@@ -1,0 +1,14 @@
+﻿{
+  "name": "AQ30.Domain",
+  "rootNamespace": "AQ30.Domain",
+  "references": [ "AQ30.SharedKernel" ],
+  "includePlatforms": [  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": true
+}

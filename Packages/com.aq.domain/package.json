@@ -1,0 +1,8 @@
+﻿{
+  "name": "com.aq.domain",
+  "version": "0.1.0",
+  "displayName": "AQ Domain",
+  "description": "Merge rules & entities.",
+  "unity": "6000.2",
+  "dependencies": { "com.aq.sharedkernel": "0.1.0" }
+}

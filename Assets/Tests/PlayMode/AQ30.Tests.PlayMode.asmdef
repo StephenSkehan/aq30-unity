@@ -1,0 +1,7 @@
+﻿{
+  "name": "AQ30.Tests.PlayMode",
+  "rootNamespace": "AQ30.Tests.PlayMode",
+  "references": [ "AQ30.SharedKernel", "AQ30.Domain", "AQ30.Infrastructure", "AQ30.Presentation" ],
+  "optionalUnityReferences": [ "TestAssemblies" ],
+  "defineConstraints": [ "UNITY_INCLUDE_TESTS" ]
+}

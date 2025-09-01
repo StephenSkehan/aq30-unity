@@ -1,0 +1,14 @@
+﻿{
+  "name": "AQ30.Presentation",
+  "rootNamespace": "AQ30.Presentation",
+  "references": [ "AQ30.SharedKernel","AQ30.Domain" ],
+  "includePlatforms": [  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

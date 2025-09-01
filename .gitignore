@@ -1,0 +1,23 @@
+﻿# Unity caches (never commit)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+UserSettings/
+Packages/PackageCache/
+
+# Addressables/cache
+Assets/StreamingAssets/aa/
+Assets/AddressableAssetsData/*/*.bin*
+
+# IDE
+.vs/
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
