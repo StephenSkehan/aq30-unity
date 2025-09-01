@@ -1,0 +1,11 @@
+﻿# Unity noise & generated artifacts
+Library/
+Temp/
+Obj/
+Builds/
+Packages/PackageCache/
+
+# Build outputs for PureDomain (C# only project)
+PureDomain/bin/
+PureDomain/obj/
+
