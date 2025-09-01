@@ -1,0 +1,8 @@
+﻿{
+  "name": "com.aq.sharedkernel",
+  "version": "0.1.0",
+  "displayName": "AQ Shared Kernel",
+  "description": "Deterministic primitives.",
+  "unity": "6000.2",
+  "dependencies": {}
+}
