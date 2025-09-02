@@ -1,8 +1,9 @@
 ﻿{
   "name": "com.aq.sharedkernel",
-  "version": "0.1.0",
   "displayName": "AQ Shared Kernel",
-  "description": "Deterministic primitives.",
-  "unity": "6000.2",
-  "dependencies": {}
+  "version": "0.0.1",
+  "unity": "2021.3",
+  "description": "Pure C# primitives for AQ (no UnityEngine/UnityEditor).",
+  "keywords": ["aq", "sharedkernel", "domain"],
+  "author": { "name": "Indigo Chimp Studios" }
 }

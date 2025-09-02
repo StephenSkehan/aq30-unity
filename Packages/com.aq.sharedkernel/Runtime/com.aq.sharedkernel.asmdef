@@ -1,8 +1,8 @@
 ﻿{
-  "name": "AQ30.SharedKernel",
-  "rootNamespace": "AQ30.SharedKernel",
-  "references": [  ],
-  "includePlatforms": [  ],
+  "name": "com.aq.sharedkernel",
+  "rootNamespace": "AQ.SharedKernel",
+  "references": [],
+  "includePlatforms": [],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
   "overrideReferences": false,

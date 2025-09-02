@@ -1,0 +1,22 @@
+{
+    "name": "com.aq.sharedkernel.tests",
+    "rootNamespace": "AQ.SharedKernel.Tests",
+    "references": [
+        "com.aq.sharedkernel",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": true
+}
