@@ -1,4 +1,4 @@
-﻿# Unity caches (never commit)
+﻿# --- Unity Generated ---
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -6,6 +6,10 @@
 [Bb]uilds/
 [Ll]ogs/
 [Mm]emoryCaptures/
+DerivedData/
+Artifacts/
+
+# Unity auto-downloads
 UserSettings/
 Packages/PackageCache/
 
@@ -13,11 +17,36 @@ Packages/PackageCache/
 Assets/StreamingAssets/aa/
 Assets/AddressableAssetsData/*/*.bin*
 
-# IDE
+# Rider/VS/IDE caches
 .vs/
 .vscode/
 .idea/
+*.csproj
+*.sln
+*.user
+*.userprefs
 
-# OS
+# OS junk
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# --- LFS-tracked assets ---
+# These are source assets you *do* want in Git, but through LFS:
+# (Run: git lfs track "*.psd" "*.png" "*.fbx" "*.wav" "*.mp4" etc.)
+*.psd
+*.png
+*.jpg
+*.jpeg
+*.tga
+*.tif
+*.tiff
+*.fbx
+*.obj
+*.wav
+*.mp3
+*.mp4
+*.prefab
+*.unity
+*.anim
+
