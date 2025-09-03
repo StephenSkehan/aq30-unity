@@ -628,12 +628,6 @@
       <Private>False</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="AQ30.SharedKernel.csproj">
-      <Project>{D3B306BF-EBDE-28E8-9B38-DD476CFC0E80}</Project>
-      <Name>AQ30.SharedKernel</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

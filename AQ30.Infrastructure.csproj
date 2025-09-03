@@ -1127,23 +1127,19 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="AQ30.SharedKernel.csproj">
-      <Project>{D3B306BF-EBDE-28E8-9B38-DD476CFC0E80}</Project>
-      <Name>AQ30.SharedKernel</Name>
-    </ProjectReference>
     <ProjectReference Include="AQ30.Domain.csproj">
       <Project>{B9495843-24A5-FB25-A35C-6E3805760158}</Project>
       <Name>AQ30.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{80E37C9B-FB7B-724C-3D0A-4A68D7793496}</Project>
+      <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{3981B0FF-B2A2-4AA7-CA50-34534F79DE4B}</Project>
+      <Name>UnityEngine.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

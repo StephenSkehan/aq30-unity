@@ -9,11 +9,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>AQ30.Tests.PlayMode</RootNamespace>
-    <ProjectGuid>{2D30020F-9D12-9972-932A-9B0B7F1A90FF}</ProjectGuid>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{689601AE-B4D1-AAC5-5252-64ED0C66939A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>AQ30.Tests.PlayMode</AssemblyName>
+    <AssemblyName>Unity.Rendering.LightTransport.Runtime</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -61,10 +61,77 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Tests\PlayMode\PlayBootSmoke.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common\Utilities\PersistentGPUArray.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\RayTracingResources.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\ComputeRayTracingBackend.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Hardware\HardwareRayTracingShader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\Sampling\SamplingResources.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\HlbvhBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common\Utilities\BlockAllocator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\IRayTracingBackend.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common\Utilities\BackendHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Hardware\HardwareRayTracingAccelStruct.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\BLASPositionsPool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common\GeometryPool\GeometryPoolDefs.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\RayTracingContext.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common\AccelStructAdapter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common\TerrainToMesh.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common\AccelStructInstances.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\Common.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\ComputeRayTracingShader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\StringIDs.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common\GeometryPool\GeometryPool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\IRayTracingShader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\RestructureBvh.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common\Utilities\GraphicsHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\ComputeRayTracingAccelStruct.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\IRayTracingAccelStruct.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common\Utilities\Utils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\UnifiedRayTracingException.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\Scan.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\RadeonRaysAPI.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\RadixSort.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\HlbvhTopLevelBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\Sampling\SobolData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\BvhCheck.cs" />
+    <Compile Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Hardware\HardwareRayTracingBackend.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Tests\PlayMode\AQ30.Tests.PlayMode.asmdef" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common\GeometryPool\GeometryPoolDefs.cs.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\Sampling\SobolSampling.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\transform.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\Unity.Rendering.LightTransport.Runtime.asmdef" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Bindings.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\Sampling\QuasiRandom.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\bit_histogram.compute" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\README.txt" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common\Utilities\CopyBuffer.compute" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\FetchGeometry.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\Sampling\Common.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\intersector_common.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Hardware\HWRayTracingMaterial.shader" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\block_scan.compute" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common\GeometryPool\GeometryPoolKernels.compute" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\triangle_mesh.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Hardware\HardwareRaygenShader.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\restructure_bvh.compute" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\Sampling\SamplingResources.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\Sampling\SobolBluenoiseSampling.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\scatter.compute" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common\GeometryPool\GeometryPool.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\ComputeRaygenShader.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\bvh2il.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\build_hlbvh.compute" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\TraceRay.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\trace_ray.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\aabb.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\CopyPositions.compute" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Common.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\Sampling\Hashes.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\math.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\intersect_structures.hlsl" />
+    <None Include="Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c\Runtime\UnifiedRayTracing\Compute\RadeonRays\kernels\block_reduce_part.compute" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -547,8 +614,76 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\Managed\UnityEngine\UnityEditor.XRModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\PlaybackEngines\WebGLSupport\UnityEditor.WebGL.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\PlaybackEngines\AndroidPlayer\UnityEditor.Android.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.YamlDotNet">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections@d49facba0036\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Plastic.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@8f3c30ecd081\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Plastic.Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@8f3c30ecd081\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="log4netPlastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@8f3c30ecd081\Lib\Editor\log4netPlastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.IonicZip">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@8f3c30ecd081\Lib\Editor\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Hashing">
+      <HintPath>Library\PackageCache\com.unity.collections@d49facba0036\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.TextureAssets">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d78732e851eb\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.collections@d49facba0036\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
@@ -1061,25 +1196,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="AQ30.Domain.csproj">
-      <Project>{B9495843-24A5-FB25-A35C-6E3805760158}</Project>
-      <Name>AQ30.Domain</Name>
+    <ProjectReference Include="Unity.Mathematics.csproj">
+      <Project>{F62E83DC-5935-DE6B-AFDF-A06A8869D0DE}</Project>
+      <Name>Unity.Mathematics</Name>
     </ProjectReference>
-    <ProjectReference Include="AQ30.Infrastructure.csproj">
-      <Project>{633148D5-EE2F-6F6A-FC27-9C16FA75102F}</Project>
-      <Name>AQ30.Infrastructure</Name>
+    <ProjectReference Include="Unity.Collections.csproj">
+      <Project>{710969C9-AD99-AF4B-2B6D-9F987C19348F}</Project>
+      <Name>Unity.Collections</Name>
     </ProjectReference>
-    <ProjectReference Include="AQ30.Presentation.csproj">
-      <Project>{488666F5-E57B-57DD-D556-23BA83C3C55D}</Project>
-      <Name>AQ30.Presentation</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{960FF64D-0EAA-B36D-212B-FEDB852B3BC6}</Project>
-      <Name>UnityEngine.TestRunner</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{1941AA53-8A1A-CC82-A93E-86F157439EEE}</Project>
-      <Name>UnityEditor.TestRunner</Name>
+    <ProjectReference Include="Unity.Burst.csproj">
+      <Project>{11E8926F-D98C-D648-79D3-5D3BB014F3F3}</Project>
+      <Name>Unity.Burst</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{80E37C9B-FB7B-724C-3D0A-4A68D7793496}</Project>

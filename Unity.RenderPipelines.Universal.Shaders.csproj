@@ -9,11 +9,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>AQ30.Tests.PlayMode</RootNamespace>
-    <ProjectGuid>{2D30020F-9D12-9972-932A-9B0B7F1A90FF}</ProjectGuid>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{343D9FB2-AE75-14A6-C794-780550C97DDF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>AQ30.Tests.PlayMode</AssemblyName>
+    <AssemblyName>Unity.RenderPipelines.Universal.Shaders</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -61,10 +61,152 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Tests\PlayMode\PlayBootSmoke.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Shaders.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Tests\PlayMode\AQ30.Tests.PlayMode.asmdef" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\SpatialMappingOcclusion.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\BakedLitForwardPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\LensFlareScreenSpace.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesSimpleLitForwardPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\TerrainLitMetaPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\FogDeferred.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesSimpleLitInput.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\StopNaN.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\LitForwardPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\TerrainLitBase.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Include\ShapeLightShared.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Nature\SpeedTree7Input.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\PaniniProjection.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\Blit.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\CoreBlitColorAndDepth.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\ClusterDeferred.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\LitGBufferPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Nature\SpeedTreeUtility.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Sprite-Lit-Default.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Sprite-Unlit-Default.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\UnlitMetaPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Debug\ProbeVolumeSamplingDebugPositionNormal.compute" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\SubpixelMorphologicalAntialiasing.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesDepthNormalsPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\StencilDeferred.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\CoreBlit.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Lit.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Include\LightingUtility.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesUnlitForwardPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesLitInput.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Sprite-Mask.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Nature\SpeedTree7Passes.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\BakedLitMetaPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\Sampling.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesUnlit.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\XR\XROcclusionMesh.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Shadow2D-Shadow-Sprite.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\BRGPicking.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\TerrainDetailLitPasses.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Unity.RenderPipelines.Universal.Shaders.asmdef" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\WavingGrassPasses.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\FinalPost.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\LitInput.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Include\InputData2D.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Nature\SpeedTree7CommonInput.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Unlit.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\LutBuilderLdr.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesSimpleLit.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Nature\SpeedTree7CommonPasses.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\CameraMotionVectors.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\XR\XRMirrorView.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\WavingGrass.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Nature\SpeedTree8Passes.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\BakedLitInput.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\EdgeAdaptiveSpatialUpsampling.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\BakedLitDepthNormalsPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\SimpleLitDepthNormalsPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\LitDepthNormalsPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\CopyDepth.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\FallbackError.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\TerrainDetailLit.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\UnlitForwardPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Debug\HDRDebugView.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\Universal2D.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Shadow2D-Unshadow-Geometry.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Include\ShadowProjectVertex.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\CopyDepthPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\WavingGrassDepthNormalsPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesEditorPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesLit.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\DepthNormalsPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\UberPost.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\UnlitInput.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Include\CombinedShapeLightShared.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\ScreenSpaceAmbientOcclusion.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Include\SurfaceData2D.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\UnlitGBufferPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Include\Core2D.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesLitForwardPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\TerrainLitInput.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\BlitHDROverlay.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\SpatialMappingWireframe.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\ScalingSetup.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\XR\XRMotionVector.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Shadow2D-Shadow-Geometry.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\WavingGrassBillboard.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\TerrainLit.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Nature\SpeedTree7BillboardInput.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\FXAA3_11.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Nature\SpeedTree8.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Include\NormalsRenderingShared.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Include\SpriteMaskShared.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\StencilDeferred.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesDepthOnlyPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Nature\SpeedTree8Input.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\DepthOnlyPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\TerrainLitAdd.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesInput.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\BokehDepthOfField.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\TerrainDetailLitInput.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\ShadowCasterPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\WavingGrassInput.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesSimpleLitGBufferPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\Common.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\TerrainLitDepthNormalsPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\ObjectMotionVectorFallback.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Nature\SpeedTree7BillboardPasses.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\BakedLit.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\SubpixelMorphologicalAntialiasingBridge.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Include\ShapeLightVariables.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\LensFlareDataDriven.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\StencilDitherMaskSeed.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\TemporalAA.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesLitGbufferPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\LitMetaPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\LutBuilderHdr.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Particles\ParticlesUnlitInput.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\TemporalAA.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\SimpleLit.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\TerrainLitPasses.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\SimpleLitInput.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\XR\XRMirrorView.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\CameraMotionBlur.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\GaussianDepthOfField.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Nature\SpeedTree7Billboard.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Shadow2D-Projected.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\UnlitDepthNormalsPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Shadow2D-Unshadow-Sprite.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\XR\XRVisibilityMeshHelper.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\SimpleLitForwardPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\ComplexLit.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Nature\SpeedTree7.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\ScreenSpaceShadows.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\2D\Light2D.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\SubpixelMorphologicalAntialiasing.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\PostProcessing\Bloom.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\MaterialError.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\SimpleLitGBufferPass.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\FallbackLoading.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Terrain\TerrainLitBasemapGen.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Utils\ClusterDeferred.hlsl" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\Debug\DebugReplacement.shader" />
+    <None Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Shaders\SimpleLitMetaPass.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -547,8 +689,76 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\Managed\UnityEngine\UnityEditor.XRModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\PlaybackEngines\WebGLSupport\UnityEditor.WebGL.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\PlaybackEngines\AndroidPlayer\UnityEditor.Android.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.YamlDotNet">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections@d49facba0036\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Plastic.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@8f3c30ecd081\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Plastic.Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@8f3c30ecd081\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="log4netPlastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@8f3c30ecd081\Lib\Editor\log4netPlastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.IonicZip">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@8f3c30ecd081\Lib\Editor\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Hashing">
+      <HintPath>Library\PackageCache\com.unity.collections@d49facba0036\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.TextureAssets">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d78732e851eb\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.collections@d49facba0036\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
@@ -1061,26 +1271,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="AQ30.Domain.csproj">
-      <Project>{B9495843-24A5-FB25-A35C-6E3805760158}</Project>
-      <Name>AQ30.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="AQ30.Infrastructure.csproj">
-      <Project>{633148D5-EE2F-6F6A-FC27-9C16FA75102F}</Project>
-      <Name>AQ30.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="AQ30.Presentation.csproj">
-      <Project>{488666F5-E57B-57DD-D556-23BA83C3C55D}</Project>
-      <Name>AQ30.Presentation</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{960FF64D-0EAA-B36D-212B-FEDB852B3BC6}</Project>
-      <Name>UnityEngine.TestRunner</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{1941AA53-8A1A-CC82-A93E-86F157439EEE}</Project>
-      <Name>UnityEditor.TestRunner</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{80E37C9B-FB7B-724C-3D0A-4A68D7793496}</Project>
       <Name>UnityEditor.UI</Name>

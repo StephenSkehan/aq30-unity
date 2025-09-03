@@ -1,0 +1,12 @@
+﻿{
+  "name": "AQ.Domain.Merge",
+  "rootNamespace": "AQ.Domain.Merge",
+  "references": [],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "noEngineReferences": true
+}

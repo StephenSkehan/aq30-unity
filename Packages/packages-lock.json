@@ -8,6 +8,12 @@
         "com.aq.sharedkernel": "0.1.0"
       }
     },
+    "com.aq.domain.merge": {
+      "version": "file:com.aq.domain.merge",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.aq.infrastructure": {
       "version": "file:com.aq.infrastructure",
       "depth": 0,
