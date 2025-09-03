@@ -1,5 +1,5 @@
 ﻿{
-  "name": "com.aq.sharedkernel",
+  "name": "AQ.SharedKernel",
   "rootNamespace": "AQ.SharedKernel",
   "references": [],
   "includePlatforms": [],
@@ -8,7 +8,6 @@
   "overrideReferences": false,
   "precompiledReferences": [],
   "autoReferenced": true,
-  "defineConstraints": [],
-  "versionDefines": [],
   "noEngineReferences": true
 }
+

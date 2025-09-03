@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageReport scope="Summary">
+  <Summary>
+    <Generatedon>3/09/2025 - 8:34:30 PM</Generatedon>
+    <Parser>MultiReportParser (4x OpenCoverParser)</Parser>
+    <Assemblies>2</Assemblies>
+    <Classes>8</Classes>
+    <Files>8</Files>
+    <Coveredlines>18</Coveredlines>
+    <Uncoveredlines>75</Uncoveredlines>
+    <Coverablelines>93</Coverablelines>
+    <Totallines>219</Totallines>
+    <Linecoverage>19.3</Linecoverage>
+    <Coveredbranches>0</Coveredbranches>
+    <Totalbranches>0</Totalbranches>
+    <Coveredmethods>17</Coveredmethods>
+    <Totalmethods>39</Totalmethods>
+    <Methodcoverage>43.5</Methodcoverage>
+  </Summary>
+  <Coverage>
+    <Assembly name="AQ.Domain.Merge" classes="3" coverage="0" coveredlines="0" coverablelines="39" totallines="83" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="14" methodcoverage="0">
+      <Class name="AQ.Domain.Merge.ItemId" coverage="0" coveredlines="0" coverablelines="20" totallines="42" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="8" methodcoverage="0" />
+      <Class name="AQ.Domain.Merge.MergeEngine" coverage="0" coveredlines="0" coverablelines="13" totallines="27" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="AQ.Domain.Merge.MergePerformed" coverage="0" coveredlines="0" coverablelines="6" totallines="14" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="4" methodcoverage="0" />
+    </Assembly>
+    <Assembly name="AQ.SharedKernel" classes="5" coverage="33.3" coveredlines="18" coverablelines="54" totallines="136" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="17" totalmethods="25" methodcoverage="68">
+      <Class name="AQ.SharedKernel.DeterministicRandom" coverage="60" coveredlines="3" coverablelines="5" totallines="18" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="5" methodcoverage="60" />
+      <Class name="AQ.SharedKernel.FixedTimeProvider" coverage="100" coveredlines="3" coverablelines="3" totallines="15" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="4" methodcoverage="100" />
+      <Class name="AQ.SharedKernel.InMemoryEventBus" coverage="0" coveredlines="0" coverablelines="33" totallines="62" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
+      <Class name="AQ.SharedKernel.NullLogger" coverage="100" coveredlines="3" coverablelines="3" totallines="14" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="3" methodcoverage="100" />
+      <Class name="AQ.SharedKernel.Result[T]" coverage="90" coveredlines="9" coverablelines="10" totallines="27" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="7" totalmethods="8" methodcoverage="87.5" />
+    </Assembly>
+  </Coverage>
+</CoverageReport>

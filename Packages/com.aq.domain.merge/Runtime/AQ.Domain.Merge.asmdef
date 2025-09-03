@@ -1,12 +1,16 @@
-﻿{
-  "name": "AQ.Domain.Merge",
-  "rootNamespace": "AQ.Domain.Merge",
-  "references": [],
-  "includePlatforms": [],
-  "excludePlatforms": [],
-  "allowUnsafeCode": false,
-  "overrideReferences": false,
-  "precompiledReferences": [],
-  "autoReferenced": true,
-  "noEngineReferences": true
+{
+    "name": "AQ.Domain.Merge",
+    "rootNamespace": "AQ.Domain.Merge",
+    "references": [
+        "GUID:0497fb17afa81db45accb254029989f4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
 }

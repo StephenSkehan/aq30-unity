@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2025-09-03_19-05-45" tag="">
+  <assembly name="AQ30.Tests.EditMode">
+    <class name="AQ30.Tests.EditMode.ProjectBootSmoke" coveredlines="2" coverablelines="3" totallines="13" coveredbranches="0" totalbranches="0" />
+  </assembly>
+  <assembly name="AQ30.Tests.PlayMode">
+    <class name="AQ30.Tests.PlayMode.PlayBootSmoke" coveredlines="3" coverablelines="4" totallines="16" coveredbranches="0" totalbranches="0" />
+  </assembly>
+</coverage>

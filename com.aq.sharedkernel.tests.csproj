@@ -75,6 +75,10 @@
       <HintPath>Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="ReportGeneratorMerged">
+      <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@205a02cbcb39\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.IO.Hashing">
       <HintPath>Library\PackageCache\com.unity.collections@d49facba0036\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
       <Private>False</Private>
@@ -601,10 +605,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="com.aq.sharedkernel.csproj">
-      <Project>{BD623DF5-FBF8-EA97-7F3E-47BF888D7312}</Project>
-      <Name>com.aq.sharedkernel</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
       <Project>{960FF64D-0EAA-B36D-212B-FEDB852B3BC6}</Project>
       <Name>UnityEngine.TestRunner</Name>
@@ -612,6 +612,10 @@
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
       <Project>{1941AA53-8A1A-CC82-A93E-86F157439EEE}</Project>
       <Name>UnityEditor.TestRunner</Name>
+    </ProjectReference>
+    <ProjectReference Include="AQ.SharedKernel.csproj">
+      <Project>{C02FBED4-D790-F417-BBE7-B5B5A8357A3D}</Project>
+      <Name>AQ.SharedKernel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -62,8 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Runtime\Overrides\ColorAdjustments.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Runtime\Passes\ScreenSpaceAmbientOcclusionPass.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Runtime\Decal\Entities\DecalEntityManager.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Runtime\Passes\ScreenSpaceAmbientOcclusionPass.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Runtime\Overrides\ScreenSpaceLensFlare.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Runtime\History\RawColorHistory.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@a2829103b3d4\Runtime\RTHandleUtils.cs" />
@@ -757,6 +757,10 @@
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ReportGeneratorMerged">
+      <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@205a02cbcb39\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">

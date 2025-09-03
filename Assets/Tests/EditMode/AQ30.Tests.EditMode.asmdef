@@ -1,8 +1,28 @@
-﻿{
-  "name": "AQ30.Tests.EditMode",
-  "rootNamespace": "AQ30.Tests.EditMode",
-  "references": [ "AQ30.SharedKernel", "AQ30.Domain", "AQ30.Infrastructure", "AQ30.Presentation" ],
-  "includePlatforms": [ "Editor" ],
-  "optionalUnityReferences": [ "TestAssemblies" ],
-  "defineConstraints": [ "UNITY_INCLUDE_TESTS" ]
+{
+    "name": "AQ30.Tests.EditMode",
+    "rootNamespace": "AQ30.Tests.EditMode",
+    "references": [
+        "AQ30.Domain",
+        "AQ30.Infrastructure",
+        "AQ30.Presentation",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "AQ.SharedKernel"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS",
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

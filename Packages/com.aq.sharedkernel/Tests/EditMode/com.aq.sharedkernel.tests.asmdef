@@ -2,9 +2,9 @@
     "name": "com.aq.sharedkernel.tests",
     "rootNamespace": "AQ.SharedKernel.Tests",
     "references": [
-        "com.aq.sharedkernel",
         "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
+        "UnityEditor.TestRunner",
+        "AQ.SharedKernel"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -195,8 +195,8 @@
     <Compile Include="Library\PackageCache\com.unity.2d.animation@34e0443c58ed\Editor\SkinningModule\UI\BoneToolbar.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@34e0443c58ed\Editor\SkinningModule\SkinningCache\SkeletonCacheExtensions.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@34e0443c58ed\Editor\SkinningModule\BatchedDrawing.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.animation@34e0443c58ed\Editor\LayoutOverlay\Manipulators\Draggable.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@34e0443c58ed\Editor\SkinningModule\SpriteMeshData\EditableBoneWeightUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.animation@34e0443c58ed\Editor\LayoutOverlay\Manipulators\Draggable.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@34e0443c58ed\Editor\SkinningModule\Undo\DisableUndoScope.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@34e0443c58ed\Editor\SkinningModule\SpriteBoneInfluence\SpriteBoneInfluenceTool.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@34e0443c58ed\Editor\SpriteLib\SpriteLibraryAssetInspector.cs" />
@@ -828,6 +828,10 @@
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ReportGeneratorMerged">
+      <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@205a02cbcb39\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">

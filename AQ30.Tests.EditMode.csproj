@@ -1121,6 +1121,10 @@
       <Project>{1941AA53-8A1A-CC82-A93E-86F157439EEE}</Project>
       <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
+    <ProjectReference Include="AQ.SharedKernel.csproj">
+      <Project>{C02FBED4-D790-F417-BBE7-B5B5A8357A3D}</Project>
+      <Name>AQ.SharedKernel</Name>
+    </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{80E37C9B-FB7B-724C-3D0A-4A68D7793496}</Project>
       <Name>UnityEditor.UI</Name>
