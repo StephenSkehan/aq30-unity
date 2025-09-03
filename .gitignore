@@ -50,3 +50,11 @@ desktop.ini
 *.unity
 *.anim
 
+Library/
+Temp/
+Obj/
+Logs/
+MemoryCaptures/
+Build/
+Builds/
+CodeCoverage/
