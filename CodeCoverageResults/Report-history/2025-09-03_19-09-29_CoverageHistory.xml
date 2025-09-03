@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<coverage version="1.0" date="2025-09-03_19-09-29" tag="">
-  <assembly name="AQ.SharedKernel">
-    <class name="AQ.SharedKernel.DeterministicRandom" coveredlines="3" coverablelines="5" totallines="18" coveredbranches="0" totalbranches="0" />
-    <class name="AQ.SharedKernel.FixedTimeProvider" coveredlines="3" coverablelines="3" totallines="15" coveredbranches="0" totalbranches="0" />
-    <class name="AQ.SharedKernel.NullLogger" coveredlines="3" coverablelines="3" totallines="14" coveredbranches="0" totalbranches="0" />
-    <class name="AQ.SharedKernel.Result[T]" coveredlines="9" coverablelines="10" totallines="27" coveredbranches="0" totalbranches="0" />
-  </assembly>
-</coverage>

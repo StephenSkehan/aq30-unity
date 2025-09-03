@@ -7,14 +7,16 @@
         "AQ30.Presentation",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "AQ.SharedKernel"
+        "AQ.SharedKernel",
+        "AQ.App",
+        "AQ.Domain.Merge"
     ],
     "includePlatforms": [
         "Editor"
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": true,
+    "overrideReferences": false,
     "precompiledReferences": [
         "nunit.framework.dll"
     ],

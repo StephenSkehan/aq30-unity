@@ -7,7 +7,7 @@ namespace AQ30.Tests.EditMode
         [Test]
         public void ProjectCompiles()
         {
-            Assert.Pass("EditMode smoke test ran.");
+            Assert.Pass("EditMode smoke test ran!");
         }
     }
 }
