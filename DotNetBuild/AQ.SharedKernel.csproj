@@ -1,12 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <LangVersion>9.0</LangVersion>
     <Nullable>disable</Nullable>
     <AssemblyName>AQ.SharedKernel</AssemblyName>
     <RootNamespace>AQ.SharedKernel</RootNamespace>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="..\Packages\com.aq.sharedkernel\Runtime\**\*.cs" />
+    <Compile Include="..\Packages\com.aq.sharedkernel\Runtime\Result\**\*.cs" />
+    <Compile Include="..\Packages\com.aq.sharedkernel\Runtime\Random\**\*.cs" />
+    <Compile Include="..\Packages\com.aq.sharedkernel\Runtime\Time\**\*.cs" />
+    <Compile Include="..\Packages\com.aq.sharedkernel\Runtime\Logging\**\*.cs" />
   </ItemGroup>
 </Project>

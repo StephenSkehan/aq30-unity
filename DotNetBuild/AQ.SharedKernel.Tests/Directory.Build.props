@@ -1,0 +1,10 @@
+﻿<Project>
+  <PropertyGroup>
+    <CollectCoverage>true</CollectCoverage>
+    <Include>[AQ.SharedKernel]*</Include>
+    <CoverletOutput>$(MSBuildProjectDirectory)\TestResults\coverage</CoverletOutput>
+    <CoverletOutputFormat>cobertura</CoverletOutputFormat>
+    <Threshold>80</Threshold>
+    <ThresholdType>line</ThresholdType>
+  </PropertyGroup>
+</Project>
