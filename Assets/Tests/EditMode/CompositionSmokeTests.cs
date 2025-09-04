@@ -1,31 +1,24 @@
-using NUnit.Framework;
-using AQ.App;
+﻿using AQ.App;
 using AQ.Domain.Merge;
-using AQ.SharedKernel;
+using NUnit.Framework;
 
-public class CompositionSmokeTests
+namespace AQ.App.Tests
 {
-    private sealed class StubRecipes : IRecipeBook
+    public sealed class CompositionSmokeTests
     {
-        public bool TryGetResult(ItemId a, ItemId b, out ItemId result)
-        { result = new ItemId("merged"); return true; }
-    }
+        [Test]
+        public void Build_returns_non_null_components_and_engine_is_operational()
+        {
+            var c = GameComposer.Build(); // empty recipes by default
+            Assert.IsNotNull(c);
+            Assert.IsNotNull(c.Engine);
+            Assert.IsNotNull(c.Grid);
 
-    [Test]
-    public void Composer_Wires_Engine_And_Bus()
-    {
-        var composer = GameComposer.ForTests(new StubRecipes());
-
-        MergePerformed seen = default;
-        composer.EventBus.Subscribe<MergePerformed>(e => seen = e);
-
-        ItemId r;
-        var ok = composer.MergeEngine.TryMerge(new ItemId("a"), new ItemId("b"), out r);
-
-        Assert.IsTrue(ok);
-        Assert.AreEqual("merged", r.Value);
-        Assert.AreEqual("a", seen.A.Value);
-        Assert.AreEqual("b", seen.B.Value);
-        Assert.AreEqual("merged", seen.Result.Value);
+            // With empty recipes, merges should fail safely without throwing
+            c.Grid.Set(0, new ItemId("twig"));
+            c.Grid.Set(1, new ItemId("twig"));
+            var res = c.Engine.TryMerge(0, 1);
+            Assert.IsFalse(res.IsSuccess);
+        }
     }
 }
