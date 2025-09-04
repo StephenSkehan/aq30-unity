@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Packages\com.aq.domain.merge\Runtime\MergePerformed.cs" />
     <Compile Include="Packages\com.aq.domain.merge\Runtime\MergePackageMarker.cs" />
+    <Compile Include="Packages\com.aq.domain.merge\Runtime\RecipeBook.cs" />
     <Compile Include="Packages\com.aq.domain.merge\Runtime\ItemId.cs" />
     <Compile Include="Packages\com.aq.domain.merge\Runtime\IRecipeBook.cs" />
     <Compile Include="Packages\com.aq.domain.merge\Runtime\MergeEngine.cs" />

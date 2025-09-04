@@ -1,19 +1,19 @@
 {
-    "name": "AQ.Domain.Merge.Tests.EditMode",
-    "rootNamespace": "",
-    "references": [
-        "GUID:99e1282d002bb1e4ca22e66516da45ec",
-        "GUID:0497fb17afa81db45accb254029989f4"
-    ],
-    "includePlatforms": [],
-    "excludePlatforms": [
-        "Editor"
-    ],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": false,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+  "name": "AQ.Domain.Merge.Tests.EditMode",
+  "references": [
+    "GUID:99e1282d002bb1e4ca22e66516da45ec",
+    "GUID:0497fb17afa81db45accb254029989f4"
+  ],
+  "includePlatforms": [ "Editor" ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "testAssemblies": true,
+  "optionalUnityReferences": [ "TestAssemblies" ],
+  "useGUIDs": true
 }
