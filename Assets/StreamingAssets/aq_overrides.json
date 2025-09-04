@@ -1,5 +1,16 @@
 ﻿{
   "schemaVersion": 1,
-  "economy": { "startingSoft": 0 },
-  "featureFlags": { "ftueFreePass": true }
+  "theme": {
+    "primaryColor": "#FF6A00",
+    "accentColor": "#1E90FF",
+    "cornerRadius": 12
+  },
+  "economy": {
+    "softCurrencyStart": 500,
+    "firstTimeFreePass": true
+  },
+  "ftue": {
+    "showFirstMergeHint": true,
+    "hintPulsePeriodMs": 900
+  }
 }
