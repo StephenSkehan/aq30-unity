@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <AssemblyName>AQ.SharedKernel</AssemblyName>
+    <RootNamespace>AQ.SharedKernel</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Packages\com.aq.sharedkernel\Runtime\**\*.cs" />
+  </ItemGroup>
+</Project>

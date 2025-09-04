@@ -58,3 +58,5 @@ MemoryCaptures/
 Build/
 Builds/
 CodeCoverage/
+
+!DotNetBuild/*.csproj

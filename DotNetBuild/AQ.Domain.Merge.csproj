@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <AssemblyName>AQ.Domain.Merge</AssemblyName>
+    <RootNamespace>AQ.Domain.Merge</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Packages\com.aq.domain.merge\Runtime\**\*.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="AQ.SharedKernel.csproj" />
+  </ItemGroup>
+</Project>
