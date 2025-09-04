@@ -1,90 +1,42 @@
-using System;
-using System.Collections.Generic;
-using NUnit.Framework;
-using AQ.Domain.Merge;
-using AQ.SharedKernel;
+﻿using NUnit.Framework;
 
 namespace AQ.Domain.Merge.Tests
 {
-    public class MergeEngineSmokeTests
+    [TestFixture]
+    public sealed class MergeEngineSmokeTests
     {
-        private sealed class StubRecipes : IRecipeBook
+        private static ItemId Id(string s) => new ItemId(s);
+
+        [Test]
+        public void Smoke_ItemOverload_merges_and_publishes()
         {
-            public bool TryGetResult(ItemId a, ItemId b, out ItemId result)
-            {
-                result = new ItemId("merged");
-                return true;
-            }
-        }
+            var bus = new TestBus();
+            var engine = new MergeEngine(new Grid(), new RecipeBookPair(Id("twig"), Id("branch")), bus, new FixedRandom(0.5), new FixedTime());
 
-        // Tiny in-memory bus for tests
-        private sealed class TestBus : IEventBus
-        {
-            public readonly List<object> Published = new List<object>();
-            private readonly Dictionary<Type, List<Delegate>> _subs = new Dictionary<Type, List<Delegate>>();
+            var res = engine.TryMerge(Id("twig"), Id("twig"));
 
-            public void Publish<T>(T evt)
-            {
-                Published.Add(evt!);
-                if (_subs.TryGetValue(typeof(T), out var handlers))
-                {
-                    // iterate a copy to tolerate unsubscription during publish
-                    foreach (var h in handlers.ToArray())
-                        ((Action<T>)h)(evt!);
-                }
-            }
-
-            public IDisposable Subscribe<T>(Action<T> handler)
-            {
-                if (handler == null) return new ActionDisposable(null);
-
-                var key = typeof(T);
-                if (!_subs.TryGetValue(key, out var list))
-                {
-                    list = new List<Delegate>();
-                    _subs[key] = list;
-                }
-                list.Add(handler);
-
-                // return unsubscriber
-                return new ActionDisposable(() =>
-                {
-                    if (_subs.TryGetValue(key, out var l))
-                    {
-                        l.Remove(handler);
-                        if (l.Count == 0) _subs.Remove(key);
-                    }
-                });
-            }
-
-            private sealed class ActionDisposable : IDisposable
-            {
-                private Action _dispose;
-                public ActionDisposable(Action dispose) { _dispose = dispose; }
-                public void Dispose()
-                {
-                    var d = _dispose;
-                    if (d != null)
-                    {
-                        _dispose = null;
-                        d();
-                    }
-                }
-            }
+            Assert.IsTrue(res.IsSuccess);
+            Assert.AreEqual(1, bus.Count);
+            Assert.AreEqual(Id("branch"), res.Value);
         }
 
         [Test]
-        public void Construct_And_TryMerge_DoesNotThrow()
+        public void Smoke_GridIndices_merge_updates_cells()
         {
+            var grid = new Grid();
             var bus = new TestBus();
-            var engine = new MergeEngine(new StubRecipes(), bus);
+            var recipes = new RecipeBookPair(Id("twig"), Id("branch"));
+            var engine = new MergeEngine(grid, recipes, bus, new FixedRandom(0.5), new FixedTime());
 
-            ItemId result;
-            Assert.DoesNotThrow(() => engine.TryMerge(new ItemId("a"), new ItemId("b"), out result));
+            grid.Set(0, Id("twig"));
+            grid.Set(1, Id("twig"));
 
-            // prove something was published
-            Assert.GreaterOrEqual(bus.Published.Count, 1);
-            // Assert.IsTrue(bus.Published.Exists(e => e is MergePerformed));
+            var res = engine.TryMerge(0, 1);
+
+            Assert.IsTrue(res.IsSuccess);
+            Assert.AreEqual(default(ItemId), grid.Get(0));
+            Assert.AreEqual(Id("branch"), grid.Get(1));
+            Assert.AreEqual(1, bus.Count);
         }
     }
 }

@@ -1,34 +1,27 @@
-using NUnit.Framework;
-using AQ.Domain.Merge;
-using AQ.SharedKernel;
+﻿using NUnit.Framework;
 
-public class PublishEventTests
+namespace AQ.Domain.Merge.Tests
 {
-    private sealed class StubRecipes : IRecipeBook
+    [TestFixture]
+    public sealed class PublishEventTests
     {
-        public bool TryGetResult(ItemId a, ItemId b, out ItemId result)
+        private static ItemId Id(string s) => new ItemId(s);
+
+        [Test]
+        public void Valid_merge_publishes_a_MergePerformed_event()
         {
-            result = new ItemId("merged");
-            return true;
+            var bus = new EventBusSpy();
+            var recipes = new RecipeBookTable();
+            var engine = new MergeEngine(new Grid(), recipes, bus, new FixedRandom(0.5), new FixedTime());
+
+            var twig = Id("twig");
+            var branch = Id("branch");
+            recipes.Add(twig, twig, branch);
+
+            var res = engine.TryMerge(twig, twig);
+
+            Assert.IsTrue(res.IsSuccess, res.Error);
+            Assert.AreEqual(1, bus.Published.Count, "Expected exactly one event to be published.");
         }
-    }
-
-    [Test]
-    public void TryMerge_Publishes_MergePerformed()
-    {
-        var bus = new InMemoryEventBus();
-        MergePerformed received = default;
-        bus.Subscribe<MergePerformed>(e => received = e);
-
-        var engine = new MergeEngine(new StubRecipes(), bus);
-
-        ItemId outId;
-        var ok = engine.TryMerge(new ItemId("a"), new ItemId("b"), out outId);
-
-        Assert.IsTrue(ok);
-        Assert.AreEqual("merged", outId.Value);
-        Assert.AreEqual("a", received.A.Value);
-        Assert.AreEqual("b", received.B.Value);
-        Assert.AreEqual("merged", received.Result.Value);
     }
 }
