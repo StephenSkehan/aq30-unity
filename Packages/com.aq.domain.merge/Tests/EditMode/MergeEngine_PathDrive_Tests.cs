@@ -39,7 +39,7 @@ namespace AQ.Domain.Merge.Tests
             grid.Set(3, twig);
             Assert.IsFalse(eng.TryMerge(1,3).IsSuccess);
 
-            // Advance and V: 1->3 (branch+twig invalid; prep for branch+branch)
+            // After cooldown, prepare branch+branch then merge to tree
             time.AdvanceSeconds(2);
             grid.Set(3, branch);
             Assert.IsTrue(eng.TryMerge(1,3).IsSuccess);
