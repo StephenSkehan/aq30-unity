@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<coverage line-rate="0.826" branch-rate="0.3" version="1.9" timestamp="1756985541" lines-covered="19" lines-valid="23" branches-covered="3" branches-valid="10">
+  <sources>
+    <source>C:\Users\Steph\Dev\aq30-unity\Packages\com.aq.sharedkernel\Runtime\</source>
+  </sources>
+  <packages>
+    <package name="AQ.SharedKernel" line-rate="0.826" branch-rate="0.3" complexity="26">
+      <classes>
+        <class name="AQ.SharedKernel.Result`1" filename="Result\Result.cs" line-rate="0.9166" branch-rate="0.3" complexity="15">
+          <methods>
+            <method name="get_IsSuccess" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Value" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="9" hits="6" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Error" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="Ok" signature="(T)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="17" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="Fail" signature="(System.String)" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="19" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="16" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+              </lines>
+            </method>
+            <method name="OrThrow" signature="()" line-rate="1" branch-rate="0.3333" complexity="6">
+              <lines>
+                <line number="21" hits="1" branch="True" condition-coverage="33.33% (2/6)">
+                  <conditions>
+                    <condition number="6" type="jump" coverage="50%" />
+                    <condition number="15" type="jump" coverage="0%" />
+                    <condition number="40" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="22" hits="1" branch="False" />
+                <line number="23" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name="ToString" signature="()" line-rate="1" branch-rate="0.5" complexity="2">
+              <lines>
+                <line number="25" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="6" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Boolean,T,System.String)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="3" branch="False" />
+                <line number="14" hits="9" branch="False" />
+                <line number="15" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="8" hits="5" branch="False" />
+            <line number="9" hits="6" branch="False" />
+            <line number="10" hits="2" branch="False" />
+            <line number="17" hits="3" branch="False" />
+            <line number="19" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="16" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="21" hits="1" branch="True" condition-coverage="33.33% (2/6)">
+              <conditions>
+                <condition number="6" type="jump" coverage="50%" />
+                <condition number="15" type="jump" coverage="0%" />
+                <condition number="40" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="22" hits="1" branch="False" />
+            <line number="23" hits="1" branch="False" />
+            <line number="25" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="6" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="13" hits="3" branch="False" />
+            <line number="14" hits="9" branch="False" />
+            <line number="15" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="AQ.SharedKernel.DeterministicRandom" filename="Random\DeterministicRandom.cs" line-rate="1" branch-rate="1" complexity="5">
+          <methods>
+            <method name="Next" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="7" branch="False" />
+              </lines>
+            </method>
+            <method name="Next" signature="(System.Int32)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="101" branch="False" />
+              </lines>
+            </method>
+            <method name="Next" signature="(System.Int32,System.Int32)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="15" hits="101" branch="False" />
+              </lines>
+            </method>
+            <method name="NextDouble" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="16" hits="51" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Int32)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="20" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="7" branch="False" />
+            <line number="14" hits="101" branch="False" />
+            <line number="15" hits="101" branch="False" />
+            <line number="16" hits="51" branch="False" />
+            <line number="11" hits="20" branch="False" />
+          </lines>
+        </class>
+        <class name="AQ.SharedKernel.FixedTimeProvider" filename="Time\ITimeProvider.cs" line-rate="1" branch-rate="1" complexity="3">
+          <methods>
+            <method name="get_UtcNow" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="Set" signature="(System.DateTime)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.DateTime)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="4" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="10" hits="5" branch="False" />
+            <line number="13" hits="2" branch="False" />
+            <line number="11" hits="4" branch="False" />
+          </lines>
+        </class>
+        <class name="AQ.SharedKernel.NullLogger" filename="Logging\ILogger.cs" line-rate="0" branch-rate="1" complexity="3">
+          <methods>
+            <method name="Log" signature="(AQ.SharedKernel.LogLevel,System.String)" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name=".cctor" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="0" branch="False" />
+            <line number="11" hits="0" branch="False" />
+            <line number="10" hits="0" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>

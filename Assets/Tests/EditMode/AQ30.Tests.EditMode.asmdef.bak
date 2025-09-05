@@ -1,0 +1,27 @@
+﻿{
+    "name":  "AQ30.Tests.EditMode.Disabled",
+    "rootNamespace":  "AQ30.Tests.EditMode",
+    "references":  [
+
+                   ],
+    "includePlatforms":  [
+                             "Editor"
+                         ],
+    "excludePlatforms":  [
+
+                         ],
+    "allowUnsafeCode":  false,
+    "overrideReferences":  false,
+    "precompiledReferences":  [
+                                  "nunit.framework.dll"
+                              ],
+    "autoReferenced":  false,
+    "defineConstraints":  [
+                              "UNITY_INCLUDE_TESTS",
+                              "UNITY_INCLUDE_TESTS"
+                          ],
+    "versionDefines":  [
+
+                       ],
+    "noEngineReferences":  false
+}

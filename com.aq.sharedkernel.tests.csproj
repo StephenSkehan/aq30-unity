@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Packages\com.aq.sharedkernel\Tests\EditMode\SharedKernelTests.cs" />
+    <Compile Include="Packages\com.aq.sharedkernel\Tests\EditMode\Kernel_Primitives_CoverageTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Packages\com.aq.sharedkernel\Tests\EditMode\com.aq.sharedkernel.tests.asmdef" />

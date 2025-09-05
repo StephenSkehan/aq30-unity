@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="33" result="Passed" total="33" passed="33" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:24Z" duration="0.555829">
+  <test-suite type="TestSuite" id="1064" name="aq30-unity" fullname="aq30-unity" runstate="Runnable" testcasecount="33" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:24Z" duration="0.555829" total="33" passed="33" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1048" name="AQ.Domain.Merge.Tests.EditMode.dll" fullname="C:/Users/Steph/Dev/aq30-unity/Library/ScriptAssemblies/AQ.Domain.Merge.Tests.EditMode.dll" runstate="Runnable" testcasecount="32" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:24Z" duration="0.533329" total="32" passed="32" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="14000" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1049" name="AQ" fullname="AQ" runstate="Runnable" testcasecount="32" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:24Z" duration="0.530957" total="32" passed="32" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1050" name="Domain" fullname="AQ.Domain" runstate="Runnable" testcasecount="32" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:24Z" duration="0.529147" total="32" passed="32" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1051" name="Merge" fullname="AQ.Domain.Merge" runstate="Runnable" testcasecount="32" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:24Z" duration="0.527449" total="32" passed="32" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1052" name="Tests" fullname="AQ.Domain.Merge.Tests" runstate="Runnable" testcasecount="32" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:24Z" duration="0.525537" total="32" passed="32" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1001" name="DeterministicRandom_Tests" fullname="AQ.Domain.Merge.Tests.DeterministicRandom_Tests" classname="AQ.Domain.Merge.Tests.DeterministicRandom_Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.021996" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1002" name="Same_seed_produces_identical_sequence" fullname="AQ.Domain.Merge.Tests.DeterministicRandom_Tests.Same_seed_produces_identical_sequence" methodname="Same_seed_produces_identical_sequence" classname="AQ.Domain.Merge.Tests.DeterministicRandom_Tests" runstate="Runnable" seed="1240488908" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.009922" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1003" name="FixedTimeProvider_Tests" fullname="AQ.Domain.Merge.Tests.FixedTimeProvider_Tests" classname="AQ.Domain.Merge.Tests.FixedTimeProvider_Tests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.007566" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1005" name="If_advance_method_exists_time_moves_forward" fullname="AQ.Domain.Merge.Tests.FixedTimeProvider_Tests.If_advance_method_exists_time_moves_forward" methodname="If_advance_method_exists_time_moves_forward" classname="AQ.Domain.Merge.Tests.FixedTimeProvider_Tests" runstate="Runnable" seed="334754078" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.003482" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1004" name="UtcNow_is_a_valid_DateTime" fullname="AQ.Domain.Merge.Tests.FixedTimeProvider_Tests.UtcNow_is_a_valid_DateTime" methodname="UtcNow_is_a_valid_DateTime" classname="AQ.Domain.Merge.Tests.FixedTimeProvider_Tests" runstate="Runnable" seed="1889824438" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.001121" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1006" name="Grid_Tests" fullname="AQ.Domain.Merge.Tests.Grid_Tests" classname="AQ.Domain.Merge.Tests.Grid_Tests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.005670" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1011" name="Contains_false_when_no_cell_matches" fullname="AQ.Domain.Merge.Tests.Grid_Tests.Contains_false_when_no_cell_matches" methodname="Contains_false_when_no_cell_matches" classname="AQ.Domain.Merge.Tests.Grid_Tests" runstate="Runnable" seed="1648349107" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.001755" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1010" name="Contains_true_when_any_cell_matches" fullname="AQ.Domain.Merge.Tests.Grid_Tests.Contains_true_when_any_cell_matches" methodname="Contains_true_when_any_cell_matches" classname="AQ.Domain.Merge.Tests.Grid_Tests" runstate="Runnable" seed="1785352022" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.000218" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1009" name="Overwrite_replaces_previous_value" fullname="AQ.Domain.Merge.Tests.Grid_Tests.Overwrite_replaces_previous_value" methodname="Overwrite_replaces_previous_value" classname="AQ.Domain.Merge.Tests.Grid_Tests" runstate="Runnable" seed="1020957044" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.000471" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1008" name="Set_then_get_roundtrips_value" fullname="AQ.Domain.Merge.Tests.Grid_Tests.Set_then_get_roundtrips_value" methodname="Set_then_get_roundtrips_value" classname="AQ.Domain.Merge.Tests.Grid_Tests" runstate="Runnable" seed="1548413205" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.000096" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1007" name="Unset_cell_returns_default" fullname="AQ.Domain.Merge.Tests.Grid_Tests.Unset_cell_returns_default" methodname="Unset_cell_returns_default" classname="AQ.Domain.Merge.Tests.Grid_Tests" runstate="Runnable" seed="1298223555" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.000079" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1012" name="InMemoryEventBus_Tests" fullname="AQ.Domain.Merge.Tests.InMemoryEventBus_Tests" classname="AQ.Domain.Merge.Tests.InMemoryEventBus_Tests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.003525" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1014" name="Disposed_subscription_is_noop" fullname="AQ.Domain.Merge.Tests.InMemoryEventBus_Tests.Disposed_subscription_is_noop" methodname="Disposed_subscription_is_noop" classname="AQ.Domain.Merge.Tests.InMemoryEventBus_Tests" runstate="Runnable" seed="543960155" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.000783" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1013" name="Subscribe_then_Publish_invokes_handler" fullname="AQ.Domain.Merge.Tests.InMemoryEventBus_Tests.Subscribe_then_Publish_invokes_handler" methodname="Subscribe_then_Publish_invokes_handler" classname="AQ.Domain.Merge.Tests.InMemoryEventBus_Tests" runstate="Runnable" seed="381650678" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.000187" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1015" name="ItemId_MoreTests" fullname="AQ.Domain.Merge.Tests.ItemId_MoreTests" classname="AQ.Domain.Merge.Tests.ItemId_MoreTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.004602" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1019" name="Default_ToString_is_safe" fullname="AQ.Domain.Merge.Tests.ItemId_MoreTests.Default_ToString_is_safe" methodname="Default_ToString_is_safe" classname="AQ.Domain.Merge.Tests.ItemId_MoreTests" runstate="Runnable" seed="246470992" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.000635" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1017" name="Equals_object_works_with_same_value" fullname="AQ.Domain.Merge.Tests.ItemId_MoreTests.Equals_object_works_with_same_value" methodname="Equals_object_works_with_same_value" classname="AQ.Domain.Merge.Tests.ItemId_MoreTests" runstate="Runnable" seed="2087873379" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.000132" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1016" name="ToString_returns_original_value" fullname="AQ.Domain.Merge.Tests.ItemId_MoreTests.ToString_returns_original_value" methodname="ToString_returns_original_value" classname="AQ.Domain.Merge.Tests.ItemId_MoreTests" runstate="Runnable" seed="24393927" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.000064" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1018" name="Works_as_dictionary_key_with_value_equality" fullname="AQ.Domain.Merge.Tests.ItemId_MoreTests.Works_as_dictionary_key_with_value_equality" methodname="Works_as_dictionary_key_with_value_equality" classname="AQ.Domain.Merge.Tests.ItemId_MoreTests" runstate="Runnable" seed="15119196" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.001197" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1020" name="ItemId_Tests" fullname="AQ.Domain.Merge.Tests.ItemId_Tests" classname="AQ.Domain.Merge.Tests.ItemId_Tests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.002781" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1023" name="Default_not_equal_to_named" fullname="AQ.Domain.Merge.Tests.ItemId_Tests.Default_not_equal_to_named" methodname="Default_not_equal_to_named" classname="AQ.Domain.Merge.Tests.ItemId_Tests" runstate="Runnable" seed="1794392114" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.000113" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1021" name="Equal_when_same_value" fullname="AQ.Domain.Merge.Tests.ItemId_Tests.Equal_when_same_value" methodname="Equal_when_same_value" classname="AQ.Domain.Merge.Tests.ItemId_Tests" runstate="Runnable" seed="1398622306" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.000089" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1022" name="Not_equal_when_different_value" fullname="AQ.Domain.Merge.Tests.ItemId_Tests.Not_equal_when_different_value" methodname="Not_equal_when_different_value" classname="AQ.Domain.Merge.Tests.ItemId_Tests" runstate="Runnable" seed="844416941" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.000067" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1027" name="MergeEngine_GridOpsDrive_Tests" fullname="AQ.Domain.Merge.Tests.MergeEngine_GridOpsDrive_Tests" classname="AQ.Domain.Merge.Tests.MergeEngine_GridOpsDrive_Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.108772" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1028" name="Mix_of_valid_invalid_and_cooldown_paths_drives_get_set" fullname="AQ.Domain.Merge.Tests.MergeEngine_GridOpsDrive_Tests.Mix_of_valid_invalid_and_cooldown_paths_drives_get_set" methodname="Mix_of_valid_invalid_and_cooldown_paths_drives_get_set" classname="AQ.Domain.Merge.Tests.MergeEngine_GridOpsDrive_Tests" runstate="Runnable" seed="1218935805" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.105891" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1029" name="MergeEngine_RepeatedMerges_Tests" fullname="AQ.Domain.Merge.Tests.MergeEngine_RepeatedMerges_Tests" classname="AQ.Domain.Merge.Tests.MergeEngine_RepeatedMerges_Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.066145" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1030" name="Two_valid_merges_then_an_invalid_one_exercises_paths" fullname="AQ.Domain.Merge.Tests.MergeEngine_RepeatedMerges_Tests.Two_valid_merges_then_an_invalid_one_exercises_paths" methodname="Two_valid_merges_then_an_invalid_one_exercises_paths" classname="AQ.Domain.Merge.Tests.MergeEngine_RepeatedMerges_Tests" runstate="Runnable" seed="1335666782" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.062497" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1031" name="MergeEngine_Step1_Tests" fullname="AQ.Domain.Merge.Tests.MergeEngine_Step1_Tests" classname="AQ.Domain.Merge.Tests.MergeEngine_Step1_Tests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.035287" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1033" name="Invalid_when_different_items_does_not_publish_or_change" fullname="AQ.Domain.Merge.Tests.MergeEngine_Step1_Tests.Invalid_when_different_items_does_not_publish_or_change" methodname="Invalid_when_different_items_does_not_publish_or_change" classname="AQ.Domain.Merge.Tests.MergeEngine_Step1_Tests" runstate="Runnable" seed="44633659" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.000425" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1034" name="Invalid_when_no_recipe_does_not_publish_or_change" fullname="AQ.Domain.Merge.Tests.MergeEngine_Step1_Tests.Invalid_when_no_recipe_does_not_publish_or_change" methodname="Invalid_when_no_recipe_does_not_publish_or_change" classname="AQ.Domain.Merge.Tests.MergeEngine_Step1_Tests" runstate="Runnable" seed="1850613049" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.000337" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1032" name="Valid_merge_updates_target_and_publishes_event" fullname="AQ.Domain.Merge.Tests.MergeEngine_Step1_Tests.Valid_merge_updates_target_and_publishes_event" methodname="Valid_merge_updates_target_and_publishes_event" classname="AQ.Domain.Merge.Tests.MergeEngine_Step1_Tests" runstate="Runnable" seed="233433572" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.031118" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1035" name="MergeEngine_Step2_Tests" fullname="AQ.Domain.Merge.Tests.MergeEngine_Step2_Tests" classname="AQ.Domain.Merge.Tests.MergeEngine_Step2_Tests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:24Z" duration="0.154339" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1037" name="Merge_blocked_if_on_cooldown_then_succeeds_after_time" fullname="AQ.Domain.Merge.Tests.MergeEngine_Step2_Tests.Merge_blocked_if_on_cooldown_then_succeeds_after_time" methodname="Merge_blocked_if_on_cooldown_then_succeeds_after_time" classname="AQ.Domain.Merge.Tests.MergeEngine_Step2_Tests" runstate="Runnable" seed="952060858" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:23Z" duration="0.060985" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1036" name="Merge_clears_source_and_updates_target" fullname="AQ.Domain.Merge.Tests.MergeEngine_Step2_Tests.Merge_clears_source_and_updates_target" methodname="Merge_clears_source_and_updates_target" classname="AQ.Domain.Merge.Tests.MergeEngine_Step2_Tests" runstate="Runnable" seed="481449103" result="Passed" start-time="2025-09-04 21:52:23Z" end-time="2025-09-04 21:52:24Z" duration="0.030280" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1038" name="Same_seed_and_time_produces_identical_results" fullname="AQ.Domain.Merge.Tests.MergeEngine_Step2_Tests.Same_seed_and_time_produces_identical_results" methodname="Same_seed_and_time_produces_identical_results" classname="AQ.Domain.Merge.Tests.MergeEngine_Step2_Tests" runstate="Runnable" seed="1400301886" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.059598" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1024" name="MergeEngineSmokeTests" fullname="AQ.Domain.Merge.Tests.MergeEngineSmokeTests" classname="AQ.Domain.Merge.Tests.MergeEngineSmokeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.064463" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1026" name="Smoke_GridIndices_merge_updates_cells" fullname="AQ.Domain.Merge.Tests.MergeEngineSmokeTests.Smoke_GridIndices_merge_updates_cells" methodname="Smoke_GridIndices_merge_updates_cells" classname="AQ.Domain.Merge.Tests.MergeEngineSmokeTests" runstate="Runnable" seed="389653333" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.030865" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1025" name="Smoke_ItemOverload_merges_and_publishes" fullname="AQ.Domain.Merge.Tests.MergeEngineSmokeTests.Smoke_ItemOverload_merges_and_publishes" methodname="Smoke_ItemOverload_merges_and_publishes" classname="AQ.Domain.Merge.Tests.MergeEngineSmokeTests" runstate="Runnable" seed="564547808" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.029999" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1039" name="MergePerformed_Reflection_Tests" fullname="AQ.Domain.Merge.Tests.MergePerformed_Reflection_Tests" classname="AQ.Domain.Merge.Tests.MergePerformed_Reflection_Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.005476" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1040" name="Can_construct_and_inspect_MergePerformed" fullname="AQ.Domain.Merge.Tests.MergePerformed_Reflection_Tests.Can_construct_and_inspect_MergePerformed" methodname="Can_construct_and_inspect_MergePerformed" classname="AQ.Domain.Merge.Tests.MergePerformed_Reflection_Tests" runstate="Runnable" seed="955250730" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.001999" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1041" name="NullLogger_Tests" fullname="AQ.Domain.Merge.Tests.NullLogger_Tests" classname="AQ.Domain.Merge.Tests.NullLogger_Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.004275" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1042" name="Public_logging_members_are_safe_noop" fullname="AQ.Domain.Merge.Tests.NullLogger_Tests.Public_logging_members_are_safe_noop" methodname="Public_logging_members_are_safe_noop" classname="AQ.Domain.Merge.Tests.NullLogger_Tests" runstate="Runnable" seed="60588006" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.001560" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1043" name="PublishEventTests" fullname="AQ.Domain.Merge.Tests.PublishEventTests" classname="AQ.Domain.Merge.Tests.PublishEventTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.032546" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1044" name="Valid_merge_publishes_a_MergePerformed_event" fullname="AQ.Domain.Merge.Tests.PublishEventTests.Valid_merge_publishes_a_MergePerformed_event" methodname="Valid_merge_publishes_a_MergePerformed_event" classname="AQ.Domain.Merge.Tests.PublishEventTests" runstate="Runnable" seed="380653453" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.030289" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1045" name="RecipeBookTests" fullname="AQ.Domain.Merge.Tests.RecipeBookTests" classname="AQ.Domain.Merge.Tests.RecipeBookTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.003993" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1046" name="Resolves_Symmetric_Pairs" fullname="AQ.Domain.Merge.Tests.RecipeBookTests.Resolves_Symmetric_Pairs" methodname="Resolves_Symmetric_Pairs" classname="AQ.Domain.Merge.Tests.RecipeBookTests" runstate="Runnable" seed="1251558780" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.001132" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1047" name="Unknown_Pair_ReturnsFalse" fullname="AQ.Domain.Merge.Tests.RecipeBookTests.Unknown_Pair_ReturnsFalse" methodname="Unknown_Pair_ReturnsFalse" classname="AQ.Domain.Merge.Tests.RecipeBookTests" runstate="Runnable" seed="478370276" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.000089" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1055" name="AQ.Tests.EditMode.dll" fullname="C:/Users/Steph/Dev/aq30-unity/Library/ScriptAssemblies/AQ.Tests.EditMode.dll" runstate="Runnable" testcasecount="1" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.011055" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="14000" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1056" name="AQ30" fullname="AQ30" runstate="Runnable" testcasecount="1" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.009262" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1057" name="Tests" fullname="AQ30.Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.007963" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1058" name="EditMode" fullname="AQ30.Tests.EditMode" runstate="Runnable" testcasecount="1" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.006705" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1053" name="ProjectBootSmoke" fullname="AQ30.Tests.EditMode.ProjectBootSmoke" classname="AQ30.Tests.EditMode.ProjectBootSmoke" runstate="Runnable" testcasecount="1" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.005381" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1054" name="ProjectCompiles" fullname="AQ30.Tests.EditMode.ProjectBootSmoke.ProjectCompiles" methodname="ProjectCompiles" classname="AQ30.Tests.EditMode.ProjectBootSmoke" runstate="Runnable" seed="1224098792" result="Passed" start-time="2025-09-04 21:52:24Z" end-time="2025-09-04 21:52:24Z" duration="0.003738" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <reason>
+                  <message><![CDATA[EditMode smoke test ran!]]></message>
+                </reason>
+                <output><![CDATA[[Code Coverage] Code Coverage results for visited sequence points were saved in C:/Users/Steph/Dev/aq30-unity/CodeCoverageResults/aq30-unity-opencov/EditMode/TestCoverageResults_0001.xml
+[Code Coverage] Code Coverage Report was generated in C:/Users/Steph/Dev/aq30-unity/CodeCoverageResults/Report
+Included Assemblies: AQ.Domain.Merge,AQ.SharedKernel
+Excluded Assemblies: <Not specified>
+Included Paths: <Not specified>
+Excluded Paths: <Not specified>
+Saving results to: C:/Users/Steph/AppData/LocalLow/DefaultCompany/aq30-unity\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

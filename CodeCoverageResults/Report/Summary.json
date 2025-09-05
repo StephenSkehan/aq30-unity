@@ -1,33 +1,36 @@
 {
   "summary": {
-    "generatedon": "2025-09-04T01:38:48Z",
+    "generatedon": "2025-09-05T00:32:08Z",
     "parser": "MultiReportParser (2x OpenCoverParser)",
     "assemblies": 2,
-    "classes": 9,
-    "files": 9,
-    "coveredlines": 59,
-    "uncoveredlines": 48,
-    "coverablelines": 107,
-    "totallines": 251,
-    "linecoverage": 55.1,
+    "classes": 12,
+    "files": 12,
+    "coveredlines": 166,
+    "uncoveredlines": 63,
+    "coverablelines": 229,
+    "totallines": 486,
+    "linecoverage": 72.4,
     "coveredbranches": 0,
     "totalbranches": 0,
-    "coveredmethods": 16,
-    "totalmethods": 43,
-    "methodcoverage": 37.2
+    "coveredmethods": 45,
+    "totalmethods": 68,
+    "methodcoverage": 66.1
  },
   "coverage": {
     "assemblies": [
-      { "name": "AQ.Domain.Merge", "classes": 4, "coverage": 66, "coveredlines": 35, "coverablelines": 53, "totallines": 115, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 66.6, "coveredmethods": 12, "totalmethods": 18, "classesinassembly": [
-        { "name": "AQ.Domain.Merge.ItemId", "coverage": 20, "coveredlines": 4, "coverablelines": 20, "totallines": 42, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 25, "coveredmethods": 2, "totalmethods": 8 },
-        { "name": "AQ.Domain.Merge.MergeEngine", "coverage": 84.6, "coveredlines": 11, "coverablelines": 13, "totallines": 27, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 2, "totalmethods": 2 },
+      { "name": "AQ.Domain.Merge", "classes": 7, "coverage": 67.4, "coveredlines": 118, "coverablelines": 175, "totallines": 350, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 62.7, "coveredmethods": 27, "totalmethods": 43, "classesinassembly": [
+        { "name": "AQ.Domain.Merge.EventHelpers", "coverage": 96.6, "coveredlines": 29, "coverablelines": 30, "totallines": 51, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 2, "totalmethods": 2 },
+        { "name": "AQ.Domain.Merge.Grid", "coverage": 100, "coveredlines": 12, "coverablelines": 12, "totallines": 30, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 6, "totalmethods": 6 },
+        { "name": "AQ.Domain.Merge.GridOps", "coverage": 37.8, "coveredlines": 14, "coverablelines": 37, "totallines": 66, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 2, "totalmethods": 2 },
+        { "name": "AQ.Domain.Merge.ItemId", "coverage": 40, "coveredlines": 8, "coverablelines": 20, "totallines": 42, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 75, "coveredmethods": 6, "totalmethods": 8 },
+        { "name": "AQ.Domain.Merge.MergeEngine", "coverage": 62.5, "coveredlines": 35, "coverablelines": 56, "totallines": 115, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 17.6, "coveredmethods": 3, "totalmethods": 17 },
         { "name": "AQ.Domain.Merge.MergePerformed", "coverage": 100, "coveredlines": 6, "coverablelines": 6, "totallines": 14, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 4, "totalmethods": 4 },
         { "name": "AQ.Domain.Merge.RecipeBook", "coverage": 100, "coveredlines": 14, "coverablelines": 14, "totallines": 32, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 4, "totalmethods": 4 } ] },
-      { "name": "AQ.SharedKernel", "classes": 5, "coverage": 44.4, "coveredlines": 24, "coverablelines": 54, "totallines": 136, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 16, "coveredmethods": 4, "totalmethods": 25, "classesinassembly": [
-        { "name": "AQ.SharedKernel.DeterministicRandom", "coverage": 0, "coveredlines": 0, "coverablelines": 5, "totallines": 18, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 5 },
+      { "name": "AQ.SharedKernel", "classes": 5, "coverage": 88.8, "coveredlines": 48, "coverablelines": 54, "totallines": 136, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 72, "coveredmethods": 18, "totalmethods": 25, "classesinassembly": [
+        { "name": "AQ.SharedKernel.DeterministicRandom", "coverage": 100, "coveredlines": 5, "coverablelines": 5, "totallines": 18, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 5, "totalmethods": 5 },
         { "name": "AQ.SharedKernel.FixedTimeProvider", "coverage": 0, "coveredlines": 0, "coverablelines": 3, "totallines": 15, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 4 },
-        { "name": "AQ.SharedKernel.InMemoryEventBus", "coverage": 72.7, "coveredlines": 24, "coverablelines": 33, "totallines": 62, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 80, "coveredmethods": 4, "totalmethods": 5 },
-        { "name": "AQ.SharedKernel.NullLogger", "coverage": 0, "coveredlines": 0, "coverablelines": 3, "totallines": 14, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 3 },
-        { "name": "AQ.SharedKernel.Result[T]", "coverage": 0, "coveredlines": 0, "coverablelines": 10, "totallines": 27, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 8 } ] } ]
+        { "name": "AQ.SharedKernel.InMemoryEventBus", "coverage": 100, "coveredlines": 33, "coverablelines": 33, "totallines": 62, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 5, "totalmethods": 5 },
+        { "name": "AQ.SharedKernel.NullLogger", "coverage": 66.6, "coveredlines": 2, "coverablelines": 3, "totallines": 14, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 66.6, "coveredmethods": 2, "totalmethods": 3 },
+        { "name": "AQ.SharedKernel.Result[T]", "coverage": 80, "coveredlines": 8, "coverablelines": 10, "totallines": 27, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 75, "coveredmethods": 6, "totalmethods": 8 } ] } ]
   }
 }

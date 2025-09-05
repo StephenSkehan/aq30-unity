@@ -1178,10 +1178,6 @@
       <Project>{C02FBED4-D790-F417-BBE7-B5B5A8357A3D}</Project>
       <Name>AQ.SharedKernel</Name>
     </ProjectReference>
-    <ProjectReference Include="AQ.App.csproj">
-      <Project>{072D7849-43C5-21A7-84E3-220769DA3878}</Project>
-      <Name>AQ.App</Name>
-    </ProjectReference>
     <ProjectReference Include="AQ.Domain.Merge.csproj">
       <Project>{78FE043F-24CD-F32B-D28A-4E138ED90D0E}</Project>
       <Name>AQ.Domain.Merge</Name>

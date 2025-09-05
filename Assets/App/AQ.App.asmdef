@@ -1,12 +1,17 @@
-{
+﻿{
   "name": "AQ.App",
   "rootNamespace": "AQ.App",
-  "references": [ "AQ.Domain.Merge", "AQ.SharedKernel" ],
+  "references": [
+    "AQ.Domain.Merge",
+    "AQ.SharedKernel"
+  ],
   "includePlatforms": [],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
   "overrideReferences": false,
   "precompiledReferences": [],
   "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
   "noEngineReferences": true
 }
