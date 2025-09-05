@@ -17,7 +17,6 @@ namespace AQ.Domain.Merge.Tests
 
             var twig = Id("twig");
             recipes.Add(twig, twig, Id("branch"));
-
             grid.Set(0, twig);
 
             var engine = new MergeEngine(grid, recipes, bus, rng, time);
@@ -56,8 +55,7 @@ namespace AQ.Domain.Merge.Tests
             grid.Set(1, default);
 
             var res2 = engine.TryMerge(0, 1);
-            // This may be allowed or disallowed depending on rules; assert at least "no exception" and valid boolean.
-            Assert.IsNotNull(res2);
+            Assert.IsNotNull(res2); // we just assert the call is handled; rule specifics come later
         }
 
         [Test]
@@ -83,12 +81,11 @@ namespace AQ.Domain.Merge.Tests
             Assert.AreEqual(branch, grid.Get(1));
             Assert.AreEqual(default(ItemId), grid.Get(0));
 
-            // immediate retry — should fail due to cooldown (and often also content)
+            // immediate retry — should fail (cooldown and/or content)
             grid.Set(0, twig);
             var immediate = engine.TryMerge(0,1);
             Assert.IsFalse(immediate.IsSuccess);
 
-            // after threshold
             time.AdvanceSeconds(2);
             grid.Set(0, twig);
             grid.Set(1, twig);
