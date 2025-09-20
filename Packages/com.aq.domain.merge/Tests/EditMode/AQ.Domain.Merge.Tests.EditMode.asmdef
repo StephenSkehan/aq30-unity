@@ -1,0 +1,23 @@
+{
+  "name": "AQ.Domain.Merge.Tests.EditMode",
+  "references": [
+    "AQ.Domain.Merge",
+    "AQ.SharedKernel"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "testAssemblies": true,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "useGUIDs": true
+}

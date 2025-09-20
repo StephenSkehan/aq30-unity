@@ -769,10 +769,10 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Android: UNITY_ADDRESSABLES
-    Standalone: UNITY_ADDRESSABLES
-    WebGL: UNITY_ADDRESSABLES
-    iPhone: UNITY_ADDRESSABLES
+    Android: UNITY_ADDRESSABLES;ADDRESSABLES
+    Standalone: UNITY_ADDRESSABLES;ADDRESSABLES
+    WebGL: UNITY_ADDRESSABLES;ADDRESSABLES
+    iPhone: UNITY_ADDRESSABLES;ADDRESSABLES
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

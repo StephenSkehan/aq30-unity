@@ -1,0 +1,204 @@
+<# =======================
+  WK3 Stabilize Audit (clean rewrite)
+  Save as: Tools/wk3-stabilize-audit.ps1
+  Run: pwsh -NoProfile -ExecutionPolicy Bypass -File .\Tools\wk3-stabilize-audit.ps1 -RepoRoot .
+======================= #>
+
+[CmdletBinding()]
+param(
+  [string]$RepoRoot = "."
+)
+
+# ---- Boilerplate & helpers ----
+$ErrorActionPreference = "Stop"
+$RepoRoot = (Resolve-Path -LiteralPath $RepoRoot).Path
+
+# Output directory + report path
+$stamp   = Get-Date -Format "yyyyMMdd_HHmmss"
+$outDir  = Join-Path $RepoRoot "_Audit"
+if (!(Test-Path $outDir)) { New-Item -ItemType Directory -Path $outDir | Out-Null }
+$report  = Join-Path $outDir ("wk3_stabilize_report_{0}.txt" -f $stamp)
+
+# PASS/FAIL counters
+$script:PASS = 0
+$script:FAIL = 0
+
+function Line([string]$s) {
+  $s
+  $s | Add-Content -LiteralPath $report
+}
+
+function Pass([string]$msg) {
+  $script:PASS++
+  Line "[PASS] $msg"
+}
+
+function Fail([string]$msg) {
+  $script:FAIL++
+  Line "[FAIL] $msg"
+}
+
+# ---- Rule: File exists (relative to RepoRoot) ----
+function Rule-FileExists {
+  param([string]$RelPath, [string]$Label)
+
+  $p = Join-Path $RepoRoot $RelPath
+  if (Test-Path -LiteralPath $p) {
+    Pass ("File exists: {0}" -f $RelPath)
+    return $true
+  } else {
+    Fail ("Missing file: {0}" -f $RelPath)
+    return $false
+  }
+}
+
+# ---- Rule: asmdef must contain references ----
+function Rule-AsmdefHasRefs {
+  param(
+    [string]$AsmdefName,          # e.g., "AQ.App.Presentation" (the "name" field in the .asmdef JSON)
+    [string[]]$RequiredRefs
+  )
+
+  $asmdefs = Get-ChildItem -Path $RepoRoot -Recurse -Filter *.asmdef -File |
+    Where-Object {
+      try {
+        $json = Get-Content -LiteralPath $_.FullName -Raw | ConvertFrom-Json
+        $json.name -eq $AsmdefName
+      } catch { $false }
+    }
+
+  if (!$asmdefs) {
+    Fail ("{0}.asmdef not found" -f $AsmdefName)
+    return $false
+  }
+
+  $ok = $true
+  $json = Get-Content -LiteralPath $asmdefs[0].FullName -Raw | ConvertFrom-Json
+  $refs = @($json.references)
+
+  foreach ($r in $RequiredRefs) {
+    if ($refs -notcontains $r) { $ok = $false }
+  }
+
+  if ($ok) {
+    Pass ("{0}.asmdef references: OK -> {1}" -f $AsmdefName, ($RequiredRefs -join ", "))
+  } else {
+    Fail ("{0}.asmdef references: MISSING -> {1}" -f $AsmdefName, ($RequiredRefs -join ", "))
+  }
+  return $ok
+}
+
+# ---- Rule: icons present (count *.png under a known folder if it exists) ----
+function Rule-IconsPresent {
+  param([string]$RelFolder = "Assets\Editor\AQ\Icons")
+
+  $dir = Join-Path $RepoRoot $RelFolder
+  if (Test-Path -LiteralPath $dir) {
+    $pngs = Get-ChildItem -Path $dir -Filter *.png -File -ErrorAction SilentlyContinue
+    $n = ($pngs | Measure-Object).Count
+    if ($n -gt 0) {
+      Pass ("Icons present: {0} png(s)" -f $n)
+      return $true
+    }
+  }
+  Fail "Icons missing (no *.png found)"
+  return $false
+}
+
+# ---- Rule: editor scripts ASCII clean (basic 7-bit check) ----
+function Rule-EditorAsciiClean {
+  # Scan only our editor scripts
+  $editorRoots = @(
+    (Join-Path $RepoRoot 'Assets\Editor')
+  ) | Where-Object { Test-Path $_ }
+
+  $files = foreach ($root in $editorRoots) {
+    Get-ChildItem -Path $root -Recurse -File -Filter *.cs -ErrorAction SilentlyContinue
+  }
+
+  $bad = @()
+  foreach ($f in $files) {
+    $bytes = [System.IO.File]::ReadAllBytes($f.FullName)
+    if ($bytes | Where-Object { $_ -gt 127 }) { $bad += $f.FullName }
+  }
+
+  if ($bad.Count -eq 0) {
+    Pass "Editor scripts are ASCII-clean"
+    return $true
+  } else {
+    Fail ("Non-ASCII bytes found in: {0}" -f ($bad -join '; '))
+    return $false
+  }
+}
+
+# ---- Rule: Addressables *editor API* must not be used in project code
+# Scopes to: Assets/ and Packages/com.aq.* only.
+# Excludes: \Tests\, Samples~, \Docs\, *.txt. (Never touches Library\PackageCache)
+function Rule-AddressablesEditorScope {
+  param([string]$RepoRoot)
+
+  $roots = @(
+    (Join-Path $RepoRoot 'Assets')
+    (Join-Path $RepoRoot 'Packages\com.aq.*')
+  ) | Where-Object { Test-Path $_ }
+
+  if ($roots.Count -eq 0) {
+    # Nothing to scan -> trivially pass
+    Pass "No project code roots found for Addressables scan"
+    return $true
+  }
+
+  $pattern = '\bUnityEditor\.AddressableAssets\b'
+
+  $hits = Get-ChildItem -Path $roots -File -Recurse -Filter *.cs -ErrorAction SilentlyContinue |
+    Where-Object {
+      $_.FullName -notmatch '\\Tests\\'  -and
+      $_.FullName -notmatch 'Samples~'   -and
+      $_.FullName -notmatch '\\Docs\\'   -and
+      $_.Name     -notmatch '\.txt$'
+    } |
+    Select-String -Pattern $pattern
+
+  if ($hits) {
+    $files = $hits | ForEach-Object { $_.Path } | Sort-Object -Unique
+    Fail ("Forbidden using UnityEditor.AddressableAssets found in: {0}" -f ($files -join '; '))
+    return $false
+  } else {
+    Pass "No Addressables editor API in our code (Assets/, Packages/com.aq.*)"
+    return $true
+  }
+}
+
+# ---- Header ----
+Line "=== WK3 Stabilize Audit ==="
+Line ("RepoRoot: {0}" -f $RepoRoot)
+Line ("Timestamp: {0}" -f (Get-Date))
+
+# ---- Required files (match prior audit expectations) ----
+$null = Rule-FileExists -RelPath 'Packages/com.aq.presentation/Runtime/GlobalBus.cs'
+$null = Rule-FileExists -RelPath 'Packages/com.aq.presentation/Runtime/MergeEventsBridge.cs'
+$null = Rule-FileExists -RelPath 'Assets/App/Presentation/EventBusInstaller.cs'
+$null = Rule-FileExists -RelPath 'Assets/App/Presentation/MergeEventsToUI.cs'
+$null = Rule-FileExists -RelPath 'Assets/Editor/AQ/GeneratePlaceholderIcons.cs'
+$null = Rule-FileExists -RelPath 'Assets/Editor/AQ/MergeUIBridgeVerify.cs'
+
+# ---- asmdef reference checks (flexible: finds by "name" field) ----
+$null = Rule-AsmdefHasRefs -AsmdefName 'AQ.App.Presentation' -RequiredRefs @('AQ30.Presentation','AQ.Domain.Merge','AQ.SharedKernel')
+$null = Rule-AsmdefHasRefs -AsmdefName 'AQ.Editor'           -RequiredRefs @('AQ30.Presentation','AQ.Domain.Merge','AQ30.Domain','AQ.SharedKernel')
+
+# ---- assets / hygiene ----
+$null = Rule-FileExists  -RelPath 'Assets/App/Presentation/RecipeBook.asset'
+$null = Rule-FileExists  -RelPath 'Assets/App/Presentation/SpawnPolicy.asset'
+$null = Rule-IconsPresent
+$null = Rule-EditorAsciiClean
+
+# ---- Addressables editor usage scope (project code only) ----
+$null = Rule-AddressablesEditorScope -RepoRoot $RepoRoot
+
+# ---- Summary ----
+Line ""
+Line ("Summary: PASS={0}, FAIL={1}" -f $script:PASS, $script:FAIL)
+Line ("Report: {0}" -f $report)
+
+# Non-zero exit on failure (useful for CI)
+if ($script:FAIL -gt 0) { exit 1 } else { exit 0 }

@@ -1,0 +1,9 @@
+﻿{
+  "name": "com.aq.sharedkernel",
+  "displayName": "AQ Shared Kernel",
+  "version": "0.0.1",
+  "unity": "2021.3",
+  "description": "Pure C# primitives for AQ (no UnityEngine/UnityEditor).",
+  "keywords": ["aq", "sharedkernel", "domain"],
+  "author": { "name": "Indigo Chimp Studios" }
+}

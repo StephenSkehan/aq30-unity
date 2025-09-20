@@ -1,0 +1,10 @@
+﻿{
+  "name": "com.aq.domain.merge",
+  "displayName": "AQ Domain: Merge",
+  "version": "0.1.0",
+  "unity": "6000.2",
+  "description": "Engine-agnostic domain model for Ally Quinn merge mechanics (IDs, recipes, grid abstractions to follow in later steps).",
+  "license": "UNLICENSED",
+  "dependencies": {},
+  "author": { "name": "Indigo Chimp Studios" }
+}

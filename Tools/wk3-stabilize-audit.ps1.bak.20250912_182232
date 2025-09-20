@@ -1,0 +1,155 @@
+param(
+  [string]$RepoRoot = ".",
+  [switch]$RunUnity
+)
+
+$ErrorActionPreference = "Stop"
+$root = (Resolve-Path $RepoRoot).Path
+$outDir = Join-Path $root "_Audit"
+if(-not (Test-Path $outDir)){ New-Item -ItemType Directory -Force -Path $outDir | Out-Null }
+$stamp = (Get-Date -Format "yyyyMMdd_HHmmss")
+$report = Join-Path $outDir ("wk3_stabilize_report_{0}.txt" -f $stamp)
+
+$PASS = 0; $FAIL = 0
+function Line($s){ $s | Tee-Object -FilePath $report -Append | Out-Host }
+function Pass($s){ $global:PASS++; Line("[PASS] " + $s) }
+function Fail($s){ $global:FAIL++; Line("[FAIL] " + $s) }
+function Info($s){ Line("[INFO] " + $s) }
+
+Line("=== WK3 Stabilize Audit ===")
+Line("RepoRoot: $root")
+Line("Timestamp: $(Get-Date)")
+
+# 1) Key files present?
+$files = @(
+  "Packages/com.aq.presentation/Runtime/GlobalBus.cs",
+  "Packages/com.aq.presentation/Runtime/MergeEventsBridge.cs",
+  "Assets/App/Presentation/EventBusInstaller.cs",
+  "Assets/App/Presentation/MergeEventsToUI.cs",
+  "Assets/Editor/AQ/GeneratePlaceholderIcons.cs",
+  "Assets/Editor/AQ/MergeUIBridgeVerify.cs"
+)
+foreach($f in $files){
+  $p = Join-Path $root $f
+  if(Test-Path $p){ Pass("File exists: $f") } else { Fail("Missing file: $f") }
+}
+
+# 2) Asmdef graph checks
+function ReadAsmdef($path){
+  if(-not (Test-Path $path)){ return $null }
+  try { (Get-Content -LiteralPath $path -Raw | ConvertFrom-Json) } catch { $null }
+}
+
+$asm_app   = ReadAsmdef (Join-Path $root "Assets/App/Presentation/AQ.App.Presentation.asmdef")
+$asm_ed    = ReadAsmdef (Join-Path $root "Assets/Editor/AQ/AQ.Editor.asmdef")
+$asm_pkg_sk= ReadAsmdef (Get-ChildItem (Join-Path $root "Packages/com.aq.sharedkernel") -Recurse -Filter *.asmdef | Select-Object -First 1 | % FullName)
+$asm_pkg_dm= ReadAsmdef (Get-ChildItem (Join-Path $root "Packages/com.aq.domain.merge") -Recurse -Filter *.asmdef | Select-Object -First 1 | % FullName)
+$asm_pkg_dn= ReadAsmdef (Get-ChildItem (Join-Path $root "Packages/com.aq.domain") -Recurse -Filter *.asmdef | Select-Object -First 1 | % FullName)
+$asm_pkg_pr= ReadAsmdef (Get-ChildItem (Join-Path $root "Packages/com.aq.presentation") -Recurse -Filter *.asmdef | Select-Object -First 1 | % FullName)
+
+if($asm_app -and $asm_pkg_pr -and $asm_pkg_dm -and $asm_pkg_sk){
+  $need = @($asm_pkg_pr.name, $asm_pkg_dm.name, $asm_pkg_sk.name)
+  $have = @($asm_app.references) | Where-Object { $_ }
+  $miss = @(); foreach($r in $need){ if(-not ($have -contains $r)){ $miss += $r } }
+  if($miss.Count -eq 0){ Pass("AQ.App.Presentation.asmdef references: OK -> $($need -join ', ')") }
+  else { Fail("AQ.App.Presentation.asmdef missing refs: $($miss -join ', ')") }
+}else{
+  Fail("Unable to read App/Presentation asmdef or package asmdefs.")
+}
+
+if($asm_ed -and $asm_pkg_pr -and $asm_pkg_dm -and $asm_pkg_dn -and $asm_pkg_sk){
+  $needE = @($asm_pkg_pr.name,$asm_pkg_dm.name,$asm_pkg_dn.name,$asm_pkg_sk.name)
+  $haveE = @($asm_ed.references) | Where-Object { $_ }
+  $missE = @(); foreach($r in $needE){ if(-not ($haveE -contains $r)){ $missE += $r } }
+  $isEditorOnly = $asm_ed.includePlatforms -contains "Editor"
+  if($missE.Count -eq 0 -and $isEditorOnly){ Pass("AQ.Editor.asmdef references Editor-only OK -> $($needE -join ', ')") }
+  else {
+    if(-not $isEditorOnly){ Fail("AQ.Editor.asmdef not Editor-only includePlatforms.") }
+    if($missE.Count -gt 0){ Fail("AQ.Editor.asmdef missing refs: $($missE -join ', ')") }
+  }
+}else{
+  Fail("Unable to read AQ.Editor asmdef or package asmdefs.")
+}
+
+# 3) Gameplay data & icons existence
+$rb = Join-Path $root "Assets/Resources/App/Gameplay/RecipeBook.asset"
+$sp = Join-Path $root "Assets/Resources/App/Gameplay/SpawnPolicy.asset"
+if(Test-Path $rb){ Pass("RecipeBook.asset present") } else { Fail("RecipeBook.asset missing") }
+if(Test-Path $sp){ Pass("SpawnPolicy.asset present") } else { Fail("SpawnPolicy.asset missing") }
+
+$iconsDir = Join-Path $root "Assets/Resources/App/UI/Icons"
+if(Test-Path $iconsDir){
+  $pngs = Get-ChildItem -LiteralPath $iconsDir -Filter *.png -File -ErrorAction SilentlyContinue
+  if($pngs){ Pass("Icons present: $($pngs.Count) png(s)") } else { Fail("Icons folder exists but contains no .png") }
+}else{ Fail("Icons folder missing: Assets/Resources/App/UI/Icons") }
+
+# 4) Non-ASCII scan in editor scripts (curly quotes, em-dashes etc.)
+$edFiles = Get-ChildItem -LiteralPath (Join-Path $root "Assets/Editor/AQ") -Filter *.cs -File -Recurse -ErrorAction SilentlyContinue
+$bad = @()
+foreach($f in $edFiles){
+  $txt = Get-Content -LiteralPath $f.FullName -Raw
+  $matches = [regex]::Matches($txt, '[^\u0000-\u007F]')
+  if($matches.Count -gt 0){ $bad += $f.FullName }
+}
+if($bad.Count -eq 0){ Pass("Editor scripts are ASCII-clean") } else { Fail("Non-ASCII characters found in:`n  " + ($bad -join "`n  ")) }
+
+# 5) Forbidden using checks (no direct Addressables usings)
+$addrHits = Get-ChildItem -LiteralPath $root -Recurse -Include *.cs -File |
+  Select-String -SimpleMatch "using UnityEditor.AddressableAssets" -List
+if($addrHits){
+  $paths = $addrHits | Select-Object -ExpandProperty Path -Unique
+  Fail("Forbidden using UnityEditor.AddressableAssets found in: " + ($paths -join "; "))
+}
+else { Pass("No 'using UnityEditor.AddressableAssets' declarations found") }
+
+# 6) Optional: Unity compile & EditMode smoke
+if($RunUnity){
+  $unity = "C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Unity.exe"
+  if(Test-Path $unity){
+    Info("Running Unity EditMode compile/test (quick)...")
+    & $unity -batchmode -quit -projectPath $root -runTests -testPlatform EditMode `
+      -testResults (Join-Path $outDir ("wk3_stabilize_editmode_{0}.xml" -f $stamp)) `
+      -testResultsFormat junit -logFile (Join-Path $outDir ("wk3_stabilize_unity_{0}.log" -f $stamp)) | Out-Null
+    Pass("Unity EditMode run invoked; check _Audit logs for details")
+  } else {
+    Info("Unity editor not found at expected path; skipping Unity run")
+  }
+}
+
+Line("")
+Line("Summary: PASS=$PASS, FAIL=$FAIL")
+Line("Report: $report")
+
+
+$ok = $true
+
+function Test-ForbiddenAddressables {
+  param([string]$RepoRoot)
+
+  $roots = @(
+    (Join-Path $RepoRoot 'Assets')
+    (Join-Path $RepoRoot 'Packages\com.aq.*')
+  )
+
+  $pattern = '\bUnityEditor\.AddressableAssets\b'
+
+  $hits = Get-ChildItem -Path $roots -File -Recurse -Filter *.cs -ErrorAction SilentlyContinue |
+    Where-Object {
+      $_.FullName -notmatch '\\Tests\\'  -and
+      $_.FullName -notmatch 'Samples~'   -and
+      $_.FullName -notmatch '\\Docs\\'   -and
+      $_.Name     -notmatch '\.txt$'
+    } |
+    Select-String -Pattern $pattern
+
+  if ($hits) {
+    $files = $hits | ForEach-Object { $_.Path } | Sort-Object -Unique
+    Write-Output ("[FAIL] UnityEditor.AddressableAssets found in project code: {0}" -f ($files -join '; '))
+    return $false
+  } else {
+    Write-Output "[PASS] No UnityEditor.AddressableAssets in our code (Assets/, Packages/com.aq.*)"
+    return $true
+  }
+}
+
+$ok = (Test-ForbiddenAddressables -RepoRoot $RepoRoot) -and $ok

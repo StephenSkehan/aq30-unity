@@ -1,0 +1,39 @@
+# --- UNITY GENERATED/LOCAL ---
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/MemoryCaptures/
+/Assets/StreamingAssets/aa/*/*.hash
+/.vs/
+/.idea/
+/*.code-workspace
+
+# --- OS JUNK ---
+.DS_Store
+Thumbs.db
+
+# --- UNITY CACHE & REPORTS ---
+/Artifacts/
+/ScriptAssemblies/
+/CrashReports/
+/_UpgradeReport_Files/
+/SysInfo.txt
+
+# --- PACKAGES CACHE ---
+/Packages/PackageCache/
+
+# --- TEXTURE/IMPORTER META LOCKS ---
+*.pidb
+*.booproj
+
+# --- TEST/LOCAL OUTPUT ---
+/_testresults/
+/*.log
+
+# --- OPTIONAL: KEEP BINARY EXPORTS OUT OF GIT ---
+*.unitypackage
+

@@ -1,0 +1,331 @@
+[20250914_084853] [INFO] Starting AQ30 Assembly Consolidation
+[20250914_084853] [INFO] Repository: .
+[20250914_084853] [INFO] Dry Run: True
+[20250914_084853] [INFO] Timestamp: 20250914_084853
+[20250914_084853] [INFO] === PHASE 1: CREATING SAFETY BACKUP ===
+[20250914_084853] [INFO] Creating Git commit backup...
+[20250914_084853] [INFO] [DRY RUN] Would create Git backup
+[20250914_084853] [INFO] === PHASE 2: CLEANING BACKUP FILES ===
+[20250914_084853] [INFO] Removing backup file: AddressableAssetsData\AssetGroups\CoreUI.asset.prepatch_20250911_161306.bak
+[20250914_084853] [INFO] Removing backup file: AddressableAssetsData\AssetGroups\CoreUI.asset.prepatch_20250911_161306.bak.meta
+[20250914_084853] [INFO] Removing backup file: App\AQ.App.asmdef.bak
+[20250914_084853] [INFO] Removing backup file: App\AQ.App.asmdef.bak.meta
+[20250914_084853] [INFO] Removing backup file: App\Composition\BootstrapperAutoAdd.cs.bak_20250908_162304
+[20250914_084853] [INFO] Removing backup file: App\Composition\BootstrapperAutoAdd.cs.bak_20250908_162304.meta
+[20250914_084853] [INFO] Removing backup file: Tests\EditMode\AQ30.Tests.EditMode.asmdef.bak
+[20250914_084853] [INFO] Removing backup file: Tests\EditMode\AQ30.Tests.EditMode.asmdef.bak.meta
+[20250914_084853] [INFO] Removing backup file: Tests\PlayMode\UITests\DialogueSmokeTests.cs.bak_20250907_072552
+[20250914_084853] [INFO] Removing backup file: Tests\PlayMode\UITests\DialogueSmokeTests.cs.bak_20250907_072552.meta
+[20250914_084853] [INFO] Removing backup file: AddressableAssetsData\AssetGroups\CoreUI.asset.prepatch_20250911_161306.bak
+[20250914_084853] [INFO] Removing backup file: AddressableAssetsData\AssetGroups\CoreUI.asset.prepatch_20250911_161306.bak.meta
+[20250914_084853] [INFO] Removing backup file: App\Save\SaveController.cs.off
+[20250914_084853] [INFO] Removing backup file: App\Save\SaveModels.cs.off
+[20250914_084853] [INFO] Removing backup file: App\Save\UnityPersistentPathProvider.cs.meta.off
+[20250914_084853] [INFO] Removing backup file: App\Save\UnityPersistentPathProvider.cs.off
+[20250914_084853] [INFO] Removing backup file: Editor\AQ.AddressablesSetup.cs.off
+[20250914_084853] [INFO] Removing backup file: Editor\AQ.InstallAddressables.cs.off
+[20250914_084853] [INFO] Removing backup file: Tests\EditMode\SaveSerialization_EditMode_Tests.cs.off
+[20250914_084853] [INFO] Removing backup file: Tests\PlayMode\Addressables\Addressables_Loads_Min_Pack.cs.off
+[20250914_084853] [INFO] Removing backup file: Tests\PlayMode\Save\Save_RoundTrip_PlayMode_Tests.cs.off
+[20250914_084853] [INFO] Removing backup file: com.aq.domain\Runtime\AQ30.Domain.asmdef.prepatch_20250911_155948.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain\Runtime\AQ30.Domain.asmdef.prepatch_20250911_155948.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\EventHelpers.cs.prepatch_20250912_101307.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\EventHelpers.cs.prepatch_20250912_101307.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\MergeEngine.cs.prepatch_20250911_184217.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\MergeEngine.cs.prepatch_20250911_184217.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\MergePerformed.cs.prepatch_20250911_190205.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\MergePerformed.cs.prepatch_20250911_190205.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\MergePerformed.cs.prepatch_20250911_190346.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\MergePerformed.cs.prepatch_20250911_190346.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\InMemoryEventBus_Tests.cs.prepatch_20250911_185125.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\InMemoryEventBus_Tests.cs.prepatch_20250911_185125.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\TestDoubles.cs.prepatch_20250911_184347.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\TestDoubles.cs.prepatch_20250911_184347.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\TestDoubles.cs.prepatch_20250911_184736.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\TestDoubles.cs.prepatch_20250911_184736.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\TestDoubles.cs.prepatch_20250911_185125.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\TestDoubles.cs.prepatch_20250911_185125.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.infrastructure\Runtime\AQ30.Infrastructure.asmdef.prepatch_20250911_155948.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.infrastructure\Runtime\AQ30.Infrastructure.asmdef.prepatch_20250911_155948.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.presentation\Runtime\AQ30.Presentation.asmdef.prepatch_20250911_155948.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.presentation\Runtime\AQ30.Presentation.asmdef.prepatch_20250911_155948.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\EventBusInMemory.cs.prepatch_20250911_183338.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\EventBusInMemory.cs.prepatch_20250911_183338.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\IEventBus.cs.prepatch_20250911_182043.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\IEventBus.cs.prepatch_20250911_182043.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\InMemoryEventBus.cs.prepatch_20250911_182444.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\InMemoryEventBus.cs.prepatch_20250911_182444.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\InMemoryEventBus.cs.prepatch_20250911_183001.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\InMemoryEventBus.cs.prepatch_20250911_183001.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\InMemoryEventBus.cs.prepatch_20250911_183709.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\InMemoryEventBus.cs.prepatch_20250911_183709.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Tests\EditMode\com.aq.sharedkernel.tests.asmdef.bak_20250908_162304
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Tests\EditMode\com.aq.sharedkernel.tests.asmdef.bak_20250908_162304.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain\Runtime\AQ30.Domain.asmdef.prepatch_20250911_155948.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain\Runtime\AQ30.Domain.asmdef.prepatch_20250911_155948.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\EventHelpers.cs.prepatch_20250912_101307.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\EventHelpers.cs.prepatch_20250912_101307.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\MergeEngine.cs.prepatch_20250911_184217.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\MergeEngine.cs.prepatch_20250911_184217.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\MergePerformed.cs.prepatch_20250911_190205.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\MergePerformed.cs.prepatch_20250911_190205.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\MergePerformed.cs.prepatch_20250911_190346.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Runtime\MergePerformed.cs.prepatch_20250911_190346.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\InMemoryEventBus_Tests.cs.prepatch_20250911_185125.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\InMemoryEventBus_Tests.cs.prepatch_20250911_185125.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\TestDoubles.cs.prepatch_20250911_184347.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\TestDoubles.cs.prepatch_20250911_184347.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\TestDoubles.cs.prepatch_20250911_184736.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\TestDoubles.cs.prepatch_20250911_184736.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\TestDoubles.cs.prepatch_20250911_185125.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.domain.merge\Tests\EditMode\TestDoubles.cs.prepatch_20250911_185125.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.infrastructure\Runtime\AQ30.Infrastructure.asmdef.prepatch_20250911_155948.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.infrastructure\Runtime\AQ30.Infrastructure.asmdef.prepatch_20250911_155948.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.presentation\Runtime\AQ30.Presentation.asmdef.prepatch_20250911_155948.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.presentation\Runtime\AQ30.Presentation.asmdef.prepatch_20250911_155948.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\EventBusInMemory.cs.prepatch_20250911_183338.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\EventBusInMemory.cs.prepatch_20250911_183338.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\IEventBus.cs.prepatch_20250911_182043.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\IEventBus.cs.prepatch_20250911_182043.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\InMemoryEventBus.cs.prepatch_20250911_182444.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\InMemoryEventBus.cs.prepatch_20250911_182444.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\InMemoryEventBus.cs.prepatch_20250911_183001.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\InMemoryEventBus.cs.prepatch_20250911_183001.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\InMemoryEventBus.cs.prepatch_20250911_183709.bak
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Events\InMemoryEventBus.cs.prepatch_20250911_183709.bak.meta
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\ILogger.cs.disabled.cs.off
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\LoggerFactory.cs.off
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\NullLogger.cs.off
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Logging\ILogger.cs.disabled.cs.off
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Logging\ILogger.cs.off
+[20250914_084853] [INFO] Removing backup file: com.aq.sharedkernel\Runtime\Logging\LoggerFactory.cs.off
+[20250914_084853] [INFO] === PHASE 3: REMOVING ORPHANED PACKAGES ===
+[20250914_084853] [INFO] Removing orphaned package: com.aq.domain
+[20250914_084853] [INFO] Removing orphaned package: com.aq.infrastructure
+[20250914_084853] [INFO] Removing orphaned package: com.aq.presentation
+[20250914_084853] [INFO] === PHASE 4: CONSOLIDATING PACKAGES TO ASSETS ===
+[20250914_084853] [INFO] Moving com.aq.sharedkernel to Assets/SharedKernel
+[20250914_084853] [INFO] Moving com.aq.domain.merge to Assets/Domain.Merge
+[20250914_084853] [INFO] === PHASE 5: CREATING CANONICAL ASSEMBLY DEFINITIONS ===
+[20250914_084853] [INFO] Creating asmdef: Assets\SharedKernel\AQ.SharedKernel.asmdef
+[20250914_084853] [INFO] Creating asmdef: Assets\Domain.Merge\AQ.Domain.Merge.asmdef
+[20250914_084853] [INFO] Creating asmdef: Assets\App\AQ.App.asmdef
+[20250914_084853] [INFO] Creating asmdef: Assets\Editor\AQ.Editor.asmdef
+[20250914_084853] [INFO] Creating asmdef: Assets\Tests\AQ.Tests.asmdef
+[20250914_084853] [INFO] === PHASE 6: CONSOLIDATING TESTS ===
+[20250914_084853] [INFO] Backing up existing tests...
+[20250914_084853] [INFO] Creating consolidated test structure...
+[20250914_084853] [INFO] === PHASE 7: FINDING ORPHANED SCRIPTS ===
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\BootstrapperAutoAddcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\BootstrapperAutoAssigncs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\BootstrapperRuntimecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\DomainMergeWirecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\GameBootstrappercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\IMergeServicecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\MergeServicecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\SharedKernelBootcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Content\AddressableGraphLoadercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Gameplay\Data\RecipeBookcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Gameplay\Data\SpawnPolicycs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Kernel\SharedKernelBootstrapcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Presentation\EventBusInstallercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Presentation\GlobalBuscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Presentation\MergeEventsBridgecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Presentation\MergeEventsToUIcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Save\ISaveServicecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Save\JsonSaveServicecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Save\SaveBlobcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Save\SaveLoadDrivercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\Save\SaveStatecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Board\BoardInputAdaptercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Board\BoardPresentercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Board\MergeItemViewcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Config\UIContractscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Dialogue\CaseGraphcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Dialogue\DialogueControllercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Dialogue\DialogueRunnercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Dialogue\DialogueTypercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\FTUE\FTUEFollowercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\FTUE\FTUEHintControllercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\Animationscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\DraggableItemcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\ItemViewcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\MergeBoardViewcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\MergeInputAdaptercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\MergeServiceStubcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\SimplePoolcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Narrative\DialoguePanelcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Narrative\INarrativeEnginecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Narrative\MiniNarrativeEnginecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\Binders\ThemeImageBindercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\Binders\ThemeTMPBindercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\Runtime\ThemeBootstrapcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\ThemeBinderImagecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\ThemeBinderTextcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\ThemeControllercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\ThemeRegistrycs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\ThemeSOcs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\App\UnityAdapters\UnityPersistentPathProvidercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\CaseFlowProbecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\CreateGameplayAssetscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\EnsureAddressablesDefinecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\GeneratePlaceholderIconscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\MergeUIBridgeVerifycs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\SwapPrefabBindingscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\WireGameplayAddressablescs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Board\SceneEventSystemUtilitycs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Diag\DialogueContractsProbecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Diag\DialogueGuidProbecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Diag\DialoguePrefabSanitycs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Dialogue\DialogueSampleMenuscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\FTUE\FTUESceneUtilitycs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakers\BoardPrefabMakercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakers\DialoguePanelPrefabMakercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakers\FTUEArrowPrefabMakercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakers\HUDPrefabMakercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakers\HUDPrefabRepaircs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakers\MergeItemPrefabMakercs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Prefabs\ContractPrefabscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Save\SaveMenuscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Theme\ThemeEditorMenucs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Theme\ThemeSceneRepaircs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQClics
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\HUDPrefabMakerMincs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakersMincs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\EditMode\CompositionSmokeTestscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\EditMode\Discovery_EditMode_Probecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\EditMode\ProjectBootSmokecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\EditMode\Sanity_EditMode_Testscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\Save\Save_RoundTrip_PlayMode_Testscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\Save\SaveServiceRoundTripTestscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\Support\MergeInputAdapterTestExtensionscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\Support\TestGamecs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\BootstrapperSmokeTestscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\DialogueAutoSkipTestscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\DialogueSmokeTests_Moderncs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\MergeBoardInteractionTestscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\MergeDropHookTestscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\MergeServiceSeamTestscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\ThemeSmokeTestscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\AddressablesSmokeTestscs
+[20250914_084853] [WARNING] Orphaned script found: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\PlayBootSmokecs
+[20250914_084853] [WARNING] Found 93 orphaned scripts that need manual placement
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\BootstrapperAutoAddcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\BootstrapperAutoAssigncs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\BootstrapperRuntimecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\DomainMergeWirecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\GameBootstrappercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\IMergeServicecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\MergeServicecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\SharedKernelBootcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Content\AddressableGraphLoadercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Gameplay\Data\RecipeBookcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Gameplay\Data\SpawnPolicycs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Kernel\SharedKernelBootstrapcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Presentation\EventBusInstallercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Presentation\GlobalBuscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Presentation\MergeEventsBridgecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Presentation\MergeEventsToUIcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Save\ISaveServicecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Save\JsonSaveServicecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Save\SaveBlobcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Save\SaveLoadDrivercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\Save\SaveStatecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Board\BoardInputAdaptercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Board\BoardPresentercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Board\MergeItemViewcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Config\UIContractscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Dialogue\CaseGraphcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Dialogue\DialogueControllercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Dialogue\DialogueRunnercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Dialogue\DialogueTypercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\FTUE\FTUEFollowercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\FTUE\FTUEHintControllercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\Animationscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\DraggableItemcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\ItemViewcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\MergeBoardViewcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\MergeInputAdaptercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\MergeServiceStubcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\SimplePoolcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Narrative\DialoguePanelcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Narrative\INarrativeEnginecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Narrative\MiniNarrativeEnginecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\Binders\ThemeImageBindercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\Binders\ThemeTMPBindercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\Runtime\ThemeBootstrapcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\ThemeBinderImagecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\ThemeBinderTextcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\ThemeControllercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\ThemeRegistrycs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Theme\ThemeSOcs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\App\UnityAdapters\UnityPersistentPathProvidercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\CaseFlowProbecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\CreateGameplayAssetscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\EnsureAddressablesDefinecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\GeneratePlaceholderIconscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\MergeUIBridgeVerifycs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\SwapPrefabBindingscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\WireGameplayAddressablescs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Board\SceneEventSystemUtilitycs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Diag\DialogueContractsProbecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Diag\DialogueGuidProbecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Diag\DialoguePrefabSanitycs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Dialogue\DialogueSampleMenuscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\FTUE\FTUESceneUtilitycs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakers\BoardPrefabMakercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakers\DialoguePanelPrefabMakercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakers\FTUEArrowPrefabMakercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakers\HUDPrefabMakercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakers\HUDPrefabRepaircs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakers\MergeItemPrefabMakercs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Prefabs\ContractPrefabscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Save\SaveMenuscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Theme\ThemeEditorMenucs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Theme\ThemeSceneRepaircs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQClics
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\HUDPrefabMakerMincs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakersMincs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\EditMode\CompositionSmokeTestscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\EditMode\Discovery_EditMode_Probecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\EditMode\ProjectBootSmokecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\EditMode\Sanity_EditMode_Testscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\Save\Save_RoundTrip_PlayMode_Testscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\Save\SaveServiceRoundTripTestscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\Support\MergeInputAdapterTestExtensionscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\Support\TestGamecs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\BootstrapperSmokeTestscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\DialogueAutoSkipTestscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\DialogueSmokeTests_Moderncs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\MergeBoardInteractionTestscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\MergeDropHookTestscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\MergeServiceSeamTestscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\ThemeSmokeTestscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\AddressablesSmokeTestscs
+[20250914_084853] [WARNING]   - C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\PlayBootSmokecs
+[20250914_084853] [INFO] === PHASE 8: VERIFICATION ===
+[20250914_084853] [ERROR] ✗ Missing canonical asmdef: Assets\SharedKernel\AQ.SharedKernel.asmdef
+[20250914_084853] [ERROR] ✗ Missing canonical asmdef: Assets\Domain.Merge\AQ.Domain.Merge.asmdef
+[20250914_084853] [INFO] ✓ Found canonical asmdef: Assets\App\AQ.App.asmdef
+[20250914_084853] [INFO] ✓ Found canonical asmdef: Assets\Editor\AQ.Editor.asmdef
+[20250914_084853] [INFO] ✓ Found canonical asmdef: Assets\Tests\AQ.Tests.asmdef
+[20250914_084853] [WARNING] ✗ Remaining AQ packages found:
+[20250914_084853] [WARNING]   - com.aq.domain
+[20250914_084853] [WARNING]   - com.aq.domain.merge
+[20250914_084853] [WARNING]   - com.aq.infrastructure
+[20250914_084853] [WARNING]   - com.aq.presentation
+[20250914_084853] [WARNING]   - com.aq.sharedkernel
+[20250914_084853] [WARNING] ✗ CONSOLIDATION COMPLETED WITH WARNINGS
+[20250914_084853] [INFO] === CONSOLIDATION COMPLETE ===
+[20250914_084853] [INFO] 
+[20250914_084853] [INFO] NEXT STEPS:
+[20250914_084853] [INFO] 1. Open Unity and let it reimport all assets
+[20250914_084853] [INFO] 2. Check for compilation errors in Console
+[20250914_084853] [INFO] 3. Run: Tools\project-audit.ps1 -RepoRoot '.'
+[20250914_084853] [INFO] 4. Test that existing tests still pass
+[20250914_084853] [INFO] 5. Commit the consolidated structure
+[20250914_084853] [INFO] 
+[20250914_084853] [INFO] If there are issues, restore from Git backup:
+[20250914_084853] [INFO]   git reset --hard HEAD~1
+[20250914_084853] [INFO] 
+[20250914_084853] [INFO] Log file saved to: .\Tools\consolidation_log_20250914_084853.txt
