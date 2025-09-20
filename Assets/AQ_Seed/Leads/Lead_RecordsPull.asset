@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f730f670e20294f4f86d9fb2b57995a3, type: 3}
+  m_Name: Lead_RecordsPull
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadCardSO
+  LeadCardId: Lead_RecordsPull
+  PortraitOrPlace: {fileID: 0}
+  Title: "Records Pull \u2014 Plate"
+  OneLiner: Run the partial plate.
+  ActionType: 4
+  EnergyCost: 1
+  Requirements:
+  - ItemId: DMVQueryTool
+    MinTier: 1
+    ConsumeOnProceed: 1
+    Icon: {fileID: 0}
+    Label: DMVQueryTool
+  EvidenceIds: []
+  SpawnLeadIds: []
+  NarrativeFlags: []
+  SoftCurrency: 0
+  EnergyGrant: 0
+  OutcomeHints: 6

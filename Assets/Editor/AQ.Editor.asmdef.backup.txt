@@ -1,0 +1,21 @@
+{
+  "name": "AQ.Editor",
+  "rootNamespace": "AQ.Editor",
+  "references": [
+    "AQ.SharedKernel",
+    "AQ.Domain.Merge",
+    "Unity.InputSystem",
+    "AQ.App"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

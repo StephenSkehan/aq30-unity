@@ -1,0 +1,28 @@
+{
+  "name": "AQ.Tests",
+  "rootNamespace": "",
+  "references": [
+    "AQ.App",
+    "AQ.SharedKernel",
+    "AQ.Domain.Merge",
+    "UnityEngine.TestRunner",
+    "UnityEditor.TestRunner",
+    "Unity.Addressables",
+    "Unity.ResourceManager"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": true,
+  "precompiledReferences": [
+    "nunit.framework.dll"
+  ],
+  "autoReferenced": false,
+  "defineConstraints": [
+    "UNITY_INCLUDE_TESTS"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

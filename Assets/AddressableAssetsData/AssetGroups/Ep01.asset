@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Ep01
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Ep01
+  m_GUID: eb7f9297064aefd42973389c42271b64
+  m_SerializeEntries:
+  - m_GUID: 19131bc7a02e86d4eb68089dc801b9eb
+    m_Address: Assets/Content/Ep01/CaseGraph_Sample.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Ep01
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 45897f9b15cab794a8df4d4546506f49, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 5de720214d26db14198cadeee5e00367, type: 2}
+    - {fileID: 11400000, guid: 02587156fb720684b8f02c6d3c3976e2, type: 2}

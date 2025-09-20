@@ -1,0 +1,191 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+
+namespace AQ.App.Leads
+{
+    public class LeadCardView : MonoBehaviour
+    {
+        [Header("Wiring")]
+        [SerializeField] private Image portraitImage;
+        [SerializeField] private TMP_Text titleText;
+        [SerializeField] private TMP_Text actionTagText;
+        [SerializeField] private TMP_Text oneLinerText;
+        [SerializeField] private TMP_Text costText;
+        [SerializeField] private Button proceedButton;
+        [SerializeField] private Transform requirementsRoot;
+        [SerializeField] private LeadRequirementItemView requirementItemPrefab;   // may be null; we self-heal
+        [SerializeField] private GameObject badgeEvidence;
+        [SerializeField] private GameObject badgeNewLeads;
+        [SerializeField] private GameObject badgeRewards;
+
+        [Header("Events")]
+        public UnityEvent<LeadCardSO> OnProceedClicked = new UnityEvent<LeadCardSO>();
+
+        private LeadCardSO _data;
+        private ActiveLeadState _state;
+
+        // Optional setter for editor/repair
+        public LeadRequirementItemView RequirementItemPrefab
+        {
+            get => requirementItemPrefab;
+            set => requirementItemPrefab = value;
+        }
+
+        public void Bind(LeadCardSO data, ActiveLeadState state)
+        {
+            _data = data;
+            _state = state;
+
+            if (portraitImage) portraitImage.sprite = data.PortraitOrPlace;
+            if (titleText) titleText.text = data.Title;
+            if (actionTagText) actionTagText.text = data.ActionType.ToString();
+            if (oneLinerText) oneLinerText.text = data.OneLiner;
+            if (costText) costText.text = data.EnergyCost > 0 ? $"Energy {data.EnergyCost}" : "No Cost";
+
+            if (badgeEvidence)  badgeEvidence.SetActive((data.OutcomeHints & LeadOutcomeHint.Evidence) != 0);
+            if (badgeNewLeads)  badgeNewLeads.SetActive((data.OutcomeHints & LeadOutcomeHint.NewLeads) != 0);
+            if (badgeRewards)   badgeRewards.SetActive((data.OutcomeHints & LeadOutcomeHint.Rewards) != 0);
+
+            // Clear any prior chips
+            if (requirementsRoot)
+                foreach (Transform c in requirementsRoot) Destroy(c.gameObject);
+
+            // Build requirement chips with a robust fallback if prefab/component is missing
+            for (int i = 0; i < data.Requirements.Length; i++)
+            {
+                var req = data.Requirements[i];
+                var met = state.IsRequirementMet(i);
+
+                LeadRequirementItemView ui = TryInstantiateReqItem(requirementsRoot);
+                ui.Bind(req, met);
+            }
+
+            RefreshProceedState();
+
+            if (proceedButton)
+            {
+                proceedButton.onClick.RemoveAllListeners();
+                proceedButton.onClick.AddListener(() => OnProceedClicked.Invoke(_data));
+            }
+        }
+
+        public void UpdateRequirementTick(int index, bool met)
+        {
+            _state.SetRequirementMet(index, met);
+            if (requirementsRoot && index >= 0 && index < requirementsRoot.childCount)
+            {
+                var child = requirementsRoot.GetChild(index)?.GetComponent<LeadRequirementItemView>();
+                if (child) child.SetMet(met);
+            }
+            RefreshProceedState();
+        }
+
+        private void RefreshProceedState()
+        {
+            if (_data == null || proceedButton == null) return;
+
+            bool allMet = true;
+            for (int i = 0; i < _data.Requirements.Length; i++)
+                allMet &= _state.IsRequirementMet(i);
+
+            proceedButton.interactable = allMet && !_state.Locked;
+        }
+
+        // --- Self-healing requirement chip creation ---
+        private LeadRequirementItemView TryInstantiateReqItem(Transform parent)
+        {
+            // Prefer the assigned prefab if it exists and has the component
+            if (parent != null && requirementItemPrefab != null)
+            {
+                var inst = Instantiate(requirementItemPrefab, parent);
+                if (inst != null) return inst;
+            }
+
+#if UNITY_EDITOR
+            // If the prefab ref is null but we’re in editor, try to load by path
+            if (parent != null && requirementItemPrefab == null)
+            {
+                var go = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/UI/Prefabs/ReqItem.prefab");
+                if (go != null)
+                {
+                    var comp = go.GetComponent<LeadRequirementItemView>();
+                    if (comp != null)
+                    {
+                        var inst = Instantiate(comp, parent);
+                        // Soft-assign so future instances are fast
+                        requirementItemPrefab = comp;
+                        return inst;
+                    }
+                }
+            }
+#endif
+            // Ultimate fallback: build a real LeadRequirementItemView at runtime
+            return CreateRuntimeReqItem(parent);
+        }
+
+        private static LeadRequirementItemView CreateRuntimeReqItem(Transform parent)
+        {
+            var go = new GameObject("ReqItem_Runtime", typeof(RectTransform), typeof(Image));
+            go.transform.SetParent(parent, false);
+            var bg = go.GetComponent<Image>(); bg.color = new Color(1,1,1,0.06f);
+            var rt = go.GetComponent<RectTransform>(); rt.sizeDelta = new Vector2(180, 72);
+
+            var layout = go.AddComponent<HorizontalLayoutGroup>();
+            layout.padding = new RectOffset(8,8,8,8);
+            layout.spacing = 8;
+            layout.childControlWidth = true; layout.childControlHeight = true;
+            layout.childForceExpandWidth = false; layout.childForceExpandHeight = false;
+
+            var iconGO = new GameObject("Icon", typeof(RectTransform), typeof(Image));
+            iconGO.transform.SetParent(go.transform, false);
+            iconGO.GetComponent<RectTransform>().sizeDelta = new Vector2(64,64);
+
+            var labelGO = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
+            labelGO.transform.SetParent(go.transform, false);
+            var tmp = labelGO.GetComponent<TextMeshProUGUI>();
+            tmp.text = "Item"; tmp.fontSize = 24; tmp.alignment = TextAlignmentOptions.MidlineLeft;
+
+            var checkGO = new GameObject("Check", typeof(RectTransform), typeof(Image));
+            checkGO.transform.SetParent(go.transform, false);
+            checkGO.GetComponent<RectTransform>().sizeDelta = new Vector2(24,24);
+            var checkImg = checkGO.GetComponent<Image>(); checkImg.enabled = false;
+
+            var comp = go.AddComponent<LeadRequirementItemView>();
+            comp.Wire(iconGO.GetComponent<Image>(), tmp, checkImg);
+
+            return comp;
+        }
+    }
+
+    // Your authored requirement chip; now with a public Wire(...) so we can build one at runtime safely
+    public class LeadRequirementItemView : MonoBehaviour
+    {
+        [SerializeField] private Image icon;
+        [SerializeField] private TMP_Text label;
+        [SerializeField] private Image checkmark;
+
+        // Allow runtime wiring when created without a prefab
+        public void Wire(Image iconImg, TMP_Text labelText, Image checkImg)
+        {
+            icon = iconImg;
+            label = labelText;
+            checkmark = checkImg;
+        }
+
+        public void Bind(LeadRequirement req, bool met)
+        {
+            if (icon)  icon.sprite = req.Icon;
+            if (label) label.text = string.IsNullOrEmpty(req.Label) ? req.ItemId : req.Label;
+            SetMet(met);
+        }
+
+        public void SetMet(bool met)
+        {
+            if (checkmark) checkmark.enabled = met;
+            var cg = GetComponent<CanvasGroup>();
+            if (cg) cg.alpha = met ? 1f : 0.6f;
+        }
+    }
+}

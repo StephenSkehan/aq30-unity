@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f730f670e20294f4f86d9fb2b57995a3, type: 3}
+  m_Name: Lead_LabSetup
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadCardSO
+  LeadCardId: Lead_LabSetup
+  PortraitOrPlace: {fileID: 0}
+  Title: Lab Setup (Priya)
+  OneLiner: Set up scanner and laptop.
+  ActionType: 2
+  EnergyCost: 0
+  Requirements:
+  - ItemId: CleanFingerprint
+    MinTier: 2
+    ConsumeOnProceed: 1
+    Icon: {fileID: 0}
+    Label: CleanFingerprint
+  - ItemId: CrimeScenePhoto
+    MinTier: 0
+    ConsumeOnProceed: 1
+    Icon: {fileID: 0}
+    Label: CrimeScenePhoto
+  - ItemId: ForensicLaptop
+    MinTier: 3
+    ConsumeOnProceed: 1
+    Icon: {fileID: 0}
+    Label: ForensicLaptop
+  EvidenceIds: []
+  SpawnLeadIds: []
+  NarrativeFlags: []
+  SoftCurrency: 0
+  EnergyGrant: 0
+  OutcomeHints: 3

@@ -1,0 +1,260 @@
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+#if TMP_PRESENT
+using TMPro;
+#endif
+
+namespace AQ.EditorTools.Content
+{
+    public static class OverlayResetLayout
+    {
+        [MenuItem("AQ/Content/Overlay: Reset Layout (Safe)")]
+        public static void ResetLayout()
+        {
+            var root = FindOverlayRoot();
+            if (!root)
+            {
+                Debug.LogWarning("[OverlayReset] ResolutionRoot not found in the open scene (even when searching inactive).");
+                return;
+            }
+
+            Undo.RegisterFullObjectHierarchyUndo(root, "Overlay Reset Layout");
+
+            // 1) Stretch the root to full screen
+            var rootRT = root.GetComponent<RectTransform>() ?? root.AddComponent<RectTransform>();
+            StretchFull(rootRT);
+
+            // CanvasScaler for portrait scaling
+            var scaler = root.GetComponent<CanvasScaler>() ?? root.AddComponent<CanvasScaler>();
+            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.referenceResolution = new Vector2(1080, 1920);
+            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+            scaler.matchWidthOrHeight = 1f;
+
+            // Subtle scrim
+            var rootImg = root.GetComponent<Image>();
+            if (rootImg)
+            {
+                rootImg.color = new Color32(20, 26, 40, 210);
+                rootImg.raycastTarget = true;
+            }
+
+            // Hide stray top-left "Title" (debug header)
+            var strayTitle = root.transform.Find("Title");
+            if (strayTitle) strayTitle.gameObject.SetActive(false);
+
+            // 2) Panel
+            var panelTr = root.transform.Find("ResolutionPanel");
+            if (!panelTr)
+            {
+                Debug.LogWarning("[OverlayReset] 'ResolutionPanel' not found under overlay root.");
+                return;
+            }
+
+            var panelRT = (RectTransform)panelTr;
+            StretchWithMargins(panelRT, left: 48, right: 48, top: 540, bottom: 420);
+
+            // Remove layout components that collapse widths
+            var vlg = panelTr.GetComponent<VerticalLayoutGroup>();
+            if (vlg) Object.DestroyImmediate(vlg, true);
+            var csf = panelTr.GetComponent<ContentSizeFitter>();
+            if (csf) Object.DestroyImmediate(csf, true);
+
+            var panelImg = panelTr.GetComponent<Image>();
+            if (panelImg)
+            {
+                panelImg.color = new Color32(45, 35, 60, 240);
+                panelImg.raycastTarget = true;
+            }
+
+            // 3) Text blocks
+            LayoutText(panelTr, "TitleText", top: 36,  height: 80, size: 48, align: TextAnchor.UpperLeft, bold: true);
+            LayoutText(panelTr, "BodyText",  top: 128, height: 80, size: 24, align: TextAnchor.UpperLeft);
+            LayoutText(panelTr, "Quest_0",   top: 220, height: 48, size: 22, align: TextAnchor.UpperLeft);
+            LayoutText(panelTr, "Quest_1",   top: 270, height: 48, size: 22, align: TextAnchor.UpperLeft);
+            LayoutText(panelTr, "Quest_2",   top: 320, height: 48, size: 22, align: TextAnchor.UpperLeft);
+
+            // Button centered under title
+            var btnTr = panelTr.Find("ResolveButton") as RectTransform;
+            if (btnTr)
+            {
+                btnTr.anchorMin = btnTr.anchorMax = new Vector2(0.5f, 1f);
+                btnTr.pivot = new Vector2(0.5f, 1f);
+                const float top = 112f, w = 380f, h = 72f;
+                btnTr.offsetMin = new Vector2(-w * 0.5f, -top - h);
+                btnTr.offsetMax = new Vector2(+w * 0.5f, -top);
+
+                var btnImg = btnTr.GetComponent<Image>();
+                if (btnImg) btnImg.color = new Color32(240, 240, 245, 255);
+
+                var button = btnTr.GetComponent<Button>();
+                if (button)
+                {
+                    var colors = button.colors;
+                    colors.normalColor = new Color32(240, 240, 245, 255);
+                    colors.highlightedColor = new Color32(255, 255, 255, 255);
+                    colors.pressedColor = new Color32(225, 225, 230, 255);
+                    button.colors = colors;
+                }
+
+                var textTr = btnTr.Find("Text");
+                if (textTr)
+                {
+                    StyleUGUIText(textTr.GetComponent<Text>(), 24, TextAnchor.MiddleCenter, Color.black);
+#if TMP_PRESENT
+                    StyleTMP(textTr.GetComponent<TMP_Text>(), 24, "Center", Color.black, false);
+#endif
+                }
+            }
+
+            Debug.Log($"[OverlayReset] Done. Found overlay at: {root.transform.GetHierarchyPath()}  (active={root.activeInHierarchy})");
+        }
+
+        // ---------- FIND OVERLAY (handles inactive) ----------
+        static GameObject FindOverlayRoot()
+        {
+            // 1) Active by name
+            var go = GameObject.Find("ResolutionRoot");
+            if (go) return go;
+
+            // 2) Inactive by component (most reliable)
+            foreach (var comp in Resources.FindObjectsOfTypeAll<Component>())
+            {
+                if (!comp) continue;
+                if (comp.GetType().Name == "ResolutionContinueMB")
+                {
+                    var g = comp.gameObject;
+                    if (g && !EditorUtility.IsPersistent(g) && g.scene.IsValid()) return g;
+                }
+            }
+
+            // 3) Inactive by name
+            foreach (var t in Resources.FindObjectsOfTypeAll<Transform>())
+            {
+                if (t && t.name == "ResolutionRoot")
+                {
+                    var g = t.gameObject;
+                    if (!EditorUtility.IsPersistent(g) && g.scene.IsValid()) return g;
+                }
+            }
+
+            return null;
+        }
+
+        // ---------- LAYOUT HELPERS ----------
+        static void StretchFull(RectTransform rt)
+        {
+            rt.anchorMin = Vector2.zero;
+            rt.anchorMax = Vector2.one;
+            rt.pivot = new Vector2(0.5f, 0.5f);
+            rt.offsetMin = Vector2.zero;
+            rt.offsetMax = Vector2.zero;
+            rt.anchoredPosition = Vector2.zero;
+        }
+
+        static void StretchWithMargins(RectTransform rt, float left, float right, float top, float bottom)
+        {
+            rt.anchorMin = Vector2.zero;
+            rt.anchorMax = Vector2.one;
+            rt.pivot = new Vector2(0.5f, 0.5f);
+            rt.offsetMin = new Vector2(left, bottom);
+            rt.offsetMax = new Vector2(-right, -top);
+        }
+
+        static void LayoutText(Transform parent, string childName, float top, float height, int size, TextAnchor align, bool bold = false)
+        {
+            var tr = parent.Find(childName) as RectTransform;
+            if (!tr) return;
+
+            tr.anchorMin = new Vector2(0f, 1f);
+            tr.anchorMax = new Vector2(1f, 1f);
+            tr.pivot = new Vector2(0.5f, 1f);
+            tr.offsetMin = new Vector2(36f, -top - height);
+            tr.offsetMax = new Vector2(-36f, -top);
+
+            var color = Color.white;
+
+            var ugui = tr.GetComponent<Text>();
+            if (ugui)
+            {
+                ugui.alignment = align;
+                ugui.fontSize = size;
+                ugui.color = color;
+                ugui.horizontalOverflow = HorizontalWrapMode.Wrap;
+                ugui.verticalOverflow = VerticalWrapMode.Overflow;
+                ugui.resizeTextForBestFit = false;
+                if (bold) ugui.fontStyle = FontStyle.Bold;
+            }
+
+#if TMP_PRESENT
+            var tmp = tr.GetComponent<TMP_Text>();
+            if (tmp)
+            {
+                StyleTMP(tmp, size, AlignToTMP(align), color, bold);
+            }
+#endif
+        }
+
+        static void StyleUGUIText(Text t, int size, TextAnchor align, Color color)
+        {
+            if (!t) return;
+            t.alignment = align;
+            t.fontSize = size;
+            t.color = color;
+            t.horizontalOverflow = HorizontalWrapMode.Wrap;
+            t.verticalOverflow = VerticalWrapMode.Overflow;
+            t.resizeTextForBestFit = false;
+        }
+
+#if TMP_PRESENT
+        static void StyleTMP(TMP_Text tmp, int size, string align, Color color, bool bold)
+        {
+            if (!tmp) return;
+            tmp.enableWordWrapping = true;
+            tmp.overflowMode = TextOverflowModes.Overflow;
+            tmp.fontSize = size;
+            tmp.color = color;
+            tmp.alignment = ParseTMPAlignment(align);
+            tmp.margin = Vector4.zero;
+            if (bold) tmp.fontStyle |= FontStyles.Bold;
+        }
+
+        static TextAlignmentOptions ParseTMPAlignment(string s)
+        {
+            return System.Enum.TryParse<TextAlignmentOptions>(s, out var val) ? val : TextAlignmentOptions.TopLeft;
+        }
+
+        static string AlignToTMP(TextAnchor a)
+        {
+            switch (a)
+            {
+                case TextAnchor.UpperLeft: return "TopLeft";
+                case TextAnchor.UpperCenter: return "Top";
+                case TextAnchor.UpperRight: return "TopRight";
+                case TextAnchor.MiddleLeft: return "Left";
+                case TextAnchor.MiddleCenter: return "Center";
+                case TextAnchor.MiddleRight: return "Right";
+                case TextAnchor.LowerLeft: return "BottomLeft";
+                case TextAnchor.LowerCenter: return "Bottom";
+                case TextAnchor.LowerRight: return "BottomRight";
+                default: return "TopLeft";
+            }
+        }
+#endif
+    }
+
+    // small helper to print a nice path
+    static class TransformPathExt
+    {
+        public static string GetHierarchyPath(this Transform t)
+        {
+            if (!t) return "(null)";
+            var path = t.name;
+            while (t.parent) { t = t.parent; path = t.name + "/" + path; }
+            return path;
+        }
+    }
+}
+#endif

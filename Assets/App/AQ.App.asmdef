@@ -1,0 +1,22 @@
+{
+  "name": "AQ.App",
+  "rootNamespace": "AQ.App",
+  "references": [
+    "AQ.SharedKernel",
+    "AQ.Domain.Merge",
+    "Unity.TextMeshPro",
+    "UnityEngine.UI",
+    "Unity.Addressables",
+    "Unity.ResourceManager",
+    "Unity.InputSystem"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

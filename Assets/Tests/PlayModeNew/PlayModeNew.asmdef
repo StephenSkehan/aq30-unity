@@ -1,0 +1,22 @@
+{
+  "name": "AQ.PlayModeNew.Tests",
+  "rootNamespace": "",
+  "references": [
+    "AQ.App",
+    "AQ.SharedKernel",
+    "AQ.Domain.Merge",
+    "UnityEngine.TestRunner",
+    "UnityEditor.TestRunner"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "precompiledReferences": [],
+  "optionalUnityReferences": [],
+  "overrideReferences": false,
+  "autoReferenced": true,
+  "testAssemblies": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: CaseGraph_Sample
+  m_EditorClassIdentifier: Assembly-CSharp::CaseGraph
+  startId: START
+  nodes:
+  - id: START
+    speaker: Lena
+    line: I think I'm being followed.
+    nextId: ASK_CHOICE
+    choices: []
+  - id: ASK_CHOICE
+    speaker: You
+    line: What do you want to do?
+    nextId: 
+    choices:
+    - text: Ask for details
+      nextId: DETAILS
+    - text: Tell her to stay put
+      nextId: STAY
+  - id: DETAILS
+    speaker: Lena
+    line: Tall, dark coat, keeps the same pace.
+    nextId: END
+    choices: []
+  - id: STAY
+    speaker: Lena
+    line: Okay. I won't move.
+    nextId: END
+    choices: []
+  - id: END
+    speaker: System
+    line: End of demo.
+    nextId: 
+    choices: []

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ddb8ab95ffc3864d8dc38f6f41b0ee5, type: 3}
+  m_Name: UIContracts
+  m_EditorClassIdentifier: AQ.App::UIContracts
+  DialoguePanel: {fileID: 357320017418390978, guid: e735d1cc001c600419ac7f0c8ff80494, type: 3}
+  HUD: {fileID: 2681407658979770644, guid: c30138bc133f6784da157679f91d38f2, type: 3}
