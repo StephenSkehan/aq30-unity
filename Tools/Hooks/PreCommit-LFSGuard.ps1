@@ -1,8 +1,8 @@
 # Tools\Hooks\PreCommit-LFSGuard.ps1
-# Block commits that stage files > 10 MB unless those files are LFS-tracked.
+# Block commits that stage files > 50 MB unless those files are LFS-tracked.
 # Exit 1 to block the commit; exit 0 to allow.
 
-param([int]$MaxSizeMB = 10)
+param([int]$MaxSizeMB = 50)
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'

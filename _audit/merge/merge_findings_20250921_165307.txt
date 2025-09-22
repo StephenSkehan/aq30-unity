@@ -1,0 +1,10 @@
+AQ Merge Audit — 20250921_165307
+Assets: C:\Users\Steph\Dev\aq30-unity\Assets
+
+Code hits:   150   (see C:\Users\Steph\Dev\aq30-unity\_audit\merge\merge_code_index_20250921_165307.txt)
+Asset files mentioning Merge-ish terms: 48   (see C:\Users\Steph\Dev\aq30-unity\_audit\merge\merge_assets_index_20250921_165307.txt)
+
+Heuristics:
+- If you see classes like MergeBoardPresenter / MergeItem / MergeCell, we re-use them.
+- If only scattered references exist (no presenter), we can layer in a thin presenter without churn.
+- If nothing shows up, we proceed with the minimal presenter scaffold.

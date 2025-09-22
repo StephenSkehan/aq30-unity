@@ -122,6 +122,7 @@
     <Compile Include="Assets\App\UI\Theme\ThemeBinderImage.cs" />
     <Compile Include="Assets\App\UI\Theme\ThemeController.cs" />
     <Compile Include="Assets\App\UI\Board\FlashOnceMB.cs" />
+    <Compile Include="Assets\App\UI\Runtime\TMPAsciiSanitizer.cs" />
     <Compile Include="Assets\App\Composition\BootstrapperRuntime.cs" />
     <Compile Include="Assets\App\Home\HomeResumeCard.cs" />
     <Compile Include="Assets\App\Composition\IMergeService.cs" />

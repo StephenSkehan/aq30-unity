@@ -63,10 +63,12 @@
   <ItemGroup>
     <Compile Include="Assets\Editor\AQ\GeneratePlaceholderIcons.cs" />
     <Compile Include="Assets\Editor\AQ\UI\Patch_LeadCardPrefab_Requirement.cs" />
+    <Compile Include="Assets\Editor\AQ\UI\TMPAsciiSweep_OK.cs" />
     <Compile Include="Assets\Editor\PrefabMakers\BoardPrefabMaker.cs" />
     <Compile Include="Assets\Editor\Theme\ThemeSceneRepair.cs" />
     <Compile Include="Assets\Editor\AQ\CreateGameplayAssets.cs" />
     <Compile Include="Assets\Editor\AQ\Util\TransformPathExt.cs" />
+    <Compile Include="Assets\Editor\AQ\UI\TMPFindGlyphs.cs" />
     <Compile Include="Assets\Editor\AQ\Variants\WK3_2_VariantMenu.cs" />
     <Compile Include="Assets\Editor\AQ\UI\AsciiSweep.cs" />
     <Compile Include="Assets\Editor\Diag\DialoguePrefabSanity.cs" />
@@ -75,6 +77,7 @@
     <Compile Include="Assets\Editor\AQ\CaseFlow\CaseFlowLiveCheck.cs" />
     <Compile Include="Assets\Editor\AQ\CaseFlow\GateProbe.cs" />
     <Compile Include="Assets\Editor\AQ\CaseFlow\ResolutionUiSnapshot.cs" />
+    <Compile Include="Assets\Editor\AQ\Art\BuildTopBarScaffold.cs" />
     <Compile Include="Assets\Editor\Save\SaveMenus.cs" />
     <Compile Include="Assets\Editor\PrefabMakers\HUDPrefabRepair.cs" />
     <Compile Include="Assets\Editor\Board\SceneEventSystemUtility.cs" />
@@ -83,7 +86,9 @@
     <Compile Include="Assets\Editor\AQ\MergeUIBridgeVerify.cs" />
     <Compile Include="Assets\Editor\AQ\CaseFlow\FixResolutionRoot.cs" />
     <Compile Include="Assets\Editor\Prefabs\ContractPrefabs.cs" />
+    <Compile Include="Assets\Editor\AQ\Art\ArtUtil.cs" />
     <Compile Include="Assets\Editor\HUDPrefabMaker.Min.cs" />
+    <Compile Include="Assets\Editor\AQ\Art\AuditTopBar.cs" />
     <Compile Include="Assets\Editor\AQ\Debug\OverlayForceVisible.cs" />
     <Compile Include="Assets\Editor\AQ\UI\RebuildReqAndWireLeadCard.cs" />
     <Compile Include="Assets\Editor\AQ\WireGameplayAddressables.cs" />
@@ -93,13 +98,17 @@
     <Compile Include="Assets\Editor\AQ\Leads\LeadsVerifier.cs" />
     <Compile Include="Assets\Editor\AQ\UI\FixLeadPrefabs_Strong.cs" />
     <Compile Include="Assets\Editor\AQ\Content\OverlaySweep.cs" />
+    <Compile Include="Assets\Editor\AQ\Merge\MergeAudit.cs" />
     <Compile Include="Assets\Editor\AQ\Content\OverlayTidy_NoLayout.cs" />
+    <Compile Include="Assets\Editor\AQ\Art\TopBarBalance.cs" />
     <Compile Include="Assets\Editor\AQ\UI\PrefabBuilder.cs" />
     <Compile Include="Assets\Editor\AQ\UI\DiagnoseLeadCardPrefab.cs" />
     <Compile Include="Assets\Editor\FTUE\FTUESceneUtility.cs" />
     <Compile Include="Assets\Editor\AQ\Variants\WK3_2_RuntimeProbe.cs" />
     <Compile Include="Assets\Editor\AQ\CaseFlow\FixBoardDemoGates.cs" />
+    <Compile Include="Assets\Editor\AQ\Art\TopBarFinalize.cs" />
     <Compile Include="Assets\Editor\Diag\DialogueGuidProbe.cs" />
+    <Compile Include="Assets\Editor\AQ\Art\PolishTopBarLayout.cs" />
     <Compile Include="Assets\Editor\AQ\CaseFlow\RevealResolutionOverlay.cs" />
     <Compile Include="Assets\Editor\AQ\Variants\WK3_2_VariantA_Verifier.cs" />
     <Compile Include="Assets\Editor\AQ\Audit\WK3_1_Validator.cs" />
@@ -107,6 +116,7 @@
     <Compile Include="Assets\Editor\Theme\ThemeEditorMenu.cs" />
     <Compile Include="Assets\Editor\AQ\EnsureAddressablesDefine.cs" />
     <Compile Include="Assets\Editor\AQ\Content\OverlayReadableStyle.cs" />
+    <Compile Include="Assets\Editor\AQ\Art\AuditCanvasBoard.cs" />
     <Compile Include="Assets\Editor\AQ\Debug\ListAdvanceWiring.cs" />
     <Compile Include="Assets\Editor\AQ\Content\ContentVariant.cs" />
     <Compile Include="Assets\Editor\AQ\FTUE\FTUEEntitlementTools.cs" />
@@ -116,6 +126,7 @@
     <Compile Include="Assets\Editor\AQ\Dev\AddDevJumpButton.cs" />
     <Compile Include="Assets\Editor\AQ\Scenes\PolishBoardLayout.cs" />
     <Compile Include="Assets\Editor\AQ\UI\FixPrefabs_Minimal.cs" />
+    <Compile Include="Assets\Editor\AQ\Art\AssignHeaderAndLeadsArt.cs" />
     <Compile Include="Assets\Editor\AQ\SwapPrefabBindings.cs" />
     <Compile Include="Assets\Editor\AQ\Variants\OverlayPolish.cs" />
     <Compile Include="Assets\Editor\AQ\CaseFlowProbe.cs" />
@@ -126,7 +137,9 @@
     <Compile Include="Assets\Editor\AQ\Variants\VariantDefaultSetter.cs" />
     <Compile Include="Assets\Editor\AQ\Leads\LeadsSeeder.cs" />
     <Compile Include="Assets\Editor\AQ\Variants\VariantMenus.cs" />
+    <Compile Include="Assets\Editor\AQ\Art\RebuildTopBar.cs" />
     <Compile Include="Assets\Editor\Diag\DialogueContractsProbe.cs" />
+    <Compile Include="Assets\Editor\AQ\Art\TopBarNukeRebuild.cs" />
     <Compile Include="Assets\Editor\AQ\UI\FixTMPCanvasRenderer.cs" />
     <Compile Include="Assets\Editor\AQ\Content\ResolutionOverlayFix.cs" />
     <Compile Include="Assets\Editor\AQCli.cs" />
@@ -134,13 +147,17 @@
     <Compile Include="Assets\Editor\PrefabMakers\FTUEArrowPrefabMaker.cs" />
     <Compile Include="Assets\Editor\AQ\Audit\OverlayTmpQuickFix.cs" />
     <Compile Include="Assets\Editor\AQ\Scenes\WireLeadsBarAndSeed.cs" />
+    <Compile Include="Assets\Editor\AQ\UI\PolishLeadCards.cs" />
     <Compile Include="Assets\Editor\AQ\Content\OverlayLayoutTools.cs" />
     <Compile Include="Assets\Editor\Dialogue\DialogueSampleMenus.cs" />
     <Compile Include="Assets\Editor\AQ\Variants\WK3_2_BindB_ToOverlay.cs" />
     <Compile Include="Assets\Editor\AQ\UI\RebuildReqAndWireLeadCard_Reflect.cs" />
     <Compile Include="Assets\Editor\AQ\CaseFlow\ResolutionUiBuilder.cs" />
+    <Compile Include="Assets\Editor\AQ\Art\AuditTopBarDeep.cs" />
     <Compile Include="Assets\Editor\AQ\CaseFlow\ForceResolutionOverlayTop.cs" />
+    <Compile Include="Assets\Editor\AQ\Diag\SceneMissingScripts.cs" />
     <Compile Include="Assets\Editor\AQ\Scenes\CaseBoardSceneBuilder.cs" />
+    <Compile Include="Assets\Editor\AQ\Art\FixCanvasBoardLayout.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Editor\AQ.Editor.asmdef.backup.txt" />

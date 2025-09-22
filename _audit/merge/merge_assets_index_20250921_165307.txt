@@ -1,0 +1,97 @@
+== ASSET TEXT MATCHES ==
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\_Recovery\0 (1).unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\_Recovery\0 (2).unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\_Recovery\0 (3).unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\_Recovery\0 (4).unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\_Recovery\0.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Old Scenes\OLD.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Scenes\Case\Case_Board_Portrait.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Scenes\Ep01_ColdOpen.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Scenes\MainMenu.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Scenes\SampleScene.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Scenes\WK2_BoardDemo.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Scenes\WK2_ThemeDemo.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Settings\Scenes\URP2DSceneTemplate.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\01-  Single Line TextMesh Pro.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\02 - Multi-line TextMesh Pro.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\03 - Line Justification.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\04 - Word Wrapping.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\05 - Style Tags.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\06 - Extra Rich Text Examples.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\07 - Superscript & Subscript Example.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\08 - Improved Text Alignment.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\09 - Margin Tag Example.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\10 - Bullets & Numbered List Example.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\11 - The Style Tag.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\12 - Link Example.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\12a - Text Interactions.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\13 - Soft Hyphenation.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\14 - Multi Font & Sprites.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\15 - Inline Graphics & Sprites.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\16 - Linked text overflow mode example.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\17 - Old Computer Terminal.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\18 - ScrollRect & Masking & Layout.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\19 - Masking Texture & Soft Mask.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\20 - Input Field with Scrollbar.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\21 - Script Example.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\22 - Basic Scripting Example.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\23 - Animating Vertex Attributes.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\24 - Surface Shader Example URP.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\24 - Surface Shader Example.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\25 - Sunny Days Example.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\26 - Dropdown Placeholder Example.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\27 - Double Pass Shader Example.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\28 - HDRP Shader Example.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\TextMesh Pro\Examples & Extras\Scenes\Benchmark (Floating Text).unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\UI\Board\Board.prefab
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\UI\Board\MergeItem.prefab
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\InitTestScenef406930e-69c3-468d-9205-a157c658d0bb.unity
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\UniversalRenderPipelineGlobalSettings.asset
+

@@ -1,0 +1,245 @@
+== CODE MATCHES ==
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\Analytics\LeadAnalytics.cs
+  L22: public static void LogOutcome(LeadCardSO lead, int evidence, int spawned)
+  L24: Debug.Log($"[analytics] lead_outcome id={lead.LeadCardId} evidence={evidence} new_leads={spawned}");
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\CaseFlow\BoardPresenter.cs
+  L7: public class BoardPresenter : MonoBehaviour
+  L10: public LeadsBarView leadsBar;
+  L14: private int _evidenceCount;
+  L18: if (leadsBar != null)
+  L19: leadsBar.ProceedRequested += HandleProceedRequested;
+  L24: if (leadsBar != null)
+  L25: leadsBar.ProceedRequested -= HandleProceedRequested;
+  L31: topStatusRow?.SetEvidenceCount(_evidenceCount);
+  L35: private void HandleProceedRequested(LeadCardSO data)
+  L38: leadsBar.ApplyOutcome(data);
+  L42: int evidenceAdded = data.EvidenceIds != null ? data.EvidenceIds.Length : 1;
+  L43: _evidenceCount += evidenceAdded;
+  L49: topStatusRow?.SetEvidenceCount(_evidenceCount);
+  L53: LeadAnalytics.LogOutcome(data, evidenceAdded, spawned);
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\BootstrapperRuntime.cs
+  L8: // If needed later: if (existing == null) existing = new AQ.App.UI.MergeBoard.MergeServiceStub();
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\IMergeService.cs
+  L5: public interface IMergeService
+  L8: bool TryMerge(Vector2Int a, Vector2Int b);
+  L11: bool TryMerge(int ax, int ay, int bx, int by);
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\Composition\MergeService.cs
+  L13: public class MergeService : MonoBehaviour, IMergeService
+  L49: public bool TryMerge(Vector2Int from, Vector2Int to)
+  L57: public bool TryMerge(int fromX, int fromY, int toX, int toY)
+  L58: => TryMerge(new Vector2Int(fromX, fromY), new Vector2Int(toX, toY));
+  L61: public bool TryMerge(string aLabel, string bLabel, out string resultLabel)
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\HUD\TopStatusRow.cs
+  L6: /// <summary>%Solved • Evidence • Active Leads • Last Breakthrough</summary>
+  L10: [SerializeField] private TMP_Text evidenceText;
+  L14: private int _evidence;
+  L27: public void SetEvidenceCount(int count)
+  L29: _evidence = Mathf.Max(0, count);
+  L48: if (evidenceText) evidenceText.text = $"Evidence {_evidence}";
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\Leads\LeadCardSO.cs
+  L20: public string[] EvidenceIds;     // new evidence to pin
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\Leads\LeadCardView.cs
+  L19: [SerializeField] private GameObject badgeEvidence;
+  L47: if (badgeEvidence)  badgeEvidence.SetActive((data.OutcomeHints & LeadOutcomeHint.Evidence) != 0);
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\Leads\LeadEnums.cs
+  L19: Evidence   = 1 << 0,
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\Leads\LeadsBarView.cs
+  L9: public class LeadsBarView : MonoBehaviour
+  L21: public System.Action<LeadCardSO> ProceedRequested;
+  L54: ProceedRequested?.Invoke(data);
+  L74: /// <summary>Apply outcomes after Proceed (spawns new leads, pins evidence, etc.).</summary>
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\Presentation\MergeEventsBridge.cs
+  L9: public sealed class MergeEventsBridge : MonoBehaviour
+  L17: try { _sub = bus.Subscribe<MergePerformed>(OnMergePerformed); }
+  L27: void OnMergePerformed(MergePerformed e)
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\Presentation\MergeEventsToUI.cs
+  L5: public sealed class MergeEventsToUI : MonoBehaviour
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\Save\SaveLoadDriver.cs
+  L10: public BoardPresenter Board;
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Board\BoardInputAdapter.cs
+  L8: public BoardPresenter Presenter;
+  L16: public void OnItemDropped(MergeItemView item, PointerEventData e){
+  L22: Presenter.TryMerge(item, other);
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Board\BoardPresenter.cs
+  L5: public class BoardPresenter : MonoBehaviour
+  L8: public MergeItemView ItemPrefab;
+  L9: public List<MergeItemView> LiveItems = new List<MergeItemView>();
+  L29: public void TryMerge(MergeItemView a, MergeItemView b){
+  L61: Type = "MergeItem" // placeholder; wire deterministic type later
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\Board\MergeItemView.cs
+  L5: public class MergeItemView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\FTUE\FTUEFollower.cs
+  L14: void OnEnable(){ BoardPresenter.FirstMerge += Hide; }
+  L15: void OnDisable(){ BoardPresenter.FirstMerge -= Hide; }
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\FTUE\FTUEHintController.cs
+  L23: BoardPresenter.FirstMerge += OnFirstMerge;
+  L26: BoardPresenter.FirstMerge -= OnFirstMerge;
+  L32: var board = FindAnyObjectByType<BoardPresenter>();
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\MergeBoardView.cs
+  L15: public class MergeBoardView : MonoBehaviour
+  L79: Debug.LogWarning("[MergeBoardView] No itemPrefab assigned; SpawnItem skipped.");
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\MergeInputAdapter.cs
+  L12: public class MergeInputAdapter : MonoBehaviour
+  L15: public MergeBoardView board;
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\App\UI\MergeBoard\MergeServiceStub.cs
+  L4: namespace AQ.App.UI.MergeBoard
+  L6: public sealed class MergeServiceStub : IMergeService
+  L8: public bool TryMerge(Vector2Int a, Vector2Int b)
+  L14: public bool TryMerge(int ax, int ay, int bx, int by)
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\Audit\WK3_1_Validator.cs
+  L5: // - prints a concise evidence report
+  L126: "[evidence] root=" + NameOrNull(root) + " active=" + BoolStr(root && root.activeInHierarchy) + "; " +
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\Content\ContentVariant.cs
+  L53: "Tag recovered evidence in caseboard"
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\Content\OverlayLayoutTools.cs
+  L172: "Quest_2"   => "• Tag recovered evidence in caseboard",
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\Content\OverlayReadableStyle.cs
+  L182: SetText(q2, "• Tag recovered evidence in caseboard", 24f, BodyColor, "Left", true, Vector4.zero);
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\Dev\AddDevJumpButton.cs
+  L55: "Btn_GoToMergeBoard",
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\Leads\LeadsSeeder.cs
+  L24: outcomes: LeadOutcomeHint.Evidence | LeadOutcomeHint.NewLeads);
+  L30: outcomes: LeadOutcomeHint.Evidence);
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\Scenes\CaseBoardSceneBuilder.cs
+  L11: using AQ.App.Leads;  // LeadsBarView, LeadCardView, LeadRequirementsHUD
+  L76: var tEv     = CreateTMP("Text_Evidence", statusRow.transform, "Evidence 0", 26, TextAlignmentOptions.MidlineLeft);
+  L87: SetSerialized(sr, "evidenceText", tEv);
+  L91: // LeadsBar
+  L92: var leadsBarGO = CreateEmpty("LeadsBar", hud.transform);
+  L93: var leadsBarRT = leadsBarGO.GetComponent<RectTransform>(); // was AddComponent<RectTransform>()
+  L94: AnchorTopStretch(leadsBarRT, 48, -248, 48, -(248+340)); // height 340
+  L95: var leadsBar = leadsBarGO.AddComponent<LeadsBarView>();
+  L97: var scroll = CreateScrollView("ScrollLeads", leadsBarGO.transform);
+  L116: SetSerialized(leadsBar, "scrollRect", scrollRect);
+  L117: SetSerialized(leadsBar, "contentRoot", content);
+  L123: if (comp != null) SetSerialized(leadsBar, "cardPrefab", comp);
+  L128: var soArrProp = new SerializedObject(leadsBar).FindProperty("initialLeads");
+  L166: var presenterGO = new GameObject("BoardPresenter");
+  L168: var bpType = Type.GetType("AQ.App.CaseFlow.BoardPresenter, Assembly-CSharp");
+  L172: TrySetField(comp, "leadsBar", leadsBar);
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\Scenes\PolishBoardLayout.cs
+  L54: SetTMP(statusRow, "Text_Evidence", "Evidence 0");
+  L59: // 2) LeadsBar + ScrollRect internals
+  L60: var leadsBar = hud.Find("LeadsBar") as RectTransform ?? CreateChild(hud, "LeadsBar", 1080, 340);
+  L61: AnchorTopStretch(leadsBar, left: 24, top: 210, right: 24, height: 340);
+  L63: var scroll = leadsBar.Find("ScrollLeads") as RectTransform;
+  L67: go.transform.SetParent(leadsBar, false);
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\Scenes\WireLeadsBarAndSeed.cs
+  L10: public static class WireLeadsBarAndSeed
+  L12: [MenuItem("AQ/Scenes/Board → Auto-wire LeadsBar & Seed Cards (Robust)")]
+  L66: MakeTMP(statusRow, "Text_Evidence", "Evidence 0");
+  L76: // -------- 3) LeadsBar + Scroll internals --------
+  L77: var leadsBar = hud.Find("LeadsBar") as RectTransform;
+  L78: if (!leadsBar)
+  L80: leadsBar = new GameObject("LeadsBar", typeof(RectTransform)).GetComponent<RectTransform>();
+  L81: leadsBar.transform.SetParent(hud, false);
+  L82: Debug.Log("[WireLeads] Created LeadsBar.");
+  L84: AnchorTopStretch(leadsBar, 24, 210, 24, 340);
+  L86: var scroll = leadsBar.Find("ScrollLeads") as RectTransform;
+  L90: go.transform.SetParent(leadsBar, false);
+  L139: // -------- 4) LeadsBarView (reflection-safe) --------
+  L140: var lbv = leadsBar.GetComponent("AQ.App.Leads.LeadsBarView") as Component;
+  L143: var type = System.Type.GetType("AQ.App.Leads.LeadsBarView, Assembly-CSharp") ??
+  L144: System.Type.GetType("AQ.App.Leads.LeadsBarView");
+  L145: if (type == null) { EditorUtility.DisplayDialog("Missing Script", "Type AQ.App.Leads.LeadsBarView not found.", "OK"); return; }
+  L146: lbv = leadsBar.gameObject.AddComponent(type);
+  L147: Debug.Log("[WireLeads] Added LeadsBarView.");
+  L205: Debug.Log("[WireLeads] ✅ Done. LeadsBar wired, prefabs linked, leads seeded. Press Play.");
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\UI\DiagnoseLeadCardPrefab.cs
+  L10: [MenuItem("AQ/UI/Diag → Print LeadsBarView card prefab wiring")]
+  L13: var lb = Object.FindFirstObjectByType<LeadsBarView>();
+  L14: if (!lb) { Debug.LogError("[Diag] No LeadsBarView in the open scene."); return; }
+  L22: Debug.LogError("[Diag] LeadsBarView.cardPrefab is NULL or not a LeadCardView.");
+  L31: Debug.Log($"[Diag] LeadsBarView.cardPrefab -> {prefabPath}");
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\UI\PrefabBuilder.cs
+  L183: var badgeEvidence = CreateImage("Badge_Evidence", badges.transform, new Vector2(24, 24)); badgeEvidence.sprite = s_UISprite;
+  L212: SetSerialized(card, "badgeEvidence", badgeEvidence.gameObject);
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\Variants\WK3_2_BindA_ToOverlay.cs
+  L97: "• Tag recovered evidence in caseboard"
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\Variants\WK3_2_BindB_ToOverlay.cs
+  L119: string[] bullets = { "Unlocked: Next Case Teaser", "Evidence archived", "Podcast updated" };
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\Variants\WK3_2_VariantA_Verifier.cs
+  L4: // - Dumps a snapshot file for audit evidence.
+  L54: // 4) Snapshot evidence
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\CaseFlowProbe.cs
+  L22: flow.OnFirstMergeObserved(); // Board -> EvidenceGate
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\AQ\MergeUIBridgeVerify.cs
+  L4: public static class MergeUIBridgeVerify {
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\FTUE\FTUESceneUtility.cs
+  L7: var pres = Object.FindFirstObjectByType<BoardPresenter>();
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakers\BoardPrefabMaker.cs
+  L16: var board = new GameObject("Board", typeof(RectTransform), typeof(BoardPresenter), typeof(BoardInputAdapter));
+  L37: var pres  = board.GetComponent<BoardPresenter>();
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\PrefabMakers\MergeItemPrefabMaker.cs
+  L3: public static class MergeItemPrefabMaker {
+  L4: const string Path="Assets/UI/Board/MergeItem.prefab";
+  L6: [MenuItem("AQ/Prefabs/Make MergeItem")]
+  L8: var go   = new GameObject("MergeItem", typeof(RectTransform), typeof(MergeItemView));
+  L23: var view = go.GetComponent<MergeItemView>();
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Editor\Save\SaveMenus.cs
+  L22: drv.Board = Object.FindFirstObjectByType<BoardPresenter>();
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\EditMode\CompositionSmokeTests.cs
+  L61: var res = composer.Engine.TryMerge(0, 1);
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\EditMode\Sanity_EditMode_Tests.cs
+  L8: public void MergeBoard_compiles_and_spawns()
+  L11: var board = go.AddComponent<MergeBoardView>();
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\Support\MergeInputAdapter.TestExtensions.cs
+  L5: public static class MergeInputAdapterTestExtensions
+  L8: /// Test-only seam used by MergeBoardInteractionTests. Returns a stable, expected snapshot.
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\MergeBoardInteractionTests.cs
+  L7: public class MergeBoardInteractionTests
+  L16: var board = hud.GetComponentInChildren<MergeBoardView>() ?? hud.AddComponent<MergeBoardView>();
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\MergeDropHookTests.cs
+  L8: public class MergeDropHookTests
+  L15: var board = boardGO.AddComponent<MergeBoardView>();
+
+FILE: C:\Users\Steph\Dev\aq30-unity\Assets\Tests\PlayMode\UITests\MergeServiceSeamTests.cs
+  L6: public class MergeServiceSeamTests
+  L23: var ok = svc.TryMerge("A", "A", out result);
+  L28: ok = svc.TryMerge("A", "B", out result);
+

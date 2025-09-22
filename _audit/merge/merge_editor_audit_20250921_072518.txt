@@ -1,0 +1,17 @@
+AQ Merge Editor Audit  2025-09-21T07:25:18.3615415Z
+Assets scanned: 59
+
+TYPE: AQ.App.MergeBoardView   (guid: 1d66d19d5d5f13245b298c4a82c7d1f7)   uses=0
+
+TYPE: AQ.App.MergeInputAdapter   (guid: 6a88287034c3a4448b3f52972ee4c974)   uses=0
+
+TYPE: AQ.App.MergeService   (guid: 00650714e35e51f48ab86574dce94f33)   uses=0
+
+TYPE: AQ.App.Presentation.MergeEventsBridge   (guid: 3d07d56c142833c4a95528520ad0debb)   uses=0
+
+TYPE: AQ.App.Presentation.MergeEventsToUI   (guid: b7b1b3ca23522594ea5f47112087636e)   uses=0
+
+TYPE: MergeItemView   (guid: 78f94fefda21ab741b0f7ba23349b195)   uses=1
+  - Assets/UI/Board/MergeItem.prefab
+
+Active Scene MergeBoard objects: 0
