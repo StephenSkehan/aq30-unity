@@ -1,0 +1,70 @@
+AQ Editor Audit — Findings
+Repo: C:\Users\Steph\Dev\aq30-unity
+Stamp: 20250923_121654
+
+SUMMARY
+  C# editor files: 103
+  MenuItem-bearing files: 0
+  AssetPostprocessor files: 1
+  Using UnityEditor (no #if UNITY_EDITOR): 32
+  Deprecated TMP (enableWordWrapping): 7
+  Deprecated FindObjectsOfType<T>: 5
+  Potential misplacements (UnityEditor usage outside Editor-only asmdef): 0
+
+MENU ITEMS
+
+ASSET POSTPROCESSORS
+  Assets\Editor\AQ\Art\UIImportGuard.cs
+
+USING UnityEditor WITHOUT #if UNITY_EDITOR
+  Assets\Editor\AQCli.cs
+  Assets\Editor\HUDPrefabMaker.Min.cs
+  Assets\Editor\PrefabMakers.Min.cs
+  Assets\Editor\AQ\CaseFlowProbe.cs
+  Assets\Editor\AQ\CreateGameplayAssets.cs
+  Assets\Editor\AQ\SwapPrefabBindings.cs
+  Assets\Editor\AQ\WireGameplayAddressables.cs
+  Assets\Editor\AQ\Art\TopBarBalance.cs
+  Assets\Editor\AQ\Art\TopBarFinalize.cs
+  Assets\Editor\AQ\Art\TopBarNukeRebuild.cs
+  Assets\Editor\AQ\Audit\OverlayTmpQuickFix.cs
+  Assets\Editor\AQ\Audit\WK3_1_TmpExplainer.cs
+  Assets\Editor\AQ\Audit\WK3_1_Validator.cs
+  Assets\Editor\AQ\CaseFlow\CaseFlowLiveCheck.cs
+  Assets\Editor\AQ\CaseFlow\FixBoardDemoGates.cs
+  Assets\Editor\AQ\Content\ResolutionOverlayFix.cs
+  Assets\Editor\AQ\Dev\AddDevJumpButton.cs
+  Assets\Editor\AQ\FTUE\FTUEEntitlementTools.cs
+  Assets\Editor\AQ\Variants\WK3_2_RuntimeProbe.cs
+  Assets\Editor\AQ\Variants\WK3_2_VariantA_Verifier.cs
+  Assets\Editor\AQ\Variants\WK3_2_VariantMenu.cs
+  Assets\Editor\Board\SceneEventSystemUtility.cs
+  Assets\Editor\Diag\DialogueContractsProbe.cs
+  Assets\Editor\Diag\DialogueGuidProbe.cs
+  Assets\Editor\Diag\DialoguePrefabSanity.cs
+  Assets\Editor\Dialogue\DialogueSampleMenus.cs
+  Assets\Editor\FTUE\FTUESceneUtility.cs
+  Assets\Editor\PrefabMakers\DialoguePanelPrefabMaker.cs
+  Assets\Editor\PrefabMakers\HUDPrefabRepair.cs
+  Assets\Editor\Save\SaveMenus.cs
+  Assets\Editor\Theme\ThemeEditorMenu.cs
+  Assets\Editor\Theme\ThemeSceneRepair.cs
+
+DEPRECATED — TMP enableWordWrapping
+  Assets\Editor\AQ\Content\OverlayLayoutTools.cs
+  Assets\Editor\AQ\Content\OverlayReadableStyle.cs
+  Assets\Editor\AQ\Content\OverlaySweep.cs
+  Assets\Editor\AQ\Content\OverlayTidyLayout.cs
+  Assets\Editor\AQ\Requirements\RequirementsHUDWire.cs
+  Assets\Editor\AQ\Variants\OverlayPolish.cs
+  Assets\Editor\PrefabMakers\DialoguePanelPrefabMaker.cs
+
+DEPRECATED — FindObjectsOfType<T>
+  Assets\Editor\AQ\Audit\WK3_4_IntegrationProbe.cs
+  Assets\Editor\AQ\CaseFlow\CaseFlowLiveCheck.cs
+  Assets\Editor\AQ\Content\ContentVariant.cs
+  Assets\Editor\AQ\Debug\ListAdvanceWiring.cs
+  Assets\Editor\AQ\Diagnostics\FindDotItem.cs
+
+POTENTIAL MISPLACEMENTS (UnityEditor usage not in Editor-only asmdef)
+

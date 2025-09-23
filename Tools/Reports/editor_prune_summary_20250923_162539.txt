@@ -1,0 +1,6 @@
+--- EDITOR PRUNE SUMMARY (20250923_162539) ---
+Project: C:\Users\Steph\Dev\aq30-unity
+Editor roots: C:\Users\Steph\Dev\aq30-unity\Assets\Editor
+Total Editor .cs: 103
+KEEP: 103
+CANDIDATES: 0
