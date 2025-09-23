@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Editor\AQ\GeneratePlaceholderIcons.cs" />
     <Compile Include="Assets\Editor\AQ\UI\Patch_LeadCardPrefab_Requirement.cs" />
+    <Compile Include="Assets\Editor\AQ\Diagnostics\FindDotItem.cs" />
     <Compile Include="Assets\Editor\AQ\UI\TMPAsciiSweep_OK.cs" />
     <Compile Include="Assets\Editor\PrefabMakers\BoardPrefabMaker.cs" />
     <Compile Include="Assets\Editor\Theme\ThemeSceneRepair.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Assets\Editor\PrefabMakers\DialoguePanelPrefabMaker.cs" />
     <Compile Include="Assets\Editor\AQ\Audit\WK3_1_TmpExplainer.cs" />
     <Compile Include="Assets\Editor\AQ\Leads\LeadsVerifier.cs" />
+    <Compile Include="Assets\Editor\AQ\Leads\LeadCard_FloatActors.cs" />
     <Compile Include="Assets\Editor\AQ\UI\FixLeadPrefabs_Strong.cs" />
     <Compile Include="Assets\Editor\AQ\Content\OverlaySweep.cs" />
     <Compile Include="Assets\Editor\AQ\Merge\MergeAudit.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Assets\Editor\FTUE\FTUESceneUtility.cs" />
     <Compile Include="Assets\Editor\AQ\Variants\WK3_2_RuntimeProbe.cs" />
     <Compile Include="Assets\Editor\AQ\CaseFlow\FixBoardDemoGates.cs" />
+    <Compile Include="Assets\Editor\AQ\Scenes\LeadsBarWire.cs" />
     <Compile Include="Assets\Editor\AQ\Art\TopBarFinalize.cs" />
     <Compile Include="Assets\Editor\Diag\DialogueGuidProbe.cs" />
     <Compile Include="Assets\Editor\AQ\Art\PolishTopBarLayout.cs" />
@@ -138,6 +141,7 @@
     <Compile Include="Assets\Editor\AQ\Leads\LeadsSeeder.cs" />
     <Compile Include="Assets\Editor\AQ\Variants\VariantMenus.cs" />
     <Compile Include="Assets\Editor\AQ\Art\RebuildTopBar.cs" />
+    <Compile Include="Assets\Editor\AQ\Art\UIImportGuard.cs" />
     <Compile Include="Assets\Editor\Diag\DialogueContractsProbe.cs" />
     <Compile Include="Assets\Editor\AQ\Art\TopBarNukeRebuild.cs" />
     <Compile Include="Assets\Editor\AQ\UI\FixTMPCanvasRenderer.cs" />
@@ -153,6 +157,8 @@
     <Compile Include="Assets\Editor\AQ\Variants\WK3_2_BindB_ToOverlay.cs" />
     <Compile Include="Assets\Editor\AQ\UI\RebuildReqAndWireLeadCard_Reflect.cs" />
     <Compile Include="Assets\Editor\AQ\CaseFlow\ResolutionUiBuilder.cs" />
+    <Compile Include="Assets\Editor\AQ\Requirements\RequirementsHUDWire.cs" />
+    <Compile Include="Assets\Editor\AQ\Leads\LeadsBarCleanup.cs" />
     <Compile Include="Assets\Editor\AQ\Art\AuditTopBarDeep.cs" />
     <Compile Include="Assets\Editor\AQ\CaseFlow\ForceResolutionOverlayTop.cs" />
     <Compile Include="Assets\Editor\AQ\Diag\SceneMissingScripts.cs" />

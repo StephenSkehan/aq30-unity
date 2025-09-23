@@ -1,4 +1,3 @@
-// Unity 6.x, C# 9 (block-scoped namespaces, not file-scoped)
 #if UNITY_EDITOR
 using System.Linq;
 using UnityEditor;
@@ -6,286 +5,180 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AQ.Editor.Scenes
+namespace AQ.Editor.Leads
 {
     public static class LeadsBarWire
     {
         private const string CanvasName = "Canvas_Board";
-        private const string HudBoardPath = "HUD_Board";
-        private const string LeadsBarPath = "LeadsBar";
-        private const string ScrollName = "ScrollLeads";
-        private const string ViewportName = "Viewport";
-        private const string ContentName = "Content_Leads";
-        private const string LeadCardPrefabPath = "Assets/UI/Prefabs/LeadCardView.prefab";
+        private const string HudBoard = "HUD_Board";
+        private const string TopBar = "TopBar";
+        private const string StatusRow = "StatusRow";
+        private const string RequirementsHUD = "RequirementsHUD";
+        private const string LeadsBar = "LeadsBar";
 
-        // ---------- PUBLIC MENUS ----------
+        private const string ScrollLeads = "ScrollLeads";
+        private const string Viewport = "Viewport";
+        private const string ContentLeads = "Content_Leads";
 
-        [MenuItem("AQ/Scenes/Wire Leads Board (HLG Horizontal)")]
+        [MenuItem("AQ/Leads/Wire LeadsBar (HLG + Horizontal Scroll)")]
         public static void WireLeadsBarHLG()
         {
-            var (canvas, hud, leads) = EnsurePaths();
-            var (scroll, viewport, content) = EnsureScrollRect(leads, horizontal:true, vertical:false);
+            var root = EnsureCanvas();
+            var hud = EnsureChild(root.transform, HudBoard, addVlg: true);
 
-            // HLG per v4.4 contract
-            var hlg = EnsureComponent<HorizontalLayoutGroup>(content.gameObject);
+            // Ensure row order: TopBar, StatusRow, RequirementsHUD, LeadsBar (don’t create TopBar/StatusRow here)
+            EnsureSibling(hud, TopBar, 0, createIfMissing:false);
+            EnsureSibling(hud, StatusRow, 1, createIfMissing:false);
+            var req = EnsureSibling(hud, RequirementsHUD, 2, createIfMissing:true); // size will be fixed by Requirements script later
+            var leads = EnsureSibling(hud, LeadsBar, 3, createIfMissing:true);
+
+            // LeadsBar should be a fixed-height row in the VLG stack
+            var le = leads.GetComponent<LayoutElement>() ?? leads.gameObject.AddComponent<LayoutElement>();
+            if (le.minHeight < 200f) le.minHeight = 220f;               // sane visual row
+            if (le.preferredHeight < 200f) le.preferredHeight = 220f;   // avoids vertical blow-up
+            le.flexibleHeight = 0f;
+
+            // Build ScrollRect hierarchy
+            var scroll = leads.Find(ScrollLeads)?.GetComponent<RectTransform>();
+            if (!scroll)
+            {
+                var go = new GameObject(ScrollLeads, typeof(RectTransform), typeof(ScrollRect), typeof(Image));
+                go.transform.SetParent(leads, false);
+                scroll = go.GetComponent<RectTransform>();
+            }
+            Stretch(scroll);
+
+            var img = scroll.GetComponent<Image>();
+            var c = img.color; c.a = 0f; img.color = c; // invisible bg to host the mask
+
+            var sr = scroll.GetComponent<ScrollRect>();
+            sr.horizontal = true;
+            sr.vertical = false;
+            sr.inertia = true;
+            sr.decelerationRate = 0.135f;
+            sr.movementType = ScrollRect.MovementType.Elastic;
+            sr.scrollSensitivity = 20f;
+
+            var viewport = scroll.Find(Viewport)?.GetComponent<RectTransform>();
+            if (!viewport)
+            {
+                var go = new GameObject(Viewport, typeof(RectTransform), typeof(Image), typeof(Mask));
+                go.transform.SetParent(scroll, false);
+                viewport = go.GetComponent<RectTransform>();
+                var vpImg = go.GetComponent<Image>(); var cc = vpImg.color; cc.a = 0f; vpImg.color = cc;
+                var mask = go.GetComponent<Mask>(); mask.showMaskGraphic = false;
+            }
+            Stretch(viewport);
+
+            var content = viewport.Find(ContentLeads)?.GetComponent<RectTransform>();
+            if (!content)
+            {
+                var go = new GameObject(ContentLeads, typeof(RectTransform));
+                go.transform.SetParent(viewport, false);
+                content = go.GetComponent<RectTransform>();
+                content.anchorMin = new Vector2(0, 1);
+                content.anchorMax = new Vector2(0, 1);
+                content.pivot     = new Vector2(0, 1);
+                content.anchoredPosition = Vector2.zero;
+            }
+
+            sr.viewport = viewport;
+            sr.content  = content;
+
+            // Ensure HLG + Fitter on content (contract)
+            var glg = content.GetComponent<GridLayoutGroup>();
+            if (glg) Object.DestroyImmediate(glg, true);
+
+            var hlg = content.GetComponent<HorizontalLayoutGroup>() ?? content.gameObject.AddComponent<HorizontalLayoutGroup>();
             hlg.spacing = 24f;
             hlg.childControlWidth = true;
             hlg.childControlHeight = true;
             hlg.childForceExpandWidth = false;
             hlg.childForceExpandHeight = false;
+            hlg.padding = new RectOffset(0, 0, 0, 0);
 
-            var fitter = EnsureComponent<ContentSizeFitter>(content.gameObject);
+            var fitter = content.GetComponent<ContentSizeFitter>() ?? content.gameObject.AddComponent<ContentSizeFitter>();
             fitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
-            fitter.verticalFit = ContentSizeFitter.FitMode.MinSize;
+            fitter.verticalFit   = ContentSizeFitter.FitMode.MinSize;
 
-            // If a GridLayoutGroup exists from a previous run, remove it (contract says HLG)
-            var glg = content.GetComponent<GridLayoutGroup>();
-            if (glg) Object.DestroyImmediate(glg, true);
+            // Normalize names
+            scroll.name   = ScrollLeads;
+            viewport.name = Viewport;
+            content.name  = ContentLeads;
 
-            // Optional: seed a few demo cards if prefab present
-            SeedDemoLeadCards(content);
-
-            MarkDirtyAndPing(content.gameObject, "✅ Done. LeadsBar wired for HLG (horizontal). Press Play.");
-
-            // Safety: name normalization
-            scroll.name = ScrollName;
-            viewport.name = ViewportName;
-            content.name = ContentName;
+            MarkSceneDirtyAndPing(leads.gameObject, "✅ LeadsBar wired: ScrollRect + HLG content (24 spacing).");
         }
 
-        [MenuItem("AQ/Scenes/Wire Leads Board (3-Column Grid)")]
-        public static void WireLeadsBarGrid()
+        // ---------- helpers ----------
+        private static GameObject EnsureCanvas()
         {
-            var (canvas, hud, leads) = EnsurePaths();
-            var (scroll, viewport, content) = EnsureScrollRect(leads, horizontal:false, vertical:true);
-
-            // Remove HLG + Fitter for grid mode
-            var hlg = content.GetComponent<HorizontalLayoutGroup>();
-            if (hlg) Object.DestroyImmediate(hlg, true);
-            var fitter = content.GetComponent<ContentSizeFitter>();
-            if (fitter) Object.DestroyImmediate(fitter, true);
-
-            var glg = EnsureComponent<GridLayoutGroup>(content.gameObject);
-            glg.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-            glg.constraintCount = 3;
-            glg.cellSize = new Vector2(160, 160);
-            glg.spacing = new Vector2(12, 12);
-            glg.startAxis = GridLayoutGroup.Axis.Horizontal;
-            glg.childAlignment = TextAnchor.UpperLeft;
-
-            // Optional: seed demo cards
-            SeedDemoLeadCards(content);
-
-            MarkDirtyAndPing(content.gameObject, "✅ Done. LeadsBar wired for Grid (3 columns, 160 row, 12 gutters). Press Play.");
-
-            // Safety: name normalization
-            scroll.name = ScrollName;
-            viewport.name = ViewportName;
-            content.name = ContentName;
-        }
-
-        [MenuItem("AQ/Audits/Audit LeadsBar Contract")]
-        public static void AuditLeadsBarContract()
-        {
-            var root = GameObject.Find(CanvasName);
-            if (!root) { LogFail($"Missing {CanvasName}"); return; }
-
-            var hud = root.transform.Find(HudBoardPath);
-            if (!hud) { LogFail($"Missing {CanvasName}/{HudBoardPath}"); return; }
-
-            var leads = hud.Find(LeadsBarPath);
-            if (!leads) { LogFail($"Missing {CanvasName}/{HudBoardPath}/{LeadsBarPath}"); return; }
-
-            var scroll = leads.Find(ScrollName);
-            var viewport = scroll ? scroll.Find(ViewportName) : null;
-            var content = viewport ? viewport.Find(ContentName) : null;
-
-            bool ok = true;
-            ok &= Check(scroll, "ScrollRect container");
-            ok &= Check(viewport, "Viewport");
-            ok &= Check(content, ContentName);
-
-            if (ok)
+            var go = GameObject.Find(CanvasName);
+            if (!go)
             {
-                var sr = scroll!.GetComponent<ScrollRect>();
-                ok &= Check(sr != null, "ScrollRect component");
-                ok &= Check(viewport!.GetComponent<Image>() != null, "Viewport has Image");
-                ok &= Check(viewport!.GetComponent<Mask>() != null, "Viewport has Mask");
-
-                // Either HLG+Fitter (contract) OR Grid alt
-                var hasHLG = content!.GetComponent<HorizontalLayoutGroup>() != null && content.GetComponent<ContentSizeFitter>() != null;
-                var hasGrid = content.GetComponent<GridLayoutGroup>() != null;
-
-                if (!hasHLG && !hasGrid)
-                {
-                    ok = false;
-                    Debug.LogError("❌ Content_Leads has neither HLG+Fitter nor GridLayoutGroup.");
-                }
-                else if (hasHLG)
-                {
-                    var h = content.GetComponent<HorizontalLayoutGroup>();
-                    var f = content.GetComponent<ContentSizeFitter>();
-                    ok &= Check(Mathf.Approximately(h.spacing, 24f), "HLG spacing = 24");
-                    ok &= Check(!h.childForceExpandWidth && !h.childForceExpandHeight, "HLG force expand off");
-                    ok &= Check(h.childControlWidth && h.childControlHeight, "HLG control size W/H on");
-                    ok &= Check(f.horizontalFit == ContentSizeFitter.FitMode.PreferredSize, "Fitter horizontal = Preferred");
-                    ok &= Check(f.verticalFit == ContentSizeFitter.FitMode.MinSize, "Fitter vertical = Min");
-                }
-            }
-
-            if (ok) Debug.Log("✅ Audit: LeadsBar matches contract.");
-            else Debug.LogError("❌ Audit: LeadsBar violations found (see logs).");
-        }
-
-        // Batch entry for PowerShell: -executeMethod AQ.Editor.Scenes.LeadsBarWire.ExecuteWireHLGBatch
-        public static void ExecuteWireHLGBatch()
-        {
-            WireLeadsBarHLG();
-            // Save active scene if needed (optional):
-            var scene = EditorSceneManager.GetActiveScene();
-            if (scene.IsValid() && scene.isDirty) EditorSceneManager.SaveScene(scene);
-        }
-
-        // ---------- HELPERS ----------
-
-        private static (GameObject canvas, Transform hud, Transform leads) EnsurePaths()
-        {
-            var canvas = GameObject.Find(CanvasName);
-            if (!canvas)
-            {
-                canvas = new GameObject(CanvasName, typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
-                var c = canvas.GetComponent<Canvas>();
-                c.renderMode = RenderMode.ScreenSpaceOverlay;
-                var scaler = canvas.GetComponent<CanvasScaler>();
+                go = new GameObject(CanvasName, typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+                var canvas = go.GetComponent<Canvas>();
+                canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+                var scaler = go.GetComponent<CanvasScaler>();
                 scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
                 scaler.referenceResolution = new Vector2(1080, 1920);
                 scaler.matchWidthOrHeight = 0.5f;
             }
-
-            var hud = canvas.transform.Find(HudBoardPath);
-            if (!hud)
-            {
-                var go = new GameObject(HudBoardPath, typeof(RectTransform), typeof(VerticalLayoutGroup));
-                go.transform.SetParent(canvas.transform, false);
-                var vlg = go.GetComponent<VerticalLayoutGroup>();
-                vlg.spacing = 0f;
-                vlg.childControlHeight = true; // HUD stack manages rows
-                vlg.childControlWidth = true;
-                vlg.childForceExpandHeight = false;
-                vlg.childForceExpandWidth = false;
-                hud = go.transform;
-            }
-
-            var leads = hud.Find(LeadsBarPath);
-            if (!leads)
-            {
-                var go = new GameObject(LeadsBarPath, typeof(RectTransform), typeof(LayoutElement));
-                go.transform.SetParent(hud, false);
-                var le = go.GetComponent<LayoutElement>();
-                le.minHeight = 220; // sane default; VLG can size this row
-                leads = go.transform;
-            }
-
-            Stretch(leads.GetComponent<RectTransform>(), vertical:true);
-
-            return (canvas, hud, leads);
+            return go;
         }
 
-        private static (GameObject scroll, RectTransform viewport, RectTransform content) EnsureScrollRect(Transform leads, bool horizontal, bool vertical)
+        private static Transform EnsureChild(Transform parent, string name, bool addVlg)
         {
-            var scroll = leads.Find(ScrollName)?.gameObject ?? new GameObject(ScrollName, typeof(RectTransform), typeof(ScrollRect), typeof(Image));
-            scroll.transform.SetParent(leads, false);
-            var sr = EnsureComponent<ScrollRect>(scroll);
-            sr.horizontal = horizontal;
-            sr.vertical = vertical;
-            sr.movementType = ScrollRect.MovementType.Elastic;
-            sr.inertia = true;
-            sr.decelerationRate = 0.135f;
-            sr.scrollSensitivity = 20f;
-
-            // Optional background (fully transparent by default)
-            var bg = EnsureComponent<Image>(scroll);
-            var bgc = bg.color; bgc.a = 0f; bg.color = bgc;
-
-            var viewport = leads.Find($"{ScrollName}/{ViewportName}") as RectTransform;
-            if (!viewport)
+            var child = parent.Find(name);
+            if (!child)
             {
-                var vpGo = new GameObject(ViewportName, typeof(RectTransform), typeof(Image), typeof(Mask));
-                vpGo.transform.SetParent(scroll.transform, false);
-                viewport = vpGo.GetComponent<RectTransform>();
-                var img = vpGo.GetComponent<Image>(); img.color = new Color(0,0,0,0); // invisible, but required for Mask
-                var mask = vpGo.GetComponent<Mask>(); mask.showMaskGraphic = false;
+                var go = new GameObject(name, typeof(RectTransform));
+                go.transform.SetParent(parent, false);
+                child = go.transform;
             }
-
-            Stretch(viewport, vertical:true);
-
-            var content = leads.Find($"{ScrollName}/{ViewportName}/{ContentName}") as RectTransform;
-            if (!content)
+            if (addVlg)
             {
-                var cGo = new GameObject(ContentName, typeof(RectTransform));
-                cGo.transform.SetParent(viewport, false);
-                content = cGo.GetComponent<RectTransform>();
-                content.anchorMin = new Vector2(0, 1);
-                content.anchorMax = new Vector2(0, 1);
-                content.pivot = new Vector2(0, 1);
-                content.anchoredPosition = Vector2.zero;
+                var vlg = child.GetComponent<VerticalLayoutGroup>() ?? child.gameObject.AddComponent<VerticalLayoutGroup>();
+                vlg.spacing = 12f;
+                vlg.childControlWidth  = true;
+                vlg.childControlHeight = true;
+                vlg.childForceExpandWidth  = true;
+                vlg.childForceExpandHeight = false;
+                vlg.padding = new RectOffset(0,0,0,0);
             }
-
-            sr.viewport = viewport;
-            sr.content = content;
-
-            Stretch(scroll.GetComponent<RectTransform>(), vertical:true);
-
-            return (scroll, viewport, content);
+            Stretch(child as RectTransform);
+            return child;
         }
 
-        private static T EnsureComponent<T>(GameObject go) where T : Component
-            => go.GetComponent<T>() ?? go.AddComponent<T>();
+        private static Transform EnsureSibling(Transform parent, string name, int index, bool createIfMissing)
+        {
+            var t = parent.Find(name);
+            if (!t && createIfMissing)
+            {
+                var go = new GameObject(name, typeof(RectTransform));
+                go.transform.SetParent(parent, false);
+                t = go.transform;
+            }
+            if (t) t.SetSiblingIndex(Mathf.Clamp(index, 0, parent.childCount - 1));
+            return t;
+        }
 
-        private static void Stretch(RectTransform rt, bool vertical)
+        private static void Stretch(RectTransform rt)
         {
             if (!rt) return;
-            var aMin = new Vector2(0, vertical ? 0 : rt.anchorMin.y);
-            var aMax = new Vector2(1, vertical ? 1 : rt.anchorMax.y);
-            rt.anchorMin = aMin;
-            rt.anchorMax = aMax;
+            rt.anchorMin = Vector2.zero;
+            rt.anchorMax = Vector2.one;
             rt.offsetMin = Vector2.zero;
             rt.offsetMax = Vector2.zero;
         }
 
-        private static void SeedDemoLeadCards(RectTransform content)
+        private static void MarkSceneDirtyAndPing(Object o, string msg)
         {
-            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(LeadCardPrefabPath);
-            if (!prefab) { Debug.Log("ℹ️ LeadCardView prefab not found; skipping demo seed."); return; }
-
-            // Seed 5 demo items only if none exist
-            if (content.childCount > 0) return;
-
-            for (int i = 0; i < 5; i++)
-            {
-                var instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, content);
-                instance.name = $"LeadCard_{i:00}";
-            }
-        }
-
-        private static void MarkDirtyAndPing(Object obj, string msg)
-        {
-            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
-            EditorUtility.SetDirty(obj);
-            EditorGUIUtility.PingObject(obj);
+            var scene = EditorSceneManager.GetActiveScene();
+            if (scene.IsValid()) EditorSceneManager.MarkSceneDirty(scene);
+            EditorUtility.SetDirty(o);
+            EditorGUIUtility.PingObject(o);
             Debug.Log(msg);
         }
-
-        private static bool Check(Transform t, string label)
-            => Check(t != null, label);
-
-        private static bool Check(bool condition, string label)
-        {
-            if (!condition) Debug.LogError($"❌ {label}");
-            return condition;
-        }
-
-        private static void LogFail(string msg) => Debug.LogError($"❌ {msg}");
     }
 }
 #endif
