@@ -5,6 +5,15 @@ TextureImporter:
   - first:
       213: 4977162204182935178
     second: ui_top_soft_0
+  - first:
+      213: 7144831474300305966
+    second: ui_top_soft_1
+  - first:
+      213: -5370013623009461747
+    second: ui_top_soft_2
+  - first:
+      213: 7586164611035457318
+    second: ui_top_soft_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -142,10 +151,10 @@ TextureImporter:
       name: ui_top_soft_0
       rect:
         serializedVersion: 2
-        x: 162
-        y: 162
-        width: 700
-        height: 700
+        x: 194
+        y: 190
+        width: 635
+        height: 638
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,6 +165,72 @@ TextureImporter:
       bones: []
       spriteID: a86f2d197ae621540800000000000000
       internalID: 4977162204182935178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_top_soft_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 91
+        width: 725
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2243b5fe5a872360800000000000000
+      internalID: 7144831474300305966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_top_soft_2
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 127
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0a3389bf01e975b0800000000000000
+      internalID: -5370013623009461747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_top_soft_3
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 127
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62768604588774960800000000000000
+      internalID: 7586164611035457318
       vertices: []
       indices: 
       edges: []
@@ -175,6 +250,9 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       ui_top_soft_0: 4977162204182935178
+      ui_top_soft_1: 7144831474300305966
+      ui_top_soft_2: -5370013623009461747
+      ui_top_soft_3: 7586164611035457318
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

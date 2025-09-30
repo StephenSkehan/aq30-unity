@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: -3529505010930464146
     second: ui_top_energy_0
+  - first:
+      213: 4429838158213781494
+    second: ui_top_energy_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -142,10 +145,10 @@ TextureImporter:
       name: ui_top_energy_0
       rect:
         serializedVersion: 2
-        x: 319
-        y: 194
-        width: 386
-        height: 636
+        x: 356
+        y: 255
+        width: 316
+        height: 514
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,6 +159,28 @@ TextureImporter:
       bones: []
       spriteID: e6a478684eda40fc0800000000000000
       internalID: -3529505010930464146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_top_energy_1
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 111
+        width: 315
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f79dc8a552f97d30800000000000000
+      internalID: 4429838158213781494
       vertices: []
       indices: 
       edges: []
@@ -175,6 +200,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       ui_top_energy_0: -3529505010930464146
+      ui_top_energy_1: 4429838158213781494
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

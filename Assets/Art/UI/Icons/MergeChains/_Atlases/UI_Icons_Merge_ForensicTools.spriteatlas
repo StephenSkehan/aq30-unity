@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI_Icons_Merge_ForensicTools
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 8ab44c33c5970e340bf0114d6c92bb41, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - ae0a93f9d9e1f9040b5387e0cc910535: 21300000
+    - 59b44ebdcf5350d4f82da544dccdb9f2: 21300000
+    - f8d1757e512306747afb9121df4b3c1e: 21300000
+    - 3723549e518033a4f80338804ad032e9: 21300000
+    - 1773a5bfea246fd48b1605eda638ff68: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: ae0a93f9d9e1f9040b5387e0cc910535, type: 3}
+  - {fileID: 21300000, guid: 59b44ebdcf5350d4f82da544dccdb9f2, type: 3}
+  - {fileID: 21300000, guid: f8d1757e512306747afb9121df4b3c1e, type: 3}
+  - {fileID: 21300000, guid: 3723549e518033a4f80338804ad032e9, type: 3}
+  - {fileID: 21300000, guid: 1773a5bfea246fd48b1605eda638ff68, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - forensic_tools_t2_evidence_bag
+  - forensic_tools_t4_uv_light
+  - forensic_tools_t1_cotton_swab
+  - forensic_tools_t3_full_forensic_case_black
+  - forensic_tools_t5_complete_forensic_kit_transparent_soft
+  m_RenderDataMap: {}
+  m_Tag: UI_Icons_Merge_ForensicTools
+  m_IsVariant: 0

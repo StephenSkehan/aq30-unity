@@ -127,7 +127,7 @@ namespace AQ.Editor.Requirements
                 label = go.GetComponent<RectTransform>();
                 var tmp = go.GetComponent<TextMeshProUGUI>();
                 tmp.text = "Requirement";
-                tmp.enableWordWrapping = true;
+                tmp.textWrappingMode = TMPro.TextWrappingModes.NoWrap;
                 tmp.overflowMode = TextOverflowModes.Ellipsis;
                 tmp.fontSize = 28f; // legible in 96-high token
                 tmp.alignment = TextAlignmentOptions.MidlineLeft;

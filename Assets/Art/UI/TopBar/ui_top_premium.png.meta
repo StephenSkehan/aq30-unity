@@ -142,10 +142,10 @@ TextureImporter:
       name: ui_top_premium_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 0
-        width: 996
-        height: 1019
+        x: 220
+        y: 151
+        width: 584
+        height: 604
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
