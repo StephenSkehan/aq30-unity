@@ -10,40 +10,42 @@ namespace AQ.EditorTools.UI.Leads
         [MenuItem("AQ/UI/Leads/Live/Nudge Actors Inside Mask (-18)")]
         public static void Run()
         {
-            var all = GameObject.FindObjectsOfType<RectTransform>(true);
+            // Unity 6000+: use FindObjectsByType (include inactive)
+            var all = Object.FindObjectsByType<RectTransform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
             int cards = 0, nudged = 0;
             foreach (var rt in all)
             {
-                // Works for LeadCard and LeadCard(Clone)
-                if (!rt.name.StartsWith("LeadCard")) continue;
+                if (rt == null) continue;
+                var go = rt.gameObject;
+                if (go == null || !go.name.Contains("LeadCard")) continue; // heuristic for card roots
                 cards++;
 
-                var anchorT = rt.Find("ActorAnchor");
-                if (!anchorT) continue;
-
-                var imageT = anchorT.Find("Image") as RectTransform;
-                if (!imageT)
+                // Find "Actors" child under the card
+                RectTransform actorsT = null;
+                foreach (Transform child in rt)
                 {
-                    var go = new GameObject("Image", typeof(RectTransform), typeof(Image));
-                    imageT = go.GetComponent<RectTransform>();
-                    imageT.SetParent(anchorT, false);
-                    var img = go.GetComponent<Image>();
-                    img.raycastTarget = false;
+                    if (child is RectTransform crt && child.name.Contains("Actors"))
+                    {
+                        actorsT = crt;
+                        break;
+                    }
                 }
+                if (!actorsT) continue;
 
-                // Ensure the portrait sits *inside* the card: top-anchored => down is negative Y.
-                var pos = imageT.anchoredPosition;
-                if (pos.y != -18f) { pos.y = -18f; imageT.anchoredPosition = pos; nudged++; }
+                // Nudge Y inside mask and bring to front
+                var ap = actorsT.anchoredPosition;
+                ap.y = -18f;
+                actorsT.anchoredPosition = ap;
+                actorsT.SetAsLastSibling();
+                nudged++;
 
-                // Make sure it renders above the header/background.
-                imageT.SetAsLastSibling();
-
-                // Visible & opaque
-                var image = imageT.GetComponent<Image>();
-                if (image)
+                // Ensure images are visible
+                var img = actorsT.GetComponent<Image>();
+                if (img)
                 {
-                    var c = image.color; c.a = 1f; image.color = c;
-                    image.enabled = true;
+                    var c = img.color; c.a = 1f; img.color = c;
+                    img.enabled = true;
                 }
             }
 

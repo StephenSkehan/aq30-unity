@@ -5,8 +5,6 @@
     "AQ.App",
     "AQ.SharedKernel",
     "AQ.Domain.Merge",
-    "UnityEngine.TestRunner",
-    "UnityEditor.TestRunner",
     "Unity.Addressables",
     "Unity.ResourceManager"
   ],
@@ -20,6 +18,7 @@
     "nunit.framework.dll"
   ],
   "autoReferenced": false,
+  "testAssemblies": true,
   "defineConstraints": [
     "UNITY_INCLUDE_TESTS"
   ],
