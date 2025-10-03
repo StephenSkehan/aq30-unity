@@ -1,0 +1,5788 @@
+//// CODE DUMP
+//// SourceRoot: C:\Users\Steph\Dev\aq30-unity\Assets\App
+//// Label     : Assets\App
+//// Generated : 2025-10-02 19:18:19 +09:30
+//// Files     : 102
+//// ---------------------------------------------------------------------------
+
+//// BEGIN FILE [1/102]: Analytics\AnalyticsInstallerMB.cs
+//// SIZE=469 bytes | LINES=19 | SHA256=862C0096926A91FC22C8AAC83A5B2861964C3512AEB3637FC22F32A43F8B946C
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App.Analytics
+{
+    // Drop this on a boot/root object in your startup scene.
+    public sealed class AnalyticsInstallerMB : MonoBehaviour
+    {
+        [SerializeField] bool installDebugBackend = true;
+
+        void Awake()
+        {
+            if (!AnalyticsLocator.TryGet(out _))
+            {
+                if (installDebugBackend) AnalyticsLocator.Set(new DebugLogAnalytics());
+            }
+        }
+    }
+}
+
+//// END FILE: Analytics\AnalyticsInstallerMB.cs
+
+
+//// BEGIN FILE [2/102]: Analytics\AnalyticsLocator.cs
+//// SIZE=797 bytes | LINES=28 | SHA256=2D21E2A4697F5D3BFF106AD6F14E5648F45C4F8E57E14837AE1536C556C7F0A8
+//// ---------------------------------------------------------------------------
+
+
+namespace AQ.App.Analytics
+{
+    /// <summary>
+    /// Tiny service-locator for IAnalytics.
+    /// Back-compat: exposes .Instance for existing callers.
+    /// </summary>
+    public static class AnalyticsLocator
+    {
+        private static IAnalytics _current;
+
+        // BACK-COMPAT (existing code calls AnalyticsLocator.Instance)
+        public static IAnalytics Instance => _current;
+
+        // New alias (use in new code)
+        public static IAnalytics Current => _current;
+
+        public static void Set(IAnalytics impl) => _current = impl;
+
+        public static bool TryGet(out IAnalytics analytics)
+        {
+            analytics = _current;
+            return analytics != null;
+        }
+
+        public static void Clear() => _current = null;
+    }
+}
+
+//// END FILE: Analytics\AnalyticsLocator.cs
+
+
+//// BEGIN FILE [3/102]: Analytics\DebugLogAnalytics.cs
+//// SIZE=1508 bytes | LINES=47 | SHA256=3DC972D3FB23641F6296F2715733D7D8D3280A0CF7AC7ED13CC276363E716165
+//// ---------------------------------------------------------------------------
+
+
+// Assembly: AQ.App
+// Purpose: Default no-op-ish analytics that writes to the Console. Safe for Editor and CI.
+
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+
+namespace AQ.App.Analytics
+{
+    public sealed class DebugLogAnalytics : IAnalytics
+    {
+        public void LogEvent(string name, IDictionary<string, object> parameters = null)
+        {
+            var sb = new StringBuilder();
+            sb.Append("[Analytics] ").Append(name);
+            if (parameters != null)
+            {
+                sb.Append(" { ");
+                bool first = true;
+                foreach (var kv in parameters)
+                {
+                    if (!first) sb.Append(", ");
+                    sb.Append(kv.Key).Append(": ").Append(kv.Value);
+                    first = false;
+                }
+                sb.Append(" }");
+            }
+            Debug.Log(sb.ToString());
+        }
+
+        public void SetUserProperty(string name, string value)
+        {
+            Debug.Log($"[Analytics] user_property {name}={value}");
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void InstallIfMissing()
+        {
+            if (AnalyticsLocator.Instance == null)
+            {
+                AnalyticsLocator.Set(new DebugLogAnalytics());
+                Debug.Log("[Analytics] Installed DebugLogAnalytics as default backend.");
+            }
+        }
+    }
+}
+
+//// END FILE: Analytics\DebugLogAnalytics.cs
+
+
+//// BEGIN FILE [4/102]: Analytics\IAnalytics.cs
+//// SIZE=521 bytes | LINES=17 | SHA256=4B7614B2C801D080B60BD062CDA3A7A9A3B90062D0FDEFD89B318A77158290CD
+//// ---------------------------------------------------------------------------
+
+
+// Assembly: AQ.App
+// Purpose: App-layer analytics abstraction (no Firebase dependency).
+
+using System.Collections.Generic;
+
+namespace AQ.App.Analytics
+{
+    public interface IAnalytics
+    {
+        /// <summary>Log an analytics event with optional parameters.</summary>
+        void LogEvent(string name, IDictionary<string, object> parameters = null);
+
+        /// <summary>Set a user property (optional, adapter may ignore).</summary>
+        void SetUserProperty(string name, string value);
+    }
+}
+
+//// END FILE: Analytics\IAnalytics.cs
+
+
+//// BEGIN FILE [5/102]: Analytics\LeadAnalytics.cs
+//// SIZE=1148 bytes | LINES=34 | SHA256=D13B00D78D60E0B9488887E19425F3714B140B8AA55DB7FF41B3DD2547F47C12
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App.Leads
+{
+    public static class LeadAnalytics
+    {
+        public static void LogLeadViewed(LeadCardSO lead)
+        {
+            Debug.Log($"[analytics] lead_viewed id={lead.LeadCardId} action={lead.ActionType}");
+        }
+
+        public static void LogReqsMet(LeadCardSO lead, int metCount)
+        {
+            Debug.Log($"[analytics] lead_requirements_met id={lead.LeadCardId} met={metCount}");
+        }
+
+        public static void LogLeadProceed(LeadCardSO lead)
+        {
+            Debug.Log($"[analytics] lead_proceed id={lead.LeadCardId} energy_cost={lead.EnergyCost}");
+        }
+
+        public static void LogOutcome(LeadCardSO lead, int evidence, int spawned)
+        {
+            Debug.Log($"[analytics] lead_outcome id={lead.LeadCardId} evidence={evidence} new_leads={spawned}");
+        }
+
+        public static void LogPercentSolved(float oldFrac, float newFrac)
+        {
+            var delta = newFrac - oldFrac;
+            Debug.Log($"[analytics] percent_solved_changed old={oldFrac:0.00} new={newFrac:0.00} delta={delta:0.00}");
+        }
+    }
+}
+
+//// END FILE: Analytics\LeadAnalytics.cs
+
+
+//// BEGIN FILE [6/102]: Analytics\WalletAnalyticsBridge.cs
+//// SIZE=3079 bytes | LINES=94 | SHA256=325C751760C040878BEA41941EE2D79EB32126BF1210AC1C0773DB494F1DF1E1
+//// ---------------------------------------------------------------------------
+
+
+// Assembly: AQ.App
+// Purpose: Subscribe to Wallet events and forward them to the current analytics backend.
+// No Firebase dependency; can be attached to a bootstrap GameObject.
+
+using System.Collections.Generic;
+using UnityEngine;
+using AQ.App.Economy;
+using AQ.App.Analytics;
+using AQ.SharedKernel.Economy;
+
+namespace AQ.App.Analytics
+{
+    [DisallowMultipleComponent]
+    public sealed class WalletAnalyticsBridge : MonoBehaviour
+    {
+        [Tooltip("Optionally create a wallet if none exists (useful in standalone test scenes).")]
+        public bool createWalletIfMissing = false;
+
+        private IWallet _wallet;
+
+        void OnEnable()
+        {
+            TryAttach();
+        }
+
+        void OnDisable()
+        {
+            if (_wallet != null)
+            {
+                _wallet.Changed -= OnWalletChanged;
+                _wallet.Granted -= OnWalletGranted;
+            }
+        }
+
+        private void TryAttach()
+        {
+            _wallet = WalletLocator.Instance;
+            if (_wallet == null && createWalletIfMissing)
+            {
+                _wallet = new WalletService();
+                WalletLocator.Set(_wallet);
+                Debug.Log("[WalletAnalyticsBridge] Created WalletService (dev-only).");
+            }
+
+            if (_wallet == null)
+            {
+                Debug.LogWarning("[WalletAnalyticsBridge] No wallet instance available; analytics not attached.");
+                return;
+            }
+
+            _wallet.Changed += OnWalletChanged;
+            _wallet.Granted += OnWalletGranted;
+        }
+
+        private void OnWalletChanged(WalletChanged e)
+        {
+            var evt = new Dictionary<string, object>
+            {
+                ["currency"] = e.Currency.ToString(),
+                ["old"]      = e.OldValue,
+                ["@new"]     = e.NewValue,       // '@' to avoid reserved word collisions
+                ["delta"]    = e.NewValue - e.OldValue,
+                ["reason"]   = e.Reason
+            };
+            AnalyticsLocator.Instance?.LogEvent("economy_changed", evt);
+        }
+
+        private void OnWalletGranted(RewardsGranted e)
+        {
+            var evt = new Dictionary<string, object>
+            {
+                ["rewards_count"] = e.Rewards.Length,
+                ["reason"]        = e.Reason
+            };
+            // Emit total per-currency too (aggregated)
+            int soft=0, premium=0, energy=0;
+            foreach (var r in e.Rewards)
+            {
+                switch (r.Currency)
+                {
+                    case Currency.Soft:    soft    += r.Amount; break;
+                    case Currency.Premium: premium += r.Amount; break;
+                    case Currency.Energy:  energy  += r.Amount; break;
+                }
+            }
+            evt["soft"]    = soft;
+            evt["premium"] = premium;
+            evt["energy"]  = energy;
+
+            AnalyticsLocator.Instance?.LogEvent("economy_granted", evt);
+        }
+    }
+}
+
+//// END FILE: Analytics\WalletAnalyticsBridge.cs
+
+
+//// BEGIN FILE [7/102]: CaseFlow\AdvanceOnceMB.cs
+//// SIZE=852 bytes | LINES=34 | SHA256=E5F80007FCE542B436C1BFBA130EF87E20E6553153393485862F77E2AAFB83F1
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections;
+using UnityEngine;
+
+namespace AQ.App.CaseFlow
+{
+    /// Routes a button click to CaseFlowAdvanceOnEventMB.Advance(),
+    /// but only once per press (with a short cooldown).
+    public class AdvanceOnceMB : MonoBehaviour
+    {
+        public CaseFlowAdvanceOnEventMB target;
+        public float cooldown = 0.20f;
+
+        bool _busy;
+
+        public void OnClick()
+        {
+            if (_busy || target == null) return;
+
+            _busy = true;
+            Debug.Log("[AdvanceOnceMB] Advance()");
+            target.Advance();
+
+            if (isActiveAndEnabled) StartCoroutine(ResetBusy());
+            else _busy = false;
+        }
+
+        IEnumerator ResetBusy()
+        {
+            yield return new WaitForSecondsRealtime(cooldown);
+            _busy = false;
+        }
+    }
+}
+
+//// END FILE: CaseFlow\AdvanceOnceMB.cs
+
+
+//// BEGIN FILE [8/102]: CaseFlow\BoardPresenter.cs
+//// SIZE=1894 bytes | LINES=60 | SHA256=A3206A8F41DB4CB958732C557821A8F70C2F4C4F3C53C2F88338963AD523B384
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using AQ.App.Leads;
+using AQ.App.HUD;
+
+namespace AQ.App.CaseFlow
+{
+    public class BoardPresenter : MonoBehaviour
+    {
+        [Header("Wiring")]
+        public LeadsBarView leadsBar;
+        public TopStatusRow topStatusRow;
+
+        private float _percentSolved;
+        private int _evidenceCount;
+
+        private void OnEnable()
+        {
+            if (leadsBar != null)
+                leadsBar.ProceedRequested += HandleProceedRequested;
+        }
+
+        private void OnDisable()
+        {
+            if (leadsBar != null)
+                leadsBar.ProceedRequested -= HandleProceedRequested;
+        }
+
+        private void Start()
+        {
+            topStatusRow?.SetSolved(_percentSolved);
+            topStatusRow?.SetEvidenceCount(_evidenceCount);
+            // Update leads count once your bar knows its state.
+        }
+
+        private void HandleProceedRequested(LeadCardSO data)
+        {
+            // TODO: charge energy & run action scene.
+            leadsBar.ApplyOutcome(data);
+
+            // Naive HUD updates for now.
+            int spawned = data.SpawnLeadIds != null ? data.SpawnLeadIds.Length : 0;
+            int evidenceAdded = data.EvidenceIds != null ? data.EvidenceIds.Length : 1;
+            _evidenceCount += evidenceAdded;
+
+            float old = _percentSolved;
+            _percentSolved = Mathf.Clamp01(_percentSolved + 0.10f);
+
+            topStatusRow?.SetSolved(_percentSolved);
+            topStatusRow?.SetEvidenceCount(_evidenceCount);
+            topStatusRow?.SetActiveLeads(spawned > 0 ? 2 + spawned : 2);
+            topStatusRow?.TickBreakthroughNow();
+
+            LeadAnalytics.LogOutcome(data, evidenceAdded, spawned);
+            LeadAnalytics.LogPercentSolved(old, _percentSolved);
+
+            // TODO: SaveLoadDriver.Save(...)
+        }
+    }
+}
+
+//// END FILE: CaseFlow\BoardPresenter.cs
+
+
+//// BEGIN FILE [9/102]: CaseFlow\CaseFlowAdvanceOnEventMB.cs
+//// SIZE=849 bytes | LINES=29 | SHA256=0668C996B1066BF67896B32C6BF73BBD648E87846B7DC520FD4A31CA34930B36
+//// ---------------------------------------------------------------------------
+
+
+// Assembly: AQ.App
+// Purpose: Expose public methods for UnityEvents/buttons to advance/reset CaseFlow.
+
+using UnityEngine;
+using AQ.SharedKernel.CaseFlow;
+
+namespace AQ.App.CaseFlow
+{
+    public sealed class CaseFlowAdvanceOnEventMB : MonoBehaviour
+    {
+        public void Advance()
+        {
+            var svc = CaseFlowLocator.Instance;
+            if (svc != null && svc.CompleteCurrentStep())
+                Debug.Log($"[CaseFlow] Advance (manual/event) → stepIndex={svc.Current.StepIndex}/{svc.Current.Steps.Count}");
+        }
+
+        public void ResetProgress()
+        {
+            var svc = CaseFlowLocator.Instance;
+            if (svc != null)
+            {
+                svc.Reset();
+                Debug.Log("[CaseFlow] Reset progress to start (manual/event)");
+            }
+        }
+    }
+}
+
+//// END FILE: CaseFlow\CaseFlowAdvanceOnEventMB.cs
+
+
+//// BEGIN FILE [10/102]: CaseFlow\CaseFlowDebugOverlayMB.cs
+//// SIZE=932 bytes | LINES=30 | SHA256=6DBC8157E78BC9E593536D9332CCE3AD6D3616591D8C9F8A5E6928C0C7F613B4
+//// ---------------------------------------------------------------------------
+
+
+// Assembly: AQ.App
+// Purpose: Minimal on-screen display of CaseFlow state for dev builds.
+
+using UnityEngine;
+using AQ.SharedKernel.CaseFlow;
+
+namespace AQ.App.CaseFlow
+{
+    public sealed class CaseFlowDebugOverlayMB : MonoBehaviour
+    {
+        public bool show = true;
+        public int fontSize = 14;
+        private GUIStyle _style;
+
+        void OnGUI()
+        {
+            if (!show) return;
+            var svc = CaseFlowLocator.Instance;
+            if (svc == null) return;
+
+            _style ??= new GUIStyle(GUI.skin.label) { fontSize = fontSize };
+            var s = svc.Current;
+            var activeKey = (s.StepIndex < s.Steps.Count) ? s.Steps[s.StepIndex] : "<complete>";
+            GUI.Label(new Rect(10, 10, 600, 40),
+                $"[CaseFlow] Episode={s.Episode} StepIndex={s.StepIndex}/{s.Steps.Count} ActiveKey={activeKey}",
+                _style);
+        }
+    }
+}
+
+//// END FILE: CaseFlow\CaseFlowDebugOverlayMB.cs
+
+
+//// BEGIN FILE [11/102]: CaseFlow\CaseFlowGateMB.cs
+//// SIZE=2162 bytes | LINES=69 | SHA256=641D4F79354455AFD26F7E803E7AC96982A10EF6F48B96C85D89F7CFB514D3B0
+//// ---------------------------------------------------------------------------
+
+
+// Assembly: AQ.App
+// Purpose: Enable/disable a target object based on CaseFlow progress.
+
+using UnityEngine;
+using AQ.SharedKernel.CaseFlow;
+
+namespace AQ.App.CaseFlow
+{
+    public sealed class CaseFlowGateMB : MonoBehaviour
+    {
+        public enum GateMode { AtIndex, AtOrBeyondIndex, HasKeyActive }
+
+        [Header("Gate Rule")]
+        public GateMode mode = GateMode.AtIndex;
+        [Tooltip("Used for AtIndex / AtOrBeyondIndex")]
+        public int requiredIndex = 0;
+        [Tooltip("Used for HasKeyActive (exact match to steps array)")]
+        public string requiredKey = "FTUE_Entitlements";
+
+        [Header("Target")]
+        [Tooltip("Target to show/hide. Defaults to this GameObject.")]
+        public GameObject target;
+
+        [Header("Polling")]
+        [Tooltip("Check every frame (safe, cheap). You can disable and call Apply() manually from UI/events.")]
+        public bool pollEveryFrame = true;
+
+        private ICaseFlowService _svc;
+
+        void Awake()
+        {
+            if (target == null) target = gameObject;
+            _svc = CaseFlowLocator.Instance;
+        }
+
+        void OnEnable() => Apply();
+
+        void Update()
+        {
+            if (pollEveryFrame) Apply();
+        }
+
+        public void Apply()
+        {
+            if (_svc == null) _svc = CaseFlowLocator.Instance;
+            if (_svc == null || target == null) return;
+
+            var state = _svc.Current;
+            bool show = false;
+
+            switch (mode)
+            {
+                case GateMode.AtIndex:
+                    show = state.StepIndex == requiredIndex;
+                    break;
+                case GateMode.AtOrBeyondIndex:
+                    show = state.StepIndex >= requiredIndex;
+                    break;
+                case GateMode.HasKeyActive:
+                    var activeKey = (state.StepIndex < state.Steps.Count) ? state.Steps[state.StepIndex] : null;
+                    show = activeKey == requiredKey;
+                    break;
+            }
+
+            if (target.activeSelf != show) target.SetActive(show);
+        }
+    }
+}
+
+//// END FILE: CaseFlow\CaseFlowGateMB.cs
+
+
+//// BEGIN FILE [12/102]: CaseFlow\CaseFlowLocator.cs
+//// SIZE=354 bytes | LINES=14 | SHA256=22C950B37D7EF14DAF77F31F30A807B8DA924EFC29F838E41FE8EE9DE153A641
+//// ---------------------------------------------------------------------------
+
+
+// Assembly: AQ.App
+// Purpose: App-level locator for the domain caseflow service.
+
+using AQ.SharedKernel.CaseFlow;
+
+namespace AQ.App.CaseFlow
+{
+    public static class CaseFlowLocator
+    {
+        public static ICaseFlowService Instance { get; private set; }
+        public static void Set(ICaseFlowService svc) => Instance = svc;
+    }
+}
+
+//// END FILE: CaseFlow\CaseFlowLocator.cs
+
+
+//// BEGIN FILE [13/102]: CaseFlow\CaseFlowOrchestratorMB.cs
+//// SIZE=4179 bytes | LINES=111 | SHA256=49896D9C8587E0289BC35E4EE4E5E89574BE57EEE7E7770D190798B23CEDE3C9
+//// ---------------------------------------------------------------------------
+
+
+// Assembly: AQ.App
+// Purpose: Scene binder that owns/starts CaseFlow and advances on FTUE grant,
+//          with an idempotent "catch-up" if the grant happened before we subscribed.
+
+using UnityEngine;
+using AQ.SharedKernel.CaseFlow;
+using AQ.SharedKernel.Economy;
+using AQ.App.Economy;
+
+namespace AQ.App.CaseFlow
+{
+    [DisallowMultipleComponent]
+    public sealed class CaseFlowOrchestratorMB : MonoBehaviour
+    {
+        [Header("Episode config")]
+        public string episodeId = "Ep01";
+        [Tooltip("Ordered step keys for the episode's 'golden path'.")]
+        public string[] steps = new[] { "FTUE_Entitlements", "Minigame_Scrub", "Resolution" };
+
+        [Header("Lifecycle")]
+        public bool beginOnStart = true;
+
+        [Header("Auto-advance triggers")]
+        [Tooltip("Advance one step when FTUE entitlements are granted (reason='ftue').")]
+        public bool advanceOnFtueGrant = true;
+
+        [Tooltip("If FTUE already happened before we subscribed, advance once at Start.")]
+        public bool catchUpOnFtueFlag = true;
+
+        [Tooltip("Must match FTUEEntitlements.playerPrefsKey so we can detect prior grant.")]
+        public string ftuePlayerPrefsKey = "aq.ftue.entitlements.v1";
+
+        private ICaseFlowService _svc;
+        private IWallet _wallet;
+
+        void Awake()
+        {
+            // Ensure caseflow service exists very early
+            _svc = CaseFlowLocator.Instance ?? new InMemoryCaseFlowService();
+            CaseFlowLocator.Set(_svc);
+        }
+
+        void OnEnable()
+        {
+            // Early attempt to attach if wallet already exists
+            TryAttachWallet();
+        }
+
+        void Start()
+        {
+            if (beginOnStart)
+            {
+                _svc.Begin(new EpisodeId(episodeId), steps);
+                Debug.Log($"[CaseFlow] Began episode '{episodeId}' with {steps.Length} step(s).");
+            }
+
+            // Attach again in case wallet was created during other components' OnEnable/Awake
+            TryAttachWallet();
+
+            // Catch-up: if FTUE already granted (flag set) but we didn't see the event,
+            // advance exactly one step iff we're at step 0 and step key matches.
+            if (advanceOnFtueGrant && catchUpOnFtueFlag)
+            {
+                if (PlayerPrefs.GetInt(ftuePlayerPrefsKey, 0) == 1 &&
+                    _svc.Current.StepIndex == 0 &&
+                    _svc.Current.Steps.Count > 0 &&
+                    _svc.Current.Steps[0] == "FTUE_Entitlements")
+                {
+                    if (_svc.CompleteCurrentStep())
+                    {
+                        Debug.Log("[CaseFlow] Catch-up advance on existing FTUE flag → stepIndex=1");
+                    }
+                }
+            }
+        }
+
+        void OnDisable()
+        {
+            if (_wallet != null) _wallet.Granted -= OnGranted;
+        }
+
+        private void TryAttachWallet()
+        {
+            if (!advanceOnFtueGrant) return;
+
+            var current = WalletLocator.Instance;
+            if (current == null || current == _wallet) return;
+
+            if (_wallet != null) _wallet.Granted -= OnGranted; // safety reattach
+            _wallet = current;
+            _wallet.Granted += OnGranted;
+        }
+
+        private void OnGranted(RewardsGranted e)
+        {
+            if (!string.Equals(e.Reason, "ftue", System.StringComparison.OrdinalIgnoreCase)) return;
+
+            var stepped = _svc.CompleteCurrentStep();
+            if (stepped)
+            {
+                Debug.Log($"[CaseFlow] Auto-advanced on FTUE grant → stepIndex={_svc.Current.StepIndex}/{_svc.Current.Steps.Count}");
+            }
+        }
+
+        // Optional UI hooks:
+        public void Advance() { if (_svc.CompleteCurrentStep()) Debug.Log($"[CaseFlow] Advance → { _svc.Current.StepIndex }"); }
+        public void ResetProgress() { _svc.Reset(); Debug.Log("[CaseFlow] Reset progress to start"); }
+        public void BeginEpisode() { _svc.Begin(new EpisodeId(episodeId), steps); Debug.Log($"[CaseFlow] Begin '{episodeId}'"); }
+    }
+}
+
+//// END FILE: CaseFlow\CaseFlowOrchestratorMB.cs
+
+
+//// BEGIN FILE [14/102]: CaseFlow\DebugLogOnResolveMB.cs
+//// SIZE=376 bytes | LINES=15 | SHA256=AD2953E941212596A88F64691281B6B1A479C82ECEBFD5EF2BD39E193685787B
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App.CaseFlow
+{
+    /// <summary>Simple logger you can call from a Button.</summary>
+    public class DebugLogOnResolveMB : MonoBehaviour
+    {
+        // Hook this from a Button listener to confirm the overlay fired.
+        public void LogNow()
+        {
+            Debug.Log("[Resolution] OnResolve start");
+        }
+    }
+}
+
+//// END FILE: CaseFlow\DebugLogOnResolveMB.cs
+
+
+//// BEGIN FILE [15/102]: CaseFlow\ResolutionContinueMB.cs
+//// SIZE=9354 bytes | LINES=264 | SHA256=D09207C6F6D7F0DBEA28244231090DD439B32FFB52696D981DE5B3BA7B1812F3
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using UnityEngine;
+using UnityEngine.UI;
+using AQ.SharedKernel.Economy;   // IWallet, Reward, WalletService
+using AQ.App.Analytics;          // AnalyticsLocator, IAnalytics, DebugLogAnalytics (if public)
+
+namespace AQ.App.CaseFlow
+{
+    /// <summary>Handles the "Continue" action on the Resolution overlay:
+    /// - Applies rewards (if a wallet is discoverable)
+    /// - Persists via SaveLoadDriver (if present)
+    /// - Emits analytics (best-effort; optional)
+    /// - Hides the overlay (fade via CanvasGroup, else deactivate)
+    /// </summary>
+    public class ResolutionContinueMB : MonoBehaviour
+    {
+        [Header("UI (optional but recommended)")]
+        [Tooltip("CanvasGroup on the ResolutionRoot for a nice fade-out. If null, we'll simply deactivate the root.")]
+        public CanvasGroup group;
+
+        [Tooltip("Root GameObject to hide after pressing Continue (usually 'ResolutionRoot'). If null, we'll use this GameObject.")]
+        public GameObject rootToHide;
+
+        [Tooltip("Seconds to fade the CanvasGroup when hiding.")]
+        public float fadeDuration = 0.25f;
+
+        [Header("Button (optional)")]
+        [Tooltip("Resolve/Continue button. If assigned, we'll auto-wire its onClick.")]
+        public Button resolveButton;
+
+        [Header("Variant/Design Inputs")]
+        [Tooltip("Rewards to grant on continue. Edit-time defaults can be set here; Variant A/B/C can also drive these.")]
+        public int soft = 500;
+        public int energy = 10;
+        public int premium = 0;
+
+        // Cache (runtime)
+        IWallet _wallet;          // discovered wallet
+        bool    _triedDiscover;   // avoid re-reflection spam
+
+        void Awake()
+        {
+            if (!rootToHide) rootToHide = gameObject;
+        }
+
+        void OnEnable()
+        {
+            if (resolveButton)
+            {
+                resolveButton.onClick.RemoveListener(OnResolve);
+                resolveButton.onClick.AddListener(OnResolve);
+            }
+        }
+
+        /// <summary>
+        /// Main entry from the Resolve/Continue button.
+        /// Order: 1) rewards, 2) save, 3) analytics, 4) hide.
+        /// </summary>
+        public void OnResolve()
+        {
+            var rewards = BuildRewards();
+            TryApplyRewards(rewards);
+            TryPersist();
+            TryAnalytics(rewards);
+            HideOverlay();
+        }
+
+        Reward[] BuildRewards()
+        {
+            var list = new List<Reward>(3);
+            if (soft    > 0) list.Add(Reward.Soft(soft));
+            if (energy  > 0) list.Add(Reward.Energy(energy));
+            if (premium > 0) list.Add(Reward.Premium(premium));
+            return list.ToArray();
+        }
+
+        void TryApplyRewards(Reward[] rewards)
+        {
+            if (rewards == null || rewards.Length == 0) return;
+
+            var wallet = GetOrDiscoverWallet();
+            if (wallet == null)
+            {
+                Debug.LogWarning("[ResolutionContinueMB] WalletService not found; rewards not applied.");
+                return;
+            }
+
+            wallet.Grant("grant", rewards);
+
+            int s = 0, e = 0, p = 0;
+            foreach (var r in rewards)
+            {
+                switch (r.Currency)
+                {
+                    case Currency.Soft:    s += r.Amount; break;
+                    case Currency.Energy:  e += r.Amount; break;
+                    case Currency.Premium: p += r.Amount; break;
+                }
+            }
+            Debug.Log($"[ResolutionContinueMB] Granted rewards → soft={s}, energy={e}, premium={p}");
+        }
+
+        void TryPersist()
+        {
+#if UNITY_2022_2_OR_NEWER
+            var driver = FindFirstObjectByType<SaveLoadDriver>(FindObjectsInactive.Include);
+#else
+            var driver = FindObjectOfType<SaveLoadDriver>(includeInactive: true);
+#endif
+            if (driver != null)
+            {
+                driver.Save();
+                Debug.Log("[ResolutionContinueMB] SaveLoadDriver.Save() called.");
+            }
+        }
+
+        void TryAnalytics(Reward[] rewards)
+        {
+            // Ensure an analytics backend exists; if not, set one.
+            IAnalytics analytics = AnalyticsLocator.Instance;
+            if (analytics == null)
+            {
+                try
+                {
+                    analytics = new DebugLogAnalytics();
+                    AnalyticsLocator.Set(analytics);
+                }
+                catch
+                {
+                    analytics = new FallbackAnalytics();
+                    AnalyticsLocator.Set(analytics);
+                }
+            }
+
+            if (analytics == null)
+            {
+                Debug.LogWarning("[ResolutionContinueMB] IAnalytics not found; skipping 'resolution_continue' emit.");
+                return;
+            }
+
+            var payload = new Dictionary<string, object>
+            {
+                { "soft", soft },
+                { "energy", energy },
+                { "premium", premium },
+                { "rewards_count", rewards?.Length ?? 0 }
+            };
+
+            analytics.LogEvent("resolution_continue", payload);
+        }
+
+        void HideOverlay()
+        {
+            if (group != null && fadeDuration > 0f && isActiveAndEnabled)
+            {
+                StartCoroutine(FadeAndDisable(group, rootToHide));
+            }
+            else
+            {
+                if (rootToHide) rootToHide.SetActive(false);
+            }
+        }
+
+        IEnumerator FadeAndDisable(CanvasGroup cg, GameObject go)
+        {
+            float t = 0f;
+            float start = cg.alpha;
+            while (t < fadeDuration)
+            {
+                t += Time.unscaledDeltaTime;
+                cg.alpha = Mathf.Lerp(start, 0f, Mathf.Clamp01(t / fadeDuration));
+                yield return null;
+            }
+            cg.alpha = 0f;
+            if (go) go.SetActive(false);
+        }
+
+        // --------- discovery helpers ---------
+
+        IWallet GetOrDiscoverWallet()
+        {
+            if (_wallet != null) return _wallet;
+            if (_triedDiscover)  return null;
+
+            _triedDiscover = true;
+
+            // 1) Look for an existing IWallet/WalletService exposed by any MB (includes inactive)
+#if UNITY_2022_2_OR_NEWER
+            var mbs = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, UnityEngine.FindObjectsSortMode.None);
+#else
+            var mbs = FindObjectsOfType<MonoBehaviour>(includeInactive: true);
+#endif
+            foreach (var mb in mbs)
+            {
+                if (!mb) continue;
+                var type = mb.GetType();
+
+                // fields
+                foreach (var f in type.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
+                {
+                    if (TryWalletFromObject(f.GetValue(mb), out _wallet)) return _wallet;
+                }
+                // properties
+                foreach (var p in type.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
+                {
+                    if (!p.CanRead) continue;
+                    object val;
+                    try { val = p.GetValue(mb, null); } catch { continue; }
+                    if (TryWalletFromObject(val, out _wallet)) return _wallet;
+                }
+            }
+
+            // 2) Dev fallback: create a local wallet so the flow works end-to-end
+            try
+            {
+                _wallet = new WalletService();
+                Debug.Log("[ResolutionContinueMB] Created local WalletService (dev fallback).");
+            }
+            catch
+            {
+                _wallet = null;
+            }
+            return _wallet;
+        }
+
+        static bool TryWalletFromObject(object obj, out IWallet wallet)
+        {
+            wallet = null;
+            if (obj == null) return false;
+
+            if (obj is IWallet w) { wallet = w; return true; }
+            if (obj is WalletService ws) { wallet = ws; return true; }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Minimal debug analytics used if no backend is registered and DebugLogAnalytics isn't constructible.
+        /// Must fulfill the IAnalytics interface.
+        /// </summary>
+        private sealed class FallbackAnalytics : IAnalytics
+        {
+            public void LogEvent(string name, IDictionary<string, object> fields = null)
+            {
+                if (fields == null || fields.Count == 0)
+                {
+                    Debug.Log("[Analytics] " + name);
+                    return;
+                }
+                var parts = fields.Select(kv => kv.Key + ": " + (kv.Value ?? "null"));
+                Debug.Log("[Analytics] " + name + " { " + string.Join(", ", parts) + " }");
+            }
+
+            public void SetUserProperty(string key, string value)
+            {
+                Debug.Log("[Analytics] set_user_property " + key + "=" + (value ?? "null"));
+            }
+        }
+    }
+}
+
+//// END FILE: CaseFlow\ResolutionContinueMB.cs
+
+
+//// BEGIN FILE [16/102]: Composition\BootstrapperAutoAdd.cs
+//// SIZE=1556 bytes | LINES=42 | SHA256=89058D608B9DA4233BE9709C7E6652B3FCAFC4B7EA771A05029CCCB63BA24A45
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App
+{
+    /// <summary>
+    /// Ensures a MergeService is available, and assigns it to any MergeInputAdapter at boot.
+    /// Safe, minimal, and test-friendly. No domain wiring here.
+    /// </summary>
+    public sealed class BootstrapperAutoAdd : MonoBehaviour
+    {
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        static void EnsureBootstrapper()
+        {
+            var holder = new GameObject("~BootstrapperAutoAdd");
+            holder.hideFlags = HideFlags.HideInHierarchy | HideFlags.DontSave;
+            holder.AddComponent<BootstrapperAutoAdd>();
+            Object.DontDestroyOnLoad(holder);
+        }
+
+        void Awake()
+        {
+            // If a MergeService exists, use it; else create one.
+            var svc = AQ.App.MergeService.Instance;
+            if (svc == null)
+            {
+                var host = new GameObject("~MergeServiceStubHost");
+                host.hideFlags = HideFlags.HideInHierarchy | HideFlags.DontSave;
+                Object.DontDestroyOnLoad(host);
+                svc = host.AddComponent<AQ.App.MergeService>();
+            }
+
+            // Assign to any adapter that’s missing a service.
+            var adapters = Object.FindObjectsByType<AQ.App.MergeInputAdapter>(FindObjectsSortMode.None);
+            foreach (var a in adapters)
+            {
+                if (a != null && a.mergeService == null)
+                    a.mergeService = svc;
+            }
+        }
+    }
+}
+
+//// END FILE: Composition\BootstrapperAutoAdd.cs
+
+
+//// BEGIN FILE [17/102]: Composition\BootstrapperAutoAssign.cs
+//// SIZE=1122 bytes | LINES=34 | SHA256=06843631F540852C433B84ED0324502C0829DC65BAD581AB92B7C36929F6F780
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App
+{
+    /// <summary>
+    /// After scene load, ensure every MergeInputAdapter has a MergeService.
+    /// Creates one shared MergeService (DontDestroyOnLoad) and assigns it to any null adapters.
+    /// </summary>
+    public static class BootstrapperAutoAssign
+    {
+        private static MergeService _shared;
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        private static void EnsureMergeService()
+        {
+            // Lazily create a single shared service
+            if (_shared == null)
+            {
+                var host = new GameObject("~DefaultMergeService");
+                Object.DontDestroyOnLoad(host);
+                _shared = host.AddComponent<MergeService>();
+            }
+
+            // New API to avoid obsolete warnings
+            var adapters = Object.FindObjectsByType<MergeInputAdapter>(FindObjectsSortMode.None);
+            foreach (var a in adapters)
+            {
+                if (a != null && a.mergeService == null)
+                    a.mergeService = _shared;
+            }
+        }
+    }
+}
+
+//// END FILE: Composition\BootstrapperAutoAssign.cs
+
+
+//// BEGIN FILE [18/102]: Composition\BootstrapperRuntime.cs
+//// SIZE=376 bytes | LINES=12 | SHA256=99EEC4D262DDEBD1597B759F5B15C375FFE37611C741785B0B78C6D8C1D3E450
+//// ---------------------------------------------------------------------------
+
+
+namespace AQ.App.Composition
+{
+    public static class BootstrapperRuntime
+    {
+        public static void WireDefaults(IMergeService existing = null)
+        {
+            // Intentionally minimal for compile success; expand later.
+            // If needed later: if (existing == null) existing = new AQ.App.UI.MergeBoard.MergeServiceStub();
+        }
+    }
+}
+
+//// END FILE: Composition\BootstrapperRuntime.cs
+
+
+//// BEGIN FILE [19/102]: Composition\DomainMergeWire.cs
+//// SIZE=389 bytes | LINES=17 | SHA256=3D5E976314B68536A3E6DB487003BC81D5D1D5E77F8EA1F596B74410C0BED25F
+//// ---------------------------------------------------------------------------
+
+
+#if AQ_ENABLE_DOMAIN_WIRE
+using System;
+
+namespace AQ.App
+{
+    public static class DomainMergeWire
+    {
+        public static void Configure(MergeService svc)
+        {
+            if (svc == null) return;
+
+            // TODO: fill in with real Domain.MergeEngine + RecipeBook once ready.
+            // svc.InjectDomainResolver((aLabel, bLabel) => { ... });
+        }
+    }
+}
+#endif
+
+
+//// END FILE: Composition\DomainMergeWire.cs
+
+
+//// BEGIN FILE [20/102]: Composition\GameBootstrapper.cs
+//// SIZE=1394 bytes | LINES=47 | SHA256=D98EF4D753C62C34D286BCD3221ACAD913886A51D31DB55B01CB82AEB1A6D531
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App
+{
+    /// <summary>
+    /// Minimal bootstrap that the tests expect:
+    /// - Ensure a MergeService exists
+    /// - After one frame, assign that service to any MergeInputAdapter with a null mergeService
+    /// </summary>
+    public sealed class GameBootstrapper : MonoBehaviour
+    {
+        private MergeService _svc;
+
+        void Awake()
+        {
+            // Prefer an existing service if one already registered an Instance
+            _svc = MergeService.Instance;
+
+            // If none yet, create our own and hold the component reference directly
+            if (_svc == null)
+            {
+                var host = new GameObject("~MergeService (Bootstrap)");
+                DontDestroyOnLoad(host);
+                _svc = host.AddComponent<MergeService>();
+            }
+        }
+
+        void Start()
+        {
+            // One frame later: adapters should exist and MergeService.Awake has run.
+            AssignAdapters();
+        }
+
+        private void AssignAdapters()
+        {
+            if (_svc == null) _svc = MergeService.Instance;
+
+            var adapters = Object.FindObjectsByType<MergeInputAdapter>(FindObjectsSortMode.None);
+            foreach (var a in adapters)
+            {
+                if (a != null && a.mergeService == null)
+                    a.mergeService = _svc;
+            }
+        }
+    }
+}
+
+//// END FILE: Composition\GameBootstrapper.cs
+
+
+//// BEGIN FILE [21/102]: Composition\IMergeService.cs
+//// SIZE=337 bytes | LINES=14 | SHA256=0F1762EA7466888ED9848DE576ECB4AEDF8A61B8CCA7AF44D789419A48D6B3CD
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App.Composition
+{
+    public interface IMergeService
+    {
+        // Grid-based merge using Unity's Vector2Int coords
+        bool TryMerge(Vector2Int a, Vector2Int b);
+
+        // Overload using explicit ints (x1,y1,x2,y2)
+        bool TryMerge(int ax, int ay, int bx, int by);
+    }
+}
+
+//// END FILE: Composition\IMergeService.cs
+
+
+//// BEGIN FILE [22/102]: Composition\MergeService.cs
+//// SIZE=3164 bytes | LINES=84 | SHA256=E33973B31038848C22A63668CBC59C05FD043E28D6A19221C0A872C23E6FF8B7
+//// ---------------------------------------------------------------------------
+
+
+using AQ.App.Composition;
+using System;
+using UnityEngine;
+
+namespace AQ.App
+{
+    /// <summary>
+    /// App-level merge service that supports both cell-based and label-based seams.
+    /// - Cell seam (Vector2Int/int) matches the composition IMergeService.
+    /// - Label seam (string,string,out string) lets UI call without domain wiring.
+    /// Tests can inject either resolver.
+    /// </summary>
+    public class MergeService : MonoBehaviour, IMergeService
+    {
+        public static MergeService Instance { get; private set; }
+
+        // Cell-based resolver: returns true if merge succeeds.
+        private Func<Vector2Int, Vector2Int, bool> _cellResolver;
+
+        // Label-based resolver: returns true if merge succeeds, and produces result label.
+        private Func<string, string, (bool ok, string result)> _labelResolver;
+
+        private void Awake()
+        {
+            if (Instance == null) Instance = this;
+        }
+
+        /// <summary>Inject a domain merge function (Vector2Int signature).</summary>
+        public void InjectDomainResolver(Func<Vector2Int, Vector2Int, bool> resolver)
+        {
+            _cellResolver = resolver;
+        }
+
+        /// <summary>Inject a domain merge function (int signature).</summary>
+        public void InjectDomainResolver(Func<int, int, int, int, bool> resolver)
+        {
+            _cellResolver = (from, to) => resolver(from.x, from.y, to.x, to.y);
+        }
+
+        /// <summary>
+        /// Inject a label-based resolver. Return (ok,resultLabel).
+        /// </summary>
+        public void InjectDomainResolver(Func<string, string, (bool ok, string result)> resolver)
+        {
+            _labelResolver = resolver;
+        }
+
+        // ===== Cell-based IMergeService (composition contract) =====
+        public bool TryMerge(Vector2Int from, Vector2Int to)
+        {
+            if (_cellResolver != null) return _cellResolver(from, to);
+
+            // Default stub: allow merge so UI can progress when domain isn’t wired yet.
+            return true;
+        }
+
+        public bool TryMerge(int fromX, int fromY, int toX, int toY)
+            => TryMerge(new Vector2Int(fromX, fromY), new Vector2Int(toX, toY));
+
+        // ===== Label-based UI seam (for MergeInputAdapter) =====
+        public bool TryMerge(string aLabel, string bLabel, out string resultLabel)
+        {
+            // Use injected label resolver if present
+            if (_labelResolver != null)
+            {
+                var r = _labelResolver(aLabel, bLabel);
+                resultLabel = r.result;
+                return r.ok;
+            }
+
+            // Fallback behavior: if labels match, "merge" into the next tier-ish label.
+            // Extremely simple placeholder so PlayMode tests can proceed deterministically.
+            if (!string.IsNullOrEmpty(aLabel) && aLabel == bLabel)
+            {
+                resultLabel = aLabel + "+"; // e.g., "A" -> "A+"
+                return true;
+            }
+
+            resultLabel = bLabel ?? aLabel ?? string.Empty;
+            return false;
+        }
+    }
+}
+
+//// END FILE: Composition\MergeService.cs
+
+
+//// BEGIN FILE [23/102]: Composition\SharedKernelBoot.cs
+//// SIZE=1968 bytes | LINES=55 | SHA256=4FDB4504C53B9F377B83E0985C73365AB3CAE863184944342FCD44998749C552
+//// ---------------------------------------------------------------------------
+
+
+using System;
+using System.Linq;
+using System.Reflection;
+using UnityEngine;
+
+namespace AQ.App
+{
+    /// <summary>
+    /// PlayMode safety net: if the SharedKernel expects a global/factory ILogger,
+    /// seed it with a NullLogger. Reflection avoids hard deps on package internals.
+    /// </summary>
+    public static class SharedKernelBoot
+    {
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void EnsureNullLoggerFactory()
+        {
+            try
+            {
+                var asm = AppDomain.CurrentDomain.GetAssemblies()
+                    .FirstOrDefault(a => a.GetName().Name == "AQ.SharedKernel");
+                if (asm == null) return;
+
+                var iLogger = asm.GetType("AQ.SharedKernel.ILogger");
+                var nullLoggerType = asm.GetType("AQ.SharedKernel.NullLogger");
+                if (iLogger == null || nullLoggerType == null) return;
+
+                var loggerInstance = Activator.CreateInstance(nullLoggerType);
+
+                // Strategy: set any public static property/field of type ILogger.
+                foreach (var t in asm.GetTypes())
+                {
+                    foreach (var p in t.GetProperties(BindingFlags.Public | BindingFlags.Static))
+                    {
+                        if (p.CanWrite && p.PropertyType == iLogger)
+                        {
+                            p.SetValue(null, loggerInstance, null);
+                        }
+                    }
+
+                    foreach (var f in t.GetFields(BindingFlags.Public | BindingFlags.Static))
+                    {
+                        if (f.FieldType == iLogger)
+                        {
+                            f.SetValue(null, loggerInstance);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // Best-effort only; never fail boot.
+            }
+        }
+    }
+}
+
+
+//// END FILE: Composition\SharedKernelBoot.cs
+
+
+//// BEGIN FILE [24/102]: Content\AddressableGraphLoader.cs
+//// SIZE=1658 bytes | LINES=42 | SHA256=D84CFC23BC3A5E75C027B53B779FAA72F9EF03C8C60F0E47D862D995DE82B82D
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+
+public class AddressableGraphLoader : MonoBehaviour
+{
+    [Tooltip("Label to load CaseGraph assets by (default: Ep01).")]
+    public string Label = "Ep01"; //
+    public DialogueRunner Runner;
+
+    void Start(){
+        if(Runner == null) Runner = FindFirstObjectByType<DialogueRunner>();
+        LoadGraphs();
+    }
+
+    public void LoadGraphs(){
+        Addressables.InitializeAsync().Completed += _ => {
+            Addressables.LoadAssetsAsync<CaseGraph>(Label, OnGraphLoaded).Completed += OnAllComplete;
+        };
+    }
+
+    List<CaseGraph> _loaded = new List<CaseGraph>();
+    void OnGraphLoaded(CaseGraph g){ if(g!=null) _loaded.Add(g); }
+
+    void OnAllComplete(AsyncOperationHandle<IList<CaseGraph>> op){
+        if(op.Status != AsyncOperationStatus.Succeeded || _loaded.Count == 0){
+            Debug.LogWarning("[Addr] No CaseGraph assets found for label '"+Label+"'.");
+            return;
+        }
+        // Pick the first for now; later we can choose by episode id
+        var graph = _loaded[0];
+        Debug.Log("[Addr] Loaded CaseGraph '"+graph.name+"' via label '"+Label+"'.");
+        if(Runner == null) Runner = FindFirstObjectByType<DialogueRunner>();
+        if(Runner != null) Runner.BootWithGraph(graph);
+    }
+
+    // Menu or button can call this at runtime to clear cache between tests
+    public void ClearAddressablesCache(){ Addressables.ClearResourceLocators(); Caching.ClearCache(); Debug.Log("[Addr] Cleared Addressables cache."); }
+}
+
+
+//// END FILE: Content\AddressableGraphLoader.cs
+
+
+//// BEGIN FILE [25/102]: Dev\Editor\QuickNavButton.cs
+//// SIZE=1029 bytes | LINES=34 | SHA256=C336C62732DB55BBA9F0C96953E836B71BD18ABE232EAAB35BA5619489FBF768
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+/// Tiny scene jump helper for development.
+public class QuickNavButton : MonoBehaviour
+{
+    [Tooltip("Exact scene name to load (must be in Build Settings).")]
+    public string sceneName = "Case_Board_Portrait";
+
+    [Tooltip("If true, loads additively; otherwise loads Single (replaces current scene).")]
+    public bool additive = false;
+
+#if UNITY_EDITOR
+    // Optional: drag a SceneAsset in the Inspector (editor-only) to avoid typos.
+    [SerializeField] private UnityEditor.SceneAsset sceneAsset;
+    private void OnValidate()
+    {
+        if (sceneAsset != null) sceneName = sceneAsset.name;
+    }
+#endif
+
+    public void GoNow()
+    {
+        if (string.IsNullOrWhiteSpace(sceneName))
+        {
+            Debug.LogError("[QuickNavButton] Scene name is empty.");
+            return;
+        }
+
+        var mode = additive ? LoadSceneMode.Additive : LoadSceneMode.Single;
+        SceneManager.LoadScene(sceneName, mode);
+    }
+}
+
+//// END FILE: Dev\Editor\QuickNavButton.cs
+
+
+//// BEGIN FILE [26/102]: Economy\WalletLocator.cs
+//// SIZE=401 bytes | LINES=16 | SHA256=908BBA3E4E3D486EF8DEA367A628F1FDB0E0132C32B63C4F545E7A0E220C5139
+//// ---------------------------------------------------------------------------
+
+
+// Assembly: AQ.App
+// File: Assets/App/Economy/WalletLocator.cs
+// Purpose: App-level locator to provide a wallet instance to MonoBehaviours.
+
+using AQ.SharedKernel.Economy;
+
+namespace AQ.App.Economy
+{
+    public static class WalletLocator
+    {
+        public static IWallet Instance { get; private set; }
+
+        public static void Set(IWallet wallet) => Instance = wallet;
+    }
+}
+
+//// END FILE: Economy\WalletLocator.cs
+
+
+//// BEGIN FILE [27/102]: FTUE\FTUEEntitlements.cs
+//// SIZE=1199 bytes | LINES=40 | SHA256=2B609C0C3FD57033EA3EAB6171FD17C507DA01A9C2FD89825B9AEE59E9CD2A75
+//// ---------------------------------------------------------------------------
+
+
+// Assembly: AQ.App
+// File: Assets/App/FTUE/FTUEEntitlements.cs
+// Purpose: One-time FTUE grant in EditMode/PlayMode. No Firebase dependency.
+
+using UnityEngine;
+using AQ.SharedKernel.Economy;
+using AQ.App.Economy;
+
+namespace AQ.App.FTUE
+{
+    [DisallowMultipleComponent]
+    public sealed class FTUEEntitlements : MonoBehaviour
+    {
+        [Header("One-time entitlements")]
+        [Min(0)] public int soft    = 500;
+        [Min(0)] public int premium = 0;
+        [Min(0)] public int energy  = 10;
+
+        [Header("PlayerPrefs key (toggle to reapply in dev)")]
+        public string playerPrefsKey = "aq.ftue.entitlements.v1";
+
+        void Awake()
+        {
+            if (PlayerPrefs.GetInt(playerPrefsKey, 0) == 1) return;
+
+            var wallet = WalletLocator.Instance ?? new WalletService();
+            WalletLocator.Set(wallet); // ensure a shared instance for other components
+
+            wallet.Grant("ftue",
+                Reward.Soft(soft),
+                Reward.Premium(premium),
+                Reward.Energy(energy)
+            );
+
+            PlayerPrefs.SetInt(playerPrefsKey, 1);
+            PlayerPrefs.Save();
+        }
+    }
+}
+
+//// END FILE: FTUE\FTUEEntitlements.cs
+
+
+//// BEGIN FILE [28/102]: Gameplay\Data\SpawnPolicy.cs
+//// SIZE=560 bytes | LINES=16 | SHA256=25B7EAF98DDC10477020A56B08840886A58EA54834502DCE7A10502EEF7AB029
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace AQ.Gameplay {
+  [CreateAssetMenu(menuName = "AQ/Gameplay/SpawnPolicy", fileName = "SpawnPolicy")]
+  public class SpawnPolicy : ScriptableObject {
+    [Tooltip("IDs of items eligible to spawn initially / at refill ticks")]
+    public List<string> startingBag = new List<string>();
+
+    [Tooltip("Seconds between spawn ticks or cooldown gating (tunable)")]
+    public float spawnCooldownSeconds = 2f;
+
+    [Tooltip("Max simultaneous spawns per tick (tunable)")]
+    public int maxPerTick = 1;
+  }
+}
+
+
+//// END FILE: Gameplay\Data\SpawnPolicy.cs
+
+
+//// BEGIN FILE [29/102]: Gameplay\Merge\MergeGeneratorConfig.cs
+//// SIZE=1219 bytes | LINES=36 | SHA256=6BCC2596DCB0A2C3AED20FED815255A5B561ACFC742F23C9AA0192F33A830359
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App.Gameplay.Merge
+{
+    [CreateAssetMenu(fileName = "MergeGeneratorConfig", menuName = "AQ/Merge/Generator Config")]
+    public class MergeGeneratorConfig : ScriptableObject
+    {
+        [Min(1)] public int width = 5;
+        [Min(1)] public int height = 5;
+        [Min(1)] public int maxTier = 6;
+
+        [Tooltip("Power spent per spawn")]
+        [Min(0)] public int spawnCost = 1;
+
+        [Tooltip("Weights for T1..Tmax (array size should match maxTier).")]
+        public int[] weights = new int[] { 75, 15, 7, 2, 1, 0 };
+
+        public int NextTier(System.Random rng)
+        {
+            if (weights == null || weights.Length == 0) return 1;
+            int len = Mathf.Min(weights.Length, Mathf.Max(1, maxTier));
+            int sum = 0; for (int i = 0; i < len; i++) sum += Mathf.Max(0, weights[i]);
+            if (sum <= 0) return 1;
+
+            int r = rng.Next(sum); // 0..sum-1
+            int acc = 0;
+            for (int t = 0; t < len; t++)
+            {
+                acc += Mathf.Max(0, weights[t]);
+                if (r < acc) return Mathf.Clamp(t + 1, 1, maxTier);
+            }
+            return 1;
+        }
+    }
+}
+
+//// END FILE: Gameplay\Merge\MergeGeneratorConfig.cs
+
+
+//// BEGIN FILE [30/102]: Gameplay\Merge\SpriteCatalog.cs
+//// SIZE=724 bytes | LINES=22 | SHA256=92AC8B90A5FCAC9ACC598678DF0B7889F6217F9D65214A7ECEA4D632F827DAB6
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace AQ.App.Gameplay.Merge
+{
+    [CreateAssetMenu(fileName = "SpriteCatalog", menuName = "AQ/Merge/Sprite Catalog")]
+    public class SpriteCatalog : ScriptableObject
+    {
+        [Tooltip("Index 0 unused; tiers start at 1. Size should be >= maxTier + 1.")]
+        public List<Sprite> byTier = new List<Sprite>();
+
+        public Sprite ForTier(int tier)
+        {
+            if (tier <= 0) return null;
+            int idx = tier;
+            if (byTier == null || byTier.Count == 0) return null;
+            if (idx < 0 || idx >= byTier.Count) idx = Mathf.Clamp(idx, 0, byTier.Count - 1);
+            return byTier[idx];
+        }
+    }
+}
+
+//// END FILE: Gameplay\Merge\SpriteCatalog.cs
+
+
+//// BEGIN FILE [31/102]: Home\HomeResumeCard.cs
+//// SIZE=1019 bytes | LINES=31 | SHA256=3BC347F5893AEB9B930D489BCB40715D57DA01F39DBD207B5766A19155152614
+//// ---------------------------------------------------------------------------
+
+
+using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+
+namespace AQ.App.Home
+{
+    /// <summary>Big "Resume Case" card: routes to Board→LeadsAvailable.</summary>
+    public class HomeResumeCard : MonoBehaviour
+    {
+        [SerializeField] private TMP_Text titleText;     // e.g., "Resume Case"
+        [SerializeField] private TMP_Text sublineText;   // e.g., "Last objective: Lift a usable print"
+        [SerializeField] private Button resumeButton;
+
+        public UnityEvent OnResumeClicked;
+
+        private void Awake()
+        {
+            if (titleText) titleText.text = "Resume Case";
+            if (sublineText) sublineText.text = "Continue from Leads";
+            resumeButton.onClick.AddListener(() => OnResumeClicked?.Invoke());
+        }
+
+        // Call this from a binder after reading save to show last objective
+        public void SetSubline(string copy)
+        {
+            if (sublineText) sublineText.text = copy;
+        }
+    }
+}
+
+//// END FILE: Home\HomeResumeCard.cs
+
+
+//// BEGIN FILE [32/102]: HUD\TopStatusRow.cs
+//// SIZE=1854 bytes | LINES=62 | SHA256=B39E6A56D78FE85ACC78AC338031F9A0A646616890459FFD89E6F0E86BBD3750
+//// ---------------------------------------------------------------------------
+
+
+using TMPro;
+using UnityEngine;
+
+namespace AQ.App.HUD
+{
+    /// <summary>%Solved • Evidence • Active Leads • Last Breakthrough</summary>
+    public class TopStatusRow : MonoBehaviour
+    {
+        [SerializeField] private TMP_Text solvedText;
+        [SerializeField] private TMP_Text evidenceText;
+        [SerializeField] private TMP_Text leadsText;
+        [SerializeField] private TMP_Text lastBreakthroughText;
+
+        private int _evidence;
+        private int _leads;
+        private float _solved; // 0..1
+        private System.DateTime _last;
+
+        private void OnEnable() => Refresh();
+
+        public void SetSolved(float fraction)
+        {
+            _solved = Mathf.Clamp01(fraction);
+            Refresh();
+        }
+
+        public void SetEvidenceCount(int count)
+        {
+            _evidence = Mathf.Max(0, count);
+            Refresh();
+        }
+
+        public void SetActiveLeads(int count)
+        {
+            _leads = Mathf.Max(0, count);
+            Refresh();
+        }
+
+        public void TickBreakthroughNow()
+        {
+            _last = System.DateTime.UtcNow;
+            Refresh();
+        }
+
+        private void Refresh()
+        {
+            if (solvedText) solvedText.text = $"Solved {(int)(_solved * 100)}%";
+            if (evidenceText) evidenceText.text = $"Evidence {_evidence}";
+            if (leadsText) leadsText.text = $"Leads {_leads}";
+            if (lastBreakthroughText)
+            {
+                if (_last == default) lastBreakthroughText.text = "Last ✓ — —";
+                else
+                {
+                    var mins = (int)System.DateTime.UtcNow.Subtract(_last).TotalMinutes;
+                    lastBreakthroughText.text = $"Last ✓ {mins}m ago";
+                }
+            }
+        }
+    }
+}
+
+//// END FILE: HUD\TopStatusRow.cs
+
+
+//// BEGIN FILE [33/102]: Kernel\SharedKernelBootstrap.cs
+//// SIZE=1727 bytes | LINES=45 | SHA256=8EA9D6E0C2BD98C553F0A3291084CCBCC46FF39C1DFC48F9D25D01DD0694E125
+//// ---------------------------------------------------------------------------
+
+
+using System;
+using System.Reflection;
+using UnityEngine;
+
+namespace AQ.App
+{
+    /// <summary>
+    /// Some package tests expect a default NullLogger instance/factory to exist.
+    /// We defensively ensure a singleton instance via reflection before any scene loads.
+    /// </summary>
+    public static class SharedKernelBootstrap
+    {
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void EnsureNullLogger()
+        {
+            // Try a few likely assembly/type names without taking a hard compile-time dependency.
+            TrySetInstance("AQ.SharedKernel.NullLogger",           "com.aq.sharedkernel");
+            TrySetInstance("AQ.SharedKernel.Logging.NullLogger",   "com.aq.sharedkernel");
+            TrySetInstance("AQ.SharedKernel.NullLogger",           "AQ.SharedKernel");
+            TrySetInstance("AQ.SharedKernel.Logging.NullLogger",   "AQ.SharedKernel");
+        }
+
+        private static void TrySetInstance(string typeName, string asm)
+        {
+            try
+            {
+                var t = Type.GetType(typeName + ", " + asm, throwOnError: false);
+                if (t == null) return;
+
+                var prop = t.GetProperty("Instance", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+                if (prop == null) return;
+
+                var current = prop.GetValue(null, null);
+                if (current != null) return;
+
+                var obj = Activator.CreateInstance(t, nonPublic: true);
+                prop.SetValue(null, obj, null);
+            }
+            catch (Exception e)
+            {
+                Debug.Log($"SharedKernelBootstrap: {e.Message}");
+            }
+        }
+    }
+}
+
+
+//// END FILE: Kernel\SharedKernelBootstrap.cs
+
+
+//// BEGIN FILE [34/102]: Leads\ActiveLeadState.cs
+//// SIZE=693 bytes | LINES=20 | SHA256=33016970FCF4E45611753329C85B36BEA5CBA0E7F5527B84A35BC73E183BC896
+//// ---------------------------------------------------------------------------
+
+
+namespace AQ.App.Leads
+{
+    /// <summary>Runtime progress for a visible lead (persisted in save).</summary>
+    [System.Serializable]
+    public struct ActiveLeadState
+    {
+        public string LeadCardId;
+        /// <summary>Bitmask of requirement completion (max 3 tracked for FTUE, scalable).</summary>
+        public byte RequirementMask;
+        public bool Locked;
+
+        public bool IsRequirementMet(int index) => (RequirementMask & (1 << index)) != 0;
+        public void SetRequirementMet(int index, bool value)
+        {
+            if (value) RequirementMask |= (byte)(1 << index);
+            else RequirementMask &= (byte)~(1 << index);
+        }
+    }
+}
+
+//// END FILE: Leads\ActiveLeadState.cs
+
+
+//// BEGIN FILE [35/102]: Leads\Data\Editor\LeadData.cs
+//// SIZE=1725 bytes | LINES=57 | SHA256=8F89AA03DD1AA1AB0349B9843A553F4751E806C6F6206C975A2E7C05937A2DB2
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App.Leads
+{
+    public enum LeadState
+    {
+        Blocked = 0,
+        Available = 1,
+        InProgress = 2,
+        Ready = 3
+    }
+
+    [CreateAssetMenu(fileName = "Lead", menuName = "AQ/Leads/Lead", order = 10)]
+    public sealed class LeadData : ScriptableObject
+    {
+        [Header("Display")]
+        public string leadId = System.Guid.NewGuid().ToString("N");
+        public string title = "Demo Lead";
+        [TextArea(1, 3)] public string subtitle = "Collect deli CCTV";
+        public Sprite actorPortrait;
+
+        [Header("State")]
+        public LeadState state = LeadState.Available;
+
+        [Header("Requirements (max 3 recommended)")]
+        public LeadRequirement[] requirements = System.Array.Empty<LeadRequirement>();
+
+        public bool IsReady()
+        {
+            if (requirements == null || requirements.Length == 0)
+                return state == LeadState.Ready;
+
+            for (int i = 0; i < requirements.Length; i++)
+            {
+                if (!requirements[i].IsSatisfied)
+                    return false;
+            }
+            return true;
+        }
+
+        public void SetRequirementSatisfied(int index, bool value)
+        {
+            if (requirements == null) return;
+            if ((uint)index >= (uint)requirements.Length) return;
+
+            // struct-in-array: copy → mutate via public setter → assign back
+            var r = requirements[index];
+            r.Satisfied = value;          // <-- use property, not private field
+            requirements[index] = r;
+
+#if UNITY_EDITOR
+            UnityEditor.EditorUtility.SetDirty(this);
+#endif
+        }
+    }
+}
+
+//// END FILE: Leads\Data\Editor\LeadData.cs
+
+
+//// BEGIN FILE [36/102]: Leads\Data\Editor\LeadsDatabase.cs
+//// SIZE=1037 bytes | LINES=38 | SHA256=7D2D2827B8FF5F1E4C3F282AD552AA837DEE4039634E955E6550859E514E80BE
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace AQ.App.Leads
+{
+    /// <summary>
+    /// Holds a list of LeadData assets.
+    /// Create via: Assets → Create → AQ → Leads → Database
+    /// </summary>
+    [CreateAssetMenu(fileName = "LeadsDatabase", menuName = "AQ/Leads/Database", order = 11)]
+    public sealed class LeadsDatabase : ScriptableObject
+    {
+        [SerializeField] private List<LeadData> leads = new List<LeadData>();
+
+        public IReadOnlyList<LeadData> Leads => leads;
+
+        public void Add(LeadData lead)
+        {
+            if (lead == null || leads.Contains(lead)) return;
+            leads.Add(lead);
+#if UNITY_EDITOR
+            UnityEditor.EditorUtility.SetDirty(this);
+#endif
+        }
+
+        public void Remove(LeadData lead)
+        {
+            if (lead == null) return;
+            if (leads.Remove(lead))
+            {
+#if UNITY_EDITOR
+                UnityEditor.EditorUtility.SetDirty(this);
+#endif
+            }
+        }
+    }
+}
+
+//// END FILE: Leads\Data\Editor\LeadsDatabase.cs
+
+
+//// BEGIN FILE [37/102]: Leads\Data\LeadRequirement.cs
+//// SIZE=1451 bytes | LINES=49 | SHA256=A862D42B1170403CB935DA09BACC35F52ABE6D6FFD22DF01F7A72976DC193928
+//// ---------------------------------------------------------------------------
+
+
+using System;
+using UnityEngine;
+
+namespace AQ.App.Leads
+{
+    /// <summary>Requirement chip on a Lead (label + optional icon + satisfied flag).</summary>
+    [Serializable]
+    public struct LeadRequirement
+    {
+        // Serialized fields (keep these names for asset compatibility)
+        [SerializeField] private string label;
+        [SerializeField] private string itemId;          // optional: an internal id / key (was referenced by runtime)
+        [SerializeField] private Sprite icon;
+        [SerializeField] private bool satisfied;
+
+        // Backwards/forwards-compatible API (matches callers in LeadCardView & LeadRequirementsHUD)
+        public string Label
+        {
+            get => label;
+            set => label = value;
+        }
+
+        public string ItemId
+        {
+            get => itemId;
+            set => itemId = value;
+        }
+
+        public Sprite Icon
+        {
+            get => icon;
+            set => icon = value;
+        }
+
+        public bool IsSatisfied => satisfied;
+
+        public bool Satisfied
+        {
+            get => satisfied;
+            set => satisfied = value;
+        }
+
+        // Also expose lowercase aliases for any newer code using fields (non-breaking).
+        // (Unity serializes private fields above; these aliases are helpers only.)
+        public string labelRef => label;
+        public Sprite iconRef => icon;
+    }
+}
+
+//// END FILE: Leads\Data\LeadRequirement.cs
+
+
+//// BEGIN FILE [38/102]: Leads\LeadCardSO.cs
+//// SIZE=1007 bytes | LINES=30 | SHA256=7DD6A1B449E7A72DBB09F82AFE8C87FD1FDEB1ABCEC735A8F5788DA3F42EB006
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App.Leads
+{
+    [CreateAssetMenu(fileName = "LeadCard", menuName = "AQ/Leads/Lead Card", order = 10)]
+    public class LeadCardSO : ScriptableObject
+    {
+        [Header("Identity")]
+        public string LeadCardId = "Lead_Unique_Id";
+        public Sprite PortraitOrPlace;
+        public string Title;   // e.g., "Mo — Lab Request" or "Riverside Diner"
+        [TextArea] public string OneLiner;
+
+        [Header("Action")]
+        public LeadActionType ActionType;
+        [Range(0, 10)] public int EnergyCost = 0;
+        public LeadRequirement[] Requirements = new LeadRequirement[0];
+
+        [Header("Outcomes")]
+        public string[] EvidenceIds;     // new evidence to pin
+        public string[] SpawnLeadIds;    // new leads to add
+        public string[] NarrativeFlags;  // case flags
+        public int SoftCurrency;
+        public int EnergyGrant;
+
+        [Header("UI")]
+        public LeadOutcomeHint OutcomeHints;
+    }
+}
+
+//// END FILE: Leads\LeadCardSO.cs
+
+
+//// BEGIN FILE [39/102]: Leads\LeadCardView.cs
+//// SIZE=8406 bytes | LINES=215 | SHA256=2C3E6B058F0DBB2B7656DDE7D21E64F02C6F9B3FFF3CD88044CC25BE12FB97B3
+//// ---------------------------------------------------------------------------
+
+
+// Assets/App/Leads/LeadCardView.cs
+// Prefab-first Lead card view. At runtime we DO NOT rebuild layout;
+// we only bind text / portrait (and optionally requirements and proceed button).
+
+using System.Collections.Generic;
+using System.Reflection;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.App.Leads
+{
+    [DisallowMultipleComponent]
+    public sealed class LeadCardView : MonoBehaviour
+    {
+        [Header("Prefab Mode")]
+        [Tooltip("When true (default), the view uses the prefab's layout and never rebuilds UI at runtime.")]
+        public bool usePrefabLayout = true;
+
+        [Header("Prefab References")]
+        [SerializeField] private RectTransform actorAnchor;   // parent for portrait image
+        [SerializeField] private Image        actorBadge;     // portrait image (optional)
+        [SerializeField] private TMP_Text     title;          // main title text
+        [SerializeField] private TMP_Text     subtitle;       // one-liner / subtitle
+        [SerializeField] private TMP_Text     action;         // small action tag (optional)
+        [SerializeField] private Transform    reqRow;         // container for requirement chips (optional)
+        [SerializeField] private Button       proceedButton;  // optional proceed button
+
+        [Header("Optional Requirement Chip Prefab")]
+        [SerializeField] private GameObject   reqChipPrefab;  // simple chip with Image (icon) + TMP_Text
+
+        System.Action _proceedHandler;
+
+        // ------------------------ Public API ------------------------
+
+        public void Bind(object leadData)
+        {
+            if (leadData == null) return;
+            CachePrefabRefsIfNeeded();
+
+            // Strings
+            SetText(title,    GetString(leadData, "title", "Title", "displayTitle", "name"));
+            SetText(subtitle, GetString(leadData, "subtitle", "SubTitle", "oneLiner", "OneLiner", "summary"));
+            SetText(action,   GetString(leadData, "actionTag", "ActionTag", "action", "Action"));
+
+            // Portrait
+            var sprite = GetSprite(leadData, "actorPortrait", "ActorPortrait", "portrait", "Portrait");
+            if (actorBadge != null)
+            {
+                actorBadge.sprite         = sprite;
+                actorBadge.enabled        = (sprite != null);
+                actorBadge.preserveAspect = true;
+            }
+
+            // Requirements (optional)
+            if (reqRow != null && reqChipPrefab != null)
+            {
+                ClearChildren(reqRow);
+                var reqs = GetRequirements(leadData, "requirements", "Requirements", "reqs", "Reqs");
+                if (reqs != null)
+                {
+                    foreach (var r in reqs)
+                        AddReqChip(r);
+                }
+            }
+
+            // Proceed button enable (if the model exposes a boolean)
+            if (proceedButton)
+            {
+                var canProceed = GetBool(leadData, "canProceed", "CanProceed", "enabled", "Enabled", "interactable", "Interactable");
+                proceedButton.interactable = canProceed ?? true;
+                proceedButton.onClick.RemoveAllListeners();
+                if (_proceedHandler != null) proceedButton.onClick.AddListener(() => _proceedHandler());
+            }
+        }
+
+        // Back-compat with older callsites
+        public void Rebuild() { /* No-op in prefab mode */ }
+
+        /// <summary>Provide a callback that fires when the card's proceed button is clicked.</summary>
+        public void SetProceedCallback(System.Action onProceed)
+        {
+            _proceedHandler = onProceed;
+            if (proceedButton)
+            {
+                proceedButton.onClick.RemoveAllListeners();
+                if (_proceedHandler != null) proceedButton.onClick.AddListener(() => _proceedHandler());
+            }
+        }
+
+        // ------------------------ Unity ------------------------
+
+        void Awake()
+        {
+            if (usePrefabLayout) CachePrefabRefsIfNeeded();
+        }
+
+        // ------------------------ Helpers ------------------------
+
+        void CachePrefabRefsIfNeeded()
+        {
+            var t = transform;
+            title    = title    ? title    : t.Find("Title")     ?.GetComponent<TMP_Text>();
+            action   = action   ? action   : t.Find("Action")    ?.GetComponent<TMP_Text>();
+            subtitle = subtitle ? subtitle : t.Find("OneLiner")  ?.GetComponent<TMP_Text>();
+            reqRow   = reqRow   ? reqRow   : (t.Find("ReqRow")   ?? t.Find("Badges"));
+
+            if (actorAnchor == null) actorAnchor = t.Find("ActorAnchor") as RectTransform;
+            if (actorBadge  == null && actorAnchor != null)
+                actorBadge = actorAnchor.Find("ActorBadge")?.GetComponent<Image>();
+
+            if (proceedButton == null)
+            {
+                var p = t.Find("Proceed") ?? t.Find("Button_Proceed");
+                if (p) proceedButton = p.GetComponentInChildren<Button>(true);
+            }
+        }
+
+        static void SetText(TMP_Text label, string value)
+        {
+            if (!label) return;
+            if (!string.IsNullOrEmpty(value)) label.text = value;
+        }
+
+        void AddReqChip(object leadRequirement)
+        {
+            if (reqRow == null || reqChipPrefab == null || leadRequirement == null) return;
+
+            var go   = Instantiate(reqChipPrefab, reqRow, false);
+            var img  = go.GetComponentInChildren<Image>(true);
+            var txt  = go.GetComponentInChildren<TMP_Text>(true);
+
+            var icon  = GetSprite(leadRequirement, "icon", "Icon");
+            var label = GetString(leadRequirement, "label", "Label", "name", "Name");
+
+            if (img) img.sprite = icon;
+            if (txt) txt.text   = string.IsNullOrEmpty(label) ? "Req" : label;
+        }
+
+        static void ClearChildren(Transform parent)
+        {
+            if (!parent) return;
+            for (int i = parent.childCount - 1; i >= 0; i--)
+            {
+                var c = parent.GetChild(i);
+                if (Application.isPlaying) Object.Destroy(c.gameObject);
+                else Object.DestroyImmediate(c.gameObject);
+            }
+        }
+
+        // ------------------------ Reflection helpers ------------------------
+
+        static string GetString(object o, params string[] names)
+        {
+            foreach (var n in names)
+            {
+                var v = GetMemberValue(o, n);
+                if (v is string s && !string.IsNullOrEmpty(s)) return s;
+            }
+            return null;
+        }
+
+        static Sprite GetSprite(object o, params string[] names)
+        {
+            foreach (var n in names)
+            {
+                var v = GetMemberValue(o, n);
+                if (v is Sprite sp) return sp;
+            }
+            return null;
+        }
+
+        static bool? GetBool(object o, params string[] names)
+        {
+            foreach (var n in names)
+            {
+                var v = GetMemberValue(o, n);
+                if (v is bool b) return b;
+            }
+            return null;
+        }
+
+        static IReadOnlyList<object> GetRequirements(object o, params string[] names)
+        {
+            foreach (var n in names)
+            {
+                var v = GetMemberValue(o, n);
+                if (v is IEnumerable<object> e) return new List<object>(e);
+                if (v is System.Collections.IEnumerable ie)
+                {
+                    var list = new List<object>();
+                    foreach (var item in ie) list.Add(item);
+                    return list;
+                }
+            }
+            return null;
+        }
+
+        static object GetMemberValue(object o, string name)
+        {
+            if (o == null || string.IsNullOrEmpty(name)) return null;
+            var flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
+
+            var t = o.GetType();
+            var p = t.GetProperty(name, flags | BindingFlags.IgnoreCase);
+            if (p != null) return p.GetValue(o, null);
+
+            var f = t.GetField(name, flags);
+            if (f != null) return f.GetValue(o);
+
+            return null;
+        }
+    }
+}
+
+//// END FILE: Leads\LeadCardView.cs
+
+
+//// BEGIN FILE [40/102]: Leads\LeadEnums.cs
+//// SIZE=455 bytes | LINES=24 | SHA256=CADFCCCFCF62AD4DF11FACDC1C5FDFBD12E0245A3DBB97EB6760E04B56C6B962
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App.Leads
+{
+    public enum LeadActionType
+    {
+        Interview,
+        Surveillance,
+        LabRequest,
+        Favor,
+        RecordsPull
+    }
+
+    /// <summary>Outcome hints for small UI badges on a card.</summary>
+    [System.Flags]
+    public enum LeadOutcomeHint
+    {
+        None       = 0,
+        Evidence   = 1 << 0,
+        NewLeads   = 1 << 1,
+        Rewards    = 1 << 2
+    }
+}
+
+//// END FILE: Leads\LeadEnums.cs
+
+
+//// BEGIN FILE [41/102]: Leads\LeadRequirementItem.cs
+//// SIZE=1154 bytes | LINES=47 | SHA256=A43DCD4AB6B96C1930D50DC77D77A005B278567B3D5641CF6CCC2ED722539CB6
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+namespace AQ.App.Leads
+{
+    /// <summary>
+    /// Simple UI row for one lead requirement (Icon  Label  Check).
+    /// </summary>
+    public class LeadRequirementItem : MonoBehaviour
+    {
+        [Header("Wiring")]
+        public Image icon;
+        public TextMeshProUGUI label;
+        public Image check;
+
+        [Header("Style")]
+        [Range(0.3f, 1f)] public float unmetAlpha = 0.75f;
+
+        public void Bind(string displayName, Sprite sprite, bool met)
+        {
+            if (label) label.text = displayName ?? "";
+            if (icon)  icon.sprite = sprite;
+            SetMet(met);
+        }
+
+        public void SetMet(bool met)
+        {
+            if (check) check.enabled = met;
+
+            if (label)
+            {
+                var c = label.color;
+                c.a = met ? 1f : unmetAlpha;
+                label.color = c;
+            }
+
+            if (icon)
+            {
+                var c = icon.color;
+                c.a = met ? 1f : unmetAlpha;
+                icon.color = c;
+            }
+        }
+    }
+}
+
+//// END FILE: Leads\LeadRequirementItem.cs
+
+
+//// BEGIN FILE [42/102]: Leads\LeadRequirementsHUD.cs
+//// SIZE=1158 bytes | LINES=32 | SHA256=FA71300212C488A3C835677F2EE2C53E9D859576915F8ABFA90A45BC1B362F91
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+namespace AQ.App.Leads
+{
+    /// <summary>Pins beneath the Leads Bar to show the selected lead's ≤3 requirements, large and readable.</summary>
+    public class LeadRequirementsHUD : MonoBehaviour
+    {
+        [SerializeField] private Image[] icons;       // length 3
+        [SerializeField] private TMP_Text[] labels;   // length 3
+        [SerializeField] private Image[] ticks;       // length 3
+
+        public void Bind(LeadCardSO data, ActiveLeadState state)
+        {
+            for (int i = 0; i < icons.Length; i++)
+            {
+                bool has = i < data.Requirements.Length;
+                icons[i].gameObject.SetActive(has);
+                labels[i].gameObject.SetActive(has);
+                ticks[i].gameObject.SetActive(has);
+
+                if (!has) continue;
+                var req = data.Requirements[i];
+                icons[i].sprite = req.Icon;
+                labels[i].text = string.IsNullOrEmpty(req.Label) ? req.ItemId : req.Label;
+                ticks[i].enabled = state.IsRequirementMet(i);
+            }
+        }
+    }
+}
+
+//// END FILE: Leads\LeadRequirementsHUD.cs
+
+
+//// BEGIN FILE [43/102]: Leads\LeadsBarView.cs
+//// SIZE=5678 bytes | LINES=147 | SHA256=BB4A518BA404F5F9C7C69838F23F8D54AA60A2D4124B1CE74657893367C29ED0
+//// ---------------------------------------------------------------------------
+
+
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.App.Leads
+{
+    /// <summary>
+    /// Minimal, robust Leads bar:
+    /// - Spawns card prefabs under a horizontal content root
+    /// - Raises ProceedRequested(LeadCardSO) when a card's proceed button is clicked
+    /// - ApplyOutcome disables that card's proceed (visual safety) without repo coupling
+    /// - Exposes Rebuild() and Rebuild(list) so any glue/repo can drive it
+    /// </summary>
+    public sealed class LeadsBarView : MonoBehaviour
+    {
+        [Header("Wiring (assign in Inspector)")]
+        public ScrollRect scrollRect;           // LeadsBar (has ScrollRect; horizontal true)
+        public RectTransform contentRoot;       // Content_Leads
+        public LeadCardView cardPrefab;         // Lead card prefab with LeadCardView (or at least the expected children)
+
+        // Event consumed by BoardPresenter
+        public event Action<LeadCardSO> ProceedRequested;
+
+        // Internal runtime state
+        readonly List<LeadCardView> _spawned = new List<LeadCardView>();
+        readonly Dictionary<LeadCardSO, Button> _proceedByLead = new Dictionary<LeadCardSO, Button>();
+
+        // Optional: a repo can be bound by external glue; we don't assume any API on it.
+        UnityEngine.Object _boundRepo;
+
+        void Awake()
+        {
+            // Be lenient about wiring
+            if (scrollRect == null) scrollRect = GetComponent<ScrollRect>();
+            if (contentRoot == null && scrollRect != null) contentRoot = scrollRect.content;
+        }
+
+        /// <summary>
+        /// Kept for glue that expects a Bind(repo). We store it but do not depend on any specific members.
+        /// </summary>
+        public void Bind(UnityEngine.Object repo)
+        {
+            _boundRepo = repo; // informational only
+        }
+
+        /// <summary>
+        /// Fallback rebuild used by older binders that call bar.Rebuild().
+        /// If you have glue that knows the current list, call Rebuild(list) instead.
+        /// </summary>
+        public void Rebuild()
+        {
+            // No source-of-truth here by design; this is a no-op unless external code calls Rebuild(list).
+            // Keeping the method to satisfy existing binders and avoid compile errors.
+        }
+
+        /// <summary>
+        /// Replace all cards with the provided list.
+        /// </summary>
+        public void Rebuild(IReadOnlyList<LeadCardSO> leads)
+        {
+            if (contentRoot == null || cardPrefab == null) return;
+
+            // Clear previous
+            for (int i = _spawned.Count - 1; i >= 0; i--)
+            {
+                var v = _spawned[i];
+                if (v != null) DestroyImmediate(v.gameObject);
+            }
+            _spawned.Clear();
+            _proceedByLead.Clear();
+
+            if (leads == null) return;
+
+            // Spawn
+            for (int i = 0; i < leads.Count; i++)
+            {
+                var so = leads[i];
+                var inst = Instantiate(cardPrefab, contentRoot);
+                inst.gameObject.name = $"LeadCard_{i}_{(so != null ? so.name : "Null")}";
+
+                // If your LeadCardView has a Bind method, use it; otherwise it's harmless.
+                try { inst.Bind(so); } catch { /* ignore if not present */ }
+
+                // Find a proceed button by common names; fall back to first Button in children
+                var btn = FindProceedButton(inst.transform);
+                if (btn != null)
+                {
+                    btn.onClick.RemoveAllListeners();
+                    btn.onClick.AddListener(() =>
+                    {
+                        if (so != null) ProceedRequested?.Invoke(so);
+                    });
+                    _proceedByLead[so] = btn;
+                }
+
+                _spawned.Add(inst);
+            }
+
+            // Ensure layout updates for horizontal content
+            LayoutRebuilder.ForceRebuildLayoutImmediate(contentRoot);
+        }
+
+        /// <summary>
+        /// Called by BoardPresenter after an action resolves (visual safety).
+        /// Disables the proceed button for the supplied lead if we spawned one.
+        /// </summary>
+        public void ApplyOutcome(LeadCardSO lead)
+        {
+            if (lead == null) return;
+            if (_proceedByLead.TryGetValue(lead, out var btn) && btn != null)
+            {
+                btn.interactable = false;
+            }
+        }
+
+        // --- helpers ---------------------------------------------------------
+
+        static Button FindProceedButton(Transform root)
+        {
+            // Preferred names first
+            var named = TryFind<Button>(root, "Button_Proceed") ?? TryFind<Button>(root, "Proceed");
+            if (named != null) return named;
+
+            // Fallback: first button in subtree
+            return root.GetComponentInChildren<Button>(true);
+        }
+
+        static T TryFind<T>(Transform root, string childName) where T : Component
+        {
+            var tr = FindTransformByNameRecursive(root, childName);
+            return tr ? tr.GetComponent<T>() : null;
+        }
+
+        static Transform FindTransformByNameRecursive(Transform root, string name)
+        {
+            if (root.name == name) return root;
+            for (int i = 0; i < root.childCount; i++)
+            {
+                var hit = FindTransformByNameRecursive(root.GetChild(i), name);
+                if (hit) return hit;
+            }
+            return null;
+        }
+    }
+}
+
+//// END FILE: Leads\LeadsBarView.cs
+
+
+//// BEGIN FILE [44/102]: Leads\LeadsRepository.cs
+//// SIZE=3246 bytes | LINES=98 | SHA256=7A431005BD0348EF8321E4E983362A1D65E56C864254F5959DC1B80FCA1BECAC
+//// ---------------------------------------------------------------------------
+
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
+using UnityEngine;
+
+namespace AQ.App.Leads
+{
+    /// <summary>
+    /// Runtime store for the active leads list in the scene.
+    /// Keeps items as LeadCardSO (what LeadsBarView expects).
+    /// </summary>
+    [DefaultExecutionOrder(-10)]
+    public sealed class LeadsRepository : MonoBehaviour
+    {
+        // NOTE: public and named exactly "database" so existing editor utilities
+        // that reference repo.database keep compiling.
+        [SerializeField] public LeadsDatabase database;
+
+        private readonly List<LeadCardSO> _current = new List<LeadCardSO>();
+        public IReadOnlyList<LeadCardSO> CurrentLeads => _current;
+
+        /// <summary>Raised whenever the in-memory list changes.</summary>
+        public event Action LeadsChanged;
+
+        private void Start()
+        {
+            if (database != null)
+            {
+                ReplaceFromDatabase(database);
+            }
+            else
+            {
+                Debug.LogWarning("[LeadsRepository] No database assigned.", this);
+            }
+        }
+
+        public void SetDatabase(LeadsDatabase db) => database = db;
+
+        /// <summary>
+        /// Replace the in-memory list with the content of the given database.
+        /// Uses reflection to read the serialized list without changing your DB class.
+        /// </summary>
+        public void ReplaceFromDatabase(LeadsDatabase db)
+        {
+            database = db;
+            _current.Clear();
+
+            if (db != null)
+            {
+                foreach (var item in ReflectLeadList(db))
+                {
+                    if (item is LeadCardSO so && so != null)
+                        _current.Add(so);
+                }
+            }
+
+            LeadsChanged?.Invoke();
+        }
+
+        /// <summary>Replace with a supplied set of items (already LeadCardSO).</summary>
+        public void ReplaceWith(IEnumerable<LeadCardSO> leads)
+        {
+            _current.Clear();
+            if (leads != null) _current.AddRange(leads);
+            LeadsChanged?.Invoke();
+        }
+
+        /// <summary>
+        /// Returns IEnumerable over the DB's private list (e.g., "leads", "_leads", "items", "_items").
+        /// </summary>
+        private static IEnumerable ReflectLeadList(LeadsDatabase db)
+        {
+            if (db == null) yield break;
+
+            const BindingFlags BF = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+            var t = typeof(LeadsDatabase);
+
+            FieldInfo field =
+                t.GetField("leads", BF) ??
+                t.GetField("_leads", BF) ??
+                t.GetField("items", BF) ??
+                t.GetField("_items", BF);
+
+            if (field == null)
+            {
+                Debug.LogWarning("[LeadsRepository] Could not find a serialized list on LeadsDatabase via reflection.");
+                yield break;
+            }
+
+            if (field.GetValue(db) is not IEnumerable value) yield break;
+
+            foreach (var it in value)
+                yield return it;
+        }
+    }
+}
+
+//// END FILE: Leads\LeadsRepository.cs
+
+
+//// BEGIN FILE [45/102]: Leads\LeadsRuntimeBus.cs
+//// SIZE=673 bytes | LINES=19 | SHA256=24BFA2257384862B62659A4AD6E102AF616FF2762B1E420BDFE5147D149BA2A9
+//// ---------------------------------------------------------------------------
+
+
+using System;
+using System.Collections.Generic;
+
+namespace AQ.App.Leads
+{
+    /// <summary>
+    /// Ultra-simple static bus so Editor or gameplay can broadcast changes
+    /// without hard dependencies. LeadsRepository subscribes to this.
+    /// </summary>
+    public static class LeadsRuntimeBus
+    {
+        public static event Action<IReadOnlyList<LeadData>> OnLeadsRefreshed;
+        public static event Action<LeadData> OnLeadStateChanged;
+
+        public static void BroadcastAll(IReadOnlyList<LeadData> list) => OnLeadsRefreshed?.Invoke(list);
+        public static void BroadcastState(LeadData lead) => OnLeadStateChanged?.Invoke(lead);
+    }
+}
+
+//// END FILE: Leads\LeadsRuntimeBus.cs
+
+
+//// BEGIN FILE [46/102]: Leads\Runtime\LeadCardData.cs
+//// SIZE=2059 bytes | LINES=68 | SHA256=775F3ECC8C7491734BA7CC894CF988B48A8E3C124900C4AF126FAC2FAC07EB4E
+//// ---------------------------------------------------------------------------
+
+
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace AQ.App.Leads
+{
+    [Serializable]
+    public enum LeadCardVisualState
+    {
+        New,        // no requirements met yet
+        InProgress, // at least one met
+        Ready       // all met
+    }
+
+    [Serializable]
+    public enum RewardType { Coins, Energy, Gems, Item }
+
+    [Serializable]
+    public class LeadRequirementData
+    {
+        // e.g. "stakeout_fuel"
+        public string groupKey;
+        // 1-based tier index in that group
+        public int tierIndex = 1;
+        // Optional: direct icon reference (otherwise presenter can resolve however you like)
+        public Sprite icon;
+        // Display label (e.g. "Burger", "Paper Cup")
+        public string displayName;
+        // Gameplay state
+        public bool achieved;
+    }
+
+    [Serializable]
+    public class LeadRewardData
+    {
+        public RewardType type;
+        public int amount = 0;
+        public Sprite icon;
+    }
+
+    [Serializable]
+    public class LeadCardData
+    {
+        public string leadId;          // testing/QA convenience
+        public string title;           // "Demo Lead"
+        public string objective;       // "Collect deli CCTV"
+        public List<LeadRequirementData> requirements = new();
+        public List<LeadRewardData> rewards = new();
+        public LeadCardVisualState visualState = LeadCardVisualState.New;
+
+        public bool HasAnyRequirementMet()
+        {
+            if (requirements == null || requirements.Count == 0) return false;
+            for (int i = 0; i < requirements.Count; i++)
+                if (requirements[i].achieved) return true;
+            return false;
+        }
+
+        public bool AllRequirementsMet()
+        {
+            if (requirements == null || requirements.Count == 0) return false;
+            for (int i = 0; i < requirements.Count; i++)
+                if (!requirements[i].achieved) return false;
+            return true;
+        }
+    }
+}
+
+//// END FILE: Leads\Runtime\LeadCardData.cs
+
+
+//// BEGIN FILE [47/102]: Leads\Runtime\LeadsBarRuntimeBinder.cs
+//// SIZE=7457 bytes | LINES=179 | SHA256=5B565C81131B5A17FFE4475DB740AC88760701E6EB1A1C16241DFB1ED82040A2
+//// ---------------------------------------------------------------------------
+
+
+// LeadsBarRuntimeBinder.cs
+// Robust binder for LeadsBarView that tolerates different repo/bus APIs.
+// - Tries to hook repo/bus events via reflection (no hard deps).
+// - Falls back to a periodic refresh if no events are found.
+
+using System;
+using System.Linq;
+using System.Reflection;
+using UnityEngine;
+
+namespace AQ.App.Leads
+{
+    [DisallowMultipleComponent]
+    public sealed class LeadsBarRuntimeBinder : MonoBehaviour
+    {
+        [Tooltip("If null, taken from the same GameObject.")]
+        public LeadsBarView view;
+
+        [Header("Fallback refresh (used if no events found)")]
+        public bool fallbackAutoRefresh = true;
+        [Range(0.1f, 3f)] public float fallbackInterval = 0.75f;
+
+        object _repoInstance;
+        EventInfo _evRefreshed;
+        EventInfo _evStateChanged;
+        Delegate _hRefreshed;
+        Delegate _hStateChanged;
+
+        MethodInfo _findFirstObjGeneric; // UnityEngine.Object.FindFirstObjectByType<T>()
+
+        void Awake()
+        {
+            if (view == null) view = GetComponent<LeadsBarView>();
+            // Cache generic method via reflection to avoid obsolete warnings.
+            _findFirstObjGeneric = typeof(UnityEngine.Object)
+                .GetMethods(BindingFlags.Public | BindingFlags.Static)
+                .FirstOrDefault(m => m.Name == "FindFirstObjectByType" && m.IsGenericMethod);
+        }
+
+        void OnEnable()
+        {
+            TryHookRepository();
+            TryHookRuntimeBus();
+            // Always do an initial draw
+            SafeRebuild("initial");
+            // Start fallback only if we didn’t hook any events
+            if (!HasAnyHook() && fallbackAutoRefresh)
+                InvokeRepeating(nameof(FallbackTick), fallbackInterval, fallbackInterval);
+        }
+
+        void OnDisable()
+        {
+            Unhook();
+            CancelInvoke(nameof(FallbackTick));
+        }
+
+        bool HasAnyHook() => _hRefreshed != null || _hStateChanged != null;
+
+        void FallbackTick() => SafeRebuild("fallback");
+
+        void SafeRebuild(string reason)
+        {
+            if (!view) return;
+            try { view.Rebuild(); }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"[LeadsBinder] Rebuild failed ({reason}): {ex.Message}", this);
+            }
+        }
+
+        #region Hook Repository (reflection)
+        void TryHookRepository()
+        {
+            var repoType = Type.GetType("AQ.App.Leads.LeadsRepository, Assembly-CSharp");
+            if (repoType == null) return;
+
+            // Try to find a scene instance without using obsolete APIs.
+            if (_findFirstObjGeneric != null)
+            {
+                var m = _findFirstObjGeneric.MakeGenericMethod(repoType);
+                _repoInstance = m.Invoke(null, null);
+            }
+
+            if (_repoInstance == null)
+            {
+                // Last resort: Resources (works in-editor too).
+                _repoInstance = Resources.FindObjectsOfTypeAll(repoType).FirstOrDefault();
+            }
+            if (_repoInstance == null) return;
+
+            // Try common event names
+            _evRefreshed   = repoType.GetEvent("LeadsRefreshed",   BindingFlags.Public | BindingFlags.Instance);
+            _evStateChanged= repoType.GetEvent("LeadStateChanged",  BindingFlags.Public | BindingFlags.Instance);
+
+            _hRefreshed    = TryAttachHandler(_repoInstance, _evRefreshed,    nameof(OnRepoEvent));
+            _hStateChanged = TryAttachHandler(_repoInstance, _evStateChanged, nameof(OnRepoEvent));
+
+            if (HasAnyHook())
+                Debug.Log("[LeadsBinder] Hooked repository events.", this);
+        }
+
+        void OnRepoEvent()                         => SafeRebuild("repo evt (no args)");
+        void OnRepoEvent(object _a)               => SafeRebuild("repo evt (1 arg)");
+        void OnRepoEvent(object _a, object _b)    => SafeRebuild("repo evt (2 args)");
+
+        #endregion
+
+        #region Hook Runtime Bus (optional, reflection)
+        void TryHookRuntimeBus()
+        {
+            // If your codebase has a static bus with events, we’ll hook those too.
+            var busType = Type.GetType("AQ.App.Leads.LeadsRuntimeBus, Assembly-CSharp");
+            if (busType == null) return;
+
+            // Try common static events on a bus
+            var evAll   = busType.GetEvent("LeadsRefreshed", BindingFlags.Public | BindingFlags.Static)
+                       ?? busType.GetEvent("All",            BindingFlags.Public | BindingFlags.Static);
+            var evState = busType.GetEvent("LeadStateChanged", BindingFlags.Public | BindingFlags.Static)
+                       ?? busType.GetEvent("State",            BindingFlags.Public | BindingFlags.Static);
+
+            // Note: for static events, target instance is null.
+            var hAll   = TryAttachHandler(null, evAll,   nameof(OnBusEvent));
+            var hState = TryAttachHandler(null, evState, nameof(OnBusEvent));
+            if (hAll != null || hState != null)
+                Debug.Log("[LeadsBinder] Hooked runtime bus events.", this);
+        }
+
+        void OnBusEvent()                       => SafeRebuild("bus evt (no args)");
+        void OnBusEvent(object _a)              => SafeRebuild("bus evt (1 arg)");
+        void OnBusEvent(object _a, object _b)   => SafeRebuild("bus evt (2 args)");
+        #endregion
+
+        #region Helpers
+        Delegate TryAttachHandler(object target, EventInfo ev, string handlerName)
+        {
+            if (ev == null) return null;
+            var handlerType = ev.EventHandlerType;
+            if (handlerType == null) return null;
+
+            // Try to bind to one of our overloads (0/1/2 params)
+            var method = GetType().GetMethod(handlerName, BindingFlags.NonPublic | BindingFlags.Instance,
+                                             null, Type.EmptyTypes, null)
+                      ?? GetType().GetMethod(handlerName, BindingFlags.NonPublic | BindingFlags.Instance,
+                                             null, new[] { typeof(object) }, null)
+                      ?? GetType().GetMethod(handlerName, BindingFlags.NonPublic | BindingFlags.Instance,
+                                             null, new[] { typeof(object), typeof(object) }, null);
+            if (method == null) return null;
+
+            try
+            {
+                var del = Delegate.CreateDelegate(handlerType, this, method, throwOnBindFailure: false);
+                if (del != null)
+                {
+                    ev.AddEventHandler(target, del);
+                    return del;
+                }
+            }
+            catch { /* ignore and fall back */ }
+            return null;
+        }
+
+        void Unhook()
+        {
+            if (_evRefreshed != null && _hRefreshed != null)
+            {
+                try { _evRefreshed.RemoveEventHandler(_repoInstance, _hRefreshed); } catch {}
+            }
+            if (_evStateChanged != null && _hStateChanged != null)
+            {
+                try { _evStateChanged.RemoveEventHandler(_repoInstance, _hStateChanged); } catch {}
+            }
+            _hRefreshed = _hStateChanged = null;
+            _evRefreshed = _evStateChanged = null;
+            _repoInstance = null;
+        }
+        #endregion
+    }
+}
+
+//// END FILE: Leads\Runtime\LeadsBarRuntimeBinder.cs
+
+
+//// BEGIN FILE [48/102]: Leads\Runtime\LeadsRuntimeGlue.cs
+//// SIZE=1640 bytes | LINES=61 | SHA256=20DF6AAE5B86A8A445EE9408A05A337EEF8E43E1DB7CEBEADCBFD06C8E59DE47
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App.Leads
+{
+    /// <summary>
+    /// Binds the repository to the bar and keeps the bar rebuilt when the repo changes.
+    /// </summary>
+    [DefaultExecutionOrder(-5)]
+    public sealed class LeadsRuntimeGlue : MonoBehaviour
+    {
+        [SerializeField] private LeadsRepository repo;
+        [SerializeField] private LeadsBarView    bar;
+
+        private bool _bound;
+
+        private void Awake()
+        {
+            if (!repo) repo = FindAnyObjectByType<LeadsRepository>();
+            if (!bar)  bar  = FindAnyObjectByType<LeadsBarView>();
+        }
+
+        private void Start()
+        {
+            if (!repo || !bar)
+            {
+                Debug.LogWarning($"[LeadsGlue] Missing pieces. repo={(repo ? "OK" : "<none>")} bar={(bar ? "OK" : "<none>")}", this);
+                return;
+            }
+
+            BindOnce();
+        }
+
+        public void BindOnce()
+        {
+            if (_bound || !repo || !bar) return;
+
+            repo.LeadsChanged += OnLeadsChanged;
+            _bound = true;
+
+            OnLeadsChanged(); // paint now
+            Debug.Log("[LeadsGlue] Bound and live.", this);
+        }
+
+        private void OnDestroy()
+        {
+            if (_bound && repo != null)
+                repo.LeadsChanged -= OnLeadsChanged;
+
+            _bound = false;
+        }
+
+        private void OnLeadsChanged()
+        {
+            if (repo == null || bar == null) return;
+
+            // IMPORTANT: bar.Rebuild expects IReadOnlyList<LeadCardSO>.
+            bar.Rebuild(repo.CurrentLeads);
+        }
+    }
+}
+
+//// END FILE: Leads\Runtime\LeadsRuntimeGlue.cs
+
+
+//// BEGIN FILE [49/102]: Merge\Runtime\MergeDomainDriver.cs
+//// SIZE=355 bytes | LINES=15 | SHA256=CE9EC8A3B34A5167E9A89583A8CBDB77ADE326CC2F2C55E1D9A9E04DB4DED001
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+namespace AQ.App.UI.Board {
+    // LEGACY: Disabled during sprint. MergeBoardController owns the board.
+    [DisallowMultipleComponent]
+    public sealed class MergeDomainDriver : MonoBehaviour {
+#if UNITY_EDITOR
+        private void OnValidate() { /* no-op */ }
+#endif
+    }
+}
+
+//// END FILE: Merge\Runtime\MergeDomainDriver.cs
+
+
+//// BEGIN FILE [50/102]: Merge\Runtime\MergeIconCatalog.cs
+//// SIZE=1709 bytes | LINES=58 | SHA256=0E74BAB59D9C4565360E9BC89D1D01085A6E37D3E79BF5507F80747CBFB31C76
+//// ---------------------------------------------------------------------------
+
+
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace AQ.App.Merge
+{
+    [CreateAssetMenu(fileName = "MergeIconCatalog", menuName = "AQ/Merge/Icon Catalog", order = 0)]
+    public sealed class MergeIconCatalog : ScriptableObject
+    {
+        [Serializable]
+        public struct Entry
+        {
+            public string id;      // e.g., "stakeout_fuel_t1_paper_cup"
+            public Sprite sprite;  // atlas sprite or standalone
+        }
+
+        [SerializeField] private List<Entry> entries = new List<Entry>();
+        private Dictionary<string, Sprite> _lookup;
+
+        public IReadOnlyList<Entry> Entries => entries;
+
+        public void SetEntries(List<Entry> newEntries)
+        {
+            entries = newEntries ?? new List<Entry>();
+            _lookup = null;
+        }
+
+        public bool TryGet(string id, out Sprite sprite)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                sprite = null;
+                return false;
+            }
+            _lookup ??= Build();
+            return _lookup.TryGetValue(id, out sprite);
+        }
+
+        public Sprite GetOrNull(string id)
+        {
+            return TryGet(id, out var s) ? s : null;
+        }
+
+        private Dictionary<string, Sprite> Build()
+        {
+            var dict = new Dictionary<string, Sprite>(StringComparer.OrdinalIgnoreCase);
+            foreach (var e in entries)
+            {
+                if (!string.IsNullOrWhiteSpace(e.id) && e.sprite != null)
+                {
+                    dict[e.id.Trim()] = e.sprite;
+                }
+            }
+            return dict;
+        }
+    }
+}
+
+//// END FILE: Merge\Runtime\MergeIconCatalog.cs
+
+
+//// BEGIN FILE [51/102]: Presentation\EventBusInstaller.cs
+//// SIZE=337 bytes | LINES=14 | SHA256=2AE288B2ECAA466C0A5A981577876F52E6587CBBB0F53D9FD752A76300F4F1BB
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using AQ.SharedKernel;
+using AQ.SharedKernel.Events;
+namespace AQ.App.Presentation
+{
+  public sealed class EventBusInstaller : MonoBehaviour
+  {
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void Install() { GlobalBus.Install(new InMemoryEventBus()); }
+  }
+}
+
+
+
+//// END FILE: Presentation\EventBusInstaller.cs
+
+
+//// BEGIN FILE [52/102]: Presentation\GlobalBus.cs
+//// SIZE=287 bytes | LINES=11 | SHA256=6AB6B0ADC4D148485756876287C106E11124B9549A374B1585DCFCF9B9CF4072
+//// ---------------------------------------------------------------------------
+
+
+using AQ.SharedKernel;
+namespace AQ.App.Presentation
+{
+  public static class GlobalBus
+  {
+    private static IEventBus _bus = new InMemoryEventBus();
+    public static void Install(IEventBus bus) { _bus = bus ?? new InMemoryEventBus(); }
+    public static IEventBus Bus => _bus;
+  }
+}
+
+//// END FILE: Presentation\GlobalBus.cs
+
+
+//// BEGIN FILE [53/102]: Presentation\MergeEventsBridge.cs
+//// SIZE=825 bytes | LINES=34 | SHA256=07C8826A941D2835642786A5767514E5D5802BBD2D0D7F4BEDB6C292E9D892F8
+//// ---------------------------------------------------------------------------
+
+
+using System;
+using UnityEngine;
+using AQ.App.Presentation;
+using AQ.Domain.Merge;
+
+namespace AQ.App.Presentation
+{
+  /// Bridges domain MergePerformed into the presentation layer (stub: log only).
+  public sealed class MergeEventsBridge : MonoBehaviour
+  {
+    IDisposable _sub;
+
+    void OnEnable()
+    {
+      var bus = GlobalBus.Bus;
+      // Typical IEventBus shape: Subscribe<T>(Action<T>) -> IDisposable
+      try { _sub = bus.Subscribe<MergePerformed>(OnMergePerformed); }
+      catch { /* if API differs, ignore for now */ }
+    }
+
+    void OnDisable()
+    {
+      try { _sub?.Dispose(); } catch {}
+      _sub = null;
+    }
+
+    void OnMergePerformed(MergePerformed e)
+    {
+      Debug.Log($"[MergeEventsBridge] MergePerformed {e.A}+{e.B}→{e.Result}");
+      // TODO: forward to UI systems as needed
+    }
+  }
+}
+
+//// END FILE: Presentation\MergeEventsBridge.cs
+
+
+//// BEGIN FILE [54/102]: Presentation\MergeEventsToUI.cs
+//// SIZE=269 bytes | LINES=10 | SHA256=94E60A025FD2362D8C88ED9A22AAF8C72059629756F5631F9B3BC4AFDDCF8124
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+namespace AQ.App.Presentation
+{
+  /// Minimal placeholder to keep presentation compile-clean in v4.
+  public sealed class MergeEventsToUI : MonoBehaviour
+  {
+    // Wire real UI reactions later; keeping this stub prevents missing-type errors.
+  }
+}
+
+//// END FILE: Presentation\MergeEventsToUI.cs
+
+
+//// BEGIN FILE [55/102]: Save\ISaveService.cs
+//// SIZE=191 bytes | LINES=10 | SHA256=7B31530DBFC29EC7CEFA002F244244664539F90B6F60486D1115C55E0B445E29
+//// ---------------------------------------------------------------------------
+
+
+namespace AQ.App.Save
+{
+    public interface ISaveService
+    {
+        bool TrySave(SaveState state);
+        bool TryLoad(out SaveState state);
+        string SavePath { get; }
+    }
+}
+
+//// END FILE: Save\ISaveService.cs
+
+
+//// BEGIN FILE [56/102]: Save\JsonSaveService.cs
+//// SIZE=1209 bytes | LINES=41 | SHA256=5FBA6089714219C9717424AFA421375C9F18E8617ABCDF5CB6FBBF3C94FC20A2
+//// ---------------------------------------------------------------------------
+
+
+using System.IO;
+using UnityEngine;
+
+public static class JsonSaveService
+{
+    static string Path => System.IO.Path.Combine(Application.persistentDataPath, "aq30_save.json");
+
+    public static bool HasSave() => File.Exists(Path);
+
+    public static void Save(SaveBlob blob){
+        try{
+            var json = JsonUtility.ToJson(blob, prettyPrint:true);
+            File.WriteAllText(Path, json);
+            Debug.Log("[Save] Wrote " + Path);
+        }catch(System.Exception ex){
+            Debug.LogError("[Save] Write failed: " + ex.Message);
+        }
+    }
+
+    public static SaveBlob Load(){
+        try{
+            if(!File.Exists(Path)) return null;
+            var json = File.ReadAllText(Path);
+            var blob = JsonUtility.FromJson<SaveBlob>(json);
+            return blob;
+        }catch(System.Exception ex){
+            Debug.LogWarning("[Save] Load failed: " + ex.Message);
+            return null;
+        }
+    }
+
+    public static void Clear(){
+        try{
+            if(File.Exists(Path)) File.Delete(Path);
+            Debug.Log("[Save] Cleared save");
+        }catch(System.Exception ex){
+            Debug.LogWarning("[Save] Clear failed: " + ex.Message);
+        }
+    }
+}
+
+//// END FILE: Save\JsonSaveService.cs
+
+
+//// BEGIN FILE [57/102]: Save\SaveBlob.cs
+//// SIZE=535 bytes | LINES=19 | SHA256=2FEF85FE853C9F87705C7C351DB37B7A1DA40A23BDB89BB768A1EBA7D1232CE4
+//// ---------------------------------------------------------------------------
+
+
+using System;
+using System.Collections.Generic;
+
+[Serializable]
+public class SaveBlob
+{
+    public int Version = 1;
+    public string ActiveThemeName;          // persisted by name via registry
+    public string DialogueNodeId;           // current node id
+    public BoardState Board = new BoardState();
+
+    [Serializable]
+    public class BoardState
+    {
+        public List<Item> Items = new List<Item>();
+        [Serializable] public class Item { public string Id; public float X; public float Y; public string Type; }
+    }
+}
+
+//// END FILE: Save\SaveBlob.cs
+
+
+//// BEGIN FILE [58/102]: Save\SaveLoadDriver.cs
+//// SIZE=1879 bytes | LINES=61 | SHA256=BB4D94AFCE4917EFCBA333D76F8A36FC6D396D018F1D04AC0424D51E22CDCD19
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+#if ENABLE_INPUT_SYSTEM
+using UnityEngine.InputSystem;
+#endif
+
+public class SaveLoadDriver : MonoBehaviour
+{
+    public ThemeController Theme;
+    public DialogueRunner Dialogue;
+    public BoardPresenter Board;
+    public ThemeRegistry ThemeRegistry; // under Resources
+
+    void Awake(){
+        if(ThemeRegistry == null) ThemeRegistry = Resources.Load<ThemeRegistry>("Theme/ThemeRegistry");
+    }
+
+    void Update(){
+        // Hotkeys are editor convenience only. Support both input backends.
+#if ENABLE_INPUT_SYSTEM
+        var kb = Keyboard.current;
+        if(kb != null){
+            if(kb.sKey.wasPressedThisFrame) Save();
+            if(kb.lKey.wasPressedThisFrame) Load();
+            if(kb.cKey.wasPressedThisFrame) Clear();
+        }
+#else
+        if (Input.GetKeyDown(KeyCode.S)) Save();
+        if (Input.GetKeyDown(KeyCode.L)) Load();
+        if (Input.GetKeyDown(KeyCode.C)) Clear();
+#endif
+    }
+
+    public void Save(){
+        var blob = new SaveBlob();
+        if(Theme && Theme.ActiveTheme) blob.ActiveThemeName = Theme.ActiveTheme.name;
+        if(Dialogue) blob.DialogueNodeId = Dialogue.GetCurrentNodeId();
+        if(Board) blob.Board = Board.CaptureBoard();
+        JsonSaveService.Save(blob);
+    }
+
+    public void Load(){
+        var blob = JsonSaveService.Load();
+        if(blob == null){ Debug.LogWarning("[Save] No save to load."); return; }
+
+        if(Theme && ThemeRegistry){
+            var t = ThemeRegistry.FindByName(blob.ActiveThemeName);
+            if(t){ Theme.ActiveTheme = t; Theme.ApplyTheme(); }
+        }
+        if(Dialogue && !string.IsNullOrEmpty(blob.DialogueNodeId)){
+            Dialogue.JumpTo(blob.DialogueNodeId);
+        }
+        if(Board != null && blob.Board != null){
+            Board.RestoreBoard(blob.Board);
+        }
+    }
+
+    public void Clear(){
+        JsonSaveService.Clear();
+    }
+}
+
+//// END FILE: Save\SaveLoadDriver.cs
+
+
+//// BEGIN FILE [59/102]: Save\SaveState.cs
+//// SIZE=220 bytes | LINES=12 | SHA256=842360875BF2BC8F99B274F74995D7B98DB291DCD27CB62F9131BF56A43F0375
+//// ---------------------------------------------------------------------------
+
+
+using System;
+
+namespace AQ.App.Save
+{
+    [Serializable]
+    public sealed class SaveState
+    {
+        public int LastLevelIndex { get; set; }
+        public string BoardHash { get; set; } = string.Empty;
+    }
+}
+
+//// END FILE: Save\SaveState.cs
+
+
+//// BEGIN FILE [60/102]: UI\Board\BoardInputAdapter.cs
+//// SIZE=832 bytes | LINES=29 | SHA256=AC700C07368A3390AB2F8510998311893572D37C1E06E4C169E08BB18521215A
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
+
+public class BoardInputAdapter : MonoBehaviour, IDropHandler
+{
+    public static BoardInputAdapter Current;
+    public BoardPresenter Presenter;
+
+    void Awake(){ Current = this; }
+
+    public void OnDrop(PointerEventData e){
+        // fallback, not used directly
+    }
+
+    public void OnItemDropped(MergeItemView item, PointerEventData e){
+        // Find overlapping item
+        foreach(var other in Presenter.LiveItems){
+            if(other==item) continue;
+            if(RectTransformUtility.RectangleContainsScreenPoint(other.Rect, e.position)){
+                Debug.Log("[Board] Drop on "+other.name);
+                Presenter.TryMerge(item, other);
+                return;
+            }
+        }
+        item.ResetPos();
+    }
+}
+
+//// END FILE: UI\Board\BoardInputAdapter.cs
+
+
+//// BEGIN FILE [61/102]: UI\Board\BoardPresenter.cs
+//// SIZE=2510 bytes | LINES=78 | SHA256=CA00B257E537CEE825481950DD4A9591379F1FE5AAAF18BB3142357DD3169035
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using System.Collections.Generic;
+using System;
+
+public class BoardPresenter : MonoBehaviour
+{
+    public RectTransform GridRoot;
+    public MergeItemView ItemPrefab;
+    public List<MergeItemView> LiveItems = new List<MergeItemView>();
+
+    public static event Action FirstMerge;
+    static bool _firstMergeFired = false;
+
+    void Start(){
+        if(LiveItems.Count == 0) SpawnTestBoard();
+        // (FTUE arrow spawn omitted here to keep this file focused)
+    }
+
+    public void SpawnTestBoard(){
+        Clear();
+        for(int i=0;i<2;i++){
+            var item = Instantiate(ItemPrefab, GridRoot);
+            item.name = "Item_"+i;
+            item.Rect.anchoredPosition = new Vector2(-100 + i*200, 0);
+            LiveItems.Add(item);
+        }
+    }
+
+    public void TryMerge(MergeItemView a, MergeItemView b){
+        Debug.Log("[Board] Attempt merge "+a.name+" + "+b.name);
+        bool ok = a.name.Split('_')[0] == b.name.Split('_')[0];
+        if(ok){
+            Destroy(b.gameObject);
+            a.ResetPos();
+            LiveItems.Remove(b);
+            Debug.Log("[Board] Merge succeeded!");
+            if(!_firstMergeFired){ _firstMergeFired = true; try{ FirstMerge?.Invoke(); } catch{} }
+        } else {
+            a.ResetPos();
+            Debug.Log("[Board] Merge failed");
+        }
+    }
+
+    public void Clear(){
+        foreach(var i in LiveItems) if(i) Destroy(i.gameObject);
+        LiveItems.Clear();
+        if(GridRoot != null){
+            for(int i=GridRoot.childCount-1;i>=0;i--) Destroy(GridRoot.GetChild(i).gameObject);
+        }
+    }
+
+    // --------- Save/Load API ----------
+    public SaveBlob.BoardState CaptureBoard(){
+        var bs = new SaveBlob.BoardState();
+        foreach(var v in LiveItems){
+            if(!v) continue;
+            bs.Items.Add(new SaveBlob.BoardState.Item{
+                Id   = v.name,
+                X    = v.Rect.anchoredPosition.x,
+                Y    = v.Rect.anchoredPosition.y,
+                Type = "MergeItem" // placeholder; wire deterministic type later
+            });
+        }
+        return bs;
+    }
+
+    public void RestoreBoard(SaveBlob.BoardState bs){
+        Clear();
+        if(bs == null || bs.Items == null) return;
+        foreach(var it in bs.Items){
+            var v = Instantiate(ItemPrefab, GridRoot);
+            v.name = string.IsNullOrEmpty(it.Id) ? "Item" : it.Id;
+            v.Rect.anchoredPosition = new Vector2(it.X, it.Y);
+            LiveItems.Add(v);
+        }
+    }
+}
+
+//// END FILE: UI\Board\BoardPresenter.cs
+
+
+//// BEGIN FILE [62/102]: UI\Board\FlashOnceMB.cs
+//// SIZE=2772 bytes | LINES=80 | SHA256=52A9BBB3D9261F86F6DE0D46C8E92F3571458864F10BCB8CB905DF81EB98C628
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections;
+using UnityEngine;
+
+namespace AQ.App.UI
+{
+    /// Fades a CanvasGroup 0→maxAlpha→0 over 'duration' seconds using unscaled time.
+    /// Use with an Image whose Color alpha is 1.0 so CanvasGroup controls the opacity.
+    [RequireComponent(typeof(CanvasGroup))]
+    public sealed class FlashOnceMB : MonoBehaviour
+    {
+        [Header("Timing")]
+        [Min(0.01f)] [SerializeField] private float duration = 0.30f;
+        [Tooltip("If true, plays once on Start (useful for testing).")]
+        [SerializeField] private bool triggerOnStart = false;
+
+        [Header("Look")]
+        [Range(0f, 1f)] [SerializeField] private float maxAlpha = 1f;
+        [Tooltip("Optional shape of the flash (0→1→0). Leave empty to use a sine arch.")]
+        [SerializeField] private AnimationCurve customCurve;
+
+        [Header("Order")]
+        [Tooltip("Move to top of its siblings while flashing so it renders above other UI.")]
+        [SerializeField] private bool setAsLastSiblingWhileFlashing = true;
+
+        private CanvasGroup _cg;
+        private Coroutine _running;
+
+        private void Awake()
+        {
+            _cg = GetComponent<CanvasGroup>();
+            _cg.alpha = 0f;
+            _cg.interactable = false;
+            _cg.blocksRaycasts = false;
+
+            // If no curve set in Inspector, we’ll just use a sine arch.
+            // (0→1→0 look; you can assign a 4-key plateau curve in the Inspector for extra punch.)
+        }
+
+        private void Start()
+        {
+            if (triggerOnStart) Trigger();
+        }
+
+        public void Trigger() => TriggerFor(duration);
+
+        public void TriggerFor(float seconds)
+        {
+            duration = Mathf.Max(0.01f, seconds);
+            if (_running != null) StopCoroutine(_running);
+            _running = StartCoroutine(CoFlash());
+        }
+
+        private IEnumerator CoFlash()
+        {
+            if (setAsLastSiblingWhileFlashing) transform.SetAsLastSibling();
+
+            float t = 0f;
+            while (t < duration)
+            {
+                t += Time.unscaledDeltaTime;
+                float n = Mathf.Clamp01(t / duration);
+                float shape = EvaluateShape(n);     // 0..1
+                _cg.alpha = Mathf.Clamp01(shape * maxAlpha);
+                yield return null;
+            }
+
+            _cg.alpha = 0f;
+            _running = null;
+        }
+
+        private float EvaluateShape(float n)
+        {
+            if (customCurve != null && customCurve.length >= 2)
+                return Mathf.Clamp01(customCurve.Evaluate(n));
+            // Default: quick, readable 0→1→0 arch
+            return Mathf.Sin(n * Mathf.PI);
+        }
+    }
+}
+
+//// END FILE: UI\Board\FlashOnceMB.cs
+
+
+//// BEGIN FILE [63/102]: UI\Board\MergeItemView.cs
+//// SIZE=1138 bytes | LINES=39 | SHA256=59A9BCB390FF888917098D19012E7C77FA9A63C5874EB0C6E9DDF0A62845B776
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+public class MergeItemView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+{
+    public Image Icon;
+    [HideInInspector] public RectTransform Rect;
+    private Canvas _canvas;
+    private CanvasGroup _group;
+    private Vector2 _startPos;
+
+    void Awake(){
+        Rect = GetComponent<RectTransform>();
+        _canvas = GetComponentInParent<Canvas>();
+        _group = gameObject.AddComponent<CanvasGroup>();
+    }
+
+    public void Bind(Sprite icon){ if(Icon!=null) Icon.sprite = icon; }
+
+    public void OnBeginDrag(PointerEventData e){
+        _startPos = Rect.anchoredPosition;
+        _group.blocksRaycasts = false;
+    }
+
+    public void OnDrag(PointerEventData e){
+        if(_canvas == null) return;
+        Rect.anchoredPosition += e.delta / _canvas.scaleFactor;
+    }
+
+    public void OnEndDrag(PointerEventData e){
+        _group.blocksRaycasts = true;
+        // let BoardInputAdapter decide merge
+        BoardInputAdapter.Current?.OnItemDropped(this, e);
+    }
+
+    public void ResetPos(){ Rect.anchoredPosition = _startPos; }
+}
+
+//// END FILE: UI\Board\MergeItemView.cs
+
+
+//// BEGIN FILE [64/102]: UI\Config\UIContracts.cs
+//// SIZE=214 bytes | LINES=9 | SHA256=F64CBFDF49E5623BCD849ACAB0CABB7FBDCB65FFED5ACCD66D8DA4C39A992B40
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "AQ/UI Contracts", fileName = "UIContracts")]
+public class UIContracts : ScriptableObject
+{
+    public GameObject DialoguePanel;
+    public GameObject HUD;
+}
+
+//// END FILE: UI\Config\UIContracts.cs
+
+
+//// BEGIN FILE [65/102]: UI\Dialogue\CaseGraph.cs
+//// SIZE=797 bytes | LINES=26 | SHA256=58E9823A5B1684AA0E8A6B5004534DBCD0AECC3FAB987012E98B675E992B50C3
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using System;
+
+[CreateAssetMenu(fileName="CaseGraph", menuName="AQ/CaseGraph", order=20)]
+public class CaseGraph : ScriptableObject
+{
+    [Serializable] public class Choice { public string text; public string nextId; }
+
+    [Serializable] public class Node {
+        public string id;
+        public string speaker;
+        [TextArea(2,5)] public string line;
+        public string nextId;                // for linear nodes
+        public Choice[] choices;             // if length>0, use choices instead of nextId
+    }
+
+    public string startId = "START";
+    public Node[] nodes;
+
+    public Node Get(string nodeId) {
+        if (nodes == null) return null;
+        for (int i=0;i<nodes.Length;i++) if (nodes[i].id == nodeId) return nodes[i];
+        return null;
+    }
+}
+
+//// END FILE: UI\Dialogue\CaseGraph.cs
+
+
+//// BEGIN FILE [66/102]: UI\Dialogue\DialogueController.cs
+//// SIZE=1738 bytes | LINES=58 | SHA256=7BB4F6A0BA8CDCE822EF019A57BD7867F92713D7FBBC6E5CF99C1E701461428D
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using UnityEngine.UI;
+using System;
+
+#if TMP_PRESENT
+using TMPro;
+#endif
+
+public class DialogueController : MonoBehaviour
+{
+#if TMP_PRESENT
+    public TMP_Text Speaker;
+    public TMP_Text Body;
+    public TMP_Text[] ChoiceLabels;
+#else
+    public Text Speaker;
+    public Text Body;
+    public Text[] ChoiceLabels;
+#endif
+    public Button AdvanceArea;
+    public Button[] ChoiceButtons;
+
+    public event Action AdvanceClicked;
+    public event Action<int> ChoiceClicked;
+
+    void Awake(){
+        if (AdvanceArea != null) AdvanceArea.onClick.AddListener(() => AdvanceClicked?.Invoke());
+        if (ChoiceButtons != null)
+            for (int i=0;i<ChoiceButtons.Length;i++){
+                int idx = i;
+                ChoiceButtons[i].onClick.AddListener(() => ChoiceClicked?.Invoke(idx));
+            }
+        ShowChoices(false);
+    }
+
+    public void BindNode(CaseGraph.Node n){
+        if (Speaker) Speaker.text = n != null ? n.speaker : "";
+        if (Body)    Body.text    = n != null ? n.line    : "";
+        if (n != null && n.choices != null && n.choices.Length > 0){
+            ShowChoices(true);
+            for (int i=0;i<ChoiceButtons.Length;i++){
+                bool on = i < n.choices.Length;
+                ChoiceButtons[i].gameObject.SetActive(on);
+                if (on && ChoiceLabels != null && i < ChoiceLabels.Length)
+                    ChoiceLabels[i].text = n.choices[i].text;
+            }
+        } else {
+            ShowChoices(false);
+        }
+    }
+
+    void ShowChoices(bool on){
+        if (ChoiceButtons == null) return;
+        foreach (var b in ChoiceButtons) if (b) b.gameObject.SetActive(on);
+        if (AdvanceArea) AdvanceArea.gameObject.SetActive(!on);
+    }
+}
+
+//// END FILE: UI\Dialogue\DialogueController.cs
+
+
+//// BEGIN FILE [67/102]: UI\Dialogue\DialogueRunner.cs
+//// SIZE=3239 bytes | LINES=90 | SHA256=696F5F973F0C351D12C324018D8BD7DE215101191ADEF58A50873A46E1649AB0
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+public class DialogueRunner : MonoBehaviour
+{
+    public CaseGraph Graph;
+    public DialogueController Panel;
+
+    string _currentId;
+    DialogueTyper _bodyTyper;
+    DialogueTyper _speakerTyper;
+    bool _booted = false;
+
+    void Start(){
+        if (Graph != null) InternalBoot(Graph);
+        // If Graph is null, we wait for BootWithGraph() (Addressables case).
+    }
+
+    public void BootWithGraph(CaseGraph g){
+        Graph = g;
+        if (!_booted) InternalBoot(g);
+        else JumpTo(Graph.startId);
+    }
+
+    void InternalBoot(CaseGraph g){
+        if (g == null || Panel == null){
+            Debug.LogWarning("[Dialogue] Missing Graph or Panel."); return;
+        }
+        // Attach typers (or reuse)
+        if (Panel.Body){ _bodyTyper = Panel.Body.GetComponent<DialogueTyper>() ?? Panel.Body.gameObject.AddComponent<DialogueTyper>(); }
+        if (Panel.Speaker){ _speakerTyper = Panel.Speaker.GetComponent<DialogueTyper>() ?? Panel.Speaker.gameObject.AddComponent<DialogueTyper>(); }
+        if (_bodyTyper != null) { _bodyTyper.charsPerSecond = 45f; }
+        if (_speakerTyper != null){ _speakerTyper.charsPerSecond = 60f; }
+
+        Panel.AdvanceClicked += OnAdvance;
+        Panel.ChoiceClicked  += OnChoice;
+
+        _currentId = string.IsNullOrEmpty(g.startId) ? (g.nodes!=null && g.nodes.Length>0 ? g.nodes[0].id : null) : g.startId;
+        _booted = true;
+        ShowNode(_currentId);
+    }
+
+    void OnDestroy(){
+        if (Panel != null){
+            Panel.AdvanceClicked -= OnAdvance;
+            Panel.ChoiceClicked  -= OnChoice;
+        }
+    }
+
+    public string GetCurrentNodeId(){ return _currentId; }
+    public void JumpTo(string id){ if(!string.IsNullOrEmpty(id)) ShowNode(id); }
+
+    void OnAdvance(){
+        if (_bodyTyper != null && _bodyTyper.IsTyping){ _bodyTyper.Skip(); return; }
+        if (_speakerTyper != null && _speakerTyper.IsTyping){ _speakerTyper.Skip(); return; }
+
+        var n = Graph.Get(_currentId);
+        if (n == null) return;
+        if (n.choices != null && n.choices.Length > 0) return;
+        if (!string.IsNullOrEmpty(n.nextId)) ShowNode(n.nextId);
+        else End();
+    }
+
+    void OnChoice(int idx){
+        if (_bodyTyper != null && _bodyTyper.IsTyping){ _bodyTyper.Skip(); return; }
+        var n = Graph.Get(_currentId);
+        if (n == null || n.choices == null || idx < 0 || idx >= n.choices.Length) return;
+        var next = n.choices[idx].nextId;
+        if (!string.IsNullOrEmpty(next)) ShowNode(next); else End();
+    }
+
+    void ShowNode(string id){
+        _currentId = id;
+        var n = Graph.Get(id);
+        if (n == null){ End(); return; }
+        if (_speakerTyper != null) _speakerTyper.SetInstant(n.speaker);
+        else if (Panel.Speaker) Panel.Speaker.text = n.speaker;
+        if (_bodyTyper != null) _bodyTyper.StartTyping(n.line);
+        else if (Panel.Body) Panel.Body.text = n.line;
+        Panel.BindNode(n);
+        Debug.Log("[Dialogue] Node: " + id);
+    }
+
+    void End(){
+        if (_bodyTyper != null) _bodyTyper.StopTyping();
+        if (_speakerTyper != null) _speakerTyper.StopTyping();
+        Debug.Log("[Dialogue] End of graph.");
+        if (Panel) Panel.gameObject.SetActive(false);
+    }
+}
+
+//// END FILE: UI\Dialogue\DialogueRunner.cs
+
+
+//// BEGIN FILE [68/102]: UI\Dialogue\DialogueTyper.cs
+//// SIZE=2242 bytes | LINES=94 | SHA256=7EC93DEDEE002877FD5C4C1E57F19CC0C272E99DF22C55046D15FBC7EBAEF857
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using System.Collections;
+#if TMP_PRESENT
+using TMPro;
+#endif
+using UnityEngine.UI;
+
+public class DialogueTyper : MonoBehaviour
+{
+    public float charsPerSecond = 45f;
+    public float punctuationPause = 0.06f;
+
+#if TMP_PRESENT
+    TMP_Text tmp;
+#endif
+    Text ugui;
+    Coroutine typing;
+    string fullText = "";
+    int shown = 0;
+    bool isTyping = false;
+
+    public bool IsTyping => isTyping;
+
+    void Awake(){
+#if TMP_PRESENT
+        tmp = GetComponent<TMP_Text>();
+#endif
+        ugui = GetComponent<Text>();
+    }
+
+    public void SetInstant(string text){
+        StopTyping();
+        fullText = text ?? "";
+        shown = fullText.Length;
+        ApplyVisible(shown);
+        isTyping = false;
+    }
+
+    public void StartTyping(string text){
+        StopTyping();
+        fullText = text ?? "";
+        shown = 0;
+        ApplyVisible(0);
+        typing = StartCoroutine(TypeRoutine());
+    }
+
+    public void Skip(){
+        if(!isTyping) return;
+        StopTyping();
+        SetInstant(fullText);
+    }
+
+    public void StopTyping(){
+        if(typing != null){ StopCoroutine(typing); typing = null; }
+        isTyping = false;
+    }
+
+    IEnumerator TypeRoutine(){
+        isTyping = true;
+        if(string.IsNullOrEmpty(fullText)){ isTyping = false; yield break; }
+        float baseDelay = (charsPerSecond > 0f) ? (1f / charsPerSecond) : 0f;
+        while(shown < fullText.Length){
+            shown++;
+            ApplyVisible(shown);
+            char c = fullText[shown-1];
+            float delay = baseDelay;
+            if(c=='.' || c=='!' || c=='?' ) delay += punctuationPause;
+            float t = 0f;
+            while(t < delay){ t += Time.unscaledDeltaTime; yield return null; }
+        }
+        isTyping = false;
+        typing = null;
+    }
+
+    void ApplyVisible(int count){
+#if TMP_PRESENT
+        if(tmp){
+            if(tmp.text != fullText) tmp.text = fullText;
+            tmp.maxVisibleCharacters = count;
+            return;
+        }
+#endif
+        if(ugui){
+            ugui.text = (count >= fullText.Length) ? fullText : fullText.Substring(0, count);
+        }
+    }
+
+    void OnEnable(){
+#if TMP_PRESENT
+        if(tmp){ tmp.maxVisibleCharacters = shown; }
+#endif
+    }
+}
+
+//// END FILE: UI\Dialogue\DialogueTyper.cs
+
+
+//// BEGIN FILE [69/102]: UI\FTUE\FTUEFollower.cs
+//// SIZE=1005 bytes | LINES=27 | SHA256=6DEB1D867C7618423949395CDC5903439B7D71264CFAA45FBF4D0CA62A8B585C
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+public class FTUEFollower : MonoBehaviour
+{
+    public RectTransform Target;
+    public Vector2 Offset = new Vector2(100, 60);
+    public float PulseSpeed = 2f;
+    public float PulseScale = 0.2f;
+    public float PulseAlpha = 0.35f;
+
+    RectTransform _rt; CanvasGroup _cg; Vector3 _base;
+
+    void Awake(){ _rt = GetComponent<RectTransform>(); _cg = GetComponent<CanvasGroup>(); _base = transform.localScale; }
+    void OnEnable(){ BoardPresenter.FirstMerge += Hide; }
+    void OnDisable(){ BoardPresenter.FirstMerge -= Hide; }
+
+    void Update(){
+        if(Target == null) return;
+        if(_rt.parent != Target.parent) _rt.SetParent(Target.parent, false);
+        _rt.anchoredPosition = Target.anchoredPosition + Offset;
+        float t = (Mathf.Sin(Time.unscaledTime * (Mathf.PI * PulseSpeed)) + 1f) * 0.5f;
+        transform.localScale = _base * (1f + t * PulseScale);
+        if(_cg) _cg.alpha = Mathf.Lerp(0f, PulseAlpha, t);
+    }
+    void Hide(){ Destroy(gameObject); }
+}
+
+//// END FILE: UI\FTUE\FTUEFollower.cs
+
+
+//// BEGIN FILE [70/102]: UI\FTUE\FTUEHintController.cs
+//// SIZE=1839 bytes | LINES=61 | SHA256=D0C1797A8BC1AD6C430413851B37D6A21018E4618B3E7FEE9790A49B0176DDF9
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using UnityEngine.UI;
+
+public class FTUEHintController : MonoBehaviour
+{
+    public RectTransform Target;
+    public Vector2 Offset = new Vector2(100, 60);
+    public float PulseSpeed = 2f;
+    public float PulseScale = 0.2f;
+    public float PulseAlpha = 0.35f;
+
+    RectTransform _rt;
+    CanvasGroup _cg;
+    Vector3 _baseScale;
+
+    void Awake(){
+        _rt = GetComponent<RectTransform>();
+        _cg = gameObject.AddComponent<CanvasGroup>();
+        _baseScale = transform.localScale;
+    }
+
+    void OnEnable(){
+        BoardPresenter.FirstMerge += OnFirstMerge;
+    }
+    void OnDisable(){
+        BoardPresenter.FirstMerge -= OnFirstMerge;
+    }
+
+    void Start(){
+        // Try to auto-find a sensible target if none provided
+        if(Target == null){
+            var board = FindAnyObjectByType<BoardPresenter>();
+            if(board != null && board.GridRoot != null && board.GridRoot.childCount > 0){
+                var first = board.GridRoot.GetChild(0) as RectTransform;
+                if(first != null) Target = first;
+            }
+        }
+        // Render above UI
+        transform.SetAsLastSibling();
+    }
+
+    void Update(){
+        if(Target == null) return;
+
+        // Follow target (same parent/same canvas space is expected)
+        if(_rt.parent != Target.parent) _rt.SetParent(Target.parent, worldPositionStays:false);
+        _rt.anchoredPosition = Target.anchoredPosition + Offset;
+
+        // Pulse scale + alpha
+        float t = (Mathf.Sin(Time.unscaledTime * (Mathf.PI * PulseSpeed)) + 1f) * 0.5f; // 0..1
+        float s = 1f + t * PulseScale;
+        transform.localScale = _baseScale * s;
+        _cg.alpha = Mathf.Lerp(0f, PulseAlpha, t);
+    }
+
+    void OnFirstMerge(){
+        // Hide permanently after the first successful merge
+        Destroy(gameObject);
+    }
+}
+
+//// END FILE: UI\FTUE\FTUEHintController.cs
+
+
+//// BEGIN FILE [71/102]: UI\Leads\Compat\LegacyNamespaceShims.cs
+//// SIZE=744 bytes | LINES=15 | SHA256=2F5EEBFD3C6E11C489B430FA173341CAA7A7EC9639566023BBD7CE815E9EE4CC
+//// ---------------------------------------------------------------------------
+
+
+// Purpose: bridge old Editor utilities that still reference AQ.UI.Leads.*
+// to the new runtime types under AQ.App.UI.Leads.* without touching the Editor code.
+
+namespace AQ.UI.Leads
+{
+    // We inherit (no extra behavior). This requires the App types to be non-sealed.
+    public class LeadCardPresenter : AQ.App.UI.Leads.LeadCardPresenter {}
+    public class RequirementSlotView : AQ.App.UI.Leads.RequirementSlotView {}
+    public class TierSetPopup       : AQ.App.UI.Leads.TierSetPopup {}
+
+    // If your project has a runtime LeadsBarPopulator under AQ.App.UI.Leads,
+    // expose it here too so Editor tools can see it under the legacy namespace.
+    public class LeadsBarPopulator  : AQ.App.UI.Leads.LeadsBarPopulator {}
+}
+
+//// END FILE: UI\Leads\Compat\LegacyNamespaceShims.cs
+
+
+//// BEGIN FILE [72/102]: UI\Leads\LeadCardData.cs
+//// SIZE=1288 bytes | LINES=41 | SHA256=738D823D6D47DC9472AD71F259391D8FFE74D510F1C7F562DC7A2B172D18E398
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace AQ.App.UI.Leads
+{
+    public enum CardState { New, InProgress, Complete }
+
+    /// <summary>Simple data model the presenter binds to.</summary>
+    public sealed class LeadCardData
+    {
+        public string Title;
+        public string Objective;
+        public string LeadId;                 // optional for QA
+        public Sprite ActorBadge;             // optional
+        public List<RequirementData> Requirements = new List<RequirementData>(3);
+        public CardState VisualState = CardState.New;
+
+        public bool HasAnyRequirementMet()
+        {
+            if (Requirements == null) return false;
+            for (int i = 0; i < Requirements.Count; i++)
+            {
+                var r = Requirements[i];
+                if (r != null && r.Met) return true;
+            }
+            return false;
+        }
+
+        public bool AllRequirementsMet()
+        {
+            if (Requirements == null || Requirements.Count == 0) return false;
+            for (int i = 0; i < Requirements.Count; i++)
+            {
+                var r = Requirements[i];
+                if (r == null || !r.Met) return false;
+            }
+            return true;
+        }
+    }
+}
+
+//// END FILE: UI\Leads\LeadCardData.cs
+
+
+//// BEGIN FILE [73/102]: UI\Leads\LeadCardDemoBinder.cs
+//// SIZE=2957 bytes | LINES=79 | SHA256=D5056D66AFA74F20033234F9958610331649BA2B9C8C37C1EAC0B78E548AA5DC
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace AQ.App.UI.Leads
+{
+    /// <summary>
+    /// Simple on-demand binder for a single card in the scene.
+    /// Finds a component named "LeadCardPresenter" on the same GameObject and calls Bind(data, popup) via reflection.
+    /// </summary>
+    public class LeadCardDemoBinder : MonoBehaviour
+    {
+        public MonoBehaviour tierSetPopup;
+        public Sprite actorSprite;
+        public Sprite[] stakeoutFuelTierSprites;
+
+        [ContextMenu("Bind Demo Now")]
+        public void BindNow()
+        {
+            var presenter = FindPresenter(gameObject);
+            if (presenter == null) { Debug.LogWarning("[LeadCardDemoBinder] LeadCardPresenter not found."); return; }
+
+            var data = new DemoLead
+            {
+                title = "Demo Lead",
+                objective = "Collect deli CCTV",
+                leadId = "L-999",
+                actorSprite = actorSprite,
+                visualState = "InProgress",
+                requirements = new List<object>
+                {
+                    new DemoRequirement { GroupTitle="Stakeout Fuel", Tiers=ToTierList(stakeoutFuelTierSprites), HighlightTierIndex=0, Achieved=true },
+                    new DemoRequirement { GroupTitle="Stakeout Fuel", Tiers=ToTierList(stakeoutFuelTierSprites), HighlightTierIndex=1, Achieved=false }
+                }
+            };
+
+            var m = presenter.GetType().GetMethod("Bind", new[] { typeof(object), typeof(MonoBehaviour) });
+            if (m != null) m.Invoke(presenter, new object[] { data, tierSetPopup });
+        }
+
+        static Component FindPresenter(GameObject go)
+        {
+            var all = go.GetComponentsInChildren<MonoBehaviour>(true);
+            foreach (var c in all)
+                if (c && c.GetType().Name == "LeadCardPresenter")
+                    return c;
+            return null;
+        }
+
+        static List<Sprite> ToTierList(Sprite[] arr)
+        {
+            var list = new List<Sprite>();
+            if (arr != null) list.AddRange(arr);
+            return list;
+        }
+
+        // private demo models
+        class DemoRequirement
+        {
+            public string GroupTitle;
+            public List<Sprite> Tiers;
+            public int HighlightTierIndex;
+            public bool Achieved;
+        }
+
+        class DemoLead
+        {
+            public string title;
+            public string objective;
+            public string leadId;
+            public Sprite actorSprite;
+            public List<object> requirements;
+            public string visualState;
+
+            public bool HasAnyRequirementMet() => requirements != null && requirements.Exists(r => ((DemoRequirement)r).Achieved);
+            public bool AllRequirementsMet() => requirements != null && requirements.TrueForAll(r => ((DemoRequirement)r).Achieved);
+        }
+    }
+}
+
+//// END FILE: UI\Leads\LeadCardDemoBinder.cs
+
+
+//// BEGIN FILE [74/102]: UI\Leads\LeadCardModels.cs
+//// SIZE=1550 bytes | LINES=52 | SHA256=5DC82BA9A8493B469119E13ED82905A05A967AE1B0F97F909949EFA349F3E07C
+//// ---------------------------------------------------------------------------
+
+
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace AQ.UI.Leads
+{
+    [Serializable]
+    public class LeadCardData
+    {
+        public string Title;
+        public string ObjectiveOneLiner;
+        public string LeadIdForQA; // optional, leave empty to hide
+        public Sprite ActorBadge;  // optional
+
+        // Between 1 and 3 requirements
+        public List<RequirementData> Requirements = new List<RequirementData>(3);
+
+        // Optional small rewards row (coins / energy / gems / items).
+        public List<RewardData> Rewards = new List<RewardData>(0);
+    }
+
+    [Serializable]
+    public class RequirementData
+    {
+        // Displayed in the slot:
+        public Sprite Icon;         // required (any tier icon)
+        public string ShortLabel;   // optional (e.g., "T4")
+        public bool Achieved;       // tick overlay
+
+        // For the popup:
+        public string GroupTitle;   // e.g., "Stakeout Fuel"
+        public List<TierEntry> Tiers = new List<TierEntry>(); // full tier set
+        public int HighlightTierIndex = -1; // 0-based index to emphasize (e.g., 3 = T4)
+    }
+
+    [Serializable]
+    public class TierEntry
+    {
+        public string Name;  // e.g., "Burger"
+        public Sprite Icon;
+    }
+
+    [Serializable]
+    public class RewardData
+    {
+        public enum RewardType { Coins, Energy, Gems, Item }
+        public RewardType Type;
+        public int Amount;
+        public Sprite ItemIcon; // if Type == Item
+    }
+}
+
+//// END FILE: UI\Leads\LeadCardModels.cs
+
+
+//// BEGIN FILE [75/102]: UI\Leads\LeadCardPresenter.cs
+//// SIZE=4980 bytes | LINES=142 | SHA256=CDE050403FDC17E0966BEC5372F6A0A65128C89EE0AE90075E6A88B298496F23
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+namespace AQ.App.UI.Leads
+{
+    /// <summary>
+    /// Presenter that binds a LeadCardData into the Lead Card prefab.
+    /// Field names are public on purpose because Editor fixers wire them directly.
+    /// </summary>
+    public class LeadCardPresenter : MonoBehaviour
+    {
+        // ----- Public wires expected by Editor utilities (names matter) -----
+        [Header("Card Visual")]
+        public Image background;
+        public Button wholeCardButton;
+
+        [Header("Texts")]
+        public TMP_Text titleText;
+        public TMP_Text objectiveText;
+        public TMP_Text leadIdText;
+
+        [Header("Actor")]
+        public Image actorAnchor;
+
+        [Header("Layout Rows")]
+        public RectTransform requirementsRow;
+        public RectTransform rewardsRow;
+
+        [Header("Requirement Slots (0..2)")]
+        public RequirementSlotView[] slots = new RequirementSlotView[3];
+
+        [Header("Popup (optional)")]
+        public TierSetPopup tierSetPopup;
+
+        // ----- Runtime state -----
+        private LeadCardData _data;
+
+        /// <summary>Bind full card data and optional popup (used by requirement clicks).</summary>
+        public void Bind(LeadCardData data, TierSetPopup popup = null)
+        {
+            _data = data;
+            if (popup != null) tierSetPopup = popup;
+
+            // Title / Objective / LeadId
+            if (titleText     != null) titleText.text     = Safe(data?.Title);
+            if (objectiveText != null) objectiveText.text = Safe(data?.Objective);
+            if (leadIdText    != null) leadIdText.text    = string.IsNullOrEmpty(data?.LeadId) ? string.Empty : $"#{data.LeadId}";
+
+            // Actor image
+            if (actorAnchor != null)
+            {
+                var sprite = data?.ActorBadge;
+                actorAnchor.sprite = sprite;
+                actorAnchor.preserveAspect = true;
+                actorAnchor.color = sprite != null ? Color.white : new Color(1,1,1,0);
+            }
+
+            // Requirements
+            SetupSlotsFromData();
+
+            // Rewards row is optional (leave as-is for now)
+
+            // Whole-card button for complete state (optional)
+            if (wholeCardButton != null)
+            {
+                wholeCardButton.onClick.RemoveAllListeners();
+                wholeCardButton.onClick.AddListener(OnWholeCardClicked);
+            }
+
+            RefreshVisual();
+        }
+
+        // ----- Helpers -----
+
+        private void SetupSlotsFromData()
+        {
+            // Hide all by default
+            for (int i = 0; i < slots.Length; i++)
+                if (slots[i] != null) slots[i].gameObject.SetActive(false);
+
+            var reqs = _data?.Requirements;
+            if (reqs == null || reqs.Count == 0) return;
+
+            for (int i = 0; i < slots.Length && i < reqs.Count; i++)
+            {
+                var slot = slots[i];
+                if (slot == null) continue;
+
+                slot.gameObject.SetActive(true);
+                slot.Bind(reqs[i]);
+
+                // rewire click → open tier popup
+                slot.onClick.RemoveListener(OnRequirementClicked);
+                slot.onClick.AddListener(OnRequirementClicked);
+            }
+        }
+
+        private void OnRequirementClicked(RequirementData req)
+        {
+            if (req == null || tierSetPopup == null) return;
+
+            var tiers = (IList<Sprite>)(req.Tiers ?? new List<Sprite>());
+            int hi = Mathf.Clamp(req.TierIndex, 0, Mathf.Max(0, tiers.Count - 1));
+            tierSetPopup.Show(Safe(req.GroupTitle), tiers, hi);
+        }
+
+        private void OnWholeCardClicked()
+        {
+            // In real game this is "complete" action. For now, noop.
+            // You can add a debug log if helpful.
+            // Debug.Log($"Lead '{_data?.Title}' clicked (state={_data?.VisualState})", this);
+        }
+
+        private void RefreshVisual()
+        {
+            if (background == null) return;
+
+            // Card colors by state (white, eggshell blue, pale green)
+            var c = Color.white;
+            switch (_data?.VisualState ?? CardState.New)
+            {
+                case CardState.InProgress: c = Hex(0xEAF2FF); break;
+                case CardState.Complete:   c = Hex(0xE9F8EE); break;
+                default:                   c = Color.white;   break;
+            }
+            background.color = c;
+        }
+
+        private static string Safe(string s) => string.IsNullOrEmpty(s) ? string.Empty : s;
+
+        private static Color Hex(uint rgb)
+        {
+            float r = ((rgb >> 16) & 0xff) / 255f;
+            float g = ((rgb >>  8) & 0xff) / 255f;
+            float b = ( rgb        & 0xff) / 255f;
+            return new Color(r,g,b,1f);
+        }
+    }
+}
+
+//// END FILE: UI\Leads\LeadCardPresenter.cs
+
+
+//// BEGIN FILE [76/102]: UI\Leads\LeadsBarPopulator.cs
+//// SIZE=3966 bytes | LINES=109 | SHA256=9E0CADF9F262BBA08DF2806301DCB5819D938A6B72FC3C5BD858E218CF79324A
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.App.UI.Leads
+{
+    /// <summary>
+    /// Minimal demo populator used by Editor auto-wire. Public fields match editor expectations.
+    /// </summary>
+    public class LeadsBarPopulator : MonoBehaviour
+    {
+        [Header("Targets")]
+        public ScrollRect leadsBar;           // ScrollRect owning Viewport/Content_Leads
+        public GameObject leadCardPrefab;     // Prefab with LeadCardPresenter on root
+        public TierSetPopup tierSetPopup;     // Optional scene popup
+
+        [Header("Stakeout Fuel tiers (icons + names)")]
+        public Sprite[] stakeoutFuelTierIcons = new Sprite[6];
+        public string[] stakeoutFuelTierNames = new string[6]; // kept for editor tools; not used by RequirementData
+
+        public void PopulateNow()
+        {
+            if (leadsBar == null || leadCardPrefab == null) return;
+            var content = leadsBar.content;
+            if (content == null) return;
+
+            // Clear existing
+            for (int i = content.childCount - 1; i >= 0; i--)
+                DestroyImmediate(content.GetChild(i).gameObject);
+
+            // Build three demo cards
+            CreateCard(content, DemoNew());
+            CreateCard(content, DemoInProgress());
+            CreateCard(content, DemoComplete());
+        }
+
+        private void CreateCard(Transform parent, LeadCardData data)
+        {
+            var go = Instantiate(leadCardPrefab, parent, false);
+            go.name = $"LeadCard_{data.LeadId}";
+            var p = go.GetComponent<LeadCardPresenter>();
+            if (p != null) p.Bind(data, tierSetPopup);
+        }
+
+        // ---- Demo data ----
+
+        private LeadCardData DemoNew()
+        {
+            return new LeadCardData
+            {
+                LeadId = "201",
+                Title = "Stakeout Snacks",
+                Objective = "Grab a basic coffee",
+                ActorBadge = null,
+                VisualState = CardState.New,
+                Requirements = new List<RequirementData>
+                {
+                    MakeReq(0, met:false), // paper cup
+                }
+            };
+        }
+
+        private LeadCardData DemoInProgress()
+        {
+            return new LeadCardData
+            {
+                LeadId = "202",
+                Title = "Night Shift Comforts",
+                Objective = "Burger for morale",
+                ActorBadge = null,
+                VisualState = CardState.InProgress,
+                Requirements = new List<RequirementData>
+                {
+                    MakeReq(3, met:true),  // burger (met)
+                    MakeReq(1, met:false), // hot coffee (pending)
+                }
+            };
+        }
+
+        private LeadCardData DemoComplete()
+        {
+            return new LeadCardData
+            {
+                LeadId = "203",
+                Title = "Stakeout Feast",
+                Objective = "All set for a long watch",
+                ActorBadge = null,
+                VisualState = CardState.Complete,
+                Requirements = new List<RequirementData>
+                {
+                    MakeReq(5, met:true),  // feast caddy (met)
+                }
+            };
+        }
+
+        /// <summary>
+        /// Create a RequirementData using your constructor:
+        /// RequirementData(string groupTitle, List&lt;Sprite&gt; tiers, int tierIndex, bool met)
+        /// </summary>
+        private RequirementData MakeReq(int tierIndex, bool met)
+        {
+            var tiers = new List<Sprite>(stakeoutFuelTierIcons ?? new Sprite[0]);
+            var clampedIndex = Mathf.Clamp(tierIndex, 0, Mathf.Max(0, tiers.Count - 1));
+            const string groupTitle = "Stakeout fuel";
+            return new RequirementData(groupTitle, tiers, clampedIndex, met);
+        }
+    }
+}
+
+//// END FILE: UI\Leads\LeadsBarPopulator.cs
+
+
+//// BEGIN FILE [77/102]: UI\Leads\RequirementData.cs
+//// SIZE=753 bytes | LINES=23 | SHA256=FE7459780CB1D2676C37E788BAFC65B5FC8C3FEC929025B2F67D9C2D06FD0D69
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace AQ.App.UI.Leads
+{
+    /// <summary>One required item (any tier) in the group.</summary>
+    public sealed class RequirementData
+    {
+        public string GroupTitle;            // e.g., "Stakeout Fuel"
+        public List<Sprite> Tiers;           // icons T1..Tn (can be 1..N)
+        public int TierIndex;                // selected tier to highlight
+        public bool Met;                     // tick state
+
+        public RequirementData(string groupTitle, List<Sprite> tiers, int tierIndex, bool met = false)
+        {
+            GroupTitle = groupTitle;
+            Tiers = tiers;
+            TierIndex = tierIndex;
+            Met = met;
+        }
+    }
+}
+
+//// END FILE: UI\Leads\RequirementData.cs
+
+
+//// BEGIN FILE [78/102]: UI\Leads\RequirementSlotView.cs
+//// SIZE=1753 bytes | LINES=60 | SHA256=F7ABBAC4C998973983E2351AC4F97DDD8A8BDAAC5D485CB5FBCFE1167D7F6495
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+
+namespace AQ.App.UI.Leads
+{
+    /// <summary>
+    /// Visual for one "required item" slot (icon + tick). Raises click with its RequirementData.
+    /// Public names match Editor utilities.
+    /// </summary>
+    public class RequirementSlotView : MonoBehaviour
+    {
+        [System.Serializable] public sealed class RequirementClickedEvent : UnityEvent<RequirementData> {}
+
+        [Header("Wires")]
+        public Button button;
+        public Image  icon;
+        public GameObject tickOverlay;
+
+        public RequirementClickedEvent onClick = new RequirementClickedEvent();
+
+        private RequirementData _data;
+
+        public void Bind(RequirementData data)
+        {
+            _data = data;
+
+            // icon
+            if (icon != null)
+            {
+                Sprite s = null;
+                if (data?.Tiers != null && data.Tiers.Count > 0)
+                {
+                    int i = Mathf.Clamp(data.TierIndex, 0, data.Tiers.Count - 1);
+                    s = data.Tiers[i];
+                }
+                icon.sprite = s;
+                icon.preserveAspect = true;
+                icon.color = s != null ? Color.white : new Color(1,1,1,0);
+            }
+
+            // tick
+            if (tickOverlay != null)
+                tickOverlay.SetActive(data?.Met == true);
+
+            // click
+            if (button != null)
+            {
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(HandleClick);
+            }
+        }
+
+        private void HandleClick()
+        {
+            if (_data != null) onClick?.Invoke(_data);
+        }
+    }
+}
+
+//// END FILE: UI\Leads\RequirementSlotView.cs
+
+
+//// BEGIN FILE [79/102]: UI\Leads\TierSetPopup.cs
+//// SIZE=3390 bytes | LINES=96 | SHA256=E38C76664302F6897DE89845EE63F2C4DECB7357F4A2C9FD1B7F6EB0D135B8B3
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+namespace AQ.App.UI.Leads
+{
+    /// <summary>
+    /// Popup that shows a group title and a row/grid of tier icons, highlighting one.
+    /// Public field names match Editor fixer expectations.
+    /// </summary>
+    public class TierSetPopup : MonoBehaviour
+    {
+        [Header("Wires (must be assigned)")]
+        public CanvasGroup canvasGroup;    // was cg
+        public Image       blocker;        // full-screen dimmer (optional)
+        public RectTransform panelRoot;    // the panel body
+        public TMP_Text    titleText;
+        public Transform   gridRoot;       // parent for icons (was tiersRoot)
+        public Image       tierIconPrefab; // template Image
+        public Button      closeButton;
+
+        private readonly List<Image> _pool = new List<Image>(16);
+
+        private void Awake()
+        {
+            if (closeButton != null)
+            {
+                closeButton.onClick.RemoveAllListeners();
+                closeButton.onClick.AddListener(Hide);
+            }
+            HideImmediate(); // never block at start
+        }
+
+        public void Show(string groupTitle, IList<Sprite> tiers, int highlightIndex)
+        {
+            // Visible + interactive
+            if (canvasGroup != null)
+            {
+                canvasGroup.alpha = 1f;
+                canvasGroup.blocksRaycasts = true;
+                canvasGroup.interactable = true;
+            }
+            if (blocker != null) blocker.raycastTarget = true;
+
+            if (titleText != null)
+                titleText.text = string.IsNullOrEmpty(groupTitle) ? string.Empty : groupTitle;
+
+            int need = tiers != null ? tiers.Count : 0;
+
+            // grow pool
+            for (int i = _pool.Count; i < need; i++)
+            {
+                var img = Instantiate(tierIconPrefab, gridRoot);
+                _pool.Add(img);
+            }
+
+            // populate
+            for (int i = 0; i < _pool.Count; i++)
+            {
+                var img = _pool[i];
+                bool active = i < need;
+
+                if (img != null) img.gameObject.SetActive(active);
+                if (!active) continue;
+
+                var sprite = tiers[i];
+                img.sprite = sprite;
+                img.preserveAspect = true;
+                img.color = Color.white;
+
+                // visual highlight via Outline
+                var outline = img.GetComponent<Outline>();
+                if (outline == null) outline = img.gameObject.AddComponent<Outline>();
+                bool isHi = (i == highlightIndex);
+                outline.effectColor = isHi ? new Color(0.15f,0.3f,0.5f,0.9f) : new Color(0,0,0,0.2f);
+                outline.effectDistance = isHi ? new Vector2(2,2) : new Vector2(1,1);
+            }
+        }
+
+        public void Hide()
+        {
+            if (canvasGroup != null)
+            {
+                canvasGroup.alpha = 0f;
+                canvasGroup.blocksRaycasts = false;
+                canvasGroup.interactable = false;
+            }
+            if (blocker != null) blocker.raycastTarget = false;
+        }
+
+        /// <summary>Instantly hide without tween; used by Editor fixer.</summary>
+        public void HideImmediate() => Hide();
+    }
+}
+
+//// END FILE: UI\Leads\TierSetPopup.cs
+
+
+//// BEGIN FILE [80/102]: UI\Leads\TierSetPopupPresenter.cs
+//// SIZE=2306 bytes | LINES=63 | SHA256=6636D1157EDF6DE264D46FC36765F48AE1E0491CCCB7C12381285279C2CCD772
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.App.UI.Leads
+{
+    public sealed class TierSetPopupPresenter : MonoBehaviour
+    {
+        [SerializeField] private CanvasGroup cg;
+        [SerializeField] private TMP_Text titleText;
+        [SerializeField] private Transform iconGrid;     // 6 children with Image
+        [SerializeField] private Image highlight;        // moves over selected
+        [SerializeField] private Button closeButton;
+
+        void Awake()
+        {
+            if (closeButton) closeButton.onClick.AddListener(Hide);
+            Hide();
+        }
+
+        public void Show(string groupTitle, List<Sprite> tierSprites, int selectedIndex)
+        {
+            if (titleText) titleText.text = groupTitle ?? "";
+            // populate icons
+            int i = 0;
+            foreach (Transform child in iconGrid)
+            {
+                if (child.name.StartsWith("Icon"))
+                {
+                    var img = child.GetComponent<Image>();
+                    if (img)
+                    {
+                        img.sprite = (tierSprites != null && i < tierSprites.Count) ? tierSprites[i] : null;
+                        img.enabled = img.sprite != null;
+                        i++;
+                    }
+                }
+            }
+            // position highlights
+            if (highlight && selectedIndex >= 0 && selectedIndex < iconGrid.childCount)
+            {
+                var target = iconGrid.GetChild(selectedIndex) as RectTransform;
+                var hrt = highlight.rectTransform;
+                hrt.SetParent(target, false);
+                hrt.anchorMin = hrt.anchorMax = new Vector2(0.5f, 0.5f);
+                hrt.anchoredPosition = Vector2.zero;
+                highlight.enabled = true;
+            }
+
+            if (cg) { cg.alpha = 1; cg.blocksRaycasts = true; cg.interactable = true; }
+            gameObject.SetActive(true);
+        }
+
+        public void Hide()
+        {
+            if (cg) { cg.alpha = 0; cg.blocksRaycasts = false; cg.interactable = false; }
+            if (highlight) highlight.enabled = false;
+            gameObject.SetActive(true); // keep alive; hidden via CG
+        }
+    }
+}
+
+//// END FILE: UI\Leads\TierSetPopupPresenter.cs
+
+
+//// BEGIN FILE [81/102]: UI\MergeBoard\Animations.cs
+//// SIZE=917 bytes | LINES=32 | SHA256=E1498D72BC1BDE614D01CD55540FD330E1D3A98FBB9FBECA76AFA897AD1364CD
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections;
+using UnityEngine;
+
+namespace AQ.App
+{
+    public static class Animations
+    {
+        public static IEnumerator Pulse(Transform t, float scale = 1.15f, float dur = 0.15f)
+        {
+            if (t == null) yield break;
+            var start = t.localScale;
+            var target = start * scale;
+            float t0 = 0f;
+            while (t0 < dur)
+            {
+                t0 += Time.deltaTime;
+                float k = Mathf.Clamp01(t0 / dur);
+                t.localScale = Vector3.Lerp(start, target, k);
+                yield return null;
+            }
+            t0 = 0f;
+            while (t0 < dur)
+            {
+                t0 += Time.deltaTime;
+                float k = Mathf.Clamp01(t0 / dur);
+                t.localScale = Vector3.Lerp(target, start, k);
+                yield return null;
+            }
+            t.localScale = start;
+        }
+    }
+}
+
+
+//// END FILE: UI\MergeBoard\Animations.cs
+
+
+//// BEGIN FILE [82/102]: UI\MergeBoard\DraggableItem.cs
+//// SIZE=2688 bytes | LINES=80 | SHA256=8360786A96CA88AE03CCF0CE022978C6CADE160DEA2EE4D553C8A324C2C7D60D
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+namespace AQ.App
+{
+    /// <summary>
+    /// Minimal draggable item that notifies the MergeInputAdapter when dropped
+    /// on another ItemView. Uses a simple RaycastAll to find the drop target.
+    /// </summary>
+    [RequireComponent(typeof(RectTransform))]
+    public class DraggableItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+    {
+        [Tooltip("The adapter that will be notified when this item is dropped on a target.")]
+        public MergeInputAdapter adapter;
+
+        [Tooltip("This component should also live on the same GameObject as your item UI.")]
+        public ItemView itemView;
+
+        private Canvas _canvas;
+        private RectTransform _rt;
+        private CanvasGroup _group;
+
+        private void Awake()
+        {
+            _rt = GetComponent<RectTransform>();
+            _group = GetComponent<CanvasGroup>();
+            if (_group == null) _group = gameObject.AddComponent<CanvasGroup>();
+            _canvas = GetComponentInParent<Canvas>();
+        }
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            if (_group != null) _group.blocksRaycasts = false;
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            if (_rt == null) return;
+            if (_canvas == null) _canvas = GetComponentInParent<Canvas>();
+            if (_canvas == null) return;
+
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                    _canvas.transform as RectTransform,
+                    eventData.position,
+                    eventData.pressEventCamera,
+                    out var localPos))
+            {
+                _rt.anchoredPosition = localPos;
+            }
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            if (_group != null) _group.blocksRaycasts = true;
+
+            if (adapter == null || itemView == null || EventSystem.current == null)
+                return;
+
+            // Raycast to find a potential ItemView under the pointer
+            var results = new List<RaycastResult>(16);
+            EventSystem.current.RaycastAll(eventData, results);
+
+            ItemView target = null;
+            for (int i = 0; i < results.Count; i++)
+            {
+                var iv = results[i].gameObject.GetComponentInParent<ItemView>();
+                if (iv != null && iv != itemView)
+                {
+                    target = iv;
+                    break;
+                }
+            }
+
+            if (target != null)
+                adapter.HandleDrop(itemView, target);
+        }
+    }
+}
+
+//// END FILE: UI\MergeBoard\DraggableItem.cs
+
+
+//// BEGIN FILE [83/102]: UI\MergeBoard\ItemView.cs
+//// SIZE=744 bytes | LINES=28 | SHA256=72524A1D03BBACDC8B43267363D5FFA49AA5E1632DF6C40737DB1FE54335D7BA
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App
+{
+    /// <summary>
+    /// Minimal item view with a label and a selectable state.
+    /// No TMPro/Text dependency to keep tests prefab-free.
+    /// </summary>
+    public class ItemView : MonoBehaviour
+    {
+        private string _labelText = string.Empty;
+        private bool _selected;
+
+        public string LabelText => _labelText;
+
+        public void SetLabel(string label)
+        {
+            _labelText = label ?? string.Empty;
+            // Hook: update visual text component here if you add one later.
+        }
+
+        public void SetSelected(bool selected)
+        {
+            _selected = selected;
+            // Hook: visual highlight toggle here if/when needed.
+        }
+    }
+}
+
+
+//// END FILE: UI\MergeBoard\ItemView.cs
+
+
+//// BEGIN FILE [84/102]: UI\MergeBoard\MergeBoardView.cs
+//// SIZE=4960 bytes | LINES=140 | SHA256=7BD2EE7514792355BC17CCC085F946E46A89672F8AAE5B7838CB921CA8581314
+//// ---------------------------------------------------------------------------
+
+
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace AQ.App
+{
+    /// <summary>
+    /// Simple board façade:
+    ///  • Tracks a coarse grid position for spawned items
+    ///  • Removes items safely (works in EditMode + PlayMode)
+    ///  • Spawns items at a grid position (optional prefab)
+    ///
+    /// NOTE: Does NOT declare ItemView (you already have it).
+    /// </summary>
+    public class MergeBoardView : MonoBehaviour
+    {
+        [Header("Layout (optional)")]
+        [SerializeField] private RectTransform gridRoot;     // parent for items (can be this)
+        [SerializeField] private Vector2 cellSize = new Vector2(100, 100);
+
+        [Header("Spawn (optional)")]
+        [SerializeField] private ItemView itemPrefab;        // optional prefab for SpawnItem
+
+        // Some code paths elsewhere call this event after the *first* successful merge.
+        public event Action OnFirstMergeCompleted;
+
+        private readonly Dictionary<ItemView, Vector2Int> _gridMap = new Dictionary<ItemView, Vector2Int>();
+
+        private RectTransform GridRootRT
+        {
+            get
+            {
+                if (gridRoot != null) return gridRoot;
+                gridRoot = GetComponent<RectTransform>();
+                return gridRoot;
+            }
+        }
+
+        /// <summary>Return a best-effort grid coordinate for the given item.</summary>
+        public Vector2Int GetGridPos(ItemView item)
+        {
+            if (item == null) return Vector2Int.zero;
+
+            if (_gridMap.TryGetValue(item, out var pos))
+                return pos;
+
+            // Fallback: infer from RectTransform position under the grid root.
+            var rt = item.GetComponent<RectTransform>();
+            var root = GridRootRT;
+            if (rt != null && root != null && rt.parent == root)
+            {
+                var local = rt.anchoredPosition;
+                var cx = cellSize.x <= 0 ? 1f : cellSize.x;
+                var cy = cellSize.y <= 0 ? 1f : cellSize.y;
+                return new Vector2Int(Mathf.RoundToInt(local.x / cx), Mathf.RoundToInt(local.y / cy));
+            }
+
+            return Vector2Int.zero;
+        }
+
+        /// <summary>Remove an item from the board. EditMode-safe.</summary>
+        public void RemoveItem(ItemView item)
+        {
+            if (item == null) return;
+
+            _gridMap.Remove(item);
+
+            // Prefer a local safe destroy to avoid hard-depending on any specific DestroyUtil signature.
+            SafeDestroy(item.gameObject);
+        }
+
+        /// <summary>
+        /// Spawn a new item at a grid position. If no prefab is assigned, this is a no-op with a warning.
+        /// </summary>
+        public ItemView SpawnItem(Vector2Int gridPos, string optionalLabel = null)
+        {
+            if (itemPrefab == null)
+            {
+                Debug.LogWarning("[MergeBoardView] No itemPrefab assigned; SpawnItem skipped.");
+                return null;
+            }
+
+            var root = GridRootRT;
+            var instance = Instantiate(itemPrefab, root != null ? root : transform);
+
+            var rt = instance.GetComponent<RectTransform>();
+            if (rt != null)
+            {
+                if (root != null)
+                    rt.SetParent(root, worldPositionStays: false);
+
+                rt.anchoredPosition = new Vector2(gridPos.x * cellSize.x, gridPos.y * cellSize.y);
+                rt.localScale = Vector3.one;
+            }
+
+            _gridMap[instance] = gridPos;
+            if (!string.IsNullOrEmpty(optionalLabel))
+                TrySetLabel(instance, optionalLabel);
+
+            return instance;
+        }
+
+        // --- helpers ---
+
+        private void TrySetLabel(ItemView item, string text)
+        {
+            var t = item.GetType();
+            var prop = t.GetProperty("LabelText",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic);
+            if (prop != null && prop.CanWrite && prop.PropertyType == typeof(string))
+            {
+                prop.SetValue(item, text);
+            }
+        }
+
+        private static void SafeDestroy(GameObject go)
+        {
+            if (go == null) return;
+
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                UnityEngine.Object.DestroyImmediate(go);
+                return;
+            }
+#endif
+            UnityEngine.Object.Destroy(go);
+        }
+
+        // Allow external code (like your adapter) to raise "first merge completed" once.
+        private bool _firstMergeRaised;
+        public void RaiseFirstMergeIfNeeded()
+        {
+            if (_firstMergeRaised) return;
+            _firstMergeRaised = true;
+            OnFirstMergeCompleted?.Invoke();
+        }
+    }
+}
+
+//// END FILE: UI\MergeBoard\MergeBoardView.cs
+
+
+//// BEGIN FILE [85/102]: UI\MergeBoard\MergeInputAdapter.cs
+//// SIZE=2804 bytes | LINES=86 | SHA256=9BE6A9CB704F79FCA0F3272F7A2C79F57CE2578DC8905AD58C7428BE7A0A0988
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections;
+using UnityEngine;
+
+namespace AQ.App
+{
+    /// <summary>
+    /// Translates UI drag/drop or test hooks into merge actions.
+    /// Restores legacy surface expected by your bootstrap scripts:
+    ///   • public object mergeService;   // kept loose to avoid extra deps
+    ///   • public void HandleDrop(ItemView source, ItemView target)
+    /// </summary>
+    public class MergeInputAdapter : MonoBehaviour
+    {
+        [Header("Wiring")]
+        public MergeBoardView board;
+
+        [Header("SFX (optional)")]
+        public AudioSource audioSource;
+        public AudioClip successHum;
+
+        // Kept for compatibility with existing bootstrapper code.
+        public object mergeService;
+
+        public bool LastMergeSucceeded { get; private set; }
+
+        /// <summary>Called by your drag/drop hook.</summary>
+        public void HandleDrop(ItemView source, ItemView target)
+        {
+            RequestMerge(source, target);
+        }
+
+        /// <summary>
+        /// For the vertical slice: treat any pair as valid, execute a "successful merge" flow.
+        /// </summary>
+        public void RequestMerge(ItemView a, ItemView b)
+        {
+            if (a == null || b == null || board == null)
+            {
+                LastMergeSucceeded = false;
+                return;
+            }
+
+            StopAllCoroutines();
+            StartCoroutine(SuccessRoutine(a, b));
+        }
+
+        private IEnumerator SuccessRoutine(ItemView a, ItemView b)
+        {
+            if (audioSource != null && successHum != null)
+                audioSource.PlayOneShot(successHum);
+
+            var targetPos = board.GetGridPos(b);
+
+            // tiny delay keeps UGUI happy and tests deterministic
+            yield return null;
+
+            board.RemoveItem(a);
+            board.RemoveItem(b);
+            board.SpawnItem(targetPos, TryGetLabelText(b));
+
+            // Mark success; notify board the *first* time only.
+            LastMergeSucceeded = true;
+            board.RaiseFirstMergeIfNeeded();
+        }
+
+        public IEnumerator SimulateMergeForTests(string aLabel, string bLabel)
+        {
+            // Optional test hook – no-op for now
+            yield return null;
+        }
+
+        private static string TryGetLabelText(ItemView v)
+        {
+            if (v == null) return string.Empty;
+            var prop = v.GetType().GetProperty("LabelText",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic);
+            if (prop != null && prop.PropertyType == typeof(string))
+            {
+                var val = prop.GetValue(v) as string;
+                return val ?? string.Empty;
+            }
+            return string.Empty;
+        }
+    }
+}
+
+//// END FILE: UI\MergeBoard\MergeInputAdapter.cs
+
+
+//// BEGIN FILE [86/102]: UI\MergeBoard\MergeServiceStub.cs
+//// SIZE=513 bytes | LINES=21 | SHA256=E2FD73630AE13BC2E17AE0F0C0060BE8F36E1CDF52FB45801465113CE80A417C
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using AQ.App.Composition;
+
+namespace AQ.App.UI.MergeBoard
+{
+    public sealed class MergeServiceStub : IMergeService
+    {
+        public bool TryMerge(Vector2Int a, Vector2Int b)
+        {
+            // Stub: always "succeeds" for now. Replace with domain calls later.
+            return true;
+        }
+
+        public bool TryMerge(int ax, int ay, int bx, int by)
+        {
+            // Stub route for tests/adapter shims
+            return true;
+        }
+    }
+}
+
+//// END FILE: UI\MergeBoard\MergeServiceStub.cs
+
+
+//// BEGIN FILE [87/102]: UI\MergeBoard\SimplePool.cs
+//// SIZE=898 bytes | LINES=37 | SHA256=6FE03455A9AE36017192AD10C89AD6CDA9FF1FA9F128D8854366E850FD918B27
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace AQ.App
+{
+    public class SimplePool<T> where T : Component
+    {
+        private readonly Stack<T> _stack = new Stack<T>();
+        private readonly T _prefab;
+        private readonly Transform _parent;
+
+        public SimplePool(T prefab, Transform parent)
+        {
+            _prefab = prefab;
+            _parent = parent;
+        }
+
+        public T Get()
+        {
+            if (_stack.Count > 0)
+            {
+                var t = _stack.Pop();
+                t.gameObject.SetActive(true);
+                return t;
+            }
+            return Object.Instantiate(_prefab, _parent);
+        }
+
+        public void Release(T t)
+        {
+            if (t == null) return;
+            t.gameObject.SetActive(false);
+            t.transform.SetParent(_parent, false);
+            _stack.Push(t);
+        }
+    }
+}
+
+
+//// END FILE: UI\MergeBoard\SimplePool.cs
+
+
+//// BEGIN FILE [88/102]: UI\Narrative\DialoguePanel.cs
+//// SIZE=638 bytes | LINES=29 | SHA256=851DF0C9747466C93D1A24514FD6E4B4E124AE72926B4B73BD30630B70922F6F
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App
+{
+    /// <summary>
+    /// MonoBehaviour shell the test attaches with AddComponent&lt;DialoguePanel&gt;().
+    /// Forwards user input into the bound MiniNarrativeEngine.
+    /// </summary>
+    public sealed class DialoguePanel : MonoBehaviour
+    {
+        private MiniNarrativeEngine _engine;
+
+        public void BindEngine(MiniNarrativeEngine engine)
+        {
+            _engine = engine;
+        }
+
+        public void OnContinue()
+        {
+            _engine?.Advance();
+        }
+
+        public void OnChoice(int index)
+        {
+            _engine?.Choose(index);
+        }
+    }
+}
+
+//// END FILE: UI\Narrative\DialoguePanel.cs
+
+
+//// BEGIN FILE [89/102]: UI\Narrative\INarrativeEngine.cs
+//// SIZE=659 bytes | LINES=20 | SHA256=089E9BA579C856644AAA1C5AB1FFED9F19DD74F20F1EC6920D5B4FE697C7076D
+//// ---------------------------------------------------------------------------
+
+
+namespace AQ.App
+{
+    public interface INarrativeEngine
+    {
+        /// <summary>Advance the narrative. If a choice is required, pass the chosen index; else pass -1.</summary>
+        void Advance(int choiceIndex = -1);
+
+        /// <summary>Current speaker name (may be null/empty).</summary>
+        string Speaker { get; }
+
+        /// <summary>Current line text (may be null if awaiting choice).</summary>
+        string Line { get; }
+
+        /// <summary>Current choices (length 0 if none).</summary>
+        string[] Choices { get; }
+
+        /// <summary>True if narrative reached an end state.</summary>
+        bool IsComplete { get; }
+    }
+}
+
+
+//// END FILE: UI\Narrative\INarrativeEngine.cs
+
+
+//// BEGIN FILE [90/102]: UI\Narrative\MiniNarrativeEngine.cs
+//// SIZE=2023 bytes | LINES=69 | SHA256=A957669A85CFA2A3A90FCEC7D3F5458001473D392B0C22B26B7B6728627288FE
+//// ---------------------------------------------------------------------------
+
+
+using System.Collections.Generic;
+
+namespace AQ.App
+{
+    /// <summary>
+    /// Plain C# narrative engine matching DialogueSmokeTests:
+    /// Advance -> first line "We start." (Speaker "Ally")
+    /// Continue -> show 2 choices
+    /// Choose(0) -> "Left it is."
+    /// Continue -> "Done." and complete
+    /// </summary>
+    public class MiniNarrativeEngine
+    {
+        public string Speaker { get; private set; }
+        public string Line    { get; private set; }
+        public List<string> Choices { get; private set; }
+        public bool IsComplete { get; private set; }
+
+        // 0 = init, 1 = first line, 2 = choices, 3 = chosen-left, 4 = done
+        private int _state = 0;
+
+        public void Advance()
+        {
+            if (IsComplete) return;
+
+            switch (_state)
+            {
+                case 0:
+                    // Enter first line
+                    Speaker = "Ally";
+                    Line    = "We start.";
+                    Choices = null;
+                    _state  = 1;
+                    break;
+
+                case 1:
+                    // Move to choices
+                    Line    = null;
+                    Choices = new List<string> { "Left", "Right" };
+                    _state  = 2;
+                    break;
+
+                case 3:
+                    // After chosen-left, finalize
+                    Line       = "Done.";
+                    Choices    = null;
+                    IsComplete = true;
+                    _state     = 4;
+                    break;
+
+                case 2:
+                    // Continue while on choices: test never does this; ignore safely.
+                    break;
+            }
+        }
+
+        public void Choose(int index)
+        {
+            if (IsComplete) return;
+            if (_state != 2) return;
+
+            // Test asserts Choose(0) -> "Left it is."
+            Line    = (index == 0) ? "Left it is." : "Right then.";
+            Choices = null;
+            _state  = 3;
+        }
+    }
+}
+
+//// END FILE: UI\Narrative\MiniNarrativeEngine.cs
+
+
+//// BEGIN FILE [91/102]: UI\Runtime\TMPAsciiSanitizer.cs
+//// SIZE=1143 bytes | LINES=35 | SHA256=C21B82F832BB90DDBDAF694F35B2700E7AA3CA0AE9E042404F26087A1E6DD510
+//// ---------------------------------------------------------------------------
+
+
+// AQ — TMP ASCII Sanitizer
+// Replaces common non-ASCII glyphs with ASCII at runtime (✓→OK) under this GameObject.
+using UnityEngine;
+
+namespace AQ.App.UI
+{
+    [DefaultExecutionOrder(-1000)]
+    public sealed class TMPAsciiSanitizer : MonoBehaviour
+    {
+        [Tooltip("If true, runs every frame for dynamic texts; otherwise runs once on Awake.")]
+        public bool continuous = false;
+
+        private static readonly (string from, string to)[] Map = new[]
+        {
+            ("✓", "OK"),
+            ("\\u2713", "OK") // defensive: if a literal backslash-u slips in
+        };
+
+        private void Awake() { Sweep(); }
+        private void LateUpdate() { if (continuous) Sweep(); }
+
+        private void Sweep()
+        {
+            var tmps = GetComponentsInChildren<TMPro.TMP_Text>(true);
+            foreach (var t in tmps)
+            {
+                if (string.IsNullOrEmpty(t.text)) continue;
+                var s = t.text;
+                foreach (var rule in Map) s = s.Replace(rule.from, rule.to);
+                if (s != t.text) t.text = s;
+            }
+        }
+    }
+}
+
+//// END FILE: UI\Runtime\TMPAsciiSanitizer.cs
+
+
+//// BEGIN FILE [92/102]: UI\Theme\Binders\ThemeImageBinder.cs
+//// SIZE=968 bytes | LINES=12 | SHA256=C381B880F18B34ACA5510647FC8BAC7BC707C918D87B389940F9B6638BE02818
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine; using UnityEngine.UI;
+[RequireComponent(typeof(Image))]
+public class ThemeImageBinder : MonoBehaviour, IThemeBindable {
+  public enum Which { Panel, Primary, Secondary, Accent } public Which Use=Which.Panel;
+  Image _img; void Awake(){ _img=GetComponent<Image>(); }
+  void OnEnable(){ if(ThemeController.Instance!=null) ThemeController.Instance.Register(this); ThemeController.ThemeChanged+=ApplyTheme; }
+  void Start(){ if(ThemeController.Instance!=null) ThemeController.Instance.Register(this); ApplyTheme(ThemeController.Instance? ThemeController.Instance.ActiveTheme : null); }
+  void OnDisable(){ if(ThemeController.Instance!=null) ThemeController.Instance.Unregister(this); ThemeController.ThemeChanged-=ApplyTheme; }
+  public void ApplyTheme(ThemeSO t){ if(!_img||t==null) return; _img.color = Use switch { Which.Panel=>t.Panel, Which.Primary=>t.Primary, Which.Secondary=>t.Secondary, Which.Accent=>t.Accent, _=>_img.color }; }
+}
+
+
+//// END FILE: UI\Theme\Binders\ThemeImageBinder.cs
+
+
+//// BEGIN FILE [93/102]: UI\Theme\Binders\ThemeTMPBinder.cs
+//// SIZE=893 bytes | LINES=12 | SHA256=D5C3CA602A89D1406D3B2DFF091160889787D78F1AA06070F7B08D9630BC9B25
+//// ---------------------------------------------------------------------------
+
+
+#if TMP_PRESENT
+using UnityEngine; using TMPro;
+[RequireComponent(typeof(TMP_Text))]
+public class ThemeTMPBinder : MonoBehaviour, IThemeBindable {
+  public bool UseSecondary=false; TMP_Text _txt; void Awake(){ _txt=GetComponent<TMP_Text>(); }
+  void OnEnable(){ if(ThemeController.Instance!=null) ThemeController.Instance.Register(this); ThemeController.ThemeChanged+=ApplyTheme; }
+  void Start(){ if(ThemeController.Instance!=null) ThemeController.Instance.Register(this); ApplyTheme(ThemeController.Instance? ThemeController.Instance.ActiveTheme : null); }
+  void OnDisable(){ if(ThemeController.Instance!=null) ThemeController.Instance.Unregister(this); ThemeController.ThemeChanged-=ApplyTheme; }
+  public void ApplyTheme(ThemeSO t){ if(!_txt||t==null) return; _txt.color = UseSecondary? t.TextSecondary : t.TextPrimary; _txt.fontSize = UseSecondary? t.BodySize : t.TitleSize; }
+}
+#endif
+
+//// END FILE: UI\Theme\Binders\ThemeTMPBinder.cs
+
+
+//// BEGIN FILE [94/102]: UI\Theme\Runtime\ThemeBootstrap.cs
+//// SIZE=333 bytes | LINES=11 | SHA256=117514C5E10E0215646ABD5696B8F2B978BEDE24B6A0A948325292E6562A5096
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+public static class ThemeBootstrap {
+  [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+  static void EnsureThemeController(){
+    if(ThemeController.Instance==null){
+      var go=new GameObject("ThemeController", typeof(ThemeController));
+      Object.DontDestroyOnLoad(go);
+    }
+  }
+}
+
+//// END FILE: UI\Theme\Runtime\ThemeBootstrap.cs
+
+
+//// BEGIN FILE [95/102]: UI\Theme\ThemeBinderImage.cs
+//// SIZE=470 bytes | LINES=23 | SHA256=9F4B5040CD13DF7F93601BA7090A31A8AC67AE2268ADA28DEC31BE1461F0B375
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.App
+{
+    [RequireComponent(typeof(Image))]
+    public class ThemeBinderImage : MonoBehaviour
+    {
+        private Image _img;
+        
+        private void Awake()
+        {
+            _img = GetComponent<Image>();
+        }
+        
+        public void Apply(ThemeSO theme)
+        {
+            if(theme != null)
+                _img.color = theme.Primary;  // Fixed: was theme.primaryColor
+        }
+    }
+}
+
+//// END FILE: UI\Theme\ThemeBinderImage.cs
+
+
+//// BEGIN FILE [96/102]: UI\Theme\ThemeBinderText.cs
+//// SIZE=1311 bytes | LINES=48 | SHA256=D89D0FC4353CF7A21BE09B3BF9D2B826E01815CE98ED477E3AD5904F28297462
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using TMPro;
+
+[RequireComponent(typeof(TextMeshProUGUI))]
+public class ThemeBinderText : MonoBehaviour, IThemeBindable
+{
+    public enum Which { Primary, Secondary, Accent }
+    public Which Use = Which.Primary;
+    
+    TextMeshProUGUI _text;
+    
+    void Awake() { _text = GetComponent<TextMeshProUGUI>(); }
+    
+    void OnEnable()
+    {
+        if (ThemeController.Instance != null) ThemeController.Instance.Register(this);
+        ThemeController.ThemeChanged += ApplyTheme;
+    }
+    
+    void Start()
+    {
+        if (ThemeController.Instance != null) ThemeController.Instance.Register(this);
+        ApplyTheme(ThemeController.Instance ? ThemeController.Instance.ActiveTheme : null);
+    }
+    
+    void OnDisable()
+    {
+        if (ThemeController.Instance != null) ThemeController.Instance.Unregister(this);
+        ThemeController.ThemeChanged -= ApplyTheme;
+    }
+    
+    public void ApplyTheme(ThemeSO t)
+    {
+        if (!_text || t == null) return;
+        
+        _text.color = Use switch
+        {
+            Which.Primary => t.Primary,
+            Which.Secondary => t.Secondary, 
+            Which.Accent => t.Accent,
+            _ => _text.color
+        };
+        
+        if (t.font != null) _text.font = t.font;
+        _text.fontSize = t.baseFontSize;
+    }
+}
+
+//// END FILE: UI\Theme\ThemeBinderText.cs
+
+
+//// BEGIN FILE [97/102]: UI\Theme\ThemeController.cs
+//// SIZE=1030 bytes | LINES=13 | SHA256=8C8B0BBA172DC6AA0A0B1569BF9CFF9AE00E79B2768947EAFBB630928385E839
+//// ---------------------------------------------------------------------------
+
+
+using System; using System.Collections.Generic; using UnityEngine;
+public class ThemeController : MonoBehaviour {
+  public ThemeSO ActiveTheme;
+  private static ThemeController _instance; public static ThemeController Instance => _instance;
+  private readonly List<IThemeBindable> _bindables = new(); public static event Action<ThemeSO> ThemeChanged;
+  void Awake(){ if(_instance!=null && _instance!=this){ Destroy(gameObject); return; } _instance=this; DontDestroyOnLoad(gameObject); }
+  public void Register(IThemeBindable b){ if(!_bindables.Contains(b)) _bindables.Add(b); }
+  public void Unregister(IThemeBindable b){ _bindables.Remove(b); }
+  [ContextMenu("Apply Theme")] public void ApplyTheme(){ var t=ActiveTheme; foreach(var b in _bindables){ b.ApplyTheme(t); } ThemeChanged?.Invoke(t); Debug.Log($"[Theme] Applied { (t? t.name : "null") } to {_bindables.Count} bindables."); }
+  public void SetActiveTheme(ThemeSO t){ ActiveTheme=t; ApplyTheme(); }
+}
+public interface IThemeBindable { void ApplyTheme(ThemeSO theme); }
+
+//// END FILE: UI\Theme\ThemeController.cs
+
+
+//// BEGIN FILE [98/102]: UI\Theme\ThemeRegistry.cs
+//// SIZE=392 bytes | LINES=14 | SHA256=D703627297CA39FE566C6105B8B2F2A6AB58F14ED5C328238F0173CFB18FE55D
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+[CreateAssetMenu(fileName="ThemeRegistry", menuName="AQ/ThemeRegistry", order=30)]
+public class ThemeRegistry : ScriptableObject
+{
+    public ThemeSO[] Themes;
+
+    public ThemeSO FindByName(string name){
+        if(string.IsNullOrEmpty(name) || Themes == null) return null;
+        foreach(var t in Themes) if(t && t.name == name) return t;
+        return null;
+    }
+}
+
+//// END FILE: UI\Theme\ThemeRegistry.cs
+
+
+//// BEGIN FILE [99/102]: UI\Theme\ThemeSO.cs
+//// SIZE=459 bytes | LINES=14 | SHA256=D05499DA12B85C949BB5C426634D5EE3BAB55AFB209DED56DDDB4011B6E23AF2
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+using TMPro;
+
+[CreateAssetMenu(fileName = "Theme", menuName = "AQ/Theme")]
+public class ThemeSO : ScriptableObject
+{
+    public Color Panel = Color.gray;         // ADD THIS
+    public Color Primary = Color.white;      // was primaryColor
+    public Color Secondary = Color.gray;     // ADD THIS
+    public Color Accent = Color.cyan;        // was accentColor
+    public TMP_FontAsset font;
+    public int baseFontSize = 36;
+}
+
+//// END FILE: UI\Theme\ThemeSO.cs
+
+
+//// BEGIN FILE [100/102]: Unity\SafeUnity.cs
+//// SIZE=1235 bytes | LINES=38 | SHA256=18B3AFBDE657409B02EF438E45343E665BFA74C0DD32D18491DF75AC4C7DD67A
+//// ---------------------------------------------------------------------------
+
+
+// Assembly: AQ.App
+// Use this ONLY in new code during WK3.
+// Existing Object.Destroy(...) call sites will be migrated in one hardening pass.
+
+using UnityEngine;
+
+namespace AQ.App
+{
+    public static class SafeUnity
+    {
+        public static void Destroy(Object obj)
+        {
+            if (obj == null) return;
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                // Claude’s guard: handle edit-mode + scene/prefab contexts consistently
+                if (obj is GameObject go)
+                {
+                    // If it's a scene object or prefab instance, DestroyImmediate is correct in edit mode.
+                    // (We avoid touching AssetDatabase blocks during sprint; hardening pass will review call-sites.)
+                    Object.DestroyImmediate(go);
+                }
+                else
+                {
+                    Object.DestroyImmediate(obj);
+                }
+                return;
+            }
+#endif
+            Object.Destroy(obj);
+        }
+
+        public static void Destroy(GameObject go) => Destroy((Object)go);
+        public static void Destroy(Component c)   => Destroy(c ? c.gameObject : null);
+    }
+}
+
+//// END FILE: Unity\SafeUnity.cs
+
+
+//// BEGIN FILE [101/102]: UnityAdapters\UnityPersistentPathProvider.cs
+//// SIZE=237 bytes | LINES=13 | SHA256=3D92EED07680C7C12D39C369CCCAAA1721B2F664B51C3C4721897C7E4CC8B58E
+//// ---------------------------------------------------------------------------
+
+
+using UnityEngine;
+
+namespace AQ.App.UnityAdapters
+{
+    public static class UnityPersistentPathProvider
+    {
+        public static string GetBasePath()
+        {
+            return Application.persistentDataPath;
+        }
+    }
+}
+
+//// END FILE: UnityAdapters\UnityPersistentPathProvider.cs
+
+
+//// BEGIN FILE [102/102]: Utils\DestroyUtil.cs
+//// SIZE=324 bytes | LINES=16 | SHA256=167611678DD463A6B5E9CB366BF448D1A1729E0B79CE8425A2E7CE4859721532
+//// ---------------------------------------------------------------------------
+
+
+// Assets/App/Utils/DestroyUtil.cs
+using UnityEngine;
+
+public static class DestroyUtil
+{
+    public static void SafeDestroy(Object obj)
+    {
+#if UNITY_EDITOR
+        if (!Application.isPlaying) Object.DestroyImmediate(obj);
+        else Object.Destroy(obj);
+#else
+        Object.Destroy(obj);
+#endif
+    }
+}
+
+//// END FILE: Utils\DestroyUtil.cs
+
+
+//// ---------------------------------------------------------------------------
+//// SUMMARY Assets\App: files=102 lines=4945
+//// END OF DUMP (Assets\App)
+

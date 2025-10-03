@@ -1,0 +1,9 @@
+=== BOARD SANITY AUDIT (STRICT): Assets/Scenes/MergeBoard_Demo.unity @ 2025-10-04 05:41:18 ===
+INFO: Scene: Assets/Scenes/MergeBoard_Demo.unity
+WARN: Grid spacing: (0,0) expected (2,2).
+INFO: Slots: 63 found (expected 63) — OK
+WARN: BoxCollider2D present on 63 UI slots (not needed for UI EventSystem).
+INFO: DragLayer: topmost | no own canvas.
+INFO: DragLayer anchors: min=(0.00, 0.00) max=(1.00, 1.00) pivot=(0.50, 0.50) (expect min(0,0) max(1,1) pivot 0.5).
+INFO: EventSystem: present
+WARN: GeneratorTile not found.

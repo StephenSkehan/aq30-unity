@@ -1,298 +1,129 @@
-// Assets/Editor/UI/Board/RebuildMergeBoardDemo.cs
-// Idempotently creates a minimal Merge Board demo scene with camera, canvas, grid, slots,
-// and best-guess wiring for Presenter/Controller/Populator.
-//
-// Menu: AQ / Board / Rebuild Merge Board Demo (idempotent)
+// COMPLETE FILE: Assets/Editor/UI/Board/RebuildMergeBoardDemo.cs
+// CREATE THIS NEW FILE (make sure folder path exists) 123
 
 #if UNITY_EDITOR
-using System;
-using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace AQ.Editor.UI.Board
 {
-    public static class MergeBoardDemoBuilder
+    public static class RebuildMergeBoardDemo
     {
-        private const string ScenePathPrimary   = "Assets/Scenes/MergeBoard_Demo.unity";
-        private const string ScenePathFallback  = "Assets/_Recovery/MergeBoard_Demo.unity";
-        private const string CanvasName         = "Canvas_Board";
-        private const string BoardRootName      = "BoardRoot";
-        private const string EventSystemName    = "EventSystem";
-        private const string CameraName         = "Camera_Main";
-        private const string SlotPrefabSearch   = "board_tile_slot t:prefab";
-
-        // Grid config
-        private const int Rows   = 5;
-        private const int Cols   = 5;
-        private static readonly Vector2 CellSize = new Vector2(128, 128);
-        private static readonly Vector2 Spacing  = new Vector2(8, 8);
-
-        [MenuItem("AQ/Board/Rebuild Merge Board Demo (idempotent)")]
-        public static void BuildDemoScene()
+        [MenuItem("AQ/Board/Rebuild MergeBoard_Demo Scene")]
+        public static void Rebuild()
         {
-            // 1) New scene
-            var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
-            scene.name = "MergeBoard_Demo";
-
-            // 2) Ensure Camera
-            EnsureCamera();
-
-            // 3) Ensure EventSystem (Input System–aware)
-            EnsureEventSystem();
-
-            // 4) Ensure Canvas + BoardRoot + Grid
-            var canvas = EnsureCanvas(out RectTransform boardRoot, out GridLayoutGroup grid);
-            ConfigureGrid(grid);
-
-            // 5) Get slot prefab
-            var slotPrefab = FindSlotPrefab();
-            if (slotPrefab == null)
-                Debug.LogWarning("[AQ] Could not find 'board_tile_slot' prefab. The grid will be empty.");
-
-            // 6) Populate visual grid
-            ClearImmediateChildren(boardRoot);
-            var total = Rows * Cols;
-            for (int i = 0; i < total; i++)
+            // Configuration
+            const int ROWS = 9;
+            const int COLS = 7;
+            const float SPACING = 2f;
+            
+            // Find required objects
+            var mergeBoard = GameObject.Find("MergeBoard");
+            if (!mergeBoard)
             {
-                if (slotPrefab != null)
+                EditorUtility.DisplayDialog("Error", "MergeBoard GameObject not found in scene", "OK");
+                return;
+            }
+
+            // Find MergeBoardController component
+            MonoBehaviour controller = null;
+            foreach (var comp in mergeBoard.GetComponents<MonoBehaviour>())
+            {
+                if (comp != null && comp.GetType().Name.Contains("MergeBoardController"))
                 {
-                    // Instantiate into this scene then parent under BoardRoot
-                    var inst = (GameObject)PrefabUtility.InstantiatePrefab(slotPrefab, canvas.gameObject.scene);
-                    var rt = inst.transform as RectTransform;
-                    rt.SetParent(boardRoot, false);
-                    inst.name = $"slot_{i:D2}";
-                }
-                else
-                {
-                    // placeholder
-                    var go = new GameObject($"slot_{i:D2}", typeof(RectTransform), typeof(Image));
-                    var rt = go.GetComponent<RectTransform>();
-                    rt.SetParent(boardRoot, false);
-                    rt.sizeDelta = CellSize;
-                    go.GetComponent<Image>().color = new Color(1, 1, 1, 0.1f);
+                    controller = comp;
+                    break;
                 }
             }
-
-            // 7) Add & bind runtime scripts if present
-            TryAddAndBindRuntime(canvas.gameObject.scene, boardRoot, slotPrefab);
-
-            // 8) Save
-            var savePath = EnsureFolderAndPickPath(ScenePathPrimary, ScenePathFallback);
-            if (EditorSceneManager.SaveScene(scene, savePath))
-                Debug.Log($"[AQ] MergeBoard demo scene saved: {savePath}");
-            else
-                Debug.LogWarning("[AQ] Scene save reported false; please Save manually.");
-        }
-
-        private static string EnsureFolderAndPickPath(string primary, string fallback)
-        {
-            var primaryDir = System.IO.Path.GetDirectoryName(primary).Replace("\\", "/");
-            if (!AssetDatabase.IsValidFolder(primaryDir))
+            
+            if (!controller)
             {
-                var parts = primaryDir.Split('/');
-                var path = "Assets";
-                for (int i = 1; i < parts.Length; i++)
-                {
-                    var next = $"{path}/{parts[i]}";
-                    if (!AssetDatabase.IsValidFolder(next))
-                        AssetDatabase.CreateFolder(path, parts[i]);
-                    path = next;
-                }
-            }
-            return primary;
-        }
-
-        private static Camera EnsureCamera()
-        {
-            var cam = UnityEngine.Object.FindFirstObjectByType<Camera>();
-            if (cam != null) return cam;
-
-            var go = new GameObject(CameraName);
-            cam = go.AddComponent<Camera>();
-            cam.clearFlags = CameraClearFlags.SolidColor;
-            cam.backgroundColor = new Color(0.07f, 0.07f, 0.07f, 1f);
-            go.transform.position = new Vector3(0, 0, -10);
-            return cam;
-        }
-
-        private static void EnsureEventSystem()
-        {
-            var existing = GameObject.Find(EventSystemName);
-            if (existing == null)
-            {
-                existing = new GameObject(EventSystemName);
-                existing.AddComponent<UnityEngine.EventSystems.EventSystem>();
+                EditorUtility.DisplayDialog("Error", 
+                    "MergeBoardController component not found on MergeBoard GameObject.\n\n" +
+                    "Make sure the MergeBoard GameObject has the MergeBoardController script attached.", "OK");
+                return;
             }
 
-            // Try Input System module first (no compile-time dependency).
-            var inputSystemType = Type.GetType(
-                "UnityEngine.InputSystem.UI.InputSystemUIInputModule, Unity.InputSystem",
-                throwOnError: false);
-
-            var legacy = existing.GetComponent<UnityEngine.EventSystems.StandaloneInputModule>();
-            var inputSystem = inputSystemType != null ? existing.GetComponent(inputSystemType) : null;
-
-            if (inputSystemType != null)
+            // Get the tile prefab from controller
+            var so = new SerializedObject(controller);
+            var tilePrefabProp = so.FindProperty("tilePrefab");
+            var tilePrefab = tilePrefabProp?.objectReferenceValue as GameObject;
+            
+            if (!tilePrefab)
             {
-                // Ensure InputSystemUIInputModule is present
-                if (inputSystem == null) inputSystem = existing.AddComponent(inputSystemType);
-                // Remove legacy to avoid InvalidOperationException spam
-                if (legacy != null) UnityEngine.Object.DestroyImmediate(legacy);
-            }
-            else
-            {
-                // Fall back to legacy StandaloneInputModule
-                if (legacy == null) existing.AddComponent<UnityEngine.EventSystems.StandaloneInputModule>();
-            }
-        }
-
-        private static Canvas EnsureCanvas(out RectTransform boardRoot, out GridLayoutGroup grid)
-        {
-            var canvasGO = GameObject.Find(CanvasName);
-            if (canvasGO == null)
-                canvasGO = new GameObject(CanvasName, typeof(RectTransform));
-
-            if (canvasGO.GetComponent<RectTransform>() == null)
-                canvasGO.AddComponent<RectTransform>();
-
-            var canvas = canvasGO.GetComponent<Canvas>();
-            if (canvas == null) canvas = canvasGO.AddComponent<Canvas>();
-            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-
-            var scaler = canvasGO.GetComponent<CanvasScaler>() ?? canvasGO.AddComponent<CanvasScaler>();
-            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1080, 1920);
-            scaler.matchWidthOrHeight = 1f;
-
-            if (canvasGO.GetComponent<GraphicRaycaster>() == null)
-                canvasGO.AddComponent<GraphicRaycaster>();
-
-            // BoardRoot
-            var boardGO = canvas.transform.Cast<Transform>()
-                .Select(t => t.gameObject)
-                .FirstOrDefault(g => g.name == BoardRootName);
-            if (boardGO == null)
-            {
-                boardGO = new GameObject(BoardRootName, typeof(RectTransform));
-                boardGO.transform.SetParent(canvasGO.transform, false);
+                EditorUtility.DisplayDialog("Error", 
+                    "Tile prefab not assigned on MergeBoardController.\n\n" +
+                    "Please assign the board_tile_slot prefab to the TilePrefab field in the Inspector.", "OK");
+                return;
             }
 
-            boardRoot = boardGO.GetComponent<RectTransform>();
-            StretchToFull(boardRoot);
+            Undo.SetCurrentGroupName("Rebuild MergeBoard");
+            var group = Undo.GetCurrentGroup();
 
-            grid = boardGO.GetComponent<GridLayoutGroup>() ?? boardGO.AddComponent<GridLayoutGroup>();
-            return canvas;
-        }
+            // 1. Clear existing children
+            var transform = mergeBoard.transform;
+            for (int i = transform.childCount - 1; i >= 0; i--)
+            {
+                var child = transform.GetChild(i);
+                if (child.name.StartsWith("slot_") || child.name.StartsWith("Slot_"))
+                    Undo.DestroyObjectImmediate(child.gameObject);
+            }
 
-        private static void ConfigureGrid(GridLayoutGroup grid)
-        {
-            grid.cellSize = CellSize;
-            grid.spacing  = Spacing;
-            grid.startCorner = GridLayoutGroup.Corner.UpperLeft;
-            grid.startAxis   = GridLayoutGroup.Axis.Horizontal;
-            grid.childAlignment = TextAnchor.UpperLeft;
+            // 2. Setup GridLayoutGroup
+            var grid = mergeBoard.GetComponent<GridLayoutGroup>();
+            if (!grid)
+                grid = Undo.AddComponent<GridLayoutGroup>(mergeBoard);
+
+            Undo.RecordObject(grid, "Setup Grid");
             grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-            grid.constraintCount = Cols;
-        }
+            grid.constraintCount = COLS;
+            grid.spacing = new Vector2(SPACING, SPACING);
+            grid.padding = new RectOffset(0, 0, 0, 0);
+            grid.childAlignment = TextAnchor.UpperLeft;
+            grid.startAxis = GridLayoutGroup.Axis.Horizontal;
+            grid.startCorner = GridLayoutGroup.Corner.UpperLeft;
 
-        private static void StretchToFull(RectTransform rt)
-        {
-            rt.anchorMin = Vector2.zero;
-            rt.anchorMax = Vector2.one;
-            rt.pivot     = new Vector2(0.5f, 0.5f);
-            rt.anchoredPosition = Vector2.zero;
-            rt.sizeDelta = Vector2.zero;
-        }
+            // Calculate cell size to fit the board
+            var rt = mergeBoard.GetComponent<RectTransform>();
+            var boardWidth = rt.rect.width;
+            var boardHeight = rt.rect.height;
+            
+            var cellW = (boardWidth - SPACING * (COLS - 1)) / COLS;
+            var cellH = (boardHeight - SPACING * (ROWS - 1)) / ROWS;
+            var cellSize = Mathf.Floor(Mathf.Min(cellW, cellH));
+            grid.cellSize = new Vector2(cellSize, cellSize);
 
-        private static GameObject FindSlotPrefab()
-        {
-            var guids = AssetDatabase.FindAssets(SlotPrefabSearch);
-            if (guids != null && guids.Length > 0)
+            // 3. Create all slot instances
+            for (int r = 0; r < ROWS; r++)
             {
-                var path = AssetDatabase.GUIDToAssetPath(guids[0]);
-                return AssetDatabase.LoadAssetAtPath<GameObject>(path);
-            }
-            // Known path fallback
-            const string known = "Assets/UI/Prefabs/board_tile_slot.prefab";
-            return AssetDatabase.LoadAssetAtPath<GameObject>(known);
-        }
-
-        private static void ClearImmediateChildren(Transform t)
-        {
-            for (int i = t.childCount - 1; i >= 0; i--)
-                UnityEngine.Object.DestroyImmediate(t.GetChild(i).gameObject);
-        }
-
-        private static void TryAddAndBindRuntime(Scene scene, RectTransform boardRoot, GameObject slotPrefab)
-        {
-            var root = new GameObject("MergeBoard");
-            var presenter = TryAddBySimpleName(root, "MergeBoardPresenter") as MonoBehaviour;
-            var controller = TryAddBySimpleName(root, "MergeBoardController") as MonoBehaviour;
-            var populator  = TryAddBySimpleName(root, "DemoBoardPopulator")  as MonoBehaviour;
-
-            // Presenter bindings
-            if (presenter != null)
-            {
-                var so = new SerializedObject(presenter);
-                TrySetInt(so,   new[] { "rows","rowCount","Rows","RowCount" }, Rows);
-                TrySetInt(so,   new[] { "cols","columns","Cols","Columns"   }, Cols);
-                TrySetObj(so,   new[] { "gridParent","grid","root","GridParent","GridRoot","Parent","BoardRoot" }, boardRoot);
-                TrySetObj(so,   new[] { "slotPrefab","tilePrefab","itemPrefab","boardTilePrefab","SlotPrefab"   }, slotPrefab);
-                so.ApplyModifiedPropertiesWithoutUndo();
+                for (int c = 0; c < COLS; c++)
+                {
+                    var slot = (GameObject)PrefabUtility.InstantiatePrefab(tilePrefab, transform);
+                    slot.name = $"slot_{r:00}_{c:00}";
+                    Undo.RegisterCreatedObjectUndo(slot, "Create Slot");
+                }
             }
 
-            // Controller bindings (now also sets prefab!)
-            if (controller != null)
-            {
-                var so = new SerializedObject(controller);
-                TrySetObj(so, new[] { "presenter","boardPresenter","mergeBoardPresenter" }, presenter);
-                TrySetObj(so, new[] { "gridParent","boardRoot","GridParent","BoardRoot"  }, boardRoot);
-                TrySetInt(so, new[] { "rows","rowCount","Rows","RowCount"                }, Rows);
-                TrySetInt(so, new[] { "cols","columns","Cols","Columns"                  }, Cols);
-                TrySetObj(so, new[] { "slotPrefab","tilePrefab","itemPrefab","boardTilePrefab","Prefab" }, slotPrefab);
-                so.ApplyModifiedPropertiesWithoutUndo();
-            }
+            Undo.CollapseUndoOperations(group);
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
 
-            // Populator optional links
-            if (populator != null)
-            {
-                var so = new SerializedObject(populator);
-                TrySetObj(so, new[] { "controller","mergeController","boardController" }, controller);
-                TrySetObj(so, new[] { "presenter","mergePresenter","boardPresenter"    }, presenter);
-                TrySetObj(so, new[] { "gridParent","boardRoot"                         }, boardRoot);
-                so.ApplyModifiedPropertiesWithoutUndo();
-            }
+            Debug.Log($"[AQ] Rebuilt MergeBoard: {ROWS}×{COLS} grid with {SPACING}px spacing. " +
+                      $"Created {ROWS * COLS} slots. Cell size: {cellSize}×{cellSize}");
+            
+            EditorUtility.DisplayDialog("Success", 
+                $"MergeBoard rebuilt successfully!\n\n" +
+                $"• {ROWS}×{COLS} grid ({ROWS * COLS} slots)\n" +
+                $"• {SPACING}px spacing\n" +
+                $"• Cell size: {cellSize}×{cellSize}\n\n" +
+                $"Press Play to test.", "OK");
         }
 
-        private static Component TryAddBySimpleName(GameObject go, string typeName)
+        [MenuItem("AQ/Board/Rebuild MergeBoard_Demo Scene", true)]
+        public static bool RebuildValidate()
         {
-            var type = TypeCache.GetTypesDerivedFrom<MonoBehaviour>().FirstOrDefault(t => t.Name == typeName);
-            if (type == null) return null;
-            return go.GetComponent(type) ?? go.AddComponent(type);
-        }
-
-        private static void TrySetInt(SerializedObject so, string[] names, int value)
-        {
-            foreach (var n in names)
-            {
-                var p = so.FindProperty(n);
-                if (p != null && p.propertyType == SerializedPropertyType.Integer)
-                    p.intValue = value;
-            }
-        }
-
-        private static void TrySetObj(SerializedObject so, string[] names, UnityEngine.Object obj)
-        {
-            foreach (var n in names)
-            {
-                var p = so.FindProperty(n);
-                if (p != null && p.propertyType == SerializedPropertyType.ObjectReference)
-                    p.objectReferenceValue = obj;
-            }
+            return GameObject.Find("MergeBoard") != null;
         }
     }
 }

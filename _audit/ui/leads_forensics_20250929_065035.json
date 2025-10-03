@@ -1,0 +1,561 @@
+{
+    "timestamp": "2025-09-29 06:50:35",
+    "scene": "OLD",
+    "unityVersion": "6000.2.2f1",
+    "tmpVersion": "Unity.TextMeshPro 0.0.0.0",
+    "typesAvailable": [
+        "AQ.App.UI.Leads.LeadCardPresenter",
+        "AQ.App.UI.Leads.RequirementSlotView",
+        "AQ.App.UI.Leads.TierSetPopupPresenter",
+        "AQ.UI.Leads.LeadCardPresenter",
+        "AQ.UI.Leads.RequirementSlotView"
+    ],
+    "canvas": {
+        "name": "Canvas_Board",
+        "mode": "ScreenSpaceOverlay",
+        "scalerMode": "ScaleWithScreenSize",
+        "referenceResX": 1080.0,
+        "referenceResY": 1920.0,
+        "match": 0.5,
+        "rect": {
+            "hasRectTransform": true,
+            "anchorMinX": 0.0,
+            "anchorMinY": 0.0,
+            "anchorMaxX": 0.0,
+            "anchorMaxY": 0.0,
+            "pivotX": 0.5,
+            "pivotY": 0.5,
+            "sizeX": 1080.0,
+            "sizeY": 1920.0,
+            "posX": 540.0,
+            "posY": 960.0
+        }
+    },
+    "hud": {
+        "name": "HUD_Board",
+        "rect": {
+            "hasRectTransform": true,
+            "anchorMinX": 0.0,
+            "anchorMinY": 0.0,
+            "anchorMaxX": 1.0,
+            "anchorMaxY": 1.0,
+            "pivotX": 0.5,
+            "pivotY": 0.5,
+            "sizeX": 1080.0,
+            "sizeY": 1920.0,
+            "posX": 0.0,
+            "posY": 0.0
+        },
+        "vlg": {
+            "spacing": 12.0,
+            "childCtrlW": true,
+            "childCtrlH": true,
+            "expandW": true,
+            "expandH": false,
+            "padding": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+            }
+        },
+        "topBar": {
+            "rect": {
+                "hasRectTransform": true,
+                "anchorMinX": 0.0,
+                "anchorMinY": 1.0,
+                "anchorMaxX": 0.0,
+                "anchorMaxY": 1.0,
+                "pivotX": 0.5,
+                "pivotY": 1.0,
+                "sizeX": 1080.0,
+                "sizeY": 176.0,
+                "posX": 540.0,
+                "posY": 0.0
+            },
+            "hlg": {
+                "spacing": 24.0,
+                "childCtrlW": true,
+                "childCtrlH": false,
+                "expandW": false,
+                "expandH": false,
+                "padding": {
+                    "left": 24,
+                    "right": 24,
+                    "top": 12,
+                    "bottom": 12
+                }
+            },
+            "hasBtnHome": true,
+            "hasAvatarChip": true,
+            "hasEpisodeChipUnderAvatar": true,
+            "hasSpacerFlex": true
+        },
+        "statusRow": {
+            "rect": {
+                "hasRectTransform": true,
+                "anchorMinX": 0.0,
+                "anchorMinY": 1.0,
+                "anchorMaxX": 0.0,
+                "anchorMaxY": 1.0,
+                "pivotX": 0.5,
+                "pivotY": 1.0,
+                "sizeX": 1080.0,
+                "sizeY": 96.0,
+                "posX": 540.0,
+                "posY": -188.0
+            },
+            "labels": [
+                {
+                    "name": "Text_Solved",
+                    "present": true,
+                    "text": "Solved 0%",
+                    "font": "LiberationSans SDF",
+                    "size": 40.0,
+                    "alignment": "MidlineLeft",
+                    "overflow": "Overflow",
+                    "wrapping": "NoWrap",
+                    "raycastTarget": false
+                },
+                {
+                    "name": "Text_Evidence",
+                    "present": true,
+                    "text": "Evidence 0",
+                    "font": "LiberationSans SDF",
+                    "size": 40.0,
+                    "alignment": "MidlineLeft",
+                    "overflow": "Overflow",
+                    "wrapping": "NoWrap",
+                    "raycastTarget": false
+                },
+                {
+                    "name": "Text_Leads",
+                    "present": true,
+                    "text": "Leads 0",
+                    "font": "LiberationSans SDF",
+                    "size": 40.0,
+                    "alignment": "MidlineLeft",
+                    "overflow": "Overflow",
+                    "wrapping": "NoWrap",
+                    "raycastTarget": false
+                },
+                {
+                    "name": "Text_LastBreakthrough",
+                    "present": true,
+                    "text": "Last OK — —",
+                    "font": "LiberationSans SDF",
+                    "size": 40.0,
+                    "alignment": "MidlineLeft",
+                    "overflow": "Overflow",
+                    "wrapping": "NoWrap",
+                    "raycastTarget": false
+                }
+            ]
+        },
+        "requirementsHud": {
+            "rect": {
+                "hasRectTransform": true,
+                "anchorMinX": 0.0,
+                "anchorMinY": 1.0,
+                "anchorMaxX": 0.0,
+                "anchorMaxY": 1.0,
+                "pivotX": 0.5,
+                "pivotY": 1.0,
+                "sizeX": 1080.0,
+                "sizeY": 120.0,
+                "posX": 540.0,
+                "posY": -296.0
+            },
+            "active": false,
+            "image": "Image present"
+        }
+    },
+    "leadsBar": {
+        "rect": {
+            "hasRectTransform": true,
+            "anchorMinX": 0.0,
+            "anchorMinY": 1.0,
+            "anchorMaxX": 0.0,
+            "anchorMaxY": 1.0,
+            "pivotX": 0.5,
+            "pivotY": 1.0,
+            "sizeX": 1080.0,
+            "sizeY": 220.0,
+            "posX": 540.0,
+            "posY": -296.0
+        },
+        "hasScroll": true,
+        "scrollH": true,
+        "scrollV": false,
+        "scrollContentPath": "Canvas_Board/HUD_Board/LeadsBar/Viewport/Content_Leads",
+        "viewportHasMask": true,
+        "contentRect": {
+            "hasRectTransform": true,
+            "anchorMinX": 0.0,
+            "anchorMinY": 0.5,
+            "anchorMaxX": 0.0,
+            "anchorMaxY": 0.5,
+            "pivotX": 0.0,
+            "pivotY": 0.5,
+            "sizeX": 1176.0,
+            "sizeY": 220.0,
+            "posX": 0.0,
+            "posY": 0.0
+        },
+        "contentSpacing": 24.0,
+        "contentPadding": {
+            "left": 24,
+            "right": 24,
+            "top": 0,
+            "bottom": 0
+        }
+    },
+    "cards": [
+        {
+            "name": "LeadCard(Clone)",
+            "rect": {
+                "hasRectTransform": true,
+                "anchorMinX": 0.0,
+                "anchorMinY": 1.0,
+                "anchorMaxX": 0.0,
+                "anchorMaxY": 1.0,
+                "pivotX": 0.0,
+                "pivotY": 1.0,
+                "sizeX": 360.0,
+                "sizeY": 220.0,
+                "posX": 24.0,
+                "posY": 0.0
+            },
+            "backImage": true,
+            "button": true,
+            "missingScripts": 0,
+            "background": "#FFFFFFFF",
+            "title": {
+                "name": "Text_Title",
+                "present": true,
+                "text": "Stakeout Snacks",
+                "font": "LiberationSans SDF",
+                "size": 32.0,
+                "alignment": "Left",
+                "overflow": "Overflow",
+                "wrapping": "NoWrap",
+                "raycastTarget": true
+            },
+            "objective": {
+                "name": "Text_Objective",
+                "present": true,
+                "text": "Grab a basic coffee",
+                "font": "LiberationSans SDF",
+                "size": 26.0,
+                "alignment": "Left",
+                "overflow": "Overflow",
+                "wrapping": "NoWrap",
+                "raycastTarget": true
+            },
+            "leadId": {
+                "name": "Text_LeadId",
+                "present": true,
+                "text": "#L-201",
+                "font": "LiberationSans SDF",
+                "size": 18.0,
+                "alignment": "Right",
+                "overflow": "Overflow",
+                "wrapping": "NoWrap",
+                "raycastTarget": true
+            },
+            "actor": {
+                "hasAnchor": true,
+                "hasImage": true,
+                "hasSprite": true,
+                "alpha": 1.0
+            },
+            "requirementsRow": {
+                "present": true,
+                "req1": {
+                    "name": "Req_1",
+                    "present": true,
+                    "hasButton": true,
+                    "hasRequirementSlotView": true,
+                    "hasIcon": true,
+                    "hasTick": true,
+                    "tickEnabled": true,
+                    "missingScripts": 0
+                },
+                "req2": {
+                    "name": "Req_2",
+                    "present": true,
+                    "hasButton": true,
+                    "hasRequirementSlotView": true,
+                    "hasIcon": true,
+                    "hasTick": true,
+                    "tickEnabled": true,
+                    "missingScripts": 0
+                },
+                "req3": {
+                    "name": "Req_3",
+                    "present": true,
+                    "hasButton": true,
+                    "hasRequirementSlotView": true,
+                    "hasIcon": true,
+                    "hasTick": true,
+                    "tickEnabled": true,
+                    "missingScripts": 0
+                }
+            }
+        },
+        {
+            "name": "LeadCard(Clone)",
+            "rect": {
+                "hasRectTransform": true,
+                "anchorMinX": 0.0,
+                "anchorMinY": 1.0,
+                "anchorMaxX": 0.0,
+                "anchorMaxY": 1.0,
+                "pivotX": 0.0,
+                "pivotY": 1.0,
+                "sizeX": 360.0,
+                "sizeY": 220.0,
+                "posX": 408.0,
+                "posY": 0.0
+            },
+            "backImage": true,
+            "button": true,
+            "missingScripts": 0,
+            "background": "#F0F5FFFF",
+            "title": {
+                "name": "Text_Title",
+                "present": true,
+                "text": "Night Shift Comforts",
+                "font": "LiberationSans SDF",
+                "size": 32.0,
+                "alignment": "Left",
+                "overflow": "Overflow",
+                "wrapping": "NoWrap",
+                "raycastTarget": true
+            },
+            "objective": {
+                "name": "Text_Objective",
+                "present": true,
+                "text": "Burger for morale",
+                "font": "LiberationSans SDF",
+                "size": 26.0,
+                "alignment": "Left",
+                "overflow": "Overflow",
+                "wrapping": "NoWrap",
+                "raycastTarget": true
+            },
+            "leadId": {
+                "name": "Text_LeadId",
+                "present": true,
+                "text": "#L-202",
+                "font": "LiberationSans SDF",
+                "size": 18.0,
+                "alignment": "Right",
+                "overflow": "Overflow",
+                "wrapping": "NoWrap",
+                "raycastTarget": true
+            },
+            "actor": {
+                "hasAnchor": true,
+                "hasImage": true,
+                "hasSprite": true,
+                "alpha": 1.0
+            },
+            "requirementsRow": {
+                "present": true,
+                "req1": {
+                    "name": "Req_1",
+                    "present": true,
+                    "hasButton": true,
+                    "hasRequirementSlotView": true,
+                    "hasIcon": true,
+                    "hasTick": true,
+                    "tickEnabled": true,
+                    "missingScripts": 0
+                },
+                "req2": {
+                    "name": "Req_2",
+                    "present": true,
+                    "hasButton": true,
+                    "hasRequirementSlotView": true,
+                    "hasIcon": true,
+                    "hasTick": true,
+                    "tickEnabled": true,
+                    "missingScripts": 0
+                },
+                "req3": {
+                    "name": "Req_3",
+                    "present": true,
+                    "hasButton": true,
+                    "hasRequirementSlotView": true,
+                    "hasIcon": true,
+                    "hasTick": true,
+                    "tickEnabled": true,
+                    "missingScripts": 0
+                }
+            }
+        },
+        {
+            "name": "LeadCard(Clone)",
+            "rect": {
+                "hasRectTransform": true,
+                "anchorMinX": 0.0,
+                "anchorMinY": 1.0,
+                "anchorMaxX": 0.0,
+                "anchorMaxY": 1.0,
+                "pivotX": 0.0,
+                "pivotY": 1.0,
+                "sizeX": 360.0,
+                "sizeY": 220.0,
+                "posX": 792.0,
+                "posY": 0.0
+            },
+            "backImage": true,
+            "button": true,
+            "missingScripts": 0,
+            "background": "#E6FFEBFF",
+            "title": {
+                "name": "Text_Title",
+                "present": true,
+                "text": "Stakeout Feast",
+                "font": "LiberationSans SDF",
+                "size": 32.0,
+                "alignment": "Left",
+                "overflow": "Overflow",
+                "wrapping": "NoWrap",
+                "raycastTarget": true
+            },
+            "objective": {
+                "name": "Text_Objective",
+                "present": true,
+                "text": "All set for a long watch",
+                "font": "LiberationSans SDF",
+                "size": 26.0,
+                "alignment": "Left",
+                "overflow": "Overflow",
+                "wrapping": "NoWrap",
+                "raycastTarget": true
+            },
+            "leadId": {
+                "name": "Text_LeadId",
+                "present": true,
+                "text": "#L-203",
+                "font": "LiberationSans SDF",
+                "size": 18.0,
+                "alignment": "Right",
+                "overflow": "Overflow",
+                "wrapping": "NoWrap",
+                "raycastTarget": true
+            },
+            "actor": {
+                "hasAnchor": true,
+                "hasImage": true,
+                "hasSprite": true,
+                "alpha": 1.0
+            },
+            "requirementsRow": {
+                "present": true,
+                "req1": {
+                    "name": "Req_1",
+                    "present": true,
+                    "hasButton": true,
+                    "hasRequirementSlotView": true,
+                    "hasIcon": true,
+                    "hasTick": true,
+                    "tickEnabled": true,
+                    "missingScripts": 0
+                },
+                "req2": {
+                    "name": "Req_2",
+                    "present": true,
+                    "hasButton": true,
+                    "hasRequirementSlotView": true,
+                    "hasIcon": true,
+                    "hasTick": true,
+                    "tickEnabled": true,
+                    "missingScripts": 0
+                },
+                "req3": {
+                    "name": "Req_3",
+                    "present": true,
+                    "hasButton": true,
+                    "hasRequirementSlotView": true,
+                    "hasIcon": true,
+                    "hasTick": true,
+                    "tickEnabled": true,
+                    "missingScripts": 0
+                }
+            }
+        }
+    ],
+    "tierSetPopup": {
+        "rect": {
+            "hasRectTransform": true,
+            "anchorMinX": 0.0,
+            "anchorMinY": 0.0,
+            "anchorMaxX": 1.0,
+            "anchorMaxY": 1.0,
+            "pivotX": 0.5,
+            "pivotY": 0.5,
+            "sizeX": 1080.0,
+            "sizeY": 1920.0,
+            "posX": 0.0,
+            "posY": 0.0
+        },
+        "hasCanvasGroup": true,
+        "hasTitle": false,
+        "titleIsUI": false,
+        "hasIconGrid": true,
+        "iconGridHasLayout": true,
+        "iconChildren": 6,
+        "hasHighlight": true,
+        "hasCloseButton": false,
+        "hasPresenterType": true,
+        "presenterOnPopup": false,
+        "missingScripts": 0
+    },
+    "prefabs": [
+        {
+            "path": "Assets/UI/Prefabs/LeadCard.prefab",
+            "name": "LeadCard",
+            "missingScripts": 4,
+            "hasTextTitle": true,
+            "hasObjective": true,
+            "hasLeadId": true,
+            "hasReqRow": true,
+            "hasReq1": true,
+            "hasReq2": true,
+            "hasReq3": true,
+            "hasActorImage": false,
+            "hasPresenter": true
+        },
+        {
+            "path": "Assets/UI/Prefabs/LeadCardView.bak_20250921_204030.prefab",
+            "name": "LeadCardView.bak_20250921_204030",
+            "missingScripts": 0,
+            "hasTextTitle": true,
+            "hasObjective": false,
+            "hasLeadId": false,
+            "hasReqRow": true,
+            "hasReq1": true,
+            "hasReq2": true,
+            "hasReq3": true,
+            "hasActorImage": true,
+            "hasPresenter": false
+        },
+        {
+            "path": "Assets/UI/Prefabs/LeadCardView.prefab",
+            "name": "LeadCardView",
+            "missingScripts": 0,
+            "hasTextTitle": true,
+            "hasObjective": false,
+            "hasLeadId": false,
+            "hasReqRow": false,
+            "hasReq1": false,
+            "hasReq2": false,
+            "hasReq3": false,
+            "hasActorImage": false,
+            "hasPresenter": false
+        }
+    ]
+}

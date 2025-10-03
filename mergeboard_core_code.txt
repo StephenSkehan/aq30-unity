@@ -1,0 +1,4213 @@
+=== MERGEBOARD CORE CODE ===
+Generated: 10/03/2025 05:56:56
+
+================================================================================
+FILE: .\Assets\MergeBoardBoot.cs
+SIZE: 9949 bytes
+MODIFIED: 10/02/2025 21:17:27
+================================================================================
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
+using UnityEngine;
+using UnityEngine.UI;
+
+[DefaultExecutionOrder(-50)]
+public sealed class MergeBoardBoot : MonoBehaviour
+{
+    [Header("Auto-filled")]
+    [SerializeField] GridLayoutGroup grid;
+    [SerializeField] Component presenter;   // MergeBoardPresenter
+    [SerializeField] Component controller;  // MergeBoardController
+
+    [Header("Fallbacks")]
+    [SerializeField] float spacingFallback = 2f;
+    [SerializeField] int fallbackIconsToPlace = 8;
+    [SerializeField] bool verboseLogs = true;
+
+    void Reset()
+    {
+        grid = GetComponent<GridLayoutGroup>();
+        presenter = FindSiblingByTypeName(gameObject, "MergeBoardPresenter");
+        controller = FindSiblingByTypeName(gameObject, "MergeBoardController");
+    }
+
+    void Awake()
+    {
+        if (!presenter) presenter = FindSiblingByTypeName(gameObject, "MergeBoardPresenter");
+        if (!controller) controller = FindSiblingByTypeName(gameObject, "MergeBoardController");
+        ApplyGridSpacing();  // get Spacing from presenter if available
+    }
+
+    void Start()
+    {
+        ApplyGridSpacing();
+
+        // Try the project's own build/seed methods first (if they exist).
+        TryInvokeAny(presenter, new[] { "Rebuild", "Build", "BuildGrid", "EnsureSlots", "CreateSlots", "GenerateBoard" });
+        TryInvokeAny(controller, new[] { "InitAndSeed", "Init", "ResetBoard" });
+        TryInvokeAny(controller, new[] { "SeedBoard", "Seed", "Populate", "Generate" });
+        TryInvokeAny(controller, new[] { "ShowGenerator", "SpawnGenerator" });
+
+        // If nothing got built, we build a basic grid of slots ourselves.
+        if (GetChildCount() == 0)
+        {
+            int rows = GetInt(presenter, "Rows") ?? GetInt(controller, "Rows") ?? 0;
+            int cols = GetInt(presenter, "Columns") ?? GetInt(presenter, "Cols") ??
+                       GetInt(controller, "Cols") ?? GetInt(controller, "Columns") ?? 0;
+
+            var prefab = GetPrefab(controller, new[] { "TilePrefab", "SlotPrefab", "CellPrefab", "BoardTilePrefab" });
+            if (rows <= 0 || cols <= 0 || prefab == null)
+            {
+                Warn($"Cannot auto-build: rows={rows}, cols={cols}, prefab={(prefab ? prefab.name : "<null>")}. " +
+                     $"Assign these on Presenter/Controller.");
+            }
+            else
+            {
+                BuildSlots(rows, cols, prefab);
+            }
+        }
+
+        // Seed icons if none visible yet.
+        if (CountIconsWithSprites() == 0)
+        {
+            var sprites = GetSpriteList(controller, "Icons");
+            if (sprites == null || sprites.Count == 0)
+            {
+                var gen = GetSprite(controller, "GeneratorSprite");
+                sprites = new List<Sprite>();
+                if (gen) sprites.Add(gen);
+            }
+            FallbackSeed(sprites);
+        }
+
+        Log($"Boot done. children={GetChildCount()}, filledIcons={CountIconsWithSprites()}, grid.spacing={grid?.spacing}");
+    }
+
+    // ---------- build / seed helpers ----------
+
+    void BuildSlots(int rows, int cols, GameObject tilePrefab)
+    {
+        if (!grid) return;
+
+        if (grid.constraint != GridLayoutGroup.Constraint.FixedColumnCount)
+            grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+        grid.constraintCount = cols;
+
+        for (int r = 0; r < rows; r++)
+            for (int c = 0; c < cols; c++)
+            {
+                var go = Instantiate(tilePrefab);
+                go.name = $"slot_{r:00}_{c:00}";
+                var rt = go.GetComponent<RectTransform>();
+                rt.SetParent(grid.transform, false);
+            }
+        Log($"Auto-built {rows * cols} slots.");
+    }
+
+    void ApplyGridSpacing()
+    {
+        if (!grid) grid = GetComponent<GridLayoutGroup>();
+        if (!grid) return;
+
+        float s = GetFloat(presenter, "Spacing") ?? spacingFallback;
+        grid.spacing = new Vector2(s, s);
+    }
+
+    void FallbackSeed(List<Sprite> sprites)
+    {
+        if (!grid || sprites == null || sprites.Count == 0) { Log("Fallback seed skipped (no sprites)."); return; }
+
+        var rng = new System.Random(12345);
+        int placed = 0;
+        int max = Mathf.Min(fallbackIconsToPlace, GetChildCount());
+
+        // place into random empty Icon images
+        for (int tries = 0; placed < max && tries < 500; tries++)
+        {
+            int idx = rng.Next(0, GetChildCount());
+            var slot = grid.transform.GetChild(idx);
+            var icon = slot.Find("Icon");
+            if (!icon) continue;
+
+            var img = icon.GetComponent<Image>();
+            if (!img || img.sprite) continue;
+
+            img.sprite = sprites[rng.Next(sprites.Count)];
+            img.preserveAspect = true;
+            placed++;
+        }
+        Log($"Fallback seeded {placed} icons.");
+    }
+
+    // ---------- reflection/util ----------
+
+    Component FindSiblingByTypeName(GameObject go, string typeName)
+    {
+        if (!go) return null;
+        foreach (var m in go.GetComponents<MonoBehaviour>())
+            if (m && m.GetType().Name == typeName) return m;
+        return null;
+    }
+
+    bool TryInvokeAny(Component target, string[] names)
+    {
+        if (!target) return false;
+        foreach (var n in names)
+        {
+            var mi = target.GetType().GetMethod(n, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, null, Type.EmptyTypes, null);
+            if (mi != null)
+            {
+                try { mi.Invoke(target, null); Log($"Invoked {target.GetType().Name}.{n}()"); return true; }
+                catch (Exception e) { Warn($"{target.GetType().Name}.{n} threw: {e.Message}"); }
+            }
+        }
+        return false;
+    }
+
+    int? GetInt(Component obj, string name)
+    {
+        if (!obj) return null;
+        var t = obj.GetType();
+        var p = t.GetProperty(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        if (p != null && (p.PropertyType == typeof(int))) return (int)p.GetValue(obj);
+        var f = t.GetField(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        if (f != null && (f.FieldType == typeof(int))) return (int)f.GetValue(obj);
+        return null;
+    }
+
+    float? GetFloat(Component obj, string name)
+    {
+        if (!obj) return null;
+        var t = obj.GetType();
+        var p = t.GetProperty(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        if (p != null && p.PropertyType == typeof(float)) return (float)p.GetValue(obj);
+        var f = t.GetField(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        if (f != null && f.FieldType == typeof(float)) return (float)f.GetValue(obj);
+        return null;
+    }
+
+    GameObject GetPrefab(Component obj, string[] fieldNames)
+    {
+        if (!obj) return null;
+        var t = obj.GetType();
+        foreach (var n in fieldNames)
+        {
+            var p = t.GetProperty(n, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (p != null)
+            {
+                var val = p.GetValue(obj);
+                if (val is GameObject go) return go;
+                if (val is Component c) return c ? c.gameObject : null;
+            }
+            var f = t.GetField(n, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (f != null)
+            {
+                var val = f.GetValue(obj);
+                if (val is GameObject go) return go;
+                if (val is Component c) return c ? c.gameObject : null;
+            }
+        }
+        return null;
+    }
+
+    List<Sprite> GetSpriteList(Component obj, string name)
+    {
+        if (!obj) return null;
+        var t = obj.GetType();
+        var p = t.GetProperty(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        if (p != null && typeof(IEnumerable<Sprite>).IsAssignableFrom(p.PropertyType))
+            return new List<Sprite>((IEnumerable<Sprite>)p.GetValue(obj));
+        var f = t.GetField(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        if (f != null && typeof(IEnumerable<Sprite>).IsAssignableFrom(f.FieldType))
+            return new List<Sprite>((IEnumerable<Sprite>)f.GetValue(obj));
+        return null;
+    }
+    // Counts how many slots currently have a sprite set on their "Icon" Image
+    int CountIconsWithSprites()
+    {
+        if (!grid) return 0;
+
+        int count = 0;
+        var t = grid.transform;
+        for (int i = 0; i < t.childCount; i++)
+        {
+            var slot = t.GetChild(i);
+            var icon = slot.Find("Icon");
+            if (!icon) continue;
+
+            var img = icon.GetComponent<UnityEngine.UI.Image>();
+            if (img && img.sprite) count++;
+        }
+        return count;
+    }
+    Sprite GetSprite(Component obj, string name)
+    {
+        if (!obj) return null;
+        var t = obj.GetType();
+        var p = t.GetProperty(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        if (p != null && p.PropertyType == typeof(Sprite)) return (Sprite)p.GetValue(obj);
+        var f = t.GetField(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        if (f != null && f.FieldType == typeof(Sprite)) return (Sprite)f.GetValue(obj);
+        return null;
+    }
+
+    int GetChildCount() => grid ? grid.transform.childCount : 0;
+
+    void Log(string m) { if (verboseLogs) Debug.Log($"{GetType().Name}: {m}"); }
+    void Warn(string m) { Debug.LogWarning($"{GetType().Name}: {m}"); }
+}
+
+
+================================================================================
+FILE: .\Assets\Scripts\UI\Board\MergeBoardController.cs
+SIZE: 9579 bytes
+MODIFIED: 10/02/2025 15:24:50
+================================================================================
+
+// Assets/Scripts/UI/Board/MergeBoardController.cs
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.App.UI.Board
+{
+    [DisallowMultipleComponent]
+    public sealed class MergeBoardController : MonoBehaviour
+    {
+        [Header("Scene wiring")]
+        [SerializeField] private RectTransform boardRoot;     // parent for slots
+        [SerializeField] private GridLayoutGroup grid;        // layout on BoardRoot
+        [SerializeField] private GameObject tilePrefab;       // prefab with BoardTileView + Image
+
+        [Header("Board size")]
+        [Min(1)] public int Rows = 9;
+        [Min(1)] public int Cols = 7;
+
+        [Header("Generator")]
+        [SerializeField] private Vector2Int GeneratorStart = new Vector2Int(5, 3); // (row, col)
+        [SerializeField] private Sprite GeneratorSprite;
+
+        [Header("Icons & spawn weights (per tier family)")]
+        public List<Sprite> Icons;  // assign your stakeout sprites here
+        public List<int> Weights;   // e.g. [75,15,7,2,1]
+
+        [Header("Rules")]
+        [Min(1)] public int MaxTier = 5; // Tmax
+
+        // Expose for tools (read-only)
+        public RectTransform BoardRoot => boardRoot;
+        public GridLayoutGroup Grid => grid;
+
+        // Runtime state
+        private BoardTileView[,] _tiles;
+        private BoardTileView _selected;
+        private BoardTileView _generatorView;
+
+        void Awake()
+        {
+            if (!boardRoot) boardRoot = GetComponent<RectTransform>();
+            if (!grid && boardRoot) grid = boardRoot.GetComponent<GridLayoutGroup>();
+        }
+
+        void Start()
+        {
+            if (!grid || !boardRoot || !tilePrefab)
+            {
+                Debug.LogWarning("[AQ] MergeBoardController: missing wiring (boardRoot/grid/tilePrefab).", this);
+                return;
+            }
+
+            if (Weights == null || Weights.Count == 0)
+                Weights = new List<int> { 75, 15, 7, 2, 1 };
+
+            FixGridVisuals();
+            BuildGrid(Rows, Cols);
+            PlaceOrRelocateGenerator(GeneratorStart.x, GeneratorStart.y);
+
+            if (Icons == null || Icons.Count == 0)
+                Debug.LogWarning("[AQ] MergeBoardController: sprites (icons) not assigned.", this);
+        }
+
+        #region Grid build & visuals
+
+        void FixGridVisuals()
+        {
+            if (!grid) return;
+            grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+            grid.constraintCount = Mathf.Max(1, Cols);
+            grid.spacing = Vector2.zero;
+            grid.padding = new RectOffset(0, 0, 0, 0);
+        }
+
+        void BuildGrid(int rows, int cols)
+        {
+            for (int i = boardRoot.childCount - 1; i >= 0; i--)
+                Destroy(boardRoot.GetChild(i).gameObject);
+
+            _tiles = new BoardTileView[rows, cols];
+
+            for (int r = 0; r < rows; r++)
+            {
+                for (int c = 0; c < cols; c++)
+                {
+                    var go = Instantiate(tilePrefab, boardRoot);
+                    var view = go.GetComponent<BoardTileView>();
+                    if (!view) view = go.AddComponent<BoardTileView>();
+                    view.Init(this, r, c, sprite: null, iconIndex: -1, tier: 0);
+                    _tiles[r, c] = view;
+                }
+            }
+
+            var rt = boardRoot.rect;
+            var cellW = Mathf.Floor(rt.width / cols);
+            var cellH = Mathf.Floor(rt.height / rows);
+            var side = Mathf.Floor(Mathf.Min(cellW, cellH));
+            grid.cellSize = new Vector2(side, side);
+        }
+
+        #endregion
+
+        #region Generator
+
+        void PlaceOrRelocateGenerator(int row, int col)
+        {
+            row = Mathf.Clamp(row, 0, Rows - 1);
+            col = Mathf.Clamp(col, 0, Cols - 1);
+
+            if (_generatorView != null)
+                _generatorView.Clear(); // do NOT set IsGenerator directly
+
+            var v = _tiles[row, col];
+            _generatorView = v;
+            _generatorView.SetAsGenerator(GeneratorSprite);
+            Select(null);
+        }
+
+        void TrySpawnFromGenerator()
+        {
+            if (_generatorView == null) return;
+
+            int tier = PickTierWeighted();
+            int iconIndex = (Icons != null && Icons.Count > 0) ? Random.Range(0, Icons.Count) : -1;
+            var sprite = (iconIndex >= 0 && iconIndex < Icons.Count) ? Icons[iconIndex] : null;
+
+            if (!TryFindNearestEmpty(_generatorView.Row, _generatorView.Col, out var dst))
+            {
+                Debug.Log("[AQ] Board full near generator.", this);
+                return;
+            }
+
+            var to = _tiles[dst.x, dst.y];
+            to.SetSprite(sprite, iconIndex, tier);
+        }
+
+        int PickTierWeighted()
+        {
+            int total = 0;
+            int count = Mathf.Min(MaxTier, Weights?.Count ?? 0);
+            for (int i = 0; i < count; i++) total += Mathf.Max(0, Weights[i]);
+            if (total <= 0) return 1;
+
+            int roll = Random.Range(1, total + 1);
+            int acc = 0;
+            for (int i = 0; i < count; i++)
+            {
+                acc += Mathf.Max(0, Weights[i]);
+                if (roll <= acc) return i + 1; // 1-based tiers
+            }
+            return 1;
+        }
+
+        bool TryFindNearestEmpty(int sr, int sc, out Vector2Int dst)
+        {
+            for (int d = 0; d <= Rows + Cols; d++)
+            {
+                for (int dr = -d; dr <= d; dr++)
+                {
+                    int dc = d - Mathf.Abs(dr);
+                    foreach (int sign in new[] { -1, 1 })
+                    {
+                        int rr = sr + dr;
+                        int cc = sc + (dc == 0 ? 0 : sign * dc);
+
+                        if (rr < 0 || rr >= Rows || cc < 0 || cc >= Cols) continue;
+                        var v = _tiles[rr, cc];
+                        if (!v.IsGenerator && v.IsEmpty)
+                        {
+                            dst = new Vector2Int(rr, cc);
+                            return true;
+                        }
+                    }
+                }
+            }
+            dst = default;
+            return false;
+        }
+
+        #endregion
+
+        #region Click/merge/swap
+
+        public void OnTileClicked(BoardTileView cell)
+        {
+            if (cell == null) return;
+
+            // Only the generator tile can spawn
+            if (ReferenceEquals(cell, _generatorView))
+            {
+                if (ReferenceEquals(_selected, _generatorView))
+                    TrySpawnFromGenerator();  // second and subsequent clicks while selected
+                else
+                    Select(_generatorView);   // first click selects generator
+
+                return;
+            }
+
+            // Clicking non-generator cells NEVER spawns.
+            if (_selected == null || ReferenceEquals(_selected, _generatorView))
+            {
+                Select(cell);
+                return;
+            }
+
+            TryMergeOrSwap(_selected, cell);
+            Select(null);
+        }
+
+        void TryMergeOrSwap(BoardTileView a, BoardTileView b)
+        {
+            if (a == null || b == null || a == b) return;
+
+            if (a.IsEmpty && !b.IsEmpty) { var t = a; a = b; b = t; }
+
+            if (!a.IsEmpty && b.IsEmpty)
+            {
+                b.SetSprite(GetSpriteFor(a.IconIndex), a.IconIndex, a.Tier);
+                a.Clear();
+                return;
+            }
+
+            if (!a.IsEmpty && !b.IsEmpty)
+            {
+                if (a.Tier == b.Tier)
+                {
+                    if (a.Tier < MaxTier)
+                    {
+                        int newTier = Mathf.Min(MaxTier, a.Tier + 1);
+                        int icon = (b.IconIndex >= 0) ? b.IconIndex : a.IconIndex;
+                        b.SetSprite(GetSpriteFor(icon), icon, newTier);
+                        a.Clear();
+                        return;
+                    }
+                    else
+                    {
+                        // Both at MaxTier => swap, do NOT merge
+                        SwapTiles(a, b);
+                        return;
+                    }
+                }
+
+                // different/incompatible tiers => swap
+                SwapTiles(a, b);
+            }
+        }
+
+        void SwapTiles(BoardTileView x, BoardTileView y)
+        {
+            // keep generator fixed
+            if (x.IsGenerator || y.IsGenerator) return;
+
+            var sx = GetSpriteFor(x.IconIndex);
+            var sy = GetSpriteFor(y.IconIndex);
+
+            int ix = x.IconIndex; int tx = x.Tier;
+            int iy = y.IconIndex; int ty = y.Tier;
+
+            y.SetSprite(sx, ix, tx);
+            x.SetSprite(sy, iy, ty);
+        }
+
+        Sprite GetSpriteFor(int iconIndex)
+        {
+            if (Icons == null || Icons.Count == 0) return null;
+            if (iconIndex < 0 || iconIndex >= Icons.Count) iconIndex = Mathf.Clamp(iconIndex, 0, Icons.Count - 1);
+            return Icons[iconIndex];
+        }
+
+        void Select(BoardTileView v)
+        {
+            if (_selected == v) return;
+
+            if (_selected) _selected.SetSelected(false);
+            _selected = v;
+            if (_selected) _selected.SetSelected(true);
+        }
+
+        #endregion
+    }
+}
+
+
+================================================================================
+FILE: .\Assets\Scripts\UI\Board\MergeBoardPresenter.cs
+SIZE: 1493 bytes
+MODIFIED: 10/02/2025 16:36:27
+================================================================================
+
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.App.UI.Board
+{
+    [RequireComponent(typeof(GridLayoutGroup))]
+    public sealed class MergeBoardPresenter : MonoBehaviour
+    {
+        const string BgName = "__AQ_BoardBG";
+
+        void OnEnable()
+        {
+            var grid = GetComponent<GridLayoutGroup>();
+            if (grid)
+            {
+                grid.spacing = new Vector2(2, 2);
+                // The controller will set FixedColumnCount = Cols; keep Flexible here in edit to avoid surprises.
+                if (grid.constraint == GridLayoutGroup.Constraint.Flexible)
+                    grid.constraint = GridLayoutGroup.Constraint.Flexible;
+            }
+
+            var rt = (RectTransform)transform;
+            // Ensure black background child exists and is stretched
+            var bg = transform.Find(BgName) as RectTransform;
+            if (!bg)
+            {
+                var go = new GameObject(BgName, typeof(RectTransform), typeof(Image));
+                bg = go.GetComponent<RectTransform>();
+                bg.SetParent(transform, false);
+                bg.SetAsFirstSibling();
+            }
+            var img = bg.GetComponent<Image>();
+            img.color = Color.black;
+            img.raycastTarget = false;
+
+            bg.anchorMin = Vector2.zero;
+            bg.anchorMax = Vector2.one;
+            bg.offsetMin = Vector2.zero;
+            bg.offsetMax = Vector2.zero;
+        }
+    }
+}
+
+
+================================================================================
+FILE: .\Assets\UI\Board\MergeBoardPresenter.cs
+SIZE: 4507 bytes
+MODIFIED: 09/27/2025 13:47:04
+================================================================================
+
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.UI
+{
+    /// <summary>
+    /// Deterministic 7x9 board layout. Fills width (respecting side margins),
+    /// clamps height to fit rows, and honors a fixed TopInset set by the editor tool.
+    /// Also applies a uniform CellColor to every child Image in the grid.
+    /// </summary>
+    [ExecuteAlways]
+    public class MergeBoardPresenter : MonoBehaviour
+    {
+        [Header("Structure (assigned by builder)")]
+        public RectTransform BoardFrame;     // stretches across canvas with margins
+        public RectTransform BoardViewport;  // the area the grid fills
+        public RectTransform Grid;           // has GridLayoutGroup
+
+        [Header("Grid")]
+        [Min(1)] public int Columns = 7;
+        [Min(1)] public int Rows    = 9;
+        [Min(0)] public float Spacing = 2f;  // requested 2px spacing
+
+        [Header("Margins")]
+        [Min(0)] public float SideMargin   = 24f;
+        [Min(0)] public float BottomMargin = 48f;
+        [Min(0)] public float TopInset     = 660f; // set by builder
+
+        [Header("Visual")]
+        public Color CellColor = Color.white;
+
+        private GridLayoutGroup _layout;
+
+        void Awake()                            => Cache();
+        void OnEnable()                         { Cache(); ApplyLayout(); ApplyAppearance(); }
+        void OnValidate()                       { Cache(); ApplyLayout(); ApplyAppearance(); }
+        void OnRectTransformDimensionsChange()  { ApplyLayout(); }
+
+        private void Cache()
+        {
+            if (Grid == null) return;
+            if (_layout == null) _layout = Grid.GetComponent<GridLayoutGroup>();
+            if (_layout == null) _layout = Grid.gameObject.AddComponent<GridLayoutGroup>();
+
+            _layout.constraint      = GridLayoutGroup.Constraint.FixedColumnCount;
+            _layout.constraintCount = Mathf.Max(1, Columns);
+            _layout.startAxis       = GridLayoutGroup.Axis.Horizontal;
+            _layout.startCorner     = GridLayoutGroup.Corner.UpperLeft;
+            _layout.childAlignment  = TextAnchor.UpperCenter;
+            _layout.spacing         = new Vector2(Spacing, Spacing);
+        }
+
+        [ContextMenu("Apply Layout")]
+        public void ApplyLayout()
+        {
+            if (BoardFrame == null || BoardViewport == null || Grid == null) return;
+
+            // Stretch the frame to canvas with margins and top inset.
+            BoardFrame.anchorMin = new Vector2(0f, 0f);
+            BoardFrame.anchorMax = new Vector2(1f, 1f);
+            BoardFrame.pivot     = new Vector2(0.5f, 1f);
+            BoardFrame.offsetMin = new Vector2(SideMargin, BottomMargin);
+            BoardFrame.offsetMax = new Vector2(-SideMargin, -TopInset);
+
+            // Viewport fills the frame.
+            BoardViewport.anchorMin = Vector2.zero;
+            BoardViewport.anchorMax = Vector2.one;
+            BoardViewport.pivot     = new Vector2(0.5f, 1f);
+            BoardViewport.offsetMin = Vector2.zero;
+            BoardViewport.offsetMax = Vector2.zero;
+
+            if (_layout == null) Cache();
+
+            // Compute square cell that fills width and fits height.
+            float availW = Mathf.Max(0f, BoardViewport.rect.width);
+            float availH = Mathf.Max(0f, BoardViewport.rect.height);
+
+            float cellW = (availW - Spacing * (Columns - 1)) / Columns;
+            float cellH = (availH - Spacing * (Rows    - 1)) / Rows;
+            float cell  = Mathf.Floor(Mathf.Min(cellW, cellH));
+
+            _layout.constraint      = GridLayoutGroup.Constraint.FixedColumnCount;
+            _layout.constraintCount = Columns;
+            _layout.spacing         = new Vector2(Spacing, Spacing);
+            _layout.cellSize        = new Vector2(cell, cell);
+        }
+
+        [ContextMenu("Apply Appearance")]
+        public void ApplyAppearance()
+        {
+            if (Grid == null) return;
+            for (int i = 0; i < Grid.childCount; i++)
+            {
+                var t = Grid.GetChild(i);
+                var img = t.GetComponent<Image>();
+                if (img != null)
+                {
+                    img.color = CellColor;               // pure white (or whatever is set)
+                    img.raycastTarget = false;
+                    // img.sprite remains null so it renders as a solid quad with CellColor.
+                }
+            }
+        }
+    }
+}
+
+
+================================================================================
+FILE: .\Assets\Scripts\UI\Board\BoardTileView.cs
+SIZE: 3021 bytes
+MODIFIED: 10/02/2025 15:24:35
+================================================================================
+
+// Assets/Scripts/UI/Board/BoardTileView.cs
+using System;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+namespace AQ.App.UI.Board
+{
+    [DisallowMultipleComponent]
+    public sealed class BoardTileView : MonoBehaviour, IPointerClickHandler
+    {
+        [Header("Wiring")]
+        [SerializeField] private Image _icon;               // child image that displays the item
+        [SerializeField] private Image _selectionOutline;   // optional thin outline for selection feedback
+
+        [NonSerialized] public MergeBoardController Controller;
+        [NonSerialized] public int Row;
+        [NonSerialized] public int Col;
+
+        // State
+        public bool IsGenerator { get; private set; }
+        public bool IsEmpty => _sprite == null;
+        public int Tier { get; private set; }     // 1..MaxTier (empty => 0)
+        public int IconIndex { get; private set; } // which icon family this tile is using
+
+        Sprite _sprite;
+
+        void Reset()
+        {
+            if (!_icon) _icon = GetComponentInChildren<Image>(true);
+        }
+
+        public void Init(MergeBoardController controller, int row, int col, Sprite sprite, int iconIndex, int tier)
+        {
+            Controller = controller;
+            Row = row;
+            Col = col;
+            IsGenerator = false;
+            SetSprite(sprite, iconIndex, tier);
+            SetSelected(false);
+            name = $"slot_{row:00}_{col:00}";
+        }
+
+        public void SetAsGenerator(Sprite generatorSprite)
+        {
+            IsGenerator = true;
+            SetSprite(generatorSprite, iconIndex: -1, tier: 1);
+        }
+
+        public void Clear()
+        {
+            IsGenerator = false;
+            _sprite = null;
+            Tier = 0;
+            IconIndex = -1;
+            if (_icon) _icon.sprite = null;
+            if (_icon) _icon.enabled = false;
+        }
+
+        public void SetSprite(Sprite sprite, int iconIndex, int tier)
+        {
+            IsGenerator = false;
+            _sprite = sprite;
+            IconIndex = iconIndex;
+            Tier = Mathf.Max(0, tier);
+            if (_icon)
+            {
+                _icon.sprite = _sprite;
+                _icon.enabled = _sprite != null;
+                _icon.preserveAspect = true;
+                _icon.type = Image.Type.Simple;
+                _icon.raycastTarget = true;
+            }
+        }
+
+        public void SetSelected(bool on)
+        {
+            if (_selectionOutline) _selectionOutline.enabled = on;
+            if (!_selectionOutline)
+                transform.localScale = on ? new Vector3(0.95f, 0.95f, 1f) : Vector3.one;
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (Controller == null) return;
+            Controller.OnTileClicked(this);
+        }
+
+        public override string ToString() => $"({Row},{Col}) gen={IsGenerator} tier={Tier} empty={IsEmpty}";
+    }
+}
+
+
+================================================================================
+EDITOR/AUDIT SCRIPTS
+================================================================================
+
+--- FILE: .\Assets\Editor\AQ\Art\AuditCanvasBoard.cs ---
+
+#if UNITY_EDITOR
+using System.Text;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+namespace AQ.EditorTools.Art
+{
+    public static class AuditCanvasBoard
+    {
+        const string TAG = "[AQ Art]";
+
+        [MenuItem("AQ/Art/Audit Canvas_Board (Deep)")]
+        public static void Run()
+        {
+            var sb = new StringBuilder();
+            var canvas = GameObject.Find("Canvas_Board");
+            if (!canvas) { Debug.LogWarning($"{TAG} Canvas_Board not found."); return; }
+
+            sb.AppendLine($"{TAG} --- Canvas_Board Deep Audit ---");
+
+            // Canvas + Scaler
+            var cv = canvas.GetComponent<Canvas>();
+            var cs = canvas.GetComponent<CanvasScaler>();
+            var rtCanvas = canvas.GetComponent<RectTransform>();
+            sb.AppendLine(DescribeCanvas(cv, cs, rtCanvas));
+
+            var hud = canvas.transform.Find("HUD_Board");
+            if (!hud) { sb.AppendLine("HUD_Board: (missing)"); Debug.Log(sb.ToString()); return; }
+
+            sb.AppendLine(DescribeRect(hud.GetComponent<RectTransform>(), "HUD_Board"));
+            var vlg = hud.GetComponent<VerticalLayoutGroup>();
+            sb.AppendLine(vlg ? DescribeVLG(vlg) : "VLG: (none)");
+
+            foreach (Transform child in hud)
+            {
+                switch (child.name)
+                {
+                    case "TopBar":    DumpTopBar(child, sb); break;
+                    case "StatusRow": DumpStatusRow(child, sb); break;
+                    case "LeadsBar":  DumpLeadsBar(child, sb); break;
+                    default:          DumpGeneric(child, sb, 1); break;
+                }
+            }
+
+            Debug.Log(sb.ToString());
+        }
+
+        static void DumpTopBar(Transform t, StringBuilder sb)
+        {
+            sb.AppendLine($"TopBar:   {DescribeRect(t.GetComponent<RectTransform>(), inline:true)}");
+            var hlg = t.GetComponent<HorizontalLayoutGroup>();
+            sb.AppendLine("  " + (hlg ? DescribeHLG(hlg) : "(no HLG)"));
+            foreach (Transform c in t) DumpGeneric(c, sb, 2);
+
+            RequireChild(t, "EpisodeChip", sb);
+        }
+
+        static void DumpStatusRow(Transform t, StringBuilder sb)
+        {
+            sb.AppendLine($"StatusRow:{DescribeRect(t.GetComponent<RectTransform>(), inline:true)}");
+            var hlg = t.GetComponent<HorizontalLayoutGroup>();
+            sb.AppendLine("  " + (hlg ? DescribeHLG(hlg) : "(no HLG)"));
+            foreach (Transform c in t) DumpGeneric(c, sb, 2);
+        }
+
+        static void DumpLeadsBar(Transform t, StringBuilder sb)
+        {
+            sb.AppendLine($"LeadsBar: {DescribeRect(t.GetComponent<RectTransform>(), inline:true)}");
+            var sr = t.GetComponent<ScrollRect>();
+            if (!sr)
+                sb.AppendLine("  (no ScrollRect)");
+            else
+            {
+                sb.AppendLine($"  ScrollRect horiz={sr.horizontal} vert={sr.vertical} inertia={sr.inertia}");
+                sb.AppendLine($"  viewport={(sr.viewport ? sr.viewport.name : "(null)")} content={(sr.content ? sr.content.name : "(null)")}");
+            }
+
+            // Viewport + Content
+            var viewport = t.Find("Viewport");
+            if (viewport) DumpGeneric(viewport, sb, 2);
+            var content  = t.Find("Viewport/Content_Leads");
+            if (content)
+            {
+                DumpGeneric(content, sb, 2);
+                int idx = 0;
+                foreach (Transform card in content)
+                {
+                    sb.AppendLine($"    [Card {idx}] {DescribeRect(card.GetComponent<RectTransform>(), inline:true)}");
+                    foreach (Transform k in card) DumpGeneric(k, sb, 3);
+                    idx++;
+                }
+            }
+
+            // Float layer (actors)
+            var floats = t.Find("FloatLayer_Actors");
+            if (floats)
+            {
+                sb.AppendLine($"  FloatLayer_Actors: children={floats.childCount}");
+                int i = 0;
+                foreach (Transform a in floats)
+                {
+                    var img = a.GetComponent<Image>();
+                    sb.AppendLine($"    [Actor {i}] {a.name} sprite={(img && img.sprite ? img.sprite.name : "(none)")} {DescribeRect(a.GetComponent<RectTransform>(), inline:true)}");
+                    i++;
+                }
+            }
+        }
+
+        static void DumpGeneric(Transform t, StringBuilder sb, int depth)
+        {
+            var pad = new string(' ', depth * 2);
+            var rt = t.GetComponent<RectTransform>();
+            var img = t.GetComponent<Image>();
+            var tmp = t.GetComponent<TextMeshProUGUI>();
+            var le = t.GetComponent<LayoutElement>();
+            var btn = t.GetComponent<Button>();
+            var cg = t.GetComponent<CanvasGroup>();
+            var mask = t.GetComponent<Mask>();
+            var rmask = t.GetComponent<RectMask2D>();
+
+            sb.AppendLine($"{pad}{t.name}: {DescribeRect(rt, inline:true)} children={t.childCount}");
+
+            if (img)
+                sb.AppendLine($"{pad}  Image sprite={(img.sprite ? img.sprite.name : "(none)")} type={img.type} raycast={img.raycastTarget} color={RGBA(img.color)}");
+            if (tmp)
+            {
+#if UNITY_2022_2_OR_NEWER
+                var wrap = tmp.textWrappingMode.ToString();
+#else
+                var wrap = tmp.enableWordWrapping ? "WordWrap" : "NoWrap";
+#endif
+                var fontName = tmp.font ? tmp.font.name : "(null)";
+                sb.AppendLine($"{pad}  TMP text=\"{San(tmp.text)}\" size={tmp.fontSize} font={fontName} align={tmp.alignment} wrap={wrap} overflow={tmp.overflowMode} maxLines={tmp.maxVisibleLines} color={RGBA(tmp.color)} raycast={tmp.raycastTarget}");
+            }
+            if (btn)  sb.AppendLine($"{pad}  Button interactable={btn.interactable} transition={btn.transition}");
+            if (cg)   sb.AppendLine($"{pad}  CanvasGroup alpha={cg.alpha:F2} blocksRaycasts={cg.blocksRaycasts} interactable={cg.interactable}");
+            if (mask || rmask) sb.AppendLine($"{pad}  Mask={(mask ? "Mask" : "RectMask2D")}");
+            if (le)   sb.AppendLine($"{pad}  LayoutElement pref=({le.preferredWidth},{le.preferredHeight}) min=({le.minWidth},{le.minHeight}) flex=({le.flexibleWidth},{le.flexibleHeight})");
+        }
+
+        // ---- helpers ----
+        static void RequireChild(Transform parent, string child, StringBuilder sb)
+        {
+            if (!parent.Find(child))
+                sb.AppendLine($"  !! Missing expected child: {child}");
+        }
+
+        static string DescribeCanvas(Canvas cv, CanvasScaler cs, RectTransform rt)
+        {
+            var mode = cv ? cv.renderMode.ToString() : "(no Canvas)";
+            var scaler = cs ? $"Scaler: UI Scale Mode={cs.uiScaleMode} Ref=({cs.referenceResolution.x}x{cs.referenceResolution.y}) Match={cs.matchWidthOrHeight:F2}" : "(no CanvasScaler)";
+            return $"Canvas: {mode}, {scaler}, {DescribeRect(rt, "Rect", inline:true)}";
+        }
+
+        static string DescribeRect(RectTransform rt, string label = null, bool inline = false)
+        {
+            if (!rt) return label == null ? "(no RectTransform)" : $"{label}: (no RectTransform)";
+            var aMin = rt.anchorMin; var aMax = rt.anchorMax; var sd = rt.sizeDelta; var ap = rt.anchoredPosition; var pv = rt.pivot;
+            var s = $"{(label ?? "Rect")}: anchors=({aMin.x:F2},{aMin.y:F2})-({aMax.x:F2},{aMax.y:F2}) pivot=({pv.x:F2},{pv.y:F2}) size=({sd.x:F0},{sd.y:F0}) pos=({ap.x:F0},{ap.y:F0})";
+            return inline ? s : "  " + s;
+        }
+
+        static string DescribeHLG(HorizontalLayoutGroup h)
+        {
+            return $"HLG padding L{h.padding.left}/R{h.padding.right}/T{h.padding.top}/B{h.padding.bottom} spacing={h.spacing} childCtrlW={h.childControlWidth} childCtrlH={h.childControlHeight} forceExpandW={h.childForceExpandWidth} forceExpandH={h.childForceExpandHeight}";
+        }
+
+        static string DescribeVLG(VerticalLayoutGroup v)
+        {
+            return $"VLG padding L{v.padding.left}/R{v.padding.right}/T{v.padding.bottom} spacing={v.spacing} childCtrlW={v.childControlWidth} childCtrlH={v.childControlHeight} forceExpandW={v.childForceExpandWidth} forceExpandH={v.childForceExpandHeight} align={v.childAlignment}";
+        }
+
+        static string RGBA(Color c) => $"{c.r:F2},{c.g:F2},{c.b:F2},{c.a:F2}";
+        static string San(string s) => string.IsNullOrEmpty(s) ? "" : s.Replace("\n","\\n");
+    }
+}
+#endif
+
+--- FILE: .\Assets\Editor\AQ\Art\CanvasBoardAuditPlus.cs ---
+
+#if UNITY_EDITOR
+using System.Linq;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.EditorTools.Art
+{
+    public static class CanvasBoardAuditPlus
+    {
+        [MenuItem("AQ/Art/Audit Canvas_Board (Deep, tolerant)")]
+        public static void RunTolerant()
+        {
+            var canvas = GameObject.Find("Canvas_Board");
+            if (!canvas)
+            {
+                Debug.LogWarning("[AQ Art] Canvas_Board not found in scene.");
+                return;
+            }
+
+            // Try to find AvatarChip anywhere under Canvas_Board
+            var avatarChip = FindDeep(canvas.transform, "AvatarChip");
+            if (!avatarChip)
+            {
+                Debug.LogWarning("[AQ Art] AvatarChip not found under Canvas_Board.");
+                return;
+            }
+
+            // Look for EpisodeChip with tolerant rules:
+            //  - exact direct child named "EpisodeChip" (ideal)
+            //  - OR any descendant whose normalized name equals "episodechip"
+            //  - accepts "(Clone)" and trims whitespace; case-insensitive
+            var direct = avatarChip.Find("EpisodeChip");
+            var deep   = FindDeepNormalized(avatarChip, "episodechip");
+
+            if (direct)
+            {
+                Debug.Log($"[AQ Art] ✓ EpisodeChip present as direct child of AvatarChip (path: {PathOf(direct)}).");
+            }
+            else if (deep)
+            {
+                Debug.Log($"[AQ Art] ⚠ EpisodeChip found as descendant (not direct): {PathOf(deep)}. " +
+                          $"Use 'AQ/Art/Fix/Normalize EpisodeChip Under AvatarChip' to reparent/rename (non-destructive).");
+            }
+            else
+            {
+                // No match: show a compact child inventory to help spot near-misses
+                var childNames = string.Join(", ", avatarChip.Cast<Transform>().Select(t => $"\"{t.name}\""));
+                Debug.LogWarning($"[AQ Art] ✗ EpisodeChip not located under AvatarChip.\n" +
+                                 $"Immediate children: [{childNames}]\n" +
+                                 $"Tip: name must be literally 'EpisodeChip' (case-insensitive; no trailing spaces).");
+            }
+
+            // Extra: quick Canvas summary (helps keep parity with your deep audit)
+            var scaler = canvas.GetComponent<CanvasScaler>();
+            if (scaler)
+            {
+                Debug.Log($"[AQ Art] Canvas scaler: {scaler.uiScaleMode} ref={scaler.referenceResolution} match={scaler.matchWidthOrHeight:0.00}");
+            }
+        }
+
+        [MenuItem("AQ/Art/Fix/Normalize EpisodeChip Under AvatarChip")]
+        public static void NormalizeEpisodeChip()
+        {
+            var canvas = GameObject.Find("Canvas_Board");
+            if (!canvas) { Debug.LogWarning("[AQ Art] Canvas_Board not found."); return; }
+
+            var avatarChip = FindDeep(canvas.transform, "AvatarChip");
+            if (!avatarChip) { Debug.LogWarning("[AQ Art] AvatarChip not found."); return; }
+
+            var chip = avatarChip.Find("EpisodeChip") ?? FindDeepNormalized(avatarChip, "episodechip");
+            if (!chip)
+            {
+                // Create a minimal holder if absolutely nothing is found
+                var go = new GameObject("EpisodeChip", typeof(RectTransform));
+                go.transform.SetParent(avatarChip, false);
+                var rt = go.GetComponent<RectTransform>();
+                rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0f);
+                rt.pivot = new Vector2(0.5f, 0.5f);
+                rt.sizeDelta = new Vector2(64, 24);
+                Debug.Log("[AQ Art] Created EpisodeChip placeholder under AvatarChip.");
+            }
+            else
+            {
+                if (chip.parent != avatarChip)
+                {
+                    // Preserve local values while moving under AvatarChip
+                    Undo.RecordObject(chip, "Normalize EpisodeChip");
+                    chip.SetParent(avatarChip, worldPositionStays: false);
+                }
+                // Normalize name
+                if (chip.name != "EpisodeChip")
+                    chip.name = "EpisodeChip";
+
+                // Make sure it's active
+                chip.gameObject.SetActive(true);
+
+                Debug.Log($"[AQ Art] EpisodeChip normalized at: {PathOf(chip)}");
+            }
+
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+        }
+
+        [MenuItem("AQ/Art/Debug/List AvatarChip Children")]
+        public static void ListAvatarChipChildren()
+        {
+            var canvas = GameObject.Find("Canvas_Board");
+            var avatar = canvas ? FindDeep(canvas.transform, "AvatarChip") : null;
+            if (!avatar) { Debug.LogWarning("[AQ Art] AvatarChip not found."); return; }
+
+            var lines = avatar.Cast<Transform>().Select(t => $" - {t.name}");
+            Debug.Log("[AQ Art] AvatarChip immediate children:\n" + string.Join("\n", lines));
+        }
+
+        // ---------- helpers ----------
+        private static Transform FindDeep(Transform root, string exactName)
+        {
+            foreach (Transform t in root)
+            {
+                if (t.name == exactName) return t;
+                var found = FindDeep(t, exactName);
+                if (found) return found;
+            }
+            return null;
+        }
+
+        private static Transform FindDeepNormalized(Transform root, string normalizedTarget)
+        {
+            foreach (Transform t in root.GetComponentsInChildren<Transform>(true))
+            {
+                if (Normalize(t.name) == normalizedTarget)
+                    return t;
+            }
+            return null;
+        }
+
+        private static string Normalize(string s)
+        {
+            if (string.IsNullOrEmpty(s)) return "";
+            s = s.Trim();
+            // drop common Unity suffixes like (Clone)
+            if (s.EndsWith("(Clone)")) s = s.Substring(0, s.Length - "(Clone)".Length).TrimEnd();
+            return s.ToLowerInvariant();
+        }
+
+        private static string PathOf(Transform t)
+        {
+            var path = t.name;
+            var p = t.parent;
+            while (p != null)
+            {
+                path = p.name + "/" + path;
+                p = p.parent;
+            }
+            return path;
+        }
+    }
+}
+#endif
+
+--- FILE: .\Assets\Editor\AQ\Dev\AuditDuplicateLeadUI.cs ---
+
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEngine;
+using System.Linq;
+
+public static class AuditDuplicateLeadUI
+{
+    [MenuItem("AQ/Dev/Audit: Duplicate Lead UI Types")]
+    public static void Run()
+    {
+        var names = new[] { "LeadCardPresenter", "TierSetPopup", "RequirementSlotView" };
+        foreach (var n in names)
+        {
+            var guids = AssetDatabase.FindAssets($"{n} t:Script");
+            var paths = guids.Select(AssetDatabase.GUIDToAssetPath).ToArray();
+            Debug.Log($"[Audit] {n}: {paths.Length} file(s)\n" + string.Join("\n", paths));
+        }
+    }
+}
+#endif
+
+--- FILE: .\Assets\Editor\AQ\Dev\AuditMenuConflicts.cs ---
+
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEngine;
+using System.Linq;
+using System.Collections.Generic;
+using System.Reflection;
+
+public static class AuditMenuConflicts
+{
+    // Project audit: only our menu paths (default "AQ/")
+    [MenuItem("AQ/Dev/Audit: MenuItem Conflicts (Project)")]
+    public static void RunProjectOnly()
+    {
+        RunInternal(prefixFilter: "AQ/");
+    }
+
+    // Everything: includes Unity's own menus (noisy, but here if you need it)
+    [MenuItem("AQ/Dev/Audit: MenuItem Conflicts (All)")]
+    public static void RunAll()
+    {
+        RunInternal(prefixFilter: null);
+    }
+
+    static void RunInternal(string prefixFilter)
+    {
+        var methods = UnityEditor.TypeCache.GetMethodsWithAttribute<MenuItem>();
+        // Collect all MenuItem attributes for each method.
+        var all = new List<(string path, bool validate, MethodInfo method)>();
+
+        foreach (var m in methods)
+        {
+            var attrs = m.GetCustomAttributes(typeof(MenuItem), false).Cast<MenuItem>();
+            foreach (var attr in attrs)
+            {
+                if (!string.IsNullOrEmpty(prefixFilter) && !attr.menuItem.StartsWith(prefixFilter))
+                    continue;
+                all.Add((attr.menuItem, attr.validate, m));
+            }
+        }
+
+        // Group by path
+        var groups = all.GroupBy(x => x.path);
+
+        int issues = 0;
+
+        foreach (var g in groups.OrderBy(g => g.Key))
+        {
+            var executes  = g.Where(x => x.validate == false).Select(x => x.method).ToList();
+            var validates = g.Where(x => x.validate == true ).Select(x => x.method).ToList();
+
+            // "OK" patterns we tolerate:
+            //  - 1 execute + 0 or 1 validate
+            // Anything else is suspicious (multiple executes or multiple validates).
+            bool ok =
+                (executes.Count == 1 && (validates.Count == 0 || validates.Count == 1)) ||
+                (executes.Count == 0 && validates.Count == 1); // rare, but some menus only validate-enable an existing one
+
+            if (!ok)
+            {
+                issues++;
+                Debug.LogWarning($"[Menu Conflict] \"{g.Key}\"  executes={executes.Count}, validates={validates.Count}\n" +
+                                 Dump("Executes", executes) + "\n" +
+                                 Dump("Validates", validates));
+            }
+        }
+
+        if (issues == 0)
+        {
+            Debug.Log(prefixFilter == null
+                ? "[Menu Audit] No actionable conflicts (All menus)."
+                : "[Menu Audit] No actionable conflicts under prefix.");
+        }
+    }
+
+    static string Dump(string label, IEnumerable<MethodInfo> methods)
+    {
+        var list = methods.ToList();
+        if (list.Count == 0) return $"  {label}: —";
+        return $"  {label}:\n" + string.Join("\n", list.Select(m => $"    - {m.DeclaringType.FullName}.{m.Name}"));
+    }
+}
+#endif
+
+--- FILE: .\Assets\Editor\AQ\Diagnostics\AuditLeadCardExample.cs ---
+
+#if UNITY_EDITOR
+using System.Linq;
+using System.Text;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+namespace AQ.EditorTools.Diagnostics
+{
+    public static class AuditLeadCardExample
+    {
+        const string CardName = "LeadCardExample";
+
+        [MenuItem("AQ/UI/Leads/Audit ▸ LeadCardExample (Edit)")]
+        public static void AuditByName()
+        {
+            var target = Resources.FindObjectsOfTypeAll<RectTransform>()
+                .FirstOrDefault(t =>
+                    t && t.gameObject.scene.IsValid() &&
+                    t.name == CardName);
+
+            if (!target)
+            {
+                Debug.LogWarning($"[AQ Audit] Could not find '{CardName}' in the active scene (Edit mode). " +
+                                 $"Select the card object and run 'Audit ▸ Selected' instead.");
+                return;
+            }
+            DumpCard(target);
+        }
+
+        [MenuItem("AQ/UI/Leads/Audit ▸ Selected (Edit)")]
+        public static void AuditSelected()
+        {
+            var tr = Selection.activeTransform as RectTransform;
+            if (!tr)
+            {
+                Debug.LogWarning("[AQ Audit] Please select a GameObject (RectTransform) in the Scene hierarchy.");
+                return;
+            }
+            DumpCard(tr);
+        }
+
+        // -------- internals --------
+        static void DumpCard(RectTransform root)
+        {
+            var sb = new StringBuilder(4096);
+
+            sb.AppendLine("=== [AQ LeadCard Audit] BEGIN ===");
+            sb.AppendLine($"Path: {GetPath(root)}  (Scene='{root.gameObject.scene.name}')");
+
+            DumpTransformRecursive(root, 0, sb);
+
+            sb.AppendLine("=== [AQ LeadCard Audit] END ===");
+
+            // One log entry -> easy to copy/paste back here
+            Debug.Log(sb.ToString());
+        }
+
+        static void DumpTransformRecursive(Transform t, int depth, StringBuilder sb)
+        {
+            var go = t.gameObject;
+            string indent = new string(' ', depth * 2);
+
+            // Header line for this node
+            sb.Append(indent).Append("• ").Append(go.name)
+              .Append("  [activeSelf=").Append(go.activeSelf ? "on" : "off")
+              .Append(" | inHierarchy=").Append(go.activeInHierarchy ? "on" : "off")
+              .Append(" | layer=").Append(LayerMask.LayerToName(go.layer))
+              .Append(" | tag=").Append(go.tag).AppendLine("]");
+
+            // RectTransform basics
+            var rt = t as RectTransform;
+            if (rt)
+            {
+                var rect = rt.rect;
+                sb.Append(indent).Append("  RectTransform")
+                  .Append("  pos=").Append(F(rt.anchoredPosition))
+                  .Append("  size=").Append($"({Round(rect.width)},{Round(rect.height)})")
+                  .Append("  anchors=").Append($"{F(rt.anchorMin)}→{F(rt.anchorMax)}")
+                  .Append("  pivot=").Append(F(rt.pivot))
+                  .AppendLine();
+            }
+
+            // Image (visuals)
+            var img = go.GetComponent<Image>();
+            if (img)
+            {
+                sb.Append(indent).Append("  Image")
+                  .Append("  enabled=").Append(img.enabled ? "on" : "off")
+                  .Append("  sprite=").Append(img.sprite ? img.sprite.name : "(null)")
+                  .Append("  type=").Append(img.type)
+                  .Append("  preserveAspect=").Append(img.preserveAspect ? "on" : "off")
+                  .Append("  color=").Append(Hex(img.color))
+                  .Append("  maskable=").Append(img.maskable ? "on" : "off")
+                  .Append("  raycast=").Append(img.raycastTarget ? "on" : "off")
+                  .AppendLine();
+            }
+
+            // TMP text
+            var tmp = go.GetComponent<TMP_Text>();
+            if (tmp)
+            {
+                string labelPreview = tmp.text;
+                if (!string.IsNullOrEmpty(labelPreview) && labelPreview.Length > 42)
+                    labelPreview = labelPreview.Substring(0, 42) + "…";
+
+                sb.Append(indent).Append("  TMP_Text")
+                  .Append("  text=\"").Append(labelPreview).Append('"')
+                  .Append("  size=").Append(Round(tmp.fontSize))
+                  .Append("  bold=").Append((tmp.fontStyle & FontStyles.Bold) != 0 ? "on" : "off")
+                  .Append("  color=").Append(Hex(tmp.color))
+                  .Append("  alignment=").Append(tmp.alignment)
+                  .AppendLine();
+            }
+
+            // CanvasGroup (visibility/interactivity)
+            var cg = go.GetComponent<CanvasGroup>();
+            if (cg)
+            {
+                sb.Append(indent).Append("  CanvasGroup")
+                  .Append("  alpha=").Append(Round(cg.alpha))
+                  .Append("  interactable=").Append(cg.interactable ? "on" : "off")
+                  .Append("  blocksRaycasts=").Append(cg.blocksRaycasts ? "on" : "off")
+                  .AppendLine();
+            }
+
+            // Layout components (if any)
+            var hlg = go.GetComponent<HorizontalLayoutGroup>();
+            if (hlg)
+            {
+                sb.Append(indent).Append("  HorizontalLayoutGroup")
+                  .Append("  spacing=").Append(Round(hlg.spacing))
+                  .Append("  childAlign=").Append(hlg.childAlignment)
+                  .Append("  pad=(").Append(hlg.padding.left).Append(',')
+                                      .Append(hlg.padding.right).Append(',')
+                                      .Append(hlg.padding.top).Append(',')
+                                      .Append(hlg.padding.bottom).Append(')')
+                  .Append("  ctrlW=").Append(hlg.childControlWidth ? "on" : "off")
+                  .Append("  ctrlH=").Append(hlg.childControlHeight ? "on" : "off")
+                  .Append("  expandW=").Append(hlg.childForceExpandWidth ? "on" : "off")
+                  .Append("  expandH=").Append(hlg.childForceExpandHeight ? "on" : "off")
+                  .AppendLine();
+            }
+
+            var vlg = go.GetComponent<VerticalLayoutGroup>();
+            if (vlg)
+            {
+                sb.Append(indent).Append("  VerticalLayoutGroup")
+                  .Append("  spacing=").Append(Round(vlg.spacing))
+                  .Append("  childAlign=").Append(vlg.childAlignment)
+                  .Append("  pad=(").Append(vlg.padding.left).Append(',')
+                                      .Append(vlg.padding.right).Append(',')
+                                      .Append(vlg.padding.top).Append(',')
+                                      .Append(vlg.padding.bottom).Append(')')
+                  .AppendLine();
+            }
+
+            var glg = go.GetComponent<GridLayoutGroup>();
+            if (glg)
+            {
+                sb.Append(indent).Append("  GridLayoutGroup")
+                  .Append("  cellSize=").Append(F(glg.cellSize))
+                  .Append("  spacing=").Append(F(glg.spacing))
+                  .Append("  startAxis=").Append(glg.startAxis)
+                  .Append("  childAlign=").Append(glg.childAlignment)
+                  .AppendLine();
+            }
+
+            var csf = go.GetComponent<ContentSizeFitter>();
+            if (csf)
+            {
+                sb.Append(indent).Append("  ContentSizeFitter")
+                  .Append("  H=").Append(csf.horizontalFit)
+                  .Append("  V=").Append(csf.verticalFit)
+                  .AppendLine();
+            }
+
+            var rm2 = go.GetComponent<RectMask2D>();
+            if (rm2)
+            {
+                sb.Append(indent).Append("  RectMask2D").AppendLine();
+            }
+
+            // Recurse
+            for (int i = 0; i < t.childCount; i++)
+                DumpTransformRecursive(t.GetChild(i), depth + 1, sb);
+        }
+
+        // helpers
+        static string GetPath(Transform t)
+        {
+            var p = t.name;
+            var cur = t.parent;
+            while (cur != null) { p = cur.name + "/" + p; cur = cur.parent; }
+            return p;
+        }
+        static string F(Vector2 v) => $"({Round(v.x)},{Round(v.y)})";
+        static string Hex(Color c)
+        {
+            Color32 c32 = c;
+            return $"#{c32.r:X2}{c32.g:X2}{c32.b:X2}{c32.a:X2}";
+        }
+        static string Round(float f) => f.ToString("0.##");
+    }
+}
+#endif
+
+--- FILE: .\Assets\Editor\AQ\Diagnostics\LeadsDeepAudit.cs ---
+
+#if UNITY_EDITOR
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+namespace AQ.EditorTools.Diagnostics
+{
+    /// <summary>
+    /// Read-only, end-to-end audit:
+    /// 1) Scene TierSetPopup instances (deep) + prefab assets named "TierSetPopup" (deep) -> missing scripts & structure.
+    /// 2) LeadsBarView -> Card Prefab reference and its prefab structure (ActorAnchor/Image, RequirementsRow/Req_1..3).
+    /// 3) Lead_* ScriptableObjects: actorSprite presence + requirement tierSprites.
+    /// 4) Live cards in scene (Edit or Play): actor presence and requirement icon sprites.
+    ///
+    /// Never modifies scene or assets.
+    /// </summary>
+    public static class LeadsDeepAudit
+    {
+        [MenuItem("AQ/Diagnostics/Leads/Deep Runtime + Assets Audit (Read-Only)")]
+        public static void Run()
+        {
+            Debug.Log("=== [AQ DeepAudit] BEGIN ===");
+
+            AuditSceneTierSetPopups();
+            AuditTierSetPopupPrefabs();
+            AuditCardPrefabReference();
+            AuditLeadAssets();
+            AuditLiveCards();
+
+            Debug.Log("=== [AQ DeepAudit] END ===");
+        }
+
+        // ---------- (1) Scene TierSetPopup instances ----------
+        private static void AuditSceneTierSetPopups()
+        {
+            var popups = Resources.FindObjectsOfTypeAll<GameObject>()
+                .Where(go => go.name == "TierSetPopup")
+                .Where(go => go.scene.IsValid() && go.scene.isLoaded)
+                .ToArray();
+
+            if (popups.Length == 0)
+            {
+                Debug.Log("[AQ DeepAudit] No TierSetPopup instances in loaded scenes.");
+                return;
+            }
+
+            Debug.Log($"[AQ DeepAudit] TierSetPopup scene instances: {popups.Length}");
+            foreach (var go in popups)
+            {
+                int missingDeep = CountMissingRecursive(go);
+                string comps = DescribeComponents(go);
+                Debug.Log($"[AQ DeepAudit] Scene='{go.scene.name}' Path='{PathOf(go.transform)}' Active={go.activeInHierarchy} MissingScripts(deep)={missingDeep}\n  RootComponents: {comps}");
+
+                var grid = go.transform.Find("IconGrid");
+                bool hasGrid = grid != null;
+                bool gridHasRect = grid is RectTransform;
+                var gridLayout = hasGrid ? grid.GetComponent<GridLayoutGroup>() : null;
+                int iconChildren = hasGrid ? grid.Cast<Transform>().Count(t => t.name.StartsWith("Icon")) : 0;
+                bool hasHighlight = hasGrid && grid.Find("Highlight") != null;
+
+                Debug.Log(
+                    $"[AQ DeepAudit] PopupStruct: Grid={(hasGrid ? "OK" : "NO")} " +
+                    $"GridRect={(gridHasRect ? "Rect" : "NoRect")} " +
+                    $"GridLayout={(gridLayout ? "OK" : "NO")} " +
+                    $"Icons={iconChildren} Highlight={(hasHighlight ? "OK" : "NO")}"
+                );
+            }
+        }
+
+        // ---------- (2) Prefab assets named "TierSetPopup" ----------
+        private static void AuditTierSetPopupPrefabs()
+        {
+            var guids = AssetDatabase.FindAssets("TierSetPopup t:prefab");
+            if (guids.Length == 0)
+            {
+                Debug.Log("[AQ DeepAudit] No prefab assets named 'TierSetPopup' found.");
+                return;
+            }
+
+            Debug.Log($"[AQ DeepAudit] TierSetPopup prefab assets: {guids.Length}");
+            foreach (var guid in guids)
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                var root = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+                if (!root) continue;
+
+                int missingDeep = CountMissingRecursive(root, includeChildren: true);
+                string comps = DescribeComponents(root);
+                Debug.Log($"[AQ DeepAudit] Prefab='{path}' MissingScripts(deep)={missingDeep}\n  RootComponents: {comps}");
+
+                var t = root.transform;
+                var grid = t.Find("IconGrid");
+                bool hasGrid = grid != null;
+                int iconChildren = hasGrid ? grid.Cast<Transform>().Count(ch => ch.name.StartsWith("Icon")) : 0;
+                bool hasHighlight = hasGrid && grid.Find("Highlight") != null;
+
+                Debug.Log(
+                    $"[AQ DeepAudit] PrefabStruct: Grid={(hasGrid ? "OK" : "NO")} " +
+                    $"Icons={iconChildren} Highlight={(hasHighlight ? "OK" : "NO")}"
+                );
+            }
+        }
+
+        // ---------- (3) LeadsBarView -> Card Prefab and structure ----------
+        private static void AuditCardPrefabReference()
+        {
+            var barView = FindByTypeName("LeadsBarView");
+            if (barView == null)
+            {
+                Debug.LogWarning("[AQ DeepAudit] LeadsBarView not found in scene (by type name).");
+                return;
+            }
+
+            UnityEngine.Object cardPrefab =
+                GetFieldOrProp<UnityEngine.Object>(barView, "cardPrefab", "CardPrefab", "card", "leadCardPrefab");
+
+            if (cardPrefab == null)
+            {
+                Debug.LogWarning("[AQ DeepAudit] LeadsBarView found but card prefab reference is null or field not recognized.");
+                return;
+            }
+
+            var assetPath = AssetDatabase.GetAssetPath(cardPrefab);
+            var display = string.IsNullOrEmpty(assetPath) ? cardPrefab.name : assetPath;
+            Debug.Log($"[AQ DeepAudit] LeadsBarView Card Prefab = {display}");
+
+            var go = cardPrefab as GameObject ?? (!string.IsNullOrEmpty(assetPath) ? AssetDatabase.LoadAssetAtPath<GameObject>(assetPath) : null);
+            if (!go)
+            {
+                Debug.LogWarning("[AQ DeepAudit] Card prefab is not a GameObject.");
+                return;
+            }
+
+            var t = go.transform;
+            bool hasActorAnchor = t.Find("ActorAnchor") != null;
+            bool hasActorImage  = t.Find("ActorAnchor/Image")?.GetComponent<Image>() != null;
+            bool hasReqRow      = t.Find("RequirementsRow") != null;
+            bool hasReq1        = t.Find("RequirementsRow/Req_1") != null;
+            bool hasReq2        = t.Find("RequirementsRow/Req_2") != null;
+            bool hasReq3        = t.Find("RequirementsRow/Req_3") != null;
+
+            Debug.Log(
+                "[AQ DeepAudit] CardPrefabStruct: " +
+                $"ActorAnchor={(hasActorAnchor ? "OK" : "NO")} " +
+                $"ActorImage={(hasActorImage ? "OK" : "NO")} " +
+                $"ReqRow={(hasReqRow ? "OK" : "NO")} " +
+                $"Req1={(hasReq1 ? "OK" : "NO")} " +
+                $"Req2={(hasReq2 ? "OK" : "NO")} " +
+                $"Req3={(hasReq3 ? "OK" : "NO")}"
+            );
+        }
+
+        // ---------- (4) Lead_* assets ----------
+        private static void AuditLeadAssets()
+        {
+            var guids = AssetDatabase.FindAssets("Lead_ t:ScriptableObject", new[] { "Assets" });
+            if (guids.Length == 0)
+            {
+                Debug.Log("[AQ DeepAudit] No Lead_* ScriptableObjects found.");
+                return;
+            }
+
+            int withActor = 0, withoutActor = 0, totalReqGroups = 0, groupsWithSprites = 0, groupsWithoutSprites = 0;
+
+            foreach (var guid in guids)
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                var asset = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
+                if (!asset) continue;
+
+                var so = new SerializedObject(asset);
+                var actorProp = so.FindProperty("actorSprite");
+                var titleProp = so.FindProperty("title");
+                var idProp    = so.FindProperty("id");
+
+                string title = titleProp != null ? titleProp.stringValue : "(title?)";
+                int id = idProp != null ? idProp.intValue : -1;
+
+                bool hasActor = actorProp != null && actorProp.objectReferenceValue != null;
+                if (hasActor) withActor++; else withoutActor++;
+
+                var reqs = so.FindProperty("requirements");
+                int reqCount = reqs != null ? reqs.arraySize : 0;
+
+                for (int i = 0; i < reqCount; i++)
+                {
+                    totalReqGroups++;
+                    var elem = reqs.GetArrayElementAtIndex(i);
+                    string groupTitle = elem.FindPropertyRelative("groupTitle")?.stringValue ?? "(group?)";
+                    var tierSprites = elem.FindPropertyRelative("tierSprites");
+                    int spriteCount = tierSprites != null ? tierSprites.arraySize : 0;
+
+                    if (spriteCount > 0) groupsWithSprites++; else groupsWithoutSprites++;
+
+                    Debug.Log($"[AQ DeepAudit] Lead id={id} '{title}': req[{i}] '{groupTitle}' tierSprites={spriteCount}");
+                }
+
+                Debug.Log($"[AQ DeepAudit] Lead id={id} '{title}': actor={(hasActor ? "OK" : "NONE")} reqGroups={reqCount}");
+            }
+
+            Debug.Log($"[AQ DeepAudit] Lead assets summary: actorSprite OK={withActor}, MISSING={withoutActor}; requirement groups total={totalReqGroups}, with sprites={groupsWithSprites}, without sprites={groupsWithoutSprites}");
+        }
+
+        // ---------- (5) Live cards (Edit or Play) ----------
+        private static void AuditLiveCards()
+        {
+            var content = GameObject.Find("Content_Leads")?.transform;
+            if (!content)
+            {
+                Debug.LogWarning("[AQ DeepAudit] Content_Leads not found in scene.");
+                return;
+            }
+
+            int scanned = 0;
+            foreach (Transform card in content)
+            {
+                bool looksLikeCard = card.Find("Text_Title") || card.Find("RequirementsRow");
+                if (!looksLikeCard) continue;
+
+                scanned++;
+                string title = card.Find("Text_Title")?.GetComponent<TMP_Text>()?.text ?? "(no title)";
+                string idTxt = card.Find("Text_LeadId")?.GetComponent<TMP_Text>()?.text ?? "(no id)";
+
+                var anchor = card.Find("ActorAnchor");
+                var actorImg = card.Find("ActorAnchor/Image")?.GetComponent<Image>();
+                string actorSprite = (actorImg && actorImg.sprite) ? actorImg.sprite.name : "(null)";
+                string actorState = actorImg ? $"α={actorImg.color.a:0.##} {(actorImg.enabled ? "enabled" : "disabled")}" : "(no Image)";
+
+                string[] reqInfo = new string[3];
+                for (int i = 1; i <= 3; i++)
+                {
+                    var icon = card.Find($"RequirementsRow/Req_{i}/Icon")?.GetComponent<Image>();
+                    string sName = (icon && icon.sprite) ? icon.sprite.name : "(null)";
+                    reqInfo[i - 1] = $"Req_{i}={sName}";
+                }
+
+                Debug.Log($"[AQ DeepAudit] LIVE Card '{card.name}' title='{title}' id='{idTxt}' Anchor={(anchor ? "OK" : "NO")} ActorImg={(actorImg ? "OK" : "NO")} sprite={actorSprite} {actorState} | {string.Join(" ", reqInfo)}");
+            }
+
+            Debug.Log($"[AQ DeepAudit] Live cards scanned: {scanned}. PlayMode={(Application.isPlaying ? "Yes" : "No")}.");
+        }
+
+        // ---------- helpers ----------
+        private static int CountMissingRecursive(GameObject root, bool includeChildren = true)
+        {
+            int count = 0;
+            foreach (var c in root.GetComponents<Component>()) if (!c) count++;
+            if (includeChildren)
+            {
+                foreach (Transform ch in root.transform)
+                    count += CountMissingRecursive(ch.gameObject, true);
+            }
+            return count;
+        }
+
+        private static string DescribeComponents(GameObject go)
+        {
+            var list = new List<string>();
+            foreach (var c in go.GetComponents<Component>())
+            {
+                if (!c) { list.Add("(Missing Script)"); continue; }
+                list.Add(c.GetType().FullName);
+            }
+            return string.Join(", ", list);
+        }
+
+        private static string PathOf(Transform t)
+        {
+            var parts = new List<string>();
+            while (t != null) { parts.Add(t.name); t = t.parent; }
+            parts.Reverse();
+            return string.Join("/", parts);
+        }
+
+        private static Component FindByTypeName(string simpleName)
+        {
+            var all = Resources.FindObjectsOfTypeAll<Component>();
+            foreach (var c in all)
+            {
+                if (!c) continue;
+                var t = c.GetType();
+                if (t.Name == simpleName || t.FullName == simpleName)
+                {
+                    var go = c.gameObject;
+                    if (go.scene.IsValid() && go.scene.isLoaded) return c;
+                }
+            }
+            return null;
+        }
+
+        private static T GetFieldOrProp<T>(Component comp, params string[] names) where T : UnityEngine.Object
+        {
+            var type = comp.GetType();
+            foreach (var n in names)
+            {
+                var f = type.GetField(n, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                if (f != null && typeof(T).IsAssignableFrom(f.FieldType))
+                    return (T)f.GetValue(comp);
+
+                var p = type.GetProperty(n, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                if (p != null && typeof(T).IsAssignableFrom(p.PropertyType))
+                    return (T)p.GetValue(comp);
+            }
+            return null;
+        }
+    }
+}
+#endif
+
+--- FILE: .\Assets\Editor\AQ\Diagnostics\LeadsForensicsAudit.cs ---
+
+#if UNITY_EDITOR
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+namespace AQ.EditorTools.Diagnostics
+{
+    /// <summary>
+    /// Read-only, side-effect-free audit of HUD_Board, LeadsBar, lead cards, and TierSetPopup.
+    /// Writes JSON to _audit/ui/ and prints a concise console summary. Never modifies the scene.
+    /// </summary>
+    public static class LeadsForensicsAudit
+    {
+        // === PUBLIC MENU ===
+        [MenuItem("AQ/Diagnostics/Leads/Run Forensics Audit")]
+        public static void Run()
+        {
+            var report = new RootReport
+            {
+                timestamp      = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                scene          = SceneManager.GetActiveScene().name,
+                unityVersion   = Application.unityVersion,
+                tmpVersion     = GetTMPVersion(),
+                typesAvailable = DetectTypes(new[]
+                {
+                    "AQ.App.UI.Leads.LeadCardPresenter",
+                    "AQ.App.UI.Leads.RequirementSlotView",
+                    "AQ.App.UI.Leads.TierSetPopupPresenter",
+                    "LeadCardPresenter", "RequirementSlotView", "TierSetPopupPresenter"
+                })
+            };
+
+            // Canvas & HUD
+            var canvas = GameObject.Find("Canvas_Board");
+            report.canvas = canvas ? InspectCanvas(canvas) : null;
+            if (!canvas) Warn("Canvas_Board not found.");
+
+            var hud = GameObject.Find("HUD_Board");
+            report.hud = hud ? InspectHUD(hud) : null;
+            if (!hud) Warn("HUD_Board not found.");
+
+            // LeadsBar & cards
+            var leadsBar = GameObject.Find("LeadsBar");
+            var content  = GameObject.Find("Content_Leads");
+            if (leadsBar && content)
+            {
+                report.leadsBar = InspectLeadsBar(leadsBar, content, out var cardReports);
+                report.cards = cardReports;
+            }
+            else
+            {
+                if (!leadsBar) Warn("LeadsBar not found.");
+                if (!content)  Warn("Content_Leads not found.");
+            }
+
+            // TierSetPopup
+            var popup = GameObject.Find("TierSetPopup");
+            report.tierSetPopup = popup ? InspectTierSetPopup(popup) : null;
+            if (!popup) Info("TierSetPopup not found.");
+
+            // LeadCard prefabs (best-effort)
+            report.prefabs = InspectLeadCardPrefabs();
+
+            // --- OUTPUT ---
+            var dir  = "_audit/ui";
+            System.IO.Directory.CreateDirectory(dir);
+            var path = System.IO.Path.Combine(dir, $"leads_forensics_{DateTime.Now:yyyyMMdd_HHmmss}.json");
+            var json = JsonUtility.ToJson(report, prettyPrint: true);
+            System.IO.File.WriteAllText(path, json);
+
+            // Console summary
+            PrintSummary(report, path);
+        }
+
+        // === INSPECTORS ===
+        private static CanvasReport InspectCanvas(GameObject canvasGo)
+        {
+            var r = new CanvasReport { name = canvasGo.name };
+            var canvas = canvasGo.GetComponent<Canvas>();
+            var scaler = canvasGo.GetComponent<CanvasScaler>();
+            var rt     = canvasGo.transform as RectTransform;
+
+            r.mode   = canvas ? canvas.renderMode.ToString() : "(no Canvas)";
+            if (scaler)
+            {
+                r.scalerMode    = scaler.uiScaleMode.ToString();
+                r.referenceResX = scaler.referenceResolution.x;
+                r.referenceResY = scaler.referenceResolution.y;
+                r.match         = scaler.matchWidthOrHeight;
+            }
+            r.rect = RectInfo(rt);
+            return r;
+        }
+
+        private static HudReport InspectHUD(GameObject hud)
+        {
+            var r = new HudReport { name = hud.name, rect = RectInfo(hud.transform as RectTransform) };
+
+            var vlg = hud.GetComponent<VerticalLayoutGroup>();
+            if (vlg != null)
+            {
+                r.vlg = new VlgInfo
+                {
+                    spacing    = vlg.spacing,
+                    childCtrlW = vlg.childControlWidth,
+                    childCtrlH = vlg.childControlHeight,
+                    expandW    = vlg.childForceExpandWidth,
+                    expandH    = vlg.childForceExpandHeight,
+                    padding    = PadInfo(vlg.padding)
+                };
+            }
+
+            // TopBar
+            var topBar = hud.transform.Find("TopBar");
+            if (topBar)
+            {
+                r.topBar = new TopBarInfo
+                {
+                    rect                     = RectInfo(topBar as RectTransform),
+                    hlg                      = BuildHlgInfo(topBar.GetComponent<HorizontalLayoutGroup>()),
+                    hasBtnHome               = topBar.Find("Btn_Home"),
+                    hasAvatarChip            = topBar.Find("AvatarChip"),
+                    hasEpisodeChipUnderAvatar= topBar.Find("AvatarChip/EpisodeChip"),
+                    hasSpacerFlex            = topBar.Find("Spacer_Flex"),
+                    hasMeters = new [] { "Meter_Energy", "Meter_Soft", "Meter_Premium" }
+                        .Select(n => (n, present: topBar.Find(n)!=null)).ToList()
+                };
+            }
+            else Warn("TopBar missing under HUD_Board.");
+
+            // StatusRow
+            var statusRow = hud.transform.Find("StatusRow");
+            if (statusRow)
+            {
+                var row = new StatusRowInfo { rect = RectInfo(statusRow as RectTransform) };
+                row.labels = new List<TextInfo>();
+                foreach (var name in new[] { "Text_Solved", "Text_Evidence", "Text_Leads", "Text_LastBreakthrough", "Text_LastOK" })
+                {
+                    var t = statusRow.Find(name)?.GetComponent<TMP_Text>();
+                    if (t) row.labels.Add(TextInfoOf(name, t));
+                }
+                r.statusRow = row;
+            }
+            else Warn("StatusRow missing under HUD_Board.");
+
+            // RequirementsHUD
+            var reqHud = hud.transform.Find("RequirementsHUD");
+            if (reqHud)
+            {
+                r.requirementsHud = new RequirementsHudInfo
+                {
+                    rect   = RectInfo(reqHud as RectTransform),
+                    active = reqHud.gameObject.activeSelf,
+                    image  = reqHud.GetComponent<Image>() ? "Image present" : "(no Image)"
+                };
+            }
+
+            return r;
+        }
+
+        private static LeadsBarReport InspectLeadsBar(GameObject leadsBar, GameObject content, out List<CardReport> cards)
+        {
+            var r = new LeadsBarReport
+            {
+                rect        = RectInfo(leadsBar.transform as RectTransform),
+                hasScroll   = leadsBar.GetComponentInChildren<ScrollRect>(true) != null
+            };
+
+            var scroll = leadsBar.GetComponentInChildren<ScrollRect>(true);
+            if (scroll)
+            {
+                r.scrollH = scroll.horizontal;
+                r.scrollV = scroll.vertical;
+                r.scrollContentPath = PathOf(scroll.content);
+            }
+
+            var viewport = leadsBar.transform.Find("Viewport");
+            if (viewport)
+            {
+                r.viewportHasMask = viewport.GetComponent<RectMask2D>() || viewport.GetComponent<Mask>();
+            }
+
+            var hlg = content.GetComponent<HorizontalLayoutGroup>();
+            if (hlg)
+            {
+                r.contentRect    = RectInfo(content.transform as RectTransform);
+                r.contentSpacing = hlg.spacing;
+                r.contentPadding = PadInfo(hlg.padding);
+            }
+
+            // Cards (tolerant: any direct child that looks like a card)
+            cards = new List<CardReport>();
+            foreach (Transform c in content.transform)
+            {
+                var card = InspectCard(c);
+                if (card != null) cards.Add(card);
+            }
+
+            return r;
+        }
+
+        private static CardReport InspectCard(Transform t)
+        {
+            var hasTitle = t.Find("Text_Title");
+            var hasReq   = t.Find("RequirementsRow");
+            if (!hasTitle && !hasReq) return null;
+
+            var rep = new CardReport
+            {
+                name           = t.name,
+                rect           = RectInfo(t as RectTransform),
+                backImage      = t.GetComponent<Image>() != null,
+                button         = t.GetComponent<Button>() != null,
+                missingScripts = CountMissingScriptsRecursive(t.gameObject),
+                background     = ColorHexOr(t.GetComponent<Image>()?.color)
+            };
+
+            // Title / Objective / Id
+            rep.title     = TextInfoOf("Text_Title",     t.Find("Text_Title")?.GetComponent<TMP_Text>());
+            rep.objective = TextInfoOf("Text_Objective", t.Find("Text_Objective")?.GetComponent<TMP_Text>());
+            rep.leadId    = TextInfoOf("Text_LeadId",    t.Find("Text_LeadId")?.GetComponent<TMP_Text>());
+
+            // Actor
+            var actorImg = t.Find("ActorAnchor/Image")?.GetComponent<Image>();
+            rep.actor = new ActorInfo
+            {
+                hasAnchor = t.Find("ActorAnchor") != null,
+                hasImage  = actorImg != null,
+                hasSprite = actorImg && actorImg.sprite != null,
+                alpha     = actorImg ? actorImg.color.a : 0f
+            };
+
+            // Requirements
+            var row = t.Find("RequirementsRow");
+            if (row)
+            {
+                rep.requirementsRow = new RequirementsRowReport
+                {
+                    present = true,
+                    req1    = InspectSlot(row, "Req_1"),
+                    req2    = InspectSlot(row, "Req_2"),
+                    req3    = InspectSlot(row, "Req_3")
+                };
+            }
+            else
+            {
+                rep.requirementsRow = new RequirementsRowReport { present = false };
+            }
+
+            return rep;
+        }
+
+        private static RequirementSlotReport InspectSlot(Transform row, string name)
+        {
+            var s = row.Find(name);
+            if (!s) return new RequirementSlotReport { name = name, present = false };
+
+            var icon = s.Find("Icon")?.GetComponent<Image>();
+            var tick = s.Find("Tick")?.GetComponent<Image>();
+
+            return new RequirementSlotReport
+            {
+                name                   = name,
+                present                = true,
+                hasButton              = s.GetComponent<Button>() != null,
+                hasRequirementSlotView = HasComponentNamed(s.gameObject, "RequirementSlotView"),
+                hasIcon                = icon != null,
+                hasTick                = tick != null,
+                tickEnabled            = tick && tick.enabled,
+                missingScripts         = CountMissingScriptsRecursive(s.gameObject)
+            };
+            }
+
+        private static TierSetPopupReport InspectTierSetPopup(GameObject popup)
+        {
+            var t         = popup.transform;
+            var cg        = popup.GetComponent<CanvasGroup>();
+            var titleTxt  = FindTMPText(t, "Title"); // UI or 3D TMP, either is OK (read-only)
+            var iconGrid  = t.Find("IconGrid");
+            var gridLay   = iconGrid ? iconGrid.GetComponent<GridLayoutGroup>() : null;
+            var highlight = iconGrid ? iconGrid.Find("Highlight")?.GetComponent<Image>() : null;
+            var closeBtn  = t.Find("Btn_Close")?.GetComponent<Button>();
+
+            var r = new TierSetPopupReport
+            {
+                rect                = RectInfo(t as RectTransform),
+                hasCanvasGroup      = cg != null,
+                visibleByCG         = cg ? cg.alpha > 0 && cg.blocksRaycasts && cg.interactable : (bool?)null,
+                hasTitle            = titleTxt != null,
+                titleIsUI           = titleTxt is TextMeshProUGUI,
+                titleHasRect        = titleTxt ? titleTxt.transform is RectTransform : (bool?)null,
+                hasIconGrid         = iconGrid != null,
+                iconGridHasRect     = iconGrid ? iconGrid is RectTransform : (bool?)null,
+                iconGridHasLayout   = gridLay != null,
+                iconChildren        = iconGrid ? iconGrid.Cast<Transform>().Count(ch => ch.name.StartsWith("Icon")) : 0,
+                hasHighlight        = highlight != null,
+                hasCloseButton      = closeBtn != null,
+                hasPresenterType    = DetectTypes(new[]{"AQ.App.UI.Leads.TierSetPopupPresenter","TierSetPopupPresenter"}).Count > 0,
+                presenterOnPopup    = HasComponentNamed(popup, "TierSetPopupPresenter"),
+                missingScripts      = CountMissingScriptsRecursive(popup)
+            };
+
+            return r;
+        }
+
+        private static List<PrefabReport> InspectLeadCardPrefabs()
+        {
+            var list = new List<PrefabReport>();
+            var guids = AssetDatabase.FindAssets("LeadCard t:prefab");
+            foreach (var guid in guids)
+            {
+                var path   = AssetDatabase.GUIDToAssetPath(guid);
+                var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+                if (!prefab) continue;
+
+                var pr = new PrefabReport { path = path, name = prefab.name };
+                pr.missingScripts = CountMissingScriptsRecursive(prefab);
+
+                var t = prefab.transform;
+                pr.hasTextTitle  = t.Find("Text_Title") != null;
+                pr.hasObjective  = t.Find("Text_Objective") != null;
+                pr.hasLeadId     = t.Find("Text_LeadId") != null;
+                pr.hasReqRow     = t.Find("RequirementsRow") != null;
+                pr.hasReq1       = t.Find("RequirementsRow/Req_1") != null;
+                pr.hasReq2       = t.Find("RequirementsRow/Req_2") != null;
+                pr.hasReq3       = t.Find("RequirementsRow/Req_3") != null;
+                pr.hasActorImage = t.Find("ActorAnchor/Image")?.GetComponent<Image>() != null;
+                pr.hasPresenter  = HasComponentNamed(prefab, "LeadCardPresenter");
+
+                list.Add(pr);
+            }
+            return list;
+        }
+
+        // === UTIL ===
+        private static string GetTMPVersion()
+        {
+            var asm = typeof(TextMeshProUGUI).Assembly.GetName();
+            return $"{asm.Name} {asm.Version}";
+        }
+
+        private static List<string> DetectTypes(IEnumerable<string> names)
+        {
+            var found = new List<string>();
+            foreach (var n in names)
+            {
+                var t = Type.GetType(n);
+                if (t != null) { found.Add(t.FullName); continue; }
+                foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
+                {
+                    try
+                    {
+                        t = asm.GetType(n) ?? asm.GetTypes().FirstOrDefault(x => x.Name == n);
+                        if (t != null) { found.Add(t.FullName); break; }
+                    }
+                    catch { /* some dynamic assemblies throw */ }
+                }
+            }
+            return found.Distinct().ToList();
+        }
+
+        private static bool HasComponentNamed(GameObject go, string simpleName)
+        {
+            foreach (var c in go.GetComponents<Component>())
+            {
+                if (!c) return true; // missing script counts as "present but broken"
+                var type = c.GetType();
+                if (type.Name == simpleName || type.FullName == simpleName)
+                    return true;
+            }
+            return false;
+        }
+
+        private static string PathOf(Transform t)
+        {
+            if (!t) return "(null)";
+            var path = t.name;
+            var p = t.parent;
+            while (p != null)
+            {
+                path = p.name + "/" + path;
+                p = p.parent;
+            }
+            return path;
+        }
+
+        private static int CountMissingScriptsRecursive(GameObject go)
+        {
+            int count = 0;
+            foreach (var c in go.GetComponents<Component>()) if (!c) count++;
+            foreach (Transform child in go.transform)
+                count += CountMissingScriptsRecursive(child.gameObject);
+            return count;
+        }
+
+        private static string ColorHexOr(Color? c)
+        {
+            if (c == null) return "(no Image)";
+            Color32 cc = (Color)c;
+            return $"#{cc.r:X2}{cc.g:X2}{cc.b:X2}{cc.a:X2}";
+        }
+
+        private static RectData RectInfo(RectTransform rt)
+        {
+            if (!rt) return new RectData { hasRectTransform = false };
+            return new RectData
+            {
+                hasRectTransform = true,
+                anchorMinX = rt.anchorMin.x, anchorMinY = rt.anchorMin.y,
+                anchorMaxX = rt.anchorMax.x, anchorMaxY = rt.anchorMax.y,
+                pivotX = rt.pivot.x, pivotY = rt.pivot.y,
+                sizeX = rt.rect.size.x, sizeY = rt.rect.size.y,
+                posX = rt.anchoredPosition.x, posY = rt.anchoredPosition.y
+            };
+        }
+
+        private static PaddingInfo PadInfo(RectOffset p)
+            => p == null ? null : new PaddingInfo { left = p.left, right = p.right, top = p.top, bottom = p.bottom };
+
+        private static HlgInfo BuildHlgInfo(HorizontalLayoutGroup h)
+        {
+            if (!h) return null;
+            return new HlgInfo
+            {
+                spacing    = h.spacing,
+                childCtrlW = h.childControlWidth,
+                childCtrlH = h.childControlHeight,
+                expandW    = h.childForceExpandWidth,
+                expandH    = h.childForceExpandHeight,
+                padding    = PadInfo(h.padding)
+            };
+        }
+
+        private static TextInfo TextInfoOf(string name, TMP_Text t)
+        {
+            if (!t) return new TextInfo { name = name, present = false };
+            string wrap;
+            try { wrap = t.textWrappingMode.ToString(); } catch { wrap = "(unknown)"; }
+
+            return new TextInfo
+            {
+                name          = name,
+                present       = true,
+                text          = t.text,
+                font          = t.font ? t.font.name : "(null)",
+                size          = t.fontSize,
+                alignment     = t.alignment.ToString(),
+                overflow      = t.overflowMode.ToString(),
+                wrapping      = wrap,
+                raycastTarget = t.raycastTarget
+            };
+        }
+
+        private static TMP_Text FindTMPText(Transform parent, string name)
+        {
+            var tr = parent.Find(name);
+            if (!tr) return null;
+            return tr.GetComponent<TextMeshProUGUI>() ?? tr.GetComponent<TMP_Text>();
+        }
+
+        // === LOGGING ===
+        private static void Info(string s) => Debug.Log("[AQ Forensics] " + s);
+        private static void Warn(string s) => Debug.LogWarning("[AQ Forensics] " + s);
+
+        private static void PrintSummary(RootReport r, string jsonPath)
+        {
+            Info($"Scene='{r.scene}' Unity={r.unityVersion} TMP={r.tmpVersion}");
+
+            if (r.canvas != null)
+                Info($"Canvas: mode={r.canvas.mode}, scaler={r.canvas.scalerMode} ref=({r.canvas.referenceResX},{r.canvas.referenceResY}) match={r.canvas.match:0.00}");
+
+            if (r.leadsBar != null)
+            {
+                var lb = r.leadsBar;
+                Info($"LeadsBar: ScrollRect H={lb.scrollH} V={lb.scrollV} viewportMask={(lb.viewportHasMask?"OK":"NO")} spacing={lb.contentSpacing:0} padding L{lb.contentPadding?.left}/R{lb.contentPadding?.right}");
+                var count = r.cards?.Count ?? 0;
+                Info($"Cards found: {count}");
+                if (r.cards != null)
+                {
+                    foreach (var c in r.cards)
+                    {
+                        var req = c.requirementsRow?.present == true
+                            ? $"{Flag(c.requirementsRow.req1)}/{Flag(c.requirementsRow.req2)}/{Flag(c.requirementsRow.req3)}"
+                            : "no row";
+                        Info($"Card '{c.name}': bg={c.background} title='{c.title?.text}' id='{c.leadId?.text}' actor(sprite={c.actor?.hasSprite}, α={c.actor?.alpha:0.##}) req={req} missingScripts={c.missingScripts}");
+                    }
+                }
+            }
+
+            if (r.tierSetPopup != null)
+            {
+                var p = r.tierSetPopup;
+                Info($"TierSetPopup: title={(p.hasTitle? "OK":"NO")} titleUI={(p.titleIsUI? "UI":"TMP")} rect={(p.titleHasRect==true?"Rect":"NoRect")} grid={(p.hasIconGrid? "OK":"NO")} gridRect={(p.iconGridHasRect==true?"Rect":"NoRect")} icons={p.iconChildren} presenterType={(p.hasPresenterType?"seen":"none")} presenterOnObj={(p.presenterOnPopup?"yes":"no")} missingScripts={p.missingScripts}");
+            }
+
+            Info($"Types available: [{string.Join(", ", r.typesAvailable)}]");
+            Info($"JSON written: {jsonPath}");
+        }
+
+        private static string Flag(RequirementSlotReport s)
+            => (!s.present ? "-" : (s.hasButton && s.hasIcon && s.hasTick ? "✓" : "⚠"));
+
+        // === DTOs ===
+        [Serializable] private class RootReport
+        {
+            public string timestamp;
+            public string scene;
+            public string unityVersion;
+            public string tmpVersion;
+            public List<string> typesAvailable;
+            public CanvasReport canvas;
+            public HudReport hud;
+            public LeadsBarReport leadsBar;
+            public List<CardReport> cards;
+            public TierSetPopupReport tierSetPopup;
+            public List<PrefabReport> prefabs;
+        }
+
+        [Serializable] private class CanvasReport
+        {
+            public string name;
+            public string mode;
+            public string scalerMode;
+            public float referenceResX, referenceResY, match;
+            public RectData rect;
+        }
+
+        [Serializable] private class HudReport
+        {
+            public string name;
+            public RectData rect;
+            public VlgInfo vlg;
+            public TopBarInfo topBar;
+            public StatusRowInfo statusRow;
+            public RequirementsHudInfo requirementsHud;
+        }
+
+        [Serializable] private class TopBarInfo
+        {
+            public RectData rect;
+            public HlgInfo hlg;
+            public bool hasBtnHome;
+            public bool hasAvatarChip;
+            public bool hasEpisodeChipUnderAvatar;
+            public bool hasSpacerFlex;
+            public List<(string meter, bool present)> hasMeters;
+        }
+
+        [Serializable] private class StatusRowInfo
+        {
+            public RectData rect;
+            public List<TextInfo> labels;
+        }
+
+        [Serializable] private class RequirementsHudInfo
+        {
+            public RectData rect;
+            public bool active;
+            public string image;
+        }
+
+        [Serializable] private class LeadsBarReport
+        {
+            public RectData rect;
+            public bool hasScroll;
+            public bool scrollH, scrollV;
+            public string scrollContentPath;
+            public bool viewportHasMask;
+            public RectData contentRect;
+            public float contentSpacing;
+            public PaddingInfo contentPadding;
+        }
+
+        [Serializable] private class CardReport
+        {
+            public string name;
+            public RectData rect;
+            public bool backImage;
+            public bool button;
+            public int  missingScripts;
+            public string background;
+            public TextInfo title, objective, leadId;
+            public ActorInfo actor;
+            public RequirementsRowReport requirementsRow;
+        }
+
+        [Serializable] private class ActorInfo
+        {
+            public bool hasAnchor;
+            public bool hasImage;
+            public bool hasSprite;
+            public float alpha;
+        }
+
+        [Serializable] private class RequirementsRowReport
+        {
+            public bool present;
+            public RequirementSlotReport req1, req2, req3;
+        }
+
+        [Serializable] private class RequirementSlotReport
+        {
+            public string name;
+            public bool present;
+            public bool hasButton;
+            public bool hasRequirementSlotView;
+            public bool hasIcon;
+            public bool hasTick;
+            public bool tickEnabled;
+            public int  missingScripts;
+        }
+
+        [Serializable] private class TierSetPopupReport
+        {
+            public RectData rect;
+            public bool hasCanvasGroup;
+            public bool? visibleByCG;
+            public bool hasTitle;
+            public bool titleIsUI;
+            public bool? titleHasRect;
+            public bool hasIconGrid;
+            public bool? iconGridHasRect;
+            public bool iconGridHasLayout;
+            public int iconChildren;
+            public bool hasHighlight;
+            public bool hasCloseButton;
+            public bool hasPresenterType;
+            public bool presenterOnPopup;
+            public int  missingScripts;
+        }
+
+        [Serializable] private class PrefabReport
+        {
+            public string path;
+            public string name;
+            public int    missingScripts;
+            public bool   hasTextTitle, hasObjective, hasLeadId;
+            public bool   hasReqRow, hasReq1, hasReq2, hasReq3;
+            public bool   hasActorImage, hasPresenter;
+        }
+
+        [Serializable] private class RectData
+        {
+            public bool hasRectTransform;
+            public float anchorMinX, anchorMinY, anchorMaxX, anchorMaxY;
+            public float pivotX, pivotY;
+            public float sizeX, sizeY;
+            public float posX, posY;
+        }
+
+        [Serializable] private class VlgInfo
+        {
+            public float spacing;
+            public bool childCtrlW, childCtrlH, expandW, expandH;
+            public PaddingInfo padding;
+        }
+
+        [Serializable] private class HlgInfo
+        {
+            public float spacing;
+            public bool childCtrlW, childCtrlH, expandW, expandH;
+            public PaddingInfo padding;
+        }
+
+        [Serializable] private class PaddingInfo { public int left, right, top, bottom; }
+
+        [Serializable] private class TextInfo
+        {
+            public string name;
+            public bool   present;
+            public string text;
+            public string font;
+            public float  size;
+            public string alignment;
+            public string overflow;
+            public string wrapping;
+            public bool   raycastTarget;
+        }
+    }
+}
+#endif
+
+--- FILE: .\Assets\Editor\AQ\Diagnostics\LiveCardActivationAudit.cs ---
+
+#if UNITY_EDITOR
+using System.Text;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.EditorTools.Diagnostics
+{
+    /// <summary>
+    /// Scene-only, read-only:
+    /// Reports activation state of RequirementsRow and each Req slot,
+    /// plus whether ActorAnchor/Image exists & enabled.
+    /// This explicitly calls out inactive ancestors (not just component.enabled).
+    /// </summary>
+    public static class LiveCardActivationAudit
+    {
+        [MenuItem("AQ/Diagnostics/Leads/Live Activation Audit (Rows/Slots/Actor)")]
+        public static void Run()
+        {
+            var content = GameObject.Find("Content_Leads")?.transform;
+            if (!content) { Debug.LogWarning("[AQ ActivAudit] Content_Leads not found."); return; }
+
+            int cards = 0;
+            foreach (Transform card in content)
+            {
+                bool looksLikeCard = card.Find("Text_Title") || card.Find("RequirementsRow");
+                if (!looksLikeCard) continue;
+                cards++;
+
+                var sb = new StringBuilder();
+                sb.Append("[AQ ActivAudit] ").Append(card.name).Append(" | ");
+
+                var row = card.Find("RequirementsRow");
+                sb.Append("Row=").Append(State(row?.gameObject)).Append("  ");
+
+                for (int i = 1; i <= 3; i++)
+                {
+                    var slot = row ? row.Find($"Req_{i}") : null;
+                    sb.Append($"Req_{i}=").Append(State(slot?.gameObject)).Append("  ");
+                }
+
+                var actorImg = card.Find("ActorAnchor/Image")?.GetComponent<Image>();
+                sb.Append("ActorImg=");
+                if (!actorImg) sb.Append("(none)");
+                else sb.Append(actorImg.enabled && actorImg.gameObject.activeInHierarchy ? "on" : "off");
+
+                Debug.Log(sb.ToString());
+            }
+            Debug.Log("[AQ ActivAudit] Cards scanned: " + cards + ".");
+        }
+
+        private static string State(GameObject go)
+        {
+            if (!go) return "(none)";
+            return go.activeInHierarchy ? "active" : go.activeSelf ? "inactive(parent-off)" : "inactive(self)";
+        }
+    }
+}
+#endif
+
+--- FILE: .\Assets\Editor\AQ\Leads\LeadsBarAudit.cs ---
+
+// Assets/Editor/AQ/Leads/LeadsBarAudit.cs
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.Editor.Leads
+{
+    public static class LeadsBarAudit
+    {
+        [MenuItem("AQ/Leads/Audit LeadsBar Wiring")]
+        public static void Audit()
+        {
+            var bar = Object.FindFirstObjectByType<AQ.App.Leads.LeadsBarView>(FindObjectsInactive.Include);
+            if (!bar) { Debug.LogWarning("🔎 No LeadsBarView found in the open scene."); return; }
+
+            var so = new SerializedObject(bar);
+            var sr = so.FindProperty("scrollRect")?.objectReferenceValue as ScrollRect;
+            var cr = so.FindProperty("contentRoot")?.objectReferenceValue as RectTransform;
+            var pf = so.FindProperty("cardPrefab")?.objectReferenceValue;
+
+            Debug.Log("🔎 LeadsBar wiring:");
+            Debug.Log($"  • ScrollRect : {(sr ? "OK" : "MISSING")} {(sr ? $"({sr.name})" : "")}", bar);
+            Debug.Log($"  • Content    : {(cr ? "OK" : "MISSING")} {(cr ? $"({cr.name})" : "")}", bar);
+            Debug.Log($"  • Card Prefab: {(pf ? "OK" : "MISSING")}", bar);
+
+            if (!sr) Debug.Log("👉 In the LeadsBar GameObject, assign: ScrollRect → your ScrollLeads component");
+            if (!cr) Debug.Log("👉 In the LeadsBar GameObject, assign: Content Root → Content_Leads");
+            if (!pf) Debug.Log("👉 In the LeadsBar GameObject, assign: Card Prefab → your card prefab");
+        }
+    }
+}
+#endif
+
+--- FILE: .\Assets\Editor\AQ\Leads\LeadsBarConformToAudit.cs ---
+
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.Editor.Leads
+{
+    public static class LeadsBarConformToAudit
+    {
+        private const string RootGOName   = "LeadsBar";
+        private const string OldScroll    = "ScrollLeads";
+        private const string ViewportName = "Viewport";
+        private const string ContentName  = "Content_Leads";
+
+        [MenuItem("AQ/Leads/Conform to Audit (ScrollRect on LeadsBar)")]
+        public static void Run()
+        {
+            var root = GameObject.Find(RootGOName);
+            if (!root) { Debug.LogError("❌ LeadsBar not found at scene root."); return; }
+
+            Undo.IncrementCurrentGroup();
+            var group = Undo.GetCurrentGroup();
+
+            var rootTF = root.transform as RectTransform;
+            EnsureFullStretch(rootTF);
+
+            // 1) Ensure ScrollRect lives ON LeadsBar
+            var rootSR = root.GetComponent<ScrollRect>() ?? Undo.AddComponent<ScrollRect>(root);
+            var rootImg = root.GetComponent<Image>() ?? Undo.AddComponent<Image>(root);
+            rootImg.color = new Color(0,0,0,0);
+            if (!root.GetComponent<Mask>() && !root.GetComponent<RectMask2D>())
+                Undo.AddComponent<RectMask2D>(root);
+
+            // 2) Ensure Viewport child under LeadsBar
+            var viewport = rootTF.Find(ViewportName) as RectTransform;
+            if (!viewport)
+            {
+                viewport = new GameObject(ViewportName, typeof(RectTransform)).GetComponent<RectTransform>();
+                Undo.RegisterCreatedObjectUndo(viewport.gameObject, "Create Viewport");
+                viewport.SetParent(rootTF, false);
+            }
+            EnsureFullStretch(viewport);
+            if (!viewport.GetComponent<Mask>() && !viewport.GetComponent<RectMask2D>())
+                Undo.AddComponent<RectMask2D>(viewport.gameObject);
+
+            // 3) Ensure Content_Leads child under Viewport
+            var content = viewport.Find(ContentName) as RectTransform;
+            if (!content)
+            {
+                content = new GameObject(ContentName, typeof(RectTransform)).GetComponent<RectTransform>();
+                Undo.RegisterCreatedObjectUndo(content.gameObject, "Create Content_Leads");
+                content.SetParent(viewport, false);
+            }
+            content.pivot = new Vector2(0, 0.5f);
+            content.anchorMin = new Vector2(0, 0.5f);
+            content.anchorMax = new Vector2(0, 0.5f);
+            content.anchoredPosition = Vector2.zero;
+            content.sizeDelta = new Vector2(0, 220);
+
+            var hlg = content.GetComponent<HorizontalLayoutGroup>() ?? Undo.AddComponent<HorizontalLayoutGroup>(content.gameObject);
+            hlg.spacing = 24;
+            hlg.childControlWidth = false;
+            hlg.childControlHeight = false;
+            hlg.childForceExpandWidth = false;
+            hlg.childForceExpandHeight = false;
+            hlg.childAlignment = TextAnchor.MiddleLeft;
+            hlg.padding = new RectOffset(24, 24, 0, 0);
+
+            var fit = content.GetComponent<ContentSizeFitter>() ?? Undo.AddComponent<ContentSizeFitter>(content.gameObject);
+            fit.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+            fit.verticalFit = ContentSizeFitter.FitMode.Unconstrained;
+
+            // 4) Wire ScrollRect references
+            rootSR.viewport = viewport;
+            rootSR.content  = content;
+            rootSR.horizontal = true;
+            rootSR.vertical = false;
+            rootSR.movementType = ScrollRect.MovementType.Clamped;
+            rootSR.inertia = true;
+
+            // 5) If an old "ScrollLeads" exists, migrate its children, then remove it
+            var old = rootTF.Find(OldScroll);
+            if (old)
+            {
+                // Move any grandchildren if they exist
+                var oldViewport = old.Find(ViewportName);
+                if (oldViewport && oldViewport != viewport)
+                {
+                    // Move content/cards under new viewport
+                    var oldContent = oldViewport.Find(ContentName);
+                    if (oldContent && oldContent != content)
+                    {
+                        // Move children from oldContent to new content
+                        var oc = oldContent as RectTransform;
+                        while (oc.childCount > 0)
+                            oc.GetChild(0).SetParent(content, false);
+                        Undo.DestroyObjectImmediate(oldContent.gameObject);
+                    }
+                    Undo.DestroyObjectImmediate(oldViewport.gameObject);
+                }
+                Undo.DestroyObjectImmediate(old.gameObject);
+            }
+
+            Undo.CollapseUndoOperations(group);
+            EditorSceneManager.MarkAllScenesDirty();
+            EditorSceneManager.SaveOpenScenes();
+
+            Debug.Log("✅ Conformed LeadsBar: ScrollRect now on LeadsBar; Viewport and Content_Leads are direct children. Audit should report a ScrollRect.");
+        }
+
+        private static void EnsureFullStretch(RectTransform rt)
+        {
+            rt.anchorMin = Vector2.zero;
+            rt.anchorMax = Vector2.one;
+            rt.offsetMin = Vector2.zero;
+            rt.offsetMax = Vector2.zero;
+            if (rt == rt.root) return;
+        }
+    }
+}
+#endif
+
+--- FILE: .\Assets\Editor\AQ\UI\Leads\LeadsDeepAudit.cs ---
+
+#if UNITY_EDITOR
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.EditorTools.UI.Leads
+{
+    public static class LeadsDeepAudit
+    {
+        private struct CardReport
+        {
+            public string Name;
+            public string Title;
+            public string Objective;
+            public string LeadId;
+            public string BgTint;
+            public bool TmpOk;
+            public bool ActorHasSprite;
+            public float ActorAlpha;
+            public bool Req1Ok, Req2Ok, Req3Ok;
+            public bool SlotsClickable;
+            public bool HasMissingScripts;
+        }
+
+        [MenuItem("AQ/UI/Leads/Audit Lead Cards (Deep)")]
+        public static void Audit()
+        {
+            var hud = GameObject.Find("HUD_Board");
+            var leadsBar = GameObject.Find("LeadsBar");
+            var content = GameObject.Find("Content_Leads");
+
+            if (!hud || !leadsBar || !content)
+            {
+                Debug.LogWarning("[AQ UI Leads] ✗ Expected objects missing. Need HUD_Board, LeadsBar, Content_Leads in the active scene.");
+                return;
+            }
+
+            // 1) HUD frame checks
+            var scroll = leadsBar.GetComponentInChildren<ScrollRect>(true);
+            var viewport = leadsBar.transform.Find("Viewport");
+            var maskOk = viewport && (viewport.GetComponent<Mask>() || viewport.GetComponent<RectMask2D>());
+            var scrollOk = scroll && scroll.horizontal && !scroll.vertical;
+
+            var hlg = content.GetComponent<HorizontalLayoutGroup>();
+            var spacingOk = hlg && Mathf.Approximately(hlg.spacing, 24f);
+
+            Info($"HUD frame: ScrollRect H={scroll?.horizontal} V={scroll?.vertical}  Viewport mask={(maskOk ? "OK" : "NO")}  HLG spacing={(hlg ? hlg.spacing.ToString("0") : "n/a")} {(spacingOk ? "✓" : "⚠")}");
+
+            // 2) EpisodeChip under AvatarChip (paranoia check)
+            var avatarChip = GameObject.Find("AvatarChip");
+            var ep = avatarChip ? avatarChip.transform.Find("EpisodeChip") : null;
+            Info($"EpisodeChip {(ep ? "✓ present (direct child)" : "✗ missing")}.");
+
+            // 3) Card reports
+            var reports = new List<CardReport>();
+            foreach (Transform t in content.transform)
+            {
+                if (!t.name.StartsWith("Card", StringComparison.OrdinalIgnoreCase)) continue;
+
+                var rep = new CardReport { Name = t.name };
+
+                var title = t.Find("Text_Title")?.GetComponent<TMP_Text>();
+                var obj   = t.Find("Text_Objective")?.GetComponent<TMP_Text>();
+                var id    = t.Find("Text_LeadId")?.GetComponent<TMP_Text>();
+                rep.Title     = title ? title.text : "(none)";
+                rep.Objective = obj   ? obj.text   : "(none)";
+                rep.LeadId    = id    ? id.text    : "(none)";
+
+                // TMP sanity (Truncate + no raycast)
+                bool tmpOk = true;
+                foreach (var tmp in t.GetComponentsInChildren<TMP_Text>(true))
+                {
+                    var isTrunc = tmp.overflowMode == TextOverflowModes.Truncate;
+                    var noRay   = !tmp.raycastTarget;
+                    if (!isTrunc || !noRay) { tmpOk = false; break; }
+                }
+                rep.TmpOk = tmpOk;
+
+                // Background tint classification
+                var bg = t.GetComponent<Image>();
+                rep.BgTint = bg ? ClassifyTint(bg.color) : "(no Image)";
+
+                // Actor state
+                var actorImg = t.Find("ActorAnchor/Image")?.GetComponent<Image>();
+                rep.ActorHasSprite = actorImg && actorImg.sprite != null;
+                rep.ActorAlpha = actorImg ? actorImg.color.a : 0f;
+
+                // Requirement slots
+                bool[] slotOk = new bool[3];
+                bool allClickable = true;
+                bool missingScripts = false;
+
+                for (int i = 1; i <= 3; i++)
+                {
+                    var slot = t.Find($"RequirementsRow/Req_{i}");
+                    if (!slot) { slotOk[i-1] = false; continue; }
+
+                    // Expected children
+                    bool hasIcon = slot.Find("Icon");
+                    bool hasTick = slot.Find("Tick");
+                    bool hasView = slot.GetComponent(typeof(Component)) && slot.GetComponent("RequirementSlotView") != null;
+                    bool hasBtn  = slot.GetComponent<Button>() != null;
+
+                    slotOk[i-1] = hasIcon && hasTick && hasBtn;
+                    allClickable &= hasBtn;
+
+                    // Missing (Mono) detection
+                    var comps = slot.GetComponents<Component>();
+                    foreach (var c in comps) if (!c) { missingScripts = true; break; }
+                }
+
+                rep.Req1Ok = slotOk[0]; rep.Req2Ok = slotOk[1]; rep.Req3Ok = slotOk[2];
+                rep.SlotsClickable = allClickable;
+
+                // any missing scripts anywhere under the card?
+                foreach (var c in t.GetComponentsInChildren<Component>(true))
+                {
+                    if (!c) { missingScripts = true; break; }
+                }
+                rep.HasMissingScripts = missingScripts;
+
+                reports.Add(rep);
+            }
+
+            // 4) Print summary
+            if (reports.Count == 0)
+            {
+                Debug.LogWarning("[AQ UI Leads] No cards found under Content_Leads.");
+                return;
+            }
+
+            Info($"Cards found: {reports.Count}");
+            foreach (var r in reports)
+            {
+                var reqStr = $"{Flag(r.Req1Ok)}/{Flag(r.Req2Ok)}/{Flag(r.Req3Ok)}";
+                var actor  = r.ActorHasSprite ? $"sprite α={r.ActorAlpha:0.##}" : $"no-sprite α={r.ActorAlpha:0.##}";
+                var tmp    = r.TmpOk ? "TMP ✓" : "TMP ⚠";
+
+                Debug.Log($"[AQ UI Leads] {r.Name}: Title='{r.Title}'  Id='{r.LeadId}'  Bg={r.BgTint}  {tmp}  Actor={actor}  ReqSlots={reqStr}  Clickable={(r.SlotsClickable? "✓":"⚠")}  MissingScripts={(r.HasMissingScripts? "⚠":"✓")}");
+            }
+
+            // 5) Save JSON snapshot for offline reference
+            var json = JsonUtility.ToJson(new Wrapper { items = reports }, true);
+            var dir = "_audit/ui"; System.IO.Directory.CreateDirectory(dir);
+            var path = System.IO.Path.Combine(dir, $"lead_cards_{DateTime.Now:yyyyMMdd_HHmmss}.json");
+            System.IO.File.WriteAllText(path, json);
+            Info($"Wrote snapshot: {path}");
+
+            // Mark scene dirty only if we ever add repair actions (currently read-only)
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+        }
+
+        private static string ClassifyTint(Color c)
+        {
+            // loose buckets for white / eggshell / pale-green; tolerates small drift
+            var hex = ColorUtility.ToHtmlStringRGB(c);
+            // quick distances in RGB
+            Vector3 v = new Vector3(c.r, c.g, c.b);
+            float dWhite = Dist(v, new Vector3(1f, 1f, 1f));
+            float dEgg   = Dist(v, new Vector3(0xF7/255f, 0xF3/255f, 0xE7/255f));
+            float dGreen = Dist(v, new Vector3(0xE6/255f, 0xF4/255f, 0xEA/255f));
+            if (dWhite <= dEgg && dWhite <= dGreen) return $"white #{hex}";
+            if (dEgg   <= dWhite && dEgg   <= dGreen) return $"eggshell #{hex}";
+            if (dGreen <= dWhite && dGreen <= dEgg)   return $"pale-green #{hex}";
+            return $"other #{hex}";
+        }
+        private static float Dist(Vector3 a, Vector3 b){ var d=a-b; return d.magnitude; }
+
+        [Serializable] private class Wrapper { public List<CardReport> items; }
+
+        private static string Flag(bool b) => b ? "✓" : "✗";
+        private static void Info(string s) => Debug.Log("[AQ UI Leads] " + s);
+    }
+}
+#endif
+
+--- FILE: .\Assets\Editor\UI\Board\Audit_MergeBoardScene.cs ---
+
+// Assets/Editor/UI/Board/Audit_MergeBoardScene.cs
+// Read-only scene auditor for MergeBoard_Demo.
+// Menu: AQ ► Board ► Audit Current Scene
+// Prints a copy/paste friendly report to the Console.
+
+#if UNITY_EDITOR
+using System;
+using System.Linq;
+using System.Text;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+static class Audit_MergeBoardScene
+{
+    [MenuItem("AQ/Board/Audit Current Scene", false, 100)]
+    private static void Audit()
+    {
+        var scene = SceneManager.GetActiveScene();
+        var roots = scene.GetRootGameObjects();
+        var sb = new StringBuilder();
+        var stamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+        Line(sb, $"=== SCENE AUDIT: {scene.name} @ {stamp} ===");
+
+        // Summary
+        Line(sb, $"Root objects: {roots.Length}");
+        Line(sb, "");
+
+        foreach (var root in roots.OrderBy(g => g.name))
+        {
+            DumpGameObject(sb, root, 0);
+        }
+
+        // Split into chunks so Unity console shows everything.
+        WriteBigToConsole(sb.ToString());
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────────
+
+    private static void DumpGameObject(StringBuilder sb, GameObject go, int depth)
+    {
+        var pad = new string(' ', depth * 2);
+        var rt = go.GetComponent<RectTransform>();
+        Line(sb, $"{pad}- {go.name}  (active={go.activeInHierarchy}, layer={LayerMask.LayerToName(go.layer)}, tag={go.tag})");
+
+        if (rt != null)
+        {
+            Line(sb, $"{pad}  RectTransform: anchorMin={Fmt(rt.anchorMin)} anchorMax={Fmt(rt.anchorMax)} pos={Fmt(rt.anchoredPosition)} sizeDelta={Fmt(rt.sizeDelta)} pivot={Fmt(rt.pivot)}");
+        }
+
+        // Common interesting components
+        var grid = go.GetComponent<GridLayoutGroup>();
+        if (grid != null)
+        {
+            Line(sb, $"{pad}  GridLayoutGroup: cellSize={Fmt(grid.cellSize)} spacing={Fmt(grid.spacing)} startCorner={grid.startCorner} startAxis={grid.startAxis} childAlign={grid.childAlignment} constraint={grid.constraint} count={grid.constraintCount}");
+            var warn = (grid.spacing != new Vector2(2, 2)) ? "  [WARN spacing!=2,2]" : "";
+            Line(sb, $"{pad}    Padding: L{grid.padding.left} T{grid.padding.top} R{grid.padding.right} B{grid.padding.bottom}{warn}");
+        }
+
+        var img = go.GetComponent<Image>();
+        if (img != null)
+        {
+            var sName = img.sprite ? img.sprite.name : "None";
+            Line(sb, $"{pad}  Image: sprite='{sName}' type={img.type} preserveAspect={img.preserveAspect} color={Fmt(img.color)}");
+        }
+
+        // Dump MergeBoard bits WITHOUT taking hard compile-time dependency (use type name match).
+        foreach (var c in go.GetComponents<Component>())
+        {
+            if (c == null) continue;
+            var tn = c.GetType().FullName ?? c.GetType().Name;
+
+            if (tn.EndsWith("MergeBoardController"))
+            {
+                DumpMergeBoardController(sb, c, pad);
+            }
+            else if (tn.EndsWith("MergeBoardPresenter"))
+            {
+                DumpMergeBoardPresenter(sb, c, pad);
+            }
+            else if (
+                !(c is Transform) &&
+                !(c is RectTransform) &&
+                !(c is GridLayoutGroup) &&
+                !(c is Image) &&
+                !(c is CanvasRenderer))
+            {
+                // List other component types briefly
+                Line(sb, $"{pad}  Component: {tn}");
+            }
+        }
+
+        // Recurse
+        for (int i = 0; i < go.transform.childCount; i++)
+        {
+            DumpGameObject(sb, go.transform.GetChild(i).gameObject, depth + 1);
+        }
+    }
+
+    private static void DumpMergeBoardController(StringBuilder sb, Component c, string pad)
+    {
+        Line(sb, $"{pad}  ▶ MergeBoardController");
+        var so = new SerializedObject(c);
+        so.Update();
+
+        // Helper to print a property if it exists
+        void P(string prop, string label = null)
+        {
+            var sp = so.FindProperty(prop);
+            if (sp == null) return;
+            label ??= prop;
+
+            switch (sp.propertyType)
+            {
+                case SerializedPropertyType.ObjectReference:
+                    Line(sb, $"{pad}    {label}: {(sp.objectReferenceValue ? sp.objectReferenceValue.name : "None")}");
+                    break;
+                case SerializedPropertyType.Integer:
+                    Line(sb, $"{pad}    {label}: {sp.intValue}");
+                    break;
+                case SerializedPropertyType.Vector2Int:
+                    Line(sb, $"{pad}    {label}: ({sp.vector2IntValue.x},{sp.vector2IntValue.y})");
+                    break;
+                default:
+                    Line(sb, $"{pad}    {label}: {sp.ToString()}");
+                    break;
+            }
+        }
+
+        // Common field names (try both camelCase & PascalCase where relevant)
+        P("boardRoot", "BoardRoot");
+        P("grid", "Grid");
+        P("tilePrefab", "TilePrefab");
+
+        P("rows", "Rows");       P("Rows", "Rows");
+        P("cols", "Cols");       P("Cols", "Cols");
+
+        P("generatorStart", "GeneratorStart"); P("GeneratorStart", "GeneratorStart");
+        P("generatorSprite", "GeneratorSprite"); P("GeneratorSprite", "GeneratorSprite");
+
+        // Icons array
+        var icons = so.FindProperty("icons"); if (icons == null) icons = so.FindProperty("Icons");
+        if (icons != null && icons.isArray)
+        {
+            Line(sb, $"{pad}    Icons: count={icons.arraySize}");
+            for (int i = 0; i < icons.arraySize; i++)
+            {
+                var e = icons.GetArrayElementAtIndex(i);
+                var name = e.objectReferenceValue ? e.objectReferenceValue.name : "None";
+                Line(sb, $"{pad}      [{i}] {name}");
+            }
+        }
+
+        // Weights array
+        var weights = so.FindProperty("weights"); if (weights == null) weights = so.FindProperty("Weights");
+        if (weights != null && weights.isArray)
+        {
+            Line(sb, $"{pad}    Weights: count={weights.arraySize}");
+            var vals = Enumerable.Range(0, weights.arraySize)
+                                 .Select(i => weights.GetArrayElementAtIndex(i).intValue.ToString());
+            Line(sb, $"{pad}      {string.Join(", ", vals)}");
+        }
+    }
+
+    private static void DumpMergeBoardPresenter(StringBuilder sb, Component c, string pad)
+    {
+        Line(sb, $"{pad}  ▶ MergeBoardPresenter");
+        var so = new SerializedObject(c);
+        so.Update();
+
+        void P(string prop, string label = null)
+        {
+            var sp = so.FindProperty(prop);
+            if (sp == null) return;
+            label ??= prop;
+
+            switch (sp.propertyType)
+            {
+                case SerializedPropertyType.Integer:
+                    Line(sb, $"{pad}    {label}: {sp.intValue}");
+                    break;
+                case SerializedPropertyType.Float:
+                    Line(sb, $"{pad}    {label}: {sp.floatValue}");
+                    break;
+                case SerializedPropertyType.Color:
+                    Line(sb, $"{pad}    {label}: {Fmt(sp.colorValue)}");
+                    break;
+                case SerializedPropertyType.ObjectReference:
+                    Line(sb, $"{pad}    {label}: {(sp.objectReferenceValue ? sp.objectReferenceValue.name : "None")}");
+                    break;
+                default:
+                    Line(sb, $"{pad}    {label}: {sp.ToString()}");
+                    break;
+            }
+        }
+
+        // Likely fields on presenter
+        P("columns", "Columns");   P("Columns", "Columns");
+        P("rows", "Rows");         P("Rows", "Rows");
+        P("spacing", "Spacing");   P("Spacing", "Spacing");
+        P("sideMargin", "SideMargin"); P("bottomMargin", "BottomMargin"); P("topInset", "TopInset");
+        P("grid", "Grid");         P("boardFrame", "BoardFrame"); P("boardViewport", "BoardViewport");
+        P("cellColor", "CellColor");
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────────
+    private static void Line(StringBuilder sb, string s) => sb.AppendLine(s);
+
+    private static string Fmt(Vector2 v) => $"({v.x:0.##},{v.y:0.##})";
+    private static string Fmt(Color c) => $"rgba({Mathf.RoundToInt(c.r*255)},{Mathf.RoundToInt(c.g*255)},{Mathf.RoundToInt(c.b*255)},{c.a:0.##})";
+
+    private static void WriteBigToConsole(string text)
+    {
+        const int chunk = 7000; // Unity console truncates very long strings
+        if (text.Length <= chunk) { Debug.Log(text); return; }
+        int i = 0; int n = 1 + (text.Length / chunk);
+        while (i < text.Length)
+        {
+            var len = Mathf.Min(chunk, text.Length - i);
+            Debug.Log($"[audit chunk {((i / chunk) + 1)}/{n}]\n" + text.Substring(i, len));
+            i += len;
+        }
+    }
+}
+#endif
+
+--- FILE: .\Assets\Editor\UI\Board\AuditAndFix_Gutters.cs ---
+
+#if UNITY_EDITOR
+using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.Editor.UI.Board
+{
+    /// <summary>
+    /// Audits & fixes MergeBoard gutters so the visible line between items
+    /// is a specific *total* thickness in pixels (default 2 px).
+    /// Works without a typed reference to MergeBoardController.
+    /// </summary>
+    public static class AuditAndFix_Gutters
+    {
+        // ---- CONFIG ----
+        // Total visible line BETWEEN icons. With two adjacent tiles this is split 50/50 (floor/ceil).
+        const int TotalGutterPx = 2;
+        const string TilePrefabName = "board_tile_slot";
+        const string IconNodeName   = "Icon";
+        const string BoardRootName  = "BoardRoot";
+
+        [MenuItem("AQ/Board/Audit & Fix Gutters (total 2 px)")]
+        public static void RunMenu() => Run(verboseDialog: true);
+
+        [InitializeOnLoadMethod]
+        static void HookPlayMode()
+        {
+            EditorApplication.playModeStateChanged += s =>
+            {
+                if (s == PlayModeStateChange.ExitingEditMode) Run(verboseDialog: false);
+            };
+        }
+
+        static void Run(bool verboseDialog)
+        {
+            var log = new System.Text.StringBuilder();
+            int fixes = 0;
+
+            // 1) Scene grid
+            var boardRoot = GameObject.Find(BoardRootName)?.GetComponent<RectTransform>();
+            if (!boardRoot)
+            {
+                Log(log, $"Scene: '{BoardRootName}' not found (skipping grid checks).");
+            }
+            else
+            {
+                var grid = boardRoot.GetComponent<GridLayoutGroup>() ?? boardRoot.gameObject.AddComponent<GridLayoutGroup>();
+                Undo.RecordObject(grid, "AQ Grid Fix");
+                var before = $"spacing={grid.spacing}, constraint={grid.constraint}, count={grid.constraintCount}";
+                grid.spacing = Vector2.zero;
+                grid.childAlignment = TextAnchor.UpperLeft;
+                grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+                if (grid.constraintCount <= 0) grid.constraintCount = 7; // harmless default; controller will set properly
+                EditorUtility.SetDirty(grid);
+                fixes++;
+                Log(log, $"Scene Grid: {before}  →  spacing=0, constraint=FixedColumnCount, count={grid.constraintCount}");
+            }
+
+            // 2) Tile prefab
+            var prefab = FindTilePrefab();
+            if (!prefab)
+            {
+                Log(log, $"Prefab '{TilePrefabName}' not found.");
+            }
+            else
+            {
+                var path = AssetDatabase.GetAssetPath(prefab);
+                var root = PrefabUtility.LoadPrefabContents(path);
+                try
+                {
+                    // 2a) Remove outlines/shadows that thicken edges
+                    int removedFx = 0;
+                    foreach (var fx in root.GetComponentsInChildren<Shadow>(true)) { Undo.DestroyObjectImmediate(fx); removedFx++; }
+                    foreach (var fx in root.GetComponentsInChildren<Outline>(true)) { Undo.DestroyObjectImmediate(fx); removedFx++; }
+                    if (removedFx > 0) Log(log, $"Prefab: removed {removedFx} Outline/Shadow component(s).");
+
+                    // 2b) Disable fat backgrounds/frames
+                    var disabled = DisableBackgrounds(root);
+                    if (disabled > 0) Log(log, $"Prefab: disabled {disabled} background/frame Image(s) (Bg/Frame/Border).");
+
+                    // 2c) Ensure Icon exists and fills with exact insets for TOTAL gutter
+                    var icon = EnsureIcon(root);
+                    var rt = icon.GetComponent<RectTransform>();
+                    var before = $"offMin={rt.offsetMin}, offMax={rt.offsetMax}, anchors={rt.anchorMin}->{rt.anchorMax}";
+                    Undo.RecordObject(rt, "AQ Icon Insets");
+
+                    // Split total gutter between left/right and bottom/top.
+                    int left  = TotalGutterPx / 2;    // floor
+                    int right = TotalGutterPx - left; // ceil
+                    int bottom= left;
+                    int top   = right;
+
+                    rt.anchorMin = Vector2.zero;   // stretch
+                    rt.anchorMax = Vector2.one;    // stretch
+                    rt.offsetMin = new Vector2(left, bottom);
+                    rt.offsetMax = new Vector2(-right, -top);
+                    EditorUtility.SetDirty(rt);
+
+                    // Image settings for crisp fill
+                    var img = icon.GetComponent<Image>() ?? icon.AddComponent<Image>();
+                    Undo.RecordObject(img, "AQ Icon Image");
+                    img.type = Image.Type.Simple;
+                    img.preserveAspect = true;
+                    img.raycastTarget = false;
+                    EditorUtility.SetDirty(img);
+
+                    fixes++;
+                    Log(log, $"Prefab Icon: {before}  →  offMin=({left},{bottom}), offMax=({-right},{-top}), stretch fill; Image.Simple preserveAspect.");
+                }
+                finally
+                {
+                    PrefabUtility.SaveAsPrefabAsset(root, AssetDatabase.GetAssetPath(prefab));
+                    PrefabUtility.UnloadPrefabContents(root);
+                }
+            }
+
+            // 3) Nudge any live controllers’ grids in Edit mode (no typed reference)
+            foreach (var ctrl in FindControllers())
+            {
+                var so = new SerializedObject(ctrl);
+                var pCols = so.FindProperty("Cols");
+                var pBoardRoot = so.FindProperty("boardRoot");
+                var grid = (pBoardRoot?.objectReferenceValue as RectTransform)?.GetComponent<GridLayoutGroup>();
+                if (grid)
+                {
+                    Undo.RecordObject(grid, "AQ Grid Column Count");
+                    grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+                    if (pCols != null && pCols.intValue > 0) grid.constraintCount = pCols.intValue;
+                    grid.spacing = Vector2.zero;
+                    EditorUtility.SetDirty(grid);
+                }
+            }
+
+            var msg = (fixes > 0 ? "Audit & fix complete.\n" : "Nothing to change.\n") + log.ToString();
+            if (verboseDialog) EditorUtility.DisplayDialog("AQ Gutters", msg, "OK");
+            else Debug.Log($"[AQ] Gutters audit\n{msg}");
+        }
+
+        // ---------- helpers ----------
+        static void Log(System.Text.StringBuilder sb, string line) => sb.AppendLine("• " + line);
+
+        static GameObject FindTilePrefab()
+        {
+            // Prefer the prefab currently referenced by any MergeBoardController
+            foreach (var ctrl in FindControllers())
+            {
+                var so = new SerializedObject(ctrl);
+                var pTile = so.FindProperty("tilePrefab");
+                var go = pTile?.objectReferenceValue as GameObject;
+                if (go) return go;
+            }
+            // Fallback: search by name
+            foreach (var guid in AssetDatabase.FindAssets($"{TilePrefabName} t:prefab"))
+            {
+                var p = AssetDatabase.GUIDToAssetPath(guid);
+                var go = AssetDatabase.LoadAssetAtPath<GameObject>(p);
+                if (go && go.name == TilePrefabName) return go;
+            }
+            return null;
+        }
+
+        static IEnumerable<MonoBehaviour> FindControllers()
+        {
+            var all = Object.FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (var mb in all)
+            {
+                var t = mb ? mb.GetType() : null;
+                if (t == null) continue;
+                if (t.Name == "MergeBoardController" || (t.FullName?.EndsWith(".MergeBoardController") ?? false))
+                    yield return mb;
+            }
+        }
+
+        static int DisableBackgrounds(GameObject prefabRoot)
+        {
+            int n = 0;
+            var names = new HashSet<string>(new[] { "Bg", "Background", "Frame", "Border" });
+            foreach (var img in prefabRoot.GetComponentsInChildren<Image>(true))
+            {
+                var nm = img.gameObject.name;
+                if (names.Contains(nm) || nm.ToLowerInvariant().Contains("frame") || nm.ToLowerInvariant().Contains("border"))
+                {
+                    if (img.enabled)
+                    {
+                        Undo.RecordObject(img, "AQ Disable Background");
+                        img.enabled = false; // safest: render off, keeps hierarchy intact
+                        EditorUtility.SetDirty(img);
+                        n++;
+                    }
+                }
+            }
+            return n;
+        }
+
+        static GameObject EnsureIcon(GameObject prefabRoot)
+        {
+            // Prefer existing child named "Icon"; otherwise create one under "Item" if present (or root).
+            var icon = prefabRoot.GetComponentsInChildren<Transform>(true)
+                                 .FirstOrDefault(t => t.name == IconNodeName)?.gameObject;
+            if (!icon)
+            {
+                icon = new GameObject(IconNodeName, typeof(RectTransform), typeof(Image));
+                var parent = prefabRoot.transform;
+                var item = parent.GetComponentsInChildren<Transform>(true).FirstOrDefault(t => t.name == "Item");
+                if (item) parent = item;
+                icon.transform.SetParent(parent, false);
+            }
+            return icon;
+        }
+    }
+}
+#endif
+
+--- FILE: .\Backups\EditorSweep\20250923_183253\full_mirror\Assets\Editor\AQ\Art\AuditCanvasBoard.cs ---
+
+// Assets/Editor/AQ/Art/AuditCanvasBoard.cs
+// Full-scene audit for Canvas_Board / HUD_Board / TopBar / StatusRow / LeadsBar.
+
+#if UNITY_EDITOR
+using System.Text;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+namespace AQ.EditorTools.Art
+{
+    public static class AuditCanvasBoard
+    {
+        const string TAG = "[AQ Art]";
+
+        [MenuItem("AQ/Art/Audit Canvas_Board (Deep)")]
+        public static void Run()
+        {
+            var sb = new StringBuilder();
+            var canvas = GameObject.Find("Canvas_Board");
+            if (!canvas)
+            {
+                Debug.LogWarning($"{TAG} Canvas_Board not found.");
+                return;
+            }
+
+            sb.AppendLine($"{TAG} --- Canvas_Board Deep Audit ---");
+
+            // Canvas + Scaler
+            var cv = canvas.GetComponent<Canvas>();
+            var cs = canvas.GetComponent<CanvasScaler>();
+            var rtCanvas = canvas.GetComponent<RectTransform>();
+            sb.AppendLine(DescribeCanvas(cv, cs, rtCanvas));
+
+            // HUD_Board
+            var hud = canvas.transform.Find("HUD_Board") ? canvas.transform.Find("HUD_Board").gameObject : null;
+            if (!hud)
+            {
+                sb.AppendLine("HUD_Board: (missing)");
+                Debug.Log(sb.ToString());
+                return;
+            }
+
+            var rtHUD = hud.GetComponent<RectTransform>();
+            sb.AppendLine(DescribeRect(rtHUD, "HUD_Board"));
+            var vlg = hud.GetComponent<VerticalLayoutGroup>();
+            sb.AppendLine(vlg ? DescribeVLG(vlg) : "  (no VerticalLayoutGroup)");
+
+            // Children of HUD_Board
+            foreach (Transform child in hud.transform)
+            {
+                var name = child.name;
+                if (name == "TopBar") DumpTopBar(child, sb);
+                else if (name == "StatusRow") DumpStatusRow(child, sb);
+                else if (name == "LeadsBar") DumpLeadsBar(child, sb);
+                else DumpGeneric(child, sb);
+            }
+
+            Debug.Log(sb.ToString());
+        }
+
+        static void DumpTopBar(Transform t, StringBuilder sb)
+        {
+            sb.AppendLine($"TopBar: {DescribeRect(t.GetComponent<RectTransform>())}");
+            var hlg = t.GetComponent<HorizontalLayoutGroup>();
+            sb.AppendLine(hlg ? "  " + DescribeHLG(hlg) : "  (no HorizontalLayoutGroup)");
+
+            foreach (Transform c in t) DumpGeneric(c, sb, 2);
+
+            // Expected children
+            RequireChild(t, "Btn_Home", sb);
+            RequireChild(t, "AvatarChip", sb);
+            RequireChild(t, "EpisodeChip", sb);
+            RequireChild(t, "Meter_Energy", sb);
+            RequireChild(t, "Meter_Soft", sb);
+            RequireChild(t, "Meter_Premium", sb);
+        }
+
+        static void DumpStatusRow(Transform t, StringBuilder sb)
+        {
+            sb.AppendLine($"StatusRow: {DescribeRect(t.GetComponent<RectTransform>())}");
+            var hlg = t.GetComponent<HorizontalLayoutGroup>();
+            sb.AppendLine(hlg ? "  " + DescribeHLG(hlg) : "  (no HorizontalLayoutGroup)");
+
+            foreach (Transform c in t) DumpGeneric(c, sb, 2);
+
+            // Expected children
+            RequireChild(t, "Text_Solved", sb);
+            RequireChild(t, "Text_Evidence", sb);
+            RequireChild(t, "Text_Leads", sb);
+            RequireChild(t, "Text_LastBreakthrough", sb);
+        }
+
+        static void DumpLeadsBar(Transform t, StringBuilder sb)
+        {
+            sb.AppendLine($"LeadsBar: {DescribeRect(t.GetComponent<RectTransform>())}");
+            var sr = t.GetComponent<ScrollRect>();
+            if (!sr)
+                sb.AppendLine("  (no ScrollRect)");
+            else
+            {
+                sb.AppendLine($"  ScrollRect horiz={sr.horizontal} vert={sr.vertical} inertia={sr.inertia}");
+                if (!sr.viewport) sb.AppendLine("  (viewport missing)");
+                if (!sr.content) sb.AppendLine("  (content missing)");
+            }
+            foreach (Transform c in t) DumpGeneric(c, sb, 2);
+        }
+
+        static void DumpGeneric(Transform t, StringBuilder sb, int depth = 1)
+        {
+            var rt = t.GetComponent<RectTransform>();
+            var img = t.GetComponent<Image>();
+            var tmp = t.GetComponent<TextMeshProUGUI>();
+            var le = t.GetComponent<LayoutElement>();
+            var pad = new string(' ', depth * 2);
+            sb.AppendLine($"{pad}{t.name}: {DescribeRect(rt, inline:true)}");
+            if (img) sb.AppendLine($"{pad}  Image sprite={(img.sprite ? img.sprite.name : "(none)")} type={img.type}");
+            if (tmp) sb.AppendLine($"{pad}  TMP text=\"{tmp.text}\" size={tmp.fontSize}");
+            if (le) sb.AppendLine($"{pad}  LayoutElement pref=({le.preferredWidth},{le.preferredHeight}) min=({le.minWidth},{le.minHeight})");
+        }
+
+        static void RequireChild(Transform parent, string child, StringBuilder sb)
+        {
+            if (!parent.Find(child))
+                sb.AppendLine($"  !! Missing expected child: {child}");
+        }
+
+        // ---- describe helpers ----
+        static string DescribeCanvas(Canvas cv, CanvasScaler cs, RectTransform rt)
+        {
+            var mode = cv ? cv.renderMode.ToString() : "(no Canvas)";
+            var scaler = cs ? $"Scaler: UI Scale Mode={cs.uiScaleMode} Ref=({cs.referenceResolution.x}x{cs.referenceResolution.y}) Match={cs.matchWidthOrHeight:F2}" : "(no CanvasScaler)";
+            return $"Canvas: {mode}, {scaler}, {DescribeRect(rt, "Rect", inline: true)}";
+        }
+
+        static string DescribeRect(RectTransform rt, string label = null, bool inline = false)
+        {
+            if (!rt) return label == null ? "(no RectTransform)" : $"{label}: (no RectTransform)";
+            var aMin = rt.anchorMin; var aMax = rt.anchorMax; var sd = rt.sizeDelta; var ap = rt.anchoredPosition; var pv = rt.pivot;
+            var s = $"{(label ?? "Rect")}: anchors=({aMin.x:F2},{aMin.y:F2})-({aMax.x:F2},{aMax.y:F2}) pivot=({pv.x:F2},{pv.y:F2}) size=({sd.x:F0},{sd.y:F0}) pos=({ap.x:F0},{ap.y:F0})";
+            return inline ? s : "  " + s;
+        }
+
+        static string DescribeHLG(HorizontalLayoutGroup h)
+        {
+            return $"HLG padding L{h.padding.left}/R{h.padding.right}/T{h.padding.top}/B{h.padding.bottom} spacing={h.spacing} childCtrlW={h.childControlWidth} childCtrlH={h.childControlHeight} forceExpandW={h.childForceExpandWidth} forceExpandH={h.childForceExpandHeight}";
+        }
+
+        static string DescribeVLG(VerticalLayoutGroup v)
+        {
+            return $"VLG padding L{v.padding.left}/R{v.padding.right}/T{v.padding.top}/B{v.padding.bottom} spacing={v.spacing} childCtrlW={v.childControlWidth} childCtrlH={v.childControlHeight} forceExpandW={v.childForceExpandWidth} forceExpandH={v.childForceExpandHeight} align={v.childAlignment}";
+        }
+    }
+}
+#endif
+
+--- FILE: .\Backups\EditorSweep\20250923_183253\full_mirror\Assets\Editor\AQ\Art\AuditTopBar.cs ---
+
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+using System.Text;
+using TMPro;
+
+namespace AQ.EditorTools.Art
+{
+    public static class AuditTopBar
+    {
+        [MenuItem("AQ/Art/Audit TopBar (tree + guesses)")]
+        public static void Run()
+        {
+            var top = Find("Canvas_Board/HUD_Board/TopBar");
+            if (!top)
+            {
+                Debug.LogWarning("[AQ Art] TopBar not found at Canvas_Board/HUD_Board/TopBar");
+                return;
+            }
+
+            var sb = new StringBuilder();
+            sb.AppendLine("[AQ Art] --- TopBar Tree ---");
+            Dump(top, 0, sb);
+            sb.AppendLine("[AQ Art] --- Guesses ---");
+            Guess(top, "Energy", sb);
+            Guess(top, "Soft|Coin|Gold", sb);
+            Guess(top, "Premium|Gem|Diamond|Ruby", sb);
+            Guess(top, "Episode|Chip|Pill", sb, includeSelf:true);
+            Guess(top, "Avatar|Portrait|Profile", sb, includeSelf:true);
+            Guess(top, "Home", sb, includeSelf:true);
+
+            Debug.Log(sb.ToString());
+        }
+
+        static Transform Find(string path)
+        {
+            var root = GameObject.Find("Canvas_Board");
+            if (!root) return null;
+            var t = root.transform;
+            var parts = path.Split('/');
+            foreach (var p in parts)
+                if (p != "Canvas_Board")
+                    t = FindChild(t, p) ?? t;
+            return t;
+        }
+
+        static Transform FindChild(Transform parent, string name)
+        {
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                var c = parent.GetChild(i);
+                if (c.name.ToLower().Contains(name.ToLower())) return c;
+            }
+            return null;
+        }
+
+        static void Dump(Transform t, int depth, StringBuilder sb)
+        {
+            var rt = t as RectTransform;
+            var img = t.GetComponent<Image>();
+            var btn = t.GetComponent<UnityEngine.UI.Button>();
+            var tmp = t.GetComponent<TMP_Text>();
+            sb.Append(' ', depth * 2);
+            sb.Append("• ").Append(PathOf(t));
+            if (rt) sb.Append($"  [{rt.rect.width:0}×{rt.rect.height:0}]");
+            if (img) sb.Append($"  Image(sprite={(img.sprite ? img.sprite.name : "null")})");
+            if (btn) sb.Append("  Button");
+            if (tmp) sb.Append($"  TMP(\"{tmp.text}\")");
+            sb.AppendLine();
+            for (int i = 0; i < t.childCount; i++) Dump(t.GetChild(i), depth + 1, sb);
+        }
+
+        static string PathOf(Transform t)
+        {
+            System.Collections.Generic.List<string> parts = new();
+            var cur = t;
+            while (cur != null && cur.gameObject.scene.IsValid())
+            {
+                parts.Add(cur.name);
+                cur = cur.parent;
+                if (cur && cur.name == "Canvas_Board") break;
+            }
+            parts.Reverse();
+            return string.Join("/", parts);
+        }
+
+        static void Guess(Transform scope, string hints, StringBuilder sb, bool includeSelf=false)
+        {
+            var target = FindByHints(scope, hints);
+            if (!target) { sb.AppendLine($"  {hints} -> (not found)"); return; }
+
+            var img = includeSelf ? target.GetComponent<Image>() : null;
+            if (!img) img = FindImageBelow(target);
+            sb.AppendLine($"  {hints} -> {(img ? PathOf(img.transform) : PathOf(target))} {(img ? "(Image)" : "(no Image found)")} ");
+        }
+
+        static Transform FindByHints(Transform scope, string hints)
+        {
+            string[] keys = hints.Split('|');
+            var stack = new System.Collections.Generic.Stack<Transform>();
+            stack.Push(scope);
+            while (stack.Count > 0)
+            {
+                var t = stack.Pop();
+                foreach (var k in keys)
+                    if (t.name.ToLower().Contains(k.ToLower())) return t;
+                for (int i = 0; i < t.childCount; i++) stack.Push(t.GetChild(i));
+            }
+            return null;
+        }
+
+        static Image FindImageBelow(Transform t)
+        {
+            return t.GetComponentInChildren<Image>(true);
+        }
+    }
+}
+#endif
+
+--- FILE: .\Backups\EditorSweep\20250923_183253\full_mirror\Assets\Editor\AQ\Art\AuditTopBarDeep.cs ---
+
+// Assets/Editor/AQ/Art/AuditTopBarDeep.cs
+// Deep, deterministic audit of Canvas_Board/HUD_Board/TopBar.
+// Prints full child tree, RectTransform data, and key component summaries.
+
+#if UNITY_EDITOR
+using System.Text;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+namespace AQ.EditorTools.Art
+{
+    public static class AuditTopBarDeep
+    {
+        const string Tag = "[AQ Art]";
+
+        [MenuItem("AQ/Art/Audit TopBar (Deep)")]
+        public static void Run()
+        {
+            var topBar = FindTopBar();
+            if (topBar == null)
+            {
+                Debug.LogWarning($"{Tag} TopBar not found at Canvas_Board/HUD_Board/TopBar");
+                return;
+            }
+
+            var sb = new StringBuilder();
+            sb.AppendLine($"{Tag} --- TopBar Deep Audit ---");
+            sb.AppendLine(DescribeRect(topBar.GetComponent<RectTransform>(), "TopBar"));
+
+            var hlg = topBar.GetComponent<HorizontalLayoutGroup>();
+            if (hlg == null) sb.AppendLine("  (no HorizontalLayoutGroup)");
+            else sb.AppendLine(DescribeHLG(hlg));
+
+            // Recurse children
+            foreach (Transform child in topBar.transform)
+                Dump(child, 1, sb);
+
+            Debug.Log(sb.ToString());
+        }
+
+        static GameObject FindTopBar()
+        {
+            var canvas = GameObject.Find("Canvas_Board");
+            if (canvas == null) return null;
+            var hud = canvas.transform.Find("HUD_Board");
+            if (hud == null) return null;
+            var top = hud.Find("TopBar");
+            return top ? top.gameObject : null;
+        }
+
+        static void Dump(Transform t, int depth, StringBuilder sb)
+        {
+            var rt = t.GetComponent<RectTransform>();
+            sb.AppendLine(DescribeRect(rt, t.name, depth));
+
+            var img = t.GetComponent<Image>();
+            if (img) sb.AppendLine(Indent(depth + 1) + DescribeImage(img));
+
+            var btn = t.GetComponent<Button>();
+            if (btn) sb.AppendLine(Indent(depth + 1) + "(Button)");
+
+            var le = t.GetComponent<LayoutElement>();
+            if (le) sb.AppendLine(Indent(depth + 1) + DescribeLE(le));
+
+            var hlg = t.GetComponent<HorizontalLayoutGroup>();
+            if (hlg) sb.AppendLine(Indent(depth + 1) + DescribeHLG(hlg));
+
+            var txt = t.GetComponent<TextMeshProUGUI>();
+            if (txt) sb.AppendLine(Indent(depth + 1) + $"TMP text=\"{txt.text}\" size={txt.fontSize}");
+
+            foreach (Transform c in t)
+                Dump(c, depth + 1, sb);
+        }
+
+        static string DescribeRect(RectTransform rt, string label, int depth = 0)
+        {
+            if (!rt) return Indent(depth) + $"{label}: (no RectTransform?)";
+            var aMin = rt.anchorMin; var aMax = rt.anchorMax;
+            var sd = rt.sizeDelta; var ap = rt.anchoredPosition;
+            return Indent(depth) + $"{label}: anchors=({aMin.x:F2},{aMin.y:F2})-({aMax.x:F2},{aMax.y:F2}) pivot={rt.pivot} sizeDelta=({sd.x:F0},{sd.y:F0}) anchored=({ap.x:F0},{ap.y:F0})";
+        }
+
+        static string DescribeImage(Image img)
+        {
+            var s = img.sprite ? img.sprite.name : "(none)";
+            var type = img.type.ToString();
+            var border = img.sprite ? img.sprite.border : Vector4.zero;
+            return $"Image sprite={s} type={type} border=({border.x},{border.y},{border.z},{border.w}) preserveAspect={img.preserveAspect}";
+        }
+
+        static string DescribeHLG(HorizontalLayoutGroup h)
+        {
+            return $"HLG padding L{h.padding.left}/R{h.padding.right}/T{h.padding.top}/B{h.padding.bottom} spacing={h.spacing} childCtrlW={h.childControlWidth} childCtrlH={h.childControlHeight} forceExpandW={h.childForceExpandWidth} forceExpandH={h.childForceExpandHeight}";
+        }
+
+        static string DescribeLE(LayoutElement le)
+        {
+            return $"LayoutElement min=({le.minWidth:F0},{le.minHeight:F0}) pref=({le.preferredWidth:F0},{le.preferredHeight:F0}) flex=({le.flexibleWidth:F1},{le.flexibleHeight:F1})";
+        }
+
+        static string Indent(int n) => new string(' ', n * 2);
+    }
+}
+#endif
+
+--- FILE: .\Backups\EditorSweep\20250923_183253\full_mirror\Assets\Editor\AQ\Merge\MergeAudit.cs ---
+
+// SPDX-License-Identifier: MIT
+// AQ Merge Audit — maps merge-related MonoBehaviours to prefabs/scenes by GUID reference.
+// Menu: AQ → Merge → Audit (Types & Usage Report)
+#if UNITY_EDITOR
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+
+namespace AQ.EditorTools.Merge
+{
+    public static class MergeAudit
+    {
+        [MenuItem("AQ/Merge/Audit (Types & Usage Report)")]
+        public static void Run()
+        {
+            var outDir = Path.Combine(Directory.GetParent(Application.dataPath)!.FullName, "_audit", "merge");
+            Directory.CreateDirectory(outDir);
+            var stamp = DateTime.UtcNow.ToString("yyyyMMdd_HHmmss");
+            var outPath = Path.Combine(outDir, $"merge_editor_audit_{stamp}.txt");
+
+            var candidates = GetCandidateTypes();
+            var guidMap = BuildScriptGuidMap(candidates);
+
+            var allAssets = AssetDatabase.FindAssets("t:Prefab t:Scene", new[] { "Assets" })
+                                         .Select(AssetDatabase.GUIDToAssetPath)
+                                         .ToArray();
+
+            var report = new List<string>();
+            report.Add($"AQ Merge Editor Audit  {DateTime.UtcNow:O}");
+            report.Add($"Assets scanned: {allAssets.Length}");
+            report.Add("");
+
+            foreach (var t in candidates)
+            {
+                var typeName = t.FullName ?? t.Name;
+                var guid = guidMap.TryGetValue(t, out var g) ? g : "<no-guid>";
+                var uses = new List<string>();
+
+                if (guid != "<no-guid>")
+                {
+                    foreach (var path in allAssets)
+                    {
+                        // Cheap YAML hit test by GUID reference
+                        var txt = File.ReadAllText(path);
+                        if (txt.Contains($"guid: {guid}"))
+                            uses.Add(path);
+                    }
+                }
+
+                report.Add($"TYPE: {typeName}   (guid: {guid})   uses={uses.Count}");
+                if (uses.Count > 0)
+                    report.AddRange(uses.Select(p => $"  - {p}"));
+                report.Add("");
+            }
+
+            // Quick scene presence snapshot for "MergeBoard" objects
+            var open = EditorSceneManager.GetActiveScene();
+            if (open.IsValid())
+            {
+                var roots = open.GetRootGameObjects();
+                var boards = new List<string>();
+                foreach (var r in roots)
+                {
+                    foreach (var t in r.GetComponentsInChildren<Transform>(true))
+                        if (t.name.IndexOf("MergeBoard", StringComparison.OrdinalIgnoreCase) >= 0)
+                            boards.Add(t.name);
+                }
+                report.Add($"Active Scene MergeBoard objects: {boards.Count}");
+            }
+
+            File.WriteAllLines(outPath, report);
+            Debug.Log($"[AQ MergeAudit] Wrote report → {outPath}");
+        }
+
+        private static List<Type> GetCandidateTypes()
+        {
+            // Grab all MonoBehaviours, filter by name/namespace hints.
+            var list = new List<Type>();
+            foreach (var t in TypeCache.GetTypesDerivedFrom<MonoBehaviour>())
+            {
+                if (t == null || t.IsAbstract) continue;
+                var n = t.Name;
+                var ns = t.Namespace ?? string.Empty;
+
+                bool looksMerge =
+                    n.IndexOf("Merge", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    ( (n.IndexOf("Board", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                       n.IndexOf("Cell",  StringComparison.OrdinalIgnoreCase) >= 0 ||
+                       n.IndexOf("Slot",  StringComparison.OrdinalIgnoreCase) >= 0 ||
+                       n.IndexOf("Tile",  StringComparison.OrdinalIgnoreCase) >= 0 )
+                      && ns.IndexOf("Merge", StringComparison.OrdinalIgnoreCase) >= 0 );
+
+                if (looksMerge) list.Add(t);
+            }
+            return list.OrderBy(t => t.FullName).ToList();
+        }
+
+        private static Dictionary<Type,string> BuildScriptGuidMap(IEnumerable<Type> types)
+        {
+            var want = new HashSet<Type>(types);
+            var guids = new Dictionary<Type, string>();
+
+            var scriptGuids = AssetDatabase.FindAssets("t:MonoScript", new[] { "Assets" });
+            foreach (var g in scriptGuids)
+            {
+                var path = AssetDatabase.GUIDToAssetPath(g);
+                var ms = AssetDatabase.LoadAssetAtPath<MonoScript>(path);
+                if (!ms) continue;
+                var cls = ms.GetClass();
+                if (cls != null && want.Contains(cls))
+                {
+                    guids[cls] = g;
+                }
+            }
+            return guids;
+        }
+    }
+}
+#endif
+
+--- FILE: .\Backups\EditorSweep\20250923_183253\removed\Assets\Editor\AQ\Art\AuditTopBar.cs ---
+
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+using System.Text;
+using TMPro;
+
+namespace AQ.EditorTools.Art
+{
+    public static class AuditTopBar
+    {
+        [MenuItem("AQ/Art/Audit TopBar (tree + guesses)")]
+        public static void Run()
+        {
+            var top = Find("Canvas_Board/HUD_Board/TopBar");
+            if (!top)
+            {
+                Debug.LogWarning("[AQ Art] TopBar not found at Canvas_Board/HUD_Board/TopBar");
+                return;
+            }
+
+            var sb = new StringBuilder();
+            sb.AppendLine("[AQ Art] --- TopBar Tree ---");
+            Dump(top, 0, sb);
+            sb.AppendLine("[AQ Art] --- Guesses ---");
+            Guess(top, "Energy", sb);
+            Guess(top, "Soft|Coin|Gold", sb);
+            Guess(top, "Premium|Gem|Diamond|Ruby", sb);
+            Guess(top, "Episode|Chip|Pill", sb, includeSelf:true);
+            Guess(top, "Avatar|Portrait|Profile", sb, includeSelf:true);
+            Guess(top, "Home", sb, includeSelf:true);
+
+            Debug.Log(sb.ToString());
+        }
+
+        static Transform Find(string path)
+        {
+            var root = GameObject.Find("Canvas_Board");
+            if (!root) return null;
+            var t = root.transform;
+            var parts = path.Split('/');
+            foreach (var p in parts)
+                if (p != "Canvas_Board")
+                    t = FindChild(t, p) ?? t;
+            return t;
+        }
+
+        static Transform FindChild(Transform parent, string name)
+        {
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                var c = parent.GetChild(i);
+                if (c.name.ToLower().Contains(name.ToLower())) return c;
+            }
+            return null;
+        }
+
+        static void Dump(Transform t, int depth, StringBuilder sb)
+        {
+            var rt = t as RectTransform;
+            var img = t.GetComponent<Image>();
+            var btn = t.GetComponent<UnityEngine.UI.Button>();
+            var tmp = t.GetComponent<TMP_Text>();
+            sb.Append(' ', depth * 2);
+            sb.Append("• ").Append(PathOf(t));
+            if (rt) sb.Append($"  [{rt.rect.width:0}×{rt.rect.height:0}]");
+            if (img) sb.Append($"  Image(sprite={(img.sprite ? img.sprite.name : "null")})");
+            if (btn) sb.Append("  Button");
+            if (tmp) sb.Append($"  TMP(\"{tmp.text}\")");
+            sb.AppendLine();
+            for (int i = 0; i < t.childCount; i++) Dump(t.GetChild(i), depth + 1, sb);
+        }
+
+        static string PathOf(Transform t)
+        {
+            System.Collections.Generic.List<string> parts = new();
+            var cur = t;
+            while (cur != null && cur.gameObject.scene.IsValid())
+            {
+                parts.Add(cur.name);
+                cur = cur.parent;
+                if (cur && cur.name == "Canvas_Board") break;
+            }
+            parts.Reverse();
+            return string.Join("/", parts);
+        }
+
+        static void Guess(Transform scope, string hints, StringBuilder sb, bool includeSelf=false)
+        {
+            var target = FindByHints(scope, hints);
+            if (!target) { sb.AppendLine($"  {hints} -> (not found)"); return; }
+
+            var img = includeSelf ? target.GetComponent<Image>() : null;
+            if (!img) img = FindImageBelow(target);
+            sb.AppendLine($"  {hints} -> {(img ? PathOf(img.transform) : PathOf(target))} {(img ? "(Image)" : "(no Image found)")} ");
+        }
+
+        static Transform FindByHints(Transform scope, string hints)
+        {
+            string[] keys = hints.Split('|');
+            var stack = new System.Collections.Generic.Stack<Transform>();
+            stack.Push(scope);
+            while (stack.Count > 0)
+            {
+                var t = stack.Pop();
+                foreach (var k in keys)
+                    if (t.name.ToLower().Contains(k.ToLower())) return t;
+                for (int i = 0; i < t.childCount; i++) stack.Push(t.GetChild(i));
+            }
+            return null;
+        }
+
+        static Image FindImageBelow(Transform t)
+        {
+            return t.GetComponentInChildren<Image>(true);
+        }
+    }
+}
+#endif
+
+--- FILE: .\Backups\EditorSweep\20250923_183253\removed\Assets\Editor\AQ\Art\AuditTopBarDeep.cs ---
+
+// Assets/Editor/AQ/Art/AuditTopBarDeep.cs
+// Deep, deterministic audit of Canvas_Board/HUD_Board/TopBar.
+// Prints full child tree, RectTransform data, and key component summaries.
+
+#if UNITY_EDITOR
+using System.Text;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+namespace AQ.EditorTools.Art
+{
+    public static class AuditTopBarDeep
+    {
+        const string Tag = "[AQ Art]";
+
+        [MenuItem("AQ/Art/Audit TopBar (Deep)")]
+        public static void Run()
+        {
+            var topBar = FindTopBar();
+            if (topBar == null)
+            {
+                Debug.LogWarning($"{Tag} TopBar not found at Canvas_Board/HUD_Board/TopBar");
+                return;
+            }
+
+            var sb = new StringBuilder();
+            sb.AppendLine($"{Tag} --- TopBar Deep Audit ---");
+            sb.AppendLine(DescribeRect(topBar.GetComponent<RectTransform>(), "TopBar"));
+
+            var hlg = topBar.GetComponent<HorizontalLayoutGroup>();
+            if (hlg == null) sb.AppendLine("  (no HorizontalLayoutGroup)");
+            else sb.AppendLine(DescribeHLG(hlg));
+
+            // Recurse children
+            foreach (Transform child in topBar.transform)
+                Dump(child, 1, sb);
+
+            Debug.Log(sb.ToString());
+        }
+
+        static GameObject FindTopBar()
+        {
+            var canvas = GameObject.Find("Canvas_Board");
+            if (canvas == null) return null;
+            var hud = canvas.transform.Find("HUD_Board");
+            if (hud == null) return null;
+            var top = hud.Find("TopBar");
+            return top ? top.gameObject : null;
+        }
+
+        static void Dump(Transform t, int depth, StringBuilder sb)
+        {
+            var rt = t.GetComponent<RectTransform>();
+            sb.AppendLine(DescribeRect(rt, t.name, depth));
+
+            var img = t.GetComponent<Image>();
+            if (img) sb.AppendLine(Indent(depth + 1) + DescribeImage(img));
+
+            var btn = t.GetComponent<Button>();
+            if (btn) sb.AppendLine(Indent(depth + 1) + "(Button)");
+
+            var le = t.GetComponent<LayoutElement>();
+            if (le) sb.AppendLine(Indent(depth + 1) + DescribeLE(le));
+
+            var hlg = t.GetComponent<HorizontalLayoutGroup>();
+            if (hlg) sb.AppendLine(Indent(depth + 1) + DescribeHLG(hlg));
+
+            var txt = t.GetComponent<TextMeshProUGUI>();
+            if (txt) sb.AppendLine(Indent(depth + 1) + $"TMP text=\"{txt.text}\" size={txt.fontSize}");
+
+            foreach (Transform c in t)
+                Dump(c, depth + 1, sb);
+        }
+
+        static string DescribeRect(RectTransform rt, string label, int depth = 0)
+        {
+            if (!rt) return Indent(depth) + $"{label}: (no RectTransform?)";
+            var aMin = rt.anchorMin; var aMax = rt.anchorMax;
+            var sd = rt.sizeDelta; var ap = rt.anchoredPosition;
+            return Indent(depth) + $"{label}: anchors=({aMin.x:F2},{aMin.y:F2})-({aMax.x:F2},{aMax.y:F2}) pivot={rt.pivot} sizeDelta=({sd.x:F0},{sd.y:F0}) anchored=({ap.x:F0},{ap.y:F0})";
+        }
+
+        static string DescribeImage(Image img)
+        {
+            var s = img.sprite ? img.sprite.name : "(none)";
+            var type = img.type.ToString();
+            var border = img.sprite ? img.sprite.border : Vector4.zero;
+            return $"Image sprite={s} type={type} border=({border.x},{border.y},{border.z},{border.w}) preserveAspect={img.preserveAspect}";
+        }
+
+        static string DescribeHLG(HorizontalLayoutGroup h)
+        {
+            return $"HLG padding L{h.padding.left}/R{h.padding.right}/T{h.padding.top}/B{h.padding.bottom} spacing={h.spacing} childCtrlW={h.childControlWidth} childCtrlH={h.childControlHeight} forceExpandW={h.childForceExpandWidth} forceExpandH={h.childForceExpandHeight}";
+        }
+
+        static string DescribeLE(LayoutElement le)
+        {
+            return $"LayoutElement min=({le.minWidth:F0},{le.minHeight:F0}) pref=({le.preferredWidth:F0},{le.preferredHeight:F0}) flex=({le.flexibleWidth:F1},{le.flexibleHeight:F1})";
+        }
+
+        static string Indent(int n) => new string(' ', n * 2);
+    }
+}
+#endif
+
+--- FILE: .\Backups\EditorSweep\20250923_183253\removed\Assets\Editor\AQ\Merge\MergeAudit.cs ---
+
+// SPDX-License-Identifier: MIT
+// AQ Merge Audit — maps merge-related MonoBehaviours to prefabs/scenes by GUID reference.
+// Menu: AQ → Merge → Audit (Types & Usage Report)
+#if UNITY_EDITOR
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+
+namespace AQ.EditorTools.Merge
+{
+    public static class MergeAudit
+    {
+        [MenuItem("AQ/Merge/Audit (Types & Usage Report)")]
+        public static void Run()
+        {
+            var outDir = Path.Combine(Directory.GetParent(Application.dataPath)!.FullName, "_audit", "merge");
+            Directory.CreateDirectory(outDir);
+            var stamp = DateTime.UtcNow.ToString("yyyyMMdd_HHmmss");
+            var outPath = Path.Combine(outDir, $"merge_editor_audit_{stamp}.txt");
+
+            var candidates = GetCandidateTypes();
+            var guidMap = BuildScriptGuidMap(candidates);
+
+            var allAssets = AssetDatabase.FindAssets("t:Prefab t:Scene", new[] { "Assets" })
+                                         .Select(AssetDatabase.GUIDToAssetPath)
+                                         .ToArray();
+
+            var report = new List<string>();
+            report.Add($"AQ Merge Editor Audit  {DateTime.UtcNow:O}");
+            report.Add($"Assets scanned: {allAssets.Length}");
+            report.Add("");
+
+            foreach (var t in candidates)
+            {
+                var typeName = t.FullName ?? t.Name;
+                var guid = guidMap.TryGetValue(t, out var g) ? g : "<no-guid>";
+                var uses = new List<string>();
+
+                if (guid != "<no-guid>")
+                {
+                    foreach (var path in allAssets)
+                    {
+                        // Cheap YAML hit test by GUID reference
+                        var txt = File.ReadAllText(path);
+                        if (txt.Contains($"guid: {guid}"))
+                            uses.Add(path);
+                    }
+                }
+
+                report.Add($"TYPE: {typeName}   (guid: {guid})   uses={uses.Count}");
+                if (uses.Count > 0)
+                    report.AddRange(uses.Select(p => $"  - {p}"));
+                report.Add("");
+            }
+
+            // Quick scene presence snapshot for "MergeBoard" objects
+            var open = EditorSceneManager.GetActiveScene();
+            if (open.IsValid())
+            {
+                var roots = open.GetRootGameObjects();
+                var boards = new List<string>();
+                foreach (var r in roots)
+                {
+                    foreach (var t in r.GetComponentsInChildren<Transform>(true))
+                        if (t.name.IndexOf("MergeBoard", StringComparison.OrdinalIgnoreCase) >= 0)
+                            boards.Add(t.name);
+                }
+                report.Add($"Active Scene MergeBoard objects: {boards.Count}");
+            }
+
+            File.WriteAllLines(outPath, report);
+            Debug.Log($"[AQ MergeAudit] Wrote report → {outPath}");
+        }
+
+        private static List<Type> GetCandidateTypes()
+        {
+            // Grab all MonoBehaviours, filter by name/namespace hints.
+            var list = new List<Type>();
+            foreach (var t in TypeCache.GetTypesDerivedFrom<MonoBehaviour>())
+            {
+                if (t == null || t.IsAbstract) continue;
+                var n = t.Name;
+                var ns = t.Namespace ?? string.Empty;
+
+                bool looksMerge =
+                    n.IndexOf("Merge", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    ( (n.IndexOf("Board", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                       n.IndexOf("Cell",  StringComparison.OrdinalIgnoreCase) >= 0 ||
+                       n.IndexOf("Slot",  StringComparison.OrdinalIgnoreCase) >= 0 ||
+                       n.IndexOf("Tile",  StringComparison.OrdinalIgnoreCase) >= 0 )
+                      && ns.IndexOf("Merge", StringComparison.OrdinalIgnoreCase) >= 0 );
+
+                if (looksMerge) list.Add(t);
+            }
+            return list.OrderBy(t => t.FullName).ToList();
+        }
+
+        private static Dictionary<Type,string> BuildScriptGuidMap(IEnumerable<Type> types)
+        {
+            var want = new HashSet<Type>(types);
+            var guids = new Dictionary<Type, string>();
+
+            var scriptGuids = AssetDatabase.FindAssets("t:MonoScript", new[] { "Assets" });
+            foreach (var g in scriptGuids)
+            {
+                var path = AssetDatabase.GUIDToAssetPath(g);
+                var ms = AssetDatabase.LoadAssetAtPath<MonoScript>(path);
+                if (!ms) continue;
+                var cls = ms.GetClass();
+                if (cls != null && want.Contains(cls))
+                {
+                    guids[cls] = g;
+                }
+            }
+            return guids;
+        }
+    }
+}
+#endif
+
