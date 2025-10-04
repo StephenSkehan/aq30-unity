@@ -1,315 +1,204 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace AQ.App.UI.Board
 {
-    [RequireComponent(typeof(Image))]
-    public sealed class BoardTileView : MonoBehaviour, 
-        IPointerDownHandler,
-        IBeginDragHandler, 
-        IDragHandler, 
-        IEndDragHandler,
-        IPointerClickHandler  // ADD THIS
+    [DisallowMultipleComponent]
+    public class BoardTileView :
+        MonoBehaviour,
+        IPointerClickHandler,
+        IBeginDragHandler,
+        IDragHandler,
+        IEndDragHandler
     {
-        #region Inspector Fields
-        [Header("Visual References")]
-        [SerializeField] Image IconImage;
-        [SerializeField] Image BackgroundImage;
-        [SerializeField] Color SelectedColor = Color.yellow;
-        [SerializeField] Color NormalColor = Color.white;
-        [SerializeField] Color GeneratorColor = Color.cyan;
-        
-        [Header("Drag Setup")]
-        [SerializeField] RectTransform DragLayer;
-        #endregion
+        MergeBoardController controller;
+        int row, col;
 
-        #region Private Fields
-        bool _isGenerator;
-        bool _isSelected;
-        int _iconIndex = -1;
-        int _tier;
-        Sprite _currentSprite;
-        MergeBoardController _controller;
-        
-        // Drag state
-        RectTransform _iconRT;
-        RectTransform _homeParent;
-        Vector2 _savedAnchorMin, _savedAnchorMax, _savedPivot, _savedSize;
-        int _savedSiblingIndex;
-        bool _isDragging;  // CRITICAL: prevents click after drag
-        
-        Canvas _rootCanvas;
-        CanvasGroup _iconCG;  // CanvasGroup on the Icon child
-        #endregion
+        Image bgImage;          // child "Bg"
+        public Image itemImage; // child "Item"
 
-        #region Public Properties
-        public bool IsGenerator => _isGenerator;
-        public bool IsEmpty => _currentSprite == null && !_isGenerator;
-        public int IconIndex => _iconIndex;
-        public int Tier => _tier;
-        public int Row { get; private set; }
-        public int Col { get; private set; }
-        #endregion
-
-        #region Unity Lifecycle
-        void Awake()
+        public struct PayloadData
         {
-            // Find icon image as CHILD
-            if (!IconImage)
+            public TileKind kind;
+            public int tier;
+            public Sprite sprite;
+        }
+
+        PayloadData payload;
+        public PayloadData Payload { get => payload; set { payload = value; Refresh(); } }
+        public TileKind Kind => payload.kind;
+        public int Tier => payload.tier;
+        public bool IsEmpty => payload.kind == TileKind.Empty;
+
+        DragGhost ghost;
+        (int r, int c)? dragStartRC;
+
+        // ---------------- binding ----------------
+
+        public void Bind(MergeBoardController c, int r, int c0)
+        {
+            controller = c;
+            row = r; col = c0;
+
+            if (!bgImage)
             {
-                Transform iconChild = transform.Find("Icon") ?? transform.Find("Item") ?? transform.Find("icon");
-                if (iconChild)
-                {
-                    IconImage = iconChild.GetComponent<Image>();
-                }
-                else
-                {
-                    var images = GetComponentsInChildren<Image>();
-                    if (images.Length > 1)
-                        IconImage = images[1];
-                }
+                var t = transform.Find("Bg"); if (t) bgImage = t.GetComponent<Image>();
+            }
+            if (!itemImage)
+            {
+                var t = transform.Find("Item"); if (t) itemImage = t.GetComponent<Image>();
             }
 
-            if (IconImage)
+            if (bgImage)
             {
-                _iconRT = IconImage.rectTransform;
-                _homeParent = (RectTransform)_iconRT.parent;
-                
-                // Get or add CanvasGroup to the ICON (not the root)
-                _iconCG = IconImage.GetComponent<CanvasGroup>();
-                if (!_iconCG)
-                    _iconCG = IconImage.gameObject.AddComponent<CanvasGroup>();
-                _iconCG.alpha = 1f;
+                bgImage.enabled = true;
+                bgImage.raycastTarget = true;
             }
 
-            // Background is the Image on root
-            if (!BackgroundImage)
+            if (itemImage)
             {
-                BackgroundImage = GetComponent<Image>();
-            }
-            
-            // Find Canvas_Board
-            _rootCanvas = GetComponentInParent<Canvas>();
-            
-            // Find controller
-            _controller = GetComponentInParent<MergeBoardController>();
-            
-            // Find DragLayer
-            if (!DragLayer)
-            {
-                var canvasBoard = GameObject.Find("Canvas_Board");
-                if (canvasBoard)
-                {
-                    var dragLayerObj = canvasBoard.transform.Find("DragLayer");
-                    if (dragLayerObj)
-                        DragLayer = dragLayerObj.GetComponent<RectTransform>();
-                }
+                itemImage.preserveAspect = true;
+                itemImage.raycastTarget  = true;
             }
 
-            // Parse row/col from name (e.g., "slot_02_05")
-            ParseRowColFromName();
+            Clear();
         }
 
-        void ParseRowColFromName()
-        {
-            string n = name;
-            if (n.StartsWith("slot_"))
-            {
-                var parts = n.Split('_');
-                if (parts.Length >= 3)
-                {
-                    if (int.TryParse(parts[1], out int r))
-                        Row = r;
-                    if (int.TryParse(parts[2], out int c))
-                        Col = c;
-                }
-            }
-        }
-        #endregion
+        // --------------- payload ops ---------------
 
-        #region Event Handlers (FIXED PATTERN)
-        
-        public void OnPointerDown(PointerEventData eventData)
+        public void SetGenerator(Sprite sprite, int tier)
         {
-            // ONLY cache pointer data - DO NOT call any game play logic here
-            _isDragging = false;  // Reset per interaction
-            // Could cache eventData.position if needed, but don't trigger selection
+            payload.kind = TileKind.Generator;
+            payload.tier = Mathf.Max(0, tier);
+            payload.sprite = sprite;
+            Refresh();
         }
 
-        public void OnBeginDrag(PointerEventData eventData)
+        public void SetItem(Sprite sprite, int tier)
         {
-            if (IsEmpty || IsGenerator || !_controller) return;
-            if (!IconImage || !DragLayer) return;
-
-            _isDragging = true;
-
-            // 1) Clear any prior selection (CRITICAL FIX)
-            _controller.ClearSelection();
-            EventSystem.current?.SetSelectedGameObject(null);
-
-            // 2) Cache layout + parent
-            _savedSiblingIndex = _iconRT.GetSiblingIndex();
-            _savedAnchorMin = _iconRT.anchorMin;
-            _savedAnchorMax = _iconRT.anchorMax;
-            _savedPivot = _iconRT.pivot;
-            _savedSize = _iconRT.sizeDelta;
-
-            // 3) Move to DragLayer (worldPositionStays: false is CRITICAL)
-            _iconRT.SetParent(DragLayer, worldPositionStays: false);
-            _iconRT.anchorMin = _iconRT.anchorMax = new Vector2(0.5f, 0.5f);
-            _iconRT.pivot = new Vector2(0.5f, 0.5f);
-            _iconRT.localScale = Vector3.one;
-            _iconRT.sizeDelta = _savedSize;
-            _iconRT.SetAsLastSibling();
-
-            // 4) Disable raycasts on icon (CRITICAL for drop detection)
-            _iconCG.blocksRaycasts = false;
-            IconImage.raycastTarget = false;
-
-            // 5) Snap to pointer immediately
-            FollowPointer(eventData);
-        }
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            if (!_isDragging) return;
-            FollowPointer(eventData);
-        }
-
-        void FollowPointer(PointerEventData eventData)
-        {
-            if (!DragLayer || !_iconRT) return;
-
-            // ScreenSpace-Overlay => camera is null
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                DragLayer,
-                eventData.position,
-                _rootCanvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : _rootCanvas.worldCamera,
-                out Vector2 localPoint
-            );
-            
-            _iconRT.anchoredPosition = localPoint;
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            if (!_isDragging) return;
-
-            // Restore parent + layout
-            _iconRT.SetParent(_homeParent, worldPositionStays: false);
-            _iconRT.SetSiblingIndex(_savedSiblingIndex);
-            _iconRT.anchorMin = _savedAnchorMin;
-            _iconRT.anchorMax = _savedAnchorMax;
-            _iconRT.pivot = _savedPivot;
-            _iconRT.sizeDelta = _savedSize;
-            _iconRT.localScale = Vector3.one;
-
-            // Re-enable raycasts
-            _iconCG.blocksRaycasts = true;
-            IconImage.raycastTarget = true;
-
-            // Find target tile under pointer
-            var targetGO = eventData.pointerCurrentRaycast.gameObject;
-            var targetTile = targetGO ? targetGO.GetComponentInParent<BoardTileView>() : null;
-
-            // Notify controller
-            if (_controller)
-            {
-                _controller.EndDrag((Row, Col), targetTile != null ? ((int, int)?)(targetTile.Row, targetTile.Col) : null);
-            }
-
-            // Clear any latched selection (CRITICAL FIX)
-            _controller.ClearSelection();
-            EventSystem.current?.SetSelectedGameObject(null);
-
-            _isDragging = false;
-        }
-
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            // CRITICAL: Suppress click that follows a drag
-            if (_isDragging) return;
-            
-            // Now safe to trigger selection/merge
-            if (_controller != null)
-            {
-                _controller.OnTileClicked(this);
-            }
-        }
-        
-        #endregion
-
-        #region Public Methods
-        public void SetIsGenerator(bool isGenerator)
-        {
-            _isGenerator = isGenerator;
-            UpdateVisuals();
-        }
-
-        public void SetSprite(Sprite sprite, int iconIndex, int tier)
-        {
-            _currentSprite = sprite;
-            _iconIndex = iconIndex;
-            _tier = tier;
-            _isGenerator = false;
-            
-            if (IconImage)
-            {
-                IconImage.sprite = sprite;
-                IconImage.enabled = sprite != null;
-            }
-            
-            UpdateVisuals();
+            payload.kind = TileKind.Item;
+            payload.tier = Mathf.Max(0, tier);
+            payload.sprite = sprite;
+            Refresh();
         }
 
         public void Clear()
         {
-            _currentSprite = null;
-            _iconIndex = -1;
-            _tier = 0;
-            _isGenerator = false;
-            
-            if (IconImage)
-            {
-                IconImage.sprite = null;
-                IconImage.enabled = false;
-            }
-            
-            UpdateVisuals();
+            payload.kind = TileKind.Empty;
+            payload.tier = -1;
+            payload.sprite = null;
+            Refresh();
         }
 
-        public void SetSelected(bool selected)
+        public void CopyFrom(BoardTileView other)
         {
-            _isSelected = selected;
-            UpdateVisuals();
+            Payload = other.payload;
+            other.Clear();
         }
-        #endregion
 
-        #region Visual Updates
-        void UpdateVisuals()
+        public void Refresh()
         {
-            if (IconImage)
-            {
-                IconImage.sprite = _currentSprite;
-                IconImage.enabled = _currentSprite != null || _isGenerator;
-                
-                if (_isGenerator && _currentSprite == null)
-                    IconImage.color = GeneratorColor;
-                else
-                    IconImage.color = Color.white;
-            }
+            if (!itemImage) return;
 
-            if (BackgroundImage)
+            if (payload.kind == TileKind.Empty || payload.sprite == null)
             {
-                if (_isSelected)
-                    BackgroundImage.color = SelectedColor;
-                else if (_isGenerator)
-                    BackgroundImage.color = GeneratorColor;
-                else
-                    BackgroundImage.color = NormalColor;
+                itemImage.sprite = null;
+                itemImage.enabled = false;
+            }
+            else
+            {
+                itemImage.sprite = payload.sprite;
+                itemImage.enabled = true;
             }
         }
-        #endregion
+
+        public void SnapToGrid()
+        {
+            ((RectTransform)transform).anchoredPosition = Vector2.zero;
+        }
+
+        // ---------------- input ----------------
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            controller?.OnTileClicked(this);
+        }
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            if (IsEmpty || !itemImage || !itemImage.enabled) return;
+
+            dragStartRC = controller?.GetIndex(this);
+
+            // Create a non-raycastable ghost and hide source icon
+            ghost = DragGhost.Spawn(
+                itemImage.sprite,
+                (RectTransform)itemImage.transform,
+                (RectTransform)controller.boardRoot);
+
+            itemImage.enabled = false;
+            Follow(eventData);
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            if (ghost == null) return;
+            Follow(eventData);
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            if (ghost != null)
+            {
+                ghost.Despawn();
+                ghost = null;
+            }
+
+            // Raycast through ALL GraphicRaycasters via EventSystem
+            (int r, int c)? dst = null;
+            var target = TileUnderPointer(eventData);
+            if (target != null) dst = controller.GetIndex(target);
+
+            controller?.EndDrag(dragStartRC, dst);
+            dragStartRC = null;
+
+            // Ensure icon shows at its final slot
+            Refresh();
+        }
+
+        void Follow(PointerEventData eventData)
+        {
+            if (ghost == null) return;
+
+            var canvas = ghost.ParentCanvas;
+            var cam = canvas != null && canvas.renderMode != RenderMode.ScreenSpaceOverlay
+                ? canvas.worldCamera
+                : null;
+
+            if (RectTransformUtility.ScreenPointToWorldPointInRectangle(
+                ghost.ParentLayer, eventData.position, cam, out var world))
+            {
+                ghost.Rect.position = world;
+            }
+        }
+
+        static BoardTileView TileUnderPointer(PointerEventData eventData)
+        {
+            if (EventSystem.current == null) return null;
+
+            var results = new List<RaycastResult>(16);
+            EventSystem.current.RaycastAll(eventData, results);
+
+            for (int i = 0; i < results.Count; i++)
+            {
+                var go = results[i].gameObject;
+                if (go.name == "DragGhost") continue; // ignore the ghost defensively
+                var view = go.GetComponentInParent<BoardTileView>();
+                if (view != null) return view;
+            }
+            return null;
+        }
     }
 }

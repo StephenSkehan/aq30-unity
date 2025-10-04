@@ -1,0 +1,13 @@
+﻿=== BOARD SANITY AUDIT (STRICT): Assets/Scenes/MergeBoard_Demo.unity @ 2025-10-04 06:14:51 ===
+INFO: Scene: Assets/Scenes/MergeBoard_Demo.unity
+INFO: Slots: 63 found (expected 63) — OK
+INFO: DragLayer: topmost | no own canvas.
+INFO: DragLayer anchors: min=(0.00, 0.00) max=(1.00, 1.00) pivot=(0.50, 0.50) (expect min(0,0) max(1,1) pivot 0.5).
+INFO: EventSystem: present
+WARN: GeneratorTile not found.
+SLOTS (first 5 of 63):
+  slot_00_00 r0 c0 | btn:True view:True icon:True badge:True tmp:True col2D:False
+  slot_00_01 r0 c1 | btn:True view:True icon:True badge:True tmp:True col2D:False
+  slot_00_02 r0 c2 | btn:True view:True icon:True badge:True tmp:True col2D:False
+  slot_00_03 r0 c3 | btn:True view:True icon:True badge:True tmp:True col2D:False
+  slot_00_04 r0 c4 | btn:True view:True icon:True badge:True tmp:True col2D:False

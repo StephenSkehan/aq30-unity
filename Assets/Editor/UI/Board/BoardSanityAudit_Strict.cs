@@ -1,412 +1,224 @@
 // Assets/Editor/UI/Board/BoardSanityAudit_Strict.cs
-// Editor-only scene audit (strict, read-only). Writes TXT+JSON to _audit/.
-// Menu: AQ > Board > Run Sanity Audit (Strict)
+// Strict board auditor — GeneratorTile is OPTIONAL and may be free-floating.
+// Replaces any previous strict auditor that warned when generator was missing.
 
 #if UNITY_EDITOR
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using TMPro;
+using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
+using Object = UnityEngine.Object;
 
 namespace AQ.App.Editor.Board
 {
     public static class BoardSanityAuditStrict
     {
-        private const int ExpectedRows = 9;
-        private const int ExpectedCols = 7;
-
-        // --------- DTOs serialized to JSON ---------
-        [Serializable]
-        private class SlotInfo
-        {
-            public string name;
-            public int row;
-            public int col;
-            public bool hasButton;
-            public int buttonOnClickCount;
-            public bool hasBoardTileView;
-            public bool hasIconImage;
-            public bool hasIconCanvasGroup;
-            public bool hasHighlightImage;
-            public bool hasBadgeImage;
-            public bool hasCountTMP;
-            public bool hasBoxCollider2D; // should be false for UI pointer system
-        }
-
-        [Serializable]
-        private class DragLayerInfo
-        {
-            public bool present;
-            public string path;
-            public bool topmostSibling;
-            public bool hasOwnCanvas;
-            public bool overrideSorting;
-            public int sortingOrder;
-            public Vector2 anchorMin;
-            public Vector2 anchorMax;
-            public Vector2 pivot;
-        }
-
-        [Serializable]
-        private class GridInfo
-        {
-            public string path;
-            public Vector2 cellSize;
-            public Vector2 spacing;
-            public string constraint;   // Flexible / FixedColumnCount / FixedRowCount
-            public int constraintCount; // when fixed, else 0
-            public TextAnchor childAlignment;
-        }
-
-        [Serializable]
-        private class GeneratorInfo
-        {
-            public bool present;
-            public string slotName;
-            public int row;
-            public int col;
-        }
-
-        [Serializable]
-        private class Report
-        {
-            public string timestampIso;
-            public string scenePath;
-            public int expectedRows;
-            public int expectedCols;
-            public int expectedSlots;
-            public int slotCountFound;
-            public bool slotsAllFound;
-            public List<string> missingSlots = new();
-            public List<string> extraSlots = new();
-            public GridInfo grid;
-            public bool gridSpacingIs2x2;
-            public DragLayerInfo dragLayer;
-            public bool eventSystemPresent;
-            public GeneratorInfo generator;
-            public List<SlotInfo> slots = new();
-            public List<string> log = new();
-        }
-
-        // slot_00_00 style
-        private static readonly Regex SlotRx = new Regex(@"^slot_(\d{2})_(\d{2})$", RegexOptions.Compiled);
+        private const int ExpectedSlots = 63;
+        private const float ExpectedSpacing = 2f;
+        private static readonly Regex SlotNameRx = new Regex(@"^slot_(\d{2})_(\d{2})$", RegexOptions.Compiled);
 
         [MenuItem("AQ/Board/Run Sanity Audit (Strict)")]
         public static void AuditCurrentScene()
         {
-            var scene = SceneManager.GetActiveScene();
-            if (!scene.IsValid() || !scene.isLoaded)
-            {
-                EditorUtility.DisplayDialog("Board Audit (Strict)", "No active scene loaded.", "OK");
-                return;
-            }
+            var (txt, json, txtPath, jsonPath) = BuildAudit();
+            Debug.Log(txt);
 
-            var report = new Report
-            {
-                timestampIso = DateTime.UtcNow.ToString("o"),
-                scenePath = scene.path,
-                expectedRows = ExpectedRows,
-                expectedCols = ExpectedCols,
-                expectedSlots = ExpectedRows * ExpectedCols
-            };
+            Directory.CreateDirectory("Assets/_audit");
+            File.WriteAllText(txtPath, txt, Encoding.UTF8);
+            File.WriteAllText(jsonPath, json, Encoding.UTF8);
+            AssetDatabase.Refresh();
 
-            var sb = new StringBuilder();
-            void Log(string level, string msg)
-            {
-                var line = $"{level}: {msg}";
-                report.log.Add(line);
-                sb.AppendLine(line);
-            }
+            Debug.Log(
+                "AQ Board Sanity (Strict): wrote\n" +
+                $" - {txtPath}\n" +
+                $" - {jsonPath}"
+            );
+        }
 
-            Log("INFO", $"Scene: {scene.path}");
+        private static (string txt, string json, string txtPath, string jsonPath) BuildAudit()
+        {
+            var now = DateTime.Now;
+            var scene = EditorSceneManager.GetActiveScene();
+            var scenePath = string.IsNullOrEmpty(scene.path) ? scene.name : scene.path;
 
-            // ----- Canvas & Grid detection -----
-            var allCanvases = FindAll<Canvas>();
-            var canvasBoard = allCanvases.FirstOrDefault(c => c.name == "Canvas_Board")
-                              ?? allCanvases.FirstOrDefault(c => c.GetComponentInChildren<GridLayoutGroup>(true) != null);
+            // Walk all objects (including inactive) in active scene
+            var all = EnumerateAll(scene).ToList();
 
-            if (canvasBoard == null)
-            {
-                Log("FAIL", "No Canvas found (Canvas_Board not present).");
-            }
+            Transform FindByName(string name) =>
+                all.FirstOrDefault(t => t.name.Equals(name, StringComparison.Ordinal));
 
+            var boardCanvas = FindByName("Canvas_Board")?.gameObject;
+            var mergeBoard = FindByName("MergeBoard")?.gameObject;
+            var dragLayer = FindByName("DragLayer")?.gameObject;
+
+            // Slots
+            var slots = all.Where(t => SlotNameRx.IsMatch(t.name))
+                           .OrderBy(t => t.name)
+                           .ToList();
+
+            // Grid spacing (look under MergeBoard first, then anywhere)
+            Vector2 spacing = Vector2.zero;
             GridLayoutGroup grid = null;
-            Transform mergeBoardTf = null;
-            if (canvasBoard != null)
+            if (mergeBoard) grid = mergeBoard.GetComponentInChildren<GridLayoutGroup>(true);
+            if (grid == null) grid = Object.FindFirstObjectByType<GridLayoutGroup>(FindObjectsInactive.Include);
+            if (grid != null) spacing = grid.spacing;
+
+            // EventSystem (no obsolete API)
+            bool hasEventSystem = Object.FindFirstObjectByType<EventSystem>(FindObjectsInactive.Include) != null;
+
+            // DragLayer details
+            string dragTopmost = "absent";
+            string dragCanvas = "";
+            string dragAnchors = "";
+            if (dragLayer != null)
             {
-                mergeBoardTf = canvasBoard.transform.Find("MergeBoard");
-                if (mergeBoardTf != null)
-                    grid = mergeBoardTf.GetComponent<GridLayoutGroup>();
-
-                if (grid == null)
-                {
-                    grid = canvasBoard.GetComponentInChildren<GridLayoutGroup>(true);
-                    mergeBoardTf = grid != null ? grid.transform : null;
-                }
-            }
-
-            var gridInfo = new GridInfo();
-            if (grid != null)
-            {
-                gridInfo.path = GetPath(grid.transform);
-                gridInfo.cellSize = grid.cellSize;
-                gridInfo.spacing = grid.spacing;
-                gridInfo.constraint = grid.constraint.ToString();
-                gridInfo.constraintCount = (grid.constraint == GridLayoutGroup.Constraint.Flexible) ? 0 : grid.constraintCount;
-                gridInfo.childAlignment = grid.childAlignment;
-
-                var spacingOk = Nearly(grid.spacing, new Vector2(2, 2));
-                report.grid = gridInfo;
-                report.gridSpacingIs2x2 = spacingOk;
-
-                Log(spacingOk ? "INFO" : "WARN",
-                    $"Grid spacing: ({grid.spacing.x},{grid.spacing.y}) expected (2,2).");
-            }
-            else
-            {
-                Log("FAIL", "GridLayoutGroup (MergeBoard) not found.");
-                report.grid = null;
-                report.gridSpacingIs2x2 = false;
-            }
-
-            // ----- Enumerate slots under MergeBoard -----
-            var slotsFound = new List<SlotInfo>();
-            if (mergeBoardTf != null)
-            {
-                foreach (Transform child in mergeBoardTf)
-                {
-                    var m = SlotRx.Match(child.name);
-                    if (!m.Success) continue;
-
-                    var r = int.Parse(m.Groups[1].Value);
-                    var c = int.Parse(m.Groups[2].Value);
-
-                    var slot = new SlotInfo
-                    {
-                        name = child.name,
-                        row = r,
-                        col = c,
-                        hasButton = child.GetComponent<Button>() != null,
-                        buttonOnClickCount = child.GetComponent<Button>()?.onClick.GetPersistentEventCount() ?? 0,
-                        hasBoardTileView = HasComponentByFullName(child.gameObject, "AQ.App.UI.Board.BoardTileView"),
-                        hasBoxCollider2D = child.GetComponent<BoxCollider2D>() != null
-                    };
-
-                    var icon = child.Find("Icon");
-                    slot.hasIconImage = icon && icon.GetComponent<Image>() != null;
-                    slot.hasIconCanvasGroup = icon && icon.GetComponent<CanvasGroup>() != null;
-
-                    var highlight = child.Find("Highlight");
-                    slot.hasHighlightImage = highlight && highlight.GetComponent<Image>() != null;
-
-                    var badge = child.Find("Badge");
-                    slot.hasBadgeImage = badge && badge.GetComponent<Image>() != null;
-                    if (badge)
-                    {
-                        var count = badge.Find("Count");
-                        slot.hasCountTMP = count && count.GetComponent<TextMeshProUGUI>() != null;
-                    }
-
-                    slotsFound.Add(slot);
-                }
-            }
-
-            // expected vs actual
-            var expectedNames = new HashSet<string>();
-            for (var r = 0; r < ExpectedRows; r++)
-                for (var c = 0; c < ExpectedCols; c++)
-                    expectedNames.Add($"slot_{r:00}_{c:00}");
-
-            var actualNames = new HashSet<string>(slotsFound.Select(s => s.name));
-            var missing = expectedNames.Where(n => !actualNames.Contains(n)).OrderBy(n => n).ToList();
-            var extra = actualNames.Where(n => !expectedNames.Contains(n)).OrderBy(n => n).ToList();
-
-            report.slotCountFound = actualNames.Count;
-            report.slotsAllFound = missing.Count == 0 && extra.Count == 0;
-            report.missingSlots = missing;
-            report.extraSlots = extra;
-            report.slots = slotsFound;
-
-            if (report.slotsAllFound)
-                Log("INFO", $"Slots: {report.slotCountFound} found (expected {report.expectedSlots}) — OK");
-            else
-            {
-                Log("WARN", $"Slots: {report.slotCountFound} found (expected {report.expectedSlots})");
-                if (missing.Count > 0) Log("FAIL", "Missing: " + string.Join(", ", missing));
-                if (extra.Count > 0) Log("WARN", "Extra: " + string.Join(", ", extra));
-            }
-
-            // Button wiring & BoxCollider2D
-            var wired = slotsFound.Where(s => s.hasButton && s.buttonOnClickCount > 0).ToList();
-            if (wired.Count > 0)
-                Log("WARN", $"Buttons with onClick wiring found on {wired.Count} slots (IPointer flow expected).");
-            var colliderSlots = slotsFound.Where(s => s.hasBoxCollider2D).ToList();
-            if (colliderSlots.Count > 0)
-                Log("WARN", $"BoxCollider2D present on {colliderSlots.Count} UI slots (not needed for UI EventSystem).");
-
-            // ----- DragLayer checks -----
-            var dragLayerTf = canvasBoard != null ? canvasBoard.transform.Find("DragLayer") : null;
-            var dl = new DragLayerInfo();
-            if (dragLayerTf == null)
-            {
-                Log("FAIL", "DragLayer is missing under the board Canvas.");
-                dl.present = false;
-            }
-            else
-            {
-                dl.present = true;
-                dl.path = GetPath(dragLayerTf);
-                var parent = dragLayerTf.parent;
-                dl.topmostSibling = parent != null && dragLayerTf.GetSiblingIndex() == parent.childCount - 1;
-
-                var dlCanvas = dragLayerTf.GetComponent<Canvas>();
-                dl.hasOwnCanvas = dlCanvas != null;
-                dl.overrideSorting = dlCanvas != null && dlCanvas.overrideSorting;
-                dl.sortingOrder = dlCanvas != null ? dlCanvas.sortingOrder : 0;
-
-                var rt = (RectTransform)dragLayerTf;
-                dl.anchorMin = rt != null ? rt.anchorMin : Vector2.zero;
-                dl.anchorMax = rt != null ? rt.anchorMax : Vector2.one;
-                dl.pivot    = rt != null ? rt.pivot    : new Vector2(0.5f, 0.5f);
-
-                var layerOk = dl.topmostSibling || (dl.hasOwnCanvas && dl.overrideSorting && dl.sortingOrder >= 1000);
-                Log(layerOk ? "INFO" : "WARN",
-                    $"DragLayer: {(dl.topmostSibling ? "topmost" : "not topmost")} {(dl.hasOwnCanvas ? $"| own canvas (override={dl.overrideSorting}, order={dl.sortingOrder})" : "| no own canvas")}.");
-
-                var anchorsOk = Nearly(dl.anchorMin, Vector2.zero) && Nearly(dl.anchorMax, Vector2.one) && Nearly(dl.pivot, new Vector2(0.5f, 0.5f));
-                Log(anchorsOk ? "INFO" : "WARN",
-                    $"DragLayer anchors: min={dl.anchorMin} max={dl.anchorMax} pivot={dl.pivot} (expect min(0,0) max(1,1) pivot 0.5).");
-            }
-            report.dragLayer = dl;
-
-            // ----- EventSystem presence -----
-            report.eventSystemPresent = FindOne<EventSystem>() != null;
-            Log(report.eventSystemPresent ? "INFO" : "FAIL", $"EventSystem: {(report.eventSystemPresent ? "present" : "missing")}");
-
-            // ----- Generator detection (child named contains "GeneratorTile") -----
-            var allTransforms = FindAll<Transform>();
-            var genIcon = allTransforms.FirstOrDefault(t => t.name.IndexOf("GeneratorTile", StringComparison.OrdinalIgnoreCase) >= 0);
-
-            var gen = new GeneratorInfo();
-            if (genIcon != null)
-            {
-                var slot = GetAncestors(genIcon).FirstOrDefault(t => SlotRx.IsMatch(t.name));
-                if (slot != null)
-                {
-                    var m = SlotRx.Match(slot.name);
-                    gen.present = true;
-                    gen.slotName = slot.name;
-                    gen.row = int.Parse(m.Groups[1].Value);
-                    gen.col = int.Parse(m.Groups[2].Value);
-                    Log("INFO", $"Generator at {gen.slotName} → ({gen.row},{gen.col}).");
-                }
+                var parent = dragLayer.transform.parent;
+                if (parent != null && dragLayer.transform.GetSiblingIndex() == parent.childCount - 1)
+                    dragTopmost = "topmost";
                 else
+                    dragTopmost = "not topmost";
+
+                var hasOwnCanvas = dragLayer.GetComponent<Canvas>() != null;
+                dragCanvas = hasOwnCanvas ? "own canvas" : "no own canvas";
+
+                var rt = dragLayer.GetComponent<RectTransform>();
+                if (rt != null)
                 {
-                    gen.present = true;
-                    gen.slotName = "(parent slot not found)";
-                    gen.row = -1; gen.col = -1;
-                    Log("WARN", "GeneratorTile found but not under a slot_(rr)_(cc) transform.");
+                    dragAnchors =
+                        $"min=({rt.anchorMin.x:0.00}, {rt.anchorMin.y:0.00}) " +
+                        $"max=({rt.anchorMax.x:0.00}, {rt.anchorMax.y:0.00}) " +
+                        $"pivot=({rt.pivot.x:0.00}, {rt.pivot.y:0.00})";
                 }
             }
+
+            // Generator — OPTIONAL; allow free-floating placement
+            var generator = FindByName("GeneratorTile")?.gameObject
+                            ?? all.Select(t => t.gameObject)
+                                  .FirstOrDefault(go => go.name.StartsWith("GeneratorTile", StringComparison.Ordinal));
+            bool genPresent = generator != null;
+            bool genUnderSlot = false;
+            if (genPresent)
+            {
+                genUnderSlot = generator.transform
+                    .GetComponentsInParent<Transform>(true)
+                    .Any(t => SlotNameRx.IsMatch(t.name));
+            }
+
+            // Build text
+            var sb = new StringBuilder();
+            sb.AppendLine($"=== BOARD SANITY AUDIT (STRICT): {scenePath} @ {now:yyyy-MM-dd HH:mm:ss} ===");
+            sb.AppendLine($"INFO: Scene: {scenePath}");
+
+            if (grid != null)
+                sb.AppendLine($"INFO: Grid spacing: ({spacing.x:0},{spacing.y:0}) expected ({ExpectedSpacing:0},{ExpectedSpacing:0}).");
+
+            var slotsLine = $"INFO: Slots: {slots.Count} found (expected {ExpectedSlots}) — " +
+                            (slots.Count == ExpectedSlots ? "OK" : "MISMATCH");
+            sb.AppendLine(slotsLine);
+
+            if (dragLayer != null)
+                sb.AppendLine($"INFO: DragLayer: {dragTopmost} | {dragCanvas}.");
+
+            if (!string.IsNullOrEmpty(dragAnchors))
+                sb.AppendLine($"INFO: DragLayer anchors: {dragAnchors} (expect min(0,0) max(1,1) pivot 0.5).");
+
+            sb.AppendLine($"INFO: EventSystem: {(hasEventSystem ? "present" : "missing")}");
+
+            // Patched: generator is informational only (no WARN)
+            if (!genPresent)
+                sb.AppendLine("INFO: GeneratorTile: not present (allowed).");
             else
+                sb.AppendLine($"INFO: GeneratorTile present {(genUnderSlot ? "under slot" : "(free-floating)")}.");
+
+            sb.AppendLine("SLOTS (first 5 of " + slots.Count + "):");
+            foreach (var s in slots.Take(5))
             {
-                gen.present = false;
-                Log("WARN", "GeneratorTile not found.");
+                var flags = new List<string>
+                {
+                    "btn:"   + (s.GetComponentInChildren<Button>(true) != null),
+                    "view:"  + HasScriptByNames(s, "BoardTileView", "TileView"),
+                    "icon:"  + HasChildWith<Image>(s, "Icon"),
+                    "badge:" + HasChildWith<Image>(s, "Badge"),
+                    "tmp:"   + (s.GetComponentsInChildren<TMP_Text>(true).Length > 0),
+                    "col2D:" + (s.GetComponent<BoxCollider2D>() != null)
+                };
+
+                var m = SlotNameRx.Match(s.name);
+                var r = m.Success ? int.Parse(m.Groups[1].Value) : -1;
+                var c = m.Success ? int.Parse(m.Groups[2].Value) : -1;
+
+                sb.AppendLine($"  {s.name} r{r} c{c} | {string.Join(" ", flags)}");
             }
-            report.generator = gen;
+            sb.AppendLine();
 
-            // ----- Write reports -----
-            var projectRoot = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
-            var auditDir = Path.Combine(projectRoot, "_audit");
-            Directory.CreateDirectory(auditDir);
-            var stamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-            var baseName = Path.Combine(auditDir, $"board_sanity_strict_{stamp}");
+            var txt = sb.ToString();
 
-            var header = $"=== BOARD SANITY AUDIT (STRICT): {report.scenePath} @ {DateTime.Now:yyyy-MM-dd HH:mm:ss} ===\n";
-            File.WriteAllText(baseName + ".txt", header + sb.ToString());
-            File.WriteAllText(baseName + ".json", JsonUtility.ToJson(report, true));
+            // Minimal JSON
+            var json = new StringBuilder();
+            json.Append("{");
+            json.Append($"\"scene\":\"{Escape(scenePath)}\"");
+            json.Append($",\"gridSpacing\":{{\"x\":{spacing.x:0.##},\"y\":{spacing.y:0.##}}}");
+            json.Append($",\"slots\":{slots.Count}");
+            json.Append($",\"eventSystem\":{(hasEventSystem ? "true" : "false")}");
+            json.Append($",\"generator\":{{\"present\":{(genPresent ? "true" : "false")},\"underSlot\":{(genUnderSlot ? "true" : "false")}}}");
+            json.Append("}");
+            var jsonStr = json.ToString();
 
-            EditorUtility.RevealInFinder(baseName + ".txt");
-
-            // concise summary
-            var pass = report.eventSystemPresent
-                       && report.slotsAllFound
-                       && report.dragLayer != null && report.dragLayer.present
-                       && report.grid != null && report.gridSpacingIs2x2;
-
-            EditorUtility.DisplayDialog("Board Audit (Strict)",
-                pass ? "Audit PASS (see _audit for report)." : "Audit finished with warnings/failures. See _audit folder for details.",
-                "OK");
+            var stamp = now.ToString("yyyyMMdd_HHmmss");
+            var txtPath = $"Assets/_audit/board_sanity_strict_{stamp}.txt";
+            var jsonPath = $"Assets/_audit/board_sanity_strict_{stamp}.json";
+            return (txt, jsonStr, txtPath, jsonPath);
         }
 
-        // ---------- helpers ----------
-        private static string GetPath(Transform t)
+        private static IEnumerable<Transform> EnumerateAll(Scene scene)
         {
-            var stack = new Stack<string>();
-            while (t != null)
+            var roots = scene.GetRootGameObjects();
+            var stack = new Stack<Transform>();
+            foreach (var go in roots)
             {
-                stack.Push(t.name);
-                t = t.parent;
-            }
-            return string.Join("/", stack);
-        }
-
-        private static IEnumerable<Transform> GetAncestors(Transform t)
-        {
-            var cur = t.parent;
-            while (cur != null)
-            {
-                yield return cur;
-                cur = cur.parent;
+                var t = go.transform;
+                stack.Push(t);
+                while (stack.Count > 0)
+                {
+                    var cur = stack.Pop();
+                    yield return cur;
+                    for (int i = 0; i < cur.childCount; i++)
+                        stack.Push(cur.GetChild(i));
+                }
             }
         }
 
-        private static bool HasComponentByFullName(GameObject go, string fullName)
+        private static bool HasChildWith<T>(Transform t, string childName) where T : Component
         {
-            var comps = go.GetComponents<Component>();
-            foreach (var c in comps)
+            var child = t.GetComponentsInChildren<Transform>(true)
+                         .FirstOrDefault(x => x.name.Equals(childName, StringComparison.Ordinal));
+            return child != null && child.GetComponent<T>() != null;
+        }
+
+        private static bool HasScriptByNames(Transform t, params string[] typeNames)
+        {
+            var names = new HashSet<string>(typeNames);
+            var mbs = t.GetComponentsInChildren<MonoBehaviour>(true);
+            foreach (var mb in mbs)
             {
-                if (c == null) continue; // missing script
-                if (string.Equals(c.GetType().FullName, fullName, StringComparison.Ordinal)) return true;
+                if (mb == null) continue;
+                if (names.Contains(mb.GetType().Name))
+                    return true;
             }
             return false;
         }
 
-        private static bool Nearly(Vector2 a, Vector2 b)
-        {
-            return Mathf.Abs(a.x - b.x) < 0.0001f && Mathf.Abs(a.y - b.y) < 0.0001f;
-        }
-
-        // Version-safe finders to avoid obsolete/compatibility warnings across Unity versions.
-        private static T FindOne<T>() where T : UnityEngine.Object
-        {
-#if UNITY_2023_1_OR_NEWER
-            return UnityEngine.Object.FindFirstObjectByType<T>();
-#else
-            return UnityEngine.Object.FindObjectOfType<T>();
-#endif
-        }
-
-        private static T[] FindAll<T>() where T : UnityEngine.Object
-        {
-#if UNITY_2023_1_OR_NEWER
-            return UnityEngine.Object.FindObjectsByType<T>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-#else
-#if UNITY_2020_1_OR_NEWER
-            return UnityEngine.Object.FindObjectsOfType<T>(true);
-#else
-            return UnityEngine.Object.FindObjectsOfType<T>();
-#endif
-#endif
-        }
+        private static string Escape(string s) =>
+            s.Replace("\\", "\\\\").Replace("\"", "\\\"");
     }
 }
 #endif

@@ -1,397 +1,263 @@
+using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace AQ.App.UI.Board
 {
+    public enum TileKind { Empty, Item, Generator }
+
+    [DisallowMultipleComponent]
     public class MergeBoardController : MonoBehaviour
     {
-        #region Inspector Fields
-        [Header("Board Setup")]
-        [SerializeField] int Rows = 7;
-        [SerializeField] int Cols = 9;
+        [Header("Board")]
+        [Min(1)] public int rows = 9;
+        [Min(1)] public int cols = 7;
+        public RectTransform boardRoot;                  // MergeBoard
+        public GraphicRaycaster raycaster;
 
-        [Header("Prefabs & Icons")]
-        [SerializeField] GameObject TilePrefab;
-        [SerializeField] GameObject GeneratorPrefab;
-        [SerializeField] int GeneratorSlot = 0;
-        [SerializeField] Sprite GeneratorSprite;
-        [SerializeField] List<Sprite> Icons = new List<Sprite>();
-        [SerializeField] int MaxTier = 5;
+        // Expose Rows/Cols for helper utilities (e.g., BoardTools)
+        public int Rows => rows;
+        public int Cols => cols;
 
-        [Header("Initial Spawn")]
-        [SerializeField] int InitialIconCount = 0;
-        [SerializeField] int InitialMaxTier = 1;
-        #endregion
+        [Header("Content")]
+        public Sprite generatorSprite;
+        public List<Sprite> icons = new List<Sprite>();  // index = tier
+        [Min(0)] public int maxTier = 5;
 
-        #region Private Fields
-        List<BoardTileView> _slots = new List<BoardTileView>();
-        BoardTileView _selected;
-        BoardTileView _generatorView;
-        GridLayoutGroup _grid;
-        #endregion
+        [Header("Start")]
+        public int defaultGeneratorRow = 4;
+        public int defaultGeneratorCol = 3;
 
-        #region Public Properties
-        public RectTransform BoardRoot => transform as RectTransform;
-        public GridLayoutGroup Grid => _grid;
-        public List<BoardTileView> Slots => _slots;
-        #endregion
+        [Header("Debug")]
+        public bool debugLogs = true;
 
-        #region Unity Lifecycle
+        // --- runtime ---
+        public BoardTileView[,] grid;                    // [r,c] -> view
+        readonly Dictionary<BoardTileView, (int r, int c)> index = new();
+
+        static readonly Regex SlotName = new Regex(@"^slot_(\d{2})_(\d{2})$",
+            RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
         void Awake()
         {
-            _grid = GetComponent<GridLayoutGroup>();
+            if (!boardRoot) boardRoot = (RectTransform)transform;
         }
 
         void Start()
         {
-            Log("=== MergeBoardController.Start() BEGIN ===");
-            
-            var existing = GetComponentsInChildren<BoardTileView>(true);
-            Log($"Found {existing.Length} existing BoardTileView components");
-
-            if (existing.Length > 0)
-            {
-                Log("Using pre-placed slots from scene");
-                MapExistingSlots(Rows, Cols);
-            }
-            else
-            {
-                Log("Building new grid at runtime");
-                BuildGrid();
-            }
-
-            Log($"Total slots mapped: {_slots.Count}");
-
-            // Spawn generator
-            if (GeneratorPrefab && GeneratorSlot >= 0 && GeneratorSlot < _slots.Count)
-            {
-                var slot = _slots[GeneratorSlot];
-                if (slot)
-                {
-                    var go = Instantiate(GeneratorPrefab, slot.transform);
-                    _generatorView = go.GetComponent<BoardTileView>();
-                    if (_generatorView)
-                    {
-                        _generatorView.SetIsGenerator(true);
-                        
-                        if (GeneratorSprite)
-                        {
-                            _generatorView.SetSprite(GeneratorSprite, -1, 0);
-                            _generatorView.SetIsGenerator(true);
-                            Log($"✓ Generator sprite set: {GeneratorSprite.name}");
-                        }
-                        
-                        Log($"✓ Generator spawned at slot {GeneratorSlot} (row={slot.Row}, col={slot.Col})");
-                    }
-                }
-            }
-
-            if (InitialIconCount > 0)
-            {
-                Log($"Seeding {InitialIconCount} initial icons");
-                SeedInitialIcons();
-            }
-
-            Log("=== MergeBoardController.Start() END ===");
-        }
-        #endregion
-
-        #region Grid Building
-        void BuildGrid()
-        {
-            if (!TilePrefab)
-            {
-                Log("ERROR: No TilePrefab assigned");
-                return;
-            }
-
-            for (int r = 0; r < Rows; r++)
-            {
-                for (int c = 0; c < Cols; c++)
-                {
-                    var go = Instantiate(TilePrefab, transform);
-                    go.name = $"slot_{r:00}_{c:00}";
-                    var view = go.GetComponent<BoardTileView>();
-                    if (view) _slots.Add(view);
-                }
-            }
-            Log($"Built {_slots.Count} slots");
+            BuildGridFromChildren();
+            if (icons == null) icons = new List<Sprite>();
+            Log($"Start: icons.Count={icons.Count}, generatorSprite={(generatorSprite ? generatorSprite.name : "null")}");
+            EnsureGeneratorExists();
         }
 
-        void MapExistingSlots(int rows, int cols)
+        // ---------------- Grid bootstrap ----------------
+
+        void BuildGridFromChildren()
         {
-            _slots.Clear();
+            grid = new BoardTileView[rows, cols];
+            index.Clear();
+
+            int bound = 0;
+            foreach (Transform child in boardRoot)
+            {
+                var m = SlotName.Match(child.name);
+                if (!m.Success) continue;
+
+                int r = int.Parse(m.Groups[1].Value);
+                int c = int.Parse(m.Groups[2].Value);
+                if (r < 0 || r >= rows || c < 0 || c >= cols) continue;
+
+                var view = child.GetComponent<BoardTileView>();
+                if (!view) view = child.gameObject.AddComponent<BoardTileView>();
+
+                view.Bind(this, r, c);
+                grid[r, c] = view;
+                index[view] = (r, c);
+                bound++;
+            }
+
+            Log($"BuildGridFromChildren: bound={bound} of expected={rows * cols}. boardRoot='{boardRoot?.name}'.");
+        }
+
+        void EnsureGeneratorExists()
+        {
+            var found = FindFirst(TileKind.Generator);
+            if (found.r >= 0) return; // already have one
+
+            var v = grid[defaultGeneratorRow, defaultGeneratorCol];
+            if (!v) return;
+
+            v.SetGenerator(generatorSprite, 0);
+            Log($"EnsureGeneratorExists: placed generator at ({defaultGeneratorRow},{defaultGeneratorCol}) using sprite '{generatorSprite?.name}'.");
+        }
+
+        // ---------------- Tile helpers ----------------
+
+        public (int r, int c) GetIndex(BoardTileView v) => index.TryGetValue(v, out var rc) ? rc : (-1, -1);
+
+        public bool IsInside(int r, int c) => r >= 0 && r < rows && c >= 0 && c < cols;
+
+        public BoardTileView Get(int r, int c) => IsInside(r, c) ? grid[r, c] : null;
+
+        public Sprite SpriteForItemTier(int tier) => (tier >= 0 && tier < icons.Count) ? icons[tier] : null;
+
+        public (int r, int c) FindFirst(TileKind kind)
+        {
             for (int r = 0; r < rows; r++)
             {
                 for (int c = 0; c < cols; c++)
                 {
-                    string slotName = $"slot_{r:00}_{c:00}";
-                    var xform = transform.Find(slotName);
-                    if (xform)
-                    {
-                        var view = xform.GetComponent<BoardTileView>();
-                        if (view) _slots.Add(view);
-                    }
+                    var v = grid[r, c];
+                    if (v != null && v.Kind == kind) return (r, c);
                 }
             }
-            Log($"Mapped {_slots.Count} pre-placed slots");
-        }
-        #endregion
-
-        #region Initial Seeding
-        void SeedInitialIcons()
-        {
-            if (Icons == null || Icons.Count == 0) return;
-
-            var emptySlots = new List<BoardTileView>();
-            foreach (var slot in _slots)
-            {
-                if (slot && slot.IsEmpty && !slot.IsGenerator)
-                    emptySlots.Add(slot);
-            }
-
-            int toSpawn = Mathf.Min(InitialIconCount, emptySlots.Count);
-            for (int i = 0; i < toSpawn; i++)
-            {
-                int randomIndex = Random.Range(0, emptySlots.Count);
-                var slot = emptySlots[randomIndex];
-                emptySlots.RemoveAt(randomIndex);
-
-                int iconIdx = Random.Range(0, Icons.Count);
-                int tier = Random.Range(0, InitialMaxTier + 1);
-                slot.SetSprite(GetSpriteFor(iconIdx), iconIdx, tier);
-            }
-        }
-        #endregion
-
-        #region Drag & Drop API
-        public void BeginDrag(int row, int col)
-        {
-            Log($"BeginDrag from ({row},{col})");
+            return (-1, -1);
         }
 
-        public void EndDrag((int row, int col)? from, (int row, int col)? to)
+        // ---------------- Input entrypoints ----------------
+
+        public void OnTileClicked(BoardTileView view)
         {
-            if (from == null)
-            {
-                Log("EndDrag: No source tile");
-                return;
-            }
+            var (r, c) = GetIndex(view);
+            if (r < 0) return;
 
-            if (to == null)
+            if (view.Kind == TileKind.Generator)
             {
-                Log($"EndDrag: Dropped outside board, snap back");
-                return;
-            }
-
-            Log($"EndDrag: ({from.Value.row},{from.Value.col}) → ({to.Value.row},{to.Value.col})");
-
-            var fromTile = GetTileAt(from.Value.row, from.Value.col);
-            var toTile = GetTileAt(to.Value.row, to.Value.col);
-
-            if (fromTile == null || toTile == null)
-            {
-                Log("EndDrag: Invalid tiles");
-                return;
-            }
-
-            if (toTile.IsEmpty)
-            {
-                Log("Action: MOVE");
-                MoveTile(fromTile, toTile);
-            }
-            else if (CanMerge(fromTile, toTile))
-            {
-                Log("Action: MERGE");
-                MergeTiles(fromTile, toTile);
-            }
-            else
-            {
-                Log("Action: SWAP");
-                SwapTiles(fromTile, toTile);
+                Log($"Generator clicked at ({r},{c}).");
+                SpawnFromGenerator(view);
             }
         }
 
-        BoardTileView GetTileAt(int row, int col)
+        public void EndDrag((int r, int c)? src, (int r, int c)? dst)
         {
-            foreach (var tile in _slots)
-            {
-                if (tile.Row == row && tile.Col == col)
-                    return tile;
-            }
-            return null;
-        }
+            if (src == null || dst == null) return;
 
-        bool CanMerge(BoardTileView a, BoardTileView b)
-        {
-            if (a == null || b == null) return false;
-            if (a.IsEmpty || b.IsEmpty) return false;
-            if (a.IsGenerator || b.IsGenerator) return false;
-            return a.Tier == b.Tier && a.Tier < MaxTier;
-        }
+            var (sr, sc) = src.Value;
+            var (tr, tc) = dst.Value;
 
-        void MoveTile(BoardTileView from, BoardTileView to)
-        {
-            Log($"MoveTile: ({from.Row},{from.Col}) -> ({to.Row},{to.Col})");
-            to.SetSprite(GetSpriteFor(from.IconIndex), from.IconIndex, from.Tier);
-            from.Clear();
-            Log($"MoveTile complete");
-        }
+            var a = Get(sr, sc);
+            var b = Get(tr, tc);
+            if (!a || !b) return;
+            if (a.IsEmpty) return;
+            if (sr == tr && sc == tc) { a.SnapToGrid(); return; }
 
-        void MergeTiles(BoardTileView from, BoardTileView to)
-        {
-            Log($"MergeTiles: ({from.Row},{from.Col}) + ({to.Row},{to.Col}) tier {to.Tier} -> {to.Tier + 1}");
-            int newTier = Mathf.Min(MaxTier, to.Tier + 1);
-            int iconIdx = to.IconIndex >= 0 ? to.IconIndex : from.IconIndex;
-            to.SetSprite(GetSpriteFor(iconIdx), iconIdx, newTier);
-            from.Clear();
-            Log($"MergeTiles complete - target should be tier {newTier}");
-        }
-
-        void SwapTiles(BoardTileView a, BoardTileView b)
-        {
-            if (a.IsGenerator || b.IsGenerator) return;
-
-            Log($"SwapTiles: ({a.Row},{a.Col}) <-> ({b.Row},{b.Col})");
-            
-            var spriteA = GetSpriteFor(a.IconIndex);
-            var spriteB = GetSpriteFor(b.IconIndex);
-            int idxA = a.IconIndex, tierA = a.Tier;
-            int idxB = b.IconIndex, tierB = b.Tier;
-
-            b.SetSprite(spriteA, idxA, tierA);
-            a.SetSprite(spriteB, idxB, tierB);
-            
-            Log($"SwapTiles complete");
-        }
-        #endregion
-
-        #region Click Interaction
-        public void OnTileClicked(BoardTileView cell)
-        {
-            if (cell == null) return;
-
-            if (cell.IsGenerator)
-            {
-                SpawnFromGenerator();
-                return;
-            }
-
-            if (_selected == null || ReferenceEquals(_selected, _generatorView))
-            {
-                Select(cell);
-                return;
-            }
-
-            TryMergeOrSwap(_selected, cell);
-            Select(null);
-        }
-
-        void SpawnFromGenerator()
-        {
-            if (Icons == null || Icons.Count == 0) return;
-            if (_generatorView == null) return;
-
-            int iconIdx = Random.Range(0, Icons.Count);
-            var sprite = GetSpriteFor(iconIdx);
-
-            var targetSlot = FindFirstEmptyFromGenerator();
-
-            if (targetSlot != null)
-            {
-                targetSlot.SetSprite(sprite, iconIdx, 0);
-                Log($"Generator spawned icon {iconIdx} at slot ({targetSlot.Row},{targetSlot.Col})");
-            }
-            else
-            {
-                Log("No empty slots for generator spawn");
-            }
-        }
-
-        BoardTileView FindFirstEmptyFromGenerator()
-        {
-            if (_generatorView == null) return null;
-            
-            var generatorSlot = _slots[GeneratorSlot];
-            if (generatorSlot == null) return null;
-            
-            int startRow = generatorSlot.Row;
-            int startCol = generatorSlot.Col;
-            int totalCells = Rows * Cols;
-            
-            Log($"FindFirstEmptyFromGenerator starting from slot ({startRow},{startCol})");
-            
-            for (int i = 1; i < totalCells; i++)
-            {
-                int idx = ((startRow * Cols + startCol) + i) % totalCells;
-                int r = idx / Cols;
-                int c = idx % Cols;
-                
-                var slot = GetTileAt(r, c);
-                if (slot != null && slot.IsEmpty)
-                {
-                    Log($"  Found empty slot at ({r},{c})");
-                    return slot;
-                }
-            }
-            
-            Log("  No empty slots found");
-            return null;
-        }
-
-        void TryMergeOrSwap(BoardTileView a, BoardTileView b)
-        {
-            if (a == null || b == null || a == b) return;
-
-            if (a.IsEmpty && !b.IsEmpty) { var t = a; a = b; b = t; }
-
-            if (!a.IsEmpty && b.IsEmpty)
+            if (b.IsEmpty)
             {
                 MoveTile(a, b);
                 return;
             }
 
-            if (!a.IsEmpty && !b.IsEmpty)
+            if (a.Tier == b.Tier)
             {
-                if (CanMerge(a, b))
+                if (a.Tier < maxTier) MergeTiles(a, b);
+                else SwapTiles(a, b);
+                return;
+            }
+
+            SwapTiles(a, b);
+        }
+
+        // ---------------- Actions ----------------
+
+        void MoveTile(BoardTileView from, BoardTileView to)
+        {
+            to.CopyFrom(from);
+            from.Clear();
+            Log("MoveTile complete.");
+        }
+
+        void SwapTiles(BoardTileView a, BoardTileView b)
+        {
+            var temp = b.Payload;
+            b.Payload = a.Payload;
+            a.Payload = temp;
+            a.Refresh();
+            b.Refresh();
+            Log("SwapTiles complete.");
+        }
+
+        void MergeTiles(BoardTileView from, BoardTileView into)
+        {
+            int newTier = from.Tier + 1;
+
+            if (from.Kind == TileKind.Generator && into.Kind == TileKind.Generator)
+            {
+                into.SetGenerator(generatorSprite, newTier);
+                from.Clear();
+                Log($"MergeTiles (Generator): tier {newTier - 1} + {newTier - 1} -> {newTier}");
+                return;
+            }
+
+            into.SetItem(SpriteForItemTier(newTier), newTier);
+            from.Clear();
+            Log($"MergeTiles (Item): tier {newTier - 1} + {newTier - 1} -> {newTier}");
+        }
+
+        // ---------------- Spawning ----------------
+
+        void SpawnFromGenerator(BoardTileView generator)
+        {
+            var dst = FindFirstEmptyFrom(generator);
+            if (dst == null) return;
+
+            var (r, c) = dst.Value;
+            var target = Get(r, c);
+
+            int tier = RollSpawnTier();
+            target.SetItem(SpriteForItemTier(tier), tier);
+
+            Log($"SpawnFromGenerator: spawned T{tier + 1} at ({r},{c}).");
+        }
+
+        int RollSpawnTier()
+        {
+            int[] odds = { 70, 20, 7, 2, 1, 0, 0, 0 };
+            int highest = Mathf.Min(maxTier, icons.Count - 1);
+            int sum = 0;
+            for (int i = 0; i <= highest; i++) sum += odds[Mathf.Min(i, odds.Length - 1)];
+
+            int roll = UnityEngine.Random.Range(0, sum);
+            int acc = 0;
+            for (int i = 0; i <= highest; i++)
+            {
+                acc += odds[Mathf.Min(i, odds.Length - 1)];
+                if (roll < acc) return i;
+            }
+            return 0;
+        }
+
+        (int r, int c)? FindFirstEmptyFrom(BoardTileView origin)
+        {
+            var (sr, sc) = GetIndex(origin);
+            if (sr < 0) return null;
+
+            for (int radius = 1; radius <= rows + cols; radius++)
+            {
+                int rMin = Mathf.Max(0, sr - radius);
+                int rMax = Mathf.Min(rows - 1, sr + radius);
+                int cMin = Mathf.Max(0, sc - radius);
+                int cMax = Mathf.Min(cols - 1, sc + radius);
+
+                for (int r = rMin; r <= rMax; r++)
+                for (int c = cMin; c <= cMax; c++)
                 {
-                    MergeTiles(a, b);
-                }
-                else
-                {
-                    SwapTiles(a, b);
+                    if (Mathf.Abs(r - sr) + Mathf.Abs(c - sc) != radius) continue;
+                    var v = grid[r, c];
+                    if (v != null && v.IsEmpty) return (r, c);
                 }
             }
+            return null;
         }
 
-        void Select(BoardTileView v)
-        {
-            if (_selected == v) return;
-            if (_selected) _selected.SetSelected(false);
-            _selected = v;
-            if (_selected) _selected.SetSelected(true);
-        }
+        // ---------------- Logging ----------------
 
-        public void ClearSelection()
+        public void Log(string msg)
         {
-            Select(null);
+            if (debugLogs) Debug.Log(msg);
         }
-        #endregion
-
-        #region Helper Methods
-        Sprite GetSpriteFor(int iconIndex)
-        {
-            if (Icons == null || Icons.Count == 0) return null;
-            if (iconIndex < 0 || iconIndex >= Icons.Count)
-                iconIndex = Mathf.Clamp(iconIndex, 0, Icons.Count - 1);
-            return Icons[iconIndex];
-        }
-
-        void Log(string msg)
-        {
-            Debug.Log($"[AQ] {msg}");
-        }
-        #endregion
     }
 }
