@@ -1,0 +1,255 @@
+// Assets/Scripts/UI/Board/FX/BoardFxPlayer.cs
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace AQ.App.UI.Board
+{
+    /// <summary>
+    /// Plays spawn/merge/swap/move feedback safely over your existing board.
+    /// Creates a non-blocking overlay under the board for slide/sparkle.
+    /// </summary>
+    [DisallowMultipleComponent]
+    [RequireComponent(typeof(MergeBoardController))]
+    public sealed class BoardFxPlayer : MonoBehaviour
+    {
+        [SerializeField] BoardFxConfigSO config;
+        [SerializeField] RectTransform overlay;     // created at runtime if missing
+        [SerializeField] AudioSource audioSource;   // created at runtime if missing
+        [Header("Debug")]
+        [SerializeField] bool debugLogs = false;    // set true to see Play* logs in Console
+
+        MergeBoardController ctrl;
+        Canvas parentCanvas;
+        Camera uiCam;
+
+        const string OverlayName = "__AQ_FXOverlay";
+
+        void Awake()
+        {
+            ctrl = GetComponent<MergeBoardController>();
+            if (!ctrl) { enabled = false; return; }
+
+            parentCanvas = ctrl.boardRoot ? ctrl.boardRoot.GetComponentInParent<Canvas>() : null;
+            uiCam = parentCanvas && parentCanvas.renderMode != RenderMode.ScreenSpaceOverlay
+                ? parentCanvas.worldCamera
+                : null;
+
+            EnsureOverlay();
+            EnsureAudio();
+        }
+
+        public void SetConfig(BoardFxConfigSO cfg) => config = cfg;
+
+        void EnsureOverlay()
+        {
+            if (overlay) return;
+
+            var parent = ctrl.boardRoot ? ctrl.boardRoot : (RectTransform)transform;
+            var t = parent.Find(OverlayName) as RectTransform;
+            if (!t)
+            {
+                var go = new GameObject(OverlayName, typeof(RectTransform), typeof(CanvasGroup));
+                t = go.GetComponent<RectTransform>();
+                t.SetParent(parent, false);
+                t.anchorMin = Vector2.zero;
+                t.anchorMax = Vector2.one;
+                t.offsetMin = Vector2.zero;
+                t.offsetMax = Vector2.zero;
+
+                var cg = go.GetComponent<CanvasGroup>();
+                cg.blocksRaycasts = false;
+                cg.interactable = false;
+            }
+            overlay = t;
+            overlay.SetAsLastSibling(); // above board visuals
+        }
+
+        void EnsureAudio()
+        {
+            if (audioSource) return;
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+            audioSource.loop = false;
+            audioSource.spatialBlend = 0f;
+            audioSource.hideFlags = HideFlags.DontSaveInBuild | HideFlags.DontSaveInEditor;
+        }
+
+        // --- Public API used by the observer ---
+
+        public void PlaySpawn(BoardTileView tile)
+        {
+            if (debugLogs) Debug.Log("[FX] Spawn");
+            if (!tile || !tile.itemImage) return;
+            if (config && config.spawnClip) PlayClip(config.spawnClip);
+
+            var rt = tile.itemImage.rectTransform;
+            StartCoroutine(CoPop(rt,
+                startScale: config ? config.spawnStartScale : 0.85f,
+                peakScale : config ? config.popPeakScale     : 1.15f,
+                duration  : config ? config.spawnPopDuration : 0.12f));
+        }
+
+        public void PlayMerge(BoardTileView from, BoardTileView into, Sprite _unused)
+        {
+            if (debugLogs) Debug.Log("[FX] Merge");
+            if (config && config.mergeClip) PlayClip(config.mergeClip);
+
+            // Pop the destination tile
+            if (into && into.itemImage)
+            {
+                StartCoroutine(CoPop(into.itemImage.rectTransform,
+                    startScale: 1f,
+                    peakScale : config ? config.popPeakScale     : 1.15f,
+                    duration  : config ? config.mergePopDuration : 0.12f));
+            }
+
+            // Optional sparkle at destination
+            if (config && config.sparklePrefab && into && into.itemImage)
+            {
+                var pos = WorldToOverlayPoint(into.itemImage.rectTransform);
+                if (config.sparkleIsUI)
+                {
+                    var fx = Instantiate(config.sparklePrefab, overlay);
+                    var fxRt = fx.transform as RectTransform;
+                    fxRt.anchoredPosition = pos;
+                    fxRt.localScale = Vector3.one;
+                    fx.Play();
+                    Destroy(fx.gameObject, config.sparkleLifetime);
+                }
+                else
+                {
+                    var fx = Instantiate(config.sparklePrefab, overlay.transform);
+                    fx.transform.position = into.itemImage.rectTransform.position;
+                    fx.Play();
+                    Destroy(fx.gameObject, config.sparkleLifetime);
+                }
+            }
+
+            // Slide of the consumed piece into the destination
+            if (from && from.itemImage && into && into.itemImage)
+            {
+                var a = CreateOverlayIcon(from.itemImage.sprite, from.itemImage.rectTransform);
+                var start = WorldToOverlayPoint(from.itemImage.rectTransform);
+                var end   = WorldToOverlayPoint(into.itemImage.rectTransform);
+                a.rectTransform.anchoredPosition = start;
+                StartCoroutine(CoSlideAndDispose(a, start, end, config ? config.mergePopDuration : 0.12f));
+            }
+        }
+
+        public void PlaySwap(BoardTileView a, BoardTileView b)
+        {
+            if (debugLogs) Debug.Log("[FX] Swap");
+            if (!a || !b || !a.itemImage || !b.itemImage) return;
+            if (config && config.swapClip) PlayClip(config.swapClip);
+
+            // Hide real icons during slide (prevents double images)
+            var aImg = a.itemImage; var bImg = b.itemImage;
+            var aWas = aImg.enabled; var bWas = bImg.enabled;
+            aImg.enabled = false; bImg.enabled = false;
+
+            // Create overlay icons
+            var overlayA = CreateOverlayIcon(aImg.sprite, aImg.rectTransform);
+            var overlayB = CreateOverlayIcon(bImg.sprite, bImg.rectTransform);
+
+            var aStart = WorldToOverlayPoint(aImg.rectTransform);
+            var bStart = WorldToOverlayPoint(bImg.rectTransform);
+            overlayA.rectTransform.anchoredPosition = aStart;
+            overlayB.rectTransform.anchoredPosition = bStart;
+
+            var dur = config ? config.swapSlideDuration : 0.12f;
+            StartCoroutine(CoSlideAndDispose(overlayA, aStart, bStart, dur, () => aImg.enabled = aWas));
+            StartCoroutine(CoSlideAndDispose(overlayB, bStart, aStart, dur, () => bImg.enabled = bWas));
+        }
+
+        // NEW: subtle feedback when moving into empty cell
+        public void PlayMove(BoardTileView into)
+        {
+            if (debugLogs) Debug.Log("[FX] Move");
+            if (!into || !into.itemImage) return;
+            StartCoroutine(CoPop(into.itemImage.rectTransform,
+                startScale: 1.0f,
+                peakScale : 1.08f,
+                duration  : 0.08f));
+        }
+
+        // --- Helpers ---
+
+        Vector2 WorldToOverlayPoint(RectTransform worldTarget)
+        {
+            var sp = RectTransformUtility.WorldToScreenPoint(uiCam, worldTarget.position);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(overlay, sp, uiCam, out var local);
+            return local;
+        }
+
+        Image CreateOverlayIcon(Sprite sprite, RectTransform likeSize)
+        {
+            var go = new GameObject("FX_Icon", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+            var rt = go.GetComponent<RectTransform>();
+            rt.SetParent(overlay, false);
+            rt.sizeDelta = likeSize.rect.size;
+            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.pivot = new Vector2(0.5f, 0.5f);
+
+            var img = go.GetComponent<Image>();
+            img.sprite = sprite;
+            img.preserveAspect = true;
+            img.raycastTarget = false;
+            return img;
+        }
+
+        void PlayClip(AudioClip clip)
+        {
+            if (!audioSource || !clip) return;
+            audioSource.volume = config ? config.sfxVolume : 0.75f;
+            audioSource.PlayOneShot(clip);
+        }
+
+        IEnumerator CoPop(RectTransform target, float startScale, float peakScale, float duration)
+        {
+            if (!target) yield break;
+            var t0 = Time.unscaledTime;
+            var mid = duration * 0.5f;
+            var orig = target.localScale;
+            target.localScale = Vector3.one * startScale;
+
+            // Up
+            while (Time.unscaledTime - t0 < mid)
+            {
+                var u = Mathf.Clamp01((Time.unscaledTime - t0) / mid);
+                var s = Mathf.Lerp(startScale, peakScale, Smooth(u));
+                target.localScale = Vector3.one * s;
+                yield return null;
+            }
+
+            // Down
+            var t1 = Time.unscaledTime;
+            while (Time.unscaledTime - t1 < mid)
+            {
+                var u = Mathf.Clamp01((Time.unscaledTime - t1) / mid);
+                var s = Mathf.Lerp(peakScale, 1f, Smooth(u));
+                target.localScale = Vector3.one * s;
+                yield return null;
+            }
+
+            target.localScale = Vector3.one;
+        }
+
+        IEnumerator CoSlideAndDispose(Image icon, Vector2 from, Vector2 to, float duration, System.Action onDone = null)
+        {
+            if (!icon) yield break;
+            var t0 = Time.unscaledTime;
+            while (Time.unscaledTime - t0 < duration)
+            {
+                var u = Mathf.Clamp01((Time.unscaledTime - t0) / duration);
+                icon.rectTransform.anchoredPosition = Vector2.Lerp(from, to, Smooth(u));
+                yield return null;
+            }
+            icon.rectTransform.anchoredPosition = to;
+            if (icon) Destroy(icon.gameObject);
+            onDone?.Invoke();
+        }
+
+        static float Smooth(float x) => x * x * (3f - 2f * x); // smoothstep
+    }
+}
