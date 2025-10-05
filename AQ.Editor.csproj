@@ -81,6 +81,7 @@
     <Compile Include="Assets\Editor\UI\Board\CleanMissingOnBoard.cs" />
     <Compile Include="Assets\Editor\AQ\Diagnostics\InspectTierSetPopupInstances.cs" />
     <Compile Include="Assets\Editor\UI\BoardTilePrefabCreator.cs" />
+    <Compile Include="Assets\Editor\UI\Board\BoardFxSetupMenu.cs" />
     <Compile Include="Assets\Editor\UI\Board\SceneUISystemAuditor.cs" />
     <Compile Include="Assets\Editor\AQ\UI\Leads\LeadsFixAll.cs" />
     <Compile Include="Assets\Editor\AQ\Leads\LeadsBarBindRuntime.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Assets\Editor\AQ\UI\Leads\AssignLiveRequirementIcons.cs" />
     <Compile Include="Assets\Editor\AQ\Dev\AuditDuplicateLeadUI.cs" />
     <Compile Include="Assets\Editor\AQ\Leads\FixTMPOverflow_Leads.cs" />
+    <Compile Include="Assets\Editor\UI\Board\BoardSaveMenu.cs" />
     <Compile Include="Assets\Editor\AQ\UI\Leads\ActorsForceTopViaCanvas.cs" />
     <Compile Include="Assets\Editor\AQ\UI\Leads\ApplyLeadCardLook_IndexCard.cs" />
     <Compile Include="Assets\Editor\UI\LeadCardPrefabCreator.cs" />
@@ -155,6 +157,7 @@
     <Compile Include="Assets\Editor\AQ\Diagnostics\LeadsForensicsAudit.cs" />
     <Compile Include="Assets\Editor\AQ\UI\Leads\ActorsNudgeInsideMask.cs" />
     <Compile Include="Assets\Editor\AQ\UI\Leads\AssignActorsToLiveCards_Strict.cs" />
+    <Compile Include="Assets\Editor\UI\Board\BoardSceneFixes.cs" />
     <Compile Include="Assets\Editor\UI\Board\CreateMergeBoardDemoScene.cs" />
     <Compile Include="Assets\Editor\AQ\Requirements\RequirementsHUDWire.cs" />
     <Compile Include="Assets\Editor\AQ\Leads\LeadsBarCleanup.cs" />
