@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 using AQ.App.Config;
+using AQ.App.Services;
+using AQ.Domain.Board; // MergeRules
 
 namespace AQ.App.UI.Board
 {
@@ -17,10 +18,10 @@ namespace AQ.App.UI.Board
         [Header("Board")]
         [Min(1)] public int rows = 9;
         [Min(1)] public int cols = 7;
-        public RectTransform boardRoot;                  // MergeBoard
+        public RectTransform boardRoot;
         public GraphicRaycaster raycaster;
 
-        // Expose Rows/Cols for helper utilities
+        // Helpers
         public int Rows => rows;
         public int Cols => cols;
         public bool IsInside(int r, int c) => r >= 0 && c >= 0 && r < rows && c < cols;
@@ -40,27 +41,27 @@ namespace AQ.App.UI.Board
         [Header("Debug")]
         public bool debugLogs = false;
 
-        // --- Backing state ---
-        BoardTileView[,] grid;
-        Dictionary<BoardTileView, (int r, int c)> index = new();
+        // Backing state
+        private BoardTileView[,] grid;
+        private readonly Dictionary<BoardTileView, (int r, int c)> index = new();
 
         // ---------------- Unity lifecycle ----------------
 
-        void Awake()
+        private void Awake()
         {
             if (!boardRoot) boardRoot = GetComponent<RectTransform>();
             BuildGridFromChildren();
             EnsureGeneratorExists();
         }
 
-        void Start()
+        private void Start()
         {
             Log("MergeBoardController.Start complete.");
         }
 
-        // ---------------- Public helpers used by other systems ----------------
+        // ---------------- Public helpers (used by Save/FX/etc.) ----------------
 
-        public (int r, int c) GetIndex(BoardTileView v) => index.TryGetValue(v, out var rc) ? rc : (-1, -1);
+        public (int r, int c) GetIndex(BoardTileView v) => v != null && index.TryGetValue(v, out var rc) ? rc : (-1, -1);
         public BoardTileView Get(int r, int c) => IsInside(r, c) ? grid[r, c] : null;
 
         // ---------------- Input entrypoints ----------------
@@ -88,34 +89,59 @@ namespace AQ.App.UI.Board
             var b = Get(tr, tc);
             if (!a || !b) return;
             if (a.IsEmpty) return;
-            if (sr == tr && sc == tc) { a.SnapToGrid(); return; }
 
-            if (b.IsEmpty)
+            if (sr == tr && sc == tc)
             {
-                MoveTile(a, b);
+                a.SnapToGrid();
                 return;
             }
 
-            if (a.Tier == b.Tier)
-            {
-                if (a.Tier < maxTier) MergeTiles(a, b);
-                else SwapTiles(a, b);
-                return;
-            }
+            // Family-aware rules (behind content; families currently unstamped → treated as compatible)
+            var outcome = MergeRules.Decide(ToRulesTile(a), ToRulesTile(b), maxTier);
 
-            SwapTiles(a, b);
+            switch (outcome)
+            {
+                case MergeRules.Outcome.Move:
+                    MoveTile(a, b);
+                    return;
+
+                case MergeRules.Outcome.Merge:
+                    MergeTiles(a, b);
+                    return;
+
+                case MergeRules.Outcome.CeilingSwap:
+                    // Distinct UX hook later (SFX/haptics); swap for now
+                    SwapTiles(a, b);
+                    Log("Ceiling hit swap (max-tier vs max-tier).");
+                    return;
+
+                case MergeRules.Outcome.Swap:
+                default:
+                    SwapTiles(a, b);
+                    return;
+            }
+        }
+
+        // Convert a BoardTileView to a MergeRules.Tile (family currently unknown → empty string)
+        private static MergeRules.Tile ToRulesTile(BoardTileView v)
+        {
+            if (v == null || v.IsEmpty)
+                return new MergeRules.Tile(TileKind.Empty, 0, string.Empty);
+
+            // When we stamp families on payloads, replace string.Empty with v.FamilyKey (or similar)
+            return new MergeRules.Tile(v.Kind, v.Tier, string.Empty);
         }
 
         // ---------------- Actions ----------------
 
-        void MoveTile(BoardTileView from, BoardTileView to)
+        private void MoveTile(BoardTileView from, BoardTileView to)
         {
             to.CopyFrom(from);
             from.Clear();
             Log("MoveTile complete.");
         }
 
-        void SwapTiles(BoardTileView a, BoardTileView b)
+        private void SwapTiles(BoardTileView a, BoardTileView b)
         {
             var temp = b.Payload;
             b.Payload = a.Payload;
@@ -125,7 +151,7 @@ namespace AQ.App.UI.Board
             Log("SwapTiles complete.");
         }
 
-        void MergeTiles(BoardTileView from, BoardTileView into)
+        private void MergeTiles(BoardTileView from, BoardTileView into)
         {
             int newTier = from.Tier + 1;
 
@@ -133,17 +159,19 @@ namespace AQ.App.UI.Board
             {
                 into.SetGenerator(generatorSprite, newTier);
                 from.Clear();
-                Log($"MergeTiles (Generator): tier {newTier - 1} + {newTier - 1} -> {newTier}");
+                Log($"MergeTiles (Generator): {newTier - 1}+{newTier - 1}->{newTier}");
                 return;
             }
 
+            // Item merge
             into.SetItem(SpriteForItemTier(newTier), newTier);
             from.Clear();
-            Log($"MergeTiles (Item): tier {newTier - 1} + {newTier - 1} -> {newTier}");
+            Log($"MergeTiles (Item): {newTier - 1}+{newTier - 1}->{newTier}");
         }
 
-        void SpawnFromGenerator(BoardTileView generator)
+        private void SpawnFromGenerator(BoardTileView generator)
         {
+            // 1) Find destination first (no energy charge on full board)
             var dst = FindFirstEmptyFrom(generator);
             if (dst == null)
             {
@@ -151,6 +179,29 @@ namespace AQ.App.UI.Board
                 return;
             }
 
+            // 2) If EnergySystem is ON, consume exactly once now
+            var flags = FeatureFlagsRuntime.Current;
+            if (flags != null && flags.EnergySystem)
+            {
+                var cfg = EnergyRuntime.Config;
+                var mgr = EnergyRuntime.Manager;
+
+                if (mgr != null && cfg != null)
+                {
+                    mgr.TickNow(cfg.RegenSecondsPerPoint, DateTime.UtcNow);
+                    if (!mgr.TryConsume(1))
+                    {
+                        Log("Energy insufficient — spawn cancelled.");
+                        return; // nothing placed, nothing charged
+                    }
+                }
+                else
+                {
+                    Log("[Energy] Config/Manager missing; allowing spawn (flag ON).");
+                }
+            }
+
+            // 3) Place the item
             var (r, c) = dst.Value;
             var v = Get(r, c);
             if (!v) return;
@@ -162,7 +213,7 @@ namespace AQ.App.UI.Board
 
         // ---------------- Visuals & content ----------------
 
-        Sprite SpriteForItemTier(int tierZeroBased)
+        private Sprite SpriteForItemTier(int tierZeroBased)
         {
             if (icons == null || icons.Count == 0) return null;
             int idx = Mathf.Clamp(tierZeroBased, 0, icons.Count - 1);
@@ -171,12 +222,12 @@ namespace AQ.App.UI.Board
 
         // ---------------- Init grid ----------------
 
-        void BuildGridFromChildren()
+        private void BuildGridFromChildren()
         {
             grid = new BoardTileView[rows, cols];
             index.Clear();
 
-            // Expect children named slot_00_00 .. slot_rr_cc
+            // Children named: slot_00_00 .. slot_rr_cc (two-digit indices)
             var re = new Regex(@"slot_(\d{2})_(\d{2})");
             int bound = 0;
 
@@ -192,7 +243,7 @@ namespace AQ.App.UI.Board
                 var view = child.GetComponent<BoardTileView>();
                 if (!view) continue;
 
-                // CRITICAL: bind view so it finds its Item image and caches references
+                // IMPORTANT: bind so the Item Image is cached
                 view.Bind(this, r, c);
 
                 grid[r, c] = view;
@@ -203,18 +254,22 @@ namespace AQ.App.UI.Board
             Log($"BuildGridFromChildren: bound={bound} of expected={rows * cols}. boardRoot='{boardRoot?.name}'.");
         }
 
-        void EnsureGeneratorExists()
+        private void EnsureGeneratorExists()
         {
-            // scan for any generator first
+            // Any generator already placed?
             for (int r = 0; r < rows; r++)
+            {
                 for (int c = 0; c < cols; c++)
-                    if (grid[r,c] && grid[r,c].Kind == TileKind.Generator)
+                {
+                    if (grid[r, c] && grid[r, c].Kind == TileKind.Generator)
                         return;
+                }
+            }
 
             var v = Get(defaultGeneratorRow, defaultGeneratorCol);
-            if (v == null) return;
+            if (!v) return;
 
-            // Fallback: if generatorSprite is not assigned, prefer icons[0] so it's visible
+            // Fallback: if generatorSprite is unset, use icons[0] so it’s visible
             var sprite = generatorSprite != null ? generatorSprite : SpriteForItemTier(0);
             v.SetGenerator(sprite, 0);
             Log($"Generator ensured at ({defaultGeneratorRow},{defaultGeneratorCol}).");
@@ -222,11 +277,12 @@ namespace AQ.App.UI.Board
 
         // ---------------- RNG helpers ----------------
 
-        int RollSpawnTier()
+        private int RollSpawnTier()
         {
             int highest = Mathf.Min(maxTier, icons != null ? icons.Count - 1 : maxTier);
             int sum = 0;
-            for (int i = 0; i <= highest; i++) sum += odds[Mathf.Min(i, odds.Length - 1)];
+            for (int i = 0; i <= highest; i++)
+                sum += odds[Mathf.Min(i, odds.Length - 1)];
 
             int roll = UnityEngine.Random.Range(0, sum);
             int acc = 0;
@@ -238,7 +294,9 @@ namespace AQ.App.UI.Board
             return 0;
         }
 
-        (int r, int c)? FindFirstEmptyFrom(BoardTileView origin)
+        // ---------------- Spawn placement ----------------
+
+        private (int r, int c)? FindFirstEmptyFrom(BoardTileView origin)
         {
             var (sr, sc) = GetIndex(origin);
             if (sr < 0) return null;
@@ -261,7 +319,7 @@ namespace AQ.App.UI.Board
                 return null;
             }
 
-            // Legacy path (row/col scanline within bounding box per radius)
+            // Legacy path (scan Manhattan ring via bounding box)
             for (int radius = 1; radius <= rows + cols; radius++)
             {
                 int rMin = Mathf.Max(0, sr - radius);
@@ -270,13 +328,16 @@ namespace AQ.App.UI.Board
                 int cMax = Mathf.Min(cols - 1, sc + radius);
 
                 for (int r = rMin; r <= rMax; r++)
-                for (int c = cMin; c <= cMax; c++)
                 {
-                    if (Mathf.Abs(r - sr) + Mathf.Abs(c - sc) != radius) continue;
-                    var v = grid[r, c];
-                    if (v != null && v.IsEmpty) return (r, c);
+                    for (int c = cMin; c <= cMax; c++)
+                    {
+                        if (Mathf.Abs(r - sr) + Mathf.Abs(c - sc) != radius) continue;
+                        var v = grid[r, c];
+                        if (v != null && v.IsEmpty) return (r, c);
+                    }
                 }
             }
+
             return null;
         }
 
