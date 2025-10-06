@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 using AQ.App.Config;
 using AQ.App.Services;
-using AQ.Domain.Board; // MergeRules
+using AQ.Domain.Board;         // MergeRules
+using AQ.App.UI.Common;       // ToastService
 
 namespace AQ.App.UI.Board
 {
@@ -49,7 +50,7 @@ namespace AQ.App.UI.Board
         private BoardTileView[,] grid;
         private readonly Dictionary<BoardTileView, (int r, int c)> index = new();
 
-        // NEW: family mapping for tiles (kept in controller for zero-churn integration)
+        // Family mapping (in-memory)
         private readonly Dictionary<BoardTileView, string> familyKeyByTile = new();
 
         // ---------------- Unity lifecycle ----------------
@@ -66,7 +67,7 @@ namespace AQ.App.UI.Board
             Log("MergeBoardController.Start complete.");
         }
 
-        // ---------------- Public helpers (used by Save/FX/etc.) ----------------
+        // ---------------- Public helpers ----------------
 
         public (int r, int c) GetIndex(BoardTileView v) => v != null && index.TryGetValue(v, out var rc) ? rc : (-1, -1);
         public BoardTileView Get(int r, int c) => IsInside(r, c) ? grid[r, c] : null;
@@ -103,7 +104,6 @@ namespace AQ.App.UI.Board
                 return;
             }
 
-            // Family-aware rules (families are now stamped on generator + spawns)
             var outcome = MergeRules.Decide(ToRulesTile(a), ToRulesTile(b), maxTier);
 
             switch (outcome)
@@ -128,13 +128,12 @@ namespace AQ.App.UI.Board
             }
         }
 
-        // Convert a BoardTileView to a MergeRules.Tile (includes family if present)
         private MergeRules.Tile ToRulesTile(BoardTileView v)
         {
             if (v == null || v.IsEmpty)
                 return new MergeRules.Tile(TileKind.Empty, 0, string.Empty);
 
-            var fam = GetFamily(v); // empty string if unknown
+            var fam = GetFamily(v);
             return new MergeRules.Tile(v.Kind, v.Tier, fam);
         }
 
@@ -157,9 +156,7 @@ namespace AQ.App.UI.Board
             a.Refresh();
             b.Refresh();
 
-            // Swap family keys as well
             (familyKeyByTile[b], familyKeyByTile[a]) = (GetFamily(a), GetFamily(b));
-            // Clean empties if any
             if (a.IsEmpty) familyKeyByTile.Remove(a);
             if (b.IsEmpty) familyKeyByTile.Remove(b);
 
@@ -173,7 +170,6 @@ namespace AQ.App.UI.Board
             if (from.Kind == TileKind.Generator && into.Kind == TileKind.Generator)
             {
                 into.SetGenerator(generatorSprite, newTier);
-                // Keep the into's generator family; prefer into, otherwise inherit from 'from'
                 if (!HasFamily(into))
                     SetFamily(into, GetFamily(from));
                 from.Clear();
@@ -182,7 +178,6 @@ namespace AQ.App.UI.Board
                 return;
             }
 
-            // Item merge — into keeps its family; if it had none, inherit 'from'
             var fam = HasFamily(into) ? GetFamily(into) : GetFamily(from);
             into.SetItem(SpriteForItemTier(newTier), newTier);
             if (!string.IsNullOrEmpty(fam))
@@ -200,6 +195,7 @@ namespace AQ.App.UI.Board
             if (dst == null)
             {
                 Log("No empty cells found for spawn.");
+                ToastService.Show("board_full", "Board full — try selling or free a slot.", 1.8f);
                 return;
             }
 
@@ -216,6 +212,7 @@ namespace AQ.App.UI.Board
                     if (!mgr.TryConsume(1))
                     {
                         Log("Energy insufficient — spawn cancelled.");
+                        ToastService.Show("out_of_energy", "Out of energy.", 1.8f);
                         return; // nothing placed, nothing charged
                     }
                 }
@@ -257,7 +254,6 @@ namespace AQ.App.UI.Board
             index.Clear();
             familyKeyByTile.Clear();
 
-            // Children named: slot_00_00 .. slot_rr_cc (two-digit indices)
             var re = new Regex(@"slot_(\d{2})_(\d{2})");
             int bound = 0;
 
@@ -273,7 +269,6 @@ namespace AQ.App.UI.Board
                 var view = child.GetComponent<BoardTileView>();
                 if (!view) continue;
 
-                // IMPORTANT: bind so the Item Image is cached
                 view.Bind(this, r, c);
 
                 grid[r, c] = view;
@@ -286,14 +281,12 @@ namespace AQ.App.UI.Board
 
         private void EnsureGeneratorExists()
         {
-            // Any generator already placed?
             for (int r = 0; r < rows; r++)
             {
                 for (int c = 0; c < cols; c++)
                 {
                     if (grid[r, c] && grid[r, c].Kind == TileKind.Generator)
                     {
-                        // If it wasn't stamped (older saves), give it a default family
                         var v = grid[r, c];
                         if (!HasFamily(v)) SetFamily(v, defaultGeneratorFamily);
                         return;
@@ -304,7 +297,6 @@ namespace AQ.App.UI.Board
             var cell = Get(defaultGeneratorRow, defaultGeneratorCol);
             if (!cell) return;
 
-            // Fallback: if generatorSprite is unset, use icons[0] so it’s visible
             var sprite = generatorSprite != null ? generatorSprite : SpriteForItemTier(0);
             cell.SetGenerator(sprite, 0);
             SetFamily(cell, defaultGeneratorFamily);
@@ -338,7 +330,6 @@ namespace AQ.App.UI.Board
             var (sr, sc) = GetIndex(origin);
             if (sr < 0) return null;
 
-            // Flag-gated deterministic spawn order: Manhattan rings, clockwise-from-North
             var flags = FeatureFlagsRuntime.Current;
             if (flags != null && flags.SpawnRingTraversal == SpawnRingMode.ManhattanClockwiseFromNorth)
             {
@@ -356,7 +347,6 @@ namespace AQ.App.UI.Board
                 return null;
             }
 
-            // Legacy path (scan Manhattan ring via bounding box)
             for (int radius = 1; radius <= rows + cols; radius++)
             {
                 int rMin = Mathf.Max(0, sr - radius);
@@ -378,20 +368,27 @@ namespace AQ.App.UI.Board
             return null;
         }
 
-        // ---------------- Family helpers ----------------
+        // ---------------- Family helpers (now public for save system) ----------------
 
-        private bool HasFamily(BoardTileView v) => v != null && familyKeyByTile.ContainsKey(v);
+        public bool HasFamily(BoardTileView v)
+        {
+            return v != null && familyKeyByTile.ContainsKey(v);
+        }
 
-        private string GetFamily(BoardTileView v)
+        public string GetFamily(BoardTileView v)
         {
             if (v == null || v.IsEmpty) return string.Empty;
             return familyKeyByTile.TryGetValue(v, out var fam) ? fam : string.Empty;
         }
 
-        private void SetFamily(BoardTileView v, string fam)
+        public void SetFamily(BoardTileView v, string fam)
         {
             if (v == null) return;
-            if (string.IsNullOrEmpty(fam)) { familyKeyByTile.Remove(v); return; }
+            if (string.IsNullOrEmpty(fam))
+            {
+                familyKeyByTile.Remove(v);
+                return;
+            }
             familyKeyByTile[v] = fam;
         }
 
