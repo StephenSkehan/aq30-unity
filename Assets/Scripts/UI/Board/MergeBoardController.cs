@@ -38,12 +38,19 @@ namespace AQ.App.UI.Board
         public int defaultGeneratorCol = 3;
         public float tileSpacing = 2f;
 
+        [Header("Families")]
+        [Tooltip("Family key assigned to the default generator; spawned items inherit their origin generator's family.")]
+        public string defaultGeneratorFamily = "stakeout_fuel";
+
         [Header("Debug")]
         public bool debugLogs = false;
 
         // Backing state
         private BoardTileView[,] grid;
         private readonly Dictionary<BoardTileView, (int r, int c)> index = new();
+
+        // NEW: family mapping for tiles (kept in controller for zero-churn integration)
+        private readonly Dictionary<BoardTileView, string> familyKeyByTile = new();
 
         // ---------------- Unity lifecycle ----------------
 
@@ -96,7 +103,7 @@ namespace AQ.App.UI.Board
                 return;
             }
 
-            // Family-aware rules (behind content; families currently unstamped → treated as compatible)
+            // Family-aware rules (families are now stamped on generator + spawns)
             var outcome = MergeRules.Decide(ToRulesTile(a), ToRulesTile(b), maxTier);
 
             switch (outcome)
@@ -110,7 +117,6 @@ namespace AQ.App.UI.Board
                     return;
 
                 case MergeRules.Outcome.CeilingSwap:
-                    // Distinct UX hook later (SFX/haptics); swap for now
                     SwapTiles(a, b);
                     Log("Ceiling hit swap (max-tier vs max-tier).");
                     return;
@@ -122,14 +128,14 @@ namespace AQ.App.UI.Board
             }
         }
 
-        // Convert a BoardTileView to a MergeRules.Tile (family currently unknown → empty string)
-        private static MergeRules.Tile ToRulesTile(BoardTileView v)
+        // Convert a BoardTileView to a MergeRules.Tile (includes family if present)
+        private MergeRules.Tile ToRulesTile(BoardTileView v)
         {
             if (v == null || v.IsEmpty)
                 return new MergeRules.Tile(TileKind.Empty, 0, string.Empty);
 
-            // When we stamp families on payloads, replace string.Empty with v.FamilyKey (or similar)
-            return new MergeRules.Tile(v.Kind, v.Tier, string.Empty);
+            var fam = GetFamily(v); // empty string if unknown
+            return new MergeRules.Tile(v.Kind, v.Tier, fam);
         }
 
         // ---------------- Actions ----------------
@@ -137,7 +143,9 @@ namespace AQ.App.UI.Board
         private void MoveTile(BoardTileView from, BoardTileView to)
         {
             to.CopyFrom(from);
+            TransferFamily(from, to);
             from.Clear();
+            familyKeyByTile.Remove(from);
             Log("MoveTile complete.");
         }
 
@@ -148,6 +156,13 @@ namespace AQ.App.UI.Board
             a.Payload = temp;
             a.Refresh();
             b.Refresh();
+
+            // Swap family keys as well
+            (familyKeyByTile[b], familyKeyByTile[a]) = (GetFamily(a), GetFamily(b));
+            // Clean empties if any
+            if (a.IsEmpty) familyKeyByTile.Remove(a);
+            if (b.IsEmpty) familyKeyByTile.Remove(b);
+
             Log("SwapTiles complete.");
         }
 
@@ -158,14 +173,23 @@ namespace AQ.App.UI.Board
             if (from.Kind == TileKind.Generator && into.Kind == TileKind.Generator)
             {
                 into.SetGenerator(generatorSprite, newTier);
+                // Keep the into's generator family; prefer into, otherwise inherit from 'from'
+                if (!HasFamily(into))
+                    SetFamily(into, GetFamily(from));
                 from.Clear();
+                familyKeyByTile.Remove(from);
                 Log($"MergeTiles (Generator): {newTier - 1}+{newTier - 1}->{newTier}");
                 return;
             }
 
-            // Item merge
+            // Item merge — into keeps its family; if it had none, inherit 'from'
+            var fam = HasFamily(into) ? GetFamily(into) : GetFamily(from);
             into.SetItem(SpriteForItemTier(newTier), newTier);
+            if (!string.IsNullOrEmpty(fam))
+                SetFamily(into, fam);
+
             from.Clear();
+            familyKeyByTile.Remove(from);
             Log($"MergeTiles (Item): {newTier - 1}+{newTier - 1}->{newTier}");
         }
 
@@ -201,14 +225,19 @@ namespace AQ.App.UI.Board
                 }
             }
 
-            // 3) Place the item
+            // 3) Place the item + stamp family from the origin generator
             var (r, c) = dst.Value;
             var v = Get(r, c);
             if (!v) return;
 
             int tier = RollSpawnTier();
             v.SetItem(SpriteForItemTier(tier), tier);
-            Log($"Spawned item T{tier + 1} at ({r},{c}).");
+
+            var genFamily = GetFamily(generator);
+            if (string.IsNullOrEmpty(genFamily)) genFamily = defaultGeneratorFamily;
+            SetFamily(v, genFamily);
+
+            Log($"Spawned item T{tier + 1} at ({r},{c}) family={genFamily}.");
         }
 
         // ---------------- Visuals & content ----------------
@@ -226,6 +255,7 @@ namespace AQ.App.UI.Board
         {
             grid = new BoardTileView[rows, cols];
             index.Clear();
+            familyKeyByTile.Clear();
 
             // Children named: slot_00_00 .. slot_rr_cc (two-digit indices)
             var re = new Regex(@"slot_(\d{2})_(\d{2})");
@@ -262,17 +292,24 @@ namespace AQ.App.UI.Board
                 for (int c = 0; c < cols; c++)
                 {
                     if (grid[r, c] && grid[r, c].Kind == TileKind.Generator)
+                    {
+                        // If it wasn't stamped (older saves), give it a default family
+                        var v = grid[r, c];
+                        if (!HasFamily(v)) SetFamily(v, defaultGeneratorFamily);
                         return;
+                    }
                 }
             }
 
-            var v = Get(defaultGeneratorRow, defaultGeneratorCol);
-            if (!v) return;
+            var cell = Get(defaultGeneratorRow, defaultGeneratorCol);
+            if (!cell) return;
 
             // Fallback: if generatorSprite is unset, use icons[0] so it’s visible
             var sprite = generatorSprite != null ? generatorSprite : SpriteForItemTier(0);
-            v.SetGenerator(sprite, 0);
-            Log($"Generator ensured at ({defaultGeneratorRow},{defaultGeneratorCol}).");
+            cell.SetGenerator(sprite, 0);
+            SetFamily(cell, defaultGeneratorFamily);
+
+            Log($"Generator ensured at ({defaultGeneratorRow},{defaultGeneratorCol}) family={defaultGeneratorFamily}.");
         }
 
         // ---------------- RNG helpers ----------------
@@ -339,6 +376,36 @@ namespace AQ.App.UI.Board
             }
 
             return null;
+        }
+
+        // ---------------- Family helpers ----------------
+
+        private bool HasFamily(BoardTileView v) => v != null && familyKeyByTile.ContainsKey(v);
+
+        private string GetFamily(BoardTileView v)
+        {
+            if (v == null || v.IsEmpty) return string.Empty;
+            return familyKeyByTile.TryGetValue(v, out var fam) ? fam : string.Empty;
+        }
+
+        private void SetFamily(BoardTileView v, string fam)
+        {
+            if (v == null) return;
+            if (string.IsNullOrEmpty(fam)) { familyKeyByTile.Remove(v); return; }
+            familyKeyByTile[v] = fam;
+        }
+
+        private void TransferFamily(BoardTileView from, BoardTileView to)
+        {
+            if (from == null || to == null) return;
+            if (familyKeyByTile.TryGetValue(from, out var fam))
+            {
+                familyKeyByTile[to] = fam;
+            }
+            else
+            {
+                familyKeyByTile.Remove(to);
+            }
         }
 
         // ---------------- Logging ----------------
