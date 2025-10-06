@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+using AQ.App.Config;
+
 namespace AQ.App.UI.Board
 {
     public enum TileKind { Empty, Item, Generator }
@@ -18,105 +20,48 @@ namespace AQ.App.UI.Board
         public RectTransform boardRoot;                  // MergeBoard
         public GraphicRaycaster raycaster;
 
-        // Expose Rows/Cols for helper utilities (e.g., BoardTools)
+        // Expose Rows/Cols for helper utilities
         public int Rows => rows;
         public int Cols => cols;
+        public bool IsInside(int r, int c) => r >= 0 && c >= 0 && r < rows && c < cols;
 
         [Header("Content")]
         public Sprite generatorSprite;
-        public List<Sprite> icons = new List<Sprite>();  // index = tier
-        [Min(0)] public int maxTier = 5;
+        public List<Sprite> icons;
+        [Range(1, 9)] public int maxTier = 6;
+        [Tooltip("Odds per tier index: T1..Tn (values repeat if shorter than tiers)")]
+        public int[] odds = new[] { 80, 15, 4, 1 };
 
-        [Header("Start")]
+        [Header("Defaults & Layout")]
         public int defaultGeneratorRow = 4;
         public int defaultGeneratorCol = 3;
+        public float tileSpacing = 2f;
 
         [Header("Debug")]
-        public bool debugLogs = true;
+        public bool debugLogs = false;
 
-        // --- runtime ---
-        public BoardTileView[,] grid;                    // [r,c] -> view
-        readonly Dictionary<BoardTileView, (int r, int c)> index = new();
+        // --- Backing state ---
+        BoardTileView[,] grid;
+        Dictionary<BoardTileView, (int r, int c)> index = new();
 
-        static readonly Regex SlotName = new Regex(@"^slot_(\d{2})_(\d{2})$",
-            RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        // ---------------- Unity lifecycle ----------------
 
         void Awake()
         {
-            if (!boardRoot) boardRoot = (RectTransform)transform;
+            if (!boardRoot) boardRoot = GetComponent<RectTransform>();
+            BuildGridFromChildren();
+            EnsureGeneratorExists();
         }
 
         void Start()
         {
-            BuildGridFromChildren();
-            if (icons == null) icons = new List<Sprite>();
-            Log($"Start: icons.Count={icons.Count}, generatorSprite={(generatorSprite ? generatorSprite.name : "null")}");
-            EnsureGeneratorExists();
+            Log("MergeBoardController.Start complete.");
         }
 
-        // ---------------- Grid bootstrap ----------------
-
-        void BuildGridFromChildren()
-        {
-            grid = new BoardTileView[rows, cols];
-            index.Clear();
-
-            int bound = 0;
-            foreach (Transform child in boardRoot)
-            {
-                var m = SlotName.Match(child.name);
-                if (!m.Success) continue;
-
-                int r = int.Parse(m.Groups[1].Value);
-                int c = int.Parse(m.Groups[2].Value);
-                if (r < 0 || r >= rows || c < 0 || c >= cols) continue;
-
-                var view = child.GetComponent<BoardTileView>();
-                if (!view) view = child.gameObject.AddComponent<BoardTileView>();
-
-                view.Bind(this, r, c);
-                grid[r, c] = view;
-                index[view] = (r, c);
-                bound++;
-            }
-
-            Log($"BuildGridFromChildren: bound={bound} of expected={rows * cols}. boardRoot='{boardRoot?.name}'.");
-        }
-
-        void EnsureGeneratorExists()
-        {
-            var found = FindFirst(TileKind.Generator);
-            if (found.r >= 0) return; // already have one
-
-            var v = grid[defaultGeneratorRow, defaultGeneratorCol];
-            if (!v) return;
-
-            v.SetGenerator(generatorSprite, 0);
-            Log($"EnsureGeneratorExists: placed generator at ({defaultGeneratorRow},{defaultGeneratorCol}) using sprite '{generatorSprite?.name}'.");
-        }
-
-        // ---------------- Tile helpers ----------------
+        // ---------------- Public helpers used by other systems ----------------
 
         public (int r, int c) GetIndex(BoardTileView v) => index.TryGetValue(v, out var rc) ? rc : (-1, -1);
-
-        public bool IsInside(int r, int c) => r >= 0 && r < rows && c >= 0 && c < cols;
-
         public BoardTileView Get(int r, int c) => IsInside(r, c) ? grid[r, c] : null;
-
-        public Sprite SpriteForItemTier(int tier) => (tier >= 0 && tier < icons.Count) ? icons[tier] : null;
-
-        public (int r, int c) FindFirst(TileKind kind)
-        {
-            for (int r = 0; r < rows; r++)
-            {
-                for (int c = 0; c < cols; c++)
-                {
-                    var v = grid[r, c];
-                    if (v != null && v.Kind == kind) return (r, c);
-                }
-            }
-            return (-1, -1);
-        }
 
         // ---------------- Input entrypoints ----------------
 
@@ -197,26 +142,89 @@ namespace AQ.App.UI.Board
             Log($"MergeTiles (Item): tier {newTier - 1} + {newTier - 1} -> {newTier}");
         }
 
-        // ---------------- Spawning ----------------
-
         void SpawnFromGenerator(BoardTileView generator)
         {
             var dst = FindFirstEmptyFrom(generator);
-            if (dst == null) return;
+            if (dst == null)
+            {
+                Log("No empty cells found for spawn.");
+                return;
+            }
 
             var (r, c) = dst.Value;
-            var target = Get(r, c);
+            var v = Get(r, c);
+            if (!v) return;
 
             int tier = RollSpawnTier();
-            target.SetItem(SpriteForItemTier(tier), tier);
-
-            Log($"SpawnFromGenerator: spawned T{tier + 1} at ({r},{c}).");
+            v.SetItem(SpriteForItemTier(tier), tier);
+            Log($"Spawned item T{tier + 1} at ({r},{c}).");
         }
+
+        // ---------------- Visuals & content ----------------
+
+        Sprite SpriteForItemTier(int tierZeroBased)
+        {
+            if (icons == null || icons.Count == 0) return null;
+            int idx = Mathf.Clamp(tierZeroBased, 0, icons.Count - 1);
+            return icons[idx];
+        }
+
+        // ---------------- Init grid ----------------
+
+        void BuildGridFromChildren()
+        {
+            grid = new BoardTileView[rows, cols];
+            index.Clear();
+
+            // Expect children named slot_00_00 .. slot_rr_cc
+            var re = new Regex(@"slot_(\d{2})_(\d{2})");
+            int bound = 0;
+
+            foreach (Transform child in boardRoot)
+            {
+                var m = re.Match(child.name);
+                if (!m.Success) continue;
+
+                int r = int.Parse(m.Groups[1].Value);
+                int c = int.Parse(m.Groups[2].Value);
+                if (!IsInside(r, c)) continue;
+
+                var view = child.GetComponent<BoardTileView>();
+                if (!view) continue;
+
+                // CRITICAL: bind view so it finds its Item image and caches references
+                view.Bind(this, r, c);
+
+                grid[r, c] = view;
+                index[view] = (r, c);
+                bound++;
+            }
+
+            Log($"BuildGridFromChildren: bound={bound} of expected={rows * cols}. boardRoot='{boardRoot?.name}'.");
+        }
+
+        void EnsureGeneratorExists()
+        {
+            // scan for any generator first
+            for (int r = 0; r < rows; r++)
+                for (int c = 0; c < cols; c++)
+                    if (grid[r,c] && grid[r,c].Kind == TileKind.Generator)
+                        return;
+
+            var v = Get(defaultGeneratorRow, defaultGeneratorCol);
+            if (v == null) return;
+
+            // Fallback: if generatorSprite is not assigned, prefer icons[0] so it's visible
+            var sprite = generatorSprite != null ? generatorSprite : SpriteForItemTier(0);
+            v.SetGenerator(sprite, 0);
+            Log($"Generator ensured at ({defaultGeneratorRow},{defaultGeneratorCol}).");
+        }
+
+        // ---------------- RNG helpers ----------------
 
         int RollSpawnTier()
         {
-            int[] odds = { 70, 20, 7, 2, 1, 0, 0, 0 };
-            int highest = Mathf.Min(maxTier, icons.Count - 1);
+            int highest = Mathf.Min(maxTier, icons != null ? icons.Count - 1 : maxTier);
             int sum = 0;
             for (int i = 0; i <= highest; i++) sum += odds[Mathf.Min(i, odds.Length - 1)];
 
@@ -235,6 +243,25 @@ namespace AQ.App.UI.Board
             var (sr, sc) = GetIndex(origin);
             if (sr < 0) return null;
 
+            // Flag-gated deterministic spawn order: Manhattan rings, clockwise-from-North
+            var flags = FeatureFlagsRuntime.Current;
+            if (flags != null && flags.SpawnRingTraversal == SpawnRingMode.ManhattanClockwiseFromNorth)
+            {
+                int maxD = Math.Max(sr, rows - 1 - sr) + Math.Max(sc, cols - 1 - sc);
+                for (int d = 1; d <= maxD; d++)
+                {
+                    foreach (var cell in AQ.Domain.Board.BoardRingTraversal.EnumerateRing(rows, cols, sr, sc, d))
+                    {
+                        int r = cell.r;
+                        int c = cell.c;
+                        var v = Get(r, c);
+                        if (v != null && v.IsEmpty) return (r, c);
+                    }
+                }
+                return null;
+            }
+
+            // Legacy path (row/col scanline within bounding box per radius)
             for (int radius = 1; radius <= rows + cols; radius++)
             {
                 int rMin = Mathf.Max(0, sr - radius);
