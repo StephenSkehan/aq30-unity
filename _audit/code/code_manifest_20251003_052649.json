@@ -1,0 +1,1142 @@
+{
+  "generatedUtc": "2025-10-02 19:56:58Z",
+  "stamp": "20251003_052649",
+  "outputs": [
+    {
+      "label": "Assets\\App",
+      "out": "C:\\Users\\Steph\\Dev\\aq30-unity\\_audit\\code\\code_assets_app_20251003_052649.txt",
+      "files": 102,
+      "lines": 4945,
+      "index": [
+        {
+          "path": "Analytics\\AnalyticsInstallerMB.cs",
+          "size": 469,
+          "lines": 19,
+          "sha256": "862C0096926A91FC22C8AAC83A5B2861964C3512AEB3637FC22F32A43F8B946C",
+          "modified": "2025-09-18 00:34:31Z"
+        },
+        {
+          "path": "Analytics\\AnalyticsLocator.cs",
+          "size": 797,
+          "lines": 28,
+          "sha256": "2D21E2A4697F5D3BFF106AD6F14E5648F45C4F8E57E14837AE1536C556C7F0A8",
+          "modified": "2025-09-18 00:36:29Z"
+        },
+        {
+          "path": "Analytics\\DebugLogAnalytics.cs",
+          "size": 1508,
+          "lines": 47,
+          "sha256": "3DC972D3FB23641F6296F2715733D7D8D3280A0CF7AC7ED13CC276363E716165",
+          "modified": "2025-09-15 00:15:54Z"
+        },
+        {
+          "path": "Analytics\\IAnalytics.cs",
+          "size": 521,
+          "lines": 17,
+          "sha256": "4B7614B2C801D080B60BD062CDA3A7A9A3B90062D0FDEFD89B318A77158290CD",
+          "modified": "2025-09-15 00:13:51Z"
+        },
+        {
+          "path": "Analytics\\LeadAnalytics.cs",
+          "size": 1148,
+          "lines": 34,
+          "sha256": "D13B00D78D60E0B9488887E19425F3714B140B8AA55DB7FF41B3DD2547F47C12",
+          "modified": "2025-09-19 05:58:11Z"
+        },
+        {
+          "path": "Analytics\\WalletAnalyticsBridge.cs",
+          "size": 3079,
+          "lines": 94,
+          "sha256": "325C751760C040878BEA41941EE2D79EB32126BF1210AC1C0773DB494F1DF1E1",
+          "modified": "2025-09-15 00:16:40Z"
+        },
+        {
+          "path": "CaseFlow\\AdvanceOnceMB.cs",
+          "size": 852,
+          "lines": 34,
+          "sha256": "E5F80007FCE542B436C1BFBA130EF87E20E6553153393485862F77E2AAFB83F1",
+          "modified": "2025-09-16 04:16:21Z"
+        },
+        {
+          "path": "CaseFlow\\BoardPresenter.cs",
+          "size": 1894,
+          "lines": 60,
+          "sha256": "A3206A8F41DB4CB958732C557821A8F70C2F4C4F3C53C2F88338963AD523B384",
+          "modified": "2025-09-19 06:48:18Z"
+        },
+        {
+          "path": "CaseFlow\\CaseFlowAdvanceOnEventMB.cs",
+          "size": 849,
+          "lines": 29,
+          "sha256": "0668C996B1066BF67896B32C6BF73BBD648E87846B7DC520FD4A31CA34930B36",
+          "modified": "2025-09-15 01:25:06Z"
+        },
+        {
+          "path": "CaseFlow\\CaseFlowDebugOverlayMB.cs",
+          "size": 932,
+          "lines": 30,
+          "sha256": "6DBC8157E78BC9E593536D9332CCE3AD6D3616591D8C9F8A5E6928C0C7F613B4",
+          "modified": "2025-09-15 01:25:34Z"
+        },
+        {
+          "path": "CaseFlow\\CaseFlowGateMB.cs",
+          "size": 2162,
+          "lines": 69,
+          "sha256": "641D4F79354455AFD26F7E803E7AC96982A10EF6F48B96C85D89F7CFB514D3B0",
+          "modified": "2025-09-15 01:23:59Z"
+        },
+        {
+          "path": "CaseFlow\\CaseFlowLocator.cs",
+          "size": 354,
+          "lines": 14,
+          "sha256": "22C950B37D7EF14DAF77F31F30A807B8DA924EFC29F838E41FE8EE9DE153A641",
+          "modified": "2025-09-15 01:11:47Z"
+        },
+        {
+          "path": "CaseFlow\\CaseFlowOrchestratorMB.cs",
+          "size": 4179,
+          "lines": 111,
+          "sha256": "49896D9C8587E0289BC35E4EE4E5E89574BE57EEE7E7770D190798B23CEDE3C9",
+          "modified": "2025-09-15 01:19:17Z"
+        },
+        {
+          "path": "CaseFlow\\DebugLogOnResolveMB.cs",
+          "size": 376,
+          "lines": 15,
+          "sha256": "AD2953E941212596A88F64691281B6B1A479C82ECEBFD5EF2BD39E193685787B",
+          "modified": "2025-09-16 02:44:30Z"
+        },
+        {
+          "path": "CaseFlow\\ResolutionContinueMB.cs",
+          "size": 9354,
+          "lines": 264,
+          "sha256": "D09207C6F6D7F0DBEA28244231090DD439B32FFB52696D981DE5B3BA7B1812F3",
+          "modified": "2025-09-18 06:04:28Z"
+        },
+        {
+          "path": "Composition\\BootstrapperAutoAdd.cs",
+          "size": 1556,
+          "lines": 42,
+          "sha256": "89058D608B9DA4233BE9709C7E6652B3FCAFC4B7EA771A05029CCCB63BA24A45",
+          "modified": "2025-09-12 05:22:48Z"
+        },
+        {
+          "path": "Composition\\BootstrapperAutoAssign.cs",
+          "size": 1122,
+          "lines": 34,
+          "sha256": "06843631F540852C433B84ED0324502C0829DC65BAD581AB92B7C36929F6F780",
+          "modified": "2025-09-07 23:33:21Z"
+        },
+        {
+          "path": "Composition\\BootstrapperRuntime.cs",
+          "size": 376,
+          "lines": 12,
+          "sha256": "99EEC4D262DDEBD1597B759F5B15C375FFE37611C741785B0B78C6D8C1D3E450",
+          "modified": "2025-09-07 01:55:29Z"
+        },
+        {
+          "path": "Composition\\DomainMergeWire.cs",
+          "size": 389,
+          "lines": 17,
+          "sha256": "3D5E976314B68536A3E6DB487003BC81D5D1D5E77F8EA1F596B74410C0BED25F",
+          "modified": "2025-09-05 06:07:40Z"
+        },
+        {
+          "path": "Composition\\GameBootstrapper.cs",
+          "size": 1394,
+          "lines": 47,
+          "sha256": "D98EF4D753C62C34D286BCD3221ACAD913886A51D31DB55B01CB82AEB1A6D531",
+          "modified": "2025-09-07 23:42:12Z"
+        },
+        {
+          "path": "Composition\\IMergeService.cs",
+          "size": 337,
+          "lines": 14,
+          "sha256": "0F1762EA7466888ED9848DE576ECB4AEDF8A61B8CCA7AF44D789419A48D6B3CD",
+          "modified": "2025-09-07 02:00:29Z"
+        },
+        {
+          "path": "Composition\\MergeService.cs",
+          "size": 3164,
+          "lines": 84,
+          "sha256": "E33973B31038848C22A63668CBC59C05FD043E28D6A19221C0A872C23E6FF8B7",
+          "modified": "2025-09-12 05:22:48Z"
+        },
+        {
+          "path": "Composition\\SharedKernelBoot.cs",
+          "size": 1968,
+          "lines": 55,
+          "sha256": "4FDB4504C53B9F377B83E0985C73365AB3CAE863184944342FCD44998749C552",
+          "modified": "2025-09-06 08:03:35Z"
+        },
+        {
+          "path": "Content\\AddressableGraphLoader.cs",
+          "size": 1658,
+          "lines": 42,
+          "sha256": "D84CFC23BC3A5E75C027B53B779FAA72F9EF03C8C60F0E47D862D995DE82B82D",
+          "modified": "2025-09-13 10:22:58Z"
+        },
+        {
+          "path": "Dev\\Editor\\QuickNavButton.cs",
+          "size": 1029,
+          "lines": 34,
+          "sha256": "C336C62732DB55BBA9F0C96953E836B71BD18ABE232EAAB35BA5619489FBF768",
+          "modified": "2025-09-19 21:30:16Z"
+        },
+        {
+          "path": "Economy\\WalletLocator.cs",
+          "size": 401,
+          "lines": 16,
+          "sha256": "908BBA3E4E3D486EF8DEA367A628F1FDB0E0132C32B63C4F545E7A0E220C5139",
+          "modified": "2025-09-14 23:45:00Z"
+        },
+        {
+          "path": "FTUE\\FTUEEntitlements.cs",
+          "size": 1199,
+          "lines": 40,
+          "sha256": "2B609C0C3FD57033EA3EAB6171FD17C507DA01A9C2FD89825B9AEE59E9CD2A75",
+          "modified": "2025-09-14 23:45:58Z"
+        },
+        {
+          "path": "Gameplay\\Data\\SpawnPolicy.cs",
+          "size": 560,
+          "lines": 16,
+          "sha256": "25B7EAF98DDC10477020A56B08840886A58EA54834502DCE7A10502EEF7AB029",
+          "modified": "2025-09-11 07:42:40Z"
+        },
+        {
+          "path": "Gameplay\\Merge\\MergeGeneratorConfig.cs",
+          "size": 1219,
+          "lines": 36,
+          "sha256": "6BCC2596DCB0A2C3AED20FED815255A5B561ACFC742F23C9AA0192F33A830359",
+          "modified": "2025-10-01 10:33:21Z"
+        },
+        {
+          "path": "Gameplay\\Merge\\SpriteCatalog.cs",
+          "size": 724,
+          "lines": 22,
+          "sha256": "92AC8B90A5FCAC9ACC598678DF0B7889F6217F9D65214A7ECEA4D632F827DAB6",
+          "modified": "2025-10-01 10:34:13Z"
+        },
+        {
+          "path": "Home\\HomeResumeCard.cs",
+          "size": 1019,
+          "lines": 31,
+          "sha256": "3BC347F5893AEB9B930D489BCB40715D57DA01F39DBD207B5766A19155152614",
+          "modified": "2025-09-19 05:57:22Z"
+        },
+        {
+          "path": "HUD\\TopStatusRow.cs",
+          "size": 1854,
+          "lines": 62,
+          "sha256": "B39E6A56D78FE85ACC78AC338031F9A0A646616890459FFD89E6F0E86BBD3750",
+          "modified": "2025-09-19 05:56:09Z"
+        },
+        {
+          "path": "Kernel\\SharedKernelBootstrap.cs",
+          "size": 1727,
+          "lines": 45,
+          "sha256": "8EA9D6E0C2BD98C553F0A3291084CCBCC46FF39C1DFC48F9D25D01DD0694E125",
+          "modified": "2025-09-06 07:12:07Z"
+        },
+        {
+          "path": "Leads\\ActiveLeadState.cs",
+          "size": 693,
+          "lines": 20,
+          "sha256": "33016970FCF4E45611753329C85B36BEA5CBA0E7F5527B84A35BC73E183BC896",
+          "modified": "2025-09-19 05:53:17Z"
+        },
+        {
+          "path": "Leads\\Data\\Editor\\LeadData.cs",
+          "size": 1725,
+          "lines": 57,
+          "sha256": "8F89AA03DD1AA1AB0349B9843A553F4751E806C6F6206C975A2E7C05937A2DB2",
+          "modified": "2025-09-23 22:58:59Z"
+        },
+        {
+          "path": "Leads\\Data\\Editor\\LeadsDatabase.cs",
+          "size": 1037,
+          "lines": 38,
+          "sha256": "7D2D2827B8FF5F1E4C3F282AD552AA837DEE4039634E955E6550859E514E80BE",
+          "modified": "2025-09-23 22:41:02Z"
+        },
+        {
+          "path": "Leads\\Data\\LeadRequirement.cs",
+          "size": 1451,
+          "lines": 49,
+          "sha256": "A862D42B1170403CB935DA09BACC35F52ABE6D6FFD22DF01F7A72976DC193928",
+          "modified": "2025-09-23 22:58:02Z"
+        },
+        {
+          "path": "Leads\\LeadCardSO.cs",
+          "size": 1007,
+          "lines": 30,
+          "sha256": "7DD6A1B449E7A72DBB09F82AFE8C87FD1FDEB1ABCEC735A8F5788DA3F42EB006",
+          "modified": "2025-09-19 05:52:52Z"
+        },
+        {
+          "path": "Leads\\LeadCardView.cs",
+          "size": 8406,
+          "lines": 215,
+          "sha256": "2C3E6B058F0DBB2B7656DDE7D21E64F02C6F9B3FFF3CD88044CC25BE12FB97B3",
+          "modified": "2025-09-24 08:10:01Z"
+        },
+        {
+          "path": "Leads\\LeadEnums.cs",
+          "size": 455,
+          "lines": 24,
+          "sha256": "CADFCCCFCF62AD4DF11FACDC1C5FDFBD12E0245A3DBB97EB6760E04B56C6B962",
+          "modified": "2025-09-19 05:51:36Z"
+        },
+        {
+          "path": "Leads\\LeadRequirementItem.cs",
+          "size": 1154,
+          "lines": 47,
+          "sha256": "A43DCD4AB6B96C1930D50DC77D77A005B278567B3D5641CF6CCC2ED722539CB6",
+          "modified": "2025-09-20 03:18:51Z"
+        },
+        {
+          "path": "Leads\\LeadRequirementsHUD.cs",
+          "size": 1158,
+          "lines": 32,
+          "sha256": "FA71300212C488A3C835677F2EE2C53E9D859576915F8ABFA90A45BC1B362F91",
+          "modified": "2025-09-19 05:54:45Z"
+        },
+        {
+          "path": "Leads\\LeadsBarView.cs",
+          "size": 5678,
+          "lines": 147,
+          "sha256": "BB4A518BA404F5F9C7C69838F23F8D54AA60A2D4124B1CE74657893367C29ED0",
+          "modified": "2025-09-24 08:34:29Z"
+        },
+        {
+          "path": "Leads\\LeadsRepository.cs",
+          "size": 3246,
+          "lines": 98,
+          "sha256": "7A431005BD0348EF8321E4E983362A1D65E56C864254F5959DC1B80FCA1BECAC",
+          "modified": "2025-09-24 09:19:15Z"
+        },
+        {
+          "path": "Leads\\LeadsRuntimeBus.cs",
+          "size": 673,
+          "lines": 19,
+          "sha256": "24BFA2257384862B62659A4AD6E102AF616FF2762B1E420BDFE5147D149BA2A9",
+          "modified": "2025-09-23 22:41:44Z"
+        },
+        {
+          "path": "Leads\\Runtime\\LeadCardData.cs",
+          "size": 2059,
+          "lines": 68,
+          "sha256": "775F3ECC8C7491734BA7CC894CF988B48A8E3C124900C4AF126FAC2FAC07EB4E",
+          "modified": "2025-09-28 02:25:34Z"
+        },
+        {
+          "path": "Leads\\Runtime\\LeadsBarRuntimeBinder.cs",
+          "size": 7457,
+          "lines": 179,
+          "sha256": "5B565C81131B5A17FFE4475DB740AC88760701E6EB1A1C16241DFB1ED82040A2",
+          "modified": "2025-09-23 23:38:07Z"
+        },
+        {
+          "path": "Leads\\Runtime\\LeadsRuntimeGlue.cs",
+          "size": 1640,
+          "lines": 61,
+          "sha256": "20DF6AAE5B86A8A445EE9408A05A337EEF8E43E1DB7CEBEADCBFD06C8E59DE47",
+          "modified": "2025-09-24 09:15:50Z"
+        },
+        {
+          "path": "Merge\\Runtime\\MergeDomainDriver.cs",
+          "size": 355,
+          "lines": 15,
+          "sha256": "CE9EC8A3B34A5167E9A89583A8CBDB77ADE326CC2F2C55E1D9A9E04DB4DED001",
+          "modified": "2025-10-01 19:59:03Z"
+        },
+        {
+          "path": "Merge\\Runtime\\MergeIconCatalog.cs",
+          "size": 1709,
+          "lines": 58,
+          "sha256": "0E74BAB59D9C4565360E9BC89D1D01085A6E37D3E79BF5507F80747CBFB31C76",
+          "modified": "2025-10-01 06:03:53Z"
+        },
+        {
+          "path": "Presentation\\EventBusInstaller.cs",
+          "size": 337,
+          "lines": 14,
+          "sha256": "2AE288B2ECAA466C0A5A981577876F52E6587CBBB0F53D9FD752A76300F4F1BB",
+          "modified": "2025-09-13 05:36:56Z"
+        },
+        {
+          "path": "Presentation\\GlobalBus.cs",
+          "size": 287,
+          "lines": 11,
+          "sha256": "6AB6B0ADC4D148485756876287C106E11124B9549A374B1585DCFCF9B9CF4072",
+          "modified": "2025-09-13 04:43:05Z"
+        },
+        {
+          "path": "Presentation\\MergeEventsBridge.cs",
+          "size": 825,
+          "lines": 34,
+          "sha256": "07C8826A941D2835642786A5767514E5D5802BBD2D0D7F4BEDB6C292E9D892F8",
+          "modified": "2025-09-13 04:43:05Z"
+        },
+        {
+          "path": "Presentation\\MergeEventsToUI.cs",
+          "size": 269,
+          "lines": 10,
+          "sha256": "94E60A025FD2362D8C88ED9A22AAF8C72059629756F5631F9B3BC4AFDDCF8124",
+          "modified": "2025-09-13 04:43:05Z"
+        },
+        {
+          "path": "Save\\ISaveService.cs",
+          "size": 191,
+          "lines": 10,
+          "sha256": "7B31530DBFC29EC7CEFA002F244244664539F90B6F60486D1115C55E0B445E29",
+          "modified": "2025-09-08 04:22:51Z"
+        },
+        {
+          "path": "Save\\JsonSaveService.cs",
+          "size": 1209,
+          "lines": 41,
+          "sha256": "5FBA6089714219C9717424AFA421375C9F18E8617ABCDF5CB6FBBF3C94FC20A2",
+          "modified": "2025-09-10 08:15:34Z"
+        },
+        {
+          "path": "Save\\SaveBlob.cs",
+          "size": 535,
+          "lines": 19,
+          "sha256": "2FEF85FE853C9F87705C7C351DB37B7A1DA40A23BDB89BB768A1EBA7D1232CE4",
+          "modified": "2025-09-10 08:15:34Z"
+        },
+        {
+          "path": "Save\\SaveLoadDriver.cs",
+          "size": 1879,
+          "lines": 61,
+          "sha256": "BB4D94AFCE4917EFCBA333D76F8A36FC6D396D018F1D04AC0424D51E22CDCD19",
+          "modified": "2025-09-10 08:31:36Z"
+        },
+        {
+          "path": "Save\\SaveState.cs",
+          "size": 220,
+          "lines": 12,
+          "sha256": "842360875BF2BC8F99B274F74995D7B98DB291DCD27CB62F9131BF56A43F0375",
+          "modified": "2025-09-08 04:22:51Z"
+        },
+        {
+          "path": "UI\\Board\\BoardInputAdapter.cs",
+          "size": 832,
+          "lines": 29,
+          "sha256": "AC700C07368A3390AB2F8510998311893572D37C1E06E4C169E08BB18521215A",
+          "modified": "2025-09-10 04:34:04Z"
+        },
+        {
+          "path": "UI\\Board\\BoardPresenter.cs",
+          "size": 2510,
+          "lines": 78,
+          "sha256": "CA00B257E537CEE825481950DD4A9591379F1FE5AAAF18BB3142357DD3169035",
+          "modified": "2025-09-10 08:15:34Z"
+        },
+        {
+          "path": "UI\\Board\\FlashOnceMB.cs",
+          "size": 2772,
+          "lines": 80,
+          "sha256": "52A9BBB3D9261F86F6DE0D46C8E92F3571458864F10BCB8CB905DF81EB98C628",
+          "modified": "2025-09-15 22:03:49Z"
+        },
+        {
+          "path": "UI\\Board\\MergeItemView.cs",
+          "size": 1138,
+          "lines": 39,
+          "sha256": "59A9BCB390FF888917098D19012E7C77FA9A63C5874EB0C6E9DDF0A62845B776",
+          "modified": "2025-09-10 04:34:04Z"
+        },
+        {
+          "path": "UI\\Config\\UIContracts.cs",
+          "size": 214,
+          "lines": 9,
+          "sha256": "F64CBFDF49E5623BCD849ACAB0CABB7FBDCB65FFED5ACCD66D8DA4C39A992B40",
+          "modified": "2025-09-11 01:54:30Z"
+        },
+        {
+          "path": "UI\\Dialogue\\CaseGraph.cs",
+          "size": 797,
+          "lines": 26,
+          "sha256": "58E9823A5B1684AA0E8A6B5004534DBCD0AECC3FAB987012E98B675E992B50C3",
+          "modified": "2025-09-10 06:57:31Z"
+        },
+        {
+          "path": "UI\\Dialogue\\DialogueController.cs",
+          "size": 1738,
+          "lines": 58,
+          "sha256": "7BB4F6A0BA8CDCE822EF019A57BD7867F92713D7FBBC6E5CF99C1E701461428D",
+          "modified": "2025-09-10 06:57:31Z"
+        },
+        {
+          "path": "UI\\Dialogue\\DialogueRunner.cs",
+          "size": 3239,
+          "lines": 90,
+          "sha256": "696F5F973F0C351D12C324018D8BD7DE215101191ADEF58A50873A46E1649AB0",
+          "modified": "2025-09-10 08:36:39Z"
+        },
+        {
+          "path": "UI\\Dialogue\\DialogueTyper.cs",
+          "size": 2242,
+          "lines": 94,
+          "sha256": "7EC93DEDEE002877FD5C4C1E57F19CC0C272E99DF22C55046D15FBC7EBAEF857",
+          "modified": "2025-09-10 08:02:17Z"
+        },
+        {
+          "path": "UI\\FTUE\\FTUEFollower.cs",
+          "size": 1005,
+          "lines": 27,
+          "sha256": "6DEB1D867C7618423949395CDC5903439B7D71264CFAA45FBF4D0CA62A8B585C",
+          "modified": "2025-09-10 06:24:32Z"
+        },
+        {
+          "path": "UI\\FTUE\\FTUEHintController.cs",
+          "size": 1839,
+          "lines": 61,
+          "sha256": "D0C1797A8BC1AD6C430413851B37D6A21018E4618B3E7FEE9790A49B0176DDF9",
+          "modified": "2025-09-10 06:06:41Z"
+        },
+        {
+          "path": "UI\\Leads\\Compat\\LegacyNamespaceShims.cs",
+          "size": 744,
+          "lines": 15,
+          "sha256": "2F5EEBFD3C6E11C489B430FA173341CAA7A7EC9639566023BBD7CE815E9EE4CC",
+          "modified": "2025-09-28 08:19:59Z"
+        },
+        {
+          "path": "UI\\Leads\\LeadCardData.cs",
+          "size": 1288,
+          "lines": 41,
+          "sha256": "738D823D6D47DC9472AD71F259391D8FFE74D510F1C7F562DC7A2B172D18E398",
+          "modified": "2025-09-28 08:09:37Z"
+        },
+        {
+          "path": "UI\\Leads\\LeadCardDemoBinder.cs",
+          "size": 2957,
+          "lines": 79,
+          "sha256": "D5056D66AFA74F20033234F9958610331649BA2B9C8C37C1EAC0B78E548AA5DC",
+          "modified": "2025-09-28 07:54:28Z"
+        },
+        {
+          "path": "UI\\Leads\\LeadCardModels.cs",
+          "size": 1550,
+          "lines": 52,
+          "sha256": "5DC82BA9A8493B469119E13ED82905A05A967AE1B0F97F909949EFA349F3E07C",
+          "modified": "2025-09-28 02:43:16Z"
+        },
+        {
+          "path": "UI\\Leads\\LeadCardPresenter.cs",
+          "size": 4980,
+          "lines": 142,
+          "sha256": "CDE050403FDC17E0966BEC5372F6A0A65128C89EE0AE90075E6A88B298496F23",
+          "modified": "2025-09-28 08:24:24Z"
+        },
+        {
+          "path": "UI\\Leads\\LeadsBarPopulator.cs",
+          "size": 3966,
+          "lines": 109,
+          "sha256": "9E0CADF9F262BBA08DF2806301DCB5819D938A6B72FC3C5BD858E218CF79324A",
+          "modified": "2025-09-28 08:40:33Z"
+        },
+        {
+          "path": "UI\\Leads\\RequirementData.cs",
+          "size": 753,
+          "lines": 23,
+          "sha256": "FE7459780CB1D2676C37E788BAFC65B5FC8C3FEC929025B2F67D9C2D06FD0D69",
+          "modified": "2025-09-28 08:11:13Z"
+        },
+        {
+          "path": "UI\\Leads\\RequirementSlotView.cs",
+          "size": 1753,
+          "lines": 60,
+          "sha256": "F7ABBAC4C998973983E2351AC4F97DDD8A8BDAAC5D485CB5FBCFE1167D7F6495",
+          "modified": "2025-09-28 08:24:44Z"
+        },
+        {
+          "path": "UI\\Leads\\TierSetPopup.cs",
+          "size": 3390,
+          "lines": 96,
+          "sha256": "E38C76664302F6897DE89845EE63F2C4DECB7357F4A2C9FD1B7F6EB0D135B8B3",
+          "modified": "2025-09-28 08:24:57Z"
+        },
+        {
+          "path": "UI\\Leads\\TierSetPopupPresenter.cs",
+          "size": 2306,
+          "lines": 63,
+          "sha256": "6636D1157EDF6DE264D46FC36765F48AE1E0491CCCB7C12381285279C2CCD772",
+          "modified": "2025-09-28 11:11:23Z"
+        },
+        {
+          "path": "UI\\MergeBoard\\Animations.cs",
+          "size": 917,
+          "lines": 32,
+          "sha256": "E1498D72BC1BDE614D01CD55540FD330E1D3A98FBB9FBECA76AFA897AD1364CD",
+          "modified": "2025-09-05 05:18:00Z"
+        },
+        {
+          "path": "UI\\MergeBoard\\DraggableItem.cs",
+          "size": 2688,
+          "lines": 80,
+          "sha256": "8360786A96CA88AE03CCF0CE022978C6CADE160DEA2EE4D553C8A324C2C7D60D",
+          "modified": "2025-09-15 09:04:02Z"
+        },
+        {
+          "path": "UI\\MergeBoard\\ItemView.cs",
+          "size": 744,
+          "lines": 28,
+          "sha256": "72524A1D03BBACDC8B43267363D5FFA49AA5E1632DF6C40737DB1FE54335D7BA",
+          "modified": "2025-09-06 12:48:36Z"
+        },
+        {
+          "path": "UI\\MergeBoard\\MergeBoardView.cs",
+          "size": 4960,
+          "lines": 140,
+          "sha256": "7BD2EE7514792355BC17CCC085F946E46A89672F8AAE5B7838CB921CA8581314",
+          "modified": "2025-09-15 08:59:42Z"
+        },
+        {
+          "path": "UI\\MergeBoard\\MergeInputAdapter.cs",
+          "size": 2804,
+          "lines": 86,
+          "sha256": "9BE6A9CB704F79FCA0F3272F7A2C79F57CE2578DC8905AD58C7428BE7A0A0988",
+          "modified": "2025-09-15 09:00:23Z"
+        },
+        {
+          "path": "UI\\MergeBoard\\MergeServiceStub.cs",
+          "size": 513,
+          "lines": 21,
+          "sha256": "E2FD73630AE13BC2E17AE0F0C0060BE8F36E1CDF52FB45801465113CE80A417C",
+          "modified": "2025-09-07 02:00:29Z"
+        },
+        {
+          "path": "UI\\MergeBoard\\SimplePool.cs",
+          "size": 898,
+          "lines": 37,
+          "sha256": "6FE03455A9AE36017192AD10C89AD6CDA9FF1FA9F128D8854366E850FD918B27",
+          "modified": "2025-09-05 05:37:52Z"
+        },
+        {
+          "path": "UI\\Narrative\\DialoguePanel.cs",
+          "size": 638,
+          "lines": 29,
+          "sha256": "851DF0C9747466C93D1A24514FD6E4B4E124AE72926B4B73BD30630B70922F6F",
+          "modified": "2025-09-07 23:09:57Z"
+        },
+        {
+          "path": "UI\\Narrative\\INarrativeEngine.cs",
+          "size": 659,
+          "lines": 20,
+          "sha256": "089E9BA579C856644AAA1C5AB1FFED9F19DD74F20F1EC6920D5B4FE697C7076D",
+          "modified": "2025-09-05 07:49:32Z"
+        },
+        {
+          "path": "UI\\Narrative\\MiniNarrativeEngine.cs",
+          "size": 2023,
+          "lines": 69,
+          "sha256": "A957669A85CFA2A3A90FCEC7D3F5458001473D392B0C22B26B7B6728627288FE",
+          "modified": "2025-09-07 23:30:36Z"
+        },
+        {
+          "path": "UI\\Runtime\\TMPAsciiSanitizer.cs",
+          "size": 1143,
+          "lines": 35,
+          "sha256": "C21B82F832BB90DDBDAF694F35B2700E7AA3CA0AE9E042404F26087A1E6DD510",
+          "modified": "2025-09-21 05:20:01Z"
+        },
+        {
+          "path": "UI\\Theme\\Binders\\ThemeImageBinder.cs",
+          "size": 968,
+          "lines": 12,
+          "sha256": "C381B880F18B34ACA5510647FC8BAC7BC707C918D87B389940F9B6638BE02818",
+          "modified": "2025-09-14 06:33:14Z"
+        },
+        {
+          "path": "UI\\Theme\\Binders\\ThemeTMPBinder.cs",
+          "size": 893,
+          "lines": 12,
+          "sha256": "D5C3CA602A89D1406D3B2DFF091160889787D78F1AA06070F7B08D9630BC9B25",
+          "modified": "2025-09-10 04:23:56Z"
+        },
+        {
+          "path": "UI\\Theme\\Runtime\\ThemeBootstrap.cs",
+          "size": 333,
+          "lines": 11,
+          "sha256": "117514C5E10E0215646ABD5696B8F2B978BEDE24B6A0A948325292E6562A5096",
+          "modified": "2025-09-10 04:23:56Z"
+        },
+        {
+          "path": "UI\\Theme\\ThemeBinderImage.cs",
+          "size": 470,
+          "lines": 23,
+          "sha256": "9F4B5040CD13DF7F93601BA7090A31A8AC67AE2268ADA28DEC31BE1461F0B375",
+          "modified": "2025-09-14 06:44:57Z"
+        },
+        {
+          "path": "UI\\Theme\\ThemeBinderText.cs",
+          "size": 1311,
+          "lines": 48,
+          "sha256": "D89D0FC4353CF7A21BE09B3BF9D2B826E01815CE98ED477E3AD5904F28297462",
+          "modified": "2025-09-14 06:42:17Z"
+        },
+        {
+          "path": "UI\\Theme\\ThemeController.cs",
+          "size": 1030,
+          "lines": 13,
+          "sha256": "8C8B0BBA172DC6AA0A0B1569BF9CFF9AE00E79B2768947EAFBB630928385E839",
+          "modified": "2025-09-10 04:23:56Z"
+        },
+        {
+          "path": "UI\\Theme\\ThemeRegistry.cs",
+          "size": 392,
+          "lines": 14,
+          "sha256": "D703627297CA39FE566C6105B8B2F2A6AB58F14ED5C328238F0173CFB18FE55D",
+          "modified": "2025-09-10 08:15:34Z"
+        },
+        {
+          "path": "UI\\Theme\\ThemeSO.cs",
+          "size": 459,
+          "lines": 14,
+          "sha256": "D05499DA12B85C949BB5C426634D5EE3BAB55AFB209DED56DDDB4011B6E23AF2",
+          "modified": "2025-09-14 06:36:40Z"
+        },
+        {
+          "path": "Unity\\SafeUnity.cs",
+          "size": 1235,
+          "lines": 38,
+          "sha256": "18B3AFBDE657409B02EF438E45343E665BFA74C0DD32D18491DF75AC4C7DD67A",
+          "modified": "2025-09-15 00:01:01Z"
+        },
+        {
+          "path": "UnityAdapters\\UnityPersistentPathProvider.cs",
+          "size": 237,
+          "lines": 13,
+          "sha256": "3D92EED07680C7C12D39C369CCCAAA1721B2F664B51C3C4721897C7E4CC8B58E",
+          "modified": "2025-09-08 04:22:51Z"
+        },
+        {
+          "path": "Utils\\DestroyUtil.cs",
+          "size": 324,
+          "lines": 16,
+          "sha256": "167611678DD463A6B5E9CB366BF448D1A1729E0B79CE8425A2E7CE4859721532",
+          "modified": "2025-09-15 07:42:04Z"
+        }
+      ]
+    },
+    {
+      "label": "Packages",
+      "out": "C:\\Users\\Steph\\Dev\\aq30-unity\\_audit\\code\\code_packages_20251003_052649.txt",
+      "files": 58,
+      "lines": 2394,
+      "index": [
+        {
+          "path": "com.aq.domain.merge\\Runtime\\EventHelpers.cs",
+          "size": 3547,
+          "lines": 86,
+          "sha256": "00220AC81DC547677CE2579AEDCB7090D9BDA2777D4EBF075E593FD56A05334D",
+          "modified": "2025-09-12 00:43:07Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Runtime\\Grid.cs",
+          "size": 933,
+          "lines": 31,
+          "sha256": "5B449E7FCE3E77C5CD28B9CAA71303148D4604059BD0C49FCE833B28D32DA5B7",
+          "modified": "2025-09-04 19:46:15Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Runtime\\GridOps.cs",
+          "size": 2413,
+          "lines": 67,
+          "sha256": "6C0CD58D0D514C455BDBE1705A217554A70E245CDE417BC383CCE41130A78296",
+          "modified": "2025-09-04 19:46:15Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Runtime\\IGrid.cs",
+          "size": 110,
+          "lines": 8,
+          "sha256": "BF49E0ED8D3C570726A9957AD97A721F4EA4DA50723F49F386A793E2DEFC4FC6",
+          "modified": "2025-09-03 10:50:17Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Runtime\\IRecipeBook.cs",
+          "size": 148,
+          "lines": 8,
+          "sha256": "56007E6348DCA216056A5B1FAC57675A209447459084368174E49F733B3DC1E8",
+          "modified": "2025-09-03 10:51:39Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Runtime\\ItemId.cs",
+          "size": 1136,
+          "lines": 43,
+          "sha256": "E5560F1A29E7B1C93D77FEA9563F13CBFA6F258BC62F378981D082C445EEC97B",
+          "modified": "2025-09-03 10:51:38Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Runtime\\MergeEngine.cs",
+          "size": 4794,
+          "lines": 116,
+          "sha256": "22507BE4498AC3946260043A9AA03F3EA63F94218F9F3DC586BE3FFA82AF7D02",
+          "modified": "2025-09-11 09:12:17Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Runtime\\MergePackageMarker.cs",
+          "size": 136,
+          "lines": 7,
+          "sha256": "93360AB361CC54093D6EB68BE96848A52B4D6681AA41A4BF9FCC4F25AAD90ADF",
+          "modified": "2025-09-03 07:27:22Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Runtime\\MergePerformed.cs",
+          "size": 608,
+          "lines": 22,
+          "sha256": "55617A80C462B932B65988B47F85483B299EE6610A45E543C5CAB9F4F2AD9EB8",
+          "modified": "2025-09-11 09:33:46Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Runtime\\RecipeBook.cs",
+          "size": 984,
+          "lines": 33,
+          "sha256": "294F03E4053E9EC9471065BE91026899B31A61203DF772C9330ADB35113DAF79",
+          "modified": "2025-09-03 23:52:49Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\DeterministicRandom_Tests.cs",
+          "size": 1470,
+          "lines": 47,
+          "sha256": "BC620125B7F8BE85423A25325040FEDA05C6F49AD5F61CEDF890EA643906517F",
+          "modified": "2025-09-04 23:24:56Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\FixedTimeProvider_Smoke_Tests.cs",
+          "size": 4607,
+          "lines": 117,
+          "sha256": "4C08B9B3F4D06E6AF1FABA2A3D9F40DC91E19B641AFFD9F1A567DE34D629F980",
+          "modified": "2025-09-04 23:16:42Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\FixedTimeProvider_Tests.cs",
+          "size": 1036,
+          "lines": 37,
+          "sha256": "E95CA9D339C0A9B88A4E9680090D73F78743232F8A54EB62B4EACD0478E0DD6B",
+          "modified": "2025-09-04 21:51:55Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\Grid_Tests.cs",
+          "size": 1301,
+          "lines": 53,
+          "sha256": "8E1DEF780CD63F67F41ED25AE35942F13EE819F00BA6B28877024543DE0424B2",
+          "modified": "2025-09-04 20:55:59Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\InMemoryEventBus_Tests.cs",
+          "size": 1115,
+          "lines": 39,
+          "sha256": "36E8A25627841D11A811F87245C6248B8CC22A1DCB3620121086540AC717178F",
+          "modified": "2025-09-11 09:21:25Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\ItemId_MoreTests.cs",
+          "size": 1100,
+          "lines": 41,
+          "sha256": "D6AFAC7BBD54E4DF86DE946366A6E5CD89151C39AA4E83F68A128096E5452D4C",
+          "modified": "2025-09-04 21:34:18Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\ItemId_Tests.cs",
+          "size": 788,
+          "lines": 33,
+          "sha256": "444BA528430560DC976234E290E84AD0F5EFD215542A13FA0476D5CC3D6C7B11",
+          "modified": "2025-09-04 20:56:13Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\MergeEngine_BranchCoverage_Tests.cs",
+          "size": 1417,
+          "lines": 42,
+          "sha256": "71D07614822AE78FBD043541DF6A05A2F9F75CE4555E002FE3AE477BC89476DE",
+          "modified": "2025-09-05 00:31:18Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\MergeEngine_Branches_Tests.cs",
+          "size": 3457,
+          "lines": 103,
+          "sha256": "0FAC59DE2E6DA549DCB60BCB157286FBA9E0F0DF27F9D66100F7BC620133E9A8",
+          "modified": "2025-09-05 00:31:28Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\MergeEngine_GridOpsDrive_Tests.cs",
+          "size": 1529,
+          "lines": 50,
+          "sha256": "EF10A283C919560D808B249E338A92F5A060EF50470A2F0B9E840A2B245E1C87",
+          "modified": "2025-09-04 21:34:54Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\MergeEngine_NegativeCases_Tests.cs",
+          "size": 1585,
+          "lines": 45,
+          "sha256": "32E2AD2929D7009AEDCB1268144EBFF27AA6059DE5F6167AD18CE715436E5514",
+          "modified": "2025-09-04 23:33:37Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\MergeEngine_PathDrive_Tests.cs",
+          "size": 1793,
+          "lines": 53,
+          "sha256": "342F021386026552A27D9F5E0A78CD561E2B069CC2A22366109D9AA2E0E3C5F8",
+          "modified": "2025-09-05 00:17:59Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\MergeEngine_RepeatedMerges_Tests.cs",
+          "size": 1907,
+          "lines": 56,
+          "sha256": "94683BCDFF9F9AE42ED9C8DB5F4A4541A225DE3F852C771382D47CA2DD1C2C0D",
+          "modified": "2025-09-04 20:56:43Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\MergeEngine_Step1_Tests.cs",
+          "size": 2333,
+          "lines": 72,
+          "sha256": "9AE7172CB9C42588701C24D5624AB50E1C0AFAA63A1E43E46E1E2E1AF15A23EE",
+          "modified": "2025-09-05 04:23:10Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\MergeEngine_Step2_Tests.cs",
+          "size": 2655,
+          "lines": 80,
+          "sha256": "98BE756F47E12D6888A9A554438FA5587A3029D932CDC158DE83B7BBC8C10DFD",
+          "modified": "2025-09-04 20:17:39Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\MergeEngineSmokeTests.cs",
+          "size": 1347,
+          "lines": 43,
+          "sha256": "7552BA79F054206FEC25F6CE968DA5183B678BDFC083005BF9AAFECD6AF251CD",
+          "modified": "2025-09-04 20:17:39Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\MergePerformed_Reflection_Tests.cs",
+          "size": 1809,
+          "lines": 49,
+          "sha256": "77EE2F5AFC5E2F1388E89486ADB49130089AF90EA66918BD0ABB90912342D8AD",
+          "modified": "2025-09-04 21:09:42Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\NullLogger_Tests.cs",
+          "size": 3176,
+          "lines": 77,
+          "sha256": "FF88815077B430C9E21B9701FEDB0B354102AF3C093A7A0F9446FF56C1375072",
+          "modified": "2025-09-04 21:42:16Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\PublishEventTests.cs",
+          "size": 823,
+          "lines": 28,
+          "sha256": "3F083C642C9C4E44C991FF2C0128940AF0C39507D205955789AC412F867EBEE0",
+          "modified": "2025-09-04 20:17:39Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\RecipeBookTests.cs",
+          "size": 878,
+          "lines": 30,
+          "sha256": "0F4F83EB64C39F9D39DA8421E3F920BC2463AF498A717230D1B4CB1FA94D6EE8",
+          "modified": "2025-09-04 00:06:41Z"
+        },
+        {
+          "path": "com.aq.domain.merge\\Tests\\EditMode\\TestDoubles.cs",
+          "size": 2745,
+          "lines": 68,
+          "sha256": "A96D59A6ABB37453016FA9183E6943E00895FD4C73D428C62EE8C714EDF5EC64",
+          "modified": "2025-09-12 05:30:53Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\CaseFlow\\CaseFlowTypes.cs",
+          "size": 877,
+          "lines": 31,
+          "sha256": "EF2A182E9E7F567BABD9096C5008433BBA2B3114342352ADE2F0AD859265C295",
+          "modified": "2025-09-15 00:02:11Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\CaseFlow\\ICaseFlowService.cs",
+          "size": 502,
+          "lines": 16,
+          "sha256": "B4BE4267BFA8129BBED672722EA4873A54BE73F7638AC0FB3EEFB3C7148DD756",
+          "modified": "2025-09-15 00:02:45Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\CaseFlow\\InMemoryCaseFlowService.cs",
+          "size": 906,
+          "lines": 34,
+          "sha256": "B44EED42D94FD77B426842729B81275AEB967983704DDA08B03744CEB3A1737D",
+          "modified": "2025-09-15 00:03:19Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Economy\\Events.cs",
+          "size": 1097,
+          "lines": 37,
+          "sha256": "5E01E11455C5993FDD9EF60A5DC158C2FAE9EC690D6398731FFCA7D6DBE6C0F1",
+          "modified": "2025-09-14 23:41:46Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Economy\\IWallet.cs",
+          "size": 1347,
+          "lines": 41,
+          "sha256": "63981F4EC19AB103AA1EE13983897472B28C7D97E22821931368F402278911F7",
+          "modified": "2025-09-14 23:47:31Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Economy\\Reward.cs",
+          "size": 1333,
+          "lines": 41,
+          "sha256": "0D677235DF0260D08EC45E983CEBA24A86B7CF26B53F953D95171A212D05E1A3",
+          "modified": "2025-09-14 23:41:23Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Economy\\WalletService.cs",
+          "size": 2048,
+          "lines": 59,
+          "sha256": "811CB022AC8F4BCE78843B4B4DD993065769B3E12E751808492F167705A8545E",
+          "modified": "2025-09-14 23:47:47Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Events\\EventBusInMemory.cs",
+          "size": 1592,
+          "lines": 48,
+          "sha256": "93B78C294B3167531A701A43DB0F0028F2320FED463E7B5105FEA5BAA17E2DB5",
+          "modified": "2025-09-11 09:03:38Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Events\\EventBusNamespaceShim.cs",
+          "size": 394,
+          "lines": 8,
+          "sha256": "FFF29009AB80AD20542CC7319A992C66F724EFE91288743F56D3B3BA8F8C3A06",
+          "modified": "2025-09-11 09:03:38Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Events\\GameEvents.cs",
+          "size": 748,
+          "lines": 27,
+          "sha256": "7816D093EECFE90B75DF1C2BCF1B4266233C563DA49D1C2257ABA8B0C808C8BD",
+          "modified": "2025-09-11 08:50:43Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Events\\IEventBus.cs",
+          "size": 361,
+          "lines": 14,
+          "sha256": "B62573531140E15D838F70A6D789096E9FA0113D5AF419D44E008F10A3460147",
+          "modified": "2025-09-11 08:50:43Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Events\\InMemoryEventBus.cs",
+          "size": 583,
+          "lines": 17,
+          "sha256": "9434EA12D54A4E6FA0A2CCBEC53FDFF144EFF5F196F24569F52457EC8E5D5562",
+          "modified": "2025-09-11 09:07:09Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\ILogger.cs",
+          "size": 221,
+          "lines": 9,
+          "sha256": "FD957378005CA82AF782F8513DEB0B96B6DBAEB174B1150B74DA9AB6AE33ECEE",
+          "modified": "2025-09-07 22:23:06Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\LoggerExtensions.Compat.cs",
+          "size": 562,
+          "lines": 18,
+          "sha256": "0D87F44EE8DDD7B0D37A5AD599D448A1708795FFDE36E1AF9E3A31FEB7613A3C",
+          "modified": "2025-09-07 02:09:03Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\LoggerFactory.cs",
+          "size": 143,
+          "lines": 8,
+          "sha256": "5A7371CB31D5F3997E70843CBFB3FCA20E961B53912AECF9F135E415E24FF32F",
+          "modified": "2025-09-07 22:45:45Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Logging\\Logging.LogLevel.cs",
+          "size": 233,
+          "lines": 14,
+          "sha256": "2DBA67369F953762147D3E89CFFDA370E2E2881D1CA8F089A5E70A6D412EB1F7",
+          "modified": "2025-09-07 01:55:23Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\LogLevel.cs",
+          "size": 356,
+          "lines": 17,
+          "sha256": "A942C2CD917D2FDBBB7D8C8AA35516732845D1FB3582DFBD889E1690DEF7C65A",
+          "modified": "2025-09-07 02:04:54Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\NullLogger.cs",
+          "size": 311,
+          "lines": 10,
+          "sha256": "E484E600796C168C9D8D1FD123D3216B65120429390E842AF94D6392F1931B04",
+          "modified": "2025-09-07 22:45:45Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Placeholder.cs",
+          "size": 115,
+          "lines": 2,
+          "sha256": "6D70BD96EF69A0710392B3C1103628EA8CC83935848A515791B2065ACC9093C4",
+          "modified": "2025-09-01 06:37:35Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Random\\DeterministicRandom.cs",
+          "size": 679,
+          "lines": 19,
+          "sha256": "DF2CD437A813FD7B895D6B1190225AFA0D520C1F0D98061DB0927ECBD3298080",
+          "modified": "2025-09-02 02:21:02Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Random\\IRandom.cs",
+          "size": 304,
+          "lines": 11,
+          "sha256": "59CBB1D4150ADC33A886FC959DD2DBBBFBC07055228ECB03D5FF90ECD0EFFB64",
+          "modified": "2025-09-02 02:21:02Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Result\\Result.cs",
+          "size": 924,
+          "lines": 28,
+          "sha256": "040AE06A142474CFA31B1562D3948B16642799AA40627008FFCEC3CC9DAEB603",
+          "modified": "2025-09-02 02:21:02Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Runtime\\Time\\ITimeProvider.cs",
+          "size": 433,
+          "lines": 16,
+          "sha256": "EA71E2C5C05554E117D60139D939C188CDB31BAE856DC1CF9B69E02685E65B36",
+          "modified": "2025-09-02 02:21:02Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Tests\\EditMode\\CaseFlow\\CaseFlowServiceTests.cs",
+          "size": 1593,
+          "lines": 45,
+          "sha256": "CE64B37B3D470E91D72DF99C5ADC0331B10A9C5B051CFEC209D90F8A9BAC0D20",
+          "modified": "2025-09-15 00:04:37Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Tests\\EditMode\\Economy\\WalletServiceTests.cs",
+          "size": 1691,
+          "lines": 51,
+          "sha256": "2F8739754D4CB58E056F65B69B4D095204CB5D9CC388F93B9FDF797035E6BA15",
+          "modified": "2025-09-14 23:43:28Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Tests\\EditMode\\Kernel_Primitives_CoverageTests.cs",
+          "size": 5436,
+          "lines": 120,
+          "sha256": "96078529B49DE0F0BDB264D44066F03D43734AF7D3B1955AE425C1067EE8D159",
+          "modified": "2025-09-04 07:07:19Z"
+        },
+        {
+          "path": "com.aq.sharedkernel\\Tests\\EditMode\\SharedKernelTests.cs",
+          "size": 2266,
+          "lines": 69,
+          "sha256": "08C83EE3AF60CC2C4D3BAEEBAF64F9E9E59D438E80602CD88A1627E4589A6B7F",
+          "modified": "2025-09-02 02:26:55Z"
+        }
+      ]
+    }
+  ]
+}

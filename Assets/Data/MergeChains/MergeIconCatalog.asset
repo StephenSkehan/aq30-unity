@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21fd6f4a161dbb643b7bbe6d040fa92b, type: 3}
+  m_Name: MergeIconCatalog
+  m_EditorClassIdentifier: AQ.App::AQ.App.Merge.MergeIconCatalog
+  entries:
+  - id: fingerprint_evidence_t1_partial_dusted_print(Clone)
+    sprite: {fileID: 0}
+  - id: fingerprint_evidence_t2_lifted_print_tape(Clone)
+    sprite: {fileID: 0}
+  - id: fingerprint_evidence_t3_fingerprint_card(Clone)
+    sprite: {fileID: 0}
+  - id: fingerprint_evidence_t4_labeled_prints(Clone)
+    sprite: {fileID: 0}
+  - id: fingerprint_evidence_t5_digital_scan_in_progress(Clone)
+    sprite: {fileID: 0}
+  - id: fingerprint_evidence_t6_database_match(Clone)
+    sprite: {fileID: 0}
+  - id: forensic_tools_t1_cotton_swab(Clone)
+    sprite: {fileID: 0}
+  - id: forensic_tools_t2_evidence_bag(Clone)
+    sprite: {fileID: 0}
+  - id: forensic_tools_t3_full_forensic_case_black(Clone)
+    sprite: {fileID: 0}
+  - id: forensic_tools_t4_uv_light(Clone)
+    sprite: {fileID: 0}
+  - id: forensic_tools_t5_complete_forensic_kit_transparent_soft(Clone)
+    sprite: {fileID: 0}
+  - id: stakeout_fuel_t1_paper_cup(Clone)
+    sprite: {fileID: 0}
+  - id: stakeout_fuel_t2_hot_coffee_cup(Clone)
+    sprite: {fileID: 0}
+  - id: stakeout_fuel_t3_coffee_and_donut(Clone)
+    sprite: {fileID: 0}
+  - id: stakeout_fuel_t4_burger(Clone)
+    sprite: {fileID: 0}
+  - id: stakeout_fuel_t5_burger_fries_drink(Clone)
+    sprite: {fileID: 0}
+  - id: stakeout_fuel_t6_takeaway_feast_caddy(Clone)
+    sprite: {fileID: 0}

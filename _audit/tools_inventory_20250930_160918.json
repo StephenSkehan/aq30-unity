@@ -1,0 +1,760 @@
+[
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "4611B08D5AA9E58CD9C38489C50C4B442D1852672146D7577A8F65FAF07CDF1A",
+    "sizeKB": 14.9,
+    "modified": "2025-09-10 22:04:45Z",
+    "parameters": "RepoRoot",
+    "header": "#>\n# 1) Contract prefab checks\n# 2) Duplicate DialoguePanel prefabs elsewhere\n#>",
+    "path": "Analyze-AuditDump.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "0CC31116F8A8A6FDB2879D37FCF330FA18BE6A55CBDA530DCEAA562F62B5E95F",
+    "sizeKB": 4.8,
+    "modified": "2025-09-20 12:59:37Z",
+    "parameters": [],
+    "header": "#Requires -Version 7\n# Resolve Assets folder from script location or current dir\n# ---------- 1) Code audit: LeadRequirementItem presence ----------\n# ---------- 2) Prefab audit: Missing Scripts ----------\n# ---------- 3) ReqItem.prefab structure ----------\n# ---------- 4) LeadCardView.prefab structure ----------\n# ---------- 5) Scenes: expected objects present by name ----------\n# ---------- 6) Summary ----------",
+    "path": "AQ-Audit.ps1"
+  },
+  {
+    "hits": [
+      "backup"
+    ],
+    "ext": ".ps1",
+    "sha256": "35D87A76B8D7F4A59C95FC95FF617BF2663359E759A7E14404655BBAED890403",
+    "sizeKB": 0.3,
+    "modified": "2025-09-28 18:48:01Z",
+    "parameters": [],
+    "header": "# PowerShell 7.x, UTF-8, CRLF",
+    "path": "AQ-Backup-Leads.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "97357D3968EDD7CE19EC45CC31FE2F3FF43E4DA616FE7606CF896321CAF3CA58",
+    "sizeKB": 11.6,
+    "modified": "2025-09-23 12:16:46Z",
+    "parameters": [],
+    "header": "#Requires -Version 7.0\n#>\n# ---------------- Config ----------------\n# What to scan\n# Directories to skip (wildcard match on normalized forward-slash paths)\n# ---------------- Helpers ----------------\n# ---------------- Main ----------------",
+    "path": "AQ-Editor-Audit.ps1"
+  },
+  {
+    "hits": [
+      "backup"
+    ],
+    "ext": ".ps1",
+    "sha256": "A48F8FFB60574C559DB420F09B0BDBE3F5F8A8945A664A2D8D5537E9367DCF28",
+    "sizeKB": 4.9,
+    "modified": "2025-09-23 16:32:01Z",
+    "parameters": null,
+    "header": "#>\n# --- Resolve project root and setup ---\n# --- Curated candidate sets (relative to repo root) ---\n# 1) Minimal: week-prototype scaffolding, sample menus, duplicate \"Min\" maker files,\n#    integration/runtime probes, and a redundant overlay tidy.\n# 2) Aggressive adds debug & extra probes used during bring-up.\n# --- Build candidate list for requested scope ---\n# De-dup and sort\n# --- Dry-run summary ---\n# --- Execute (move) if -Apply, else DRY RUN ---\n# Ensure backup root exists",
+    "path": "AQ-Editor-Prune-Curated.ps1"
+  },
+  {
+    "hits": [
+      "backup"
+    ],
+    "ext": ".ps1",
+    "sha256": "E201802F4A8EE44DCA7A80B4856C0DCC80F54C3A3EC3F73F37CDDCA65C4ED1B6",
+    "sizeKB": 10.4,
+    "modified": "2025-09-23 16:24:43Z",
+    "parameters": [
+      "Root",
+      "Apply"
+    ],
+    "header": "#>\n# --- Helpers ---------------------------------------------------------------",
+    "path": "AQ-Editor-Prune.ps1"
+  },
+  {
+    "hits": [
+      "backup"
+    ],
+    "ext": ".ps1",
+    "sha256": "9D956B859324C0340C939062B20C654468D12379BFD316F19EAE188F1D8F37B6",
+    "sizeKB": 6.3,
+    "modified": "2025-09-23 16:48:56Z",
+    "parameters": [
+      "Apply",
+      "HardDelete",
+      "Force",
+      "ListOnly"
+    ],
+    "header": "#Requires -Version 7.0\n#>\n# Hard whitelist (leaf filenames, case-insensitive)\n# Robust file discovery: ANY .cs under Assets whose path contains \"\\Editor\\\" (segment)\n# Classify by leaf filename\n# Backup (mirror) before any changes",
+    "path": "AQ-Editor-Whitelist-Sweep.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "AAFAAB2F912C5F005FA363A0C02C26BB86EEBD50F6FABB9268FB575ECE7A22DC",
+    "sizeKB": 1.0,
+    "modified": "2025-09-20 13:08:32Z",
+    "parameters": [],
+    "header": "#Requires -Version 7",
+    "path": "AQ-FindDuplicates.ps1"
+  },
+  {
+    "hits": [
+      "backup"
+    ],
+    "ext": ".ps1",
+    "sha256": "7E6315699942165E6B214F4561D0887F8C212AA249048B6143AAD7E89C6C803E",
+    "sizeKB": 1.6,
+    "modified": "2025-09-20 13:18:07Z",
+    "parameters": [],
+    "header": "#Requires -Version 7\n# Backup first\n# Load\n# 1) Fix double-replaced token\n# 2) Ensure we target ONLY the inner helper type inside this file.\n#    Keep the public MonoBehaviour 'AQ.App.Leads.LeadRequirementItem' defined in its own file.\n#    If the class declaration here is still the old name, rename it.\n# 3) Update *this file's* references to the inner type (lists, news, generics).",
+    "path": "AQ-FixBotchedRename.ps1"
+  },
+  {
+    "hits": [
+      "lfs"
+    ],
+    "ext": ".ps1",
+    "sha256": "586198FDFEB2762E140BBAE914E3EE0509BEA01A1A48FE2E77164DC6330C9BD9",
+    "sizeKB": 4.0,
+    "modified": "2025-09-21 13:30:20Z",
+    "parameters": "MaxSizeMB",
+    "header": "# Tools\\AQ-FixGuardOnce.ps1\n# Repairs the LFS pre-commit guard and ensures Git actually runs it.\n# 0) Find repo root\n# 1) Make sure .git/hooks is the active hooks path\n# 2) Write a clean guard that uses 'git check-attr' (no ternary, no trickery)\n# Tools\\Hooks\\PreCommit-LFSGuard.ps1\n# Block commits that stage files > 10 MB unless those files are LFS-tracked.\n# Exit 1 to block the commit; exit 0 to allow.\n# Get staged Added/Modified files\n# Build LFS map via check-attr\n# Lines: \"path: filter: lfs\" or \"path: filter: unspecified\"\n# 3) Install a real 'pre-commit' (no extension) that invokes the guard\n#!/bin/sh\n# Git pre-commit hook → PowerShell guard\n# Force LF so /bin/sh is happy:\n# Also drop a Windows .cmd fallback (optional)",
+    "path": "AQ-FixGuardOnce.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "2ED47ABB390C4E4800E0544E51F6574DF5440739B2FC32F4B88063A8ED3FEDB8",
+    "sizeKB": 7.7,
+    "modified": "2025-09-20 14:44:21Z",
+    "parameters": null,
+    "header": "# Tools\\AQ-GitFixUpstream.ps1\n# Purpose: Fix \"no upstream branch\" safely without hangs: set upstream via config (no network),\n#          verify upstream, optionally push non-interactively with a hard timeout.\n# Platform: PowerShell 7.x · Encoding: UTF-8 · Newlines: CRLF\n# Logs: _audit\\git\\upstream\\<stamp>\\\n# Usage: pwsh -NoProfile -ExecutionPolicy Bypass .\\Tools\\AQ-GitFixUpstream.ps1\n# --- toggles -----------------------------------------------------------------\n# --- logging -----------------------------------------------------------------\n# Normalize any (string|string[]) → single trimmed string\n# --- process runner with timeout (never hangs) -------------------------------\n# Explicit helpers (do NOT shadow 'git')\n# --- tabular result helpers --------------------------------------------------\n# --- context -----------------------------------------------------------------\n# --- STEP 1: Set upstream via config (no network) ----------------------------\n# branch.<name>.remote = origin\n# branch.<name>.merge  = refs/heads/<name>",
+    "path": "AQ-GitFixUpstream.ps1"
+  },
+  {
+    "hits": [
+      "lfs"
+    ],
+    "ext": ".ps1",
+    "sha256": "80698B0A9A2C86B546C7863A1910A2A10AB3BDC0954C06F8A6BE0F8207BCCD09",
+    "sizeKB": 8.5,
+    "modified": "2025-09-20 14:21:20Z",
+    "parameters": null,
+    "header": "# Tools\\AQ-GitHealth.ps1\n# Purpose: End-to-end Git/GitHub connection health (non-destructive).\n# Platform: PowerShell 7.x. Encoding: UTF-8, CRLF. Logs: _audit\\git\\<stamp>\\\n# Usage: pwsh -NoProfile -ExecutionPolicy Bypass .\\Tools\\AQ-GitHealth.ps1\n# --- Setup & logging ---------------------------------------------------------\n# --- 0) Environment ----------------------------------------------------------\n# --- 1) Git / gh / LFS availability -----------------------------------------\n# --- 2) Repo context ---------------------------------------------------------\n# --- 3) origin URL analysis --------------------------------------------------\n# --- 4) Network reachability (DNS + ports) ----------------------------------\n# --- 5) HTTPS/TLS probe ------------------------------------------------------\n# --- 6) Auth status via gh ---------------------------------------------------\n# --- 7) SSH auth (if using SSH remote) ---------------------------------------",
+    "path": "AQ-GitHealth.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "DA85663E2D2A81174FA24331165F75C68B784DAFFA5E3F2C20B8D45628E42F76",
+    "sizeKB": 2.4,
+    "modified": "2025-09-20 14:40:25Z",
+    "parameters": null,
+    "header": "# Tools\\AQ-GitStatus.ps1\n# Purpose: Read-only Git/GitHub status: auth, origin, branch, upstream, remote presence.\n# Platform: PowerShell 7.x. Encoding: UTF-8, CRLF. Non-destructive. Logs: _audit\\git\\status\\<stamp>\\\n# Usage: pwsh -NoProfile -ExecutionPolicy Bypass .\\Tools\\AQ-GitStatus.ps1\n# Auth (gh)\n# Git basics\n# Upstream (safe '@{u}')\n# Remote head presence (read-only probe)\n# Output",
+    "path": "AQ-GitStatus.ps1"
+  },
+  {
+    "hits": [
+      "lfs"
+    ],
+    "ext": ".ps1",
+    "sha256": "59026A190D10F1E4813A6665CB247372D8239BF724DC7C058E4853A43232A816",
+    "sizeKB": 1.1,
+    "modified": "2025-09-21 13:24:06Z",
+    "parameters": [],
+    "header": "# Tools\\AQ-InstallHooks.ps1\n# Purpose: Install pre-commit hook that calls our LFS guard (works in PowerShell on Windows).\n# Ensure the guard exists\n# Windows .cmd shim that Git will run",
+    "path": "AQ-InstallHooks.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "3FE3B5C1D87D8FC8721A4AB9FF68A3394F569E119339A854884DD0B33D3F178D",
+    "sizeKB": 0.3,
+    "modified": "2025-09-28 18:47:34Z",
+    "parameters": [],
+    "header": "# PowerShell 7.x, UTF-8, CRLF",
+    "path": "AQ-Leads-Inventory.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "7C49AA938B935437986CA0CBBDC02E5E3D487AB5486589B3DE2DFEF2E02D324D",
+    "sizeKB": 3.0,
+    "modified": "2025-09-21 16:51:32Z",
+    "parameters": [],
+    "header": "#Requires -Version 7\n# --- 1) Code index (C#)\n# --- 2) Asset index (prefabs/scenes/SOs) scanning YAML text\n# --- 3) Findings summary",
+    "path": "AQ-MergeAudit.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "E2AFA40513D217DAF174D8DF6E45E2E0F546395B8F5D8DA0361718B405C75018",
+    "sizeKB": 7.7,
+    "modified": "2025-09-20 14:48:35Z",
+    "parameters": null,
+    "header": "# Tools\\AQ-PushUpstream.ps1\n# Purpose: Push current branch to origin, create/set upstream if needed, then verify (no hangs).\n# Platform: PowerShell 7.x · Encoding: UTF-8 · Newlines: CRLF\n# Logs: _audit\\git\\push\\<stamp>\\\n# Usage: pwsh -NoProfile -ExecutionPolicy Bypass .\\Tools\\AQ-PushUpstream.ps1\n# ---- knobs -------------------------------------------------------------------\n# ---- logging -----------------------------------------------------------------\n# ---- proc runner (timeout; never hangs) --------------------------------------\n# ---- explicit git helpers (no shadowing) -------------------------------------\n# ---- table helpers -----------------------------------------------------------\n# ---- context -----------------------------------------------------------------\n# ---- upstream configured locally? -------------------------------------------\n# ---- remote branch exists? (read-only) --------------------------------------\n# ---- ensure local upstream keys (no network) --------------------------------",
+    "path": "AQ-PushUpstream.ps1"
+  },
+  {
+    "hits": [
+      "backup"
+    ],
+    "ext": ".ps1",
+    "sha256": "339C51F5F2C4A33C067A636CDC00BC3EAB54F8FB593E04484ECC6F998628CD50",
+    "sizeKB": 1.7,
+    "modified": "2025-09-20 13:11:24Z",
+    "parameters": [],
+    "header": "#Requires -Version 7\n# Backup first\n# Load file\n# 1) Rename the class declaration\n# 2) Rename references INSIDE THIS FILE ONLY\n#    (types, fields, generics, \"new\" expressions, GetComponent<>, arrays)",
+    "path": "AQ-Rename-InnerLeadReq.ps1"
+  },
+  {
+    "hits": [
+      "lfs"
+    ],
+    "ext": ".ps1",
+    "sha256": "8804C302FA0CC3F3F2E41F8DE9C27379295017DCC11E1269E33AE03F895D0544",
+    "sizeKB": 4.2,
+    "modified": "2025-09-21 13:25:29Z",
+    "parameters": "MaxSizeMB",
+    "header": "# Tools\\AQ-RepairGuard.ps1\n# Fixes the PreCommit-LFSGuard.ps1 quoting issue and ensures a proper 'pre-commit' hook is installed.\n# Locate repo root\n# Make sure Git uses .git/hooks (unset custom hooksPath if present)\n# Paths\n# Correct, self-contained guard content with safe single-quoted strings\n# Tools\\Hooks\\PreCommit-LFSGuard.ps1\n# Blocks commits that stage files > 10 MB unless covered by LFS rules.\n# Gather staged files (Added/Modified only)\n# Build an LFS glob list from .gitattributes and 'git lfs track'\n# From .gitattributes\n# From 'git lfs track' output (lines look like: \"    *.png (.gitattributes)\")\n# Write a real POSIX-style pre-commit shim (no extension) that calls PowerShell\n#!/bin/sh\n# Git pre-commit hook → PowerShell guard\n# Force LF endings so /bin/sh is happy\n# Windows fallback .cmd (nice-to-have)",
+    "path": "AQ-RepairGuard.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "827DE9051518779F015C7D24F8BC82FC18D8C44C80929305856747EE38DBFCA0",
+    "sizeKB": 1.2,
+    "modified": "2025-09-21 16:29:25Z",
+    "parameters": [],
+    "header": "#Requires -Version 7",
+    "path": "AQ-SanitizeGlyphs.ps1"
+  },
+  {
+    "hits": [
+      "backup",
+      "checkpoint",
+      "zip",
+      "archive",
+      "compress-archive",
+      "7z",
+      "git tag",
+      "git  tag",
+      "lfs",
+      "snapshot",
+      "export",
+      "bundle"
+    ],
+    "ext": ".ps1",
+    "sha256": "7221E66955F3C536EA7636D4A37B815DCF1C84F1CE3AF717E09B288934716834",
+    "sizeKB": 5.5,
+    "modified": "2025-09-30 16:09:08Z",
+    "parameters": "Root",
+    "header": "#requires -Version 7.2\n#>",
+    "path": "AQ-Tools-Audit.ps1"
+  },
+  {
+    "hits": [
+      "lfs",
+      "export"
+    ],
+    "ext": ".ps1",
+    "sha256": "F67E5DADF38CD4F10509C41612F1552519C3C31C5FFE3231AA01CF02D2E0D170",
+    "sizeKB": 4.3,
+    "modified": "2025-09-20 19:54:49Z",
+    "parameters": [],
+    "header": "# Tools\\AQ-UnityGitBootstrap.ps1\n# Purpose: Bootstrap a clean Unity repo with correct .gitignore, .gitattributes (LFS), and safe Git settings.\n# Platform: PowerShell 7.x · Encoding: UTF-8 · Newlines: CRLF · Logs: _audit\\git\\bootstrap\\<stamp>\\\n# --- setup logging ------------------------------------------------------------\n# --- canonical Unity .gitignore ----------------------------------------------\n# --- UNITY GENERATED/LOCAL ---\n# --- OS JUNK ---\n# --- UNITY CACHE & REPORTS ---\n# --- PACKAGES CACHE ---\n# --- TEXTURE/IMPORTER META LOCKS ---\n# --- TEST/LOCAL OUTPUT ---\n# --- OPTIONAL: KEEP BINARY EXPORTS OUT OF GIT ---\n# --- robust LFS rules (.gitattributes) ---------------------------------------\n# Large Unity assets to LFS\n# --- write files idempotently -------------------------------------------------\n# --- git + lfs settings (repo-local) -----------------------------------------\n# more reliable big pushes over flakey links\n# ensure LFS rules registered (safe if already tracked)\n# stage and commit bootstrap files if changed",
+    "path": "AQ-UnityGitBootstrap.ps1"
+  },
+  {
+    "hits": [
+      "checkpoint",
+      "git tag"
+    ],
+    "ext": ".ps1",
+    "sha256": "B43B67A91EC37B0100BC41C3794199627B776945EC933BF76910705D8DB8D7CF",
+    "sizeKB": 1.0,
+    "modified": "2025-09-22 18:58:38Z",
+    "parameters": [],
+    "header": "#Requires -Version 7.0\n# Config\n# Run Unity in batchmode to execute our menu method\n# Optional: lightweight checkpoint tag",
+    "path": "AQ-WireLeads-Bar.ps1"
+  },
+  {
+    "hits": [
+      "backup"
+    ],
+    "ext": ".ps1",
+    "sha256": "A710D85C903C62088CA10E95D5DF0A897A4334595C7A7AB08D7686011117A98A",
+    "sizeKB": 15.5,
+    "modified": "2025-09-14 08:47:05Z",
+    "parameters": null,
+    "header": "# AQ30 Assembly Architecture Consolidation Script\n# Consolidates hybrid package/assets architecture to canonical Assets-based structure\n# Based on Technical Seed Doc v3 + sprint pragmatism\n# Ensure Tools directory exists",
+    "path": "AQ30-Assembly-Consolidation.ps1"
+  },
+  {
+    "hits": [
+      "backup"
+    ],
+    "ext": ".ps1",
+    "sha256": "22652B94388ACC107772353656BD748FCCCC9DE3FF506E605213CE0F129D718D",
+    "sizeKB": 8.5,
+    "modified": "2025-09-11 15:53:58Z",
+    "parameters": null,
+    "header": "#>\n# Resolve paths\n# --- Gather asmdefs ----------------------------------------------------------\n# Build GUID -> name map from .asmdef.meta\n# --- Analyze references ------------------------------------------------------",
+    "path": "asmdef-audit-and-fix.ps1"
+  },
+  {
+    "hits": [
+      "export"
+    ],
+    "ext": ".ps1",
+    "sha256": "7EA1E53B9682040E0FE3BC3A20F087146DC6CA490D9822681FD644C115C3937D",
+    "sizeKB": 4.7,
+    "modified": "2025-09-28 18:25:12Z",
+    "parameters": [
+      "Root",
+      "CsvOut"
+    ],
+    "header": "#>\n# Collect .cs files (skip Library / Packages cache)\n# Summary\n# Details\n# CSV\n# Exit code for CI/local checks",
+    "path": "Audit-CsPlacement.ps1"
+  },
+  {
+    "hits": [
+      "bundle"
+    ],
+    "ext": ".ps1",
+    "sha256": "8D948FE9B732B4BD961F98E6131891032C3AFD5A2F68FD397006DB3FCCF8A2DE",
+    "sizeKB": 7.5,
+    "modified": "2025-09-17 08:43:58Z",
+    "parameters": "ProjectPath",
+    "header": "#>\n# Limit to app + AQ packages; exclude samples, TMP examples, tests by default\n# ────────────────────────────────────────────────────────────────────────────\n# WK3-1 Economy & Rewards (Wallet, Reward, persistence, overlay binder)\n# Require real interface/class defs with word boundaries\n# ────────────────────────────────────────────────────────────────────────────\n# WK3-2 Minigame Framework + Scrub\n# ────────────────────────────────────────────────────────────────────────────\n# WK3-3 CaseFlow Orchestrator\n# ────────────────────────────────────────────────────────────────────────────\n# WK3-4 Firebase Analytics & Crashlytics (heuristic: explicit calls present)\n# ────────────────────────────────────────────────────────────────────────────\n# WK3-5 Ads & IAP Stubs",
+    "path": "Audit-WK3.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "2BE9194B4CD4680F899CFEF46532119D800A15AD1715932C39379FC710EC87B7",
+    "sizeKB": 0.5,
+    "modified": "2025-09-04 11:56:26Z",
+    "parameters": [],
+    "header": "# Resolve repo and DotNetBuild folder relative to this script",
+    "path": "build-domain.ps1"
+  },
+  {
+    "hits": [
+      "backup",
+      "checkpoint",
+      "zip",
+      "archive",
+      "lfs"
+    ],
+    "ext": ".ps1",
+    "sha256": "A6F86F7D30DB6B1457CDAC8D7E87441E4C352A2B2303D797833C2AA9336D484B",
+    "sizeKB": 10.8,
+    "modified": "2025-09-18 14:05:34Z",
+    "parameters": "Message",
+    "header": "#requires -Version 7.0\n# ---------------- helpers ----------------",
+    "path": "Checkpoint-Repo.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".txt",
+    "sha256": "73F709583F9DC891629C4CE20AA4676743A8D959937A58F04E515DCFF9CB3804",
+    "sizeKB": 35.2,
+    "modified": "2025-09-14 08:48:55Z",
+    "parameters": [],
+    "header": "",
+    "path": "consolidation_log_20250914_084853.txt"
+  },
+  {
+    "hits": [],
+    "ext": ".md",
+    "sha256": "55733C601F4987B6D242ABF71547FBBD55CBA15EF0CD7BE3D31510A4F8893324",
+    "sizeKB": 5.1,
+    "modified": "2025-09-14 08:47:46Z",
+    "parameters": [],
+    "header": "",
+    "path": "CONSOLIDATION-USAGE-GUIDE.md"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "32062852AA36C19B3EAF9EA933A2A013D2C61A08A1080B6422151BF66649EA80",
+    "sizeKB": 6.4,
+    "modified": "2025-09-10 12:01:36Z",
+    "parameters": null,
+    "header": "",
+    "path": "Content-ScriptDump.ps1"
+  },
+  {
+    "hits": [
+      "backup"
+    ],
+    "ext": ".ps1",
+    "sha256": "8771C96F6F2E8B697CB5B6659A15DD1B9A834E88D0A6DD4EB093B091E712FEF6",
+    "sizeKB": 6.1,
+    "modified": "2025-09-10 11:29:18Z",
+    "parameters": "RepoRoot",
+    "header": "# --- preflight ----------------------------------------------------------------\n# --- gather files --------------------------------------------------------------\n# repo-wide grep exclusions\n# Build report rows\n# Print table\n# --- quarantine helpers --------------------------------------------------------\n# --- auto quarantine by explicit name -----------------------------------------",
+    "path": "Curate-Tools.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "DB8D52037467AD157A7A1ECA7C423DA8314B37A2A7550146C4648692BAF87990",
+    "sizeKB": 7.3,
+    "modified": "2025-09-13 06:42:15Z",
+    "parameters": "RepoRoot",
+    "header": "# --- Paths (canonical layout from the tech seed) ---\n# Editor asmdef can be either path historically; keep whichever exists as canonical and quarantine the other if duplicates\n# --- Quarantine helper ---\n# --- JSON helpers ---\n# --- 1) Quarantine any rogue AQ.App.Presentation under Assets/App* ---\n# --- 2) Ensure canonical runtime asmdef: Assets/App/AQ.App.asmdef ---\n# --- 3) Normalize package presentation asmdef refs (must NOT reference AQ.App) ---\n# name should be AQ30.Presentation (keep if already correct)",
+    "path": "fix-asmdefs_canonical.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "2C32AE07F52B4F8928197BEBBA2AE2BD5E6E157A2513500242B29CC4B57D15FF",
+    "sizeKB": 2.5,
+    "modified": "2025-09-13 12:25:09Z",
+    "parameters": "RepoRoot",
+    "header": "# --- Helpers ---\n# --- Canonical paths (do not create new files; only edit if present) ---\n# 1) Presentation must see Domain + SharedKernel\n# 2) App must see Presentation + Domain + SharedKernel\n# 3) Editor (no changes to references—just sanity print if present)",
+    "path": "fix-asmdefs_wire.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "E20A3DBFB86ACA45E1FFCD8EB08723A1F15B2EC3D20F324BE6ACC36FE3F35118",
+    "sizeKB": 4.0,
+    "modified": "2025-09-12 21:29:41Z",
+    "parameters": "RepoRoot",
+    "header": "# ---- Paths (normalized under the provided RepoRoot) ----\n# ---- Enforce one asmdef per location ----\n# ---- Make sure references are present where needed ----\n# Presentation assembly should be able to see AQ30.Presentation + Merge/SharedKernel domain code.\n# Package runtime asmdef should also reference Domain types used by MergeEventsBridge, etc.",
+    "path": "fix-asmdefs.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "CF516DF7A9D8BE27229B2F67ED714FAC1739A3AE7D1A0A134749B1C180BB2D27",
+    "sizeKB": 3.7,
+    "modified": "2025-09-13 15:06:44Z",
+    "parameters": null,
+    "header": "#>\n# -----------------------\n# Helpers (ASCII only)\n# -----------------------\n# Safe file read/write with UTF8 (no BOM)\n# Insert a using before the first \"namespace\" if the using is missing\n# -----------------------\n# Main\n# -----------------------\n# Target file and namespace\n# Apply patch",
+    "path": "fix-v4.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "D88953DB0D2C3DE5E09A44EA71473483342CDF6CBF4CF8B6D03B7EDB63762241",
+    "sizeKB": 3.3,
+    "modified": "2025-09-11 17:06:51Z",
+    "parameters": null,
+    "header": "# write machine-friendly log",
+    "path": "gameplay-data-audit.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "02F72CD0810F32C293A2854105C18A0C4B425C572500E85B75BFB129D9C2CCFF",
+    "sizeKB": 0.5,
+    "modified": "2025-09-09 21:01:09Z",
+    "parameters": "Print",
+    "header": "",
+    "path": "Get-UnityExe.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "B4BE7A87FC8AB8CDDF217A83C77D484C2BEA9D5213DF8223B9E20B904EBA87FB",
+    "sizeKB": 0.7,
+    "modified": "2025-09-04 11:41:17Z",
+    "parameters": null,
+    "header": "",
+    "path": "guard-domain-no-unity.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "6CDB036CC06E8C0D669F26F042B757422D8E183E3486CAF7229BDB1D1C4355E3",
+    "sizeKB": 5.3,
+    "modified": "2025-09-28 18:32:07Z",
+    "parameters": [
+      "Root",
+      "Apply"
+    ],
+    "header": "#>\n# Collect .cs files (ignore Library/Packages)\n# Optional skip patterns",
+    "path": "Move-CsByAudit.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "ED4BEC1D7C96C8EECCA3F4F30CDE03BC9F5E22F7D22099845CBD75621E5CF1E7",
+    "sizeKB": 0.1,
+    "modified": "2025-09-18 14:39:11Z",
+    "parameters": [],
+    "header": "# Nuke the push and any helper processes",
+    "path": "NukeHungGIT.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "36844E5D5128510F824130AB632E3BD72B9F28BE7B72CCE8FCAAC9958BAD8406",
+    "sizeKB": 6.9,
+    "modified": "2025-09-11 15:34:59Z",
+    "parameters": [
+      "RepoRoot",
+      "NoSources"
+    ],
+    "header": "#>\n# 0) Resolve and validate\n# Unity editor version (if available)\n# 1) Prepare output\n# 2) Collect file inventory\n# Relative, normalized, sorted list\n# 3) Write structure file\n# Extension summary\n# 4) asmdef analysis",
+    "path": "project-audit.ps1"
+  },
+  {
+    "hits": [
+      "snapshot",
+      "export"
+    ],
+    "ext": ".ps1",
+    "sha256": "072CE0952B12D6116FE7D38CD5B1721B2146483F9F54B2639B83D66FF96E5F4B",
+    "sizeKB": 3.2,
+    "modified": "2025-09-18 06:30:15Z",
+    "parameters": "Root",
+    "header": "# Tools/QuickAudit-WK3.ps1\n# Purpose: Zero-guess situational awareness for WK3 handover (PS 5.1/7.x safe)\n# 0) Environment snapshot\n# 1) Unity + packages snapshot\n# 2) Asmdef inventory\n# 3) TMPro 'using' audit (Binder B hotspot)\n# 4) Variant binders & runners present?\n# 5) Analytics plumbing sanity\n# 6) Unity 6 API sweep\n# 7) Test presence quicklook",
+    "path": "QuickAudit-WK3.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "C6E8B43C83BD079CF277C8AF1CE3DBCD4CDFE13154ECC65C1E6861D8895016EA",
+    "sizeKB": 1.8,
+    "modified": "2025-09-10 11:12:18Z",
+    "parameters": "Filter",
+    "header": "# Build args",
+    "path": "Run-PlayModeSubset.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "F058351ADE4BC450427AC0F9F2ADBF1FFA9670C537CA57534C70F4DCCD54CA7E",
+    "sizeKB": 1.5,
+    "modified": "2025-09-09 21:03:11Z",
+    "parameters": null,
+    "header": "# Load Unity locator (defines Get-UnityExe)\n# Friendly reporting: don’t Resolve-Path unless the file exists",
+    "path": "Run-Unity-Tests.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "F0FD359678CAA612309AAE9AF70D7BA4D016F010DF0201E9B0CDF2035659C80F",
+    "sizeKB": 0.4,
+    "modified": "2025-09-17 08:48:20Z",
+    "parameters": [
+      "UnityExe",
+      "ProjectPath"
+    ],
+    "header": "",
+    "path": "Run-WK3-UnityAudit.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "6CB3959921F57FD8DD0697C421A6589F440F9F671F687D2D8B37D1165A8DB5E6",
+    "sizeKB": 9.8,
+    "modified": "2025-09-10 12:07:53Z",
+    "parameters": null,
+    "header": "# ----------------------------- C#: Theme -----------------------------",
+    "path": "WK2-1-Scaffold.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "9E5F941EB6F4AA4CBF70FD54C65E0423C463D974380F5C1DC5DA6E523AB9EB08",
+    "sizeKB": 13.6,
+    "modified": "2025-09-14 17:34:37Z",
+    "parameters": "RepoRoot",
+    "header": "#>\n# 0) Run authoritative project audit\n# 1) ScriptAssemblies presence signal\n# 2) Collect asmdefs from Assets/ and Packages/ (domain/ker often reside in Packages)\n# Canonical presence (anywhere): App, Editor, Tests, Domain.Merge, SharedKernel\n# 3) Assembly-CSharp leak scan (null-safe)\n# Project-only asmdef leak scan (patched: scope = Assets/ and Packages/com.aq.* only, JSON-based)\n#>",
+    "path": "WK3-Kickoff-Audit.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".bak_20250914_173437",
+    "sha256": "698AACB5B3273FBE78887F877EC64D2F7CAB55BF65A52D3F654FAE92AEECF520",
+    "sizeKB": 6.5,
+    "modified": "2025-09-14 16:52:20Z",
+    "parameters": [],
+    "header": "",
+    "path": "WK3-Kickoff-Audit.ps1.bak_20250914_173437"
+  },
+  {
+    "hits": [],
+    "ext": ".bak_20250914_173748",
+    "sha256": "9E5F941EB6F4AA4CBF70FD54C65E0423C463D974380F5C1DC5DA6E523AB9EB08",
+    "sizeKB": 13.6,
+    "modified": "2025-09-14 17:34:37Z",
+    "parameters": [],
+    "header": "",
+    "path": "WK3-Kickoff-Audit.ps1.bak_20250914_173748"
+  },
+  {
+    "hits": [],
+    "ext": ".bak_20250914_173937",
+    "sha256": "9E5F941EB6F4AA4CBF70FD54C65E0423C463D974380F5C1DC5DA6E523AB9EB08",
+    "sizeKB": 13.6,
+    "modified": "2025-09-14 17:34:37Z",
+    "parameters": [],
+    "header": "",
+    "path": "WK3-Kickoff-Audit.ps1.bak_20250914_173937"
+  },
+  {
+    "hits": [],
+    "ext": ".bak_20250914_174714",
+    "sha256": "9E5F941EB6F4AA4CBF70FD54C65E0423C463D974380F5C1DC5DA6E523AB9EB08",
+    "sizeKB": 13.6,
+    "modified": "2025-09-14 17:34:37Z",
+    "parameters": [],
+    "header": "",
+    "path": "WK3-Kickoff-Audit.ps1.bak_20250914_174714"
+  },
+  {
+    "hits": [],
+    "ext": ".bak_20250914_175147",
+    "sha256": "9E5F941EB6F4AA4CBF70FD54C65E0423C463D974380F5C1DC5DA6E523AB9EB08",
+    "sizeKB": 13.6,
+    "modified": "2025-09-14 17:34:37Z",
+    "parameters": [],
+    "header": "",
+    "path": "WK3-Kickoff-Audit.ps1.bak_20250914_175147"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "8CB88C36BA9DAED857AF2A1F89F8C741D6D9279AE60F83AE136F6F0C1523547D",
+    "sizeKB": 3.7,
+    "modified": "2025-09-13 14:07:23Z",
+    "parameters": "RepoRoot",
+    "header": "# v4 expectations:\n# - Canonical runtime asmdefs: AQ.SharedKernel (pkg), AQ.Domain.Merge (pkg), AQ.App (Assets/App)\n# - Presentation bridge files under Assets/App/Presentation/\n# - AQ.App.Presentation.asmdef removed in v4\n# 1) Required App/Presentation files\n# 2) Editor asmdef present\n# 3) Icons check\n# 4) Canonical runtime asmdefs (ignore Editor/Tests/Library/PackageCache and any quarantine folders)\n# 5) Legacy v3 check explicitly skipped\n# 6) No UnityEditor.AddressableAssets in runtime code (exclude Editor)",
+    "path": "wk3-stabilize-audit_v4.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "C84D17FC1F8D36E0A782157D588D1E0F24156B66BEE7B658EC2E892B83859512",
+    "sizeKB": 6.0,
+    "modified": "2025-09-12 18:51:06Z",
+    "parameters": "RepoRoot",
+    "header": "# ---------- Basics ----------\n# ---------- Helpers ----------\n# ---------- Rules ----------\n# Forbid UnityEditor.AddressableAssets in NON-Editor code only.",
+    "path": "wk3-stabilize-audit.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".bak",
+    "sha256": "42DAD3D098CF6BD791B32EF2F129A5186015772E3D4B9ED1F0CE9434F30A49F6",
+    "sizeKB": 6.5,
+    "modified": "2025-09-12 18:27:40Z",
+    "parameters": [],
+    "header": "",
+    "path": "wk3-stabilize-audit.ps1.bak"
+  },
+  {
+    "hits": [],
+    "ext": ".20250912_181214",
+    "sha256": "D73ABADAE05D9A19499020457C2A4FB96579F8E1372AE11EAA0520C59E8069F2",
+    "sizeKB": 5.8,
+    "modified": "2025-09-12 16:50:26Z",
+    "parameters": [],
+    "header": "",
+    "path": "wk3-stabilize-audit.ps1.bak.20250912_181214"
+  },
+  {
+    "hits": [],
+    "ext": ".20250912_181727",
+    "sha256": "FB38F7281CD074D6FA6A7A31E7C0B659F7B232BFB6FBBD27B68CAD31828C745D",
+    "sizeKB": 6.7,
+    "modified": "2025-09-12 18:12:24Z",
+    "parameters": [],
+    "header": "",
+    "path": "wk3-stabilize-audit.ps1.bak.20250912_181727"
+  },
+  {
+    "hits": [],
+    "ext": ".20250912_182001",
+    "sha256": "FB38F7281CD074D6FA6A7A31E7C0B659F7B232BFB6FBBD27B68CAD31828C745D",
+    "sizeKB": 6.7,
+    "modified": "2025-09-12 18:12:24Z",
+    "parameters": [],
+    "header": "",
+    "path": "wk3-stabilize-audit.ps1.bak.20250912_182001"
+  },
+  {
+    "hits": [],
+    "ext": ".20250912_182232",
+    "sha256": "FB38F7281CD074D6FA6A7A31E7C0B659F7B232BFB6FBBD27B68CAD31828C745D",
+    "sizeKB": 6.7,
+    "modified": "2025-09-12 18:12:24Z",
+    "parameters": [],
+    "header": "",
+    "path": "wk3-stabilize-audit.ps1.bak.20250912_182232"
+  },
+  {
+    "hits": [
+      "bundle"
+    ],
+    "ext": ".ps1",
+    "sha256": "46759D96FE79EAF89ACDC71B82CAFC6BEE92E25CA650571F586055356F39939A",
+    "sizeKB": 3.3,
+    "modified": "2025-09-15 08:56:54Z",
+    "parameters": "RepoRoot",
+    "header": "# --- WK1 & WK2 quick signals ---\n# --- WK3 heuristic % (presence meters) ---",
+    "path": "WK3-Status.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".ps1",
+    "sha256": "9B05AE9ECCAB71ADA2968D34E78ADC991D75A9B885AEDF87E49FACEEDFD93BE2",
+    "sizeKB": 3.9,
+    "modified": "2025-09-09 20:52:48Z",
+    "parameters": [
+      "CreateHUD",
+      "CreateDialoguePanel",
+      "RunUnityAfterWrite"
+    ],
+    "header": "",
+    "path": "Write-EditorPrefabMakers.ps1"
+  },
+  {
+    "hits": [
+      "lfs"
+    ],
+    "ext": ".ps1",
+    "sha256": "17F2A9A5993A2C3F54D5D0829B42F146BFCC7A1BBC77BF7C3692E90382B108FD",
+    "sizeKB": 1.9,
+    "modified": "2025-09-21 13:33:06Z",
+    "parameters": "MaxSizeMB",
+    "header": "# Tools\\Hooks\\PreCommit-LFSGuard.ps1\n# Block commits that stage files > 50 MB unless those files are LFS-tracked.\n# Exit 1 to block the commit; exit 0 to allow.\n# Get staged Added/Modified files\n# Build LFS map via check-attr\n# Lines: \"path: filter: lfs\" or \"path: filter: unspecified\"",
+    "path": "Hooks\\PreCommit-LFSGuard.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".txt",
+    "sha256": "45D638B0EE7BAC91FD6A2DDD70BD605D45248E08A63DDD2605198D85AB082A51",
+    "sizeKB": 7.5,
+    "modified": "2025-09-23 16:25:42Z",
+    "parameters": [],
+    "header": "",
+    "path": "Reports\\editor_keep_list_20250923_162539.txt"
+  },
+  {
+    "hits": [
+      "backup"
+    ],
+    "ext": ".ps1",
+    "sha256": "0298F359110B4E439E419E18EBE0DAED81C03A83C6F4ECD3364CBCE0D137338C",
+    "sizeKB": 0.5,
+    "modified": "2025-09-23 16:25:42Z",
+    "parameters": null,
+    "header": "# Auto-generated by AQ-Editor-Prune.ps1 at 20250923_162539\n# This plan MOVES candidate files into: C:\\Users\\Steph\\Dev\\aq30-unity\\Backups\\Pruned\\20250923_162539\n# Review the list before running. Usage:\n#   pwsh -NoProfile -ExecutionPolicy Bypass \"C:\\Users\\Steph\\Dev\\aq30-unity\\Tools\\Reports\\editor_prune_plan_20250923_162539.ps1\" [-WhatIf]",
+    "path": "Reports\\editor_prune_plan_20250923_162539.ps1"
+  },
+  {
+    "hits": [],
+    "ext": ".txt",
+    "sha256": "7EF4BD542536422F2B579454C4681718300AC2EEFBD53D8670CA8F8A24801675",
+    "sizeKB": 0.2,
+    "modified": "2025-09-23 16:25:42Z",
+    "parameters": [],
+    "header": "",
+    "path": "Reports\\editor_prune_summary_20250923_162539.txt"
+  }
+]

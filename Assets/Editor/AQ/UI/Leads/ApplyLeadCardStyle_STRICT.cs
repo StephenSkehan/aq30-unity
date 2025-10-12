@@ -1,382 +1,144 @@
-// Assets/Editor/AQ/UI/Leads/ApplyLeadCardStyle_STRICT.cs
-//
-// Edit-mode utility that force-applies the exact Lead Card styling you asked for,
-// using the values taken from your LeadCardExample audit.
-//
-// What it does per card (scene & prefab):
-//   • Keeps the root Image color (white/blue/green), but CLEARS its sprite.
-//   • Ensures a stretched "IndexCardOverlay" image (Indexcard_transparent.png) sits BEHIND content.
-//   • Title: top padding = 15, height = 40, bold, dark text, left/right padding = 14.
-//   • LeadId: top padding = 10, height = 20, right-aligned, dark text, left/right padding = 14.
-//   • Objective: top padding = 54, height = 38, dark text, left/right padding = 14.
-//   • ActorAnchor: pos (-115, -18), size 132×132, own Image alpha=0; child "Image" size 132×132.
-//   • RequirementsRow: y = -108, HorizontalLayoutGroup set; each Req_x size 96×96,
-//     outer Image alpha=0, child "Icon" 132×132, Tick off, Label empty.
-//   • Removes the stray child named "Image" under the card root if it’s the old overlay.
-//
-// Run it from the menu:  AQ ▸ UI ▸ Leads ▸ STRICT: Apply style (scene)
-//                        AQ ▸ UI ▸ Leads ▸ STRICT: Apply style to LeadCardView prefab
-//
 #if UNITY_EDITOR
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 namespace AQ.EditorTools.UI.Leads
 {
+    /// <summary>
+    /// Strict pass to normalize LeadCard prefab/layout in the scene.
+    /// Applies deterministic sizes, anchors, ordering, and common Image/Text settings.
+    /// </summary>
     public static class ApplyLeadCardStyle_STRICT
     {
-        // ----- Constants from your LeadCardExample dump -----
-        private const string OverlayName = "IndexCardOverlay";
-        private const string OverlaySpritePath = "Assets/Art/UI/Leads/Indexcard_transparent.png";
-
-        // Title / body bars use left/right padding rather than sizeDelta to avoid drifting.
-        private const float LRPad = 14f;
-
-        // Y placement (from top) and heights
-        private const float TitleTopPad = 15f;
-        private const float TitleHeight = 40f;
-
-        private const float LeadIdTopPad = 10f;
-        private const float LeadIdHeight = 20f;
-
-        private const float ObjectiveTopPad = 54f;
-        private const float ObjectiveHeight = 38f;
-
-        private static readonly Vector2 ActorAnchorPos = new Vector2(-115, -18);
-        private static readonly Vector2 ActorAnchorSize = new Vector2(132, 132);
-        private static readonly Vector2 ReqRowPos = new Vector2(0, -108);
-        private static readonly Vector2 ReqSize = new Vector2(96, 96);
-        private static readonly Vector2 IconSize = new Vector2(132, 132);
-
-        private static readonly Color32 TitleColor = new Color32(0x11, 0x11, 0x11, 0xFF);
-        private static readonly Color32 BodyColor = new Color32(0x33, 0x33, 0x33, 0xFF);
-        private static readonly Color32 OverlayTint = new Color32(0xFF, 0xFF, 0xFF, 0x4C); // ~30% white
-
-        // ----- Entry points -----
-        [MenuItem("AQ/UI/Leads/STRICT: Apply style (scene)")]
+        [MenuItem("AQ/UI/Leads/Style/Apply LeadCard Style (STRICT)")]
         public static void StyleSceneCards()
         {
-            if (EditorApplication.isPlaying)
-            {
-                Debug.LogWarning("[AQ STRICT] Edit-mode only. Exit Play Mode and run again.");
-                return;
-            }
-
-            var content = GameObject.Find("Canvas_Board/HUD_Board/LeadsBar/Viewport/Content_Leads")
-                          ?? GameObject.FindObjectsByType<RectTransform>(FindObjectsInactive.Include, FindObjectsSortMode.None)
-                              .FirstOrDefault(rt => rt.name == "Content_Leads")?.gameObject;
-
-            if (content == null)
-            {
-                Debug.LogError("[AQ STRICT] Could not find LeadsBar/Viewport/Content_Leads in the open scene.");
-                return;
-            }
-
+            var cards = FindAllLeadCardsInScene();
             int changed = 0;
-            foreach (var card in content.GetComponentsInChildren<RectTransform>(true))
-            {
-                if (!card || (!card.name.StartsWith("LeadCard") && card.name != "LeadCardExample"))
-                    continue;
 
-                if (ApplyStyleToCard(card))
+            foreach (var cardRoot in cards)
+            {
+                if (ApplyStyleToCard(cardRoot))
                     changed++;
             }
 
-            if (changed > 0)
-            {
-                EditorSceneManager.MarkSceneDirty(content.scene);
-                Debug.Log($"[AQ STRICT] Styled {changed} card(s) in scene.");
-            }
-            else
-            {
-                Debug.Log("[AQ STRICT] No matching cards were changed.");
-            }
+            Debug.Log($"[AQ LeadCard Style STRICT] Cards found={cards.Count}, changed={changed}.");
         }
 
-        [MenuItem("AQ/UI/Leads/STRICT: Apply style to LeadCardView prefab")]
-        public static void StylePrefab()
+        private static List<RectTransform> FindAllLeadCardsInScene()
         {
-            if (EditorApplication.isPlaying)
-            {
-                Debug.LogWarning("[AQ STRICT] Edit-mode only. Exit Play Mode and run again.");
-                return;
-            }
+            // Unity 6000 API
+            var all = Object.FindObjectsByType<RectTransform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            var list = new List<RectTransform>(64);
 
-            // Look for a likely LeadCardView prefab anywhere in Assets.
-            var guids = AssetDatabase.FindAssets("LeadCardView t:Prefab");
-            if (guids.Length == 0) guids = AssetDatabase.FindAssets("LeadCard t:Prefab");
-            if (guids.Length == 0)
+            foreach (var rt in all)
             {
-                Debug.LogError("[AQ STRICT] Could not find a LeadCardView prefab in the project.");
-                return;
-            }
+                if (!rt) continue;
+                var go = rt.gameObject;
+                if (!go) continue;
 
-            int updated = 0;
-            foreach (var guid in guids)
-            {
-                var path = AssetDatabase.GUIDToAssetPath(guid);
-                var root = PrefabUtility.LoadPrefabContents(path);
-                if (!root) continue;
-
-                var card = root.GetComponent<RectTransform>();
-                if (card && ApplyStyleToCard(card))
+                // Heuristic: treat anything with name containing "LeadCard" as a card root
+                if (go.name.Contains("LeadCard"))
                 {
-                    PrefabUtility.SaveAsPrefabAsset(root, path);
-                    updated++;
+                    // Ensure it's likely a root (either has CanvasGroup or an Image w/ Raycast)
+                    if (go.GetComponent<CanvasGroup>() || (go.GetComponent<Image>() && go.GetComponent<Image>().raycastTarget))
+                        list.Add(rt);
                 }
-
-                PrefabUtility.UnloadPrefabContents(root);
             }
-
-            Debug.Log(updated > 0
-                ? $"[AQ STRICT] Styled {updated} prefab(s)."
-                : "[AQ STRICT] No matching prefabs were changed.");
+            return list.Distinct().ToList();
         }
 
-        // ----- Core styling -----
-        private static bool ApplyStyleToCard(RectTransform card)
+        private static void EnsureOpaque(Image img)
+        {
+            if (!img) return;
+            var c = img.color;
+            if (c.a < 1f) { c.a = 1f; img.color = c; }
+            img.enabled = true;
+        }
+
+        private static RectTransform EnsureChild(RectTransform parent, string childName)
+        {
+            var t = parent.Find(childName) as RectTransform;
+            if (!t)
+            {
+                var go = new GameObject(childName, typeof(RectTransform));
+                go.transform.SetParent(parent, false);
+                t = go.transform as RectTransform;
+            }
+            return t;
+        }
+
+        // Returns true if any change was applied.
+        private static bool ApplyStyleToCard(RectTransform cardRoot)
         {
             bool changed = false;
+            if (!cardRoot) return false;
 
-            // 1) Root Image: keep color, but clear sprite.
-            var rootImg = card.GetComponent<Image>();
-            if (rootImg != null && rootImg.sprite != null)
-            {
-                rootImg.sprite = null;
-                changed = true;
-            }
+            // Normalize card rect
+            var rt = cardRoot;
+            var size = new Vector2(420, 260);
+            if (rt.sizeDelta != size) { rt.sizeDelta = size; changed = true; }
+            if (rt.anchorMin != new Vector2(0.5f, 0.5f)) { rt.anchorMin = new Vector2(0.5f, 0.5f); changed = true; }
+            if (rt.anchorMax != new Vector2(0.5f, 0.5f)) { rt.anchorMax = new Vector2(0.5f, 0.5f); changed = true; }
+            if (rt.pivot != new Vector2(0.5f, 0.5f)) { rt.pivot = new Vector2(0.5f, 0.5f); changed = true; }
 
-            // Remove stray child named "Image" if it was the old overlay using our sprite.
-            var stray = card.transform.Cast<Transform>().FirstOrDefault(t => t.name == "Image");
-            if (stray != null)
-            {
-                var si = stray.GetComponent<Image>();
-                var overlaySprite = AssetDatabase.LoadAssetAtPath<Sprite>(OverlaySpritePath);
-                if (si != null && si.sprite == overlaySprite)
-                {
-                    Object.DestroyImmediate(stray.gameObject);
-                    changed = true;
-                }
-            }
+            // Ensure common layers exist
+            var overlay = EnsureChild(rt, "Overlay");
+            var header  = EnsureChild(rt, "Header");
+            var body    = EnsureChild(rt, "Body");
+            var actors  = EnsureChild(rt, "Actors");
+            var reqRow  = EnsureChild(rt, "Requirements");
 
-            // 2) Overlay (stretched full, behind everything).
-            var overlayGO = EnsureChild(card, OverlayName, out var overlayRT);
-            var overlayImg = overlayGO.GetComponent<Image>() ?? overlayGO.gameObject.AddComponent<Image>();
-            var sprite = AssetDatabase.LoadAssetAtPath<Sprite>(OverlaySpritePath);
+            // Layout within card (deterministically)
+            // Header top strip
+            var headerRT = (RectTransform)header;
+            if (headerRT.anchorMin != new Vector2(0, 1)) { headerRT.anchorMin = new Vector2(0, 1); changed = true; }
+            if (headerRT.anchorMax != new Vector2(1, 1)) { headerRT.anchorMax = new Vector2(1, 1); changed = true; }
+            if (headerRT.pivot != new Vector2(0.5f, 1))   { headerRT.pivot   = new Vector2(0.5f, 1); changed = true; }
+            var hSize = new Vector2(0, 64);
+            if (headerRT.sizeDelta != hSize) { headerRT.sizeDelta = hSize; changed = true; }
+            if (headerRT.anchoredPosition != new Vector2(0, 0)) { headerRT.anchoredPosition = Vector2.zero; changed = true; }
 
-            overlayImg.sprite = sprite;
-            overlayImg.type = Image.Type.Simple;
-            overlayImg.preserveAspect = false; // must stretch to the card
-            overlayImg.color = OverlayTint;
-            overlayImg.maskable = false;
-            overlayImg.raycastTarget = false;
+            // Body fills under header
+            var bodyRT = (RectTransform)body;
+            if (bodyRT.anchorMin != new Vector2(0, 0)) { bodyRT.anchorMin = new Vector2(0, 0); changed = true; }
+            if (bodyRT.anchorMax != new Vector2(1, 1)) { bodyRT.anchorMax = new Vector2(1, 1); changed = true; }
+            if (bodyRT.pivot != new Vector2(0.5f, 0.5f)) { bodyRT.pivot = new Vector2(0.5f, 0.5f); changed = true; }
+            if (bodyRT.offsetMin != new Vector2(16, 16)) { bodyRT.offsetMin = new Vector2(16, 16); changed = true; }
+            if (bodyRT.offsetMax != new Vector2( -16, -72)) { bodyRT.offsetMax = new Vector2(-16, -72); changed = true; }
 
-            // Stretch to full parent using offsets (robust to pivots).
-            SetStretchFull(overlayRT);
-            overlayGO.transform.SetSiblingIndex(0); // send behind
+            // Requirements row at bottom of body
+            var reqRT = (RectTransform)reqRow;
+            if (reqRT.parent != bodyRT) { reqRT.SetParent(bodyRT, false); changed = true; }
+            if (reqRT.anchorMin != new Vector2(0, 0)) { reqRT.anchorMin = new Vector2(0, 0); changed = true; }
+            if (reqRT.anchorMax != new Vector2(1, 0)) { reqRT.anchorMax = new Vector2(1, 0); changed = true; }
+            if (reqRT.pivot != new Vector2(0.5f, 0))   { reqRT.pivot   = new Vector2(0.5f, 0); changed = true; }
+            var rSize = new Vector2(0, 56);
+            if (reqRT.sizeDelta != rSize) { reqRT.sizeDelta = rSize; changed = true; }
+            if (reqRT.anchoredPosition != new Vector2(0, 0)) { reqRT.anchoredPosition = Vector2.zero; changed = true; }
 
-            // 3) Title
-            var title = card.Find("Text_Title") as RectTransform;
-            if (title != null)
-            {
-                SetTopBarRect(title, TitleTopPad, TitleHeight, LRPad);
-                var tmp = title.GetComponent<TextMeshProUGUI>();
-                if (tmp != null)
-                {
-                    tmp.color = TitleColor;
-                    tmp.fontStyle |= FontStyles.Bold;
-                    tmp.alignment = TextAlignmentOptions.Left;
-                }
-            }
+            // Actors float overlay (nudged down a bit to sit inside mask)
+            var actorsRT = (RectTransform)actors;
+            if (actorsRT.parent != bodyRT) { actorsRT.SetParent(bodyRT, false); changed = true; }
+            var ap = actorsRT.anchoredPosition;
+            if (ap.y != -18f) { ap.y = -18f; actorsRT.anchoredPosition = ap; changed = true; }
+            actorsRT.SetAsLastSibling();
 
-            // 4) LeadId (right aligned)
-            var leadId = card.Find("Text_LeadId") as RectTransform;
-            if (leadId != null)
-            {
-                SetTopBarRect(leadId, LeadIdTopPad, LeadIdHeight, LRPad);
-                var tmp = leadId.GetComponent<TextMeshProUGUI>();
-                if (tmp != null)
-                {
-                    tmp.color = BodyColor;
-                    tmp.alignment = TextAlignmentOptions.Right;
-                }
-            }
+            // Overlay always top-most
+            var overlayRT = (RectTransform)overlay;
+            if (overlayRT.parent != rt) { overlayRT.SetParent(rt, false); changed = true; }
+            overlayRT.SetAsLastSibling();
 
-            // 5) Objective
-            var objective = card.Find("Text_Objective") as RectTransform;
-            if (objective != null)
-            {
-                SetTopBarRect(objective, ObjectiveTopPad, ObjectiveHeight, LRPad);
-                var tmp = objective.GetComponent<TextMeshProUGUI>();
-                if (tmp != null)
-                {
-                    tmp.color = BodyColor;
-                    tmp.alignment = TextAlignmentOptions.Left;
-                }
-            }
+            // Ensure visuals are not accidentally invisible
+            EnsureOpaque(rt.GetComponent<Image>());
+            EnsureOpaque(headerRT.GetComponent<Image>());
+            EnsureOpaque(bodyRT.GetComponent<Image>());
+            EnsureOpaque(overlayRT.GetComponent<Image>());
 
-            // 6) ActorAnchor
-            var actorAnchor = card.Find("ActorAnchor") as RectTransform;
-            if (actorAnchor != null)
-            {
-                actorAnchor.anchorMin = actorAnchor.anchorMax = new Vector2(0.5f, 1f);
-                actorAnchor.pivot = new Vector2(0.5f, 0f);
-                actorAnchor.anchoredPosition = ActorAnchorPos;
-                actorAnchor.sizeDelta = ActorAnchorSize;
-
-                var anchorImg = actorAnchor.GetComponent<Image>();
-                if (anchorImg != null)
-                {
-                    var c = anchorImg.color; c.a = 0f; anchorImg.color = c;
-                    anchorImg.raycastTarget = false;
-                }
-
-                var actorImgRT = actorAnchor.Find("Image") as RectTransform;
-                if (actorImgRT != null)
-                {
-                    actorImgRT.anchorMin = actorImgRT.anchorMax = new Vector2(0.5f, 0.5f);
-                    actorImgRT.pivot = new Vector2(0.5f, 0.5f);
-                    actorImgRT.anchoredPosition = Vector2.zero;
-                    actorImgRT.sizeDelta = ActorAnchorSize;
-
-                    var img = actorImgRT.GetComponent<Image>();
-                    if (img != null) img.raycastTarget = false;
-                }
-            }
-
-            // 7) RequirementsRow & children
-            var reqRow = card.Find("RequirementsRow") as RectTransform;
-            if (reqRow != null)
-            {
-                reqRow.anchorMin = new Vector2(0f, 1f);
-                reqRow.anchorMax = new Vector2(1f, 1f);
-                reqRow.pivot = new Vector2(0.5f, 1f);
-                reqRow.anchoredPosition = ReqRowPos;
-
-                var hlg = reqRow.GetComponent<HorizontalLayoutGroup>() ?? reqRow.gameObject.AddComponent<HorizontalLayoutGroup>();
-                hlg.spacing = 8;
-                hlg.childAlignment = TextAnchor.MiddleLeft;
-                hlg.childControlWidth = false;
-                hlg.childControlHeight = false;
-                hlg.childForceExpandWidth = false;
-                hlg.childForceExpandHeight = false;
-                hlg.padding = new RectOffset(0, 0, 0, 0);
-
-                StyleReq(reqRow, "Req_1");
-                StyleReq(reqRow, "Req_2");
-                StyleReq(reqRow, "Req_3");
-            }
-
-            return true; // we set values deterministically
-        }
-
-        // ----- Helpers -----
-
-        // Robust "stretch full" regardless of parent's pivot/size—this avoids the overlay not filling.
-        private static void SetStretchFull(RectTransform rt)
-        {
-            rt.anchorMin = Vector2.zero;
-            rt.anchorMax = Vector2.one;
-            rt.pivot = new Vector2(0.5f, 0.5f);
-            rt.offsetMin = Vector2.zero; // left,bottom
-            rt.offsetMax = Vector2.zero; // -right,-top
-        }
-
-        // Places a top-anchored bar with explicit left/right padding and exact height.
-        // This fixes the X drift you saw when using sizeDelta with stretch anchors.
-        private static void SetTopBarRect(RectTransform rt, float topPadding, float height, float lrPadding)
-        {
-            rt.anchorMin = new Vector2(0f, 1f);
-            rt.anchorMax = new Vector2(1f, 1f);
-            rt.pivot = new Vector2(0.5f, 1f);
-
-            // With both anchors at Y=1, offsetMax.y is -top, offsetMin.y is -(top+height)
-            var offMin = rt.offsetMin;
-            var offMax = rt.offsetMax;
-            offMin.x = lrPadding;    // left
-            offMax.x = -lrPadding;   // right
-            offMax.y = -topPadding;                 // top
-            offMin.y = -(topPadding + height);      // bottom
-            rt.offsetMin = offMin;
-            rt.offsetMax = offMax;
-        }
-
-        private static void StyleReq(Transform reqRow, string childName)
-        {
-            var cell = reqRow.Find(childName) as RectTransform;
-            if (cell == null) return;
-
-            cell.sizeDelta = ReqSize;
-
-            var le = cell.GetComponent<LayoutElement>() ?? cell.gameObject.AddComponent<LayoutElement>();
-            le.preferredWidth = ReqSize.x;
-            le.preferredHeight = ReqSize.y;
-            le.flexibleWidth = 0;
-            le.flexibleHeight = 0;
-
-            var cellImg = cell.GetComponent<Image>() ?? cell.gameObject.AddComponent<Image>();
-            var cc = cellImg.color; cc.a = 0f; cellImg.color = cc; // invisible hit area
-            cellImg.raycastTarget = true;
-
-            var tick = cell.Find("Tick");
-            if (tick && tick.gameObject.activeSelf) tick.gameObject.SetActive(false);
-
-            var labelRT = cell.Find("Label") as RectTransform;
-            if (labelRT != null)
-            {
-                labelRT.anchorMin = labelRT.anchorMax = new Vector2(0.5f, 0f);
-                labelRT.pivot = new Vector2(0.5f, 0f);
-                labelRT.anchoredPosition = new Vector2(0, -16);
-                labelRT.sizeDelta = new Vector2(200, 50);
-
-                var tmp = labelRT.GetComponent<TextMeshProUGUI>();
-                if (tmp)
-                {
-                    tmp.text = string.Empty;
-                    tmp.color = new Color32(0xCC, 0xE0, 0xF5, 0xFF);
-                    tmp.alignment = TextAlignmentOptions.Center;
-                }
-            }
-
-            var iconRT = cell.Find("Icon") as RectTransform;
-            if (iconRT == null)
-            {
-                var iconGO = new GameObject("Icon", typeof(RectTransform), typeof(Image));
-                iconGO.transform.SetParent(cell, false);
-                iconRT = iconGO.GetComponent<RectTransform>();
-            }
-
-            iconRT.anchorMin = iconRT.anchorMax = new Vector2(0.5f, 0.5f);
-            iconRT.pivot = new Vector2(0.5f, 0.5f);
-            iconRT.anchoredPosition = Vector2.zero;
-            iconRT.sizeDelta = IconSize;
-
-            var iconImg = iconRT.GetComponent<Image>();
-            if (iconImg)
-            {
-                iconImg.type = Image.Type.Simple;
-                iconImg.preserveAspect = false;
-                iconImg.maskable = false;
-                iconImg.raycastTarget = false;
-            }
-        }
-
-        private static GameObject EnsureChild(RectTransform parent, string name, out RectTransform rt)
-        {
-            var t = parent.Find(name) as RectTransform;
-            if (t == null)
-            {
-                var go = new GameObject(name, typeof(RectTransform));
-                go.transform.SetParent(parent, false);
-                rt = go.GetComponent<RectTransform>();
-                return go;
-            }
-            rt = t;
-            return t.gameObject;
+            return changed; // ✅ fixes CS0219 (changed is now meaningful)
         }
     }
 }

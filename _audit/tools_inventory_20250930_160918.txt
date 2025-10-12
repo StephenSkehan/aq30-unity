@@ -1,0 +1,57 @@
+Tools inventory @ C:\Users\Steph\Dev\aq30-unity\Tools
+Scanned files: 67
+  - .ps1: 53
+  - .txt: 3
+  - .20250912_181214: 1
+  - .20250912_181727: 1
+  - .20250912_182001: 1
+  - .20250912_182232: 1
+  - .bak: 1
+  - .bak_20250914_173437: 1
+  - .bak_20250914_173748: 1
+  - .bak_20250914_173937: 1
+  - .bak_20250914_174714: 1
+  - .bak_20250914_175147: 1
+  - .md: 1
+
+Top PowerShell scripts:
+  - AQ-Tools-Audit.ps1  (5.5 KB)
+  - AQ-Backup-Leads.ps1  (0.3 KB)
+  - AQ-Leads-Inventory.ps1  (0.3 KB)
+  - Move-CsByAudit.ps1  (5.3 KB)
+  - Audit-CsPlacement.ps1  (4.7 KB)
+  - AQ-Editor-Whitelist-Sweep.ps1  (6.3 KB)
+  - AQ-Editor-Prune-Curated.ps1  (4.9 KB)
+  - Reports\editor_prune_plan_20250923_162539.ps1  (0.5 KB)
+  - AQ-Editor-Prune.ps1  (10.4 KB)
+  - AQ-Editor-Audit.ps1  (11.6 KB)
+  - AQ-WireLeads-Bar.ps1  (1 KB)
+  - AQ-MergeAudit.ps1  (3 KB)
+  - AQ-SanitizeGlyphs.ps1  (1.2 KB)
+  - Hooks\PreCommit-LFSGuard.ps1  (1.9 KB)
+  - AQ-FixGuardOnce.ps1  (4 KB)
+
+Backup/Checkpoint candidates (by name/content):
+  - AQ-Backup-Leads.ps1 [hits: backup]
+  - AQ-Editor-Prune-Curated.ps1 [hits: backup]
+  - AQ-Editor-Prune.ps1 [hits: backup]
+  - AQ-Editor-Whitelist-Sweep.ps1 [hits: backup]
+  - AQ-FixBotchedRename.ps1 [hits: backup]
+  - AQ-FixGuardOnce.ps1 [hits: lfs]
+  - AQ-GitHealth.ps1 [hits: lfs]
+  - AQ-InstallHooks.ps1 [hits: lfs]
+  - AQ-Rename-InnerLeadReq.ps1 [hits: backup]
+  - AQ-RepairGuard.ps1 [hits: lfs]
+  - AQ-Tools-Audit.ps1 [hits: 7z, archive, backup, bundle, checkpoint, compress-archive, export, git  tag, git tag, lfs, snapshot, zip]
+  - AQ-UnityGitBootstrap.ps1 [hits: export, lfs]
+  - AQ-WireLeads-Bar.ps1 [hits: checkpoint, git tag]
+  - AQ30-Assembly-Consolidation.ps1 [hits: backup]
+  - asmdef-audit-and-fix.ps1 [hits: backup]
+  - Audit-CsPlacement.ps1 [hits: export]
+  - Audit-WK3.ps1 [hits: bundle]
+  - Checkpoint-Repo.ps1 [hits: archive, backup, checkpoint, lfs, zip]
+  - Curate-Tools.ps1 [hits: backup]
+  - QuickAudit-WK3.ps1 [hits: export, snapshot]
+  - WK3-Status.ps1 [hits: bundle]
+  - Hooks\PreCommit-LFSGuard.ps1 [hits: lfs]
+  - Reports\editor_prune_plan_20250923_162539.ps1 [hits: backup]
