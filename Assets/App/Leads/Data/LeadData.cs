@@ -11,7 +11,7 @@ namespace AQ.App.Leads
     }
 
     [CreateAssetMenu(fileName = "Lead", menuName = "AQ/Leads/Lead", order = 10)]
-    public sealed class LeadData : ScriptableObject
+    public sealed class LeadData : ScriptableObject, ILeadCardModel
     {
         [Header("Identity")]
         public string leadId = System.Guid.NewGuid().ToString("N");
@@ -40,6 +40,14 @@ namespace AQ.App.Leads
 
         [Header("UI")]
         public LeadOutcomeHint OutcomeHints;
+
+        // ---- ILeadCardModel ----
+        string ILeadCardModel.Title        => title;
+        string ILeadCardModel.Subtitle     => subtitle;
+        string ILeadCardModel.ActionTag    => ActionType.ToString();
+        Sprite ILeadCardModel.ActorPortrait => actorPortrait;
+        LeadRequirement[] ILeadCardModel.Requirements => requirements;
+        bool   ILeadCardModel.CanProceed   => IsReady();
 
         // ---- Logic ----
 

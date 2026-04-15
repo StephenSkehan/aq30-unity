@@ -79,8 +79,7 @@ namespace AQ.App.Leads
                 var inst = Instantiate(cardPrefab, contentRoot);
                 inst.gameObject.name = $"LeadCard_{i}_{(so != null ? so.name : "Null")}";
 
-                // If your LeadCardView has a Bind method, use it; otherwise it's harmless.
-                try { inst.Bind(so); } catch { /* ignore if not present */ }
+                inst.Bind(so);
 
                 // Find a proceed button by common names; fall back to first Button in children
                 var btn = FindProceedButton(inst.transform);
