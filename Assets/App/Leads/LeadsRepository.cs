@@ -42,7 +42,7 @@ namespace AQ.App.Leads
                 }
             }
 
-            LeadsChanged?.Invoke();
+            Broadcast();
         }
 
         /// <summary>Replace with a supplied set of leads.</summary>
@@ -50,7 +50,13 @@ namespace AQ.App.Leads
         {
             _current.Clear();
             if (leads != null) _current.AddRange(leads);
+            Broadcast();
+        }
+
+        private void Broadcast()
+        {
             LeadsChanged?.Invoke();
+            LeadsRuntimeBus.BroadcastAll(CurrentLeads);
         }
     }
 }
