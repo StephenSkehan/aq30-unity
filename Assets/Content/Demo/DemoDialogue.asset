@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: DemoDialogue
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: INTRO
+  nodes:
+  - id: INTRO
+    speaker: Ally Quinn
+    line: Welcome to the dialogue system demo! I'm Ally, your detective partner.
+    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 1
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FEATURES
+    choices: []
+  - id: FEATURES
+    speaker: Ally Quinn
+    line: Let me show you what this system can do. Click to continue...
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: TYPEWRITER
+    choices: []
+  - id: TYPEWRITER
+    speaker: Ally Quinn
+    line: Notice the typewriter effect? The text appears character by character.
+      Pretty cool, right?
+    portrait: {fileID: 0}
+    emotion: 1
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: CHOICES_INTRO
+    choices: []
+  - id: CHOICES_INTRO
+    speaker: Ally Quinn
+    line: Now let's try something interactive. What would you like to see?
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices:
+    - text: Tell me about portraits
+      nextId: PORTRAITS
+      requiresFlag: 
+    - text: Show me branching dialogue
+      nextId: BRANCHING
+      requiresFlag: 
+    - text: I'm ready to finish
+      nextId: FINISH
+      requiresFlag: 
+  - id: PORTRAITS
+    speaker: Ally Quinn
+    line: The system supports character portraits with different emotions. When you
+      add portrait sprites, they'll show up here on the left!
+    portrait: {fileID: 0}
+    emotion: 1
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: BACK_TO_MENU
+    choices: []
+  - id: BRANCHING
+    speaker: Ally Quinn
+    line: You can create complex branching narratives with choices, conditions, and
+      flags. The system tracks what the player has seen.
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: learned_about_branching
+    nextId: BACK_TO_MENU
+    choices: []
+  - id: BACK_TO_MENU
+    speaker: Ally Quinn
+    line: Want to see something else?
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: CHOICES_INTRO
+    choices: []
+  - id: FINISH
+    speaker: Ally Quinn
+    line: Thanks for checking out the dialogue system! Now you're ready to create
+      your own detective story.
+    portrait: {fileID: 0}
+    emotion: 1
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

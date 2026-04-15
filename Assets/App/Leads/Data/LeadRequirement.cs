@@ -9,7 +9,7 @@ namespace AQ.App.Leads
     {
         // Serialized fields (keep these names for asset compatibility)
         [SerializeField] private string label;
-        [SerializeField] private string itemId;          // optional: an internal id / key (was referenced by runtime)
+// CLEANUP:         [SerializeField] private string itemId;          // optional: an internal id / key (was referenced by runtime)
         [SerializeField] private Sprite icon;
         [SerializeField] private bool satisfied;
 
@@ -20,11 +20,11 @@ namespace AQ.App.Leads
             set => label = value;
         }
 
-        public string ItemId
-        {
-            get => itemId;
-            set => itemId = value;
-        }
+// CLEANUP:         public string ItemId
+       // {
+// CLEANUP:             get => itemId;
+// CLEANUP:             set => itemId = value;
+      //  }
 
         public Sprite Icon
         {

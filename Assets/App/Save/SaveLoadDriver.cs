@@ -1,4 +1,5 @@
 using UnityEngine;
+using AQ.App;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif

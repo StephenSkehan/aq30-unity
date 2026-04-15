@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e820d5a6a6b85f542a4065e7bfbe6d2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ade5ab32c0d17a43839e490845abfb0, type: 3}
   m_Name: FeatureFlags
-  m_EditorClassIdentifier: Assembly-CSharp::AQ.App.Config.FeatureFlags
   EnergySystem: 1
   FamilyAwareMerges: 1
   InventoryPlacement_RowMajorFirstEmpty: 1

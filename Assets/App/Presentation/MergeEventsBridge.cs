@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
 using AQ.App.Presentation;
-using AQ.Domain.Merge;
-
+/// 
 namespace AQ.App.Presentation
 {
   /// Bridges domain MergePerformed into the presentation layer (stub: log only).
@@ -14,8 +13,8 @@ namespace AQ.App.Presentation
     {
       var bus = GlobalBus.Bus;
       // Typical IEventBus shape: Subscribe<T>(Action<T>) -> IDisposable
-      try { _sub = bus.Subscribe<MergePerformed>(OnMergePerformed); }
-      catch { /* if API differs, ignore for now */ }
+// CLEANUP:       try { _sub = bus.Subscribe<MergePerformed>(OnMergePerformed); }
+      //catch { /* if API differs, ignore for now */ }
     }
 
     void OnDisable()
@@ -24,10 +23,10 @@ namespace AQ.App.Presentation
       _sub = null;
     }
 
-    void OnMergePerformed(MergePerformed e)
-    {
-      Debug.Log($"[MergeEventsBridge] MergePerformed {e.A}+{e.B}→{e.Result}");
-      // TODO: forward to UI systems as needed
-    }
+   /// void OnMergePerformed(MergePerformed e)
+   /// {
+   ///   Debug.Log($"[MergeEventsBridge] MergePerformed {e.A}+{e.B}→{e.Result}");
+   ///   // TODO: forward to UI systems as needed
+   /// }
   }
 }

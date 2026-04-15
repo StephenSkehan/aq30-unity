@@ -1,20 +1,36 @@
+// Assets/Scripts/App/Bootstrap/ConfigInstaller.cs
+using System;
 using UnityEngine;
 using AQ.App.Config;
+using AQ.App.Services;
 
 namespace AQ.App.Bootstrap
 {
     /// <summary>
-    /// Scene-level installer. Drag this onto any boot object in the canonical scene
-    /// and assign the FeatureFlags asset. Does not modify existing controllers.
+    /// Scene bootstrapper: assigns FeatureFlagsRuntime.Current and EnergyRuntime.Config/Manager.
+    /// Put this on any always-loaded object in your starting scene.
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class ConfigInstaller : MonoBehaviour
     {
-        public FeatureFlags FeatureFlags;
+        [Header("Assign from Assets/App/Config")]
+        public FeatureFlags featureFlags;
+        public EnergyConfig energyConfig;
 
-        void Awake()
+        private void Awake()
         {
-            FeatureFlagsRuntime.Current = FeatureFlags;
+            if (featureFlags)
+                FeatureFlagsRuntime.Current = featureFlags;
+
+            if (energyConfig)
+                EnergyRuntime.Config = energyConfig;
+
+            var flags = FeatureFlagsRuntime.Current;
+            if (flags != null && flags.EnergySystem && EnergyRuntime.Config != null && EnergyRuntime.Manager == null)
+            {
+                var cfg = EnergyRuntime.Config;
+                EnergyRuntime.Manager = new EnergyManager(cfg.Start, cfg.Cap, DateTime.UtcNow);
+            }
         }
     }
 }

@@ -1,82 +1,56 @@
 using UnityEngine;
-using AQ.App.Config;
+using UnityEngine.InputSystem; // new Input System
 using AQ.App.Services;
-
-#if ENABLE_INPUT_SYSTEM
-using UnityEngine.InputSystem; // Keyboard
-#endif
 
 namespace AQ.App.Dev
 {
     /// <summary>
-    /// Editor/Dev-only hotkeys for energy testing (no effect in Release):
-    ///   F6 -> +1
-    ///   F7 -> +10
-    ///   F8 -> Fill to Cap
-    /// Works with both the new Input System and the legacy Input Manager.
-    /// Requires FeatureFlags.EnergySystem to be ON.
+    /// Editor/dev hotkeys for adjusting energy:
+    /// F6 = consume 10 (min 0)
+    /// F7 = +5 (no max)
+    /// F8 = +20 (no max)
+    /// HUD is self-updating; no direct HUD calls here.
     /// </summary>
-    [DisallowMultipleComponent]
+    [DefaultExecutionOrder(10000)]
     public sealed class EnergyDevHotkeys : MonoBehaviour
     {
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-        void Update()
+        private EnergyManager _mgr;
+
+        private void Awake()
         {
-            var flags = FeatureFlagsRuntime.Current;
-            if (flags == null || !flags.EnergySystem) return;
-
-            var cfg = EnergyRuntime.Config;
-            var mgr = EnergyRuntime.Manager;
-            if (cfg == null || mgr == null) return;
-
-            // --- New Input System path ---
-#if ENABLE_INPUT_SYSTEM
-            var kb = Keyboard.current;
-            if (kb != null)
-            {
-                if (kb.f6Key.wasPressedThisFrame)
-                {
-                    mgr.AddOverflow(1);
-                    Debug.Log("[EnergyDev] +1");
-                }
-                else if (kb.f7Key.wasPressedThisFrame)
-                {
-                    mgr.AddOverflow(10);
-                    Debug.Log("[EnergyDev] +10");
-                }
-                else if (kb.f8Key.wasPressedThisFrame)
-                {
-                    var add = Mathf.Max(0, mgr.Cap - mgr.Current);
-                    mgr.AddOverflow(add);
-                    Debug.Log("[EnergyDev] Fill to Cap");
-                }
-                return; // handled
-            }
+#if UNITY_EDITOR
+            _mgr = EnergyRuntime.Manager;
 #endif
+        }
 
-            // --- Legacy Input Manager path ---
-#if ENABLE_LEGACY_INPUT_MANAGER
-            if (Input.GetKeyDown(KeyCode.F6))
+        private void Update()
+        {
+#if UNITY_EDITOR
+            // Only run in Editor; safe-guard if Input System isn't ready.
+            var kb = Keyboard.current;
+            if (kb == null) return;
+
+            if (_mgr == null) _mgr = EnergyRuntime.Manager;
+            if (_mgr == null) return;
+
+            // F6: consume 10 (min 0)
+            if (kb.f6Key.wasPressedThisFrame)
             {
-                mgr.AddOverflow(1);
-                Debug.Log("[EnergyDev] +1");
+                _mgr.TryConsume(10);
             }
-            else if (Input.GetKeyDown(KeyCode.F7))
+
+            // F7: add 5 (no max)
+            if (kb.f7Key.wasPressedThisFrame)
             {
-                mgr.AddOverflow(10);
-                Debug.Log("[EnergyDev] +10");
+                _mgr.Add(5);
             }
-            else if (Input.GetKeyDown(KeyCode.F8))
+
+            // F8: add 20 (no max)
+            if (kb.f8Key.wasPressedThisFrame)
             {
-                var add = Mathf.Max(0, mgr.Cap - mgr.Current);
-                mgr.AddOverflow(add);
-                Debug.Log("[EnergyDev] Fill to Cap");
+                _mgr.Add(20);
             }
 #endif
         }
-#else
-        // In release builds this does nothing.
-        void Update() { }
-#endif
     }
 }

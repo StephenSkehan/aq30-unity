@@ -23,7 +23,7 @@ namespace AQ.App.Leads
                 if (!has) continue;
                 var req = data.Requirements[i];
                 icons[i].sprite = req.Icon;
-                labels[i].text = string.IsNullOrEmpty(req.Label) ? req.ItemId : req.Label;
+// CLEANUP:                 labels[i].text = string.IsNullOrEmpty(req.Label) ? req.ItemId : req.Label;
                 ticks[i].enabled = state.IsRequirementMet(i);
             }
         }

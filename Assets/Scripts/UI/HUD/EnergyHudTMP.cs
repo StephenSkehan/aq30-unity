@@ -1,92 +1,81 @@
+// Assets/Scripts/UI/HUD/EnergyHudTMP.cs
 using System;
-using System.Collections;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using AQ.App.Config;
 using AQ.App.Services;
 
 namespace AQ.App.UI.HUD
 {
     /// <summary>
-    /// TextMeshPro version of the Energy HUD.
-    /// - Works with TextMeshProUGUI.
-    /// - Respects FeatureFlags.EnergySystem.
-    /// - Shows "Energy: {current}/{cap} (mm:ss)" countdown when not at cap.
+    /// Simple TMP HUD: "current/cap  (+1 in m:ss)".
+    /// Attach to a TextMeshProUGUI object.
     /// </summary>
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(TextMeshProUGUI))]
     public sealed class EnergyHudTMP : MonoBehaviour
     {
-        [Tooltip("TextMeshProUGUI to update; defaults to component on this GameObject.")]
-        public TextMeshProUGUI target;
+        [Tooltip("Optional explicit label; defaults to this object's TMP component.")]
+        public TextMeshProUGUI label;
 
-        [Tooltip("Update period in seconds.")]
-        [Range(0.05f, 2f)] public float updateInterval = 0.25f;
+        [Tooltip("Update period in seconds for the text (unscaled time).")]
+        [Min(0.03f)]
+        public float refreshSeconds = 0.1f;
 
-        [Tooltip("Show countdown to next regen point when not at cap.")]
-        public bool showCountdown = true;
+        private float _nextAt;
 
-        [Tooltip("Prefix shown before the numbers.")]
-        public string prefix = "Energy: ";
-
-        void Awake()
+        private void Awake()
         {
-            if (!target) target = GetComponent<TextMeshProUGUI>();
+            if (!label) label = GetComponent<TextMeshProUGUI>();
         }
 
-        void OnEnable()
+        private void Update()
         {
-            StartCoroutine(Run());
-        }
-
-        void OnDisable()
-        {
-            StopAllCoroutines();
-        }
-
-        IEnumerator Run()
-        {
-            var wait = new WaitForSeconds(updateInterval > 0f ? updateInterval : 0.25f);
-            while (true)
-            {
-                UpdateText();
-                yield return wait;
-            }
-        }
-
-        void UpdateText()
-        {
-            if (!target) return;
+            if (Time.unscaledTime < _nextAt) return;
+            _nextAt = Time.unscaledTime + refreshSeconds;
 
             var flags = FeatureFlagsRuntime.Current;
             if (flags == null || !flags.EnergySystem)
             {
-                target.text = prefix + "—";
+                if (label) label.text = string.Empty;
                 return;
             }
 
             var cfg = EnergyRuntime.Config;
-            var mgr = EnergyRuntime.Manager;
-            if (cfg == null || mgr == null)
+            if (cfg == null)
             {
-                target.text = prefix + "—";
+                if (label) label.text = "energy: (no config)";
                 return;
             }
 
-            var now = DateTime.UtcNow;
-            mgr.TickNow(cfg.RegenSecondsPerPoint, now);
-
-            string suffix = "";
-            if (showCountdown && mgr.Current < mgr.Cap && cfg.RegenSecondsPerPoint > 0)
+            var mgr = EnergyRuntime.Manager;
+            if (mgr == null)
             {
-                var elapsed = (int)(now - mgr.LastTickUtc).TotalSeconds;
-                int rem = cfg.RegenSecondsPerPoint - (elapsed % cfg.RegenSecondsPerPoint);
-                if (rem == cfg.RegenSecondsPerPoint) rem = 0;
-                int mm = rem / 60;
-                int ss = rem % 60;
-                suffix = $" ({mm:00}:{ss:00})";
+                // Create a baseline manager if something else hasn't already.
+                mgr = EnergyRuntime.Manager = new EnergyManager(cfg.Start, cfg.Cap, DateTime.UtcNow);
             }
 
-            target.text = $"{prefix}{mgr.Current}/{mgr.Cap}{suffix}";
+            mgr.TickNow(cfg.RegenSecondsPerPoint, DateTime.UtcNow);
+
+            string text;
+            string text2;
+            if (mgr.Current >= cfg.Cap)
+            {
+                text = $"{mgr.Current}";
+            }
+            else
+            {
+                int sp = Mathf.Max(1, cfg.RegenSecondsPerPoint);
+                int since = Mathf.Max(0, (int)(DateTime.UtcNow - mgr.LastTickUtc).TotalSeconds);
+                int until = sp - (since % sp);
+                int m = until / 60;
+                int s = until % 60;
+                text = $"{mgr.Current}"; 
+                text2 = $"(+1 in {m}:{s:00})";
+
+            }
+
+            if (label) label.text = text;
         }
     }
 }
