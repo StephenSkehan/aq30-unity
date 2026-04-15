@@ -7,24 +7,15 @@ namespace AQ.App.Leads
     [Serializable]
     public struct LeadRequirement
     {
-        // Serialized fields (keep these names for asset compatibility)
         [SerializeField] private string label;
-// CLEANUP:         [SerializeField] private string itemId;          // optional: an internal id / key (was referenced by runtime)
         [SerializeField] private Sprite icon;
         [SerializeField] private bool satisfied;
 
-        // Backwards/forwards-compatible API (matches callers in LeadCardView & LeadRequirementsHUD)
         public string Label
         {
             get => label;
             set => label = value;
         }
-
-// CLEANUP:         public string ItemId
-       // {
-// CLEANUP:             get => itemId;
-// CLEANUP:             set => itemId = value;
-      //  }
 
         public Sprite Icon
         {
@@ -39,10 +30,5 @@ namespace AQ.App.Leads
             get => satisfied;
             set => satisfied = value;
         }
-
-        // Also expose lowercase aliases for any newer code using fields (non-breaking).
-        // (Unity serializes private fields above; these aliases are helpers only.)
-        public string labelRef => label;
-        public Sprite iconRef => icon;
     }
 }

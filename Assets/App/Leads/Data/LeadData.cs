@@ -13,17 +13,35 @@ namespace AQ.App.Leads
     [CreateAssetMenu(fileName = "Lead", menuName = "AQ/Leads/Lead", order = 10)]
     public sealed class LeadData : ScriptableObject
     {
-        [Header("Display")]
+        [Header("Identity")]
         public string leadId = System.Guid.NewGuid().ToString("N");
+
+        [Header("Display")]
         public string title = "Demo Lead";
-        [TextArea(1, 3)] public string subtitle = "Collect deli CCTV";
+        [TextArea(1, 3)] public string subtitle = "";
         public Sprite actorPortrait;
 
         [Header("State")]
         public LeadState state = LeadState.Available;
 
+        [Header("Action")]
+        public LeadActionType ActionType;
+        [Range(0, 10)] public int EnergyCost = 0;
+
         [Header("Requirements (max 3 recommended)")]
         public LeadRequirement[] requirements = System.Array.Empty<LeadRequirement>();
+
+        [Header("Outcomes")]
+        public string[] EvidenceIds;
+        public string[] SpawnLeadIds;
+        public string[] NarrativeFlags;
+        public int SoftCurrency;
+        public int EnergyGrant;
+
+        [Header("UI")]
+        public LeadOutcomeHint OutcomeHints;
+
+        // ---- Logic ----
 
         public bool IsReady()
         {
@@ -43,9 +61,9 @@ namespace AQ.App.Leads
             if (requirements == null) return;
             if ((uint)index >= (uint)requirements.Length) return;
 
-            // struct-in-array: copy → mutate via public setter → assign back
+            // struct-in-array: copy → mutate → assign back
             var r = requirements[index];
-            r.Satisfied = value;          // <-- use property, not private field
+            r.Satisfied = value;
             requirements[index] = r;
 
 #if UNITY_EDITOR

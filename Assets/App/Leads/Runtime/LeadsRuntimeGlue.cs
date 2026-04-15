@@ -53,7 +53,6 @@ namespace AQ.App.Leads
         {
             if (repo == null || bar == null) return;
 
-            // IMPORTANT: bar.Rebuild expects IReadOnlyList<LeadCardSO>.
             bar.Rebuild(repo.CurrentLeads);
         }
     }

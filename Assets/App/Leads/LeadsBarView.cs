@@ -8,7 +8,7 @@ namespace AQ.App.Leads
     /// <summary>
     /// Minimal, robust Leads bar:
     /// - Spawns card prefabs under a horizontal content root
-    /// - Raises ProceedRequested(LeadCardSO) when a card's proceed button is clicked
+    /// - Raises ProceedRequested(LeadData) when a card's proceed button is clicked
     /// - ApplyOutcome disables that card's proceed (visual safety) without repo coupling
     /// - Exposes Rebuild() and Rebuild(list) so any glue/repo can drive it
     /// </summary>
@@ -20,11 +20,11 @@ namespace AQ.App.Leads
         public LeadCardView cardPrefab;         // Lead card prefab with LeadCardView (or at least the expected children)
 
         // Event consumed by BoardPresenter
-        public event Action<LeadCardSO> ProceedRequested;
+        public event Action<LeadData> ProceedRequested;
 
         // Internal runtime state
         readonly List<LeadCardView> _spawned = new List<LeadCardView>();
-        readonly Dictionary<LeadCardSO, Button> _proceedByLead = new Dictionary<LeadCardSO, Button>();
+        readonly Dictionary<LeadData, Button> _proceedByLead = new Dictionary<LeadData, Button>();
 
         // Optional: a repo can be bound by external glue; we don't assume any API on it.
         UnityEngine.Object _boundRepo;
@@ -57,7 +57,7 @@ namespace AQ.App.Leads
         /// <summary>
         /// Replace all cards with the provided list.
         /// </summary>
-        public void Rebuild(IReadOnlyList<LeadCardSO> leads)
+        public void Rebuild(IReadOnlyList<LeadData> leads)
         {
             if (contentRoot == null || cardPrefab == null) return;
 
@@ -105,7 +105,7 @@ namespace AQ.App.Leads
         /// Called by BoardPresenter after an action resolves (visual safety).
         /// Disables the proceed button for the supplied lead if we spawned one.
         /// </summary>
-        public void ApplyOutcome(LeadCardSO lead)
+        public void ApplyOutcome(LeadData lead)
         {
             if (lead == null) return;
             if (_proceedByLead.TryGetValue(lead, out var btn) && btn != null)
