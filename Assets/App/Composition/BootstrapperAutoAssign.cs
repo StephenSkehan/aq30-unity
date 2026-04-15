@@ -3,8 +3,14 @@
 namespace AQ.App
 {
     /// <summary>
-    /// After scene load, ensure every MergeInputAdapter has a MergeService.
-    /// Creates one shared MergeService (DontDestroyOnLoad) and assigns it to any null adapters.
+    /// Single app bootstrapper. Runs automatically after every scene load.
+    ///
+    /// Responsibilities:
+    ///   1. Ensure exactly one MergeService exists (creates a DontDestroyOnLoad host if none).
+    ///   2. Assign that service to any MergeInputAdapter whose mergeService field is null.
+    ///
+    /// AfterSceneLoad timing is intentional: adapters are guaranteed to be present
+    /// before this method runs, so FindObjectsByType returns the full set.
     /// </summary>
     public static class BootstrapperAutoAssign
     {
@@ -13,15 +19,13 @@ namespace AQ.App
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void EnsureMergeService()
         {
-            // Lazily create a single shared service
             if (_shared == null)
             {
-                var host = new GameObject("~DefaultMergeService");
+                var host = new GameObject("~MergeService");
                 Object.DontDestroyOnLoad(host);
                 _shared = host.AddComponent<MergeService>();
             }
 
-            // New API to avoid obsolete warnings
             var adapters = Object.FindObjectsByType<MergeInputAdapter>(FindObjectsSortMode.None);
             foreach (var a in adapters)
             {
