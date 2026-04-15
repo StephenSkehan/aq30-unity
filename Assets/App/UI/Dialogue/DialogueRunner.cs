@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace AQ.App
@@ -32,7 +31,11 @@ namespace AQ.App
         private bool _booted = false;
         private bool _waitingForAudio = false;
 
-        // History for back button
+        // Filtered choices for the currently displayed node.
+        // OnChoice indexes into this, not the raw choices array.
+        private CaseGraph.Choice[] _filteredChoices = System.Array.Empty<CaseGraph.Choice>();
+
+        // History for back button (capped at 50)
         private Stack<string> _history = new Stack<string>();
         public bool CanGoBack => _history.Count > 0;
 
@@ -178,25 +181,12 @@ namespace AQ.App
                 return;
             }
 
-            var n = Graph.Get(_currentId);
-            if (n == null || n.choices == null || idx < 0 || idx >= n.choices.Length)
-                return;
+            // Index into the filtered set — idx is a button index, not a raw choices index
+            if (idx < 0 || idx >= _filteredChoices.Length) return;
 
-            var choice = n.choices[idx];
-
-            // Check if choice has flag requirement
-            if (!string.IsNullOrEmpty(choice.requiresFlag))
-            {
-                if (!DialogueFlags.Has(choice.requiresFlag))
-                {
-                    Debug.LogWarning($"[DialogueRunner] Choice blocked - missing flag: {choice.requiresFlag}");
-                    return;
-                }
-            }
-
-            var next = choice.nextId;
-            if (!string.IsNullOrEmpty(next))
-                ShowNode(next);
+            var choice = _filteredChoices[idx];
+            if (!string.IsNullOrEmpty(choice.nextId))
+                ShowNode(choice.nextId);
             else
                 End();
         }
@@ -243,20 +233,9 @@ namespace AQ.App
 
         void ShowNode(string id)
         {
-            // Save current to history before advancing
-            if (!string.IsNullOrEmpty(_currentId) && _currentId != id)
-            {
+            // Save current to history before advancing (cap at 50 entries)
+            if (!string.IsNullOrEmpty(_currentId) && _currentId != id && _history.Count < 50)
                 _history.Push(_currentId);
-                
-                // Limit history size to prevent memory issues
-                if (_history.Count > 50)
-                {
-                    // Convert to list, remove oldest, convert back
-                    var temp = new List<string>(_history);
-                    temp.RemoveAt(temp.Count - 1);
-                    _history = new Stack<string>(temp);
-                }
-            }
 
             _currentId = id;
             var n = Graph.Get(id);
@@ -324,8 +303,9 @@ namespace AQ.App
             else if (Panel.Body)
                 Panel.Body.text = n.line;
 
-            // Bind node to controller (updates portrait, choices, etc.)
-            Panel.BindNode(n);
+            // Filter choices and bind — ChoiceFilter is the single place for flag logic
+            _filteredChoices = ChoiceFilter.GetAvailable(n.choices);
+            Panel.BindNode(n, _filteredChoices);
 
             // Update back button visibility
             Panel.UpdateBackButton(CanGoBack);

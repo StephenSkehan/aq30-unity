@@ -78,22 +78,21 @@ namespace AQ.App
 
         /// <summary>
         /// Bind node data to UI elements.
+        /// visibleChoices is the pre-filtered set from ChoiceFilter.GetAvailable —
+        /// the controller just renders what it receives.
         /// </summary>
-        public void BindNode(CaseGraph.Node n)
+        public void BindNode(CaseGraph.Node n, CaseGraph.Choice[] visibleChoices)
         {
             if (n == null) return;
 
-            // Update text
             if (Speaker) Speaker.text = n.speaker ?? "";
             if (Body) Body.text = n.line ?? "";
 
-            // Update portrait
             UpdatePortrait(n.portrait, n.emotion);
 
-            // Update choices or show advance button
-            if (n.choices != null && n.choices.Length > 0)
+            if (visibleChoices != null && visibleChoices.Length > 0)
             {
-                BindChoices(n.choices);
+                BindChoices(visibleChoices);
                 ShowChoices(true);
             }
             else
@@ -127,41 +126,16 @@ namespace AQ.App
         {
             if (ChoiceButtons == null || ChoiceLabels == null) return;
 
-            int validChoiceIndex = 0;
-
-            for (int i = 0; i < choices.Length; i++)
+            for (int i = 0; i < choices.Length && i < ChoiceButtons.Length; i++)
             {
-                var choice = choices[i];
-
-                // Check if choice has flag requirement
-                bool isAvailable = true;
-                if (!string.IsNullOrEmpty(choice.requiresFlag))
-                {
-                    isAvailable = DialogueFlags.Has(choice.requiresFlag);
-                }
-
-                // Skip unavailable choices
-                if (!isAvailable) continue;
-
-                // Show this choice if we have a button for it
-                if (validChoiceIndex < ChoiceButtons.Length)
-                {
-                    ChoiceButtons[validChoiceIndex].gameObject.SetActive(true);
-
-                    if (validChoiceIndex < ChoiceLabels.Length)
-                    {
-                        ChoiceLabels[validChoiceIndex].text = choice.text;
-                    }
-
-                    validChoiceIndex++;
-                }
+                ChoiceButtons[i].gameObject.SetActive(true);
+                if (i < ChoiceLabels.Length)
+                    ChoiceLabels[i].text = choices[i].text;
             }
 
             // Hide unused buttons
-            for (int i = validChoiceIndex; i < ChoiceButtons.Length; i++)
-            {
+            for (int i = choices.Length; i < ChoiceButtons.Length; i++)
                 ChoiceButtons[i].gameObject.SetActive(false);
-            }
         }
 
         void ShowChoices(bool on)
