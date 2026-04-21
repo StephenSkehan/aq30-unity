@@ -3,7 +3,6 @@
   "rootNamespace": "AQ.Editor",
   "references": [
     "AQ.SharedKernel",
-    "AQ.Domain.Merge",
     "Unity.TextMeshPro",
     "UnityEngine.UI",
     "Unity.InputSystem",
