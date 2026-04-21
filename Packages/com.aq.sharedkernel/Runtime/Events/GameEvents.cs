@@ -24,4 +24,26 @@ namespace AQ.SharedKernel.Events
     }
 
     public readonly struct FirstMergeObserved : IGameEvent { }
+
+    /// <summary>
+    /// Fired by MergeEventsBridge whenever a new item is placed on the board
+    /// (from a generator spawn or a merge result). Used by LeadRequirementChecker
+    /// to auto-satisfy lead requirements.
+    /// </summary>
+    public readonly struct ItemCreatedOnBoard : IGameEvent
+    {
+        /// <summary>Matches ItemDefinitionSO.itemId (e.g. "forensic_laptop").</summary>
+        public readonly string ItemId;
+        /// <summary>Matches MergeBoardController family key (e.g. "forensic_tools").</summary>
+        public readonly string Family;
+        /// <summary>0-based tier (T1 item = 0).</summary>
+        public readonly int Tier;
+
+        public ItemCreatedOnBoard(string itemId, string family, int tier)
+        {
+            ItemId = itemId;
+            Family = family;
+            Tier   = tier;
+        }
+    }
 }

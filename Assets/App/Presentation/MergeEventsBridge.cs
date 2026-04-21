@@ -1,32 +1,43 @@
-using System;
 using UnityEngine;
-using AQ.App.Presentation;
-/// 
+using AQ.App.Items;
+using AQ.App.UI.Board;
+using AQ.SharedKernel.Events;
+
 namespace AQ.App.Presentation
 {
-  /// Bridges domain MergePerformed into the presentation layer (stub: log only).
-  public sealed class MergeEventsBridge : MonoBehaviour
-  {
-    IDisposable _sub;
-
-    void OnEnable()
+    /// <summary>
+    /// Bridges MergeBoardController's static OnItemCreated event into the GlobalBus
+    /// as an ItemCreatedOnBoard domain event. This keeps the board controller ignorant
+    /// of the bus and the lead system ignorant of the board controller.
+    /// </summary>
+    public sealed class MergeEventsBridge : MonoBehaviour
     {
-      var bus = GlobalBus.Bus;
-      // Typical IEventBus shape: Subscribe<T>(Action<T>) -> IDisposable
-// CLEANUP:       try { _sub = bus.Subscribe<MergePerformed>(OnMergePerformed); }
-      //catch { /* if API differs, ignore for now */ }
-    }
+        [SerializeField] private ItemRegistry _registry;
 
-    void OnDisable()
-    {
-      try { _sub?.Dispose(); } catch {}
-      _sub = null;
-    }
+        private void Awake()
+        {
+            if (!_registry) _registry = FindAnyObjectByType<ItemRegistry>();
+        }
 
-   /// void OnMergePerformed(MergePerformed e)
-   /// {
-   ///   Debug.Log($"[MergeEventsBridge] MergePerformed {e.A}+{e.B}→{e.Result}");
-   ///   // TODO: forward to UI systems as needed
-   /// }
-  }
+        private void OnEnable()
+        {
+            MergeBoardController.OnItemCreated += HandleItemCreated;
+        }
+
+        private void OnDisable()
+        {
+            MergeBoardController.OnItemCreated -= HandleItemCreated;
+        }
+
+        private void HandleItemCreated(string family, int tier)
+        {
+            var def = _registry != null ? _registry.Find(family, tier) : null;
+
+            // Fall back to a synthetic id so events still flow even before all
+            // ItemDefinitionSOs are authored. The checker will simply find no match.
+            var itemId = def != null ? def.itemId : string.Empty;
+
+            GlobalBus.Bus.Publish(new ItemCreatedOnBoard(itemId, family, tier));
+        }
+    }
 }

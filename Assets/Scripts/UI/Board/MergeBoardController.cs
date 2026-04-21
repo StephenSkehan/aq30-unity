@@ -53,6 +53,13 @@ namespace AQ.App.UI.Board
         // Family mapping (in-memory)
         private readonly Dictionary<BoardTileView, string> familyKeyByTile = new();
 
+        /// <summary>
+        /// Fired after any board action that places a new item (spawn or merge result).
+        /// Parameters: (family, tier) — consumed by MergeEventsBridge to publish
+        /// ItemCreatedOnBoard on the GlobalBus for lead requirement matching.
+        /// </summary>
+        public static event Action<string, int> OnItemCreated;
+
         // ---------------- Unity lifecycle ----------------
 
         private void Awake()
@@ -186,6 +193,7 @@ namespace AQ.App.UI.Board
             from.Clear();
             familyKeyByTile.Remove(from);
             Log($"MergeTiles (Item): {newTier - 1}+{newTier - 1}->{newTier}");
+            OnItemCreated?.Invoke(fam, newTier);
         }
 
         private void SpawnFromGenerator(BoardTileView generator)
@@ -235,6 +243,7 @@ namespace AQ.App.UI.Board
             SetFamily(v, genFamily);
 
             Log($"Spawned item T{tier + 1} at ({r},{c}) family={genFamily}.");
+            OnItemCreated?.Invoke(genFamily, tier);
         }
 
         // ---------------- Visuals & content ----------------

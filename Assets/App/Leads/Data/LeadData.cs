@@ -73,10 +73,8 @@ namespace AQ.App.Leads
             var r = requirements[index];
             r.Satisfied = value;
             requirements[index] = r;
-
-#if UNITY_EDITOR
-            UnityEditor.EditorUtility.SetDirty(this);
-#endif
+            // Note: intentionally no EditorUtility.SetDirty — satisfaction is runtime
+            // state only and must not be baked into the SO asset on disk.
         }
     }
 }

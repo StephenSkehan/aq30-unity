@@ -53,10 +53,16 @@ namespace AQ.App.Leads
             Broadcast();
         }
 
-        private void Broadcast()
+        /// <summary>
+        /// Call after mutating lead state outside the repository (e.g. from
+        /// LeadRequirementChecker) to push the updated list to all UI subscribers.
+        /// </summary>
+        public void NotifyChanged()
         {
             LeadsChanged?.Invoke();
             LeadsRuntimeBus.BroadcastAll(CurrentLeads);
         }
+
+        private void Broadcast() => NotifyChanged();
     }
 }
