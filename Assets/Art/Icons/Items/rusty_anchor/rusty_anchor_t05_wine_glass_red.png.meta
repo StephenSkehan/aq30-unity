@@ -1,0 +1,6292 @@
+fileFormatVersion: 2
+guid: 2138b6f57afee0741bc35b735969f948
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7839025707852785261
+    second: rusty_anchor_t05_wine_glass_red_0
+  - first:
+      213: -6555482227410963147
+    second: rusty_anchor_t05_wine_glass_red_1
+  - first:
+      213: -7299058874943626876
+    second: rusty_anchor_t05_wine_glass_red_2
+  - first:
+      213: -8110443451755854861
+    second: rusty_anchor_t05_wine_glass_red_3
+  - first:
+      213: 5647918668321324587
+    second: rusty_anchor_t05_wine_glass_red_4
+  - first:
+      213: 2944980861277962602
+    second: rusty_anchor_t05_wine_glass_red_5
+  - first:
+      213: 4754723110196634630
+    second: rusty_anchor_t05_wine_glass_red_6
+  - first:
+      213: -1712766891481187358
+    second: rusty_anchor_t05_wine_glass_red_7
+  - first:
+      213: -967858396477012934
+    second: rusty_anchor_t05_wine_glass_red_8
+  - first:
+      213: -3229346632609539489
+    second: rusty_anchor_t05_wine_glass_red_9
+  - first:
+      213: -5151921180800071428
+    second: rusty_anchor_t05_wine_glass_red_10
+  - first:
+      213: 7892357002995397982
+    second: rusty_anchor_t05_wine_glass_red_11
+  - first:
+      213: -3411916730778326888
+    second: rusty_anchor_t05_wine_glass_red_12
+  - first:
+      213: 5863638803604539459
+    second: rusty_anchor_t05_wine_glass_red_13
+  - first:
+      213: 4223934461913845841
+    second: rusty_anchor_t05_wine_glass_red_14
+  - first:
+      213: 2440699576558208229
+    second: rusty_anchor_t05_wine_glass_red_15
+  - first:
+      213: 5259997175751929068
+    second: rusty_anchor_t05_wine_glass_red_16
+  - first:
+      213: -4362302015911764741
+    second: rusty_anchor_t05_wine_glass_red_17
+  - first:
+      213: 3529081483621909349
+    second: rusty_anchor_t05_wine_glass_red_18
+  - first:
+      213: -9001554616168417970
+    second: rusty_anchor_t05_wine_glass_red_19
+  - first:
+      213: -6772628590045341686
+    second: rusty_anchor_t05_wine_glass_red_20
+  - first:
+      213: 3668576188393262827
+    second: rusty_anchor_t05_wine_glass_red_21
+  - first:
+      213: -2463556863705026942
+    second: rusty_anchor_t05_wine_glass_red_22
+  - first:
+      213: -6333179012545922071
+    second: rusty_anchor_t05_wine_glass_red_23
+  - first:
+      213: 3315243863801067011
+    second: rusty_anchor_t05_wine_glass_red_24
+  - first:
+      213: -6934613307986893018
+    second: rusty_anchor_t05_wine_glass_red_25
+  - first:
+      213: -639340660412394696
+    second: rusty_anchor_t05_wine_glass_red_26
+  - first:
+      213: -502615319956116415
+    second: rusty_anchor_t05_wine_glass_red_27
+  - first:
+      213: -6495187836065009480
+    second: rusty_anchor_t05_wine_glass_red_28
+  - first:
+      213: -4911921699464411011
+    second: rusty_anchor_t05_wine_glass_red_29
+  - first:
+      213: 8338332639958105280
+    second: rusty_anchor_t05_wine_glass_red_30
+  - first:
+      213: 7763675338383794313
+    second: rusty_anchor_t05_wine_glass_red_31
+  - first:
+      213: -2918578561024084969
+    second: rusty_anchor_t05_wine_glass_red_32
+  - first:
+      213: -4022626498682965473
+    second: rusty_anchor_t05_wine_glass_red_33
+  - first:
+      213: -2038329429266509340
+    second: rusty_anchor_t05_wine_glass_red_34
+  - first:
+      213: -8699408931075906272
+    second: rusty_anchor_t05_wine_glass_red_35
+  - first:
+      213: 3735399456925219640
+    second: rusty_anchor_t05_wine_glass_red_36
+  - first:
+      213: -3467640773384793050
+    second: rusty_anchor_t05_wine_glass_red_37
+  - first:
+      213: -5105677975088654725
+    second: rusty_anchor_t05_wine_glass_red_38
+  - first:
+      213: 164210419076733139
+    second: rusty_anchor_t05_wine_glass_red_39
+  - first:
+      213: 3761930270385812089
+    second: rusty_anchor_t05_wine_glass_red_40
+  - first:
+      213: -9128947515741671621
+    second: rusty_anchor_t05_wine_glass_red_41
+  - first:
+      213: 7276844578323950542
+    second: rusty_anchor_t05_wine_glass_red_42
+  - first:
+      213: 7253133149824443166
+    second: rusty_anchor_t05_wine_glass_red_43
+  - first:
+      213: 6545638050350338497
+    second: rusty_anchor_t05_wine_glass_red_44
+  - first:
+      213: -2641493240541973742
+    second: rusty_anchor_t05_wine_glass_red_45
+  - first:
+      213: 8629848931152461227
+    second: rusty_anchor_t05_wine_glass_red_46
+  - first:
+      213: 6491988843365837849
+    second: rusty_anchor_t05_wine_glass_red_47
+  - first:
+      213: 185515974715858957
+    second: rusty_anchor_t05_wine_glass_red_48
+  - first:
+      213: 3033523708133143548
+    second: rusty_anchor_t05_wine_glass_red_49
+  - first:
+      213: 8684556141166568022
+    second: rusty_anchor_t05_wine_glass_red_50
+  - first:
+      213: 523166054647572717
+    second: rusty_anchor_t05_wine_glass_red_51
+  - first:
+      213: -5428420931521299783
+    second: rusty_anchor_t05_wine_glass_red_52
+  - first:
+      213: -5044384315452381074
+    second: rusty_anchor_t05_wine_glass_red_53
+  - first:
+      213: 7485997052937173085
+    second: rusty_anchor_t05_wine_glass_red_54
+  - first:
+      213: -8238962850152872144
+    second: rusty_anchor_t05_wine_glass_red_55
+  - first:
+      213: 5046979690658364199
+    second: rusty_anchor_t05_wine_glass_red_56
+  - first:
+      213: 8097337920657892880
+    second: rusty_anchor_t05_wine_glass_red_57
+  - first:
+      213: 5989237879102385956
+    second: rusty_anchor_t05_wine_glass_red_58
+  - first:
+      213: 5706770770580275353
+    second: rusty_anchor_t05_wine_glass_red_59
+  - first:
+      213: -6568468012582014236
+    second: rusty_anchor_t05_wine_glass_red_60
+  - first:
+      213: 6690837717473336445
+    second: rusty_anchor_t05_wine_glass_red_61
+  - first:
+      213: -7214276593651994390
+    second: rusty_anchor_t05_wine_glass_red_62
+  - first:
+      213: -8115232659528727091
+    second: rusty_anchor_t05_wine_glass_red_63
+  - first:
+      213: -8467122686458434943
+    second: rusty_anchor_t05_wine_glass_red_64
+  - first:
+      213: 5660152014302061321
+    second: rusty_anchor_t05_wine_glass_red_65
+  - first:
+      213: 7855067267212254329
+    second: rusty_anchor_t05_wine_glass_red_66
+  - first:
+      213: -6288600711413856862
+    second: rusty_anchor_t05_wine_glass_red_67
+  - first:
+      213: -5396652209864027533
+    second: rusty_anchor_t05_wine_glass_red_68
+  - first:
+      213: -4359163010067084337
+    second: rusty_anchor_t05_wine_glass_red_69
+  - first:
+      213: 257660499600844373
+    second: rusty_anchor_t05_wine_glass_red_70
+  - first:
+      213: 7103288350040416377
+    second: rusty_anchor_t05_wine_glass_red_71
+  - first:
+      213: 19896572556101731
+    second: rusty_anchor_t05_wine_glass_red_72
+  - first:
+      213: 4012793548036101761
+    second: rusty_anchor_t05_wine_glass_red_73
+  - first:
+      213: 957753643921095435
+    second: rusty_anchor_t05_wine_glass_red_74
+  - first:
+      213: 5931683476216610534
+    second: rusty_anchor_t05_wine_glass_red_75
+  - first:
+      213: 5884470518271563024
+    second: rusty_anchor_t05_wine_glass_red_76
+  - first:
+      213: -5395615920596783383
+    second: rusty_anchor_t05_wine_glass_red_77
+  - first:
+      213: -2203569657896800064
+    second: rusty_anchor_t05_wine_glass_red_78
+  - first:
+      213: -8183879997778771404
+    second: rusty_anchor_t05_wine_glass_red_79
+  - first:
+      213: -2913655509240793306
+    second: rusty_anchor_t05_wine_glass_red_80
+  - first:
+      213: -1132861403299491427
+    second: rusty_anchor_t05_wine_glass_red_81
+  - first:
+      213: 7886466625513239716
+    second: rusty_anchor_t05_wine_glass_red_82
+  - first:
+      213: 5177712071044164086
+    second: rusty_anchor_t05_wine_glass_red_83
+  - first:
+      213: -8168377842763898680
+    second: rusty_anchor_t05_wine_glass_red_84
+  - first:
+      213: 4637120519224464331
+    second: rusty_anchor_t05_wine_glass_red_85
+  - first:
+      213: -3814644584624765440
+    second: rusty_anchor_t05_wine_glass_red_86
+  - first:
+      213: 768884231138300477
+    second: rusty_anchor_t05_wine_glass_red_87
+  - first:
+      213: 7073090203190319298
+    second: rusty_anchor_t05_wine_glass_red_88
+  - first:
+      213: -676444940947623882
+    second: rusty_anchor_t05_wine_glass_red_89
+  - first:
+      213: 6444637591116257959
+    second: rusty_anchor_t05_wine_glass_red_90
+  - first:
+      213: -2569555879776349915
+    second: rusty_anchor_t05_wine_glass_red_91
+  - first:
+      213: -6081662346374085221
+    second: rusty_anchor_t05_wine_glass_red_92
+  - first:
+      213: -4514874846932317136
+    second: rusty_anchor_t05_wine_glass_red_93
+  - first:
+      213: 5818895368586566852
+    second: rusty_anchor_t05_wine_glass_red_94
+  - first:
+      213: -3695331206837442373
+    second: rusty_anchor_t05_wine_glass_red_95
+  - first:
+      213: 35491994939944637
+    second: rusty_anchor_t05_wine_glass_red_96
+  - first:
+      213: -5408407180718442225
+    second: rusty_anchor_t05_wine_glass_red_97
+  - first:
+      213: -8186318669498814078
+    second: rusty_anchor_t05_wine_glass_red_98
+  - first:
+      213: 7175704032169288582
+    second: rusty_anchor_t05_wine_glass_red_99
+  - first:
+      213: -8035491988896086307
+    second: rusty_anchor_t05_wine_glass_red_100
+  - first:
+      213: -5307080565227420493
+    second: rusty_anchor_t05_wine_glass_red_101
+  - first:
+      213: -1110279017318295293
+    second: rusty_anchor_t05_wine_glass_red_102
+  - first:
+      213: -2611614204355222134
+    second: rusty_anchor_t05_wine_glass_red_103
+  - first:
+      213: 649127215511829221
+    second: rusty_anchor_t05_wine_glass_red_104
+  - first:
+      213: 1724965214777002335
+    second: rusty_anchor_t05_wine_glass_red_105
+  - first:
+      213: 2064208252926487384
+    second: rusty_anchor_t05_wine_glass_red_106
+  - first:
+      213: 4144777065204458086
+    second: rusty_anchor_t05_wine_glass_red_107
+  - first:
+      213: 919364298856243617
+    second: rusty_anchor_t05_wine_glass_red_108
+  - first:
+      213: -2895461014345380593
+    second: rusty_anchor_t05_wine_glass_red_109
+  - first:
+      213: 2863860594657492209
+    second: rusty_anchor_t05_wine_glass_red_110
+  - first:
+      213: 4029915338827066212
+    second: rusty_anchor_t05_wine_glass_red_111
+  - first:
+      213: 3453747653776984786
+    second: rusty_anchor_t05_wine_glass_red_112
+  - first:
+      213: 7613016120730072491
+    second: rusty_anchor_t05_wine_glass_red_113
+  - first:
+      213: -5898464639181055128
+    second: rusty_anchor_t05_wine_glass_red_114
+  - first:
+      213: 5123964547079491360
+    second: rusty_anchor_t05_wine_glass_red_115
+  - first:
+      213: -6836833408731356935
+    second: rusty_anchor_t05_wine_glass_red_116
+  - first:
+      213: 2090278139795784806
+    second: rusty_anchor_t05_wine_glass_red_117
+  - first:
+      213: 5108829179455731355
+    second: rusty_anchor_t05_wine_glass_red_118
+  - first:
+      213: -9143918309223101682
+    second: rusty_anchor_t05_wine_glass_red_119
+  - first:
+      213: -3789452238537748573
+    second: rusty_anchor_t05_wine_glass_red_120
+  - first:
+      213: -1870787621925171787
+    second: rusty_anchor_t05_wine_glass_red_121
+  - first:
+      213: 3786665596588548963
+    second: rusty_anchor_t05_wine_glass_red_122
+  - first:
+      213: -301521853800601645
+    second: rusty_anchor_t05_wine_glass_red_123
+  - first:
+      213: 3313304021815927898
+    second: rusty_anchor_t05_wine_glass_red_124
+  - first:
+      213: 6298842643378878964
+    second: rusty_anchor_t05_wine_glass_red_125
+  - first:
+      213: 8159222739887272555
+    second: rusty_anchor_t05_wine_glass_red_126
+  - first:
+      213: 7838565063049392926
+    second: rusty_anchor_t05_wine_glass_red_127
+  - first:
+      213: 629148418421308649
+    second: rusty_anchor_t05_wine_glass_red_128
+  - first:
+      213: -8559655377584707312
+    second: rusty_anchor_t05_wine_glass_red_129
+  - first:
+      213: -5671257755168563167
+    second: rusty_anchor_t05_wine_glass_red_130
+  - first:
+      213: -6248517268312372267
+    second: rusty_anchor_t05_wine_glass_red_131
+  - first:
+      213: 6206982156418140181
+    second: rusty_anchor_t05_wine_glass_red_132
+  - first:
+      213: -3300032119279267569
+    second: rusty_anchor_t05_wine_glass_red_133
+  - first:
+      213: -1344218119303911529
+    second: rusty_anchor_t05_wine_glass_red_134
+  - first:
+      213: 6702687936615392470
+    second: rusty_anchor_t05_wine_glass_red_135
+  - first:
+      213: 6439322054838475477
+    second: rusty_anchor_t05_wine_glass_red_136
+  - first:
+      213: 2738081773527258238
+    second: rusty_anchor_t05_wine_glass_red_137
+  - first:
+      213: -5824824422850511886
+    second: rusty_anchor_t05_wine_glass_red_138
+  - first:
+      213: 3803884111579405891
+    second: rusty_anchor_t05_wine_glass_red_139
+  - first:
+      213: 7996546790076287144
+    second: rusty_anchor_t05_wine_glass_red_140
+  - first:
+      213: 1259323870785693711
+    second: rusty_anchor_t05_wine_glass_red_141
+  - first:
+      213: -6589248782752554020
+    second: rusty_anchor_t05_wine_glass_red_142
+  - first:
+      213: -2880480082824910183
+    second: rusty_anchor_t05_wine_glass_red_143
+  - first:
+      213: 6285186057713542255
+    second: rusty_anchor_t05_wine_glass_red_144
+  - first:
+      213: -7294085763516313029
+    second: rusty_anchor_t05_wine_glass_red_145
+  - first:
+      213: -1899242502877455883
+    second: rusty_anchor_t05_wine_glass_red_146
+  - first:
+      213: 5610009239801910828
+    second: rusty_anchor_t05_wine_glass_red_147
+  - first:
+      213: 5478870150850465057
+    second: rusty_anchor_t05_wine_glass_red_148
+  - first:
+      213: -7026270101765816691
+    second: rusty_anchor_t05_wine_glass_red_149
+  - first:
+      213: 1696079813077087843
+    second: rusty_anchor_t05_wine_glass_red_150
+  - first:
+      213: -838776450961339654
+    second: rusty_anchor_t05_wine_glass_red_151
+  - first:
+      213: -696635367684164325
+    second: rusty_anchor_t05_wine_glass_red_152
+  - first:
+      213: 5892320502086937350
+    second: rusty_anchor_t05_wine_glass_red_153
+  - first:
+      213: -8354004179028520242
+    second: rusty_anchor_t05_wine_glass_red_154
+  - first:
+      213: 299357815975540180
+    second: rusty_anchor_t05_wine_glass_red_155
+  - first:
+      213: 4750749207561159954
+    second: rusty_anchor_t05_wine_glass_red_156
+  - first:
+      213: -5854471513221336537
+    second: rusty_anchor_t05_wine_glass_red_157
+  - first:
+      213: -7055420490807387760
+    second: rusty_anchor_t05_wine_glass_red_158
+  - first:
+      213: 5302261360893570642
+    second: rusty_anchor_t05_wine_glass_red_159
+  - first:
+      213: 934556730363467307
+    second: rusty_anchor_t05_wine_glass_red_160
+  - first:
+      213: 1181567433152022538
+    second: rusty_anchor_t05_wine_glass_red_161
+  - first:
+      213: 7241690326584343828
+    second: rusty_anchor_t05_wine_glass_red_162
+  - first:
+      213: 985650494851613058
+    second: rusty_anchor_t05_wine_glass_red_163
+  - first:
+      213: -721809996548314508
+    second: rusty_anchor_t05_wine_glass_red_164
+  - first:
+      213: -6754684832382492254
+    second: rusty_anchor_t05_wine_glass_red_165
+  - first:
+      213: 6283354599965849719
+    second: rusty_anchor_t05_wine_glass_red_166
+  - first:
+      213: -8504015597634716275
+    second: rusty_anchor_t05_wine_glass_red_167
+  - first:
+      213: 6591204991568043255
+    second: rusty_anchor_t05_wine_glass_red_168
+  - first:
+      213: -5680346758331832606
+    second: rusty_anchor_t05_wine_glass_red_169
+  - first:
+      213: -1351540179760575350
+    second: rusty_anchor_t05_wine_glass_red_170
+  - first:
+      213: 4510015051250890851
+    second: rusty_anchor_t05_wine_glass_red_171
+  - first:
+      213: 5750587899259866205
+    second: rusty_anchor_t05_wine_glass_red_172
+  - first:
+      213: -1298582795008477993
+    second: rusty_anchor_t05_wine_glass_red_173
+  - first:
+      213: 2451058443474536046
+    second: rusty_anchor_t05_wine_glass_red_174
+  - first:
+      213: -8880454090595857281
+    second: rusty_anchor_t05_wine_glass_red_175
+  - first:
+      213: 7874080258506098443
+    second: rusty_anchor_t05_wine_glass_red_176
+  - first:
+      213: -3390751021641356120
+    second: rusty_anchor_t05_wine_glass_red_177
+  - first:
+      213: -1634524605516433781
+    second: rusty_anchor_t05_wine_glass_red_178
+  - first:
+      213: 6746844232037312407
+    second: rusty_anchor_t05_wine_glass_red_179
+  - first:
+      213: -9023022128458399046
+    second: rusty_anchor_t05_wine_glass_red_180
+  - first:
+      213: -504510913877572507
+    second: rusty_anchor_t05_wine_glass_red_181
+  - first:
+      213: -6848317917475207900
+    second: rusty_anchor_t05_wine_glass_red_182
+  - first:
+      213: 72092128005816836
+    second: rusty_anchor_t05_wine_glass_red_183
+  - first:
+      213: 1094187613238719160
+    second: rusty_anchor_t05_wine_glass_red_184
+  - first:
+      213: 9177465674704624434
+    second: rusty_anchor_t05_wine_glass_red_185
+  - first:
+      213: 5856230297003583267
+    second: rusty_anchor_t05_wine_glass_red_186
+  - first:
+      213: 2921838667908004659
+    second: rusty_anchor_t05_wine_glass_red_187
+  - first:
+      213: -8533245440429316254
+    second: rusty_anchor_t05_wine_glass_red_188
+  - first:
+      213: 2967304289462364106
+    second: rusty_anchor_t05_wine_glass_red_189
+  - first:
+      213: -7714628783774984056
+    second: rusty_anchor_t05_wine_glass_red_190
+  - first:
+      213: 7515748191786704409
+    second: rusty_anchor_t05_wine_glass_red_191
+  - first:
+      213: 2717555131772360688
+    second: rusty_anchor_t05_wine_glass_red_192
+  - first:
+      213: -71337155188512206
+    second: rusty_anchor_t05_wine_glass_red_193
+  - first:
+      213: 849718640952735637
+    second: rusty_anchor_t05_wine_glass_red_194
+  - first:
+      213: -7876449238517210435
+    second: rusty_anchor_t05_wine_glass_red_195
+  - first:
+      213: -7834927826792131415
+    second: rusty_anchor_t05_wine_glass_red_196
+  - first:
+      213: -2334677843314990420
+    second: rusty_anchor_t05_wine_glass_red_197
+  - first:
+      213: -3781840885830131761
+    second: rusty_anchor_t05_wine_glass_red_198
+  - first:
+      213: -223993742134315396
+    second: rusty_anchor_t05_wine_glass_red_199
+  - first:
+      213: 8664857234067118704
+    second: rusty_anchor_t05_wine_glass_red_200
+  - first:
+      213: 4292600308198520748
+    second: rusty_anchor_t05_wine_glass_red_201
+  - first:
+      213: 6413866209888452576
+    second: rusty_anchor_t05_wine_glass_red_202
+  - first:
+      213: -4436625364958874063
+    second: rusty_anchor_t05_wine_glass_red_203
+  - first:
+      213: -3813066095535622177
+    second: rusty_anchor_t05_wine_glass_red_204
+  - first:
+      213: 1220663508341393305
+    second: rusty_anchor_t05_wine_glass_red_205
+  - first:
+      213: 5312730380273188484
+    second: rusty_anchor_t05_wine_glass_red_206
+  - first:
+      213: -2035284143281859847
+    second: rusty_anchor_t05_wine_glass_red_207
+  - first:
+      213: 2312917805501249641
+    second: rusty_anchor_t05_wine_glass_red_208
+  - first:
+      213: 7001615658575195160
+    second: rusty_anchor_t05_wine_glass_red_209
+  - first:
+      213: 3926117199298001297
+    second: rusty_anchor_t05_wine_glass_red_210
+  - first:
+      213: 2639015792306009629
+    second: rusty_anchor_t05_wine_glass_red_211
+  - first:
+      213: -2252739404483048612
+    second: rusty_anchor_t05_wine_glass_red_212
+  - first:
+      213: -7221284842007490051
+    second: rusty_anchor_t05_wine_glass_red_213
+  - first:
+      213: -4873247791958279008
+    second: rusty_anchor_t05_wine_glass_red_214
+  - first:
+      213: -6554647485344494870
+    second: rusty_anchor_t05_wine_glass_red_215
+  - first:
+      213: -1124050363583676606
+    second: rusty_anchor_t05_wine_glass_red_216
+  - first:
+      213: 2208451106971052408
+    second: rusty_anchor_t05_wine_glass_red_217
+  - first:
+      213: 4375562417183218399
+    second: rusty_anchor_t05_wine_glass_red_218
+  - first:
+      213: -6350784938893864190
+    second: rusty_anchor_t05_wine_glass_red_219
+  - first:
+      213: 7626621791418476716
+    second: rusty_anchor_t05_wine_glass_red_220
+  - first:
+      213: 8393510265661295657
+    second: rusty_anchor_t05_wine_glass_red_221
+  - first:
+      213: 20191509153116491
+    second: rusty_anchor_t05_wine_glass_red_222
+  - first:
+      213: -5514657692885199837
+    second: rusty_anchor_t05_wine_glass_red_223
+  - first:
+      213: 4272749919175238113
+    second: rusty_anchor_t05_wine_glass_red_224
+  - first:
+      213: 2040917768198261537
+    second: rusty_anchor_t05_wine_glass_red_225
+  - first:
+      213: -1461906261464781432
+    second: rusty_anchor_t05_wine_glass_red_226
+  - first:
+      213: -5538142435229497395
+    second: rusty_anchor_t05_wine_glass_red_227
+  - first:
+      213: 2917658269723698828
+    second: rusty_anchor_t05_wine_glass_red_228
+  - first:
+      213: -7397517296672803859
+    second: rusty_anchor_t05_wine_glass_red_229
+  - first:
+      213: 4409144177333638491
+    second: rusty_anchor_t05_wine_glass_red_230
+  - first:
+      213: -6848945694074767339
+    second: rusty_anchor_t05_wine_glass_red_231
+  - first:
+      213: 9171841324960427635
+    second: rusty_anchor_t05_wine_glass_red_232
+  - first:
+      213: -6040986754585239077
+    second: rusty_anchor_t05_wine_glass_red_233
+  - first:
+      213: -4672805465493438781
+    second: rusty_anchor_t05_wine_glass_red_234
+  - first:
+      213: 1093476532856153260
+    second: rusty_anchor_t05_wine_glass_red_235
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_0
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 933
+        width: 121
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6668bd2950d9cc60800000000000000
+      internalID: 7839025707852785261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_1
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 0
+        width: 706
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53578c785af3605a0800000000000000
+      internalID: -6555482227410963147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_2
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 983
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 481a25410a884ba90800000000000000
+      internalID: -7299058874943626876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_3
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 951
+        width: 90
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f3033fc6aae17f80800000000000000
+      internalID: -8110443451755854861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_4
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 983
+        width: 67
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2ef699da10716e40800000000000000
+      internalID: 5647918668321324587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_5
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 965
+        width: 34
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a610cca7d7caed820800000000000000
+      internalID: 2944980861277962602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_6
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 965
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6046c942a7b2cf140800000000000000
+      internalID: 4754723110196634630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 847
+        width: 49
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ebb63a36970b38e0800000000000000
+      internalID: -1712766891481187358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_8
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 933
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a34cb159ae97192f0800000000000000
+      internalID: -967858396477012934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_9
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 943
+        width: 26
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5a54b2f85e0f23d0800000000000000
+      internalID: -3229346632609539489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_10
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 943
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf8c99b6bf2b088b0800000000000000
+      internalID: -5151921180800071428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_11
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 930
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e557b14f0e8478d60800000000000000
+      internalID: 7892357002995397982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_12
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 837
+        width: 62
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 898eeba7fcf66a0d0800000000000000
+      internalID: -3411916730778326888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_13
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 935
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3488b0ccc64df5150800000000000000
+      internalID: 5863638803604539459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_14
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 911
+        width: 42
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 150d7e4830e6e9a30800000000000000
+      internalID: 4223934461913845841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_15
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 901
+        width: 44
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e4c230655b1fd120800000000000000
+      internalID: 2440699576558208229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_16
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 915
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cec604c00934ff840800000000000000
+      internalID: 5259997175751929068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_17
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 893
+        width: 50
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfcdb92dd6df573c0800000000000000
+      internalID: -4362302015911764741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_18
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 919
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56341b659e0d9f030800000000000000
+      internalID: 3529081483621909349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_19
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 901
+        width: 36
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e45f005d4cd041380800000000000000
+      internalID: -9001554616168417970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_20
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 813
+        width: 71
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0851b62e2ac202a0800000000000000
+      internalID: -6772628590045341686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_21
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 901
+        width: 46
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bee03ac3b9669e230800000000000000
+      internalID: 3668576188393262827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_22
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 890
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28ee2eeb510bfcdd0800000000000000
+      internalID: -2463556863705026942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_23
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 869
+        width: 36
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ebbd322e370c18a0800000000000000
+      internalID: -6333179012545922071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_24
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 893
+        width: 26
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 306f7adaabc120e20800000000000000
+      internalID: 3315243863801067011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_25
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 879
+        width: 34
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 627aeb200fd43cf90800000000000000
+      internalID: -6934613307986893018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_26
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 895
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 833d7a58e0b9027f0800000000000000
+      internalID: -639340660412394696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_27
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 871
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14ca85b870a5609f0800000000000000
+      internalID: -502615319956116415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_28
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 821
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b038e973157cd5a0800000000000000
+      internalID: -6495187836065009480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_29
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 858
+        width: 34
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7804e22d3955dbb0800000000000000
+      internalID: -4911921699464411011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_30
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 853
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cc7fbf8b55b7b370800000000000000
+      internalID: 8338332639958105280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 711
+        width: 43
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 980a3d7269d1ebb60800000000000000
+      internalID: 7763675338383794313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_32
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 855
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 714b61513402f77d0800000000000000
+      internalID: -2918578561024084969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_33
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 843
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f12bde12382cc28c0800000000000000
+      internalID: -4022626498682965473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_34
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 847
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e158510f2666b3e0800000000000000
+      internalID: -2038329429266509340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_35
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 845
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0252c5b2bad754780800000000000000
+      internalID: -8699408931075906272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_36
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 815
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83bf63cd30ec6d330800000000000000
+      internalID: 3735399456925219640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_37
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 815
+        width: 42
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6241db5c61770efc0800000000000000
+      internalID: -3467640773384793050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_38
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 829
+        width: 34
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b761e45ceecf429b0800000000000000
+      internalID: -5105677975088654725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_39
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 639
+        width: 105
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d89c719184674200800000000000000
+      internalID: 164210419076733139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_40
+      rect:
+        serializedVersion: 2
+        x: 991
+        y: 807
+        width: 33
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 972b22c36af053430800000000000000
+      internalID: 3761930270385812089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_41
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 799
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3f68070a967f4180800000000000000
+      internalID: -9128947515741671621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_42
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 815
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecbe9b0f69b8cf460800000000000000
+      internalID: 7276844578323950542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_43
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 815
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1365e7cb2e48a460800000000000000
+      internalID: 7253133149824443166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_44
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 807
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c199636027c6da50800000000000000
+      internalID: 6545638050350338497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_45
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 815
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21376e894e7875bd0800000000000000
+      internalID: -2641493240541973742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_46
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 783
+        width: 36
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bad70a641e163c770800000000000000
+      internalID: 8629848931152461227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_47
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 791
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91cae9ef47d281a50800000000000000
+      internalID: 6491988843365837849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_48
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 791
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d00691dcbc5139200800000000000000
+      internalID: 185515974715858957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_49
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 797
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf370018dbd391a20800000000000000
+      internalID: 3033523708133143548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_50
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 795
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 652ab223ccdb58870800000000000000
+      internalID: 8684556141166568022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_51
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 773
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de8afcd31c8a24700800000000000000
+      internalID: 523166054647572717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_52
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 741
+        width: 68
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bab06d7cef5aa4b0800000000000000
+      internalID: -5428420931521299783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_53
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 786
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e68a8eef03fbef9b0800000000000000
+      internalID: -5044384315452381074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_54
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 770
+        width: 34
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d58f0f938aa93e760800000000000000
+      internalID: 7485997052937173085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_55
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 783
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0378ffe80f259ad80800000000000000
+      internalID: -8238962850152872144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_56
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 757
+        width: 28
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72b7d42e9497a0640800000000000000
+      internalID: 5046979690658364199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_57
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 759
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0162d13ffe58f5070800000000000000
+      internalID: 8097337920657892880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_58
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 711
+        width: 42
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42f26336e1c0e1350800000000000000
+      internalID: 5989237879102385956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_59
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 746
+        width: 34
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9900503b7c5823f40800000000000000
+      internalID: 5706770770580275353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_60
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 765
+        width: 22
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e2788fc42d18d4a0800000000000000
+      internalID: -6568468012582014236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_61
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 751
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7c98c75471aadc50800000000000000
+      internalID: 6690837717473336445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_62
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 757
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae035f339adb1eb90800000000000000
+      internalID: -7214276593651994390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_63
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 757
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc5442b74e6e06f80800000000000000
+      internalID: -8115232659528727091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_64
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 687
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18a6ef307ccbe7a80800000000000000
+      internalID: -8467122686458434943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_65
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 733
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 903af2ba446ec8e40800000000000000
+      internalID: 5660152014302061321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_66
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 727
+        width: 30
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97c1cf4cf0ec20d60800000000000000
+      internalID: 7855067267212254329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_67
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 719
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a588eda8f66ab8a0800000000000000
+      internalID: -6288600711413856862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_68
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 719
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3725ab6686d3b15b0800000000000000
+      internalID: -5396652209864027533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_69
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 735
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcbcde296542183c0800000000000000
+      internalID: -4359163010067084337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_70
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 695
+        width: 50
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 556ab57fbd4639300800000000000000
+      internalID: 257660499600844373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_71
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 711
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97064599e13f39260800000000000000
+      internalID: 7103288350040416377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_72
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 725
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 368447bc3dfa64000800000000000000
+      internalID: 19896572556101731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_73
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 647
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 186dba3a87e40b730800000000000000
+      internalID: 4012793548036101761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_74
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 695
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0bb0406ddf9a4d00800000000000000
+      internalID: 957753643921095435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_75
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 687
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eef1f7b1b2915250800000000000000
+      internalID: 5931683476216610534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_76
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 687
+        width: 36
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 015d5d452c6d9a150800000000000000
+      internalID: 5884470518271563024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_77
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 671
+        width: 50
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eee26c48ebee15b0800000000000000
+      internalID: -5395615920596783383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_78
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 679
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c07b3732195b61e0800000000000000
+      internalID: -2203569657896800064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_79
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 679
+        width: 18
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 432c8f780840d6e80800000000000000
+      internalID: -8183879997778771404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 631
+        width: 19
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 627b7d560cd9097d0800000000000000
+      internalID: -2913655509240793306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_81
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 663
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d91559c4e844740f0800000000000000
+      internalID: -1132861403299491427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_82
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 671
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a4b0b29c9b527d60800000000000000
+      internalID: 7886466625513239716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_83
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 583
+        width: 68
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f9e6d722bdead740800000000000000
+      internalID: 5177712071044164086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_84
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 639
+        width: 18
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c0e2e241a714ae80800000000000000
+      internalID: -8168377842763898680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_85
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 661
+        width: 22
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc39c013b8c5a5040800000000000000
+      internalID: 4637120519224464331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_86
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 655
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 006c21d06f8af0bc0800000000000000
+      internalID: -3814644584624765440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_87
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 647
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d32d56e6220abaa00800000000000000
+      internalID: 768884231138300477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_88
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 623
+        width: 22
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c85471a01aa82260800000000000000
+      internalID: 7073090203190319298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_89
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 613
+        width: 50
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 630f4b009e8cc96f0800000000000000
+      internalID: -676444940947623882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_90
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 615
+        width: 14
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aa1d947eb3ff6950800000000000000
+      internalID: 6444637591116257959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_91
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 607
+        width: 44
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5211a6b9a8a175cd0800000000000000
+      internalID: -2569555879776349915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_92
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 639
+        width: 18
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9501886158999ba0800000000000000
+      internalID: -6081662346374085221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_93
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 639
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03cc04f5f31f751c0800000000000000
+      internalID: -4514874846932317136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_94
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 599
+        width: 9
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cc94c5028ed0c050800000000000000
+      internalID: 5818895368586566852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_95
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 591
+        width: 12
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb8e90998db87bcc0800000000000000
+      internalID: -3695331206837442373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_96
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 611
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbee3c608c71e7000800000000000000
+      internalID: 35491994939944637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_97
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 490
+        width: 70
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f09fa98f25a71f4b0800000000000000
+      internalID: -5408407180718442225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_98
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 599
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 281ff560b8a546e80800000000000000
+      internalID: -8186318669498814078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_99
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 615
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 683e9ca7cc8359360800000000000000
+      internalID: 7175704032169288582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_100
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 615
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd60a562c923c7090800000000000000
+      internalID: -8035491988896086307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_101
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 527
+        width: 58
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b48d3318567956b0800000000000000
+      internalID: -5307080565227420493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_102
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 591
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3095c23cd1f7790f0800000000000000
+      internalID: -1110279017318295293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_103
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 589
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a85ea03d7bea1cbd0800000000000000
+      internalID: -2611614204355222134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_104
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 581
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5eafe9663c9220900800000000000000
+      internalID: 649127215511829221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_105
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 599
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5940bc39be40f710800000000000000
+      internalID: 1724965214777002335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_106
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 594
+        width: 42
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85bec1a287a85ac10800000000000000
+      internalID: 2064208252926487384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_107
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 567
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 662a2b4e7c4358930800000000000000
+      internalID: 4144777065204458086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_108
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 535
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a1a08475fc32cc00800000000000000
+      internalID: 919364298856243617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_109
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 567
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0d83fa5c8141d7d0800000000000000
+      internalID: -2895461014345380593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_110
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 559
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fc7cc6990a7eb720800000000000000
+      internalID: 2863860594657492209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_111
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 565
+        width: 50
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46b6fa536a22de730800000000000000
+      internalID: 4029915338827066212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_112
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 575
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2da473f313d2eef20800000000000000
+      internalID: 3453747653776984786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_113
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 567
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba5307983ddd6a960800000000000000
+      internalID: 7613016120730072491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_114
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 525
+        width: 65
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86b196d79a1742ea0800000000000000
+      internalID: -5898464639181055128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_115
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 543
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02f4e5e8b9afb1740800000000000000
+      internalID: 5123964547079491360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_116
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 525
+        width: 44
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f06b04ec30be11a0800000000000000
+      internalID: -6836833408731356935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_117
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 493
+        width: 55
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 664ca44b4e8220d10800000000000000
+      internalID: 2090278139795784806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_118
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 535
+        width: 30
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b96fb9b221536e640800000000000000
+      internalID: 5108829179455731355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_119
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 551
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b019b8eb64a1180800000000000000
+      internalID: -9143918309223101682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_120
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 525
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3af06a43449296bc0800000000000000
+      internalID: -3789452238537748573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_121
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 493
+        width: 42
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bdc3f8d190a906e0800000000000000
+      internalID: -1870787621925171787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_122
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 511
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3636ad72c40fc8430800000000000000
+      internalID: 3786665596588548963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_123
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 525
+        width: 34
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d7a234b877c0dbf0800000000000000
+      internalID: -301521853800601645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_124
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 517
+        width: 42
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a54263504783bfd20800000000000000
+      internalID: 3313304021815927898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_125
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 495
+        width: 8
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f93eaee20cf96750800000000000000
+      internalID: 6298842643378878964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_126
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 507
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b62354e3ad16b3170800000000000000
+      internalID: 8159222739887272555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_127
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 495
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e13b8d3f46d28cc60800000000000000
+      internalID: 7838565063049392926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_128
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 503
+        width: 34
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ec3007372f2bb800800000000000000
+      internalID: 629148418421308649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_129
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 501
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0192d4bf8cef53980800000000000000
+      internalID: -8559655377584707312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_130
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 461
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 120af798e15ab41b0800000000000000
+      internalID: -5671257755168563167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_131
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 461
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dbc85986aec849a0800000000000000
+      internalID: -6248517268312372267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_132
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 399
+        width: 34
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 518cd70a261a32650800000000000000
+      internalID: 6206982156418140181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_133
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 439
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f01daf6954ee332d0800000000000000
+      internalID: -3300032119279267569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_134
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 407
+        width: 44
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7972f321eb0685de0800000000000000
+      internalID: -1344218119303911529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_135
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 463
+        width: 28
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d4a14e7a2bb40d50800000000000000
+      internalID: 6702687936615392470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_136
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 451
+        width: 22
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5da5cf8ba411d5950800000000000000
+      internalID: 6439322054838475477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_137
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 421
+        width: 98
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e745015bdde9ff520800000000000000
+      internalID: 2738081773527258238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_138
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 463
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fbb9f47c011a2fa0800000000000000
+      internalID: -5824824422850511886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_139
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 439
+        width: 34
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34e5175127c1ac430800000000000000
+      internalID: 3803884111579405891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_140
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 455
+        width: 50
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a8894420f079fe60800000000000000
+      internalID: 7996546790076287144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_141
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 471
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f08e95763640a7110800000000000000
+      internalID: 1259323870785693711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_142
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 458
+        width: 36
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd3eb57b4294e84a0800000000000000
+      internalID: -6589248782752554020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_143
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 439
+        width: 23
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99a22a840aa7608d0800000000000000
+      internalID: -2880480082824910183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_144
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 471
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f64e04d4b67793750800000000000000
+      internalID: 6285186057713542255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_145
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 471
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b325060d4a336ca90800000000000000
+      internalID: -7294085763516313029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_146
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 453
+        width: 44
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f95aa9910984a5e0800000000000000
+      internalID: -1899242502877455883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_147
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 445
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c265d053ea1cadd40800000000000000
+      internalID: 5610009239801910828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_148
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 383
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12dcee7bf5bd80c40800000000000000
+      internalID: 5478870150850465057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_149
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 389
+        width: 68
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8efc48b19cad7e90800000000000000
+      internalID: -7026270101765816691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_150
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 429
+        width: 42
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 366bb219a9fa98710800000000000000
+      internalID: 1696079813077087843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_151
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 375
+        width: 91
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afa8c7a03411c54f0800000000000000
+      internalID: -838776450961339654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_152
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 415
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b153633f2dd0556f0800000000000000
+      internalID: -696635367684164325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_153
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 419
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60ba4ad174ab5c150800000000000000
+      internalID: 5892320502086937350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_154
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 413
+        width: 34
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec250e8e57d901c80800000000000000
+      internalID: -8354004179028520242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_155
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 373
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d575f9f858872400800000000000000
+      internalID: 299357815975540180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_156
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 407
+        width: 22
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 215c6a5db3d0ee140800000000000000
+      internalID: 4750749207561159954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_157
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 367
+        width: 60
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7227cc25d2db0cea0800000000000000
+      internalID: -5854471513221336537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_158
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 381
+        width: 36
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 099d960e17c161e90800000000000000
+      internalID: -7055420490807387760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_159
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 375
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25e275a7d9a659940800000000000000
+      internalID: 5302261360893570642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_160
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 379
+        width: 38
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b26d3cf056638fc00800000000000000
+      internalID: 934556730363467307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_161
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 386
+        width: 18
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a08423bf155c56010800000000000000
+      internalID: 1181567433152022538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_162
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 375
+        width: 42
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41d3171ebf6af7460800000000000000
+      internalID: 7241690326584343828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_163
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 351
+        width: 28
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 281815227ebbdad00800000000000000
+      internalID: 985650494851613058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_164
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 343
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47a6968e1ad9bf5f0800000000000000
+      internalID: -721809996548314508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_165
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 359
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a16f1ccee98242a0800000000000000
+      internalID: -6754684832382492254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_166
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 349
+        width: 34
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 778f7c0d7b5f23750800000000000000
+      internalID: 6283354599965849719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_167
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 357
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8df992cedaabf980800000000000000
+      internalID: -8504015597634716275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_168
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 367
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fcd134a40aa87b50800000000000000
+      internalID: 6591204991568043255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_169
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 261
+        width: 42
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e6e69418ba5b21b0800000000000000
+      internalID: -5680346758331832606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_170
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 335
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8c04b50e5d5e3de0800000000000000
+      internalID: -1351540179760575350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_171
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 335
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36879754bcac69e30800000000000000
+      internalID: 4510015051250890851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_172
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 351
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5c4b09f9313ecf40800000000000000
+      internalID: 5750587899259866205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_173
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 314
+        width: 58
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d4f51004d18afde0800000000000000
+      internalID: -1298582795008477993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_174
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 349
+        width: 28
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6685070ba8e30220800000000000000
+      internalID: 2451058443474536046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_175
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 343
+        width: 50
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7c8ed52e0a42c480800000000000000
+      internalID: -8880454090595857281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_176
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 159
+        width: 98
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b070c25c64a564d60800000000000000
+      internalID: 7874080258506098443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_177
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 323
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ac264929e1a1f0d0800000000000000
+      internalID: -3390751021641356120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_178
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 295
+        width: 36
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b86be8708800159e0800000000000000
+      internalID: -1634524605516433781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_179
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 303
+        width: 42
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7972a7d251b91ad50800000000000000
+      internalID: 6746844232037312407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_180
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 314
+        width: 34
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab28fb02e29c7c280800000000000000
+      internalID: -9023022128458399046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_181
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 323
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56405013ffd9ff8f0800000000000000
+      internalID: -504510913877572507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_182
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 323
+        width: 30
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42582f35323e5f0a0800000000000000
+      internalID: -6848317917475207900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_183
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 315
+        width: 26
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40283e0986f100100800000000000000
+      internalID: 72092128005816836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_184
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 319
+        width: 34
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b2f9b446d55f2f00800000000000000
+      internalID: 1094187613238719160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_185
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 277
+        width: 74
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23b1c172868ec5f70800000000000000
+      internalID: 9177465674704624434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_186
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 311
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32767cf6d62854150800000000000000
+      internalID: 5856230297003583267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_187
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 303
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33b38a3b9c47c8820800000000000000
+      internalID: 2921838667908004659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_188
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 258
+        width: 42
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2672df5ab72d39980800000000000000
+      internalID: -8533245440429316254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_189
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 287
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac7a5e1a78bfd2920800000000000000
+      internalID: 2967304289462364106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_190
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 279
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8889619bef120f490800000000000000
+      internalID: -7714628783774984056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_191
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 255
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91e1bb8092d4d4860800000000000000
+      internalID: 7515748191786704409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_192
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 239
+        width: 42
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f7d4de7ef1b6b520800000000000000
+      internalID: 2717555131772360688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_193
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 227
+        width: 36
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23aa3bd3c3f820ff0800000000000000
+      internalID: -71337155188512206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_194
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 261
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 597f3091a9ecacb00800000000000000
+      internalID: 849718640952735637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_195
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 175
+        width: 44
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db229c6162b31b290800000000000000
+      internalID: -7876449238517210435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_196
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 253
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a45b3b17aeb44390800000000000000
+      internalID: -7834927826792131415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_197
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 215
+        width: 75
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca22c340fde899fd0800000000000000
+      internalID: -2334677843314990420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_198
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcfdb0b50c3348bc0800000000000000
+      internalID: -3781840885830131761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_199
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 239
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c767c28d0e634ecf0800000000000000
+      internalID: -223993742134315396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_200
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 231
+        width: 42
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07a5b0afeb1cf3870800000000000000
+      internalID: 8664857234067118704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_201
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 223
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca7b7e4bc31629b30800000000000000
+      internalID: 4292600308198520748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_202
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 215
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ef3845f551a20950800000000000000
+      internalID: 6413866209888452576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_203
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 215
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1367320acb0fd62c0800000000000000
+      internalID: -4436625364958874063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_204
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 199
+        width: 18
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd7738ea694451bc0800000000000000
+      internalID: -3813066095535622177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_205
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 95
+        width: 42
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99788f45efaa0f010800000000000000
+      internalID: 1220663508341393305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_206
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 159
+        width: 52
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48efb9ff12c9ab940800000000000000
+      internalID: 5312730380273188484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_207
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 87
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f213b6ead731c3e0800000000000000
+      internalID: -2035284143281859847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_208
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 126
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 968f39f5d72291020800000000000000
+      internalID: 2312917805501249641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_209
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 111
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81cef27685cba2160800000000000000
+      internalID: 7001615658575195160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_210
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 151
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19975b29ace5c7630800000000000000
+      internalID: 3926117199298001297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_211
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 117
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d16bb0981eaaf9420800000000000000
+      internalID: 2639015792306009629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_212
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 167
+        width: 34
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5b43487279acb0e0800000000000000
+      internalID: -2252739404483048612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_213
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 95
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df11b3a32b7d8cb90800000000000000
+      internalID: -7221284842007490051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_214
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 119
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0acbed9e3febe5cb0800000000000000
+      internalID: -4873247791958279008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_215
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 143
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aea422017d63905a0800000000000000
+      internalID: -6554647485344494870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_216
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 167
+        width: 58
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24f32f856229660f0800000000000000
+      internalID: -1124050363583676606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_217
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 87
+        width: 42
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 879e3d6b49ef5ae10800000000000000
+      internalID: 2208451106971052408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_218
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 125
+        width: 46
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fda51c0f5de19bc30800000000000000
+      internalID: 4375562417183218399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_219
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 159
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2039458feba7dd7a0800000000000000
+      internalID: -6350784938893864190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_220
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 0
+        width: 84
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca860c99c1437d960800000000000000
+      internalID: 7626621791418476716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_221
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 159
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92c065bad1dbb7470800000000000000
+      internalID: 8393510265661295657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_222
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 167
+        width: 46
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b41fc82121cb74000800000000000000
+      internalID: 20191509153116491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_223
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 103
+        width: 41
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 324d3b5db000873b0800000000000000
+      internalID: -5514657692885199837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_224
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 87
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e1e48ad96bdb4b30800000000000000
+      internalID: 4272749919175238113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_225
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 15
+        width: 70
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12b8d3d95ebc25c10800000000000000
+      internalID: 2040917768198261537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_226
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 87
+        width: 18
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88de87e200446bbe0800000000000000
+      internalID: -1461906261464781432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_227
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 75
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc701a82cc09423b0800000000000000
+      internalID: -5538142435229497395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_228
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 55
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c86acd6ecba9d7820800000000000000
+      internalID: 2917658269723698828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_229
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 61
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de37200663db65990800000000000000
+      internalID: -7397517296672803859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_230
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 61
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b551475c44d603d30800000000000000
+      internalID: 4409144177333638491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_231
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 53
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5187bb2bd28a3f0a0800000000000000
+      internalID: -6848945694074767339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_232
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 39
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37ea38e271de84f70800000000000000
+      internalID: 9171841324960427635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_233
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 43
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd16b10ad8a1a2ca0800000000000000
+      internalID: -6040986754585239077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_234
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 15
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ce72cccf2cd62fb0800000000000000
+      internalID: -4672805465493438781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusty_anchor_t05_wine_glass_red_235
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 23
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca4ed17fc1fcc2f00800000000000000
+      internalID: 1093476532856153260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      rusty_anchor_t05_wine_glass_red_0: 7839025707852785261
+      rusty_anchor_t05_wine_glass_red_1: -6555482227410963147
+      rusty_anchor_t05_wine_glass_red_10: -5151921180800071428
+      rusty_anchor_t05_wine_glass_red_100: -8035491988896086307
+      rusty_anchor_t05_wine_glass_red_101: -5307080565227420493
+      rusty_anchor_t05_wine_glass_red_102: -1110279017318295293
+      rusty_anchor_t05_wine_glass_red_103: -2611614204355222134
+      rusty_anchor_t05_wine_glass_red_104: 649127215511829221
+      rusty_anchor_t05_wine_glass_red_105: 1724965214777002335
+      rusty_anchor_t05_wine_glass_red_106: 2064208252926487384
+      rusty_anchor_t05_wine_glass_red_107: 4144777065204458086
+      rusty_anchor_t05_wine_glass_red_108: 919364298856243617
+      rusty_anchor_t05_wine_glass_red_109: -2895461014345380593
+      rusty_anchor_t05_wine_glass_red_11: 7892357002995397982
+      rusty_anchor_t05_wine_glass_red_110: 2863860594657492209
+      rusty_anchor_t05_wine_glass_red_111: 4029915338827066212
+      rusty_anchor_t05_wine_glass_red_112: 3453747653776984786
+      rusty_anchor_t05_wine_glass_red_113: 7613016120730072491
+      rusty_anchor_t05_wine_glass_red_114: -5898464639181055128
+      rusty_anchor_t05_wine_glass_red_115: 5123964547079491360
+      rusty_anchor_t05_wine_glass_red_116: -6836833408731356935
+      rusty_anchor_t05_wine_glass_red_117: 2090278139795784806
+      rusty_anchor_t05_wine_glass_red_118: 5108829179455731355
+      rusty_anchor_t05_wine_glass_red_119: -9143918309223101682
+      rusty_anchor_t05_wine_glass_red_12: -3411916730778326888
+      rusty_anchor_t05_wine_glass_red_120: -3789452238537748573
+      rusty_anchor_t05_wine_glass_red_121: -1870787621925171787
+      rusty_anchor_t05_wine_glass_red_122: 3786665596588548963
+      rusty_anchor_t05_wine_glass_red_123: -301521853800601645
+      rusty_anchor_t05_wine_glass_red_124: 3313304021815927898
+      rusty_anchor_t05_wine_glass_red_125: 6298842643378878964
+      rusty_anchor_t05_wine_glass_red_126: 8159222739887272555
+      rusty_anchor_t05_wine_glass_red_127: 7838565063049392926
+      rusty_anchor_t05_wine_glass_red_128: 629148418421308649
+      rusty_anchor_t05_wine_glass_red_129: -8559655377584707312
+      rusty_anchor_t05_wine_glass_red_13: 5863638803604539459
+      rusty_anchor_t05_wine_glass_red_130: -5671257755168563167
+      rusty_anchor_t05_wine_glass_red_131: -6248517268312372267
+      rusty_anchor_t05_wine_glass_red_132: 6206982156418140181
+      rusty_anchor_t05_wine_glass_red_133: -3300032119279267569
+      rusty_anchor_t05_wine_glass_red_134: -1344218119303911529
+      rusty_anchor_t05_wine_glass_red_135: 6702687936615392470
+      rusty_anchor_t05_wine_glass_red_136: 6439322054838475477
+      rusty_anchor_t05_wine_glass_red_137: 2738081773527258238
+      rusty_anchor_t05_wine_glass_red_138: -5824824422850511886
+      rusty_anchor_t05_wine_glass_red_139: 3803884111579405891
+      rusty_anchor_t05_wine_glass_red_14: 4223934461913845841
+      rusty_anchor_t05_wine_glass_red_140: 7996546790076287144
+      rusty_anchor_t05_wine_glass_red_141: 1259323870785693711
+      rusty_anchor_t05_wine_glass_red_142: -6589248782752554020
+      rusty_anchor_t05_wine_glass_red_143: -2880480082824910183
+      rusty_anchor_t05_wine_glass_red_144: 6285186057713542255
+      rusty_anchor_t05_wine_glass_red_145: -7294085763516313029
+      rusty_anchor_t05_wine_glass_red_146: -1899242502877455883
+      rusty_anchor_t05_wine_glass_red_147: 5610009239801910828
+      rusty_anchor_t05_wine_glass_red_148: 5478870150850465057
+      rusty_anchor_t05_wine_glass_red_149: -7026270101765816691
+      rusty_anchor_t05_wine_glass_red_15: 2440699576558208229
+      rusty_anchor_t05_wine_glass_red_150: 1696079813077087843
+      rusty_anchor_t05_wine_glass_red_151: -838776450961339654
+      rusty_anchor_t05_wine_glass_red_152: -696635367684164325
+      rusty_anchor_t05_wine_glass_red_153: 5892320502086937350
+      rusty_anchor_t05_wine_glass_red_154: -8354004179028520242
+      rusty_anchor_t05_wine_glass_red_155: 299357815975540180
+      rusty_anchor_t05_wine_glass_red_156: 4750749207561159954
+      rusty_anchor_t05_wine_glass_red_157: -5854471513221336537
+      rusty_anchor_t05_wine_glass_red_158: -7055420490807387760
+      rusty_anchor_t05_wine_glass_red_159: 5302261360893570642
+      rusty_anchor_t05_wine_glass_red_16: 5259997175751929068
+      rusty_anchor_t05_wine_glass_red_160: 934556730363467307
+      rusty_anchor_t05_wine_glass_red_161: 1181567433152022538
+      rusty_anchor_t05_wine_glass_red_162: 7241690326584343828
+      rusty_anchor_t05_wine_glass_red_163: 985650494851613058
+      rusty_anchor_t05_wine_glass_red_164: -721809996548314508
+      rusty_anchor_t05_wine_glass_red_165: -6754684832382492254
+      rusty_anchor_t05_wine_glass_red_166: 6283354599965849719
+      rusty_anchor_t05_wine_glass_red_167: -8504015597634716275
+      rusty_anchor_t05_wine_glass_red_168: 6591204991568043255
+      rusty_anchor_t05_wine_glass_red_169: -5680346758331832606
+      rusty_anchor_t05_wine_glass_red_17: -4362302015911764741
+      rusty_anchor_t05_wine_glass_red_170: -1351540179760575350
+      rusty_anchor_t05_wine_glass_red_171: 4510015051250890851
+      rusty_anchor_t05_wine_glass_red_172: 5750587899259866205
+      rusty_anchor_t05_wine_glass_red_173: -1298582795008477993
+      rusty_anchor_t05_wine_glass_red_174: 2451058443474536046
+      rusty_anchor_t05_wine_glass_red_175: -8880454090595857281
+      rusty_anchor_t05_wine_glass_red_176: 7874080258506098443
+      rusty_anchor_t05_wine_glass_red_177: -3390751021641356120
+      rusty_anchor_t05_wine_glass_red_178: -1634524605516433781
+      rusty_anchor_t05_wine_glass_red_179: 6746844232037312407
+      rusty_anchor_t05_wine_glass_red_18: 3529081483621909349
+      rusty_anchor_t05_wine_glass_red_180: -9023022128458399046
+      rusty_anchor_t05_wine_glass_red_181: -504510913877572507
+      rusty_anchor_t05_wine_glass_red_182: -6848317917475207900
+      rusty_anchor_t05_wine_glass_red_183: 72092128005816836
+      rusty_anchor_t05_wine_glass_red_184: 1094187613238719160
+      rusty_anchor_t05_wine_glass_red_185: 9177465674704624434
+      rusty_anchor_t05_wine_glass_red_186: 5856230297003583267
+      rusty_anchor_t05_wine_glass_red_187: 2921838667908004659
+      rusty_anchor_t05_wine_glass_red_188: -8533245440429316254
+      rusty_anchor_t05_wine_glass_red_189: 2967304289462364106
+      rusty_anchor_t05_wine_glass_red_19: -9001554616168417970
+      rusty_anchor_t05_wine_glass_red_190: -7714628783774984056
+      rusty_anchor_t05_wine_glass_red_191: 7515748191786704409
+      rusty_anchor_t05_wine_glass_red_192: 2717555131772360688
+      rusty_anchor_t05_wine_glass_red_193: -71337155188512206
+      rusty_anchor_t05_wine_glass_red_194: 849718640952735637
+      rusty_anchor_t05_wine_glass_red_195: -7876449238517210435
+      rusty_anchor_t05_wine_glass_red_196: -7834927826792131415
+      rusty_anchor_t05_wine_glass_red_197: -2334677843314990420
+      rusty_anchor_t05_wine_glass_red_198: -3781840885830131761
+      rusty_anchor_t05_wine_glass_red_199: -223993742134315396
+      rusty_anchor_t05_wine_glass_red_2: -7299058874943626876
+      rusty_anchor_t05_wine_glass_red_20: -6772628590045341686
+      rusty_anchor_t05_wine_glass_red_200: 8664857234067118704
+      rusty_anchor_t05_wine_glass_red_201: 4292600308198520748
+      rusty_anchor_t05_wine_glass_red_202: 6413866209888452576
+      rusty_anchor_t05_wine_glass_red_203: -4436625364958874063
+      rusty_anchor_t05_wine_glass_red_204: -3813066095535622177
+      rusty_anchor_t05_wine_glass_red_205: 1220663508341393305
+      rusty_anchor_t05_wine_glass_red_206: 5312730380273188484
+      rusty_anchor_t05_wine_glass_red_207: -2035284143281859847
+      rusty_anchor_t05_wine_glass_red_208: 2312917805501249641
+      rusty_anchor_t05_wine_glass_red_209: 7001615658575195160
+      rusty_anchor_t05_wine_glass_red_21: 3668576188393262827
+      rusty_anchor_t05_wine_glass_red_210: 3926117199298001297
+      rusty_anchor_t05_wine_glass_red_211: 2639015792306009629
+      rusty_anchor_t05_wine_glass_red_212: -2252739404483048612
+      rusty_anchor_t05_wine_glass_red_213: -7221284842007490051
+      rusty_anchor_t05_wine_glass_red_214: -4873247791958279008
+      rusty_anchor_t05_wine_glass_red_215: -6554647485344494870
+      rusty_anchor_t05_wine_glass_red_216: -1124050363583676606
+      rusty_anchor_t05_wine_glass_red_217: 2208451106971052408
+      rusty_anchor_t05_wine_glass_red_218: 4375562417183218399
+      rusty_anchor_t05_wine_glass_red_219: -6350784938893864190
+      rusty_anchor_t05_wine_glass_red_22: -2463556863705026942
+      rusty_anchor_t05_wine_glass_red_220: 7626621791418476716
+      rusty_anchor_t05_wine_glass_red_221: 8393510265661295657
+      rusty_anchor_t05_wine_glass_red_222: 20191509153116491
+      rusty_anchor_t05_wine_glass_red_223: -5514657692885199837
+      rusty_anchor_t05_wine_glass_red_224: 4272749919175238113
+      rusty_anchor_t05_wine_glass_red_225: 2040917768198261537
+      rusty_anchor_t05_wine_glass_red_226: -1461906261464781432
+      rusty_anchor_t05_wine_glass_red_227: -5538142435229497395
+      rusty_anchor_t05_wine_glass_red_228: 2917658269723698828
+      rusty_anchor_t05_wine_glass_red_229: -7397517296672803859
+      rusty_anchor_t05_wine_glass_red_23: -6333179012545922071
+      rusty_anchor_t05_wine_glass_red_230: 4409144177333638491
+      rusty_anchor_t05_wine_glass_red_231: -6848945694074767339
+      rusty_anchor_t05_wine_glass_red_232: 9171841324960427635
+      rusty_anchor_t05_wine_glass_red_233: -6040986754585239077
+      rusty_anchor_t05_wine_glass_red_234: -4672805465493438781
+      rusty_anchor_t05_wine_glass_red_235: 1093476532856153260
+      rusty_anchor_t05_wine_glass_red_24: 3315243863801067011
+      rusty_anchor_t05_wine_glass_red_25: -6934613307986893018
+      rusty_anchor_t05_wine_glass_red_26: -639340660412394696
+      rusty_anchor_t05_wine_glass_red_27: -502615319956116415
+      rusty_anchor_t05_wine_glass_red_28: -6495187836065009480
+      rusty_anchor_t05_wine_glass_red_29: -4911921699464411011
+      rusty_anchor_t05_wine_glass_red_3: -8110443451755854861
+      rusty_anchor_t05_wine_glass_red_30: 8338332639958105280
+      rusty_anchor_t05_wine_glass_red_31: 7763675338383794313
+      rusty_anchor_t05_wine_glass_red_32: -2918578561024084969
+      rusty_anchor_t05_wine_glass_red_33: -4022626498682965473
+      rusty_anchor_t05_wine_glass_red_34: -2038329429266509340
+      rusty_anchor_t05_wine_glass_red_35: -8699408931075906272
+      rusty_anchor_t05_wine_glass_red_36: 3735399456925219640
+      rusty_anchor_t05_wine_glass_red_37: -3467640773384793050
+      rusty_anchor_t05_wine_glass_red_38: -5105677975088654725
+      rusty_anchor_t05_wine_glass_red_39: 164210419076733139
+      rusty_anchor_t05_wine_glass_red_4: 5647918668321324587
+      rusty_anchor_t05_wine_glass_red_40: 3761930270385812089
+      rusty_anchor_t05_wine_glass_red_41: -9128947515741671621
+      rusty_anchor_t05_wine_glass_red_42: 7276844578323950542
+      rusty_anchor_t05_wine_glass_red_43: 7253133149824443166
+      rusty_anchor_t05_wine_glass_red_44: 6545638050350338497
+      rusty_anchor_t05_wine_glass_red_45: -2641493240541973742
+      rusty_anchor_t05_wine_glass_red_46: 8629848931152461227
+      rusty_anchor_t05_wine_glass_red_47: 6491988843365837849
+      rusty_anchor_t05_wine_glass_red_48: 185515974715858957
+      rusty_anchor_t05_wine_glass_red_49: 3033523708133143548
+      rusty_anchor_t05_wine_glass_red_5: 2944980861277962602
+      rusty_anchor_t05_wine_glass_red_50: 8684556141166568022
+      rusty_anchor_t05_wine_glass_red_51: 523166054647572717
+      rusty_anchor_t05_wine_glass_red_52: -5428420931521299783
+      rusty_anchor_t05_wine_glass_red_53: -5044384315452381074
+      rusty_anchor_t05_wine_glass_red_54: 7485997052937173085
+      rusty_anchor_t05_wine_glass_red_55: -8238962850152872144
+      rusty_anchor_t05_wine_glass_red_56: 5046979690658364199
+      rusty_anchor_t05_wine_glass_red_57: 8097337920657892880
+      rusty_anchor_t05_wine_glass_red_58: 5989237879102385956
+      rusty_anchor_t05_wine_glass_red_59: 5706770770580275353
+      rusty_anchor_t05_wine_glass_red_6: 4754723110196634630
+      rusty_anchor_t05_wine_glass_red_60: -6568468012582014236
+      rusty_anchor_t05_wine_glass_red_61: 6690837717473336445
+      rusty_anchor_t05_wine_glass_red_62: -7214276593651994390
+      rusty_anchor_t05_wine_glass_red_63: -8115232659528727091
+      rusty_anchor_t05_wine_glass_red_64: -8467122686458434943
+      rusty_anchor_t05_wine_glass_red_65: 5660152014302061321
+      rusty_anchor_t05_wine_glass_red_66: 7855067267212254329
+      rusty_anchor_t05_wine_glass_red_67: -6288600711413856862
+      rusty_anchor_t05_wine_glass_red_68: -5396652209864027533
+      rusty_anchor_t05_wine_glass_red_69: -4359163010067084337
+      rusty_anchor_t05_wine_glass_red_7: -1712766891481187358
+      rusty_anchor_t05_wine_glass_red_70: 257660499600844373
+      rusty_anchor_t05_wine_glass_red_71: 7103288350040416377
+      rusty_anchor_t05_wine_glass_red_72: 19896572556101731
+      rusty_anchor_t05_wine_glass_red_73: 4012793548036101761
+      rusty_anchor_t05_wine_glass_red_74: 957753643921095435
+      rusty_anchor_t05_wine_glass_red_75: 5931683476216610534
+      rusty_anchor_t05_wine_glass_red_76: 5884470518271563024
+      rusty_anchor_t05_wine_glass_red_77: -5395615920596783383
+      rusty_anchor_t05_wine_glass_red_78: -2203569657896800064
+      rusty_anchor_t05_wine_glass_red_79: -8183879997778771404
+      rusty_anchor_t05_wine_glass_red_8: -967858396477012934
+      rusty_anchor_t05_wine_glass_red_80: -2913655509240793306
+      rusty_anchor_t05_wine_glass_red_81: -1132861403299491427
+      rusty_anchor_t05_wine_glass_red_82: 7886466625513239716
+      rusty_anchor_t05_wine_glass_red_83: 5177712071044164086
+      rusty_anchor_t05_wine_glass_red_84: -8168377842763898680
+      rusty_anchor_t05_wine_glass_red_85: 4637120519224464331
+      rusty_anchor_t05_wine_glass_red_86: -3814644584624765440
+      rusty_anchor_t05_wine_glass_red_87: 768884231138300477
+      rusty_anchor_t05_wine_glass_red_88: 7073090203190319298
+      rusty_anchor_t05_wine_glass_red_89: -676444940947623882
+      rusty_anchor_t05_wine_glass_red_9: -3229346632609539489
+      rusty_anchor_t05_wine_glass_red_90: 6444637591116257959
+      rusty_anchor_t05_wine_glass_red_91: -2569555879776349915
+      rusty_anchor_t05_wine_glass_red_92: -6081662346374085221
+      rusty_anchor_t05_wine_glass_red_93: -4514874846932317136
+      rusty_anchor_t05_wine_glass_red_94: 5818895368586566852
+      rusty_anchor_t05_wine_glass_red_95: -3695331206837442373
+      rusty_anchor_t05_wine_glass_red_96: 35491994939944637
+      rusty_anchor_t05_wine_glass_red_97: -5408407180718442225
+      rusty_anchor_t05_wine_glass_red_98: -8186318669498814078
+      rusty_anchor_t05_wine_glass_red_99: 7175704032169288582
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

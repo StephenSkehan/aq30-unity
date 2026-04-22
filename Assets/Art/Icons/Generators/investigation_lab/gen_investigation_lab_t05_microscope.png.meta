@@ -1,0 +1,6110 @@
+fileFormatVersion: 2
+guid: 88d707d757f664d4b90fa695cb8cf316
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2558790056612710088
+    second: gen_investigation_lab_t05_microscope_0
+  - first:
+      213: -6497377995063007235
+    second: gen_investigation_lab_t05_microscope_1
+  - first:
+      213: 4974007232373890307
+    second: gen_investigation_lab_t05_microscope_2
+  - first:
+      213: -5707736732234346674
+    second: gen_investigation_lab_t05_microscope_3
+  - first:
+      213: -3351483415449314434
+    second: gen_investigation_lab_t05_microscope_4
+  - first:
+      213: 5832505557432336624
+    second: gen_investigation_lab_t05_microscope_5
+  - first:
+      213: 2755230238302838706
+    second: gen_investigation_lab_t05_microscope_6
+  - first:
+      213: 2935461943923576268
+    second: gen_investigation_lab_t05_microscope_7
+  - first:
+      213: -4733219534140915270
+    second: gen_investigation_lab_t05_microscope_8
+  - first:
+      213: 6773367206369690343
+    second: gen_investigation_lab_t05_microscope_9
+  - first:
+      213: -1776145528170705034
+    second: gen_investigation_lab_t05_microscope_10
+  - first:
+      213: -6001576569393912321
+    second: gen_investigation_lab_t05_microscope_11
+  - first:
+      213: -8968604323759425987
+    second: gen_investigation_lab_t05_microscope_12
+  - first:
+      213: 8108219116235686505
+    second: gen_investigation_lab_t05_microscope_13
+  - first:
+      213: 12994412650626441
+    second: gen_investigation_lab_t05_microscope_14
+  - first:
+      213: -7868006639836307418
+    second: gen_investigation_lab_t05_microscope_15
+  - first:
+      213: -3496471173520299710
+    second: gen_investigation_lab_t05_microscope_16
+  - first:
+      213: -5345358216677696553
+    second: gen_investigation_lab_t05_microscope_17
+  - first:
+      213: -7272043865827007453
+    second: gen_investigation_lab_t05_microscope_18
+  - first:
+      213: 8372148246995815549
+    second: gen_investigation_lab_t05_microscope_19
+  - first:
+      213: -5990878485784681036
+    second: gen_investigation_lab_t05_microscope_20
+  - first:
+      213: 1496661246272707399
+    second: gen_investigation_lab_t05_microscope_21
+  - first:
+      213: -5641208086587827736
+    second: gen_investigation_lab_t05_microscope_22
+  - first:
+      213: 1596041919537347790
+    second: gen_investigation_lab_t05_microscope_23
+  - first:
+      213: -3077130194170487179
+    second: gen_investigation_lab_t05_microscope_24
+  - first:
+      213: -7688360515612828922
+    second: gen_investigation_lab_t05_microscope_25
+  - first:
+      213: -4431106090234775878
+    second: gen_investigation_lab_t05_microscope_26
+  - first:
+      213: -8193976596020425045
+    second: gen_investigation_lab_t05_microscope_27
+  - first:
+      213: 6204616244380859531
+    second: gen_investigation_lab_t05_microscope_28
+  - first:
+      213: -7874069547131448642
+    second: gen_investigation_lab_t05_microscope_29
+  - first:
+      213: 5046870536009074231
+    second: gen_investigation_lab_t05_microscope_30
+  - first:
+      213: -3909151727173662807
+    second: gen_investigation_lab_t05_microscope_31
+  - first:
+      213: -8368165252409241817
+    second: gen_investigation_lab_t05_microscope_32
+  - first:
+      213: 5870175418091813414
+    second: gen_investigation_lab_t05_microscope_33
+  - first:
+      213: 2980157650768385026
+    second: gen_investigation_lab_t05_microscope_34
+  - first:
+      213: 2848091565966226053
+    second: gen_investigation_lab_t05_microscope_35
+  - first:
+      213: -3742499935638485844
+    second: gen_investigation_lab_t05_microscope_36
+  - first:
+      213: 6386243178770416697
+    second: gen_investigation_lab_t05_microscope_37
+  - first:
+      213: -4665816206922128821
+    second: gen_investigation_lab_t05_microscope_38
+  - first:
+      213: -4079712421948379874
+    second: gen_investigation_lab_t05_microscope_39
+  - first:
+      213: 3287836792739507103
+    second: gen_investigation_lab_t05_microscope_40
+  - first:
+      213: 350575809603372618
+    second: gen_investigation_lab_t05_microscope_41
+  - first:
+      213: -960308413710326367
+    second: gen_investigation_lab_t05_microscope_42
+  - first:
+      213: -5759700915320707243
+    second: gen_investigation_lab_t05_microscope_43
+  - first:
+      213: -4347461546262925210
+    second: gen_investigation_lab_t05_microscope_44
+  - first:
+      213: 3021099374200026310
+    second: gen_investigation_lab_t05_microscope_45
+  - first:
+      213: 4436809379680187796
+    second: gen_investigation_lab_t05_microscope_46
+  - first:
+      213: -8304208288509019869
+    second: gen_investigation_lab_t05_microscope_47
+  - first:
+      213: 6513715301820872021
+    second: gen_investigation_lab_t05_microscope_48
+  - first:
+      213: -6253436023759764873
+    second: gen_investigation_lab_t05_microscope_49
+  - first:
+      213: -2128804605015388906
+    second: gen_investigation_lab_t05_microscope_50
+  - first:
+      213: 5804766813777188594
+    second: gen_investigation_lab_t05_microscope_51
+  - first:
+      213: -5138781501226364705
+    second: gen_investigation_lab_t05_microscope_52
+  - first:
+      213: -3640534046738604683
+    second: gen_investigation_lab_t05_microscope_53
+  - first:
+      213: 8974337053972753401
+    second: gen_investigation_lab_t05_microscope_54
+  - first:
+      213: 4278279762587815710
+    second: gen_investigation_lab_t05_microscope_55
+  - first:
+      213: -302146348829648559
+    second: gen_investigation_lab_t05_microscope_56
+  - first:
+      213: 4746215285871534812
+    second: gen_investigation_lab_t05_microscope_57
+  - first:
+      213: -5527855941763011054
+    second: gen_investigation_lab_t05_microscope_58
+  - first:
+      213: 3266245933372747713
+    second: gen_investigation_lab_t05_microscope_59
+  - first:
+      213: -4622097670180471165
+    second: gen_investigation_lab_t05_microscope_60
+  - first:
+      213: -6513814750836507745
+    second: gen_investigation_lab_t05_microscope_61
+  - first:
+      213: 8598114768189614752
+    second: gen_investigation_lab_t05_microscope_62
+  - first:
+      213: 3629178419253865039
+    second: gen_investigation_lab_t05_microscope_63
+  - first:
+      213: 5202519800487642315
+    second: gen_investigation_lab_t05_microscope_64
+  - first:
+      213: -7939499266800005580
+    second: gen_investigation_lab_t05_microscope_65
+  - first:
+      213: -6710708350556287269
+    second: gen_investigation_lab_t05_microscope_66
+  - first:
+      213: 3000575081332222756
+    second: gen_investigation_lab_t05_microscope_67
+  - first:
+      213: -6906218385638085628
+    second: gen_investigation_lab_t05_microscope_68
+  - first:
+      213: 2313166279342753997
+    second: gen_investigation_lab_t05_microscope_69
+  - first:
+      213: -8829804338824808284
+    second: gen_investigation_lab_t05_microscope_70
+  - first:
+      213: 1485096708732464551
+    second: gen_investigation_lab_t05_microscope_71
+  - first:
+      213: -5206968905649956265
+    second: gen_investigation_lab_t05_microscope_72
+  - first:
+      213: -6068404573851301395
+    second: gen_investigation_lab_t05_microscope_73
+  - first:
+      213: -8330570818852371966
+    second: gen_investigation_lab_t05_microscope_74
+  - first:
+      213: -3270210218777034007
+    second: gen_investigation_lab_t05_microscope_75
+  - first:
+      213: 7885691200098195464
+    second: gen_investigation_lab_t05_microscope_76
+  - first:
+      213: 4568413709186706345
+    second: gen_investigation_lab_t05_microscope_77
+  - first:
+      213: 8273196509266794267
+    second: gen_investigation_lab_t05_microscope_78
+  - first:
+      213: -3795481219456101821
+    second: gen_investigation_lab_t05_microscope_79
+  - first:
+      213: 3848045630404958657
+    second: gen_investigation_lab_t05_microscope_80
+  - first:
+      213: 535104759547500328
+    second: gen_investigation_lab_t05_microscope_81
+  - first:
+      213: -4033237135640984442
+    second: gen_investigation_lab_t05_microscope_82
+  - first:
+      213: -7914747726588744201
+    second: gen_investigation_lab_t05_microscope_83
+  - first:
+      213: -8416079728528049202
+    second: gen_investigation_lab_t05_microscope_84
+  - first:
+      213: 12283108480082453
+    second: gen_investigation_lab_t05_microscope_85
+  - first:
+      213: 7075814499587565501
+    second: gen_investigation_lab_t05_microscope_86
+  - first:
+      213: 5758116266079232867
+    second: gen_investigation_lab_t05_microscope_87
+  - first:
+      213: 6291592977899199320
+    second: gen_investigation_lab_t05_microscope_88
+  - first:
+      213: -6725453512023887014
+    second: gen_investigation_lab_t05_microscope_89
+  - first:
+      213: 7413791997134384773
+    second: gen_investigation_lab_t05_microscope_90
+  - first:
+      213: -6490637393574662194
+    second: gen_investigation_lab_t05_microscope_91
+  - first:
+      213: -5488013322565557627
+    second: gen_investigation_lab_t05_microscope_92
+  - first:
+      213: 2273913867023504245
+    second: gen_investigation_lab_t05_microscope_93
+  - first:
+      213: 771327064154223163
+    second: gen_investigation_lab_t05_microscope_94
+  - first:
+      213: -3626499622741469603
+    second: gen_investigation_lab_t05_microscope_95
+  - first:
+      213: 6480195037625237857
+    second: gen_investigation_lab_t05_microscope_96
+  - first:
+      213: -4766262606648023140
+    second: gen_investigation_lab_t05_microscope_97
+  - first:
+      213: -81965397065714022
+    second: gen_investigation_lab_t05_microscope_98
+  - first:
+      213: 9113883934431907736
+    second: gen_investigation_lab_t05_microscope_99
+  - first:
+      213: 1229924117435007726
+    second: gen_investigation_lab_t05_microscope_100
+  - first:
+      213: 5907995644244730382
+    second: gen_investigation_lab_t05_microscope_101
+  - first:
+      213: 492055462992488797
+    second: gen_investigation_lab_t05_microscope_102
+  - first:
+      213: 5550194531888071468
+    second: gen_investigation_lab_t05_microscope_103
+  - first:
+      213: 974652231570382394
+    second: gen_investigation_lab_t05_microscope_104
+  - first:
+      213: -2980287494677923422
+    second: gen_investigation_lab_t05_microscope_105
+  - first:
+      213: 1670895218816082170
+    second: gen_investigation_lab_t05_microscope_106
+  - first:
+      213: 1945103269432793527
+    second: gen_investigation_lab_t05_microscope_107
+  - first:
+      213: 510566775923787553
+    second: gen_investigation_lab_t05_microscope_108
+  - first:
+      213: -6318851606206230828
+    second: gen_investigation_lab_t05_microscope_109
+  - first:
+      213: -5863821903109764131
+    second: gen_investigation_lab_t05_microscope_110
+  - first:
+      213: 9061249479081411733
+    second: gen_investigation_lab_t05_microscope_111
+  - first:
+      213: -3624814912764308180
+    second: gen_investigation_lab_t05_microscope_112
+  - first:
+      213: -7793643520054743329
+    second: gen_investigation_lab_t05_microscope_113
+  - first:
+      213: 8196500372457154603
+    second: gen_investigation_lab_t05_microscope_114
+  - first:
+      213: 2149502684098931133
+    second: gen_investigation_lab_t05_microscope_115
+  - first:
+      213: 926255963758045126
+    second: gen_investigation_lab_t05_microscope_116
+  - first:
+      213: -517974046743683322
+    second: gen_investigation_lab_t05_microscope_117
+  - first:
+      213: 8652764960321588378
+    second: gen_investigation_lab_t05_microscope_118
+  - first:
+      213: -1757595211925061359
+    second: gen_investigation_lab_t05_microscope_119
+  - first:
+      213: 209685278277663404
+    second: gen_investigation_lab_t05_microscope_120
+  - first:
+      213: -4637671709346567248
+    second: gen_investigation_lab_t05_microscope_121
+  - first:
+      213: 3465147347033023201
+    second: gen_investigation_lab_t05_microscope_122
+  - first:
+      213: -795765515734631952
+    second: gen_investigation_lab_t05_microscope_123
+  - first:
+      213: 6299444388749393623
+    second: gen_investigation_lab_t05_microscope_124
+  - first:
+      213: -8893980149759050862
+    second: gen_investigation_lab_t05_microscope_125
+  - first:
+      213: 205016040598631016
+    second: gen_investigation_lab_t05_microscope_126
+  - first:
+      213: -1652497177073706427
+    second: gen_investigation_lab_t05_microscope_127
+  - first:
+      213: 8180439161752698518
+    second: gen_investigation_lab_t05_microscope_128
+  - first:
+      213: 5190688960633549737
+    second: gen_investigation_lab_t05_microscope_129
+  - first:
+      213: 5951255310683446913
+    second: gen_investigation_lab_t05_microscope_130
+  - first:
+      213: 6516029772616931916
+    second: gen_investigation_lab_t05_microscope_131
+  - first:
+      213: -4981371607167937696
+    second: gen_investigation_lab_t05_microscope_132
+  - first:
+      213: 1758756353021201140
+    second: gen_investigation_lab_t05_microscope_133
+  - first:
+      213: 5903154170000708346
+    second: gen_investigation_lab_t05_microscope_134
+  - first:
+      213: 3151704835090438521
+    second: gen_investigation_lab_t05_microscope_135
+  - first:
+      213: 7956617870990458387
+    second: gen_investigation_lab_t05_microscope_136
+  - first:
+      213: -5852246613503606070
+    second: gen_investigation_lab_t05_microscope_137
+  - first:
+      213: -5071083331977401997
+    second: gen_investigation_lab_t05_microscope_138
+  - first:
+      213: 668465081950271413
+    second: gen_investigation_lab_t05_microscope_139
+  - first:
+      213: -1735858880156929181
+    second: gen_investigation_lab_t05_microscope_140
+  - first:
+      213: 4490736248953218105
+    second: gen_investigation_lab_t05_microscope_141
+  - first:
+      213: 1137487115459017161
+    second: gen_investigation_lab_t05_microscope_142
+  - first:
+      213: -7121640974296738564
+    second: gen_investigation_lab_t05_microscope_143
+  - first:
+      213: -1057590602745590111
+    second: gen_investigation_lab_t05_microscope_144
+  - first:
+      213: -5227786591310705329
+    second: gen_investigation_lab_t05_microscope_145
+  - first:
+      213: 892064723549258072
+    second: gen_investigation_lab_t05_microscope_146
+  - first:
+      213: -6209855498238291886
+    second: gen_investigation_lab_t05_microscope_147
+  - first:
+      213: -542687833769746589
+    second: gen_investigation_lab_t05_microscope_148
+  - first:
+      213: -457834726959077023
+    second: gen_investigation_lab_t05_microscope_149
+  - first:
+      213: -4522748315718900250
+    second: gen_investigation_lab_t05_microscope_150
+  - first:
+      213: 5775807823433632567
+    second: gen_investigation_lab_t05_microscope_151
+  - first:
+      213: -7863545688617781991
+    second: gen_investigation_lab_t05_microscope_152
+  - first:
+      213: 7328115456741359704
+    second: gen_investigation_lab_t05_microscope_153
+  - first:
+      213: -8948464043738745942
+    second: gen_investigation_lab_t05_microscope_154
+  - first:
+      213: 981314371743918157
+    second: gen_investigation_lab_t05_microscope_155
+  - first:
+      213: 7502274475680676619
+    second: gen_investigation_lab_t05_microscope_156
+  - first:
+      213: 5723708880247277703
+    second: gen_investigation_lab_t05_microscope_157
+  - first:
+      213: 5152358277444989631
+    second: gen_investigation_lab_t05_microscope_158
+  - first:
+      213: -6457462641593296416
+    second: gen_investigation_lab_t05_microscope_159
+  - first:
+      213: -7446531568526642740
+    second: gen_investigation_lab_t05_microscope_160
+  - first:
+      213: 4643495342371723514
+    second: gen_investigation_lab_t05_microscope_161
+  - first:
+      213: 1090740405204111202
+    second: gen_investigation_lab_t05_microscope_162
+  - first:
+      213: 7618859188708441746
+    second: gen_investigation_lab_t05_microscope_163
+  - first:
+      213: 3242037312702444294
+    second: gen_investigation_lab_t05_microscope_164
+  - first:
+      213: 4902274915301926306
+    second: gen_investigation_lab_t05_microscope_165
+  - first:
+      213: 7979427533683864846
+    second: gen_investigation_lab_t05_microscope_166
+  - first:
+      213: -1306638861112546732
+    second: gen_investigation_lab_t05_microscope_167
+  - first:
+      213: -8976512160384843651
+    second: gen_investigation_lab_t05_microscope_168
+  - first:
+      213: -3552170223079292323
+    second: gen_investigation_lab_t05_microscope_169
+  - first:
+      213: -3038174134291279554
+    second: gen_investigation_lab_t05_microscope_170
+  - first:
+      213: 7279935998818013804
+    second: gen_investigation_lab_t05_microscope_171
+  - first:
+      213: 5341605549423620946
+    second: gen_investigation_lab_t05_microscope_172
+  - first:
+      213: 7866701664941844777
+    second: gen_investigation_lab_t05_microscope_173
+  - first:
+      213: -6187461027557161233
+    second: gen_investigation_lab_t05_microscope_174
+  - first:
+      213: 1226124292327536468
+    second: gen_investigation_lab_t05_microscope_175
+  - first:
+      213: 2998942195815012152
+    second: gen_investigation_lab_t05_microscope_176
+  - first:
+      213: 5354718919495130780
+    second: gen_investigation_lab_t05_microscope_177
+  - first:
+      213: -8736287330566195597
+    second: gen_investigation_lab_t05_microscope_178
+  - first:
+      213: -242969680996265097
+    second: gen_investigation_lab_t05_microscope_179
+  - first:
+      213: -6689675554580214256
+    second: gen_investigation_lab_t05_microscope_180
+  - first:
+      213: -3103453672365542404
+    second: gen_investigation_lab_t05_microscope_181
+  - first:
+      213: -5417557020046146669
+    second: gen_investigation_lab_t05_microscope_182
+  - first:
+      213: -2973425858913523670
+    second: gen_investigation_lab_t05_microscope_183
+  - first:
+      213: 4110361182632570484
+    second: gen_investigation_lab_t05_microscope_184
+  - first:
+      213: -5000150306856180956
+    second: gen_investigation_lab_t05_microscope_185
+  - first:
+      213: -2178185106492494656
+    second: gen_investigation_lab_t05_microscope_186
+  - first:
+      213: 5280303054581138653
+    second: gen_investigation_lab_t05_microscope_187
+  - first:
+      213: 2070824392216462257
+    second: gen_investigation_lab_t05_microscope_188
+  - first:
+      213: -3444143636636073243
+    second: gen_investigation_lab_t05_microscope_189
+  - first:
+      213: -1777425328081605976
+    second: gen_investigation_lab_t05_microscope_190
+  - first:
+      213: 2843660366645449472
+    second: gen_investigation_lab_t05_microscope_191
+  - first:
+      213: 1089836744545035350
+    second: gen_investigation_lab_t05_microscope_192
+  - first:
+      213: 1773157242146549864
+    second: gen_investigation_lab_t05_microscope_193
+  - first:
+      213: -7424981846270693881
+    second: gen_investigation_lab_t05_microscope_194
+  - first:
+      213: 1813790762823974440
+    second: gen_investigation_lab_t05_microscope_195
+  - first:
+      213: -1101879166424680068
+    second: gen_investigation_lab_t05_microscope_196
+  - first:
+      213: -3675391608196485237
+    second: gen_investigation_lab_t05_microscope_197
+  - first:
+      213: 6262044563022437829
+    second: gen_investigation_lab_t05_microscope_198
+  - first:
+      213: -8195568765287923357
+    second: gen_investigation_lab_t05_microscope_199
+  - first:
+      213: 7157752496372913734
+    second: gen_investigation_lab_t05_microscope_200
+  - first:
+      213: -5129541873121967076
+    second: gen_investigation_lab_t05_microscope_201
+  - first:
+      213: -7652811965916063482
+    second: gen_investigation_lab_t05_microscope_202
+  - first:
+      213: -2099402021759745881
+    second: gen_investigation_lab_t05_microscope_203
+  - first:
+      213: 523657126102571673
+    second: gen_investigation_lab_t05_microscope_204
+  - first:
+      213: -5539648317161857663
+    second: gen_investigation_lab_t05_microscope_205
+  - first:
+      213: 8692063942105656675
+    second: gen_investigation_lab_t05_microscope_206
+  - first:
+      213: 8424430282675338308
+    second: gen_investigation_lab_t05_microscope_207
+  - first:
+      213: -6593871603398313911
+    second: gen_investigation_lab_t05_microscope_208
+  - first:
+      213: 5208640216153571198
+    second: gen_investigation_lab_t05_microscope_209
+  - first:
+      213: -5591400585612084047
+    second: gen_investigation_lab_t05_microscope_210
+  - first:
+      213: -6021613954100898872
+    second: gen_investigation_lab_t05_microscope_211
+  - first:
+      213: -2067560217119919213
+    second: gen_investigation_lab_t05_microscope_212
+  - first:
+      213: 702156219400021981
+    second: gen_investigation_lab_t05_microscope_213
+  - first:
+      213: 125098123588623993
+    second: gen_investigation_lab_t05_microscope_214
+  - first:
+      213: -6847261372500085768
+    second: gen_investigation_lab_t05_microscope_215
+  - first:
+      213: 2016639796365146576
+    second: gen_investigation_lab_t05_microscope_216
+  - first:
+      213: -8030301120333790833
+    second: gen_investigation_lab_t05_microscope_217
+  - first:
+      213: -3882446795735266186
+    second: gen_investigation_lab_t05_microscope_218
+  - first:
+      213: -6876257046284805486
+    second: gen_investigation_lab_t05_microscope_219
+  - first:
+      213: -1568097117626803945
+    second: gen_investigation_lab_t05_microscope_220
+  - first:
+      213: 3504588949040406313
+    second: gen_investigation_lab_t05_microscope_221
+  - first:
+      213: 4199258115106362058
+    second: gen_investigation_lab_t05_microscope_222
+  - first:
+      213: 4968273095705533929
+    second: gen_investigation_lab_t05_microscope_223
+  - first:
+      213: -3396866173151941815
+    second: gen_investigation_lab_t05_microscope_224
+  - first:
+      213: 9012694105946423738
+    second: gen_investigation_lab_t05_microscope_225
+  - first:
+      213: -5843050601592781768
+    second: gen_investigation_lab_t05_microscope_226
+  - first:
+      213: -3438234360253440178
+    second: gen_investigation_lab_t05_microscope_227
+  - first:
+      213: 5089521704385866601
+    second: gen_investigation_lab_t05_microscope_228
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_0
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 1003
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8393cc4200a5d7cd0800000000000000
+      internalID: -2558790056612710088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_1
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 1013
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df764d8532da4d5a0800000000000000
+      internalID: -6497377995063007235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_2
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 1005
+        width: 270
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30d9ed37939370540800000000000000
+      internalID: 4974007232373890307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_3
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 1011
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4f09b3deab0ac0b0800000000000000
+      internalID: -5707736732234346674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_4
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 1011
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7bd78f27932d71d0800000000000000
+      internalID: -3351483415449314434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_5
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 1011
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f00f3d07e831f050800000000000000
+      internalID: 5832505557432336624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_6
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 1019
+        width: 14
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bf947ccd4b8c3620800000000000000
+      internalID: 2755230238302838706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_7
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 1011
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccd0e33d51bdcb820800000000000000
+      internalID: 2935461943923576268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_8
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 1003
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab1479f49e9305eb0800000000000000
+      internalID: -4733219534140915270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_9
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 997
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e202fc5695dffd50800000000000000
+      internalID: 6773367206369690343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_10
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 1003
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67f8cf37d0dd957e0800000000000000
+      internalID: -1776145528170705034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_11
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 981
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff5e7f868ed16bca0800000000000000
+      internalID: -6001576569393912321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_12
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 981
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d36794f92ed198380800000000000000
+      internalID: -8968604323759425987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_13
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 973
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9628248b35e268070800000000000000
+      internalID: 8108219116235686505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_14
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 981
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98dfa16795a2e2000800000000000000
+      internalID: 12994412650626441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_15
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 981
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6206426c5a93fc290800000000000000
+      internalID: -7868006639836307418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_16
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 973
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 249ede62ef90a7fc0800000000000000
+      internalID: -3496471173520299710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_17
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 981
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dbd5b9d50971d5b0800000000000000
+      internalID: -5345358216677696553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_18
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 981
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 324a25a02a2841b90800000000000000
+      internalID: -7272043865827007453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_19
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 973
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7c481d1978df2470800000000000000
+      internalID: 8372148246995815549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_20
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 981
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b5264a12cf1cdca0800000000000000
+      internalID: -5990878485784681036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_21
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 981
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74b9d2d497535c410800000000000000
+      internalID: 1496661246272707399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_22
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 973
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e91fd6322766b1b0800000000000000
+      internalID: -5641208086587827736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_23
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 981
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eccf7ac6ba7462610800000000000000
+      internalID: 1596041919537347790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_24
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 965
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57ed6d84466db45d0800000000000000
+      internalID: -3077130194170487179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_25
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 981
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60b12c188d47d4590800000000000000
+      internalID: -7688360515612828922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_26
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 973
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab67c79ec7c8182c0800000000000000
+      internalID: -4431106090234775878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_27
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 963
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bae865013b5294e80800000000000000
+      internalID: -8193976596020425045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_28
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 963
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8c70fdc9993b1650800000000000000
+      internalID: 6204616244380859531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_29
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 963
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb2528a277fa9b290800000000000000
+      internalID: -7874069547131448642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_30
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 965
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 736c43653061a0640800000000000000
+      internalID: 5046870536009074231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_31
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 961
+        width: 22
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a785b83737efb9c0800000000000000
+      internalID: -3909151727173662807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_32
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 963
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72f41641a0e4edb80800000000000000
+      internalID: -8368165252409241817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_33
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 957
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62ab794f07d077150800000000000000
+      internalID: 5870175418091813414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_34
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 963
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20456b40895ab5920800000000000000
+      internalID: 2980157650768385026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_35
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 957
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 582f33d7034768720800000000000000
+      internalID: 2848091565966226053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_36
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 963
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca4885c1328ff0cc0800000000000000
+      internalID: -3742499935638485844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_37
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 963
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9344fd7d55e70a850800000000000000
+      internalID: 6386243178770416697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_38
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 963
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b42652f51e0bf3fb0800000000000000
+      internalID: -4665816206922128821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_39
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 963
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1da400ea23f167c0800000000000000
+      internalID: -4079712421948379874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_40
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 963
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9ba2bea42eb0ad20800000000000000
+      internalID: 3287836792739507103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_41
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 957
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a46014667de7dd400800000000000000
+      internalID: 350575809603372618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_42
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 963
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a52afde59c4ca2f0800000000000000
+      internalID: -960308413710326367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_43
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 0
+        width: 803
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55721d1a88e6110b0800000000000000
+      internalID: -5759700915320707243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_44
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 955
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 660f35ce1c6baa3c0800000000000000
+      internalID: -4347461546262925210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_45
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 949
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c4f856dfd91de920800000000000000
+      internalID: 3021099374200026310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_46
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 941
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49575f3af96b29d30800000000000000
+      internalID: 4436809379680187796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_47
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 947
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 329b0962f8681cc80800000000000000
+      internalID: -8304208288509019869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_48
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 931
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5553f0d4e8d556a50800000000000000
+      internalID: 6513715301820872021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_49
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 931
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7720b2a81155739a0800000000000000
+      internalID: -6253436023759764873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_50
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 909
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61d87d99d77f472e0800000000000000
+      internalID: -2128804605015388906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_51
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 899
+        width: 59
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f65a2389acae8050800000000000000
+      internalID: 5804766813777188594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_52
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 909
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd0dd0973716fa8b0800000000000000
+      internalID: -5138781501226364705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_53
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 891
+        width: 30
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57d1e67a2993a7dc0800000000000000
+      internalID: -3640534046738604683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_54
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 899
+        width: 30
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fbeba4a0004b8c70800000000000000
+      internalID: 8974337053972753401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_55
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 899
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1f0acad6c08f5b30800000000000000
+      internalID: 4278279762587815710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_56
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 891
+        width: 30
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 159d3df1f7f8ecbf0800000000000000
+      internalID: -302146348829648559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_57
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 899
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd2e6ede7a1fdd140800000000000000
+      internalID: 4746215285871534812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_58
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 891
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21eeead0f4c1943b0800000000000000
+      internalID: -5527855941763011054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_59
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 875
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cf2fbffe59045d20800000000000000
+      internalID: 3266245933372747713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_60
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 875
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38e7bbb68a20bdfb0800000000000000
+      internalID: -4622097670180471165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_61
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 877
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9bb0bbeef74a95a0800000000000000
+      internalID: -6513814750836507745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_62
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 859
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0aa6bffa3d3a25770800000000000000
+      internalID: 8598114768189614752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_63
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 859
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4ae32a4b8e6d5230800000000000000
+      internalID: 3629178419253865039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_64
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 867
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc48005c130133840800000000000000
+      internalID: 5202519800487642315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_65
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 859
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43e49eb6b7b31d190800000000000000
+      internalID: -7939499266800005580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_66
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 851
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bde48dd5f46ced2a0800000000000000
+      internalID: -6710708350556287269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_67
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 845
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42b22b4832f24a920800000000000000
+      internalID: 3000575081332222756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_68
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 853
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40c25ce08fe2820a0800000000000000
+      internalID: -6906218385638085628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_69
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 837
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc803a2b9740a1020800000000000000
+      internalID: 2313166279342753997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_70
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 843
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a8f4247cbb367580800000000000000
+      internalID: -8829804338824808284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_71
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 824
+        width: 42
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ada915969f1c9410800000000000000
+      internalID: 1485096708732464551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 829
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75ada363e512db7b0800000000000000
+      internalID: -5206968905649956265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_73
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 827
+        width: 30
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de9cc3e1132b8cba0800000000000000
+      internalID: -6068404573851301395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_74
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 827
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 202c11e3afdd36c80800000000000000
+      internalID: -8330570818852371966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_75
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 819
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e241f0e121ed92d0800000000000000
+      internalID: -3270210218777034007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_76
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 797
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 808d646cd5a9f6d60800000000000000
+      internalID: 7885691200098195464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_77
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 795
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ab29136014466f30800000000000000
+      internalID: 4568413709186706345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_78
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 803
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1759d3546c40d270800000000000000
+      internalID: 8273196509266794267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_79
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 803
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34217a2b0fdb35bc0800000000000000
+      internalID: -3795481219456101821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_80
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 771
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c918cfec11076530800000000000000
+      internalID: 3848045630404958657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_81
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 781
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 827137691f21d6700800000000000000
+      internalID: 535104759547500328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_82
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 765
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6848433b1301708c0800000000000000
+      internalID: -4033237135640984442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_83
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 763
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fde8d570ea292290800000000000000
+      internalID: -7914747726588744201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_84
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 739
+        width: 64
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecb38b3c314143b80800000000000000
+      internalID: -8416079728528049202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_85
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 757
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51261bd0c63ab2000800000000000000
+      internalID: 12283108480082453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_86
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 755
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db7a9705cc7523260800000000000000
+      internalID: 7075814499587565501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_87
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 749
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3632d077c30f8ef40800000000000000
+      internalID: 5758116266079232867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_88
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 749
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85b1607aa7a305750800000000000000
+      internalID: 6291592977899199320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_89
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 749
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a53b96ee9a36aa2a0800000000000000
+      internalID: -6725453512023887014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_90
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 733
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58e24db9a8413e660800000000000000
+      internalID: 7413791997134384773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_91
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 733
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecf6d1eedaf9ce5a0800000000000000
+      internalID: -6490637393574662194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_92
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 717
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5826ed9b5f8a6d3b0800000000000000
+      internalID: -5488013322565557627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_93
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 723
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57355c54d909e8f10800000000000000
+      internalID: 2273913867023504245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_94
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 693
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b32be80d0ed44ba00800000000000000
+      internalID: 771327064154223163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_95
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 685
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d561860aec51cadc0800000000000000
+      internalID: -3626499622741469603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_96
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 693
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 161c6ec9d074ee950800000000000000
+      internalID: 6480195037625237857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_97
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 677
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9764887965daddb0800000000000000
+      internalID: -4766262606648023140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_98
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 669
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a963608d7ecccdef0800000000000000
+      internalID: -81965397065714022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_99
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 677
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89f04f3a6250b7e70800000000000000
+      internalID: 9113883934431907736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_100
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 669
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee24668e771911110800000000000000
+      internalID: 1229924117435007726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_101
+      rect:
+        serializedVersion: 2
+        x: 939
+        y: 677
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0223cd8cba6df150800000000000000
+      internalID: 5907995644244730382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_102
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 677
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d59257926d124d600800000000000000
+      internalID: 492055462992488797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_103
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 669
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2301834580460d40800000000000000
+      internalID: 5550194531888071468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_104
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 677
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3e5b4a6a09a68d00800000000000000
+      internalID: 974652231570382394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_105
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 661
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a9fe275054e3a6d0800000000000000
+      internalID: -2980287494677923422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_106
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 659
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af06e664956303710800000000000000
+      internalID: 1670895218816082170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_107
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 661
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b91ef13e156efa10800000000000000
+      internalID: 1945103269432793527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_108
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 645
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 127cd0117c5e51700800000000000000
+      internalID: 510566775923787553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_109
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 637
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4decbaf51fdee48a0800000000000000
+      internalID: -6318851606206230828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_110
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 637
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddbccf60c058f9ea0800000000000000
+      internalID: -5863821903109764131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_111
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 637
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59447d5846600cd70800000000000000
+      internalID: 9061249479081411733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_112
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 629
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c25152cba0212bdc0800000000000000
+      internalID: -3624814912764308180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_113
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 605
+        width: 45
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdeac11d28a67d390800000000000000
+      internalID: -7793643520054743329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_114
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 635
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b286aad69a1dfb170800000000000000
+      internalID: 8196500372457154603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_115
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 605
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db927797d4194dd10800000000000000
+      internalID: 2149502684098931133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_116
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 613
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c7a2ea34e8badc00800000000000000
+      internalID: 926255963758045126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_117
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 613
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60f98fc4959cfc8f0800000000000000
+      internalID: -517974046743683322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_118
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 605
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9c4ae813ebc41870800000000000000
+      internalID: 8652764960321588378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_119
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 613
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11187468774cb97e0800000000000000
+      internalID: -1757595211925061359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_120
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 613
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caa7e5e46a3f8e200800000000000000
+      internalID: 209685278277663404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_121
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 589
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bbe48bd62ea3afb0800000000000000
+      internalID: -4637671709346567248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_122
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 597
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e26a4a272da61030800000000000000
+      internalID: 3465147347033023201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_123
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 597
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f9b126ca7fd4f4f0800000000000000
+      internalID: -795765515734631952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_124
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 597
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7de3cb1bb4f1c6750800000000000000
+      internalID: 6299444388749393623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_125
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 581
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29b7c361d2c329480800000000000000
+      internalID: -8893980149759050862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_126
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 581
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8627321b00d58d200800000000000000
+      internalID: 205016040598631016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_127
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 565
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54a9f20a2962119e0800000000000000
+      internalID: -1652497177073706427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_128
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 557
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69eb6f66312c68170800000000000000
+      internalID: 8180439161752698518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_129
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 557
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a3ba16bb18090840800000000000000
+      internalID: 5190688960633549737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_130
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 541
+        width: 8
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18e91f88c2b179250800000000000000
+      internalID: 5951255310683446913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_131
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 555
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4a93b60e869d6a50800000000000000
+      internalID: 6516029772616931916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_132
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 549
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 063d98c6aec9edab0800000000000000
+      internalID: -4981371607167937696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_133
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 525
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fa4a44b59b586810800000000000000
+      internalID: 1758756353021201140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_134
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 533
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af2124df0773ce150800000000000000
+      internalID: 5903154170000708346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_135
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 525
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 979527c59da1dbb20800000000000000
+      internalID: 3151704835090438521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_136
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 525
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31e39e53cc59b6e60800000000000000
+      internalID: 7956617870990458387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_137
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 533
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac2822826b4a8cea0800000000000000
+      internalID: -5852246613503606070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_138
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 515
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 379251bc394ef99b0800000000000000
+      internalID: -5071083331977401997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_139
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 517
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b7f56a437dd64900800000000000000
+      internalID: 668465081950271413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_140
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 509
+        width: 5
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 363f904ab8df8e7e0800000000000000
+      internalID: -1735858880156929181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_141
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 501
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 934a3d253dc425e30800000000000000
+      internalID: 4490736248953218105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_142
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 493
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c9b48d318a29cf00800000000000000
+      internalID: 1137487115459017161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_143
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 501
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf41d251449da2d90800000000000000
+      internalID: -7121640974296738564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_144
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 477
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aece8d33fea251f0800000000000000
+      internalID: -1057590602745590111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_145
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 491
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4d006f0bcb2377b0800000000000000
+      internalID: -5227786591310705329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_146
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 469
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8518fc3c320416c00800000000000000
+      internalID: 892064723549258072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_147
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 469
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2501009535922d9a0800000000000000
+      internalID: -6209855498238291886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_148
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 461
+        width: 38
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36f5a3c5a4cf778f0800000000000000
+      internalID: -542687833769746589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_149
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 445
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16924c5ddb175a9f0800000000000000
+      internalID: -457834726959077023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_150
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 445
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e524119e58fb31c0800000000000000
+      internalID: -4522748315718900250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_151
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 459
+        width: 30
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73b0fa62d9ac72050800000000000000
+      internalID: 5775807823433632567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_152
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 453
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 915f1eaebd21fd290800000000000000
+      internalID: -7863545688617781991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_153
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 451
+        width: 30
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8504e109e22b2b560800000000000000
+      internalID: 7328115456741359704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_154
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 453
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa3b89bfc5ba0d380800000000000000
+      internalID: -8948464043738745942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_155
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 429
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4828ccc8345e9d00800000000000000
+      internalID: 981314371743918157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_156
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 443
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0b3d6a03ee6d1860800000000000000
+      internalID: 7502274475680676619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_157
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 429
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78843eca6e2be6f40800000000000000
+      internalID: 5723708880247277703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_158
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 429
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb2f6a21e8ad08740800000000000000
+      internalID: 5152358277444989631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_159
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 413
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e9d979c0fb7266a0800000000000000
+      internalID: -6457462641593296416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_160
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 405
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc1bc39edfa98a890800000000000000
+      internalID: -7446531568526642740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_161
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 413
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af85f3e5962017040800000000000000
+      internalID: 4643495342371723514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_162
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 389
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26f4b5a9e96132f00800000000000000
+      internalID: 1090740405204111202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_163
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 395
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29effa0d010abb960800000000000000
+      internalID: 7618859188708441746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_164
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 397
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 603f03442c70efc20800000000000000
+      internalID: 3242037312702444294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_165
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 387
+        width: 38
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a521e5ef01680440800000000000000
+      internalID: 4902274915301926306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_166
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 379
+        width: 38
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e05b238a01f9cbe60800000000000000
+      internalID: 7979427533683864846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_167
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 387
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45a6aa1f0e2eddde0800000000000000
+      internalID: -1306638861112546732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_168
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 379
+        width: 38
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d70894eefb50d6380800000000000000
+      internalID: -8976512160384843651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_169
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 350
+        width: 29
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5283a7900824bec0800000000000000
+      internalID: -3552170223079292323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_170
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 347
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e31d9c7c8bc36d5d0800000000000000
+      internalID: -3038174134291279554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_171
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 333
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c62502d5837870560800000000000000
+      internalID: 7279935998818013804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_172
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 331
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25376a732f1312a40800000000000000
+      internalID: 5341605549423620946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_173
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 312
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92925d41c732c2d60800000000000000
+      internalID: 7866701664941844777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_174
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 323
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe6c1ee5af8b12aa0800000000000000
+      internalID: -6187461027557161233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_175
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 309
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 457f8ae2c81140110800000000000000
+      internalID: 1226124292327536468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_176
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 315
+        width: 35
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 837db7bb9026e9920800000000000000
+      internalID: 2998942195815012152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_177
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 307
+        width: 30
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9e129c9c78cf4a40800000000000000
+      internalID: 5354718919495130780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_178
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 285
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3763bdda5f872c680800000000000000
+      internalID: -8736287330566195597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_179
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 269
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7731709cc5cc0acf0800000000000000
+      internalID: -242969680996265097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_180
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 269
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01ec1aac68f7923a0800000000000000
+      internalID: -6689675554580214256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_181
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 267
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf335c9e3515ee4d0800000000000000
+      internalID: -3103453672365542404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_182
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 245
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 393c9bdf798f0d4b0800000000000000
+      internalID: -5417557020046146669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_183
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 237
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a28af796fe44cb6d0800000000000000
+      internalID: -2973425858913523670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_184
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 259
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47e6e5dc7bfea0930800000000000000
+      internalID: 4110361182632570484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_185
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 245
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 423e640b9c5eb9ab0800000000000000
+      internalID: -5000150306856180956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_186
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 259
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cce778af2885c1e0800000000000000
+      internalID: -2178185106492494656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_187
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 251
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd408b2e6a7674940800000000000000
+      internalID: 5280303054581138653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_188
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 237
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b3c64220db0dbc10800000000000000
+      internalID: 2070824392216462257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_189
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 237
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e282ee3c91f330d0800000000000000
+      internalID: -3444143636636073243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_190
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 237
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aae9e0d4115557e0800000000000000
+      internalID: -1777425328081605976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_191
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 229
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00352cf7906b67720800000000000000
+      internalID: 2843660366645449472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_192
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 205
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65466c5beb0ef1f00800000000000000
+      internalID: 1089836744545035350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_193
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 209
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8607e0dfd158b9810800000000000000
+      internalID: 1773157242146549864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_194
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 211
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70eaf4d995a25f890800000000000000
+      internalID: -7424981846270693881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_195
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 213
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82ef103c611eb2910800000000000000
+      internalID: 1813790762823974440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_196
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 213
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c797ad37cb655b0f0800000000000000
+      internalID: -1101879166424680068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_197
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 197
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8f2ffe2ec26efcc0800000000000000
+      internalID: -3675391608196485237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_198
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 189
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cd5e923a5047e650800000000000000
+      internalID: 6262044563022437829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_199
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 189
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3610ab441ad734e80800000000000000
+      internalID: -8195568765287923357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_200
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 165
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6461978d8f1755360800000000000000
+      internalID: 7157752496372913734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_201
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 165
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c14c21808d430d8b0800000000000000
+      internalID: -5129541873121967076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_202
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 173
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 609d6b63010cbc590800000000000000
+      internalID: -7652811965916063482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_203
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 179
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a0064cfbfc6dd2e0800000000000000
+      internalID: -2099402021759745881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_204
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 165
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99a1279b167644700800000000000000
+      internalID: 523657126102571673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_205
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 179
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18d1af2b4373f13b0800000000000000
+      internalID: -5539648317161857663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_206
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 165
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36d60325a1a60a870800000000000000
+      internalID: 8692063942105656675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_207
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 163
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44c38e125b699e470800000000000000
+      internalID: 8424430282675338308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_208
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 165
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94878e866bcdd74a0800000000000000
+      internalID: -6593871603398313911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_209
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 165
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7fb5a61eaec84840800000000000000
+      internalID: 5208640216153571198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_210
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 149
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bc3ea9baca5762b0800000000000000
+      internalID: -5591400585612084047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_211
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 133
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c3d74b330eee6ca0800000000000000
+      internalID: -6021613954100898872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_212
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 133
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39376dadfec8e43e0800000000000000
+      internalID: -2067560217119919213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_213
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 125
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd76b228c5f8eb900800000000000000
+      internalID: 702156219400021981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_214
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 125
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97e5192a4107cb100800000000000000
+      internalID: 125098123588623993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_215
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 123
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f3f0ef5f04a9f0a0800000000000000
+      internalID: -6847261372500085768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_216
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 123
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d9b24ec53b8cfb10800000000000000
+      internalID: 2016639796365146576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_217
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 123
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f81451b6da3ae8090800000000000000
+      internalID: -8030301120333790833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_218
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 109
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67c88d89537ce1ac0800000000000000
+      internalID: -3882446795735266186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_219
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 93
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29adaebf5a0a290a0800000000000000
+      internalID: -6876257046284805486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_220
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 109
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7195a8acafffc3ae0800000000000000
+      internalID: -1568097117626803945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_221
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 109
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92f105fb41dc2a030800000000000000
+      internalID: 3504588949040406313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_222
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 85
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac2571fc103c64a30800000000000000
+      internalID: 4199258115106362058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_223
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 93
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ed98a8be0ad2f440800000000000000
+      internalID: 4968273095705533929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_224
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 85
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94becbf7638ebd0d0800000000000000
+      internalID: -3396866173151941815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_225
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 93
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab1813eb985831d70800000000000000
+      internalID: 9012694105946423738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_226
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 69
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8340e678f6059eea0800000000000000
+      internalID: -5843050601592781768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_227
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 5
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4f1d8ed010f840d0800000000000000
+      internalID: -3438234360253440178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t05_microscope_228
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 0
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96b6f82560d91a640800000000000000
+      internalID: 5089521704385866601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      gen_investigation_lab_t05_microscope_0: -2558790056612710088
+      gen_investigation_lab_t05_microscope_1: -6497377995063007235
+      gen_investigation_lab_t05_microscope_10: -1776145528170705034
+      gen_investigation_lab_t05_microscope_100: 1229924117435007726
+      gen_investigation_lab_t05_microscope_101: 5907995644244730382
+      gen_investigation_lab_t05_microscope_102: 492055462992488797
+      gen_investigation_lab_t05_microscope_103: 5550194531888071468
+      gen_investigation_lab_t05_microscope_104: 974652231570382394
+      gen_investigation_lab_t05_microscope_105: -2980287494677923422
+      gen_investigation_lab_t05_microscope_106: 1670895218816082170
+      gen_investigation_lab_t05_microscope_107: 1945103269432793527
+      gen_investigation_lab_t05_microscope_108: 510566775923787553
+      gen_investigation_lab_t05_microscope_109: -6318851606206230828
+      gen_investigation_lab_t05_microscope_11: -6001576569393912321
+      gen_investigation_lab_t05_microscope_110: -5863821903109764131
+      gen_investigation_lab_t05_microscope_111: 9061249479081411733
+      gen_investigation_lab_t05_microscope_112: -3624814912764308180
+      gen_investigation_lab_t05_microscope_113: -7793643520054743329
+      gen_investigation_lab_t05_microscope_114: 8196500372457154603
+      gen_investigation_lab_t05_microscope_115: 2149502684098931133
+      gen_investigation_lab_t05_microscope_116: 926255963758045126
+      gen_investigation_lab_t05_microscope_117: -517974046743683322
+      gen_investigation_lab_t05_microscope_118: 8652764960321588378
+      gen_investigation_lab_t05_microscope_119: -1757595211925061359
+      gen_investigation_lab_t05_microscope_12: -8968604323759425987
+      gen_investigation_lab_t05_microscope_120: 209685278277663404
+      gen_investigation_lab_t05_microscope_121: -4637671709346567248
+      gen_investigation_lab_t05_microscope_122: 3465147347033023201
+      gen_investigation_lab_t05_microscope_123: -795765515734631952
+      gen_investigation_lab_t05_microscope_124: 6299444388749393623
+      gen_investigation_lab_t05_microscope_125: -8893980149759050862
+      gen_investigation_lab_t05_microscope_126: 205016040598631016
+      gen_investigation_lab_t05_microscope_127: -1652497177073706427
+      gen_investigation_lab_t05_microscope_128: 8180439161752698518
+      gen_investigation_lab_t05_microscope_129: 5190688960633549737
+      gen_investigation_lab_t05_microscope_13: 8108219116235686505
+      gen_investigation_lab_t05_microscope_130: 5951255310683446913
+      gen_investigation_lab_t05_microscope_131: 6516029772616931916
+      gen_investigation_lab_t05_microscope_132: -4981371607167937696
+      gen_investigation_lab_t05_microscope_133: 1758756353021201140
+      gen_investigation_lab_t05_microscope_134: 5903154170000708346
+      gen_investigation_lab_t05_microscope_135: 3151704835090438521
+      gen_investigation_lab_t05_microscope_136: 7956617870990458387
+      gen_investigation_lab_t05_microscope_137: -5852246613503606070
+      gen_investigation_lab_t05_microscope_138: -5071083331977401997
+      gen_investigation_lab_t05_microscope_139: 668465081950271413
+      gen_investigation_lab_t05_microscope_14: 12994412650626441
+      gen_investigation_lab_t05_microscope_140: -1735858880156929181
+      gen_investigation_lab_t05_microscope_141: 4490736248953218105
+      gen_investigation_lab_t05_microscope_142: 1137487115459017161
+      gen_investigation_lab_t05_microscope_143: -7121640974296738564
+      gen_investigation_lab_t05_microscope_144: -1057590602745590111
+      gen_investigation_lab_t05_microscope_145: -5227786591310705329
+      gen_investigation_lab_t05_microscope_146: 892064723549258072
+      gen_investigation_lab_t05_microscope_147: -6209855498238291886
+      gen_investigation_lab_t05_microscope_148: -542687833769746589
+      gen_investigation_lab_t05_microscope_149: -457834726959077023
+      gen_investigation_lab_t05_microscope_15: -7868006639836307418
+      gen_investigation_lab_t05_microscope_150: -4522748315718900250
+      gen_investigation_lab_t05_microscope_151: 5775807823433632567
+      gen_investigation_lab_t05_microscope_152: -7863545688617781991
+      gen_investigation_lab_t05_microscope_153: 7328115456741359704
+      gen_investigation_lab_t05_microscope_154: -8948464043738745942
+      gen_investigation_lab_t05_microscope_155: 981314371743918157
+      gen_investigation_lab_t05_microscope_156: 7502274475680676619
+      gen_investigation_lab_t05_microscope_157: 5723708880247277703
+      gen_investigation_lab_t05_microscope_158: 5152358277444989631
+      gen_investigation_lab_t05_microscope_159: -6457462641593296416
+      gen_investigation_lab_t05_microscope_16: -3496471173520299710
+      gen_investigation_lab_t05_microscope_160: -7446531568526642740
+      gen_investigation_lab_t05_microscope_161: 4643495342371723514
+      gen_investigation_lab_t05_microscope_162: 1090740405204111202
+      gen_investigation_lab_t05_microscope_163: 7618859188708441746
+      gen_investigation_lab_t05_microscope_164: 3242037312702444294
+      gen_investigation_lab_t05_microscope_165: 4902274915301926306
+      gen_investigation_lab_t05_microscope_166: 7979427533683864846
+      gen_investigation_lab_t05_microscope_167: -1306638861112546732
+      gen_investigation_lab_t05_microscope_168: -8976512160384843651
+      gen_investigation_lab_t05_microscope_169: -3552170223079292323
+      gen_investigation_lab_t05_microscope_17: -5345358216677696553
+      gen_investigation_lab_t05_microscope_170: -3038174134291279554
+      gen_investigation_lab_t05_microscope_171: 7279935998818013804
+      gen_investigation_lab_t05_microscope_172: 5341605549423620946
+      gen_investigation_lab_t05_microscope_173: 7866701664941844777
+      gen_investigation_lab_t05_microscope_174: -6187461027557161233
+      gen_investigation_lab_t05_microscope_175: 1226124292327536468
+      gen_investigation_lab_t05_microscope_176: 2998942195815012152
+      gen_investigation_lab_t05_microscope_177: 5354718919495130780
+      gen_investigation_lab_t05_microscope_178: -8736287330566195597
+      gen_investigation_lab_t05_microscope_179: -242969680996265097
+      gen_investigation_lab_t05_microscope_18: -7272043865827007453
+      gen_investigation_lab_t05_microscope_180: -6689675554580214256
+      gen_investigation_lab_t05_microscope_181: -3103453672365542404
+      gen_investigation_lab_t05_microscope_182: -5417557020046146669
+      gen_investigation_lab_t05_microscope_183: -2973425858913523670
+      gen_investigation_lab_t05_microscope_184: 4110361182632570484
+      gen_investigation_lab_t05_microscope_185: -5000150306856180956
+      gen_investigation_lab_t05_microscope_186: -2178185106492494656
+      gen_investigation_lab_t05_microscope_187: 5280303054581138653
+      gen_investigation_lab_t05_microscope_188: 2070824392216462257
+      gen_investigation_lab_t05_microscope_189: -3444143636636073243
+      gen_investigation_lab_t05_microscope_19: 8372148246995815549
+      gen_investigation_lab_t05_microscope_190: -1777425328081605976
+      gen_investigation_lab_t05_microscope_191: 2843660366645449472
+      gen_investigation_lab_t05_microscope_192: 1089836744545035350
+      gen_investigation_lab_t05_microscope_193: 1773157242146549864
+      gen_investigation_lab_t05_microscope_194: -7424981846270693881
+      gen_investigation_lab_t05_microscope_195: 1813790762823974440
+      gen_investigation_lab_t05_microscope_196: -1101879166424680068
+      gen_investigation_lab_t05_microscope_197: -3675391608196485237
+      gen_investigation_lab_t05_microscope_198: 6262044563022437829
+      gen_investigation_lab_t05_microscope_199: -8195568765287923357
+      gen_investigation_lab_t05_microscope_2: 4974007232373890307
+      gen_investigation_lab_t05_microscope_20: -5990878485784681036
+      gen_investigation_lab_t05_microscope_200: 7157752496372913734
+      gen_investigation_lab_t05_microscope_201: -5129541873121967076
+      gen_investigation_lab_t05_microscope_202: -7652811965916063482
+      gen_investigation_lab_t05_microscope_203: -2099402021759745881
+      gen_investigation_lab_t05_microscope_204: 523657126102571673
+      gen_investigation_lab_t05_microscope_205: -5539648317161857663
+      gen_investigation_lab_t05_microscope_206: 8692063942105656675
+      gen_investigation_lab_t05_microscope_207: 8424430282675338308
+      gen_investigation_lab_t05_microscope_208: -6593871603398313911
+      gen_investigation_lab_t05_microscope_209: 5208640216153571198
+      gen_investigation_lab_t05_microscope_21: 1496661246272707399
+      gen_investigation_lab_t05_microscope_210: -5591400585612084047
+      gen_investigation_lab_t05_microscope_211: -6021613954100898872
+      gen_investigation_lab_t05_microscope_212: -2067560217119919213
+      gen_investigation_lab_t05_microscope_213: 702156219400021981
+      gen_investigation_lab_t05_microscope_214: 125098123588623993
+      gen_investigation_lab_t05_microscope_215: -6847261372500085768
+      gen_investigation_lab_t05_microscope_216: 2016639796365146576
+      gen_investigation_lab_t05_microscope_217: -8030301120333790833
+      gen_investigation_lab_t05_microscope_218: -3882446795735266186
+      gen_investigation_lab_t05_microscope_219: -6876257046284805486
+      gen_investigation_lab_t05_microscope_22: -5641208086587827736
+      gen_investigation_lab_t05_microscope_220: -1568097117626803945
+      gen_investigation_lab_t05_microscope_221: 3504588949040406313
+      gen_investigation_lab_t05_microscope_222: 4199258115106362058
+      gen_investigation_lab_t05_microscope_223: 4968273095705533929
+      gen_investigation_lab_t05_microscope_224: -3396866173151941815
+      gen_investigation_lab_t05_microscope_225: 9012694105946423738
+      gen_investigation_lab_t05_microscope_226: -5843050601592781768
+      gen_investigation_lab_t05_microscope_227: -3438234360253440178
+      gen_investigation_lab_t05_microscope_228: 5089521704385866601
+      gen_investigation_lab_t05_microscope_23: 1596041919537347790
+      gen_investigation_lab_t05_microscope_24: -3077130194170487179
+      gen_investigation_lab_t05_microscope_25: -7688360515612828922
+      gen_investigation_lab_t05_microscope_26: -4431106090234775878
+      gen_investigation_lab_t05_microscope_27: -8193976596020425045
+      gen_investigation_lab_t05_microscope_28: 6204616244380859531
+      gen_investigation_lab_t05_microscope_29: -7874069547131448642
+      gen_investigation_lab_t05_microscope_3: -5707736732234346674
+      gen_investigation_lab_t05_microscope_30: 5046870536009074231
+      gen_investigation_lab_t05_microscope_31: -3909151727173662807
+      gen_investigation_lab_t05_microscope_32: -8368165252409241817
+      gen_investigation_lab_t05_microscope_33: 5870175418091813414
+      gen_investigation_lab_t05_microscope_34: 2980157650768385026
+      gen_investigation_lab_t05_microscope_35: 2848091565966226053
+      gen_investigation_lab_t05_microscope_36: -3742499935638485844
+      gen_investigation_lab_t05_microscope_37: 6386243178770416697
+      gen_investigation_lab_t05_microscope_38: -4665816206922128821
+      gen_investigation_lab_t05_microscope_39: -4079712421948379874
+      gen_investigation_lab_t05_microscope_4: -3351483415449314434
+      gen_investigation_lab_t05_microscope_40: 3287836792739507103
+      gen_investigation_lab_t05_microscope_41: 350575809603372618
+      gen_investigation_lab_t05_microscope_42: -960308413710326367
+      gen_investigation_lab_t05_microscope_43: -5759700915320707243
+      gen_investigation_lab_t05_microscope_44: -4347461546262925210
+      gen_investigation_lab_t05_microscope_45: 3021099374200026310
+      gen_investigation_lab_t05_microscope_46: 4436809379680187796
+      gen_investigation_lab_t05_microscope_47: -8304208288509019869
+      gen_investigation_lab_t05_microscope_48: 6513715301820872021
+      gen_investigation_lab_t05_microscope_49: -6253436023759764873
+      gen_investigation_lab_t05_microscope_5: 5832505557432336624
+      gen_investigation_lab_t05_microscope_50: -2128804605015388906
+      gen_investigation_lab_t05_microscope_51: 5804766813777188594
+      gen_investigation_lab_t05_microscope_52: -5138781501226364705
+      gen_investigation_lab_t05_microscope_53: -3640534046738604683
+      gen_investigation_lab_t05_microscope_54: 8974337053972753401
+      gen_investigation_lab_t05_microscope_55: 4278279762587815710
+      gen_investigation_lab_t05_microscope_56: -302146348829648559
+      gen_investigation_lab_t05_microscope_57: 4746215285871534812
+      gen_investigation_lab_t05_microscope_58: -5527855941763011054
+      gen_investigation_lab_t05_microscope_59: 3266245933372747713
+      gen_investigation_lab_t05_microscope_6: 2755230238302838706
+      gen_investigation_lab_t05_microscope_60: -4622097670180471165
+      gen_investigation_lab_t05_microscope_61: -6513814750836507745
+      gen_investigation_lab_t05_microscope_62: 8598114768189614752
+      gen_investigation_lab_t05_microscope_63: 3629178419253865039
+      gen_investigation_lab_t05_microscope_64: 5202519800487642315
+      gen_investigation_lab_t05_microscope_65: -7939499266800005580
+      gen_investigation_lab_t05_microscope_66: -6710708350556287269
+      gen_investigation_lab_t05_microscope_67: 3000575081332222756
+      gen_investigation_lab_t05_microscope_68: -6906218385638085628
+      gen_investigation_lab_t05_microscope_69: 2313166279342753997
+      gen_investigation_lab_t05_microscope_7: 2935461943923576268
+      gen_investigation_lab_t05_microscope_70: -8829804338824808284
+      gen_investigation_lab_t05_microscope_71: 1485096708732464551
+      gen_investigation_lab_t05_microscope_72: -5206968905649956265
+      gen_investigation_lab_t05_microscope_73: -6068404573851301395
+      gen_investigation_lab_t05_microscope_74: -8330570818852371966
+      gen_investigation_lab_t05_microscope_75: -3270210218777034007
+      gen_investigation_lab_t05_microscope_76: 7885691200098195464
+      gen_investigation_lab_t05_microscope_77: 4568413709186706345
+      gen_investigation_lab_t05_microscope_78: 8273196509266794267
+      gen_investigation_lab_t05_microscope_79: -3795481219456101821
+      gen_investigation_lab_t05_microscope_8: -4733219534140915270
+      gen_investigation_lab_t05_microscope_80: 3848045630404958657
+      gen_investigation_lab_t05_microscope_81: 535104759547500328
+      gen_investigation_lab_t05_microscope_82: -4033237135640984442
+      gen_investigation_lab_t05_microscope_83: -7914747726588744201
+      gen_investigation_lab_t05_microscope_84: -8416079728528049202
+      gen_investigation_lab_t05_microscope_85: 12283108480082453
+      gen_investigation_lab_t05_microscope_86: 7075814499587565501
+      gen_investigation_lab_t05_microscope_87: 5758116266079232867
+      gen_investigation_lab_t05_microscope_88: 6291592977899199320
+      gen_investigation_lab_t05_microscope_89: -6725453512023887014
+      gen_investigation_lab_t05_microscope_9: 6773367206369690343
+      gen_investigation_lab_t05_microscope_90: 7413791997134384773
+      gen_investigation_lab_t05_microscope_91: -6490637393574662194
+      gen_investigation_lab_t05_microscope_92: -5488013322565557627
+      gen_investigation_lab_t05_microscope_93: 2273913867023504245
+      gen_investigation_lab_t05_microscope_94: 771327064154223163
+      gen_investigation_lab_t05_microscope_95: -3626499622741469603
+      gen_investigation_lab_t05_microscope_96: 6480195037625237857
+      gen_investigation_lab_t05_microscope_97: -4766262606648023140
+      gen_investigation_lab_t05_microscope_98: -81965397065714022
+      gen_investigation_lab_t05_microscope_99: 9113883934431907736
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

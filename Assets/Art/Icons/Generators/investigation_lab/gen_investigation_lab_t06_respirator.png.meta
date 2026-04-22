@@ -1,0 +1,2392 @@
+fileFormatVersion: 2
+guid: 8fb3189f686ad4f42a90fd467a53fe5c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4328059495257280336
+    second: gen_investigation_lab_t06_respirator_0
+  - first:
+      213: -5428111053450997906
+    second: gen_investigation_lab_t06_respirator_1
+  - first:
+      213: -6887115882605095264
+    second: gen_investigation_lab_t06_respirator_2
+  - first:
+      213: -149802604982210995
+    second: gen_investigation_lab_t06_respirator_3
+  - first:
+      213: 5026923507840639586
+    second: gen_investigation_lab_t06_respirator_4
+  - first:
+      213: 1211435232424642289
+    second: gen_investigation_lab_t06_respirator_5
+  - first:
+      213: 7007354563335506501
+    second: gen_investigation_lab_t06_respirator_6
+  - first:
+      213: 7481157076251703957
+    second: gen_investigation_lab_t06_respirator_7
+  - first:
+      213: -7814719480963598291
+    second: gen_investigation_lab_t06_respirator_8
+  - first:
+      213: -463698423943786985
+    second: gen_investigation_lab_t06_respirator_9
+  - first:
+      213: -7555654271945072357
+    second: gen_investigation_lab_t06_respirator_10
+  - first:
+      213: 5858817195017791317
+    second: gen_investigation_lab_t06_respirator_11
+  - first:
+      213: -6989041621026417751
+    second: gen_investigation_lab_t06_respirator_12
+  - first:
+      213: 7772001616380058943
+    second: gen_investigation_lab_t06_respirator_13
+  - first:
+      213: 6624366945042506922
+    second: gen_investigation_lab_t06_respirator_14
+  - first:
+      213: -6352453401626121401
+    second: gen_investigation_lab_t06_respirator_15
+  - first:
+      213: 1481478258612429575
+    second: gen_investigation_lab_t06_respirator_16
+  - first:
+      213: 4623420893281733970
+    second: gen_investigation_lab_t06_respirator_17
+  - first:
+      213: -8583608469357504416
+    second: gen_investigation_lab_t06_respirator_18
+  - first:
+      213: -6557699176624587099
+    second: gen_investigation_lab_t06_respirator_19
+  - first:
+      213: -7209798738638683587
+    second: gen_investigation_lab_t06_respirator_20
+  - first:
+      213: -5866454252395743936
+    second: gen_investigation_lab_t06_respirator_21
+  - first:
+      213: -3822172945972539498
+    second: gen_investigation_lab_t06_respirator_22
+  - first:
+      213: 6423552304687376939
+    second: gen_investigation_lab_t06_respirator_23
+  - first:
+      213: 2951093266110834752
+    second: gen_investigation_lab_t06_respirator_24
+  - first:
+      213: 1286820346764285449
+    second: gen_investigation_lab_t06_respirator_25
+  - first:
+      213: -1575931746587654474
+    second: gen_investigation_lab_t06_respirator_26
+  - first:
+      213: -417625068813339864
+    second: gen_investigation_lab_t06_respirator_27
+  - first:
+      213: 7118869773369464612
+    second: gen_investigation_lab_t06_respirator_28
+  - first:
+      213: 5408550594537617904
+    second: gen_investigation_lab_t06_respirator_29
+  - first:
+      213: -3315668475441761780
+    second: gen_investigation_lab_t06_respirator_30
+  - first:
+      213: 8114005722387237524
+    second: gen_investigation_lab_t06_respirator_31
+  - first:
+      213: 4864523309915283676
+    second: gen_investigation_lab_t06_respirator_32
+  - first:
+      213: 564853606584440703
+    second: gen_investigation_lab_t06_respirator_33
+  - first:
+      213: 2566896400851411714
+    second: gen_investigation_lab_t06_respirator_34
+  - first:
+      213: -2709654901362857107
+    second: gen_investigation_lab_t06_respirator_35
+  - first:
+      213: -2734784900734363425
+    second: gen_investigation_lab_t06_respirator_36
+  - first:
+      213: 6801642157947338372
+    second: gen_investigation_lab_t06_respirator_37
+  - first:
+      213: -319798979871859249
+    second: gen_investigation_lab_t06_respirator_38
+  - first:
+      213: -3318806770182895170
+    second: gen_investigation_lab_t06_respirator_39
+  - first:
+      213: 1394080172663599022
+    second: gen_investigation_lab_t06_respirator_40
+  - first:
+      213: 3409094995924195447
+    second: gen_investigation_lab_t06_respirator_41
+  - first:
+      213: 6362572988991359823
+    second: gen_investigation_lab_t06_respirator_42
+  - first:
+      213: -3254390605229660623
+    second: gen_investigation_lab_t06_respirator_43
+  - first:
+      213: -3588091619018775868
+    second: gen_investigation_lab_t06_respirator_44
+  - first:
+      213: -1882599389239783189
+    second: gen_investigation_lab_t06_respirator_45
+  - first:
+      213: 874437874413566905
+    second: gen_investigation_lab_t06_respirator_46
+  - first:
+      213: 839132701525343225
+    second: gen_investigation_lab_t06_respirator_47
+  - first:
+      213: -5786604166291343608
+    second: gen_investigation_lab_t06_respirator_48
+  - first:
+      213: -2625389495204938595
+    second: gen_investigation_lab_t06_respirator_49
+  - first:
+      213: 4327031302090485284
+    second: gen_investigation_lab_t06_respirator_50
+  - first:
+      213: 4965093099867918278
+    second: gen_investigation_lab_t06_respirator_51
+  - first:
+      213: -7238412669372147681
+    second: gen_investigation_lab_t06_respirator_52
+  - first:
+      213: 1006064272528404488
+    second: gen_investigation_lab_t06_respirator_53
+  - first:
+      213: -7504641647389335324
+    second: gen_investigation_lab_t06_respirator_54
+  - first:
+      213: -6316874688309814126
+    second: gen_investigation_lab_t06_respirator_55
+  - first:
+      213: 927923355966583946
+    second: gen_investigation_lab_t06_respirator_56
+  - first:
+      213: 7649841945323870692
+    second: gen_investigation_lab_t06_respirator_57
+  - first:
+      213: 7384997678567253519
+    second: gen_investigation_lab_t06_respirator_58
+  - first:
+      213: -4201561238800682640
+    second: gen_investigation_lab_t06_respirator_59
+  - first:
+      213: -7587008975544491002
+    second: gen_investigation_lab_t06_respirator_60
+  - first:
+      213: 3384176864581777235
+    second: gen_investigation_lab_t06_respirator_61
+  - first:
+      213: -436120854812787694
+    second: gen_investigation_lab_t06_respirator_62
+  - first:
+      213: 6382469078027324545
+    second: gen_investigation_lab_t06_respirator_63
+  - first:
+      213: 478435441976864806
+    second: gen_investigation_lab_t06_respirator_64
+  - first:
+      213: 4812808210772649505
+    second: gen_investigation_lab_t06_respirator_65
+  - first:
+      213: 9074335508549935055
+    second: gen_investigation_lab_t06_respirator_66
+  - first:
+      213: -7717812768541812067
+    second: gen_investigation_lab_t06_respirator_67
+  - first:
+      213: -1304312723839393278
+    second: gen_investigation_lab_t06_respirator_68
+  - first:
+      213: 6766462100910924926
+    second: gen_investigation_lab_t06_respirator_69
+  - first:
+      213: 1845030962919280256
+    second: gen_investigation_lab_t06_respirator_70
+  - first:
+      213: -7733924044073783690
+    second: gen_investigation_lab_t06_respirator_71
+  - first:
+      213: -5800572995083258736
+    second: gen_investigation_lab_t06_respirator_72
+  - first:
+      213: 8890729089792144524
+    second: gen_investigation_lab_t06_respirator_73
+  - first:
+      213: -7136487830854013407
+    second: gen_investigation_lab_t06_respirator_74
+  - first:
+      213: -2097284818611633263
+    second: gen_investigation_lab_t06_respirator_75
+  - first:
+      213: 20957379494770784
+    second: gen_investigation_lab_t06_respirator_76
+  - first:
+      213: -7861876532604759853
+    second: gen_investigation_lab_t06_respirator_77
+  - first:
+      213: -2345787785345131390
+    second: gen_investigation_lab_t06_respirator_78
+  - first:
+      213: 1012949643642109089
+    second: gen_investigation_lab_t06_respirator_79
+  - first:
+      213: -8867034586499912845
+    second: gen_investigation_lab_t06_respirator_80
+  - first:
+      213: -5362328418198058254
+    second: gen_investigation_lab_t06_respirator_81
+  - first:
+      213: 4565530068444380581
+    second: gen_investigation_lab_t06_respirator_82
+  - first:
+      213: 1138607321720892837
+    second: gen_investigation_lab_t06_respirator_83
+  - first:
+      213: -7170409616157093005
+    second: gen_investigation_lab_t06_respirator_84
+  - first:
+      213: 7675687641793966574
+    second: gen_investigation_lab_t06_respirator_85
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_0
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 893
+        width: 74
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b0fe62f1d4afe3c0800000000000000
+      internalID: -4328059495257280336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_1
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 861
+        width: 114
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6f8ea991c97ba4b0800000000000000
+      internalID: -5428111053450997906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_2
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 911
+        width: 164
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a65f52289c0c60a0800000000000000
+      internalID: -6887115882605095264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_3
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 901
+        width: 114
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4e6b9f035bcbedf0800000000000000
+      internalID: -149802604982210995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_4
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 1013
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 262e6edeb4833c540800000000000000
+      internalID: 5026923507840639586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_5
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 783
+        width: 166
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f64019ece1efc010800000000000000
+      internalID: 1211435232424642289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_6
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 935
+        width: 50
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54a43da49df1f3160800000000000000
+      internalID: 7007354563335506501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_7
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 893
+        width: 42
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59af1e659b862d760800000000000000
+      internalID: 7481157076251703957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_8
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 967
+        width: 36
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d28f6d5490a8c8390800000000000000
+      internalID: -7814719480963598291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_9
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 893
+        width: 84
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71e0ced7dbc9099f0800000000000000
+      internalID: -463698423943786985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_10
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 911
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b112d03a87ce42790800000000000000
+      internalID: -7555654271945072357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_11
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 911
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5576cf09233be4150800000000000000
+      internalID: 5858817195017791317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_12
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 911
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a3dc4adcafe10f90800000000000000
+      internalID: -6989041621026417751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_13
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 879
+        width: 50
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3d5812da42bbdb60800000000000000
+      internalID: 7772001616380058943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_14
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 903
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa4291d93aa7eeb50800000000000000
+      internalID: 6624366945042506922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_15
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 893
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74b6ad7b94d87d7a0800000000000000
+      internalID: -6352453401626121401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_16
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 893
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 703ee0380a44f8410800000000000000
+      internalID: 1481478258612429575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_17
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 879
+        width: 58
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25d4d277ec0b92040800000000000000
+      internalID: 4623420893281733970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_18
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 887
+        width: 78
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06859e43395e0e880800000000000000
+      internalID: -8583608469357504416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_19
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 879
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ae7b61d75f5ef4a0800000000000000
+      internalID: -6557699176624587099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_20
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 898
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d32c1611f36a1fb90800000000000000
+      internalID: -7209798738638683587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_21
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 887
+        width: 42
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0453fd270fa269ea0800000000000000
+      internalID: -5866454252395743936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_22
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 871
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69fc235d4f9e4fac0800000000000000
+      internalID: -3822172945972539498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_23
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 890
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2a6805a9ca052950800000000000000
+      internalID: 6423552304687376939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_24
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 890
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0486591a0b364f820800000000000000
+      internalID: 2951093266110834752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_25
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 871
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90651aa9944bbd110800000000000000
+      internalID: 1286820346764285449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_26
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 871
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b6c1661d6a212ae0800000000000000
+      internalID: -1575931746587654474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_27
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 890
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 823351c663c443af0800000000000000
+      internalID: -417625068813339864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_28
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 861
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 427d3fb675e4bc260800000000000000
+      internalID: 7118869773369464612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_29
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 855
+        width: 23
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f974292c180f0b40800000000000000
+      internalID: 5408550594537617904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_30
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 879
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c023558b6116cf1d0800000000000000
+      internalID: -3315668475441761780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_31
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 869
+        width: 26
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49ac064f63dba9070800000000000000
+      internalID: 8114005722387237524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_32
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 861
+        width: 28
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd0ab115d22428340800000000000000
+      internalID: 4864523309915283676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_33
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 877
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f77509acc53c6d700800000000000000
+      internalID: 564853606584440703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_34
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 879
+        width: 34
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2032af33da27f9320800000000000000
+      internalID: 2566896400851411714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_35
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 871
+        width: 42
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6bee5c393f556ad0800000000000000
+      internalID: -2709654901362857107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1001
+        height: 865
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd850ae4f971c0ad0800000000000000
+      internalID: -2734784900734363425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_37
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 861
+        width: 26
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48eb5c98189446e50800000000000000
+      internalID: 6801642157947338372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_38
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 834
+        width: 26
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcd943da588df8bf0800000000000000
+      internalID: -319798979871859249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_39
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 855
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb9461983da31f1d0800000000000000
+      internalID: -3318806770182895170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_40
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 821
+        width: 34
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaf6708e784c85310800000000000000
+      internalID: 1394080172663599022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_41
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 850
+        width: 34
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7789f9d26d98f4f20800000000000000
+      internalID: 3409094995924195447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_42
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 845
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4b43525c666c4850800000000000000
+      internalID: 6362572988991359823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_43
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 858
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 136eaeeacf416d2d0800000000000000
+      internalID: -3254390605229660623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_44
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 845
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c264dadea9843ec0800000000000000
+      internalID: -3588091619018775868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_45
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 834
+        width: 31
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be0def574d9afd5e0800000000000000
+      internalID: -1882599389239783189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_46
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 839
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bb71922d90a22c00800000000000000
+      internalID: 874437874413566905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_47
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 826
+        width: 33
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fbf4d10fb235ab00800000000000000
+      internalID: 839132701525343225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_48
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 847
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 807b8646b2ad1bfa0800000000000000
+      internalID: -5786604166291343608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_49
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 839
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9c744df92eb09bd0800000000000000
+      internalID: -2625389495204938595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_50
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 845
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42e691d2b04bc0c30800000000000000
+      internalID: 4327031302090485284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_51
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 834
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cfce5e3edd87e440800000000000000
+      internalID: 4965093099867918278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_52
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 829
+        width: 34
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f18d268270efb8b90800000000000000
+      internalID: -7238412669372147681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_53
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 807
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8007441202246fd00800000000000000
+      internalID: 1006064272528404488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_54
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 829
+        width: 26
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e0a1c8de282ad790800000000000000
+      internalID: -7504641647389335324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 615
+        width: 83
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29c13a070f3f558a0800000000000000
+      internalID: -6316874688309814126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_56
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 751
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a843d2b3065a0ec00800000000000000
+      internalID: 927923355966583946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_57
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 693
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e999eaf7b2b92a60800000000000000
+      internalID: 7649841945323870692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_58
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 637
+        width: 55
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f06e512e248cc7660800000000000000
+      internalID: 7384997678567253519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_59
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 743
+        width: 50
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0713c3b605e01b5c0800000000000000
+      internalID: -4201561238800682640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_60
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 687
+        width: 67
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60468f0d88785b690800000000000000
+      internalID: -7587008975544491002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_61
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 527
+        width: 74
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 357fd7e9de207fe20800000000000000
+      internalID: 3384176864581777235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_62
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 647
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21c7eb9a46692f9f0800000000000000
+      internalID: -436120854812787694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_63
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 634
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18ccbb98fc5139850800000000000000
+      internalID: 6382469078027324545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_64
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 607
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 620fcf6ef7eb3a600800000000000000
+      internalID: 478435441976864806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_65
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 615
+        width: 22
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 126ef2f71978ac240800000000000000
+      internalID: 4812808210772649505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_66
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 527
+        width: 60
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcf15df21148eed70800000000000000
+      internalID: 9074335508549935055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_67
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 399
+        width: 97
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9a57108d22d4e490800000000000000
+      internalID: -7717812768541812067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_68
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 413
+        width: 42
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 202e78bfc7626ede0800000000000000
+      internalID: -1304312723839393278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_69
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 421
+        width: 58
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7460f63e6d47ed50800000000000000
+      internalID: 6766462100910924926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_70
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 381
+        width: 36
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08e8668a2edda9910800000000000000
+      internalID: 1845030962919280256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_71
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 493
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67e2129de059ba490800000000000000
+      internalID: -7733924044073783690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_72
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 378
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 094b65ef799308fa0800000000000000
+      internalID: -5800572995083258736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_73
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 327
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c84fa478007326b70800000000000000
+      internalID: 8890729089792144524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_74
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 314
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12e6c0ae02a16fc90800000000000000
+      internalID: -7136487830854013407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_75
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 311
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19385d1c192f4e2e0800000000000000
+      internalID: -2097284818611633263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_76
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 175
+        width: 78
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 068753820a47a4000800000000000000
+      internalID: 20957379494770784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_77
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 247
+        width: 34
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d01d1692f005e290800000000000000
+      internalID: -7861876532604759853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_78
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 159
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28c9d001076127fd0800000000000000
+      internalID: -2345787785345131390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_79
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 167
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ac75a48558be0e00800000000000000
+      internalID: 1012949643642109089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_80
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 159
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37be19ce507f1f480800000000000000
+      internalID: -8867034586499912845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_81
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 167
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fa8258e6be2595b0800000000000000
+      internalID: -5362328418198058254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_82
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 143
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5adfdf478650c5f30800000000000000
+      internalID: 4565530068444380581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_83
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 95
+        width: 18
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ad25d593552dcf00800000000000000
+      internalID: 1138607321720892837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_84
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 95
+        width: 26
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37359eec1769d7c90800000000000000
+      internalID: -7170409616157093005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gen_investigation_lab_t06_respirator_85
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 87
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee13cff1e35858a60800000000000000
+      internalID: 7675687641793966574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      gen_investigation_lab_t06_respirator_0: -4328059495257280336
+      gen_investigation_lab_t06_respirator_1: -5428111053450997906
+      gen_investigation_lab_t06_respirator_10: -7555654271945072357
+      gen_investigation_lab_t06_respirator_11: 5858817195017791317
+      gen_investigation_lab_t06_respirator_12: -6989041621026417751
+      gen_investigation_lab_t06_respirator_13: 7772001616380058943
+      gen_investigation_lab_t06_respirator_14: 6624366945042506922
+      gen_investigation_lab_t06_respirator_15: -6352453401626121401
+      gen_investigation_lab_t06_respirator_16: 1481478258612429575
+      gen_investigation_lab_t06_respirator_17: 4623420893281733970
+      gen_investigation_lab_t06_respirator_18: -8583608469357504416
+      gen_investigation_lab_t06_respirator_19: -6557699176624587099
+      gen_investigation_lab_t06_respirator_2: -6887115882605095264
+      gen_investigation_lab_t06_respirator_20: -7209798738638683587
+      gen_investigation_lab_t06_respirator_21: -5866454252395743936
+      gen_investigation_lab_t06_respirator_22: -3822172945972539498
+      gen_investigation_lab_t06_respirator_23: 6423552304687376939
+      gen_investigation_lab_t06_respirator_24: 2951093266110834752
+      gen_investigation_lab_t06_respirator_25: 1286820346764285449
+      gen_investigation_lab_t06_respirator_26: -1575931746587654474
+      gen_investigation_lab_t06_respirator_27: -417625068813339864
+      gen_investigation_lab_t06_respirator_28: 7118869773369464612
+      gen_investigation_lab_t06_respirator_29: 5408550594537617904
+      gen_investigation_lab_t06_respirator_3: -149802604982210995
+      gen_investigation_lab_t06_respirator_30: -3315668475441761780
+      gen_investigation_lab_t06_respirator_31: 8114005722387237524
+      gen_investigation_lab_t06_respirator_32: 4864523309915283676
+      gen_investigation_lab_t06_respirator_33: 564853606584440703
+      gen_investigation_lab_t06_respirator_34: 2566896400851411714
+      gen_investigation_lab_t06_respirator_35: -2709654901362857107
+      gen_investigation_lab_t06_respirator_36: -2734784900734363425
+      gen_investigation_lab_t06_respirator_37: 6801642157947338372
+      gen_investigation_lab_t06_respirator_38: -319798979871859249
+      gen_investigation_lab_t06_respirator_39: -3318806770182895170
+      gen_investigation_lab_t06_respirator_4: 5026923507840639586
+      gen_investigation_lab_t06_respirator_40: 1394080172663599022
+      gen_investigation_lab_t06_respirator_41: 3409094995924195447
+      gen_investigation_lab_t06_respirator_42: 6362572988991359823
+      gen_investigation_lab_t06_respirator_43: -3254390605229660623
+      gen_investigation_lab_t06_respirator_44: -3588091619018775868
+      gen_investigation_lab_t06_respirator_45: -1882599389239783189
+      gen_investigation_lab_t06_respirator_46: 874437874413566905
+      gen_investigation_lab_t06_respirator_47: 839132701525343225
+      gen_investigation_lab_t06_respirator_48: -5786604166291343608
+      gen_investigation_lab_t06_respirator_49: -2625389495204938595
+      gen_investigation_lab_t06_respirator_5: 1211435232424642289
+      gen_investigation_lab_t06_respirator_50: 4327031302090485284
+      gen_investigation_lab_t06_respirator_51: 4965093099867918278
+      gen_investigation_lab_t06_respirator_52: -7238412669372147681
+      gen_investigation_lab_t06_respirator_53: 1006064272528404488
+      gen_investigation_lab_t06_respirator_54: -7504641647389335324
+      gen_investigation_lab_t06_respirator_55: -6316874688309814126
+      gen_investigation_lab_t06_respirator_56: 927923355966583946
+      gen_investigation_lab_t06_respirator_57: 7649841945323870692
+      gen_investigation_lab_t06_respirator_58: 7384997678567253519
+      gen_investigation_lab_t06_respirator_59: -4201561238800682640
+      gen_investigation_lab_t06_respirator_6: 7007354563335506501
+      gen_investigation_lab_t06_respirator_60: -7587008975544491002
+      gen_investigation_lab_t06_respirator_61: 3384176864581777235
+      gen_investigation_lab_t06_respirator_62: -436120854812787694
+      gen_investigation_lab_t06_respirator_63: 6382469078027324545
+      gen_investigation_lab_t06_respirator_64: 478435441976864806
+      gen_investigation_lab_t06_respirator_65: 4812808210772649505
+      gen_investigation_lab_t06_respirator_66: 9074335508549935055
+      gen_investigation_lab_t06_respirator_67: -7717812768541812067
+      gen_investigation_lab_t06_respirator_68: -1304312723839393278
+      gen_investigation_lab_t06_respirator_69: 6766462100910924926
+      gen_investigation_lab_t06_respirator_7: 7481157076251703957
+      gen_investigation_lab_t06_respirator_70: 1845030962919280256
+      gen_investigation_lab_t06_respirator_71: -7733924044073783690
+      gen_investigation_lab_t06_respirator_72: -5800572995083258736
+      gen_investigation_lab_t06_respirator_73: 8890729089792144524
+      gen_investigation_lab_t06_respirator_74: -7136487830854013407
+      gen_investigation_lab_t06_respirator_75: -2097284818611633263
+      gen_investigation_lab_t06_respirator_76: 20957379494770784
+      gen_investigation_lab_t06_respirator_77: -7861876532604759853
+      gen_investigation_lab_t06_respirator_78: -2345787785345131390
+      gen_investigation_lab_t06_respirator_79: 1012949643642109089
+      gen_investigation_lab_t06_respirator_8: -7814719480963598291
+      gen_investigation_lab_t06_respirator_80: -8867034586499912845
+      gen_investigation_lab_t06_respirator_81: -5362328418198058254
+      gen_investigation_lab_t06_respirator_82: 4565530068444380581
+      gen_investigation_lab_t06_respirator_83: 1138607321720892837
+      gen_investigation_lab_t06_respirator_84: -7170409616157093005
+      gen_investigation_lab_t06_respirator_85: 7675687641793966574
+      gen_investigation_lab_t06_respirator_9: -463698423943786985
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
