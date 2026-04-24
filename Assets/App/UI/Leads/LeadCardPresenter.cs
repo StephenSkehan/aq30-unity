@@ -54,7 +54,7 @@ namespace AQ.App.UI.Leads
                 var sprite = data?.ActorBadge;
                 actorAnchor.sprite = sprite;
                 actorAnchor.preserveAspect = true;
-                actorAnchor.color = sprite != null ? Color.white : new Color(1,1,1,0);
+                actorAnchor.color = sprite != null ? Color.white : new Color(1, 1, 1, 0);
             }
 
             // Requirements

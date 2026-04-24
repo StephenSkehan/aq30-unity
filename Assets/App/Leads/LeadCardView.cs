@@ -80,21 +80,52 @@ namespace AQ.App.Leads
 
         void CachePrefabRefsIfNeeded()
         {
-            var t = transform;
-            title    = title    ? title    : t.Find("Title")   ?.GetComponent<TMP_Text>();
-            action   = action   ? action   : t.Find("Action")  ?.GetComponent<TMP_Text>();
-            subtitle = subtitle ? subtitle : t.Find("OneLiner")?.GetComponent<TMP_Text>();
-            reqRow   = reqRow   ? reqRow   : (t.Find("ReqRow") ?? t.Find("Badges"));
-
-            if (actorAnchor == null) actorAnchor = t.Find("ActorAnchor") as RectTransform;
-            if (actorBadge  == null && actorAnchor != null)
-                actorBadge = actorAnchor.Find("ActorBadge")?.GetComponent<Image>();
-
-            if (proceedButton == null)
+            // Handles both LeadCard.prefab names and LeadCardView.prefab names
+            if (!title)    title    = FindDeep<TMP_Text>("Text_Title")    ?? FindDeep<TMP_Text>("Title");
+            if (!subtitle) subtitle = FindDeep<TMP_Text>("Text_OneLiner") ?? FindDeep<TMP_Text>("Text_Objective") ?? FindDeep<TMP_Text>("OneLiner");
+            if (!action)   action   = FindDeep<TMP_Text>("Text_ActionTag") ?? FindDeep<TMP_Text>("Text_Cost") ?? FindDeep<TMP_Text>("Action");
+            if (!reqRow)   reqRow   = FindTransformDeep(transform, "RewardsRow")
+                                      ?? FindTransformDeep(transform, "Badges")
+                                      ?? FindTransformDeep(transform, "Requirements")
+                                      ?? FindTransformDeep(transform, "ReqRow");
+            if (!actorAnchor) actorAnchor = FindTransformDeep(transform, "ActorAnchor") as RectTransform;
+            if (!actorBadge)
             {
-                var p = t.Find("Proceed") ?? t.Find("Button_Proceed");
+                var anchor = actorAnchor ? actorAnchor : FindTransformDeep(transform, "ActorAnchor");
+                if (anchor) actorBadge = FindDeep<Image>(anchor, "ActorBadge");
+                if (!actorBadge) actorBadge = FindDeep<Image>("ActorBadge") ?? FindDeep<Image>("Portrait");
+            }
+            if (!proceedButton)
+            {
+                var p = FindTransformDeep(transform, "Button_Proceed")
+                        ?? FindTransformDeep(transform, "Proceed");
                 if (p) proceedButton = p.GetComponentInChildren<Button>(true);
             }
+        }
+
+        T FindDeep<T>(string n) where T : Component
+        {
+            foreach (var c in GetComponentsInChildren<T>(true))
+                if (c.gameObject.name == n) return c;
+            return null;
+        }
+
+        static T FindDeep<T>(Transform root, string n) where T : Component
+        {
+            foreach (var c in root.GetComponentsInChildren<T>(true))
+                if (c.gameObject.name == n) return c;
+            return null;
+        }
+
+        static Transform FindTransformDeep(Transform root, string n)
+        {
+            if (root.name == n) return root;
+            for (int i = 0; i < root.childCount; i++)
+            {
+                var hit = FindTransformDeep(root.GetChild(i), n);
+                if (hit) return hit;
+            }
+            return null;
         }
 
         static void SetText(TMP_Text label, string value)

@@ -15,7 +15,7 @@ MonoBehaviour:
   leadId: demo_beth_talking
   title: Get Beth Talking
   subtitle: Buy Beth a coffee to loosen her up
-  actorPortrait: {fileID: 0}
+  actorPortrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
   state: 1
   ActionType: 0
   EnergyCost: 0

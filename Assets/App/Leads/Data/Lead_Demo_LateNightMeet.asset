@@ -15,7 +15,7 @@ MonoBehaviour:
   leadId: demo_late_night
   title: The Late Night Meet
   subtitle: "Bring food \u2014 the informant only talks over a proper meal"
-  actorPortrait: {fileID: 0}
+  actorPortrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
   state: 0
   ActionType: 0
   EnergyCost: 0

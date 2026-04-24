@@ -24,6 +24,44 @@ namespace AQ.Editor.Items
             new TierSpec { itemId="stakeout_fuel_t5", tier=4, displayName="Combo Meal",     spritePath="Assets/Art/Icons/Items/food_gifts/food_gifts_t05_burger_fries_drink.png" },
         };
 
+        [MenuItem("Tools/AQ/Fix Demo Lead Portraits")]
+        public static void FixPortraits()
+        {
+            const string spritePath = "Assets/Art/Characters/Ally/char_ally_neutral_f01.png";
+            const string leadDir    = "Assets/App/Leads/Data";
+
+            var sprite = AssetDatabase.LoadAssetAtPath<Sprite>(spritePath);
+            if (sprite == null)
+            {
+                Debug.LogError($"[FixPortraits] Sprite not found at {spritePath}. Check import settings (textureType must be Sprite).");
+                return;
+            }
+            Debug.Log($"[FixPortraits] Loaded sprite: {sprite.name}");
+
+            int fixed_ = 0;
+            string[] guids = AssetDatabase.FindAssets("t:LeadData", new[] { leadDir });
+            foreach (var guid in guids)
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                var lead = AssetDatabase.LoadAssetAtPath<LeadData>(path);
+                if (lead == null) continue;
+
+                var so = new SerializedObject(lead);
+                var prop = so.FindProperty("actorPortrait");
+                if (prop == null) { Debug.LogWarning($"[FixPortraits] 'actorPortrait' field not found on {lead.name}"); continue; }
+
+                prop.objectReferenceValue = sprite;
+                so.ApplyModifiedProperties();
+                EditorUtility.SetDirty(lead);
+                Debug.Log($"[FixPortraits] Set portrait on {lead.name} → {sprite.name}");
+                fixed_++;
+            }
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            Debug.Log($"[FixPortraits] Done — fixed {fixed_} lead(s).");
+        }
+
         [MenuItem("Tools/AQ/Setup Demo Leads")]
         public static void Run()
         {
@@ -85,24 +123,27 @@ namespace AQ.Editor.Items
             }
 
             // ── 3. Create demo LeadData assets ────────────────────────────
+            var portrait = AssetDatabase.LoadAssetAtPath<Sprite>(
+                "Assets/Art/Characters/Ally/char_ally_neutral_f01.png");
+
             var lead1 = MakeLead(leadDir + "/Lead_Demo_StakeoutDiner.asset",
                 "demo_stake_diner", "Stake Out the Diner",
                 "Watch the corner diner for suspicious activity",
-                LeadState.Available,
+                LeadState.Available, portrait,
                 new string[]  { "Paper Cup" },
                 new ItemDefinitionSO[] { fuelSOs[0] });
 
             var lead2 = MakeLead(leadDir + "/Lead_Demo_GetBethTalking.asset",
                 "demo_beth_talking", "Get Beth Talking",
                 "Buy Beth a coffee to loosen her up",
-                LeadState.Available,
+                LeadState.Available, portrait,
                 new string[]  { "Hot Coffee", "Coffee & Donut" },
                 new ItemDefinitionSO[] { fuelSOs[1], fuelSOs[2] });
 
             var lead3 = MakeLead(leadDir + "/Lead_Demo_LateNightMeet.asset",
                 "demo_late_night", "The Late Night Meet",
                 "Bring food — the informant only talks over a proper meal",
-                LeadState.Blocked,
+                LeadState.Blocked, portrait,
                 new string[]  { "Burger" },
                 new ItemDefinitionSO[] { fuelSOs[3] });
 
@@ -128,7 +169,7 @@ namespace AQ.Editor.Items
         }
 
         private static LeadData MakeLead(string path, string leadId, string title, string subtitle,
-            LeadState state, string[] labels, ItemDefinitionSO[] defs)
+            LeadState state, Sprite portrait, string[] labels, ItemDefinitionSO[] defs)
         {
             var lead = AssetDatabase.LoadAssetAtPath<LeadData>(path);
             if (lead == null)
@@ -142,6 +183,7 @@ namespace AQ.Editor.Items
             so.FindProperty("title").stringValue    = title;
             so.FindProperty("subtitle").stringValue = subtitle;
             so.FindProperty("state").enumValueIndex = (int)state;
+            so.FindProperty("actorPortrait").objectReferenceValue = portrait;
 
             var reqsProp = so.FindProperty("requirements");
             reqsProp.arraySize = labels.Length;

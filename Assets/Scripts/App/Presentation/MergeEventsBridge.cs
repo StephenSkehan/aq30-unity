@@ -32,11 +32,9 @@ namespace AQ.App.Presentation
         private void HandleItemCreated(string family, int tier)
         {
             var def = _registry != null ? _registry.Find(family, tier) : null;
-
-            // Fall back to a synthetic id so events still flow even before all
-            // ItemDefinitionSOs are authored. The checker will simply find no match.
             var itemId = def != null ? def.itemId : string.Empty;
 
+            Debug.Log($"[Bridge] family='{family}' tier={tier} → itemId='{itemId}' (registry={(def != null ? "hit" : "miss")})");
             GlobalBus.Bus.Publish(new ItemCreatedOnBoard(itemId, family, tier));
         }
     }

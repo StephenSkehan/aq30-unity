@@ -36,6 +36,8 @@ namespace AQ.App.Leads
 
         private void OnItemCreated(ItemCreatedOnBoard e)
         {
+            Debug.Log($"[LeadChecker] ItemCreated — itemId='{e.ItemId}' family='{e.Family}' tier={e.Tier}");
+
             if (_repository == null || string.IsNullOrEmpty(e.ItemId)) return;
 
             bool anyChanged = false;
