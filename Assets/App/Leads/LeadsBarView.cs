@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using AQ.App.UI.Leads;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -61,6 +62,10 @@ namespace AQ.App.Leads
                         presenter.rewardsRow.gameObject.SetActive(false);
                 }
 
+                // Show a "tap to proceed" hint on ready lead cards
+                if (so != null && so.state == LeadState.Ready)
+                    AddProceedHint(go.transform);
+
                 var btn = FindProceedButton(go.transform);
                 if (btn != null)
                 {
@@ -112,6 +117,24 @@ namespace AQ.App.Leads
                              : lead.state == LeadState.InProgress ? AQ.App.UI.Leads.CardState.InProgress
                              : AQ.App.UI.Leads.CardState.New
             };
+        }
+
+        static void AddProceedHint(Transform cardRoot)
+        {
+            var go = new GameObject("Txt_ProceedHint");
+            go.transform.SetParent(cardRoot, false);
+            var rt = go.AddComponent<RectTransform>();
+            rt.anchorMin        = new Vector2(0f, 0f);
+            rt.anchorMax        = new Vector2(1f, 0f);
+            rt.pivot            = new Vector2(0.5f, 0f);
+            rt.sizeDelta        = new Vector2(0f, 28f);
+            rt.anchoredPosition = new Vector2(0f, 8f);
+            var tmp = go.AddComponent<TextMeshProUGUI>();
+            tmp.text        = "▶  Tap card to proceed";
+            tmp.fontSize    = 13f;
+            tmp.color       = new Color(0.12f, 0.50f, 0.12f, 1f);
+            tmp.alignment   = TextAlignmentOptions.Center;
+            tmp.fontStyle   = FontStyles.Bold;
         }
 
         static Button FindProceedButton(Transform root)
