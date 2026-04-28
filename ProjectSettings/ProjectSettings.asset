@@ -114,6 +114,7 @@ PlayerSettings:
   xboxEnableGuest: 0
   xboxEnablePIXSampling: 0
   metalFramebufferOnly: 0
+  metalUseMetalDisplayLink: 0
   xboxOneResolution: 0
   xboxOneSResolution: 0
   xboxOneXResolution: 3
@@ -777,7 +778,7 @@ PlayerSettings:
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
     Android: UNITY_ADDRESSABLES;ADDRESSABLES
-    Standalone: UNITY_ADDRESSABLES;ADDRESSABLES;APP_UI_EDITOR_ONLY
+    Standalone: UNITY_ADDRESSABLES;ADDRESSABLES;APP_UI_EDITOR_ONLY;SENTIS_ANALYTICS_ENABLED
     WebGL: UNITY_ADDRESSABLES;ADDRESSABLES
     iPhone: UNITY_ADDRESSABLES;ADDRESSABLES
   additionalCompilerArguments: {}
