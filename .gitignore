@@ -36,3 +36,6 @@ Thumbs.db
 
 # --- OPTIONAL: KEEP BINARY EXPORTS OUT OF GIT ---
 *.unitypackage
+
+# --- LOCAL TOOLING ---
+/.claude/
