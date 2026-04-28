@@ -42,8 +42,7 @@ namespace AQ.App
 
         void Start()
         {
-            if (Graph != null) InternalBoot(Graph);
-            // If Graph is null, we wait for BootWithGraph() (Addressables case)
+            if (!_booted && Graph != null) InternalBoot(Graph);
         }
 
         /// <summary>
@@ -60,6 +59,7 @@ namespace AQ.App
 
         void InternalBoot(CaseGraph g)
         {
+            if (Panel == null) Panel = GetComponent<DialogueController>();
             if (g == null || Panel == null)
             {
                 Debug.LogWarning("[DialogueRunner] Missing Graph or Panel.");
@@ -77,13 +77,16 @@ namespace AQ.App
             // Attach typers (or reuse existing)
             if (Panel.Body)
             {
+                Panel.Body.gameObject.SetActive(true);
                 _bodyTyper = Panel.Body.GetComponent<DialogueTyper>();
                 if (_bodyTyper == null)
                     _bodyTyper = Panel.Body.gameObject.AddComponent<DialogueTyper>();
             }
+            else { Debug.LogWarning("[DialogueRunner.InternalBoot] Panel.Body is null"); }
 
             if (Panel.Speaker)
             {
+                Panel.Speaker.gameObject.SetActive(true);
                 _speakerTyper = Panel.Speaker.GetComponent<DialogueTyper>();
                 if (_speakerTyper == null)
                     _speakerTyper = Panel.Speaker.gameObject.AddComponent<DialogueTyper>();

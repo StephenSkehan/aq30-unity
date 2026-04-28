@@ -1,4 +1,5 @@
 using UnityEngine;
+using AQ.App;
 using AQ.App.Leads;
 using AQ.SharedKernel.CaseFlow;
 
@@ -12,6 +13,10 @@ namespace AQ.App.CaseFlow
     [DefaultExecutionOrder(0)]
     public sealed class CaseFlowLeadBridgeMB : MonoBehaviour
     {
+        [Header("Resolution Dialogue")]
+        [SerializeField] private CaseGraph       resolutionDialogue;
+        [SerializeField] private DialogueRunner  dialogueRunner;
+
         private LeadsRepository  _repo;
         private LeadsBarView     _bar;
         private ICaseFlowService _svc;
@@ -83,7 +88,19 @@ namespace AQ.App.CaseFlow
             if (CurrentKey() != kLeadReady) return;
 
             if (_svc.CompleteCurrentStep())
+            {
                 Debug.Log($"[CaseFlowLeadBridge] Proceed '{lead?.leadId}' → step now '{CurrentKey()}'", this);
+                TryBootDialogue();
+            }
+        }
+
+        private void TryBootDialogue()
+        {
+            if (resolutionDialogue == null || dialogueRunner == null) return;
+            if (DialogueFlags.Has("aq.act1.intro.seen")) return;
+
+            dialogueRunner.gameObject.SetActive(true);
+            dialogueRunner.BootWithGraph(resolutionDialogue);
         }
 
         private string CurrentKey()

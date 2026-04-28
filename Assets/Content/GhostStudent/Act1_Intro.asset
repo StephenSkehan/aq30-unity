@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Act1_Intro
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: ACT1_OPEN
+  nodes:
+  - id: ACT1_OPEN
+    speaker: Ally Quinn
+    line: "You're listening to Cold Case Ally — Havenbay's realest true crime
+      podcast. I'm Ally Quinn. Settle in... because this one's going to get under
+      your skin."
+    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
+      type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: ACT1_CASE
+    choices: []
+  - id: ACT1_CASE
+    speaker: Ally Quinn
+    line: "Three weeks ago, a student at Havenbay Community College vanished. No
+      goodbye. No forwarding address. Just… gone. The school's been calling
+      them The Ghost Student."
+    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
+      type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: ACT1_DETAIL
+    choices: []
+  - id: ACT1_DETAIL
+    speaker: Ally Quinn
+    line: "Here's what I know: enrolled, paying tuition, even attending lectures
+      — right up until Tuesday the 14th. Then nothing. The registrar has no
+      withdrawal on file. Their dorm room still has all their stuff."
+    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
+      type: 3}
+    emotion: 6
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: ACT1_STAKEOUT
+    choices: []
+  - id: ACT1_STAKEOUT
+    speaker: Ally Quinn
+    line: "My first lead is the corner diner on Meridian Street. The student ate
+      there every morning. The owner — a woman named Beth — may have been
+      the last person to see them."
+    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
+      type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: ACT1_CLOSE
+    choices: []
+  - id: ACT1_CLOSE
+    speaker: Ally Quinn
+    line: "So here's the plan. We watch. We gather evidence. We don't stop until
+      we know what happened to The Ghost Student. Let's get to work."
+    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
+      type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag: aq.act1.intro.seen
+    nextId:
+    choices: []
