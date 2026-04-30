@@ -29,4 +29,5 @@ MonoBehaviour:
   NarrativeFlags: []
   SoftCurrency: 0
   EnergyGrant: 0
+  resolutionDialogue: {fileID: 11400000, guid: e1f2a3b4c5d6789012345678ef123401, type: 2}
   OutcomeHints: 0
