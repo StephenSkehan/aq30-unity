@@ -38,6 +38,9 @@ namespace AQ.App.Leads
         public int SoftCurrency;
         public int EnergyGrant;
 
+        [Header("Resolution Dialogue")]
+        public CaseGraph resolutionDialogue;
+
         [Header("UI")]
         public LeadOutcomeHint OutcomeHints;
 

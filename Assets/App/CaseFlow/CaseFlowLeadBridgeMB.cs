@@ -90,17 +90,28 @@ namespace AQ.App.CaseFlow
             if (_svc.CompleteCurrentStep())
             {
                 Debug.Log($"[CaseFlowLeadBridge] Proceed '{lead?.leadId}' → step now '{CurrentKey()}'", this);
-                TryBootDialogue();
+                TryBootDialogue(lead);
             }
         }
 
-        private void TryBootDialogue()
+        private void TryBootDialogue(LeadData lead)
         {
-            if (resolutionDialogue == null || dialogueRunner == null) return;
-            if (DialogueFlags.Has("aq.act1.intro.seen")) return;
+            if (dialogueRunner == null) return;
+
+            var graph = (lead != null && lead.resolutionDialogue != null)
+                ? lead.resolutionDialogue
+                : resolutionDialogue;
+
+            if (graph == null) return;
+
+            var seenFlag = (lead != null && lead.resolutionDialogue != null)
+                ? $"aq.lead.{lead.leadId}.seen"
+                : "aq.act1.intro.seen";
+
+            if (DialogueFlags.Has(seenFlag)) return;
 
             dialogueRunner.gameObject.SetActive(true);
-            dialogueRunner.BootWithGraph(resolutionDialogue);
+            dialogueRunner.BootWithGraph(graph);
         }
 
         private string CurrentKey()
