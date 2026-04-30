@@ -110,8 +110,16 @@ namespace AQ.App.CaseFlow
 
             if (DialogueFlags.Has(seenFlag)) return;
 
+            if (_bar != null) _bar.gameObject.SetActive(false);
+            dialogueRunner.DialogueEnded += OnDialogueEnded;
             dialogueRunner.gameObject.SetActive(true);
             dialogueRunner.BootWithGraph(graph);
+        }
+
+        private void OnDialogueEnded()
+        {
+            dialogueRunner.DialogueEnded -= OnDialogueEnded;
+            if (_bar != null) _bar.gameObject.SetActive(true);
         }
 
         private string CurrentKey()

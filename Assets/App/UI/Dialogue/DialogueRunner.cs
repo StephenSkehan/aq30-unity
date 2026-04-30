@@ -25,6 +25,8 @@ namespace AQ.App
         [Header("Debug")]
         public bool verboseLogging = false;
 
+        public event System.Action DialogueEnded;
+
         // State
         private string _currentId;
         private DialogueTyper _bodyTyper;
@@ -350,6 +352,8 @@ namespace AQ.App
 
             if (Panel)
                 Panel.gameObject.SetActive(false);
+
+            DialogueEnded?.Invoke();
         }
 
         /// <summary>
