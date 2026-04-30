@@ -39,3 +39,9 @@ Thumbs.db
 
 # --- LOCAL TOOLING ---
 /.claude/
+
+# --- UNITY CRASH RECOVERY ---
+/Assets/_Recovery/
+
+# --- LOCAL DESIGN DOCS ---
+/SAS/

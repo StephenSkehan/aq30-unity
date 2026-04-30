@@ -137,7 +137,7 @@ namespace AQ.App.UI.Board
 
                 File.Move(_pathTmp, _pathLive);
 
-                Debug.Log($"[Save] wrote {dto.cells.Count} cells → {_pathLive}");
+                //Debug.Log($"[Save] wrote {dto.cells.Count} cells → {_pathLive}");
             }
             catch (Exception ex)
             {
