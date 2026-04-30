@@ -23,6 +23,16 @@ namespace AQ.App.Leads
 
         void Awake()
         {
+            // The lead bar sits inside a VerticalLayoutGroup whose later siblings (the board grid)
+            // would otherwise render on top. Override sorting ensures leads always draw above the grid.
+            var c = GetComponent<Canvas>();
+            if (c == null)
+            {
+                c = gameObject.AddComponent<Canvas>();
+                c.overrideSorting = true;
+                c.sortingOrder = 1;
+            }
+
             if (scrollRect == null) scrollRect = GetComponent<ScrollRect>();
             if (contentRoot == null && scrollRect != null) contentRoot = scrollRect.content;
         }

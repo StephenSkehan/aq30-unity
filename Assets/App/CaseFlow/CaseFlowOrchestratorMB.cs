@@ -10,6 +10,7 @@ using AQ.App.Economy;
 namespace AQ.App.CaseFlow
 {
     [DisallowMultipleComponent]
+    [DefaultExecutionOrder(-2)]
     public sealed class CaseFlowOrchestratorMB : MonoBehaviour
     {
         [Header("Episode config")]

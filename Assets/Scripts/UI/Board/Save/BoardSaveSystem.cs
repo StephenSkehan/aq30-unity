@@ -85,8 +85,9 @@ namespace AQ.App.UI.Board
         {
             public int r;
             public int c;
-            public string kind; // "Item" | "Generator"
-            public int tier;    // 0-based
+            public string kind;   // "Item" | "Generator"
+            public int tier;      // 0-based
+            public string family; // e.g. "corner_diner" — empty in legacy saves
         }
 
         [Serializable]
@@ -191,8 +192,9 @@ namespace AQ.App.UI.Board
                     {
                         r = r,
                         c = c,
-                        kind = v.Kind == TileKind.Generator ? "Generator" : "Item",
-                        tier = v.Tier
+                        kind   = v.Kind == TileKind.Generator ? "Generator" : "Item",
+                        tier   = v.Tier,
+                        family = board.GetFamily(v)
                     });
                 }
             }
@@ -210,6 +212,8 @@ namespace AQ.App.UI.Board
                 var v = board.Get(cell.r, cell.c);
                 if (v == null) continue;
 
+                var family = string.IsNullOrEmpty(cell.family) ? board.defaultGeneratorFamily : cell.family;
+
                 if (string.Equals(cell.kind, "Generator", StringComparison.OrdinalIgnoreCase))
                 {
                     var sprite = board.generatorSprite != null ? board.generatorSprite :
@@ -226,7 +230,11 @@ namespace AQ.App.UI.Board
                     }
                     v.SetItem(icon, Mathf.Max(0, cell.tier));
                 }
+
+                board.SetFamily(v, family);
             }
+
+            board.FireItemCreatedForCurrentBoard();
         }
 
         private static EnergyDTO BuildEnergyDTO()

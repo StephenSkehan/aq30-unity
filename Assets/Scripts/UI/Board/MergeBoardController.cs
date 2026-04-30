@@ -414,6 +414,28 @@ namespace AQ.App.UI.Board
             }
         }
 
+        // ---------------- Save-restore helpers ----------------
+
+        /// <summary>
+        /// Re-fires OnItemCreated for every non-generator tile that has a family.
+        /// Called by BoardSaveSystem after restoring board state so LeadRequirementChecker
+        /// can process items that were placed without going through a spawn/merge path.
+        /// </summary>
+        public void FireItemCreatedForCurrentBoard()
+        {
+            for (int r = 0; r < rows; r++)
+            {
+                for (int c = 0; c < cols; c++)
+                {
+                    var v = grid[r, c];
+                    if (v == null || v.IsEmpty || v.Kind == TileKind.Generator) continue;
+                    var fam = GetFamily(v);
+                    if (!string.IsNullOrEmpty(fam))
+                        OnItemCreated?.Invoke(fam, v.Tier);
+                }
+            }
+        }
+
         // ---------------- Logging ----------------
 
         public void Log(string msg)

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using AQ.App;
 using AQ.App.Leads;
@@ -41,6 +42,8 @@ namespace AQ.App.CaseFlow
             if (_bar  == null) Debug.LogWarning("[CaseFlowLeadBridge] LeadsBarView not found in scene.", this);
 
             Debug.Log($"[CaseFlowLeadBridge] Started — svc={((_svc != null) ? "OK" : "NULL")} repo={((_repo != null) ? "OK" : "NULL")} bar={((_bar != null) ? "OK" : "NULL")} currentKey='{CurrentKey()}'", this);
+
+            StartCoroutine(CatchUpNextFrame());
         }
 
         void OnDestroy()
@@ -48,6 +51,12 @@ namespace AQ.App.CaseFlow
             if (_repo != null) _repo.LeadsChanged          -= OnLeadsChanged;
             if (_bar  != null) _bar.ProceedRequested       -= OnProceed;
             LeadsRuntimeBus.OnLeadStateChanged             -= OnLeadStateChanged;
+        }
+
+        private IEnumerator CatchUpNextFrame()
+        {
+            yield return null;
+            OnLeadsChanged();
         }
 
         private void OnLeadStateChanged(LeadData lead)
