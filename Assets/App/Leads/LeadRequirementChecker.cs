@@ -45,7 +45,7 @@ namespace AQ.App.Leads
             foreach (var lead in _repository.CurrentLeads)
             {
                 if (lead == null) continue;
-                if (lead.state == LeadState.Blocked || lead.state == LeadState.Ready) continue;
+                if (lead.RuntimeState == LeadState.Blocked || lead.RuntimeState == LeadState.Ready) continue;
 
                 var reqs = lead.requirements;
                 if (reqs == null || reqs.Length == 0) continue;
@@ -62,7 +62,7 @@ namespace AQ.App.Leads
 
                     if (lead.IsReady())
                     {
-                        lead.state = LeadState.Ready;
+                        lead.RuntimeState = LeadState.Ready;
                         LeadsRuntimeBus.BroadcastState(lead);
                         Debug.Log($"[LeadChecker] Lead '{lead.title}' is now Ready.");
                     }

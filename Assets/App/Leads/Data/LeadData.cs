@@ -22,7 +22,12 @@ namespace AQ.App.Leads
         public Sprite actorPortrait;
 
         [Header("State")]
+        [Tooltip("Design-time initial state. Never read this at runtime — use RuntimeState.")]
         public LeadState state = LeadState.Available;
+
+        // Runtime-only shadow. Never serialised, so SO mutations can't persist across sessions.
+        // Initialised from state by LeadsRepository. All runtime reads/writes go through here.
+        [NonSerialized] public LeadState RuntimeState;
 
         [Header("Action")]
         public LeadActionType ActionType;
@@ -57,7 +62,7 @@ namespace AQ.App.Leads
         public bool IsReady()
         {
             if (requirements == null || requirements.Length == 0)
-                return state == LeadState.Ready;
+                return RuntimeState == LeadState.Ready;
 
             for (int i = 0; i < requirements.Length; i++)
             {

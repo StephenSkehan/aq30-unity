@@ -38,7 +38,9 @@ namespace AQ.App.Leads
             {
                 foreach (var lead in db.Leads)
                 {
-                    if (lead != null) _current.Add(lead);
+                    if (lead == null) continue;
+                    lead.RuntimeState = lead.state;
+                    _current.Add(lead);
                 }
             }
 

@@ -61,7 +61,7 @@ namespace AQ.App.CaseFlow
 
         private void OnLeadStateChanged(LeadData lead)
         {
-            if (lead == null || lead.state != LeadState.Ready) return;
+            if (lead == null || lead.RuntimeState != LeadState.Ready) return;
             Debug.Log($"[CaseFlowLeadBridge] OnLeadStateChanged: lead='{lead.leadId}' state=Ready, currentKey='{CurrentKey()}'", this);
             TryAdvanceFromBoardActive(lead.leadId);
         }
@@ -74,7 +74,7 @@ namespace AQ.App.CaseFlow
             var leads = _repo.CurrentLeads;
             for (int i = 0; i < leads.Count; i++)
             {
-                if (leads[i] != null && leads[i].state == LeadState.Ready)
+                if (leads[i] != null && leads[i].RuntimeState == LeadState.Ready)
                 {
                     TryAdvanceFromBoardActive(leads[i].leadId);
                     return;

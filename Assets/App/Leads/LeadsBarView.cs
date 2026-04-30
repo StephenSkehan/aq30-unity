@@ -73,7 +73,7 @@ namespace AQ.App.Leads
                 }
 
                 // Show a "tap to proceed" hint on ready lead cards
-                if (so != null && so.state == LeadState.Ready)
+                if (so != null && so.RuntimeState == LeadState.Ready)
                     AddProceedHint(go.transform);
 
                 var btn = FindProceedButton(go.transform);
@@ -123,8 +123,8 @@ namespace AQ.App.Leads
                 LeadId       = lead.leadId,
                 ActorBadge   = lead.actorPortrait,
                 Requirements = reqs,
-                VisualState  = lead.state == LeadState.Ready      ? AQ.App.UI.Leads.CardState.Complete
-                             : lead.state == LeadState.InProgress ? AQ.App.UI.Leads.CardState.InProgress
+                VisualState  = lead.RuntimeState == LeadState.Ready      ? AQ.App.UI.Leads.CardState.Complete
+                             : lead.RuntimeState == LeadState.InProgress ? AQ.App.UI.Leads.CardState.InProgress
                              : AQ.App.UI.Leads.CardState.New
             };
         }
