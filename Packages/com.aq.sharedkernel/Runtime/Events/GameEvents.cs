@@ -46,4 +46,23 @@ namespace AQ.SharedKernel.Events
             Tier   = tier;
         }
     }
+
+    /// <summary>
+    /// Fired by MergeEventsBridge whenever an item is removed from the board
+    /// (consumed by a merge or by lead activation). Used by LeadRequirementChecker
+    /// to maintain live board-state satisfaction counts.
+    /// </summary>
+    public readonly struct ItemRemovedFromBoard : IGameEvent
+    {
+        public readonly string ItemId;
+        public readonly string Family;
+        public readonly int Tier;
+
+        public ItemRemovedFromBoard(string itemId, string family, int tier)
+        {
+            ItemId = itemId;
+            Family = family;
+            Tier   = tier;
+        }
+    }
 }

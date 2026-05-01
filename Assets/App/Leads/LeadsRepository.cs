@@ -59,6 +59,17 @@ namespace AQ.App.Leads
         }
 
         /// <summary>
+        /// Removes a single lead from the active list and notifies subscribers.
+        /// Called on lead activation (player taps Proceed on a Ready card).
+        /// </summary>
+        public void RemoveLead(LeadData lead)
+        {
+            if (lead == null || !_current.Contains(lead)) return;
+            _current.Remove(lead);
+            Broadcast();
+        }
+
+        /// <summary>
         /// Call after mutating lead state outside the repository (e.g. from
         /// LeadRequirementChecker) to push the updated list to all UI subscribers.
         /// </summary>

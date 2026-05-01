@@ -60,6 +60,13 @@ namespace AQ.App.UI.Board
         /// </summary>
         public static event Action<string, int> OnItemCreated;
 
+        /// <summary>
+        /// Fired when an item is removed from the board (consumed by a merge or lead activation).
+        /// Parameters: (family, tier) — consumed by MergeEventsBridge to publish
+        /// ItemRemovedFromBoard on the GlobalBus so LeadRequirementChecker can decrement live counts.
+        /// </summary>
+        public static event Action<string, int> OnItemRemoved;
+
         // ---------------- Unity lifecycle ----------------
 
         private void Awake()
@@ -176,22 +183,35 @@ namespace AQ.App.UI.Board
 
             if (from.Kind == TileKind.Generator && into.Kind == TileKind.Generator)
             {
+                var genFam = GetFamily(from);
+                int genTier = from.Tier;
                 into.SetGenerator(generatorSprite, newTier);
                 if (!HasFamily(into))
-                    SetFamily(into, GetFamily(from));
+                    SetFamily(into, genFam);
                 from.Clear();
                 familyKeyByTile.Remove(from);
+                OnItemRemoved?.Invoke(genFam, genTier);
                 Log($"MergeTiles (Generator): {newTier - 1}+{newTier - 1}->{newTier}");
                 return;
             }
 
-            var fam = HasFamily(into) ? GetFamily(into) : GetFamily(from);
+            // Capture both items' identities before any state changes.
+            var fromFam  = GetFamily(from);
+            var intoFam  = HasFamily(into) ? GetFamily(into) : GetFamily(from);
+            int fromTier = from.Tier;
+            int intoTier = into.Tier;
+
+            var fam = intoFam;
             into.SetItem(SpriteForItemTier(newTier), newTier);
             if (!string.IsNullOrEmpty(fam))
                 SetFamily(into, fam);
 
             from.Clear();
             familyKeyByTile.Remove(from);
+
+            // Fire removal for both consumed source items, then creation for the result.
+            OnItemRemoved?.Invoke(fromFam, fromTier);
+            OnItemRemoved?.Invoke(intoFam, intoTier);
             Log($"MergeTiles (Item): {newTier - 1}+{newTier - 1}->{newTier}");
             OnItemCreated?.Invoke(fam, newTier);
         }
@@ -412,6 +432,33 @@ namespace AQ.App.UI.Board
             {
                 familyKeyByTile.Remove(to);
             }
+        }
+
+        // ---------------- Lead activation ----------------
+
+        /// <summary>
+        /// Finds the first tile matching (family, tier), fires OnItemRemoved, and clears it.
+        /// Called once per lead requirement during lead activation to consume qualifying items.
+        /// Returns false if no matching tile was found.
+        /// </summary>
+        public bool TryClearItem(string family, int tier)
+        {
+            for (int r = 0; r < rows; r++)
+            {
+                for (int c = 0; c < cols; c++)
+                {
+                    var v = grid[r, c];
+                    if (v == null || v.IsEmpty || v.Kind == TileKind.Generator) continue;
+                    if (v.Tier != tier) continue;
+                    if (GetFamily(v) != family) continue;
+
+                    OnItemRemoved?.Invoke(family, tier);
+                    v.Clear();
+                    familyKeyByTile.Remove(v);
+                    return true;
+                }
+            }
+            return false;
         }
 
         // ---------------- Save-restore helpers ----------------

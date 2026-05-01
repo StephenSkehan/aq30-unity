@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: 222fba07fae7fa343a6d2a96dfd2ee48
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - actorPortrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+  - resolutionDialogue: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -31,6 +31,9 @@ namespace AQ.App.Leads
                 c = gameObject.AddComponent<Canvas>();
                 c.overrideSorting = true;
                 c.sortingOrder = 1;
+                // A nested Canvas with overrideSorting requires its own GraphicRaycaster;
+                // without it the EventSystem cannot detect clicks on child buttons.
+                gameObject.AddComponent<UnityEngine.UI.GraphicRaycaster>();
             }
 
             if (scrollRect == null) scrollRect = GetComponent<ScrollRect>();
@@ -79,12 +82,17 @@ namespace AQ.App.Leads
                 var btn = FindProceedButton(go.transform);
                 if (btn != null)
                 {
+                    var capturedSo = so;
                     btn.onClick.RemoveAllListeners();
                     btn.onClick.AddListener(() =>
                     {
-                        if (so != null) ProceedRequested?.Invoke(so);
+                        if (capturedSo != null) ProceedRequested?.Invoke(capturedSo);
                     });
                     if (so != null) _proceedByLead[so] = btn;
+                }
+                else
+                {
+                    Debug.LogWarning($"[LeadsBarView] No button found on card '{so?.leadId}' — tap-to-proceed will not work.");
                 }
 
                 _spawned.Add(go);
@@ -140,7 +148,7 @@ namespace AQ.App.Leads
             rt.sizeDelta        = new Vector2(0f, 28f);
             rt.anchoredPosition = new Vector2(0f, 8f);
             var tmp = go.AddComponent<TextMeshProUGUI>();
-            tmp.text        = "▶  Tap card to proceed";
+            tmp.text        = ">>  Tap card to proceed";
             tmp.fontSize    = 13f;
             tmp.color       = new Color(0.12f, 0.50f, 0.12f, 1f);
             tmp.alignment   = TextAlignmentOptions.Center;

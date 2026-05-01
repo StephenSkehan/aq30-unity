@@ -22,20 +22,28 @@ namespace AQ.App.Presentation
         private void OnEnable()
         {
             MergeBoardController.OnItemCreated += HandleItemCreated;
+            MergeBoardController.OnItemRemoved += HandleItemRemoved;
         }
 
         private void OnDisable()
         {
             MergeBoardController.OnItemCreated -= HandleItemCreated;
+            MergeBoardController.OnItemRemoved -= HandleItemRemoved;
         }
 
         private void HandleItemCreated(string family, int tier)
         {
             var def = _registry != null ? _registry.Find(family, tier) : null;
             var itemId = def != null ? def.itemId : string.Empty;
-
-            Debug.Log($"[Bridge] family='{family}' tier={tier} → itemId='{itemId}' (registry={(def != null ? "hit" : "miss")})");
             GlobalBus.Bus.Publish(new ItemCreatedOnBoard(itemId, family, tier));
+        }
+
+        private void HandleItemRemoved(string family, int tier)
+        {
+            var def = _registry != null ? _registry.Find(family, tier) : null;
+            var itemId = def != null ? def.itemId : string.Empty;
+
+            GlobalBus.Bus.Publish(new ItemRemovedFromBoard(itemId, family, tier));
         }
     }
 }

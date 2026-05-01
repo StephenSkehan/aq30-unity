@@ -41,8 +41,6 @@ namespace AQ.App.CaseFlow
             if (_repo == null) Debug.LogWarning("[CaseFlowLeadBridge] LeadsRepository not found in scene.", this);
             if (_bar  == null) Debug.LogWarning("[CaseFlowLeadBridge] LeadsBarView not found in scene.", this);
 
-            Debug.Log($"[CaseFlowLeadBridge] Started — svc={((_svc != null) ? "OK" : "NULL")} repo={((_repo != null) ? "OK" : "NULL")} bar={((_bar != null) ? "OK" : "NULL")} currentKey='{CurrentKey()}'", this);
-
             StartCoroutine(CatchUpNextFrame());
         }
 
@@ -62,7 +60,6 @@ namespace AQ.App.CaseFlow
         private void OnLeadStateChanged(LeadData lead)
         {
             if (lead == null || lead.RuntimeState != LeadState.Ready) return;
-            Debug.Log($"[CaseFlowLeadBridge] OnLeadStateChanged: lead='{lead.leadId}' state=Ready, currentKey='{CurrentKey()}'", this);
             TryAdvanceFromBoardActive(lead.leadId);
         }
 
@@ -94,33 +91,59 @@ namespace AQ.App.CaseFlow
         private void OnProceed(LeadData lead)
         {
             if (_svc == null) return;
-            if (CurrentKey() != kLeadReady) return;
+            if (lead == null || lead.RuntimeState != LeadState.Ready) return;
 
-            if (_svc.CompleteCurrentStep())
+            // Consume board items and remove lead card — LeadActivationBridgeMB handles this
+            // via the bus so AQ.App doesn't need a direct ref to MergeBoardController.
+            LeadsRuntimeBus.BroadcastActivated(lead);
+
+            // Advance the narrative step exactly once when the first lead resolves.
+            // After that the step stays at Resolution and subsequent leads just boot dialogue.
+            if (CurrentKey() == kLeadReady)
             {
-                Debug.Log($"[CaseFlowLeadBridge] Proceed '{lead?.leadId}' → step now '{CurrentKey()}'", this);
-                TryBootDialogue(lead);
+                if (_svc.CompleteCurrentStep())
+                    Debug.Log($"[CaseFlowLeadBridge] Proceed '{lead?.leadId}' → step now '{CurrentKey()}'", this);
             }
+
+            TryBootDialogue(lead);
         }
 
         private void TryBootDialogue(LeadData lead)
         {
-            if (dialogueRunner == null) return;
+            if (dialogueRunner == null)
+            {
+                Debug.LogWarning("[CaseFlowLeadBridge] TryBootDialogue: dialogueRunner is NULL — assign it in the Inspector on this GameObject.", this);
+                return;
+            }
 
             var graph = (lead != null && lead.resolutionDialogue != null)
                 ? lead.resolutionDialogue
                 : resolutionDialogue;
 
-            if (graph == null) return;
+            if (graph == null)
+            {
+                Debug.LogWarning($"[CaseFlowLeadBridge] TryBootDialogue: no CaseGraph — lead.resolutionDialogue='{lead?.resolutionDialogue}' fallback resolutionDialogue='{resolutionDialogue}'", this);
+                return;
+            }
 
             var seenFlag = (lead != null && lead.resolutionDialogue != null)
                 ? $"aq.lead.{lead.leadId}.seen"
                 : "aq.act1.intro.seen";
 
-            if (DialogueFlags.Has(seenFlag)) return;
+            if (DialogueFlags.Has(seenFlag))
+            {
+                Debug.Log($"[CaseFlowLeadBridge] TryBootDialogue: flag '{seenFlag}' already set — dialogue skipped.", this);
+                return;
+            }
 
+            Debug.Log($"[CaseFlowLeadBridge] Booting dialogue graph='{graph.name}' flag='{seenFlag}'", this);
             if (_bar != null) _bar.gameObject.SetActive(false);
             dialogueRunner.DialogueEnded += OnDialogueEnded;
+            // Prefab stores zero scale as its hidden default — restore before showing.
+            dialogueRunner.transform.localScale = UnityEngine.Vector3.one;
+            // Root screen-space Canvas requires its own GraphicRaycaster for click input.
+            if (dialogueRunner.GetComponent<UnityEngine.UI.GraphicRaycaster>() == null)
+                dialogueRunner.gameObject.AddComponent<UnityEngine.UI.GraphicRaycaster>();
             dialogueRunner.gameObject.SetActive(true);
             dialogueRunner.BootWithGraph(graph);
         }

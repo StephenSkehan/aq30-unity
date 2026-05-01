@@ -22,6 +22,9 @@ namespace AQ.App.Leads
                  "When set, Label and Icon are sourced from the definition.")]
         public ItemDefinitionSO itemDefinition;
 
+        [Tooltip("How many items of this type must exist on the board simultaneously.")]
+        [Range(1, 3)] public int quantity;
+
         public string Label
         {
             get => itemDefinition != null ? itemDefinition.displayName : label;
