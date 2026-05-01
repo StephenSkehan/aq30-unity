@@ -40,6 +40,9 @@ namespace AQ.App.Leads
                 {
                     if (lead == null) continue;
                     lead.RuntimeState = lead.state;
+                    if (lead.requirements != null)
+                        for (int i = 0; i < lead.requirements.Length; i++)
+                            lead.SetRequirementSatisfied(i, false);
                     _current.Add(lead);
                 }
             }

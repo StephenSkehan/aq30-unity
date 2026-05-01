@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_forensic_laptop
   m_EditorClassIdentifier: AQ.App::AQ.App.Items.ItemDefinitionSO
   itemId: forensic_laptop
-  family: stakeout_fuel
+  family: forensic_tools
   tier: 4
   icon: {fileID: 0}
   displayName: Forensic Laptop

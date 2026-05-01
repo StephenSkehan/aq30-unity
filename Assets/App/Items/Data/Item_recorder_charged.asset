@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_recorder_charged
   m_EditorClassIdentifier: AQ.App::AQ.App.Items.ItemDefinitionSO
   itemId: recorder_charged
-  family: stakeout_fuel
+  family: forensic_tools
   tier: 2
   icon: {fileID: 0}
   displayName: Charged Recorder

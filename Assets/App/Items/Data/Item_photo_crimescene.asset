@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_photo_crimescene
   m_EditorClassIdentifier: AQ.App::AQ.App.Items.ItemDefinitionSO
   itemId: photo_crimescene
-  family: stakeout_fuel
+  family: forensic_tools
   tier: 3
   icon: {fileID: 0}
   displayName: Crime Scene Photo
