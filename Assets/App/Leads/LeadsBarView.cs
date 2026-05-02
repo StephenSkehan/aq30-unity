@@ -120,7 +120,10 @@ namespace AQ.App.Leads
                 foreach (var r in lead.requirements)
                 {
                     var tiers = r.Icon != null ? new List<Sprite> { r.Icon } : new List<Sprite>();
-                    reqs.Add(new AQ.App.UI.Leads.RequirementData(r.Label, tiers, 0, r.IsSatisfied));
+                    var data  = new AQ.App.UI.Leads.RequirementData(r.Label, tiers, 0, r.IsSatisfied);
+                    int qty   = r.quantity < 1 ? 1 : r.quantity;
+                    for (int q = 0; q < qty; q++)
+                        reqs.Add(data);
                 }
             }
 

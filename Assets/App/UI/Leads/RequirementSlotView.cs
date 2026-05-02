@@ -21,6 +21,12 @@ namespace AQ.App.UI.Leads
 
         private RequirementData _data;
 
+        private void Awake()
+        {
+            var bg = GetComponent<UnityEngine.UI.Image>();
+            if (bg != null) bg.color = new Color(1, 1, 1, 0);
+        }
+
         public void Bind(RequirementData data)
         {
             _data = data;

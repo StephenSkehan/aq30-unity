@@ -24,6 +24,12 @@ MonoBehaviour:
     icon: {fileID: 0}
     satisfied: 0
     itemDefinition: {fileID: 11400000, guid: bade2d4a626a49d45855f8e7c55870bc, type: 2}
+    quantity: 0
+  - label: Meal
+    icon: {fileID: 21300000, guid: ca82a2b675d69c3468ef3d502f252149, type: 3}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: be99df09b3b97c642809c1b314227bfc, type: 2}
+    quantity: 2
   EvidenceIds: []
   SpawnLeadIds: []
   NarrativeFlags: []

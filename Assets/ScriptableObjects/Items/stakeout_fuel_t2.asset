@@ -15,5 +15,5 @@ MonoBehaviour:
   itemId: stakeout_fuel_t2
   family: stakeout_fuel
   tier: 1
-  icon: {fileID: 4142872213768729330, guid: c130f4de202792246b217dd14c636def, type: 3}
+  icon: {fileID: -741138309456426736, guid: c130f4de202792246b217dd14c636def, type: 3}
   displayName: Hot Coffee

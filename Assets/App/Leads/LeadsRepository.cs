@@ -70,6 +70,22 @@ namespace AQ.App.Leads
         }
 
         /// <summary>
+        /// Adds a lead to the active list (e.g. spawned by a lead outcome).
+        /// Resets RuntimeState and requirement satisfaction to design-time defaults.
+        /// No-ops if the lead is already present.
+        /// </summary>
+        public void SpawnLead(LeadData lead)
+        {
+            if (lead == null || _current.Contains(lead)) return;
+            lead.RuntimeState = lead.state;
+            if (lead.requirements != null)
+                for (int i = 0; i < lead.requirements.Length; i++)
+                    lead.SetRequirementSatisfied(i, false);
+            _current.Add(lead);
+            Broadcast();
+        }
+
+        /// <summary>
         /// Call after mutating lead state outside the repository (e.g. from
         /// LeadRequirementChecker) to push the updated list to all UI subscribers.
         /// </summary>

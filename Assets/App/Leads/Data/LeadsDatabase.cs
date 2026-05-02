@@ -33,5 +33,13 @@ namespace AQ.App.Leads
 #endif
             }
         }
+
+        public LeadData FindById(string leadId)
+        {
+            if (string.IsNullOrEmpty(leadId)) return null;
+            for (int i = 0; i < leads.Count; i++)
+                if (leads[i] != null && leads[i].leadId == leadId) return leads[i];
+            return null;
+        }
     }
 }
