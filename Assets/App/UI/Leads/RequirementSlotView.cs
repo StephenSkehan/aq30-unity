@@ -25,6 +25,26 @@ namespace AQ.App.UI.Leads
         {
             var bg = GetComponent<UnityEngine.UI.Image>();
             if (bg != null) bg.color = new Color(1, 1, 1, 0);
+
+            if (tickOverlay == null)
+                tickOverlay = CreateTickOverlay();
+        }
+
+        private GameObject CreateTickOverlay()
+        {
+            var go = new GameObject("Tick");
+            go.transform.SetParent(transform, false);
+            var rt = go.AddComponent<RectTransform>();
+            rt.anchorMin = new Vector2(1f, 0f);
+            rt.anchorMax = new Vector2(1f, 0f);
+            rt.pivot     = new Vector2(1f, 0f);
+            rt.anchoredPosition = new Vector2(-4f, 4f);
+            rt.sizeDelta = new Vector2(28f, 28f);
+            go.AddComponent<CanvasRenderer>();
+            var img = go.AddComponent<Image>();
+            img.color = new Color(0.2f, 0.85f, 0.4f, 1f);
+            go.SetActive(false);
+            return go;
         }
 
         public void Bind(RequirementData data)
@@ -45,9 +65,17 @@ namespace AQ.App.UI.Leads
                 icon.color = s != null ? Color.white : new Color(1,1,1,0);
             }
 
-            // tick
+            // tick — ensure it renders on top regardless of prefab sibling order
+            bool met = data?.Met == true;
+            var slotBg = GetComponent<UnityEngine.UI.Image>();
+            if (slotBg != null)
+                slotBg.color = met ? new Color(0.2f, 0.85f, 0.4f, 0.4f) : new Color(1,1,1,0);
+
             if (tickOverlay != null)
-                tickOverlay.SetActive(data?.Met == true);
+            {
+                tickOverlay.SetActive(met);
+                if (met) tickOverlay.transform.SetAsLastSibling();
+            }
 
             // click
             if (button != null)
