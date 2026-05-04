@@ -15,5 +15,5 @@ MonoBehaviour:
   itemId: forensic_tools_t5
   family: forensic_tools
   tier: 4
-  icon: {fileID: -1083988597593794288, guid: 1d9046d22981e0344813073774a3fe2a, type: 3}
+  icon: {fileID: 21300000, guid: 1773a5bfea246fd48b1605eda638ff68, type: 3}
   displayName: Complete Forensic Kit

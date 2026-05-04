@@ -3,6 +3,13 @@ using UnityEngine;
 
 namespace AQ.App.Leads
 {
+    [Serializable]
+    public struct LeadBranchOutcome
+    {
+        public string label;
+        public string[] SpawnLeadIds;
+    }
+
     public enum LeadState
     {
         Blocked = 0,
@@ -38,8 +45,10 @@ namespace AQ.App.Leads
         public LeadRequirement[] requirements = System.Array.Empty<LeadRequirement>();
 
         [Header("Outcomes")]
+        public string[] RequiredLeadIds;
         public string[] EvidenceIds;
         public string[] SpawnLeadIds;
+        public LeadBranchOutcome[] BranchOutcomes;
         public string[] NarrativeFlags;
         public int SoftCurrency;
         public int EnergyGrant;

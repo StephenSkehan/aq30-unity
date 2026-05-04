@@ -15,5 +15,5 @@ MonoBehaviour:
   itemId: forensic_tools_t1
   family: forensic_tools
   tier: 0
-  icon: {fileID: 5178305252895463755, guid: 21d1818a775740543b238bace43549d0, type: 3}
+  icon: {fileID: 21300000, guid: f8d1757e512306747afb9121df4b3c1e, type: 3}
   displayName: Cotton Swab

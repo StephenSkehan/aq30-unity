@@ -4,11 +4,18 @@ namespace AQ.App.Leads
 {
     public enum LeadActionType
     {
-        Interview,
-        Surveillance,
-        LabRequest,
-        Favor,
-        RecordsPull
+        Evidence   = 0,
+        Interview  = 1,
+        Data       = 2,
+        Location   = 3,
+        MoneyTrail = 4,
+        Podcast    = 5,
+        Discuss    = 6,
+        // Post-MVP (reserved for future episodes):
+        Timeline   = 7,
+        Alibi      = 8,
+        Stakeout   = 9,
+        Lab        = 10,
     }
 
     /// <summary>Outcome hints for small UI badges on a card.</summary>

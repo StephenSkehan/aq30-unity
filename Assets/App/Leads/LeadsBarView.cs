@@ -61,6 +61,7 @@ namespace AQ.App.Leads
             for (int i = 0; i < leads.Count; i++)
             {
                 var so = leads[i];
+                if (so != null && so.RuntimeState == LeadState.Blocked) continue;
                 var go = Instantiate(cardPrefab, contentRoot);
                 go.name = $"LeadCard_{i}_{(so != null ? so.name : "Null")}";
 

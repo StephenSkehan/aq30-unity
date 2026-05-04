@@ -10,31 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 222fba07fae7fa343a6d2a96dfd2ee48, type: 3}
-  m_Name: Lead_38182e51641e48e4a67eea351209b184
+  m_Name: Lead_GS_FindMaya
   m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadData
-  leadId: 38182e51641e48e4a67eea351209b184
-  title: Interview Beth
-  subtitle: Collect deli CCTV
+  leadId: gs_find_maya
+  title: Find Maya
+  subtitle: "The notes narrow it down. She's alive. She's close. Find her before they do."
   actorPortrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
-  state: 1
-  ActionType: 0
+  state: 0
+  ActionType: 3
   EnergyCost: 0
   requirements:
-  - label: UV Light
-    icon: {fileID: 0}
-    satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: 4426ca7e5c440644793d4f17cc690acf, type: 2}
-  - label: CrimeScenePhoto
-    icon: {fileID: 0}
-    satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: ed7637afffe76c1428ae3bece78c9829, type: 2}
   - label: Evidence Bag
     icon: {fileID: 0}
     satisfied: 0
     itemDefinition: {fileID: 11400000, guid: 396f63cfaf7106c47bdaf61671377b24, type: 2}
+    quantity: 1
+  - label: Full Forensic Case
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: ed7637afffe76c1428ae3bece78c9829, type: 2}
+    quantity: 1
+  - label: UV Light
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: 4426ca7e5c440644793d4f17cc690acf, type: 2}
+    quantity: 1
+  RequiredLeadIds: []
   EvidenceIds: []
   SpawnLeadIds: []
-  NarrativeFlags: []
-  SoftCurrency: 0
-  EnergyGrant: 0
-  OutcomeHints: 0
+  BranchOutcomes: []
+  NarrativeFlags:
+  - gs.find_maya.activated
+  SoftCurrency: 200
+  EnergyGrant: 10
+  resolutionDialogue: {fileID: 0}
+  OutcomeHints: 4
