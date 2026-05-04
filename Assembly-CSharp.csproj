@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\Demo\FixPortraitPosition.cs" />
     <Compile Include="Assets\Scripts\UI\Board\FX\BoardFxConfigSO.cs" />
     <Compile Include="Assets\Scripts\UI\Board\Save\BoardSaveData.cs" />
+    <Compile Include="Assets\Scripts\App\Services\EnergyRegenMB.cs" />
     <Compile Include="Assets\_Deprecated\Board\TileView.cs" />
     <Compile Include="Assets\Scripts\Demo\StartDialogueButton.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyManager.cs" />
