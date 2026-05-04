@@ -3,7 +3,9 @@ using System;
 using TMPro;
 using UnityEngine;
 using AQ.App.Config;
+using AQ.App.Economy;
 using AQ.App.Services;
+using AQ.SharedKernel.Economy;
 
 namespace AQ.App.UI.HUD
 {
@@ -48,31 +50,24 @@ namespace AQ.App.UI.HUD
                 return;
             }
 
-            var mgr = EnergyRuntime.Manager;
-            if (mgr == null)
-            {
-                // Create a baseline manager if something else hasn't already.
-                mgr = EnergyRuntime.Manager = new EnergyManager(cfg.Start, cfg.Cap, DateTime.UtcNow);
-            }
-
-            mgr.TickNow(cfg.RegenSecondsPerPoint, DateTime.UtcNow);
+            var mgr    = EnergyRuntime.Manager;
+            var wallet = WalletLocator.Instance;
+            int current = wallet?.Get(Currency.Energy) ?? 0;
 
             string text;
-            string text2;
-            if (mgr.Current >= cfg.Cap)
+            if (current >= cfg.Cap)
             {
-                text = $"{mgr.Current}";
+                text = $"{current}";
             }
             else
             {
-                int sp = Mathf.Max(1, cfg.RegenSecondsPerPoint);
-                int since = Mathf.Max(0, (int)(DateTime.UtcNow - mgr.LastTickUtc).TotalSeconds);
+                int sp    = Mathf.Max(1, cfg.RegenSecondsPerPoint);
+                var last  = mgr?.LastTickUtc ?? DateTime.UtcNow;
+                int since = Mathf.Max(0, (int)(DateTime.UtcNow - last).TotalSeconds);
                 int until = sp - (since % sp);
                 int m = until / 60;
                 int s = until % 60;
-                text = $"{mgr.Current}"; 
-                text2 = $"(+1 in {m}:{s:00})";
-
+                text = $"{current} (+1 in {m}:{s:00})";
             }
 
             if (label) label.text = text;

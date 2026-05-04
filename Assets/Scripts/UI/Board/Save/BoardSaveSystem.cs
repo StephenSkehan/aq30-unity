@@ -4,7 +4,9 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 using AQ.App.Config;
+using AQ.App.Economy;
 using AQ.App.Services;
+using AQ.SharedKernel.Economy;
 
 namespace AQ.App.UI.Board
 {
@@ -248,9 +250,10 @@ namespace AQ.App.UI.Board
 
             mgr.TickNow(cfg.RegenSecondsPerPoint, DateTime.UtcNow);
 
+            var wallet = WalletLocator.Instance;
             return new EnergyDTO
             {
-                current = mgr.Current,
+                current     = wallet?.Get(Currency.Energy) ?? mgr.Current,
                 lastTickUtc = mgr.LastTickUtc.ToString("o")
             };
         }
@@ -273,13 +276,20 @@ namespace AQ.App.UI.Board
             if (!DateTime.TryParse(energy.lastTickUtc, null, System.Globalization.DateTimeStyles.AdjustToUniversal, out var last))
                 last = DateTime.UtcNow;
 
-            EnergyRuntime.Manager = new EnergyManager(
-                start: Mathf.Clamp(energy.current, 0, int.MaxValue),
-                cap: cfg.Cap,
-                lastTickUtc: last
-            );
+            EnergyRuntime.Manager = new EnergyManager(0, cfg.Cap, lastTickUtc: last);
 
-            EnergyRuntime.Manager.TickNow(cfg.RegenSecondsPerPoint, DateTime.UtcNow);
+            // Apply offline regen: compute ticks since last save
+            int offlineTicks = EnergyRuntime.Manager.TickNow(cfg.RegenSecondsPerPoint, DateTime.UtcNow);
+            int restored = Math.Min(energy.current + offlineTicks, cfg.Cap);
+
+            // Seed wallet with restored balance
+            var wallet = WalletLocator.Instance;
+            if (wallet != null)
+            {
+                int existing = wallet.Get(Currency.Energy);
+                if (existing > 0) wallet.TrySpend(Currency.Energy, existing);
+                wallet.Grant("save.restore", Reward.Energy(restored));
+            }
         }
 
         private int SnapshotHash()
@@ -305,7 +315,7 @@ namespace AQ.App.UI.Board
                 var flags = FeatureFlagsRuntime.Current;
                 if (flags != null && flags.EnergySystem && EnergyRuntime.Manager != null)
                 {
-                    h = h * 31 + EnergyRuntime.Manager.Current;
+                    h = h * 31 + (WalletLocator.Instance?.Get(Currency.Energy) ?? 0);
                     h = h * 31 + (int)(DateTime.UtcNow - EnergyRuntime.Manager.LastTickUtc).TotalSeconds;
                 }
 

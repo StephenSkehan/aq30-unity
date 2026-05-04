@@ -29,7 +29,7 @@ namespace AQ.App.Bootstrap
             if (flags != null && flags.EnergySystem && EnergyRuntime.Config != null && EnergyRuntime.Manager == null)
             {
                 var cfg = EnergyRuntime.Config;
-                EnergyRuntime.Manager = new EnergyManager(cfg.Start, cfg.Cap, DateTime.UtcNow);
+                EnergyRuntime.Manager = new EnergyManager(0, cfg.Cap, DateTime.UtcNow);
             }
         }
     }

@@ -5,9 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using AQ.App.Config;
-using AQ.App.Services;
+using AQ.App.Economy;
 using AQ.Domain.Board;         // MergeRules
 using AQ.App.UI.Common;       // ToastService
+using AQ.SharedKernel.Economy;
 
 namespace AQ.App.UI.Board
 {
@@ -231,22 +232,19 @@ namespace AQ.App.UI.Board
             var flags = FeatureFlagsRuntime.Current;
             if (flags != null && flags.EnergySystem)
             {
-                var cfg = EnergyRuntime.Config;
-                var mgr = EnergyRuntime.Manager;
-
-                if (mgr != null && cfg != null)
+                var wallet = WalletLocator.Instance;
+                if (wallet != null)
                 {
-                    mgr.TickNow(cfg.RegenSecondsPerPoint, DateTime.UtcNow);
-                    if (!mgr.TryConsume(1))
+                    if (!wallet.TrySpend(Currency.Energy, 1, "generator.spawn"))
                     {
                         Log("Energy insufficient — spawn cancelled.");
                         ToastService.Show("out_of_energy", "Out of energy.", 1.8f);
-                        return; // nothing placed, nothing charged
+                        return;
                     }
                 }
                 else
                 {
-                    Log("[Energy] Config/Manager missing; allowing spawn (flag ON).");
+                    Log("[Energy] Wallet missing; allowing spawn (flag ON).");
                 }
             }
 

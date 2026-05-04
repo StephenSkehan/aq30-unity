@@ -1,55 +1,36 @@
 using UnityEngine;
 using UnityEngine.InputSystem; // new Input System
-using AQ.App.Services;
+using AQ.App.Economy;
+using AQ.SharedKernel.Economy;
 
 namespace AQ.App.Dev
 {
     /// <summary>
     /// Editor/dev hotkeys for adjusting energy:
-    /// F6 = consume 10 (min 0)
-    /// F7 = +5 (no max)
-    /// F8 = +20 (no max)
-    /// HUD is self-updating; no direct HUD calls here.
+    /// F6 = spend 10
+    /// F7 = grant 5
+    /// F8 = grant 20
     /// </summary>
     [DefaultExecutionOrder(10000)]
     public sealed class EnergyDevHotkeys : MonoBehaviour
     {
-        private EnergyManager _mgr;
-
-        private void Awake()
-        {
-#if UNITY_EDITOR
-            _mgr = EnergyRuntime.Manager;
-#endif
-        }
-
         private void Update()
         {
 #if UNITY_EDITOR
-            // Only run in Editor; safe-guard if Input System isn't ready.
             var kb = Keyboard.current;
             if (kb == null) return;
 
-            if (_mgr == null) _mgr = EnergyRuntime.Manager;
-            if (_mgr == null) return;
+            var wallet = WalletLocator.Instance;
+            if (wallet == null) return;
 
-            // F6: consume 10 (min 0)
             if (kb.f6Key.wasPressedThisFrame)
-            {
-                _mgr.TryConsume(10);
-            }
+                wallet.TrySpend(Currency.Energy, 10, "dev.hotkey");
 
-            // F7: add 5 (no max)
             if (kb.f7Key.wasPressedThisFrame)
-            {
-                _mgr.Add(5);
-            }
+                wallet.Grant("dev.hotkey", Reward.Energy(5));
 
-            // F8: add 20 (no max)
             if (kb.f8Key.wasPressedThisFrame)
-            {
-                _mgr.Add(20);
-            }
+                wallet.Grant("dev.hotkey", Reward.Energy(20));
 #endif
         }
     }
