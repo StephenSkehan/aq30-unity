@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
+using AQ.App.Analytics;
 using AQ.App.Config;
 using AQ.App.Economy;
 using AQ.Domain.Board;         // MergeRules
@@ -215,6 +216,7 @@ namespace AQ.App.UI.Board
             OnItemRemoved?.Invoke(intoFam, intoTier);
             Log($"MergeTiles (Item): {newTier - 1}+{newTier - 1}->{newTier}");
             OnItemCreated?.Invoke(fam, newTier);
+            GameAnalytics.LogMerge(fam, fromTier, newTier);
         }
 
         private void SpawnFromGenerator(BoardTileView generator)
@@ -262,6 +264,7 @@ namespace AQ.App.UI.Board
 
             Log($"Spawned item T{tier + 1} at ({r},{c}) family={genFamily}.");
             OnItemCreated?.Invoke(genFamily, tier);
+            GameAnalytics.LogSpawnRoll(genFamily, tier);
         }
 
         // ---------------- Visuals & content ----------------

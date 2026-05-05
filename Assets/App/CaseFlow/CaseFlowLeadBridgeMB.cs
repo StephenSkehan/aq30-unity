@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using AQ.App;
 using AQ.App.Leads;
+using AQ.App.Analytics;
 using AQ.SharedKernel.CaseFlow;
 
 namespace AQ.App.CaseFlow
@@ -92,6 +93,8 @@ namespace AQ.App.CaseFlow
         {
             if (_svc == null) return;
             if (lead == null || lead.RuntimeState != LeadState.Ready) return;
+
+            GameAnalytics.LogCardSubmit(lead.leadId);
 
             // Consume board items and remove lead card — LeadActivationBridgeMB handles this
             // via the bus so AQ.App doesn't need a direct ref to MergeBoardController.

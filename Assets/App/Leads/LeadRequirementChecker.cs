@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using AQ.App.Analytics;
 using AQ.App.Presentation;
 using AQ.SharedKernel.Events;
 
@@ -106,6 +107,7 @@ namespace AQ.App.Leads
 
                 if (lead.RuntimeState != newState)
                 {
+                    GameAnalytics.LogCardStateChange(lead.leadId, lead.RuntimeState.ToString(), newState.ToString());
                     lead.RuntimeState = newState;
                     if (newState == LeadState.Ready)
                         LeadsRuntimeBus.BroadcastState(lead);
