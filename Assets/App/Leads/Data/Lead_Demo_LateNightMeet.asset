@@ -33,7 +33,7 @@ MonoBehaviour:
   EvidenceIds: []
   SpawnLeadIds: []
   NarrativeFlags: []
-  SoftCurrency: 0
+  SoftCurrency: 150
   EnergyGrant: 0
   resolutionDialogue: {fileID: 11400000, guid: e3f4a5b6c7d8901234567890ef345603, type: 2}
   OutcomeHints: 0

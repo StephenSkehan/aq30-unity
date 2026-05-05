@@ -35,6 +35,6 @@ MonoBehaviour:
   EvidenceIds: []
   SpawnLeadIds: []
   NarrativeFlags: []
-  SoftCurrency: 0
+  SoftCurrency: 150
   EnergyGrant: 0
   OutcomeHints: 0

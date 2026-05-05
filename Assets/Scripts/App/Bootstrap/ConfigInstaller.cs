@@ -2,7 +2,9 @@
 using System;
 using UnityEngine;
 using AQ.App.Config;
+using AQ.App.Economy;
 using AQ.App.Services;
+using AQ.SharedKernel.Economy;
 
 namespace AQ.App.Bootstrap
 {
@@ -19,6 +21,11 @@ namespace AQ.App.Bootstrap
 
         private void Awake()
         {
+            // Wallet must exist before any other system reads it — FTUEEntitlements
+            // only calls WalletLocator.Set() on first boot, so we ensure it here.
+            if (WalletLocator.Instance == null)
+                WalletLocator.Set(new WalletService());
+
             if (featureFlags)
                 FeatureFlagsRuntime.Current = featureFlags;
 
