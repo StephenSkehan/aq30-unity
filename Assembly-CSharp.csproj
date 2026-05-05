@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\App\Config\FeatureFlags.cs" />
     <Compile Include="Assets\Scripts\Dev\EnergyDevHotkeys.cs" />
     <Compile Include="Assets\Scripts\UI\Board\DragGhost.cs" />
+    <Compile Include="Assets\Scripts\UI\HUD\SoftCurrencyHudTMP.cs" />
     <Compile Include="Assets\_Deprecated\Board\GuttersLockRunner.cs" />
     <Compile Include="Assets\Scripts\App\Presentation\MergeEventsBridge.cs" />
     <Compile Include="Assets\Scripts\Demo\PortraitDiagnostics.cs" />
