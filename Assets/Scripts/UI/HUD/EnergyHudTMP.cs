@@ -50,27 +50,9 @@ namespace AQ.App.UI.HUD
                 return;
             }
 
-            var mgr    = EnergyRuntime.Manager;
             var wallet = WalletLocator.Instance;
             int current = wallet?.Get(Currency.Energy) ?? 0;
-
-            string text;
-            if (current >= cfg.Cap)
-            {
-                text = $"{current}";
-            }
-            else
-            {
-                int sp    = Mathf.Max(1, cfg.RegenSecondsPerPoint);
-                var last  = mgr?.LastTickUtc ?? DateTime.UtcNow;
-                int since = Mathf.Max(0, (int)(DateTime.UtcNow - last).TotalSeconds);
-                int until = sp - (since % sp);
-                int m = until / 60;
-                int s = until % 60;
-                text = $"{current} (+1 in {m}:{s:00})";
-            }
-
-            if (label) label.text = text;
+            if (label) label.text = $"{current}";
         }
     }
 }
