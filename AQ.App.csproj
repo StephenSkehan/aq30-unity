@@ -74,6 +74,7 @@
     <Compile Include="Assets\App\Economy\WalletLocator.cs" />
     <Compile Include="Assets\App\CaseFlow\CaseFlowAdvanceOnEventMB.cs" />
     <Compile Include="Assets\App\Analytics\DebugLogAnalytics.cs" />
+    <Compile Include="Assets\App\Leads\LeadAnalytics.cs" />
     <Compile Include="Assets\App\Analytics\WalletAnalyticsBridge.cs" />
     <Compile Include="Assets\App\UI\Dialogue\ChoiceFilter.cs" />
     <Compile Include="Assets\App\UI\MergeBoard\DraggableItem.cs" />
@@ -149,7 +150,6 @@
     <Compile Include="Assets\App\CaseFlow\CaseFlowLocator.cs" />
     <Compile Include="Assets\App\Presentation\EventBusInstaller.cs" />
     <Compile Include="Assets\App\UI\Theme\ThemeRegistry.cs" />
-    <Compile Include="Assets\App\Analytics\LeadAnalytics.cs" />
     <Compile Include="Assets\App\NarrativeFlags.cs" />
     <Compile Include="Assets\App\Gameplay\Merge\SpriteCatalog.cs" />
     <Compile Include="Assets\App\Gameplay\Merge\MergeGeneratorConfig.cs" />
@@ -163,6 +163,7 @@
     <Compile Include="Assets\App\UI\Dialogue\DialogueFlags.cs" />
     <Compile Include="Assets\App\HUD\TopStatusRow.cs" />
     <Compile Include="Assets\App\Presentation\MergeEventsToUI.cs" />
+    <Compile Include="Assets\App\Analytics\GameAnalytics.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\App\AQ.App.asmdef" />
