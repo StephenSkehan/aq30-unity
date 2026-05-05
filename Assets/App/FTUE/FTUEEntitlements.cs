@@ -14,7 +14,7 @@ namespace AQ.App.FTUE
         [Header("One-time entitlements")]
         [Min(0)] public int soft    = 500;
         [Min(0)] public int premium = 0;
-        [Min(0)] public int energy  = 10;
+        [Min(0)] public int energy  = 100;
 
         [Header("PlayerPrefs key (toggle to reapply in dev)")]
         public string playerPrefsKey = "aq.ftue.entitlements.v1";
