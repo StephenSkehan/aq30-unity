@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using AQ.App.CaseFlow;
 using AQ.App.Config;
 using AQ.App.Economy;
+using AQ.App.Leads;
 using AQ.App.Services;
+using AQ.SharedKernel.CaseFlow;
 using AQ.SharedKernel.Economy;
 
 namespace AQ.App.UI.Board
@@ -19,6 +22,8 @@ namespace AQ.App.UI.Board
     {
         [Tooltip("If not assigned, will search in scene.")]
         public MergeBoardController board;
+
+        private LeadsRepository _leadsRepo;
 
         [Header("Save Settings")]
         [Tooltip("Debounce time for saves after a detected change.")]
@@ -40,6 +45,8 @@ namespace AQ.App.UI.Board
         {
             if (!board)
                 board = FindFirstObjectByType<MergeBoardController>();
+
+            _leadsRepo = FindFirstObjectByType<LeadsRepository>();
 
             var root = Application.persistentDataPath;
             _pathLive = Path.Combine(root, fileName);
@@ -100,16 +107,41 @@ namespace AQ.App.UI.Board
         }
 
         [Serializable]
+        private sealed class WalletDTO
+        {
+            public int soft;
+        }
+
+        [Serializable]
+        private sealed class CaseFlowDTO
+        {
+            public string episodeId;
+            public int stepIndex;
+        }
+
+        [Serializable]
+        private sealed class LeadStateDTO
+        {
+            public string leadId;
+            public int    runtimeState;
+            public bool[] satisfied;
+            public bool   activated;
+        }
+
+        [Serializable]
         private sealed class SaveDTO
         {
-            public string schemaVersion = "0.5.0";
+            public string schemaVersion = "0.6.0";
             public string timestampUtc;
 
             public int rows;
             public int cols;
 
-            public List<CellDTO> cells = new List<CellDTO>();
-            public EnergyDTO energy;
+            public List<CellDTO>      cells    = new List<CellDTO>();
+            public EnergyDTO          energy;
+            public WalletDTO          wallet;
+            public CaseFlowDTO        caseFlow;
+            public List<LeadStateDTO> leads    = new List<LeadStateDTO>();
         }
 
         public void TrySave()
@@ -119,11 +151,14 @@ namespace AQ.App.UI.Board
             var dto = new SaveDTO
             {
                 timestampUtc = DateTime.UtcNow.ToString("o"),
-                rows = board.Rows,
-                cols = board.Cols,
-                energy = BuildEnergyDTO()
+                rows     = board.Rows,
+                cols     = board.Cols,
+                energy   = BuildEnergyDTO(),
+                wallet   = BuildWalletDTO(),
+                caseFlow = BuildCaseFlowDTO(),
             };
             FillCells(dto.cells);
+            FillLeads(dto.leads);
 
             string json = JsonUtility.ToJson(dto, prettyPrint: false);
             Directory.CreateDirectory(Path.GetDirectoryName(_pathLive));
@@ -169,8 +204,11 @@ namespace AQ.App.UI.Board
 
                 ApplyCells(dto);
                 ApplyEnergy(dto.energy);
+                ApplyWallet(dto.wallet);
+                ApplyCaseFlow(dto.caseFlow);
+                ApplyLeads(dto.leads);
 
-                Debug.Log($"[Save] loaded {dto.cells.Count} cells from {_pathLive}");
+                Debug.Log($"[Save] loaded {dto.cells.Count} cells, {dto.leads?.Count ?? 0} leads from {_pathLive}");
             }
             catch (Exception ex)
             {
@@ -253,7 +291,7 @@ namespace AQ.App.UI.Board
             var wallet = WalletLocator.Instance;
             return new EnergyDTO
             {
-                current     = wallet?.Get(Currency.Energy) ?? mgr.Current,
+                current     = wallet?.Get(Currency.Energy) ?? 0,
                 lastTickUtc = mgr.LastTickUtc.ToString("o")
             };
         }
@@ -292,6 +330,93 @@ namespace AQ.App.UI.Board
             }
         }
 
+        private static WalletDTO BuildWalletDTO()
+        {
+            var wallet = WalletLocator.Instance;
+            if (wallet == null) return null;
+            return new WalletDTO { soft = wallet.Get(Currency.Soft) };
+        }
+
+        private static void ApplyWallet(WalletDTO dto)
+        {
+            if (dto == null) return;
+            var wallet = WalletLocator.Instance;
+            if (wallet == null) return;
+
+            int existing = wallet.Get(Currency.Soft);
+            if (existing > 0) wallet.TrySpend(Currency.Soft, existing);
+            if (dto.soft > 0)  wallet.Grant("save.restore", Reward.Soft(dto.soft));
+        }
+
+        private static CaseFlowDTO BuildCaseFlowDTO()
+        {
+            var svc = CaseFlowLocator.Instance;
+            if (svc == null) return null;
+            var state = svc.Current;
+            return new CaseFlowDTO
+            {
+                episodeId = state.Episode.Value,
+                stepIndex = state.StepIndex
+            };
+        }
+
+        private static void ApplyCaseFlow(CaseFlowDTO dto)
+        {
+            if (dto == null) return;
+            var svc = CaseFlowLocator.Instance;
+            if (svc == null) return;
+
+            // Advance silently from current index to saved index.
+            // CaseFlowOrchestratorMB.Start() already ran Begin() + FTUE catch-up,
+            // so current StepIndex may already be > 0.
+            int target  = dto.stepIndex;
+            int current = svc.Current.StepIndex;
+            for (int i = current; i < target; i++)
+                svc.CompleteCurrentStep();
+        }
+
+        private void FillLeads(List<LeadStateDTO> outList)
+        {
+            outList.Clear();
+            if (_leadsRepo == null) return;
+
+            foreach (var lead in _leadsRepo.CurrentLeads)
+            {
+                if (lead == null) continue;
+                var dto = new LeadStateDTO
+                {
+                    leadId       = lead.leadId,
+                    runtimeState = (int)lead.RuntimeState,
+                    activated    = false,
+                    satisfied    = lead.requirements != null
+                                   ? Array.ConvertAll(lead.requirements, r => r.IsSatisfied)
+                                   : Array.Empty<bool>()
+                };
+                outList.Add(dto);
+            }
+
+            foreach (var id in _leadsRepo.ActivatedLeadIds)
+                outList.Add(new LeadStateDTO { leadId = id, activated = true });
+        }
+
+        private void ApplyLeads(List<LeadStateDTO> dtos)
+        {
+            if (dtos == null || dtos.Count == 0 || _leadsRepo == null) return;
+
+            var states = new LeadsRepository.LeadSaveState[dtos.Count];
+            for (int i = 0; i < dtos.Count; i++)
+            {
+                states[i] = new LeadsRepository.LeadSaveState
+                {
+                    LeadId                = dtos[i].leadId,
+                    RuntimeState          = dtos[i].runtimeState,
+                    SatisfiedRequirements = dtos[i].satisfied,
+                    Activated             = dtos[i].activated
+                };
+            }
+            _leadsRepo.ApplySavedStates(states);
+        }
+
         private int SnapshotHash()
         {
             unchecked
@@ -312,11 +437,28 @@ namespace AQ.App.UI.Board
                     }
                 }
 
-                var flags = FeatureFlagsRuntime.Current;
-                if (flags != null && flags.EnergySystem && EnergyRuntime.Manager != null)
+                var wallet = WalletLocator.Instance;
+                if (wallet != null)
                 {
-                    h = h * 31 + (WalletLocator.Instance?.Get(Currency.Energy) ?? 0);
-                    h = h * 31 + (int)(DateTime.UtcNow - EnergyRuntime.Manager.LastTickUtc).TotalSeconds;
+                    h = h * 31 + wallet.Get(Currency.Soft);
+
+                    var flags = FeatureFlagsRuntime.Current;
+                    if (flags != null && flags.EnergySystem)
+                    {
+                        h = h * 31 + wallet.Get(Currency.Energy);
+                        if (EnergyRuntime.Manager != null)
+                            h = h * 31 + (int)(DateTime.UtcNow - EnergyRuntime.Manager.LastTickUtc).TotalSeconds;
+                    }
+                }
+
+                if (_leadsRepo != null)
+                {
+                    foreach (var lead in _leadsRepo.CurrentLeads)
+                    {
+                        if (lead == null) continue;
+                        h = h * 31 + lead.leadId.GetHashCode();
+                        h = h * 31 + (int)lead.RuntimeState;
+                    }
                 }
 
                 return h;

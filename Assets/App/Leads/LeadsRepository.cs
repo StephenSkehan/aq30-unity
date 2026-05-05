@@ -15,6 +15,7 @@ namespace AQ.App.Leads
         private readonly List<LeadData> _current = new List<LeadData>();
         private readonly HashSet<string> _activatedLeadIds = new HashSet<string>();
         public IReadOnlyList<LeadData> CurrentLeads => _current;
+        public IEnumerable<string> ActivatedLeadIds => _activatedLeadIds;
 
         /// <summary>Raised whenever the in-memory list changes.</summary>
         public event Action LeadsChanged;
@@ -144,5 +145,51 @@ namespace AQ.App.Leads
         }
 
         private void Broadcast() => NotifyChanged();
+
+        // ---- Persistence ----
+
+        public struct LeadSaveState
+        {
+            public string LeadId;
+            public int    RuntimeState;
+            public bool[] SatisfiedRequirements;
+            public bool   Activated;
+        }
+
+        /// <summary>
+        /// Restores lead states from a save. Call after ReplaceFromDatabase() has already run.
+        /// Activated leads are removed from the active list but tracked for dependency resolution.
+        /// </summary>
+        public void ApplySavedStates(IReadOnlyList<LeadSaveState> states)
+        {
+            if (states == null || states.Count == 0) return;
+
+            foreach (var saved in states)
+            {
+                if (string.IsNullOrEmpty(saved.LeadId)) continue;
+
+                if (saved.Activated)
+                {
+                    _activatedLeadIds.Add(saved.LeadId);
+                    var resolved = _current.Find(l => l != null && l.leadId == saved.LeadId);
+                    if (resolved != null) _current.Remove(resolved);
+                    continue;
+                }
+
+                var lead = _current.Find(l => l != null && l.leadId == saved.LeadId);
+                if (lead == null) continue;
+
+                lead.RuntimeState = (LeadState)saved.RuntimeState;
+
+                if (saved.SatisfiedRequirements != null && lead.requirements != null)
+                {
+                    int count = Math.Min(saved.SatisfiedRequirements.Length, lead.requirements.Length);
+                    for (int i = 0; i < count; i++)
+                        lead.SetRequirementSatisfied(i, saved.SatisfiedRequirements[i]);
+                }
+            }
+
+            Broadcast();
+        }
     }
 }
