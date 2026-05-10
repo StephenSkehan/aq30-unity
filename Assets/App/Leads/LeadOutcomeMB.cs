@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using AQ.App.Economy;
 using AQ.SharedKernel.Economy;
 
@@ -19,6 +20,12 @@ namespace AQ.App.Leads
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void EnsureExists()
+        {
+            CreateIfMissing();
+            SceneManager.sceneLoaded += (_, __) => CreateIfMissing();
+        }
+
+        private static void CreateIfMissing()
         {
             if (FindFirstObjectByType<LeadOutcomeMB>() == null)
                 new GameObject("~LeadOutcome").AddComponent<LeadOutcomeMB>();

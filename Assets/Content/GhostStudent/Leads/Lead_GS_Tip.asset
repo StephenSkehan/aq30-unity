@@ -31,10 +31,12 @@ MonoBehaviour:
   SpawnLeadIds:
   - gs_roommate
   - gs_lecturer
+  - gs_scroll_a
+  - gs_scroll_b
   BranchOutcomes: []
   NarrativeFlags:
   - gs.tip.activated
   SoftCurrency: 50
   EnergyGrant: 0
-  resolutionDialogue: {fileID: 0}
+  resolutionDialogue: {fileID: 11400000, guid: f3a72b4d8c1e590fa8d2b6c341e07259, type: 2}
   OutcomeHints: 6

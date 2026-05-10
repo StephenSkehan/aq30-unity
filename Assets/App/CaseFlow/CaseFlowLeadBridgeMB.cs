@@ -119,36 +119,20 @@ namespace AQ.App.CaseFlow
                 return;
             }
 
-            var graph = (lead != null && lead.resolutionDialogue != null)
-                ? lead.resolutionDialogue
-                : resolutionDialogue;
+            var seenFlag = $"aq.lead.{lead?.leadId ?? "unknown"}.seen";
+            if (DialogueFlags.Has(seenFlag)) return;
 
-            if (graph == null)
-            {
-                Debug.LogWarning($"[CaseFlowLeadBridge] TryBootDialogue: no CaseGraph — lead.resolutionDialogue='{lead?.resolutionDialogue}' fallback resolutionDialogue='{resolutionDialogue}'", this);
-                return;
-            }
-
-            var seenFlag = (lead != null && lead.resolutionDialogue != null)
-                ? $"aq.lead.{lead.leadId}.seen"
-                : "aq.act1.intro.seen";
-
-            if (DialogueFlags.Has(seenFlag))
-            {
-                Debug.Log($"[CaseFlowLeadBridge] TryBootDialogue: flag '{seenFlag}' already set — dialogue skipped.", this);
-                return;
-            }
-
-            Debug.Log($"[CaseFlowLeadBridge] Booting dialogue graph='{graph.name}' flag='{seenFlag}'", this);
             if (_bar != null) _bar.gameObject.SetActive(false);
             dialogueRunner.DialogueEnded += OnDialogueEnded;
-            // Prefab stores zero scale as its hidden default — restore before showing.
             dialogueRunner.transform.localScale = UnityEngine.Vector3.one;
-            // Root screen-space Canvas requires its own GraphicRaycaster for click input.
             if (dialogueRunner.GetComponent<UnityEngine.UI.GraphicRaycaster>() == null)
                 dialogueRunner.gameObject.AddComponent<UnityEngine.UI.GraphicRaycaster>();
             dialogueRunner.gameObject.SetActive(true);
-            dialogueRunner.BootWithGraph(graph);
+
+            if (lead?.resolutionDialogue != null)
+                dialogueRunner.BootWithGraph(lead.resolutionDialogue);
+            else
+                dialogueRunner.BootWithText("Ally Quinn", $"{lead?.title}: Missing dialog data - ID: {lead?.leadId}");
         }
 
         private void OnDialogueEnded()

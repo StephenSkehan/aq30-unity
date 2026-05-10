@@ -67,7 +67,12 @@ namespace AQ.App.UI.Common
             _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             _canvas.sortingOrder = 5000;
 
-            gameObject.AddComponent<CanvasScaler>();
+            var scaler = gameObject.AddComponent<CanvasScaler>();
+            scaler.uiScaleMode          = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.referenceResolution  = new Vector2(1080f, 1920f);
+            scaler.screenMatchMode      = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+            scaler.matchWidthOrHeight   = 0f; // match width
+
             gameObject.AddComponent<GraphicRaycaster>();
 
             // Panel (top-center)
@@ -84,9 +89,9 @@ namespace AQ.App.UI.Common
 
             _panel.anchorMin = new Vector2(0.5f, 1f);
             _panel.anchorMax = new Vector2(0.5f, 1f);
-            _panel.pivot = new Vector2(0.5f, 1f);
-            _panel.anchoredPosition = new Vector2(0f, -80f);
+            _panel.pivot     = new Vector2(0.5f, 1f);
             _panel.sizeDelta = new Vector2(800f, 64f);
+            _panel.anchoredPosition = ToastTopOffset();
 
             // Label (TMP)
             var labelGO = new GameObject("Label", typeof(RectTransform));
@@ -107,6 +112,21 @@ namespace AQ.App.UI.Common
             // Hidden by default
             _group.alpha = 0f;
             _panel.gameObject.SetActive(false);
+        }
+
+        private void Start()
+        {
+            // Re-apply once Canvas.scaleFactor is resolved after first frame setup.
+            if (_panel != null)
+                _panel.anchoredPosition = ToastTopOffset();
+        }
+
+        private Vector2 ToastTopOffset()
+        {
+            var safe = Screen.safeArea;
+            float topInset_px     = Screen.height - (safe.y + safe.height);
+            float topInset_canvas = Screen.width > 0f ? topInset_px * (1080f / Screen.width) : 0f;
+            return new Vector2(0f, -(80f + topInset_canvas));
         }
 
         private IEnumerator ProcessQueue()

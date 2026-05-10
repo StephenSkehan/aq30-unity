@@ -144,6 +144,17 @@ namespace AQ.App.UI.Board
             public List<LeadStateDTO> leads    = new List<LeadStateDTO>();
         }
 
+        public static void ClearSave()
+        {
+            var root     = Application.persistentDataPath;
+            var live     = Path.Combine(root, "board_state.json");
+            var prev     = Path.Combine(root, "board_state.prev.json");
+            var tmp      = live + ".tmp";
+            foreach (var p in new[] { live, prev, tmp })
+                if (File.Exists(p)) File.Delete(p);
+            Debug.Log("[Save] BoardSaveSystem cleared");
+        }
+
         public void TrySave()
         {
             if (board == null) return;

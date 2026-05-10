@@ -59,6 +59,18 @@ namespace AQ.App
                 JumpTo(Graph.startId);
         }
 
+        /// <summary>
+        /// Boot a single-line filler dialogue without needing a CaseGraph asset.
+        /// Tap to dismiss — fires DialogueEnded normally.
+        /// </summary>
+        public void BootWithText(string speaker, string line)
+        {
+            var g = ScriptableObject.CreateInstance<CaseGraph>();
+            g.startId = "filler";
+            g.nodes   = new[] { new CaseGraph.Node { id = "filler", speaker = speaker, line = line } };
+            BootWithGraph(g);
+        }
+
         void InternalBoot(CaseGraph g)
         {
             if (Panel == null) Panel = GetComponent<DialogueController>();

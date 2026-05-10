@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using AQ.App.Leads;
 using AQ.App.UI.Board;
 
@@ -23,6 +24,14 @@ namespace AQ.App
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void EnsureExists()
         {
+            CreateIfMissing();
+            // RuntimeInitializeOnLoadMethod fires only on the FIRST scene load.
+            // Hook sceneLoaded so subsequent LoadScene calls (e.g. game reset) also recreate us.
+            SceneManager.sceneLoaded += (_, __) => CreateIfMissing();
+        }
+
+        private static void CreateIfMissing()
+        {
             if (FindFirstObjectByType<LeadActivationBridgeMB>() == null)
                 new GameObject("~LeadActivationBridge").AddComponent<LeadActivationBridgeMB>();
         }
@@ -38,7 +47,7 @@ namespace AQ.App
 
         private void OnLeadActivated(LeadData lead)
         {
-            // Remove lead first so brief un-satisfaction from item removal doesn't flash on the card.
+            if (_repo == null) _repo = FindAnyObjectByType<LeadsRepository>();
             _repo?.RemoveLead(lead);
             ConsumeItems(lead);
         }
