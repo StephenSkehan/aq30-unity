@@ -102,6 +102,7 @@
     <Compile Include="Assets\Scripts\UI\Board\Save\BoardSaveData.cs" />
     <Compile Include="Assets\Scripts\UI\Common\GameResetMB.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyRegenMB.cs" />
+    <Compile Include="Assets\Scripts\UI\Common\TileInfoPopup.cs" />
     <Compile Include="Assets\_Deprecated\Board\TileView.cs" />
     <Compile Include="Assets\Scripts\Demo\StartDialogueButton.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyManager.cs" />
@@ -122,6 +123,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\SDFFunctions.hlsl" />
+    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />

@@ -7,8 +7,9 @@ using UnityEngine.UI;
 using AQ.App.Analytics;
 using AQ.App.Config;
 using AQ.App.Economy;
+using AQ.App.Items;
 using AQ.Domain.Board;         // MergeRules
-using AQ.App.UI.Common;       // ToastService
+using AQ.App.UI.Common;       // ToastService, TileInfoPopup
 using AQ.SharedKernel.Economy;
 
 namespace AQ.App.UI.Board
@@ -45,6 +46,9 @@ namespace AQ.App.UI.Board
         [Tooltip("Family key assigned to the default generator; spawned items inherit their origin generator's family.")]
         public string defaultGeneratorFamily = "stakeout_fuel";
 
+        [Header("Item Definitions")]
+        [SerializeField] private ItemDefinitionSO[] itemDefinitions = System.Array.Empty<ItemDefinitionSO>();
+
         [Header("Debug")]
         public bool debugLogs = false;
 
@@ -70,6 +74,33 @@ namespace AQ.App.UI.Board
         public static event Action<string, int> OnItemRemoved;
 
         // ---------------- Unity lifecycle ----------------
+
+        private void OnEnable()  => BoardTileView.LongHeld += OnTileLongHeld;
+        private void OnDisable() => BoardTileView.LongHeld -= OnTileLongHeld;
+
+        private void OnTileLongHeld(BoardTileView tile)
+        {
+            if (tile == null || tile.IsEmpty || tile.Kind == TileKind.Generator) return;
+
+            var family = GetFamily(tile);
+            int tier   = tile.Tier;
+
+            var def         = LookupItemDef(family, tier);
+            string name     = def != null ? def.displayName : FormatFamilyTier(family, tier);
+            Sprite icon     = def?.icon != null ? def.icon : tile.Payload.sprite;
+
+            TileInfoPopup.Show(name, icon, family, tier);
+        }
+
+        private ItemDefinitionSO LookupItemDef(string family, int tier)
+        {
+            foreach (var def in itemDefinitions)
+                if (def != null && def.family == family && def.tier == tier) return def;
+            return null;
+        }
+
+        private static string FormatFamilyTier(string family, int tier)
+            => $"{family.Replace('_', ' ')} T{tier + 1}";
 
         private void Awake()
         {

@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,10 +11,16 @@ namespace AQ.App.UI.Board
     public class BoardTileView :
         MonoBehaviour,
         IPointerClickHandler,
+        IPointerDownHandler,
+        IPointerUpHandler,
         IBeginDragHandler,
         IDragHandler,
         IEndDragHandler
     {
+        private const float LongPressDuration = 0.5f;
+        private Coroutine _longPressRoutine;
+
+        public static event Action<BoardTileView> LongHeld;
         MergeBoardController controller;
         int row, col;
 
@@ -126,8 +134,34 @@ namespace AQ.App.UI.Board
             controller?.OnTileClicked(this);
         }
 
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (IsEmpty || payload.kind == TileKind.Generator) return;
+            _longPressRoutine = StartCoroutine(LongPressRoutine());
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            CancelLongPress();
+        }
+
+        private void CancelLongPress()
+        {
+            if (_longPressRoutine == null) return;
+            StopCoroutine(_longPressRoutine);
+            _longPressRoutine = null;
+        }
+
+        private IEnumerator LongPressRoutine()
+        {
+            yield return new WaitForSecondsRealtime(LongPressDuration);
+            _longPressRoutine = null;
+            LongHeld?.Invoke(this);
+        }
+
         public void OnBeginDrag(PointerEventData eventData)
         {
+            CancelLongPress();
             if (IsEmpty || !itemImage || !itemImage.enabled) return;
 
             dragStartRC = controller?.GetIndex(this);
