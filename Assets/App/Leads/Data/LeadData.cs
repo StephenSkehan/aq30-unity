@@ -59,6 +59,10 @@ namespace AQ.App.Leads
         [Header("UI")]
         public LeadOutcomeHint OutcomeHints;
 
+        [Header("Evidence Board")]
+        [Tooltip("LeadIds this lead connects to on the evidence board. Draw a string when both ends are resolved.")]
+        public string[] boardConnections = System.Array.Empty<string>();
+
         // ---- ILeadCardModel ----
         string ILeadCardModel.Title        => title;
         string ILeadCardModel.Subtitle     => subtitle;

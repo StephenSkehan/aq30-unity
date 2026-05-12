@@ -35,3 +35,5 @@ MonoBehaviour:
   EnergyGrant: 0
   resolutionDialogue: {fileID: 11400000, guid: a4d7f1b6c8e30952a4d7f1b6c8e30952, type: 2}
   OutcomeHints: 4
+  boardConnections:
+  - gs_scroll_b
