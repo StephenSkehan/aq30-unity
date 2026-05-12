@@ -19,7 +19,7 @@ MonoBehaviour:
     line: "It took half the night to crack the cipher. Maya used a military-grade
       symmetric key — the kind you don't find in a standard toolkit. She was
       scared enough to learn it."
-    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
+    portrait: {fileID: -5112325403583219243, guid: e02460f0c092dde4891723eecbbdc368,
       type: 3}
     emotion: 5
     voiceClip: {fileID: 0}
@@ -34,7 +34,7 @@ MonoBehaviour:
     line: "Three words in the decrypted file: 'They're selling us.' Sent to an
       encrypted relay two days before she vanished. No recipient on record.
       No follow-up message. Just those three words and then silence."
-    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
+    portrait: {fileID: -5758400864172228007, guid: 7e03a4f198056f44ba2209764d9e8219,
       type: 3}
     emotion: 4
     voiceClip: {fileID: 0}

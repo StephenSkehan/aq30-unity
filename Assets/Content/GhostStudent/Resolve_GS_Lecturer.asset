@@ -19,7 +19,7 @@ MonoBehaviour:
     line: "He asked me twice if I was recording before he'd say a word.
       Professor Drake — fifteen years at Havenbay, never once put a foot wrong.
       Now he's terrified of his own office."
-    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
+    portrait: {fileID: -5112325403583219243, guid: e02460f0c092dde4891723eecbbdc368,
       type: 3}
     emotion: 5
     voiceClip: {fileID: 0}
@@ -35,7 +35,7 @@ MonoBehaviour:
       someone in the faculty had sold student biometric data to a private
       research firm. She had a name. He told her to go to administration.
       He didn't know that was the worst advice he could give her."
-    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
+    portrait: {fileID: -8028765454255842948, guid: ae0c3985c1991244d8ee72fa0756eb08,
       type: 3}
     emotion: 6
     voiceClip: {fileID: 0}
