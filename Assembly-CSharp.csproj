@@ -76,16 +76,21 @@
     <Compile Include="Assets\Scripts\App\Config\FeatureFlags.cs" />
     <Compile Include="Assets\Scripts\Dev\EnergyDevHotkeys.cs" />
     <Compile Include="Assets\Scripts\UI\Board\DragGhost.cs" />
+    <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardZoomPan.cs" />
+    <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceItemPin.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\SoftCurrencyHudTMP.cs" />
     <Compile Include="Assets\_Deprecated\Board\GuttersLockRunner.cs" />
     <Compile Include="Assets\Scripts\App\Presentation\MergeEventsBridge.cs" />
     <Compile Include="Assets\Scripts\Demo\PortraitDiagnostics.cs" />
     <Compile Include="Assets\Scripts\UI\Board\MergeBoardController.cs" />
+    <Compile Include="Assets\Scripts\UI\EvidenceBoard\LeadCardPin.cs" />
     <Compile Include="Assets\Scripts\Demo\CanvasDiagnostics.cs" />
     <Compile Include="Assets\Scripts\App\Config\EnergyConfig.cs" />
+    <Compile Include="Assets\Scripts\UI\EvidenceBoard\CharacterPhotoPin.cs" />
     <Compile Include="Assets\UI\Board\MergeBoardPresenter.cs" />
     <Compile Include="Assets\Scripts\UI\Board\BoardTileView.cs" />
     <Compile Include="Assets\Scripts\Demo\DialogueClickHandler.cs" />
+    <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardScreen.cs" />
     <Compile Include="Assets\Scripts\UI\Board\BoardTools.cs" />
     <Compile Include="Assets\Scripts\Domain\Board\BoardRingTraversal.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
@@ -94,6 +99,8 @@
     <Compile Include="Assets\Scripts\UI\Board\PocketDraggable.cs" />
     <Compile Include="Assets\Scripts\Util\EnsureAudioListener.cs" />
     <Compile Include="Assets\Scripts\UI\Board\FX\BoardFxObserver.cs" />
+    <Compile Include="Assets\Scripts\UI\EvidenceBoard\CharacterProfileModal.cs" />
+    <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardOpenerMB.cs" />
     <Compile Include="Assets\Scripts\UI\Common\ToastService.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyRuntime.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
@@ -108,6 +115,7 @@
     <Compile Include="Assets\Scripts\App\Services\EnergyManager.cs" />
     <Compile Include="Assets\Scripts\Util\Audio\AudioListenerJanitor.cs" />
     <Compile Include="Assets\Scripts\Domain\Board\MergeRules.cs" />
+    <Compile Include="Assets\Scripts\UI\EvidenceBoard\StringConnectionLine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -121,9 +129,9 @@
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\SDFFunctions.hlsl" />
-    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />

@@ -119,14 +119,8 @@ namespace AQ.App.CaseFlow
                 return;
             }
 
-            var seenFlag = $"aq.lead.{lead?.leadId ?? "unknown"}.seen";
-            if (DialogueFlags.Has(seenFlag)) return;
-
             if (_bar != null) _bar.gameObject.SetActive(false);
             dialogueRunner.DialogueEnded += OnDialogueEnded;
-            dialogueRunner.transform.localScale = UnityEngine.Vector3.one;
-            if (dialogueRunner.GetComponent<UnityEngine.UI.GraphicRaycaster>() == null)
-                dialogueRunner.gameObject.AddComponent<UnityEngine.UI.GraphicRaycaster>();
             dialogueRunner.gameObject.SetActive(true);
 
             if (lead?.resolutionDialogue != null)

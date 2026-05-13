@@ -21,6 +21,8 @@ namespace AQ.App
         [Header("Audio")]
         [Tooltip("AudioSource for voice acting (optional - will be auto-created if null)")]
         public AudioSource voiceSource;
+        [Tooltip("Background music AudioSource — will be ducked during voice playback")]
+        public AudioSource musicSource;
 
         [Header("Debug")]
         public bool verboseLogging = false;
@@ -29,6 +31,8 @@ namespace AQ.App
 
         // State
         private string _currentId;
+        private Coroutine _musicFadeRoutine;
+        private Coroutine _voiceRestoreRoutine;
         private DialogueTyper _bodyTyper;
         private DialogueTyper _speakerTyper;
         private bool _booted = false;
@@ -71,6 +75,40 @@ namespace AQ.App
             BootWithGraph(g);
         }
 
+        void SetupLayoutPanel()
+        {
+            if (Panel.transform.Find("_Background") != null) return;
+
+            var scaler = gameObject.GetComponent<UnityEngine.UI.CanvasScaler>();
+            if (scaler == null) scaler = gameObject.AddComponent<UnityEngine.UI.CanvasScaler>();
+            scaler.uiScaleMode = UnityEngine.UI.CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.referenceResolution = new Vector2(1080, 1920);
+            scaler.screenMatchMode = UnityEngine.UI.CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+            scaler.matchWidthOrHeight = 1f;
+
+            var bg = new GameObject("_Background");
+            bg.transform.SetParent(Panel.transform, false);
+            var rt = bg.AddComponent<RectTransform>();
+            rt.anchorMin = new Vector2(0, 0);
+            rt.anchorMax = new Vector2(1, 300f / 1920f);
+            rt.pivot = new Vector2(0.5f, 0);
+            rt.sizeDelta = Vector2.zero;
+            rt.anchoredPosition = Vector2.zero;
+            bg.AddComponent<CanvasRenderer>();
+            var img = bg.AddComponent<UnityEngine.UI.Image>();
+            img.color = new Color(0, 0, 0, 0.95f);
+            img.raycastTarget = true;
+            bg.transform.SetAsFirstSibling();
+
+            var trigger = bg.AddComponent<UnityEngine.EventSystems.EventTrigger>();
+            var entry = new UnityEngine.EventSystems.EventTrigger.Entry
+            {
+                eventID = UnityEngine.EventSystems.EventTriggerType.PointerClick
+            };
+            entry.callback.AddListener((_) => OnAdvance());
+            trigger.triggers.Add(entry);
+        }
+
         void InternalBoot(CaseGraph g)
         {
             if (Panel == null) Panel = GetComponent<DialogueController>();
@@ -79,6 +117,8 @@ namespace AQ.App
                 Debug.LogWarning("[DialogueRunner] Missing Graph or Panel.");
                 return;
             }
+
+            SetupLayoutPanel();
 
             // Setup voice source
             if (voiceSource == null)
@@ -113,7 +153,7 @@ namespace AQ.App
             // Subscribe to panel events
             Panel.AdvanceClicked += OnAdvance;
             Panel.ChoiceClicked += OnChoice;
-            Panel.BackClicked += OnBack; // NEW: Back button support
+            Panel.BackClicked += OnBack;
 
             // Start at first node
             _currentId = string.IsNullOrEmpty(g.startId) ?
@@ -150,6 +190,20 @@ namespace AQ.App
             }
         }
 
+        void Update()
+        {
+            if (!_booted) return;
+
+            bool tapped = Input.GetMouseButtonDown(0);
+            if (!tapped && Input.touchCount > 0)
+                tapped = Input.GetTouch(0).phase == TouchPhase.Began;
+            if (!tapped) return;
+
+            if (_filteredChoices != null && _filteredChoices.Length > 0) return;
+
+            OnAdvance();
+        }
+
         void OnAdvance()
         {
             // If waiting for audio to complete, allow skip by stopping audio
@@ -159,6 +213,8 @@ namespace AQ.App
                 {
                     voiceSource.Stop();
                     _waitingForAudio = false;
+                    if (_voiceRestoreRoutine != null) { StopCoroutine(_voiceRestoreRoutine); _voiceRestoreRoutine = null; }
+                    RestoreMusic();
                 }
                 return;
             }
@@ -257,9 +313,10 @@ namespace AQ.App
 
             _currentId = id;
             var n = Graph.Get(id);
-            
+
             if (n == null)
             {
+                Debug.LogWarning($"[DialogueRunner] ShowNode: node '{id}' not found in graph — ending.");
                 End();
                 return;
             }
@@ -307,6 +364,7 @@ namespace AQ.App
             {
                 voiceSource.Stop();
             }
+            if (_voiceRestoreRoutine != null) { StopCoroutine(_voiceRestoreRoutine); _voiceRestoreRoutine = null; }
             _waitingForAudio = false;
 
             // Display speaker (instant or typed)
@@ -333,12 +391,12 @@ namespace AQ.App
             {
                 voiceSource.clip = n.voiceClip;
                 voiceSource.Play();
+                DuckMusic();
 
                 if (n.waitForAudio)
-                {
                     _waitingForAudio = true;
-                    StartCoroutine(WaitForAudioComplete(n.voiceClip.length));
-                }
+
+                _voiceRestoreRoutine = StartCoroutine(WaitForAudioComplete(n.voiceClip.length));
             }
         }
 
@@ -346,9 +404,38 @@ namespace AQ.App
         {
             yield return new WaitForSeconds(duration);
             _waitingForAudio = false;
+            _voiceRestoreRoutine = null;
+            RestoreMusic();
 
             if (verboseLogging)
                 Debug.Log("[DialogueRunner] Audio playback complete");
+        }
+
+        void DuckMusic()
+        {
+            if (musicSource == null) return;
+            if (_musicFadeRoutine != null) StopCoroutine(_musicFadeRoutine);
+            _musicFadeRoutine = StartCoroutine(FadeMusicVolume(0.15f, 0.4f));
+        }
+
+        void RestoreMusic()
+        {
+            if (musicSource == null) return;
+            if (_musicFadeRoutine != null) StopCoroutine(_musicFadeRoutine);
+            _musicFadeRoutine = StartCoroutine(FadeMusicVolume(1f, 0.5f));
+        }
+
+        IEnumerator FadeMusicVolume(float target, float duration)
+        {
+            float start = musicSource.volume;
+            float elapsed = 0f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                musicSource.volume = Mathf.Lerp(start, target, Mathf.Clamp01(elapsed / duration));
+                yield return null;
+            }
+            musicSource.volume = target;
         }
 
         void End()
@@ -358,6 +445,9 @@ namespace AQ.App
 
             if (voiceSource && voiceSource.isPlaying)
                 voiceSource.Stop();
+
+            if (_voiceRestoreRoutine != null) { StopCoroutine(_voiceRestoreRoutine); _voiceRestoreRoutine = null; }
+            RestoreMusic();
 
             if (verboseLogging)
                 Debug.Log("[DialogueRunner] End of graph");
