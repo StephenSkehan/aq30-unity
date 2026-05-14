@@ -7,7 +7,9 @@ using UnityEngine.UI;
 using AQ.App.Analytics;
 using AQ.App.Config;
 using AQ.App.Economy;
+using AQ.App.Generators;
 using AQ.App.Items;
+using AQ.App.Overflow;
 using AQ.Domain.Board;         // MergeRules
 using AQ.App.UI.Common;       // ToastService, TileInfoPopup
 using AQ.SharedKernel.Economy;
@@ -34,8 +36,14 @@ namespace AQ.App.UI.Board
         public Sprite generatorSprite;
         public List<Sprite> icons;
         [Range(1, 9)] public int maxTier = 6;
-        [Tooltip("Odds per tier index: T1..Tn (values repeat if shorter than tiers)")]
+        [Tooltip("Fallback odds per tier index (used when no GeneratorTypeSO is wired). Values repeat if shorter than maxTier.")]
         public int[] odds = new[] { 80, 15, 4, 1 };
+
+        [Header("Generator Types")]
+        [Tooltip("All GeneratorTypeSO assets used in this scene. Looked up by generatorTypeId at runtime.")]
+        public GeneratorTypeSO[] generatorTypes;
+        [Tooltip("GeneratorTypeSO assigned to the default generator placed at startup.")]
+        public GeneratorTypeSO defaultGeneratorType;
 
         [Header("Defaults & Layout")]
         public int defaultGeneratorRow = 4;
@@ -43,7 +51,7 @@ namespace AQ.App.UI.Board
         public float tileSpacing = 2f;
 
         [Header("Families")]
-        [Tooltip("Family key assigned to the default generator; spawned items inherit their origin generator's family.")]
+        [Tooltip("Fallback family key when no defaultGeneratorType SO is assigned.")]
         public string defaultGeneratorFamily = "stakeout_fuel";
 
         [Header("Item Definitions")]
@@ -105,6 +113,7 @@ namespace AQ.App.UI.Board
         private void Awake()
         {
             if (!boardRoot) boardRoot = GetComponent<RectTransform>();
+            GeneratorFamilyRegistry.Load();
             BuildGridFromChildren();
             EnsureGeneratorExists();
         }
@@ -216,15 +225,22 @@ namespace AQ.App.UI.Board
 
             if (from.Kind == TileKind.Generator && into.Kind == TileKind.Generator)
             {
-                var genFam = GetFamily(from);
-                int genTier = from.Tier;
-                into.SetGenerator(generatorSprite, newTier);
+                var genTypeId = GetFamily(from);
+                int prevTier = from.Tier;
+                var genSO = FindGeneratorType(genTypeId);
+                var genSprite = genSO != null ? genSO.SpriteForTier(newTier) : generatorSprite;
+                into.SetGenerator(genSprite, newTier);
                 if (!HasFamily(into))
-                    SetFamily(into, genFam);
+                    SetFamily(into, genTypeId);
                 from.Clear();
                 familyKeyByTile.Remove(from);
-                OnItemRemoved?.Invoke(genFam, genTier);
-                Log($"MergeTiles (Generator): {newTier - 1}+{newTier - 1}->{newTier}");
+                OnItemRemoved?.Invoke(genTypeId, prevTier);
+
+                // Lock sub-gen drops once max tier is reached for this type
+                if (genSO != null && newTier >= genSO.maxGeneratorTier)
+                    GeneratorFamilyRegistry.SetSubGenLocked(genTypeId);
+
+                Log($"MergeTiles (Generator): {newTier - 1}+{newTier - 1}->{newTier} type={genTypeId}");
                 return;
             }
 
@@ -235,7 +251,7 @@ namespace AQ.App.UI.Board
             int intoTier = into.Tier;
 
             var fam = intoFam;
-            into.SetItem(SpriteForItemTier(newTier), newTier);
+            into.SetItem(SpriteForItem(fam, newTier), newTier);
             if (!string.IsNullOrEmpty(fam))
                 SetFamily(into, fam);
 
@@ -262,8 +278,8 @@ namespace AQ.App.UI.Board
             }
 
             // 2) If EnergySystem is ON, consume exactly once now
-            var flags = FeatureFlagsRuntime.Current;
-            if (flags != null && flags.EnergySystem)
+            var featureFlags = FeatureFlagsRuntime.Current;
+            if (featureFlags != null && featureFlags.EnergySystem)
             {
                 var wallet = WalletLocator.Instance;
                 if (wallet != null)
@@ -281,21 +297,105 @@ namespace AQ.App.UI.Board
                 }
             }
 
-            // 3) Place the item + stamp family from the origin generator
+            // 3) Roll drop table if SO is available
+            var genTypeId = GetFamily(generator);
+            var so = FindGeneratorType(genTypeId);
+            DropEntry? drop = so != null ? DropRoller.Roll(so, generator.Tier) : null;
+
+            // 4a) Sub-generator result → push to overflow bucket instead of board
+            if (drop.HasValue && drop.Value.type == DropType.SubGenerator)
+            {
+                OverflowBucketService.Push(new OverflowTileData
+                {
+                    kind   = OverflowKind.Generator,
+                    family = genTypeId,
+                    tier   = 0
+                });
+                Log($"Sub-generator pushed to overflow (type={genTypeId}).");
+                return;
+            }
+
+            // 4b) Item result (from SO or legacy fallback)
             var (r, c) = dst.Value;
             var v = Get(r, c);
             if (!v) return;
 
-            int tier = RollSpawnTier();
-            v.SetItem(SpriteForItemTier(tier), tier);
+            string itemFamily;
+            int itemTier;
 
-            var genFamily = GetFamily(generator);
-            if (string.IsNullOrEmpty(genFamily)) genFamily = defaultGeneratorFamily;
-            SetFamily(v, genFamily);
+            if (drop.HasValue)
+            {
+                itemFamily = drop.Value.itemFamily;
+                itemTier   = drop.Value.itemTier;
+            }
+            else
+            {
+                // Legacy fallback: inherit generator's type id as family, roll by odds array
+                itemFamily = string.IsNullOrEmpty(genTypeId) ? defaultGeneratorFamily : genTypeId;
+                itemTier   = RollSpawnTier();
+            }
 
-            Log($"Spawned item T{tier + 1} at ({r},{c}) family={genFamily}.");
-            OnItemCreated?.Invoke(genFamily, tier);
-            GameAnalytics.LogSpawnRoll(genFamily, tier);
+            v.SetItem(SpriteForItem(itemFamily, itemTier), itemTier);
+            SetFamily(v, itemFamily);
+
+            Log($"Spawned item T{itemTier + 1} family={itemFamily} at ({r},{c}).");
+            OnItemCreated?.Invoke(itemFamily, itemTier);
+            GameAnalytics.LogSpawnRoll(itemFamily, itemTier);
+        }
+
+        // ---------------- Generator type lookup ----------------
+
+        public GeneratorTypeSO FindGeneratorType(string typeId)
+        {
+            if (!string.IsNullOrEmpty(typeId) && generatorTypes != null)
+                foreach (var so in generatorTypes)
+                    if (so != null && so.generatorTypeId == typeId) return so;
+            return defaultGeneratorType;
+        }
+
+        // ---------------- Overflow bucket placement ----------------
+
+        /// <summary>
+        /// Attempts to place a tile from the overflow bucket onto the first available empty cell.
+        /// Returns false if the board is full.
+        /// </summary>
+        public bool PlaceFromOverflow(OverflowTileData data)
+        {
+            var empty = FindAnyEmptyCell();
+            if (empty == null) return false;
+
+            var (r, c) = empty.Value;
+            var v = Get(r, c);
+            if (!v) return false;
+
+            if (data.kind == OverflowKind.Generator)
+            {
+                var so = FindGeneratorType(data.family);
+                var sprite = so != null ? so.SpriteForTier(data.tier) : generatorSprite;
+                v.SetGenerator(sprite, data.tier);
+                SetFamily(v, data.family);
+                Log($"Placed generator from overflow: type={data.family} tier={data.tier} at ({r},{c}).");
+            }
+            else
+            {
+                v.SetItem(SpriteForItem(data.family, data.tier), data.tier);
+                SetFamily(v, data.family);
+                OnItemCreated?.Invoke(data.family, data.tier);
+                Log($"Placed item from overflow: family={data.family} tier={data.tier} at ({r},{c}).");
+            }
+
+            return true;
+        }
+
+        private (int r, int c)? FindAnyEmptyCell()
+        {
+            for (int r = 0; r < rows; r++)
+                for (int c = 0; c < cols; c++)
+                {
+                    var v = grid[r, c];
+                    if (v != null && v.IsEmpty) return (r, c);
+                }
+            return null;
         }
 
         // ---------------- Visuals & content ----------------
@@ -306,6 +406,15 @@ namespace AQ.App.UI.Board
             int idx = Mathf.Clamp(tierZeroBased, 0, icons.Count - 1);
             return icons[idx];
         }
+
+        public Sprite SpriteForItem(string family, int tier)
+        {
+            var def = LookupItemDef(family, tier);
+            if (def != null && def.icon != null) return def.icon;
+            return SpriteForItemTier(tier);
+        }
+
+        public Sprite SpriteForItemTierPublic(int tierZeroBased) => SpriteForItemTier(tierZeroBased);
 
         // ---------------- Init grid ----------------
 
@@ -342,6 +451,8 @@ namespace AQ.App.UI.Board
 
         private void EnsureGeneratorExists()
         {
+            var typeId = defaultGeneratorType != null ? defaultGeneratorType.generatorTypeId : defaultGeneratorFamily;
+
             for (int r = 0; r < rows; r++)
             {
                 for (int c = 0; c < cols; c++)
@@ -349,7 +460,7 @@ namespace AQ.App.UI.Board
                     if (grid[r, c] && grid[r, c].Kind == TileKind.Generator)
                     {
                         var v = grid[r, c];
-                        if (!HasFamily(v)) SetFamily(v, defaultGeneratorFamily);
+                        if (!HasFamily(v)) SetFamily(v, typeId);
                         return;
                     }
                 }
@@ -358,11 +469,12 @@ namespace AQ.App.UI.Board
             var cell = Get(defaultGeneratorRow, defaultGeneratorCol);
             if (!cell) return;
 
-            var sprite = generatorSprite != null ? generatorSprite : SpriteForItemTier(0);
+            var sprite = defaultGeneratorType != null ? defaultGeneratorType.SpriteForTier(0)
+                       : (generatorSprite != null   ? generatorSprite : SpriteForItemTier(0));
             cell.SetGenerator(sprite, 0);
-            SetFamily(cell, defaultGeneratorFamily);
+            SetFamily(cell, typeId);
 
-            Log($"Generator ensured at ({defaultGeneratorRow},{defaultGeneratorCol}) family={defaultGeneratorFamily}.");
+            Log($"Generator ensured at ({defaultGeneratorRow},{defaultGeneratorCol}) typeId={typeId}.");
         }
 
         // ---------------- RNG helpers ----------------

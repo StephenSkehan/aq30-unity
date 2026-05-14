@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using AQ.App.Economy;
+using AQ.App.Overflow;
 using AQ.SharedKernel.Economy;
 
 namespace AQ.App.Leads
@@ -55,6 +56,16 @@ namespace AQ.App.Leads
 
             if (lead.SoftCurrency > 0) wallet.Grant("lead.outcome", Reward.Soft(lead.SoftCurrency));
             if (lead.EnergyGrant  > 0) wallet.Grant("lead.outcome", Reward.Energy(lead.EnergyGrant));
+
+            if (!string.IsNullOrEmpty(lead.generatorRewardTypeId))
+            {
+                OverflowBucketService.Push(new OverflowTileData
+                {
+                    kind   = OverflowKind.Generator,
+                    family = lead.generatorRewardTypeId,
+                    tier   = lead.generatorRewardTier
+                });
+            }
         }
 
         private void ApplyNarrativeFlags(LeadData lead)

@@ -18,7 +18,7 @@ MonoBehaviour:
     speaker: Ally Quinn
     line: "Beth's a talker once she warms up. Let her vent about the rent,
       then I asked about the student. She went quiet for just a second."
-    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
+    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
       type: 3}
     emotion: 4
     voiceClip: {fileID: 0}
@@ -33,7 +33,7 @@ MonoBehaviour:
     line: "Morning of the 14th, they came in looking wrecked. Asked Beth if
       she knew anyone who could help a person start over somewhere new. Beth
       thought they were joking. I don't think they were."
-    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
+    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
       type: 3}
     emotion: 5
     voiceClip: {fileID: 0}

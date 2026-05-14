@@ -15,5 +15,5 @@ MonoBehaviour:
   itemId: forensic_tools_t3
   family: forensic_tools
   tier: 2
-  icon: {fileID: 21300000, guid: 3723549e518033a4f80338804ad032e9, type: 3}
+  icon: {fileID: -3863082373122608324, guid: 5746898bf651e05468e40379ff7e9388, type: 3}
   displayName: Full Forensic Case

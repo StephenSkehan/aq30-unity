@@ -15,7 +15,7 @@ MonoBehaviour:
   leadId: gs_records
   title: "Pull Maya’s Academic Records"
   subtitle: Both interviews point to something hidden in her official file.
-  actorPortrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+  actorPortrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
   state: 0
   ActionType: 2
   EnergyCost: 0

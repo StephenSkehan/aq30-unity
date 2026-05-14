@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AQ.App.Audio;
 
 namespace AQ.App
 {
@@ -389,6 +390,7 @@ namespace AQ.App
             // Play voice clip if present
             if (n.voiceClip && voiceSource)
             {
+                voiceSource.volume = AudioSettingsService.DialogueVolume;
                 voiceSource.clip = n.voiceClip;
                 voiceSource.Play();
                 DuckMusic();
@@ -415,14 +417,14 @@ namespace AQ.App
         {
             if (musicSource == null) return;
             if (_musicFadeRoutine != null) StopCoroutine(_musicFadeRoutine);
-            _musicFadeRoutine = StartCoroutine(FadeMusicVolume(0.15f, 0.4f));
+            _musicFadeRoutine = StartCoroutine(FadeMusicVolume(AudioSettingsService.MusicVolume * 0.15f, 0.4f));
         }
 
         void RestoreMusic()
         {
             if (musicSource == null) return;
             if (_musicFadeRoutine != null) StopCoroutine(_musicFadeRoutine);
-            _musicFadeRoutine = StartCoroutine(FadeMusicVolume(1f, 0.5f));
+            _musicFadeRoutine = StartCoroutine(FadeMusicVolume(AudioSettingsService.MusicVolume, 0.5f));
         }
 
         IEnumerator FadeMusicVolume(float target, float duration)

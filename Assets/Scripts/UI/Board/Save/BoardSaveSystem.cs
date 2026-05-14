@@ -6,7 +6,9 @@ using UnityEngine;
 using AQ.App.CaseFlow;
 using AQ.App.Config;
 using AQ.App.Economy;
+using AQ.App.Generators;
 using AQ.App.Leads;
+using AQ.App.Overflow;
 using AQ.App.Services;
 using AQ.SharedKernel.CaseFlow;
 using AQ.SharedKernel.Economy;
@@ -152,6 +154,8 @@ namespace AQ.App.UI.Board
             var tmp      = live + ".tmp";
             foreach (var p in new[] { live, prev, tmp })
                 if (File.Exists(p)) File.Delete(p);
+            OverflowBucketService.Clear();
+            GeneratorFamilyRegistry.Clear();
             Debug.Log("[Save] BoardSaveSystem cleared");
         }
 
@@ -267,18 +271,15 @@ namespace AQ.App.UI.Board
 
                 if (string.Equals(cell.kind, "Generator", StringComparison.OrdinalIgnoreCase))
                 {
-                    var sprite = board.generatorSprite != null ? board.generatorSprite :
-                                 (board.icons != null && board.icons.Count > 0 ? board.icons[0] : null);
+                    var genSO = board.FindGeneratorType(family);
+                    var sprite = genSO != null ? genSO.SpriteForTier(Mathf.Max(0, cell.tier))
+                               : (board.generatorSprite != null ? board.generatorSprite
+                               : (board.icons != null && board.icons.Count > 0 ? board.icons[0] : null));
                     v.SetGenerator(sprite, Mathf.Max(0, cell.tier));
                 }
                 else
                 {
-                    Sprite icon = null;
-                    if (board.icons != null && board.icons.Count > 0)
-                    {
-                        int idx = Mathf.Clamp(cell.tier, 0, board.icons.Count - 1);
-                        icon = board.icons[idx];
-                    }
+                    Sprite icon = board.SpriteForItem(family, Mathf.Max(0, cell.tier));
                     v.SetItem(icon, Mathf.Max(0, cell.tier));
                 }
 

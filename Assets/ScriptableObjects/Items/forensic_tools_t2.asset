@@ -15,5 +15,5 @@ MonoBehaviour:
   itemId: forensic_tools_t2
   family: forensic_tools
   tier: 1
-  icon: {fileID: 21300000, guid: ae0a93f9d9e1f9040b5387e0cc910535, type: 3}
+  icon: {fileID: -8529418245662911159, guid: 4b407f70efe858e45922bebe8f385890, type: 3}
   displayName: Evidence Bag

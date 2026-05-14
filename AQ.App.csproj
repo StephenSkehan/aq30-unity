@@ -84,12 +84,15 @@
     <Compile Include="Assets\App\UI\MergeBoard\MergeServiceStub.cs" />
     <Compile Include="Assets\App\UI\MergeBoard\MergeInputAdapter.cs" />
     <Compile Include="Assets\App\Leads\LeadsBarView.cs" />
+    <Compile Include="Assets\App\Audio\MusicManagerMB.cs" />
     <Compile Include="Assets\App\UI\Board\MergeItemView.cs" />
     <Compile Include="Assets\App\Save\JsonSaveService.cs" />
     <Compile Include="Assets\App\Presentation\GlobalBus.cs" />
     <Compile Include="Assets\App\Content\AddressableGraphLoader.cs" />
     <Compile Include="Assets\App\Leads\Runtime\LeadsBarRuntimeBinder.cs" />
     <Compile Include="Assets\App\UI\MergeBoard\MergeBoardView.cs" />
+    <Compile Include="Assets\App\Generators\GeneratorFamilyRegistry.cs" />
+    <Compile Include="Assets\App\Generators\DropRoller.cs" />
     <Compile Include="Assets\App\Composition\BootstrapperAutoAssign.cs" />
     <Compile Include="Assets\App\CaseFlow\AdvanceOnceMB.cs" />
     <Compile Include="Assets\App\CaseFlow\DebugLogOnResolveMB.cs" />
@@ -101,6 +104,7 @@
     <Compile Include="Assets\App\Leads\LeadsRepository.cs" />
     <Compile Include="Assets\App\Items\ItemRegistry.cs" />
     <Compile Include="Assets\App\Leads\Data\LeadRequirement.cs" />
+    <Compile Include="Assets\App\UI\Settings\GameControlPanelMB.cs" />
     <Compile Include="Assets\App\Merge\Runtime\MergeIconCatalog.cs" />
     <Compile Include="Assets\App\Leads\Data\LeadData.cs" />
     <Compile Include="Assets\App\Leads\LeadRequirementsHUD.cs" />
@@ -121,6 +125,7 @@
     <Compile Include="Assets\App\Leads\ActiveLeadState.cs" />
     <Compile Include="Assets\App\UI\FTUE\FTUEHintController.cs" />
     <Compile Include="Assets\App\CaseFlow\CaseFlowLeadBridgeMB.cs" />
+    <Compile Include="Assets\App\Overflow\OverflowBucketService.cs" />
     <Compile Include="Assets\App\Save\SaveLoadDriver.cs" />
     <Compile Include="Assets\App\UI\Theme\Binders\ThemeTMPBinder.cs" />
     <Compile Include="Assets\App\UnityAdapters\UnityPersistentPathProvider.cs" />
@@ -146,7 +151,9 @@
     <Compile Include="Assets\App\UI\Dialogue\DialogueController.cs" />
     <Compile Include="Assets\App\Leads\LeadCardView.cs" />
     <Compile Include="Assets\App\Unity\SafeUnity.cs" />
+    <Compile Include="Assets\App\Audio\AudioSettingsService.cs" />
     <Compile Include="Assets\App\UI\Theme\Binders\ThemeImageBinder.cs" />
+    <Compile Include="Assets\App\UI\Settings\ShowSettingsPanelMB.cs" />
     <Compile Include="Assets\App\CaseFlow\CaseFlowLocator.cs" />
     <Compile Include="Assets\App\Presentation\EventBusInstaller.cs" />
     <Compile Include="Assets\App\UI\Theme\ThemeRegistry.cs" />
@@ -162,6 +169,7 @@
     <Compile Include="Assets\App\UI\Leads\LeadCardDemoBinder.cs" />
     <Compile Include="Assets\App\UI\Dialogue\DialogueFlags.cs" />
     <Compile Include="Assets\App\HUD\TopStatusRow.cs" />
+    <Compile Include="Assets\App\Generators\GeneratorTypeSO.cs" />
     <Compile Include="Assets\App\Presentation\MergeEventsToUI.cs" />
     <Compile Include="Assets\App\Analytics\GameAnalytics.cs" />
   </ItemGroup>

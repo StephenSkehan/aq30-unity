@@ -53,6 +53,11 @@ namespace AQ.App.Leads
         public int SoftCurrency;
         public int EnergyGrant;
 
+        [Header("Generator Reward")]
+        [Tooltip("Push a generator of this type to the overflow bucket on lead activation. Empty = no generator reward.")]
+        public string generatorRewardTypeId;
+        public int generatorRewardTier;
+
         [Header("Resolution Dialogue")]
         public CaseGraph resolutionDialogue;
 
