@@ -32,6 +32,7 @@ MonoBehaviour:
   BranchOutcomes: []
   NarrativeFlags:
   - gs.gerald.activated
+  - aq.char.gerald.active
   SoftCurrency: 50
   EnergyGrant: 0
   generatorRewardTypeId: 
