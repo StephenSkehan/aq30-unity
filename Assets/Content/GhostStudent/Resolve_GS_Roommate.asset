@@ -16,45 +16,42 @@ MonoBehaviour:
   nodes:
   - id: GS_ROOM_R1
     speaker: Ally Quinn
-    line: "Her name's Priti. Two years sharing a dorm with Maya, and someone
-      got to her first. She kept her voice steady. Her hands didn't."
-    portrait: {fileID: -5112325403583219243, guid: e02460f0c092dde4891723eecbbdc368,
-      type: 3}
+    line: Her name's Priti. Two years sharing a dorm with Maya, and someone got to
+      her first. She kept her voice steady. Her hands didn't.
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
-    setsFlag:
+    setsFlag: 
     nextId: GS_ROOM_R2
     choices: []
   - id: GS_ROOM_R2
     speaker: Ally Quinn
-    line: "Three nights before Maya disappeared, Priti heard her on the phone
-      at two in the morning. She caught four words: 'I have the records.'
-      Maya didn't sleep after that call."
-    portrait: {fileID: -5112325403583219243, guid: e02460f0c092dde4891723eecbbdc368,
-      type: 3}
+    line: 'Three nights before Maya disappeared, Priti heard her on the phone at
+      two in the morning. She caught four words: ''I have the records.'' Maya didn''t
+      sleep after that call.'
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
-    setsFlag:
+    setsFlag: 
     nextId: GS_ROOM_R3
     choices: []
   - id: GS_ROOM_R3
     speaker: Ally Quinn
-    line: "Records. That's the thread. Maya had something documented — something
-      someone wanted buried badly enough to bury her with it. I need to find
-      where she kept them."
-    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
-      type: 3}
+    line: "Records. That's the thread. Maya had something documented \u2014 something
+      someone wanted buried badly enough to bury her with it. I need to find where
+      she kept them."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: aq.lead.gs_roommate.seen
-    nextId:
+    nextId: 
     choices: []

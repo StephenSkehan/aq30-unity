@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadData
   leadId: gs_tip
   title: The Encrypted Message
-  subtitle: "A fragment of Maya’s last message — ‘They’re selling
-    us.’ Follow the thread."
-  actorPortrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+  subtitle: "A fragment of Maya\u2019s last message \u2014 \u2018They\u2019re selling
+    us.\u2019 Follow the thread."
+  actorPortrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
   state: 1
   ActionType: 0
   EnergyCost: 0

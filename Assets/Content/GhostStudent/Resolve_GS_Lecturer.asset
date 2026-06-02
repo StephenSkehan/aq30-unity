@@ -16,47 +16,43 @@ MonoBehaviour:
   nodes:
   - id: GS_LEC_R1
     speaker: Ally Quinn
-    line: "He asked me twice if I was recording before he'd say a word.
-      Professor Drake — fifteen years at Havenbay, never once put a foot wrong.
-      Now he's terrified of his own office."
-    portrait: {fileID: -5112325403583219243, guid: e02460f0c092dde4891723eecbbdc368,
-      type: 3}
+    line: "He asked me twice if I was recording before he'd say a word. Professor
+      Drake \u2014 fifteen years at Havenbay, never once put a foot wrong. Now he's
+      terrified of his own office."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
-    setsFlag:
+    setsFlag: 
     nextId: GS_LEC_R2
     choices: []
   - id: GS_LEC_R2
     speaker: Ally Quinn
-    line: "Three days before Maya vanished, she came to his office. She said
-      someone in the faculty had sold student biometric data to a private
-      research firm. She had a name. He told her to go to administration.
-      He didn't know that was the worst advice he could give her."
-    portrait: {fileID: -8028765454255842948, guid: ae0c3985c1991244d8ee72fa0756eb08,
-      type: 3}
+    line: Three days before Maya vanished, she came to his office. She said someone
+      in the faculty had sold student biometric data to a private research firm.
+      She had a name. He told her to go to administration. He didn't know that was
+      the worst advice he could give her.
+    portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
     emotion: 6
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
-    setsFlag:
+    setsFlag: 
     nextId: GS_LEC_R3
     choices: []
   - id: GS_LEC_R3
     speaker: Ally Quinn
-    line: "He wouldn't say the name out loud. But when he walked me to the door
-      he left a notepad face-down on the desk. I need to know whose name
-      was on it."
-    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
-      type: 3}
+    line: He wouldn't say the name out loud. But when he walked me to the door he
+      left a notepad face-down on the desk. I need to know whose name was on it.
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: aq.lead.gs_lecturer.seen
-    nextId:
+    nextId: 
     choices: []

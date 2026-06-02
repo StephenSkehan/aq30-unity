@@ -16,44 +16,44 @@ MonoBehaviour:
   nodes:
   - id: GS_GER_R1
     speaker: Gerald Quinn
-    line: "Your father looked into something like this. 2008. A private outfit
-      funnelling money through Havenbay — Voss Bio, they were calling it then.
-      Thomas thought it was a grant. Took him six months to work out it was a
-      trade. Students for data. Bodies for numbers."
-    portrait: {fileID: 3100000000000000006, guid: c3a4b5d6e7f8c3a4b5d6e7f8c3a4b5db, type: 3}
+    line: "Your father looked into something like this. 2008. A private outfit funnelling
+      money through Havenbay \u2014 Voss Bio, they were calling it then. Thomas thought
+      it was a grant. Took him six months to work out it was a trade. Students for
+      data. Bodies for numbers."
+    portrait: {fileID: 21300000, guid: c3a4b5d6e7f8c3a4b5d6e7f8c3a4b5db, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
-    setsFlag:
+    setsFlag: 
     nextId: GS_GER_R2
     choices: []
   - id: GS_GER_R2
     speaker: Ally Quinn
-    line: "He never told me. Not a word. I've been through his case files —
-      nothing about Havenbay, nothing about a Voss anything. Gerald, where
-      are these files?"
-    portrait: {fileID: -5758400864172228007, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    line: "He never told me. Not a word. I've been through his case files \u2014
+      nothing about Havenbay, nothing about a Voss anything. Gerald, where are these
+      files?"
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
     emotion: 4
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
-    setsFlag:
+    setsFlag: 
     nextId: GS_GER_R3
     choices: []
   - id: GS_GER_R3
     speaker: Ally Quinn
-    line: "There's a lockbox. The one my father kept under the stairs — the one
-      I was never supposed to open. I think I know where the key is. If Thomas
+    line: "There's a lockbox. The one my father kept under the stairs \u2014 the
+      one I was never supposed to open. I think I know where the key is. If Thomas
       found them before, I can find them again."
-    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: aq.lead.gs_gerald.seen
-    nextId:
+    nextId: 
     choices: []

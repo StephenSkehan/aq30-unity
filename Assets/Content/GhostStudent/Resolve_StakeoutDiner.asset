@@ -16,30 +16,28 @@ MonoBehaviour:
   nodes:
   - id: STAKEOUT_R1
     speaker: Ally Quinn
-    line: "An hour of cold coffee and quiet. But worth it — same sedan,
-      no plates, parked across from the diner twice in forty minutes. Somebody's
-      watching the same place I am."
-    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
-      type: 3}
+    line: "An hour of cold coffee and quiet. But worth it \u2014 same sedan, no plates,
+      parked across from the diner twice in forty minutes. Somebody's watching the
+      same place I am."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
-    setsFlag:
+    setsFlag: 
     nextId: STAKEOUT_R2
     choices: []
   - id: STAKEOUT_R2
     speaker: Ally Quinn
-    line: "Beth opens at six-thirty. If the Ghost Student was a regular, she
-      saw something. Time to go in and find out."
-    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
-      type: 3}
+    line: Beth opens at six-thirty. If the Ghost Student was a regular, she saw something.
+      Time to go in and find out.
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: aq.lead.demo_stake_diner.seen
-    nextId:
+    nextId: 
     choices: []

@@ -16,31 +16,28 @@ MonoBehaviour:
   nodes:
   - id: LATENIGHT_R1
     speaker: Ally Quinn
-    line: "My contact showed up late and ordered the biggest thing on the menu.
-      Over a burger and a lot of nervous glances at the door, they gave me
-      a name. A different name — one the college never used."
-    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
-      type: 3}
+    line: "My contact showed up late and ordered the biggest thing on the menu. Over
+      a burger and a lot of nervous glances at the door, they gave me a name. A different
+      name \u2014 one the college never used."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 4
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
-    setsFlag:
+    setsFlag: 
     nextId: LATENIGHT_R2
     choices: []
   - id: LATENIGHT_R2
     speaker: Ally Quinn
-    line: "If that name is real, the enrollment is a cover. The Ghost Student
-      didn't disappear. They were hiding. This isn't a missing persons case
-      anymore."
-    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
-      type: 3}
+    line: If that name is real, the enrollment is a cover. The Ghost Student didn't
+      disappear. They were hiding. This isn't a missing persons case anymore.
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: aq.lead.demo_late_night.seen
-    nextId:
+    nextId: 
     choices: []

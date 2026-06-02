@@ -16,47 +16,44 @@ MonoBehaviour:
   nodes:
   - id: GS_SEC_R1
     speaker: Ally Quinn
-    line: "Thirty-two years on the campus night gate. Victor Amara doesn't miss
-      much. When I said Maya's name his jaw set in a way that told me he'd
-      been waiting for someone to ask."
-    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
-      type: 3}
+    line: Thirty-two years on the campus night gate. Victor Amara doesn't miss much.
+      When I said Maya's name his jaw set in a way that told me he'd been waiting
+      for someone to ask.
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
-    setsFlag:
+    setsFlag: 
     nextId: GS_SEC_R2
     choices: []
   - id: GS_SEC_R2
     speaker: Ally Quinn
-    line: "Night of the fourteenth — the night Maya went dark — a black SUV
-      idled outside the east gate for forty minutes. No university plates.
-      No visitor log entry. Victor flagged it. His supervisor told him to
-      delete the note and forget it. He didn't forget it."
-    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
-      type: 3}
+    line: "Night of the fourteenth \u2014 the night Maya went dark \u2014 a black
+      SUV idled outside the east gate for forty minutes. No university plates. No
+      visitor log entry. Victor flagged it. His supervisor told him to delete the
+      note and forget it. He didn't forget it."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
-    setsFlag:
+    setsFlag: 
     nextId: GS_SEC_R3
     choices: []
   - id: GS_SEC_R3
     speaker: Ally Quinn
-    line: "The driver had a Voss Group lanyard. Private security — the kind
-      that works for people who don't want a paper trail. Whatever happened
-      to Maya, someone organised it. And they had money behind them."
-    portrait: {fileID: 3757819190876562394, guid: 792b5f88f6dd2724d84b6954cc0b5fad,
-      type: 3}
+    line: "The driver had a Voss Group lanyard. Private security \u2014 the kind
+      that works for people who don't want a paper trail. Whatever happened to Maya,
+      someone organised it. And they had money behind them."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag:
+    requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: aq.lead.gs_scroll_a.seen
-    nextId:
+    nextId: 
     choices: []
