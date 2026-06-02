@@ -115,7 +115,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 00000000000000000000000000000000
+      spriteID: c3a4b5d6e7f8000202000000deadbeef
       internalID: 3100000000000000002
       vertices: []
       indices: 
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 00000000000000000000000000000001
+    spriteID: f1e2d3c4b5a6000202000000deadbef0
     internalID: 0
     vertices: []
     indices: 

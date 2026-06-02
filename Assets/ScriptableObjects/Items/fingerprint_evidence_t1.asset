@@ -15,5 +15,5 @@ MonoBehaviour:
   itemId: fingerprint_evidence_t1
   family: fingerprint_evidence
   tier: 0
-  icon: {fileID: -6891980087230274641, guid: edfcdc48bebfa334dbb0bd226ae2fbd4, type: 3}
+  icon: {fileID: 2347778151789183797, guid: edfcdc48bebfa334dbb0bd226ae2fbd4, type: 3}
   displayName: Partial Dusted Print
