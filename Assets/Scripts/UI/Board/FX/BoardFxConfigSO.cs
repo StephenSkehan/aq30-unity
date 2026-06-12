@@ -23,12 +23,6 @@ namespace AQ.App.UI.Board
         [Min(0.01f)] public float invalidShakeDuration = 0.20f;
         [Min(0f)]    public float invalidShakeMagnitude = 10f;
 
-        [Header("Audio (optional)")]
-        public AudioClip spawnClip;
-        public AudioClip mergeClip;
-        public AudioClip swapClip;
-        public float sfxVolume = 0.75f;
-
         [Header("VFX (optional)")]
         public ParticleSystem sparklePrefab;
         [Tooltip("If true, the sparkle prefab is UI-space (RectTransform) and will be parented under the overlay. If false, it's a world-space ParticleSystem under the board's Canvas.")]

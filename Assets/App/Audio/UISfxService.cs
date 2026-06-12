@@ -25,6 +25,9 @@ namespace AQ.App.Audio
             _source.spatialBlend = 0f;
         }
 
+        public static void PlayBoardSpawn()    => Play(_config?.boardSpawn);
+        public static void PlayBoardMerge()    => Play(_config?.boardMerge);
+        public static void PlayBoardSwap()     => Play(_config?.boardSwap);
         public static void PlayLeadFulfilled() => Play(_config?.leadFulfilled);
         public static void PlayOverflowDrop()  => Play(_config?.overflowDrop);
 

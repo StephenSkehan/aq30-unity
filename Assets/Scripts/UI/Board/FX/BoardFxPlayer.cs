@@ -1,5 +1,6 @@
 // Assets/Scripts/UI/Board/FX/BoardFxPlayer.cs
 using System.Collections;
+using AQ.App.Audio;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +16,6 @@ namespace AQ.App.UI.Board
     {
         [SerializeField] BoardFxConfigSO config;
         [SerializeField] RectTransform overlay;     // created at runtime if missing
-        [SerializeField] AudioSource audioSource;   // created at runtime if missing
         [Header("Debug")]
         [SerializeField] bool debugLogs = false;    // set true to see Play* logs in Console
 
@@ -36,7 +36,6 @@ namespace AQ.App.UI.Board
                 : null;
 
             EnsureOverlay();
-            EnsureAudio();
         }
 
         public void SetConfig(BoardFxConfigSO cfg) => config = cfg;
@@ -65,23 +64,13 @@ namespace AQ.App.UI.Board
             overlay.SetAsLastSibling(); // above board visuals
         }
 
-        void EnsureAudio()
-        {
-            if (audioSource) return;
-            audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.playOnAwake = false;
-            audioSource.loop = false;
-            audioSource.spatialBlend = 0f;
-            audioSource.hideFlags = HideFlags.DontSaveInBuild | HideFlags.DontSaveInEditor;
-        }
-
         // --- Public API used by the observer ---
 
         public void PlaySpawn(BoardTileView tile)
         {
             if (debugLogs) Debug.Log("[FX] Spawn");
             if (!tile || !tile.itemImage) return;
-            if (config && config.spawnClip) PlayClip(config.spawnClip);
+            UISfxService.PlayBoardSpawn();
 
             var rt = tile.itemImage.rectTransform;
             StartCoroutine(CoPop(rt,
@@ -93,7 +82,7 @@ namespace AQ.App.UI.Board
         public void PlayMerge(BoardTileView from, BoardTileView into, Sprite _unused)
         {
             if (debugLogs) Debug.Log("[FX] Merge");
-            if (config && config.mergeClip) PlayClip(config.mergeClip);
+            UISfxService.PlayBoardMerge();
 
             // Pop the destination tile
             if (into && into.itemImage)
@@ -141,7 +130,7 @@ namespace AQ.App.UI.Board
         {
             if (debugLogs) Debug.Log("[FX] Swap");
             if (!a || !b || !a.itemImage || !b.itemImage) return;
-            if (config && config.swapClip) PlayClip(config.swapClip);
+            UISfxService.PlayBoardSwap();
 
             // Hide real icons during slide (prevents double images)
             var aImg = a.itemImage; var bImg = b.itemImage;
@@ -196,13 +185,6 @@ namespace AQ.App.UI.Board
             img.preserveAspect = true;
             img.raycastTarget = false;
             return img;
-        }
-
-        void PlayClip(AudioClip clip)
-        {
-            if (!audioSource || !clip) return;
-            audioSource.volume = config ? config.sfxVolume : 0.75f;
-            audioSource.PlayOneShot(clip);
         }
 
         IEnumerator CoPop(RectTransform target, float startScale, float peakScale, float duration)

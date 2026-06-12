@@ -95,6 +95,7 @@
     <Compile Include="Assets\App\Generators\DropRoller.cs" />
     <Compile Include="Assets\App\Composition\BootstrapperAutoAssign.cs" />
     <Compile Include="Assets\App\CaseFlow\AdvanceOnceMB.cs" />
+    <Compile Include="Assets\App\Audio\UISfxService.cs" />
     <Compile Include="Assets\App\CaseFlow\DebugLogOnResolveMB.cs" />
     <Compile Include="Assets\App\Composition\SharedKernelBoot.cs" />
     <Compile Include="Assets\App\Leads\ILeadCardModel.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Assets\App\UI\Theme\ThemeBinderImage.cs" />
     <Compile Include="Assets\App\UI\Theme\ThemeController.cs" />
     <Compile Include="Assets\App\UI\Board\FlashOnceMB.cs" />
+    <Compile Include="Assets\App\Audio\UISfxSO.cs" />
     <Compile Include="Assets\App\UI\Runtime\TMPAsciiSanitizer.cs" />
     <Compile Include="Assets\App\Home\HomeResumeCard.cs" />
     <Compile Include="Assets\App\Composition\IMergeService.cs" />
