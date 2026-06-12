@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using AQ.App.Audio;
 using AQ.App.Economy;
 using AQ.App.Overflow;
 using AQ.SharedKernel.Economy;
@@ -44,6 +45,7 @@ namespace AQ.App.Leads
         {
             if (lead == null) return;
 
+            UISfxService.PlayLeadFulfilled();
             GrantRewards(lead);
             ApplyNarrativeFlags(lead);
             SpawnFollowUpLeads(lead);

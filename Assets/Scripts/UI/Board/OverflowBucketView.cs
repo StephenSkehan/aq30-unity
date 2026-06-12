@@ -1,3 +1,4 @@
+using AQ.App.Audio;
 using AQ.App.Generators;
 using AQ.App.Overflow;
 using AQ.App.UI.Common;
@@ -153,7 +154,10 @@ namespace AQ.App.UI.Board
             if (board == null) return;
 
             if (board.PlaceFromOverflow(top.Value))
+            {
                 OverflowBucketService.Pop();
+                UISfxService.PlayOverflowDrop();
+            }
             else
                 ToastService.Show("board_full", "Board full — free a slot first.", 2f);
         }
