@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\UI\HUD\EnergyHudTMPTime.cs" />
     <Compile Include="Assets\Scripts\App\LeadActivationBridgeMB.cs" />
     <Compile Include="Assets\Scripts\App\Config\FeatureFlags.cs" />
+    <Compile Include="Assets\Scripts\UI\Board\FX\GeneratorTileAnimator.cs" />
     <Compile Include="Assets\Scripts\Dev\EnergyDevHotkeys.cs" />
     <Compile Include="Assets\Scripts\UI\Board\DragGhost.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardZoomPan.cs" />

@@ -12,6 +12,7 @@ using AQ.App.Items;
 using AQ.App.Overflow;
 using AQ.Domain.Board;         // MergeRules
 using AQ.App.UI.Common;       // ToastService, TileInfoPopup
+using AQ.App.UI.Board.FX;
 using AQ.SharedKernel.Economy;
 
 namespace AQ.App.UI.Board
@@ -199,8 +200,10 @@ namespace AQ.App.UI.Board
         {
             to.CopyFrom(from);
             TransferFamily(from, to);
-            from.Clear();
+            from.Clear();                           // tears down animator on source
             familyKeyByTile.Remove(from);
+            if (to.Kind == TileKind.Generator)      // re-attach on destination
+                AttachGeneratorAnimator(to, GetFamily(to), to.Tier);
             Log("MoveTile complete.");
         }
 
@@ -213,6 +216,10 @@ namespace AQ.App.UI.Board
             b.Refresh();
 
             (familyKeyByTile[b], familyKeyByTile[a]) = (GetFamily(a), GetFamily(b));
+
+            // Sync animators — payloads moved but component is on tile GO, not payload
+            SyncGeneratorAnimator(a);
+            SyncGeneratorAnimator(b);
             if (a.IsEmpty) familyKeyByTile.Remove(a);
             if (b.IsEmpty) familyKeyByTile.Remove(b);
 
@@ -232,6 +239,7 @@ namespace AQ.App.UI.Board
                 into.SetGenerator(genSprite, newTier);
                 if (!HasFamily(into))
                     SetFamily(into, genTypeId);
+                AttachGeneratorAnimator(into, genTypeId, newTier);
                 from.Clear();
                 familyKeyByTile.Remove(from);
                 OnItemRemoved?.Invoke(genTypeId, prevTier);
@@ -353,6 +361,31 @@ namespace AQ.App.UI.Board
             return defaultGeneratorType;
         }
 
+        // ---------------- Generator tile animation ----------------
+
+        public void AttachGeneratorAnimator(BoardTileView tile, string family, int tier)
+        {
+            if (!tile) return;
+            var so = FindGeneratorType(family);
+            if (so == null) return;
+            var tierCfg = so.ConfigForTier(tier);
+            if (tierCfg == null) return;
+
+            var animator = tile.GetComponent<GeneratorTileAnimator>();
+            if (animator == null) animator = tile.gameObject.AddComponent<GeneratorTileAnimator>();
+            animator.Init(tierCfg.particles, (RectTransform)tile.transform);
+        }
+
+        // Attach or remove animator based on tile's current kind — call after any payload swap.
+        private void SyncGeneratorAnimator(BoardTileView tile)
+        {
+            if (!tile) return;
+            if (tile.Kind == TileKind.Generator)
+                AttachGeneratorAnimator(tile, GetFamily(tile), tile.Tier);
+            else
+                tile.GetComponent<GeneratorTileAnimator>()?.Teardown();
+        }
+
         // ---------------- Overflow bucket placement ----------------
 
         /// <summary>
@@ -374,6 +407,7 @@ namespace AQ.App.UI.Board
                 var sprite = so != null ? so.SpriteForTier(data.tier) : generatorSprite;
                 v.SetGenerator(sprite, data.tier);
                 SetFamily(v, data.family);
+                AttachGeneratorAnimator(v, data.family, data.tier);
                 Log($"Placed generator from overflow: type={data.family} tier={data.tier} at ({r},{c}).");
             }
             else
@@ -473,6 +507,7 @@ namespace AQ.App.UI.Board
                        : (generatorSprite != null   ? generatorSprite : SpriteForItemTier(0));
             cell.SetGenerator(sprite, 0);
             SetFamily(cell, typeId);
+            AttachGeneratorAnimator(cell, typeId, 0);
 
             Log($"Generator ensured at ({defaultGeneratorRow},{defaultGeneratorCol}) typeId={typeId}.");
         }

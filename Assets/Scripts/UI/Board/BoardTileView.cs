@@ -86,6 +86,7 @@ namespace AQ.App.UI.Board
 
         public void SetItem(Sprite sprite, int tier)
         {
+            GetComponent<AQ.App.UI.Board.FX.GeneratorTileAnimator>()?.Teardown();
             payload.kind = TileKind.Item;
             payload.tier = Mathf.Max(0, tier);
             payload.sprite = sprite;
@@ -94,6 +95,7 @@ namespace AQ.App.UI.Board
 
         public void Clear()
         {
+            GetComponent<AQ.App.UI.Board.FX.GeneratorTileAnimator>()?.Teardown();
             payload.kind = TileKind.Empty;
             payload.tier = -1;
             payload.sprite = null;

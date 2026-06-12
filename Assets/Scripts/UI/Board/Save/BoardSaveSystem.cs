@@ -276,6 +276,7 @@ namespace AQ.App.UI.Board
                                : (board.generatorSprite != null ? board.generatorSprite
                                : (board.icons != null && board.icons.Count > 0 ? board.icons[0] : null));
                     v.SetGenerator(sprite, Mathf.Max(0, cell.tier));
+                    board.AttachGeneratorAnimator(v, family, Mathf.Max(0, cell.tier));
                 }
                 else
                 {
