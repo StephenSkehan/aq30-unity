@@ -23,12 +23,13 @@ namespace AQ.App.UI.Board
         private Image _itemIcon;
         private Text _badge;
 
-        private const float SIZE   = 100f;
-        private const float MARGIN = 24f;
+        private const float SIZE   = 160f;
+        private const float MARGIN = 32f;
 
         private void Awake()
         {
-            BuildHUD();
+            try { BuildHUD(); }
+            catch (System.Exception e) { Debug.LogError($"[OverflowBucket] BuildHUD failed: {e}"); }
         }
 
         private void OnEnable()
@@ -42,6 +43,28 @@ namespace AQ.App.UI.Board
             OverflowBucketService.BucketChanged -= Refresh;
         }
 
+        private void Update()
+        {
+            if (OverflowBucketService.IsEmpty || _root == null || !_root.gameObject.activeSelf) return;
+
+            bool tapped = false;
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+                tapped = RectContains(Input.GetTouch(0).position);
+            else if (Input.GetMouseButtonDown(0))
+                tapped = RectContains(Input.mousePosition);
+
+            if (tapped) OnTapped();
+        }
+
+        private bool RectContains(Vector2 screenPos)
+        {
+            if (_root == null) return false;
+            var corners = new Vector3[4];
+            _root.GetWorldCorners(corners);
+            return screenPos.x >= corners[0].x && screenPos.x <= corners[2].x &&
+                   screenPos.y >= corners[0].y && screenPos.y <= corners[2].y;
+        }
+
         private void BuildHUD()
         {
             var canvasGO = new GameObject("OverflowCanvas");
@@ -52,14 +75,14 @@ namespace AQ.App.UI.Board
             canvasGO.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
             canvasGO.AddComponent<GraphicRaycaster>();
 
-            // Bucket root — bottom-right corner
+            // Bucket root — bottom-left corner
             var bucketGO = new GameObject("BucketRoot");
             bucketGO.transform.SetParent(canvasGO.transform, false);
             _root = bucketGO.AddComponent<RectTransform>();
             _root.sizeDelta = new Vector2(SIZE, SIZE);
-            _root.anchorMin = _root.anchorMax = new Vector2(1f, 0f);
-            _root.pivot = new Vector2(1f, 0f);
-            _root.anchoredPosition = new Vector2(-MARGIN, MARGIN);
+            _root.anchorMin = _root.anchorMax = new Vector2(0f, 0f);
+            _root.pivot = new Vector2(0f, 0f);
+            _root.anchoredPosition = new Vector2(MARGIN, MARGIN);
 
             // Translucent background
             var bg = MakeImage(_root, "BucketBg");
@@ -83,8 +106,15 @@ namespace AQ.App.UI.Board
             badgeRT.anchorMin = badgeRT.anchorMax = new Vector2(1f, 1f);
             badgeRT.pivot = new Vector2(1f, 1f);
             badgeRT.anchoredPosition = new Vector2(8f, -8f);
-            var badgeBg = badgeGO.AddComponent<Image>();
+
+            // Background on a child so Image and Text aren't on the same GO (only one Graphic allowed per GO)
+            var badgeBgGO = new GameObject("BadgeBg");
+            badgeBgGO.transform.SetParent(badgeGO.transform, false);
+            var badgeBgRT = badgeBgGO.AddComponent<RectTransform>();
+            Stretch(badgeBgRT);
+            var badgeBg = badgeBgGO.AddComponent<Image>();
             badgeBg.color = new Color(0.85f, 0.15f, 0.15f, 1f);
+
             _badge = badgeGO.AddComponent<Text>();
             _badge.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             _badge.fontSize = 20;
@@ -92,12 +122,7 @@ namespace AQ.App.UI.Board
             _badge.alignment = TextAnchor.MiddleCenter;
             _badge.color = Color.white;
 
-            // Tap target — transparent Image + Button over the whole bucket
-            var hitImg = bucketGO.AddComponent<Image>();
-            hitImg.color = Color.clear;
-            var btn = bucketGO.AddComponent<Button>();
-            btn.targetGraphic = hitImg;
-            btn.onClick.AddListener(OnTapped);
+            // No Button — input handled via raw Update() poll (EventSystem GR unreliable on dynamic overlays)
         }
 
         private void Refresh()
@@ -161,5 +186,30 @@ namespace AQ.App.UI.Board
             rt.anchorMax = Vector2.one;
             rt.offsetMin = rt.offsetMax = Vector2.zero;
         }
+
+#if UNITY_EDITOR
+        [ContextMenu("Debug: Clear Stack")]
+        private void Debug_ClearStack()
+        {
+            OverflowBucketService.Clear();
+            Debug.Log("[OverflowBucket] Stack cleared.");
+        }
+
+        [ContextMenu("Debug: Push gen_junk T0")]
+        private void Debug_PushGenJunk()
+        {
+            Debug.Log($"[OverflowBucket] ContextMenu: Push gen_junk T0. Stack before: {OverflowBucketService.Count}");
+            OverflowBucketService.Push(new OverflowTileData { kind = OverflowKind.Generator, family = "gen_junk", tier = 0 });
+            Debug.Log($"[OverflowBucket] ContextMenu: Push complete. Stack after: {OverflowBucketService.Count}");
+        }
+
+        [ContextMenu("Debug: Push gen_investigation_lab T0")]
+        private void Debug_PushInvestigationLab()
+        {
+            Debug.Log($"[OverflowBucket] ContextMenu: Push gen_investigation_lab T0. Stack before: {OverflowBucketService.Count}");
+            OverflowBucketService.Push(new OverflowTileData { kind = OverflowKind.Generator, family = "gen_investigation_lab", tier = 0 });
+            Debug.Log($"[OverflowBucket] ContextMenu: Push complete. Stack after: {OverflowBucketService.Count}");
+        }
+#endif
     }
 }
