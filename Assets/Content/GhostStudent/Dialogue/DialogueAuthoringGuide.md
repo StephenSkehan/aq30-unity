@@ -259,17 +259,17 @@ Always: `aq.lead.gs_<leadId>.seen`
 | Lead | setsFlag |
 |------|----------|
 | gs_records | `aq.lead.gs_records.seen` |
-| gs_phase1_pod | `aq.lead.gs_phase1_pod.seen` + `gs.phase1.complete` |
+| gs_phase1_pod | `aq.lead.gs_phase1_pod.seen` *(gs.phase1.complete is in NarrativeFlags, fires on Proceed)* |
 | gs_admin | `aq.lead.gs_admin.seen` |
 | gs_money | `aq.lead.gs_money.seen` |
 | gs_other_ghost | `aq.lead.gs_other_ghost.seen` |
-| gs_thomas_connection | `aq.lead.gs_thomas_connection.seen` + `aq.season.thomas_connection_made` |
-| gs_find_maya | `aq.lead.gs_find_maya.seen` + `aq.gs.maya_found` |
-| gs_case_close | `aq.lead.gs_case_close.seen` + `gs.ep01.complete` |
+| gs_thomas_connection | `aq.lead.gs_thomas_connection.seen` |
+| gs_find_maya | `aq.lead.gs_find_maya.seen` |
+| gs_case_close | `aq.lead.gs_case_close.seen` *(gs.ep01.complete is in NarrativeFlags, fires on Proceed)* |
 
-When a node sets multiple flags, use a single space-separated string: `setsFlag: gs.phase1.complete aq.lead.gs_phase1_pod.seen`
+**`setsFlag` holds exactly one flag.** `DialogueFlags.Set()` treats the entire string as a single key — there is no splitting. If a lead needs to set a narrative flag when activated, add it to `LeadData.NarrativeFlags[]` instead (fires on Proceed, not on dialogue completion).
 
-**Important:** `gs.ep01.complete` is the flag that triggers `CaseResolutionService`. It must be set exactly, no typos.
+**Important:** `gs.ep01.complete` is the flag that triggers `CaseResolutionService`. It must be set exactly, no typos. It belongs in `Lead_GS_CaseClose.asset.NarrativeFlags[]`, not in the dialogue setsFlag.
 
 ### NarrativeFlags in LeadData vs. dialogue setsFlag
 These are two separate systems.

@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_GS_Phase1Pod
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: GS_P1P_R1
+  nodes:
+  - id: GS_P1P_R1
+    speaker: Ally Quinn
+    line: "This is Echoes of Havenbay. Three weeks in. Here's what we know."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_P1P_R2
+    choices: []
+  - id: GS_P1P_R2
+    speaker: Ally Quinn
+    line: "Maya's roommate heard her on the phone the night she vanished — 'I
+      have the records.' Her lecturer told her to go to administration, the worst
+      advice he could have given. And when I pulled her enrollment file, I found fourteen
+      remote logins and six students living the same lie."
+    portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_P1P_R3
+    choices: []
+  - id: GS_P1P_R3
+    speaker: Ally Quinn
+    line: "Someone is running Maya's life remotely. They have institutional access.
+      And they know I'm looking."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_P1P_R4
+    choices: []
+  - id: GS_P1P_R4
+    speaker: Ally Quinn
+    line: "The money is somewhere. The name is somewhere. I'm going to find both.
+      This has been Echoes of Havenbay — and we're just getting started."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.gs_phase1_pod.seen
+    nextId:
+    choices: []

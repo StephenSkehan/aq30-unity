@@ -40,5 +40,5 @@ MonoBehaviour:
   - gs.records.activated
   SoftCurrency: 100
   EnergyGrant: 0
-  resolutionDialogue: {fileID: 0}
+  resolutionDialogue: {fileID: 11400000, guid: e1f2a3b4c5d6e1f2a3b4c5d6e1f2a3b4, type: 2}
   OutcomeHints: 4

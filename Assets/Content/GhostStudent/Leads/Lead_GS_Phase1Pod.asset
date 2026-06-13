@@ -49,5 +49,5 @@ MonoBehaviour:
   - gs.phase1.complete
   SoftCurrency: 200
   EnergyGrant: 20
-  resolutionDialogue: {fileID: 0}
+  resolutionDialogue: {fileID: 11400000, guid: f2a3b4c5d6e7f8f2a3b4c5d6e7f8f2a3, type: 2}
   OutcomeHints: 6
