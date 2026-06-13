@@ -31,9 +31,6 @@ MonoBehaviour:
   SpawnLeadIds:
   - gs_roommate
   - gs_lecturer
-  - gs_scroll_a
-  - gs_scroll_b
-  - gs_gerald
   BranchOutcomes: []
   NarrativeFlags:
   - gs.tip.activated

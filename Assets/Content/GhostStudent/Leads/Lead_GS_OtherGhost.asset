@@ -33,13 +33,7 @@ MonoBehaviour:
   RequiredLeadIds: []
   EvidenceIds: []
   SpawnLeadIds: []
-  BranchOutcomes:
-  - label: Offer anonymity
-    SpawnLeadIds:
-    - gs_ghost_anon
-  - label: Go on record
-    SpawnLeadIds:
-    - gs_ghost_public
+  BranchOutcomes: []
   NarrativeFlags:
   - gs.other_ghost.activated
   SoftCurrency: 100
