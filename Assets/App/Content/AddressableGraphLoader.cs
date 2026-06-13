@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -28,27 +27,25 @@ namespace AQ.App.Content
             };
         }
 
-        List<CaseGraph> _loaded = new List<CaseGraph>();
-        
+        CaseGraph _loaded;
+
         void OnGraphLoaded(CaseGraph g)
         {
-            if (g != null) _loaded.Add(g);
+            if (g != null && _loaded == null) _loaded = g;
         }
 
         void OnAllComplete(AsyncOperationHandle<IList<CaseGraph>> op)
         {
-            if (op.Status != AsyncOperationStatus.Succeeded || _loaded.Count == 0)
+            if (op.Status != AsyncOperationStatus.Succeeded || _loaded == null)
             {
                 Debug.LogWarning("[Addr] No CaseGraph assets found for label '" + Label + "'.");
                 return;
             }
-            
-            // Pick the first for now; later we can choose by episode id
-            var graph = _loaded[0];
-            Debug.Log("[Addr] Loaded CaseGraph '" + graph.name + "' via label '" + Label + "'.");
-            
+
+            Debug.Log("[Addr] Loaded CaseGraph '" + _loaded.name + "' via label '" + Label + "'.");
+
             if (Runner == null) Runner = FindFirstObjectByType<DialogueRunner>();
-            if (Runner != null) Runner.BootWithGraph(graph);
+            if (Runner != null) Runner.BootWithGraph(_loaded);
         }
 
         /// <summary>

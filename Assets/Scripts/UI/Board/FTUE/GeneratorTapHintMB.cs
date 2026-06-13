@@ -17,6 +17,8 @@ public class GeneratorTapHintMB : MonoBehaviour
     TextMeshProUGUI      _label;
     RectTransform        _rt;
     MergeBoardController _board;
+    BoardTileView        _targetView;
+    RectTransform        _targetTile;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     static void Bootstrap()
@@ -40,10 +42,11 @@ public class GeneratorTapHintMB : MonoBehaviour
         _board = FindAnyObjectByType<MergeBoardController>();
         if (_board == null) { Destroy(gameObject); yield break; }
 
-        var gen = FindGeneratorTile();
-        if (gen == null) { Destroy(gameObject); yield break; }
+        _targetView = FindGeneratorTile();
+        if (_targetView == null) { Destroy(gameObject); yield break; }
+        _targetTile = _targetView.GetComponent<RectTransform>();
 
-        var canvas = gen.GetComponentInParent<Canvas>();
+        var canvas = _targetTile.GetComponentInParent<Canvas>();
         if (canvas == null) { Destroy(gameObject); yield break; }
 
         _rt = GetComponent<RectTransform>();
@@ -65,12 +68,17 @@ public class GeneratorTapHintMB : MonoBehaviour
     {
         if (_label == null || _board == null) return;
 
-        var gen = FindGeneratorTile();
-        if (gen == null) return;
+        // Re-find only if the cached tile is no longer a generator (moved/swapped away)
+        if (_targetView == null || _targetView.Kind != TileKind.Generator)
+        {
+            _targetView = FindGeneratorTile();
+            if (_targetView == null) return;
+            _targetTile = _targetView.GetComponent<RectTransform>();
+        }
 
         // Hover above the generator tile in world space
-        var pos = gen.position;
-        pos.y += gen.rect.height * gen.lossyScale.y * 0.8f;
+        var pos = _targetTile.position;
+        pos.y += _targetTile.rect.height * _targetTile.lossyScale.y * 0.8f;
         transform.position = pos;
 
         // Pulse scale + alpha
@@ -89,14 +97,14 @@ public class GeneratorTapHintMB : MonoBehaviour
         Destroy(gameObject);
     }
 
-    RectTransform FindGeneratorTile()
+    BoardTileView FindGeneratorTile()
     {
         for (int r = 0; r < _board.Rows; r++)
             for (int c = 0; c < _board.Cols; c++)
             {
                 var tile = _board.Get(r, c);
                 if (tile != null && tile.Kind == TileKind.Generator)
-                    return tile.GetComponent<RectTransform>();
+                    return tile;
             }
         return null;
     }
