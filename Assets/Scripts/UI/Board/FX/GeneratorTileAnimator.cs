@@ -84,7 +84,7 @@ namespace AQ.App.UI.Board.FX
         private IEnumerator GlowPulse()
         {
             float t     = 0f;
-            float speed = Mathf.Lerp(0.7f, 2.5f, Mathf.Clamp01(_config.emissionRate / 10f));
+            float speed = 0.5f; // 1/speed = 2-second cycle
 
             while (_active && _glow)
             {

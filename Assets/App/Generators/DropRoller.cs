@@ -1,4 +1,4 @@
-using AQ.App;   // DialogueFlags
+using AQ.App;   // NarrativeFlags
 using UnityEngine;
 
 namespace AQ.App.Generators
@@ -38,7 +38,7 @@ namespace AQ.App.Generators
         private static bool IsEligible(in DropEntry e, bool subGenLocked)
         {
             if (e.type == DropType.SubGenerator && subGenLocked) return false;
-            if (!string.IsNullOrEmpty(e.requiresStoryFlag) && !DialogueFlags.Has(e.requiresStoryFlag)) return false;
+            if (!string.IsNullOrEmpty(e.requiresStoryFlag) && !NarrativeFlags.Has(e.requiresStoryFlag)) return false;
             return true;
         }
     }

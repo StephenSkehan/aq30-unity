@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\HUD\EnergyHudTMP.cs" />
+    <Compile Include="Assets\Scripts\UI\Board\FTUE\GeneratorTapHintMB.cs" />
     <Compile Include="Assets\Scripts\Demo\ClickDebugger.cs" />
     <Compile Include="Assets\_Deprecated\Board\GuttersLock.cs" />
     <Compile Include="Assets\Scripts\UI\Board\Save\BoardSaveSystem.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardOpenerMB.cs" />
     <Compile Include="Assets\Scripts\UI\Common\ToastService.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyRuntime.cs" />
+    <Compile Include="Assets\Scripts\UI\Board\FTUE\ProceedHintMB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\Scripts\Demo\FixPortraitPosition.cs" />
     <Compile Include="Assets\Scripts\UI\Board\FX\BoardFxConfigSO.cs" />

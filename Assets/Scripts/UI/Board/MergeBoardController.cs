@@ -82,6 +82,11 @@ namespace AQ.App.UI.Board
         /// </summary>
         public static event Action<string, int> OnItemRemoved;
 
+        /// <summary>
+        /// Fired on any tap of a generator tile, regardless of outcome. Used by FTUE hint.
+        /// </summary>
+        public static event Action GeneratorTapped;
+
         // ---------------- Unity lifecycle ----------------
 
         private void OnEnable()  => BoardTileView.LongHeld += OnTileLongHeld;
@@ -276,6 +281,8 @@ namespace AQ.App.UI.Board
 
         private void SpawnFromGenerator(BoardTileView generator)
         {
+            GeneratorTapped?.Invoke();
+
             // 1) Find destination first (no energy charge on full board)
             var dst = FindFirstEmptyFrom(generator);
             if (dst == null)

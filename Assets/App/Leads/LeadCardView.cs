@@ -2,6 +2,7 @@
 // Prefab-first lead card view. Binds an ILeadCardModel to UI elements;
 // never rebuilds layout at runtime.
 
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ namespace AQ.App.Leads
     [DisallowMultipleComponent]
     public sealed class LeadCardView : MonoBehaviour
     {
+        /// <summary>Fired the first time a card transitions to CanProceed = true. Used by FTUE hint.</summary>
+        public static event Action<LeadCardView> CardBecameReady;
         [Header("Prefab References")]
         [SerializeField] private RectTransform actorAnchor;
         [SerializeField] private Image        actorBadge;
@@ -24,6 +27,11 @@ namespace AQ.App.Leads
         [SerializeField] private GameObject   reqChipPrefab;
 
         System.Action _proceedHandler;
+        bool          _wasCanProceed;
+
+        /// <summary>RectTransform of the Proceed button — used by FTUE hint to position itself.</summary>
+        public RectTransform ProceedButtonRect =>
+            proceedButton ? proceedButton.GetComponent<RectTransform>() : null;
 
         // ------------------------ Public API ------------------------
 
@@ -57,6 +65,10 @@ namespace AQ.App.Leads
                 if (_proceedHandler != null)
                     proceedButton.onClick.AddListener(() => _proceedHandler());
             }
+
+            if (model.CanProceed && !_wasCanProceed)
+                CardBecameReady?.Invoke(this);
+            _wasCanProceed = model.CanProceed;
         }
 
         public void Rebuild() { /* No-op in prefab mode */ }
