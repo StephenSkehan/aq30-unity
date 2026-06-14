@@ -37,7 +37,8 @@ MonoBehaviour:
   BranchOutcomes: []
   NarrativeFlags:
   - gs.thomas_connection.activated
+  - aq.season.thomas_connection_made
   SoftCurrency: 100
   EnergyGrant: 0
-  resolutionDialogue: {fileID: 0}
+  resolutionDialogue: {fileID: 11400000, guid: d6e7f8a9b0c1d6e7f8a9b0c1d6e7f8a9, type: 2}
   OutcomeHints: 6
