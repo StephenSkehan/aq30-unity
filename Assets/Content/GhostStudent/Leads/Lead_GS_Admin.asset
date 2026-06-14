@@ -43,5 +43,5 @@ MonoBehaviour:
   - gs.admin.activated
   SoftCurrency: 100
   EnergyGrant: 0
-  resolutionDialogue: {fileID: 0}
+  resolutionDialogue: {fileID: 11400000, guid: a3b4c5d6e7f8a3b4c5d6e7f8a3b4c5d6, type: 2}
   OutcomeHints: 4

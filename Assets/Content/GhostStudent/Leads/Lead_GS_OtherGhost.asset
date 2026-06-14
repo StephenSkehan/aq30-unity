@@ -38,5 +38,5 @@ MonoBehaviour:
   - gs.other_ghost.activated
   SoftCurrency: 100
   EnergyGrant: 0
-  resolutionDialogue: {fileID: 0}
+  resolutionDialogue: {fileID: 11400000, guid: c5d6e7f8a9b0c5d6e7f8a9b0c5d6e7f8, type: 2}
   OutcomeHints: 6
