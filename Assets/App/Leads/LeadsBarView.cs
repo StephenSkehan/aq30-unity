@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using AQ.App.UI.Leads;
 using TMPro;
@@ -19,6 +20,10 @@ namespace AQ.App.Leads
         readonly List<GameObject> _spawned = new List<GameObject>();
         readonly Dictionary<LeadData, Button> _proceedByLead = new Dictionary<LeadData, Button>();
 
+        string _lastFulfillId;
+        int _activatedCount;
+        TextMeshProUGUI _progressLabel;
+
         UnityEngine.Object _boundRepo;
 
         void Awake()
@@ -38,9 +43,21 @@ namespace AQ.App.Leads
 
             if (scrollRect == null) scrollRect = GetComponent<ScrollRect>();
             if (contentRoot == null && scrollRect != null) contentRoot = scrollRect.content;
+            CreateProgressLabel();
         }
 
         public void Bind(UnityEngine.Object repo) { _boundRepo = repo; }
+
+        void OnEnable()  { LeadsRuntimeBus.OnLeadActivated += HandleLeadActivated; }
+        void OnDisable() { LeadsRuntimeBus.OnLeadActivated -= HandleLeadActivated; }
+
+        void HandleLeadActivated(LeadData lead)
+        {
+            if (lead == null) return;
+            _lastFulfillId = lead.leadId;
+            _activatedCount++;
+            UpdateProgressLabel();
+        }
 
         public void Rebuild() { }
 
@@ -97,6 +114,12 @@ namespace AQ.App.Leads
                 }
 
                 _spawned.Add(go);
+
+                if (_lastFulfillId != null && so != null && so.leadId == _lastFulfillId)
+                {
+                    StartCoroutine(PlayFulfillBounce(go.GetComponent<RectTransform>()));
+                    _lastFulfillId = null;
+                }
             }
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(contentRoot);
@@ -107,6 +130,50 @@ namespace AQ.App.Leads
             if (lead == null) return;
             if (_proceedByLead.TryGetValue(lead, out var btn) && btn != null)
                 btn.interactable = false;
+        }
+
+        // ----- Progress HUD + Fulfill Animation -----
+
+        void CreateProgressLabel()
+        {
+            var go = new GameObject("Txt_CaseProgress");
+            go.transform.SetParent(transform, false);
+            var rt = go.AddComponent<RectTransform>();
+            rt.anchorMin        = new Vector2(1f, 1f);
+            rt.anchorMax        = new Vector2(1f, 1f);
+            rt.pivot            = new Vector2(1f, 1f);
+            rt.sizeDelta        = new Vector2(120f, 28f);
+            rt.anchoredPosition = new Vector2(-8f, -8f);
+            _progressLabel = go.AddComponent<TextMeshProUGUI>();
+            _progressLabel.fontSize  = 14f;
+            _progressLabel.color     = new Color(0.2f, 0.2f, 0.2f, 0.7f);
+            _progressLabel.alignment = TextAlignmentOptions.Right;
+            UpdateProgressLabel();
+        }
+
+        void UpdateProgressLabel()
+        {
+            if (_progressLabel == null) return;
+            _progressLabel.text = $"{_activatedCount} / 12";
+        }
+
+        static IEnumerator PlayFulfillBounce(RectTransform rt)
+        {
+            if (rt == null) yield break;
+            float elapsed = 0f;
+            const float duration = 0.2f;
+            const float peak = 1.08f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                float scale = t < 0.5f
+                    ? Mathf.Lerp(1f, peak, t * 2f)
+                    : Mathf.Lerp(peak, 1f, (t - 0.5f) * 2f);
+                rt.localScale = new Vector3(scale, scale, 1f);
+                yield return null;
+            }
+            rt.localScale = Vector3.one;
         }
 
         // ----- Helpers -----

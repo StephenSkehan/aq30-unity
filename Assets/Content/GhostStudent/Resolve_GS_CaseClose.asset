@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_GS_CaseClose
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: GS_CC_R1
+  nodes:
+  - id: GS_CC_R1
+    speaker: Ally Quinn
+    line: "This is Echoes of Havenbay. And the Ghost Student case is closed."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_CC_R2
+    choices: []
+  - id: GS_CC_R2
+    speaker: Ally Quinn
+    line: "Over three weeks I documented six ghost student identities at Havenbay
+      University. Real families paying full tuition for names on degree certificates,
+      processed through administration with institutional-level access. Maya Chen
+      found this. They made her disappear to keep it quiet. She's home now."
+    portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_CC_R3
+    choices: []
+  - id: GS_CC_R3
+    speaker: Ally Quinn
+    line: "The money routes through a shell company. The same entity appears in Havenbay
+      city development filings going back twenty years. The university is not the
+      top of this. I don't know yet what is. But I know the name they used. And
+      I know it connects to a case my father never closed."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_CC_R4
+    choices: []
+  - id: GS_CC_R4
+    speaker: Ally Quinn
+    line: "Maya encoded it and sent it into the dark — three words to whoever
+      was listening. 'They're selling us.' She had the records. She had the proof.
+      She just needed someone to find her."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_CC_R5
+    choices: []
+  - id: GS_CC_R5
+    speaker: Ally Quinn
+    line: "That was Maya's voice. She sent it to whoever was listening. Tonight,
+      three weeks later, the world finally heard it. My name is Ally Quinn. This
+      has been Echoes of Havenbay."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.gs_case_close.seen
+    nextId:
+    choices: []
