@@ -125,6 +125,7 @@
     <Compile Include="Assets\App\UI\Config\UIContracts.cs" />
     <Compile Include="Assets\App\Leads\ActiveLeadState.cs" />
     <Compile Include="Assets\App\UI\FTUE\FTUEHintController.cs" />
+    <Compile Include="Assets\App\CaseFlow\CaseResolutionService.cs" />
     <Compile Include="Assets\App\CaseFlow\CaseFlowLeadBridgeMB.cs" />
     <Compile Include="Assets\App\Overflow\OverflowBucketService.cs" />
     <Compile Include="Assets\App\Save\SaveLoadDriver.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Assets\App\UI\Runtime\TMPAsciiSanitizer.cs" />
     <Compile Include="Assets\App\Home\HomeResumeCard.cs" />
     <Compile Include="Assets\App\Composition\IMergeService.cs" />
+    <Compile Include="Assets\App\CaseFlow\CaseEvents.cs" />
     <Compile Include="Assets\App\Leads\LeadRequirementItem.cs" />
     <Compile Include="Assets\App\UI\Dialogue\DialogueController.cs" />
     <Compile Include="Assets\App\Leads\LeadCardView.cs" />
@@ -161,6 +163,7 @@
     <Compile Include="Assets\App\UI\Theme\ThemeRegistry.cs" />
     <Compile Include="Assets\App\NarrativeFlags.cs" />
     <Compile Include="Assets\App\Gameplay\Merge\SpriteCatalog.cs" />
+    <Compile Include="Assets\App\UI\CaseResolutionScreenMB.cs" />
     <Compile Include="Assets\App\Gameplay\Merge\MergeGeneratorConfig.cs" />
     <Compile Include="Assets\App\UI\Board\BoardPresenter.cs" />
     <Compile Include="Assets\App\UI\Leads\LeadCardPresenter.cs" />
