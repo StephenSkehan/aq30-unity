@@ -20,20 +20,20 @@ MonoBehaviour:
   ActionType: 3
   EnergyCost: 0
   requirements:
-  - label: Evidence Bag
-    icon: {fileID: 0}
-    satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: 396f63cfaf7106c47bdaf61671377b24, type: 2}
-    quantity: 1
-  - label: Full Forensic Case
-    icon: {fileID: 0}
-    satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: ed7637afffe76c1428ae3bece78c9829, type: 2}
-    quantity: 1
   - label: UV Light
     icon: {fileID: 0}
     satisfied: 0
     itemDefinition: {fileID: 11400000, guid: 4426ca7e5c440644793d4f17cc690acf, type: 2}
+    quantity: 1
+  - label: Labeled Prints
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: 06d84af3542406e4b9b8abbc7989ce84, type: 2}
+    quantity: 1
+  - label: Beer Bottle
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: cc9c941c9760f9341aecdd32cfd7888d, type: 2}
     quantity: 1
   RequiredLeadIds: []
   EvidenceIds: []

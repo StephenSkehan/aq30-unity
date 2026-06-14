@@ -25,10 +25,15 @@ MonoBehaviour:
     satisfied: 0
     itemDefinition: {fileID: 11400000, guid: ed7637afffe76c1428ae3bece78c9829, type: 2}
     quantity: 1
-  - label: UV Light
+  - label: Fingerprint Card
     icon: {fileID: 0}
     satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: 4426ca7e5c440644793d4f17cc690acf, type: 2}
+    itemDefinition: {fileID: 11400000, guid: 4833f4e00fba6474a9db41bd3885aa51, type: 2}
+    quantity: 1
+  - label: Tall Glass, Ice & Orange
+    icon: {fileID: -1576522733346470, guid: 90bb4008ce13f6d458c4ea4201ffc4fb, type: 3}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: 26e209f3237ee81459398dad9baf75da, type: 2}
     quantity: 1
   RequiredLeadIds: []
   EvidenceIds: []

@@ -20,15 +20,15 @@ MonoBehaviour:
   ActionType: 1
   EnergyCost: 0
   requirements:
-  - label: Evidence Bag
-    icon: {fileID: 0}
-    satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: 396f63cfaf7106c47bdaf61671377b24, type: 2}
-    quantity: 1
   - label: Full Forensic Case
     icon: {fileID: 0}
     satisfied: 0
     itemDefinition: {fileID: 11400000, guid: ed7637afffe76c1428ae3bece78c9829, type: 2}
+    quantity: 1
+  - label: Fingerprint Card
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: 4833f4e00fba6474a9db41bd3885aa51, type: 2}
     quantity: 1
   RequiredLeadIds: []
   EvidenceIds: []

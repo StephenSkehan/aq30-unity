@@ -20,11 +20,6 @@ MonoBehaviour:
   ActionType: 1
   EnergyCost: 0
   requirements:
-  - label: Evidence Bag
-    icon: {fileID: 0}
-    satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: 396f63cfaf7106c47bdaf61671377b24, type: 2}
-    quantity: 1
   - label: Full Forensic Case
     icon: {fileID: 0}
     satisfied: 0
