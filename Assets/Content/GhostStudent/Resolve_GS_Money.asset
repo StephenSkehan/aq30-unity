@@ -44,9 +44,9 @@ MonoBehaviour:
     choices: []
   - id: GS_MON_R3
     speaker: Ally Quinn
-    line: "The principal behind Voss Bio is behind enough shell layers that I can't
-      reach them from here. I need someone who knows how these networks are built.
-      I need Gerald."
+    line: "Whoever controls Voss Bio is shielded behind enough shell layers that I
+      can't reach them from here. I need someone who knows how these networks are
+      built. I need Gerald."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
