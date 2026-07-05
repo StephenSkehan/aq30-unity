@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Tests\PlayMode\UITests\DialogueAutoSkipTests.cs" />
-    <Compile Include="Assets\Tests\PlayMode\Save\SaveServiceRoundTripTests.cs" />
     <Compile Include="Assets\Tests\PlayMode\UITests\MergeBoardInteractionTests.cs" />
     <Compile Include="Assets\Tests\PlayMode\UITests\BootstrapperSmokeTests.cs" />
     <Compile Include="Assets\Tests\PlayMode\PlayBootSmoke.cs" />
@@ -78,7 +77,6 @@
     <Compile Include="Assets\Tests\PlayMode\AddressablesSmokeTests.cs" />
     <Compile Include="Assets\Tests\PlayMode\UITests\MergeServiceSeamTests.cs" />
     <Compile Include="Assets\Tests\PlayMode\UITests\Support\MergeInputAdapter.TestExtensions.cs" />
-    <Compile Include="Assets\Tests\PlayMode\Save\Save_RoundTrip_PlayMode_Tests.cs" />
     <Compile Include="Assets\Tests\PlayMode\WK3_2_VariantA_PlayProbe.cs" />
   </ItemGroup>
   <ItemGroup>

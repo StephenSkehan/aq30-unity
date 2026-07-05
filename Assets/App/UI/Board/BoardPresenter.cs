@@ -48,30 +48,4 @@ public class BoardPresenter : MonoBehaviour
             for(int i=GridRoot.childCount-1;i>=0;i--) Destroy(GridRoot.GetChild(i).gameObject);
         }
     }
-
-    // --------- Save/Load API ----------
-    public SaveBlob.BoardState CaptureBoard(){
-        var bs = new SaveBlob.BoardState();
-        foreach(var v in LiveItems){
-            if(!v) continue;
-            bs.Items.Add(new SaveBlob.BoardState.Item{
-                Id   = v.name,
-                X    = v.Rect.anchoredPosition.x,
-                Y    = v.Rect.anchoredPosition.y,
-                Type = "MergeItem" // placeholder; wire deterministic type later
-            });
-        }
-        return bs;
-    }
-
-    public void RestoreBoard(SaveBlob.BoardState bs){
-        Clear();
-        if(bs == null || bs.Items == null) return;
-        foreach(var it in bs.Items){
-            var v = Instantiate(ItemPrefab, GridRoot);
-            v.name = string.IsNullOrEmpty(it.Id) ? "Item" : it.Id;
-            v.Rect.anchoredPosition = new Vector2(it.X, it.Y);
-            LiveItems.Add(v);
-        }
-    }
 }

@@ -54,6 +54,11 @@ namespace AQ.App.Services
             SecondsPerTick = Math.Max(0.001f, secondsPerPoint);
             var nowUtc = now.ToUniversalTime();
 
+            // Device clock moved backwards (timezone/DST/manual change): without
+            // this clamp LastTickUtc sits in the future and regen stalls.
+            if (LastTickUtc > nowUtc)
+                LastTickUtc = nowUtc;
+
             double elapsed = (nowUtc - LastTickUtc).TotalSeconds;
             if (elapsed < SecondsPerTick)
                 return 0;

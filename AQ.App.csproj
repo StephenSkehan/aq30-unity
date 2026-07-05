@@ -86,7 +86,6 @@
     <Compile Include="Assets\App\Leads\LeadsBarView.cs" />
     <Compile Include="Assets\App\Audio\MusicManagerMB.cs" />
     <Compile Include="Assets\App\UI\Board\MergeItemView.cs" />
-    <Compile Include="Assets\App\Save\JsonSaveService.cs" />
     <Compile Include="Assets\App\Presentation\GlobalBus.cs" />
     <Compile Include="Assets\App\Content\AddressableGraphLoader.cs" />
     <Compile Include="Assets\App\Leads\Runtime\LeadsBarRuntimeBinder.cs" />
@@ -116,7 +115,6 @@
     <Compile Include="Assets\App\UI\Leads\TierSetPopup.cs" />
     <Compile Include="Assets\App\UI\MergeBoard\SimplePool.cs" />
     <Compile Include="Assets\App\UI\Narrative\INarrativeEngine.cs" />
-    <Compile Include="Assets\App\Save\SaveBlob.cs" />
     <Compile Include="Assets\App\UI\Theme\ThemeBinderText.cs" />
     <Compile Include="Assets\App\UI\Board\BoardInputAdapter.cs" />
     <Compile Include="Assets\App\FTUE\FTUEEntitlements.cs" />
@@ -128,7 +126,6 @@
     <Compile Include="Assets\App\CaseFlow\CaseResolutionService.cs" />
     <Compile Include="Assets\App\CaseFlow\CaseFlowLeadBridgeMB.cs" />
     <Compile Include="Assets\App\Overflow\OverflowBucketService.cs" />
-    <Compile Include="Assets\App\Save\SaveLoadDriver.cs" />
     <Compile Include="Assets\App\UI\Theme\Binders\ThemeTMPBinder.cs" />
     <Compile Include="Assets\App\UnityAdapters\UnityPersistentPathProvider.cs" />
     <Compile Include="Assets\App\Leads\LeadsRuntimeBus.cs" />

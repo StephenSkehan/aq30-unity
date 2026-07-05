@@ -204,17 +204,26 @@ namespace AQ.App.UI.Board
         public void TryLoad()
         {
             if (board == null) return;
-            if (!File.Exists(_pathLive)) return;
+
+            // A crash between the two File.Moves in TrySave can leave only the
+            // .prev backup on disk, so a missing/corrupt live file falls back to it.
+            if (!LoadFrom(_pathLive))
+                LoadFrom(_pathPrev);
+        }
+
+        private bool LoadFrom(string path)
+        {
+            if (!File.Exists(path)) return false;
 
             try
             {
-                string json = File.ReadAllText(_pathLive, Encoding.UTF8);
+                string json = File.ReadAllText(path, Encoding.UTF8);
                 var dto = JsonUtility.FromJson<SaveDTO>(json);
 
                 if (dto == null || dto.cells == null)
                 {
-                    Debug.LogWarning("[Save] load failed (schema mismatch). Resetting with notice.");
-                    return;
+                    Debug.LogWarning($"[Save] load failed (schema mismatch): {path}");
+                    return false;
                 }
 
                 ApplyCells(dto);
@@ -223,11 +232,13 @@ namespace AQ.App.UI.Board
                 ApplyCaseFlow(dto.caseFlow);
                 ApplyLeads(dto.leads);
 
-                Debug.Log($"[Save] loaded {dto.cells.Count} cells, {dto.leads?.Count ?? 0} leads from {_pathLive}");
+                Debug.Log($"[Save] loaded {dto.cells.Count} cells, {dto.leads?.Count ?? 0} leads from {path}");
+                return true;
             }
             catch (Exception ex)
             {
-                Debug.LogWarning($"[Save] load failed: {ex.Message}. Resetting with notice.");
+                Debug.LogWarning($"[Save] load failed: {ex.Message}. Path={path}");
+                return false;
             }
         }
 
@@ -459,8 +470,10 @@ namespace AQ.App.UI.Board
                     if (flags != null && flags.EnergySystem)
                     {
                         h = h * 31 + wallet.Get(Currency.Energy);
+                        // Must not depend on wall-clock "now": a now-relative term changes
+                        // every second and made the debounced save fire continuously.
                         if (EnergyRuntime.Manager != null)
-                            h = h * 31 + (int)(DateTime.UtcNow - EnergyRuntime.Manager.LastTickUtc).TotalSeconds;
+                            h = h * 31 + EnergyRuntime.Manager.LastTickUtc.GetHashCode();
                     }
                 }
 

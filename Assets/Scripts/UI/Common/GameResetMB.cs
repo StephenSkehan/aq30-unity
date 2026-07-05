@@ -103,7 +103,6 @@ public class GameResetMB : MonoBehaviour, IPointerClickHandler
             wallet.TrySpend(Currency.Energy,  wallet.Get(Currency.Energy),  "reset");
         }
 
-        JsonSaveService.Clear();
         BoardSaveSystem.ClearSave();
         PlayerPrefs.DeleteAll();
         Destroy(_dialogRoot);
