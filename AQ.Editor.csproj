@@ -66,6 +66,7 @@
     <Compile Include="Assets\Editor\UI\Board\BoardSanityAudit.cs" />
     <Compile Include="Assets\Editor\Diag\DialoguePanelDiagnostics.cs" />
     <Compile Include="Assets\Editor\Diag\SetupDialogueDemo.cs" />
+    <Compile Include="Assets\Editor\AQ\AppBrandingSetup.cs" />
     <Compile Include="Assets\Editor\Diag\RebuildDialoguePanelFromScratch.cs" />
     <Compile Include="Assets\Editor\AQ\Audit\Audit_MergeBoardScene.cs" />
     <Compile Include="Assets\Editor\Diag\CopyTestPanelToDialogue.cs" />
