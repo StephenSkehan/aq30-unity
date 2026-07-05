@@ -26,6 +26,10 @@ namespace AQ.App.UI.Board
 
         Image bgImage;          // child "Bg"
         public Image itemImage; // child "Item"
+        Image energyBadge;      // child "EnergyBadge", created on demand, generators only
+
+        static Sprite _energyBadgeSprite;
+        static bool _energyBadgeSpriteLoaded;
 
         public struct PayloadData
         {
@@ -122,6 +126,45 @@ namespace AQ.App.UI.Board
                 itemImage.sprite = payload.sprite;
                 itemImage.enabled = true;
             }
+
+            RefreshEnergyBadge();
+        }
+
+        void RefreshEnergyBadge()
+        {
+            bool show = payload.kind == TileKind.Generator && itemImage != null && itemImage.enabled;
+
+            if (!show)
+            {
+                if (energyBadge) energyBadge.enabled = false;
+                return;
+            }
+
+            if (!energyBadge)
+            {
+                if (!_energyBadgeSpriteLoaded)
+                {
+                    _energyBadgeSpriteLoaded = true;
+                    _energyBadgeSprite = Resources.Load<Sprite>("App/UI/MergeBoard/energy_badge");
+                }
+                if (_energyBadgeSprite == null) return;
+
+                var go = new GameObject("EnergyBadge", typeof(RectTransform), typeof(Image));
+                var rt = (RectTransform)go.transform;
+                rt.SetParent(transform, false);
+                rt.SetAsLastSibling();
+                rt.anchorMin = new Vector2(0.03f, 0.03f);
+                rt.anchorMax = new Vector2(0.38f, 0.38f);
+                rt.offsetMin = Vector2.zero;
+                rt.offsetMax = Vector2.zero;
+
+                energyBadge = go.GetComponent<Image>();
+                energyBadge.sprite = _energyBadgeSprite;
+                energyBadge.preserveAspect = true;
+                energyBadge.raycastTarget = false;
+            }
+
+            energyBadge.enabled = true;
         }
 
         public void SnapToGrid()
@@ -175,6 +218,7 @@ namespace AQ.App.UI.Board
                 (RectTransform)controller.boardRoot);
 
             itemImage.enabled = false;
+            if (energyBadge) energyBadge.enabled = false;
             Follow(eventData);
         }
 
