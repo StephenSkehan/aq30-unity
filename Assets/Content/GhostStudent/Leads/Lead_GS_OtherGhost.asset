@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -40,3 +40,4 @@ MonoBehaviour:
   EnergyGrant: 0
   resolutionDialogue: {fileID: 11400000, guid: c5d6e7f8a9b0c5d6e7f8a9b0c5d6e7f8, type: 2}
   OutcomeHints: 6
+  boardPhase: 2

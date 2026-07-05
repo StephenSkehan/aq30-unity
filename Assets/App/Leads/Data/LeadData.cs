@@ -68,6 +68,9 @@ namespace AQ.App.Leads
         [Tooltip("LeadIds this lead connects to on the evidence board. Draw a string when both ends are resolved.")]
         public string[] boardConnections = System.Array.Empty<string>();
 
+        [Tooltip("Phase cluster this lead's card belongs to on the evidence board (1-based).")]
+        public int boardPhase = 1;
+
         // ---- ILeadCardModel ----
         string ILeadCardModel.Title        => title;
         string ILeadCardModel.Subtitle     => subtitle;

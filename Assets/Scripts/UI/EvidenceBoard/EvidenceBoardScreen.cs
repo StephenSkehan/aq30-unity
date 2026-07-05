@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AQ.App;
+using AQ.App.CaseFlow;
 using AQ.App.Leads;
 using TMPro;
 using UnityEngine;
@@ -18,13 +19,16 @@ namespace AQ.App.UI.EvidenceBoard
         private static DialogueRunner  _dialogueRunner;
         private static bool            _isOpen;
 
-        private const float BoardW        = 2160f;
-        private const float BoardH        = 3840f;
-        private const float DefaultScale  = 0.65f;
-        private const float MinZoom       = 0.4f;
-        private const float MaxZoom       = 2.5f;
-        private const float PinPadding    = 220f;
-        private const float MinSeparation = 320f;
+        private const float BoardW         = 2160f;
+        private const float BoardH         = 3840f;
+        private const float DefaultScale   = 0.65f;
+        private const float MinZoom        = 0.4f;
+        private const float MaxZoom        = 2.5f;
+        private const float CardColSpacing = 500f;
+        private const float CardRowSpacing = 380f;
+        private const float PhotoSpacing   = 300f;
+
+        private static readonly List<CaseFlowDebugOverlayMB> _pausedOverlays = new();
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Init()
@@ -52,7 +56,9 @@ namespace AQ.App.UI.EvidenceBoard
 
             var canvas            = _root.GetComponent<Canvas>();
             canvas.renderMode     = RenderMode.ScreenSpaceOverlay;
-            canvas.sortingOrder   = 10;
+            // Above HUD widgets (OverflowBucketView 200, CaseResolutionScreen 200),
+            // below dialogs/modals at 9999.
+            canvas.sortingOrder   = 300;
 
             var scaler                 = _root.GetComponent<CanvasScaler>();
             scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
@@ -73,9 +79,15 @@ namespace AQ.App.UI.EvidenceBoard
             else
                 bgImg.color = new Color(0.76f, 0.60f, 0.42f, 1f);
 
+            // Viewport mask — keeps pins off the cork frame, the title, and the screen edges
+            var viewport = MakeStretch("Viewport", _root.transform);
+            viewport.offsetMin = new Vector2(70f, 140f);
+            viewport.offsetMax = new Vector2(-70f, -135f);
+            viewport.gameObject.AddComponent<RectMask2D>();
+
             // Board content — panned and zoomed
             var boardGo       = new GameObject("BoardContent", typeof(RectTransform));
-            boardGo.transform.SetParent(_root.transform, false);
+            boardGo.transform.SetParent(viewport, false);
             _boardContent               = boardGo.GetComponent<RectTransform>();
             _boardContent.anchorMin     = new Vector2(0.5f, 0.5f);
             _boardContent.anchorMax     = new Vector2(0.5f, 0.5f);
@@ -191,6 +203,15 @@ namespace AQ.App.UI.EvidenceBoard
 
             PopulateBoard();
 
+            // IMGUI debug overlays draw above every canvas; pause them while open.
+            _pausedOverlays.Clear();
+            foreach (var overlay in Object.FindObjectsByType<CaseFlowDebugOverlayMB>(FindObjectsSortMode.None))
+            {
+                if (!overlay.show) continue;
+                overlay.show = false;
+                _pausedOverlays.Add(overlay);
+            }
+
             _cg.alpha           = 1f;
             _cg.blocksRaycasts  = true;
             _cg.interactable    = true;
@@ -211,6 +232,10 @@ namespace AQ.App.UI.EvidenceBoard
             _cg.blocksRaycasts = false;
             _cg.interactable   = false;
             _isOpen            = false;
+
+            foreach (var overlay in _pausedOverlays)
+                if (overlay != null) overlay.show = true;
+            _pausedOverlays.Clear();
 
             if (_btnCg != null)
             {
@@ -250,35 +275,57 @@ namespace AQ.App.UI.EvidenceBoard
 
             if (resolvedLeads.Count == 0) return;
 
-            var placed    = new List<Vector2>();
-            var cardRts   = new Dictionary<string, RectTransform>();
+            var cardRts    = new Dictionary<string, RectTransform>();
             var tackSprite = Resources.Load<Sprite>("App/UI/EvidenceBoard/push_pin");
 
+            float y = BoardH / 2f - 500f;
+
+            // Cast row — one photo per unique portrait
+            var seenPortraits = new HashSet<Sprite>();
+            var cast = new List<LeadData>();
+            foreach (var lead in resolvedLeads)
+                if (lead.actorPortrait != null && seenPortraits.Add(lead.actorPortrait))
+                    cast.Add(lead);
+
+            for (int i = 0; i < cast.Count; i++)
+            {
+                float x = (i - (cast.Count - 1) / 2f) * PhotoSpacing;
+                CharacterPhotoPin.Create(_boardContent, cast[i], resolvedLeads,
+                    new Vector2(x, y), OnReplayLeadDialogue, tackSprite, CharacterNameFor(cast[i]));
+            }
+            if (cast.Count > 0) y -= 420f;
+
+            // Lead cards clustered by phase, in database order within each phase
+            var phases = new SortedDictionary<int, List<LeadData>>();
             foreach (var lead in resolvedLeads)
             {
-                // Index card
-                var cardPos = GetDeterministicPosition(lead.leadId + "_card", placed, new Vector2(380f, 300f));
-                placed.Add(cardPos);
-                var cardRt = LeadCardPin.Create(_boardContent, lead, cardPos, OnLeadCardTapped, tackSprite);
-                cardRts[lead.leadId] = cardRt;
+                int p = Mathf.Max(1, lead.boardPhase);
+                if (!phases.TryGetValue(p, out var list)) phases[p] = list = new List<LeadData>();
+                list.Add(lead);
+            }
 
-                // Character photo
-                var photoPos = GetDeterministicPosition(lead.leadId + "_photo", placed, new Vector2(260f, 310f));
-                placed.Add(photoPos);
-                CharacterPhotoPin.Create(_boardContent, lead, resolvedLeads, photoPos, OnReplayLeadDialogue, tackSprite);
+            const int cols = 3;
+            foreach (var kv in phases)
+            {
+                CreatePhaseLabel("PHASE " + kv.Key, new Vector2(0f, y));
+                y -= 200f;
 
-                // Evidence item pins for each satisfied requirement
-                if (lead.requirements != null)
+                var leads = kv.Value;
+                int rows  = (leads.Count + cols - 1) / cols;
+                for (int i = 0; i < leads.Count; i++)
                 {
-                    foreach (var req in lead.requirements)
-                    {
-                        if (!req.IsSatisfied) continue;
-                        string label = req.Label ?? "Evidence";
-                        var itemPos  = GetDeterministicPosition(lead.leadId + "_" + label, placed, new Vector2(220f, 220f));
-                        placed.Add(itemPos);
-                        EvidenceItemPin.Create(_boardContent, label, req.Icon, itemPos, tackSprite);
-                    }
+                    int row   = i / cols;
+                    int inRow = Mathf.Min(cols, leads.Count - row * cols);
+                    var rng   = new System.Random(leads[i].leadId.GetHashCode());
+                    float jx  = (float)(rng.NextDouble() * 50.0 - 25.0);
+                    float jy  = (float)(rng.NextDouble() * 36.0 - 18.0);
+                    float x   = (i % cols - (inRow - 1) / 2f) * CardColSpacing + jx;
+
+                    var cardRt = LeadCardPin.Create(_boardContent, leads[i],
+                        new Vector2(x, y - row * CardRowSpacing + jy), OnLeadCardTapped, tackSprite);
+                    cardRts[leads[i].leadId] = cardRt;
                 }
+                y -= rows * CardRowSpacing + 60f;
             }
 
             // String connections — draw after all pins so RTs are valid, behind everything
@@ -303,30 +350,46 @@ namespace AQ.App.UI.EvidenceBoard
                 Object.Destroy(_boardContent.GetChild(i).gameObject);
         }
 
-        // ---- Deterministic placement ----
+        // ---- Cluster helpers ----
 
-        private static Vector2 GetDeterministicPosition(string seed, List<Vector2> placed, Vector2 pinSize)
+        private static string CharacterNameFor(LeadData lead)
         {
-            float halfW = BoardW / 2f - PinPadding - pinSize.x / 2f;
-            float halfH = BoardH / 2f - PinPadding - pinSize.y / 2f;
-            var   rng   = new System.Random(seed.GetHashCode());
+            // Portrait art is the only character identity on LeadData today;
+            // map the known sprite families, fall back to the lead title.
+            var n = lead.actorPortrait != null ? lead.actorPortrait.name.ToLowerInvariant() : string.Empty;
+            if (n.Contains("ally"))   return "Ally Quinn";
+            if (n.Contains("gerald")) return "Gerald Quinn";
+            return lead.title;
+        }
 
-            Vector2 candidate = Vector2.zero;
-            for (int attempt = 0; attempt < 20; attempt++)
-            {
-                float x   = (float)(rng.NextDouble() * halfW * 2.0 - halfW);
-                float y   = (float)(rng.NextDouble() * halfH * 2.0 - halfH);
-                candidate = new Vector2(x, y);
+        private static void CreatePhaseLabel(string text, Vector2 pos)
+        {
+            var go = new GameObject("PhaseLabel_" + text, typeof(RectTransform), typeof(Image));
+            var rt = (RectTransform)go.transform;
+            rt.SetParent(_boardContent, false);
+            rt.anchorMin        = rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.pivot            = new Vector2(0.5f, 0.5f);
+            rt.sizeDelta        = new Vector2(560f, 110f);
+            rt.anchoredPosition = pos;
+            rt.localRotation    = Quaternion.Euler(0f, 0f, -1.5f);
 
-                bool clear = true;
-                foreach (var p in placed)
-                {
-                    if (Vector2.Distance(candidate, p) < MinSeparation) { clear = false; break; }
-                }
-                if (clear) return candidate;
-            }
+            var img           = go.GetComponent<Image>();
+            img.color         = new Color(0.94f, 0.90f, 0.78f, 1f);
+            img.raycastTarget = false;
 
-            return candidate;
+            var lblGo = new GameObject("Text", typeof(RectTransform));
+            lblGo.transform.SetParent(rt, false);
+            var lblRt       = (RectTransform)lblGo.transform;
+            lblRt.anchorMin = Vector2.zero;
+            lblRt.anchorMax = Vector2.one;
+            lblRt.offsetMin = lblRt.offsetMax = Vector2.zero;
+            var tmp           = lblGo.AddComponent<TextMeshProUGUI>();
+            tmp.text          = text;
+            tmp.fontSize      = 52f;
+            tmp.fontStyle     = FontStyles.Bold;
+            tmp.color         = new Color(0.20f, 0.10f, 0.05f, 0.9f);
+            tmp.alignment     = TextAlignmentOptions.Center;
+            tmp.raycastTarget = false;
         }
 
         // ---- Dialogue replay ----

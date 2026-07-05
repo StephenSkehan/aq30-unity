@@ -16,7 +16,8 @@ namespace AQ.App.UI.EvidenceBoard
         private Action<LeadData> _onReplay;
 
         public static RectTransform Create(RectTransform parent, LeadData lead,
-            List<LeadData> relatedLeads, Vector2 pos, Action<LeadData> onReplay, Sprite tackSprite = null)
+            List<LeadData> relatedLeads, Vector2 pos, Action<LeadData> onReplay,
+            Sprite tackSprite = null, string displayName = null)
         {
             var card              = MakeRect("Photo_" + lead.leadId, parent);
             card.anchorMin        = new Vector2(0.5f, 0.5f);
@@ -54,7 +55,7 @@ namespace AQ.App.UI.EvidenceBoard
             nRt.offsetMin        = new Vector2(6f, 4f);
             nRt.offsetMax        = new Vector2(-6f, 0f);
             var nTmp             = nRt.gameObject.AddComponent<TextMeshProUGUI>();
-            nTmp.text            = lead.title;
+            nTmp.text            = displayName ?? lead.title;
             nTmp.fontSize        = 21f;
             nTmp.fontStyle       = FontStyles.Bold;
             nTmp.color           = new Color(0.10f, 0.05f, 0.02f, 1f);

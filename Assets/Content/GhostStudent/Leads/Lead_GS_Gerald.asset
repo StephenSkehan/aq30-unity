@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -40,3 +40,4 @@ MonoBehaviour:
   resolutionDialogue: {fileID: 11400000, guid: d4e5f6a7b8c9d4e5f6a7b8c9d4e5f6a7, type: 2}
   OutcomeHints: 6
   boardConnections: []
+  boardPhase: 2

@@ -77,7 +77,6 @@
     <Compile Include="Assets\Scripts\Dev\EnergyDevHotkeys.cs" />
     <Compile Include="Assets\Scripts\UI\Board\DragGhost.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardZoomPan.cs" />
-    <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceItemPin.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\SoftCurrencyHudTMP.cs" />
     <Compile Include="Assets\Scripts\App\Presentation\MergeEventsBridge.cs" />
     <Compile Include="Assets\Scripts\UI\Board\MergeBoardController.cs" />
