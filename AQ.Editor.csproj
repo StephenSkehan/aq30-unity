@@ -68,6 +68,7 @@
     <Compile Include="Assets\Editor\Diag\SetupDialogueDemo.cs" />
     <Compile Include="Assets\Editor\AQ\AppBrandingSetup.cs" />
     <Compile Include="Assets\Editor\Diag\RebuildDialoguePanelFromScratch.cs" />
+    <Compile Include="Assets\Editor\AQ\IOSPostBuild.cs" />
     <Compile Include="Assets\Editor\AQ\Audit\Audit_MergeBoardScene.cs" />
     <Compile Include="Assets\Editor\Diag\CopyTestPanelToDialogue.cs" />
     <Compile Include="Assets\Editor\AQ\Audit\LeadAuditor.cs" />
