@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: aq30-unity
+  companyName: Indigo Chimp Studios
+  productName: Ally Quinn
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.023529412, g: 0.039215688, b: 0.078431375, a: 1}
