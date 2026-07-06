@@ -41,10 +41,23 @@ namespace AQ.App.UI.Board
         private float _nextSaveAt = -1f;
         private int _lastSnapshotHash;
 
+        /// <summary>
+        /// True once this scene's save (or absence of one) has been applied to the
+        /// wallet. Restore is destructive (set-to-saved), so anything of real-money
+        /// value — IAP credits, restored purchases — must not be granted until this
+        /// is true. Goes false again during a scene reload until the new Start() runs.
+        /// </summary>
+        public static bool WalletRestored { get; private set; }
+
+        /// <summary>Fired right after WalletRestored becomes true.</summary>
+        public static event Action WalletRestoreCompleted;
+
         // --------------- Unity ---------------
 
         private void Awake()
         {
+            WalletRestored = false;
+
             if (!board)
                 board = FindFirstObjectByType<MergeBoardController>();
 
@@ -56,10 +69,36 @@ namespace AQ.App.UI.Board
             _pathPrev = Path.Combine(root, Path.GetFileNameWithoutExtension(_pathLive) + ".prev.json");
         }
 
+        private IWallet _observedWallet;
+
         private void Start()
         {
             TryLoad();
             _lastSnapshotHash = SnapshotHash();
+
+            WalletRestored = true;
+            WalletRestoreCompleted?.Invoke();
+
+            // Subscribed after restore so the restore grants themselves don't save.
+            _observedWallet = WalletLocator.Instance;
+            if (_observedWallet != null)
+                _observedWallet.Changed += OnWalletChanged;
+        }
+
+        private void OnDestroy()
+        {
+            if (_observedWallet != null)
+                _observedWallet.Changed -= OnWalletChanged;
+        }
+
+        // Premium is real-money value: persist immediately instead of waiting out
+        // the debounce window, so a crash can't eat a purchase credit.
+        private void OnWalletChanged(WalletChanged e)
+        {
+            if (e.Currency != Currency.Premium) return;
+            TrySave();
+            _lastSnapshotHash = SnapshotHash();
+            _nextSaveAt = -1f;
         }
 
         private void LateUpdate()
@@ -112,6 +151,7 @@ namespace AQ.App.UI.Board
         private sealed class WalletDTO
         {
             public int soft;
+            public int premium;
         }
 
         [Serializable]
@@ -358,7 +398,11 @@ namespace AQ.App.UI.Board
         {
             var wallet = WalletLocator.Instance;
             if (wallet == null) return null;
-            return new WalletDTO { soft = wallet.Get(Currency.Soft) };
+            return new WalletDTO
+            {
+                soft    = wallet.Get(Currency.Soft),
+                premium = wallet.Get(Currency.Premium)
+            };
         }
 
         private static void ApplyWallet(WalletDTO dto)
@@ -367,9 +411,16 @@ namespace AQ.App.UI.Board
             var wallet = WalletLocator.Instance;
             if (wallet == null) return;
 
-            int existing = wallet.Get(Currency.Soft);
-            if (existing > 0) wallet.TrySpend(Currency.Soft, existing);
-            if (dto.soft > 0)  wallet.Grant("save.restore", Reward.Soft(dto.soft));
+            // Restore is set-to-saved, not additive: it wipes anything granted
+            // earlier this boot. Grants of real-money value must wait for
+            // WalletRestored (see below).
+            int existingSoft = wallet.Get(Currency.Soft);
+            if (existingSoft > 0) wallet.TrySpend(Currency.Soft, existingSoft);
+            if (dto.soft > 0)     wallet.Grant("save.restore", Reward.Soft(dto.soft));
+
+            int existingPremium = wallet.Get(Currency.Premium);
+            if (existingPremium > 0) wallet.TrySpend(Currency.Premium, existingPremium);
+            if (dto.premium > 0)     wallet.Grant("save.restore", Reward.Premium(dto.premium));
         }
 
         private static CaseFlowDTO BuildCaseFlowDTO()
@@ -465,6 +516,7 @@ namespace AQ.App.UI.Board
                 if (wallet != null)
                 {
                     h = h * 31 + wallet.Get(Currency.Soft);
+                    h = h * 31 + wallet.Get(Currency.Premium);
 
                     var flags = FeatureFlagsRuntime.Current;
                     if (flags != null && flags.EnergySystem)
