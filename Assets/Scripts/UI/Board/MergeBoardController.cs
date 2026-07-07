@@ -302,7 +302,7 @@ namespace AQ.App.UI.Board
                     if (!wallet.TrySpend(Currency.Energy, 1, "generator.spawn"))
                     {
                         Log("Energy insufficient — spawn cancelled.");
-                        ToastService.Show("out_of_energy", "Out of energy.", 1.8f);
+                        EnergyOutPopup.Show();
                         return;
                     }
                 }
