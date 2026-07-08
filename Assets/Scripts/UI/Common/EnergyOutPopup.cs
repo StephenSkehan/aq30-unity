@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using AQ.App.Economy;
 using AQ.App.Services;
+using AQ.App.Services.Ads;
 using AQ.App.Services.Purchasing;
 using AQ.SharedKernel.Economy;
 
@@ -15,12 +16,12 @@ namespace AQ.App.UI.Common
     /// </summary>
     public static class EnergyOutPopup
     {
-        private const bool AdsEnabled = false; // Sprint 6 flips this
-
         private static GameObject _root;
         private static TextMeshProUGUI _balanceLbl;
         private static TextMeshProUGUI _refillLbl;
         private static Button _refillBtn;
+        private static TextMeshProUGUI _adLbl;
+        private static Button _adBtn;
 
         public static void Show()
         {
@@ -65,14 +66,10 @@ namespace AQ.App.UI.Common
             _refillLbl = _refillBtn.GetComponentInChildren<TextMeshProUGUI>();
             _refillBtn.onClick.AddListener(OnRefillClicked);
 
-#pragma warning disable CS0162
-            if (AdsEnabled)
-            {
-                var adBtn = MakeButton("Watch Ad  +20 Energy", panel,
-                    new Color(0.25f, 0.40f, 0.60f), new Vector2(0f, 100f), new Vector2(520f, 90f));
-                // Sprint 6: adBtn.onClick → rewarded ad flow
-            }
-#pragma warning restore CS0162
+            _adBtn = MakeButton("", panel, new Color(0.25f, 0.40f, 0.60f), new Vector2(0f, 100f), new Vector2(520f, 90f));
+            _adLbl = _adBtn.GetComponentInChildren<TextMeshProUGUI>();
+            _adBtn.onClick.AddListener(OnWatchAdClicked);
+            AdService.AvailabilityChanged += RefreshDynamic;
 
             AddLabel("GET PLATINUM INGOTS", panel, 34f, new Color(0.80f, 0.75f, 0.55f),
                      new Vector2(0f, 25f), new Vector2(600f, 50f), bold: true);
@@ -80,7 +77,7 @@ namespace AQ.App.UI.Common
             MakeProductButton(panel, PurchaseService.IngotsSmall,  "20 Ingots",              "A$1.99", new Vector2(-140f, -75f));
             MakeProductButton(panel, PurchaseService.IngotsMedium, "60 Ingots",              "A$4.99", new Vector2( 140f, -75f));
             MakeProductButton(panel, PurchaseService.IngotsLarge,  "150 Ingots",             "A$9.99", new Vector2(-140f, -215f));
-            MakeProductButton(panel, PurchaseService.StarterPack,  "Starter\n+300⚡  50 Ingots", "A$3.99", new Vector2(140f, -215f));
+            MakeProductButton(panel, PurchaseService.StarterPack,  "Starter Pack\n300 Energy + 50 Ingots", "A$3.99", new Vector2(140f, -215f));
 
             var close = MakeButton("Close", panel, new Color(0.35f, 0.20f, 0.20f), new Vector2(0f, -390f), new Vector2(280f, 90f));
             close.onClick.AddListener(Close);
@@ -93,11 +90,33 @@ namespace AQ.App.UI.Common
         {
             if (_root == null) return;
             PurchaseService.PurchaseSucceeded -= OnPurchaseSucceeded;
+            AdService.AvailabilityChanged -= RefreshDynamic;
             Object.Destroy(_root);
             _root = null;
             _balanceLbl = null;
             _refillLbl  = null;
             _refillBtn  = null;
+            _adLbl      = null;
+            _adBtn      = null;
+        }
+
+        private static void OnWatchAdClicked()
+        {
+            var ads = AdService.Instance;
+            if (ads == null || !ads.AdReady) return;
+
+            ads.ShowRewardedEnergy(rewarded =>
+            {
+                if (rewarded)
+                {
+                    ToastService.Show("ad_energy", $"+{AdService.EnergyPerAd} energy", 1.5f);
+                    Close();
+                }
+                else
+                {
+                    RefreshDynamic();
+                }
+            });
         }
 
         private static void OnRefillClicked()
@@ -146,6 +165,20 @@ namespace AQ.App.UI.Common
                 _refillBtn.GetComponent<Image>().color = affordable
                     ? new Color(0.18f, 0.52f, 0.35f)
                     : new Color(0.20f, 0.28f, 0.23f);
+            }
+
+            var ads = AdService.Instance;
+            if (_adBtn != null && _adLbl != null)
+            {
+                int left = ads != null ? ads.ViewsLeftToday : 0;
+                bool ready = ads != null && ads.AdReady;
+                _adLbl.text = left > 0
+                    ? $"Watch Ad  +{AdService.EnergyPerAd} Energy  ({left} left today)"
+                    : "Watch Ad  —  come back tomorrow";
+                _adBtn.interactable = ready;
+                _adBtn.GetComponent<Image>().color = ready
+                    ? new Color(0.25f, 0.40f, 0.60f)
+                    : new Color(0.22f, 0.28f, 0.36f);
             }
         }
 

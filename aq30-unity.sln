@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AQ.Editor", "AQ.Editor.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AQ.Tests", "AQ.Tests.csproj", "{F9179262-061F-DB22-F79A-867E3CFE95DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMobileAds.Editor", "GoogleMobileAds.Editor.csproj", "{1B9BCB04-68B2-CBFF-38FF-AD6F9D99D908}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.aq.sharedkernel.tests", "com.aq.sharedkernel.tests.csproj", "{536408DF-2BB5-BE54-CD1D-16E1798A3A27}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AQ.PlayModeNew.Tests", "AQ.PlayModeNew.Tests.csproj", "{265C4172-C165-8F65-425B-73D2E3F12A6B}"
@@ -43,6 +45,10 @@ Global
 		{F9179262-061F-DB22-F79A-867E3CFE95DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9179262-061F-DB22-F79A-867E3CFE95DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9179262-061F-DB22-F79A-867E3CFE95DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B9BCB04-68B2-CBFF-38FF-AD6F9D99D908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B9BCB04-68B2-CBFF-38FF-AD6F9D99D908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B9BCB04-68B2-CBFF-38FF-AD6F9D99D908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B9BCB04-68B2-CBFF-38FF-AD6F9D99D908}.Release|Any CPU.Build.0 = Release|Any CPU
 		{536408DF-2BB5-BE54-CD1D-16E1798A3A27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{536408DF-2BB5-BE54-CD1D-16E1798A3A27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{536408DF-2BB5-BE54-CD1D-16E1798A3A27}.Release|Any CPU.ActiveCfg = Release|Any CPU
