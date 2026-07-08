@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "165834937566",
+    "project_id": "allyquinn-b3c00",
+    "storage_bucket": "allyquinn-b3c00.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165834937566:ios:938694e52ba062d3a91e4f",
+        "android_client_info": {
+          "package_name": "com.skehan.allyquinn"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX3_4VQzF6vWjGFPfglNzFpU-j0XI3U48"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
