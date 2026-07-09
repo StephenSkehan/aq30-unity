@@ -57,11 +57,11 @@ namespace AQ.App.Analytics
             int delta = e.NewValue - e.OldValue;
             var evt = new Dictionary<string, object>
             {
-                ["currency"] = e.Currency.ToString(),
-                ["old"]      = e.OldValue,
-                ["@new"]     = e.NewValue,       // '@' to avoid reserved word collisions
-                ["delta"]    = delta,
-                ["reason"]   = e.Reason
+                ["currency"]  = e.Currency.ToString(),
+                ["old_value"] = e.OldValue,
+                ["new_value"] = e.NewValue,
+                ["delta"]     = delta,
+                ["reason"]    = e.Reason
             };
             AnalyticsLocator.Instance?.LogEvent("economy_changed", evt);
 
