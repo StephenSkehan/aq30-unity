@@ -58,6 +58,7 @@ namespace AQ.App.Leads
 
             if (lead.SoftCurrency > 0) wallet.Grant("lead.outcome", Reward.Soft(lead.SoftCurrency));
             if (lead.EnergyGrant  > 0) wallet.Grant("lead.outcome", Reward.Energy(lead.EnergyGrant));
+            if (lead.PremiumGrant > 0) wallet.Grant("lead.outcome", Reward.Premium(lead.PremiumGrant));
 
             if (!string.IsNullOrEmpty(lead.generatorRewardTypeId))
             {

@@ -41,13 +41,16 @@ MonoBehaviour:
   - gs_thomas_connection
   - gs_find_maya
   EvidenceIds: []
-  SpawnLeadIds: []
+  SpawnLeadIds:
+  - cold_case_a
+  - ep2_teaser
   BranchOutcomes: []
   NarrativeFlags:
   - gs.case_close.activated
   - gs.ep01.complete
   SoftCurrency: 500
-  EnergyGrant: 20
+  EnergyGrant: 
+  PremiumGrant: 3
   resolutionDialogue: {fileID: 11400000, guid: f8a9b0c1d2e3f8a9b0c1d2e3f8a9b0c1, type: 2}
   OutcomeHints: 4
   boardPhase: 2

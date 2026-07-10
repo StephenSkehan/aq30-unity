@@ -78,6 +78,8 @@ namespace AQ.App
 
         void SetupLayoutPanel()
         {
+            Panel.EnsureRuntimeChoiceUI();
+
             if (Panel.transform.Find("_Background") != null) return;
 
             var scaler = gameObject.GetComponent<UnityEngine.UI.CanvasScaler>();
@@ -196,11 +198,22 @@ namespace AQ.App
             if (!_booted) return;
 
             bool tapped = Input.GetMouseButtonDown(0);
-            if (!tapped && Input.touchCount > 0)
-                tapped = Input.GetTouch(0).phase == TouchPhase.Began;
+            Vector2 tapPos = Input.mousePosition;
+            if (!tapped && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                tapped = true;
+                tapPos = Input.GetTouch(0).position;
+            }
             if (!tapped) return;
 
-            if (_filteredChoices != null && _filteredChoices.Length > 0) return;
+            // Choices use the same raw-input path as advance (Button.onClick is
+            // unreliable on this panel — see EnsureRuntimeChoiceUI).
+            if (_filteredChoices != null && _filteredChoices.Length > 0)
+            {
+                int idx = Panel != null ? Panel.ChoiceIndexAtScreenPoint(tapPos) : -1;
+                if (idx >= 0) OnChoice(idx);
+                return;
+            }
 
             OnAdvance();
         }
@@ -237,8 +250,10 @@ namespace AQ.App
             var n = Graph.Get(_currentId);
             if (n == null) return;
 
-            // If node has choices, don't auto-advance (wait for choice)
-            if (n.choices != null && n.choices.Length > 0) return;
+            // If node has VISIBLE choices, don't auto-advance (wait for choice).
+            // Checks the filtered set: if flags hid every choice, fall through to
+            // linear progression instead of soft-locking.
+            if (_filteredChoices != null && _filteredChoices.Length > 0) return;
 
             // Linear progression
             if (!string.IsNullOrEmpty(n.nextId))

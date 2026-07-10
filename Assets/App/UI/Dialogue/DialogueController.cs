@@ -153,6 +153,72 @@ namespace AQ.App
         }
 
         /// <summary>
+        /// Creates two runtime choice buttons when the prefab has none assigned.
+        /// Buttons carry no onClick listeners on purpose: this panel's input is
+        /// raw (DialogueRunner.Update hit-tests) because EventSystem routing has
+        /// historically failed here — Button components exist for visuals only.
+        /// </summary>
+        public void EnsureRuntimeChoiceUI()
+        {
+            if (ChoiceButtons != null && ChoiceButtons.Length > 0) return;
+
+            const int count = 2;
+            ChoiceButtons = new Button[count];
+            ChoiceLabels  = new Text[count];
+
+            for (int i = 0; i < count; i++)
+            {
+                var go = new GameObject($"ChoiceBtn_{i}", typeof(RectTransform), typeof(Image), typeof(Button));
+                go.transform.SetParent(transform, false);
+                var rt = (RectTransform)go.transform;
+                // Stacked above the bottom dialogue strip (which spans 0..300/1920).
+                float bottom = (320f + i * 130f) / 1920f;
+                rt.anchorMin = new Vector2(0.06f, bottom);
+                rt.anchorMax = new Vector2(0.94f, bottom + 110f / 1920f);
+                rt.offsetMin = rt.offsetMax = Vector2.zero;
+
+                var img = go.GetComponent<Image>();
+                img.color = new Color(0.10f, 0.14f, 0.22f, 0.97f);
+
+                var lblGo = new GameObject("Label", typeof(RectTransform));
+                lblGo.transform.SetParent(rt, false);
+                var lblRt = (RectTransform)lblGo.transform;
+                lblRt.anchorMin = Vector2.zero;
+                lblRt.anchorMax = Vector2.one;
+                lblRt.offsetMin = new Vector2(24f, 6f);
+                lblRt.offsetMax = new Vector2(-24f, -6f);
+                var txt = lblGo.AddComponent<Text>();
+                txt.fontSize  = 34;
+                txt.color     = Color.white;
+                txt.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+                txt.alignment = TextAnchor.MiddleCenter;
+                txt.raycastTarget = false;
+
+                ChoiceButtons[i] = go.GetComponent<Button>();
+                ChoiceLabels[i]  = txt;
+                go.SetActive(false);
+            }
+        }
+
+        /// <summary>
+        /// Raw-input helper: returns the index of the visible choice button under
+        /// the screen point, or -1.
+        /// </summary>
+        public int ChoiceIndexAtScreenPoint(Vector2 screenPoint)
+        {
+            if (ChoiceButtons == null) return -1;
+            for (int i = 0; i < ChoiceButtons.Length; i++)
+            {
+                var b = ChoiceButtons[i];
+                if (b == null || !b.gameObject.activeInHierarchy) continue;
+                if (RectTransformUtility.RectangleContainsScreenPoint(
+                        (RectTransform)b.transform, screenPoint, null))
+                    return i;
+            }
+            return -1;
+        }
+
+        /// <summary>
         /// Update back button visibility based on history state.
         /// </summary>
         public void UpdateBackButton(bool canGoBack)

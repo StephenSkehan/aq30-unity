@@ -164,20 +164,30 @@ namespace AQ.App.Leads
         {
             if (states == null || states.Count == 0) return;
 
+            // Pass 1: register history and remove activated leads. Must run before
+            // state entries so a repeatable lead that was activated and later
+            // re-armed (present as BOTH an activated entry and a state entry)
+            // is not removed after its live state was applied.
             foreach (var saved in states)
             {
-                if (string.IsNullOrEmpty(saved.LeadId)) continue;
+                if (string.IsNullOrEmpty(saved.LeadId) || !saved.Activated) continue;
+                _activatedLeadIds.Add(saved.LeadId);
+                var resolved = _current.Find(l => l != null && l.leadId == saved.LeadId);
+                if (resolved != null) _current.Remove(resolved);
+            }
 
-                if (saved.Activated)
-                {
-                    _activatedLeadIds.Add(saved.LeadId);
-                    var resolved = _current.Find(l => l != null && l.leadId == saved.LeadId);
-                    if (resolved != null) _current.Remove(resolved);
-                    continue;
-                }
+            // Pass 2: apply live states, re-adding any lead pass 1 removed.
+            foreach (var saved in states)
+            {
+                if (string.IsNullOrEmpty(saved.LeadId) || saved.Activated) continue;
 
                 var lead = _current.Find(l => l != null && l.leadId == saved.LeadId);
-                if (lead == null) continue;
+                if (lead == null)
+                {
+                    lead = database != null ? database.FindById(saved.LeadId) : null;
+                    if (lead == null) continue;
+                    _current.Add(lead);
+                }
 
                 lead.RuntimeState = (LeadState)saved.RuntimeState;
 

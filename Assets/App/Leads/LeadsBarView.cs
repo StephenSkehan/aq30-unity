@@ -55,8 +55,12 @@ namespace AQ.App.Leads
         {
             if (lead == null) return;
             _lastFulfillId = lead.leadId;
-            _activatedCount++;
-            UpdateProgressLabel();
+            // boardPhase 0 = repeatables/teasers, outside the "X / 12" case arc.
+            if (lead.boardPhase > 0)
+            {
+                _activatedCount++;
+                UpdateProgressLabel();
+            }
         }
 
         public void Rebuild() { }

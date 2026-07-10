@@ -83,6 +83,7 @@
     <Compile Include="Assets\Editor\Diag\CreateTestPanel.cs" />
     <Compile Include="Assets\Editor\Diag\MakeDialoguePanelVisible.cs" />
     <Compile Include="Assets\Editor\UI\Board\BoardSaveMenu.cs" />
+    <Compile Include="Assets\Editor\AQ\TestChoiceDialogue.cs" />
     <Compile Include="Assets\Editor\Items\ItemRegistryWirer.cs" />
     <Compile Include="Assets\Editor\AQ\ConfigureGmaSettings.cs" />
     <Compile Include="Assets\Editor\Animation\TestPortraitAnimator.cs" />

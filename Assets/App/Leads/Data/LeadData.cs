@@ -52,6 +52,8 @@ namespace AQ.App.Leads
         public string[] NarrativeFlags;
         public int SoftCurrency;
         public int EnergyGrant;
+        [Tooltip("Platinum Ingots granted on activation (economy sheet: Very Hard band milestones).")]
+        public int PremiumGrant;
 
         [Header("Generator Reward")]
         [Tooltip("Push a generator of this type to the overflow bucket on lead activation. Empty = no generator reward.")]
@@ -68,7 +70,7 @@ namespace AQ.App.Leads
         [Tooltip("LeadIds this lead connects to on the evidence board. Draw a string when both ends are resolved.")]
         public string[] boardConnections = System.Array.Empty<string>();
 
-        [Tooltip("Phase cluster this lead's card belongs to on the evidence board (1-based).")]
+        [Tooltip("Phase cluster this lead's card belongs to on the evidence board (1-based). 0 = never shown on the board and excluded from case progress (repeatables, teasers).")]
         public int boardPhase = 1;
 
         // ---- ILeadCardModel ----

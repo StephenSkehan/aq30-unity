@@ -35,7 +35,7 @@ MonoBehaviour:
   NarrativeFlags:
   - gs.tip.activated
   - aq.loc.rusty_anchor.active
-  SoftCurrency: 50
+  SoftCurrency: 20
   EnergyGrant: 0
   generatorRewardTypeId: gen_junk
   generatorRewardTier: 0

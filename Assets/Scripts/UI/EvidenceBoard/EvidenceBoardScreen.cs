@@ -265,7 +265,7 @@ namespace AQ.App.UI.EvidenceBoard
 
             foreach (var lead in _repo.database.Leads)
             {
-                if (lead == null) continue;
+                if (lead == null || lead.boardPhase <= 0) continue; // repeatables/teasers stay off the board
                 if (DialogueFlags.Has("aq.lead." + lead.leadId + ".seen"))
                 {
                     resolvedIds.Add(lead.leadId);

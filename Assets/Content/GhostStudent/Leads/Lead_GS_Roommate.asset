@@ -36,7 +36,7 @@ MonoBehaviour:
   BranchOutcomes: []
   NarrativeFlags:
   - gs.roommate.activated
-  SoftCurrency: 100
+  SoftCurrency: 20
   EnergyGrant: 0
   resolutionDialogue: {fileID: 11400000, guid: 7b89d23a1f4c06e2937db48ae16f5c10, type: 2}
   OutcomeHints: 4

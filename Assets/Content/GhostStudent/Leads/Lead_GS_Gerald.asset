@@ -33,7 +33,7 @@ MonoBehaviour:
   NarrativeFlags:
   - gs.gerald.activated
   - aq.char.gerald.active
-  SoftCurrency: 50
+  SoftCurrency: 20
   EnergyGrant: 0
   generatorRewardTypeId: 
   generatorRewardTier: 0
