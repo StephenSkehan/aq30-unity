@@ -60,6 +60,28 @@ namespace AQ.App.Services.Ads
             if (Instance != null && Instance != this) { Destroy(gameObject); return; }
             Instance = this;
 
+            // The ads SDK must not start before the UMP/ATT consent flow resolves.
+            if (ConsentService.AdsAllowed)
+                InitializeAds();
+            else
+                ConsentService.ConsentResolved += OnConsentResolved;
+        }
+
+        private void OnDestroy()
+        {
+            ConsentService.ConsentResolved -= OnConsentResolved;
+            if (Instance == this) Instance = null;
+        }
+
+        private void OnConsentResolved()
+        {
+            ConsentService.ConsentResolved -= OnConsentResolved;
+            if (ConsentService.AdsAllowed) InitializeAds();
+            else AvailabilityChanged?.Invoke(); // button stays greyed
+        }
+
+        private void InitializeAds()
+        {
             MobileAds.Initialize(_ =>
             {
                 _initialized = true;

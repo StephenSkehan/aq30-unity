@@ -43,6 +43,13 @@ namespace AQ.App.UI.Settings
         private readonly List<TabDef> _tabs = new List<TabDef>();
         private int _activeTab = 0;
 
+        // External assemblies (e.g. Assembly-CSharp services) can contribute tabs.
+        // Must be called before the panel's first Show(), i.e. from a
+        // RuntimeInitializeOnLoadMethod(BeforeSceneLoad).
+        private static readonly List<(string label, Action<RectTransform> build)> _externalTabs = new();
+        public static void RegisterExternalTab(string label, Action<RectTransform> build)
+            => _externalTabs.Add((label, build));
+
         // ── ui references ─────────────────────────────────────────────────────
         private Canvas       _canvas;
         private RectTransform _panelRt;
@@ -65,7 +72,8 @@ namespace AQ.App.UI.Settings
         void Awake()
         {
             RegisterTab("Audio", BuildAudioTab);
-            // Future tabs: RegisterTab("Gameplay", BuildGameplayTab);
+            foreach (var (label, build) in _externalTabs)
+                RegisterTab(label, build);
         }
 
         void OnEnable() => Open();

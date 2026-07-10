@@ -21,6 +21,11 @@ namespace AQ.EditorTools
             // present, App Store Connect skips the per-build encryption questionnaire.
             plist.root.SetBoolean("ITSAppUsesNonExemptEncryption", false);
 
+            // Apple's ATT prompt purpose string (the system dialog's second line).
+            // The friendly pre-prompt explainer is the published AdMob IDFA message.
+            plist.root.SetString("NSUserTrackingUsageDescription",
+                "This lets us show ads that are more relevant to you and keep the game free. Your game progress is never linked to your identity.");
+
             plist.WriteToFile(plistPath);
         }
     }

@@ -104,6 +104,9 @@ public class GameResetMB : MonoBehaviour, IPointerClickHandler
         }
 
         BoardSaveSystem.ClearSave();
+        // DeleteAll also wipes UMP consent records (NSUserDefaults on iOS).
+        // Intentional: reset = cold-install semantics, and ConsentService
+        // re-gathers consent on every boot, so this stays GDPR-correct.
         PlayerPrefs.DeleteAll();
         Destroy(_dialogRoot);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

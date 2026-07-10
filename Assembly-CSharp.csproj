@@ -94,10 +94,12 @@
     <Compile Include="Assets\Scripts\UI\Board\BoardTools.cs" />
     <Compile Include="Assets\Scripts\Domain\Board\BoardRingTraversal.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
+    <Compile Include="Assets\Scripts\App\Services\Ads\ConsentService.cs" />
     <Compile Include="Assets\MergeBoardBoot.cs" />
     <Compile Include="Assets\Scripts\App\Bootstrap\ConfigInstaller.cs" />
     <Compile Include="Assets\Scripts\UI\Board\PocketDraggable.cs" />
     <Compile Include="Assets\Scripts\Util\EnsureAudioListener.cs" />
+    <Compile Include="Assets\Scripts\UI\Settings\PrivacySettingsTab.cs" />
     <Compile Include="Assets\Scripts\UI\Board\FX\BoardFxObserver.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\CharacterProfileModal.cs" />
     <Compile Include="Assets\Scripts\Dev\DevTestPanelMB.cs" />
