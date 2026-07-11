@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Episode 1 — The Listener · Script v1.2 (VO-lock candidate)</title>
+<style>
+  @page { size: A4; margin: 17mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font: 10.5pt/1.55 Georgia, 'Times New Roman', serif; color: #1c1a17; }
+  .cover { padding: 20pt 0 10pt; border-bottom: 3pt solid #0a1220; margin-bottom: 12pt; }
+  .kicker { font-family: Arial, sans-serif; font-size: 8.5pt; letter-spacing: 2pt; text-transform: uppercase; color: #8a8378; margin-bottom: 6pt; }
+  h1 { font-size: 20pt; line-height: 1.2; }
+  .meta { font-family: Arial, sans-serif; font-size: 8.5pt; color: #8a8378; margin-top: 6pt; }
+  h2 { font-family: Arial, sans-serif; font-size: 12pt; letter-spacing: 1pt; text-transform: uppercase; color: #0a1220; margin: 16pt 0 6pt; border-bottom: 2pt solid #0a1220; padding-bottom: 3pt; page-break-after: avoid; }
+  h3 { font-family: Arial, sans-serif; font-size: 9.5pt; letter-spacing: 1pt; text-transform: uppercase; margin: 11pt 0 4pt; color: #0a1220; border-bottom: 0.5pt solid #d8d3ca; padding-bottom: 2pt; page-break-after: avoid; }
+  p { margin-bottom: 6pt; text-align: justify; }
+  ul { margin: 0 0 6pt 18pt; }
+  li { margin-bottom: 2.5pt; }
+  table { width: 100%; border-collapse: collapse; margin: 5pt 0 10pt; font-size: 9.5pt; }
+  th { font-family: Arial, sans-serif; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.5pt; text-align: left; padding: 4pt 6pt; background: #0a1220; color: #f5f2ec; }
+  td { padding: 4.5pt 6pt; vertical-align: top; border-bottom: 0.5pt solid #d8d3ca; }
+  td.n { width: 20pt; font-family: Arial, sans-serif; color: #8a8378; }
+  td.sp { width: 82pt; font-family: Arial, sans-serif; font-size: 8.5pt; font-weight: bold; }
+  td.em { width: 52pt; font-family: Arial, sans-serif; font-size: 8.5pt; color: #9b2c2c; }
+  .lead { page-break-inside: avoid; }
+  .leadmeta { font-family: Arial, sans-serif; font-size: 8.5pt; color: #4a453d; background: #f3efe6; padding: 5pt 8pt; margin-bottom: 5pt; }
+  .vo { font-style: italic; color: #6b6459; font-size: 8.5pt; font-family: Arial, sans-serif; }
+  .dq { font-size: 12.5pt; font-style: italic; color: #0a1220; border-left: 3pt solid #9b2c2c; padding: 6pt 0 6pt 12pt; margin: 10pt 0; }
+  .check td:first-child { width: 230pt; font-family: Arial, sans-serif; font-size: 8.5pt; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="kicker">Ally Quinn: True Crime Merge · Echoes of Havenbay</div>
+  <h1>Episode 1 — The Listener<br><span style="font-size:12pt; font-weight:normal;">Full Production Script · v1.2 — VO-LOCK CANDIDATE</span></h1>
+  <div class="meta">v1.1 + third review pass: all 12 fix-before-recording items · 11 July 2026 · pending table read + runtime timing test</div>
+</div>
+
+<div class="dq">"Her last message to the show has no words in it. Forty seconds of someone else in her house."</div>
+
+<h2>Format canon &amp; the clock</h2>
+<p><strong>The tip line:</strong> "keeps voices, timestamps and nothing else. That's the promise." Anonymising by design. <strong>Temporality:</strong> case alerts during the investigation (L1, L5); full episode after (L12). <strong>The absolute clock:</strong> Dot's final message is timestamped <strong>3:04 a.m., Friday</strong>. The episode opens Monday (Day 1 — "three nights ago" is true exactly once, in L1). All later references use the weekday/timestamp, never relative time. Datelines: D1 Mon (L1–L3) · D2 Tue (L4–L5) · D3 Wed (L6–L8) · D4 Thu (L9–L10; both branch results land Day 4 — public by mid-afternoon, protected by evening) · D5 Fri (L11) · D6 Sat (L12).</p>
+
+<h2>Lead structure</h2>
+<table>
+  <tr><th>#</th><th>id</th><th>Type</th><th>Title</th><th>Day</th><th>Gates</th><th>Requirement framing (family)</th><th>Band</th></tr>
+  <tr><td>1</td><td>e1_tip</td><td>Podcast · VO</td><td>The Tip Line</td><td>1</td><td>start → spawns 2, 3</td><td>set up the rig (forensic — guaranteed one-merge, no randomness)</td><td>Easy · 20</td></tr>
+  <tr><td>2</td><td>e1_forty</td><td>Evidence</td><td>The Forty Seconds</td><td>1</td><td>spawned by 1</td><td>take the audio apart (forensic)</td><td>Easy · 20</td></tr>
+  <tr><td>3</td><td>e1_archive</td><td>Data</td><td>Three Years of Goodnights</td><td>1–2</td><td>spawned by 1</td><td>tag and cross-file the archive (forensic)</td><td>Standard · 50</td></tr>
+  <tr><td>4</td><td>e1_bridge</td><td>Discuss (Gerald)</td><td>The Volume-Up</td><td>2</td><td>2 + 3</td><td>a round at the Anchor (harbour/bar)</td><td>Standard · 50</td></tr>
+  <tr><td>5</td><td>e1_pod1</td><td>Podcast · VO</td><td>Case Alert: Dot Ellis</td><td>2</td><td>4 → spawns 6, 7, 8</td><td>cut and publish the alert (forensic)</td><td>Milestone · 200 + 20 energy</td></tr>
+  <tr><td>6</td><td>e1_cottage</td><td>Evidence</td><td>The Cold Kettle</td><td>3</td><td>spawned by 5</td><td>document the scene properly (fingerprint)</td><td>Hard · 95 — with progress toasts</td></tr>
+  <tr><td>7</td><td>e1_inspector</td><td>Interview</td><td>The Man Who Came at Noon</td><td>3</td><td>spawned by 5</td><td>door-knocking supplies (diner food)</td><td>Standard · 50</td></tr>
+  <tr><td>8</td><td>e1_boats</td><td>Money Trail</td><td>The Quiet Boats</td><td>3</td><td>spawned by 5</td><td>chart three years of river traffic (harbour/bar)</td><td>Hard · 95 — with progress toasts</td></tr>
+  <tr><td>9</td><td>e1_delcruz</td><td>Interview · BRANCH</td><td>Off the Record</td><td>4</td><td>7 + 8</td><td>case packet for the bench (forensic)</td><td>Standard · 50</td></tr>
+  <tr><td>10</td><td>e1_trail</td><td>Data</td><td>Where Dot Went</td><td>4</td><td>6 + 9</td><td>assemble the paper trail (forensic)</td><td>Standard · 50</td></tr>
+  <tr><td>11</td><td>e1_hills</td><td>Location · CLIMAX</td><td>The Hill Cottage</td><td>5</td><td>10</td><td>the drive up (harbour/bar)</td><td>Very Hard · 185 + 2 ingots — with progress toasts</td></tr>
+  <tr><td>12</td><td>e1_close</td><td>Podcast · VO</td><td>Goodnight, Harbour</td><td>6</td><td>11</td><td><strong>ceremonial:</strong> one low-tier item. Reward, not workload.</td><td>Milestone · 500 + 20 energy + 3 ingots</td></tr>
+</table>
+<p style="font-size:9pt;"><em>Portraits: Ally, Gerald, Dot, Del Cruz. Mo, Mrs. Vale, Vera quoted in narration. First merge goal opens after L1n3 (~45s); rig-merge is deterministic (pieces pre-placed). L6/L8/L11 emit per-requirement progress toasts (flavor strings specced in production notes). Flags: <code>aq.lead.e1_*.seen</code>; <code>e1.phase1.complete</code>; <code>e1.ep01.complete</code>; <code>aq.e1.truth_public</code>/<code>aq.e1.truth_protected</code> → PUBLIC TRUTH / PROTECTED TRUTH on case summary. Node counts generated from asset data.</em></p>
+
+<!-- ═══════ PHASE 1 ═══════ -->
+<h2>Phase 1</h2>
+
+<div class="lead">
+<h3>L1 · e1_tip — "The Tip Line" (Podcast, VO) · Day 1, Monday</h3>
+<div class="leadmeta">8–12s excerpt only; vague caption. First merge opens after n3 — one guaranteed merge, then n4–5.</div>
+<table>
+  <tr><th></th><th>Speaker</th><th>Emotion</th><th>Line</th></tr>
+  <tr><td class="n">1</td><td class="sp">Dot (voicemail)</td><td class="em">happy</td><td><span class="vo">[warm, amused, unhurried]</span> It's Dot from Rivermouth, love. Nothing worth troubling you with — the gulls held a parliament on my roof, and the quiet boats went by twice. Say goodnight to the harbour for me, Ally.</td></tr>
+  <tr><td class="n">2</td><td class="sp">Tip line — 3:04 a.m., Friday</td><td class="em">—</td><td>[An excerpt from her final message. Muffled movement inside a house. A strained metallic sound. An engine idling somewhere outside. It cuts off.]</td></tr>
+  <tr><td class="n">3</td><td class="sp">Ally</td><td class="em">neutral</td><td><span class="vo">[polished host voice, fatigue underneath]</span> My show ends the same way every week: I read out the tip-line number and say, tell me what this city won't. The line keeps voices, timestamps and nothing else. That's the promise. Dot has left the last message after every episode for three years.</td></tr>
+  <tr><td class="n" colspan="4" style="font-family:Arial; font-size:8pt; color:#9b2c2c;">▶ FIRST MERGE GOAL — "Set up the rig." Deterministic single merge. Nodes 4–5 on completion.</td></tr>
+  <tr><td class="n">4</td><td class="sp">Ally</td><td class="em">sad</td><td><span class="vo">[remorse under restraint]</span> Three nights ago — 3:04 on Friday morning — she left the message you just heard part of. Forty seconds. No words. She opened the line and let the house speak for her. It waited three days in my queue. I was busy making a show about listening.</td></tr>
+  <tr><td class="n">5</td><td class="sp">Ally</td><td class="em">neutral</td><td><span class="vo">[resolve; host register]</span> Dot, if you can hear this: goodnight, the harbour misses you. Everyone else — this is Echoes of Havenbay. The tip line is open. This week, it's mine to answer.</td></tr>
+</table>
+</div>
+
+<div class="lead">
+<h3>L2 · e1_forty — "The Forty Seconds" (Evidence) · Day 1</h3>
+<div class="leadmeta">Full recording as the object. Segment replay UI is a v1.x note — v1 presents discoveries as nodes. No relative dates.</div>
+<table>
+  <tr><th></th><th>Speaker</th><th>Emotion</th><th>Line</th></tr>
+  <tr><td class="n">1</td><td class="sp">Ally</td><td class="em">neutral</td><td>I loaded the whole of Friday's message into the studio. Forty seconds, one sound at a time.</td></tr>
+  <tr><td class="n">2</td><td class="sp">Ally</td><td class="em">neutral</td><td>First: a floorboard, twice. The same squeak opens twelve of her older messages — the same three footsteps before she starts talking. Her hall, by the phone table. Whoever moved on Friday was standing where Dot stands to talk to me.</td></tr>
+  <tr><td class="n">3</td><td class="sp">Ally</td><td class="em">neutral</td><td>Then a strained spring — her back door, opened slow. The way you open a door you don't want heard. And outside, faint but steady: a diesel engine, idling. Waiting for somebody.</td></tr>
+  <tr><td class="n">4</td><td class="sp">Ally</td><td class="em">surprised</td><td>The steps are the tell. Eight of them, unhurried, and every second one lands harder. I can't tell you he limps. I can tell you the house does, when he walks through it.</td></tr>
+  <tr><td class="n">5</td><td class="sp">Ally</td><td class="em">neutral</td><td>Somebody was in Dot's house at three in the morning. She kept the line open and her mouth shut — braver in forty seconds than most of us manage in a year. Now let's find her street.</td></tr>
+</table>
+</div>
+
+<div class="lead">
+<h3>L3 · e1_archive — "Three Years of Goodnights" (Data) · Day 1–2</h3>
+<table>
+  <tr><th></th><th>Speaker</th><th>Emotion</th><th>Line</th></tr>
+  <tr><td class="n">1</td><td class="sp">Ally</td><td class="em">neutral</td><td>Three years of messages, most under a minute. I used to pick one to close the show — Dot knew, and loved it. "Play the one about the gulls," she told me once. "I was very good in that one."</td></tr>
+  <tr><td class="n">2</td><td class="sp">Ally</td><td class="em">neutral</td><td>Tonight they're not a closing segment. They're a map. A school bell in the daytime messages — half past eight, then noon, term time only. And under the late calls, a low mechanical note every twenty-odd seconds.</td></tr>
+  <tr><td class="n">3</td><td class="sp">Ally</td><td class="em">worried</td><td>And the boats. Years of them, mentioned like weather. Then three weeks ago the message changed: "the pretty one came close tonight — two-note horn, no lights, and a funny mark on the funnel, like a fish-hook." I played that one on the show.</td></tr>
+  <tr><td class="n">4</td><td class="sp">Ally</td><td class="em">neutral</td><td>A school that rings at eight-thirty and noon. A machine that breathes every twenty seconds. Gerald has heard every machine this city ever built. Time to buy my grandfather a drink.</td></tr>
+</table>
+</div>
+
+<div class="lead">
+<h3>L4 · e1_bridge — "The Volume-Up" (Discuss — Gerald) · Day 2, Tuesday</h3>
+<table>
+  <tr><th></th><th>Speaker</th><th>Emotion</th><th>Line</th></tr>
+  <tr><td class="n">1</td><td class="sp">Ally</td><td class="em">neutral</td><td>The Anchor, Tuesday-quiet. Mo had the corner booth held before I asked. I handed Gerald the headphones and told him what was on them. He didn't flinch. He turned the volume up.</td></tr>
+  <tr><td class="n">2</td><td class="sp">Gerald</td><td class="em">neutral</td><td>Loop the low note for me, love. Just that. Nothing else in my ears.</td></tr>
+  <tr><td class="n">3</td><td class="sp">Ally</td><td class="em">neutral</td><td>I looped it. He counted under his breath, pencil ticking the table. Then he took the headphones off. Twenty-two seconds.</td></tr>
+  <tr><td class="n">4</td><td class="sp">Gerald</td><td class="em">worried</td><td>Swing-bridge counterweight — Rivermouth reach. The old crossing sings when boats run late. Your Dot lives close enough to hear the river breathe. So did the man in her hall. Mind how you go down there.</td></tr>
+  <tr><td class="n">5</td><td class="sp">Ally</td><td class="em">neutral</td><td>On the way out I played Mo three seconds of Dot's voice. She stopped polishing the glass. "Dorothy Ellis. Cleaned Chandler Road school thirty years. Tuesday quiz, table six — tell her it misses her." Rivermouth. Chandler Road. We're close.</td></tr>
+</table>
+</div>
+
+<div class="lead">
+<h3>L5 · e1_pod1 — "Case Alert: Dot Ellis" (Podcast, VO — milestone) · Day 2</h3>
+<div class="leadmeta">Street name kept OFF the public alert — the show practices what this episode preaches. Fires e1.phase1.complete.</div>
+<table>
+  <tr><th></th><th>Speaker</th><th>Emotion</th><th>Line</th></tr>
+  <tr><td class="n">1</td><td class="sp">Ally</td><td class="em">neutral</td><td><span class="vo">[host register, steadier than she feels]</span> This is Echoes of Havenbay, with a case alert. Her name is Dot Ellis, from Rivermouth. At 3:04 on Friday morning, someone was inside her house. She hasn't been heard from since.</td></tr>
+  <tr><td class="n">2</td><td class="sp">Ally</td><td class="em">neutral</td><td>Police logged a welfare check. No forced entry, no report from family, and an adult is allowed to leave home without explaining herself. They won't call it an abduction. I'm not asking them to — yet.</td></tr>
+  <tr><td class="n">3</td><td class="sp">Ally</td><td class="em">worried</td><td>So we do what this show does. We knock on Rivermouth's doors ourselves — and you'll notice I'm not saying her street on this feed. If you knew Dot Ellis, the tip line is open, and it keeps no names.</td></tr>
+  <tr><td class="n">4</td><td class="sp">Ally</td><td class="em">neutral</td><td><span class="vo">[quiet steel; to one listener]</span> One more thing, for whoever needs to hear it. She left us your footsteps. Eight of them — eight steps too slow to stay invisible. That was Friday. We're faster now.</td></tr>
+</table>
+</div>
+
+<!-- ═══════ PHASE 2 ═══════ -->
+<h2>Phase 2</h2>
+
+<div class="lead">
+<h3>L6 · e1_cottage — "The Cold Kettle" (Evidence) · Day 3, Wednesday</h3>
+<div class="leadmeta">Scene untouched — no glass. Progress toasts: "Mail: three days deep" · "The kitchen: packed in the dark".</div>
+<table>
+  <tr><th></th><th>Speaker</th><th>Emotion</th><th>Line</th></tr>
+  <tr><td class="n">1</td><td class="sp">Ally</td><td class="em">neutral</td><td>Eleven Chandler Road. A blue gate, a garden kept the way you keep a promise — and Dot's car in the drive, dry ground beneath it. It hasn't moved since before the rain.</td></tr>
+  <tr><td class="n">2</td><td class="sp">Ally</td><td class="em">neutral</td><td>Mrs. Vale next door has held the spare key for years — Dot's own arrangement: use it if the curtains stay shut two mornings running. This was the third. She went in first. I followed.</td></tr>
+  <tr><td class="n">3</td><td class="sp">Ally</td><td class="em">sad</td><td>Kettle cold. Bed made. Reading glasses gone, coat gone, the little case she took to church gone. She packed — quick, in the dark, but she packed. You don't pack for the river.</td></tr>
+  <tr><td class="n">4</td><td class="sp">Ally</td><td class="em">surprised</td><td>The hall table: her phone charger, empty. The phone was gone. I hoped that meant it went with her. And on the cradle, dead centre, where the phone should sleep — a coin. Old brass, worn smooth. Placed. Not dropped.</td></tr>
+  <tr><td class="n">5</td><td class="sp">Ally</td><td class="em">worried</td><td>I didn't touch it. I photographed where it lay, backed us both out of the hall, and kept the room untouched until Del arrived. Gerald's answer to the photo took a full minute: "Where was it." Then: "Don't put that on the show, love."</td></tr>
+  <tr><td class="n">6</td><td class="sp">Ally</td><td class="em">neutral</td><td>I've heard my grandfather discuss murders with his mouth full. I've never heard him go quiet. Back to work.</td></tr>
+</table>
+</div>
+
+<div class="lead">
+<h3>L7 · e1_inspector — "The Man Who Came at Noon" (Interview) · Day 3</h3>
+<div class="leadmeta">The dead rear lamp planted here — pays off at L11 and grounds the protected-branch trace.</div>
+<table>
+  <tr><th></th><th>Speaker</th><th>Emotion</th><th>Line</th></tr>
+  <tr><td class="n">1</td><td class="sp">Ally</td><td class="em">neutral</td><td>Rivermouth doors open for coffee and a box from the Corner Diner — they packed it heavy when they heard why. Mrs. Vale remembered him without prompting: a gas man, ten days back, lanyard doing the work. No company name she knew. Nobody had scheduled anything.</td></tr>
+  <tr><td class="n">2</td><td class="sp">Ally</td><td class="em">surprised</td><td>Her doorbell camera kept eleven seconds of him. Tall. Careful. Face angled off-lens like a man with practice. Every second step lands heavier — the house wasn't imagining. And at the edge of frame, a pale van waited at the kerb. Left rear lamp, dead.</td></tr>
+  <tr><td class="n">3</td><td class="sp">Ally</td><td class="em">worried</td><td>He went to Dot's door first. Twenty minutes inside, in daylight. My working theory: the first visit mapped what her window could see. The second came back for whatever she'd kept of it.</td></tr>
+  <tr><td class="n">4</td><td class="sp">Ally</td><td class="em">neutral</td><td>Whether he came to frighten her, or silence her, or worse — I don't get to know that yet, and neither do you. What I know: he plans, he returns, and he's on camera. Eleven seconds and one dead lamp are more than he ever meant anyone to have.</td></tr>
+</table>
+</div>
+
+<div class="lead">
+<h3>L8 · e1_boats — "The Quiet Boats" (Money Trail) · Day 3</h3>
+<div class="leadmeta">Money Trail earned: no manifests = money outside the system. Progress toasts: "Pattern: low out, high back" · "Three weeks ago: the fish-hook". Ally's single <em>angry</em>.</div>
+<table>
+  <tr><th></th><th>Speaker</th><th>Emotion</th><th>Line</th></tr>
+  <tr><td class="n">1</td><td class="sp">Ally</td><td class="em">neutral</td><td>Back to the archive with worse eyes. Every boat mention, three years, laid end to end. Low in the water going out. Riding high coming back. And the port register shows no manifest, ever, for a night crossing on that reach. Cargo that officially doesn't exist is money that officially doesn't move.</td></tr>
+  <tr><td class="n">2</td><td class="sp">Ally</td><td class="em">neutral</td><td>Insomnia made Dot a scientist. Same window, same hours, decades of nights. She wasn't spying. She just knew what belonged on her river — and said hello to what didn't.</td></tr>
+  <tr><td class="n">3</td><td class="sp">Ally</td><td class="em">surprised</td><td>Three weeks ago: the pretty one, close in. Two-note horn. A fish-hook mark on the funnel. I played it on the show with her blessing and thought it was charming.</td></tr>
+  <tr><td class="n">4</td><td class="sp">Ally</td><td class="em">angry</td><td><span class="vo">[cold precision, not volume]</span> Ten days later a fake inspector mapped her window. If he found her through the show — then I handed him the window. Episode forty-one, closing minute, my voice, her view. And if he's a listener, he's heard everything I've said since.</td></tr>
+</table>
+</div>
+
+<div class="lead">
+<h3>L9 · e1_delcruz — "Off the Record" (Interview — THE BRANCH) · Day 4, Thursday</h3>
+<div class="leadmeta">Choice reframed: he already knows she heard him — the choice is the CLEAN COPY. Both results land Day 4 (public by mid-afternoon; protected by evening).</div>
+<table>
+  <tr><th></th><th>Speaker</th><th>Emotion</th><th>Line</th></tr>
+  <tr><td class="n">1</td><td class="sp">Ally</td><td class="em">neutral</td><td>Sergeant Del Cruz, Harbor Ward, her lunch break, her bench — back to the water. I laid it out: the forty seconds, the inspector, the van, the coin now in her evidence intake.</td></tr>
+  <tr><td class="n">2</td><td class="sp">Del Cruz</td><td class="em">neutral</td><td>I can open the missing-person file — empty house, packed bag, that footage. That's real. What I can't do is turn your theory about boats into warrants. Not on a podcast's say-so.</td></tr>
+  <tr><td class="n">3</td><td class="sp">Ally</td><td class="em">worried</td><td>Then the question that cuts this episode in half. He already knows I heard him — I told the whole city I have his footsteps. What he doesn't know is how cleanly. The full track holds his engine, his gait, the room itself. Publish it, and ten thousand ears go to work. So does he.</td></tr>
+  <tr><td class="n">4</td><td class="sp">Del Cruz</td><td class="em">neutral</td><td>Your show, your call. Just don't pretend silence is neutral either.<br><em>CHOICE ① Release the full recording — let the city work it &nbsp;&nbsp;② Publish a transcript only — Del keeps the clean copy</em></td></tr>
+  <tr><td class="n">5a</td><td class="sp">Ally</td><td class="em">neutral</td><td><em>(sets aq.e1.truth_public)</em> We released it at noon. By mid-afternoon, a retired Harbourline fleet mechanic had named the engine — the governor retrofit their vans carried after the '09 recall. Hours, not days. The cost came with it: two hundred false sightings, and the van off the streets by dusk.</td></tr>
+  <tr><td class="n">5b</td><td class="sp">Ally</td><td class="em">neutral</td><td><em>(sets aq.e1.truth_protected)</em> We published the transcript and held the audio. By evening Del had walked the clean copy through properly: the van's plate traces to a shell contractor, but its VIN was last registered to Harbourline. Slower than a crowd. Cleaner than one. And he still doesn't know what we hold.</td></tr>
+  <tr><td class="n">6</td><td class="sp">Ally</td><td class="em">neutral</td><td><em>(converge)</em> Either way, one thing rides with me now: how you tell the truth is also who you are. Dot's still out there — and her car never left the drive. So how does a frightened woman with a church case leave town?</td></tr>
+</table>
+</div>
+
+<div class="lead">
+<h3>L10 · e1_trail — "Where Dot Went" (Data) · Day 4, evening</h3>
+<div class="leadmeta">Coat contradiction fixed (timetable inside the newsletter). Vera contradiction fixed. Final location step added: the bus depot → Chapel Lane.</div>
+<table>
+  <tr><th></th><th>Speaker</th><th>Emotion</th><th>Line</th></tr>
+  <tr><td class="n">1</td><td class="sp">Ally</td><td class="em">neutral</td><td>The cottage told us she left. Now, where. A pharmacy bag folded flat in the kitchen drawer — St. Brigid's Pharmacy, Larkhill. A town I had to look up.</td></tr>
+  <tr><td class="n">2</td><td class="sp">Ally</td><td class="em">neutral</td><td>Tucked inside the parish newsletter on her mantel, a Christmas card in someone else's hand. "The hills are quiet. You'd hate it. — V." The first evidence that Vera was more than a name Dot mentioned when she was feeling guilty.</td></tr>
+  <tr><td class="n">3</td><td class="sp">Ally</td><td class="em">neutral</td><td>And folded into the same newsletter, a bus timetable: one morning service from Rivermouth passes through Larkhill. Pharmacy, card, route. Not proof. Enough to ring the depot.</td></tr>
+  <tr><td class="n">4</td><td class="sp">Ally</td><td class="em">neutral</td><td>The morning driver remembered her — the only passenger to ask for Chapel Lane before sunrise, church case on her lap. Chapel Lane, Larkhill. I'm driving up at first light. If I'm wrong, it's a long quiet road to be wrong on.</td></tr>
+</table>
+</div>
+
+<div class="lead">
+<h3>L11 · e1_hills — "The Hill Cottage" (Location — CLIMAX) · Day 5, Friday</h3>
+<div class="leadmeta">Dot explains her escape (closes the phone/police/tip-line logic). Del's unit makes safety real-but-provisional. Progress toasts: "The fog thickens past the church" · "A diesel, somewhere ahead". Dot's <em>angry</em> — the script's second and last.</div>
+<table>
+  <tr><th></th><th>Speaker</th><th>Emotion</th><th>Line</th></tr>
+  <tr><td class="n">1</td><td class="sp">Ally</td><td class="em">worried</td><td>Fog all the way up — the kind that swallows headlights whole. I found the church, then Chapel Lane. And before I saw anything at all, I heard it: a diesel, idling, somewhere behind the white.</td></tr>
+  <tr><td class="n">2</td><td class="sp">Ally</td><td class="em">worried</td><td>Through the fog, for two seconds, it moved: a pale van pulling away without lights. One rear lamp dead. The same dead lamp as eleven seconds of doorbell footage. I stood in the road and let it go — a gate was in reach and a van wasn't.</td></tr>
+  <tr><td class="n">3</td><td class="sp">Ally</td><td class="em">worried</td><td>The cottage door opened before I reached the step — a shape behind the lace curtain, small and absolutely unbothered.</td></tr>
+  <tr><td class="n">4</td><td class="sp">Dot</td><td class="em">neutral</td><td>You always did make a production of things. I heard the gate. Vera heard the gate. The church heard the gate. Come in, love — you're letting the hill in.</td></tr>
+  <tr><td class="n">5</td><td class="sp">Dot</td><td class="em">angry</td><td>And before you say sorry, say it properly: you turned my window into a broadcast, Ally Quinn. My river. My own silly voice. — And I still called your line that night. You know why? I knew you'd hear it. Eventually.</td></tr>
+  <tr><td class="n">6</td><td class="sp">Dot</td><td class="em">neutral</td><td>I went out through the allotments and caught the first bus. Phone switched off since — your gas man handled it at noon, and I wasn't leading him to Vera. Your number was the one I could dial in the dark. I needed the sound somewhere he couldn't take it.</td></tr>
+  <tr><td class="n">7</td><td class="sp">Ally</td><td class="em">sad</td><td>I said I was sorry. Properly. No microphone, no defence, while Vera pretended the kettle needed watching. Then I told them about the van.</td></tr>
+  <tr><td class="n">8</td><td class="sp">Ally</td><td class="em">neutral</td><td>Del had a unit on Chapel Lane before that kettle boiled, and Dot and Vera spent the night somewhere the van doesn't know. She's safe tonight. "Tonight" is doing a lot of work in that sentence.</td></tr>
+</table>
+</div>
+
+<div class="lead">
+<h3>L12 · e1_close — "Goodnight, Harbour" (Podcast, VO — milestone) · Day 6, Saturday</h3>
+<div class="leadmeta">Branch-dependent n2: protected truth withholds Harbourline's name on the feed. Practice change made concrete. Coin never airs. Ceremonial requirement. Fires e1.ep01.complete.</div>
+<table>
+  <tr><th></th><th>Speaker</th><th>Emotion</th><th>Line</th></tr>
+  <tr><td class="n">1</td><td class="sp">Ally</td><td class="em">neutral</td><td><span class="vo">[host register, warmer than the episode's opening]</span> This is Echoes of Havenbay. Dot Ellis is safe. She was found through the life she left in plain sight — a school, a parish, a bus route, and three years of messages nobody had thought to treat as evidence. She declined an interview. Her words: "I'm not content, love. I'm a person."</td></tr>
+  <tr><td class="n">2a</td><td class="sp">Ally</td><td class="em">worried</td><td><em>(requires aq.e1.truth_public)</em> On the record: the van traces to Harbourline Security — dissolved in 2011, still driving. You heard the full track when we did, and it worked, and it cost: two hundred ghosts in the queue, and the van gone before police reached it. Loud truth. I'd choose it again. I think.</td></tr>
+  <tr><td class="n">2b</td><td class="sp">Ally</td><td class="em">worried</td><td><em>(requires aq.e1.truth_protected)</em> On the record: the van traces to a dissolved port-security company. Del has asked me to keep its name off this feed — and this time, I'm listening. Quiet truth cost a day of silence I don't want to spend again. I'd choose it again. I think.</td></tr>
+  <tr><td class="n">3</td><td class="sp">Ally</td><td class="em">neutral</td><td>And one thing changes at this show, starting tonight: a voice can tell us where to look without me telling everyone else where it lives. That's the new rule. Dot wrote it; I'm just reading it out.</td></tr>
+  <tr><td class="n">4</td><td class="sp">Ally</td><td class="em">worried</td><td><span class="vo">[measured; to one listener]</span> And now — not as a reporter, but to the man with the careful walk: this show is built on listening. This case taught me who else does. She's safe. The recording is safe. You're the only one still hiding.</td></tr>
+  <tr><td class="n">5</td><td class="sp">Dot (voicemail)</td><td class="em">happy</td><td><span class="vo">[warm; the ritual, reclaimed]</span> It's Dot. From the hills now — imagine that. Vera says hello, which for Vera is a parade. You found an old woman who didn't want a fuss and you made one anyway. Good girl. Say goodnight to the harbour for me, Ally.</td></tr>
+  <tr><td class="n">6</td><td class="sp">Ally</td><td class="em">neutral</td><td><span class="vo">[six words, then the promise]</span> Goodnight, Dot. Goodnight, harbour. — The tip line stays open.</td></tr>
+  <tr><td class="n">7</td><td class="sp">—</td><td class="em">—</td><td>[Somewhere: this episode, playing. A click. Silence. A diesel engine starts.]</td></tr>
+</table>
+</div>
+
+<!-- ═══════ APPENDICES ═══════ -->
+<h2>v1.2 fix-before-recording checklist (all 12)</h2>
+<table class="check">
+  <tr><th>Item</th><th>Resolution</th></tr>
+  <tr><td>1 · Timeline consistency</td><td>Absolute clock: 3:04 a.m. Friday; opens Monday; "three nights ago" said once (L1n4); weekday/timestamp thereafter; "last Thursday" removed; both branch results land Day 4.</td></tr>
+  <tr><td>2 · Coat/timetable contradiction</td><td>Timetable folded inside the parish newsletter (L10n3).</td></tr>
+  <tr><td>3 · Locating the cottage</td><td>Bus depot call: the morning driver — "the only passenger to ask for Chapel Lane before sunrise" (L10n4).</td></tr>
+  <tr><td>4 · "First family evidence" contradiction</td><td>"The first evidence that Vera was more than a name Dot mentioned when she was feeling guilty" (L10n2).</td></tr>
+  <tr><td>5 · Dot explains her escape</td><td>L11n6: allotments, first bus, phone off (the gas man handled it), the tip line as the number she could dial in the dark.</td></tr>
+  <tr><td>6 · Dot demonstrably protected</td><td>L11n8: Del's unit on Chapel Lane before the kettle boiled; the night spent somewhere the van doesn't know.</td></tr>
+  <tr><td>7 · Dead lamp planted</td><td>L7n2: pale van at the kerb, left rear lamp dead — paid off L11n2 and grounding the VIN trace.</td></tr>
+  <tr><td>8 · Street off the public alert</td><td>L5n1 "from Rivermouth"; L5n3 says the omission out loud — the show practices the episode's lesson.</td></tr>
+  <tr><td>9 · Branch reframed around the clean copy</td><td>L9n3 "He already knows I heard him… what he doesn't know is how cleanly"; choice = full recording vs transcript only.</td></tr>
+  <tr><td>10 · "Off the record" corrected</td><td>L12n4: "not as a reporter, but to the man with the careful walk."</td></tr>
+  <tr><td>11 · Protected truth withholds Harbourline</td><td>L12n2b: the name stays off the feed; PUBLIC/PROTECTED differ materially through the finale.</td></tr>
+  <tr><td>12 · Permanent practice change</td><td>L12n3: the new rule — "Dot wrote it; I'm just reading it out." Series canon: source-location review before publication.</td></tr>
+</table>
+<p style="font-size:9pt;"><em>Also applied: glass removed (photograph + back out, L6n5); Money Trail earned via missing manifests (L8n1); mechanic recognises the fleet-specific governor retrofit (L9n5a); "lanyard doing the work" (L7n1); squeak line clarified (L2n2); progress-toast flavor strings specced for L6/L8/L11; rig-merge deterministic. Deferred to v1.x with the feature backlog: audio scrub/waveform UI, document/archive item family.</em></p>
+
+<h2>Production notes (delta from v1.1)</h2>
+<ul>
+  <li><strong>Progress toasts:</strong> L6, L8, L11 each define two short flavor strings fired on requirement satisfaction (uses existing ToastService; strings in this doc's leadmeta rows).</li>
+  <li><strong>FTUE rig merge:</strong> pre-placed pieces, zero randomness, cannot fail; nodes 4–5 fire on completion.</li>
+  <li><strong>New canon on approval adds:</strong> Chapel Lane, Larkhill; the '09 Harbourline recall retrofit; the show's source-location rule ("Dot's rule"). All prior canon items stand.</li>
+  <li><strong>Next step after Stephen's read:</strong> table read + runtime timing test → VO LOCK → asset production, portrait generation (Dot, Del), VO recording (Ally, Dot).</li>
+</ul>
+
+</body>
+</html>
