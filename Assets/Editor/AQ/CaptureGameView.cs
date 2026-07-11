@@ -35,6 +35,24 @@ namespace AQ.EditorTools
             EditorApplication.isPlaying = true;
         }
 
+        // The unfocused editor throttles the player loop to ~zero; MCP-driven
+        // sessions need explicit ticks for runtime scripts to advance.
+        // NOTE: EditorApplication.Step() pauses playback — always clear the
+        // pause afterwards or the session freezes harder than it started.
+        [MenuItem("AQ/Dev/Step 10 Frames")]
+        public static void StepFrames()
+        {
+            if (!Application.isPlaying) return;
+            for (int i = 0; i < 10; i++) EditorApplication.Step();
+            EditorApplication.isPaused = false;
+        }
+
+        [MenuItem("AQ/Dev/Resume (unpause)")]
+        public static void Resume()
+        {
+            EditorApplication.isPaused = false;
+        }
+
         /// <summary>
         /// Select a fixed 1080x1920 size on the Game view (reflection — the
         /// GameView APIs are internal) so captures are consistent regardless

@@ -25,7 +25,9 @@ namespace AQ.App.Dev
 
             var canvas = go.GetComponent<Canvas>();
             canvas.renderMode   = RenderMode.ScreenSpaceOverlay;
-            canvas.sortingOrder = 8000;
+            // Below the dialogue canvas (order 10) so dev buttons never cover
+            // character portraits during dialogue QA; still above the board.
+            canvas.sortingOrder = 5;
 
             var scaler = go.GetComponent<CanvasScaler>();
             scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
