@@ -18,6 +18,7 @@
 9. Appendices — glossary · flag registry · asset naming · source archaeology · Episode Seed Vault · go-to-market canon · Parked Ideas Vault
 
 ---
+
 # Chapter 1 — Vision & Positioning
 
 ## 1.1 The high concept
@@ -77,6 +78,7 @@ Her ideal journey, end to end: install off the "unlock the podcast episode" hook
 - **Positioning phrase:** the "advanced evolution" of the merge genre — the mature-investigative segment between Merge Dragons' fantasy abstraction and Merge Mansion's domesticity, currently underserved and validated by market data (merge revenue roughly quadrupled since 2022 on the strength of narrative-driven titles).
 
 The honest strategic bottom line (market research, July 2026): v1 is **a quality-first niche entry, not a Gossip Harbor competitor at launch** — the correct strategy for a solo studio with no UA budget. Launch is validation and audience seeding: measure D1 against the ~25% genre benchmark, treat reviews and story-completion rate as the leading indicators, and let episodes be our "events" until real liveops exist. The differentiator is the writing; everything in this bible exists to protect it.
+
 # Chapter 2 — Havenbay
 
 ## 2.1 The city
@@ -127,6 +129,7 @@ The Listener made a corridor of the city canon: **Rivermouth** (Chandler Road, t
 Food: chowders, pier dumplings, 2 a.m. diners, lumpia stands, Irish pubs — and the Corner Diner, whose takeout boxes open Rivermouth's doors (Episode 1). Fashion: dock coats and flannel below, tailored trench-coat money above; noir silhouettes echo the genre on purpose. Sports: the **Havenbay Mariners** (baseball), the **Bay City Sharks** (hockey — games often end in bar fights), and amateur boxing under Frankie Malone's promotion. Art: "rebellion and code" — Nova's murals on the Viaduct, Highcliff galleries fronting quiet money. Tech: "a city caught between analog grit and digital intrusion" — half-working fingerprint scanners and sabotaged CCTV two streets from gleaming corporate data centers. Faith: churches as community anchors rather than political powers; a parish newsletter can still find a missing woman (Episode 1).
 
 Havenbay's contrasts are the story engine: wealth against poverty, tradition against progress, public virtue against private vice. Its warmth is real — and so are the shadows it casts.
+
 # Chapter 3 — The Season Arc
 
 The season question: **who killed Thomas Quinn, and what conspiracy was he uncovering?** Every episode is a self-contained case plus exactly one new arc clue — one new fact, one new cost, never the full answer — until the finale unmasks the Ferryman and Councillor Hart live on the podcast. "The personal quest to solve her father's murder is the key that unlocks the city's deepest conspiracy."
@@ -181,6 +184,7 @@ The delivery mechanism is fixed: each episode's case is solved honestly and comp
 - **Costs compound.** Each notch should also cost Ally something irreversible — aired her own culpability (Ep1), accepted she is watched (Ep2), and onward. The arc is measured in what she can't take back.
 - **Keep the street layer separate from the apex.** Harbourline vans, careful walkers, quiet boats — the network's fingers are episode material; its head is finale material. Scripts connect a finger to the head only by explicit season decision.
 - **Thomas opens slowly.** His files are a well, not a faucet: one page, one initial, one artifact per withdrawal, each earned by the case at hand.
+
 # Chapter 4 — Character Compendium
 
 **The census: 20 principal/recurring + 3 Episode 1 characters = 23 narrative characters, plus 2 historical figures and 1 unnamed Episode 1 antagonist.** The roster (`canon-character-roster.md`) is the single source of truth for who exists; this chapter is the deep file on each of them — biography (legacy lore migrated to canon names), relationship to Ally, voice, and appearance. Appearance status: **★ CANON** means an approved image exists and is binding; *proposed* means a prompt block exists and the first approved image will become canon (Chapter 8.2).
@@ -423,6 +427,7 @@ Also ruled out of canon (2026-07-11): all middle names sourced from no document 
 3. Portrait production order (by first likely story use): Mo → Del → Arthur → Helen → Priya → Cortez → Vega (Mo, Del, Arthur, Dot done as of 2026-07-11).
 4. External summaries — including AI-generated rosters — are audited against the roster; anything untraceable is invention until deliberately adopted.
 5. The lighting grammar (Chapter 8.4) rides with every new portrait: civilians warm, cops cool, antagonists cold and underlit, the ambiguous split-lit.
+
 # Chapter 5 — Episode Format & Writing Craft
 
 Every episode of *Ally Quinn: True Crime Merge* is an episode of *Echoes of Havenbay* first. The player is not "playing levels with story attached" — they are producing a true-crime podcast with Ally, one lead at a time. This chapter is the writers' room: the format, the doctrine, and the red lines. It consolidates the Episode Writer's Prompt v2, the Pilot Spec v1 (2026-07-10), and the craft rulings minted while locking Episode 1. Where this chapter and a locked script disagree, the locked script wins and this chapter gets a pickup.
@@ -519,6 +524,7 @@ Canon-first rule: invent ONLY at the episode level — the case's victim, its on
 ## 5.10 The season notch
 
 Each episode = a self-contained case + exactly one new clue advancing the Ferryman/Hart/Thomas thread — one new fact, one new cost, never the full answer. Every script ends with a written **season-arc notch**: what the episode adds, and what it deliberately leaves unanswered (the unanswered list is the hook inventory for future episodes). The quality bar, verbatim from the writers' prompt: "the mid-episode reveal should make a listener physically stop; the finale should resolve the case with emotional honesty while making the Ferryman feel closer and more personal. If it works as a synopsis but not as 44 spoken lines, rewrite the lines — the lines are the game."
+
 # Chapter 6 — Episode Guide
 
 The season ladder as it stands at bible v2.0. One locked episode, one draft, one design document holding a mid-season slot, a repeatable cold-case loop, and a vault of renamed prototype cases ready to be pitched. Canon status is marked on every entry; only Episode 1 is canon in full.
@@ -602,6 +608,7 @@ Alongside them, the three unproduced Episode 1 pitches (2026-07-10) are preserve
 ## 6.6 Season shape (working)
 
 Locked points on the ladder: Ep1 The Listener (aired, in-game) → Ep2 The Ferryman (the coin detonates; the antagonist becomes aware and generational) → ~Ep5 The Ghost Student (Voss Bio surfaces; Thomas's investigation named). The finale unmasks the Ferryman and Hart live on the podcast — that episode is reserved (never assigned to an external writer), and the Ferryman's face stays ungenerated until its reveal. Between locked points, episodes are pitched against the Pilot Doctrine and judged by the standing rubric (cold-open strength, present-tense jeopardy, emotional keeper, one-sentence clarity, canon nativeness, whisper elegance, branch quality, teachability). Every episode: one new season fact, one new cost, never the full answer.
+
 # Chapter 7 — Game Systems as Narrative
 
 This chapter explains the shipped systems *as storytelling instruments* — why each exists narratively and what fiction it carries. It deliberately does not duplicate specs: the SAS architecture chapters (Shared Kernel/Economy, CaseFlow, Leads, Merge Board UI, SaveLoad, Analytics — SAS Chapters 1–11) and `ally_quinn_economy_v0_2.xlsx` are the masters for numbers and implementation. Where a figure appears here, it is quoted from those masters as of July 2026; if they move, they win.
@@ -660,6 +667,7 @@ Narrative flags are the season's long-term memory (registry in Appendix 9.2). Th
 ## 7.7 Telemetry as story QA
 
 Analytics is tuned to narrative health, not just funnel health: Episode 1's climax lead (L11) ships with a beta-telemetry watch — time from L10 to first toast, toast gap, sessions-to-complete, abandonment %, energy exhaustion % — because a climax that stalls on the board is a story failure delivered by the economy. The genre benchmarks to read the beta against: D1 ≈ 25%, D7 ≈ 3–7%; story-completion rate and reviews are the leading indicators that the differentiator works.
+
 # Chapter 8 — Production Canon Rules
 
 The rules that keep a one-person studio's canon coherent across scripts, art, audio, and code. These are process law: when a rule here conflicts with convenience, the rule wins; when it conflicts with a locked script, the script wins and the rule gets amended deliberately.
@@ -721,6 +729,7 @@ The flow of truth: a script mints a fact → the roster/bible record it → prom
 ## 8.9 Rating & content boundaries
 
 12+ across all content: missing persons, fraud, corruption, restrained murder in scripts; no graphic violence, no sexual content, no on-page harm to children; grounded and contemporary, no supernatural elements. Monetisation content rules ride along: no dark patterns, no story behind a paywall, ads opt-in only. These are store-rating commitments as well as taste — treat violations as shippability bugs, not notes.
+
 # Chapter 9 — Appendices
 
 ## 9.1 Glossary
