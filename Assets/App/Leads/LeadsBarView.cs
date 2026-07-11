@@ -150,8 +150,9 @@ namespace AQ.App.Leads
             rt.anchoredPosition = new Vector2(-8f, -8f);
             _progressLabel = go.AddComponent<TextMeshProUGUI>();
             _progressLabel.fontSize  = 14f;
-            _progressLabel.color     = new Color(0.2f, 0.2f, 0.2f, 0.7f);
+            _progressLabel.color     = AQ.App.UI.AQTheme.PaperDim;
             _progressLabel.alignment = TextAlignmentOptions.Right;
+            AQ.App.UI.AQTheme.StyleText(_progressLabel);
             UpdateProgressLabel();
         }
 
@@ -225,9 +226,10 @@ namespace AQ.App.Leads
             var tmp = go.AddComponent<TextMeshProUGUI>();
             tmp.text        = ">>  Tap card to proceed";
             tmp.fontSize    = 13f;
-            tmp.color       = new Color(0.12f, 0.50f, 0.12f, 1f);
+            tmp.color       = AQ.App.UI.AQTheme.Amber;
             tmp.alignment   = TextAlignmentOptions.Center;
             tmp.fontStyle   = FontStyles.Bold;
+            AQ.App.UI.AQTheme.StyleText(tmp);
         }
 
         static Button FindProceedButton(Transform root)

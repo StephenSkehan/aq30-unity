@@ -13,6 +13,7 @@ namespace AQ.EditorTools
             Create("Assets/Fonts/Staatliches-Regular.ttf", "Assets/Resources/App/UI/Fonts/Staatliches SDF.asset");
             Create("Assets/Fonts/NunitoSans-Variable.ttf", "Assets/Resources/App/UI/Fonts/NunitoSans SDF.asset");
             SetProjectDefaultFont();
+            WireFallbacks();
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
             Debug.Log("[Fonts] TMP font assets built (dynamic atlases).");
@@ -29,6 +30,34 @@ namespace AQ.EditorTools
             so.ApplyModifiedProperties();
             EditorUtility.SetDirty(TMP_Settings.instance);
             Debug.Log("[Fonts] TMP default font -> NunitoSans SDF");
+        }
+
+        /// <summary>
+        /// Glyphs the theme fonts lack (▼, arrows, symbols) fall back to
+        /// LiberationSans instead of rendering as blank.
+        /// </summary>
+        static void WireFallbacks()
+        {
+            var liberation = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(
+                "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset");
+            if (liberation == null) { Debug.LogWarning("[Fonts] LiberationSans SDF not found — no fallback wired"); return; }
+
+            foreach (var path in new[]
+            {
+                "Assets/Resources/App/UI/Fonts/NunitoSans SDF.asset",
+                "Assets/Resources/App/UI/Fonts/Staatliches SDF.asset",
+            })
+            {
+                var fa = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(path);
+                if (fa == null) continue;
+                fa.fallbackFontAssetTable ??= new System.Collections.Generic.List<TMP_FontAsset>();
+                if (!fa.fallbackFontAssetTable.Contains(liberation))
+                {
+                    fa.fallbackFontAssetTable.Add(liberation);
+                    EditorUtility.SetDirty(fa);
+                    Debug.Log($"[Fonts] fallback wired: {fa.name} -> LiberationSans SDF");
+                }
+            }
         }
 
         [MenuItem("AQ/Setup/Apply Theme Fonts To Open Scene")]

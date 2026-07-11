@@ -91,6 +91,7 @@
     <Compile Include="Assets\Editor\AQ\ConfigureGmaSettings.cs" />
     <Compile Include="Assets\Editor\Animation\TestPortraitAnimator.cs" />
     <Compile Include="Assets\Editor\Diag\CreateDemoCaseGraph.cs" />
+    <Compile Include="Assets\Editor\AQ\RestyleLeadCardPrefab.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Editor\AQ.Editor.asmdef.backup.txt" />
