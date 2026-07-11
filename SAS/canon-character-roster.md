@@ -4,7 +4,7 @@
 
 **Counts: 20 principal/recurring + 3 Episode 1 = 23 narrative characters · 2 historical figures · 1 unnamed Episode 1 antagonist.** *(rev 2026-07-11: Damien Kroll revived as #20 per bible dossier ruling.)*
 
-## Principal & recurring cast (19)
+## Principal & recurring cast (20)
 
 | # | Character | Age | Role | Appearance status |
 |---|-----------|-----|------|-------------------|
