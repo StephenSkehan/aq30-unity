@@ -11,8 +11,8 @@ namespace AQ.EditorTools
     /// </summary>
     public static class TestPortraitDialogue
     {
-        const string SpritePath = "Assets/Art/Characters/Del/char_del_neutral_f01.png";
-        const string Speaker    = "Del Cruz";
+        const string SpritePath = "Assets/Art/Characters/Dot/char_dot_angry_f01.png";
+        const string Speaker    = "Dot Ellis";
 
         [MenuItem("AQ/Dev/Test Portrait Dialogue (Play Mode)")]
         public static void Run()
