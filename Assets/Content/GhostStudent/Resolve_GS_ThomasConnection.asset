@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_GS_ThomasConnection
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: GS_THO_R1
+  nodes:
+  - id: GS_THO_R1
+    speaker: Gerald Quinn
+    line: "I've had these since Thomas was taken off the case. Twenty-two years.
+      I told myself I was keeping them safe. I think I was keeping them for you."
+    portrait: {fileID: 21300000, guid: c3a4b5d6e7f8c3a4b5d6e7f8c3a4b5db, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_THO_R2
+    choices: []
+  - id: GS_THO_R2
+    speaker: Ally Quinn
+    line: "His handwriting. Notes going back to 2004. Voss Bio Holdings — the
+      same shell company, the same payment routes, the same families. He was four
+      years ahead of where I am now."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_THO_R3
+    choices: []
+  - id: GS_THO_R3
+    speaker: Gerald Quinn
+    line: "This is the thread your father was pulling when they stopped him. We are
+      not going to stop."
+    portrait: {fileID: 21300000, guid: c3a4b5d6e7f8c3a4b5d6e7f8c3a4b5db, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_THO_R4
+    choices: []
+  - id: GS_THO_R4
+    speaker: Ally Quinn
+    line: Then we finish it.
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.gs_thomas_connection.seen
+    nextId:
+    choices: []

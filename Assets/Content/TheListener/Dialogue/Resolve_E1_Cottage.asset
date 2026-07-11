@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_E1_Cottage
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: E1_L6_N1
+  nodes:
+  - id: E1_L6_N1
+    speaker: "Ally Quinn"
+    line: "Eleven Chandler Road. A blue gate, a garden kept the way you keep a promise — and Dot's car in the drive, dry ground beneath it. It hasn't moved since before the rain."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L6_N2
+    choices: []
+  - id: E1_L6_N2
+    speaker: "Ally Quinn"
+    line: "Mrs. Vale next door has held the spare key for years — Dot's own arrangement: if the curtains stayed shut and she couldn't raise her, use it. She couldn't — and hadn't for days. She went in first. I followed."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L6_N3
+    choices: []
+  - id: E1_L6_N3
+    speaker: "Ally Quinn"
+    line: "Kettle cold. Bed made. Reading glasses gone, coat gone, the little case she took to church gone. She packed — quick, in the dark, but she packed. You don't pack for the river."
+    portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L6_N4
+    choices: []
+  - id: E1_L6_N4
+    speaker: "Ally Quinn"
+    line: "The hall table: her phone charger, empty. The phone was gone. I hoped that meant it went with her. And on the cradle, dead centre, where the phone should sleep — a coin. Old brass, worn smooth. Placed. Not dropped."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L6_N5
+    choices: []
+  - id: E1_L6_N5
+    speaker: "Ally Quinn"
+    line: "I didn't touch it. I photographed where it lay, backed us both out of the hall, and kept the room untouched until Del arrived. Gerald's answer to the photo took a full minute: \"Where was it.\" Then: \"Don't put that on the show, love.\""
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L6_N6
+    choices: []
+  - id: E1_L6_N6
+    speaker: "Ally Quinn"
+    line: "I've heard my grandfather discuss murders with his mouth full. I've never heard him go quiet. Back to work."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.e1_cottage.seen
+    nextId: 
+    choices: []

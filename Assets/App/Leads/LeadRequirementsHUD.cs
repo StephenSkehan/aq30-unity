@@ -11,19 +11,19 @@ namespace AQ.App.Leads
         [SerializeField] private TMP_Text[] labels;   // length 3
         [SerializeField] private Image[] ticks;       // length 3
 
-        public void Bind(LeadCardSO data, ActiveLeadState state)
+        public void Bind(LeadData data, ActiveLeadState state)
         {
             for (int i = 0; i < icons.Length; i++)
             {
-                bool has = i < data.Requirements.Length;
+                bool has = i < data.requirements.Length;
                 icons[i].gameObject.SetActive(has);
                 labels[i].gameObject.SetActive(has);
                 ticks[i].gameObject.SetActive(has);
 
                 if (!has) continue;
-                var req = data.Requirements[i];
-                icons[i].sprite = req.Icon;
-                labels[i].text = string.IsNullOrEmpty(req.Label) ? req.ItemId : req.Label;
+                var req = data.requirements[i];
+                icons[i].sprite  = req.Icon;
+                labels[i].text   = req.Label;
                 ticks[i].enabled = state.IsRequirementMet(i);
             }
         }

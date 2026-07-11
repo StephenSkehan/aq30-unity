@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222fba07fae7fa343a6d2a96dfd2ee48, type: 3}
+  m_Name: Lead_Demo_GetBethTalking
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadData
+  leadId: demo_beth_talking
+  title: Get Beth Talking
+  subtitle: Buy Beth a coffee to loosen her up
+  actorPortrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+  state: 1
+  ActionType: 0
+  EnergyCost: 0
+  requirements:
+  - label: Hot Coffee
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: aec532c73afd928448f9769ef7757a82, type: 2}
+  - label: Coffee & Donut
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: 433138bea51e9c747b8f142067458eb8, type: 2}
+  EvidenceIds: []
+  SpawnLeadIds: []
+  NarrativeFlags: []
+  SoftCurrency: 150
+  EnergyGrant: 0
+  resolutionDialogue: {fileID: 11400000, guid: e2f3a4b5c6d7890123456789ef234502, type: 2}
+  OutcomeHints: 0

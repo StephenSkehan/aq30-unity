@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a868e5692e51b543950ce498978cd56, type: 3}
+  m_Name: UISfx
+  m_EditorClassIdentifier: AQ.App::AQ.App.Audio.UISfxSO
+  boardSpawn: {fileID: 8300000, guid: 9bfe1119f43255f43bed0b9ef163105d, type: 3}
+  boardMerge: {fileID: 8300000, guid: 8c05370e5eeb25049be405da0680179c, type: 3}
+  boardSwap: {fileID: 8300000, guid: 99a920ec5910beb43a9652d6b0964b33, type: 3}
+  leadFulfilled: {fileID: 8300000, guid: 54529a779e523ea4281c9f3b6103cdd9, type: 3}
+  overflowDrop: {fileID: 8300000, guid: 5657a70914624444faee6ea63151ce7d, type: 3}
+  volume: 0.8

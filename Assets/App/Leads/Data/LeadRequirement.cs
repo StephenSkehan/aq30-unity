@@ -1,34 +1,39 @@
 using System;
 using UnityEngine;
+using AQ.App.Items;
 
 namespace AQ.App.Leads
 {
-    /// <summary>Requirement chip on a Lead (label + optional icon + satisfied flag).</summary>
+    /// <summary>
+    /// Requirement chip on a Lead card.
+    /// Assign <see cref="itemDefinition"/> in the Inspector to wire automatic
+    /// board-matching. The label and icon fall back to the legacy serialized
+    /// fields when itemDefinition is null, preserving existing asset data.
+    /// </summary>
     [Serializable]
     public struct LeadRequirement
     {
-        // Serialized fields (keep these names for asset compatibility)
+        // Legacy display fields — kept for backward compat with existing assets.
         [SerializeField] private string label;
-        [SerializeField] private string itemId;          // optional: an internal id / key (was referenced by runtime)
         [SerializeField] private Sprite icon;
         [SerializeField] private bool satisfied;
 
-        // Backwards/forwards-compatible API (matches callers in LeadCardView & LeadRequirementsHUD)
+        [Tooltip("Link to an ItemDefinitionSO to enable automatic board matching. " +
+                 "When set, Label and Icon are sourced from the definition.")]
+        public ItemDefinitionSO itemDefinition;
+
+        [Tooltip("How many items of this type must exist on the board simultaneously.")]
+        [Range(1, 3)] public int quantity;
+
         public string Label
         {
-            get => label;
+            get => itemDefinition != null ? itemDefinition.displayName : label;
             set => label = value;
-        }
-
-        public string ItemId
-        {
-            get => itemId;
-            set => itemId = value;
         }
 
         public Sprite Icon
         {
-            get => icon;
+            get => itemDefinition != null ? itemDefinition.icon : icon;
             set => icon = value;
         }
 
@@ -39,10 +44,5 @@ namespace AQ.App.Leads
             get => satisfied;
             set => satisfied = value;
         }
-
-        // Also expose lowercase aliases for any newer code using fields (non-breaking).
-        // (Unity serializes private fields above; these aliases are helpers only.)
-        public string labelRef => label;
-        public Sprite iconRef => icon;
     }
 }

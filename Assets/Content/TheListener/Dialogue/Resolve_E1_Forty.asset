@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_E1_Forty
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: E1_L2_N1
+  nodes:
+  - id: E1_L2_N1
+    speaker: "Ally Quinn"
+    line: "I loaded the whole of Friday's message into the studio. Forty seconds, one sound at a time."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L2_N2
+    choices: []
+  - id: E1_L2_N2
+    speaker: "Ally Quinn"
+    line: "First: a floorboard, twice. The same squeak opens twelve of her older messages — the same three footsteps before she starts talking. Her hall, by the phone table. Whoever moved on Friday was standing where Dot stands to talk to me."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L2_N3
+    choices: []
+  - id: E1_L2_N3
+    speaker: "Ally Quinn"
+    line: "Then a strained spring — a door, opened slow. The way you open one you don't want heard. And outside, faint but steady: a diesel engine, idling. Waiting for somebody."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L2_N4
+    choices: []
+  - id: E1_L2_N4
+    speaker: "Ally Quinn"
+    line: "The steps are the tell. Eight of them, unhurried, and every second one lands harder. I can't call it a limp yet. I can tell you the house does when they cross it."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L2_N5
+    choices: []
+  - id: E1_L2_N5
+    speaker: "Ally Quinn"
+    line: "Somebody was in Dot's house at three in the morning. She kept the line open and her mouth shut — braver in forty seconds than most of us manage in a year. Now let's find her street."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.e1_forty.seen
+    nextId: 
+    choices: []

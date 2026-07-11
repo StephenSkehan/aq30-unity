@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_E1_DelCruz
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: E1_L9_N1
+  nodes:
+  - id: E1_L9_N1
+    speaker: "Ally Quinn"
+    line: "Sergeant Del Cruz, Harbor Ward, her lunch break, her bench — back to the water. I laid it out: the forty seconds, the inspector, the van, the coin now in her evidence intake."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L9_N2
+    choices: []
+  - id: E1_L9_N2
+    speaker: "Del Cruz"
+    line: "I can open the missing-person file — empty house, packed bag, that footage. That's real. What I can't do is turn your theory about boats into warrants. Not on a podcast's say-so."
+    portrait: {fileID: 21300000, guid: de1a4b5c6d7e8f90a1b2c3d4e5f6a701, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L9_N3
+    choices: []
+  - id: E1_L9_N3
+    speaker: "Ally Quinn"
+    line: "Then the question that cuts this episode in half. He already knows I heard him — I told the whole city I have his footsteps. What he doesn't know is how cleanly. The full track holds his engine, his gait, the room itself. Publish it, and ten thousand ears go to work. So does he."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L9_N4
+    choices: []
+  - id: E1_L9_N4
+    speaker: "Del Cruz"
+    line: "Your show, your call. Just don't pretend silence is neutral either."
+    portrait: {fileID: 21300000, guid: de1a4b5c6d7e8f90a1b2c3d4e5f6a701, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices:
+    - text: "Release the full recording — let the city work it"
+      nextId: E1_L9_N5A
+      requiresFlag: 
+    - text: "Publish a transcript only — Del keeps the clean copy"
+      nextId: E1_L9_N5B
+      requiresFlag: 
+  - id: E1_L9_N5A
+    speaker: "Ally Quinn"
+    line: "We released it at noon. By mid-afternoon, a retired Harbourline fleet mechanic had named the engine — the governor retrofit their vans carried after the '09 recall. Hours, not days. The cost came with it: two hundred false sightings, and the van off the streets by dusk."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.e1.truth_public
+    nextId: E1_L9_N6
+    choices: []
+  - id: E1_L9_N5B
+    speaker: "Ally Quinn"
+    line: "We published the transcript and held the audio. By evening Del had walked the clean copy and the plate through properly: the plate is registered to a shell contractor, but the VIN traces back to a van last registered to Harbourline. Slower than the crowd. Cleaner than the noise. And he still doesn't know what we hold."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.e1.truth_protected
+    nextId: E1_L9_N6
+    choices: []
+  - id: E1_L9_N6
+    speaker: "Ally Quinn"
+    line: "Either way, one thing rides with me now: how you tell the truth is also who you are. Dot's still out there — and her car never left the drive. So how does a frightened woman with a church case leave town?"
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.e1_delcruz.seen
+    nextId: 
+    choices: []

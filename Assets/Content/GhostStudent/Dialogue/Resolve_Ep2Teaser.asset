@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_Ep2Teaser
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: EP2_T1
+  nodes:
+  - id: EP2_T1
+    speaker: Ally Quinn
+    line: "Twenty years of harbour money that never touched a bank. Episode 2 is coming. Keep your radio on."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.ep2_teaser.seen
+    nextId: 
+    choices: []

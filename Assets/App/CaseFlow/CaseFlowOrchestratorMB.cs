@@ -6,10 +6,12 @@ using UnityEngine;
 using AQ.SharedKernel.CaseFlow;
 using AQ.SharedKernel.Economy;
 using AQ.App.Economy;
+using AQ.App.Analytics;
 
 namespace AQ.App.CaseFlow
 {
     [DisallowMultipleComponent]
+    [DefaultExecutionOrder(-2)]
     public sealed class CaseFlowOrchestratorMB : MonoBehaviour
     {
         [Header("Episode config")]
@@ -69,6 +71,9 @@ namespace AQ.App.CaseFlow
                     if (_svc.CompleteCurrentStep())
                     {
                         Debug.Log("[CaseFlow] Catch-up advance on existing FTUE flag → stepIndex=1");
+                        var cur = _svc.Current;
+                        string key = cur.StepIndex < cur.Steps.Count ? cur.Steps[cur.StepIndex] : "end";
+                        GameAnalytics.LogFtueStep(key, cur.StepIndex);
                     }
                 }
             }
@@ -99,6 +104,9 @@ namespace AQ.App.CaseFlow
             if (stepped)
             {
                 Debug.Log($"[CaseFlow] Auto-advanced on FTUE grant → stepIndex={_svc.Current.StepIndex}/{_svc.Current.Steps.Count}");
+                var cur = _svc.Current;
+                string key = cur.StepIndex < cur.Steps.Count ? cur.Steps[cur.StepIndex] : "end";
+                GameAnalytics.LogFtueStep(key, cur.StepIndex);
             }
         }
 

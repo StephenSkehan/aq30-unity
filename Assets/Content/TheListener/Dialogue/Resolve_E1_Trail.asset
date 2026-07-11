@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_E1_Trail
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: E1_L10_N1
+  nodes:
+  - id: E1_L10_N1
+    speaker: "Ally Quinn"
+    line: "The cottage told us she left. Now, where. A pharmacy bag folded flat in the kitchen drawer — St. Brigid's Pharmacy, Larkhill. A town I had to look up."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L10_N2A
+    choices: []
+  - id: E1_L10_N2A
+    speaker: "Ally Quinn"
+    line: "And the queue paid its way through the noise — between the ghosts, three callers knew that governor whine, and two of them drive for a living. The van is real to the city now. So is she."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: aq.e1.truth_public
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L10_N2B
+    choices: []
+  - id: E1_L10_N2B
+    speaker: "Ally Quinn"
+    line: "And Del's quiet trace held: the shell contractor's paperwork leads nowhere alive, which is its own kind of answer. Nobody knows we know. The van has a history, and histories have habits."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: aq.e1.truth_protected
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L10_N3
+    choices: []
+  - id: E1_L10_N3
+    speaker: "Ally Quinn"
+    line: "Tucked inside the parish newsletter on her mantel, a Christmas card in someone else's hand. \"The hills are quiet. You'd hate it. — V.\" The first evidence that Vera was more than a name Dot mentioned when she was feeling guilty. And folded into the same newsletter, a bus timetable: one morning service from Rivermouth passes through Larkhill."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L10_N4
+    choices: []
+  - id: E1_L10_N4
+    speaker: "Ally Quinn"
+    line: "The morning driver remembered her — the only passenger to ask for Chapel Lane before sunrise, church case on her lap. Chapel Lane, Larkhill. I'm driving up at first light. If I'm wrong, it's a long quiet road to be wrong on."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.e1_trail.seen
+    nextId: 
+    choices: []

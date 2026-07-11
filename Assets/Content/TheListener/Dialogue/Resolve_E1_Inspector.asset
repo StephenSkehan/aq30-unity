@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_E1_Inspector
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: E1_L7_N1
+  nodes:
+  - id: E1_L7_N1
+    speaker: "Ally Quinn"
+    line: "Rivermouth doors open for coffee and a box from the Corner Diner — they packed it heavy when they heard why. Mrs. Vale remembered him without prompting: a gas man, eight days before Friday's message, lanyard doing the work. No company name she knew. Nobody had scheduled anything."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L7_N2
+    choices: []
+  - id: E1_L7_N2
+    speaker: "Ally Quinn"
+    line: "Her doorbell camera kept eleven seconds of him. Tall. Careful. Face angled off-lens like a man with practice. Every second step lands heavier — the house wasn't imagining. At the kerb, a pale van, left rear lamp dead. And as it pulled away, one clean frame of the rear plate."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L7_N3
+    choices: []
+  - id: E1_L7_N3
+    speaker: "Ally Quinn"
+    line: "He went to Dot's door first. Twenty minutes inside, in daylight. My working theory: the first visit mapped what her window could see. The second came back for whatever she'd kept of it."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L7_N4
+    choices: []
+  - id: E1_L7_N4
+    speaker: "Ally Quinn"
+    line: "Whether he came to frighten her, or silence her, or worse — I don't get to know that yet, and neither do you. What I know: he plans, he returns, and he's on camera. Eleven seconds, a dead lamp and one clean plate are more than he ever meant anyone to have."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.e1_inspector.seen
+    nextId: 
+    choices: []

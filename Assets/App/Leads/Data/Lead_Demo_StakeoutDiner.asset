@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222fba07fae7fa343a6d2a96dfd2ee48, type: 3}
+  m_Name: Lead_Demo_StakeoutDiner
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadData
+  leadId: demo_stake_diner
+  title: Stake Out the Diner
+  subtitle: Watch the corner diner for suspicious activity
+  actorPortrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+  state: 1
+  ActionType: 0
+  EnergyCost: 0
+  requirements:
+  - label: Paper Cup
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: 6260d6c91e1723645a27eb33e16edb9c, type: 2}
+  EvidenceIds: []
+  SpawnLeadIds: []
+  NarrativeFlags: []
+  SoftCurrency: 150
+  EnergyGrant: 0
+  resolutionDialogue: {fileID: 11400000, guid: e1f2a3b4c5d6789012345678ef123401, type: 2}
+  OutcomeHints: 0

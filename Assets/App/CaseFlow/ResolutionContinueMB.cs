@@ -11,9 +11,9 @@ namespace AQ.App.CaseFlow
 {
     /// <summary>Handles the "Continue" action on the Resolution overlay:
     /// - Applies rewards (if a wallet is discoverable)
-    /// - Persists via SaveLoadDriver (if present)
     /// - Emits analytics (best-effort; optional)
     /// - Hides the overlay (fade via CanvasGroup, else deactivate)
+    /// Persistence is handled by BoardSaveSystem's change-triggered autosave.
     /// </summary>
     public class ResolutionContinueMB : MonoBehaviour
     {
@@ -57,13 +57,12 @@ namespace AQ.App.CaseFlow
 
         /// <summary>
         /// Main entry from the Resolve/Continue button.
-        /// Order: 1) rewards, 2) save, 3) analytics, 4) hide.
+        /// Order: 1) rewards, 2) analytics, 3) hide.
         /// </summary>
         public void OnResolve()
         {
             var rewards = BuildRewards();
             TryApplyRewards(rewards);
-            TryPersist();
             TryAnalytics(rewards);
             HideOverlay();
         }
@@ -101,20 +100,6 @@ namespace AQ.App.CaseFlow
                 }
             }
             Debug.Log($"[ResolutionContinueMB] Granted rewards → soft={s}, energy={e}, premium={p}");
-        }
-
-        void TryPersist()
-        {
-#if UNITY_2022_2_OR_NEWER
-            var driver = FindFirstObjectByType<SaveLoadDriver>(FindObjectsInactive.Include);
-#else
-            var driver = FindObjectOfType<SaveLoadDriver>(includeInactive: true);
-#endif
-            if (driver != null)
-            {
-                driver.Save();
-                Debug.Log("[ResolutionContinueMB] SaveLoadDriver.Save() called.");
-            }
         }
 
         void TryAnalytics(Reward[] rewards)

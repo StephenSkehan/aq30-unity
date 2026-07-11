@@ -14,6 +14,7 @@ namespace AQ.App.CaseFlow
 
         void OnGUI()
         {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
             if (!show) return;
             var svc = CaseFlowLocator.Instance;
             if (svc == null) return;
@@ -24,6 +25,7 @@ namespace AQ.App.CaseFlow
             GUI.Label(new Rect(10, 10, 600, 40),
                 $"[CaseFlow] Episode={s.Episode} StepIndex={s.StepIndex}/{s.Steps.Count} ActiveKey={activeKey}",
                 _style);
+#endif
         }
     }
 }

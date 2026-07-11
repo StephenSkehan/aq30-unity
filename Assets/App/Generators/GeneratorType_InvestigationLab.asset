@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6140942ece21c5743b73fe4d8d94c0f7, type: 3}
+  m_Name: GeneratorType_InvestigationLab
+  m_EditorClassIdentifier: AQ.App::AQ.App.Generators.GeneratorTypeSO
+  generatorTypeId: gen_investigation_lab
+  displayName: Investigation Lab
+  maxGeneratorTier: 9
+  tiers:
+  - dropTable:
+    - type: 0
+      itemFamily: forensic_tools
+      itemTier: 0
+      weight: 35
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: forensic_tools
+      itemTier: 1
+      weight: 12
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: forensic_tools
+      itemTier: 2
+      weight: 4
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: forensic_tools
+      itemTier: 3
+      weight: 2
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: forensic_tools
+      itemTier: 4
+      weight: 1
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: fingerprint_evidence
+      itemTier: 0
+      weight: 35
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: fingerprint_evidence
+      itemTier: 1
+      weight: 12
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: fingerprint_evidence
+      itemTier: 2
+      weight: 4
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: fingerprint_evidence
+      itemTier: 3
+      weight: 2
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: fingerprint_evidence
+      itemTier: 4
+      weight: 1
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: fingerprint_evidence
+      itemTier: 5
+      weight: 1
+      requiresStoryFlag:
+    - type: 1
+      itemFamily:
+      itemTier: 0
+      weight: 10
+      requiresStoryFlag:
+    particles:
+      emissionRate: 4
+      startColor: {r: 0.2, g: 0.55, b: 1, a: 1}
+      endColor: {r: 0.85, g: 0.92, b: 1, a: 0}
+      startSize: 0.03
+  generatorSprites:
+  - {fileID: -8227789603668291983, guid: 8c0b79bdaa6fccd40ae1df8e844b032b, type: 3}
+  - {fileID: 7022844974753378144, guid: 94e9a225e8b96264baf5700eae27da05, type: 3}
+  - {fileID: 5277611117803656845, guid: ff48f4cd17380c5419a7a5bfa75e0a46, type: 3}
+  - {fileID: 7467405113745244285, guid: f1ba59919d7825d49902978dac95d3f7, type: 3}
+  - {fileID: -2558790056612710088, guid: 88d707d757f664d4b90fa695cb8cf316, type: 3}
+  - {fileID: -4328059495257280336, guid: 8fb3189f686ad4f42a90fd467a53fe5c, type: 3}
+  - {fileID: 2580694356535937054, guid: 54ffd9f1a1f0fa746a86781576a6f81e, type: 3}
+  - {fileID: 1449361188851590972, guid: 5d9208a60ae600548939ee50cedef82e, type: 3}
+  - {fileID: 7478511958545286180, guid: 56e0b2a2ee5073e40b285e19abbd8b4b, type: 3}
+  - {fileID: -4983707811461214028, guid: 98b9ce3b3572fba48a9484cc47a3ce49, type: 3}

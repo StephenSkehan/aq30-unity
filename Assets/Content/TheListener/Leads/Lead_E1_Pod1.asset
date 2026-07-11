@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222fba07fae7fa343a6d2a96dfd2ee48, type: 3}
+  m_Name: Lead_E1_Pod1
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadData
+  leadId: e1_pod1
+  title: "Case Alert: Dot Ellis"
+  subtitle: "Her name is Dot Ellis. Tell Havenbay — carefully."
+  actorPortrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+  state: 0
+  ActionType: 2
+  EnergyCost: 0
+  requirements:
+  - label: UV Light
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: 4426ca7e5c440644793d4f17cc690acf, type: 2}
+    quantity: 1
+  - label: Full Forensic Case
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: ed7637afffe76c1428ae3bece78c9829, type: 2}
+    quantity: 1
+  RequiredLeadIds:
+  - e1_bridge
+  EvidenceIds: []
+  SpawnLeadIds:
+  - e1_cottage
+  - e1_inspector
+  - e1_boats
+  BranchOutcomes: []
+  NarrativeFlags:
+  - e1.phase1.complete
+  SoftCurrency: 200
+  EnergyGrant: 20
+  PremiumGrant: 0
+  generatorRewardTypeId: 
+  generatorRewardTier: 0
+  resolutionDialogue: {fileID: 11400000, guid: dd10000500000000000000000000dd05, type: 2}
+  OutcomeHints: 4
+  boardConnections: []
+  boardPhase: 1

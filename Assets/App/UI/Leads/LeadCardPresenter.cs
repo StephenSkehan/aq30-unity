@@ -54,7 +54,7 @@ namespace AQ.App.UI.Leads
                 var sprite = data?.ActorBadge;
                 actorAnchor.sprite = sprite;
                 actorAnchor.preserveAspect = true;
-                actorAnchor.color = sprite != null ? Color.white : new Color(1,1,1,0);
+                actorAnchor.color = sprite != null ? Color.white : new Color(1, 1, 1, 0);
             }
 
             // Requirements
@@ -117,13 +117,13 @@ namespace AQ.App.UI.Leads
         {
             if (background == null) return;
 
-            // Card colors by state (white, eggshell blue, pale green)
-            var c = Color.white;
+            // Card colors by state (noir theme: base card, lifted, teal-tinged ready)
+            Color c;
             switch (_data?.VisualState ?? CardState.New)
             {
-                case CardState.InProgress: c = Hex(0xEAF2FF); break;
-                case CardState.Complete:   c = Hex(0xE9F8EE); break;
-                default:                   c = Color.white;   break;
+                case CardState.InProgress: c = AQTheme.PanelLine; break;
+                case CardState.Complete:   c = AQTheme.TealDim;   break;
+                default:                   c = AQTheme.Card;      break;
             }
             background.color = c;
         }

@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_GS_OtherGhost
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: GS_OGH_R1
+  nodes:
+  - id: GS_OGH_R1
+    speaker: Ally Quinn
+    line: "His name matched the same pattern as Maya's — perfect record, external
+      logins, tuition routed through Northgate. He'd been carrying it for eight months.
+      When I found him in the library at six in the morning he already looked like
+      someone who knew I was coming."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_OGH_R2
+    choices: []
+  - id: GS_OGH_R2
+    speaker: Ally Quinn
+    line: "I told him I wasn't there to write about him. I was there because a student
+      named Maya Chen was missing. He said: 'I didn't know.' He'd been alone with
+      this for eight months and no one had come looking."
+    portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_OGH_R3
+    choices: []
+  - id: GS_OGH_R3
+    speaker: Ally Quinn
+    line: "He confirmed it runs through administration. The university registers the
+      ghost, collects the tuition, the family gets the credential. He wouldn't say
+      how far up it goes. He was scared enough that he didn't have to."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.gs_other_ghost.seen
+    nextId:
+    choices: []

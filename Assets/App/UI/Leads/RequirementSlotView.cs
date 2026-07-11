@@ -21,6 +21,53 @@ namespace AQ.App.UI.Leads
 
         private RequirementData _data;
 
+        private void Awake()
+        {
+            var bg = GetComponent<UnityEngine.UI.Image>();
+            if (bg != null) bg.color = new Color(1, 1, 1, 0);
+
+            if (tickOverlay == null)
+                tickOverlay = CreateTickOverlay();
+        }
+
+        private GameObject CreateTickOverlay()
+        {
+            var go = new GameObject("Tick");
+            go.transform.SetParent(transform, false);
+            var rt = go.AddComponent<RectTransform>();
+            rt.anchorMin = new Vector2(1f, 0f);
+            rt.anchorMax = new Vector2(1f, 0f);
+            rt.pivot     = new Vector2(1f, 0f);
+            rt.anchoredPosition = new Vector2(-2f, 2f);
+            rt.sizeDelta = new Vector2(28f, 28f);
+            var img = go.AddComponent<Image>();
+            img.sprite = AQTheme.Rounded;
+            img.type   = Image.Type.Sliced;
+            img.pixelsPerUnitMultiplier = 0.35f; // corners overrun -> circular badge
+            img.color  = AQTheme.Success;
+            img.raycastTarget = false;
+
+            // Checkmark drawn from two bars — no reliance on a ✓ glyph existing.
+            AddBar(rt, new Vector2(4f, 10f),  45f, new Vector2(-8f, -2f));
+            AddBar(rt, new Vector2(4f, 17f), -45f, new Vector2(1f, 0.5f));
+
+            go.SetActive(false);
+            return go;
+        }
+
+        private static void AddBar(RectTransform parent, Vector2 size, float zRot, Vector2 pos)
+        {
+            var go = new GameObject("Stroke");
+            go.transform.SetParent(parent, false);
+            var rt = go.AddComponent<RectTransform>();
+            rt.sizeDelta        = size;
+            rt.anchoredPosition = pos;
+            rt.localRotation    = Quaternion.Euler(0f, 0f, zRot);
+            var img = go.AddComponent<Image>();
+            img.color = Color.white;
+            img.raycastTarget = false;
+        }
+
         public void Bind(RequirementData data)
         {
             _data = data;
@@ -39,9 +86,20 @@ namespace AQ.App.UI.Leads
                 icon.color = s != null ? Color.white : new Color(1,1,1,0);
             }
 
-            // tick
+            // tick — ensure it renders on top regardless of prefab sibling order
+            bool met = data?.Met == true;
+            var slotBg = GetComponent<UnityEngine.UI.Image>();
+            if (slotBg != null)
+            {
+                var tint = AQTheme.Success; tint.a = 0.25f;
+                slotBg.color = met ? tint : new Color(1, 1, 1, 0);
+            }
+
             if (tickOverlay != null)
-                tickOverlay.SetActive(data?.Met == true);
+            {
+                tickOverlay.SetActive(met);
+                if (met) tickOverlay.transform.SetAsLastSibling();
+            }
 
             // click
             if (button != null)

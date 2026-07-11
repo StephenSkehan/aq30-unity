@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222fba07fae7fa343a6d2a96dfd2ee48, type: 3}
+  m_Name: Lead_GS_Tip
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadData
+  leadId: gs_tip
+  title: The Encrypted Message
+  subtitle: "A fragment of Maya\u2019s last message \u2014 \u2018They\u2019re selling
+    us.\u2019 Follow the thread."
+  actorPortrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
+  state: 1
+  ActionType: 0
+  EnergyCost: 0
+  requirements:
+  - label: Full Forensic Case
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: ed7637afffe76c1428ae3bece78c9829, type: 2}
+    quantity: 1
+  RequiredLeadIds: []
+  EvidenceIds: []
+  SpawnLeadIds:
+  - gs_roommate
+  - gs_lecturer
+  BranchOutcomes: []
+  NarrativeFlags:
+  - gs.tip.activated
+  - aq.loc.rusty_anchor.active
+  SoftCurrency: 20
+  EnergyGrant: 0
+  generatorRewardTypeId: gen_junk
+  generatorRewardTier: 0
+  resolutionDialogue: {fileID: 11400000, guid: f3a72b4d8c1e590fa8d2b6c341e07259, type: 2}
+  OutcomeHints: 6
+  boardConnections:
+  - gs_roommate
+  - gs_lecturer
+  - gs_gerald

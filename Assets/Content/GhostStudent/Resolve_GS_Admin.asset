@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_GS_Admin
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: GS_ADM_R1
+  nodes:
+  - id: GS_ADM_R1
+    speaker: Ally Quinn
+    line: "Dean Hartley gave me twenty minutes. He shook my hand, offered coffee,
+      and checked his watch twice before I'd said a word."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_ADM_R2
+    choices: []
+  - id: GS_ADM_R2
+    speaker: Ally Quinn
+    line: "I showed him the enrollment anomalies. He said our student records were
+      a matter of institutional privacy. I asked why Maya's profile had been accessed
+      fourteen times from outside the university network. He said he'd look into it."
+    portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
+    emotion: 6
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_ADM_R3
+    choices: []
+  - id: GS_ADM_R3
+    speaker: Ally Quinn
+    line: He didn't ask which student. I hadn't said Maya's name yet.
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_ADM_R4
+    choices: []
+  - id: GS_ADM_R4
+    speaker: Ally Quinn
+    line: "He ended the meeting before I could follow up. Walking out I heard him
+      pick up his phone. He knew exactly what I was looking for. The question is
+      who he called first."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.gs_admin.seen
+    nextId:
+    choices: []

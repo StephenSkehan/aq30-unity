@@ -15,18 +15,26 @@ MonoBehaviour:
   leadId: 382456addf424c6d8eebd32deef24bb9
   title: Interview Beth
   subtitle: Collect deli CCTV
-  actorPortrait: {fileID: 0}
+  actorPortrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
   state: 1
+  ActionType: 0
+  EnergyCost: 0
   requirements:
-  - label: Forensic Laptop
-    itemId: forensic_laptop
+  - label: UV Light
     icon: {fileID: 0}
     satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: 4426ca7e5c440644793d4f17cc690acf, type: 2}
   - label: CrimeScenePhoto
-    itemId: photo_crimescene
     icon: {fileID: 0}
     satisfied: 0
-  - label: Charged Recorder
-    itemId: recorder_charged
+    itemDefinition: {fileID: 11400000, guid: ed7637afffe76c1428ae3bece78c9829, type: 2}
+  - label: Evidence Bag
     icon: {fileID: 0}
     satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: 396f63cfaf7106c47bdaf61671377b24, type: 2}
+  EvidenceIds: []
+  SpawnLeadIds: []
+  NarrativeFlags: []
+  SoftCurrency: 150
+  EnergyGrant: 0
+  OutcomeHints: 0

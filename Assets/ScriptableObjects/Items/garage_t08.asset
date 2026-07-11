@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9, type: 3}
+  m_Name: garage_t08
+  m_EditorClassIdentifier: AQ.App::AQ.App.Items.ItemDefinitionSO
+  itemId: garage_t08
+  family: garage
+  tier: 7
+  icon: {fileID: -691813304095892454, guid: b7f6062a69b75794d9074843a4dbcda2, type: 3}
+  displayName: Custom Exhaust

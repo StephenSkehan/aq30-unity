@@ -54,15 +54,24 @@ namespace AQ.App.Analytics
 
         private void OnWalletChanged(WalletChanged e)
         {
+            int delta = e.NewValue - e.OldValue;
             var evt = new Dictionary<string, object>
             {
-                ["currency"] = e.Currency.ToString(),
-                ["old"]      = e.OldValue,
-                ["@new"]     = e.NewValue,       // '@' to avoid reserved word collisions
-                ["delta"]    = e.NewValue - e.OldValue,
-                ["reason"]   = e.Reason
+                ["currency"]  = e.Currency.ToString(),
+                ["old_value"] = e.OldValue,
+                ["new_value"] = e.NewValue,
+                ["delta"]     = delta,
+                ["reason"]    = e.Reason
             };
             AnalyticsLocator.Instance?.LogEvent("economy_changed", evt);
+
+            if (e.Currency == Currency.Energy)
+            {
+                if (delta > 0)
+                    GameAnalytics.LogEnergyGain(delta, e.Reason);
+                else if (delta < 0)
+                    GameAnalytics.LogEnergySpend(-delta, e.Reason);
+            }
         }
 
         private void OnWalletGranted(RewardsGranted e)
@@ -88,6 +97,15 @@ namespace AQ.App.Analytics
             evt["energy"]  = energy;
 
             AnalyticsLocator.Instance?.LogEvent("economy_granted", evt);
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        private static void AutoInstall()
+        {
+            if (Object.FindFirstObjectByType<WalletAnalyticsBridge>() != null) return;
+            var go = new GameObject("WalletAnalyticsBridge_Auto");
+            Object.DontDestroyOnLoad(go);
+            go.AddComponent<WalletAnalyticsBridge>();
         }
     }
 }

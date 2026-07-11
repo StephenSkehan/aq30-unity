@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222fba07fae7fa343a6d2a96dfd2ee48, type: 3}
+  m_Name: Lead_E1_Tip
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadData
+  leadId: e1_tip
+  title: "The Tip Line"
+  subtitle: "A voicemail with no words in it. Forty seconds. Three nights old."
+  actorPortrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+  state: 1
+  ActionType: 2
+  EnergyCost: 0
+  requirements:
+  - label: Evidence Bag
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: 396f63cfaf7106c47bdaf61671377b24, type: 2}
+    quantity: 1
+  RequiredLeadIds: []
+  EvidenceIds: []
+  SpawnLeadIds:
+  - e1_forty
+  - e1_archive
+  BranchOutcomes: []
+  NarrativeFlags:
+  - aq.loc.rusty_anchor.active
+  SoftCurrency: 20
+  EnergyGrant: 0
+  PremiumGrant: 0
+  generatorRewardTypeId: gen_junk
+  generatorRewardTier: 0
+  resolutionDialogue: {fileID: 11400000, guid: dd10000100000000000000000000dd01, type: 2}
+  OutcomeHints: 4
+  boardConnections: []
+  boardPhase: 1

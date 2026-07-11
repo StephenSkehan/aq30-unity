@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6140942ece21c5743b73fe4d8d94c0f7, type: 3}
+  m_Name: GeneratorType_CornerDiner
+  m_EditorClassIdentifier: AQ.App::AQ.App.Generators.GeneratorTypeSO
+  generatorTypeId: corner_diner
+  displayName: Corner Diner
+  maxGeneratorTier: 9
+  tiers:
+  - dropTable:
+    - type: 0
+      itemFamily: food_gifts
+      itemTier: 0
+      weight: 35
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: food_gifts
+      itemTier: 1
+      weight: 20
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: food_gifts
+      itemTier: 2
+      weight: 15
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: food_gifts
+      itemTier: 3
+      weight: 10
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: food_gifts
+      itemTier: 4
+      weight: 6
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: food_gifts
+      itemTier: 5
+      weight: 4
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: food_gifts
+      itemTier: 6
+      weight: 3
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: food_gifts
+      itemTier: 7
+      weight: 2
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: food_gifts
+      itemTier: 8
+      weight: 1
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: food_gifts
+      itemTier: 9
+      weight: 1
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: food_gifts
+      itemTier: 10
+      weight: 1
+      requiresStoryFlag:
+    - type: 0
+      itemFamily: food_gifts
+      itemTier: 11
+      weight: 1
+      requiresStoryFlag:
+    - type: 1
+      itemFamily:
+      itemTier: 0
+      weight: 10
+      requiresStoryFlag:
+    particles:
+      emissionRate: 4
+      startColor: {r: 0.9, g: 0.55, b: 0.1, a: 1}
+      endColor: {r: 1, g: 0.85, b: 0.5, a: 0}
+      startSize: 0.03
+  generatorSprites:
+  - {fileID: 4029526942562925688, guid: 0433cef5805f85342ab7e369946b1c41, type: 3}
+  - {fileID: 4004064464431834146, guid: 83fcc7ffae805d04b9a58e8ba18bb3c1, type: 3}
+  - {fileID: 2118218133998206558, guid: 42c367dbdd2c69141b73ec2423552d3b, type: 3}
+  - {fileID: 2707377127623365340, guid: 1418cbf5288463a4b89010c7b18ffbb4, type: 3}
+  - {fileID: -9065285046478620426, guid: 7311fa77be41ca1478b28594f03411e5, type: 3}
+  - {fileID: 1816304211388318734, guid: dc64081c94486174fa352c6c6d98f7d1, type: 3}
+  - {fileID: -3165239850918927304, guid: 96ea1a515f46e3b4f9a0b54f8851ab5b, type: 3}
+  - {fileID: -4259644928505973151, guid: 1ad85d46815b8e04faf4f4c239b80012, type: 3}
+  - {fileID: 6190918055856019711, guid: bf4f1050b71b4114eb48d0c0c55e1f95, type: 3}
+  - {fileID: 202961760710261564, guid: 728a11c5998532f489baf438a733610e, type: 3}

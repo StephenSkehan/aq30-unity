@@ -1,9 +1,19 @@
-namespace AQ.App.Config
+// Assets/Scripts/App/Services/EnergyRuntime.cs
+using System;
+using UnityEngine;
+using AQ.App.Config;
+
+namespace AQ.App.Services
 {
-    /// <summary>Runtime holders set at boot by ConfigInstaller.</summary>
+    /// <summary>
+    /// Lightweight static holder for energy config/runtime objects.
+    /// </summary>
     public static class EnergyRuntime
     {
-        public static EnergyConfig Config;
-        public static AQ.App.Services.EnergyManager Manager;
+        /// <summary>Assigned by ConfigInstaller (or scene) at startup.</summary>
+        public static EnergyConfig Config { get; set; }
+
+        /// <summary>Created by ConfigInstaller / SaveSystem when EnergySystem is enabled.</summary>
+        public static EnergyManager Manager { get; set; }
     }
 }

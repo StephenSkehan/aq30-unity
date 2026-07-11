@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,15 +11,25 @@ namespace AQ.App.UI.Board
     public class BoardTileView :
         MonoBehaviour,
         IPointerClickHandler,
+        IPointerDownHandler,
+        IPointerUpHandler,
         IBeginDragHandler,
         IDragHandler,
         IEndDragHandler
     {
+        private const float LongPressDuration = 0.5f;
+        private Coroutine _longPressRoutine;
+
+        public static event Action<BoardTileView> LongHeld;
         MergeBoardController controller;
         int row, col;
 
         Image bgImage;          // child "Bg"
         public Image itemImage; // child "Item"
+        Image energyBadge;      // child "EnergyBadge", created on demand, generators only
+
+        static Sprite _energyBadgeSprite;
+        static bool _energyBadgeSpriteLoaded;
 
         public struct PayloadData
         {
@@ -78,6 +90,7 @@ namespace AQ.App.UI.Board
 
         public void SetItem(Sprite sprite, int tier)
         {
+            GetComponent<AQ.App.UI.Board.FX.GeneratorTileAnimator>()?.Teardown();
             payload.kind = TileKind.Item;
             payload.tier = Mathf.Max(0, tier);
             payload.sprite = sprite;
@@ -86,6 +99,7 @@ namespace AQ.App.UI.Board
 
         public void Clear()
         {
+            GetComponent<AQ.App.UI.Board.FX.GeneratorTileAnimator>()?.Teardown();
             payload.kind = TileKind.Empty;
             payload.tier = -1;
             payload.sprite = null;
@@ -112,6 +126,45 @@ namespace AQ.App.UI.Board
                 itemImage.sprite = payload.sprite;
                 itemImage.enabled = true;
             }
+
+            RefreshEnergyBadge();
+        }
+
+        void RefreshEnergyBadge()
+        {
+            bool show = payload.kind == TileKind.Generator && itemImage != null && itemImage.enabled;
+
+            if (!show)
+            {
+                if (energyBadge) energyBadge.enabled = false;
+                return;
+            }
+
+            if (!energyBadge)
+            {
+                if (!_energyBadgeSpriteLoaded)
+                {
+                    _energyBadgeSpriteLoaded = true;
+                    _energyBadgeSprite = Resources.Load<Sprite>("App/UI/MergeBoard/energy_badge");
+                }
+                if (_energyBadgeSprite == null) return;
+
+                var go = new GameObject("EnergyBadge", typeof(RectTransform), typeof(Image));
+                var rt = (RectTransform)go.transform;
+                rt.SetParent(transform, false);
+                rt.SetAsLastSibling();
+                rt.anchorMin = new Vector2(0.03f, 0.03f);
+                rt.anchorMax = new Vector2(0.38f, 0.38f);
+                rt.offsetMin = Vector2.zero;
+                rt.offsetMax = Vector2.zero;
+
+                energyBadge = go.GetComponent<Image>();
+                energyBadge.sprite = _energyBadgeSprite;
+                energyBadge.preserveAspect = true;
+                energyBadge.raycastTarget = false;
+            }
+
+            energyBadge.enabled = true;
         }
 
         public void SnapToGrid()
@@ -121,13 +174,46 @@ namespace AQ.App.UI.Board
 
         // ---------------- input ----------------
 
+        private bool _longPressFired;
+
         public void OnPointerClick(PointerEventData eventData)
         {
+            // A completed long-press must not also count as a tap — on
+            // generators that tap would spawn an item.
+            if (_longPressFired) { _longPressFired = false; return; }
             controller?.OnTileClicked(this);
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            _longPressFired = false;
+            if (IsEmpty) return;
+            _longPressRoutine = StartCoroutine(LongPressRoutine());
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            CancelLongPress();
+        }
+
+        private void CancelLongPress()
+        {
+            if (_longPressRoutine == null) return;
+            StopCoroutine(_longPressRoutine);
+            _longPressRoutine = null;
+        }
+
+        private IEnumerator LongPressRoutine()
+        {
+            yield return new WaitForSecondsRealtime(LongPressDuration);
+            _longPressRoutine = null;
+            _longPressFired = true;
+            LongHeld?.Invoke(this);
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            CancelLongPress();
             if (IsEmpty || !itemImage || !itemImage.enabled) return;
 
             dragStartRC = controller?.GetIndex(this);
@@ -139,6 +225,7 @@ namespace AQ.App.UI.Board
                 (RectTransform)controller.boardRoot);
 
             itemImage.enabled = false;
+            if (energyBadge) energyBadge.enabled = false;
             Follow(eventData);
         }
 

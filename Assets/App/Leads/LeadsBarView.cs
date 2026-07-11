@@ -1,143 +1,256 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using AQ.App.UI.Leads;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace AQ.App.Leads
 {
-    /// <summary>
-    /// Minimal, robust Leads bar:
-    /// - Spawns card prefabs under a horizontal content root
-    /// - Raises ProceedRequested(LeadCardSO) when a card's proceed button is clicked
-    /// - ApplyOutcome disables that card's proceed (visual safety) without repo coupling
-    /// - Exposes Rebuild() and Rebuild(list) so any glue/repo can drive it
-    /// </summary>
     public sealed class LeadsBarView : MonoBehaviour
     {
         [Header("Wiring (assign in Inspector)")]
-        public ScrollRect scrollRect;           // LeadsBar (has ScrollRect; horizontal true)
-        public RectTransform contentRoot;       // Content_Leads
-        public LeadCardView cardPrefab;         // Lead card prefab with LeadCardView (or at least the expected children)
+        public ScrollRect scrollRect;
+        public RectTransform contentRoot;
+        public GameObject cardPrefab;   // LeadCard.prefab (has LeadCardPresenter)
 
-        // Event consumed by BoardPresenter
-        public event Action<LeadCardSO> ProceedRequested;
+        public event Action<LeadData> ProceedRequested;
 
-        // Internal runtime state
-        readonly List<LeadCardView> _spawned = new List<LeadCardView>();
-        readonly Dictionary<LeadCardSO, Button> _proceedByLead = new Dictionary<LeadCardSO, Button>();
+        readonly List<GameObject> _spawned = new List<GameObject>();
+        readonly Dictionary<LeadData, Button> _proceedByLead = new Dictionary<LeadData, Button>();
 
-        // Optional: a repo can be bound by external glue; we don't assume any API on it.
+        string _lastFulfillId;
+        int _activatedCount;
+        TextMeshProUGUI _progressLabel;
+
         UnityEngine.Object _boundRepo;
 
         void Awake()
         {
-            // Be lenient about wiring
+            // The lead bar sits inside a VerticalLayoutGroup whose later siblings (the board grid)
+            // would otherwise render on top. Override sorting ensures leads always draw above the grid.
+            var c = GetComponent<Canvas>();
+            if (c == null)
+            {
+                c = gameObject.AddComponent<Canvas>();
+                c.overrideSorting = true;
+                c.sortingOrder = 1;
+                // A nested Canvas with overrideSorting requires its own GraphicRaycaster;
+                // without it the EventSystem cannot detect clicks on child buttons.
+                gameObject.AddComponent<UnityEngine.UI.GraphicRaycaster>();
+            }
+
             if (scrollRect == null) scrollRect = GetComponent<ScrollRect>();
             if (contentRoot == null && scrollRect != null) contentRoot = scrollRect.content;
+            CreateProgressLabel();
         }
 
-        /// <summary>
-        /// Kept for glue that expects a Bind(repo). We store it but do not depend on any specific members.
-        /// </summary>
-        public void Bind(UnityEngine.Object repo)
+        public void Bind(UnityEngine.Object repo) { _boundRepo = repo; }
+
+        void OnEnable()  { LeadsRuntimeBus.OnLeadActivated += HandleLeadActivated; }
+        void OnDisable() { LeadsRuntimeBus.OnLeadActivated -= HandleLeadActivated; }
+
+        void HandleLeadActivated(LeadData lead)
         {
-            _boundRepo = repo; // informational only
+            if (lead == null) return;
+            _lastFulfillId = lead.leadId;
+            // boardPhase 0 = repeatables/teasers, outside the "X / 12" case arc.
+            if (lead.boardPhase > 0)
+            {
+                _activatedCount++;
+                UpdateProgressLabel();
+            }
         }
 
-        /// <summary>
-        /// Fallback rebuild used by older binders that call bar.Rebuild().
-        /// If you have glue that knows the current list, call Rebuild(list) instead.
-        /// </summary>
-        public void Rebuild()
-        {
-            // No source-of-truth here by design; this is a no-op unless external code calls Rebuild(list).
-            // Keeping the method to satisfy existing binders and avoid compile errors.
-        }
+        public void Rebuild() { }
 
-        /// <summary>
-        /// Replace all cards with the provided list.
-        /// </summary>
-        public void Rebuild(IReadOnlyList<LeadCardSO> leads)
+        public void Rebuild(IReadOnlyList<LeadData> leads)
         {
             if (contentRoot == null || cardPrefab == null) return;
 
-            // Clear previous
-            for (int i = _spawned.Count - 1; i >= 0; i--)
+            for (int i = contentRoot.childCount - 1; i >= 0; i--)
             {
-                var v = _spawned[i];
-                if (v != null) DestroyImmediate(v.gameObject);
+                var child = contentRoot.GetChild(i);
+                if (child != null) DestroyImmediate(child.gameObject);
             }
             _spawned.Clear();
             _proceedByLead.Clear();
 
             if (leads == null) return;
 
-            // Spawn
             for (int i = 0; i < leads.Count; i++)
             {
                 var so = leads[i];
-                var inst = Instantiate(cardPrefab, contentRoot);
-                inst.gameObject.name = $"LeadCard_{i}_{(so != null ? so.name : "Null")}";
+                if (so != null && so.RuntimeState == LeadState.Blocked) continue;
+                var go = Instantiate(cardPrefab, contentRoot);
+                go.name = $"LeadCard_{i}_{(so != null ? so.name : "Null")}";
 
-                // If your LeadCardView has a Bind method, use it; otherwise it's harmless.
-                try { inst.Bind(so); } catch { /* ignore if not present */ }
+                var presenter = go.GetComponent<LeadCardPresenter>();
+                if (presenter != null)
+                {
+                    presenter.Bind(ToCardData(so));
+                    bool hasReqs = so != null && so.requirements != null && so.requirements.Length > 0;
+                    if (presenter.requirementsRow != null)
+                        presenter.requirementsRow.gameObject.SetActive(hasReqs);
+                    if (presenter.rewardsRow != null)
+                        presenter.rewardsRow.gameObject.SetActive(false);
+                }
 
-                // Find a proceed button by common names; fall back to first Button in children
-                var btn = FindProceedButton(inst.transform);
+                // Show a "tap to proceed" hint on ready lead cards
+                if (so != null && so.RuntimeState == LeadState.Ready)
+                    AddProceedHint(go.transform);
+
+                var btn = FindProceedButton(go.transform);
                 if (btn != null)
                 {
+                    var capturedSo = so;
                     btn.onClick.RemoveAllListeners();
                     btn.onClick.AddListener(() =>
                     {
-                        if (so != null) ProceedRequested?.Invoke(so);
+                        if (capturedSo != null) ProceedRequested?.Invoke(capturedSo);
                     });
-                    _proceedByLead[so] = btn;
+                    if (so != null) _proceedByLead[so] = btn;
+                }
+                else
+                {
+                    Debug.LogWarning($"[LeadsBarView] No button found on card '{so?.leadId}' — tap-to-proceed will not work.");
                 }
 
-                _spawned.Add(inst);
+                _spawned.Add(go);
+
+                if (_lastFulfillId != null && so != null && so.leadId == _lastFulfillId)
+                {
+                    StartCoroutine(PlayFulfillBounce(go.GetComponent<RectTransform>()));
+                    _lastFulfillId = null;
+                }
             }
 
-            // Ensure layout updates for horizontal content
             LayoutRebuilder.ForceRebuildLayoutImmediate(contentRoot);
         }
 
-        /// <summary>
-        /// Called by BoardPresenter after an action resolves (visual safety).
-        /// Disables the proceed button for the supplied lead if we spawned one.
-        /// </summary>
-        public void ApplyOutcome(LeadCardSO lead)
+        public void ApplyOutcome(LeadData lead)
         {
             if (lead == null) return;
             if (_proceedByLead.TryGetValue(lead, out var btn) && btn != null)
-            {
                 btn.interactable = false;
-            }
         }
 
-        // --- helpers ---------------------------------------------------------
+        // ----- Progress HUD + Fulfill Animation -----
+
+        void CreateProgressLabel()
+        {
+            var go = new GameObject("Txt_CaseProgress");
+            go.transform.SetParent(transform, false);
+            var rt = go.AddComponent<RectTransform>();
+            rt.anchorMin        = new Vector2(1f, 1f);
+            rt.anchorMax        = new Vector2(1f, 1f);
+            rt.pivot            = new Vector2(1f, 1f);
+            rt.sizeDelta        = new Vector2(120f, 28f);
+            rt.anchoredPosition = new Vector2(-8f, -8f);
+            _progressLabel = go.AddComponent<TextMeshProUGUI>();
+            _progressLabel.fontSize  = 14f;
+            _progressLabel.color     = AQ.App.UI.AQTheme.PaperDim;
+            _progressLabel.alignment = TextAlignmentOptions.Right;
+            AQ.App.UI.AQTheme.StyleText(_progressLabel);
+            UpdateProgressLabel();
+        }
+
+        void UpdateProgressLabel()
+        {
+            if (_progressLabel == null) return;
+            _progressLabel.text = $"{_activatedCount} / 12";
+        }
+
+        static IEnumerator PlayFulfillBounce(RectTransform rt)
+        {
+            if (rt == null) yield break;
+            float elapsed = 0f;
+            const float duration = 0.2f;
+            const float peak = 1.08f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                float scale = t < 0.5f
+                    ? Mathf.Lerp(1f, peak, t * 2f)
+                    : Mathf.Lerp(peak, 1f, (t - 0.5f) * 2f);
+                rt.localScale = new Vector3(scale, scale, 1f);
+                yield return null;
+            }
+            rt.localScale = Vector3.one;
+        }
+
+        // ----- Helpers -----
+
+        static AQ.App.UI.Leads.LeadCardData ToCardData(LeadData lead)
+        {
+            if (lead == null) return new AQ.App.UI.Leads.LeadCardData();
+
+            var reqs = new List<AQ.App.UI.Leads.RequirementData>(lead.requirements?.Length ?? 0);
+            if (lead.requirements != null)
+            {
+                foreach (var r in lead.requirements)
+                {
+                    var tiers = r.Icon != null ? new List<Sprite> { r.Icon } : new List<Sprite>();
+                    var data  = new AQ.App.UI.Leads.RequirementData(r.Label, tiers, 0, r.IsSatisfied);
+                    int qty   = r.quantity < 1 ? 1 : r.quantity;
+                    for (int q = 0; q < qty; q++)
+                        reqs.Add(data);
+                }
+            }
+
+            return new AQ.App.UI.Leads.LeadCardData
+            {
+                Title        = lead.title,
+                Objective    = lead.subtitle,
+                LeadId       = lead.leadId,
+                ActorBadge   = lead.actorPortrait,
+                Requirements = reqs,
+                VisualState  = lead.RuntimeState == LeadState.Ready      ? AQ.App.UI.Leads.CardState.Complete
+                             : lead.RuntimeState == LeadState.InProgress ? AQ.App.UI.Leads.CardState.InProgress
+                             : AQ.App.UI.Leads.CardState.New
+            };
+        }
+
+        static void AddProceedHint(Transform cardRoot)
+        {
+            var go = new GameObject("Txt_ProceedHint");
+            go.transform.SetParent(cardRoot, false);
+            var rt = go.AddComponent<RectTransform>();
+            rt.anchorMin        = new Vector2(0f, 0f);
+            rt.anchorMax        = new Vector2(1f, 0f);
+            rt.pivot            = new Vector2(0.5f, 0f);
+            rt.sizeDelta        = new Vector2(0f, 28f);
+            rt.anchoredPosition = new Vector2(0f, 8f);
+            var tmp = go.AddComponent<TextMeshProUGUI>();
+            tmp.text        = ">>  Tap card to proceed";
+            tmp.fontSize    = 13f;
+            tmp.color       = AQ.App.UI.AQTheme.Amber;
+            tmp.alignment   = TextAlignmentOptions.Center;
+            tmp.fontStyle   = FontStyles.Bold;
+            AQ.App.UI.AQTheme.StyleText(tmp);
+        }
 
         static Button FindProceedButton(Transform root)
         {
-            // Preferred names first
             var named = TryFind<Button>(root, "Button_Proceed") ?? TryFind<Button>(root, "Proceed");
             if (named != null) return named;
-
-            // Fallback: first button in subtree
             return root.GetComponentInChildren<Button>(true);
         }
 
         static T TryFind<T>(Transform root, string childName) where T : Component
         {
-            var tr = FindTransformByNameRecursive(root, childName);
+            var tr = FindDeep(root, childName);
             return tr ? tr.GetComponent<T>() : null;
         }
 
-        static Transform FindTransformByNameRecursive(Transform root, string name)
+        static Transform FindDeep(Transform root, string name)
         {
             if (root.name == name) return root;
             for (int i = 0; i < root.childCount; i++)
             {
-                var hit = FindTransformByNameRecursive(root.GetChild(i), name);
+                var hit = FindDeep(root.GetChild(i), name);
                 if (hit) return hit;
             }
             return null;

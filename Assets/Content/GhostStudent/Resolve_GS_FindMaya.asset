@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_GS_FindMaya
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: GS_FMY_R1
+  nodes:
+  - id: GS_FMY_R1
+    speaker: Ally Quinn
+    line: "Thomas's notes put her in the maintenance office behind the arts building.
+      Sub-basement. No cameras. I went at four in the morning. The door was unlocked."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_FMY_R2
+    choices: []
+  - id: GS_FMY_R2
+    speaker: Ally Quinn
+    line: "She was sitting on the floor against the far wall, a sleeping bag and
+      three days of food wrappers beside her. She looked up and said: 'How did you
+      even find me?'"
+    portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_FMY_R3
+    choices: []
+  - id: GS_FMY_R3
+    speaker: Ally Quinn
+    line: "I told her: your message. Three words — 'They're selling us.' She'd
+      sent it into the dark, not knowing if anyone would ever hear it. I heard it."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: GS_FMY_R4
+    choices: []
+  - id: GS_FMY_R4
+    speaker: Ally Quinn
+    line: "She was quiet for a moment. Then: 'I thought no one was looking.' I
+      said: 'I was.' I helped her up. 'Let's get you out.'"
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.gs_find_maya.seen
+    nextId:
+    choices: []

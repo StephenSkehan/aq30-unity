@@ -36,3 +36,19 @@ Thumbs.db
 
 # --- OPTIONAL: KEEP BINARY EXPORTS OUT OF GIT ---
 *.unitypackage
+
+# --- LOCAL TOOLING ---
+/.claude/
+
+# --- UNITY CRASH RECOVERY ---
+/Assets/_Recovery/
+
+# --- LOCAL DESIGN DOCS ---
+/SAS/
+
+# --- TEXTMESH PRO EXAMPLE FONT ATLAS CACHE ---
+# Unity regenerates glyph tables in these assets at runtime; not meaningful to track
+Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/*.asset
+
+# Editor screenshot captures
+/Screenshots/

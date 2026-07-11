@@ -3,8 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using AQ.App.CaseFlow;
 using AQ.App.Config;
+using AQ.App.Economy;
+using AQ.App.Generators;
+using AQ.App.Leads;
+using AQ.App.Overflow;
 using AQ.App.Services;
+using AQ.SharedKernel.CaseFlow;
+using AQ.SharedKernel.Economy;
 
 namespace AQ.App.UI.Board
 {
@@ -17,6 +24,8 @@ namespace AQ.App.UI.Board
     {
         [Tooltip("If not assigned, will search in scene.")]
         public MergeBoardController board;
+
+        private LeadsRepository _leadsRepo;
 
         [Header("Save Settings")]
         [Tooltip("Debounce time for saves after a detected change.")]
@@ -32,12 +41,27 @@ namespace AQ.App.UI.Board
         private float _nextSaveAt = -1f;
         private int _lastSnapshotHash;
 
+        /// <summary>
+        /// True once this scene's save (or absence of one) has been applied to the
+        /// wallet. Restore is destructive (set-to-saved), so anything of real-money
+        /// value — IAP credits, restored purchases — must not be granted until this
+        /// is true. Goes false again during a scene reload until the new Start() runs.
+        /// </summary>
+        public static bool WalletRestored { get; private set; }
+
+        /// <summary>Fired right after WalletRestored becomes true.</summary>
+        public static event Action WalletRestoreCompleted;
+
         // --------------- Unity ---------------
 
         private void Awake()
         {
+            WalletRestored = false;
+
             if (!board)
                 board = FindFirstObjectByType<MergeBoardController>();
+
+            _leadsRepo = FindFirstObjectByType<LeadsRepository>();
 
             var root = Application.persistentDataPath;
             _pathLive = Path.Combine(root, fileName);
@@ -45,10 +69,36 @@ namespace AQ.App.UI.Board
             _pathPrev = Path.Combine(root, Path.GetFileNameWithoutExtension(_pathLive) + ".prev.json");
         }
 
+        private IWallet _observedWallet;
+
         private void Start()
         {
             TryLoad();
             _lastSnapshotHash = SnapshotHash();
+
+            WalletRestored = true;
+            WalletRestoreCompleted?.Invoke();
+
+            // Subscribed after restore so the restore grants themselves don't save.
+            _observedWallet = WalletLocator.Instance;
+            if (_observedWallet != null)
+                _observedWallet.Changed += OnWalletChanged;
+        }
+
+        private void OnDestroy()
+        {
+            if (_observedWallet != null)
+                _observedWallet.Changed -= OnWalletChanged;
+        }
+
+        // Premium is real-money value: persist immediately instead of waiting out
+        // the debounce window, so a crash can't eat a purchase credit.
+        private void OnWalletChanged(WalletChanged e)
+        {
+            if (e.Currency != Currency.Premium) return;
+            TrySave();
+            _lastSnapshotHash = SnapshotHash();
+            _nextSaveAt = -1f;
         }
 
         private void LateUpdate()
@@ -85,8 +135,9 @@ namespace AQ.App.UI.Board
         {
             public int r;
             public int c;
-            public string kind; // "Item" | "Generator"
-            public int tier;    // 0-based
+            public string kind;   // "Item" | "Generator"
+            public int tier;      // 0-based
+            public string family; // e.g. "corner_diner" — empty in legacy saves
         }
 
         [Serializable]
@@ -97,16 +148,55 @@ namespace AQ.App.UI.Board
         }
 
         [Serializable]
+        private sealed class WalletDTO
+        {
+            public int soft;
+            public int premium;
+        }
+
+        [Serializable]
+        private sealed class CaseFlowDTO
+        {
+            public string episodeId;
+            public int stepIndex;
+        }
+
+        [Serializable]
+        private sealed class LeadStateDTO
+        {
+            public string leadId;
+            public int    runtimeState;
+            public bool[] satisfied;
+            public bool   activated;
+        }
+
+        [Serializable]
         private sealed class SaveDTO
         {
-            public string schemaVersion = "0.5.0";
+            public string schemaVersion = "0.6.0";
             public string timestampUtc;
 
             public int rows;
             public int cols;
 
-            public List<CellDTO> cells = new List<CellDTO>();
-            public EnergyDTO energy;
+            public List<CellDTO>      cells    = new List<CellDTO>();
+            public EnergyDTO          energy;
+            public WalletDTO          wallet;
+            public CaseFlowDTO        caseFlow;
+            public List<LeadStateDTO> leads    = new List<LeadStateDTO>();
+        }
+
+        public static void ClearSave()
+        {
+            var root     = Application.persistentDataPath;
+            var live     = Path.Combine(root, "board_state.json");
+            var prev     = Path.Combine(root, "board_state.prev.json");
+            var tmp      = live + ".tmp";
+            foreach (var p in new[] { live, prev, tmp })
+                if (File.Exists(p)) File.Delete(p);
+            OverflowBucketService.Clear();
+            GeneratorFamilyRegistry.Clear();
+            Debug.Log("[Save] BoardSaveSystem cleared");
         }
 
         public void TrySave()
@@ -116,11 +206,14 @@ namespace AQ.App.UI.Board
             var dto = new SaveDTO
             {
                 timestampUtc = DateTime.UtcNow.ToString("o"),
-                rows = board.Rows,
-                cols = board.Cols,
-                energy = BuildEnergyDTO()
+                rows     = board.Rows,
+                cols     = board.Cols,
+                energy   = BuildEnergyDTO(),
+                wallet   = BuildWalletDTO(),
+                caseFlow = BuildCaseFlowDTO(),
             };
             FillCells(dto.cells);
+            FillLeads(dto.leads);
 
             string json = JsonUtility.ToJson(dto, prettyPrint: false);
             Directory.CreateDirectory(Path.GetDirectoryName(_pathLive));
@@ -137,7 +230,7 @@ namespace AQ.App.UI.Board
 
                 File.Move(_pathTmp, _pathLive);
 
-                Debug.Log($"[Save] wrote {dto.cells.Count} cells → {_pathLive}");
+                //Debug.Log($"[Save] wrote {dto.cells.Count} cells → {_pathLive}");
             }
             catch (Exception ex)
             {
@@ -151,27 +244,41 @@ namespace AQ.App.UI.Board
         public void TryLoad()
         {
             if (board == null) return;
-            if (!File.Exists(_pathLive)) return;
+
+            // A crash between the two File.Moves in TrySave can leave only the
+            // .prev backup on disk, so a missing/corrupt live file falls back to it.
+            if (!LoadFrom(_pathLive))
+                LoadFrom(_pathPrev);
+        }
+
+        private bool LoadFrom(string path)
+        {
+            if (!File.Exists(path)) return false;
 
             try
             {
-                string json = File.ReadAllText(_pathLive, Encoding.UTF8);
+                string json = File.ReadAllText(path, Encoding.UTF8);
                 var dto = JsonUtility.FromJson<SaveDTO>(json);
 
                 if (dto == null || dto.cells == null)
                 {
-                    Debug.LogWarning("[Save] load failed (schema mismatch). Resetting with notice.");
-                    return;
+                    Debug.LogWarning($"[Save] load failed (schema mismatch): {path}");
+                    return false;
                 }
 
                 ApplyCells(dto);
                 ApplyEnergy(dto.energy);
+                ApplyWallet(dto.wallet);
+                ApplyCaseFlow(dto.caseFlow);
+                ApplyLeads(dto.leads);
 
-                Debug.Log($"[Save] loaded {dto.cells.Count} cells from {_pathLive}");
+                Debug.Log($"[Save] loaded {dto.cells.Count} cells, {dto.leads?.Count ?? 0} leads from {path}");
+                return true;
             }
             catch (Exception ex)
             {
-                Debug.LogWarning($"[Save] load failed: {ex.Message}. Resetting with notice.");
+                Debug.LogWarning($"[Save] load failed: {ex.Message}. Path={path}");
+                return false;
             }
         }
 
@@ -191,8 +298,9 @@ namespace AQ.App.UI.Board
                     {
                         r = r,
                         c = c,
-                        kind = v.Kind == TileKind.Generator ? "Generator" : "Item",
-                        tier = v.Tier
+                        kind   = v.Kind == TileKind.Generator ? "Generator" : "Item",
+                        tier   = v.Tier,
+                        family = board.GetFamily(v)
                     });
                 }
             }
@@ -210,23 +318,27 @@ namespace AQ.App.UI.Board
                 var v = board.Get(cell.r, cell.c);
                 if (v == null) continue;
 
+                var family = string.IsNullOrEmpty(cell.family) ? board.defaultGeneratorFamily : cell.family;
+
                 if (string.Equals(cell.kind, "Generator", StringComparison.OrdinalIgnoreCase))
                 {
-                    var sprite = board.generatorSprite != null ? board.generatorSprite :
-                                 (board.icons != null && board.icons.Count > 0 ? board.icons[0] : null);
+                    var genSO = board.FindGeneratorType(family);
+                    var sprite = genSO != null ? genSO.SpriteForTier(Mathf.Max(0, cell.tier))
+                               : (board.generatorSprite != null ? board.generatorSprite
+                               : (board.icons != null && board.icons.Count > 0 ? board.icons[0] : null));
                     v.SetGenerator(sprite, Mathf.Max(0, cell.tier));
+                    board.AttachGeneratorAnimator(v, family, Mathf.Max(0, cell.tier));
                 }
                 else
                 {
-                    Sprite icon = null;
-                    if (board.icons != null && board.icons.Count > 0)
-                    {
-                        int idx = Mathf.Clamp(cell.tier, 0, board.icons.Count - 1);
-                        icon = board.icons[idx];
-                    }
+                    Sprite icon = board.SpriteForItem(family, Mathf.Max(0, cell.tier));
                     v.SetItem(icon, Mathf.Max(0, cell.tier));
                 }
+
+                board.SetFamily(v, family);
             }
+
+            board.FireItemCreatedForCurrentBoard();
         }
 
         private static EnergyDTO BuildEnergyDTO()
@@ -240,9 +352,10 @@ namespace AQ.App.UI.Board
 
             mgr.TickNow(cfg.RegenSecondsPerPoint, DateTime.UtcNow);
 
+            var wallet = WalletLocator.Instance;
             return new EnergyDTO
             {
-                current = mgr.Current,
+                current     = wallet?.Get(Currency.Energy) ?? 0,
                 lastTickUtc = mgr.LastTickUtc.ToString("o")
             };
         }
@@ -265,13 +378,118 @@ namespace AQ.App.UI.Board
             if (!DateTime.TryParse(energy.lastTickUtc, null, System.Globalization.DateTimeStyles.AdjustToUniversal, out var last))
                 last = DateTime.UtcNow;
 
-            EnergyRuntime.Manager = new EnergyManager(
-                start: Mathf.Clamp(energy.current, 0, int.MaxValue),
-                cap: cfg.Cap,
-                lastTickUtc: last
-            );
+            EnergyRuntime.Manager = new EnergyManager(0, cfg.Cap, lastTickUtc: last);
 
-            EnergyRuntime.Manager.TickNow(cfg.RegenSecondsPerPoint, DateTime.UtcNow);
+            // Apply offline regen: compute ticks since last save
+            int offlineTicks = EnergyRuntime.Manager.TickNow(cfg.RegenSecondsPerPoint, DateTime.UtcNow);
+            int restored = Math.Min(energy.current + offlineTicks, cfg.Cap);
+
+            // Seed wallet with restored balance
+            var wallet = WalletLocator.Instance;
+            if (wallet != null)
+            {
+                int existing = wallet.Get(Currency.Energy);
+                if (existing > 0) wallet.TrySpend(Currency.Energy, existing);
+                wallet.Grant("save.restore", Reward.Energy(restored));
+            }
+        }
+
+        private static WalletDTO BuildWalletDTO()
+        {
+            var wallet = WalletLocator.Instance;
+            if (wallet == null) return null;
+            return new WalletDTO
+            {
+                soft    = wallet.Get(Currency.Soft),
+                premium = wallet.Get(Currency.Premium)
+            };
+        }
+
+        private static void ApplyWallet(WalletDTO dto)
+        {
+            if (dto == null) return;
+            var wallet = WalletLocator.Instance;
+            if (wallet == null) return;
+
+            // Restore is set-to-saved, not additive: it wipes anything granted
+            // earlier this boot. Grants of real-money value must wait for
+            // WalletRestored (see below).
+            int existingSoft = wallet.Get(Currency.Soft);
+            if (existingSoft > 0) wallet.TrySpend(Currency.Soft, existingSoft);
+            if (dto.soft > 0)     wallet.Grant("save.restore", Reward.Soft(dto.soft));
+
+            int existingPremium = wallet.Get(Currency.Premium);
+            if (existingPremium > 0) wallet.TrySpend(Currency.Premium, existingPremium);
+            if (dto.premium > 0)     wallet.Grant("save.restore", Reward.Premium(dto.premium));
+        }
+
+        private static CaseFlowDTO BuildCaseFlowDTO()
+        {
+            var svc = CaseFlowLocator.Instance;
+            if (svc == null) return null;
+            var state = svc.Current;
+            return new CaseFlowDTO
+            {
+                episodeId = state.Episode.Value,
+                stepIndex = state.StepIndex
+            };
+        }
+
+        private static void ApplyCaseFlow(CaseFlowDTO dto)
+        {
+            if (dto == null) return;
+            var svc = CaseFlowLocator.Instance;
+            if (svc == null) return;
+
+            // Advance silently from current index to saved index.
+            // CaseFlowOrchestratorMB.Start() already ran Begin() + FTUE catch-up,
+            // so current StepIndex may already be > 0.
+            int target  = dto.stepIndex;
+            int current = svc.Current.StepIndex;
+            for (int i = current; i < target; i++)
+                svc.CompleteCurrentStep();
+        }
+
+        private void FillLeads(List<LeadStateDTO> outList)
+        {
+            outList.Clear();
+            if (_leadsRepo == null) return;
+
+            foreach (var lead in _leadsRepo.CurrentLeads)
+            {
+                if (lead == null) continue;
+                var dto = new LeadStateDTO
+                {
+                    leadId       = lead.leadId,
+                    runtimeState = (int)lead.RuntimeState,
+                    activated    = false,
+                    satisfied    = lead.requirements != null
+                                   ? Array.ConvertAll(lead.requirements, r => r.IsSatisfied)
+                                   : Array.Empty<bool>()
+                };
+                outList.Add(dto);
+            }
+
+            foreach (var id in _leadsRepo.ActivatedLeadIds)
+                outList.Add(new LeadStateDTO { leadId = id, activated = true });
+        }
+
+        private void ApplyLeads(List<LeadStateDTO> dtos)
+        {
+            if (dtos == null || dtos.Count == 0 || _leadsRepo == null) return;
+
+            var states = new LeadsRepository.LeadSaveState[dtos.Count];
+            for (int i = 0; i < dtos.Count; i++)
+            {
+                states[i] = new LeadsRepository.LeadSaveState
+                {
+                    LeadId                = dtos[i].leadId,
+                    RuntimeState          = dtos[i].runtimeState,
+                    SatisfiedRequirements = dtos[i].satisfied,
+                    Activated             = dtos[i].activated
+                };
+            }
+            _leadsRepo.ApplySavedStates(states);
         }
 
         private int SnapshotHash()
@@ -294,11 +512,31 @@ namespace AQ.App.UI.Board
                     }
                 }
 
-                var flags = FeatureFlagsRuntime.Current;
-                if (flags != null && flags.EnergySystem && EnergyRuntime.Manager != null)
+                var wallet = WalletLocator.Instance;
+                if (wallet != null)
                 {
-                    h = h * 31 + EnergyRuntime.Manager.Current;
-                    h = h * 31 + (int)(DateTime.UtcNow - EnergyRuntime.Manager.LastTickUtc).TotalSeconds;
+                    h = h * 31 + wallet.Get(Currency.Soft);
+                    h = h * 31 + wallet.Get(Currency.Premium);
+
+                    var flags = FeatureFlagsRuntime.Current;
+                    if (flags != null && flags.EnergySystem)
+                    {
+                        h = h * 31 + wallet.Get(Currency.Energy);
+                        // Must not depend on wall-clock "now": a now-relative term changes
+                        // every second and made the debounced save fire continuously.
+                        if (EnergyRuntime.Manager != null)
+                            h = h * 31 + EnergyRuntime.Manager.LastTickUtc.GetHashCode();
+                    }
+                }
+
+                if (_leadsRepo != null)
+                {
+                    foreach (var lead in _leadsRepo.CurrentLeads)
+                    {
+                        if (lead == null) continue;
+                        h = h * 31 + lead.leadId.GetHashCode();
+                        h = h * 31 + (int)lead.RuntimeState;
+                    }
                 }
 
                 return h;
