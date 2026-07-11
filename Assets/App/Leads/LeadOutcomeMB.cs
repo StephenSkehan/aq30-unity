@@ -46,6 +46,7 @@ namespace AQ.App.Leads
             if (lead == null) return;
 
             UISfxService.PlayLeadFulfilled();
+            AQ.App.Services.HapticService.Medium();
             GrantRewards(lead);
             ApplyNarrativeFlags(lead);
             SpawnFollowUpLeads(lead);

@@ -35,7 +35,7 @@ namespace AQ.App.Generators
             return null;
         }
 
-        private static bool IsEligible(in DropEntry e, bool subGenLocked)
+        public static bool IsEligible(in DropEntry e, bool subGenLocked)
         {
             if (e.type == DropType.SubGenerator && subGenLocked) return false;
             if (!string.IsNullOrEmpty(e.requiresStoryFlag) && !NarrativeFlags.Has(e.requiresStoryFlag)) return false;

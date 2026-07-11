@@ -94,7 +94,14 @@ namespace AQ.App.UI.Board
 
         private void OnTileLongHeld(BoardTileView tile)
         {
-            if (tile == null || tile.IsEmpty || tile.Kind == TileKind.Generator) return;
+            if (tile == null || tile.IsEmpty) return;
+
+            if (tile.Kind == TileKind.Generator)
+            {
+                var genType = FindGeneratorType(GetFamily(tile));
+                GeneratorInfoPopup.Show(genType, tile.Tier, tile.Payload.sprite);
+                return;
+            }
 
             var family = GetFamily(tile);
             int tier   = tile.Tier;
@@ -233,6 +240,7 @@ namespace AQ.App.UI.Board
 
         private void MergeTiles(BoardTileView from, BoardTileView into)
         {
+            AQ.App.Services.HapticService.Light();
             int newTier = from.Tier + 1;
 
             if (from.Kind == TileKind.Generator && into.Kind == TileKind.Generator)

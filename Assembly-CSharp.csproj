@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\App\Services\Ads\AdService.cs" />
     <Compile Include="Assets\Scripts\UI\Board\MergeBoardController.cs" />
     <Compile Include="Assets\Scripts\UI\Board\OverflowBucketView.cs" />
+    <Compile Include="Assets\Scripts\UI\Common\GeneratorInfoPopup.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyLadderService.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\LeadCardPin.cs" />
     <Compile Include="Assets\Scripts\App\Config\EnergyConfig.cs" />

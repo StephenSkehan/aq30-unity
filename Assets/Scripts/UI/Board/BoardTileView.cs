@@ -174,14 +174,20 @@ namespace AQ.App.UI.Board
 
         // ---------------- input ----------------
 
+        private bool _longPressFired;
+
         public void OnPointerClick(PointerEventData eventData)
         {
+            // A completed long-press must not also count as a tap — on
+            // generators that tap would spawn an item.
+            if (_longPressFired) { _longPressFired = false; return; }
             controller?.OnTileClicked(this);
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (IsEmpty || payload.kind == TileKind.Generator) return;
+            _longPressFired = false;
+            if (IsEmpty) return;
             _longPressRoutine = StartCoroutine(LongPressRoutine());
         }
 
@@ -201,6 +207,7 @@ namespace AQ.App.UI.Board
         {
             yield return new WaitForSecondsRealtime(LongPressDuration);
             _longPressRoutine = null;
+            _longPressFired = true;
             LongHeld?.Invoke(this);
         }
 

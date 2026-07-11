@@ -163,6 +163,7 @@
     <Compile Include="Assets\App\NarrativeFlags.cs" />
     <Compile Include="Assets\App\Gameplay\Merge\SpriteCatalog.cs" />
     <Compile Include="Assets\App\UI\CaseResolutionScreenMB.cs" />
+    <Compile Include="Assets\App\Services\HapticService.cs" />
     <Compile Include="Assets\App\Gameplay\Merge\MergeGeneratorConfig.cs" />
     <Compile Include="Assets\App\UI\Board\BoardPresenter.cs" />
     <Compile Include="Assets\App\UI\Leads\LeadCardPresenter.cs" />
