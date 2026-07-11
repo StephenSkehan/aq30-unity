@@ -57,9 +57,9 @@ namespace AQ.App.Leads
             var wallet = WalletLocator.Instance;
             if (wallet == null) return;
 
-            if (lead.SoftCurrency > 0) wallet.Grant("lead.outcome", Reward.Soft(lead.SoftCurrency));
-            if (lead.EnergyGrant  > 0) wallet.Grant("lead.outcome", Reward.Energy(lead.EnergyGrant));
-            if (lead.PremiumGrant > 0) wallet.Grant("lead.outcome", Reward.Premium(lead.PremiumGrant));
+            if (lead.SoftCurrency > 0) { wallet.Grant("lead.outcome", Reward.Soft(lead.SoftCurrency));     AQ.App.UI.FlightFX.FlyReward("soft", lead.SoftCurrency); }
+            if (lead.EnergyGrant  > 0) { wallet.Grant("lead.outcome", Reward.Energy(lead.EnergyGrant));   AQ.App.UI.FlightFX.FlyReward("energy", lead.EnergyGrant); }
+            if (lead.PremiumGrant > 0) { wallet.Grant("lead.outcome", Reward.Premium(lead.PremiumGrant)); AQ.App.UI.FlightFX.FlyReward("premium", lead.PremiumGrant); }
 
             if (!string.IsNullOrEmpty(lead.generatorRewardTypeId))
             {
