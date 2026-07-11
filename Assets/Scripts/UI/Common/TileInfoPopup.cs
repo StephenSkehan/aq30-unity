@@ -28,14 +28,14 @@ namespace AQ.App.UI.Common
             // Dim overlay
             var dim    = MakeRect("Dim", _root.transform);
             var dimImg = dim.gameObject.AddComponent<Image>();
-            dimImg.color  = new Color(0f, 0f, 0f, 0.75f);
+            dimImg.color  = AQTheme.Scrim;
             dim.anchorMin = Vector2.zero;
             dim.anchorMax = Vector2.one;
             dim.offsetMin = dim.offsetMax = Vector2.zero;
 
             // Panel
             var panel = MakeRect("Panel", _root.transform);
-            panel.gameObject.AddComponent<Image>().color = new Color(0.12f, 0.12f, 0.15f, 1f);
+            AQTheme.StylePanel(panel);
             panel.anchorMin        = new Vector2(0.5f, 0.5f);
             panel.anchorMax        = new Vector2(0.5f, 0.5f);
             panel.pivot            = new Vector2(0.5f, 0.5f);
@@ -43,7 +43,7 @@ namespace AQ.App.UI.Common
             panel.anchoredPosition = Vector2.zero;
 
             // Title
-            AddLabel(displayName, panel, 52f, Color.white, new Vector2(0f, 270f), new Vector2(540f, 80f), bold: true);
+            AddLabel(displayName, panel, 52f, AQTheme.Paper, new Vector2(0f, 270f), new Vector2(540f, 80f), bold: true);
 
             // Icon
             var iconRt             = MakeRect("Icon", panel);
@@ -60,14 +60,14 @@ namespace AQ.App.UI.Common
 
             // Family
             AddLabel($"Family:  {FormatFamily(family)}", panel, 34f,
-                     new Color(0.75f, 0.75f, 0.75f), new Vector2(0f, -115f), new Vector2(520f, 50f));
+                     AQTheme.PaperDim, new Vector2(0f, -115f), new Vector2(520f, 50f));
 
             // Tier
             AddLabel($"Tier:  {tier + 1}", panel, 34f,
-                     new Color(0.75f, 0.75f, 0.75f), new Vector2(0f, -170f), new Vector2(520f, 50f));
+                     AQTheme.PaperDim, new Vector2(0f, -170f), new Vector2(520f, 50f));
 
             // OK button
-            var ok = MakeButton("OK", panel, new Color(0.18f, 0.52f, 0.35f), new Vector2(0f, -270f));
+            var ok = MakeButton("OK", panel, AQTheme.Teal, new Vector2(0f, -270f));
             ok.onClick.AddListener(Close);
         }
 
@@ -111,6 +111,7 @@ namespace AQ.App.UI.Common
             tmp.alignment       = TextAlignmentOptions.Center;
             tmp.raycastTarget   = false;
             if (bold) tmp.fontStyle = FontStyles.Bold;
+            AQTheme.StyleText(tmp, display: bold);
         }
 
         private static Button MakeButton(string label, RectTransform parent, Color color, Vector2 anchoredPosition)
@@ -123,7 +124,7 @@ namespace AQ.App.UI.Common
             rt.pivot            = new Vector2(0.5f, 0.5f);
             rt.sizeDelta        = new Vector2(280f, 90f);
             rt.anchoredPosition = anchoredPosition;
-            go.GetComponent<Image>().color = color;
+            AQTheme.Round(go.GetComponent<Image>(), color);
 
             var lbl       = MakeRect("Label", rt);
             lbl.anchorMin = Vector2.zero;
@@ -132,9 +133,10 @@ namespace AQ.App.UI.Common
             var tmp            = lbl.gameObject.AddComponent<TextMeshProUGUI>();
             tmp.text           = label;
             tmp.fontSize       = 40f;
-            tmp.color          = Color.white;
+            tmp.color          = AQTheme.Paper;
             tmp.alignment      = TextAlignmentOptions.Center;
             tmp.raycastTarget  = false;
+            AQTheme.StyleText(tmp, display: true);
 
             return go.GetComponent<Button>();
         }

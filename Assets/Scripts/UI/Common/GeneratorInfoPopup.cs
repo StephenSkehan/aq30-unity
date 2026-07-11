@@ -50,7 +50,7 @@ namespace AQ.App.UI.Common
 
             var dim    = MakeRect("Dim", _root.transform);
             var dimImg = dim.gameObject.AddComponent<Image>();
-            dimImg.color  = new Color(0f, 0f, 0f, 0.75f);
+            dimImg.color  = AQTheme.Scrim;
             dim.anchorMin = Vector2.zero;
             dim.anchorMax = Vector2.one;
             dim.offsetMin = dim.offsetMax = Vector2.zero;
@@ -59,7 +59,7 @@ namespace AQ.App.UI.Common
             float panelH  = 420f + lineCount * 58f;
 
             var panel = MakeRect("Panel", _root.transform);
-            panel.gameObject.AddComponent<Image>().color = new Color(0.12f, 0.12f, 0.15f, 1f);
+            AQTheme.StylePanel(panel);
             panel.anchorMin        = new Vector2(0.5f, 0.5f);
             panel.anchorMax        = new Vector2(0.5f, 0.5f);
             panel.pivot            = new Vector2(0.5f, 0.5f);
@@ -68,10 +68,10 @@ namespace AQ.App.UI.Common
 
             float y = panelH / 2f - 60f;
             AddLabel(string.IsNullOrEmpty(type.displayName) ? FormatFamily(type.generatorTypeId) : type.displayName,
-                     panel, 46f, Color.white, new Vector2(0f, y), new Vector2(540f, 70f), bold: true);
+                     panel, 46f, AQTheme.Paper, new Vector2(0f, y), new Vector2(540f, 70f), bold: true);
             y -= 60f;
             AddLabel($"Generator  ·  Tier {tier + 1}", panel, 30f,
-                     new Color(0.65f, 0.65f, 0.65f), new Vector2(0f, y), new Vector2(540f, 40f));
+                     AQTheme.PaperDim, new Vector2(0f, y), new Vector2(540f, 40f));
             y -= 60f;
 
             var iconRt              = MakeRect("Icon", panel);
@@ -87,7 +87,7 @@ namespace AQ.App.UI.Common
             if (icon == null) iconImg.color = new Color(1f, 1f, 1f, 0.15f);
             y -= 190f;
 
-            AddLabel("CAN DROP", panel, 28f, new Color(0.80f, 0.75f, 0.55f),
+            AddLabel("CAN DROP", panel, 28f, AQTheme.Amber,
                      new Vector2(0f, y), new Vector2(540f, 40f), bold: true);
             y -= 55f;
 
@@ -95,17 +95,17 @@ namespace AQ.App.UI.Common
             {
                 int pct = itemTotal > 0f ? Mathf.RoundToInt(kv.Value / itemTotal * 100f) : 0;
                 AddLabel($"{FormatFamily(kv.Key)}  —  {pct}%", panel, 32f,
-                         new Color(0.85f, 0.85f, 0.90f), new Vector2(0f, y), new Vector2(540f, 46f));
+                         AQTheme.Paper, new Vector2(0f, y), new Vector2(540f, 46f));
                 y -= 58f;
             }
             if (hasSubGen)
             {
                 AddLabel("Bonus generator  —  rare", panel, 32f,
-                         new Color(0.75f, 0.85f, 0.75f), new Vector2(0f, y), new Vector2(540f, 46f));
+                         AQTheme.Success, new Vector2(0f, y), new Vector2(540f, 46f));
                 y -= 58f;
             }
 
-            var ok = MakeButton("OK", panel, new Color(0.18f, 0.52f, 0.35f), new Vector2(0f, -panelH / 2f + 75f));
+            var ok = MakeButton("OK", panel, AQTheme.Teal, new Vector2(0f, -panelH / 2f + 75f));
             ok.onClick.AddListener(Close);
         }
 
@@ -149,6 +149,7 @@ namespace AQ.App.UI.Common
             tmp.alignment       = TextAlignmentOptions.Center;
             tmp.raycastTarget   = false;
             if (bold) tmp.fontStyle = FontStyles.Bold;
+            AQTheme.StyleText(tmp, display: bold);
         }
 
         private static Button MakeButton(string label, RectTransform parent, Color color, Vector2 anchoredPosition)
@@ -161,7 +162,7 @@ namespace AQ.App.UI.Common
             rt.pivot            = new Vector2(0.5f, 0.5f);
             rt.sizeDelta        = new Vector2(280f, 90f);
             rt.anchoredPosition = anchoredPosition;
-            go.GetComponent<Image>().color = color;
+            AQTheme.Round(go.GetComponent<Image>(), color);
 
             var lbl       = MakeRect("Label", rt);
             lbl.anchorMin = Vector2.zero;
@@ -170,9 +171,10 @@ namespace AQ.App.UI.Common
             var tmp            = lbl.gameObject.AddComponent<TextMeshProUGUI>();
             tmp.text           = label;
             tmp.fontSize       = 40f;
-            tmp.color          = Color.white;
+            tmp.color          = AQTheme.Paper;
             tmp.alignment      = TextAlignmentOptions.Center;
             tmp.raycastTarget  = false;
+            AQTheme.StyleText(tmp, display: true);
 
             return go.GetComponent<Button>();
         }

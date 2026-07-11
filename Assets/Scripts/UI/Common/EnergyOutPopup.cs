@@ -41,37 +41,37 @@ namespace AQ.App.UI.Common
 
             var dim    = MakeRect("Dim", _root.transform);
             var dimImg = dim.gameObject.AddComponent<Image>();
-            dimImg.color  = new Color(0f, 0f, 0f, 0.75f);
+            dimImg.color  = AQTheme.Scrim;
             dim.anchorMin = Vector2.zero;
             dim.anchorMax = Vector2.one;
             dim.offsetMin = dim.offsetMax = Vector2.zero;
 
             var panel = MakeRect("Panel", _root.transform);
-            panel.gameObject.AddComponent<Image>().color = new Color(0.12f, 0.12f, 0.15f, 1f);
+            AQTheme.StylePanel(panel);
             panel.anchorMin        = new Vector2(0.5f, 0.5f);
             panel.anchorMax        = new Vector2(0.5f, 0.5f);
             panel.pivot            = new Vector2(0.5f, 0.5f);
             panel.sizeDelta        = new Vector2(660f, 980f);
             panel.anchoredPosition = Vector2.zero;
 
-            AddLabel("OUT OF ENERGY", panel, 52f, Color.white, new Vector2(0f, 430f), new Vector2(600f, 70f), bold: true);
+            AddLabel("OUT OF ENERGY", panel, 52f, AQTheme.Paper, new Vector2(0f, 430f), new Vector2(600f, 70f), bold: true);
             AddLabel("Energy refills over time (+1 every 90s)", panel, 28f,
-                     new Color(0.65f, 0.65f, 0.65f), new Vector2(0f, 370f), new Vector2(600f, 40f));
+                     AQTheme.PaperDim, new Vector2(0f, 370f), new Vector2(600f, 40f));
 
-            _balanceLbl = AddLabel("", panel, 34f, new Color(0.85f, 0.85f, 0.95f),
+            _balanceLbl = AddLabel("", panel, 34f, AQTheme.Paper,
                                    new Vector2(0f, 305f), new Vector2(600f, 50f));
 
             // Ladder refill
-            _refillBtn = MakeButton("", panel, new Color(0.18f, 0.52f, 0.35f), new Vector2(0f, 215f), new Vector2(520f, 100f));
+            _refillBtn = MakeButton("", panel, AQTheme.Teal, new Vector2(0f, 215f), new Vector2(520f, 100f));
             _refillLbl = _refillBtn.GetComponentInChildren<TextMeshProUGUI>();
             _refillBtn.onClick.AddListener(OnRefillClicked);
 
-            _adBtn = MakeButton("", panel, new Color(0.25f, 0.40f, 0.60f), new Vector2(0f, 100f), new Vector2(520f, 90f));
+            _adBtn = MakeButton("", panel, AQTheme.Steel, new Vector2(0f, 100f), new Vector2(520f, 90f));
             _adLbl = _adBtn.GetComponentInChildren<TextMeshProUGUI>();
             _adBtn.onClick.AddListener(OnWatchAdClicked);
             AdService.AvailabilityChanged += RefreshDynamic;
 
-            AddLabel("GET PLATINUM INGOTS", panel, 34f, new Color(0.80f, 0.75f, 0.55f),
+            AddLabel("GET PLATINUM INGOTS", panel, 34f, AQTheme.Amber,
                      new Vector2(0f, 25f), new Vector2(600f, 50f), bold: true);
 
             MakeProductButton(panel, PurchaseService.IngotsSmall,  "20 Ingots",              "A$1.99", new Vector2(-140f, -75f));
@@ -79,7 +79,7 @@ namespace AQ.App.UI.Common
             MakeProductButton(panel, PurchaseService.IngotsLarge,  "150 Ingots",             "A$9.99", new Vector2(-140f, -215f));
             MakeProductButton(panel, PurchaseService.StarterPack,  "Starter Pack\n300 Energy + 50 Ingots", "A$3.99", new Vector2(140f, -215f));
 
-            var close = MakeButton("Close", panel, new Color(0.35f, 0.20f, 0.20f), new Vector2(0f, -390f), new Vector2(280f, 90f));
+            var close = MakeButton("Close", panel, AQTheme.AlertRed, new Vector2(0f, -390f), new Vector2(280f, 90f));
             close.onClick.AddListener(Close);
 
             PurchaseService.PurchaseSucceeded += OnPurchaseSucceeded;
@@ -162,9 +162,7 @@ namespace AQ.App.UI.Common
             {
                 bool affordable = ingots >= cost;
                 _refillBtn.interactable = affordable;
-                _refillBtn.GetComponent<Image>().color = affordable
-                    ? new Color(0.18f, 0.52f, 0.35f)
-                    : new Color(0.20f, 0.28f, 0.23f);
+                _refillBtn.GetComponent<Image>().color = affordable ? AQTheme.Teal : AQTheme.TealDim;
             }
 
             var ads = AdService.Instance;
@@ -176,9 +174,7 @@ namespace AQ.App.UI.Common
                     ? $"Watch Ad  +{AdService.EnergyPerAd} Energy  ({left} left today)"
                     : "Watch Ad  —  come back tomorrow";
                 _adBtn.interactable = ready;
-                _adBtn.GetComponent<Image>().color = ready
-                    ? new Color(0.25f, 0.40f, 0.60f)
-                    : new Color(0.22f, 0.28f, 0.36f);
+                _adBtn.GetComponent<Image>().color = ready ? AQTheme.Steel : AQTheme.SteelDim;
             }
         }
 
@@ -190,7 +186,7 @@ namespace AQ.App.UI.Common
                 : fallbackPrice;
 
             var btn = MakeButton($"{contents}\n{price}", parent,
-                new Color(0.22f, 0.22f, 0.30f), pos, new Vector2(250f, 120f), fontSize: 28f);
+                AQTheme.Card, pos, new Vector2(250f, 120f), fontSize: 28f);
             btn.onClick.AddListener(() => PurchaseService.Instance?.Buy(productId));
         }
 
@@ -219,6 +215,7 @@ namespace AQ.App.UI.Common
             tmp.alignment       = TextAlignmentOptions.Center;
             tmp.raycastTarget   = false;
             if (bold) tmp.fontStyle = FontStyles.Bold;
+            AQTheme.StyleText(tmp, display: bold);
             return tmp;
         }
 
@@ -233,7 +230,7 @@ namespace AQ.App.UI.Common
             rt.pivot            = new Vector2(0.5f, 0.5f);
             rt.sizeDelta        = size;
             rt.anchoredPosition = anchoredPosition;
-            go.GetComponent<Image>().color = color;
+            AQTheme.Round(go.GetComponent<Image>(), color);
 
             var lbl       = MakeRect("Label", rt);
             lbl.anchorMin = Vector2.zero;
@@ -242,9 +239,10 @@ namespace AQ.App.UI.Common
             var tmp            = lbl.gameObject.AddComponent<TextMeshProUGUI>();
             tmp.text           = label;
             tmp.fontSize       = fontSize;
-            tmp.color          = Color.white;
+            tmp.color          = AQTheme.Paper;
             tmp.alignment      = TextAlignmentOptions.Center;
             tmp.raycastTarget  = false;
+            AQTheme.StyleText(tmp, display: true);
 
             return go.GetComponent<Button>();
         }

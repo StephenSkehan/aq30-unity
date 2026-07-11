@@ -82,6 +82,7 @@
     <Compile Include="Assets\App\UI\Theme\Runtime\ThemeBootstrap.cs" />
     <Compile Include="Assets\App\UI\MergeBoard\ItemView.cs" />
     <Compile Include="Assets\App\Items\ItemDefinitionSO.cs" />
+    <Compile Include="Assets\App\UI\AQTheme.cs" />
     <Compile Include="Assets\App\UI\MergeBoard\MergeServiceStub.cs" />
     <Compile Include="Assets\App\UI\MergeBoard\MergeInputAdapter.cs" />
     <Compile Include="Assets\App\Leads\LeadsBarView.cs" />
