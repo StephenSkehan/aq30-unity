@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_E1_Bridge
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: E1_L4_N1
+  nodes:
+  - id: E1_L4_N1
+    speaker: "Ally Quinn"
+    line: "The Anchor, Tuesday-quiet. Mo had the corner booth held before I asked. I handed Gerald the headphones and told him what was on them. He didn't flinch. He turned the volume up."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L4_N2
+    choices: []
+  - id: E1_L4_N2
+    speaker: "Gerald Quinn"
+    line: "Loop the low note for me, love. Just that. Nothing else in my ears."
+    portrait: {fileID: 21300000, guid: c3a4b5d6e7f8c3a4b5d6e7f8c3a4b5d6, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L4_N3
+    choices: []
+  - id: E1_L4_N3
+    speaker: "Ally Quinn"
+    line: "I looped it. He counted under his breath, pencil ticking the table. Then he took the headphones off. Twenty-two seconds."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L4_N4
+    choices: []
+  - id: E1_L4_N4
+    speaker: "Gerald Quinn"
+    line: "Swing-bridge counterweight — Rivermouth reach. The old crossing sings when boats run late. Your Dot lives close enough to hear the river breathe. So did whoever was in her hall. Mind how you go down there."
+    portrait: {fileID: 21300000, guid: c3a4b5d6e7f8c3a4b5d6e7f8c3a4b5db, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L4_N5
+    choices: []
+  - id: E1_L4_N5
+    speaker: "Ally Quinn"
+    line: "On the way out I played Mo three seconds of Dot's voice. She stopped polishing the glass. \"Dorothy Ellis. Cleaned Chandler Road school for thirty years. Tuesday quiz, table six — tell her it misses her.\" Rivermouth. Chandler Road. We're close."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.e1_bridge.seen
+    nextId: 
+    choices: []

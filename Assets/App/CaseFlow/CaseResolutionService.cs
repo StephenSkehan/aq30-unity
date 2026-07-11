@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace AQ.App.CaseFlow
 {
-    /// Watches for gs.ep01.complete in activated lead flags; publishes CaseResolvedEvent once.
+    /// Watches for the episode completion flag in activated lead flags; publishes CaseResolvedEvent once.
     public sealed class CaseResolutionService : MonoBehaviour
     {
-        const string EpisodeId    = "gs_ep01";
-        const string CompletionFlag = "gs.ep01.complete";
+        const string EpisodeId    = "e1_the_listener";
+        const string CompletionFlag = "e1.ep01.complete";
 
         bool _fired;
 

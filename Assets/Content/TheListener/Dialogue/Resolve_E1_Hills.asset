@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_E1_Hills
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: E1_L11_N1
+  nodes:
+  - id: E1_L11_N1
+    speaker: "Ally Quinn"
+    line: "Fog all the way up — the kind that swallows headlights whole. I found the church, then Chapel Lane. And before I saw anything at all, I heard it: a diesel, idling, somewhere behind the white."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L11_N2
+    choices: []
+  - id: E1_L11_N2
+    speaker: "Ally Quinn"
+    line: "Through the fog, for two seconds, it moved: a pale van pulling away without lights. One rear lamp dead — the same dead lamp caught in Mrs. Vale's eleven seconds of footage. I stood in the road and let it go. A gate was in reach and a van wasn't."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L11_N3
+    choices: []
+  - id: E1_L11_N3
+    speaker: "Ally Quinn"
+    line: "The cottage door opened before I reached the step — a shape behind the lace curtain, small and absolutely unbothered."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L11_N4
+    choices: []
+  - id: E1_L11_N4
+    speaker: "Dot Ellis"
+    line: "You always did make a production of things. I heard the gate. Vera heard the gate. The church heard the gate. Come in, love — you're letting the hill in."
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L11_N5
+    choices: []
+  - id: E1_L11_N5
+    speaker: "Dot Ellis"
+    line: "And before you say sorry, say it properly: you turned my window into a broadcast, Ally Quinn. My river. My own silly voice. — And I still called your line that night. You know why? I knew you'd hear it. Eventually."
+    portrait: {fileID: 0}
+    emotion: 3
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L11_N6
+    choices: []
+  - id: E1_L11_N6
+    speaker: "Dot Ellis"
+    line: "I went out through the allotments and caught the first bus. Phone switched off since — the fake gas man handled it at noon, and I wasn't leading him to Vera. Your number was the one I could dial in the dark. I needed the sound somewhere he couldn't take it."
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L11_N7
+    choices: []
+  - id: E1_L11_N7
+    speaker: "Ally Quinn"
+    line: "I said I was sorry. Properly. No microphone, no defence, while Vera pretended the kettle needed watching. Then I told them about the van."
+    portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L11_N8
+    choices: []
+  - id: E1_L11_N8
+    speaker: "Ally Quinn"
+    line: "Del had a unit on Chapel Lane before that kettle boiled, and Dot and Vera spent the night somewhere the van doesn't know. She's safe tonight. \"Tonight\" is doing a lot of work in that sentence."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.e1_hills.seen
+    nextId: 
+    choices: []

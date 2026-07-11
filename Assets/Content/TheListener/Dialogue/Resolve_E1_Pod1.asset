@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_E1_Pod1
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: E1_L5_N1
+  nodes:
+  - id: E1_L5_N1
+    speaker: "Ally Quinn"
+    line: "This is Echoes of Havenbay, with a case alert. Her name is Dot Ellis, from Rivermouth. At 3:04 on Friday morning, someone was inside her house. She hasn't been heard from since."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L5_N2
+    choices: []
+  - id: E1_L5_N2
+    speaker: "Ally Quinn"
+    line: "Police logged a welfare check. No forced entry, no report from family, and an adult is allowed to leave home without explaining herself. They won't call it an abduction. I'm not asking them to — yet."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L5_N3
+    choices: []
+  - id: E1_L5_N3
+    speaker: "Ally Quinn"
+    line: "So we do what this show does. We knock on Rivermouth's doors ourselves — and you'll notice I'm not saying her street on this feed. If you knew Dot Ellis, the tip line is open, and it keeps no names."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L5_N4
+    choices: []
+  - id: E1_L5_N4
+    speaker: "Ally Quinn"
+    line: "One more thing, for whoever needs to hear it. She left us your footsteps. Eight of them — eight steps too slow to stay invisible. That was Friday. We're faster now."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.e1_pod1.seen
+    nextId: 
+    choices: []

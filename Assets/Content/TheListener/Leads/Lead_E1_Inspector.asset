@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222fba07fae7fa343a6d2a96dfd2ee48, type: 3}
+  m_Name: Lead_E1_Inspector
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadData
+  leadId: e1_inspector
+  title: "The Man Who Came at Noon"
+  subtitle: "A gas man nobody scheduled. Somebody's doorbell was watching."
+  actorPortrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+  state: 0
+  ActionType: 2
+  EnergyCost: 0
+  requirements:
+  - label: Burger Single
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: e75756c20bf853a4d987fbc21775a7f8, type: 2}
+    quantity: 1
+  - label: Hot Coffee Cup
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: abd1a75e4f876994eafb7f2ab137296d, type: 2}
+    quantity: 1
+  RequiredLeadIds: []
+  EvidenceIds: []
+  SpawnLeadIds: []
+  BranchOutcomes: []
+  NarrativeFlags: []
+  SoftCurrency: 50
+  EnergyGrant: 0
+  PremiumGrant: 0
+  generatorRewardTypeId: 
+  generatorRewardTier: 0
+  resolutionDialogue: {fileID: 11400000, guid: dd10000700000000000000000000dd07, type: 2}
+  OutcomeHints: 4
+  boardConnections:
+  - e1_delcruz
+  boardPhase: 2

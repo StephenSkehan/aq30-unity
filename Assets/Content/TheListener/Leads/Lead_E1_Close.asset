@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222fba07fae7fa343a6d2a96dfd2ee48, type: 3}
+  m_Name: Lead_E1_Close
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadData
+  leadId: e1_close
+  title: "Goodnight, Harbour"
+  subtitle: "Dot Ellis is safe. Say it on the record — then say goodnight."
+  actorPortrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+  state: 0
+  ActionType: 2
+  EnergyCost: 0
+  requirements:
+  - label: Evidence Bag
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: 396f63cfaf7106c47bdaf61671377b24, type: 2}
+    quantity: 1
+  RequiredLeadIds:
+  - e1_hills
+  EvidenceIds: []
+  SpawnLeadIds:
+  - cold_case_a
+  - ep2_teaser
+  BranchOutcomes: []
+  NarrativeFlags:
+  - e1.ep01.complete
+  SoftCurrency: 500
+  EnergyGrant: 20
+  PremiumGrant: 3
+  generatorRewardTypeId: 
+  generatorRewardTier: 0
+  resolutionDialogue: {fileID: 11400000, guid: dd10000c00000000000000000000dd0c, type: 2}
+  OutcomeHints: 4
+  boardConnections: []
+  boardPhase: 2

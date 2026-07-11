@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_E1_Boats
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: E1_L8_N1
+  nodes:
+  - id: E1_L8_N1
+    speaker: "Ally Quinn"
+    line: "Back to the archive with worse eyes. Every boat mention, three years, laid end to end. Low in the water going out. Riding high coming back. No manifest ever filed for a night crossing on that reach — but the mooring fees are paid, in cash, quarterly, by a company with no phone number. Cargo that doesn't exist, paid for by money that does."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L8_N2
+    choices: []
+  - id: E1_L8_N2
+    speaker: "Ally Quinn"
+    line: "Insomnia made Dot a scientist. Same window, same hours, decades of nights. She wasn't spying. She just knew what belonged on her river — and said hello to what didn't."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L8_N3
+    choices: []
+  - id: E1_L8_N3
+    speaker: "Ally Quinn"
+    line: "Three weeks ago: the pretty one, close in. Two-note horn. A fish-hook mark on the funnel. I played it on the show with her blessing and thought it was charming."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: E1_L8_N4
+    choices: []
+  - id: E1_L8_N4
+    speaker: "Ally Quinn"
+    line: "Ten days after I aired the fish-hook message, a fake inspector mapped her window. If he found her through the show — then I handed him the window. Episode forty-one, closing minute, my voice, her view. And if he's a listener, he's heard everything I've said since."
+    portrait: {fileID: 21300000, guid: 230f35c9bb532ef499cee05b337028d0, type: 3}
+    emotion: 3
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.e1_boats.seen
+    nextId: 
+    choices: []
