@@ -28,6 +28,11 @@ namespace AQ.App.UI
         public static readonly Color Success    = Hex("3F9D5A"); // checks, confirms
         public static readonly Color Scrim      = new Color(0f, 0f, 0f, 0.78f);
 
+        // Board
+        public static readonly Color BoardFrame = Hex("101A2C"); // plate behind the grid
+        public static readonly Color BoardCellA = Hex("1D2740"); // checker light
+        public static readonly Color BoardCellB = Hex("18223A"); // checker dark
+
         static Color Hex(string hex)
         {
             return ColorUtility.TryParseHtmlString("#" + hex, out var c) ? c : Color.magenta;
@@ -63,27 +68,11 @@ namespace AQ.App.UI
             {
                 if (_rounded != null) return _rounded;
 
-                var tex = new Texture2D(TexSize, TexSize, TextureFormat.RGBA32, false)
-                {
-                    hideFlags = HideFlags.HideAndDontSave,
-                    wrapMode  = TextureWrapMode.Clamp
-                };
-                var px   = new Color32[TexSize * TexSize];
-                float half = TexSize / 2f;
-                for (int y = 0; y < TexSize; y++)
-                for (int x = 0; x < TexSize; x++)
-                {
-                    // signed distance to a rounded rect centred in the texture
-                    float cx = Mathf.Abs(x + 0.5f - half) - (half - CornerRadius);
-                    float cy = Mathf.Abs(y + 0.5f - half) - (half - CornerRadius);
-                    float d  = new Vector2(Mathf.Max(cx, 0f), Mathf.Max(cy, 0f)).magnitude
-                               + Mathf.Min(Mathf.Max(cx, cy), 0f) - CornerRadius;
-                    byte a = (byte)(Mathf.Clamp01(0.5f - d) * 255f);
-                    px[y * TexSize + x] = new Color32(255, 255, 255, a);
-                }
-                tex.SetPixels32(px);
-                tex.Apply(false, true);
+                // Prefer the persisted asset (scene objects share it); generate as fallback.
+                _rounded = Resources.Load<Sprite>("App/UI/aq_rounded");
+                if (_rounded != null) return _rounded;
 
+                var tex = BuildRoundedTexture(false);
                 _rounded = Sprite.Create(tex, new Rect(0, 0, TexSize, TexSize),
                     new Vector2(0.5f, 0.5f), 100f, 0, SpriteMeshType.FullRect,
                     new Vector4(SliceBorder, SliceBorder, SliceBorder, SliceBorder));
@@ -91,6 +80,36 @@ namespace AQ.App.UI
                 _rounded.hideFlags = HideFlags.HideAndDontSave;
                 return _rounded;
             }
+        }
+
+        /// <summary>
+        /// White rounded-rect texture. readable=true keeps CPU pixels so the
+        /// editor can EncodeToPNG it into the persisted Resources asset
+        /// (import with a 40px 9-slice border to match SliceBorder).
+        /// </summary>
+        public static Texture2D BuildRoundedTexture(bool readable)
+        {
+            var tex = new Texture2D(TexSize, TexSize, TextureFormat.RGBA32, false)
+            {
+                hideFlags = HideFlags.HideAndDontSave,
+                wrapMode  = TextureWrapMode.Clamp
+            };
+            var px   = new Color32[TexSize * TexSize];
+            float half = TexSize / 2f;
+            for (int y = 0; y < TexSize; y++)
+            for (int x = 0; x < TexSize; x++)
+            {
+                // signed distance to a rounded rect centred in the texture
+                float cx = Mathf.Abs(x + 0.5f - half) - (half - CornerRadius);
+                float cy = Mathf.Abs(y + 0.5f - half) - (half - CornerRadius);
+                float d  = new Vector2(Mathf.Max(cx, 0f), Mathf.Max(cy, 0f)).magnitude
+                           + Mathf.Min(Mathf.Max(cx, cy), 0f) - CornerRadius;
+                byte a = (byte)(Mathf.Clamp01(0.5f - d) * 255f);
+                px[y * TexSize + x] = new Color32(255, 255, 255, a);
+            }
+            tex.SetPixels32(px);
+            tex.Apply(false, !readable);
+            return tex;
         }
 
         /// <summary>Give an Image rounded corners and a theme color.</summary>
