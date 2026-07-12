@@ -41,8 +41,9 @@ Use established canon wherever it fits. Invent ONLY at the episode level: the ca
 **Season arc:** who killed Thomas Quinn, and what conspiracy was he uncovering? Each episode = a self-contained case + exactly one new clue advancing the Ferryman/Hart thread — one new fact, one new cost, never the full answer. The season finale (not yours to write) unmasks the Ferryman and Hart live on the podcast.
 
 **Aired so far:**
-- **Episode 1 — "The Ghost Student":** university admins sold student biometric identities to Voss Bio; Maya Chen found out and hid; Ally found her and exposed it. Gerald revealed Thomas investigated Voss Bio in the 2000s.
-- **Episode 2 — "The Ferryman":** the 2006 murder of harbour bagman Danny Reyes; established that the money route still runs, and the Ferryman left Ally his coin plus a photocopy of her father's press badge — he's watched the Quinns for twenty years. Number your episode 3 or later; do not contradict either.
+- **Episode 1 — "The Listener":** Dot Ellis, the show's most faithful caller, fled a night intruder; Ally found her through three years of goodnight voicemails. Minted canon: the coin whisper (unexplained), the pale van tracing to dissolved Harbourline Security (its man unnamed, unseen, and distinct from the Ferryman), and the show's new rule — a voice can say where to look without Ally saying where it lives.
+- **Episode 2 — "The Ferryman":** the 2006 murder of harbour bagman Danny Reyes; established that the money route still runs, and the Ferryman left Ally his coin plus a photocopy of her father's press badge — he's watched the Quinns for twenty years.
+- **"The Ghost Student"** is now a mid-season episode (~Ep5, unaired): do not reference Voss Bio or Maya Chen as aired events. Number your episode 3 or later; do not contradict the two aired episodes.
 
 ## Tone rules
 

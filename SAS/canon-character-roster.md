@@ -4,7 +4,7 @@
 
 **Counts: 20 principal/recurring + 3 Episode 1 = 23 narrative characters · 2 historical figures · 1 unnamed Episode 1 antagonist.** *(rev 2026-07-11: Damien Kroll revived as #20 per bible dossier ruling.)*
 
-## Principal & recurring cast (19)
+## Principal & recurring cast (20)
 
 | # | Character | Age | Role | Appearance status |
 |---|-----------|-----|------|-------------------|
@@ -28,6 +28,8 @@
 | 18 | Dante Voss | — | Head of Voss Group private security; corporate antagonist | proposed |
 | 19 | The Ferryman | — | Unidentified shadow broker; killed Thomas Quinn; coin calling-card | **deliberately NO portrait until the finale reveal** |
 | 20 | Damien Kroll *(revived 2026-07-11, bible dossier ruling)* | — | Voss Group field lieutenant; private-security contractor who has worked both sides | proposed |
+
+*Open canon point (2026-07-12): Alex Vega's pronouns are deliberately unset — no script has featured Vega yet; the first script that does decides, on purpose (bible Ch 4.2).*
 
 ## Episode 1 additions (3)
 

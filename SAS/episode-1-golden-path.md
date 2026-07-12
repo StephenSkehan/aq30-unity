@@ -26,7 +26,7 @@ Item shorthand: F=forensic_tools · P=fingerprint_evidence · R=rusty_anchor · 
 - Energy: full FTUE tank should carry roughly through Phase 1; pinch expected mid-Phase-2 (dev -50 button to force-test the popup funnel).
 
 ## Total arc economy
-≈144 T1-equivalents across 12 leads · rewards: 1,360 CaseCash + 40 energy + 5 ingots. Matches the validated pinch model.
+≈144 T1-equivalents across 12 leads · rewards: 1,365 CaseCash + 40 energy + 5 ingots *(corrected from 1,360 on 2026-07-12 — the lead table's sum is authoritative)*. Matches the validated pinch model.
 
 ## Known-pending (not bugs)
 Dot/Del portraits absent until generated (their dialogue nodes show name + line, no portrait — by design until import). VO fields empty until recording lands. FTUE first-merge choreography (rig merge at ~45s) is a CaseFlow wiring task in the UI phase, not in this data.
