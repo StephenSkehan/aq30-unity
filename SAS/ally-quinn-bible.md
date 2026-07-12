@@ -567,7 +567,7 @@ Portraits: Ally, Gerald, Dot, Del Cruz (Mo participates, quoted in L4, without d
 
 **Why this episode leads the season** (from the pitch process): the hook is audio-native (the game's USP *is* the case), the keeper is the victim and she saves herself — Ally's job is to *listen well enough to catch up* — and the jeopardy indicts the show itself (Ally aired the window; the season's theme of listening-as-power cuts both ways from the first hour).
 
-## 6.2 Episode 2 — "The Ferryman" · DRAFT v3 (season-order re-points applied 2026-07-12, not yet locked)
+## 6.2 Episode 2 — "The Ferryman" · DRAFT v4 (logic-and-structure pass 2026-07-12, not yet locked)
 
 *In 2006, night ferryman Danny Reyes rowed the harbour's last crossing and never came back; the file said accident, the town said thief, and his daughter spent twenty years knowing both were lies.*
 
@@ -579,7 +579,9 @@ Season facts the draft establishes: the money route predates Voss Bio and moves 
 - L1's caller now opens on The Listener's goodnight-harbour ritual ("You say goodnight to the harbour… It kept my father") — the caller trusts the show because it listens, not because of a named prior case.
 - L9n3 generalizes Voss Bio to "another story wouldn't let him sleep" — the two-year fact survives, the name stays off-air until ~Ep5.
 - The aired-so-far audit found no other on-air references to prior episodes; the writers-prompt's aired-so-far list is updated to the new season order.
-- The optional resonance was taken: one line at L6n4 ("A friend of the show once counted quiet boats from her window in Rivermouth") sews the two cases into one harbour — villain identity deliberately unconnected, reserved for an explicit season decision. Remaining before lock: table read → revision passes → VO LOCK.
+- The optional resonance was taken: one line at L6 (Dot's quiet boats — "Different water, same discipline") sews the two cases into one harbour; villain identity deliberately unconnected, reserved for an explicit season decision.
+
+**v4 (external review triaged against canon, 2026-07-12)** hardened the episode's logic: Rosa opens by voicemail (tip-line canon) and speaks with a portrait; the second ledger comes from a fused cashbox cut open at Malone's; the forged entry is matched to Merrick through Eddie's gate book; the vessel is locked as a launch; a full D1–D13 dateline clock (the investigation waits for Thursday's tide) and 2006 anchors are locked; the envelope now holds Thomas's *original* press badge; the Ep1 coin is connected by type at L3; Del's intake is formal (interview room three, evidence under real names, Eddie protected); L12's requirement is ceremonial; and L5 echoes the Ep1 PUBLIC/PROTECTED flag via variant nodes. Remaining before lock: **the branch decision** (the greenlit package expects one choice per episode; Ep2 has candidates, not a choice) → table read → revision passes → VO LOCK.
 
 ## 6.3 "The Ghost Student" · DESIGN DOC, slotted ~Episode 5
 

@@ -44,7 +44,6 @@ Thumbs.db
 /Assets/_Recovery/
 
 # --- LOCAL DESIGN DOCS ---
-/SAS/
 
 # --- TEXTMESH PRO EXAMPLE FONT ATLAS CACHE ---
 # Unity regenerates glyph tables in these assets at runtime; not meaningful to track
