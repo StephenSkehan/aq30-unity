@@ -29,6 +29,8 @@
 | 19 | The Ferryman | — | Unidentified shadow broker; killed Thomas Quinn; coin calling-card | **deliberately NO portrait until the finale reveal** |
 | 20 | Damien Kroll *(revived 2026-07-11, bible dossier ruling)* | — | Voss Group field lieutenant; private-security contractor who has worked both sides | proposed |
 
+*Open canon point (2026-07-12): Alex Vega's pronouns are deliberately unset — no script has featured Vega yet; the first script that does decides, on purpose (bible Ch 4.2).*
+
 ## Episode 1 additions (3)
 
 | Character | Role | Appearance status |

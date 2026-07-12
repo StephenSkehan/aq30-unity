@@ -1,5 +1,5 @@
 # Episode 2 — The Ferryman
-*Echoes of Havenbay · v2 (canon-revised) 2026-07-10 · conforms to episode-writers-prompt.md v2*
+*Echoes of Havenbay · v3 (canon-revised for the Listener-first season) 2026-07-12 · conforms to episode-writers-prompt.md v2*
 
 ## Logline
 
@@ -37,7 +37,7 @@ In 2006, the night ferryman Danny Reyes rowed Havenbay harbour's last crossing a
 | 12 | f2_close | Podcast | The Ferryman, Part One | L11 | press items — the episode that reopens a homicide | Very Hard (milestone: +500 CaseCash, +20 energy, +3 ingots) |
 
 Card subtitles:
-1. *A twenty-year-old voice on line two. "You found the ghost student. My father's been a ghost since 2006."*
+1. *A twenty-year-old voice on line two. "You say goodnight to the harbour. It kept my father in 2006."*
 2. *Rosa Reyes kept her father's logbook through the smear and the silence. She's ready to open it.*
 3. *The Reyes file closed in six days, and the Gazette helped bury him. Arthur Finch owes this one.*
 4. *Water moves the way it moves, whoever signs the paperwork. Priya Shah checks the tides against the story.*
@@ -59,7 +59,7 @@ Card subtitles:
 | # | Speaker | Emotion | Line |
 |---|---|---|---|
 | 1 | Ally | neutral | Line two stayed lit for forty minutes before I picked it up. The voice on the other end was steady — the way people get when they've rehearsed something for twenty years. |
-| 2 | Ally | surprised | "You found the ghost student," she said. "My father's been a ghost since 2006. Danny Reyes. He rowed the last crossing at Havenbay harbour, and one night the boat came back without him." |
+| 2 | Ally | surprised | "You say goodnight to the harbour," she said. "Every week, like it's a friend. It kept my father. Danny Reyes — he rowed the last crossing, and one night the boat came back without him." |
 | 3 | Ally | worried | Accident, the file says. Closed in six days, with a rumour pinned to a dead man's coat: that he'd been skimming the till. His daughter kept his logbook. She says the last entry isn't his handwriting. |
 | 4 | Ally | neutral | I've read a lot of last words. These were written by someone still breathing. This is Echoes of Havenbay. Episode two starts at the water. *(sets aq.lead.f2_tip.seen)* |
 
@@ -105,7 +105,7 @@ Card subtitles:
 | 1 | Ally | neutral | Eddie Okafor locked the harbour gates every night for thirty years. He agreed to meet me at a bus stop two suburbs from the water. His choice. His route. |
 | 2 | Ally | surprised | "Thursday nights the Pier 13 gate stayed open," he said. "Merrick's orders. Special crossing. No manifest, no lights — and you didn't look at the skiff. You looked at your shoes." |
 | 3 | Ally | worried | Sailor Merrick. Dock foreman, 2001 to 2011. Died with a marina berth he couldn't afford and a funeral nobody cried at. Eddie says Merrick took a boat out the night Danny vanished. He's been afraid for twenty years — not of Merrick. Of whoever Merrick answered to. |
-| 4 | Ally | neutral | "The Thursday crossings didn't stop when Danny died," he told me — at a bus stop, in daylight, still whispering. "They never stopped at all." |
+| 4 | Ally | neutral | "The Thursday crossings didn't stop when Danny died," he told me — at a bus stop, in daylight, still whispering. "They never stopped at all." A friend of the show once counted quiet boats from her window in Rivermouth. They never stop anywhere. |
 
 ### L7 — f2_ledger · "The Second Ledger" (4 nodes)
 
@@ -131,7 +131,7 @@ Card subtitles:
 |---|---|---|---|
 | 1 | Ally | neutral | Dad's lockbox again. I used to think it was a shrine. It's a filing cabinet with a guilt complex. |
 | 2 | Ally | surprised | October 2006: a Pier 13 gate pass, visitor class, made out to T. Quinn. Never used. Under it, a note in his shorthand: "If D. doesn't show, the book goes to the water. Don't chase it. They count the ones who chase." |
-| 3 | Ally | worried | He stopped chasing — for two years, until Voss Bio. That's season talk; tonight is Danny's. Because the gate pass names the drop, and the drop matches a line in the second ledger. If the Thursday crossings never stopped, neither did Pier 13. |
+| 3 | Ally | worried | He stopped chasing — for two years, until another story wouldn't let him sleep. Season talk; tonight is Danny's. The gate pass names the drop, and the drop matches a line in the second ledger. If the Thursday crossings never stopped, neither did Pier 13. |
 
 ### L10 — f2_pier13 · "Pier 13" (5 nodes)
 
@@ -166,7 +166,7 @@ Card subtitles:
 
 ## Season-arc notch
 
-This episode converts the Ferryman from a name into a present, aware antagonist — and makes it generational: he watched Thomas, now he watches Ally, and he wants her to know. New season facts: the money route predates Voss Bio and moves physically by water from Pier 13 on a fixed tide; the operation uses code names (Pilot, Chalk, Anchor, Ledger, F); the coin calling card goes back at least to 2006; Thomas lost a source that year and changed his methods because of it. Deliberately unanswered: whether "F" is the Ferryman himself or his operator (a broker like Silas Vex fits the ledger's handwriting-free discipline); what the crossings carry now; where the route lands; and — pointed at Episode 3 — why Del Cruz believes a taskforce would leak from inside Havenbay PD.
+This episode converts the Ferryman from a name into a present, aware antagonist — and makes it generational: he watched Thomas, now he watches Ally, and he wants her to know. New season facts: the money route is older than any corporate name the season will meet (the Voss Bio thread lands ~Episode 5, unnamed on air until then) and moves physically by water from Pier 13 on a fixed tide; the operation uses code names (Pilot, Chalk, Anchor, Ledger, F); the coin calling card goes back at least to 2006; Thomas lost a source that year and changed his methods because of it. Deliberately unanswered: whether "F" is the Ferryman himself or his operator (a broker like Silas Vex fits the ledger's handwriting-free discipline); what the crossings carry now; where the route lands; whether the Rivermouth quiet boats (Episode 1) and the Thursday crossings share water or masters — resonance planted at L6n4, the connection reserved for an explicit season decision; and — pointed at Episode 3 — why Del Cruz believes a taskforce would leak from inside Havenbay PD.
 
 ## The resolution beat
 
@@ -174,5 +174,19 @@ Rosa. Twenty years of holding a door open, resolved not by an arrest (her father
 
 ## Canon usage note
 
-**Canon used:** Pier 13 (the drop — its coin lore is the episode's spine), the Ferryman's coin (planted in the 2006 effects list, paid off in the envelope), Arthur Finch/the Gazette morgue (archives lead — and the smear ran in his own paper, giving him skin), Dr. Priya Shah (tide/handwriting forensics), Kestrel Point (where the skiff was found), the Rusty Anchor + Mo Callahan (Gerald's booth), Sgt. Del Cruz/Harbor Ward (reopening), Thomas Quinn's lockbox/shorthand/source discipline, Voss Bio continuity, Silas Vex (named as a season hypothesis only).
+**Canon used:** Pier 13 (the drop — its coin lore is the episode's spine), the Ferryman's coin (planted in the 2006 effects list, paid off in the envelope), Arthur Finch/the Gazette morgue (archives lead — and the smear ran in his own paper, giving him skin), Dr. Priya Shah (tide/handwriting forensics), Kestrel Point (where the skiff was found), the Rusty Anchor + Mo Callahan (Gerald's booth), Sgt. Del Cruz/Harbor Ward (reopening), Thomas Quinn's lockbox/shorthand/source discipline, the ~Ep5 Voss Bio thread (production note only — L9n3 keeps it unnamed on air), Silas Vex (named as a season hypothesis only).
 **Invented (episode-level only):** Danny and Rosa Reyes (victim and keeper — no canon role exists), Eddie Okafor (one-off witness), Sailor Merrick (dead hand of the crime). Each fills a role canon deliberately leaves open per episode.
+
+
+---
+
+## v3 changes (2026-07-12 — season-order re-points, per bible Ch 6.2)
+
+| Item | Resolution |
+|---|---|
+| 1 · L1 caller opener | "You found the ghost student" replaced with The Listener's goodnight-harbour ritual (L1n2 + card subtitle 1) — the caller trusts the show because it listens, not because of a named prior case. |
+| 2 · Voss Bio | Unnamed in dialogue (L9n3 generalized to "another story wouldn't let him sleep"); survives as a production note; the thread lands ~Ep5 (Ghost Student). |
+| 3 · Aired-so-far audit | No other on-air references to prior episodes found; logline, reveal ladder, and remaining scripts untouched. |
+| 4 · Rivermouth resonance | One light connective line added at L6n4 (a friend of the show, quiet boats, her window). Villain identity deliberately NOT connected — reserved for an explicit season decision. |
+
+Remaining before lock: table read (performance/timing veto) → numbered-revision passes as needed → VO LOCK; cue sheet and actor sides generate from asset data at production.

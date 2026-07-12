@@ -245,7 +245,7 @@ Semi-retired senior investigative journalist, now the Gazette's archivist and Ha
 
 Harbor Ward born, Puerto Rican descent; the grey zone between legality and crime, worked with unmatched skill and a strict personal code: **no jobs involving kids or trafficking, no hurting innocents, no selling out friends.** Expunged teenage arrest (quietly arranged, the story goes, by a retired detective doing a favor); a past that makes the shadows comfortable and disposability a private fear — "deep anxiety about being disposable in a city where information is currency." Met Ally over the encrypted remains of her father's surviving files — the laptop is gone, but what Thomas left behind still needed hands like Vega's. Has pulled Ally out of more than one cyber trap since. Wears USB drives like dog tags.
 
-**Voice.** Smirking intelligence, three steps ahead; gum-snap casual about things that would get anyone else arrested ("Old habits"). *Open canon point (this bible, 2026-07-11): Vega's pronouns are deliberately unset — no script has featured Vega yet; the first that does decides, on purpose. Flag for the roster at its next revision.*
+**Voice.** Smirking intelligence, three steps ahead; gum-snap casual about things that would get anyone else arrested ("Old habits"). *Open canon point: Vega's pronouns are deliberately unset — no script has featured Vega yet; the first that does decides, on purpose. Recorded in the roster (2026-07-12).*
 
 **Appearance (proposed).** Wiry, quick, androgynous style: undercut dark hair, silver ear cuffs, faded hoodie under a beaten bomber jacket with enamel pins, fingerless gloves, one earbud always in.
 
@@ -567,7 +567,7 @@ Portraits: Ally, Gerald, Dot, Del Cruz (Mo participates, quoted in L4, without d
 
 **Why this episode leads the season** (from the pitch process): the hook is audio-native (the game's USP *is* the case), the keeper is the victim and she saves herself — Ally's job is to *listen well enough to catch up* — and the jeopardy indicts the show itself (Ally aired the window; the season's theme of listening-as-power cuts both ways from the first hour).
 
-## 6.2 Episode 2 — "The Ferryman" · DRAFT v2 (canon-revised 2026-07-10, not yet locked)
+## 6.2 Episode 2 — "The Ferryman" · DRAFT v3 (season-order re-points applied 2026-07-12, not yet locked)
 
 *In 2006, night ferryman Danny Reyes rowed the harbour's last crossing and never came back; the file said accident, the town said thief, and his daughter spent twenty years knowing both were lies.*
 
@@ -575,11 +575,11 @@ Full 12-lead draft exists and conforms to the writers' prompt v2. The case: Dann
 
 Season facts the draft establishes: the money route predates Voss Bio and moves physically by water from Pier 13 on a fixed tide; the operation uses code names (Pilot, Chalk, Anchor, Ledger, and one that's just F); the coin calling-card goes back at least to 2006; Thomas lost a source that year and never wrote a source's real name again — Danny Reyes taught him that, posthumously. Keeper: Rosa Reyes, who ends the episode writing the logbook's final line in her own hand.
 
-**Required work before lock — callback re-points.** The draft was written when "The Ghost Student" was Episode 1. Its Ep1 callbacks now point at The Listener instead, and each needs a deliberate pass:
-- L1's caller currently opens with "You found the ghost student." Re-point to The Listener (e.g., the Dot Ellis case as the caller's reason to trust the show — a listener found, a harbour named).
-- L9n3's "he stopped chasing — for two years, until Voss Bio. That's season talk" — Voss Bio is now unaired future canon (Ghost Student slot ~Ep5), so the line must either generalize or become a deliberate forward-seed.
-- Audit every "you heard/we aired" reference against the new season order.
-- Opportunity, not obligation: The Listener planted Harbourline and the quiet boats on the same water this episode works — a light connective line (the reach, the night traffic Dot logged) would sew the two cases into one harbour without merging their villains.
+**Re-points applied in v3 (2026-07-12).** The draft was written when "The Ghost Student" was Episode 1; its callbacks now point at The Listener. What changed, and what was deliberately preserved:
+- L1's caller now opens on The Listener's goodnight-harbour ritual ("You say goodnight to the harbour… It kept my father") — the caller trusts the show because it listens, not because of a named prior case.
+- L9n3 generalizes Voss Bio to "another story wouldn't let him sleep" — the two-year fact survives, the name stays off-air until ~Ep5.
+- The aired-so-far audit found no other on-air references to prior episodes; the writers-prompt's aired-so-far list is updated to the new season order.
+- The optional resonance was taken: one line at L6n4 ("A friend of the show once counted quiet boats from her window in Rivermouth") sews the two cases into one harbour — villain identity deliberately unconnected, reserved for an explicit season decision. Remaining before lock: table read → revision passes → VO LOCK.
 
 ## 6.3 "The Ghost Student" · DESIGN DOC, slotted ~Episode 5
 
@@ -623,7 +623,7 @@ The lead lifecycle is the story's clock: Blocked → Available → In Progress �
 
 Every lead carries a reward band — Easy / Standard / Hard / Very Hard — with CaseCash rewards drawn from banded ranges (Ep1 midpoints: 20 / 50 / 95 / 185) and episode-level multipliers scaling later episodes (Ep2 ×1.1 … Ep6 ×1.55). Milestones (L5, L12) add energy and Platinum Ingots on top: Episode 1 pays 200 CC + 20 energy at the mid-season milestone and 500 CC + 20 energy + 3 ingots at the close, with the climax adding 2 ingots. Very Hard leads carry a 0.5–1.0% rare Fast Track drop.
 
-The validated Episode 1 arc: ≈144 T1-equivalent items across 12 leads, paying ≈1,365 CaseCash + 40 energy + 5 ingots total. (The golden path's summary line says 1,360 while its own lead table sums to 1,365 — flagged for upstream correction; the per-lead table is treated as authoritative here.) The tuning intent: a full FTUE energy tank (100) carries roughly through Phase 1; the pinch lands mid-Phase-2, where the energy-out popup funnel takes over. Bands are narrative pacing as much as economy: Easy leads are story beats you walk into; Very Hard leads (climax, finale) are earned.
+The validated Episode 1 arc: ≈144 T1-equivalent items across 12 leads, paying 1,365 CaseCash + 40 energy + 5 ingots total (golden path corrected to its lead table's sum, 2026-07-12). The tuning intent: a full FTUE energy tank (100) carries roughly through Phase 1; the pinch lands mid-Phase-2, where the energy-out popup funnel takes over. Bands are narrative pacing as much as economy: Easy leads are story beats you walk into; Very Hard leads (climax, finale) are earned.
 
 ## 7.3 Item families & their character ties
 
