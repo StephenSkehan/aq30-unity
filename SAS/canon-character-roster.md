@@ -41,6 +41,15 @@
 
 **Episode 1 portrait cast:** Ally, Gerald, Dot, Del. Mo participates (quoted in L4) without dialogue nodes. The fake gas inspector ("the man with the careful walk") is the active Ep1 threat: male, pale van tracing to the dissolved Harbourline Security — **unnamed, unseen, and kept distinct from the Ferryman** unless a script explicitly connects them.
 
+## Episode 2 additions (draft — provisional until the script locks)
+
+| Character | Role | Appearance status |
+|-----------|------|-------------------|
+| Rosa Reyes, 39 | Harbor Ward fuel dock; Danny's daughter; the Ep2 keeper | proposed (prompt block added 2026-07-12; portrait pipeline APPROVED) |
+| Danny Reyes (deceased 2006) | The harbour's bagman — "a ferryman," not the Ferryman | posthumous — no portrait |
+| Eddie Okafor | Retired harbour gatekeeper; witness (his gate book is the forgery match) | none needed — quoted through Ally |
+| "Sailor" Merrick (d. 2011) | Dock foreman; the dead hand of the 2006 staging | none — never depicted |
+
 ## Historical figures (2)
 
 - **Patrick Callahan** — Mo's grandfather; founded the dockside tavern in 1924.

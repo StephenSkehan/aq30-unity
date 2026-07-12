@@ -567,7 +567,7 @@ Portraits: Ally, Gerald, Dot, Del Cruz (Mo participates, quoted in L4, without d
 
 **Why this episode leads the season** (from the pitch process): the hook is audio-native (the game's USP *is* the case), the keeper is the victim and she saves herself — Ally's job is to *listen well enough to catch up* — and the jeopardy indicts the show itself (Ally aired the window; the season's theme of listening-as-power cuts both ways from the first hour).
 
-## 6.2 Episode 2 — "The Ferryman" · DRAFT v4 (logic-and-structure pass 2026-07-12, not yet locked)
+## 6.2 Episode 2 — "The Ferryman" · DRAFT v5 (branch added 2026-07-12, not yet locked)
 
 *In 2006, night ferryman Danny Reyes rowed the harbour's last crossing and never came back; the file said accident, the town said thief, and his daughter spent twenty years knowing both were lies.*
 
@@ -581,7 +581,7 @@ Season facts the draft establishes: the money route predates Voss Bio and moves 
 - The aired-so-far audit found no other on-air references to prior episodes; the writers-prompt's aired-so-far list is updated to the new season order.
 - The optional resonance was taken: one line at L6 (Dot's quiet boats — "Different water, same discipline") sews the two cases into one harbour; villain identity deliberately unconnected, reserved for an explicit season decision.
 
-**v4 (external review triaged against canon, 2026-07-12)** hardened the episode's logic: Rosa opens by voicemail (tip-line canon) and speaks with a portrait; the second ledger comes from a fused cashbox cut open at Malone's; the forged entry is matched to Merrick through Eddie's gate book; the vessel is locked as a launch; a full D1–D13 dateline clock (the investigation waits for Thursday's tide) and 2006 anchors are locked; the envelope now holds Thomas's *original* press badge; the Ep1 coin is connected by type at L3; Del's intake is formal (interview room three, evidence under real names, Eddie protected); L12's requirement is ceremonial; and L5 echoes the Ep1 PUBLIC/PROTECTED flag via variant nodes. Remaining before lock: **the branch decision** (the greenlit package expects one choice per episode; Ep2 has candidates, not a choice) → table read → revision passes → VO LOCK.
+**v4 (external review triaged against canon, 2026-07-12)** hardened the episode's logic: Rosa opens by voicemail (tip-line canon) and speaks with a portrait; the second ledger comes from a fused cashbox cut open at Malone's; the forged entry is matched to Merrick through Eddie's gate book; the vessel is locked as a launch; a full D1–D13 dateline clock (the investigation waits for Thursday's tide) and 2006 anchors are locked; the envelope now holds Thomas's *original* press badge; the Ep1 coin is connected by type at L3; Del's intake is formal (interview room three, evidence under real names, Eddie protected); L12's requirement is ceremonial; and L5 echoes the Ep1 PUBLIC/PROTECTED flag via variant nodes. **v5 adds the branch (Stephen-approved):** at L11, after Del voices Eddie's own wish ("Eddie says use his name. I say move him first"), the player chooses **WITNESS SHIELDED** (`aq.e2.eddie_protected` — Eddie moved, the match sealed inside the system Del distrusts) or **TRUTH IN DAYLIGHT** (`aq.e2.merrick_published` — the reopening too loud to bury; Eddie inferable, the Ferryman aware). Paths converge; one variant line at L12n1. Rosa's portrait is approved (prompt block in the portrait doc); press icons are P0 and garage import P1 in the art schedule. Remaining before lock: table read → runtime pacing pass → revision passes → VO LOCK.
 
 ## 6.3 "The Ghost Student" · DESIGN DOC, slotted ~Episode 5
 
@@ -625,7 +625,7 @@ The lead lifecycle is the story's clock: Blocked → Available → In Progress �
 
 Every lead carries a reward band — Easy / Standard / Hard / Very Hard — with CaseCash rewards drawn from banded ranges (Ep1 midpoints: 20 / 50 / 95 / 185) and episode-level multipliers scaling later episodes (Ep2 ×1.1 … Ep6 ×1.55). Milestones (L5, L12) add energy and Platinum Ingots on top: Episode 1 pays 200 CC + 20 energy at the mid-season milestone and 500 CC + 20 energy + 3 ingots at the close, with the climax adding 2 ingots. Very Hard leads carry a 0.5–1.0% rare Fast Track drop.
 
-The validated Episode 1 arc: ≈144 T1-equivalent items across 12 leads, paying 1,365 CaseCash + 40 energy + 5 ingots total (golden path corrected to its lead table's sum, 2026-07-12). The tuning intent: a full FTUE energy tank (100) carries roughly through Phase 1; the pinch lands mid-Phase-2, where the energy-out popup funnel takes over. Bands are narrative pacing as much as economy: Easy leads are story beats you walk into; Very Hard leads (climax, finale) are earned.
+The validated Episode 1 arc: ≈144 T1-equivalent items across 12 leads, paying 1,365 CaseCash + 40 energy + 5 ingots total (golden path corrected to its lead table's sum, 2026-07-12). The tuning intent: a full FTUE energy tank (100) carries roughly through Phase 1; the pinch lands mid-Phase-2, where the energy-out popup funnel takes over. Bands are narrative pacing as much as economy: Easy leads are story beats you walk into; Very Hard leads (climax, finale) are earned. One schema rule minted by the Ep2 pass: requirement difficulty and reward band are **separate axes** (`RequirementDifficulty` / `RewardBand`) — a milestone finale pays Very Hard rewards over a *ceremonial* requirement (Ep1 and Ep2 both do), and nobody should balance a grind onto a finale by reading its reward tier.
 
 ## 7.3 Item families & their character ties
 
@@ -773,6 +773,8 @@ Flags are namespaced dot-paths, set on Proceed, never retconned. Registry as of 
 | `f2.phase1.complete` | Ep2 L5n4 (draft) | Ep2 mid-season milestone |
 | `f2.ep02.complete` | Ep2 L12n5 (draft) | Episode 2 closed |
 | `cold_case_a` (chain) | Ep1 completion | Cold-case loop live; teaser card "Episode 2: The Ferryman" present, non-proceedable |
+| `aq.e2.eddie_protected` | Ep2 L11 choice ① (draft) | WITNESS SHIELDED — Eddie moved first, match sealed; the evidence sleeps inside the system Del distrusts (Ep3 leak-thread fuse); L12n1a variant |
+| `aq.e2.merrick_published` | Ep2 L11 choice ② (draft) | TRUTH IN DAYLIGHT — reopening un-buryable; Eddie inferable; the Ferryman knows what Ally holds; L12n1b variant |
 | Ghost Student branch flag | gs_other_ghost (design) | Anonymity vs. on-record; both converge; going public hardens `gs_admin` |
 
 Rules: one branch flag per episode; flags are cheap to set and expensive to honor — every flag added is a promise that some future script will read it. The registry in this appendix must be updated at every episode lock.

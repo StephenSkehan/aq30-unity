@@ -119,6 +119,28 @@ the allotments and the first bus, protected her sister Vera. Ep1 dialogue uses
 her **neutral and angry** portraits — generate those two first; happy third
 (final voicemail warmth); rest optional.*
 
+### Rosa Reyes — the keeper, Episode 2 *(appearance PROPOSED — approved for the pipeline 2026-07-12; canonical reusable character, not an episode-only face)*
+```
+Rosa Reyes, woman of 39, runs the Harbor Ward fuel dock she has kept since she
+was nineteen. Sturdy, weather-worn, quietly formidable — twenty years of dawn
+shifts in salt air. Dark hair pulled back in a short practical ponytail, first
+grey threads showing. Strong hands with work-rough knuckles; her father's old
+brass logbook pencil clipped to her breast pocket. High-visibility work vest
+open over a faded flannel shirt and a navy thermal; a fine chain at her neck
+disappearing under the collar. Expression: controlled and guarded, grief held
+for years rather than fresh — a woman who has rehearsed one sentence for twenty
+years and finally said it. Reads as: the keeper of a door held open. Warm
+diesel-dawn key light (civilian-warm rule), harbour fog softness behind.
+```
+*Notes: no teal (Ally's color), no moss cardigan tones (Dot's palette). Rosa's
+palette: navy, flannel red-brown, brass. Expression priority for Episode 2
+production: 1 NEUTRAL (guarded control) → 2 SAD (grief held for years, never
+collapse) → 3 ANGRY (at the smear and the institutions — set jaw, level eyes,
+restrained) → 4 HAPPY (restrained vindication, warmth arriving like weather).
+Full 7-emotion sheet worthwhile later; those four gate Episode 2. Script-locked
+facts behind the design: fuel dock since nineteen, the logbook, the voicemail
+("You say goodnight to the harbour"), the final line written in her own hand.*
+
 ## Ensemble completion blocks (added 2026-07-11 — all PROPOSED until first approved image)
 
 **Lighting grammar (extends the civilians-warm / cops-cool rule):**

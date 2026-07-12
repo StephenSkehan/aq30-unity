@@ -75,6 +75,33 @@ from upper-left, gentle warm rim from the right.
 **Batch discipline:** generate a family in ONE session with the first approved icon of that family attached as an extra style anchor for the rest. Filename exactly as listed (.png, 1024×1024). Drop finished batches in `OneDrive/AllyQuinn Game/Images/Production 2026 Images/Items/` — I take it from there.
 **Acceptance per icon:** transparent background · silhouette readable at 96px · consistent angle/lighting with its family · no text/shadow.
 
+## Part 1b — Wave 2 (Episode 2 dependencies · scheduled 2026-07-12)
+
+**Priority ruling: Press = P0, Garage = P1.** Press gates three Ep2 leads (L3 morgue files, L5 episode cutting, L12 the ceremonial Publish) and recurs all season wherever Ally researches, cuts, or publishes. Garage gates one lead (L7, the fused cashbox at Malone's) and its tier art already exists in `SAS/Item Icons/Item Family - Garage/` — import + gap-fill, not regeneration. Timing caveat: if Episode 2 ships in the beta build these are **pre-beta** dependencies; if the launch build is Episode 1 only, the Ep2 timeline (6–8 weeks post-launch) holds.
+
+### Batch F — Press Items (10, PROPOSED tier list — approve before generating) · palette: ink black, newsprint cream, brass · Arthur Finch's face anchors this family's artwork
+| File | Item | Art notes |
+|---|---|---|
+| press_items_t01 | Newsprint Scrap | torn column inches, one word legible |
+| press_items_t02 | Notepad & Pencil | reporter's flip pad, pencil across it |
+| press_items_t03 | Press Badge | laminated lanyard badge, worn edges |
+| press_items_t04 | Cassette Interview Tape | labelled in handwriting |
+| press_items_t05 | Typewriter | compact portable, paper mid-sentence |
+| press_items_t06 | Clippings Folder | manila, headlines fanning out |
+| press_items_t07 | Microfiche Reel | boxed reel, archive label |
+| press_items_t08 | Morgue File Box | corrugated archive box, dated spine |
+| press_items_t09 | Front-Page Proof | full broadsheet proof, red mark-ups |
+| press_items_t10 | The Morgue Cabinet | oak card-catalogue cabinet, one drawer open — the family hero |
+
+### Batch G — Garage (import pass) 
+Existing `garage_t01`–`t10` assets imported via the GUID pipeline; generate replacements only where an icon fails the 96 px silhouette check. No second garage family (ruling 2026-07-12).
+
+### New UI sprites (Ep2 branch)
+| File | What | Notes |
+|---|---|---|
+| ui_stamp_shielded | "WITNESS SHIELDED" stamp | distressed rubber-stamp ring in steel blue, text overlaid at runtime — pattern of ui_stamp_protected |
+| ui_stamp_daylight | "TRUTH IN DAYLIGHT" stamp | same, in amber-gold |
+
 ## Part 2 — UI sprites (small batch, big effect)
 
 Same style reference. All on transparent background unless noted.
