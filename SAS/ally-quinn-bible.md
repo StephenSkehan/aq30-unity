@@ -225,7 +225,7 @@ He trained her with puzzles and staged mysteries, taught her "what to write down
 
 **Voice (locked register).** Short sentences, regret without self-pity. Endearment: "love." "Loop the low note for me, love. Just that. Nothing else in my ears." His episode-1 beat — counting a bridge's breathing under his breath, pencil ticking the table — is the character in miniature: old knowledge, quietly lethal.
 
-**Appearance (locked).** Teal/green textured suit, magenta shirt, swirling tie, round wire-rim glasses. His corner booth at the Rusty Anchor is held without asking; the Anchor is his second home. The old fedora-and-waistcoat look is legacy art, superseded.
+**Appearance (locked).** Teal/green textured suit, magenta shirt, swirling tie, round gold wire-rim glasses, and a neat white moustache (canon retcon with portrait set v2 — the approved image rules, per Ch 8.2). His corner booth at the Rusty Anchor is held without asking; the Anchor is his second home. The old fedora-and-waistcoat look is legacy art, superseded.
 
 ---
 
