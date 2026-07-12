@@ -52,6 +52,54 @@ namespace AQ.EditorTools
             return s;
         }
 
+        [MenuItem("AQ/Dev/Simulate Proceed On Ready Lead")]
+        public static void SimulateProceed()
+        {
+            if (!Application.isPlaying) { Debug.LogWarning("[Probe] enter play mode first."); return; }
+            // the ready card shows the runtime "Txt_ProceedHint"; its card root holds the button
+            var hint = GameObject.Find("Txt_ProceedHint");
+            GameObject card = hint != null ? hint.transform.parent.gameObject : null;
+            if (card == null)
+            {
+                // fallback: first lead card with a Button
+                var bar = GameObject.Find("LeadsBarRuntime");
+                var btnAny = bar != null ? bar.GetComponentInChildren<UnityEngine.UI.Button>(true) : null;
+                card = btnAny != null ? btnAny.gameObject : null;
+            }
+            if (card == null) { FLog("[Probe] ERROR no ready lead card found"); return; }
+            var btn = card.GetComponentInChildren<UnityEngine.UI.Button>(true);
+            if (btn == null) { FLog("[Probe] ERROR no button on card " + card.name); return; }
+            FLog($"[Probe] invoking proceed on '{btn.gameObject.name}' (card '{card.name}')");
+            btn.onClick.Invoke();
+            FLog("[Probe] proceed invoked.");
+        }
+
+        [MenuItem("AQ/Dev/Dump Dialogue State")]
+        public static void DumpDialogue()
+        {
+            if (!Application.isPlaying) { Debug.LogWarning("[Probe] enter play mode first."); return; }
+            var runner = Object.FindAnyObjectByType<AQ.App.DialogueRunner>(FindObjectsInactive.Include);
+            if (runner == null) { FLog("[Probe] no DialogueRunner"); return; }
+            var t = runner.GetType();
+            var panel = runner.Panel;
+            FLog($"[Probe] runner active={runner.isActiveAndEnabled} panel={(panel ? panel.gameObject.name : "null")} panelActive={(panel && panel.gameObject.activeInHierarchy)}");
+            foreach (var fname in new[] { "_currentId", "_booted", "_waitingForAudio", "_filteredChoices" })
+            {
+                var f = t.GetField(fname, System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+                object v = f?.GetValue(runner);
+                if (v is System.Array arr) v = $"array[{arr.Length}]";
+                FLog($"[Probe]   {fname} = {v ?? "null"}");
+            }
+            // try to advance exactly the way a tap would
+            var adv = t.GetMethod("OnAdvance", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
+            FLog($"[Probe]   OnAdvance method: {(adv != null ? "found — invoking" : "NOT FOUND")}");
+            if (adv != null && panel != null && panel.gameObject.activeInHierarchy)
+            {
+                try { adv.Invoke(runner, adv.GetParameters().Length == 0 ? null : new object[adv.GetParameters().Length]); FLog("[Probe]   OnAdvance invoked OK"); }
+                catch (System.Exception e) { FLog("[Probe]   OnAdvance THREW: " + e.InnerException?.Message); }
+            }
+        }
+
         [MenuItem("AQ/Dev/Simulate Click On Generator")]
         public static void SimulateClick()
         {
