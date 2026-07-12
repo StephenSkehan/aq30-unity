@@ -202,6 +202,10 @@ namespace AQ.App.UI.Board
         public void TrySave()
         {
             if (board == null) return;
+            // After an editor domain reload mid-play the controller's grid is
+            // gone; a save from that state persists a phantom board (this is
+            // how generator duplicates accumulated into real save files).
+            if (!board.GridReady) return;
 
             var dto = new SaveDTO
             {

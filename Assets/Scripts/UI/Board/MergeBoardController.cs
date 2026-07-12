@@ -139,7 +139,11 @@ namespace AQ.App.UI.Board
         // ---------------- Public helpers ----------------
 
         public (int r, int c) GetIndex(BoardTileView v) => v != null && index.TryGetValue(v, out var rc) ? rc : (-1, -1);
-        public BoardTileView Get(int r, int c) => IsInside(r, c) ? grid[r, c] : null;
+        // grid is null after an editor domain reload mid-play (Awake doesn't
+        // rerun); observers poll Get() every frame, so guard or they NRE-storm
+        // and quit-time saves persist garbage.
+        public bool GridReady => grid != null;
+        public BoardTileView Get(int r, int c) => grid != null && IsInside(r, c) ? grid[r, c] : null;
 
         // ---------------- Input entrypoints ----------------
 
