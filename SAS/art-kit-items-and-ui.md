@@ -1,25 +1,39 @@
 # Art Generation Kit — Item Icons & UI Sprites
-*v1.2 · 2026-07-12 (Press ladder revised — steadier mass, no-text, no-Arthur-face; stamp acceptance added) · Attach the Ally key art (app icon image) as STYLE reference with every generation. Never as character reference.*
+*v1.3 · 2026-07-12 (contradiction pass: single-object→cluster, no-text absolute, occupancy/tier rule, generator↔family map, separate UI-symbol block, technical QC, self-contained bg) · Attach the Ally key art as PALETTE/LIGHTING reference — not a geometry reference — with every item generation.*
+
+> **Wave 1 status (read first):** the four Wave-1 families (33 icons) + 3 generators are **already generated and imported into `Assets/`** (verified in the build). Their per-tier notes below are kept for the record; where a note is edited for the no-text/occupancy rules, that applies to a **future regeneration pass (post-launch polish)**, not to the shipped art. The **live to-generate work is Wave 2 (Press), the Ep2 stamps, and any Ep1 stamps** — those obey v1.3 fully. Run the small **proof batch** (bottom of doc) before any bulk run.
+
+> **Reference-block index:** items use the **item-icon block** (below); flat UI marks (stamps) use the separate **flat UI-symbol block** (§ stamps); the background uses its own **environment block** (§ bg); 9-slice panels/buttons are **built programmatically, not generated** (§ 9-slice). Do not cross these.*
 
 ## Part 1 — Item icons (Wave 1: the four live families, 33 items + 3 generators)
 
 ### Global item style block (paste with every batch)
 
 ```
-Match the attached image's art style: stylized painterly 3D-illustration, rich
-saturated color, soft cinematic lighting. Render a SINGLE OBJECT as a game item
-icon: viewed from slightly above (about 15 degrees), centered, filling ~80% of
-a square canvas, on a fully TRANSPARENT background. No text, no border, no
-watermark, no drop shadow (the game adds shadows at runtime). Clean, chunky,
-readable silhouette that stays legible at 96 pixels. Consistent light: soft key
-from upper-left, gentle warm rim from the right.
+Match the approved Ally Quinn item-icon reference style: stylized painterly
+3D illustration, rich saturated local colour, clean sculpted forms and soft
+cinematic lighting.
+Render ONE COHESIVE ICON COMPOSITION: either one object OR a tightly grouped
+cluster that reads as one silhouette. No scenery, room, tabletop or environmental
+background.
+View from approximately 15 degrees above. Keep the same camera direction and
+ground plane across the entire family. Centre the composition with 10-12% safe
+margin on every side; nothing cropped. Overall occupancy may increase gradually
+from low tier to hero tier, approximately 62-82% (do NOT fill every tier to the
+same size - that flattens the value ladder).
+Fully transparent PNG background. No border, frame, cast shadow, floor shadow,
+watermark, readable words, letters, numerals, denominations, dates, barcodes or
+logos. Abstract marks and simple non-linguistic symbols are allowed.
+Soft key from upper-left, restrained warm rim from the right. Chunky outer
+silhouette; avoid fragile thin elements and excessive micro-detail. The icon
+must remain identifiable at 96, 64 AND 48 pixels.
 ```
 
 ### Batch A — Forensic Tools (5) · palette: steel grey, teal case-accents, clinical white
 | File | Item | Art notes |
 |---|---|---|
 | forensic_tools_t01 | Cotton Swab | single swab, angled, sterile packet hint |
-| forensic_tools_t02 | Evidence Bag | clear zip bag, red EVIDENCE tape strip, something indistinct inside |
+| forensic_tools_t02 | Evidence Bag | zip bag with a strong OPAQUE zip rim and visible folds (controlled, not fully realistic transparency, so it survives on alpha), a red tamper strip of repeating diagonal bars (no letters), something indistinct inside |
 | forensic_tools_t03 | Full Forensic Case | small hard case, opened lid showing foam-fit tools |
 | forensic_tools_t04 | UV Light | handheld UV torch, violet glow at the lens |
 | forensic_tools_t05 | Complete Forensic Kit | premium large case, gleaming instruments, the family's "hero" |
@@ -32,7 +46,7 @@ from upper-left, gentle warm rim from the right.
 | fingerprint_evidence_t03 | Fingerprint Card | classic ten-print card, inked prints |
 | fingerprint_evidence_t04 | Labeled Prints | fanned trio of tagged print cards (red/blue/green tabs) |
 | fingerprint_evidence_t05 | Digital Scan In Progress | handheld scanner, print mid-scan, cyan scanline |
-| fingerprint_evidence_t06 | Database Match | tablet showing matched prints, green MATCH glow |
+| fingerprint_evidence_t06 | Database Match | tablet showing twin aligned fingerprints joined by green linking brackets / a green check symbol (no MATCH text); bold simplified print spirals, not fine ridge detail |
 
 ### Batch C — Rusty Anchor (10) · palette: amber liquids, brass, warm bar light, dark wood hints
 | File | Item | Art notes |
@@ -46,7 +60,7 @@ from upper-left, gentle warm rim from the right.
 | rusty_anchor_t07 | Wine Bottle & Glasses | bottle + two glasses grouped |
 | rusty_anchor_t08 | Anchor Signature Cocktail | showy layered cocktail, tiny anchor pick |
 | rusty_anchor_t09 | Whiskey on Ice Premium | crystal tumbler, large sphere ice, deep amber |
-| rusty_anchor_t10 | 50-Year Scotch | aged bottle, wax seal, faded 50 on the label — the family hero |
+| rusty_anchor_t10 | 50-Year Scotch | aged bottle, thick wax seal with five radial marks (no numeral), deep amber, brass — the family hero |
 
 ### Batch D — Food Gifts / Corner Diner (12) · palette: warm diner reds/creams, appetizing
 | File | Item | Art notes |
@@ -68,12 +82,22 @@ from upper-left, gentle warm rim from the right.
 | File | Item | Art notes |
 |---|---|---|
 | gen_investigation_lab | Investigation Lab kit | desktop forensic station: lamp, microscope, files |
-| gen_corner_diner | Corner Diner takeout window | mini diner counter with menu board |
+| gen_corner_diner | Corner Diner takeout window | mini diner counter with a dark menu board bearing cream horizontal menu strokes (no readable words) |
 | gen_junk | Old evidence drawer | worn wooden drawer unit, mixed odds and ends spilling |
 
-**Tier progression rule across all families:** each tier reads visibly "more" than the last — bigger, richer, shinier, more elements — so a player can rank two icons at a glance.
+**Generator ↔ family map (authoritative — from the shipped generator SOs, `Assets/App/Generators/`):**
+
+| Generator | Produces (Ep1) | Type | Notes |
+|---|---|---|---|
+| Investigation Lab (`gen_investigation_lab`) | Forensic Tools + Fingerprint Evidence | multi-fixed | the starting generator |
+| Corner Diner (`corner_diner`) | Food Gifts | single-fixed | granted at Ep1 L5 |
+| Old Evidence Drawer (`gen_junk`) | Rusty Anchor *(in Ep1)* | flag-gated multi | also drops garage / press / helens_gifts, each locked behind its own `aq.char.*` / `aq.loc.*` story flag; only `rusty_anchor` is unlocked in Ep1 (rusty flag set at L1) |
+
+So four live families are served by three generators — the Lab produces two, and the Junk drawer's family menu grows as story flags fire.
+
+**Tier progression rule (revised v1.3):** don't just make each tier "shinier." Every tier must differ from the tier below in **at least TWO** of: outer silhouette · object count · vertical height · footprint · premium material · family accent motif. Occupancy rises ~62%→82% low-to-hero (see the global block). **Test each icon at 96, 64 AND 48 px**, and inside an actual board tile with the runtime shadow + generator badge + max-tier star present — not just on a blank canvas.
 **Batch discipline:** generate a family in ONE session with the first approved icon of that family attached as an extra style anchor for the rest. Filename exactly as listed (.png, 1024×1024). Drop finished batches in `OneDrive/AllyQuinn Game/Images/Production 2026 Images/Items/` — I take it from there.
-**Acceptance per icon:** transparent background · silhouette readable at 96px · consistent angle/lighting with its family · no text/shadow.
+**Acceptance per icon:** straight-alpha transparent PNG · silhouette readable at 96 / 64 / 48 px · consistent angle+lighting with its family · **no readable text (abstract diegetic marks OK)** · no baked shadow · centred with safe margin. Full technical checklist at the end of this doc.
 
 ## Part 1b — Wave 2 (Episode 2 dependencies · FINAL, ready to generate · 2026-07-12)
 
@@ -97,9 +121,9 @@ from upper-left, gentle warm rim from the right.
 | press_items_t04 | Cassette Recorder & Tape | a chunky handheld cassette recorder with a micro-cassette beside it, blank label block, brass screws catching light. Distinct mechanical silhouette, more mass than t03. |
 | press_items_t05 | Bulging Clippings Folder | a thick manila folder over-stuffed with papers, colour tabs and protruding clippings held by a paper-clip, one red grease-pencil ring. A visible collection — much more paper. |
 | press_items_t06 | Portable Typewriter | a compact vintage portable typewriter, a blank sheet wound in, keys catching warm light, brass return lever. Large, unmistakable machine silhouette. |
-| press_items_t07 | Microfiche Viewer & Reel | a boxed microfiche reel seated in/beside a small tabletop viewer, a short film strip pulled out catching light, brass spindle. Taller technical archive equipment. |
+| press_items_t07 | Microfilm Viewer & Reel | a boxed microfilm reel seated in/beside a small tabletop viewer, a short film strip pulled out catching light, brass spindle. Taller technical archive equipment. *(a reel is microfilm, not microfiche — named correctly)* |
 | press_items_t08 | Stuffed Morgue File Box | a large corrugated archive box, lid off, several folders standing inside with colour tabs, a redaction bar on one visible sheet. Big box — more mass than the viewer. |
-| press_items_t09 | Front-Page Layout Board | a broad flat proof/layout board with column blocks, a generic photo block, red grease-pencil markup, a scalpel and roller resting on it. The widest flat silhouette — the published output. |
+| press_items_t09 | Front-Page Layout Board | a proof/layout board on a slight easel lip so it is NOT a flat low rectangle at the 15° angle — column blocks, a generic photo block, red grease-pencil markup, a raised roller and clipped sheets breaking the top silhouette. The published output. |
 | press_items_t10 | The Morgue Cabinet | a tall oak card-catalogue / filing cabinet, one drawer open showing fanned clippings and brass label-holders, a desk-lamp glow on top, worn brass handles — the family **hero**: biggest, richest, warmest. |
 
 *Acceptance per icon (same as Wave 1): transparent background · silhouette readable at 96 px · consistent 15° angle + upper-left key with warm right rim · no text baked in beyond the diegetic headline/label hints · each tier visibly "more" than the one below. Generate t01 first, approve, then attach it as the family style anchor for t02–t10.*
@@ -108,9 +132,19 @@ from upper-left, gentle warm rim from the right.
 Tier art already exists: `SAS/Item Icons/Item Family - Garage/garage_t01`–`t10` (socket wrench → the pimped ride). **Import checklist:** (1) copy the ten PNGs into the item-icon import location; (2) run the GUID/meta pipeline (the Gerald-pattern batch importer) so each gets a stable GUID; (3) confirm each reads at 96 px against the family tier rule; (4) regenerate **only** any tier that fails the silhouette check — no new family, no full regen (ruling 2026-07-12). Garage's only Ep2 use is L7 (the fused cashbox at Malone's).
 
 ### New UI sprites (Ep2 branch stamps) · differ by SYMBOL, not colour alone
-Follow the `ui_stamp_public` / `ui_stamp_protected` pattern (distressed rubber-stamp ring, text overlaid at runtime, transparent background, readable at mobile size). Attach the Ally key art as style anchor.
+**Use the FLAT UI-SYMBOL block below — do NOT append the 3D item block** (the two render languages fight). Attach the Ally key art for palette only.
 
-| File | Prompt (append to the item style block, but render as a FLAT UI stamp, not a 3D object) |
+```
+Render a FLAT graphic UI STAMP, orthographic (no 3D perspective, no cast shadow),
+minimal depth, high contrast, even/fixed stroke weight — like a real distressed
+rubber stamp. Transparent PNG. Source canvas 512×512 with a clear ~12% empty
+exterior margin. The central symbol occupies a minimum ~45% diameter and its
+lines stay ≥ 6 px thick when scaled to 64 px. Leave an empty text-safe band across
+the middle third for a runtime label (no baked text, letters or numbers). The
+distress/ink-worn texture must never break or fill the central symbol.
+```
+
+| File | Prompt (append to the FLAT UI-SYMBOL block above) |
 |---|---|
 | ui_stamp_shielded | a distressed **shield-shaped (or octagonal)** rubber-stamp border in steel blue, ink-worn and uneven, with a small clean **SHIELD** silhouette centered inside; empty band top and bottom for runtime text ("WITNESS SHIELDED"). No baked text. Transparent background. |
 | ui_stamp_daylight | a distressed **circular sunburst** ring in warm amber-gold, with a small **SUN-with-rays** silhouette centered inside; empty band for runtime text ("TRUTH IN DAYLIGHT"). No baked text. Transparent background. |
@@ -131,10 +165,40 @@ Same style reference. All on transparent background unless noted.
 | ui_icon_settings | Settings gear | simple, chunky |
 | ui_panel_9slice | Popup panel | rounded rect, deep navy (#0A1220) body, subtle lighter border, uniform corners — MUST have symmetric corners for 9-slicing; flat center |
 | ui_button_9slice | Button | rounded pill, teal fill, subtle top highlight; symmetric corners |
-| ui_stamp_public | "PUBLIC TRUTH" stamp | distressed red rubber-stamp ring, no text needed (text is overlaid) |
-| ui_stamp_protected | "PROTECTED TRUTH" stamp | same, in steel blue |
-| bg_rivermouth_night | Scene background | **P0 — the real Ep1 backdrop (replaces the purple-viaduct stand-in).** Portrait, ≥1284×2778: stylized Havenbay/Rivermouth riverside street at night — distant iron **swing-bridge** silhouette over dark water, amber sodium street-lamps, wet cobbles, low river fog, deep navy sky (#0A1220). **Keep the central 60% low-detail/darker — the board covers it; put interest in the top third (sky/bridge) and bottom third (street/river).** No people, vehicles, text. Full generation prompt issued to Stephen 2026-07-12. |
+| ui_stamp_public | "PUBLIC TRUTH" stamp | **BLOCKING: differ by SYMBOL, not colour** — a distressed **circular megaphone/broadcast** symbol; use the FLAT UI-SYMBOL block. Text overlaid at runtime. |
+| ui_stamp_protected | "PROTECTED TRUTH" stamp | **BLOCKING: differ by SYMBOL, not colour** — a distressed **shield/lock** symbol in steel blue; FLAT UI-SYMBOL block. (If already generated as colour-only variants, regenerate with symbols before beta.) |
+| bg_rivermouth_night | Scene background | **P0 — DONE & approved (2026-07-12).** Filename `bg_rivermouth_night.png`; source: OneDrive `Images/Production 2026 Images/Backgrounds/`. Full prompt + the **environment block** are recorded in §Environment below. **Gameplay quiet zone (normalized, aspect-independent): x 0.08–0.92, y 0.23–0.78** — no high-contrast edges or isolated highlights inside that rectangle (the board sits there). Brightness is controlled by a runtime scrim, NOT by re-lighting the art. |
 
 **HUD architecture ruling (2026-07-12):** the top bar is **component-built, not a background image.** The old `HUDImage` placeholder (`HUD3_Transparent_0`, 920×238, a big baked panel that forced the ~320 px oversized HUD) is **retired** — do not replace it with another background image. The compact Gossip-Harbor-style bar is assembled in code from `ui_meter_pill_9s` (currency pills), `ui_top_avatar_frame` (portrait), the `ui_top_energy/soft/premium` icons, and `ui_icon_settings` (gear, replacing the "MENU" text button). This is Claude's #2 UI pass (HUD-shrink + board-density), not an art-generation task.
 
-If any 9-slice sprite generates poorly (uneven corners), tell me and I build it programmatically instead — items and the background are where generation genuinely wins.
+**9-slice panels & buttons (`ui_panel_9slice`, `ui_button_9slice`): BUILD PROGRAMMATICALLY by default — do not generate.** AI is poor at perfectly symmetric corners, flat centres, and pixel-identical opposing edges. Generation genuinely wins only for **items and backgrounds**; precision UI infrastructure is deterministic code.
+
+---
+
+## Technical acceptance & QC (every generated asset)
+- PNG, **straight (non-premultiplied) alpha**, **sRGB**.
+- **No** opaque matte and **no** white/black edge halo around the silhouette; no semi-transparent noise outside the shape.
+- ≥ **10–12% safe margin**, silhouette never cropped; centre pivot unless overridden.
+- **No baked cast shadow** (runtime adds it).
+- Reads at **96 / 64 / 48 px**; approved on a **contact sheet over light tile, dark tile AND checkerboard**.
+- Greyscale / colour-blind check where the asset carries meaning (stamps, MATCH cue).
+- Unity import: Sprite (2D and UI), **mipmaps OFF**, alpha transparency ON, sensible max-size/compression; land in the item-icon import folder; stable filename + GUID via the batch pipeline.
+
+## Asset manifest (record per approved asset — reproducibility, not just "one session")
+`filename · prompt revision (e.g. kit v1.3) · reference images used · generation/edit ID if available · approval date · OneDrive source path · Unity GUID/import status`. Keep it as a small table so a re-roll or a reviewer can trace any icon.
+
+## Proof batch — run these FIVE before any bulk generation
+The reviewer's stress test: **Press t01–t03 · the Forensic Evidence Bag (alpha/transparency test) · one Rusty Anchor stemmed glass (thin-silhouette test) · one flat stamp (flat-UI-block test) · one generator.** These five expose nearly every failure mode (single-object vs cluster, no-text, alpha halo, thin-element collapse, flat-vs-3D) before the pipeline "cheerfully manufactures fifty-seven beautifully consistent mistakes." Approve all five, then proceed family by family.
+
+
+## Environment block (backgrounds — separate render language from items)
+Backgrounds are painterly SCENES, not alpha objects. Use this block (not the item block):
+```
+Painterly night scene for a noir true-crime mobile game, matching the Ally key
+art palette (deep navy #0A1220, amber lamplight, muted). PORTRAIT phone aspect.
+Composition must leave a QUIET, low-contrast, darker zone in the normalized
+rectangle x 0.08-0.92 / y 0.23-0.78 (a game board sits there) — put all interest
+in the top and bottom bands. No people, vehicles, text, UI or watermark. It will
+be dimmed by a runtime scrim, so a slightly brighter render than final is fine.
+```
+The approved `bg_rivermouth_night` full prompt (swing-bridge, amber lamps, wet cobbles, water tower, moon) is the reference instance of this block; regenerate variants or future-episode backdrops from the same rules.
