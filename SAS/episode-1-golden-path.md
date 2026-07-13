@@ -9,7 +9,7 @@ Item shorthand: F=forensic_tools · P=fingerprint_evidence · R=rusty_anchor · 
 | 2 | The Forty Seconds | spawned by 1 | 1× F-T3 Full Forensic Case | 20 CC | "the house does when they cross it" — no gender before L7 |
 | 3 | Three Years of Goodnights | spawned by 1 | 1× F-T4 UV Light + 1× P-T2 Lifted Print Tape | 50 CC | fish-hook message beat (worried portrait) |
 | 4 | The Volume-Up | leads 2 AND 3 done | 1× R-T4 Beer Bottle *(needs gen_junk from lead 1 + rusty flag)* | 50 CC | Gerald portraits (neutral + worried); Mo's line quotes "Dorothy Ellis" |
-| 5 | Case Alert: Dot Ellis | lead 4 | 1× F-T4 + 1× F-T3 | 200 CC + 20 energy | spawns 6+7+8; progress label ticks |
+| 5 | Case Alert: Dot Ellis | lead 4 | 1× F-T4 + 1× F-T3 | 200 CC + 20 energy · **grants corner_diner generator via overflow** (2026-07-12 fix — food source for L7/L9/L11) | spawns 6+7+8; progress label ticks |
 | 6 | The Cold Kettle | spawned by 5 | 1× P-T5 Digital Scan + 1× P-T2 | 95 CC | the coin beat; Gerald's "Don't put that on the show" |
 | 7 | The Man Who Came at Noon | spawned by 5 | 1× D-T4 Burger + 1× D-T2 Coffee | 50 CC | dead lamp + clean plate planted |
 | 8 | The Quiet Boats | spawned by 5 | 1× R-T5 Wine Glass Red | 95 CC | Ally's ANGRY portrait (first use) on final node |
@@ -24,6 +24,13 @@ Item shorthand: F=forensic_tools · P=fingerprint_evidence · R=rusty_anchor · 
 - Progress label ends 12/12 (cold cases don't increment it).
 - Evidence board: e1 cards cluster PHASE 1 / PHASE 2; cold cases + teaser absent from board.
 - Energy: full FTUE tank should carry roughly through Phase 1; pinch expected mid-Phase-2 (dev -50 button to force-test the popup funnel).
+
+## Generator provisioning (added 2026-07-12)
+
+Three generators source Ep1's four requirement families, granted progressively via the overflow bucket:
+- **Investigation Lab** (starting generator) → forensic_tools + fingerprint_evidence (F, P) — every F/P lead.
+- **gen_junk** (granted L1; `aq.loc.rusty_anchor.active` set at L1 unlocks its bar drops) → rusty_anchor (R) — L4, L8, L11. *(gen_junk's garage/press/helens drops stay locked behind their Ep2+ character flags — correctly inert in Ep1.)*
+- **Corner Diner** (granted **L5**) → food_gifts (D) — L7, L9, L11. **This grant was missing** until 2026-07-12: no lead provisioned the food generator, so L7 "The Man Who Came at Noon" (burger + coffee) was **unsatisfiable — a hard Ep1 progression blocker**. Fixed by setting `generatorRewardTypeId: corner_diner` on `Lead_E1_Pod1` (L5), the Phase-2 opener, before any food lead spawns.
 
 ## Total arc economy
 ≈144 T1-equivalents across 12 leads · rewards: 1,365 CaseCash + 40 energy + 5 ingots *(corrected from 1,360 on 2026-07-12 — the lead table's sum is authoritative)*. Matches the validated pinch model.
