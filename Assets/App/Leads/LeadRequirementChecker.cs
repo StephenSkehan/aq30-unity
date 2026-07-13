@@ -21,12 +21,30 @@ namespace AQ.App.Leads
         // itemId → count of that item currently on the board
         private readonly Dictionary<string, int> _liveCounts = new Dictionary<string, int>();
 
+        // itemId set of every item required by a currently non-Blocked lead.
+        // Drives the board tile requirement-match checkmark.
+        private readonly HashSet<string> _neededItemIds = new HashSet<string>();
+        public IReadOnlyCollection<string> NeededItemIds => _neededItemIds;
+        public bool IsItemNeeded(string itemId) => !string.IsNullOrEmpty(itemId) && _neededItemIds.Contains(itemId);
+
+        /// <summary>Raised whenever the set of item types needed by active leads changes.</summary>
+        public event Action NeededItemsChanged;
+
+        /// <summary>Scene-level singleton so board tiles can query without a wired reference.</summary>
+        public static LeadRequirementChecker Instance { get; private set; }
+
         private IDisposable _subCreated;
         private IDisposable _subRemoved;
 
         private void Awake()
         {
             if (!_repository) _repository = FindAnyObjectByType<LeadsRepository>();
+            Instance = this;
+        }
+
+        private void OnDestroy()
+        {
+            if (Instance == this) Instance = null;
         }
 
         private void OnEnable()
@@ -34,12 +52,17 @@ namespace AQ.App.Leads
             _liveCounts.Clear();
             _subCreated = GlobalBus.Bus.Subscribe<ItemCreatedOnBoard>(OnItemCreated);
             _subRemoved = GlobalBus.Bus.Subscribe<ItemRemovedFromBoard>(OnItemRemoved);
+
+            if (_repository != null) _repository.LeadsChanged += RecomputeNeededItemIds;
+            RecomputeNeededItemIds();
         }
 
         private void OnDisable()
         {
             _subCreated?.Dispose(); _subCreated = null;
             _subRemoved?.Dispose(); _subRemoved = null;
+
+            if (_repository != null) _repository.LeadsChanged -= RecomputeNeededItemIds;
         }
 
         private void OnItemCreated(ItemCreatedOnBoard e)
@@ -117,6 +140,44 @@ namespace AQ.App.Leads
 
             if (anyChanged)
                 _repository.NotifyChanged();
+
+            RecomputeNeededItemIds();
+        }
+
+        /// <summary>
+        /// Rebuilds the set of itemIds required by any currently non-Blocked lead
+        /// (regardless of that specific requirement's satisfaction) and fires
+        /// <see cref="NeededItemsChanged"/> if the set actually changed. Called after
+        /// board item counts change and whenever the active lead list changes
+        /// (spawn/activate/save-restore) so tiles already on the board pick up or
+        /// drop their checkmark without needing to be touched themselves.
+        /// </summary>
+        private void RecomputeNeededItemIds()
+        {
+            var newSet = new HashSet<string>();
+            if (_repository != null)
+            {
+                foreach (var lead in _repository.CurrentLeads)
+                {
+                    if (lead == null || lead.RuntimeState == LeadState.Blocked) continue;
+
+                    var reqs = lead.requirements;
+                    if (reqs == null) continue;
+
+                    for (int i = 0; i < reqs.Length; i++)
+                    {
+                        var def = reqs[i].itemDefinition;
+                        if (def != null && !string.IsNullOrEmpty(def.itemId))
+                            newSet.Add(def.itemId);
+                    }
+                }
+            }
+
+            if (newSet.SetEquals(_neededItemIds)) return;
+
+            _neededItemIds.Clear();
+            foreach (var id in newSet) _neededItemIds.Add(id);
+            NeededItemsChanged?.Invoke();
         }
     }
 }

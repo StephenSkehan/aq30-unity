@@ -210,8 +210,10 @@ namespace AQ.App.UI.Board
 
         private void MoveTile(BoardTileView from, BoardTileView to)
         {
-            to.CopyFrom(from);
+            // Family must be transferred before CopyFrom (which triggers Refresh -> the
+            // requirement-tick lookup on `to`) so GetItemId can resolve on the same pass.
             TransferFamily(from, to);
+            to.CopyFrom(from);
             from.Clear();                           // tears down animator on source
             familyKeyByTile.Remove(from);
             if (to.Kind == TileKind.Generator)      // re-attach on destination
@@ -224,10 +226,13 @@ namespace AQ.App.UI.Board
             var temp = b.Payload;
             b.Payload = a.Payload;
             a.Payload = temp;
+
+            // Family must be swapped before the Refresh() calls below (the
+            // requirement-tick lookup) so GetItemId resolves current, not stale, families.
+            (familyKeyByTile[b], familyKeyByTile[a]) = (GetFamily(a), GetFamily(b));
+
             a.Refresh();
             b.Refresh();
-
-            (familyKeyByTile[b], familyKeyByTile[a]) = (GetFamily(a), GetFamily(b));
 
             // Sync animators — payloads moved but component is on tile GO, not payload
             SyncGeneratorAnimator(a);
@@ -271,10 +276,12 @@ namespace AQ.App.UI.Board
             int fromTier = from.Tier;
             int intoTier = into.Tier;
 
+            // Family must be set before SetItem (which triggers Refresh -> the
+            // requirement-tick lookup) so GetItemId can resolve on the same pass.
             var fam = intoFam;
-            into.SetItem(SpriteForItem(fam, newTier), newTier);
             if (!string.IsNullOrEmpty(fam))
                 SetFamily(into, fam);
+            into.SetItem(SpriteForItem(fam, newTier), newTier);
 
             from.Clear();
             familyKeyByTile.Remove(from);
@@ -358,8 +365,10 @@ namespace AQ.App.UI.Board
                 itemTier   = RollSpawnTier();
             }
 
-            v.SetItem(SpriteForItem(itemFamily, itemTier), itemTier);
+            // Family must be set before SetItem (which triggers Refresh -> the
+            // requirement-tick lookup) so GetItemId can resolve on the same pass.
             SetFamily(v, itemFamily);
+            v.SetItem(SpriteForItem(itemFamily, itemTier), itemTier);
 
             Log($"Spawned item T{itemTier + 1} family={itemFamily} at ({r},{c}).");
             OnItemCreated?.Invoke(itemFamily, itemTier);
@@ -427,8 +436,10 @@ namespace AQ.App.UI.Board
             }
             else
             {
-                v.SetItem(SpriteForItem(data.family, data.tier), data.tier);
+                // Family must be set before SetItem (which triggers Refresh -> the
+                // requirement-tick lookup) so GetItemId can resolve on the same pass.
                 SetFamily(v, data.family);
+                v.SetItem(SpriteForItem(data.family, data.tier), data.tier);
                 OnItemCreated?.Invoke(data.family, data.tier);
                 Log($"Placed item from overflow: family={data.family} tier={data.tier} at ({r},{c}).");
             }
@@ -464,6 +475,20 @@ namespace AQ.App.UI.Board
         }
 
         public Sprite SpriteForItemTierPublic(int tierZeroBased) => SpriteForItemTier(tierZeroBased);
+
+        /// <summary>
+        /// Resolves a tile's stable itemId (family+tier → ItemDefinitionSO.itemId) for
+        /// requirement matching. Generators and empty tiles never satisfy a lead
+        /// requirement, so this returns empty for them.
+        /// </summary>
+        public string GetItemId(BoardTileView v)
+        {
+            if (v == null || v.IsEmpty || v.Kind != TileKind.Item) return string.Empty;
+            var fam = GetFamily(v);
+            if (string.IsNullOrEmpty(fam)) return string.Empty;
+            var def = LookupItemDef(fam, v.Tier);
+            return def != null ? def.itemId : string.Empty;
+        }
 
         // ---------------- Init grid ----------------
 

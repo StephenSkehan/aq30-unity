@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using AQ.App.Leads;
 
 namespace AQ.App.UI.Board
 {
@@ -27,6 +28,7 @@ namespace AQ.App.UI.Board
         Image bgImage;          // child "Bg"
         public Image itemImage; // child "Item"
         Image energyBadge;      // child "EnergyBadge", created on demand, generators only
+        Image requirementTick;  // child "RequirementTick", created on demand, items only
 
         static Sprite _energyBadgeSprite;
         static bool _energyBadgeSpriteLoaded;
@@ -46,6 +48,20 @@ namespace AQ.App.UI.Board
 
         DragGhost ghost;
         (int r, int c)? dragStartRC;
+
+        // ---------------- lifecycle ----------------
+
+        private void OnEnable()
+        {
+            if (LeadRequirementChecker.Instance != null)
+                LeadRequirementChecker.Instance.NeededItemsChanged += RefreshRequirementTick;
+        }
+
+        private void OnDisable()
+        {
+            if (LeadRequirementChecker.Instance != null)
+                LeadRequirementChecker.Instance.NeededItemsChanged -= RefreshRequirementTick;
+        }
 
         // ---------------- binding ----------------
 
@@ -128,6 +144,70 @@ namespace AQ.App.UI.Board
             }
 
             RefreshEnergyBadge();
+            RefreshRequirementTick();
+        }
+
+        /// <summary>
+        /// Shows a green tick badge when this tile's item is currently needed by an
+        /// active lead (Gossip-Harbor-style board↔story connection). Driven off
+        /// LeadRequirementChecker's live itemId set — generators never qualify.
+        /// </summary>
+        void RefreshRequirementTick()
+        {
+            bool needed = payload.kind == TileKind.Item
+                       && itemImage != null && itemImage.enabled
+                       && controller != null
+                       && LeadRequirementChecker.Instance != null
+                       && LeadRequirementChecker.Instance.IsItemNeeded(controller.GetItemId(this));
+
+            if (!needed)
+            {
+                if (requirementTick) requirementTick.enabled = false;
+                return;
+            }
+
+            if (!requirementTick) requirementTick = CreateRequirementTick();
+            requirementTick.enabled = true;
+            requirementTick.transform.SetAsLastSibling();
+        }
+
+        Image CreateRequirementTick()
+        {
+            var go = new GameObject("RequirementTick", typeof(RectTransform), typeof(Image));
+            var rt = (RectTransform)go.transform;
+            rt.SetParent(transform, false);
+            rt.SetAsLastSibling();
+            // Top-right corner, opposite the energy badge (bottom-left).
+            rt.anchorMin = new Vector2(0.62f, 0.62f);
+            rt.anchorMax = new Vector2(0.97f, 0.97f);
+            rt.offsetMin = Vector2.zero;
+            rt.offsetMax = Vector2.zero;
+
+            var badge = go.GetComponent<Image>();
+            badge.sprite = AQTheme.Rounded;
+            badge.type   = Image.Type.Sliced;
+            badge.pixelsPerUnitMultiplier = 0.35f; // corners overrun -> circular badge
+            badge.color  = AQTheme.Success;
+            badge.raycastTarget = false;
+
+            AddTickStroke(rt, new Vector2(3f, 8f),  45f, new Vector2(-6f, -1.5f));
+            AddTickStroke(rt, new Vector2(3f, 13f), -45f, new Vector2(1f, 1f));
+
+            return badge;
+        }
+
+        static void AddTickStroke(RectTransform parent, Vector2 size, float zRot, Vector2 pos)
+        {
+            var go = new GameObject("Stroke", typeof(RectTransform), typeof(Image));
+            var rt = (RectTransform)go.transform;
+            rt.SetParent(parent, false);
+            rt.sizeDelta        = size;
+            rt.anchoredPosition = pos;
+            rt.localRotation    = Quaternion.Euler(0f, 0f, zRot);
+
+            var img = go.GetComponent<Image>();
+            img.color = Color.white;
+            img.raycastTarget = false;
         }
 
         void RefreshEnergyBadge()
@@ -226,6 +306,7 @@ namespace AQ.App.UI.Board
 
             itemImage.enabled = false;
             if (energyBadge) energyBadge.enabled = false;
+            if (requirementTick) requirementTick.enabled = false;
             Follow(eventData);
         }
 
