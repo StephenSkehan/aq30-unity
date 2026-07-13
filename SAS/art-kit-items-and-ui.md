@@ -32,7 +32,7 @@ must remain identifiable at 96, 64 AND 48 pixels.
 ### Batch A — Forensic Tools (5) · palette: steel grey, teal case-accents, clinical white
 | File | Item | Art notes |
 |---|---|---|
-| forensic_tools_t01 | Cotton Swab | single swab, angled, sterile packet hint |
+| forensic_tools_t01 | Dusting Brush *(was Cotton Swab)* | single fingerprint dusting brush, chunky round head, no bag — smallest tier; update SO displayName to "Dusting Brush" (keep filename/itemId) |
 | forensic_tools_t02 | Evidence Bag | zip bag with a strong OPAQUE zip rim and visible folds (controlled, not fully realistic transparency, so it survives on alpha), a red tamper strip of repeating diagonal bars (no letters), something indistinct inside |
 | forensic_tools_t03 | Full Forensic Case | small hard **closed** case, latched lid, corner guards + handle — kept shut so it differs from the open hero kit at t05 |
 | forensic_tools_t04 | UV Light | handheld UV torch, violet glow at the lens |

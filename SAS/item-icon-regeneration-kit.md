@@ -143,11 +143,13 @@ Approve all five (checked at 96/64/48 px on a light tile, dark tile AND checkerb
 *Single-digit `t1`–`t5`; note `t3` and `t5` have long filenames — keep them exact.*
 | Filename | Item | Art note |
 |---|---|---|
-| forensic_tools_t1_cotton_swab.png | Cotton Swab | single angled sterile swab, packet hint |
+| forensic_tools_t1_cotton_swab.png | **Dusting Brush** | a single fingerprint dusting brush — chunky round head, angled handle, **no bag**; smallest footprint in the family. *(Swapped from cotton swab 2026-07-13: a dusting brush fits the fingerprint-themed family and reads sturdier at 48px. Keep the filename as-is for GUID stability; update the ScriptableObject `displayName` "Cotton Swab" → "Dusting Brush" — see note below.)* |
 | forensic_tools_t2_evidence_bag.png | Evidence Bag | zip bag with a strong OPAQUE zip rim + folds (controlled, not full transparency, so it survives on alpha), red tamper strip of diagonal bars (no letters), something indistinct inside |
 | forensic_tools_t3_full_forensic_case_black.png | Full Forensic Case | small hard **closed** case, latched lid, sturdy corner guards + handle — deliberately shut so it reads distinctly from the open hero kit at t5 |
 | forensic_tools_t4_uv_light.png | UV Light | handheld UV torch, violet glow at the lens |
-| forensic_tools_t5_complete_forensic_kit_transparent_soft.png | Complete Forensic Kit | premium large case, gleaming instruments — **family hero** |
+| forensic_tools_t5_complete_forensic_kit_transparent_soft.png | Complete Forensic Kit | premium large **open** case, foam-fit gleaming instruments (print card + dusting brush + UV light) — **family hero** |
+
+> **⚠ t1 displayName follow-on (data, not art):** the art for `forensic_tools_t1` is now a dusting brush, but its `displayName` in `Assets/ScriptableObjects/Items/forensic_tools_t1.asset` (and the source line in `Assets/Editor/Items/ItemDefinitionBatchCreator.cs`) still reads **"Cotton Swab"**. Change it to **"Dusting Brush"** so the tile-info popup matches the icon. **Do NOT** rename the `.asset`, the `itemId` (`forensic_tools_t1`), or the PNG filename — only the `displayName` string changes. Pure one-line edit; GUIDs and wiring are untouched.
 
 ---
 
