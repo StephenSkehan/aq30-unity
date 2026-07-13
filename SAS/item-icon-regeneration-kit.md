@@ -145,7 +145,7 @@ Approve all five (checked at 96/64/48 px on a light tile, dark tile AND checkerb
 |---|---|---|
 | forensic_tools_t1_cotton_swab.png | Cotton Swab | single angled sterile swab, packet hint |
 | forensic_tools_t2_evidence_bag.png | Evidence Bag | zip bag with a strong OPAQUE zip rim + folds (controlled, not full transparency, so it survives on alpha), red tamper strip of diagonal bars (no letters), something indistinct inside |
-| forensic_tools_t3_full_forensic_case_black.png | Full Forensic Case | small hard case, opened lid, foam-fit tools |
+| forensic_tools_t3_full_forensic_case_black.png | Full Forensic Case | small hard **closed** case, latched lid, sturdy corner guards + handle — deliberately shut so it reads distinctly from the open hero kit at t5 |
 | forensic_tools_t4_uv_light.png | UV Light | handheld UV torch, violet glow at the lens |
 | forensic_tools_t5_complete_forensic_kit_transparent_soft.png | Complete Forensic Kit | premium large case, gleaming instruments — **family hero** |
 
