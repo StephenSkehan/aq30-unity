@@ -16,4 +16,4 @@ MonoBehaviour:
   family: forensic_tools
   tier: 0
   icon: {fileID: 5178305252895463755, guid: 21d1818a775740543b238bace43549d0, type: 3}
-  displayName: Cotton Swab
+  displayName: Fingerprint Brush
