@@ -133,11 +133,12 @@ years and finally said it. Reads as: the keeper of a door held open. Warm
 diesel-dawn key light (civilian-warm rule), harbour fog softness behind.
 ```
 *Notes: no teal (Ally's color), no moss cardigan tones (Dot's palette). Rosa's
-palette: navy, flannel red-brown, brass. Expression priority for Episode 2
-production: 1 NEUTRAL (guarded control) → 2 SAD (grief held for years, never
-collapse) → 3 ANGRY (at the smear and the institutions — set jaw, level eyes,
-restrained) → 4 HAPPY (restrained vindication, warmth arriving like weather).
-Full 7-emotion sheet worthwhile later; those four gate Episode 2. Script-locked
+palette: navy, flannel red-brown, brass. Expression priority: 1 NEUTRAL (guarded
+control) → 2 SAD (grief held for years, never collapse) → 3 ANGRY (at the smear
+and the institutions — set jaw, level eyes, restrained) → 4 HAPPY (restrained
+vindication, warmth arriving like weather). Only NEUTRAL is required by the
+current Ep2 script (v6); sad/angry/happy are reusable-cast preparation, not
+VO-lock blockers. Full 7-emotion sheet worthwhile later. Script-locked
 facts behind the design: fuel dock since nineteen, the logbook, the voicemail
 ("You say goodnight to the harbour"), the final line written in her own hand.*
 

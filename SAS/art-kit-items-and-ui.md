@@ -99,8 +99,8 @@ Existing `garage_t01`–`t10` assets imported via the GUID pipeline; generate re
 ### New UI sprites (Ep2 branch)
 | File | What | Notes |
 |---|---|---|
-| ui_stamp_shielded | "WITNESS SHIELDED" stamp | distressed rubber-stamp ring in steel blue, text overlaid at runtime — pattern of ui_stamp_protected |
-| ui_stamp_daylight | "TRUTH IN DAYLIGHT" stamp | same, in amber-gold |
+| ui_stamp_shielded | "WITNESS SHIELDED" stamp | distressed rubber-stamp ring in steel blue with a small SHIELD silhouette, text overlaid at runtime — pattern of ui_stamp_protected |
+| ui_stamp_daylight | "TRUTH IN DAYLIGHT" stamp | same, in amber-gold with a small SUN-RAYS silhouette — the pair must differ by symbol, never colour alone, and read at mobile size |
 
 ## Part 2 — UI sprites (small batch, big effect)
 
