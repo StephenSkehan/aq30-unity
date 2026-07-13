@@ -1,6 +1,6 @@
 # Episode 2 — The Ferryman
 
-*Echoes of Havenbay · v6 (pre-table-read continuity pass) 2026-07-12 · STRUCTURE LOCKED — table-read candidate · conforms to episode-writers-prompt.md v2 + pilot-spec relaxations*
+*Echoes of Havenbay · v7 (final table-read corrections) 2026-07-12 · STRUCTURE LOCKED — table-read candidate · conforms to episode-writers-prompt.md v2 + pilot-spec relaxations*
 
 ## Format canon & the clock
 
@@ -71,7 +71,7 @@ Card subtitles:
 
 | # | Speaker | Emotion | Line |
 |---|---|---|---|
-| 1 | Rosa (voicemail) | neutral | [steady — rehearsed for twenty years] My name is Rosa Reyes. You say goodnight to the harbour every week, like it's a friend. It kept my father. Danny Reyes rowed the last crossing for eleven years. One night he didn't come back. The boat did. |
+| 1 | Rosa (voicemail) | neutral | [steady — rehearsed for twenty years] My name is Rosa Reyes. You say goodnight to the harbour every week, like it's a friend. It kept my father. Danny Reyes rowed the harbour's last public crossing for eleven years. One night he didn't come back. The boat did. |
 | 2 | Ally | neutral | The tip line keeps voices, timestamps and nothing else — that's the promise. At 10:52 on Sunday night, Rosa Reyes chose to leave her name, the fuel dock, and one reason to come find her: the last entry in her father's logbook isn't his handwriting. |
 | 3 | Ally | worried | Accident, the file said — closed in six days, with a rumour pinned to a dead man's coat: that he'd been skimming the till. The harbour believed it for twenty years. His daughter never did. |
 | 4 | Ally | neutral | I've read a lot of last words. These were written by someone still breathing. This is Echoes of Havenbay. Episode two starts at the water. *(sets aq.lead.f2_tip.seen)* |
@@ -92,7 +92,7 @@ Card subtitles:
 | 1 | Ally | neutral | Arthur Finch keeps the Gazette's memory in a basement he calls the morgue. He pulled the Reyes clippings before I finished asking. He'd been waiting for someone to ask for twenty years. |
 | 2 | Ally | surprised | "We ran the thief story," he said, laying down the 2006 brief — four sentences, no byline, no source. "It arrived written. I was junior desk that week; I filed my objection, and they filed me. So I kept everything." |
 | 3 | Ally | surprised | Everything includes a 2006 records-request packet — requester's name long since redacted — holding what the official file lost: the effects list from the launch. Rope, thermos, tackle box. And one item nobody explains: a single coin, taped to the tiller. |
-| 4 | Ally | worried | Old brass, one face worn blank, a crescent nick in the rim — the same kind Del lifted from a phone cradle in Rivermouth. Files this clean don't happen by accident. Somebody built this forgetting — and twenty years on, somebody is still leaving the same coin. |
+| 4 | Ally | worried | Old brass, one face worn blank, a crescent nick in the rim — the same kind Del lifted from a phone cradle in Rivermouth. Files this clean don't happen by accident. Somebody built this forgetting — and twenty years on, somebody is still leaving the same calling card. |
 
 ### L4 — f2_tides · "Run the Tides" (3 nodes)
 
@@ -159,7 +159,7 @@ Toasts: "North shed. No lights." (~30%) · "Oars on black water." (~70%) — nei
 | 1 | Ally | worried | Thursday, 4:40 a.m. Pier 13, north shed — where a gate pass says my father should have stood. Del had a car three minutes out; Gerald had my live location and a deadline. Rosa's blessing rode shotgun. I have never felt less alone in an empty place. |
 | 2 | Ally | surprised | At 5:02 a launch crossed with no lights. One figure, one crate, gone in ninety seconds. Twenty years after Danny Reyes went into the water, his route still runs on his tide. |
 | 3 | Ally | surprised | The crate wasn't cargo. It was left facing my hide, lid loose, one envelope inside. My name on it — not "A. Quinn." *Ally.* The way a friend would write it. |
-| 4 | Ally | worried | I photographed it where it sat, then opened it — it was addressed to me, and evidence was never its point. Inside: a coin like the one on Danny's tiller. My father's 2006 press badge — not a copy, the badge. And five words in block capitals: THE ROUTE OUTLIVES ITS RIDERS. |
+| 4 | Ally | worried | I photographed it where it sat, then opened it — it was addressed to me, and evidence was never its point. Inside: another old brass coin — one face worn blank, a crescent nick in the rim. My father's 2006 press badge — not a copy, the badge. And five words in block capitals: THE ROUTE OUTLIVES ITS RIDERS. |
 | 5 | Ally | angry | [cold precision, not volume] You want me scared. Noted. But you kept his badge for twenty years — a souvenir, Ferryman, which makes this a collection. Collections get found. I'm coming for the rest of it. |
 
 ### L11 — f2_delcruz · "Make It Official" (Interview — THE BRANCH · 6 node positions)
@@ -182,7 +182,7 @@ Toasts: "North shed. No lights." (~30%) · "Oars on black water." (~70%) — nei
 | 1a | Ally | neutral | (requires aq.e2.eddie_protected) This is Echoes of Havenbay — and as of nine o'clock this morning, the Reyes crossing is open again. A homicide investigation. The gate-book match remains under seal. Its witness is safe. The case reopened without spending his name. |
 | 1b | Ally | neutral | (requires aq.e2.merrick_published) This is Echoes of Havenbay. We published Merrick's match before the file could disappear twice. By Friday night the city knew who forged Danny's goodbye. As of nine this morning, the Reyes crossing is open again — a homicide investigation, too loud to lose. |
 | 2 | Ally | neutral | Danny Reyes was not a thief. Say it at the fuel dock. Say it at Mo's. He carried criminal money for eleven years — carried it, never took it — and when he tried to put it down, the water was told to keep him. |
-| 3 | Ally | sad | Rosa listened to the whole episode standing up, holding the logbook. When it ended, she wrote one line beneath her father's last one — in her own hand, with today's date. Ledgers should end honestly. Now this one does. |
+| 3 | Ally | sad | Rosa listened to the whole episode standing up, holding the logbook. When it ended, she wrote one line beneath the forged final entry — in her own hand, with today's date. Ledgers should end honestly. Now this one does. |
 | 4 | Ally | worried | The man who ordered that crossing is still out there, still counting. He kept my father's badge for twenty years, and gave it back to tell me he'd had it. He believes the route outlives its riders. |
 | 5 | Ally | neutral | Maybe it does. But hear this, Havenbay: routes need water, and the tide is turning. I'm Ally Quinn. Episode three is already recording. *(narrative flag: f2.ep02.complete — fires on Proceed)* |
 
@@ -194,7 +194,7 @@ This episode converts the Ferryman from a name into a present, aware antagonist 
 
 ## The resolution beat
 
-Rosa. Twenty years of holding a door open, resolved not by an arrest (her father's killer is dead) but by the truth said out loud and the case reopened — sealed by the image of her writing the logbook's final line herself, in her own hand, with the date. The ledger ends honestly. That's the episode's thesis in one physical action, and Ally never explains it.
+Rosa. Twenty years of holding a door open, resolved not by an arrest (her father's killer is dead) but by the truth said out loud and the case reopened — sealed by the image of her writing the first honest line beneath the forged one herself, in her own hand, with the date. The ledger ends honestly. That's the episode's thesis in one physical action, and Ally never explains it.
 
 ## Canon usage note
 
@@ -226,7 +226,7 @@ Rosa. Twenty years of holding a door open, resolved not by an arrest (her father
 | 6 · Absolute clock | Full dateline table (D1–D13) + locked 2006 anchors (last entry Sun 8 Oct; meet Thu 12 Oct; file closed 14 Oct — six days). The investigation now visibly *waits for Thursday's tide*. |
 | 7 · Pier 13 competence | Del's car three minutes out, Gerald holding live location + deadline; photograph-first, and the evidence cost of opening acknowledged ("evidence was never its point"). |
 | 8 · The badge | Photocopy → Thomas's **original** 2006 press badge; the "collection" deduction now valid; L10n5 and L12n4 rewritten around possession. |
-| 9 · Coin bridge | Ep1 coin explicitly connected *by type* at L3n4 ("the same kind Del lifted from a phone cradle in Rivermouth") — private, so it works on either Ep1 branch; L10's coin is "a coin like the one on Danny's tiller," never "the same coin." |
+| 9 · Coin bridge | Ep1 coin explicitly connected *by type* at L3n4 ("the same kind Del lifted from a phone cradle in Rivermouth") — private, so it works on either Ep1 branch; L10's coin repeats the crescent-nick mark ("another old brass coin — one face worn blank, a crescent nick in the rim"), never "the same coin." |
 | 10 · Official intake | L11 moved into Harbor Ward precinct, interview room three, recorder running; evidence entered under its own names; Eddie as protected witness; "officially anonymous, unofficially airtight" cut. |
 | 11 · L12 economy | Requirement made ceremonial (one low-tier press item — "press Publish"), mirroring Episode 1; milestone rewards unchanged. |
 | 12 · Rosa presence | Rosa speaks directly with portrait: L1 voicemail + L2n2 (one new portrait character, within the 4-per-episode budget). |
@@ -271,5 +271,15 @@ Rosa. Twenty years of holding a door open, resolved not by an arrest (her father
 | 10 · Runtime clock presentation | Production note: dateline cards per lead, evidence-wall dates advancing, a Thursday countdown surfacing near L9; no narration explaining the gaps — the wait reads as surveillance preparation. |
 | 11 · Ceremonial validation | Schema note hardened in bible Ch 7.2: authoring-time validation should reject high-tier/multi-item requirement configs on ceremonial leads. |
 | 12 · Stamps accessibility | Art-kit note: WITNESS SHIELDED / TRUTH IN DAYLIGHT stamps must differ by silhouette/symbol (shield vs rays), not colour alone, and stay readable at mobile size. |
+
+## v7 changes (2026-07-12 — final table-read corrections)
+
+| Item | Resolution |
+|---|---|
+| 1 · Rosa's honest line | L12n3 + resolution beat: she writes "beneath **the forged final entry**," not "beneath her father's last one" (the case proves the final entry is Merrick's). The protected line "Ledgers should end honestly. Now this one does." is untouched. |
+| 2 · "The same coin" | L3n4: "still leaving the same **calling card**" (not "the same coin"). L10n4 now repeats the mark — "another old brass coin — one face worn blank, a crescent nick in the rim" — so recognition rides on the signature, never on one physical object moving between scenes. |
+| 3 · Sunday/Thursday clarity | L1n1: Danny rowed "the harbour's last **public** crossing" — Eddie's later "special crossing" (L6n2) then reads as the separate criminal run. Watch this at the read; if the audience still stumbles, the fuller distinction is available. |
+
+**Table-read watch list (performance, not rewrite):** Rosa's two registers (L1 rehearsed-formal vs L2 hard-immediate) on one neutral portrait; "never once swam" (L2n2) — keep unless the read exposes it, then "never once went into the water"; L10n5 must play as cold precision containing fear, never trailer-quip; Del's "he" in "Wait, and he can't be found" needs vocal weight (means Eddie); dense nodes likely to need subtitle-card splitting without breaking the take — L8n2, L10n4, L11n3, L11n5a/5b, L12n1a/1b; watch whether L10's 70% toast ("Oars on black water") pre-empts L10n2's discovery — fallback "Movement beyond the pylons" on hand.
 
 Remaining before lock: table read (performance/timing veto) → runtime pacing pass → numbered-revision passes → VO LOCK; cue sheet and actor sides generate from asset data at production. Protected lines for the read (trim around, not through): "The boat did." · "staged where murder wants to go" · "Danny was the till" · "a ferryman / the Ferryman" · "Evidence was never its point." · "the lock we don't trust" · "an ear that's waited that long" · "Ledgers should end honestly."

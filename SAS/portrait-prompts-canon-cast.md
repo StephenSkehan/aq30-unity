@@ -52,7 +52,7 @@ rules for justice and pays for it in sleep.
 ### Arthur Finch — Gazette archivist *(★ CANON — emotion sheet approved 2026-07-11; the sheet's NEUTRAL cell is his identity anchor [no separate seed portrait]. Canon deviation: hair is tousled, not neatly combed. Keep: wire reading glasses low on nose, PRESS lanyard + badge, pencil behind right ear. His face also anchors the press item family artwork.)*
 ```
 Arthur Finch, man of 62, semi-retired newspaper journalist and archivist. Lean,
-slightly stooped, silver hair neatly combed, short silver beard. Half-moon
+slightly stooped, silver hair tousled (not neatly combed — canon), short silver beard. Half-moon
 reading glasses low on his nose. Brown cardigan over a checked shirt, press
 lanyard from another decade, pencil behind one ear, faint ink smudge on his
 fingers. Expression: patient, wry, a man who has read everything and forgotten
