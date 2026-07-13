@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Editor\TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Assets\Scripts\UI\Board\Editor\QATapGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ExternalDependencyManager\Editor\1.2.187\Google.IOSResolver.dll" />
