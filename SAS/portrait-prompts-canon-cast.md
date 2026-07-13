@@ -121,7 +121,7 @@ the allotments and the first bus, protected her sister Vera. Ep1 dialogue uses
 her **neutral and angry** portraits — generate those two first; happy third
 (final voicemail warmth); rest optional.*
 
-### Rosa Reyes — the keeper, Episode 2 *(appearance PROPOSED — approved for the pipeline 2026-07-12; canonical reusable character, not an episode-only face)*
+### Rosa Reyes — the keeper, Episode 2 *(★ CANON — portrait + 7-emotion sheet approved 2026-07-12. Warm-toned/Latina; grey-streaked dark hair in a short practical ponytail; weathered navy fuel-dock vest with muted brass-gold strips over faded flannel + navy thermal. The first-approved render is now the identity anchor — match it on all future renders; canonical reusable character, not an episode-only face. Import: `char_rosa_{emotion}_f01.png` → `Assets/Art/Characters/Rosa/`; only NEUTRAL is required for Ep2's current beats, the full 7-emotion set is on hand for later.)*
 ```
 Rosa Reyes, woman of 39, runs the Harbor Ward fuel dock she has kept since she
 was nineteen. Sturdy, weather-worn, quietly formidable — twenty years of dawn

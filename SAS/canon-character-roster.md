@@ -45,7 +45,7 @@
 
 | Character | Role | Appearance status |
 |-----------|------|-------------------|
-| Rosa Reyes, 39 | Harbor Ward fuel dock; Danny's daughter; the Ep2 keeper | proposed (prompt block added 2026-07-12; portrait pipeline APPROVED) |
+| Rosa Reyes, 39 | Harbor Ward fuel dock; Danny's daughter; the Ep2 keeper | ★ CANON (portrait + 7-emotion sheet approved 2026-07-12; first-approved render is now the identity anchor) |
 | Danny Reyes (deceased 2006) | The harbour's bagman — "a ferryman," not the Ferryman | posthumous — no portrait |
 | Eddie Okafor | Retired harbour gatekeeper; witness (his gate book is the forgery match) | none needed — quoted through Ally |
 | "Sailor" Merrick (d. 2011) | Dock foreman; the dead hand of the 2006 staging | none — never depicted |
