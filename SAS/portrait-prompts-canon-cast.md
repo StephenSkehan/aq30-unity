@@ -7,7 +7,9 @@
 1. Attach **Ally model sheet 4A (neutral-light identity reference)** as the style reference with every generation — it supersedes the app icon as anchor (2026-07-11). Say "match this art style" — never "match this character". Blue-is-lighting rule applies: blue tones in any noir variant are lighting only, never material color.
 2. Paste the **Global Style Block**, then one **Character Block**.
 3. Generate the **neutral** portrait first. Approve it. Then generate emotions using the Variant Template with the approved neutral attached as the character reference.
-4. Order of production (by first likely story use): Mo → Del Cruz → Arthur → Helen → Priya → Cortez → Vega.
+4. Order of production (by first likely story use): Mo → Del Cruz → Arthur → **Rosa Reyes (next — Ep2 keeper, approved 2026-07-12)** → Helen → Priya → Cortez → Vega. *(Mo, Del, Arthur, Dot, Ally, Gerald already ★ CANON.)*
+
+*Document scope: this file holds the recurring-cast prompt blocks. **Ally** has her own dedicated kit (`model-sheet-prompt-ally.md`); **Gerald** is ★ CANON from the in-game set (his canon block lives in the bible, Ch 4.1); **Thomas** appears only as the locket photo (seed plate, no portrait); the roster (`canon-character-roster.md`) is the full character census. If a character isn't blocked below, it's in one of those, not missing.*
 
 ---
 
@@ -123,17 +125,25 @@ her **neutral and angry** portraits — generate those two first; happy third
 ```
 Rosa Reyes, woman of 39, runs the Harbor Ward fuel dock she has kept since she
 was nineteen. Sturdy, weather-worn, quietly formidable — twenty years of dawn
-shifts in salt air. Dark hair pulled back in a short practical ponytail, first
-grey threads showing. Strong hands with work-rough knuckles; her father's old
-brass logbook pencil clipped to her breast pocket. High-visibility work vest
-open over a faded flannel shirt and a navy thermal; a fine chain at her neck
-disappearing under the collar. Expression: controlled and guarded, grief held
-for years rather than fresh — a woman who has rehearsed one sentence for twenty
-years and finally said it. Reads as: the keeper of a door held open. Warm
-diesel-dawn key light (civilian-warm rule), harbour fog softness behind.
+shifts in salt air. Broad, capable shoulders and a work-worn posture; she
+carries the physical assurance of someone who has run a fuel dock for twenty
+years. Dark hair pulled back in a short practical ponytail, first grey threads
+showing. A weathered navy fuel-dock work vest with muted brass-gold reflective
+strips, open over a faded red-brown flannel shirt and a navy thermal; a fine
+chain at her neck disappearing under the collar. Expression: controlled and
+guarded, grief held for years rather than fresh — a woman who has rehearsed one
+sentence for twenty years and finally said it. Reads as: the keeper of a door
+held open. Warm diesel-dawn key light (civilian-warm rule), with a faint
+soft-grey haze contained inside the dark navy vignette — no visible harbour
+scenery (obeys the portrait system's plain-background rule).
 ```
 *Notes: no teal (Ally's color), no moss cardigan tones (Dot's palette). Rosa's
-palette: navy, flannel red-brown, brass. Expression priority: 1 NEUTRAL (guarded
+palette: navy, flannel red-brown, brass. **Head-and-shoulders bust — hands out
+of frame** (her work-worn hands are a full-body-artwork detail, kept in the
+bible, not this crop). **Heritage/complexion are deliberately unset — the first
+approved NEUTRAL render establishes them as canon** (first-approved-image rule,
+Ch 8.2); if a specific background is wanted, state it before generating rather
+than letting the model infer from "Reyes." Expression priority: 1 NEUTRAL (guarded
 control) → 2 SAD (grief held for years, never collapse) → 3 ANGRY (at the smear
 and the institutions — set jaw, level eyes, restrained) → 4 HAPPY (restrained
 vindication, warmth arriving like weather). Only NEUTRAL is required by the

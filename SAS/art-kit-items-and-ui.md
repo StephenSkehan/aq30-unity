@@ -1,5 +1,5 @@
 # Art Generation Kit — Item Icons & UI Sprites
-*v1.1 · 2026-07-12 (Wave 2 Press ladder finalized) · Attach the Ally key art (app icon image) as STYLE reference with every generation. Never as character reference.*
+*v1.2 · 2026-07-12 (Press ladder revised — steadier mass, no-text, no-Arthur-face; stamp acceptance added) · Attach the Ally key art (app icon image) as STYLE reference with every generation. Never as character reference.*
 
 ## Part 1 — Item icons (Wave 1: the four live families, 33 items + 3 generators)
 
@@ -81,22 +81,26 @@ from upper-left, gentle warm rim from the right.
 
 **Batch discipline (same as Wave 1):** paste the **Global item style block** (Part 1) with every generation, attach the Ally key art as the STYLE anchor, and after the first Press icon is approved attach it as an extra style anchor for the rest of the family. Files `.png`, 1024×1024, transparent background. Drop finished batches in `OneDrive/AllyQuinn Game/Images/Production 2026 Images/Items/`.
 
-### Batch F — Press Items (10) · palette: ink black, newsprint cream, brass, worn Gazette red · Arthur Finch's family — reads as *a story becoming permanent record*
+### Batch F — Press Items (10) · palette: ink black, newsprint cream, brass, worn Gazette red · reads as *a story becoming permanent record*
 
-**Escalation principle (readability-reviewed):** the ladder climbs from a single torn scrap to the whole archive cabinet — each tier reads as **bigger, richer, or more institutional** than the last, and every tier has a **distinct silhouette at 96 px** (torn strip → cassette → spiral pad → hanging badge → framed column → fanned folder → round reel → boxed typewriter → broad flat sheet → tall cabinet). Warm archive light; add a touch of Gazette-red editorial mark only from t05 up, so value visibly rises.
+**Escalation principle (revised 2026-07-12 for steadier mass):** the ladder climbs by increasing **object count + physical mass + investigative value** — several tiers PAIR objects so the rise never dips (badge+notebook, recorder+tape, viewer+reel). Distinct silhouette at 96 px per tier.
 
-| File | Item | Per-tier prompt (append to the global style block) |
+**⚠ NO TEXT rule (kit-wide) — obey it here:** the earlier draft asked for legible words, handwritten labels, archive dates and headlines. **Remove all of that** — generated text is unreliable and the kit forbids it. Represent "paper/press" with **abstract column strokes, redaction bars, colour tabs, grease-pencil rings, generic photo blocks, and unreadable scribble texture** only. No readable letters anywhere.
+
+**⚠ Do NOT depict Arthur (or any face/person).** Generate t01 from the main style reference only; once approved, attach it as the family anchor for t02–t10. Arthur's *archive palette and props* — brown card stock, black ink, brass, worn lanyard, red pencil marks — inspire the family; his face never appears on a badge, paper, or folder.
+
+| File | Item | Per-tier prompt (append to the global style block · NO readable text) |
 |---|---|---|
-| press_items_t01 | Newsprint Scrap | a single small torn corner of newspaper, one bold headline word half-legible, soft creased edges, newsprint cream and ink black. The rawest tier — minimal, small in frame. |
-| press_items_t02 | Interview Cassette | one labelled micro-cassette tape, handwritten paper label, two visible reels, a little brass sheen on the screws. Small but "more" than a scrap — it holds a captured voice. |
-| press_items_t03 | Reporter's Notepad | a spiral-bound flip notepad standing slightly open, a pencil laid across it, quick shorthand scribbles on the page. Small, distinct spiral silhouette. |
-| press_items_t04 | Press Badge | a laminated Gazette press badge on a worn fabric lanyard with a brass clip, edges softened with age, a small portrait-shaped photo area (no face detail). Hanging silhouette. |
-| press_items_t05 | Marked Clipping | a single newspaper column clipped and mounted on card, one line ringed in red grease-pencil, faint coffee stain — the first editorial red appears here. Small-medium, framed. |
-| press_items_t06 | Clippings Folder | a worn manila folder, several dated clippings fanning out of it, a red tab, a paper-clip. Clearly more paper than t05 — a collection begins. |
-| press_items_t07 | Microfiche Reel | a boxed microfiche reel, archive label with a date, a short strip of film pulled out catching light, brass spindle. Round institutional silhouette. |
-| press_items_t08 | Portable Typewriter | a compact vintage portable typewriter, a sheet wound in mid-sentence, keys catching warm light, a little brass on the return lever. Big solid silhouette — the tool. |
-| press_items_t09 | Front-Page Proof | a full broadsheet front-page proof held flat, bold masthead, columns, a photo block, red editor's marks and a "PROOF" corner stamp. Large flat silhouette — the published output. |
-| press_items_t10 | The Morgue Cabinet | a tall oak card-catalogue / filing cabinet, one drawer open showing fanned clippings and brass label-holders, a desk lamp glow on top, worn brass handles — the family **hero**: biggest, richest, warmest. |
+| press_items_t01 | Torn Newsprint Clipping | a single light torn scrap of newspaper, abstract column strokes only (no readable words), soft creased edges, newsprint cream and ink black. The rawest, smallest tier. |
+| press_items_t02 | Notepad & Pencil | a spiral-bound flip notepad with a pencil laid diagonally across it, unreadable scribble texture on the page. Thicker object + diagonal pencil — clearly more than t01. |
+| press_items_t03 | Press Badge & Notebook | a laminated press badge on a worn brass-clipped lanyard resting on a closed leather notebook — a layered pair, hanging lanyard silhouette. Photo area is a blank block, no face. |
+| press_items_t04 | Cassette Recorder & Tape | a chunky handheld cassette recorder with a micro-cassette beside it, blank label block, brass screws catching light. Distinct mechanical silhouette, more mass than t03. |
+| press_items_t05 | Bulging Clippings Folder | a thick manila folder over-stuffed with papers, colour tabs and protruding clippings held by a paper-clip, one red grease-pencil ring. A visible collection — much more paper. |
+| press_items_t06 | Portable Typewriter | a compact vintage portable typewriter, a blank sheet wound in, keys catching warm light, brass return lever. Large, unmistakable machine silhouette. |
+| press_items_t07 | Microfiche Viewer & Reel | a boxed microfiche reel seated in/beside a small tabletop viewer, a short film strip pulled out catching light, brass spindle. Taller technical archive equipment. |
+| press_items_t08 | Stuffed Morgue File Box | a large corrugated archive box, lid off, several folders standing inside with colour tabs, a redaction bar on one visible sheet. Big box — more mass than the viewer. |
+| press_items_t09 | Front-Page Layout Board | a broad flat proof/layout board with column blocks, a generic photo block, red grease-pencil markup, a scalpel and roller resting on it. The widest flat silhouette — the published output. |
+| press_items_t10 | The Morgue Cabinet | a tall oak card-catalogue / filing cabinet, one drawer open showing fanned clippings and brass label-holders, a desk-lamp glow on top, worn brass handles — the family **hero**: biggest, richest, warmest. |
 
 *Acceptance per icon (same as Wave 1): transparent background · silhouette readable at 96 px · consistent 15° angle + upper-left key with warm right rim · no text baked in beyond the diegetic headline/label hints · each tier visibly "more" than the one below. Generate t01 first, approve, then attach it as the family style anchor for t02–t10.*
 
@@ -108,8 +112,10 @@ Follow the `ui_stamp_public` / `ui_stamp_protected` pattern (distressed rubber-s
 
 | File | Prompt (append to the item style block, but render as a FLAT UI stamp, not a 3D object) |
 |---|---|
-| ui_stamp_shielded | a distressed circular rubber-stamp ring in steel blue, ink-worn and uneven, with a small clean **SHIELD** silhouette centered inside the ring; empty band top and bottom for runtime text ("WITNESS SHIELDED"). No baked text. Transparent background. |
-| ui_stamp_daylight | the same distressed rubber-stamp ring in warm amber-gold, with a small **SUN-with-rays** silhouette centered inside; empty band for runtime text ("TRUTH IN DAYLIGHT"). No baked text. Transparent background. |
+| ui_stamp_shielded | a distressed **shield-shaped (or octagonal)** rubber-stamp border in steel blue, ink-worn and uneven, with a small clean **SHIELD** silhouette centered inside; empty band top and bottom for runtime text ("WITNESS SHIELDED"). No baked text. Transparent background. |
+| ui_stamp_daylight | a distressed **circular sunburst** ring in warm amber-gold, with a small **SUN-with-rays** silhouette centered inside; empty band for runtime text ("TRUTH IN DAYLIGHT"). No baked text. Transparent background. |
+
+**Stamp acceptance (both):** readable at **48 and 64 px**; the central symbol survives in **greyscale** (colour is secondary); a clear **text-safe band** for the runtime label; the distress texture must **not** erase the symbol; and the two use **materially different outer silhouettes** — a **shield-shaped / octagonal** border for WITNESS SHIELDED, a **circular sunburst** border for TRUTH IN DAYLIGHT — so they differ by shape as well as symbol.
 
 **Accessibility rule:** the pair must be distinguishable for a colour-blind player — the **shield vs. sun-rays symbols** carry the distinction, blue/amber is secondary. Both must read at ~120 px on a case-summary card. (Ep1's `ui_stamp_public`/`ui_stamp_protected` are still outstanding too — see the readiness audit; the same symbol-not-colour rule applies if they get a symbol pass.)
 

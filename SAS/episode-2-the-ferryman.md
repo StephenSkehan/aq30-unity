@@ -26,7 +26,7 @@ In 2006, the night ferryman Danny Reyes rowed Havenbay harbour's last crossing. 
 3. Danny wasn't robbing the till — he *was* the till: the second ledger, cut from a fused cashbox behind the fuel-dock till, shows a fortune crossing every Thursday. In his last month he starts underlining — the month Merrick reached for Rosa. *(L7)*
 4. The redacted requester, and the journalist Danny was building the case for: Thomas Quinn. The meet never happened. *(L8→L9)*
 5. The Thursday crossings never stopped — and Eddie's own gate book puts Merrick's hand on Danny's forged goodbye. The Pier 13 drop is live *this Thursday*. *(L6, confirmed L10)*
-6. The Ferryman leaves Ally an envelope: his coin, and her father's **original** 2006 press badge — kept for twenty years. THE ROUTE OUTLIVES ITS RIDERS. *(L10)*
+6. The Ferryman leaves Ally an envelope: another marked coin, and her father's **original** 2006 press badge — kept for twenty years. THE ROUTE OUTLIVES ITS RIDERS. *(L10)*
 
 ---
 
