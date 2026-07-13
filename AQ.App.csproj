@@ -172,6 +172,7 @@
     <Compile Include="Assets\App\CaseFlow\CaseFlowOrchestratorMB.cs" />
     <Compile Include="Assets\App\UI\Narrative\MiniNarrativeEngine.cs" />
     <Compile Include="Assets\App\Analytics\AnalyticsInstallerMB.cs" />
+    <Compile Include="Assets\App\UI\BackgroundScrimMB.cs" />
     <Compile Include="Assets\App\UI\FTUE\FTUEFollower.cs" />
     <Compile Include="Assets\App\UI\Leads\LeadCardDemoBinder.cs" />
     <Compile Include="Assets\App\UI\Dialogue\DialogueFlags.cs" />

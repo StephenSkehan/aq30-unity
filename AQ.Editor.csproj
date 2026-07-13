@@ -94,6 +94,7 @@
     <Compile Include="Assets\Editor\AQ\FlightFXSetup.cs" />
     <Compile Include="Assets\Editor\Animation\TestPortraitAnimator.cs" />
     <Compile Include="Assets\Editor\Diag\CreateDemoCaseGraph.cs" />
+    <Compile Include="Assets\Editor\AQ\SetupSceneBackground.cs" />
     <Compile Include="Assets\Editor\AQ\RestyleLeadCardPrefab.cs" />
   </ItemGroup>
   <ItemGroup>

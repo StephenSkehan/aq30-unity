@@ -64,6 +64,7 @@
     <Analyzer Include="C:\Users\User\Dev\aq30-unity\Library\PackageCache\com.unity.dt.app-ui@8ac7e730dd5d\Runtime\MVVM\SourceGenerators\netstandard2.0\MVVMSourceGenerators.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\UI\HUD\Editor\RebuildHudComponents.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Editor\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Scripts\UI\Board\Editor\QATapGenerator.cs" />
   </ItemGroup>
