@@ -1,5 +1,5 @@
 # Art Generation Kit — Item Icons & UI Sprites
-*v1 · 2026-07-11 · Attach the Ally key art (app icon image) as STYLE reference with every generation. Never as character reference.*
+*v1.1 · 2026-07-12 (Wave 2 Press ladder finalized) · Attach the Ally key art (app icon image) as STYLE reference with every generation. Never as character reference.*
 
 ## Part 1 — Item icons (Wave 1: the four live families, 33 items + 3 generators)
 
@@ -75,32 +75,43 @@ from upper-left, gentle warm rim from the right.
 **Batch discipline:** generate a family in ONE session with the first approved icon of that family attached as an extra style anchor for the rest. Filename exactly as listed (.png, 1024×1024). Drop finished batches in `OneDrive/AllyQuinn Game/Images/Production 2026 Images/Items/` — I take it from there.
 **Acceptance per icon:** transparent background · silhouette readable at 96px · consistent angle/lighting with its family · no text/shadow.
 
-## Part 1b — Wave 2 (Episode 2 dependencies · scheduled 2026-07-12)
+## Part 1b — Wave 2 (Episode 2 dependencies · FINAL, ready to generate · 2026-07-12)
 
 **Priority ruling: Press = P0, Garage = P1.** Press gates three Ep2 leads (L3 morgue files, L5 episode cutting, L12 the ceremonial Publish) and recurs all season wherever Ally researches, cuts, or publishes. Garage gates one lead (L7, the fused cashbox at Malone's) and its tier art already exists in `SAS/Item Icons/Item Family - Garage/` — import + gap-fill, not regeneration. Timing caveat: if Episode 2 ships in the beta build these are **pre-beta** dependencies; if the launch build is Episode 1 only, the Ep2 timeline (6–8 weeks post-launch) holds.
 
-### Batch F — Press Items (10, PROPOSED tier list — approve before generating) · palette: ink black, newsprint cream, brass · Arthur Finch's face anchors this family's artwork
-| File | Item | Art notes |
-|---|---|---|
-| press_items_t01 | Newsprint Scrap | torn column inches, one word legible |
-| press_items_t02 | Notepad & Pencil | reporter's flip pad, pencil across it |
-| press_items_t03 | Press Badge | laminated lanyard badge, worn edges |
-| press_items_t04 | Cassette Interview Tape | labelled in handwriting |
-| press_items_t05 | Typewriter | compact portable, paper mid-sentence |
-| press_items_t06 | Clippings Folder | manila, headlines fanning out |
-| press_items_t07 | Microfiche Reel | boxed reel, archive label |
-| press_items_t08 | Morgue File Box | corrugated archive box, dated spine |
-| press_items_t09 | Front-Page Proof | full broadsheet proof, red mark-ups |
-| press_items_t10 | The Morgue Cabinet | oak card-catalogue cabinet, one drawer open — the family hero |
+**Batch discipline (same as Wave 1):** paste the **Global item style block** (Part 1) with every generation, attach the Ally key art as the STYLE anchor, and after the first Press icon is approved attach it as an extra style anchor for the rest of the family. Files `.png`, 1024×1024, transparent background. Drop finished batches in `OneDrive/AllyQuinn Game/Images/Production 2026 Images/Items/`.
 
-### Batch G — Garage (import pass) 
-Existing `garage_t01`–`t10` assets imported via the GUID pipeline; generate replacements only where an icon fails the 96 px silhouette check. No second garage family (ruling 2026-07-12).
+### Batch F — Press Items (10) · palette: ink black, newsprint cream, brass, worn Gazette red · Arthur Finch's family — reads as *a story becoming permanent record*
 
-### New UI sprites (Ep2 branch)
-| File | What | Notes |
+**Escalation principle (readability-reviewed):** the ladder climbs from a single torn scrap to the whole archive cabinet — each tier reads as **bigger, richer, or more institutional** than the last, and every tier has a **distinct silhouette at 96 px** (torn strip → cassette → spiral pad → hanging badge → framed column → fanned folder → round reel → boxed typewriter → broad flat sheet → tall cabinet). Warm archive light; add a touch of Gazette-red editorial mark only from t05 up, so value visibly rises.
+
+| File | Item | Per-tier prompt (append to the global style block) |
 |---|---|---|
-| ui_stamp_shielded | "WITNESS SHIELDED" stamp | distressed rubber-stamp ring in steel blue with a small SHIELD silhouette, text overlaid at runtime — pattern of ui_stamp_protected |
-| ui_stamp_daylight | "TRUTH IN DAYLIGHT" stamp | same, in amber-gold with a small SUN-RAYS silhouette — the pair must differ by symbol, never colour alone, and read at mobile size |
+| press_items_t01 | Newsprint Scrap | a single small torn corner of newspaper, one bold headline word half-legible, soft creased edges, newsprint cream and ink black. The rawest tier — minimal, small in frame. |
+| press_items_t02 | Interview Cassette | one labelled micro-cassette tape, handwritten paper label, two visible reels, a little brass sheen on the screws. Small but "more" than a scrap — it holds a captured voice. |
+| press_items_t03 | Reporter's Notepad | a spiral-bound flip notepad standing slightly open, a pencil laid across it, quick shorthand scribbles on the page. Small, distinct spiral silhouette. |
+| press_items_t04 | Press Badge | a laminated Gazette press badge on a worn fabric lanyard with a brass clip, edges softened with age, a small portrait-shaped photo area (no face detail). Hanging silhouette. |
+| press_items_t05 | Marked Clipping | a single newspaper column clipped and mounted on card, one line ringed in red grease-pencil, faint coffee stain — the first editorial red appears here. Small-medium, framed. |
+| press_items_t06 | Clippings Folder | a worn manila folder, several dated clippings fanning out of it, a red tab, a paper-clip. Clearly more paper than t05 — a collection begins. |
+| press_items_t07 | Microfiche Reel | a boxed microfiche reel, archive label with a date, a short strip of film pulled out catching light, brass spindle. Round institutional silhouette. |
+| press_items_t08 | Portable Typewriter | a compact vintage portable typewriter, a sheet wound in mid-sentence, keys catching warm light, a little brass on the return lever. Big solid silhouette — the tool. |
+| press_items_t09 | Front-Page Proof | a full broadsheet front-page proof held flat, bold masthead, columns, a photo block, red editor's marks and a "PROOF" corner stamp. Large flat silhouette — the published output. |
+| press_items_t10 | The Morgue Cabinet | a tall oak card-catalogue / filing cabinet, one drawer open showing fanned clippings and brass label-holders, a desk lamp glow on top, worn brass handles — the family **hero**: biggest, richest, warmest. |
+
+*Acceptance per icon (same as Wave 1): transparent background · silhouette readable at 96 px · consistent 15° angle + upper-left key with warm right rim · no text baked in beyond the diegetic headline/label hints · each tier visibly "more" than the one below. Generate t01 first, approve, then attach it as the family style anchor for t02–t10.*
+
+### Batch G — Garage (import pass, no generation unless an icon fails)
+Tier art already exists: `SAS/Item Icons/Item Family - Garage/garage_t01`–`t10` (socket wrench → the pimped ride). **Import checklist:** (1) copy the ten PNGs into the item-icon import location; (2) run the GUID/meta pipeline (the Gerald-pattern batch importer) so each gets a stable GUID; (3) confirm each reads at 96 px against the family tier rule; (4) regenerate **only** any tier that fails the silhouette check — no new family, no full regen (ruling 2026-07-12). Garage's only Ep2 use is L7 (the fused cashbox at Malone's).
+
+### New UI sprites (Ep2 branch stamps) · differ by SYMBOL, not colour alone
+Follow the `ui_stamp_public` / `ui_stamp_protected` pattern (distressed rubber-stamp ring, text overlaid at runtime, transparent background, readable at mobile size). Attach the Ally key art as style anchor.
+
+| File | Prompt (append to the item style block, but render as a FLAT UI stamp, not a 3D object) |
+|---|---|
+| ui_stamp_shielded | a distressed circular rubber-stamp ring in steel blue, ink-worn and uneven, with a small clean **SHIELD** silhouette centered inside the ring; empty band top and bottom for runtime text ("WITNESS SHIELDED"). No baked text. Transparent background. |
+| ui_stamp_daylight | the same distressed rubber-stamp ring in warm amber-gold, with a small **SUN-with-rays** silhouette centered inside; empty band for runtime text ("TRUTH IN DAYLIGHT"). No baked text. Transparent background. |
+
+**Accessibility rule:** the pair must be distinguishable for a colour-blind player — the **shield vs. sun-rays symbols** carry the distinction, blue/amber is secondary. Both must read at ~120 px on a case-summary card. (Ep1's `ui_stamp_public`/`ui_stamp_protected` are still outstanding too — see the readiness audit; the same symbol-not-colour rule applies if they get a symbol pass.)
 
 ## Part 2 — UI sprites (small batch, big effect)
 
