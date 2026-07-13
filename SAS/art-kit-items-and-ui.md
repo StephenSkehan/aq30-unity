@@ -127,6 +127,8 @@ Same style reference. All on transparent background unless noted.
 | ui_button_9slice | Button | rounded pill, teal fill, subtle top highlight; symmetric corners |
 | ui_stamp_public | "PUBLIC TRUTH" stamp | distressed red rubber-stamp ring, no text needed (text is overlaid) |
 | ui_stamp_protected | "PROTECTED TRUTH" stamp | same, in steel blue |
-| bg_rivermouth_night | Scene background | portrait 1080×1920: stylized Havenbay riverside street at night, swing-bridge silhouette distant, amber lamps, deep navy sky — quiet, noir, matches key art. Keep the central 60% low-detail (board covers it) |
+| bg_rivermouth_night | Scene background | **P0 — the real Ep1 backdrop (replaces the purple-viaduct stand-in).** Portrait, ≥1284×2778: stylized Havenbay/Rivermouth riverside street at night — distant iron **swing-bridge** silhouette over dark water, amber sodium street-lamps, wet cobbles, low river fog, deep navy sky (#0A1220). **Keep the central 60% low-detail/darker — the board covers it; put interest in the top third (sky/bridge) and bottom third (street/river).** No people, vehicles, text. Full generation prompt issued to Stephen 2026-07-12. |
+
+**HUD architecture ruling (2026-07-12):** the top bar is **component-built, not a background image.** The old `HUDImage` placeholder (`HUD3_Transparent_0`, 920×238, a big baked panel that forced the ~320 px oversized HUD) is **retired** — do not replace it with another background image. The compact Gossip-Harbor-style bar is assembled in code from `ui_meter_pill_9s` (currency pills), `ui_top_avatar_frame` (portrait), the `ui_top_energy/soft/premium` icons, and `ui_icon_settings` (gear, replacing the "MENU" text button). This is Claude's #2 UI pass (HUD-shrink + board-density), not an art-generation task.
 
 If any 9-slice sprite generates poorly (uneven corners), tell me and I build it programmatically instead — items and the background are where generation genuinely wins.
