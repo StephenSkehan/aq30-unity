@@ -50,10 +50,13 @@ namespace AQ.EditorTools
                 // intentional layering.
                 if (presenter.actorAnchor != null)
                 {
+                    // Bust bottom aligns with the title's bottom edge (title spans
+                    // y -10..-42), so the character stands ON the card header and
+                    // the full subtitle width below is free.
                     var rt = presenter.actorAnchor.rectTransform;
                     rt.anchorMin = rt.anchorMax = new Vector2(0f, 1f);
                     rt.pivot     = new Vector2(0f, 1f);
-                    rt.anchoredPosition = new Vector2(10f, 16f);
+                    rt.anchoredPosition = new Vector2(10f, 94f);
                     rt.sizeDelta = new Vector2(96f, 136f);
                     presenter.actorAnchor.preserveAspect = true;
                 }
@@ -73,17 +76,19 @@ namespace AQ.EditorTools
                     presenter.titleText.enableAutoSizing = false;
                 }
 
-                StyleText(presenter.objectiveText, body, 15f, AQTheme.PaperDim, TextAlignmentOptions.TopLeft);
+                // Subtitle: full card width at a bigger size — the bust ends at the
+                // title line, so the whole band below it belongs to the copy.
+                StyleText(presenter.objectiveText, body, 18f, AQTheme.PaperDim, TextAlignmentOptions.TopLeft);
                 if (presenter.objectiveText != null)
                 {
                     var rt = presenter.objectiveText.rectTransform;
                     rt.anchorMin = new Vector2(0f, 1f);
                     rt.anchorMax = new Vector2(1f, 1f);
                     rt.pivot     = new Vector2(0.5f, 1f);
-                    rt.offsetMin = new Vector2(118f, 0f);
+                    rt.offsetMin = new Vector2(14f, 0f);
                     rt.offsetMax = new Vector2(-12f, 0f);
-                    rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, -44f);
-                    rt.sizeDelta = new Vector2(rt.sizeDelta.x, 54f);
+                    rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, -48f);
+                    rt.sizeDelta = new Vector2(rt.sizeDelta.x, 66f);
                     presenter.objectiveText.overflowMode = TextOverflowModes.Ellipsis;
                 }
 

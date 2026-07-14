@@ -232,9 +232,9 @@ namespace AQ.App.Leads
         }
 
         /// <summary>
-        /// Reward-preview chips (icon + amount) on the card. The prefab's
-        /// rewardsRow rect predates the card restyle and overlaps the
-        /// requirement row, so it is re-anchored here to a slim band above it.
+        /// Reward-preview chips (icon + amount) floating beside the bust's
+        /// shoulder, above the card's top edge — the reward tags the character,
+        /// GH-style, instead of burying itself in the copy.
         /// </summary>
         static void BuildRewardPreview(RectTransform row, LeadData lead)
         {
@@ -245,12 +245,11 @@ namespace AQ.App.Leads
             row.gameObject.SetActive(any);
             if (!any) return;
 
-            // Indent past the actor bust (which spans the card's left ~110px).
-            row.anchorMin = new Vector2(0f, 0f);
-            row.anchorMax = new Vector2(1f, 0f);
-            row.pivot     = new Vector2(0.5f, 0f);
-            row.offsetMin = new Vector2(118f, 104f);
-            row.offsetMax = new Vector2(-12f, 132f);
+            row.anchorMin = new Vector2(0f, 1f);
+            row.anchorMax = new Vector2(1f, 1f);
+            row.pivot     = new Vector2(0f, 0f);
+            row.offsetMin = new Vector2(112f, 24f);
+            row.offsetMax = new Vector2(-12f, 52f);
 
             var layout = row.GetComponent<HorizontalLayoutGroup>();
             if (layout == null)
