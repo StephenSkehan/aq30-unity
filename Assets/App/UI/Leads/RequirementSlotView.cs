@@ -26,11 +26,24 @@ namespace AQ.App.UI.Leads
 
         private void Awake()
         {
+            // Light chip plate so dark item icons stay visible on the dark card
+            // (GH puts every item on a white shelf for the same reason).
             var bg = GetComponent<UnityEngine.UI.Image>();
-            if (bg != null) bg.color = new Color(1, 1, 1, 0);
+            if (bg != null)
+            {
+                bg.sprite = AQTheme.Rounded;
+                bg.type   = Image.Type.Sliced;
+                bg.pixelsPerUnitMultiplier = 2f;
+                bg.color  = PlateTint;
+            }
 
             if (tickOverlay == null)
                 tickOverlay = CreateTickOverlay();
+        }
+
+        private static Color PlateTint
+        {
+            get { var c = AQTheme.Paper; c.a = 0.16f; return c; }
         }
 
         private void OnEnable()
@@ -106,8 +119,8 @@ namespace AQ.App.UI.Leads
             var slotBg = GetComponent<UnityEngine.UI.Image>();
             if (slotBg != null)
             {
-                var tint = AQTheme.Success; tint.a = 0.25f;
-                slotBg.color = met ? tint : new Color(1, 1, 1, 0);
+                var tint = AQTheme.Success; tint.a = 0.3f;
+                slotBg.color = met ? tint : PlateTint;
             }
 
             if (tickOverlay != null)

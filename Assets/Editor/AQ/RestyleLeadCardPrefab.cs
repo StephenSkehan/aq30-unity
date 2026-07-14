@@ -44,14 +44,18 @@ namespace AQ.EditorTools
                     presenter.background.color  = AQTheme.Card;
                 }
 
-                // Actor badge: small, top-left, round mask feel via overrun corners
+                // Actor bust: portraits are transparent now — render a larger bust
+                // whose head rises slightly above the card's top edge (GH-customer
+                // style). Requirement chips draw over its base, which reads as
+                // intentional layering.
                 if (presenter.actorAnchor != null)
                 {
                     var rt = presenter.actorAnchor.rectTransform;
                     rt.anchorMin = rt.anchorMax = new Vector2(0f, 1f);
                     rt.pivot     = new Vector2(0f, 1f);
-                    rt.anchoredPosition = new Vector2(12f, -12f);
-                    rt.sizeDelta = new Vector2(52f, 52f);
+                    rt.anchoredPosition = new Vector2(10f, 16f);
+                    rt.sizeDelta = new Vector2(96f, 136f);
+                    presenter.actorAnchor.preserveAspect = true;
                 }
 
                 StyleText(presenter.titleText, display, 24f, AQTheme.Paper, TextAlignmentOptions.TopLeft);
@@ -61,7 +65,7 @@ namespace AQ.EditorTools
                     rt.anchorMin = new Vector2(0f, 1f);
                     rt.anchorMax = new Vector2(1f, 1f);
                     rt.pivot     = new Vector2(0.5f, 1f);
-                    rt.offsetMin = new Vector2(74f, 0f);
+                    rt.offsetMin = new Vector2(118f, 0f);
                     rt.offsetMax = new Vector2(-12f, 0f);
                     rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, -10f);
                     rt.sizeDelta = new Vector2(rt.sizeDelta.x, 32f);
@@ -76,7 +80,7 @@ namespace AQ.EditorTools
                     rt.anchorMin = new Vector2(0f, 1f);
                     rt.anchorMax = new Vector2(1f, 1f);
                     rt.pivot     = new Vector2(0.5f, 1f);
-                    rt.offsetMin = new Vector2(74f, 0f);
+                    rt.offsetMin = new Vector2(118f, 0f);
                     rt.offsetMax = new Vector2(-12f, 0f);
                     rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, -44f);
                     rt.sizeDelta = new Vector2(rt.sizeDelta.x, 54f);

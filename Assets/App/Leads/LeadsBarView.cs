@@ -146,12 +146,27 @@ namespace AQ.App.Leads
             rt.anchorMin        = new Vector2(1f, 1f);
             rt.anchorMax        = new Vector2(1f, 1f);
             rt.pivot            = new Vector2(1f, 1f);
-            rt.sizeDelta        = new Vector2(120f, 28f);
+            rt.sizeDelta        = new Vector2(64f, 26f);
             rt.anchoredPosition = new Vector2(-8f, -8f);
-            _progressLabel = go.AddComponent<TextMeshProUGUI>();
+
+            var pill = go.AddComponent<Image>();
+            pill.sprite = AQ.App.UI.AQTheme.Rounded;
+            pill.type   = Image.Type.Sliced;
+            pill.pixelsPerUnitMultiplier = 2.5f;
+            pill.color  = AQ.App.UI.AQTheme.BoardFrame;
+            pill.raycastTarget = false;
+
+            var lblGo = new GameObject("Label");
+            lblGo.transform.SetParent(rt, false);
+            var lrt = lblGo.AddComponent<RectTransform>();
+            lrt.anchorMin = Vector2.zero;
+            lrt.anchorMax = Vector2.one;
+            lrt.offsetMin = lrt.offsetMax = Vector2.zero;
+            _progressLabel = lblGo.AddComponent<TextMeshProUGUI>();
             _progressLabel.fontSize  = 14f;
             _progressLabel.color     = AQ.App.UI.AQTheme.PaperDim;
-            _progressLabel.alignment = TextAlignmentOptions.Right;
+            _progressLabel.alignment = TextAlignmentOptions.Center;
+            _progressLabel.raycastTarget = false;
             AQ.App.UI.AQTheme.StyleText(_progressLabel);
             UpdateProgressLabel();
         }
@@ -230,11 +245,12 @@ namespace AQ.App.Leads
             row.gameObject.SetActive(any);
             if (!any) return;
 
+            // Indent past the actor bust (which spans the card's left ~110px).
             row.anchorMin = new Vector2(0f, 0f);
             row.anchorMax = new Vector2(1f, 0f);
             row.pivot     = new Vector2(0.5f, 0f);
-            row.sizeDelta = new Vector2(-24f, 28f);
-            row.anchoredPosition = new Vector2(0f, 104f);
+            row.offsetMin = new Vector2(118f, 104f);
+            row.offsetMax = new Vector2(-12f, 132f);
 
             var layout = row.GetComponent<HorizontalLayoutGroup>();
             if (layout == null)
@@ -259,6 +275,13 @@ namespace AQ.App.Leads
             chip.transform.SetParent(row, false);
             var rt = chip.AddComponent<RectTransform>();
             rt.sizeDelta = new Vector2(88f, 26f);
+
+            var pill = chip.AddComponent<Image>();
+            pill.sprite = AQ.App.UI.AQTheme.Rounded;
+            pill.type   = Image.Type.Sliced;
+            pill.pixelsPerUnitMultiplier = 2.5f;
+            pill.color  = AQ.App.UI.AQTheme.BoardFrame;
+            pill.raycastTarget = false;
 
             var iconGo = new GameObject("Icon");
             iconGo.transform.SetParent(rt, false);
