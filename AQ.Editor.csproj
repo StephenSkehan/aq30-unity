@@ -88,6 +88,7 @@
     <Compile Include="Assets\Editor\UI\Board\BoardSaveMenu.cs" />
     <Compile Include="Assets\Editor\AQ\TestChoiceDialogue.cs" />
     <Compile Include="Assets\Editor\AQ\RestyleHudNoir.cs" />
+    <Compile Include="Assets\Editor\AQ\BoardDensityPass.cs" />
     <Compile Include="Assets\Editor\AQ\TestPortraitDialogue.cs" />
     <Compile Include="Assets\Editor\Items\ItemRegistryWirer.cs" />
     <Compile Include="Assets\Editor\AQ\ConfigureGmaSettings.cs" />
