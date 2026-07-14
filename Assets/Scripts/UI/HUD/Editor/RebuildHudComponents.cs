@@ -24,16 +24,20 @@ namespace AQ.EditorTools
         const string Gen    = "gen_hud_";
 
         // ---- layout (HUDImage local space, center anchor; x:-540..540, y:0 = middle) ----
+        // GH-reference pass: slim plate, numerals dominate, icons straddle the
+        // pill's left edge, plus buttons sit inside the right edge, and the
+        // (now transparent) portrait bust overflows its frame.
         const float RowY       = 0f;
-        const float PortraitX  = -418f;
-        const float FrameSize  = 122f;
+        const float PortraitX  = -430f;
+        const float FrameSize  = 112f;
+        const float PlateH     = 156f;
 
         static readonly float[] PillX  = { -210f, 40f, 290f };   // energy, soft, premium
-        const float PillW = 160f, PillH = 62f;
-        const float IconDX = -95f, IconSize = 54f;
-        const float ValueDX = 8f;
-        const float PlusDX = 100f, PlusSize = 50f;
-        const float SettingsX = 462f, SettingsY = 0f, SettingsSize = 88f;
+        const float PillW = 190f, PillH = 64f;
+        const float IconSize = 76f;
+        const float ValueDX = 14f;
+        const float PlusSize = 44f;
+        const float SettingsX = 462f, SettingsY = 0f, SettingsSize = 80f;
 
         [MenuItem("AQ/Setup/Rebuild HUD (Components)")]
         public static void Rebuild()
@@ -52,10 +56,10 @@ namespace AQ.EditorTools
             }
 
             // 2) Normalize the container: it ships at scale y=0.75 (which squishes
-            // every child, incl. the portrait). Bake that into height (320*0.75=240)
-            // and reset scale to 1 so the new components render undistorted.
+            // every child, incl. the portrait). Reset scale to 1 and slim the
+            // plate — GH's header is one tight row, not a tall band.
             hudRt.localScale = Vector3.one;
-            hudRt.sizeDelta  = new Vector2(hudRt.sizeDelta.x, 240f);
+            hudRt.sizeDelta  = new Vector2(hudRt.sizeDelta.x, PlateH);
 
             // Backing: swap the baked HUD3 sprite for a dark rounded panel.
             var rounded = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Resources/App/UI/aq_rounded.png");
@@ -80,8 +84,8 @@ namespace AQ.EditorTools
                 LoadSpriteSingle(TopBar + "ui_top_premium.png"),
             };
 
-            // 3) Avatar frame behind the portrait.
-            MakeImage(hudRt, Gen + "avatar_frame", frame, Color.white, PortraitX, RowY, FrameSize, FrameSize);
+            // 3) Avatar frame; the transparent bust overflows it (GH-style presence).
+            MakeImage(hudRt, Gen + "avatar_frame", frame, Color.white, PortraitX, RowY - 8f, FrameSize, FrameSize);
 
             // 4) Three pills + icons + plus buttons.
             string[] valueNames = { "Txt_Value", "Txt_Soft_Currency", "Txt_Premium" };
@@ -92,16 +96,17 @@ namespace AQ.EditorTools
                 // Teal outline underlay + cream body = the kit's pill look, cleanly.
                 MakeImage(hudRt, Gen + "pillbg_" + i, AQTheme.Rounded, AQTheme.Teal,  px, RowY, PillW + 6f, PillH + 6f);
                 MakeImage(hudRt, Gen + "pill_"   + i, AQTheme.Rounded, AQTheme.Paper, px, RowY, PillW, PillH);
-                MakeImage(hudRt, Gen + "icon_"   + i, icons[i], Color.white, px + IconDX, RowY, IconSize, IconSize);
-                MakePlus(hudRt, Gen + "plus_" + i, px + PlusDX, RowY, plusLive[i]);
                 ReseatValue(hud.transform, valueNames[i], px + ValueDX, RowY);
+                // Icon straddles the pill's left edge — icon and value read as one unit.
+                MakeImage(hudRt, Gen + "icon_"   + i, icons[i], Color.white, px - PillW / 2f, RowY, IconSize, IconSize);
+                MakePlus(hudRt, Gen + "plus_" + i, px + PillW / 2f - 10f, RowY, plusLive[i]);
             }
 
             // 5) Timer under the energy pill.
-            ReseatTimer(hud.transform, "Txt_Timer", PillX[0], RowY - 56f);
+            ReseatTimer(hud.transform, "Txt_Timer", PillX[0], RowY - 54f);
 
-            // 6) Portrait + settings gear on top; relabel settings to a gear glyph.
-            BringToFront(hud.transform, "Img_Player");
+            // 6) Portrait bust + settings gear on top.
+            StylePortraitBust(hud.transform, "Img_Player");
             StyleSettingsGear(hud.transform, "But_Settings");
 
             EditorUtility.SetDirty(hud);
@@ -157,7 +162,7 @@ namespace AQ.EditorTools
             img.sprite = AQTheme.Rounded;
             img.type   = Image.Type.Sliced;
             img.pixelsPerUnitMultiplier = 0.5f; // corners overrun -> circle
-            img.color  = live ? new Color32(60, 140, 235, 255) : new Color32(90, 100, 120, 255);
+            img.color  = live ? AQTheme.Teal : AQTheme.SteelDim;
 
             var lblGo = new GameObject("Label", typeof(RectTransform));
             lblGo.transform.SetParent(rt, false);
@@ -183,16 +188,32 @@ namespace AQ.EditorTools
             var t = hud.Find(name);
             if (t == null) { Debug.LogWarning($"[HUDRebuild] {name} missing"); return; }
             var rt = (RectTransform)t;
-            Center(rt, x, y, 150f, 56f);
+            Center(rt, x, y, 150f, 60f);
             var tmp = t.GetComponent<TMP_Text>();
             if (tmp != null)
             {
                 tmp.alignment = TextAlignmentOptions.Center;
                 tmp.color = AQTheme.Navy;      // dark text reads on the cream pill
                 tmp.enableAutoSizing = false;
-                tmp.fontSize = 34f;
+                tmp.fontSize = 46f;            // GH rule: the number is the loudest thing in the header
                 tmp.margin = Vector4.zero;     // clear the old full-width layout margins
+                AQTheme.StyleText(tmp, display: true);
             }
+            rt.SetAsLastSibling();
+        }
+
+        /// <summary>
+        /// The portrait art is transparent now — render it as a bust rising out
+        /// of the avatar frame instead of a picture inside a box.
+        /// </summary>
+        static void StylePortraitBust(Transform hud, string name)
+        {
+            var t = hud.Find(name);
+            if (t == null) { Debug.LogWarning($"[HUDRebuild] {name} missing"); return; }
+            var rt = (RectTransform)t;
+            Center(rt, PortraitX, RowY + 14f, 124f, 188f);
+            var img = t.GetComponent<Image>();
+            if (img != null) img.preserveAspect = true;
             rt.SetAsLastSibling();
         }
 
@@ -211,12 +232,6 @@ namespace AQ.EditorTools
                 tmp.margin = Vector4.zero;
             }
             rt.SetAsLastSibling();
-        }
-
-        static void BringToFront(Transform hud, string name)
-        {
-            var t = hud.Find(name);
-            if (t != null) t.SetAsLastSibling();
         }
 
         static void StyleSettingsGear(Transform hud, string name)
