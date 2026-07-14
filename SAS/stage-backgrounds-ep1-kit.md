@@ -7,12 +7,12 @@ The episode runs Day 1–6, and the backgrounds trace one deliberate arc — **f
 ## How the images are displayed (composition rules — every prompt)
 - **Portrait, 1284×2778 or larger** (true phone ratio; the current Rivermouth master is 863×1822 — go bigger this round). Keep vertical bleed: nothing essential in the top or bottom crop margins of the 1080×1920 stage crop.
 - **Bottom ~16% is covered by the dialogue text strip** — nothing narratively important in the bottom band.
-- **A character bust (~460px) stands in the lower-left third** during dialogue — keep that zone atmospheric, not detailed. Key landmark interest belongs in the **upper half and right side**.
+- **A character bust (~460px) stands in the lower-RIGHT third** during dialogue (right-anchored so the cast faces into the scene) — keep that zone atmospheric, not detailed. Key landmark interest belongs in the **upper half and left side**.
 - **Scrim spec:** production presentation is a **35% black scrim** (the stage eases to this when a dialogue has its own backdrop); the **75% scrim is the stress test** (default board-backdrop dimming). Approve each image at BOTH levels. Every image needs at least one strong emissive anchor that survives the stress test — usually a warm practical (lamp, window, screen glow, dawn sky); BG-3 and BG-4 are the documented cool-light exceptions.
 - No people, no readable text/signage (abstract marks fine), no vehicles with readable plates.
 
 ## Approval overlay (review every generation like this)
-Check each image at: full resolution → the 1080×1920 stage crop → with the bottom-16% strip and a ~460px lower-left character silhouette overlaid → under 35% scrim → under 75% scrim → with Ally's portrait actually placed over it. This exposes composition failures far faster than judging attractive full-screen paintings in isolation.
+Check each image at: full resolution → the 1080×1920 stage crop → with the bottom-16% strip and a ~460px lower-right character silhouette overlaid → under 35% scrim → under 75% scrim → with Ally's portrait actually placed over it. This exposes composition failures far faster than judging attractive full-screen paintings in isolation.
 
 ## Global style block (paste with EVERY background; attach bg_rivermouth_night.png as the style anchor)
 ```
@@ -24,8 +24,8 @@ rendering, lighting, palette and atmospheric depth — do NOT copy its street,
 bridge, moon, architecture or composition unless this prompt explicitly asks
 for them. Portrait composition, 1284x2778 or larger. Strong single emissive
 light source that stays readable when the image is darkened to 25%
-brightness. Lower-left third kept simple and atmospheric (a character
-portrait stands there); focal landmark in the upper half or right side.
+brightness. Lower-RIGHT third kept simple and atmospheric (a character
+portrait stands there); focal landmark in the upper half or left side.
 No people, no readable words or numbers, no logos.
 ```
 
@@ -35,7 +35,7 @@ No people, no readable words or numbers, no logos.
 
 ### BG-1 · Ally's studio, night — "the rig"
 *Used by: L1 The Tip Line, L2 The Forty Seconds, L3 Three Years of Goodnights (Act 1 spine — highest screen time in the episode). This becomes a PERMANENT series location: once approved, lock the room geometry and prop placement (mic, mixing desk, cassette shelves, corkboard, dormer window, lamp) — all later studio variants are edits of this master, never regenerations.*
-A cramped attic podcast studio at night, high detail biased RIGHT: chrome broadcast mic and mixing desk right-middle, warm desk lamp upper-right, the answering machine in its pool of lamplight right of centre, corkboard and cassette shelves in the upper background, rain-flecked dormer window upper-right with Havenbay rooftops beyond. Monitor shows abstract waveform bars (no pseudo-text). Lower-left: dark chair edge and soft wall shadow only.
+A cramped attic podcast studio at night, high detail biased LEFT: chrome broadcast mic and mixing desk left-middle, warm desk lamp upper-left, the answering machine in its pool of lamplight left of centre, corkboard and cassette shelves in the upper background, rain-flecked dormer window upper-left with Havenbay rooftops beyond. Monitor shows abstract waveform bars (no pseudo-text). Lower-right: dark chair edge and soft wall shadow only.
 
 ### BG-1B · Studio variant — "on air, investigation night" *(lighting edit of BG-1, same camera)*
 *Used by: L5 Case Alert.*
@@ -47,11 +47,11 @@ Same geometry as BG-1B with the temperature turned toward resolution: tally lamp
 
 ### BG-2 · The Rusty Anchor, interior night
 *Used by: L4 The Volume-Up. Permanent canon set — will be reused every season (Gerald's booth, Mo's bar). Strict geometry consistency once approved.*
-Dockside bar interior, warm amber everything (its signature lighting): brass rail, dark wood, Gerald's corner booth with a low-hanging shaded bulb, bottles glinting behind the bar upper-right (abstract unlabelled glass and paper shapes — no readable brand labels), port window with black harbour water beyond. A century of dockside wear in the wood, brass and upholstery.
+Dockside bar interior, warm amber everything (its signature lighting): brass rail, dark wood, Gerald's corner booth with a low-hanging shaded bulb, bottles glinting behind the bar upper-left (abstract unlabelled glass and paper shapes — no readable brand labels), port window upper-left with black harbour water beyond. A century of dockside wear in the wood, brass and upholstery.
 
 ### BG-3 · 11 Chandler Road, kitchen interior — "the cold kettle"
 *Used by: L6 The Cold Kettle.*
-A tidy widow's terrace kitchen frozen mid-life: kettle on the stove, one cup set out, floral wallpaper, net curtains with grey daylight leaking through the window upper-right, a hallway door ajar into darkness. Unsettling *because* it's neat — NO police tape, overturned furniture, broken glass or ominous red details; the neatness is the horror. **Exception to the warm-practical rule: the pale cool window is the sole emissive anchor — do not add a glowing lamp.** Paint the window ~20–30% brighter than feels final so it survives the scrim.
+A tidy widow's terrace kitchen frozen mid-life: kettle on the stove, one cup set out, floral wallpaper, net curtains with grey daylight leaking through the window upper-left, a hallway door ajar into darkness. Unsettling *because* it's neat — NO police tape, overturned furniture, broken glass or ominous red details; the neatness is the horror. **Exception to the warm-practical rule: the pale cool window is the sole emissive anchor — do not add a glowing lamp.** Paint the window ~20–30% brighter than feels final so it survives the scrim.
 
 ### BG-4 · Chandler Road street, overcast noon — "the man who came at noon"
 *Used by: L7 The Man Who Came at Noon.*
@@ -59,19 +59,19 @@ Rivermouth terrace row at flat overcast noon — the episode's only true dayligh
 
 ### BG-5 · Rivermouth moorings, night — "the quiet boats"
 *Used by: L8 The Quiet Boats.*
-Working wharf at night: fishing boats dark and low in black water with only partial edge highlights (restrained rigging/deck detail — this is a threatening pattern, not a busy maritime illustration), coiled rope and crates, a single sodium dock light whose long amber reflection forms the dominant visual axis, the swing-bridge silhouette far upper-right (ties to the existing street master). Oily calm water. Cash-quiet menace.
+Working wharf at night: fishing boats dark and low in black water with only partial edge highlights (restrained rigging/deck detail — this is a threatening pattern, not a busy maritime illustration), coiled rope and crates, a single sodium dock light whose long amber reflection forms the dominant visual axis, the swing-bridge silhouette far upper-left (ties to the existing street master). Oily calm water. Cash-quiet menace.
 
 ### BG-6 · Del's bench, waterfront midday — "off the record"
 *Used by: L9 Off the Record (the branch — Del's lunch break per the locked script).*
-Harbor Ward seafront bench facing the water, empty, at cold overcast midday: flat blue-grey water, pale winter sky, railings, Kestrel Point lighthouse pinprick on the horizon upper-right. Cool police palette (civilians warm / cops cool) without pretending lunchtime is dawn — the first wide-open horizon in the episode, contrasting the closed rooms before it. The pale sky is the emissive anchor.
+Harbor Ward seafront bench facing the water, empty, at cold overcast midday: flat blue-grey water, pale winter sky, railings, Kestrel Point lighthouse pinprick on the horizon upper-left. Cool police palette (civilians warm / cops cool) without pretending lunchtime is dawn — the first wide-open horizon in the episode, contrasting the closed rooms before it. The pale sky is the emissive anchor.
 
 ### BG-7 · Reconstructed route: the allotments at first light — "where Dot went"
 *Used by: L10 Where Dot Went. NOTE: this is a RECONSTRUCTION — the player is visualising Dot's Day-1 escape while Ally traces it on Day 4, not literally standing there at dawn.*
-Rivermouth allotments at dawn with a slight misted-memory treatment — softer edges, gentler contrast than the literal locations: leaning sheds, bean canes, mist between plots, and the key symbol — a gate standing OPEN onto a lane, upper-right to right-middle, where a bus-stop pole silhouette (simple pole + small blank timetable case, nothing sign-like or readable) stands against the brightening sky (the emissive anchor — the episode's first real warmth of daylight). Her escape route, seen with relief, not fear.
+Rivermouth allotments at dawn with a slight misted-memory treatment — softer edges, gentler contrast than the literal locations: leaning sheds, bean canes, mist between plots, and the key symbol — a gate standing OPEN onto a lane, upper-left to left-middle, where a bus-stop pole silhouette (simple pole + small blank timetable case, nothing sign-like or readable) stands against the brightening sky (the emissive anchor — the episode's first real warmth of daylight). Her escape route, seen with relief, not fear.
 
 ### BG-8 · The hill cottage, Chapel Lane, fog — "behind that door"
 *Used by: L11 The Hill Cottage. The emotional hero of the set.*
-Larkhill lane climbing into thick fog, dry-stone wall, and Vera's low stone cottage — modest and practical, NOT picturesque or fairy-tale — with ONE warmly lit window and a lit door lamp: the brightest warm elements in the entire episode, though not overexposed, and no human silhouette in the doorway. Everything else dissolves into fog. The warmth suggests safety without cancelling the surrounding danger; the door light must survive the stress scrim — it's what the whole arc has been walking toward.
+Larkhill lane climbing into thick fog, dry-stone wall, and Vera's low stone cottage left of centre — modest and practical, NOT picturesque or fairy-tale — with ONE warmly lit window and a lit door lamp: the brightest warm elements in the entire episode, though not overexposed, and no human silhouette in the doorway. Everything else dissolves into fog. The warmth suggests safety without cancelling the surrounding danger; the door light must survive the stress scrim — it's what the whole arc has been walking toward.
 
 ---
 

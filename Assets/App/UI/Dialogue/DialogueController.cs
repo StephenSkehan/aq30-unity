@@ -155,7 +155,9 @@ namespace AQ.App
         /// <summary>
         /// Normalizes the stage layout each boot: the portrait renders as a large
         /// bust standing on the text strip (not the legacy full-height left
-        /// column), and speaker/body reclaim the freed left indent.
+        /// column), and speaker/body reclaim the freed left indent. The bust is
+        /// RIGHT-anchored: the cast art faces screen-left, so the character looks
+        /// into the scene and their straight-cropped back sits at the screen edge.
         /// </summary>
         public void ApplyStageLayout()
         {
@@ -169,10 +171,10 @@ namespace AQ.App
                     ? (RectTransform)imageRt.parent
                     : imageRt;
 
-                holder.anchorMin = holder.anchorMax = new Vector2(0f, stripTop);
-                holder.pivot = new Vector2(0f, 0f);
+                holder.anchorMin = holder.anchorMax = new Vector2(1f, stripTop);
+                holder.pivot = new Vector2(1f, 0f);
                 holder.sizeDelta = new Vector2(460f, 460f);
-                holder.anchoredPosition = new Vector2(36f, -12f);
+                holder.anchoredPosition = new Vector2(-8f, -12f);
 
                 if (holder != imageRt)
                 {
