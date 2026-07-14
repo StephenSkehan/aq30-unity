@@ -40,6 +40,17 @@ namespace AQ.EditorTools
             Debug.LogWarning("[QATapGenerator] No generator tile found on the board.");
         }
 
+        [MenuItem("AQ/Dev/QA Show Settings")]
+        public static void ShowSettings()
+        {
+            if (!Application.isPlaying)
+            {
+                Debug.LogWarning("[QATapGenerator] Enter Play Mode first.");
+                return;
+            }
+            AQ.App.UI.Settings.GameControlPanelMB.Show();
+        }
+
         [MenuItem("AQ/Dev/QA Grant 50 Energy")]
         public static void GrantEnergy()
         {

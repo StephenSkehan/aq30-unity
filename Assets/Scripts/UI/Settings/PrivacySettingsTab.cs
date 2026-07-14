@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using AQ.App.Services.Ads;
@@ -54,7 +55,7 @@ namespace AQ.App.UI.Settings
             rt.anchorMin  = new Vector2(0.10f, anchorTop - 0.16f);
             rt.anchorMax  = new Vector2(0.90f, anchorTop);
             rt.sizeDelta  = Vector2.zero;
-            go.GetComponent<Image>().color = new Color(0.22f, 0.22f, 0.28f, 1f);
+            AQTheme.Round(go.GetComponent<Image>(), AQTheme.Steel);
             go.GetComponent<Button>().onClick.AddListener(() => onClick());
 
             var lblGo = new GameObject("Label", typeof(RectTransform));
@@ -63,13 +64,13 @@ namespace AQ.App.UI.Settings
             lblRt.anchorMin = Vector2.zero;
             lblRt.anchorMax = Vector2.one;
             lblRt.offsetMin = lblRt.offsetMax = Vector2.zero;
-            var txt       = lblGo.AddComponent<Text>();
+            var txt       = lblGo.AddComponent<TextMeshProUGUI>();
             txt.text      = label;
             txt.fontSize  = 30;
-            txt.color     = Color.white;
-            txt.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            txt.alignment = TextAnchor.MiddleCenter;
+            txt.color     = AQTheme.Paper;
+            txt.alignment = TextAlignmentOptions.Center;
             txt.raycastTarget = false;
+            AQTheme.StyleText(txt, display: true);
         }
 
         private static void AddVersionLabel(RectTransform parent)
@@ -80,13 +81,13 @@ namespace AQ.App.UI.Settings
             rt.anchorMin  = new Vector2(0.10f, 0.02f);
             rt.anchorMax  = new Vector2(0.90f, 0.10f);
             rt.sizeDelta  = Vector2.zero;
-            var txt       = go.AddComponent<Text>();
+            var txt       = go.AddComponent<TextMeshProUGUI>();
             txt.text      = $"Ally Quinn: True Crime Merge  v{Application.version}";
             txt.fontSize  = 22;
-            txt.color     = new Color(0.55f, 0.55f, 0.55f, 1f);
-            txt.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            txt.alignment = TextAnchor.MiddleCenter;
+            txt.color     = AQTheme.PaperDim;
+            txt.alignment = TextAlignmentOptions.Center;
             txt.raycastTarget = false;
+            AQTheme.StyleText(txt);
         }
     }
 }

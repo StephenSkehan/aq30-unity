@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using AQ.App.Audio;
@@ -58,15 +59,9 @@ namespace AQ.App.UI.Settings
         private readonly List<RectTransform> _tabContents = new List<RectTransform>();
         private bool _built = false;
 
-        // ── colours ───────────────────────────────────────────────────────────
-        private static readonly Color kBg        = new Color(0.08f, 0.08f, 0.10f, 0.97f);
-        private static readonly Color kPanel     = new Color(0.14f, 0.14f, 0.18f, 1f);
-        private static readonly Color kTabActive = new Color(0.28f, 0.55f, 0.90f, 1f);
-        private static readonly Color kTabIdle   = new Color(0.22f, 0.22f, 0.28f, 1f);
-        private static readonly Color kSliderBg  = new Color(0.22f, 0.22f, 0.28f, 1f);
-        private static readonly Color kSliderFg  = new Color(0.28f, 0.55f, 0.90f, 1f);
-        private static readonly Color kWhite     = Color.white;
-        private static readonly Color kDim       = new Color(0.7f, 0.7f, 0.7f, 1f);
+        // ── colours (AQTheme tokens) ─────────────────────────────────────────
+        private static readonly Color kTabActive = AQTheme.Teal;
+        private static readonly Color kTabIdle   = AQTheme.SteelDim;
 
         // ─────────────────────────────────────────────────────────────────────
         void Awake()
@@ -98,33 +93,35 @@ namespace AQ.App.UI.Settings
             var scaler = gameObject.AddComponent<CanvasScaler>();
             scaler.uiScaleMode        = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1080, 1920);
-            scaler.matchWidthOrHeight  = 1f;
+            scaler.matchWidthOrHeight  = 0.5f; // match the other popups; keeps the 800px panel on-screen on narrow devices
 
             gameObject.AddComponent<GraphicRaycaster>();
 
             // Full-screen backdrop
-            var backdrop = MakeImage("Backdrop", transform, kBg);
+            var backdrop = MakeImage("Backdrop", transform, AQTheme.Scrim);
             Stretch(backdrop.rectTransform);
             var trigger = backdrop.gameObject.AddComponent<UnityEngine.EventSystems.EventTrigger>();
             // Backdrop click does NOT close — user must use X button to avoid accidental dismissal
 
             // Panel container  (800×900 centred)
-            var panelGo = MakeImage("Panel", transform, kPanel);
-            _panelRt = panelGo.rectTransform;
+            var panelGo = new GameObject("Panel");
+            panelGo.transform.SetParent(transform, false);
+            _panelRt = panelGo.AddComponent<RectTransform>();
             Centre(_panelRt, 800, 900);
+            AQTheme.StylePanel(_panelRt);
 
             // Title bar
-            var title = MakeText("Title", _panelRt, "Settings", 42, kWhite);
+            var title = MakeText("Title", _panelRt, "SETTINGS", 46, AQTheme.Paper, display: true);
             var trt = title.rectTransform;
-            trt.anchorMin = new Vector2(0.05f, 0.88f);
+            trt.anchorMin = new Vector2(0.06f, 0.88f);
             trt.anchorMax = new Vector2(0.85f, 0.97f);
             trt.sizeDelta  = Vector2.zero;
 
             // Close button
-            var closeBtn = MakeButton("CloseBtn", _panelRt, "✕", 38, kWhite, new Color(0.7f,0.2f,0.2f,1f));
+            var closeBtn = MakeButton("CloseBtn", _panelRt, "✕", 38, AQTheme.Paper, AQTheme.AlertRed);
             var crt = closeBtn.GetComponent<RectTransform>();
-            crt.anchorMin = new Vector2(0.85f, 0.88f);
-            crt.anchorMax = new Vector2(1f,    0.97f);
+            crt.anchorMin = new Vector2(0.86f, 0.895f);
+            crt.anchorMax = new Vector2(0.965f, 0.955f);
             crt.sizeDelta  = Vector2.zero;
             closeBtn.onClick.AddListener(Close);
 
@@ -155,7 +152,7 @@ namespace AQ.App.UI.Settings
                 int idx = i;
 
                 // Tab button
-                var btn = MakeButton($"Tab_{_tabs[i].Label}", tbRt, _tabs[i].Label, 30, kWhite, kTabIdle);
+                var btn = MakeButton($"Tab_{_tabs[i].Label}", tbRt, _tabs[i].Label, 30, AQTheme.Paper, kTabIdle);
                 btn.onClick.AddListener(() => SelectTab(idx));
                 _tabButtons.Add(btn);
 
@@ -253,7 +250,7 @@ namespace AQ.App.UI.Settings
             rrt.anchorMax = new Vector2(0.95f, anchorTop);
             rrt.sizeDelta  = Vector2.zero;
 
-            var lbl = MakeText("Label", rrt, label, 28, kDim);
+            var lbl = MakeText("Label", rrt, label, 28, AQTheme.PaperDim);
             var lrt = lbl.rectTransform;
             lrt.anchorMin = new Vector2(0, 0.5f);
             lrt.anchorMax = new Vector2(0.45f, 1f);
@@ -280,27 +277,28 @@ namespace AQ.App.UI.Settings
             return img;
         }
 
-        private static Text MakeText(string name, Transform parent, string text, int size, Color color)
+        private static TextMeshProUGUI MakeText(string name, Transform parent, string text, int size, Color color, bool display = false)
         {
             var go = new GameObject(name);
             go.transform.SetParent(parent, false);
             go.AddComponent<RectTransform>();
-            var t = go.AddComponent<Text>();
+            var t = go.AddComponent<TextMeshProUGUI>();
             t.text      = text;
             t.fontSize  = size;
             t.color     = color;
-            t.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            t.alignment = TextAnchor.MiddleLeft;
+            t.alignment = TextAlignmentOptions.MidlineLeft;
             t.raycastTarget = false;
+            AQTheme.StyleText(t, display);
             return t;
         }
 
         private static Button MakeButton(string name, Transform parent, string label, int fontSize, Color textColor, Color bgColor)
         {
             var img = MakeImage(name, parent, bgColor);
+            AQTheme.Round(img, bgColor);
             var btn = img.gameObject.AddComponent<Button>();
-            var txt = MakeText("Label", img.transform, label, fontSize, textColor);
-            txt.alignment = TextAnchor.MiddleCenter;
+            var txt = MakeText("Label", img.transform, label, fontSize, textColor, display: true);
+            txt.alignment = TextAlignmentOptions.Center;
             var trt = txt.rectTransform;
             Stretch(trt);
             return btn;
@@ -312,7 +310,7 @@ namespace AQ.App.UI.Settings
             go.transform.SetParent(parent, false);
             var rt = go.AddComponent<RectTransform>();
 
-            var bgImg = MakeImage("Background", go.transform, kSliderBg);
+            var bgImg = AQTheme.Round(MakeImage("Background", go.transform, AQTheme.Card), AQTheme.Card);
             Stretch(bgImg.rectTransform);
             bgImg.rectTransform.sizeDelta = Vector2.zero;
 
@@ -324,7 +322,7 @@ namespace AQ.App.UI.Settings
             faRt.sizeDelta  = new Vector2(-20, 0);
             faRt.anchoredPosition = new Vector2(-5, 0);
 
-            var fill = MakeImage("Fill", fillArea.transform, kSliderFg);
+            var fill = AQTheme.Round(MakeImage("Fill", fillArea.transform, AQTheme.Teal), AQTheme.Teal);
             fill.rectTransform.sizeDelta = new Vector2(10, 0);
 
             var handleArea = new GameObject("Handle Slide Area");
@@ -333,7 +331,7 @@ namespace AQ.App.UI.Settings
             Stretch(haRt);
             haRt.sizeDelta = new Vector2(-20, 0);
 
-            var handle = MakeImage("Handle", handleArea.transform, kWhite);
+            var handle = AQTheme.Round(MakeImage("Handle", handleArea.transform, AQTheme.Paper), AQTheme.Paper);
             handle.rectTransform.sizeDelta = new Vector2(40, 0);
 
             var slider = go.AddComponent<Slider>();
