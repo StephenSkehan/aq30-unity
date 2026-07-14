@@ -94,7 +94,7 @@ namespace AQ.App.Leads
                     if (presenter.requirementsRow != null)
                         presenter.requirementsRow.gameObject.SetActive(hasReqs);
                     if (presenter.rewardsRow != null)
-                        presenter.rewardsRow.gameObject.SetActive(false);
+                        BuildRewardPreview(presenter.rewardsRow, so);
                 }
 
                 // Show a "tap to proceed" hint on ready lead cards
@@ -192,11 +192,14 @@ namespace AQ.App.Leads
             {
                 foreach (var r in lead.requirements)
                 {
+                    // One chip per requirement; quantity shows as a live owned/needed
+                    // count on the chip instead of duplicate slots.
                     var tiers = r.Icon != null ? new List<Sprite> { r.Icon } : new List<Sprite>();
-                    var data  = new AQ.App.UI.Leads.RequirementData(r.Label, tiers, 0, r.IsSatisfied);
-                    int qty   = r.quantity < 1 ? 1 : r.quantity;
-                    for (int q = 0; q < qty; q++)
-                        reqs.Add(data);
+                    reqs.Add(new AQ.App.UI.Leads.RequirementData(r.Label, tiers, 0, r.IsSatisfied)
+                    {
+                        ItemId      = r.itemDefinition != null ? r.itemDefinition.itemId : null,
+                        NeededCount = r.quantity < 1 ? 1 : r.quantity
+                    });
                 }
             }
 
@@ -211,6 +214,80 @@ namespace AQ.App.Leads
                              : lead.RuntimeState == LeadState.InProgress ? AQ.App.UI.Leads.CardState.InProgress
                              : AQ.App.UI.Leads.CardState.New
             };
+        }
+
+        /// <summary>
+        /// Reward-preview chips (icon + amount) on the card. The prefab's
+        /// rewardsRow rect predates the card restyle and overlaps the
+        /// requirement row, so it is re-anchored here to a slim band above it.
+        /// </summary>
+        static void BuildRewardPreview(RectTransform row, LeadData lead)
+        {
+            for (int i = row.childCount - 1; i >= 0; i--)
+                Destroy(row.GetChild(i).gameObject);
+
+            bool any = lead != null && (lead.SoftCurrency > 0 || lead.EnergyGrant > 0 || lead.PremiumGrant > 0);
+            row.gameObject.SetActive(any);
+            if (!any) return;
+
+            row.anchorMin = new Vector2(0f, 0f);
+            row.anchorMax = new Vector2(1f, 0f);
+            row.pivot     = new Vector2(0.5f, 0f);
+            row.sizeDelta = new Vector2(-24f, 28f);
+            row.anchoredPosition = new Vector2(0f, 104f);
+
+            var layout = row.GetComponent<HorizontalLayoutGroup>();
+            if (layout == null)
+            {
+                layout = row.gameObject.AddComponent<HorizontalLayoutGroup>();
+                layout.spacing = 12f;
+                layout.childAlignment = TextAnchor.MiddleLeft;
+                layout.childForceExpandWidth  = false;
+                layout.childForceExpandHeight = false;
+                layout.childControlWidth  = false;
+                layout.childControlHeight = false;
+            }
+
+            if (lead.SoftCurrency > 0) AddRewardChip(row, "App/UI/Icons/flight_cash",      lead.SoftCurrency);
+            if (lead.EnergyGrant  > 0) AddRewardChip(row, "App/UI/MergeBoard/energy_badge", lead.EnergyGrant);
+            if (lead.PremiumGrant > 0) AddRewardChip(row, "App/UI/Icons/flight_ingot",     lead.PremiumGrant);
+        }
+
+        static void AddRewardChip(RectTransform row, string spritePath, int amount)
+        {
+            var chip = new GameObject("Reward");
+            chip.transform.SetParent(row, false);
+            var rt = chip.AddComponent<RectTransform>();
+            rt.sizeDelta = new Vector2(88f, 26f);
+
+            var iconGo = new GameObject("Icon");
+            iconGo.transform.SetParent(rt, false);
+            var irt = iconGo.AddComponent<RectTransform>();
+            irt.anchorMin = new Vector2(0f, 0.5f);
+            irt.anchorMax = new Vector2(0f, 0.5f);
+            irt.pivot     = new Vector2(0f, 0.5f);
+            irt.anchoredPosition = Vector2.zero;
+            irt.sizeDelta = new Vector2(24f, 24f);
+            var img = iconGo.AddComponent<Image>();
+            img.sprite = Resources.Load<Sprite>(spritePath);
+            img.preserveAspect = true;
+            img.raycastTarget  = false;
+            img.enabled = img.sprite != null;
+
+            var txtGo = new GameObject("Amount");
+            txtGo.transform.SetParent(rt, false);
+            var trt = txtGo.AddComponent<RectTransform>();
+            trt.anchorMin = Vector2.zero;
+            trt.anchorMax = Vector2.one;
+            trt.offsetMin = new Vector2(28f, 0f);
+            trt.offsetMax = Vector2.zero;
+            var tmp = txtGo.AddComponent<TextMeshProUGUI>();
+            tmp.text      = $"+{amount}";
+            tmp.fontSize  = 16f;
+            tmp.color     = AQ.App.UI.AQTheme.Amber;
+            tmp.alignment = TextAlignmentOptions.MidlineLeft;
+            tmp.raycastTarget = false;
+            AQ.App.UI.AQTheme.StyleText(tmp);
         }
 
         static void AddProceedHint(Transform cardRoot)

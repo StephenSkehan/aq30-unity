@@ -27,8 +27,14 @@ namespace AQ.App.Leads
         public IReadOnlyCollection<string> NeededItemIds => _neededItemIds;
         public bool IsItemNeeded(string itemId) => !string.IsNullOrEmpty(itemId) && _neededItemIds.Contains(itemId);
 
+        public int GetLiveCount(string itemId) =>
+            !string.IsNullOrEmpty(itemId) && _liveCounts.TryGetValue(itemId, out int c) ? c : 0;
+
         /// <summary>Raised whenever the set of item types needed by active leads changes.</summary>
         public event Action NeededItemsChanged;
+
+        /// <summary>Raised on every board item create/remove — drives live owned/needed counts.</summary>
+        public event Action LiveCountsChanged;
 
         /// <summary>Scene-level singleton so board tiles can query without a wired reference.</summary>
         public static LeadRequirementChecker Instance { get; private set; }
@@ -70,6 +76,7 @@ namespace AQ.App.Leads
             if (string.IsNullOrEmpty(e.ItemId)) return;
             _liveCounts[e.ItemId] = (_liveCounts.TryGetValue(e.ItemId, out int c) ? c : 0) + 1;
             RecomputeAllLeads();
+            LiveCountsChanged?.Invoke();
         }
 
         private void OnItemRemoved(ItemRemovedFromBoard e)
@@ -78,6 +85,7 @@ namespace AQ.App.Leads
             if (_liveCounts.TryGetValue(e.ItemId, out int c) && c > 0)
                 _liveCounts[e.ItemId] = c - 1;
             RecomputeAllLeads();
+            LiveCountsChanged?.Invoke();
         }
 
         private void RecomputeAllLeads()

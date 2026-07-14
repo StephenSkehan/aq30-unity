@@ -1,6 +1,8 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using AQ.App.Leads;
 
 namespace AQ.App.UI.Leads
 {
@@ -20,6 +22,7 @@ namespace AQ.App.UI.Leads
         public RequirementClickedEvent onClick = new RequirementClickedEvent();
 
         private RequirementData _data;
+        private TextMeshProUGUI _countLabel;
 
         private void Awake()
         {
@@ -28,6 +31,18 @@ namespace AQ.App.UI.Leads
 
             if (tickOverlay == null)
                 tickOverlay = CreateTickOverlay();
+        }
+
+        private void OnEnable()
+        {
+            if (LeadRequirementChecker.Instance != null)
+                LeadRequirementChecker.Instance.LiveCountsChanged += RefreshCount;
+        }
+
+        private void OnDisable()
+        {
+            if (LeadRequirementChecker.Instance != null)
+                LeadRequirementChecker.Instance.LiveCountsChanged -= RefreshCount;
         }
 
         private GameObject CreateTickOverlay()
@@ -101,12 +116,70 @@ namespace AQ.App.UI.Leads
                 if (met) tickOverlay.transform.SetAsLastSibling();
             }
 
+            RefreshCount();
+
             // click
             if (button != null)
             {
                 button.onClick.RemoveAllListeners();
                 button.onClick.AddListener(HandleClick);
             }
+        }
+
+        /// <summary>
+        /// Owned/needed count badge ("1/2") for multi-quantity requirements —
+        /// live board counts from LeadRequirementChecker, refreshed on every
+        /// item create/remove. Single-quantity slots rely on the tick alone.
+        /// </summary>
+        private void RefreshCount()
+        {
+            bool show = _data != null && _data.NeededCount > 1 && !string.IsNullOrEmpty(_data.ItemId);
+            if (!show)
+            {
+                if (_countLabel != null) _countLabel.transform.parent.gameObject.SetActive(false);
+                return;
+            }
+
+            if (_countLabel == null) _countLabel = CreateCountLabel();
+
+            int owned = 0;
+            if (LeadRequirementChecker.Instance != null)
+                owned = Mathf.Clamp(LeadRequirementChecker.Instance.GetLiveCount(_data.ItemId), 0, _data.NeededCount);
+
+            _countLabel.transform.parent.gameObject.SetActive(true);
+            _countLabel.text = $"{owned}/{_data.NeededCount}";
+            _countLabel.color = owned >= _data.NeededCount ? AQTheme.Success : AQTheme.Paper;
+        }
+
+        private TextMeshProUGUI CreateCountLabel()
+        {
+            var go = new GameObject("Count");
+            go.transform.SetParent(transform, false);
+            var rt = go.AddComponent<RectTransform>();
+            rt.anchorMin = new Vector2(0f, 0f);
+            rt.anchorMax = new Vector2(0f, 0f);
+            rt.pivot     = new Vector2(0f, 0f);
+            rt.anchoredPosition = new Vector2(2f, 2f);
+            rt.sizeDelta = new Vector2(36f, 20f);
+            var bg = go.AddComponent<Image>();
+            bg.sprite = AQTheme.Rounded;
+            bg.type   = Image.Type.Sliced;
+            bg.pixelsPerUnitMultiplier = 0.35f;
+            bg.color  = AQTheme.BoardFrame;
+            bg.raycastTarget = false;
+
+            var lblGo = new GameObject("Label");
+            lblGo.transform.SetParent(rt, false);
+            var lrt = lblGo.AddComponent<RectTransform>();
+            lrt.anchorMin = Vector2.zero;
+            lrt.anchorMax = Vector2.one;
+            lrt.offsetMin = lrt.offsetMax = Vector2.zero;
+            var tmp = lblGo.AddComponent<TextMeshProUGUI>();
+            tmp.fontSize  = 14f;
+            tmp.alignment = TextAlignmentOptions.Center;
+            tmp.raycastTarget = false;
+            AQTheme.StyleText(tmp);
+            return tmp;
         }
 
         private void HandleClick()

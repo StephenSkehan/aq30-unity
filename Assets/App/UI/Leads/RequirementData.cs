@@ -10,6 +10,8 @@ namespace AQ.App.UI.Leads
         public List<Sprite> Tiers;           // icons T1..Tn (can be 1..N)
         public int TierIndex;                // selected tier to highlight
         public bool Met;                     // tick state
+        public string ItemId;                // board itemId for live owned-count lookup (null = no counts)
+        public int NeededCount = 1;          // quantity required simultaneously on the board
 
         public RequirementData(string groupTitle, List<Sprite> tiers, int tierIndex, bool met = false)
         {
