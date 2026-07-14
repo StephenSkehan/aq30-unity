@@ -88,6 +88,7 @@ namespace AQ.App
         void SetupLayoutPanel()
         {
             Panel.EnsureRuntimeChoiceUI();
+            Panel.ApplyStageLayout();
 
             if (Panel.transform.Find("_Background") != null) return;
 

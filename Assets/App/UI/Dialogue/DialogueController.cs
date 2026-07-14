@@ -153,6 +153,50 @@ namespace AQ.App
         }
 
         /// <summary>
+        /// Normalizes the stage layout each boot: the portrait renders as a large
+        /// bust standing on the text strip (not the legacy full-height left
+        /// column), and speaker/body reclaim the freed left indent.
+        /// </summary>
+        public void ApplyStageLayout()
+        {
+            const float stripTop = 300f / 1920f;
+
+            if (portraitImage != null)
+            {
+                portraitImage.preserveAspect = true;
+                var imageRt = (RectTransform)portraitImage.transform;
+                var holder = imageRt.parent != null && imageRt.parent != transform
+                    ? (RectTransform)imageRt.parent
+                    : imageRt;
+
+                holder.anchorMin = holder.anchorMax = new Vector2(0f, stripTop);
+                holder.pivot = new Vector2(0f, 0f);
+                holder.sizeDelta = new Vector2(460f, 460f);
+                holder.anchoredPosition = new Vector2(36f, -12f);
+
+                if (holder != imageRt)
+                {
+                    imageRt.anchorMin = Vector2.zero;
+                    imageRt.anchorMax = Vector2.one;
+                    imageRt.offsetMin = imageRt.offsetMax = Vector2.zero;
+                }
+            }
+
+            WidenToStrip(Speaker);
+            WidenToStrip(Body);
+        }
+
+        static void WidenToStrip(Component text)
+        {
+            var rt = text != null ? text.transform as RectTransform : null;
+            if (rt == null) return;
+            var min = rt.anchorMin; min.x = 0.06f; rt.anchorMin = min;
+            var max = rt.anchorMax; max.x = 0.94f; rt.anchorMax = max;
+            rt.offsetMin = new Vector2(0f, rt.offsetMin.y);
+            rt.offsetMax = new Vector2(0f, rt.offsetMax.y);
+        }
+
+        /// <summary>
         /// Creates two runtime choice buttons when the prefab has none assigned.
         /// Buttons carry no onClick listeners on purpose: this panel's input is
         /// raw (DialogueRunner.Update hit-tests) because EventSystem routing has

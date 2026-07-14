@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,22 +8,32 @@ using AQ.App.UI;
 using AQ.App.UI.Board;
 
 /// <summary>
-/// Cinematic dialogue stage: while any dialogue runs, fades out the board and
-/// HUD, deepens the background scrim and optionally swaps the scene backdrop
-/// (CaseGraph.stageBackground) so the actor and story carry the screen.
-/// Self-installing; CanvasGroups are added at runtime so the scene file is
-/// never mutated. Lives in Assembly-CSharp to reach both AQ.App (dialogue,
-/// scrim) and the board controller.
+/// Cinematic dialogue stage: while any dialogue runs, fades out the board, HUD
+/// and stray overlay canvases (evidence-board button), deepens the background
+/// scrim and optionally swaps the scene backdrop (CaseGraph.stageBackground)
+/// so the actor and story carry the screen. Self-installing; CanvasGroups are
+/// added at runtime so the scene file is never mutated. Each group's alpha and
+/// interactivity are captured at open and restored exactly — other systems
+/// (e.g. EvidenceBoardScreen hiding its own button) keep their state. Lives in
+/// Assembly-CSharp to reach both AQ.App (dialogue, scrim) and the board
+/// controller.
 /// </summary>
 public sealed class DialogueStageMB : MonoBehaviour
 {
     const float FadeSeconds = 0.25f;
     const float StageScrimOpacity = 0.75f;
 
+    struct StagedGroup
+    {
+        public CanvasGroup Group;
+        public float BaseAlpha;
+        public bool BaseInteractable;
+        public bool BaseBlocksRaycasts;
+    }
+
     static DialogueStageMB _instance;
 
-    CanvasGroup _board;
-    CanvasGroup _hud;
+    readonly List<StagedGroup> _groups = new List<StagedGroup>();
     BackgroundScrimMB _scrim;
     Image _background;
 
@@ -59,8 +70,7 @@ public sealed class DialogueStageMB : MonoBehaviour
         // Scene reload destroys the staged objects — drop all cached state.
         if (_fade != null) StopCoroutine(_fade);
         _fade = null;
-        _board = null;
-        _hud = null;
+        _groups.Clear();
         _scrim = null;
         _background = null;
         _open = false;
@@ -68,14 +78,19 @@ public sealed class DialogueStageMB : MonoBehaviour
 
     void OnDialogueOpened(CaseGraph graph)
     {
-        if (!FindStage()) return;
-
         if (!_open)
         {
+            if (!FindStage()) return;
             _open = true;
             _baseScrimOpacity = _scrim != null ? _scrim.opacity : 0f;
             _baseBackground = _background != null ? _background.sprite : null;
-            SetInteractive(false);
+            for (int i = 0; i < _groups.Count; i++)
+            {
+                var g = _groups[i].Group;
+                if (g == null) continue;
+                g.interactable = false;
+                g.blocksRaycasts = false;
+            }
         }
 
         if (_background != null)
@@ -84,7 +99,7 @@ public sealed class DialogueStageMB : MonoBehaviour
             _background.sprite = stageSprite != null ? stageSprite : _baseBackground;
         }
 
-        StartFade(0f, StageScrimOpacity);
+        StartFade(toStage: true);
     }
 
     void OnDialogueClosed()
@@ -93,12 +108,21 @@ public sealed class DialogueStageMB : MonoBehaviour
         _open = false;
 
         if (_background != null) _background.sprite = _baseBackground;
-        SetInteractive(true);
-        StartFade(1f, _baseScrimOpacity);
+        for (int i = 0; i < _groups.Count; i++)
+        {
+            var staged = _groups[i];
+            if (staged.Group == null) continue;
+            staged.Group.interactable = staged.BaseInteractable;
+            staged.Group.blocksRaycasts = staged.BaseBlocksRaycasts;
+        }
+
+        StartFade(toStage: false);
     }
 
     bool FindStage()
     {
+        _groups.Clear();
+
         if (_scrim == null) _scrim = FindAnyObjectByType<BackgroundScrimMB>();
         var gameRoot = _scrim != null ? _scrim.transform.parent : null;
 
@@ -108,20 +132,36 @@ public sealed class DialogueStageMB : MonoBehaviour
             if (bg != null) _background = bg.GetComponent<Image>();
         }
 
-        if (_board == null)
-        {
-            var controller = FindAnyObjectByType<MergeBoardController>();
-            var canvas = controller != null ? controller.GetComponentInParent<Canvas>() : null;
-            if (canvas != null) _board = EnsureGroup(canvas.gameObject);
-        }
+        var controller = FindAnyObjectByType<MergeBoardController>();
+        var boardCanvas = controller != null ? controller.GetComponentInParent<Canvas>() : null;
+        if (boardCanvas != null) Stage(EnsureGroup(boardCanvas.gameObject));
 
-        if (_hud == null && gameRoot != null)
+        if (gameRoot != null)
         {
             var safe = gameRoot.Find("SafeAreaRoot");
-            if (safe != null) _hud = EnsureGroup(safe.gameObject);
+            if (safe != null) Stage(EnsureGroup(safe.gameObject));
         }
 
-        return _board != null || _hud != null || _scrim != null;
+        // These auto-install onto their own overlay canvases, so the board/HUD
+        // groups never cover them.
+        var evidBtn = GameObject.Find("__EvidBoardBtn");
+        if (evidBtn != null) Stage(evidBtn.GetComponent<CanvasGroup>());
+        var overflow = GameObject.Find("OverflowCanvas");
+        if (overflow != null) Stage(EnsureGroup(overflow));
+
+        return _groups.Count > 0 || _scrim != null;
+    }
+
+    void Stage(CanvasGroup group)
+    {
+        if (group == null) return;
+        _groups.Add(new StagedGroup
+        {
+            Group = group,
+            BaseAlpha = group.alpha,
+            BaseInteractable = group.interactable,
+            BaseBlocksRaycasts = group.blocksRaycasts
+        });
     }
 
     static CanvasGroup EnsureGroup(GameObject go)
@@ -130,44 +170,43 @@ public sealed class DialogueStageMB : MonoBehaviour
         return group != null ? group : go.AddComponent<CanvasGroup>();
     }
 
-    void SetInteractive(bool value)
-    {
-        if (_board != null) { _board.blocksRaycasts = value; _board.interactable = value; }
-        if (_hud != null) { _hud.blocksRaycasts = value; _hud.interactable = value; }
-    }
-
-    void StartFade(float groupTarget, float scrimTarget)
+    void StartFade(bool toStage)
     {
         if (_fade != null) StopCoroutine(_fade);
-        _fade = StartCoroutine(Fade(groupTarget, scrimTarget));
+        _fade = StartCoroutine(Fade(toStage));
     }
 
-    IEnumerator Fade(float groupTarget, float scrimTarget)
+    IEnumerator Fade(bool toStage)
     {
-        float boardStart = _board != null ? _board.alpha : groupTarget;
-        float hudStart = _hud != null ? _hud.alpha : groupTarget;
-        float scrimStart = _scrim != null ? _scrim.opacity : scrimTarget;
+        int count = _groups.Count;
+        var starts = new float[count];
+        for (int i = 0; i < count; i++)
+            starts[i] = _groups[i].Group != null ? _groups[i].Group.alpha : 0f;
+        float scrimStart = _scrim != null ? _scrim.opacity : 0f;
+        float scrimTarget = toStage ? StageScrimOpacity : _baseScrimOpacity;
 
         float t = 0f;
         while (t < FadeSeconds)
         {
             t += Time.unscaledDeltaTime;
             float k = Mathf.Clamp01(t / FadeSeconds);
-            ApplyStage(
-                Mathf.Lerp(boardStart, groupTarget, k),
-                Mathf.Lerp(hudStart, groupTarget, k),
-                Mathf.Lerp(scrimStart, scrimTarget, k));
+            ApplyStage(starts, toStage, k, scrimStart, scrimTarget);
             yield return null;
         }
 
-        ApplyStage(groupTarget, groupTarget, scrimTarget);
+        ApplyStage(starts, toStage, 1f, scrimStart, scrimTarget);
         _fade = null;
     }
 
-    void ApplyStage(float boardAlpha, float hudAlpha, float scrimOpacity)
+    void ApplyStage(float[] starts, bool toStage, float k, float scrimStart, float scrimTarget)
     {
-        if (_board != null) _board.alpha = boardAlpha;
-        if (_hud != null) _hud.alpha = hudAlpha;
-        if (_scrim != null) _scrim.SetOpacity(scrimOpacity);
+        for (int i = 0; i < _groups.Count && i < starts.Length; i++)
+        {
+            var staged = _groups[i];
+            if (staged.Group == null) continue;
+            float target = toStage ? 0f : staged.BaseAlpha;
+            staged.Group.alpha = Mathf.Lerp(starts[i], target, k);
+        }
+        if (_scrim != null) _scrim.SetOpacity(Mathf.Lerp(scrimStart, scrimTarget, k));
     }
 }
