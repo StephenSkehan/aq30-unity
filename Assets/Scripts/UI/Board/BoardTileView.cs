@@ -237,9 +237,10 @@ namespace AQ.App.UI.Board
             var rt = (RectTransform)go.transform;
             rt.SetParent(transform, false);
             rt.SetAsLastSibling();
-            // Top-right corner, opposite the energy badge (bottom-left).
-            rt.anchorMin = new Vector2(0.62f, 0.62f);
-            rt.anchorMax = new Vector2(0.97f, 0.97f);
+            // Top-right corner, GH-stamp bold: ~46% of the cell, slight overhang
+            // past the tile edge.
+            rt.anchorMin = new Vector2(0.58f, 0.58f);
+            rt.anchorMax = new Vector2(1.04f, 1.04f);
             rt.offsetMin = Vector2.zero;
             rt.offsetMax = Vector2.zero;
 
@@ -250,8 +251,8 @@ namespace AQ.App.UI.Board
             badge.color  = AQTheme.Success;
             badge.raycastTarget = false;
 
-            AddTickStroke(rt, new Vector2(3f, 8f),  45f, new Vector2(-6f, -1.5f));
-            AddTickStroke(rt, new Vector2(3f, 13f), -45f, new Vector2(1f, 1f));
+            AddTickStroke(rt, new Vector2(5f, 12f),  45f, new Vector2(-9f, -2.5f));
+            AddTickStroke(rt, new Vector2(5f, 20f), -45f, new Vector2(2f, 1.5f));
 
             return badge;
         }

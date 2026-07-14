@@ -77,6 +77,7 @@ namespace AQ.App.UI.Board
                 startScale: config ? config.spawnStartScale : 0.85f,
                 peakScale : config ? config.popPeakScale     : 1.15f,
                 duration  : config ? config.spawnPopDuration : 0.12f));
+            SparkleBurst(rt, 6, 46f, 0.35f);
         }
 
         public void PlayMerge(BoardTileView from, BoardTileView into, Sprite _unused)
@@ -93,7 +94,8 @@ namespace AQ.App.UI.Board
                     duration  : config ? config.mergePopDuration : 0.12f));
             }
 
-            // Optional sparkle at destination
+            // Sparkle at destination: configured prefab if one exists, otherwise
+            // the built-in procedural burst (bigger than the spawn burst).
             if (config && config.sparklePrefab && into && into.itemImage)
             {
                 var pos = WorldToOverlayPoint(into.itemImage.rectTransform);
@@ -113,6 +115,10 @@ namespace AQ.App.UI.Board
                     fx.Play();
                     Destroy(fx.gameObject, config.sparkleLifetime);
                 }
+            }
+            else if (into && into.itemImage)
+            {
+                SparkleBurst(into.itemImage.rectTransform, 8, 68f, 0.45f);
             }
 
             // Slide of the consumed piece into the destination
@@ -163,6 +169,55 @@ namespace AQ.App.UI.Board
         }
 
         // --- Helpers ---
+
+        static readonly Color kSparkleWarm = new Color(0.99f, 0.83f, 0.45f, 1f); // amber-white
+
+        /// <summary>
+        /// Procedural UI sparkle: small rotated-square motes radiating from the
+        /// tile centre, shrinking and fading. No prefab or particle system.
+        /// </summary>
+        void SparkleBurst(RectTransform target, int count, float radius, float duration)
+        {
+            if (!target || !overlay) return;
+            var centre = WorldToOverlayPoint(target);
+            for (int i = 0; i < count; i++)
+            {
+                float ang = (360f / count) * i + Random.Range(-14f, 14f);
+                var dir = new Vector2(Mathf.Cos(ang * Mathf.Deg2Rad), Mathf.Sin(ang * Mathf.Deg2Rad));
+                float dist = radius * Random.Range(0.7f, 1.15f);
+                float size = Random.Range(7f, 13f);
+
+                var go = new GameObject("FX_Spark", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+                var rt = go.GetComponent<RectTransform>();
+                rt.SetParent(overlay, false);
+                rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+                rt.sizeDelta = new Vector2(size, size);
+                rt.anchoredPosition = centre;
+                rt.localRotation = Quaternion.Euler(0f, 0f, 45f);
+
+                var img = go.GetComponent<Image>();
+                img.color = i % 2 == 0 ? Color.white : kSparkleWarm;
+                img.raycastTarget = false;
+
+                StartCoroutine(CoSpark(rt, img, centre, centre + dir * dist, duration * Random.Range(0.85f, 1.15f)));
+            }
+        }
+
+        IEnumerator CoSpark(RectTransform rt, Image img, Vector2 from, Vector2 to, float duration)
+        {
+            var t0 = Time.unscaledTime;
+            var startSize = rt.sizeDelta;
+            while (Time.unscaledTime - t0 < duration)
+            {
+                if (!rt) yield break;
+                var u = Mathf.Clamp01((Time.unscaledTime - t0) / duration);
+                rt.anchoredPosition = Vector2.Lerp(from, to, Smooth(u));
+                rt.sizeDelta = startSize * (1f - u * 0.8f);
+                var c = img.color; c.a = 1f - u * u; img.color = c;
+                yield return null;
+            }
+            if (rt) Destroy(rt.gameObject);
+        }
 
         Vector2 WorldToOverlayPoint(RectTransform worldTarget)
         {
