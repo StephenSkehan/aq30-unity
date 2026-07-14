@@ -30,6 +30,12 @@ namespace AQ.App
 
         public event System.Action DialogueEnded;
 
+        // Global stage hooks: every dialogue entry point (lead proceed, evidence
+        // board replay, dev tools) funnels through BootWithGraph/End, so these
+        // fire for all of them without each caller needing wiring.
+        public static event System.Action<CaseGraph> DialogueOpened;
+        public static event System.Action DialogueClosed;
+
         // State
         private string _currentId;
         private Coroutine _musicFadeRoutine;
@@ -61,7 +67,10 @@ namespace AQ.App
             if (!_booted)
                 InternalBoot(g);
             else
+            {
+                DialogueOpened?.Invoke(g);
                 JumpTo(Graph.startId);
+            }
         }
 
         /// <summary>
@@ -166,6 +175,7 @@ namespace AQ.App
             _booted = true;
             _history.Clear(); // Reset history on boot
 
+            DialogueOpened?.Invoke(g);
             ShowNode(_currentId);
         }
 
@@ -472,6 +482,7 @@ namespace AQ.App
             if (Panel)
                 Panel.gameObject.SetActive(false);
 
+            DialogueClosed?.Invoke();
             DialogueEnded?.Invoke();
         }
 

@@ -43,5 +43,17 @@ namespace AQ.EditorTools
             runner.BootWithGraph(g);
             Debug.Log("[PortraitTest] booted with " + SpritePath);
         }
+
+        // Ends the running dialogue through the real End() path (JumpTo to a
+        // missing node) so DialogueClosed/stage-restore can be QA'd without a tap.
+        [MenuItem("AQ/Dev/QA End Dialogue (Play Mode)")]
+        public static void EndDialogue()
+        {
+            if (!Application.isPlaying) { Debug.LogWarning("[PortraitTest] Enter Play Mode first."); return; }
+            var runner = Object.FindAnyObjectByType<DialogueRunner>(FindObjectsInactive.Include);
+            if (runner == null) { Debug.LogError("[PortraitTest] no DialogueRunner in scene"); return; }
+            runner.JumpTo("__qa_end__");
+            Debug.Log("[PortraitTest] forced dialogue end");
+        }
     }
 }

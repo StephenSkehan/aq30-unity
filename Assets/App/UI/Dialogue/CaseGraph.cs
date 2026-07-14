@@ -78,6 +78,10 @@ namespace AQ.App
 
         [Header("Graph Configuration")]
         public string startId = "START";
+
+        [Header("Stage")]
+        [Tooltip("Optional scene backdrop shown while this dialogue runs. Empty = keep the board's current background.")]
+        public Sprite stageBackground;
         
         [Header("Nodes")]
         public Node[] nodes;

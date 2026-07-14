@@ -26,6 +26,12 @@ namespace AQ.App.UI
         private void OnEnable()  => Apply();
         private void OnValidate()=> Apply();
 
+        public void SetOpacity(float value)
+        {
+            opacity = Mathf.Clamp01(value);
+            Apply();
+        }
+
         private void Apply()
         {
             if (!_img) _img = GetComponent<Image>();
