@@ -1,3 +1,4 @@
+using AQ.App.Analytics;
 using AQ.App.Events;
 using AQ.App.Leads;
 using AQ.App.Presentation;
@@ -39,6 +40,7 @@ namespace AQ.App.CaseFlow
                 if (f == CompletionFlag)
                 {
                     _fired = true;
+                    GameAnalytics.LogEpisodeComplete(EpisodeId);
                     GlobalBus.Bus.Publish(new CaseResolvedEvent(EpisodeId));
                     return;
                 }

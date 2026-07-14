@@ -54,6 +54,14 @@ namespace AQ.App.Analytics
             });
         }
 
+        public static void LogEpisodeComplete(string episodeId)
+        {
+            AnalyticsLocator.Instance?.LogEvent("episode_complete", new Dictionary<string, object>
+            {
+                ["episode_id"] = episodeId ?? string.Empty
+            });
+        }
+
         public static void LogEnergyGain(int amount, string reason)
         {
             AnalyticsLocator.Instance?.LogEvent("energy_gain", new Dictionary<string, object>
