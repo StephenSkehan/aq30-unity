@@ -51,6 +51,42 @@ namespace AQ.EditorTools
             AQ.App.UI.Settings.GameControlPanelMB.Show();
         }
 
+        /// <summary>
+        /// Merges the first same-(kind,family,tier) pair found on the board through
+        /// MergeBoardController.EndDrag — the real drop entrypoint — so merge-driven
+        /// state (badges, events, counts) can be QA'd headlessly.
+        /// </summary>
+        [MenuItem("AQ/Dev/QA Merge First Pair")]
+        public static void MergeFirstPair()
+        {
+            if (!Application.isPlaying)
+            {
+                Debug.LogWarning("[QATapGenerator] Enter Play Mode first.");
+                return;
+            }
+
+            var controller = Object.FindAnyObjectByType<MergeBoardController>();
+            if (controller == null) { Debug.LogWarning("[QATapGenerator] No MergeBoardController found."); return; }
+
+            var tiles = Object.FindObjectsByType<BoardTileView>(FindObjectsSortMode.None);
+            for (int i = 0; i < tiles.Length; i++)
+            {
+                var a = tiles[i];
+                if (a.IsEmpty || !controller.IsMergeCandidate(a)) continue;
+                for (int j = i + 1; j < tiles.Length; j++)
+                {
+                    var b = tiles[j];
+                    if (b.IsEmpty || b.Kind != a.Kind || b.Tier != a.Tier) continue;
+                    if (controller.GetItemId(a) != controller.GetItemId(b) && a.Kind == TileKind.Item) continue;
+
+                    controller.EndDrag(controller.GetIndex(a), controller.GetIndex(b));
+                    Debug.Log($"[QATapGenerator] Merged pair '{a.name}' -> '{b.name}'.");
+                    return;
+                }
+            }
+            Debug.LogWarning("[QATapGenerator] No mergeable pair on the board.");
+        }
+
         [MenuItem("AQ/Dev/QA Grant 50 Energy")]
         public static void GrantEnergy()
         {

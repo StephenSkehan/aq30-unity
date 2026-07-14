@@ -29,6 +29,7 @@ namespace AQ.App.UI.Board
         public Image itemImage; // child "Item"
         Image energyBadge;      // child "EnergyBadge", created on demand, generators only
         Image requirementTick;  // child "RequirementTick", created on demand, items only
+        Image mergeHint;        // child "MergeHint", created on demand — a pair exists on the board
 
         static Sprite _energyBadgeSprite;
         static bool _energyBadgeSpriteLoaded;
@@ -55,12 +56,14 @@ namespace AQ.App.UI.Board
         {
             if (LeadRequirementChecker.Instance != null)
                 LeadRequirementChecker.Instance.NeededItemsChanged += RefreshRequirementTick;
+            MergeBoardController.BoardCompositionChanged += RefreshMergeHint;
         }
 
         private void OnDisable()
         {
             if (LeadRequirementChecker.Instance != null)
                 LeadRequirementChecker.Instance.NeededItemsChanged -= RefreshRequirementTick;
+            MergeBoardController.BoardCompositionChanged -= RefreshMergeHint;
         }
 
         // ---------------- binding ----------------
@@ -145,6 +148,61 @@ namespace AQ.App.UI.Board
 
             RefreshEnergyBadge();
             RefreshRequirementTick();
+            RefreshMergeHint();
+        }
+
+        /// <summary>
+        /// Amber spark badge (top-left) when this tile can merge with another tile
+        /// currently on the board — the "always a move available" signal. Driven by
+        /// MergeBoardController.BoardCompositionChanged.
+        /// </summary>
+        void RefreshMergeHint()
+        {
+            bool mergeable = !IsEmpty
+                          && itemImage != null && itemImage.enabled
+                          && controller != null
+                          && controller.IsMergeCandidate(this);
+
+            if (!mergeable)
+            {
+                if (mergeHint) mergeHint.gameObject.SetActive(false);
+                return;
+            }
+
+            if (!mergeHint) mergeHint = CreateMergeHint();
+            mergeHint.gameObject.SetActive(true);
+            mergeHint.transform.SetAsLastSibling();
+        }
+
+        Image CreateMergeHint()
+        {
+            var go = new GameObject("MergeHint", typeof(RectTransform), typeof(Image));
+            var rt = (RectTransform)go.transform;
+            rt.SetParent(transform, false);
+            // Top-left corner: top-right is the requirement tick, bottom-left the
+            // energy badge — every badge keeps its own corner.
+            rt.anchorMin = new Vector2(0.03f, 0.66f);
+            rt.anchorMax = new Vector2(0.34f, 0.97f);
+            rt.offsetMin = Vector2.zero;
+            rt.offsetMax = Vector2.zero;
+
+            var badge = go.GetComponent<Image>();
+            badge.sprite = AQTheme.Rounded;
+            badge.type   = Image.Type.Sliced;
+            badge.pixelsPerUnitMultiplier = 0.35f; // corners overrun -> circular badge
+            badge.color  = AQTheme.Amber;
+            badge.raycastTarget = false;
+
+            var spark = new GameObject("Spark", typeof(RectTransform), typeof(Image));
+            var srt = (RectTransform)spark.transform;
+            srt.SetParent(rt, false);
+            srt.sizeDelta = new Vector2(13f, 13f);
+            srt.localRotation = Quaternion.Euler(0f, 0f, 45f);
+            var simg = spark.GetComponent<Image>();
+            simg.color = Color.white;
+            simg.raycastTarget = false;
+
+            return badge;
         }
 
         /// <summary>
@@ -162,12 +220,14 @@ namespace AQ.App.UI.Board
 
             if (!needed)
             {
-                if (requirementTick) requirementTick.enabled = false;
+                // SetActive, not Image.enabled — the badge has child stroke images
+                // that would otherwise linger on their own.
+                if (requirementTick) requirementTick.gameObject.SetActive(false);
                 return;
             }
 
             if (!requirementTick) requirementTick = CreateRequirementTick();
-            requirementTick.enabled = true;
+            requirementTick.gameObject.SetActive(true);
             requirementTick.transform.SetAsLastSibling();
         }
 
@@ -306,7 +366,8 @@ namespace AQ.App.UI.Board
 
             itemImage.enabled = false;
             if (energyBadge) energyBadge.enabled = false;
-            if (requirementTick) requirementTick.enabled = false;
+            if (requirementTick) requirementTick.gameObject.SetActive(false);
+            if (mergeHint) mergeHint.gameObject.SetActive(false);
             Follow(eventData);
         }
 

@@ -87,6 +87,17 @@ namespace AQ.App.UI.Board
         /// </summary>
         public static event Action GeneratorTapped;
 
+        /// <summary>
+        /// Fired after any change to what occupies the board (spawn, merge, overflow
+        /// placement, lead consumption, restore). Drives the mergeable-pair hint on
+        /// every tile — moves and swaps don't change composition, so they don't fire.
+        /// </summary>
+        public static event Action BoardCompositionChanged;
+
+        // (kind, family, tier) → live count; rebuilt lazily for merge-pair hints.
+        private readonly Dictionary<(TileKind kind, string fam, int tier), int> _mergeCounts = new();
+        private bool _mergeCountsDirty = true;
+
         // ---------------- Unity lifecycle ----------------
 
         private void OnEnable()  => BoardTileView.LongHeld += OnTileLongHeld;
@@ -271,6 +282,7 @@ namespace AQ.App.UI.Board
                     GeneratorFamilyRegistry.SetSubGenLocked(genTypeId);
 
                 Log($"MergeTiles (Generator): {newTier - 1}+{newTier - 1}->{newTier} type={genTypeId}");
+                NotifyBoardChanged();
                 return;
             }
 
@@ -296,6 +308,7 @@ namespace AQ.App.UI.Board
             Log($"MergeTiles (Item): {newTier - 1}+{newTier - 1}->{newTier}");
             OnItemCreated?.Invoke(fam, newTier);
             GameAnalytics.LogMerge(fam, fromTier, newTier);
+            NotifyBoardChanged();
         }
 
         private void SpawnFromGenerator(BoardTileView generator)
@@ -377,6 +390,7 @@ namespace AQ.App.UI.Board
             Log($"Spawned item T{itemTier + 1} family={itemFamily} at ({r},{c}).");
             OnItemCreated?.Invoke(itemFamily, itemTier);
             GameAnalytics.LogSpawnRoll(itemFamily, itemTier);
+            NotifyBoardChanged();
         }
 
         // ---------------- Generator type lookup ----------------
@@ -448,6 +462,7 @@ namespace AQ.App.UI.Board
                 Log($"Placed item from overflow: family={data.family} tier={data.tier} at ({r},{c}).");
             }
 
+            NotifyBoardChanged();
             return true;
         }
 
@@ -492,6 +507,50 @@ namespace AQ.App.UI.Board
             if (string.IsNullOrEmpty(fam)) return string.Empty;
             var def = LookupItemDef(fam, v.Tier);
             return def != null ? def.itemId : string.Empty;
+        }
+
+        // ---------------- Merge-pair hints ----------------
+
+        /// <summary>
+        /// True when another tile with the same (kind, family, tier) exists on the
+        /// board AND dropping one on the other would actually merge (same rule the
+        /// drop path uses, so ceiling tiles never light up).
+        /// </summary>
+        public bool IsMergeCandidate(BoardTileView v)
+        {
+            if (v == null || v.IsEmpty || grid == null) return false;
+            var fam = GetFamily(v);
+            if (string.IsNullOrEmpty(fam)) return false;
+
+            if (_mergeCountsDirty) RebuildMergeCounts();
+            if (!(_mergeCounts.TryGetValue((v.Kind, fam, v.Tier), out int n) && n >= 2)) return false;
+
+            var t = new MergeRules.Tile(v.Kind, v.Tier, fam);
+            return MergeRules.Decide(t, t, maxTier) == MergeRules.Outcome.Merge;
+        }
+
+        private void RebuildMergeCounts()
+        {
+            _mergeCounts.Clear();
+            for (int r = 0; r < rows; r++)
+            {
+                for (int c = 0; c < cols; c++)
+                {
+                    var v = grid[r, c];
+                    if (v == null || v.IsEmpty) continue;
+                    var fam = GetFamily(v);
+                    if (string.IsNullOrEmpty(fam)) continue;
+                    var key = (v.Kind, fam, v.Tier);
+                    _mergeCounts[key] = _mergeCounts.TryGetValue(key, out int n) ? n + 1 : 1;
+                }
+            }
+            _mergeCountsDirty = false;
+        }
+
+        private void NotifyBoardChanged()
+        {
+            _mergeCountsDirty = true;
+            BoardCompositionChanged?.Invoke();
         }
 
         // ---------------- Init grid ----------------
@@ -552,6 +611,7 @@ namespace AQ.App.UI.Board
             cell.SetGenerator(sprite, 0);
             SetFamily(cell, typeId);
             AttachGeneratorAnimator(cell, typeId, 0);
+            NotifyBoardChanged();
 
             Log($"Generator ensured at ({defaultGeneratorRow},{defaultGeneratorCol}) typeId={typeId}.");
         }
@@ -678,6 +738,7 @@ namespace AQ.App.UI.Board
                     OnItemRemoved?.Invoke(family, tier);
                     v.Clear();
                     familyKeyByTile.Remove(v);
+                    NotifyBoardChanged();
                     return true;
                 }
             }
@@ -704,6 +765,7 @@ namespace AQ.App.UI.Board
                         OnItemCreated?.Invoke(fam, v.Tier);
                 }
             }
+            NotifyBoardChanged();
         }
 
         // ---------------- Logging ----------------
