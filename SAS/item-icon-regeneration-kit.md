@@ -1,5 +1,5 @@
 # Item-Icon Regeneration Kit — full board sweep (PRE-RELEASE)
-*v1.2 · 2026-07-15 (v1.0 2026-07-13) · Authoritative kit for regenerating **all 87 on-board icons** *(was 93 — fingerprint_evidence retired 2026-07-15, see Out of scope)* before the Aug 8 beta. Supersedes the "Wave 1 = shipped, regen is post-launch" note in `art-kit-items-and-ui.md` — that call is reversed: **every item, generator, and currency icon is being regenerated now.***
+*v1.3 · 2026-07-15 (Render Language Standard added — the item look is the SYSTEM anchor; backgrounds conform to it) · v1.2 2026-07-15, v1.0 2026-07-13 · Authoritative kit for regenerating **all 87 on-board icons** *(was 93 — fingerprint_evidence retired 2026-07-15, see Out of scope)* before the Aug 8 beta. Supersedes the "Wave 1 = shipped, regen is post-launch" note in `art-kit-items-and-ui.md` — that call is reversed: **every item, generator, and currency icon is being regenerated now.***
 
 ## Why this exists
 The current on-board icons predate the v1.3 style spec and share three flaws (observed live):
@@ -42,6 +42,24 @@ Soft key from upper-left, restrained warm rim from the right. Chunky outer
 silhouette; avoid fragile thin elements and excessive micro-detail. The icon
 must remain identifiable at 96, 64 AND 48 pixels.
 ```
+
+## Render Language Standard (whole art system · 2026-07-15)
+
+One render language across the entire game: STYLIZED PAINTERLY ILLUSTRATION
+for a mobile casual game, matching the approved character portraits and the
+item-icon set. Rich painterly rendering, clean sculpted/simplified forms,
+saturated local colour, soft cinematic lighting, deep noir values and
+atmosphere — but explicitly NOT photorealism: no photographic micro-texture,
+no lens/DoF/film-still realism, no hyperreal materials. Backgrounds, items,
+generators, currency and portraits must read as ONE illustrated world, because
+items sit on the backgrounds and character busts stand over them — a photoreal
+backdrop makes the stylized foreground look pasted-on. Mood comes from LIGHTING
+and VALUE (navy shadow, amber practicals, fog, contrast), NOT from photographic
+detail. Anchor = the item icons + character portraits; backgrounds conform to
+them, never the reverse. Acceptance test for any asset: could this sit behind
+the character portraits and under the merge tiles and look like one game?
+
+*The item-icon look defined above is the SYSTEM anchor that backgrounds and all other art now conform to. The NEW families (audio_investigation items + gen_audio_rig, Part 4) inherit this standard — generate them in the same illustration language.*
 
 **The three-flaw kill-switch** (call these out to the generator every time):
 - *no baked shadow of any kind* — the sentence is repeated twice in the block on purpose.

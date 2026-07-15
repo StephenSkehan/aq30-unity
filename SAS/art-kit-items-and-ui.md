@@ -1,9 +1,25 @@
 # Art Generation Kit — Item Icons & UI Sprites
-*v1.3 · 2026-07-12 (contradiction pass: single-object→cluster, no-text absolute, occupancy/tier rule, generator↔family map, separate UI-symbol block, technical QC, self-contained bg) · Attach the Ally key art as PALETTE/LIGHTING reference — not a geometry reference — with every item generation.*
+*v1.4 · 2026-07-15 (Render Language Standard added; Environment-block heading corrected — backgrounds share the ONE illustration language, framing rules differ) · v1.3 2026-07-12 (contradiction pass: single-object→cluster, no-text absolute, occupancy/tier rule, generator↔family map, separate UI-symbol block, technical QC, self-contained bg) · Attach the Ally key art as PALETTE/LIGHTING reference — not a geometry reference — with every item generation.*
 
 > **⚠ STATUS REVERSED 2026-07-13 — the whole board is being regenerated PRE-RELEASE.** The earlier note here ("Wave 1 is shipped; regen is post-launch polish") is **superseded.** The live board icons predate the v1.3 spec and carry three flaws (baked drop-shadows, inconsistent size, off-universe), so **all 93 on-board icons — 53 items + 30 generator-chain + 10 currency — are being regenerated before the Aug 8 beta.** The authoritative, filename-exact kit for that sweep is **`SAS/item-icon-regeneration-kit.md`** — use it for every item/generator/currency batch. The material below stays valid as reference (the global block, the four detailed item families, the QC/manifest/proof batch), but the *count and scope* live in the regen kit. The **Wave 2 (Press), Ep2 stamps, and Ep1 stamps** work below is unchanged.
 
 > **Reference-block index:** items use the **item-icon block** (below); flat UI marks (stamps) use the separate **flat UI-symbol block** (§ stamps); the background uses its own **environment block** (§ bg); 9-slice panels/buttons are **built programmatically, not generated** (§ 9-slice). Do not cross these.*
+
+## Render Language Standard (whole art system · 2026-07-15)
+
+One render language across the entire game: STYLIZED PAINTERLY ILLUSTRATION
+for a mobile casual game, matching the approved character portraits and the
+item-icon set. Rich painterly rendering, clean sculpted/simplified forms,
+saturated local colour, soft cinematic lighting, deep noir values and
+atmosphere — but explicitly NOT photorealism: no photographic micro-texture,
+no lens/DoF/film-still realism, no hyperreal materials. Backgrounds, items,
+generators, currency and portraits must read as ONE illustrated world, because
+items sit on the backgrounds and character busts stand over them — a photoreal
+backdrop makes the stylized foreground look pasted-on. Mood comes from LIGHTING
+and VALUE (navy shadow, amber practicals, fog, contrast), NOT from photographic
+detail. Anchor = the item icons + character portraits; backgrounds conform to
+them, never the reverse. Acceptance test for any asset: could this sit behind
+the character portraits and under the merge tiles and look like one game?
 
 ## Part 1 — Item icons (Wave 1: the four live families, 33 items + 3 generators)
 
@@ -191,7 +207,9 @@ Same style reference. All on transparent background unless noted.
 The reviewer's stress test: **Press t01–t03 · the Forensic Evidence Bag (alpha/transparency test) · one Rusty Anchor stemmed glass (thin-silhouette test) · one flat stamp (flat-UI-block test) · one generator.** These five expose nearly every failure mode (single-object vs cluster, no-text, alpha halo, thin-element collapse, flat-vs-3D) before the pipeline "cheerfully manufactures fifty-seven beautifully consistent mistakes." Approve all five, then proceed family by family.
 
 
-## Environment block (backgrounds — separate render language from items)
+## Environment block (backgrounds — same render language as items, different FRAMING rules)
+
+Backgrounds are painterly illustration, NOT photoreal — see the Render Language Standard; they conform to the item-icon/portrait look.
 Backgrounds are painterly SCENES, not alpha objects. Use this block (not the item block):
 ```
 Painterly night scene for a noir true-crime mobile game, matching the Ally key

@@ -1,8 +1,24 @@
 # Episode 1 Stage Backgrounds — generation kit
-*v1.1 · 2026-07-14 · 8 masters + 2 studio lighting variants for "The Listener" dialogue stage. Wired per-dialogue via `CaseGraph.stageBackground` (already shipped — assign the sprite on each Resolve_E1_* asset and the cinematic stage swaps it in). v1.1 applies external review: BG-6 time-of-day corrected to the locked script, BG-7 labelled as a reconstruction, broadcast variant split for L5 vs L12, cool-light exceptions documented, scrim spec standardised, style-only reference language added.*
+*v1.2 · 2026-07-15 (render language locked to stylized painterly illustration — NOT photoreal; reconciliation list added) · v1.1 2026-07-14 · 8 masters + 2 studio lighting variants for "The Listener" dialogue stage. Wired per-dialogue via `CaseGraph.stageBackground` (already shipped — assign the sprite on each Resolve_E1_* asset and the cinematic stage swaps it in). v1.1 applies external review: BG-6 time-of-day corrected to the locked script, BG-7 labelled as a reconstruction, broadcast variant split for L5 vs L12, cool-light exceptions documented, scrim spec standardised, style-only reference language added.*
 
 ## The idea: light follows the search
 The episode runs Day 1–6, and the backgrounds trace one deliberate arc — **from closed night to first light** as Ally gets closer to Dot. Acts 1–2 live in lamplit darkness (studio, bar, night water); the turn comes at L9's open midday horizon and L10's first-light reconstruction of Dot's escape; L11's fog hill carries the episode's only warm door; L12 says goodnight as the studio window shifts toward dawn. Players never read this consciously. They feel it.
+
+## Render Language Standard (whole art system · 2026-07-15)
+
+One render language across the entire game: STYLIZED PAINTERLY ILLUSTRATION
+for a mobile casual game, matching the approved character portraits and the
+item-icon set. Rich painterly rendering, clean sculpted/simplified forms,
+saturated local colour, soft cinematic lighting, deep noir values and
+atmosphere — but explicitly NOT photorealism: no photographic micro-texture,
+no lens/DoF/film-still realism, no hyperreal materials. Backgrounds, items,
+generators, currency and portraits must read as ONE illustrated world, because
+items sit on the backgrounds and character busts stand over them — a photoreal
+backdrop makes the stylized foreground look pasted-on. Mood comes from LIGHTING
+and VALUE (navy shadow, amber practicals, fog, contrast), NOT from photographic
+detail. Anchor = the item icons + character portraits; backgrounds conform to
+them, never the reverse. Acceptance test for any asset: could this sit behind
+the character portraits and under the merge tiles and look like one game?
 
 ## How the images are displayed (composition rules — every prompt)
 - **Portrait, 1284×2778 or larger** (true phone ratio; the current Rivermouth master is 863×1822 — go bigger this round). Keep vertical bleed: nothing essential in the top or bottom crop margins of the 1080×1920 stage crop.
@@ -16,8 +32,9 @@ Check each image at: full resolution → the 1080×1920 stage crop → with the 
 
 ## Global style block (paste with EVERY background; attach bg_rivermouth_night.png as the style anchor)
 ```
-Match the approved Ally Quinn background style (reference attached): painterly
-noir illustration, deep navy shadow masses, warm amber practical lights,
+Match the approved Ally Quinn background style (reference attached): FLAT/GRAPHIC
+stylized painterly ILLUSTRATION matching the item icons and character portraits —
+NOT photoreal, no photographic texture or lens realism. Painterly noir, deep navy shadow masses, warm amber practical lights,
 restrained teal accents, soft volumetric night air. Grounded and grimy-real,
 not gothic, not fantasy. Use the attached reference ONLY for painterly
 rendering, lighting, palette and atmospheric depth — do NOT copy its street,
@@ -28,6 +45,13 @@ brightness. Lower-RIGHT third kept simple and atmospheric (a character
 portrait stands there); focal landmark in the upper half or left side.
 No people, no readable words or numbers, no logos.
 ```
+
+## Render-language reconciliation (2026-07-15)
+- **BG-5 (moorings): adopt the FLATTER/illustrative version (the "v2" pass)**, not the atmospheric-photoreal one.
+- **BG-4 (street noon) and BG-5 v2 are the current best reference instances of the target look** — attach one of them as an extra style anchor on future BG generations, alongside bg_rivermouth_night.
+- **BG-1C studio, BG-2 Rusty Anchor, BG-3 kitchen, BG-6 bench:** earlier passes rendered richer/atmospheric. Re-judge each against the flat target; apply a light "flatten/de-photoreal" edit pass where needed — do NOT auto-full-reroll four good images; judge first, edit only the ones that read photoreal.
+- **BG-7 (allotments) and BG-8 (hill cottage): generate directly in the flat illustration language from the start.**
+- **Board backdrop bg_rivermouth_night:** confirm it is itself in this illustration language; if it reads photoreal, it's a candidate for the same de-photoreal pass (it's the shared anchor every exterior sits beside).
 
 ---
 
