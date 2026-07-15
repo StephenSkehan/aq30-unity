@@ -78,6 +78,7 @@ namespace AQ.App.UI.Settings
             if (!_built) BuildUI();
             RefreshTabHighlight();
             SyncSlidersToService();
+            AQTheme.PopIn(_panelRt);
         }
 
         // ── build full UI ─────────────────────────────────────────────────────

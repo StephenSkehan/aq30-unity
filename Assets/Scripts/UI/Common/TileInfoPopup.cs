@@ -36,6 +36,7 @@ namespace AQ.App.UI.Common
             // Panel
             var panel = MakeRect("Panel", _root.transform);
             AQTheme.StylePanel(panel);
+            AQTheme.PopIn(panel);
             panel.anchorMin        = new Vector2(0.5f, 0.5f);
             panel.anchorMax        = new Vector2(0.5f, 0.5f);
             panel.pivot            = new Vector2(0.5f, 0.5f);

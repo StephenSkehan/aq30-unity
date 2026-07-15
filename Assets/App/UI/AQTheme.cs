@@ -121,6 +121,48 @@ namespace AQ.App.UI
             return img;
         }
 
+        /// <summary>Springy scale-in for popup panels. Safe to call on every show.</summary>
+        public static void PopIn(RectTransform panel)
+        {
+            if (panel == null) return;
+            var driver = panel.GetComponent<PopInDriver>();
+            if (driver == null) driver = panel.gameObject.AddComponent<PopInDriver>();
+            driver.Play();
+        }
+
+        private sealed class PopInDriver : MonoBehaviour
+        {
+            Coroutine _co;
+
+            public void Play()
+            {
+                if (_co != null) StopCoroutine(_co);
+                _co = StartCoroutine(Co());
+            }
+
+            System.Collections.IEnumerator Co()
+            {
+                var rt = (RectTransform)transform;
+                const float up = 0.11f, settle = 0.07f;
+                float t = 0f;
+                while (t < up)
+                {
+                    t += Time.unscaledDeltaTime;
+                    rt.localScale = Vector3.one * Mathf.Lerp(0.86f, 1.04f, Mathf.Clamp01(t / up));
+                    yield return null;
+                }
+                t = 0f;
+                while (t < settle)
+                {
+                    t += Time.unscaledDeltaTime;
+                    rt.localScale = Vector3.one * Mathf.Lerp(1.04f, 1f, Mathf.Clamp01(t / settle));
+                    yield return null;
+                }
+                rt.localScale = Vector3.one;
+                _co = null;
+            }
+        }
+
         /// <summary>
         /// Popup panel treatment: hairline border (image on the rect itself)
         /// with an inset body. Call before adding content so the body renders
