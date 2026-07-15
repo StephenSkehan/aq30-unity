@@ -30,6 +30,7 @@ namespace AQ.App.UI.Board
         Image energyBadge;      // child "EnergyBadge", created on demand, generators only
         Image requirementTick;  // child "RequirementTick", created on demand, items only
         Image mergeHint;        // child "MergeHint", created on demand — a pair exists on the board
+        Image maxTierGlow;      // child "MaxTierGlow", created on demand — item at family ceiling
 
         static Sprite _energyBadgeSprite;
         static bool _energyBadgeSpriteLoaded;
@@ -149,6 +150,50 @@ namespace AQ.App.UI.Board
             RefreshEnergyBadge();
             RefreshRequirementTick();
             RefreshMergeHint();
+            RefreshMaxTierGlow();
+        }
+
+        /// <summary>
+        /// Soft amber halo behind items sitting at their family's top tier —
+        /// the "you finished this ladder" trophy read.
+        /// </summary>
+        void RefreshMaxTierGlow()
+        {
+            bool maxed = !IsEmpty
+                      && itemImage != null && itemImage.enabled
+                      && controller != null
+                      && controller.IsAtFamilyCeiling(this);
+
+            if (!maxed)
+            {
+                if (maxTierGlow) maxTierGlow.gameObject.SetActive(false);
+                return;
+            }
+
+            if (!maxTierGlow) maxTierGlow = CreateMaxTierGlow();
+            maxTierGlow.gameObject.SetActive(true);
+            // Render just beneath the item icon.
+            maxTierGlow.transform.SetSiblingIndex(itemImage.transform.GetSiblingIndex());
+        }
+
+        Image CreateMaxTierGlow()
+        {
+            var go = new GameObject("MaxTierGlow", typeof(RectTransform), typeof(Image));
+            var rt = (RectTransform)go.transform;
+            rt.SetParent(transform, false);
+            rt.anchorMin = new Vector2(0.01f, 0.01f);
+            rt.anchorMax = new Vector2(0.99f, 0.99f);
+            rt.offsetMin = Vector2.zero;
+            rt.offsetMax = Vector2.zero;
+
+            var img = go.GetComponent<Image>();
+            img.sprite = AQTheme.Rounded;
+            img.type   = Image.Type.Sliced;
+            img.pixelsPerUnitMultiplier = 0.9f;
+            var c = AQTheme.Amber; c.a = 0.32f;
+            img.color = c;
+            img.raycastTarget = false;
+            return img;
         }
 
         /// <summary>
@@ -369,6 +414,7 @@ namespace AQ.App.UI.Board
             if (energyBadge) energyBadge.enabled = false;
             if (requirementTick) requirementTick.gameObject.SetActive(false);
             if (mergeHint) mergeHint.gameObject.SetActive(false);
+            if (maxTierGlow) maxTierGlow.gameObject.SetActive(false);
             Follow(eventData);
         }
 

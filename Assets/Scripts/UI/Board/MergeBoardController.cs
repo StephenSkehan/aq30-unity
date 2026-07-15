@@ -509,6 +509,20 @@ namespace AQ.App.UI.Board
             return def != null ? def.itemId : string.Empty;
         }
 
+        /// <summary>
+        /// True when this item tile sits at its family's top tier (no higher
+        /// ItemDefinitionSO exists) — drives the premium max-tier glow.
+        /// </summary>
+        public bool IsAtFamilyCeiling(BoardTileView v)
+        {
+            if (v == null || v.IsEmpty || v.Kind != TileKind.Item) return false;
+            var fam = GetFamily(v);
+            if (string.IsNullOrEmpty(fam)) return false;
+            if (v.Tier < 1) return false;
+            if (LookupItemDef(fam, v.Tier) == null) return false;
+            return LookupItemDef(fam, v.Tier + 1) == null;
+        }
+
         // ---------------- Merge-pair hints ----------------
 
         /// <summary>
