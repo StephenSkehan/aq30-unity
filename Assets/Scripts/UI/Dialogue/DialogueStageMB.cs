@@ -21,7 +21,10 @@ using AQ.App.UI.Board;
 public sealed class DialogueStageMB : MonoBehaviour
 {
     const float FadeSeconds = 0.25f;
-    const float StageScrimOpacity = 0.75f;
+    // Deep scrim when dialogue plays over the default board backdrop; light
+    // when the graph brings its own stageBackground (the backdrop IS the stage).
+    const float StageScrimDark = 0.75f;
+    const float StageScrimLit = 0.35f;
 
     struct StagedGroup
     {
@@ -38,6 +41,7 @@ public sealed class DialogueStageMB : MonoBehaviour
     Image _background;
 
     float _baseScrimOpacity;
+    float _stageScrim = StageScrimDark;
     Sprite _baseBackground;
     bool _open;
     Coroutine _fade;
@@ -93,11 +97,10 @@ public sealed class DialogueStageMB : MonoBehaviour
             }
         }
 
+        var stageSprite = graph != null ? graph.stageBackground : null;
         if (_background != null)
-        {
-            var stageSprite = graph != null ? graph.stageBackground : null;
             _background.sprite = stageSprite != null ? stageSprite : _baseBackground;
-        }
+        _stageScrim = stageSprite != null ? StageScrimLit : StageScrimDark;
 
         StartFade(toStage: true);
     }
@@ -183,7 +186,7 @@ public sealed class DialogueStageMB : MonoBehaviour
         for (int i = 0; i < count; i++)
             starts[i] = _groups[i].Group != null ? _groups[i].Group.alpha : 0f;
         float scrimStart = _scrim != null ? _scrim.opacity : 0f;
-        float scrimTarget = toStage ? StageScrimOpacity : _baseScrimOpacity;
+        float scrimTarget = toStage ? _stageScrim : _baseScrimOpacity;
 
         float t = 0f;
         while (t < FadeSeconds)

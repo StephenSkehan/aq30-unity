@@ -44,6 +44,21 @@ namespace AQ.EditorTools
             Debug.Log("[PortraitTest] booted with " + SpritePath);
         }
 
+        // Boots a real Ep1 CaseGraph asset so per-graph stage wiring
+        // (stageBackground + lit scrim) can be verified end to end.
+        [MenuItem("AQ/Dev/Test E1 Tip Dialogue (Play Mode)")]
+        public static void RunTipGraph()
+        {
+            if (!Application.isPlaying) { Debug.LogWarning("[PortraitTest] Enter Play Mode first."); return; }
+            var runner = Object.FindAnyObjectByType<DialogueRunner>(FindObjectsInactive.Include);
+            var g = AssetDatabase.LoadAssetAtPath<CaseGraph>("Assets/Content/TheListener/Dialogue/Resolve_E1_Tip.asset");
+            if (runner == null || g == null) { Debug.LogError($"[PortraitTest] runner={runner != null} graph={g != null}"); return; }
+            Debug.Log($"[PortraitTest] tip graph stageBackground={(g.stageBackground != null ? g.stageBackground.name : "NULL")}");
+            runner.gameObject.SetActive(true);
+            if (runner.Panel != null) runner.Panel.gameObject.SetActive(true);
+            runner.BootWithGraph(g);
+        }
+
         // Ends the running dialogue through the real End() path (JumpTo to a
         // missing node) so DialogueClosed/stage-restore can be QA'd without a tap.
         [MenuItem("AQ/Dev/QA End Dialogue (Play Mode)")]
