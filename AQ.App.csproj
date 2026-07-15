@@ -169,6 +169,7 @@
     <Compile Include="Assets\App\Gameplay\Merge\MergeGeneratorConfig.cs" />
     <Compile Include="Assets\App\UI\Board\BoardPresenter.cs" />
     <Compile Include="Assets\App\UI\Leads\LeadCardPresenter.cs" />
+    <Compile Include="Assets\App\Leads\LeadCardSnapMB.cs" />
     <Compile Include="Assets\App\CaseFlow\CaseFlowOrchestratorMB.cs" />
     <Compile Include="Assets\App\UI\Narrative\MiniNarrativeEngine.cs" />
     <Compile Include="Assets\App\Analytics\AnalyticsInstallerMB.cs" />
