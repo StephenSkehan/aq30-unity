@@ -31,6 +31,10 @@ namespace AQ.App.UI.Board
         Image requirementTick;  // child "RequirementTick", created on demand, items only
         Image mergeHint;        // child "MergeHint", created on demand — a pair exists on the board
         Image maxTierGlow;      // child "MaxTierGlow", created on demand — item at family ceiling
+        Image dropHighlight;    // child "Highlight" from the slot prefab (cyan, ships disabled)
+
+        // Only one drag exists at a time; the source tile owns the hover state.
+        static BoardTileView _hovered;
 
         static Sprite _energyBadgeSprite;
         static bool _energyBadgeSpriteLoaded;
@@ -422,10 +426,36 @@ namespace AQ.App.UI.Board
         {
             if (ghost == null) return;
             Follow(eventData);
+
+            // Drop-target hover: light the cell under the pointer (visual only —
+            // drop resolution stays in OnEndDrag, untouched).
+            var over = TileUnderPointer(eventData);
+            if (over == this) over = null;
+            if (over != _hovered)
+            {
+                SetHover(_hovered, false);
+                SetHover(over, true);
+                _hovered = over;
+            }
+        }
+
+        static void SetHover(BoardTileView tile, bool on)
+        {
+            if (tile == null) return;
+            if (!tile.dropHighlight)
+            {
+                var t = tile.transform.Find("Highlight");
+                if (t) tile.dropHighlight = t.GetComponent<Image>();
+                if (!tile.dropHighlight) return;
+            }
+            tile.dropHighlight.enabled = on;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            SetHover(_hovered, false);
+            _hovered = null;
+
             if (ghost != null)
             {
                 ghost.Despawn();
