@@ -64,8 +64,16 @@ namespace AQ.App
                 int needed = req.quantity < 1 ? 1 : req.quantity;
                 for (int i = 0; i < needed; i++)
                 {
-                    if (!_board.TryClearItem(def.family, def.tier))
+                    if (_board.TryClearItem(def.family, def.tier, out var sprite, out var worldPos))
+                    {
+                        // Consumed item arcs from its tile to the leads bar.
+                        var screen = RectTransformUtility.WorldToScreenPoint(null, worldPos);
+                        AQ.App.UI.FlightFX.FlyItemToBar(sprite, screen);
+                    }
+                    else
+                    {
                         Debug.LogWarning($"[LeadActivation] Item family='{def.family}' tier={def.tier} not found on board for lead '{lead.leadId}' (needed {needed}, cleared {i}).", this);
+                    }
                 }
             }
         }

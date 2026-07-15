@@ -41,6 +41,13 @@ namespace AQ.App.UI
             Runner().StartCoroutine(FlyBatch(sprite, from, to, count, target.transform));
         }
 
+        /// <summary>Consumed board item arcs from its tile to the leads bar —
+        /// the board visibly feeds the story when a lead is activated.</summary>
+        public static void FlyItemToBar(Sprite sprite, Vector2 fromScreen)
+        {
+            Runner().StartCoroutine(FlyOne(sprite, fromScreen, SourceScreenPos(), null));
+        }
+
         static Vector2 SourceScreenPos()
         {
             var bar = GameObject.Find("LeadsBarRuntime");

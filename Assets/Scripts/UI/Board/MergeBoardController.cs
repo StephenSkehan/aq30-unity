@@ -724,7 +724,9 @@ namespace AQ.App.UI.Board
         /// Called once per lead requirement during lead activation to consume qualifying items.
         /// Returns false if no matching tile was found.
         /// </summary>
-        public bool TryClearItem(string family, int tier)
+        public bool TryClearItem(string family, int tier) => TryClearItem(family, tier, out _, out _);
+
+        public bool TryClearItem(string family, int tier, out Sprite clearedSprite, out Vector3 clearedWorldPos)
         {
             for (int r = 0; r < rows; r++)
             {
@@ -735,6 +737,8 @@ namespace AQ.App.UI.Board
                     if (v.Tier != tier) continue;
                     if (GetFamily(v) != family) continue;
 
+                    clearedSprite   = v.Payload.sprite;
+                    clearedWorldPos = v.transform.position;
                     OnItemRemoved?.Invoke(family, tier);
                     v.Clear();
                     familyKeyByTile.Remove(v);
@@ -742,6 +746,8 @@ namespace AQ.App.UI.Board
                     return true;
                 }
             }
+            clearedSprite = null;
+            clearedWorldPos = default;
             return false;
         }
 
