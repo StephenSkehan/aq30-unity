@@ -43,6 +43,8 @@ namespace AQ.App.Leads
 
             if (scrollRect == null) scrollRect = GetComponent<ScrollRect>();
             if (contentRoot == null && scrollRect != null) contentRoot = scrollRect.content;
+            if (scrollRect != null && scrollRect.GetComponent<LeadCardSnapMB>() == null)
+                scrollRect.gameObject.AddComponent<LeadCardSnapMB>();
             CreateProgressLabel();
         }
 
