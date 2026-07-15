@@ -47,7 +47,7 @@ No people, no readable words or numbers, no logos.
 ```
 
 ## Render-language reconciliation (2026-07-15)
-- **BG-5 (moorings): adopt the FLATTER/illustrative version (the "v2" pass)**, not the atmospheric-photoreal one.
+- **BG-5 (moorings): RESOLVED 2026-07-15** — the flat v2 is confirmed in-game (hash-identical to the imported bg_e1_moorings; the photoreal pass was never imported).
 - **BG-4 (street noon) and BG-5 v2 are the current best reference instances of the target look** — attach one of them as an extra style anchor on future BG generations, alongside bg_rivermouth_night.
 - **BG-1C studio, BG-2 Rusty Anchor, BG-3 kitchen, BG-6 bench:** earlier passes rendered richer/atmospheric. Re-judge each against the flat target; apply a light "flatten/de-photoreal" edit pass where needed — do NOT auto-full-reroll four good images; judge first, edit only the ones that read photoreal.
 - **BG-7 (allotments) and BG-8 (hill cottage): generate directly in the flat illustration language from the start.**
