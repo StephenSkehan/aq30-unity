@@ -42,36 +42,6 @@ MonoBehaviour:
       itemTier: 4
       weight: 1
       requiresStoryFlag:
-    - type: 0
-      itemFamily: fingerprint_evidence
-      itemTier: 0
-      weight: 35
-      requiresStoryFlag:
-    - type: 0
-      itemFamily: fingerprint_evidence
-      itemTier: 1
-      weight: 12
-      requiresStoryFlag:
-    - type: 0
-      itemFamily: fingerprint_evidence
-      itemTier: 2
-      weight: 4
-      requiresStoryFlag:
-    - type: 0
-      itemFamily: fingerprint_evidence
-      itemTier: 3
-      weight: 2
-      requiresStoryFlag:
-    - type: 0
-      itemFamily: fingerprint_evidence
-      itemTier: 4
-      weight: 1
-      requiresStoryFlag:
-    - type: 0
-      itemFamily: fingerprint_evidence
-      itemTier: 5
-      weight: 1
-      requiresStoryFlag:
     - type: 1
       itemFamily:
       itemTier: 0

@@ -28,7 +28,7 @@ MonoBehaviour:
   - label: Labeled Prints
     icon: {fileID: 0}
     satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: 06d84af3542406e4b9b8abbc7989ce84, type: 2}
+    itemDefinition: {fileID: 11400000, guid: 4426ca7e5c440644793d4f17cc690acf, type: 2}
     quantity: 1
   RequiredLeadIds:
   - gs_roommate

@@ -28,7 +28,7 @@ MonoBehaviour:
   - label: Database Match
     icon: {fileID: 0}
     satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: f9de90cd224421e48a2230246dc90e75, type: 2}
+    itemDefinition: {fileID: 11400000, guid: f80f6006132ef7643a5914a70001d526, type: 2}
     quantity: 1
   - label: Beer Bottle
     icon: {fileID: 0}

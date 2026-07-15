@@ -1,5 +1,5 @@
 # Item-Icon Regeneration Kit — full board sweep (PRE-RELEASE)
-*v1.0 · 2026-07-13 · Authoritative kit for regenerating **all 93 on-board icons** before the Aug 8 beta. Supersedes the "Wave 1 = shipped, regen is post-launch" note in `art-kit-items-and-ui.md` — that call is reversed: **every item, generator, and currency icon is being regenerated now.***
+*v1.0 · 2026-07-13 · Authoritative kit for regenerating **all 87 on-board icons** *(was 93 — fingerprint_evidence retired 2026-07-15, see Out of scope)* before the Aug 8 beta. Supersedes the "Wave 1 = shipped, regen is post-launch" note in `art-kit-items-and-ui.md` — that call is reversed: **every item, generator, and currency icon is being regenerated now.***
 
 ## Why this exists
 The current on-board icons predate the v1.3 style spec and share three flaws (observed live):
@@ -55,7 +55,7 @@ must remain identifiable at 96, 64 AND 48 pixels.
 ---
 
 ## PROOF BATCH — run these FIVE and approve before any bulk generation
-The stress test that exposes nearly every failure mode before you manufacture 88 consistent mistakes:
+The stress test that exposes nearly every failure mode before you manufacture 82 consistent mistakes:
 1. `food_gifts_t04_burger_single` — single hero-ish object, universe-fit + no-shadow check
 2. `forensic_tools_t2_evidence_bag` — the alpha/transparency + no-halo torture test
 3. `rusty_anchor_t06_champagne_flute` — thin-stem silhouette-collapse test
@@ -66,7 +66,7 @@ Approve all five (checked at 96/64/48 px on a light tile, dark tile AND checkerb
 
 ---
 
-# PART 1 — ITEM FAMILIES (53 icons)
+# PART 1 — ITEM FAMILIES (47 icons)
 
 ### food_gifts (12) · palette: warm diner reds/creams, appetizing · `Assets/Art/Icons/Items/food_gifts/`
 | Filename | Item | Art note |
@@ -127,17 +127,6 @@ Approve all five (checked at 96/64/48 px on a light tile, dark tile AND checkerb
 | helens_gifts_t08_scarf.png | Scarf | a folded silk scarf, soft sheen |
 | helens_gifts_t09_perfume.png | Perfume | an elegant perfume bottle, warm glass |
 | helens_gifts_t10_locket.png | Locket | an opened heart locket on a fine chain — **family hero**, sentimental |
-
-### fingerprint_evidence (6) · palette: ink navy, white card stock, silver · `Assets/Art/Icons/Items/fingerprint_evidence/`
-*Note the single-digit `t1`–`t6` filenames.*
-| Filename | Item | Art note |
-|---|---|---|
-| fingerprint_evidence_t1_partial_dusted_print.png | Partial Dusted Print | dusting brush over a half-revealed print on a dark surface |
-| fingerprint_evidence_t2_lifted_print_tape.png | Lifted Print Tape | clear tape strip holding a print, curling slightly |
-| fingerprint_evidence_t3_fingerprint_card.png | Fingerprint Card | classic ten-print card, inked prints (no readable text) |
-| fingerprint_evidence_t4_labeled_prints.png | Labeled Prints | fanned trio of tagged cards (red/blue/green tabs, no words) |
-| fingerprint_evidence_t5_digital_scan_in_progress.png | Digital Scan In Progress | handheld scanner, print mid-scan, cyan scanline |
-| fingerprint_evidence_t6_database_match.png | Database Match | tablet showing twin aligned prints joined by a green check / linking brackets (no MATCH text); bold simplified spirals — **family hero** |
 
 ### forensic_tools (5) · palette: steel grey, teal case-accents, clinical white · `Assets/Art/Icons/Items/forensic_tools/`
 *Single-digit `t1`–`t5`; note `t3` and `t5` have long filenames — keep them exact.*
@@ -245,6 +234,7 @@ Currency families are on-board merge tiles too. Same global block. **Hard rule: 
 Track per approved icon: `filename · this kit v1.0 · reference images used · generation ID · approval date · Unity reimport confirmed (GUID unchanged Y/N)`. A tiny table is enough; it lets any re-roll match the family.
 
 ## Out of scope for this sweep (noted, not touched)
+- **`fingerprint_evidence` — RETIRED 2026-07-15.** Removed from the gen_investigation_lab drop table; every lead requirement (Ep1 + shelved Ghost Student + cold cases) remapped to same-tier forensic_tools. The family slot is reserved for its replacement (decision pending — Audio Investigation is the front-runner; ladders in the project memory/decision doc). Do NOT generate fingerprint art.
 - **`press` family** — referenced by the `gen_junk` drop-table but has no ScriptableObjects and no art; it's the Episode 2 dependency (Batch F in `art-kit-items-and-ui.md`), generated separately when Ep2 content lands.
 - **`stakeout_fuel`** — a legacy alias that reuses `food_gifts` art; regenerating food_gifts refreshes it automatically. No separate generation.
 - **Legacy duplicates under `Assets/Art/UI/Icons/MergeChains/`** — superseded by `Assets/Art/Icons/Items/`; not on the live board, leave alone.
@@ -253,7 +243,7 @@ Track per approved icon: `filename · this kit v1.0 · reference images used · 
 ## Recommended generation order (biggest visible win first)
 1. **food_gifts** (12) — the most-merged family and the first tiles a player touches. Run the proof batch here, lock the look.
 2. **rusty_anchor** (10), **garage** (10), **helens_gifts** (10) — the other big item ladders.
-3. **fingerprint_evidence** (6), **forensic_tools** (5) — the investigation items.
+3. **forensic_tools** (5) — the investigation items.
 4. **junk / investigation_lab / corner_diner** generator chains (30).
 5. **currency** cash + platinum (10).
 
