@@ -1,5 +1,5 @@
 # Item-Icon Regeneration Kit — full board sweep (PRE-RELEASE)
-*v1.0 · 2026-07-13 · Authoritative kit for regenerating **all 87 on-board icons** *(was 93 — fingerprint_evidence retired 2026-07-15, see Out of scope)* before the Aug 8 beta. Supersedes the "Wave 1 = shipped, regen is post-launch" note in `art-kit-items-and-ui.md` — that call is reversed: **every item, generator, and currency icon is being regenerated now.***
+*v1.2 · 2026-07-15 (v1.0 2026-07-13) · Authoritative kit for regenerating **all 87 on-board icons** *(was 93 — fingerprint_evidence retired 2026-07-15, see Out of scope)* before the Aug 8 beta. Supersedes the "Wave 1 = shipped, regen is post-launch" note in `art-kit-items-and-ui.md` — that call is reversed: **every item, generator, and currency icon is being regenerated now.***
 
 ## Why this exists
 The current on-board icons predate the v1.3 style spec and share three flaws (observed live):
@@ -215,6 +215,41 @@ Currency families are on-board merge tiles too. Same global block. **Hard rule: 
 
 ---
 
+---
+
+# PART 4 — NEW FAMILY: Audio Investigation (6 items + 10-tier generator chain)
+*Added v1.2 2026-07-15 — Stephen-ruled: Audio Investigation replaces the retired fingerprint_evidence AND becomes the game's OPENING family, putting Ally's podcast identity on the board from minute one. "Audio Investigation finds the story. Forensic Tools makes it evidence." These are NEW files (create at the paths below), not overwrites. Deliver with straight alpha if the generator allows; flat background otherwise (no checkerboard).*
+
+### audio_investigation items (6) · palette: warm charcoal, chrome, brass, amber VU-meter glow · `Assets/Art/Icons/Items/audio_investigation/`
+*The ladder climbs from LISTENING to RECORDING to BROADCASTING to ANALYSING — each tier looks more professional and more coveted than the last. Match the gear already canonized in the BG-1 studio master (chrome broadcast mic, mixing desk, cassette deck): attach EP1-BG1.png as a prop-style reference alongside the Ally key art.*
+| Filename | Item | Art note |
+|---|---|---|
+| audio_investigation_t01_earbuds_case.png | Earbuds in Case | small consumer earbuds coiled in an open pocket case — the rawest listening tier, chunky case so it survives 48px |
+| audio_investigation_t02_studio_headphones.png | Studio Headphones | closed-back retro studio cans, coiled cable, worn leather headband — echoes Ally's canon neck-worn pair |
+| audio_investigation_t03_recorder_headphones.png | Recorder & Headphones | handheld cassette recorder with small headphones hooked over it — the first working field kit; one silhouette, recorder dominant |
+| audio_investigation_t04_broadcast_mic_rig.png | Broadcast Microphone Rig | the chrome broadcast mic (Ally's canon prop) on a desk arm with pop filter — tall, premium podcast silhouette |
+| audio_investigation_t05_mixing_console.png | Audio Mixing Console | compact analogue mixing desk, rows of knobs and faders, two amber VU meters glowing — no readable labels |
+| audio_investigation_t06_audio_workstation.png | Forensic Audio Workstation | monitor with abstract teal waveform + console + mic as ONE tight cluster — **family hero**, the full analysis rig people covet |
+
+### gen_audio_rig generator chain (10) · "the audio source" · palette: warm charcoal, brass, cassette-era browns, amber glow · `Assets/Art/Icons/Generators/audio_rig/`
+*Same generator treatment as Part 2: each tier is a FIXTURE on a subtle base pedestal, more massive/permanent than a hand-held item. The chain climbs from a shoebox of tapes to a broadcast station — Ally's operation growing across the season. Filenames carry the `gen_audio_rig_` prefix.*
+| Filename | Item | Art note |
+|---|---|---|
+| gen_audio_rig_t01_cassette_box.png | Cassette Box | a worn shoebox of mixed cassettes, one tape propped against it — humblest source (Dot's tapes) |
+| gen_audio_rig_t02_tape_crate.png | Tape Crate | wooden crate of reels and tape spines, abstract label strips |
+| gen_audio_rig_t03_answering_machine.png | Answering Machine | the tip-line answering machine, one amber message light glowing — canon L1 prop |
+| gen_audio_rig_t04_reel_recorder.png | Reel Recorder | tabletop reel-to-reel machine, twin reels, brass trim |
+| gen_audio_rig_t05_radio_receiver.png | Radio Receiver | vintage receiver/tuner stack with warm dial glow |
+| gen_audio_rig_t06_broadcast_desk.png | Broadcast Desk | small desk unit: mic boom + mixer face + lamp — a workstation becoming permanent |
+| gen_audio_rig_t07_studio_booth.png | Studio Booth | corner acoustic booth with foam panels and a hanging mic — room-scale now |
+| gen_audio_rig_t08_broadcast_rack.png | Broadcast Rack | full equipment rack tower, stacked units, amber meters |
+| gen_audio_rig_t09_radio_mast.png | Radio Mast | rooftop mast/antenna unit on a brick chimney base, signal lamp lit |
+| gen_audio_rig_t10_radio_station.png | Radio Station | attic-studio-turned-station facade, lit dormer + mast — **chain hero** ("Echoes of Havenbay" made physical, no readable words) |
+
+**Integration plan (code/data side, after art lands — one session):** create ItemDefinitionSOs (`audio_investigation_t1..t6`) + `GeneratorType_AudioRig` SO; the OPENING default generator becomes the audio rig producing audio_investigation items; the Investigation Lab (forensic source) moves to a granted/later introduction. Requirement re-flavor per the episode logic — L1/L2/L3/L5 → audio items, L6/L9/L10 stay forensic — needs a fresh economy check of the golden-path T1-equivalents before committing. **Press family amendment now locked: press_items_t04 must change from "Cassette Recorder & Tape" to a newsroom telephone + message pad** (see art-kit-items-and-ui.md) so the audio family owns all tape/recorder silhouettes.
+
+---
+
 ## Technical acceptance & QC (every asset)
 - PNG, **straight (non-premultiplied) alpha**, **sRGB**.
 - **No** opaque matte, **no** white/black edge halo, no semi-transparent noise outside the shape.
@@ -243,8 +278,9 @@ Track per approved icon: `filename · this kit v1.0 · reference images used · 
 ## Recommended generation order (biggest visible win first)
 1. **food_gifts** (12) — the most-merged family and the first tiles a player touches. Run the proof batch here, lock the look.
 2. **rusty_anchor** (10), **garage** (10), **helens_gifts** (10) — the other big item ladders.
-3. **forensic_tools** (5) — the investigation items.
-4. **junk / investigation_lab / corner_diner** generator chains (30).
-5. **currency** cash + platinum (10).
+3. **audio_investigation items (6) + gen_audio_rig chain (10)** — the NEW opening family (Part 4); generate before the remaining regens so the opening minutes get the identity win first.
+4. **forensic_tools** (5) — the investigation items.
+5. **junk / investigation_lab / corner_diner** generator chains (30).
+6. **currency** cash + platinum (10). *(already done)*
 
 That order means the board looks fixed for the earliest-game tiles almost immediately, and any style adjustment you discover in family #1 propagates cheaply to the rest.
