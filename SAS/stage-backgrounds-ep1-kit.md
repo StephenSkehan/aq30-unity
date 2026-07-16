@@ -51,7 +51,8 @@ No people, no readable words or numbers, no logos.
 - **BG-4 (street noon) and BG-5 v2 are the current best reference instances of the target look** — attach one of them as an extra style anchor on future BG generations, alongside bg_rivermouth_night.
 - **BG-2 Rusty Anchor: RESOLVED 2026-07-16** — flat v2 imported in place (same GUID); v2 swaps the drink on Gerald's table for a harbour chart.
 - **BG-3 kitchen: RESOLVED 2026-07-16** — flat v2 imported in place; v2 also tightens to exactly one cup set out per spec.
-- **BG-1C studio, BG-6 bench:** earlier passes rendered richer/atmospheric. Re-judge each against the flat target; apply a light "flatten/de-photoreal" edit pass where needed — do NOT auto-full-reroll four good images; judge first, edit only the ones that read photoreal.
+- **BG-1 base: flat v2 imported 2026-07-16** (in place, same GUID); **BG-1B/BG-1C v2 relights TO FOLLOW as a set** of this new master — swap in place when they arrive.
+- **BG-6 bench: RESOLVED 2026-07-16 — Stephen confirmed OK as-is, locked.**
 - **BG-7 (allotments) and BG-8 (hill cottage): generate directly in the flat illustration language from the start.**
 - **Board backdrop bg_rivermouth_night:** confirm it is itself in this illustration language; if it reads photoreal, it's a candidate for the same de-photoreal pass (it's the shared anchor every exterior sits beside).
 
