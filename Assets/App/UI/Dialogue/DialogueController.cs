@@ -174,7 +174,9 @@ namespace AQ.App
                 holder.anchorMin = holder.anchorMax = new Vector2(1f, stripTop);
                 holder.pivot = new Vector2(1f, 0f);
                 holder.sizeDelta = new Vector2(460f, 460f);
-                holder.anchoredPosition = new Vector2(-8f, -12f);
+                // +36: the sprite sits centred in its box with side margins, so a
+                // positive x pushes the visible back-crop toward the screen edge.
+                holder.anchoredPosition = new Vector2(36f, -12f);
 
                 if (holder != imageRt)
                 {
@@ -186,6 +188,23 @@ namespace AQ.App
 
             WidenToStrip(Speaker);
             WidenToStrip(Body);
+
+            // Long nodes were silently truncating at three lines: give the body
+            // the rest of the strip below the speaker and never clip vertically.
+            if (Body != null)
+            {
+                var rt = Body.rectTransform;
+                var min = rt.anchorMin; min.y = 0.012f; rt.anchorMin = min;
+                var max = rt.anchorMax; max.y = 0.096f; rt.anchorMax = max;
+                rt.offsetMin = new Vector2(rt.offsetMin.x, 0f);
+                rt.offsetMax = new Vector2(rt.offsetMax.x, 0f);
+                Body.fontSize = 30; // was 36 — the longest Ep1 nodes need five lines
+#if TMP_PRESENT
+                Body.overflowMode = TMPro.TextOverflowModes.Overflow;
+#else
+                Body.verticalOverflow = VerticalWrapMode.Overflow;
+#endif
+            }
         }
 
         static void WidenToStrip(Component text)
