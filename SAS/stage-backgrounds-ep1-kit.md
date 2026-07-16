@@ -56,7 +56,7 @@ No people, no readable words or numbers, no logos.
 - **BG-1C dawn: RESOLVED 2026-07-16** — v2 relight imported in place (same GUID); softer tally, rain cleared, window shifted to first blue dawn per spec. All three studio states now on the flat v2 master.
 - **BG-6 bench: RESOLVED 2026-07-16 — Stephen confirmed OK as-is, locked.**
 - **BG-7 (allotments) and BG-8 (hill cottage): generate directly in the flat illustration language from the start.**
-- **Board backdrop bg_rivermouth_night:** confirm it is itself in this illustration language; if it reads photoreal, it's a candidate for the same de-photoreal pass (it's the shared anchor every exterior sits beside).
+- **Board backdrop bg_rivermouth_night: RESOLVED 2026-07-16** — verdict: the original master read photoreal-atmospheric (soft haze, blended gradients) and was also sub-spec at 863x1822; the flat v2 (same composition, painted cloud shapes + dabbed reflections, full 1284x2778) passes the acceptance test and was imported in place (same GUID). Scene consumes it as a full-stretch UI Image, so the size change is inert. **Reconciliation ledger CLOSED — whole Ep1 set + board master now on the flat illustration language.**
 
 ---
 
