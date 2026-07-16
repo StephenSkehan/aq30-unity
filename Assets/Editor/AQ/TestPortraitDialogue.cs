@@ -44,6 +44,31 @@ namespace AQ.EditorTools
             Debug.Log("[PortraitTest] booted with " + SpritePath);
         }
 
+        // Boots a two-page-long single node so runner pagination can be QA'd.
+        [MenuItem("AQ/Dev/Test Long Node Dialogue (Play Mode)")]
+        public static void RunLongNode()
+        {
+            if (!Application.isPlaying) { Debug.LogWarning("[PortraitTest] Enter Play Mode first."); return; }
+            var runner = Object.FindAnyObjectByType<DialogueRunner>(FindObjectsInactive.Include);
+            if (runner == null) { Debug.LogError("[PortraitTest] no runner"); return; }
+            var g = ScriptableObject.CreateInstance<CaseGraph>();
+            g.startId = "L1";
+            g.nodes = new[]
+            {
+                new CaseGraph.Node
+                {
+                    id = "L1", speaker = "Pagination Test",
+                    line = "First sentence of a very long node that should not fit on one page of the strip. " +
+                           "Second sentence padding the count well past the limit with more words than needed. " +
+                           "Third sentence to guarantee we cross two hundred and forty characters comfortably. " +
+                           "Fourth sentence that must appear on PAGE TWO if pagination works correctly."
+                }
+            };
+            runner.gameObject.SetActive(true);
+            if (runner.Panel != null) runner.Panel.gameObject.SetActive(true);
+            runner.BootWithGraph(g);
+        }
+
         // Boots a real Ep1 CaseGraph asset so per-graph stage wiring
         // (stageBackground + lit scrim) can be verified end to end.
         [MenuItem("AQ/Dev/Test E1 Tip Dialogue (Play Mode)")]

@@ -49,6 +49,12 @@ namespace AQ.App
         // OnChoice indexes into this, not the raw choices array.
         private CaseGraph.Choice[] _filteredChoices = System.Array.Empty<CaseGraph.Choice>();
 
+        // Long nodes paginate at sentence boundaries instead of overflowing the
+        // strip — one tap per page, choices/advance only on the last page.
+        private const int PageCharLimit = 240;
+        private string[] _pages = System.Array.Empty<string>();
+        private int _pageIx;
+
         // History for back button (capped at 50)
         private Stack<string> _history = new Stack<string>();
         public bool CanGoBack => _history.Count > 0;
@@ -261,6 +267,14 @@ namespace AQ.App
             var n = Graph.Get(_currentId);
             if (n == null) return;
 
+            // More pages of this node first
+            if (_pageIx < _pages.Length - 1)
+            {
+                _pageIx++;
+                ShowPage(n);
+                return;
+            }
+
             // If node has VISIBLE choices, don't auto-advance (wait for choice).
             // Checks the filtered set: if flags hid every choice, fall through to
             // linear progression instead of soft-locking.
@@ -394,26 +408,17 @@ namespace AQ.App
             if (_voiceRestoreRoutine != null) { StopCoroutine(_voiceRestoreRoutine); _voiceRestoreRoutine = null; }
             _waitingForAudio = false;
 
-            // Display speaker (instant or typed)
-            if (_speakerTyper != null)
-                _speakerTyper.SetInstant(n.speaker);
-            else if (Panel.Speaker)
-                Panel.Speaker.text = n.speaker;
-
-            // Display body (typed or instant)
-            if (_bodyTyper != null)
-                _bodyTyper.StartTyping(n.line);
-            else if (Panel.Body)
-                Panel.Body.text = n.line;
-
-            // Filter choices and bind — ChoiceFilter is the single place for flag logic
+            // Filter choices once — ChoiceFilter is the single place for flag logic
             _filteredChoices = ChoiceFilter.GetAvailable(n.choices);
-            Panel.BindNode(n, _filteredChoices);
+
+            _pages = BuildPages(n.line);
+            _pageIx = 0;
+            ShowPage(n);
 
             // Update back button visibility
             Panel.UpdateBackButton(CanGoBack);
 
-            // Play voice clip if present
+            // Play voice clip if present (spans all pages of the node)
             if (n.voiceClip && voiceSource)
             {
                 voiceSource.volume = AudioSettingsService.DialogueVolume;
@@ -426,6 +431,52 @@ namespace AQ.App
 
                 _voiceRestoreRoutine = StartCoroutine(WaitForAudioComplete(n.voiceClip.length));
             }
+        }
+
+        void ShowPage(CaseGraph.Node n)
+        {
+            bool lastPage = _pageIx >= _pages.Length - 1;
+            string page = _pages.Length > 0 ? _pages[_pageIx] : n.line;
+
+            // Choices only surface on the final page.
+            Panel.BindNode(n, lastPage ? _filteredChoices : System.Array.Empty<CaseGraph.Choice>());
+            if (Panel.Body) Panel.Body.text = string.Empty; // BindNode wrote the full line
+
+            if (_speakerTyper != null)
+                _speakerTyper.SetInstant(n.speaker);
+            else if (Panel.Speaker)
+                Panel.Speaker.text = n.speaker;
+
+            if (_bodyTyper != null)
+                _bodyTyper.StartTyping(page);
+            else if (Panel.Body)
+                Panel.Body.text = page;
+        }
+
+        /// <summary>
+        /// Splits a long line into strip-sized pages at sentence boundaries.
+        /// Short lines come back as a single page; sentences are never broken.
+        /// </summary>
+        static string[] BuildPages(string line)
+        {
+            if (string.IsNullOrEmpty(line) || line.Length <= PageCharLimit)
+                return new[] { line ?? string.Empty };
+
+            var sentences = System.Text.RegularExpressions.Regex.Split(line, @"(?<=[.!?…])\s+");
+            var pages = new List<string>();
+            var current = new System.Text.StringBuilder();
+            foreach (var s in sentences)
+            {
+                if (current.Length > 0 && current.Length + s.Length + 1 > PageCharLimit)
+                {
+                    pages.Add(current.ToString());
+                    current.Clear();
+                }
+                if (current.Length > 0) current.Append(' ');
+                current.Append(s);
+            }
+            if (current.Length > 0) pages.Add(current.ToString());
+            return pages.ToArray();
         }
 
         IEnumerator WaitForAudioComplete(float duration)
