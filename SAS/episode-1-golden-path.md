@@ -23,7 +23,9 @@ Item shorthand: F=forensic_tools · P=fingerprint_evidence · R=rusty_anchor · 
 - Teaser card "Episode 2: The Ferryman" present, non-proceedable.
 - Progress label ends 12/12 (cold cases don't increment it).
 - Evidence board: e1 cards cluster PHASE 1 / PHASE 2; cold cases + teaser absent from board.
-- Energy: full FTUE tank should carry roughly through Phase 1; pinch expected mid-Phase-2 (dev -50 button to force-test the popup funnel).
+- Energy: full FTUE tank should carry roughly through Phase 1; pinch expected mid-Phase-2 at the Schedule B walls (L6/L8/L10/L11); regen is 150s/point since 2026-07-17 (dev -50 button to force-test the popup funnel).
+- **Evidence Locker (2026-07-17):** long-press an item → STORE moves it off-board (8 free slots; slots 9–12 cost 200/400/800/1600 CC — the CaseCash sink). Locker items still satisfy leads; a Proceed that would draw from the locker shows a "USE LOCKER ITEMS?" confirm. LOCKER button bottom-left, above the overflow pocket. QA drivers under AQ/Dev/QA Locker - *.
+- **Form factors (2026-07-17):** BoardFitMB shrinks cell size at runtime so all 9 rows + the corner buttons fit every aspect (was: bottom row clipped on 16:9/4:3). Regression check: AQ/Dev/QA Form Factor Sweep in play mode — 8 clean audit lines = pass.
 
 ## Generator provisioning (added 2026-07-12)
 

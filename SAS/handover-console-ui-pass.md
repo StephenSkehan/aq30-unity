@@ -1,5 +1,7 @@
 # Handover → local console session (UI/UX #2 pass)
 
+> **ARCHIVED 2026-07-17 — this handover was consumed; the UI/UX #2 pass and everything after it shipped. Known error preserved for the record: it calls Case_Board_Portrait "(main)" — WRONG. The live playable scene is `Assets/Scenes/Main Merge.unity` (Build Index 0); Case_Board_Portrait is a stale prototype stub. Do not start work from this document.**
+
 *Paste the fenced block below as the first message to a fresh Claude Code console session opened in the local `aq30-unity` project. Written 2026-07-12 by the cloud (web) session that did the bible/episodes/audit work.*
 
 ```

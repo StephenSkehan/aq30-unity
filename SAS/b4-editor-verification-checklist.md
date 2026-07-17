@@ -1,5 +1,7 @@
 # B4 — In-Editor Verification Checklist (for Stephen)
 
+> **ARCHIVED 2026-07-17 — this checklist was completed and its outputs consumed (UI/UX passes #1–#2 + amber batch all shipped). Two corrections for anyone reading it later: the live playable scene is `Assets/Scenes/Main Merge.unity` (Build Index 0), NOT Case_Board_Portrait (a stale prototype stub); and LFS files are real content in this checkout, not pointer stubs.**
+
 *2026-07-12 · the one thing that gates Claude's UI/UX work. Goal: tell Claude which UI items are REAL in the running game vs. still stubs, so he codes the actual gaps and doesn't rebuild what exists. This checkout stores scenes/prefabs/final UI art as git-LFS pointer stubs, so Claude literally cannot see the scene wiring — only you can.*
 
 **Time: ~15 minutes. What Claude needs back: this list filled in (Y/N/notes) + 4 screenshots.**

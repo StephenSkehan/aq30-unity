@@ -238,6 +238,8 @@ Currency families are on-board merge tiles too. Same global block. **Hard rule: 
 # PART 4 — NEW FAMILY: Audio Investigation (6 items + 10-tier generator chain)
 *Added v1.2 2026-07-15 — Stephen-ruled: Audio Investigation replaces the retired fingerprint_evidence AND becomes the game's OPENING family, putting Ally's podcast identity on the board from minute one. "Audio Investigation finds the story. Forensic Tools makes it evidence." These are NEW files (create at the paths below), not overwrites. Deliver with straight alpha if the generator allows; flat background otherwise (no checkerboard).*
 
+**STATUS 2026-07-17: the 6 item icons are DELIVERED + IMPORTED (commit 421d394 — transparent-native straight alpha, passed the acceptance test; ItemDefinitionSOs created, not yet scene-wired). Outstanding: the 10 gen_audio_rig chain sprites (blocks the whole integration flip — see audio-investigation-requirement-map.md) and a T1 regen: the delivered earbuds have NO pocket case (spec'd below for 48px survival) — weakest board-size read; regen is an in-place same-GUID swap. NOTE for the generator SO when built: drop table mirrors the lab's TUNED curve (135/12/4/2/1 + sub-gen 1, per the 2026-07-17 Excel tuning pass), not the original 35/12/4/2/1.**
+
 ### audio_investigation items (6) · palette: warm charcoal, chrome, brass, amber VU-meter glow · `Assets/Art/Icons/Items/audio_investigation/`
 *The ladder climbs from LISTENING to RECORDING to BROADCASTING to ANALYSING — each tier looks more professional and more coveted than the last. Match the gear already canonized in the BG-1 studio master (chrome broadcast mic, mixing desk, cassette deck): attach EP1-BG1.png as a prop-style reference alongside the Ally key art.*
 | Filename | Item | Art note |

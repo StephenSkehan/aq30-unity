@@ -1,5 +1,5 @@
 # Audio Investigation — Ep1 Requirement Map (SIGNED OFF)
-*v1.1 · 2026-07-17 · integration design for the opening-family swap (art spec: item-icon-regeneration-kit v1.3 Part 4). **Stephen ruled 2026-07-17: L4 lab grant · L5 pure audio · L12 bookend YES.** Blocked only on audio family art delivery.*
+*v1.1 · 2026-07-17 · integration design for the opening-family swap (art spec: item-icon-regeneration-kit v1.3 Part 4). **Stephen ruled 2026-07-17: L4 lab grant · L5 pure audio · L12 bookend YES.** Art status 2026-07-17: 6 item icons imported + SOs created (421d394, not scene-wired); **blocked only on the 10 gen_audio_rig chain sprites**. gen_audio_rig drop table = the lab's TUNED curve (135/12/4/2/1 + sub-gen 1).*
 
 Shorthand: A=audio_investigation · F=forensic_tools · R=rusty_anchor · D=food_gifts.
 T1-equivalents: T2=2 · T3=4 · T4=8 · T5=16 · T6=32.
