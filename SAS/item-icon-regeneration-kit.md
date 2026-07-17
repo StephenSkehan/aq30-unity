@@ -1,5 +1,13 @@
 # Item-Icon Regeneration Kit — full board sweep (PRE-RELEASE)
-*v1.3 · 2026-07-15 (Render Language Standard added — the item look is the SYSTEM anchor; backgrounds conform to it) · v1.2 2026-07-15, v1.0 2026-07-13 · Authoritative kit for regenerating **all 87 on-board icons** *(was 93 — fingerprint_evidence retired 2026-07-15, see Out of scope)* before the Aug 8 beta. Supersedes the "Wave 1 = shipped, regen is post-launch" note in `art-kit-items-and-ui.md` — that call is reversed: **every item, generator, and currency icon is being regenerated now.***
+*v1.4 · 2026-07-17 (audio item delivery status + total-scope arithmetic + transparency wording) · v1.3 2026-07-15 (Render Language Standard) · v1.2 2026-07-15, v1.0 2026-07-13 · Authoritative kit for the pre-beta board-art sweep. Supersedes the "Wave 1 = shipped, regen is post-launch" note in `art-kit-items-and-ui.md` — that call is reversed: **every item, generator, and currency icon is being regenerated now.***
+
+```text
+TOTAL PRE-BETA BOARD-ART SCOPE
+  87 in-place regenerations (was 93 — fingerprint retired 2026-07-15)
+ +16 new Audio Investigation assets (6 items DELIVERED 2026-07-17 · 10 gen chain OUTSTANDING)
+ =103 deliverables (before Press items and Ep-stamps, tracked in art-kit-items-and-ui.md)
+DONE: 42 regens + 6 audio items = 48/103 · REMAINING: garage 10, helens 10, forensic 5, investigation_lab 10, corner_diner 10, gen_junk 0 (done), + 10 audio-rig chain
+```
 
 ## Why this exists
 The current on-board icons predate the v1.3 style spec and share three flaws (observed live):
@@ -236,7 +244,7 @@ Currency families are on-board merge tiles too. Same global block. **Hard rule: 
 ---
 
 # PART 4 — NEW FAMILY: Audio Investigation (6 items + 10-tier generator chain)
-*Added v1.2 2026-07-15 — Stephen-ruled: Audio Investigation replaces the retired fingerprint_evidence AND becomes the game's OPENING family, putting Ally's podcast identity on the board from minute one. "Audio Investigation finds the story. Forensic Tools makes it evidence." These are NEW files (create at the paths below), not overwrites. Deliver with straight alpha if the generator allows; flat background otherwise (no checkerboard).*
+*Added v1.2 2026-07-15 — Stephen-ruled: Audio Investigation replaces the retired fingerprint_evidence AND becomes the game's OPENING family, putting Ally's podcast identity on the board from minute one. "Audio Investigation finds the story. Forensic Tools makes it evidence." These are NEW files (create at the paths below), not overwrites. Generation may use a temporary flat background if the tool demands it, but **final delivery must be genuine straight-alpha transparency** (the global spec's technical acceptance is absolute; a flat background is not an acceptable final asset).*
 
 **STATUS 2026-07-17: the 6 item icons are DELIVERED + IMPORTED (commit 421d394 — transparent-native straight alpha, passed the acceptance test; ItemDefinitionSOs created, not yet scene-wired). Outstanding: the 10 gen_audio_rig chain sprites (blocks the whole integration flip — see audio-investigation-requirement-map.md) and a T1 regen: the delivered earbuds have NO pocket case (spec'd below for 48px survival) — weakest board-size read; regen is an in-place same-GUID swap. NOTE for the generator SO when built: drop table mirrors the lab's TUNED curve (135/12/4/2/1 + sub-gen 1, per the 2026-07-17 Excel tuning pass), not the original 35/12/4/2/1.**
 

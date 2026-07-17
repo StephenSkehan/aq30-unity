@@ -1,5 +1,5 @@
 # Episode 1 Stage Backgrounds — generation kit
-*v1.2 · 2026-07-15 (render language locked to stylized painterly illustration — NOT photoreal; reconciliation list added) · v1.1 2026-07-14 · 8 masters + 2 studio lighting variants for "The Listener" dialogue stage. Wired per-dialogue via `CaseGraph.stageBackground` (already shipped — assign the sprite on each Resolve_E1_* asset and the cinematic stage swaps it in). v1.1 applies external review: BG-6 time-of-day corrected to the locked script, BG-7 labelled as a reconstruction, broadcast variant split for L5 vs L12, cool-light exceptions documented, scrim spec standardised, style-only reference language added.*
+*v1.3 · 2026-07-17 (status matrix added; reconciliation CLOSED 2026-07-16) · v1.2 2026-07-15 (render language locked to stylized painterly illustration — NOT photoreal; reconciliation list added) · v1.1 2026-07-14 · 8 masters + 2 studio lighting variants for "The Listener" dialogue stage. Wired per-dialogue via `CaseGraph.stageBackground` (already shipped — assign the sprite on each Resolve_E1_* asset and the cinematic stage swaps it in). v1.1 applies external review: BG-6 time-of-day corrected to the locked script, BG-7 labelled as a reconstruction, broadcast variant split for L5 vs L12, cool-light exceptions documented, scrim spec standardised, style-only reference language added.*
 
 ## The idea: light follows the search
 The episode runs Day 1–6, and the backgrounds trace one deliberate arc — **from closed night to first light** as Ally gets closer to Dot. Acts 1–2 live in lamplit darkness (studio, bar, night water); the turn comes at L9's open midday horizon and L10's first-light reconstruction of Dot's escape; L11's fog hill carries the episode's only warm door; L12 says goodnight as the studio window shifts toward dawn. Players never read this consciously. They feel it.
@@ -55,7 +55,22 @@ No people, no readable words or numbers, no logos.
 - **BG-1B on-air: RESOLVED 2026-07-16** — v2 relight of the flat BG-1 master imported in place (same GUID); red tally + deep-night rain window, geometry matches the master.
 - **BG-1C dawn: RESOLVED 2026-07-16** — v2 relight imported in place (same GUID); softer tally, rain cleared, window shifted to first blue dawn per spec. All three studio states now on the flat v2 master.
 - **BG-6 bench: RESOLVED 2026-07-16 — Stephen confirmed OK as-is, locked.**
-- **BG-7 (allotments) and BG-8 (hill cottage): generate directly in the flat illustration language from the start.**
+- **BG-7 (allotments) and BG-8 (hill cottage):** ~~generate directly in the flat illustration language from the start~~ — **BOTH DONE: generated flat, imported and wired (BG-7 commit 489c588 → Trail/L10; BG-8 commit 64a4bc8 → Hills/L11).**
+
+### Status matrix (all assets, 2026-07-17)
+| Asset | Generated | Imported | Wired | Language |
+|---|---|---|---|---|
+| BG-1 studio (+1B on-air, +1C dawn) | ✅ | ✅ (flat v2s) | ✅ L1/2/3 · L5 · L12 | flat ✅ |
+| BG-2 Rusty Anchor | ✅ | ✅ (flat v2) | ✅ L4 | flat ✅ |
+| BG-3 kitchen | ✅ | ✅ (flat v2) | ✅ L6 | flat ✅ |
+| BG-4 street | ✅ | ✅ | ✅ L7 | flat (reference instance) ✅ |
+| BG-5 moorings | ✅ | ✅ (flat v2) | ✅ L8 | flat (reference instance) ✅ |
+| BG-6 bench | ✅ | ✅ | ✅ L9 | locked as-is ✅ |
+| BG-7 allotments | ✅ | ✅ | ✅ L10 | flat-from-start ✅ |
+| BG-8 hill cottage | ✅ | ✅ | ✅ L11 | flat-from-start ✅ |
+| bg_rivermouth_night (board master) | ✅ | ✅ (flat v2) | ✅ scene Background | flat ✅ |
+
+**RECONCILIATION LEDGER CLOSED 2026-07-16.** Stephen's in-editor approval pass of the swapped v2s = the only remaining eyeball.
 - **Board backdrop bg_rivermouth_night: RESOLVED 2026-07-16** — verdict: the original master read photoreal-atmospheric (soft haze, blended gradients) and was also sub-spec at 863x1822; the flat v2 (same composition, painted cloud shapes + dabbed reflections, full 1284x2778) passes the acceptance test and was imported in place (same GUID). Scene consumes it as a full-stretch UI Image, so the size change is inert. **Reconciliation ledger CLOSED — whole Ep1 set + board master now on the flat illustration language.**
 
 ---

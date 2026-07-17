@@ -68,7 +68,10 @@ must remain identifiable at 96, 64 AND 48 pixels.
 | forensic_tools_t04 | UV Light | handheld UV torch, violet glow at the lens |
 | forensic_tools_t05 | Complete Forensic Kit | premium large case, gleaming instruments, the family's "hero" |
 
-### Batch B — Fingerprint Evidence (6) · palette: ink navy, white card stock, silver
+### ~~Batch B — Fingerprint Evidence (6)~~ · **RETIRED 2026-07-15 — DO NOT GENERATE**
+> **The fingerprint_evidence family was removed from the game** (overlapped forensic_tools; replaced by Audio Investigation, see item-icon-regeneration-kit.md Part 4). All lead asks remapped to forensic. The table below is preserved for the archive only. Current sweep = **87 regens + 16 new audio = 103 pre-beta board-art deliverables** (the "93" in the 2026-07-13 banner predates the retirement).
+
+*(archived spec below — do not generate)*
 | File | Item | Art notes |
 |---|---|---|
 | fingerprint_evidence_t01 | Partial Dusted Print | dusting brush over a half-revealed print on dark surface |
@@ -119,7 +122,7 @@ must remain identifiable at 96, 64 AND 48 pixels.
 
 | Generator | Produces (Ep1) | Type | Notes |
 |---|---|---|---|
-| Investigation Lab (`gen_investigation_lab`) | Forensic Tools + Fingerprint Evidence | multi-fixed | the starting generator |
+| Investigation Lab (`gen_investigation_lab`) | Forensic Tools ONLY *(fingerprint retired 2026-07-15; becomes the L4-granted generator when the Audio Investigation swap lands)* | multi-fixed | the starting generator *(until the audio swap)* |
 | Corner Diner (`corner_diner`) | Food Gifts | single-fixed | granted at Ep1 L5 |
 | Old Evidence Drawer (`gen_junk`) | Rusty Anchor *(in Ep1)* | flag-gated multi | also drops garage / press / helens_gifts, each locked behind its own `aq.char.*` / `aq.loc.*` story flag; only `rusty_anchor` is unlocked in Ep1 (rusty flag set at L1) |
 
@@ -148,7 +151,7 @@ So four live families are served by three generators — the Lab produces two, a
 | press_items_t01 | Torn Newsprint Clipping | a single light torn scrap of newspaper, abstract column strokes only (no readable words), soft creased edges, newsprint cream and ink black. The rawest, smallest tier. |
 | press_items_t02 | Notepad & Pencil | a spiral-bound flip notepad with a pencil laid diagonally across it, unreadable scribble texture on the page. Thicker object + diagonal pencil — clearly more than t01. |
 | press_items_t03 | Press Badge & Notebook | a laminated press badge on a worn brass-clipped lanyard resting on a closed leather notebook — a layered pair, hanging lanyard silhouette. Photo area is a blank block, no face. |
-| press_items_t04 | Cassette Recorder & Tape | a chunky handheld cassette recorder with a micro-cassette beside it, blank label block, brass screws catching light. Distinct mechanical silhouette, more mass than t03. |
+| press_items_t04 | Newsroom Telephone & Message Pad *(AMENDED 2026-07-15 — the cassette recorder collided with the Audio Investigation family; this amendment was LOCKED with the audio ruling)* | a heavy retro newsroom desk telephone with a message pad and pencil beside it, one abstract scrawled line on the pad (no readable text). Distinct mechanical silhouette, more mass than t03. |
 | press_items_t05 | Bulging Clippings Folder | a thick manila folder over-stuffed with papers, colour tabs and protruding clippings held by a paper-clip, one red grease-pencil ring. A visible collection — much more paper. |
 | press_items_t06 | Portable Typewriter | a compact vintage portable typewriter, a blank sheet wound in, keys catching warm light, brass return lever. Large, unmistakable machine silhouette. |
 | press_items_t07 | Microfilm Viewer & Reel | a boxed microfilm reel seated in/beside a small tabletop viewer, a short film strip pulled out catching light, brass spindle. Taller technical archive equipment. *(a reel is microfilm, not microfiche — named correctly)* |
@@ -156,9 +159,9 @@ So four live families are served by three generators — the Lab produces two, a
 | press_items_t09 | Front-Page Layout Board | a proof/layout board on a slight easel lip so it is NOT a flat low rectangle at the 15° angle — column blocks, a generic photo block, red grease-pencil markup, a raised roller and clipped sheets breaking the top silhouette. The published output. |
 | press_items_t10 | The Morgue Cabinet | a tall oak card-catalogue / filing cabinet, one drawer open showing fanned clippings and brass label-holders, a desk-lamp glow on top, worn brass handles — the family **hero**: biggest, richest, warmest. |
 
-*Acceptance per icon (same as Wave 1): transparent background · silhouette readable at 96 px · consistent 15° angle + upper-left key with warm right rim · no text baked in beyond the diegetic headline/label hints · each tier visibly "more" than the one below. Generate t01 first, approve, then attach it as the family style anchor for t02–t10.*
+*Acceptance per icon (same as Wave 1): transparent background · silhouette readable at 96 px · consistent 15° angle + upper-left key with warm right rim · **abstract headline/label MARKS only — never readable text** (the no-text rule is absolute) · each tier visibly "more" than the one below. Generate t01 first, approve, then attach it as the family style anchor for t02–t10.*
 
-### Batch G — Garage (import pass, no generation unless an icon fails)
+### Batch G — Garage · **SUPERSEDED 2026-07-13: garage is in the FULL regeneration sweep** (item-icon-regeneration-kit.md — 10 regens). The import-and-gap-fill instruction below predates the whole-board regen ruling; the regen kit wins.
 Tier art already exists: `SAS/Item Icons/Item Family - Garage/garage_t01`–`t10` (socket wrench → the pimped ride). **Import checklist:** (1) copy the ten PNGs into the item-icon import location; (2) run the GUID/meta pipeline (the Gerald-pattern batch importer) so each gets a stable GUID; (3) confirm each reads at 96 px against the family tier rule; (4) regenerate **only** any tier that fails the silhouette check — no new family, no full regen (ruling 2026-07-12). Garage's only Ep2 use is L7 (the fused cashbox at Malone's).
 
 ### New UI sprites (Ep2 branch stamps) · differ by SYMBOL, not colour alone
@@ -217,7 +220,7 @@ Same style reference. All on transparent background unless noted.
 ## Asset manifest (record per approved asset — reproducibility, not just "one session")
 `filename · prompt revision (e.g. kit v1.3) · reference images used · generation/edit ID if available · approval date · OneDrive source path · Unity GUID/import status`. Keep it as a small table so a re-roll or a reviewer can trace any icon.
 
-## Proof batch — run these FIVE before any bulk generation
+## Proof batch — five proof CATEGORIES (seven assets) before any bulk generation
 The reviewer's stress test: **Press t01–t03 · the Forensic Evidence Bag (alpha/transparency test) · one Rusty Anchor stemmed glass (thin-silhouette test) · one flat stamp (flat-UI-block test) · one generator.** These five expose nearly every failure mode (single-object vs cluster, no-text, alpha halo, thin-element collapse, flat-vs-3D) before the pipeline "cheerfully manufactures fifty-seven beautifully consistent mistakes." Approve all five, then proceed family by family.
 
 

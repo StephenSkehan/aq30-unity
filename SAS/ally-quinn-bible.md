@@ -1,7 +1,14 @@
 # Ally Quinn: True Crime Merge — Master Bible
 
-*v2.0 · 2026-07-11 · the connected whole: world, season, cast, craft, systems-as-story, and production law.*
+*v2.1 · 2026-07-17 (systems addendum below; badge + Vex canon corrections applied in place) · v2.0 · 2026-07-11 · the connected whole: world, season, cast, craft, systems-as-story, and production law.*
 *Supersedes `Bible/Ally Quinn Bible.docx` (March scaffold). Built per `SAS/bible-source-dossier.md` (CHECKPOINT 1, all rulings incorporated).*
+
+> ## ⚠ SYSTEMS ADDENDUM 2026-07-17 — Chapter 7 and the glossary predate the July economy rulings
+> Where Chapter 7 or the glossary states a number or family fact, the CURRENT truth is (per `SAS/CURRENT-STATE.md` and the systems masters):
+> - **Live build:** Schedule B — **330 T1-equivalents · 1,410 CaseCash** (not ≈144/1,365) · regen **150s**/point (not 90) · walls at L6/L8/L10/L11 · **Evidence Locker** is CaseCash's first spend (8 free slots + slots 9–12 at 200/400/800/1600 CC) · drop tables are the 2026-07-17 tuned spawn-low/merge-up curves.
+> - **Fingerprint Evidence is RETIRED** (2026-07-15; all asks remapped to forensic).
+> - **Signed next state (not yet live):** Audio Investigation becomes the OPENING family ("Audio Investigation finds the story. Forensic Tools makes it evidence."), the Investigation Lab moves to an L4 grant — blocked on the 10 gen_audio_rig chain sprites.
+> - Long-term canon policy (families as places/practices, merge-as-investigation) is unchanged; only the concrete figures below are historical.
 
 **How to use this document.** This bible is the narrative program's home truth — the one place where the world, the season arc, the cast, the episode craft, and the production rules connect. It does not duplicate its masters: dialogue truth lives in locked scripts, roster truth in `canon-character-roster.md`, appearance truth in `portrait-prompts-canon-cast.md`, systems truth in the SAS architecture docs and the economy sheet. Where this bible and a master disagree, the master wins and this bible gets corrected. Precedence for any conflict: **locked scripts → roster → this bible → prompts/kits → SAS systems docs → legacy sources** (full archaeology in Appendix 9.4).
 
@@ -150,7 +157,7 @@ What he was chasing: a corruption web tying old-money redevelopment, missing pub
 - **~2023 — the podcast.** Ally, now a licensed PI, starts *Echoes of Havenbay*. Three years of episodes build the audience — and the tip-line ritual — that Episode 1 inherits.
 - **2026 — the Resurgence.** The Listener airs. A coin appears on a phone cradle in Rivermouth. The season begins.
 
-Thomas persists in the story as evidence and absence: his files and notes (initials only, post-2006), the lockbox ("a filing cabinet with a guilt complex"), his fountain pen, the sepia photo in Ally's locket, the photocopied 2006 press badge the Ferryman returns to her like a taunt. The rule from the pilot spec stands: episodes touch Thomas lightly — his absence, his files existing, not their contents — until the season deliberately opens them.
+Thomas persists in the story as evidence and absence: his files and notes (initials only, post-2006), the lockbox ("a filing cabinet with a guilt complex"), his fountain pen, the sepia photo in Ally's locket, the *original* 2006 press badge the Ferryman returns to her like a taunt *(v4 ruling — "photocopied" is superseded everywhere)*. The rule from the pilot spec stands: episodes touch Thomas lightly — his absence, his files existing, not their contents — until the season deliberately opens them.
 
 ## 3.2 The Ferryman network
 
@@ -170,7 +177,7 @@ Nova Skye orbits the network from the other side — an ambiguous ally whose mur
 The delivery mechanism is fixed: each episode's case is solved honestly and completely, and the season advances by exactly one notch, usually in the final minutes, usually underplayed. The ladder so far:
 
 1. **Ep1 — The Listener (locked):** the whisper. A coin, somewhere it shouldn't be — placed dead centre on Dot's phone cradle. Ally photographs it, Gerald goes silent ("Don't put that on the show, love"), and no one explains anything. Plus the street-level thread: a pale van tracing to dissolved Harbourline Security, and a stinger — somewhere, the episode playing; a click; a diesel starts. Someone now knows her name.
-2. **Ep2 — The Ferryman (draft):** the detonation. The coin becomes a signature (2006, Danny's tiller), the route becomes live (Pier 13, Thursday, 4:40 a.m.), the antagonist becomes aware and generational (the envelope: his coin, Thomas's photocopied press badge, five block capitals). New facts: the route predates Voss Bio; code names; Thomas's 2006 source discipline. Left open: who "F" is; what the crossings carry now; why Del believes a taskforce would leak.
+2. **Ep2 — The Ferryman (draft):** the detonation. The coin becomes a signature (2006, Danny's tiller), the route becomes live (Pier 13, Thursday, 4:40 a.m.), the antagonist becomes aware and generational (the envelope: his coin, Thomas's *original* press badge — per the v4 ruling — five block capitals). New facts: the route predates Voss Bio; code names; Thomas's 2006 source discipline. Left open: who "F" is; what the crossings carry now; why Del believes a taskforce would leak.
 3. **Ep3 (open):** pointed by Ep2's notch — the leak inside Havenbay PD. (And the Ep2 stinger question: who else was listening?)
 4. **~Ep5 — The Ghost Student (design doc):** the institutional turn. Voss Bio surfaces; the shell company in the scheme's money trail matches Thomas's old notes; Gerald's lockbox reveal — Thomas investigated Voss Bio in the 2000s. The conspiracy acquires a corporate name and a family connection.
 5. **Mid-to-late season (shape):** the network's tiers come into focus — a red-herring antagonist is spent (the episode where Ally, raw and frustrated, tells her listeners she's "chasing a ghost"); Hart's philanthropy and Voss's contracts start sharing paperwork; the Kestrel-and-harbour geography accumulates weight.
@@ -571,7 +578,7 @@ Portraits: Ally, Gerald, Dot, Del Cruz (Mo participates, quoted in L4, without d
 
 *In 2006, night ferryman Danny Reyes rowed the harbour's last crossing and never came back; the file said accident, the town said thief, and his daughter spent twenty years knowing both were lies.*
 
-Full 12-lead draft exists and conforms to the writers' prompt v2. The case: Danny Reyes was the harbour's bagman — "the ferryman" was a job before it was a name — rowing unbanked cash from Pier 13 every Thursday for eleven years. He kept a second ledger because he wanted out; the journalist he was building the case for was Thomas Quinn; he disappeared four days before the meet. Dock foreman "Sailor" Merrick (d. 2011) faked the final logbook entry; a coin was taped to the tiller. The route never stopped — and at Pier 13 its current operator leaves Ally an envelope: his coin, a photocopy of her father's 2006 press badge, and five words: THE ROUTE OUTLIVES ITS RIDERS.
+Full 12-lead draft exists and conforms to the writers' prompt v2. The case: Danny Reyes was the harbour's bagman — "the ferryman" was a job before it was a name — rowing unbanked cash from Pier 13 every Thursday for eleven years. He kept a second ledger because he wanted out; the journalist he was building the case for was Thomas Quinn; he disappeared four days before the meet. Dock foreman "Sailor" Merrick (d. 2011) faked the final logbook entry; a coin was taped to the tiller. The route never stopped — and at Pier 13 its current operator leaves Ally an envelope: his coin, her father's *original* 2006 press badge (v4 ruling), and five words: THE ROUTE OUTLIVES ITS RIDERS.
 
 Season facts the draft establishes: the money route predates Voss Bio and moves physically by water from Pier 13 on a fixed tide; the operation uses code names (Pilot, Chalk, Anchor, Ledger, and one that's just F); the coin calling-card goes back at least to 2006; Thomas lost a source that year and never wrote a source's real name again — Danny Reyes taught him that, posthumously. Keeper: Rosa Reyes, who ends the episode writing the logbook's final line in her own hand.
 

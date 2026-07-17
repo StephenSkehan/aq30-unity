@@ -27,6 +27,11 @@ The scenario model shows **requirement mass is a ~2-day lever, not a 4-day one.*
 | L12 Goodnight, Harbour | 1× A-T2 | 2 | — | 2 | — | 2 |
 | **Episode total** | | **144** | | **262** | | **330** |
 
+## Model method (documented 2026-07-17 post-audit — the grid is reproducible from this)
+- **Per-tap T1eq yields** (drop-table expectation, sub-generator entries included in the denominator at 0 T1eq): lab/audio 223/155 = **1.4387** · junk-per-family 298/171 = **1.7427** · diner 275/162 = **1.6975**. *(An external recheck derived ~1.336 for the lab and ~233 total taps — that treats sub-gen rolls differently; THIS is the canonical method: expected taps = Σ(family T1eq ÷ family yield) × 1.10 merge-alignment overhead, then −20 taps for the L5 energy grant. Schedule B: (30+92)/1.4387 + 160/1.7427 + 48/1.6975 = 204.9 × 1.10 ≈ 225.)*
+- **Assumptions:** sessions start at the full 100 cap (gaps ≥ regen-to-full); ads = +20 energy each at the archetype's ads/day; sub-generator drops consume a tap and yield no requirement progress; the 1.10 overhead covers merge-composition misalignment + end-of-episode leftovers; locker use assumed neutral to board efficiency.
+- **Known limitation — lead topology is NOT modeled:** L6/L7/L8 are parallel (all spawn from L5), so "wall 1/wall 2" ordering and popup timing vary by route (rusty-first vs forensic-first players see different congestion). The grid is aggregate-mass only; route modeling (lowest-tier-first / story-order / single-family-focus) is future work if crowd-test data shows route-dependent stalls.
+
 ## Model outcomes (from the CSV; new drop tables, audio rig = new lab curve, 10% merge-alignment overhead, L5 +20 credited)
 
 | Schedule | Expected taps | Light (1 sess/day) | Engaged (2 sess + 2 ads) | Popups (light) |
@@ -36,7 +41,7 @@ The scenario model shows **requirement mass is a ~2-day lever, not a 4-day one.*
 | **B 330** | **~225** | **1.8–1.9 days** | ~0.7 days | 1–2 |
 
 ## Recommendation
-1. **Adopt Schedule B.** Walls at L6/L8/L10/L11 land between story beats; branch lead L9 and both podcast bookends stay frictionless; the climax grind (L11) is the biggest ask, resolved by the finale being nearly free.
+1. **Adopt Schedule B.** Walls at L6/L8/L10/L11 land between story beats; branch lead L9 and both podcast bookends stay frictionless. **On L11, stated honestly: the CLIMAX is deliberately the episode's largest earned build (112 T1eq); the FINALE (L12) is frictionless.** "Don't wall the climax" in the goal statement means don't wall the *resolution payoff* — the build-up to the cottage is meant to be earned. Crowd-test fallback threshold: if testers routinely need 3+ sessions inside L11 alone, exhaust energy twice within it, or abandon after L10, drop to Schedule A's L11 shape (2× R-T6 + 1× R-T4 + 2× D-T4 = 88).
 2. **Regen 90 → 150s/point.** Doesn't change days-to-complete; makes waiting out a wall slow enough that the popup's ad/refill offer is genuinely tempting. (180s starts to feel punitive against a 100 tank.)
 3. **Accept ~2-day light-player completion for Ep1** and buy long-tail pacing elsewhere: cold-case chain is the elder game, Ep2 cadence is the real content meter. If 4–5 day metering is wanted later, that's a tank-cap/segment decision for a future sprint, not more quantity stacking.
 

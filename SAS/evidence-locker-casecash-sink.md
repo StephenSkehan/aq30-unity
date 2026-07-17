@@ -4,8 +4,10 @@
 
 *v1 · 2026-07-17 · gives soft currency its first spend. Canon basis: economy v0.2 sheet's "purchasable inventory slots — CaseCash slots 9–12: 200/400/800/1600; ingot slots 13+" (deferred-post-v1 list, proposed pulled forward). Companion decisions: ep1-economy-rebalance.md (Schedule B made board space the pressure point this sink relieves).*
 
-## Problem
-CaseCash is faucet-only: Ep1 grants 1,365 CC (already banded Easy 20 / Standard 50 / Hard 95 / VH 185 + milestone 200 / finale 500 — the sheet's "flat 100" collision note is stale) and nothing spends it. The HUD counter is pure score; the cash "+" is greyed. Meanwhile Schedule B raised concurrent build pressure (4 resident generators, 112-T1eq climax ask) — board space is now the thing players actually run out of.
+## Problem (historical — as it stood at proposal time, 2026-07-17 morning)
+CaseCash was faucet-only: nothing spent it; the HUD counter was pure score. Meanwhile Schedule B raised concurrent build pressure (4 resident generators, 112-T1eq climax ask) — board space became the thing players actually run out of. *(Current faucet: 1,410 CC — includes the L10 band fix ruled with this feature. The cash "+" was later removed outright, 215f2b3.)*
+
+**Scope honesty (post-audit note 2026-07-17):** the locker is a FINITE progression sink — 3,000 CC total across four slots, then it stops consuming. It solves "CC has no value," not long-term soft-currency inflation; season-scale sinks (cosmetics, board utilities) remain future work.
 
 ## Current-state reality (matters for scope)
 `OverflowBucketService` is an **uncapped, invisible FILO stack** (auto-drips to board; no slots, no UI, own `overflow_state.json`). The sheet's slot pricing presumes a visible 8-slot inventory. So this feature *introduces* capacity + a pocket UI; it does not extend an existing one. Scope is honest-feature-work, not a toggle: ~2 sessions.
@@ -19,7 +21,7 @@ Off-board storage for board items, skinned as Ally's evidence locker (noir flavo
 - **Locked-slot row** renders greyed with price tag → tap → confirm → `IWallet.TrySpend` soft → slot unlocks permanently.
 
 ## Faucet fit
-Ep1 nets 1,365 CC → slots 9–10 (600 CC) are comfortably in-episode purchases; 11–12 (2,400 CC) are cold-case-era goals. The sink never gates progression — it sells convenience, so free players lose nothing but tidiness. **No CC→energy path** (canon: ladder/ads only) — locker is orthogonal to the ingot funnel.
+Ep1 nets **1,410 CC** (with the L10 band fix) → slots 9–10 (600 CC) are comfortably in-episode purchases; 11–12 (2,400 CC) are cold-case-era goals. The sink never gates progression — it sells convenience, so free players lose nothing but tidiness. **No CC→energy path** (canon: ladder/ads only) — locker is orthogonal to the ingot funnel.
 
 ## Architecture
 - `EvidenceLockerService` (static, mirrors OverflowBucketService): `List<OverflowTileData>` storage + `UnlockedSlots` int; own `locker_state.json`; `LockerChanged` event.
@@ -35,18 +37,17 @@ Ep1 nets 1,365 CC → slots 9–10 (600 CC) are comfortably in-episode purchases
 - ~~Storing a lead-needed item will drop its tick from the board~~ **SUPERSEDED (Stephen-ruled 2026-07-17): locker items COUNT toward lead satisfaction.** LeadRequirementChecker merges locker counts (board + locker); consumption pulls board first, then locker; when a Ready card's proceed would draw from the locker, a ConfirmPopup ("Use locker items?") gates the activation. Locker entries carry itemId (recorded at store time from the ItemDefinitionSO).
 - Cold-case repeatable CC grants are the long-tail faucet; if slot 12 sells too fast/slow, retune prices not capacity.
 
-## Optional faucet amendment (flag while we're here)
-L10 "Where Dot Went" pays Standard 50 CC but is now a 40-T1eq Hard wall under Schedule B → propose **50 → 95 CC** (episode total 1,365 → 1,410). Cosmetic to the pinch model; keeps band logic honest.
+## Decision record (all RULED 2026-07-17, same day)
+1. ✅ Adopted as the v1 CC sink (pulled forward from post-v1) — built immediately, not Sprint 8.
+2. ✅ Slot prices 200/400/800/1600 CC per sheet.
+3. ✅ L10 reward 50 → 95 CC (episode total 1,365 → **1,410**).
+4. ✅ v2 same day: locker items COUNT toward lead satisfaction, confirm popup gates locker draw-down on Proceed.
 
-## Decisions needed
-1. Adopt Evidence Locker as the v1 CC sink (pull forward from post-v1)? Scope ≈ 2 sessions.
-2. Slot prices 200/400/800/1600 CC per sheet — confirm or retune.
-3. L10 reward 50 → 95 CC: yes/no?
-4. Sprint slot: proposed **Sprint 8** alongside its existing economy-tuning remit.
+## Implemented behaviour (shipped defb63c + 11c733e)
+`EvidenceLockerService` (locker_state.json, entries carry itemId) · `LockerScreen` panel + HUD button · TileInfoPopup STORE button · QAReset/ClearSave riders · `locker_slot_purchased` analytics · checker merges locker counts · consumption board-first-then-locker · FlightFX holds past dialogue. Play-verified: store → panel → retrieve → buy ×2 → insufficient-refusal → ordinary-relaunch persistence.
 
-## Implementation checklist (post-sign-off)
-1. `EvidenceLockerService` + save + tests-in-editor QA menu (`AQ/Dev/QA Store First Item`, `QA Open Locker`).
-2. `LockerPanelMB` + HUD entry point + buy flow.
-3. TileInfoPopup Store button.
-4. QA Reset + ClearSave file-list extension (`locker_state.json`).
-5. Analytics event; golden-path doc note; play-verify store→retrieve→purchase→kill/relaunch persistence.
+## Outstanding verification (from the 2026-07-17 external audit — NOT yet run)
+Board and locker persist in SEPARATE files; store/retrieve/mixed-consumption cross both. A crash between the two writes could duplicate (store: locker saved before board autosave) or lose (retrieve: locker entry removed before board autosave) an item. **Kill/relaunch tests needed at each boundary:** after board removal · after locker insertion · during retrieval · during mixed board+locker lead consumption · during slot purchase/wallet deduction. Candidate hardening: force a board TrySave immediately after every locker transaction.
+
+## Future tuning
+Slot prices retune-able in place; if the locker proves too strong a satisfaction buffer (players pre-stash wall requirements), revisit whether locker items should satisfy leads at full weight; the confirm popup gains a "don't ask again" only after the pinch model is re-checked.

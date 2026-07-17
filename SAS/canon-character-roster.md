@@ -1,8 +1,8 @@
 # Ally Quinn — Canon Character Roster
-*v1.0 · 2026-07-11 · THE single source of truth for who exists in Havenbay.*
+*v1.1 · 2026-07-17 (count clarified · ages filled from Bible/portrait specs · Vex role de-resolved to preserve the mystery) · v1.0 · 2026-07-11 · THE single source of truth for who exists in Havenbay.*
 *Supersedes: AQCharBible_BackStory.docx, Character_Setting_Bible v1.2/v1.3 (both retain deep-lore value but their NAMES are stale — see the migration table at the bottom). Any external summary (including AI-generated rosters) defers to this document.*
 
-**Counts: 20 principal/recurring + 3 Episode 1 = 23 narrative characters · 2 historical figures · 1 unnamed Episode 1 antagonist.** *(rev 2026-07-11: Damien Kroll revived as #20 per bible dossier ruling.)*
+**Counts: 20 principal/recurring + 3 Episode 1 = 23 LOCKED-SCRIPT narrative characters, plus 4 PROVISIONAL Episode 2 entries (§ Episode 2 additions — Rosa already ★ CANON via her approved portrait) = 27 currently registered · 2 historical figures · 1 unnamed Episode 1 antagonist.** *(rev 2026-07-17: headline count clarified — it previously said 23 while the doc registered 27. rev 2026-07-11: Damien Kroll revived as #20 per bible dossier ruling.)*
 
 ## Principal & recurring cast (20)
 
@@ -20,12 +20,12 @@
 | 10 | Dr. Priya Shah | late 30s | Forensic scientist | proposed (prompt block exists) |
 | 11 | Dr. Lionel Cortez | mid 50s | Chief medical examiner | proposed (prompt block exists) |
 | 12 | Sgt. Delaney "Del" Cruz | 36 | Harbor Ward police sergeant; principled, bends rules for justice | ★ CANON (portrait v2 + emotion sheet 2026-07-11; kestrel tattoo, cool blue lighting) |
-| 13 | Captain Dana Drake | — | HCPD captain; strict institutional gatekeeper, not inherently corrupt | proposed |
+| 13 | Captain Dana Drake | early 50s | HCPD captain; strict institutional gatekeeper, not inherently corrupt | proposed |
 | 14 | Officer Benjamin "Benji" Park | 24 | Rookie Harbor Ward patrol officer; idealistic, comic relief | proposed |
-| 15 | Silas Vex | — | Black-market information broker; the Ferryman's operator | proposed |
-| 16 | Sabine Rourke | — | Investigative attorney and fixer; loyalties deliberately ambiguous | proposed |
-| 17 | Councillor Evelyn Hart | — | Public reformer, covert power broker; connected to the Ferryman | proposed |
-| 18 | Dante Voss | — | Head of Voss Group private security; corporate antagonist | proposed |
+| 15 | Silas Vex | indeterminate middle age | Black-market information broker; suspected Ferryman-network operator, **unproven** *(the Bible deliberately keeps his true role — pawn, partner, or independent — an open mystery; do not resolve it in scripts or art)* | proposed |
+| 16 | Sabine Rourke | mid-40s | Investigative attorney and fixer; loyalties deliberately ambiguous | proposed |
+| 17 | Councillor Evelyn Hart | 55 | Public reformer, covert power broker; connected to the Ferryman | proposed |
+| 18 | Dante Voss | 52 | Head of Voss Group private security; corporate antagonist | proposed |
 | 19 | The Ferryman | — | Unidentified shadow broker; killed Thomas Quinn; coin calling-card | **deliberately NO portrait until the finale reveal** |
 | 20 | Damien Kroll *(revived 2026-07-11, bible dossier ruling)* | — | Voss Group field lieutenant; private-security contractor who has worked both sides | proposed |
 

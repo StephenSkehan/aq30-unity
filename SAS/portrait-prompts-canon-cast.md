@@ -7,7 +7,7 @@
 1. Attach **Ally model sheet 4A (neutral-light identity reference)** as the style reference with every generation — it supersedes the app icon as anchor (2026-07-11). Say "match this art style" — never "match this character". Blue-is-lighting rule applies: blue tones in any noir variant are lighting only, never material color.
 2. Paste the **Global Style Block**, then one **Character Block**.
 3. Generate the **neutral** portrait first. Approve it. Then generate emotions using the Variant Template with the approved neutral attached as the character reference.
-4. Order of production (by first likely story use): Mo → Del Cruz → Arthur → **Rosa Reyes (next — Ep2 keeper, approved 2026-07-12)** → Helen → Priya → Cortez → Vega. *(Mo, Del, Arthur, Dot, Ally, Gerald already ★ CANON.)*
+4. Order of production (by first likely story use): Mo → Del Cruz → Arthur → Rosa Reyes *(✅ DONE — approved 2026-07-12)* → **Helen (next)** → Priya → Cortez → Vega. *(Mo, Del, Arthur, Dot, Ally, Gerald, Rosa already ★ CANON.)*
 
 *Document scope: this file holds the recurring-cast prompt blocks. **Ally** has her own dedicated kit (`model-sheet-prompt-ally.md`); **Gerald** is ★ CANON from the in-game set (his canon block lives in the bible, Ch 4.1); **Thomas** appears only as the locket photo (seed plate, no portrait); the roster (`canon-character-roster.md`) is the full character census. If a character isn't blocked below, it's in one of those, not missing.*
 
@@ -46,9 +46,14 @@ be crossed.
 Delaney "Del" Cruz, woman of 36, Filipino heritage. Athletic, composed, alert.
 Black hair in a short practical low bun. Plainclothes: charcoal jacket over a
 navy shirt, police badge on a neck chain, small Saint Michael medallion visible
-at her collar. A small kestrel tattoo on her right wrist (include the wrist in
-frame). Expression: professional calm with tired, honest eyes — a cop who bends
-rules for justice and pays for it in sleep.
+at her collar. A small kestrel tattoo on her right wrist — DEL-SPECIFIC CROP
+OVERRIDE: include the lower right forearm crossing the bottom of frame so the
+wrist tattoo stays visible; the hand itself may remain outside the crop (this
+overrides the global head-and-shoulders/hands-out rule for Del only; in any
+render where the forearm genuinely cannot sit in frame, the tattoo is mandatory
+in model/full-body art and optional in dialogue busts). Expression: professional
+calm with tired, honest eyes — a cop who bends rules for justice and pays for
+it in sleep.
 ```
 
 ### Arthur Finch — Gazette archivist *(★ CANON — emotion sheet approved 2026-07-11; the sheet's NEUTRAL cell is his identity anchor [no separate seed portrait]. Canon deviation: hair is tousled, not neatly combed. Keep: wire reading glasses low on nose, PRESS lanyard + badge, pencil behind right ear. His face also anchors the press item family artwork.)*
@@ -140,15 +145,15 @@ scenery (obeys the portrait system's plain-background rule).
 *Notes: no teal (Ally's color), no moss cardigan tones (Dot's palette). Rosa's
 palette: navy, flannel red-brown, brass. **Head-and-shoulders bust — hands out
 of frame** (her work-worn hands are a full-body-artwork detail, kept in the
-bible, not this crop). **Heritage/complexion are deliberately unset — the first
-approved NEUTRAL render establishes them as canon** (first-approved-image rule,
-Ch 8.2); if a specific background is wanted, state it before generating rather
-than letting the model infer from "Reyes." Expression priority: 1 NEUTRAL (guarded
+bible, not this crop). **Heritage/complexion: ESTABLISHED 2026-07-12 by the
+approved render (first-approved-image rule, Ch 8.2) — warm-toned/Latina,
+grey-streaked dark hair; the approved image is the identity anchor for all
+future renders.** Expression priority: 1 NEUTRAL (guarded
 control) → 2 SAD (grief held for years, never collapse) → 3 ANGRY (at the smear
 and the institutions — set jaw, level eyes, restrained) → 4 HAPPY (restrained
 vindication, warmth arriving like weather). Only NEUTRAL is required by the
 current Ep2 script (v6); sad/angry/happy are reusable-cast preparation, not
-VO-lock blockers. Full 7-emotion sheet worthwhile later. Script-locked
+VO-lock blockers (script ref: Ep2 — v7 is current; "v6" above is historical). Full 7-emotion sheet approved 2026-07-12. Script-locked
 facts behind the design: fuel dock since nineteen, the logbook, the voicemail
 ("You say goodnight to the harbour"), the final line written in her own hand.*
 
