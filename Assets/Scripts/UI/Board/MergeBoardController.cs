@@ -58,6 +58,9 @@ namespace AQ.App.UI.Board
         [Header("Item Definitions")]
         [SerializeField] private ItemDefinitionSO[] itemDefinitions = System.Array.Empty<ItemDefinitionSO>();
 
+        /// <summary>Read-only view of the registered item definitions (QA tooling / locker).</summary>
+        public System.Collections.Generic.IReadOnlyList<ItemDefinitionSO> ItemDefinitions => itemDefinitions;
+
         [Header("Debug")]
         public bool debugLogs = false;
 
@@ -121,7 +124,25 @@ namespace AQ.App.UI.Board
             string name     = def != null ? def.displayName : FormatFamilyTier(family, tier);
             Sprite icon     = def?.icon != null ? def.icon : tile.Payload.sprite;
 
-            TileInfoPopup.Show(name, icon, family, tier);
+            // Store-to-locker: only offered while the locker has space. CanStore is
+            // re-checked inside the callback so a stale popup can't overfill it.
+            System.Action onStore = null;
+            if (AQ.App.Locker.EvidenceLockerService.CanStore)
+            {
+                onStore = () =>
+                {
+                    if (!AQ.App.Locker.EvidenceLockerService.CanStore) return;
+                    if (TryClearItem(family, tier, out _, out _))
+                        AQ.App.Locker.EvidenceLockerService.TryStore(new OverflowTileData
+                        {
+                            kind   = OverflowKind.Item,
+                            family = family,
+                            tier   = tier
+                        });
+                };
+            }
+
+            TileInfoPopup.Show(name, icon, family, tier, onStore);
         }
 
         private ItemDefinitionSO LookupItemDef(string family, int tier)

@@ -9,7 +9,8 @@ namespace AQ.App.UI.Common
     {
         private static GameObject _root;
 
-        public static void Show(string displayName, Sprite icon, string family, int tier)
+        public static void Show(string displayName, Sprite icon, string family, int tier,
+                                System.Action onStore = null)
         {
             if (_root != null) return;
 
@@ -67,9 +68,20 @@ namespace AQ.App.UI.Common
             AddLabel($"Tier:  {tier + 1}", panel, 34f,
                      AQTheme.PaperDim, new Vector2(0f, -170f), new Vector2(520f, 50f));
 
-            // OK button
-            var ok = MakeButton("OK", panel, AQTheme.Teal, new Vector2(0f, -270f));
-            ok.onClick.AddListener(Close);
+            // Buttons: OK alone when no store action; OK + STORE side by side otherwise.
+            if (onStore == null)
+            {
+                var ok = MakeButton("OK", panel, AQTheme.Teal, new Vector2(0f, -270f));
+                ok.onClick.AddListener(Close);
+            }
+            else
+            {
+                var ok = MakeButton("OK", panel, AQTheme.Teal, new Vector2(-150f, -270f));
+                ok.onClick.AddListener(Close);
+
+                var store = MakeButton("STORE", panel, AQTheme.Steel, new Vector2(150f, -270f));
+                store.onClick.AddListener(() => { onStore(); Close(); });
+            }
         }
 
         private static void Close()

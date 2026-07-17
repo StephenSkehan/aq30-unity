@@ -79,5 +79,14 @@ namespace AQ.App.Analytics
                 ["reason"] = reason ?? string.Empty
             });
         }
+
+        public static void LogLockerSlotPurchased(int slotIndex, int price)
+        {
+            AnalyticsLocator.Instance?.LogEvent("locker_slot_purchased", new Dictionary<string, object>
+            {
+                ["slot_index"] = slotIndex,
+                ["price"] = price
+            });
+        }
     }
 }

@@ -196,6 +196,7 @@ namespace AQ.App.UI.Board
                 if (File.Exists(p)) File.Delete(p);
             OverflowBucketService.Clear();
             GeneratorFamilyRegistry.Clear();
+            AQ.App.Locker.EvidenceLockerService.Clear();
             Debug.Log("[Save] BoardSaveSystem cleared");
         }
 

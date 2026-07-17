@@ -1,4 +1,7 @@
-# Evidence Locker — the CaseCash Sink (DRAFT for sign-off)
+# Evidence Locker — the CaseCash Sink (RULED + IMPLEMENTED 2026-07-17)
+
+**Stephen ruled same day: adopt · prices per sheet · L10 50→95 CC · built immediately (not Sprint 8).** Shipped: `EvidenceLockerService` (AQ.App) + `LockerScreen` (Assembly-CSharp, HUD button above overflow bucket) + TileInfoPopup STORE button + QA-reset/ClearSave riders + `locker_slot_purchased` analytics + 5 QA menu drivers (AQ/Dev/QA Locker - *). Play-verified headlessly: store → panel → retrieve → buy 200 ✓ / 400 ✓ / 800-insufficient refused ✓ → locker_state.json persists purchasedSlots. Note: editor QA menu lives in `Assets/Scripts/UI/Board/Editor/` (Assembly-CSharp-Editor) — `Assets/Editor` (AQ.Editor asmdef) cannot see board types.
+
 *v1 · 2026-07-17 · gives soft currency its first spend. Canon basis: economy v0.2 sheet's "purchasable inventory slots — CaseCash slots 9–12: 200/400/800/1600; ingot slots 13+" (deferred-post-v1 list, proposed pulled forward). Companion decisions: ep1-economy-rebalance.md (Schedule B made board space the pressure point this sink relieves).*
 
 ## Problem

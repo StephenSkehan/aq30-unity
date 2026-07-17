@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\App\Services\EnergyLadderService.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\LeadCardPin.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\ShowEnergyStoreMB.cs" />
+    <Compile Include="Assets\Scripts\UI\Board\LockerScreen.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\PremiumHudTMP.cs" />
     <Compile Include="Assets\Scripts\App\Config\EnergyConfig.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\CharacterPhotoPin.cs" />

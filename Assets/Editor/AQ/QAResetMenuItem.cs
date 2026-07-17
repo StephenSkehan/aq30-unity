@@ -41,6 +41,7 @@ static class QAResetMenuItem
             Path.Combine(root, "board_state.json.tmp"),
             Path.Combine(root, "overflow_state.json"),
             Path.Combine(root, "generator_registry.json"),
+            Path.Combine(root, "locker_state.json"),
         })
         {
             if (File.Exists(path)) File.Delete(path);

@@ -88,6 +88,7 @@
     <Compile Include="Assets\App\Leads\LeadsBarView.cs" />
     <Compile Include="Assets\App\Audio\MusicManagerMB.cs" />
     <Compile Include="Assets\App\UI\Board\MergeItemView.cs" />
+    <Compile Include="Assets\App\Locker\EvidenceLockerService.cs" />
     <Compile Include="Assets\App\Presentation\GlobalBus.cs" />
     <Compile Include="Assets\App\Content\AddressableGraphLoader.cs" />
     <Compile Include="Assets\App\Leads\Runtime\LeadsBarRuntimeBinder.cs" />

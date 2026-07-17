@@ -37,7 +37,7 @@ MonoBehaviour:
   SpawnLeadIds: []
   BranchOutcomes: []
   NarrativeFlags: []
-  SoftCurrency: 50
+  SoftCurrency: 95
   EnergyGrant: 0
   PremiumGrant: 0
   generatorRewardTypeId: 
