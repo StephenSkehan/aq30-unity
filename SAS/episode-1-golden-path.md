@@ -10,12 +10,12 @@ Item shorthand: F=forensic_tools · P=fingerprint_evidence · R=rusty_anchor · 
 | 3 | Three Years of Goodnights | spawned by 1 | 1× F-T4 UV Light + 1× P-T2 Lifted Print Tape | 50 CC | fish-hook message beat (worried portrait) |
 | 4 | The Volume-Up | leads 2 AND 3 done | 1× R-T4 Beer Bottle *(needs gen_junk from lead 1 + rusty flag)* | 50 CC | Gerald portraits (neutral + worried); Mo's line quotes "Dorothy Ellis" |
 | 5 | Case Alert: Dot Ellis | lead 4 | 1× F-T4 + 1× F-T3 | 200 CC + 20 energy · **grants corner_diner generator via overflow** (2026-07-12 fix — food source for L7/L9/L11) | spawns 6+7+8; progress label ticks |
-| 6 | The Cold Kettle | spawned by 5 | 1× P-T5 Digital Scan + 1× P-T2 | 95 CC | the coin beat; Gerald's "Don't put that on the show" |
-| 7 | The Man Who Came at Noon | spawned by 5 | 1× D-T4 Burger + 1× D-T2 Coffee | 50 CC | dead lamp + clean plate planted |
-| 8 | The Quiet Boats | spawned by 5 | 1× R-T5 Wine Glass Red | 95 CC | Ally's ANGRY portrait (first use) on final node |
-| 9 | Off the Record — **THE BRANCH** | leads 7 AND 8 | 1× F-T4 + 1× D-T2 | 50 CC | **Del Cruz speaks (no portrait yet — name only, expected). CHOICE UI: two buttons. Verify BOTH paths converge; flag set (public/protected)** |
-| 10 | Where Dot Went | leads 6 AND 9 | 1× F-T4 + 1× P-T3 Fingerprint Card | 50 CC | **branch variant node**: public run shows "the queue paid its way"; protected shows "Del's quiet trace" — one only |
-| 11 | The Hill Cottage | lead 10 | 1× R-T6 Champagne Flute + 1× D-T4 | 185 CC + **2 ingots** | Dot speaks in person (angry beat = her one use); apology; van glimpse |
+| 6 | The Cold Kettle | spawned by 5 | 2× F-T5 Complete Kit + 1× F-T4 + 2× F-T2 | 95 CC | the coin beat; Gerald's "Don't put that on the show" |
+| 7 | The Man Who Came at Noon | spawned by 5 | 2× D-T4 Burger + 3× D-T3 Coffee & Donut | 50 CC | dead lamp + clean plate planted |
+| 8 | The Quiet Boats | spawned by 5 | 3× R-T5 Wine Glass Red + 1× R-T4 Beer Bottle | 95 CC | Ally's ANGRY portrait (first use) on final node |
+| 9 | Off the Record — **THE BRANCH** | leads 7 AND 8 | 1× F-T4 + 2× D-T2 | 50 CC | **Del Cruz speaks (no portrait yet — name only, expected). CHOICE UI: two buttons. Verify BOTH paths converge; flag set (public/protected)** |
+| 10 | Where Dot Went | leads 6 AND 9 | 2× F-T5 + 1× F-T4 | 50 CC | **branch variant node**: public run shows "the queue paid its way"; protected shows "Del's quiet trace" — one only |
+| 11 | The Hill Cottage | lead 10 | 2× R-T6 Champagne Flute + 2× R-T5 + 2× D-T4 | 185 CC + **2 ingots** | Dot speaks in person (angry beat = her one use); apology; van glimpse |
 | 12 | Goodnight, Harbour | lead 11 | 1× F-T2 Evidence Bag (ceremonial) | 500 CC + 20 energy + **3 ingots** | **branch variant node 2A/2B** (Harbourline named vs withheld); Dot's voicemail; final line; STINGER node; resolution screen fires; cold_case_a + Ep2 teaser appear |
 
 ## Post-episode checks
@@ -33,7 +33,7 @@ Three generators source Ep1's four requirement families, granted progressively v
 - **Corner Diner** (granted **L5**) → food_gifts (D) — L7, L9, L11. **This grant was missing** until 2026-07-12: no lead provisioned the food generator, so L7 "The Man Who Came at Noon" (burger + coffee) was **unsatisfiable — a hard Ep1 progression blocker**. Fixed by setting `generatorRewardTypeId: corner_diner` on `Lead_E1_Pod1` (L5), the Phase-2 opener, before any food lead spawns.
 
 ## Total arc economy
-≈144 T1-equivalents across 12 leads · rewards: 1,365 CaseCash + 40 energy + 5 ingots *(corrected from 1,360 on 2026-07-12 — the lead table's sum is authoritative)*. Matches the validated pinch model.
+≈330 T1-equivalents across 12 leads (**Schedule B rebalance 2026-07-17** — walls at L6/L8/L10/L11, regen 90→150s in the same change; model + rationale in SAS/ep1-economy-rebalance.md) · rewards unchanged: 1,365 CaseCash + 40 energy + 5 ingots. Fingerprint (P) asks were remapped to forensic 2026-07-15 (family retired); the audio swap (L1/2/3/5/12 → audio_investigation) is signed off and pending art — table shorthand updates with that integration.
 
 ## Known-pending (not bugs)
 Dot/Del portraits absent until generated (their dialogue nodes show name + line, no portrait — by design until import). VO fields empty until recording lands. FTUE first-merge choreography (rig merge at ~45s) is a CaseFlow wiring task in the UI phase, not in this data.

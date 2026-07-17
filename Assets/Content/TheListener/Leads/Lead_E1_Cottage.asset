@@ -20,16 +20,21 @@ MonoBehaviour:
   ActionType: 2
   EnergyCost: 0
   requirements:
-  - label: Digital Scan In Progress
+  - label: Complete Forensic Kit
     icon: {fileID: 0}
     satisfied: 0
     itemDefinition: {fileID: 11400000, guid: f80f6006132ef7643a5914a70001d526, type: 2}
+    quantity: 2
+  - label: UV Light
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: 4426ca7e5c440644793d4f17cc690acf, type: 2}
     quantity: 1
-  - label: Lifted Print Tape
+  - label: Evidence Bag
     icon: {fileID: 0}
     satisfied: 0
     itemDefinition: {fileID: 11400000, guid: 396f63cfaf7106c47bdaf61671377b24, type: 2}
-    quantity: 1
+    quantity: 2
   RequiredLeadIds: []
   EvidenceIds: []
   SpawnLeadIds: []

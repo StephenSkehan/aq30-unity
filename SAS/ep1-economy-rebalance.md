@@ -1,5 +1,7 @@
-# Ep1 Economy Rebalance — Requirement Schedules A/B (DRAFT for sign-off)
-*v1 · 2026-07-17 · companion: `ep1-economy-scenarios.csv` (full model grid). Written against the signed-off audio requirement map (audio-investigation-requirement-map.md v1.1); tier-for-tier identical if applied pre-audio-swap (A→F).*
+# Ep1 Economy Rebalance — Requirement Schedules A/B (RULED: SCHEDULE B)
+*v1.1 · 2026-07-17 · companion: `ep1-economy-scenarios.csv` (full model grid). Written against the signed-off audio requirement map (audio-investigation-requirement-map.md v1.1); tier-for-tier identical if applied pre-audio-swap (A→F).*
+
+**Stephen ruled 2026-07-17: Schedule B · regen 150s · ~2-day Ep1 accepted. IMPLEMENTED same day** — 6 lead assets + EnergyConfig updated. **L10-B amended at implementation:** `4× F-T4 + 2× F-T3` exceeded the `LeadRequirement.quantity` [Range(1,3)] cap, replaced with **`2× F-T5 + 1× F-T4`** (same 40 T1eq, no code change). Quantity>1 satisfaction path code-verified (checker greedy-allocates `cnt >= needed`, consumption loops per quantity, chip badge reads NeededCount) — first live exercise is this content; include a quantity lead in the next editor QA pass.
 
 ## Goal
 Ep1 currently costs ~100 taps against a 100-energy FTUE tank + 40/hr regen + 100/day ad energy → a free player clears it in one sitting with ≈0 EnergyOutPopup encounters. Add real pacing and monetization surface to Phase 2 **without touching the Act-1 hook (L1–L5) or walling the story climax**.

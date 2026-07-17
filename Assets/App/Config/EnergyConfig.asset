@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AQ.App.Config.EnergyConfig
   Start: 100
   Cap: 100
-  RegenSecondsPerPoint: 90
+  RegenSecondsPerPoint: 150

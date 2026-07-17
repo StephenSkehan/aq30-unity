@@ -24,6 +24,11 @@ MonoBehaviour:
     icon: {fileID: 0}
     satisfied: 0
     itemDefinition: {fileID: 11400000, guid: 95ccc8a89377a3d488b11202fcaed138, type: 2}
+    quantity: 3
+  - label: Beer Bottle
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: cc9c941c9760f9341aecdd32cfd7888d, type: 2}
     quantity: 1
   RequiredLeadIds: []
   EvidenceIds: []

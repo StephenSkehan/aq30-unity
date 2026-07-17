@@ -24,12 +24,12 @@ MonoBehaviour:
     icon: {fileID: 0}
     satisfied: 0
     itemDefinition: {fileID: 11400000, guid: e75756c20bf853a4d987fbc21775a7f8, type: 2}
-    quantity: 1
-  - label: Hot Coffee Cup
+    quantity: 2
+  - label: Coffee and Donut
     icon: {fileID: 0}
     satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: abd1a75e4f876994eafb7f2ab137296d, type: 2}
-    quantity: 1
+    itemDefinition: {fileID: 11400000, guid: a10bd1ec8cf686d4894f870d3b7fa2d7, type: 2}
+    quantity: 3
   RequiredLeadIds: []
   EvidenceIds: []
   SpawnLeadIds: []

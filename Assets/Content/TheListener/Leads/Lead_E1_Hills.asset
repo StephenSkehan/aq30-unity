@@ -24,12 +24,17 @@ MonoBehaviour:
     icon: {fileID: 0}
     satisfied: 0
     itemDefinition: {fileID: 11400000, guid: 84f8d5a60806dc3488407f1eb600a404, type: 2}
-    quantity: 1
+    quantity: 2
+  - label: Wine Glass Red
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: 95ccc8a89377a3d488b11202fcaed138, type: 2}
+    quantity: 2
   - label: Burger Single
     icon: {fileID: 0}
     satisfied: 0
     itemDefinition: {fileID: 11400000, guid: e75756c20bf853a4d987fbc21775a7f8, type: 2}
-    quantity: 1
+    quantity: 2
   RequiredLeadIds:
   - e1_trail
   EvidenceIds: []

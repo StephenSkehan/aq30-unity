@@ -29,7 +29,7 @@ MonoBehaviour:
     icon: {fileID: 0}
     satisfied: 0
     itemDefinition: {fileID: 11400000, guid: abd1a75e4f876994eafb7f2ab137296d, type: 2}
-    quantity: 1
+    quantity: 2
   RequiredLeadIds:
   - e1_inspector
   - e1_boats
