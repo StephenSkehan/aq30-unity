@@ -72,6 +72,7 @@
     <Compile Include="Assets\Editor\AQ\IOSPostBuild.cs" />
     <Compile Include="Assets\Editor\AQ\CaptureGameView.cs" />
     <Compile Include="Assets\Editor\AQ\Audit\Audit_MergeBoardScene.cs" />
+    <Compile Include="Assets\Editor\AQ\QAFormFactorSweep.cs" />
     <Compile Include="Assets\Editor\AQ\RestyleBoardNoir.cs" />
     <Compile Include="Assets\Editor\Diag\CopyTestPanelToDialogue.cs" />
     <Compile Include="Assets\Editor\AQ\Audit\LeadAuditor.cs" />
