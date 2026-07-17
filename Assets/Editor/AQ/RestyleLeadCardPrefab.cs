@@ -78,7 +78,8 @@ namespace AQ.EditorTools
 
                 // Subtitle: full card width at a bigger size — the bust ends at the
                 // title line, so the whole band below it belongs to the copy.
-                StyleText(presenter.objectiveText, body, 18f, AQTheme.PaperDim, TextAlignmentOptions.TopLeft);
+                // Paper (not PaperDim): grey-on-blue failed contrast (Stephen 2026-07-17).
+                StyleText(presenter.objectiveText, body, 18f, AQTheme.Paper, TextAlignmentOptions.TopLeft);
                 if (presenter.objectiveText != null)
                 {
                     var rt = presenter.objectiveText.rectTransform;

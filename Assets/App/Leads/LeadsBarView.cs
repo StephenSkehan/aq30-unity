@@ -247,23 +247,28 @@ namespace AQ.App.Leads
             row.gameObject.SetActive(any);
             if (!any) return;
 
+            // 2x2 pill grid above the card, next to the bust (Stephen-ruled
+            // 2026-07-17): exactly four slots, bigger pills, white text.
             row.anchorMin = new Vector2(0f, 1f);
             row.anchorMax = new Vector2(1f, 1f);
             row.pivot     = new Vector2(0f, 0f);
             row.offsetMin = new Vector2(112f, 24f);
-            row.offsetMax = new Vector2(-12f, 52f);
+            row.offsetMax = new Vector2(-12f, 110f);
 
-            var layout = row.GetComponent<HorizontalLayoutGroup>();
+            // Immediate, not deferred: Unity refuses AddComponent<GridLayoutGroup>
+            // while a conflicting LayoutGroup is still alive on the object.
+            var hLayout = row.GetComponent<HorizontalLayoutGroup>();
+            if (hLayout != null) DestroyImmediate(hLayout); // pre-2026-07-17 single-row layout
+
+            var layout = row.GetComponent<GridLayoutGroup>();
             if (layout == null)
-            {
-                layout = row.gameObject.AddComponent<HorizontalLayoutGroup>();
-                layout.spacing = 12f;
-                layout.childAlignment = TextAnchor.MiddleLeft;
-                layout.childForceExpandWidth  = false;
-                layout.childForceExpandHeight = false;
-                layout.childControlWidth  = false;
-                layout.childControlHeight = false;
-            }
+                layout = row.gameObject.AddComponent<GridLayoutGroup>();
+            layout.constraint      = GridLayoutGroup.Constraint.FixedColumnCount;
+            layout.constraintCount = 2;
+            layout.cellSize        = new Vector2(140f, 38f);
+            layout.spacing         = new Vector2(8f, 8f);
+            layout.startCorner     = GridLayoutGroup.Corner.LowerLeft;
+            layout.childAlignment  = TextAnchor.LowerLeft;
 
             if (lead.SoftCurrency > 0) AddRewardChip(row, "App/UI/Icons/flight_cash",      lead.SoftCurrency);
             if (lead.EnergyGrant  > 0) AddRewardChip(row, "App/UI/MergeBoard/energy_badge", lead.EnergyGrant);
@@ -274,8 +279,7 @@ namespace AQ.App.Leads
         {
             var chip = new GameObject("Reward");
             chip.transform.SetParent(row, false);
-            var rt = chip.AddComponent<RectTransform>();
-            rt.sizeDelta = new Vector2(88f, 26f);
+            var rt = chip.AddComponent<RectTransform>(); // sized by the 2x2 grid
 
             var pill = chip.AddComponent<Image>();
             pill.sprite = AQ.App.UI.AQTheme.Rounded;
@@ -290,8 +294,8 @@ namespace AQ.App.Leads
             irt.anchorMin = new Vector2(0f, 0.5f);
             irt.anchorMax = new Vector2(0f, 0.5f);
             irt.pivot     = new Vector2(0f, 0.5f);
-            irt.anchoredPosition = Vector2.zero;
-            irt.sizeDelta = new Vector2(24f, 24f);
+            irt.anchoredPosition = new Vector2(4f, 0f);
+            irt.sizeDelta = new Vector2(30f, 30f);
             var img = iconGo.AddComponent<Image>();
             img.sprite = Resources.Load<Sprite>(spritePath);
             img.preserveAspect = true;
@@ -303,12 +307,12 @@ namespace AQ.App.Leads
             var trt = txtGo.AddComponent<RectTransform>();
             trt.anchorMin = Vector2.zero;
             trt.anchorMax = Vector2.one;
-            trt.offsetMin = new Vector2(28f, 0f);
+            trt.offsetMin = new Vector2(40f, 0f);
             trt.offsetMax = Vector2.zero;
             var tmp = txtGo.AddComponent<TextMeshProUGUI>();
             tmp.text      = $"+{amount}";
-            tmp.fontSize  = 16f;
-            tmp.color     = AQ.App.UI.AQTheme.Amber;
+            tmp.fontSize  = 22f;
+            tmp.color     = Color.white;
             tmp.alignment = TextAlignmentOptions.MidlineLeft;
             tmp.raycastTarget = false;
             AQ.App.UI.AQTheme.StyleText(tmp);

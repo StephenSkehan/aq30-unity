@@ -41,10 +41,9 @@ namespace AQ.App.UI.Leads
                 tickOverlay = CreateTickOverlay();
         }
 
-        private static Color PlateTint
-        {
-            get { var c = AQTheme.Paper; c.a = 0.16f; return c; }
-        }
+        // Unmet plate is fully transparent (Stephen-ruled 2026-07-17 — the grey
+        // square read as clutter); the plate only appears as the green met state.
+        private static Color PlateTint => Color.clear;
 
         private void OnEnable()
         {

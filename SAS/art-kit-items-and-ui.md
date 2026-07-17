@@ -1,6 +1,20 @@
 # Art Generation Kit — Item Icons & UI Sprites
 *v1.4 · 2026-07-15 (Render Language Standard added; Environment-block heading corrected — backgrounds share the ONE illustration language, framing rules differ) · v1.3 2026-07-12 (contradiction pass: single-object→cluster, no-text absolute, occupancy/tier rule, generator↔family map, separate UI-symbol block, technical QC, self-contained bg) · Attach the Ally key art as PALETTE/LIGHTING reference — not a geometry reference — with every item generation.*
 
+## ADDENDUM 2026-07-17 — HUD menu (hamburger) button
+*The runtime-drawn 3-bar placeholder reads rough (Stephen). Generate `ui_top_menu.png` → import to `Assets/Art/UI/TopBar/` → wire in RebuildHudComponents.StyleSettingsGear (replaces the drawn bars).*
+
+```
+A single mobile-game UI icon: a hamburger menu button for a noir detective
+podcast game. Three short rounded horizontal bars, softly bevelled with a
+subtle top-light, in warm cream (#F0EBDF) on a TRANSPARENT background —
+the game composites its own dark navy plate behind it. Stylized painterly
+game-UI finish matching a premium merge game: gentle dimensionality, no
+photorealism, NO drop shadow, no outline box, no background plate baked in.
+Centered with generous margins, must read clearly at 44px. 512x512,
+straight alpha, no text, no extra glyphs.
+```
+
 > **⚠ STATUS REVERSED 2026-07-13 — the whole board is being regenerated PRE-RELEASE.** The earlier note here ("Wave 1 is shipped; regen is post-launch polish") is **superseded.** The live board icons predate the v1.3 spec and carry three flaws (baked drop-shadows, inconsistent size, off-universe), so **all 93 on-board icons — 53 items + 30 generator-chain + 10 currency — are being regenerated before the Aug 8 beta.** The authoritative, filename-exact kit for that sweep is **`SAS/item-icon-regeneration-kit.md`** — use it for every item/generator/currency batch. The material below stays valid as reference (the global block, the four detailed item families, the QC/manifest/proof batch), but the *count and scope* live in the regen kit. The **Wave 2 (Press), Ep2 stamps, and Ep1 stamps** work below is unchanged.
 
 > **Reference-block index:** items use the **item-icon block** (below); flat UI marks (stamps) use the separate **flat UI-symbol block** (§ stamps); the background uses its own **environment block** (§ bg); 9-slice panels/buttons are **built programmatically, not generated** (§ 9-slice). Do not cross these.*

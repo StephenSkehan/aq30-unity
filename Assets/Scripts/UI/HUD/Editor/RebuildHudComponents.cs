@@ -76,7 +76,6 @@ namespace AQ.EditorTools
             // padding and no usable 9-slice data, so it can't stretch into a clean
             // pill. Build the pill from AQTheme.Rounded (proper 9-slice) instead —
             // same cream body + teal outline the kit intends, crisp at any size.
-            var frame  = LoadSpriteSingle(TopBar + "ui_top_avatar_frame.png");
             var icons  = new[]
             {
                 LoadSpriteSingle(TopBar + "ui_top_energy.png"),
@@ -84,12 +83,14 @@ namespace AQ.EditorTools
                 LoadSpriteSingle(TopBar + "ui_top_premium.png"),
             };
 
-            // 3) Avatar frame; the transparent bust overflows it (GH-style presence).
-            MakeImage(hudRt, Gen + "avatar_frame", frame, Color.white, PortraitX, RowY - 8f, FrameSize, FrameSize);
+            // 3) No avatar frame (Stephen-ruled 2026-07-17): the transparent bust
+            // stands directly on the plate.
 
-            // 4) Three pills + icons + plus buttons.
+            // 4) Three pills + icons + plus buttons. The soft-currency pill gets NO
+            // "+" at all (Stephen-ruled 2026-07-17): CaseCash is earn-only in the
+            // canon economy, and a disabled button read as broken.
             string[] valueNames = { "Txt_Value", "Txt_Soft_Currency", "Txt_Premium" };
-            bool[]   plusLive    = { true, false, true }; // energy+, soft(info-only), premium+
+            bool[]   plusLive    = { true, false, true }; // energy+, soft(none), premium+
             for (int i = 0; i < 3; i++)
             {
                 float px = PillX[i];
@@ -99,7 +100,7 @@ namespace AQ.EditorTools
                 ReseatValue(hud.transform, valueNames[i], px + ValueDX, RowY);
                 // Icon straddles the pill's left edge — icon and value read as one unit.
                 MakeImage(hudRt, Gen + "icon_"   + i, icons[i], Color.white, px - PillW / 2f, RowY, IconSize, IconSize);
-                MakePlus(hudRt, Gen + "plus_" + i, px + PillW / 2f - 10f, RowY, plusLive[i]);
+                if (plusLive[i]) MakePlus(hudRt, Gen + "plus_" + i, px + PillW / 2f - 10f, RowY, true);
             }
 
             // 5) Timer under the energy pill.
