@@ -32,7 +32,7 @@ Ep1 nets 1,365 CC → slots 9–10 (600 CC) are comfortably in-episode purchases
 ## Guardrails
 - Do not touch drag/drop code (known-fragile; store/retrieve rides popups + existing placement paths only).
 - Retrieval into a full board must refuse with a toast, not overflow-queue (keeps the two systems distinct).
-- Storing a lead-needed item will drop its tick from the board — LeadRequirementChecker counts board only; acceptable v1 (locker panel shows the tick-equivalent later if it confuses).
+- ~~Storing a lead-needed item will drop its tick from the board~~ **SUPERSEDED (Stephen-ruled 2026-07-17): locker items COUNT toward lead satisfaction.** LeadRequirementChecker merges locker counts (board + locker); consumption pulls board first, then locker; when a Ready card's proceed would draw from the locker, a ConfirmPopup ("Use locker items?") gates the activation. Locker entries carry itemId (recorded at store time from the ItemDefinitionSO).
 - Cold-case repeatable CC grants are the long-tail faucet; if slot 12 sells too fast/slow, retune prices not capacity.
 
 ## Optional faucet amendment (flag while we're here)

@@ -162,6 +162,7 @@
     <Compile Include="Assets\App\CaseFlow\CaseFlowLocator.cs" />
     <Compile Include="Assets\App\Presentation\EventBusInstaller.cs" />
     <Compile Include="Assets\App\UI\Theme\ThemeRegistry.cs" />
+    <Compile Include="Assets\App\UI\Common\ConfirmPopup.cs" />
     <Compile Include="Assets\App\NarrativeFlags.cs" />
     <Compile Include="Assets\App\Gameplay\Merge\SpriteCatalog.cs" />
     <Compile Include="Assets\App\UI\FlightFX.cs" />

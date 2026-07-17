@@ -70,9 +70,15 @@ namespace AQ.App
                         var screen = RectTransformUtility.WorldToScreenPoint(null, worldPos);
                         AQ.App.UI.FlightFX.FlyItemToBar(sprite, screen);
                     }
+                    else if (AQ.App.Locker.EvidenceLockerService.TryTakeItem(def.family, def.tier))
+                    {
+                        // Board couldn't cover it — drawn from the Evidence Locker
+                        // (player confirmed at proceed-time). No tile to fly from.
+                        Debug.Log($"[LeadActivation] '{def.family}' T{def.tier + 1} consumed from locker for lead '{lead.leadId}'.", this);
+                    }
                     else
                     {
-                        Debug.LogWarning($"[LeadActivation] Item family='{def.family}' tier={def.tier} not found on board for lead '{lead.leadId}' (needed {needed}, cleared {i}).", this);
+                        Debug.LogWarning($"[LeadActivation] Item family='{def.family}' tier={def.tier} not found on board or locker for lead '{lead.leadId}' (needed {needed}, cleared {i}).", this);
                     }
                 }
             }

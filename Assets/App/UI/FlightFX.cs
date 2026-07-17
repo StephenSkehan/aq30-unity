@@ -17,10 +17,31 @@ namespace AQ.App.UI
 
         static FlightRunner _runner;
 
+        // While a resolution dialogue covers the board, flights are queued and
+        // replayed over the restored grid + HUD when the dialogue closes.
+        // Hold is set by CaseFlowLeadBridgeMB before rewards fire (the dialogue
+        // opens the same frame, after them) and released by DialogueStageMB.
+        static bool _hold;
+        static readonly System.Collections.Generic.List<(string kind, int amount)> _heldRewards = new();
+        static readonly System.Collections.Generic.List<(Sprite sprite, Vector2 from)> _heldItems = new();
+
+        public static void SetHold(bool hold)
+        {
+            if (_hold == hold) return;
+            _hold = hold;
+            if (_hold) return;
+
+            var rewards = _heldRewards.ToArray(); _heldRewards.Clear();
+            var items   = _heldItems.ToArray();   _heldItems.Clear();
+            foreach (var (sprite, from) in items) FlyItemToBar(sprite, from);
+            foreach (var (kind, amount) in rewards) FlyReward(kind, amount);
+        }
+
         /// <summary>kind: "soft" | "energy" | "premium".</summary>
         public static void FlyReward(string kind, int amount)
         {
             if (amount <= 0) return;
+            if (_hold) { _heldRewards.Add((kind, amount)); return; }
 
             Sprite sprite; string targetName;
             switch (kind)
@@ -45,6 +66,7 @@ namespace AQ.App.UI
         /// the board visibly feeds the story when a lead is activated.</summary>
         public static void FlyItemToBar(Sprite sprite, Vector2 fromScreen)
         {
+            if (_hold) { _heldItems.Add((sprite, fromScreen)); return; }
             Runner().StartCoroutine(FlyOne(sprite, fromScreen, SourceScreenPos(), null));
         }
 

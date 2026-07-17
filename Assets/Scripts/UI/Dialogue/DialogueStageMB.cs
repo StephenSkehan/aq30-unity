@@ -107,6 +107,10 @@ public sealed class DialogueStageMB : MonoBehaviour
 
     void OnDialogueClosed()
     {
+        // Always release held reward/item flights, even if the stage never faded
+        // (_open false) — the hold is set at proceed-time by CaseFlowLeadBridgeMB.
+        AQ.App.UI.FlightFX.SetHold(false);
+
         if (!_open) return;
         _open = false;
 

@@ -94,7 +94,61 @@ namespace AQ.App.CaseFlow
             if (_svc == null) return;
             if (lead == null || lead.RuntimeState != LeadState.Ready) return;
 
+            // Locker items count toward satisfaction, so a Ready card may need to
+            // draw from the Evidence Locker. Confirm before consuming stash.
+            int fromLocker = CountLockerDraw(lead);
+            if (fromLocker > 0)
+            {
+                string noun = fromLocker == 1 ? "item" : "items";
+                UI.Common.ConfirmPopup.Show(
+                    "USE LOCKER ITEMS?",
+                    $"{fromLocker} required {noun} will be taken from your Evidence Locker.",
+                    "PROCEED",
+                    onConfirm: () => DoProceed(lead));
+                return;
+            }
+
+            DoProceed(lead);
+        }
+
+        /// <summary>How many required items the board can't cover and the locker would supply.</summary>
+        private static int CountLockerDraw(LeadData lead)
+        {
+            var checker = LeadRequirementChecker.Instance;
+            if (checker == null || lead.requirements == null) return 0;
+
+            // Greedy board-first allocation, sharing counts across duplicate itemIds
+            // (mirrors the checker's satisfaction pass).
+            var boardTemp = new System.Collections.Generic.Dictionary<string, int>();
+            int shortfall = 0;
+            foreach (var req in lead.requirements)
+            {
+                var def = req.itemDefinition;
+                if (def == null || string.IsNullOrEmpty(def.itemId)) continue;
+
+                if (!boardTemp.TryGetValue(def.itemId, out int avail))
+                    avail = checker.GetBoardCount(def.itemId);
+
+                int needed = req.quantity < 1 ? 1 : req.quantity;
+                int fromBoard = Mathf.Min(avail, needed);
+                boardTemp[def.itemId] = avail - fromBoard;
+                shortfall += needed - fromBoard;
+            }
+            return shortfall;
+        }
+
+        private void DoProceed(LeadData lead)
+        {
+            if (_svc == null) return;
+            if (lead == null || lead.RuntimeState != LeadState.Ready) return;
+
             GameAnalytics.LogCardSubmit(lead.leadId);
+
+            // Hold reward/consumption flight FX until the resolution dialogue closes —
+            // rewards fire inside BroadcastActivated, the same frame the dialogue opens,
+            // and the chips should fly over the restored grid + HUD, not the stage.
+            // Released by DialogueStageMB on DialogueClosed.
+            UI.FlightFX.SetHold(true);
 
             // Consume board items and remove lead card — LeadActivationBridgeMB handles this
             // via the bus so AQ.App doesn't need a direct ref to MergeBoardController.

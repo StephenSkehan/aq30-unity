@@ -21,13 +21,27 @@ namespace AQ.App.Leads
         // itemId → count of that item currently on the board
         private readonly Dictionary<string, int> _liveCounts = new Dictionary<string, int>();
 
+        // itemId → count stored in the Evidence Locker. Locker items keep counting
+        // toward satisfaction (consumption pulls board first, then locker with a
+        // proceed-time confirmation).
+        private readonly Dictionary<string, int> _lockerCounts = new Dictionary<string, int>();
+
         // itemId set of every item required by a currently non-Blocked lead.
         // Drives the board tile requirement-match checkmark.
         private readonly HashSet<string> _neededItemIds = new HashSet<string>();
         public IReadOnlyCollection<string> NeededItemIds => _neededItemIds;
         public bool IsItemNeeded(string itemId) => !string.IsNullOrEmpty(itemId) && _neededItemIds.Contains(itemId);
 
-        public int GetLiveCount(string itemId) =>
+        /// <summary>Board + locker count — what satisfaction and card badges run on.</summary>
+        public int GetLiveCount(string itemId)
+        {
+            if (string.IsNullOrEmpty(itemId)) return 0;
+            int c = _liveCounts.TryGetValue(itemId, out int b) ? b : 0;
+            return c + (_lockerCounts.TryGetValue(itemId, out int l) ? l : 0);
+        }
+
+        /// <summary>Board-only count — used at proceed-time to detect locker draw-down.</summary>
+        public int GetBoardCount(string itemId) =>
             !string.IsNullOrEmpty(itemId) && _liveCounts.TryGetValue(itemId, out int c) ? c : 0;
 
         /// <summary>Raised whenever the set of item types needed by active leads changes.</summary>
@@ -59,6 +73,9 @@ namespace AQ.App.Leads
             _subCreated = GlobalBus.Bus.Subscribe<ItemCreatedOnBoard>(OnItemCreated);
             _subRemoved = GlobalBus.Bus.Subscribe<ItemRemovedFromBoard>(OnItemRemoved);
 
+            AQ.App.Locker.EvidenceLockerService.LockerChanged += OnLockerChanged;
+            AQ.App.Locker.EvidenceLockerService.CopyCounts(_lockerCounts);
+
             if (_repository != null) _repository.LeadsChanged += RecomputeNeededItemIds;
             RecomputeNeededItemIds();
         }
@@ -68,7 +85,16 @@ namespace AQ.App.Leads
             _subCreated?.Dispose(); _subCreated = null;
             _subRemoved?.Dispose(); _subRemoved = null;
 
+            AQ.App.Locker.EvidenceLockerService.LockerChanged -= OnLockerChanged;
+
             if (_repository != null) _repository.LeadsChanged -= RecomputeNeededItemIds;
+        }
+
+        private void OnLockerChanged()
+        {
+            AQ.App.Locker.EvidenceLockerService.CopyCounts(_lockerCounts);
+            RecomputeAllLeads();
+            LiveCountsChanged?.Invoke();
         }
 
         private void OnItemCreated(ItemCreatedOnBoard e)
@@ -101,9 +127,11 @@ namespace AQ.App.Leads
                 var reqs = lead.requirements;
                 if (reqs == null || reqs.Length == 0) continue;
 
-                // Greedy allocation: copy live counts and "spend" one per requirement.
-                // Correctly handles multiple requirements pointing to the same itemId.
-                var tempCounts  = new Dictionary<string, int>(_liveCounts);
+                // Greedy allocation: copy live counts (board + locker) and "spend" one
+                // per requirement. Correctly handles duplicate itemIds across reqs.
+                var tempCounts = new Dictionary<string, int>(_liveCounts);
+                foreach (var kv in _lockerCounts)
+                    tempCounts[kv.Key] = (tempCounts.TryGetValue(kv.Key, out int b) ? b : 0) + kv.Value;
                 bool allSat     = true;
                 bool anySat     = false;
 

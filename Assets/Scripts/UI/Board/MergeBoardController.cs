@@ -138,7 +138,7 @@ namespace AQ.App.UI.Board
                             kind   = OverflowKind.Item,
                             family = family,
                             tier   = tier
-                        });
+                        }, def != null ? def.itemId : null);
                 };
             }
 
