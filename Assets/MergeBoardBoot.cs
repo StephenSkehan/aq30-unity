@@ -24,6 +24,11 @@ public class MergeBoardBoot : MonoBehaviour
         if (grid != null)
             grid.spacing = spacing;
 
+        // Dynamic cell fit: shrinks cells on short/wide aspects so the playable
+        // bottom row and the corner buttons never collide (form-factor QA fix).
+        if (grid != null && grid.GetComponent<BoardFitMB>() == null)
+            grid.gameObject.AddComponent<BoardFitMB>();
+
         int childCount = mergeBoard != null ? mergeBoard.childCount : 0;
         Debug.Log($"MergeBoardBoot: Found {childCount} pre-placed slots, skipping runtime build.");
         Debug.Log($"MergeBoardBoot: Boot done. children={childCount}, grid.spacing=({spacing.x:F2}, {spacing.y:F2})");

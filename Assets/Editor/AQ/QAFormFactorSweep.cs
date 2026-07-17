@@ -69,6 +69,14 @@ namespace AQ.EditorTools
 
         static string AuditLayout()
         {
+            // The fit component reacts to size changes in LateUpdate and the
+            // GridLayoutGroup applies a frame later — force both so the audit
+            // measures settled geometry, not the previous preset's layout.
+            var fitGo = GameObject.Find("Canvas_Board_Grid");
+            var fit = fitGo != null ? fitGo.GetComponentInChildren<UnityEngine.UI.GridLayoutGroup>(true) : null;
+            if (fit != null) fit.SendMessage("Refit", SendMessageOptions.DontRequireReceiver);
+            Canvas.ForceUpdateCanvases();
+
             var sb = new StringBuilder();
             float sw = Screen.width, sh = Screen.height;
             sb.Append($"render {sw}x{sh}");
@@ -112,11 +120,35 @@ namespace AQ.EditorTools
                 foreach (RectTransform cell in layout.transform)
                 {
                     if (!cell.gameObject.activeInHierarchy) continue;
+                    // Skip ignoreLayout children (BoardFrame backdrop) — the
+                    // requirement is about playable cells, not the plate.
+                    var le = cell.GetComponent<UnityEngine.UI.LayoutElement>();
+                    if (le != null && le.ignoreLayout) continue;
                     cell.GetWorldCorners(corners);
                     var r = Rect.MinMaxRect(corners[0].x, corners[0].y, corners[2].x, corners[2].y);
                     gridBounds = gridBounds == null ? r :
                         Rect.MinMaxRect(Mathf.Min(gridBounds.Value.xMin, r.xMin), Mathf.Min(gridBounds.Value.yMin, r.yMin),
                                         Mathf.Max(gridBounds.Value.xMax, r.xMax), Mathf.Max(gridBounds.Value.yMax, r.yMax));
+                }
+            }
+            if (layout != null)
+            {
+                // A GridLayoutGroup adopts every non-ignoreLayout child as a cell;
+                // anything beyond the 63 slots creates a phantom row.
+                var names = new Dictionary<string, int>();
+                int adopted = 0;
+                foreach (RectTransform cell in layout.transform)
+                {
+                    if (!cell.gameObject.activeInHierarchy) continue;
+                    var le2 = cell.GetComponent<UnityEngine.UI.LayoutElement>();
+                    if (le2 != null && le2.ignoreLayout) continue;
+                    adopted++;
+                    names[cell.name] = (names.TryGetValue(cell.name, out int n) ? n : 0) + 1;
+                }
+                if (adopted != 63)
+                {
+                    sb.Append($" | ADOPTED {adopted} cells:");
+                    foreach (var kv in names) sb.Append($" {kv.Key}x{kv.Value}");
                 }
             }
             if (gridBounds == null) sb.Append(" | grid: MISSING");
@@ -145,6 +177,15 @@ namespace AQ.EditorTools
             if (rects.TryGetValue("locker", out var a) && rects.TryGetValue("evidence", out var b)
                 && a.Overlaps(b))
                 sb.Append(" | locker/evidence OVERLAP");
+
+            // Ruled 2026-07-17: corner buttons must never sit on top of grid cells.
+            if (gridBounds != null)
+            {
+                if (rects.TryGetValue("locker", out var lk) && lk.Overlaps(gridBounds.Value))
+                    sb.Append($" | locker-over-grid lk({lk.xMin:F0},{lk.yMin:F0},{lk.xMax:F0},{lk.yMax:F0}) grid({gridBounds.Value.xMin:F0},{gridBounds.Value.yMin:F0},{gridBounds.Value.xMax:F0},{gridBounds.Value.yMax:F0})");
+                if (rects.TryGetValue("evidence", out var ev) && ev.Overlaps(gridBounds.Value))
+                    sb.Append(" | evidence-over-grid");
+            }
 
             return sb.ToString();
         }

@@ -56,11 +56,23 @@ namespace AQ.App.UI.Board
                 t.offsetMin = Vector2.zero;
                 t.offsetMax = Vector2.zero;
 
+                // boardRoot's GridLayoutGroup adopts any child without ignoreLayout
+                // as a cell (same trap as BoardFrame — see CLAUDE.md). Without this
+                // the overlay became a phantom 64th cell: it added a fake row-10 to
+                // the board bounds and re-anchored every FX burst to a cell-sized rect.
+                var le = go.AddComponent<UnityEngine.UI.LayoutElement>();
+                le.ignoreLayout = true;
+
                 var cg = go.GetComponent<CanvasGroup>();
                 cg.blocksRaycasts = false;
                 cg.interactable = false;
             }
             overlay = t;
+            // Belt-and-braces for overlays that predate the ignoreLayout fix
+            // (found via parent.Find after a domain-reload-less restart).
+            var existing = overlay.GetComponent<UnityEngine.UI.LayoutElement>();
+            if (existing == null) existing = overlay.gameObject.AddComponent<UnityEngine.UI.LayoutElement>();
+            existing.ignoreLayout = true;
             overlay.SetAsLastSibling(); // above board visuals
         }
 

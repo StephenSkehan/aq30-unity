@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\UI\Dialogue\DialogueStageMB.cs" />
     <Compile Include="Assets\Scripts\UI\Board\MergeBoardController.cs" />
     <Compile Include="Assets\Scripts\UI\Board\OverflowBucketView.cs" />
+    <Compile Include="Assets\Scripts\UI\Board\BoardFitMB.cs" />
     <Compile Include="Assets\Scripts\UI\Common\GeneratorInfoPopup.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyLadderService.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\LeadCardPin.cs" />
