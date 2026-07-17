@@ -20,7 +20,7 @@ MonoBehaviour:
     - type: 0
       itemFamily: garage
       itemTier: 0
-      weight: 30
+      weight: 140
       requiresStoryFlag: aq.char.frankie.active
     - type: 0
       itemFamily: garage
@@ -35,42 +35,42 @@ MonoBehaviour:
     - type: 0
       itemFamily: garage
       itemTier: 3
-      weight: 5
+      weight: 4
       requiresStoryFlag: aq.char.frankie.active
     - type: 0
       itemFamily: garage
       itemTier: 4
-      weight: 3
-      requiresStoryFlag: aq.char.frankie.active
-    - type: 0
-      itemFamily: garage
-      itemTier: 5
       weight: 2
       requiresStoryFlag: aq.char.frankie.active
     - type: 0
       itemFamily: garage
-      itemTier: 6
+      itemTier: 5
       weight: 1
+      requiresStoryFlag: aq.char.frankie.active
+    - type: 0
+      itemFamily: garage
+      itemTier: 6
+      weight: 0
       requiresStoryFlag: aq.char.frankie.active
     - type: 0
       itemFamily: garage
       itemTier: 7
-      weight: 1
+      weight: 0
       requiresStoryFlag: aq.char.frankie.active
     - type: 0
       itemFamily: garage
       itemTier: 8
-      weight: 1
+      weight: 0
       requiresStoryFlag: aq.char.frankie.active
     - type: 0
       itemFamily: garage
       itemTier: 9
-      weight: 1
+      weight: 0
       requiresStoryFlag: aq.char.frankie.active
     - type: 0
       itemFamily: helens_gifts
       itemTier: 0
-      weight: 30
+      weight: 140
       requiresStoryFlag: aq.char.helen.active
     - type: 0
       itemFamily: helens_gifts
@@ -85,42 +85,42 @@ MonoBehaviour:
     - type: 0
       itemFamily: helens_gifts
       itemTier: 3
-      weight: 5
+      weight: 4
       requiresStoryFlag: aq.char.helen.active
     - type: 0
       itemFamily: helens_gifts
       itemTier: 4
-      weight: 3
-      requiresStoryFlag: aq.char.helen.active
-    - type: 0
-      itemFamily: helens_gifts
-      itemTier: 5
       weight: 2
       requiresStoryFlag: aq.char.helen.active
     - type: 0
       itemFamily: helens_gifts
-      itemTier: 6
+      itemTier: 5
       weight: 1
+      requiresStoryFlag: aq.char.helen.active
+    - type: 0
+      itemFamily: helens_gifts
+      itemTier: 6
+      weight: 0
       requiresStoryFlag: aq.char.helen.active
     - type: 0
       itemFamily: helens_gifts
       itemTier: 7
-      weight: 1
+      weight: 0
       requiresStoryFlag: aq.char.helen.active
     - type: 0
       itemFamily: helens_gifts
       itemTier: 8
-      weight: 1
+      weight: 0
       requiresStoryFlag: aq.char.helen.active
     - type: 0
       itemFamily: helens_gifts
       itemTier: 9
-      weight: 1
+      weight: 0
       requiresStoryFlag: aq.char.helen.active
     - type: 0
       itemFamily: rusty_anchor
       itemTier: 0
-      weight: 30
+      weight: 140
       requiresStoryFlag: aq.loc.rusty_anchor.active
     - type: 0
       itemFamily: rusty_anchor
@@ -135,42 +135,42 @@ MonoBehaviour:
     - type: 0
       itemFamily: rusty_anchor
       itemTier: 3
-      weight: 5
+      weight: 4
       requiresStoryFlag: aq.loc.rusty_anchor.active
     - type: 0
       itemFamily: rusty_anchor
       itemTier: 4
-      weight: 3
-      requiresStoryFlag: aq.loc.rusty_anchor.active
-    - type: 0
-      itemFamily: rusty_anchor
-      itemTier: 5
       weight: 2
       requiresStoryFlag: aq.loc.rusty_anchor.active
     - type: 0
       itemFamily: rusty_anchor
-      itemTier: 6
+      itemTier: 5
       weight: 1
+      requiresStoryFlag: aq.loc.rusty_anchor.active
+    - type: 0
+      itemFamily: rusty_anchor
+      itemTier: 6
+      weight: 0
       requiresStoryFlag: aq.loc.rusty_anchor.active
     - type: 0
       itemFamily: rusty_anchor
       itemTier: 7
-      weight: 1
+      weight: 0
       requiresStoryFlag: aq.loc.rusty_anchor.active
     - type: 0
       itemFamily: rusty_anchor
       itemTier: 8
-      weight: 1
+      weight: 0
       requiresStoryFlag: aq.loc.rusty_anchor.active
     - type: 0
       itemFamily: rusty_anchor
       itemTier: 9
-      weight: 1
+      weight: 0
       requiresStoryFlag: aq.loc.rusty_anchor.active
     - type: 0
       itemFamily: press
       itemTier: 0
-      weight: 30
+      weight: 140
       requiresStoryFlag: aq.char.arthur.active
     - type: 0
       itemFamily: press
@@ -185,42 +185,42 @@ MonoBehaviour:
     - type: 0
       itemFamily: press
       itemTier: 3
-      weight: 5
+      weight: 4
       requiresStoryFlag: aq.char.arthur.active
     - type: 0
       itemFamily: press
       itemTier: 4
-      weight: 3
-      requiresStoryFlag: aq.char.arthur.active
-    - type: 0
-      itemFamily: press
-      itemTier: 5
       weight: 2
       requiresStoryFlag: aq.char.arthur.active
     - type: 0
       itemFamily: press
-      itemTier: 6
+      itemTier: 5
       weight: 1
+      requiresStoryFlag: aq.char.arthur.active
+    - type: 0
+      itemFamily: press
+      itemTier: 6
+      weight: 0
       requiresStoryFlag: aq.char.arthur.active
     - type: 0
       itemFamily: press
       itemTier: 7
-      weight: 1
+      weight: 0
       requiresStoryFlag: aq.char.arthur.active
     - type: 0
       itemFamily: press
       itemTier: 8
-      weight: 1
+      weight: 0
       requiresStoryFlag: aq.char.arthur.active
     - type: 0
       itemFamily: press
       itemTier: 9
-      weight: 1
+      weight: 0
       requiresStoryFlag: aq.char.arthur.active
     - type: 1
       itemFamily:
       itemTier: 0
-      weight: 10
+      weight: 1
       requiresStoryFlag:
     particles:
       emissionRate: 4
