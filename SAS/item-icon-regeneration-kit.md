@@ -2,14 +2,13 @@
 *v1.4 · 2026-07-17 (audio item delivery status + total-scope arithmetic + transparency wording) · v1.3 2026-07-15 (Render Language Standard) · v1.2 2026-07-15, v1.0 2026-07-13 · Authoritative kit for the pre-beta board-art sweep. Supersedes the "Wave 1 = shipped, regen is post-launch" note in `art-kit-items-and-ui.md` — that call is reversed: **every item, generator, and currency icon is being regenerated now.***
 
 ```text
-TOTAL PRE-BETA BOARD-ART SCOPE (recounted 2026-07-18 from repository state)
-  87 in-place regenerations (was 93 — fingerprint retired 2026-07-15)
- +12 new assets: 6 audio items (DELIVERED+LIVE) + 6 Field Kit generator tiers (DELIVERED+LIVE)
-    (was +16 — the 10-tier gen_audio_rig was RETIRED pre-integration 2026-07-18,
-     replaced by the six-tier Field Kit; see Part 4 status)
-  =99 unique deliverables (before Press items and Ep-stamps, tracked in art-kit-items-and-ui.md)
-DONE 54/99: currency 10 · gen_junk chain 10 · food_gifts 12 · rusty_anchor 10 · audio items 6 · field kit 6
-REMAINING 45: garage 10 · helens_gifts 10 · forensic 5 · investigation_lab chain 10 · corner_diner chain 10
+TOTAL PRE-BETA BOARD-ART SCOPE (recounted 2026-07-18 evening from repository state)
+  77 in-place regenerations (93 − fingerprint 6 retired 2026-07-15 − corner_diner chain 10 retired 2026-07-18)
+ +18 new assets: 6 audio items + 6 Field Kit tiers + 6 NEW corner_diner tiers — ALL DELIVERED+LIVE
+    (gen_audio_rig 10 retired pre-integration; corner_diner ladder redesigned 10→6, see below)
+  =95 unique deliverables (before Press items and Ep-stamps, tracked in art-kit-items-and-ui.md)
+DONE 60/95: currency 10 · gen_junk chain 10 · food_gifts 12 · rusty_anchor 10 · audio items 6 · field kit 6 · corner_diner chain 6
+REMAINING 35: garage 10 · helens_gifts 10 · forensic 5 · investigation_lab chain 10
 ```
 
 ## Why this exists
@@ -171,22 +170,19 @@ Approve all five (checked at 96/64/48 px on a light tile, dark tile AND checkerb
 
 ---
 
-# PART 2 — GENERATOR CHAINS (30 icons)
-Generators are **also 10-tier merge chains** on the board, so they get the same treatment — but each tier reads as a **fixture on a subtle base pedestal**, more massive/permanent than a loose item. The chain climbs from a humble source to a landmark. Same global block, plus "sits on a subtle base/pedestal; reads as a permanent installation, not a hand-held object."
+# PART 2 — GENERATOR CHAINS
+Generator chains get the same treatment as items — but each tier reads as a **fixture on a subtle base pedestal**, more massive/permanent than a loose item. The chain climbs from a humble source to a landmark. Same global block, plus "sits on a subtle base/pedestal; reads as a permanent installation, not a hand-held object." **Chains are NOT uniformly 10-tier (2026-07-18): Field Kit and Corner Diner are six-tier; only investigation_lab and gen_junk remain ten.**
 
-### corner_diner (10) · the food source · palette: warm diner reds/creams (matches food_gifts) · `Assets/Art/Icons/Generators/corner_diner/`
-| Filename | Item | Art note |
+### corner_diner · **✅ SIX-TIER LADDER DELIVERED + LIVE 2026-07-18 (df35827 — the old 10-tier ladder is RETIRED)**
+*Ruling: the ten-tier version had duplicate silhouettes (two carts; van vs truck), a backwards donut-shop→van step, and an unreachable hero (T10 = 512 T1 pieces ≈ 82,944 taps at the ~1/162 sub-gen rate; T6 = 32 pieces ≈ 5,184 — still long-term, actually reachable). Progression: supplies → preparation → street service → mobile kitchen → fixed service point → full location. Art direction (recorded): warm diner red + cream enamel, dark navy accents, brass/chrome hardware, soft upper-left top light + restrained warm rim, ~15° above front three-quarter, transparent bg, no cast shadow/plate, no readable text/menus/numerals; each tier changes ≥2 of silhouette/footprint/mobility/height/mass/architectural scale.*
+| Filename | Item | Status |
 |---|---|---|
-| corner_diner_t01_coffee_crate.png | Coffee Crate | a wooden crate of coffee supplies — humblest source |
-| corner_diner_t02_shoulder_tray.png | Shoulder Tray | a vendor's shoulder tray of cups |
-| corner_diner_t03_small_coffee_cart.png | Small Coffee Cart | a little two-wheel coffee cart |
-| corner_diner_t04_large_coffee_cart.png | Large Coffee Cart | a bigger cart with awning |
-| corner_diner_t05_donut_shop.png | Donut Shop | a small donut counter |
-| corner_diner_t06_vendor_van.png | Vendor Van | a food vendor van |
-| corner_diner_t07_coffee_truck.png | Coffee Truck | a larger coffee truck |
-| corner_diner_t08_night_window.png | Night Window | a lit takeaway night window; dark menu board bears cream horizontal menu strokes (no readable words) |
-| corner_diner_t09_burger_shop_counter.png | Burger Shop Counter | a burger counter with griddle glow |
-| corner_diner_t10_fast_food_facade.png | Fast Food Facade | a full lit diner facade — **chain hero** |
+| corner_diner_t01_coffee_supply_crate.png | Coffee Supply Crate | ✅ live |
+| corner_diner_t02_countertop_coffee_station.png | Countertop Coffee Station | ✅ live |
+| corner_diner_t03_coffee_cart.png | Coffee Cart | ✅ live |
+| corner_diner_t04_diner_food_truck.png | Diner Food Truck | ✅ live |
+| corner_diner_t05_night_service_window.png | Night Service Window | ✅ live |
+| corner_diner_t06_corner_diner_facade.png | Corner Diner | ✅ live — **chain hero** |
 
 ### investigation_lab (10) · the forensic source · palette: steel grey, teal, clinical white · `Assets/Art/Icons/Generators/investigation_lab/`
 *Filenames carry the `gen_investigation_lab_` prefix — keep exact.*
