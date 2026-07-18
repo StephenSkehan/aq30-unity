@@ -179,7 +179,10 @@ namespace AQ.App.UI.EvidenceBoard
 
             var btnImg = btnGo.GetComponent<Image>();
             btnImg.color = Color.white;
-            var btnSprite = Resources.Load<Sprite>("App/UI/EvidenceBoard/evid_board_btn");
+            // Proper icon art (2026-07-18); old cork thumbnail as fallback.
+            var btnSprite = Resources.Load<Sprite>("App/UI/Icons/ui_btn_evidence_board");
+            if (btnSprite == null)
+                btnSprite = Resources.Load<Sprite>("App/UI/EvidenceBoard/evid_board_btn");
             if (btnSprite != null)
             {
                 btnImg.sprite         = btnSprite;

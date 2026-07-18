@@ -54,25 +54,36 @@ namespace AQ.App.UI.Board
             rt.anchorMin        = new Vector2(0f, 0f);
             rt.anchorMax        = new Vector2(0f, 0f);
             rt.pivot            = new Vector2(0f, 0f);
-            rt.sizeDelta        = new Vector2(140f, 80f);
-            rt.anchoredPosition = new Vector2(24f, 224f); // overflow bucket sits at y 32..192
+            rt.sizeDelta        = new Vector2(90f, 90f);
+            rt.anchoredPosition = new Vector2(24f, 219f); // level with the evidence-board button
 
-            AQTheme.Round(btnGo.GetComponent<Image>(), AQTheme.Steel);
+            var img  = btnGo.GetComponent<Image>();
+            var icon = Resources.Load<Sprite>("App/UI/Icons/ui_btn_locker");
+            if (icon != null)
+            {
+                img.sprite         = icon; // proper icon art (delivered 2026-07-18)
+                img.preserveAspect = true;
+            }
+            else
+            {
+                // Fallback: text pill (pre-icon look) if the sprite ever goes missing.
+                AQTheme.Round(img, AQTheme.Steel);
+                var lbl       = MakeRect("Label", rt);
+                lbl.anchorMin = Vector2.zero;
+                lbl.anchorMax = Vector2.one;
+                lbl.offsetMin = lbl.offsetMax = Vector2.zero;
+                var tmp           = lbl.gameObject.AddComponent<TextMeshProUGUI>();
+                tmp.text          = "LOCKER";
+                tmp.fontSize      = 24f;
+                tmp.color         = AQTheme.Paper;
+                tmp.alignment     = TextAlignmentOptions.Center;
+                tmp.raycastTarget = false;
+                AQTheme.StyleText(tmp, display: true);
+            }
+
             var btn = btnGo.GetComponent<Button>();
             btn.transition = Selectable.Transition.None;
             btn.onClick.AddListener(Toggle);
-
-            var lbl       = MakeRect("Label", rt);
-            lbl.anchorMin = Vector2.zero;
-            lbl.anchorMax = Vector2.one;
-            lbl.offsetMin = lbl.offsetMax = Vector2.zero;
-            var tmp           = lbl.gameObject.AddComponent<TextMeshProUGUI>();
-            tmp.text          = "LOCKER";
-            tmp.fontSize      = 30f;
-            tmp.color         = AQTheme.Paper;
-            tmp.alignment     = TextAlignmentOptions.Center;
-            tmp.raycastTarget = false;
-            AQTheme.StyleText(tmp, display: true);
         }
 
         // ---- Panel ----

@@ -2,7 +2,7 @@
 *v1.4 · 2026-07-15 (Render Language Standard added; Environment-block heading corrected — backgrounds share the ONE illustration language, framing rules differ) · v1.3 2026-07-12 (contradiction pass: single-object→cluster, no-text absolute, occupancy/tier rule, generator↔family map, separate UI-symbol block, technical QC, self-contained bg) · Attach the Ally key art as PALETTE/LIGHTING reference — not a geometry reference — with every item generation.*
 
 ## ADDENDUM 2026-07-18 — corner button icons: Evidence Locker + Evidence Board
-*Both corner buttons now sit level (bottom strip, over the background) and need proper icons. Generate `ui_btn_locker.png` and `ui_btn_evidence_board.png` → `Assets/Art/UI/TopBar/` → I wire them into LockerScreen.BuildHudButton and EvidenceBoardScreen.BuildHudButton (replacing the LOCKER text pill and the photo-real cork thumbnail).*
+***✅ DELIVERED + WIRED same day** (green-screen delivery keyed with 3px erosion + despill; imported to `Assets/Resources/App/UI/Icons/`, wired into LockerScreen + EvidenceBoardScreen with fallbacks). Prompts kept below for regen reference — next time deliver straight alpha per the global spec.*
 
 ```
 ui_btn_locker.png — A single mobile-game UI icon: a small vintage evidence
