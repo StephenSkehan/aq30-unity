@@ -328,11 +328,21 @@ namespace AQ.App.UI.Board
                 if (string.Equals(cell.kind, "Generator", StringComparison.OrdinalIgnoreCase))
                 {
                     var genSO = board.FindGeneratorType(family);
-                    var sprite = genSO != null ? genSO.SpriteForTier(Mathf.Max(0, cell.tier))
+                    int genTier = Mathf.Max(0, cell.tier);
+                    // Legacy-save migration (diner 10→6 ruling, 2026-07-18): a save
+                    // may hold generator tiers beyond the chain's current maximum —
+                    // clamp to the SO's max-tier hero rather than strand an unknown
+                    // tier (pre-release QA saves only; ruled acceptable).
+                    if (genSO != null && genTier > genSO.maxGeneratorTier)
+                    {
+                        Debug.LogWarning($"[Save] Generator '{family}' T{genTier + 1} exceeds chain max — clamped to T{genSO.maxGeneratorTier + 1} (legacy save).");
+                        genTier = genSO.maxGeneratorTier;
+                    }
+                    var sprite = genSO != null ? genSO.SpriteForTier(genTier)
                                : (board.generatorSprite != null ? board.generatorSprite
                                : (board.icons != null && board.icons.Count > 0 ? board.icons[0] : null));
-                    v.SetGenerator(sprite, Mathf.Max(0, cell.tier));
-                    board.AttachGeneratorAnimator(v, family, Mathf.Max(0, cell.tier));
+                    v.SetGenerator(sprite, genTier);
+                    board.AttachGeneratorAnimator(v, family, genTier);
                 }
                 else
                 {
