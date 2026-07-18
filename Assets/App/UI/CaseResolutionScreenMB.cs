@@ -81,9 +81,11 @@ namespace AQ.App.UI
                 48f, Color.white, FontStyles.Bold,
                 TextAlignmentOptions.Center, 72f);
 
-            // Case title
+            // Case title — TODO: source from episode data when a second episode
+            // ships; hardcoded copy went stale once already (Ghost Student text
+            // survived into The Listener's finale until 2026-07-18).
             AddTMP(content, "Txt_CaseTitle",
-                "The Ghost Student",
+                "The Listener",
                 28f, new Color(0.7f, 0.85f, 1f, 1f), FontStyles.Italic,
                 TextAlignmentOptions.Center, 40f);
 
@@ -95,7 +97,7 @@ namespace AQ.App.UI
 
             // Summary body
             AddTMP(content, "Txt_Summary",
-                "You found Maya. You exposed the ghost scheme.\nThe money trail leads deeper — and so does your father’s unfinished case.",
+                "You found Dot — safe, and listening still.\nThe man who came at noon has lost his cover. Harbourline’s trail leads deeper — and so does your father’s unfinished case.",
                 20f, new Color(0.88f, 0.88f, 0.88f, 1f), FontStyles.Normal,
                 TextAlignmentOptions.Center, 80f);
 

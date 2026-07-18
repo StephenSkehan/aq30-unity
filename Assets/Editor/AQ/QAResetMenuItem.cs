@@ -23,6 +23,21 @@ static class QAResetMenuItem
 
     static void DoReset()
     {
+        // Resetting WHILE playing wipes prefs/saves under the live session
+        // without rebooting it → zero-wallet limbo with no leads (bitten
+        // 2026-07-17 and again 2026-07-18). Exit play first, then reset and
+        // re-enter on the next editor tick.
+        if (EditorApplication.isPlaying)
+        {
+            Debug.Log("[QA Reset] Was in play mode — exiting first, reset re-runs on exit.");
+            EditorApplication.isPlaying = false;
+            EditorApplication.delayCall += () =>
+            {
+                if (!EditorApplication.isPlaying) DoReset();
+                else EditorApplication.delayCall += DoReset; // one more tick if still tearing down
+            };
+            return;
+        }
 
         // PlayerPrefs — everything, including aq.ftue.entitlements.v1 and all flags
         PlayerPrefs.DeleteAll();
