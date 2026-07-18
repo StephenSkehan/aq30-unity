@@ -1,4 +1,10 @@
 ﻿generator_id,generator_name,entry_order,drop_type,item_family,item_tier_display,weight,requires_story_flag,prob_pct_all_eligible
+gen_field_kit,Field Kit,0,item,audio_investigation,T1,135,,87.1
+gen_field_kit,Field Kit,1,item,audio_investigation,T2,12,,7.74
+gen_field_kit,Field Kit,2,item,audio_investigation,T3,4,,2.58
+gen_field_kit,Field Kit,3,item,audio_investigation,T4,2,,1.29
+gen_field_kit,Field Kit,4,item,audio_investigation,T5,1,,0.65
+gen_field_kit,Field Kit,5,sub_generator,,,1,,0.65
 gen_investigation_lab,Investigation Lab,0,item,forensic_tools,T1,135,,87.1
 gen_investigation_lab,Investigation Lab,1,item,forensic_tools,T2,12,,7.74
 gen_investigation_lab,Investigation Lab,2,item,forensic_tools,T3,4,,2.58

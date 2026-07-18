@@ -1,5 +1,5 @@
-# Audio Investigation — Ep1 Requirement Map (SIGNED OFF)
-*v1.1 · 2026-07-17 · integration design for the opening-family swap (art spec: item-icon-regeneration-kit v1.3 Part 4). **Stephen ruled 2026-07-17: L4 lab grant · L5 pure audio · L12 bookend YES.** Art status 2026-07-17: 6 item icons imported + SOs created (421d394, not scene-wired); **blocked only on the 10 gen_audio_rig chain sprites**. gen_audio_rig drop table = the lab's TUNED curve (135/12/4/2/1 + sub-gen 1).*
+# Audio Investigation — Ep1 Requirement Map (★ INTEGRATED 2026-07-18)
+*v2 · 2026-07-18 (commit `46b71a6`) · v1.1 2026-07-17 (signed off: L4 lab grant · L5 pure audio · L12 bookend). **LIVE.** The proposed 10-tier `gen_audio_rig` was RETIRED before integration (design ruling 2026-07-18 — its recorders/receivers read too close to the audio items it produced) and replaced by the six-tier **Field Kit** (`gen_field_kit`: Utility Pouch → Investigator's Satchel → Field Backpack → Hard Equipment Case → Rolling Gear Trunk → Mobile Field Unit). Semantics: Field Kit CARRIES, Audio Investigation LISTENS, Forensic PROVES. Field Kit drops the tuned audio curve (135/12/4/2/1 + sub-gen 1), audio-only in Ep1 (multi-family is future capability, deliberately not active). Everything in §1/§2 below is the SHIPPED state.*
 
 Shorthand: A=audio_investigation · F=forensic_tools · R=rusty_anchor · D=food_gifts.
 T1-equivalents: T2=2 · T3=4 · T4=8 · T5=16 · T6=32.
@@ -20,7 +20,7 @@ L4/L6–L11 unchanged. Requirement `label` strings update with the GUID swaps.
 
 | Slot | Current | Proposed |
 |---|---|---|
-| Starting generator | gen_investigation_lab | **gen_audio_rig** (defaultGeneratorFamily swap in Main Merge) |
+| Starting generator | gen_investigation_lab | **gen_field_kit** *(was drafted as gen_audio_rig — retired pre-integration)* |
 | L1 grant | gen_junk | unchanged |
 | **L4 grant (NEW)** | — | **gen_investigation_lab** via `generatorRewardTypeId` on Lead_E1_Bridge |
 | L5 grant | corner_diner | unchanged |

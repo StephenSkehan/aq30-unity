@@ -2,11 +2,14 @@
 *v1.4 · 2026-07-17 (audio item delivery status + total-scope arithmetic + transparency wording) · v1.3 2026-07-15 (Render Language Standard) · v1.2 2026-07-15, v1.0 2026-07-13 · Authoritative kit for the pre-beta board-art sweep. Supersedes the "Wave 1 = shipped, regen is post-launch" note in `art-kit-items-and-ui.md` — that call is reversed: **every item, generator, and currency icon is being regenerated now.***
 
 ```text
-TOTAL PRE-BETA BOARD-ART SCOPE
+TOTAL PRE-BETA BOARD-ART SCOPE (recounted 2026-07-18 from repository state)
   87 in-place regenerations (was 93 — fingerprint retired 2026-07-15)
- +16 new Audio Investigation assets (6 items DELIVERED 2026-07-17 · 10 gen chain OUTSTANDING)
- =103 deliverables (before Press items and Ep-stamps, tracked in art-kit-items-and-ui.md)
-DONE: 42 regens + 6 audio items = 48/103 · REMAINING: garage 10, helens 10, forensic 5, investigation_lab 10, corner_diner 10, gen_junk 0 (done), + 10 audio-rig chain
+ +12 new assets: 6 audio items (DELIVERED+LIVE) + 6 Field Kit generator tiers (DELIVERED+LIVE)
+    (was +16 — the 10-tier gen_audio_rig was RETIRED pre-integration 2026-07-18,
+     replaced by the six-tier Field Kit; see Part 4 status)
+  =99 unique deliverables (before Press items and Ep-stamps, tracked in art-kit-items-and-ui.md)
+DONE 54/99: currency 10 · gen_junk chain 10 · food_gifts 12 · rusty_anchor 10 · audio items 6 · field kit 6
+REMAINING 45: garage 10 · helens_gifts 10 · forensic 5 · investigation_lab chain 10 · corner_diner chain 10
 ```
 
 ## Why this exists
@@ -246,7 +249,7 @@ Currency families are on-board merge tiles too. Same global block. **Hard rule: 
 # PART 4 — NEW FAMILY: Audio Investigation (6 items + 10-tier generator chain)
 *Added v1.2 2026-07-15 — Stephen-ruled: Audio Investigation replaces the retired fingerprint_evidence AND becomes the game's OPENING family, putting Ally's podcast identity on the board from minute one. "Audio Investigation finds the story. Forensic Tools makes it evidence." These are NEW files (create at the paths below), not overwrites. Generation may use a temporary flat background if the tool demands it, but **final delivery must be genuine straight-alpha transparency** (the global spec's technical acceptance is absolute; a flat background is not an acceptable final asset).*
 
-**STATUS 2026-07-17: the 6 item icons are DELIVERED + IMPORTED (commit 421d394 — transparent-native straight alpha, passed the acceptance test; ItemDefinitionSOs created, not yet scene-wired). Outstanding: the 10 gen_audio_rig chain sprites (blocks the whole integration flip — see audio-investigation-requirement-map.md) and a T1 regen: the delivered earbuds have NO pocket case (spec'd below for 48px survival) — weakest board-size read; regen is an in-place same-GUID swap. NOTE for the generator SO when built: drop table mirrors the lab's TUNED curve (135/12/4/2/1 + sub-gen 1, per the 2026-07-17 Excel tuning pass), not the original 35/12/4/2/1.**
+**STATUS 2026-07-18: FULLY LIVE (commit 46b71a6).** The 6 item icons are imported, scene-wired, and required by L1/L2/L3/L5/L12. The generator side shipped as the six-tier **Field Kit** (`gen_field_kit` — see below; the 10-tier gen_audio_rig spec that used to sit here was RETIRED pre-integration). Still open: the audio_investigation_t01 regen (earbuds need their pocket case — audience-test gate, in-place same-GUID swap).
 
 ### audio_investigation items (6) · palette: warm charcoal, chrome, brass, amber VU-meter glow · `Assets/Art/Icons/Items/audio_investigation/`
 *The ladder climbs from LISTENING to RECORDING to BROADCASTING to ANALYSING — each tier looks more professional and more coveted than the last. Match the gear already canonized in the BG-1 studio master (chrome broadcast mic, mixing desk, cassette deck): attach EP1-BG1.png as a prop-style reference alongside the Ally key art.*
@@ -259,8 +262,10 @@ Currency families are on-board merge tiles too. Same global block. **Hard rule: 
 | audio_investigation_t05_mixing_console.png | Audio Mixing Console | compact analogue mixing desk, rows of knobs and faders, two amber VU meters glowing — no readable labels |
 | audio_investigation_t06_audio_workstation.png | Forensic Audio Workstation | monitor with abstract teal waveform + console + mic as ONE tight cluster — **family hero**, the full analysis rig people covet |
 
-### gen_audio_rig generator chain (10) · "the audio source" · palette: warm charcoal, brass, cassette-era browns, amber glow · `Assets/Art/Icons/Generators/audio_rig/`
-*Same generator treatment as Part 2: each tier is a FIXTURE on a subtle base pedestal, more massive/permanent than a hand-held item. The chain climbs from a shoebox of tapes to a broadcast station — Ally's operation growing across the season. Filenames carry the `gen_audio_rig_` prefix.*
+### ~~gen_audio_rig generator chain (10)~~ · **RETIRED PRE-INTEGRATION 2026-07-18 — DO NOT GENERATE**
+> **Design ruling: the recorders/receivers/broadcast desks below read too close to the Audio Investigation ITEMS the generator produces.** Shipped instead: the six-tier **Field Kit** (`gen_field_kit`, `Assets/Art/Icons/Generators/field_kit/`) — Utility Pouch → Investigator's Satchel → Field Backpack → Hard Equipment Case → Rolling Gear Trunk → Mobile Field Unit (all 6 delivered as straight-alpha finals and LIVE, commit 46b71a6). The Field Kit is how Ally CARRIES equipment (items listen; forensic proves) and is deliberately generic enough to host additional portable families later — audio-only in Ep1. The table below is preserved for the archive only.
+
+*(archived spec below — do not generate)*
 | Filename | Item | Art note |
 |---|---|---|
 | gen_audio_rig_t01_cassette_box.png | Cassette Box | a worn shoebox of mixed cassettes, one tape propped against it — humblest source (Dot's tapes) |
@@ -306,7 +311,7 @@ Track per approved icon: `filename · this kit v1.0 · reference images used · 
 ## Recommended generation order (biggest visible win first)
 1. **food_gifts** (12) — the most-merged family and the first tiles a player touches. Run the proof batch here, lock the look.
 2. **rusty_anchor** (10), **garage** (10), **helens_gifts** (10) — the other big item ladders.
-3. ~~audio_investigation items (6)~~ **✅ DELIVERED + IMPORTED 2026-07-17 (t01 flagged for regen — needs its pocket case, audience-test gate).** **gen_audio_rig chain (10) — STILL OUTSTANDING and now the single blocker for the audio integration; generate these next, before the remaining regens.**
+3. ~~audio_investigation items (6) + generator chain~~ **✅ ALL DONE 2026-07-18: audio items live + six-tier Field Kit live (46b71a6). The audio opening is INTEGRATED — nothing here blocks anything.** Only the t01 earbuds regen remains (audience-test gate).
 4. **forensic_tools** (5) — the investigation items.
 5. **junk / investigation_lab / corner_diner** generator chains (30).
 6. **currency** cash + platinum (10). *(already done)*
