@@ -275,12 +275,15 @@ namespace AQ.App.Leads
             layout.startCorner     = GridLayoutGroup.Corner.LowerLeft;
             layout.childAlignment  = TextAnchor.LowerLeft;
 
-            if (lead.SoftCurrency > 0) AddRewardChip(row, "App/UI/Icons/flight_cash",      lead.SoftCurrency);
+            // Cash chip mirrors the HUD's soft-currency icon at HUD size
+            // (Stephen-ruled 2026-07-18: same art, same 90x66, uncropped).
+            if (lead.SoftCurrency > 0) AddRewardChip(row, "App/UI/Icons/ui_top_soft",      lead.SoftCurrency, 90f, 66f);
             if (lead.EnergyGrant  > 0) AddRewardChip(row, "App/UI/MergeBoard/energy_badge", lead.EnergyGrant);
             if (lead.PremiumGrant > 0) AddRewardChip(row, "App/UI/Icons/flight_ingot",     lead.PremiumGrant);
         }
 
-        static void AddRewardChip(RectTransform row, string spritePath, int amount)
+        static void AddRewardChip(RectTransform row, string spritePath, int amount,
+                                  float iconW = 64f, float iconH = 46f)
         {
             var chip = new GameObject("Reward");
             chip.transform.SetParent(row, false);
@@ -302,7 +305,7 @@ namespace AQ.App.Leads
             irt.anchorMax = new Vector2(0f, 0.5f);
             irt.pivot     = new Vector2(0.5f, 0.5f);
             irt.anchoredPosition = new Vector2(4f, 0f);
-            irt.sizeDelta = new Vector2(64f, 46f);
+            irt.sizeDelta = new Vector2(iconW, iconH);
             var img = iconGo.AddComponent<Image>();
             img.sprite = Resources.Load<Sprite>(spritePath);
             img.preserveAspect = true;
@@ -314,7 +317,7 @@ namespace AQ.App.Leads
             var trt = txtGo.AddComponent<RectTransform>();
             trt.anchorMin = Vector2.zero;
             trt.anchorMax = Vector2.one;
-            trt.offsetMin = new Vector2(38f, 0f);
+            trt.offsetMin = new Vector2(iconW * 0.5f + 8f, 0f);
             trt.offsetMax = Vector2.zero;
             var tmp = txtGo.AddComponent<TextMeshProUGUI>();
             tmp.text      = amount.ToString(); // bare number (2026-07-18: no "+")
