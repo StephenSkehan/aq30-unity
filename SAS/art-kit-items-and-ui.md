@@ -126,7 +126,7 @@ must remain identifiable at 96, 64 AND 48 pixels.
 | Corner Diner (`corner_diner`) | Food Gifts | single-fixed | granted at Ep1 L5 |
 | Old Evidence Drawer (`gen_junk`) | Rusty Anchor *(in Ep1)* | flag-gated multi | also drops garage / press / helens_gifts, each locked behind its own `aq.char.*` / `aq.loc.*` story flag; only `rusty_anchor` is unlocked in Ep1 (rusty flag set at L1) |
 
-So four live families are served by three generators — the Lab produces two, and the Junk drawer's family menu grows as story flags fire.
+So **three live families** are served by three generators (the Lab produces forensic only since the 2026-07-15 fingerprint retirement), and the Junk drawer's family menu grows as story flags fire. *(After the signed audio integration: four generators, four Ep1 families — audio, forensic, rusty, food.)*
 
 **Tier progression rule (revised v1.3):** don't just make each tier "shinier." Every tier must differ from the tier below in **at least TWO** of: outer silhouette · object count · vertical height · footprint · premium material · family accent motif. Occupancy rises ~62%→82% low-to-hero (see the global block). **Test each icon at 96, 64 AND 48 px**, and inside an actual board tile with the runtime shadow + generator badge + max-tier star present — not just on a blank canvas.
 **Batch discipline:** generate a family in ONE session with the first approved icon of that family attached as an extra style anchor for the rest. Filename exactly as listed (.png, 1024×1024). Drop finished batches in `OneDrive/AllyQuinn Game/Images/Production 2026 Images/Items/` — I take it from there.

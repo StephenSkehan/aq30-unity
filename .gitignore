@@ -51,3 +51,6 @@ Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/*.asset
 
 # Editor screenshot captures
 /Screenshots/
+
+# Doc-pack snapshots for external audits stay local (2026-07-18)
+SAS/*.zip

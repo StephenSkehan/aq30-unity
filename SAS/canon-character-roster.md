@@ -2,7 +2,7 @@
 *v1.1 · 2026-07-17 (count clarified · ages filled from Bible/portrait specs · Vex role de-resolved to preserve the mystery) · v1.0 · 2026-07-11 · THE single source of truth for who exists in Havenbay.*
 *Supersedes: AQCharBible_BackStory.docx, Character_Setting_Bible v1.2/v1.3 (both retain deep-lore value but their NAMES are stale — see the migration table at the bottom). Any external summary (including AI-generated rosters) defers to this document.*
 
-**Counts: 20 principal/recurring + 3 Episode 1 = 23 LOCKED-SCRIPT narrative characters, plus 4 PROVISIONAL Episode 2 entries (§ Episode 2 additions — Rosa already ★ CANON via her approved portrait) = 27 currently registered · 2 historical figures · 1 unnamed Episode 1 antagonist.** *(rev 2026-07-17: headline count clarified — it previously said 23 while the doc registered 27. rev 2026-07-11: Damien Kroll revived as #20 per bible dossier ruling.)*
+**Counts: 20 principal/recurring + 3 Episode 1 = 23 CORE REGISTERED narrative characters (a mix of ★ CANON and proposed — "registered" is a roster status, not a script-appearance claim), plus 4 PROVISIONAL Episode 2 entries (§ Episode 2 additions — Rosa already ★ CANON via her approved portrait) = 27 currently registered · 2 historical figures · 1 unnamed Episode 1 antagonist.** *(rev 2026-07-17: headline count clarified — it previously said 23 while the doc registered 27. rev 2026-07-11: Damien Kroll revived as #20 per bible dossier ruling.)*
 
 ## Principal & recurring cast (20)
 

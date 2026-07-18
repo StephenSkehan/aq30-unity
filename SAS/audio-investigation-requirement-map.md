@@ -42,7 +42,7 @@ Why L4: `LeadData.generatorRewardTypeId` is a single string, so L5 can't carry b
 
 ## 5 · Integration checklist (post-sign-off, post-art)
 
-1. 6× ItemDefinitionSO (`audio_investigation_t1–t6`) + item PNGs (kit Part 4 filenames).
+1. ~~6× ItemDefinitionSO + item PNGs~~ **✅ DONE 2026-07-17 (421d394 — SOs `aad15000...`, PNGs imported; NOT yet scene-registered, that's step 3).**
 2. `GeneratorType_AudioRig.asset` + 10 chain sprites; drop table = lab curve, audio only.
 3. Scene: register SOs in itemDefinitions[]/generatorTypes[]; defaultGeneratorFamily → gen_audio_rig.
 4. Requirement GUID + label swaps on L1/L2/L3/L5/L12; `generatorRewardTypeId: gen_investigation_lab` on Lead_E1_Bridge.

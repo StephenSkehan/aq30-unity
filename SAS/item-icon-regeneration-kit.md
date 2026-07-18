@@ -297,7 +297,7 @@ Currency families are on-board merge tiles too. Same global block. **Hard rule: 
 Track per approved icon: `filename · this kit v1.0 · reference images used · generation ID · approval date · Unity reimport confirmed (GUID unchanged Y/N)`. A tiny table is enough; it lets any re-roll match the family.
 
 ## Out of scope for this sweep (noted, not touched)
-- **`fingerprint_evidence` — RETIRED 2026-07-15.** Removed from the gen_investigation_lab drop table; every lead requirement (Ep1 + shelved Ghost Student + cold cases) remapped to same-tier forensic_tools. The family slot is reserved for its replacement (decision pending — Audio Investigation is the front-runner; ladders in the project memory/decision doc). Do NOT generate fingerprint art.
+- **`fingerprint_evidence` — RETIRED 2026-07-15.** Removed from the gen_investigation_lab drop table; every lead requirement (Ep1 + shelved Ghost Student + cold cases) remapped to same-tier forensic_tools. Its replacement is **Audio Investigation — CHOSEN and signed off** (requirement map ruled 2026-07-17; no longer a "front-runner"). Do NOT generate fingerprint art.
 - **`press` family** — referenced by the `gen_junk` drop-table but has no ScriptableObjects and no art; it's the Episode 2 dependency (Batch F in `art-kit-items-and-ui.md`), generated separately when Ep2 content lands.
 - **`stakeout_fuel`** — a legacy alias that reuses `food_gifts` art; regenerating food_gifts refreshes it automatically. No separate generation.
 - **Legacy duplicates under `Assets/Art/UI/Icons/MergeChains/`** — superseded by `Assets/Art/Icons/Items/`; not on the live board, leave alone.
@@ -306,7 +306,7 @@ Track per approved icon: `filename · this kit v1.0 · reference images used · 
 ## Recommended generation order (biggest visible win first)
 1. **food_gifts** (12) — the most-merged family and the first tiles a player touches. Run the proof batch here, lock the look.
 2. **rusty_anchor** (10), **garage** (10), **helens_gifts** (10) — the other big item ladders.
-3. **audio_investigation items (6) + gen_audio_rig chain (10)** — the NEW opening family (Part 4); generate before the remaining regens so the opening minutes get the identity win first.
+3. ~~audio_investigation items (6)~~ **✅ DELIVERED + IMPORTED 2026-07-17 (t01 flagged for regen — needs its pocket case, audience-test gate).** **gen_audio_rig chain (10) — STILL OUTSTANDING and now the single blocker for the audio integration; generate these next, before the remaining regens.**
 4. **forensic_tools** (5) — the investigation items.
 5. **junk / investigation_lab / corner_diner** generator chains (30).
 6. **currency** cash + platinum (10). *(already done)*

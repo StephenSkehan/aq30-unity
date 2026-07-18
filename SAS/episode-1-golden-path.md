@@ -2,7 +2,7 @@
 *v2 · 2026-07-17 (v1 2026-07-11) · for editor QA (`AQ > QA Reset + Play`) and device passes. Run BOTH branches (two full runs, or save-scum the L9 choice). **This document describes the exact playable build — signed-but-unintegrated changes live in their own SAS docs until they land, then this table updates in the same commit.***
 
 ```text
-LIVE BUILD AS OF: 2026-07-17 (branch claude/ally-quinn-bible-phase-2-p8e642)
+LIVE BUILD AS OF: 2026-07-18 · commit 04b8360 + this correction pass (branch claude/ally-quinn-bible-phase-2-p8e642)
 Audio integration:    NOT LIVE (signed off — audio-investigation-requirement-map.md; blocked on 10 gen_audio_rig sprites; 6 item SOs imported but unwired)
 Fingerprint family:   RETIRED (all asks remapped to forensic 2026-07-15)
 Starting generator:   Investigation Lab (forensic only)
@@ -38,7 +38,7 @@ Item shorthand: F=forensic_tools · R=rusty_anchor · D=food_gifts. Tiers are di
 
 ## Generator provisioning (added 2026-07-12)
 
-Three generators source Ep1's four requirement families, granted progressively via the overflow bucket:
+Three generators source Ep1's three live requirement families (forensic, rusty, food — fingerprint retired 2026-07-15), granted progressively via the overflow bucket:
 - **Investigation Lab** (starting generator) → forensic_tools ONLY (fingerprint drops removed at retirement, 2026-07-15) — every F lead.
 - **gen_junk** (granted L1; `aq.loc.rusty_anchor.active` set at L1 unlocks its bar drops) → rusty_anchor (R) — L4, L8, L11. *(gen_junk's garage/press/helens drops stay locked behind their Ep2+ character flags — correctly inert in Ep1.)*
 - **Corner Diner** (granted **L5**) → food_gifts (D) — L7, L9, L11. **This grant was missing** until 2026-07-12: no lead provisioned the food generator, so L7 "The Man Who Came at Noon" (burger + coffee) was **unsatisfiable — a hard Ep1 progression blocker**. Fixed by setting `generatorRewardTypeId: corner_diner` on `Lead_E1_Pod1` (L5), the Phase-2 opener, before any food lead spawns.
