@@ -99,7 +99,11 @@ namespace AQ.EditorTools
                 MakeImage(hudRt, Gen + "pill_"   + i, AQTheme.Rounded, AQTheme.Paper, px, RowY, PillW, PillH);
                 ReseatValue(hud.transform, valueNames[i], px + ValueDX, RowY);
                 // Icon straddles the pill's left edge — icon and value read as one unit.
-                MakeImage(hudRt, Gen + "icon_"   + i, icons[i], Color.white, px - PillW / 2f, RowY, IconSize, IconSize);
+                // Cash note art is wide (919x668): in a square box it renders short and
+                // reads cropped — give it the full pill height instead (2026-07-18).
+                float iw = i == 1 ? 90f : IconSize;
+                float ih = i == 1 ? 66f : IconSize;
+                MakeImage(hudRt, Gen + "icon_"   + i, icons[i], Color.white, px - PillW / 2f, RowY, iw, ih);
                 if (plusLive[i]) MakePlus(hudRt, Gen + "plus_" + i, px + PillW / 2f - 10f, RowY, true);
             }
 

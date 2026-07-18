@@ -42,6 +42,18 @@ namespace AQ.App.Dev
             MakeButton("RESET", 0, new Color(0.55f, 0.20f, 0.20f, 0.85f), ResetToStart);
             MakeButton("-50 ENERGY", 1, new Color(0.20f, 0.35f, 0.55f, 0.85f), DrainEnergy);
             MakeButton("CRASH TEST", 2, new Color(0.45f, 0.30f, 0.10f, 0.85f), CrashTest);
+            ApplyVisibility();
+        }
+
+        private void OnEnable()  => AQ.App.Dev.DebugInfoToggle.Changed += ApplyVisibility;
+        private void OnDisable() => AQ.App.Dev.DebugInfoToggle.Changed -= ApplyVisibility;
+
+        // Hidden unless Settings > Debug > Debug Info is ON (2026-07-18 ruling).
+        private void ApplyVisibility()
+        {
+            bool show = AQ.App.Dev.DebugInfoToggle.Show;
+            for (int i = 0; i < transform.childCount; i++)
+                transform.GetChild(i).gameObject.SetActive(show);
         }
 
         private static void ResetToStart()

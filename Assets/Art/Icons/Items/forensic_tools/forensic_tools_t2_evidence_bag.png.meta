@@ -145,10 +145,10 @@ TextureImporter:
       name: forensic_tools_t2_evidence_bag_0
       rect:
         serializedVersion: 2
-        x: 285
-        y: 222
-        width: 455
-        height: 568
+        x: 164
+        y: 68
+        width: 694
+        height: 888
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

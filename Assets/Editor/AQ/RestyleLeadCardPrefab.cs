@@ -103,14 +103,14 @@ namespace AQ.EditorTools
                     rt.offsetMin = new Vector2(12f, 0f);
                     rt.offsetMax = new Vector2(-12f, 0f);
                     rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, 10f);
-                    rt.sizeDelta = new Vector2(rt.sizeDelta.x, 92f);
+                    rt.sizeDelta = new Vector2(rt.sizeDelta.x, 116f);
                 }
 
                 foreach (var slot in presenter.slots)
                 {
                     if (slot == null) continue;
                     var srt = (RectTransform)slot.transform;
-                    srt.sizeDelta = new Vector2(68f, 88f);
+                    srt.sizeDelta = new Vector2(92f, 112f); // bigger item read (2026-07-18)
 
                     var icon = slot.icon != null ? slot.icon.rectTransform : null;
                     if (icon != null)
@@ -118,7 +118,7 @@ namespace AQ.EditorTools
                         icon.anchorMin = icon.anchorMax = new Vector2(0.5f, 1f);
                         icon.pivot     = new Vector2(0.5f, 1f);
                         icon.anchoredPosition = new Vector2(0f, 0f);
-                        icon.sizeDelta = new Vector2(60f, 60f);
+                        icon.sizeDelta = new Vector2(86f, 86f);
                     }
 
                     var label = slot.transform.Find("Label");

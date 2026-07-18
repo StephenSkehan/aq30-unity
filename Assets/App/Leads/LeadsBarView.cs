@@ -22,6 +22,9 @@ namespace AQ.App.Leads
 
         string _lastFulfillId;
         int _activatedCount;
+
+        /// <summary>Resolved-lead count — surfaced in the combined debug overlay line.</summary>
+        public int ActivatedCount => _activatedCount;
         TextMeshProUGUI _progressLabel;
 
         UnityEngine.Object _boundRepo;
@@ -45,7 +48,9 @@ namespace AQ.App.Leads
             if (contentRoot == null && scrollRect != null) contentRoot = scrollRect.content;
             if (scrollRect != null && scrollRect.GetComponent<LeadCardSnapMB>() == null)
                 scrollRect.gameObject.AddComponent<LeadCardSnapMB>();
-            CreateProgressLabel();
+            // Standalone "0/12" pill retired 2026-07-18 — progress now rides the
+            // combined debug overlay line (CaseFlowDebugOverlayMB, toggle-gated).
+            // CreateProgressLabel();
         }
 
         public void Bind(UnityEngine.Object repo) { _boundRepo = repo; }
@@ -310,8 +315,8 @@ namespace AQ.App.Leads
             trt.offsetMin = new Vector2(40f, 0f);
             trt.offsetMax = Vector2.zero;
             var tmp = txtGo.AddComponent<TextMeshProUGUI>();
-            tmp.text      = $"+{amount}";
-            tmp.fontSize  = 22f;
+            tmp.text      = amount.ToString(); // bare number (2026-07-18: no "+")
+            tmp.fontSize  = 24f;
             tmp.color     = Color.white;
             tmp.alignment = TextAlignmentOptions.MidlineLeft;
             tmp.raycastTarget = false;

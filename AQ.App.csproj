@@ -108,6 +108,7 @@
     <Compile Include="Assets\App\Leads\LeadsRepository.cs" />
     <Compile Include="Assets\App\Items\ItemRegistry.cs" />
     <Compile Include="Assets\App\Leads\Data\LeadRequirement.cs" />
+    <Compile Include="Assets\App\Dev\DebugInfoToggle.cs" />
     <Compile Include="Assets\App\UI\Settings\GameControlPanelMB.cs" />
     <Compile Include="Assets\App\Merge\Runtime\MergeIconCatalog.cs" />
     <Compile Include="Assets\App\Leads\Data\LeadData.cs" />

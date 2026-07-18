@@ -157,10 +157,10 @@ TextureImporter:
       name: forensic_tools_t3_full_forensic_case_black_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 106
-        width: 998
-        height: 709
+        x: 67
+        y: 156
+        width: 888
+        height: 712
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
