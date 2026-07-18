@@ -257,7 +257,7 @@ namespace AQ.App.Leads
             row.anchorMin = new Vector2(0f, 1f);
             row.anchorMax = new Vector2(1f, 1f);
             row.pivot     = new Vector2(0f, 0f);
-            row.offsetMin = new Vector2(112f, 24f);
+            row.offsetMin = new Vector2(150f, 24f); // clear of the bust (2026-07-18)
             row.offsetMax = new Vector2(-12f, 110f);
 
             // Immediate, not deferred: Unity refuses AddComponent<GridLayoutGroup>
@@ -275,9 +275,10 @@ namespace AQ.App.Leads
             layout.startCorner     = GridLayoutGroup.Corner.LowerLeft;
             layout.childAlignment  = TextAnchor.LowerLeft;
 
-            // Cash chip mirrors the HUD's soft-currency icon at HUD size
-            // (Stephen-ruled 2026-07-18: same art, same 90x66, uncropped).
-            if (lead.SoftCurrency > 0) AddRewardChip(row, "App/UI/Icons/ui_top_soft",      lead.SoftCurrency, 90f, 66f);
+            // Cash chip mirrors the HUD's soft-currency icon at the SAME ON-SCREEN
+            // size: the card hierarchy renders ~1.7x larger than the HUD canvas,
+            // so 90x66 local was oversized — 52x38 measures identical (2026-07-18).
+            if (lead.SoftCurrency > 0) AddRewardChip(row, "App/UI/Icons/ui_top_soft",      lead.SoftCurrency, 62f, 45f);
             if (lead.EnergyGrant  > 0) AddRewardChip(row, "App/UI/MergeBoard/energy_badge", lead.EnergyGrant);
             if (lead.PremiumGrant > 0) AddRewardChip(row, "App/UI/Icons/flight_ingot",     lead.PremiumGrant);
         }
