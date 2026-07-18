@@ -35,7 +35,7 @@ MonoBehaviour:
   SoftCurrency: 50
   EnergyGrant: 0
   PremiumGrant: 0
-  generatorRewardTypeId: 
+  generatorRewardTypeId: gen_investigation_lab
   generatorRewardTier: 0
   resolutionDialogue: {fileID: 11400000, guid: dd10000400000000000000000000dd04, type: 2}
   OutcomeHints: 4

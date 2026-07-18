@@ -209,7 +209,15 @@ namespace AQ.App.UI.Board
                 return;
             }
 
-            var outcome = MergeRules.Decide(ToRulesTile(a), ToRulesTile(b), maxTier);
+            // Generator pairs cap at their own SO's tier count, not the board-wide
+            // item ceiling — a 6-tier chain (Field Kit) must stop at T6, not T10.
+            int ceiling = maxTier;
+            if (a.Kind == TileKind.Generator && b.Kind == TileKind.Generator)
+            {
+                var genSO = FindGeneratorType(GetFamily(a));
+                if (genSO != null) ceiling = Mathf.Min(ceiling, genSO.maxGeneratorTier);
+            }
+            var outcome = MergeRules.Decide(ToRulesTile(a), ToRulesTile(b), ceiling);
 
             switch (outcome)
             {
@@ -561,7 +569,13 @@ namespace AQ.App.UI.Board
             if (!(_mergeCounts.TryGetValue((v.Kind, fam, v.Tier), out int n) && n >= 2)) return false;
 
             var t = new MergeRules.Tile(v.Kind, v.Tier, fam);
-            return MergeRules.Decide(t, t, maxTier) == MergeRules.Outcome.Merge;
+            int ceiling = maxTier;
+            if (v.Kind == TileKind.Generator)
+            {
+                var genSO = FindGeneratorType(fam);
+                if (genSO != null) ceiling = Mathf.Min(ceiling, genSO.maxGeneratorTier);
+            }
+            return MergeRules.Decide(t, t, ceiling) == MergeRules.Outcome.Merge;
         }
 
         private void RebuildMergeCounts()

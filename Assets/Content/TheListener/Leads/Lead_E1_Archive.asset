@@ -20,15 +20,15 @@ MonoBehaviour:
   ActionType: 2
   EnergyCost: 0
   requirements:
-  - label: UV Light
+  - label: Broadcast Microphone Rig
     icon: {fileID: 0}
     satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: 4426ca7e5c440644793d4f17cc690acf, type: 2}
+    itemDefinition: {fileID: 11400000, guid: aad15000b1c2d3e4f5a6b7c8d9e0f104, type: 2}
     quantity: 1
-  - label: Lifted Print Tape
+  - label: Studio Headphones
     icon: {fileID: 0}
     satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: 396f63cfaf7106c47bdaf61671377b24, type: 2}
+    itemDefinition: {fileID: 11400000, guid: aad15000b1c2d3e4f5a6b7c8d9e0f102, type: 2}
     quantity: 1
   RequiredLeadIds: []
   EvidenceIds: []
