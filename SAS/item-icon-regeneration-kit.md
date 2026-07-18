@@ -114,7 +114,7 @@ Approve all five (checked at 96/64/48 px on a light tile, dark tile AND checkerb
 | Filename | Item | Art note |
 |---|---|---|
 | rusty_anchor_t01_shot_glass_empty.png | Shot Glass | simple glass, a catch of amber light |
-| rusty_anchor_t02_short_glass_ice.png | Short Glass on Ice | tumbler, two ice cubes, condensation |
+| rusty_anchor_t02_short_glass_ice.png | Glass of Iced Water *(RULED 2026-07-18 — subject changed from a whiskey-style tumbler to a tall clear glass of iced water; the tumbler read too close to T9's premium whiskey at board size. Filename retained, cosmetic)* | tall clear glass, ice cubes, water — unmistakably non-alcoholic |
 | rusty_anchor_t03_tall_glass_ice_orange.png | Tall Glass Orange | highball, orange slice on rim |
 | rusty_anchor_t04_beer_bottle.png | Beer Bottle | brown bottle, abstract anchor motif on label (no words) |
 | rusty_anchor_t05_wine_glass_red.png | Wine Glass Red | red wine, elegant stem |
