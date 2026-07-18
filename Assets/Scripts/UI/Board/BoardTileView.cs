@@ -467,11 +467,19 @@ namespace AQ.App.UI.Board
             var target = TileUnderPointer(eventData);
             if (target != null) dst = controller.GetIndex(target);
 
+            // Dropped on the locker HUD button? Note it, but let the normal drag
+            // lifecycle complete first (state machinery untouched — the store
+            // runs after, exactly like the long-press STORE path).
+            bool toLocker = dst == null && Kind == TileKind.Item &&
+                            AQ.App.UI.Board.LockerScreen.IsOverHudButton(eventData.position);
+
             controller?.EndDrag(dragStartRC, dst);
             dragStartRC = null;
 
             // Ensure icon shows at its final slot
             Refresh();
+
+            if (toLocker) controller?.StoreTileToLocker(this);
         }
 
         void Follow(PointerEventData eventData)

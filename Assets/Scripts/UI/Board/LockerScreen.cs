@@ -18,6 +18,12 @@ namespace AQ.App.UI.Board
         private static GameObject _root;      // panel canvas (built on demand)
         private static RectTransform _grid;   // slot grid parent, rebuilt on refresh
         private static bool _isOpen;
+        private static RectTransform _hudBtn; // for drag-drop hit testing
+
+        /// <summary>True when the screen point sits on the locker HUD button (drag-to-store).</summary>
+        public static bool IsOverHudButton(Vector2 screenPos)
+            => _hudBtn != null &&
+               RectTransformUtility.RectangleContainsScreenPoint(_hudBtn, screenPos);
 
         private const int Columns = 4;
         private const float SlotSize = 200f;
@@ -84,6 +90,7 @@ namespace AQ.App.UI.Board
             var btn = btnGo.GetComponent<Button>();
             btn.transition = Selectable.Transition.None;
             btn.onClick.AddListener(Toggle);
+            _hudBtn = rt;
         }
 
         // ---- Panel ----
@@ -250,10 +257,20 @@ namespace AQ.App.UI.Board
         private static void BuySlot()
         {
             int price = EvidenceLockerService.NextSlotPrice;
-            if (EvidenceLockerService.TryBuySlot())
-                ToastService.Show("locker_slot", $"Locker slot unlocked (-{price} CC).", 2f);
-            else
-                ToastService.Show("locker_slot_no", "Not enough CaseCash.", 2f);
+            if (price < 0) return;
+            int slotNo = EvidenceLockerService.Capacity + 1;
+            // Purchase confirmation (Stephen-ruled 2026-07-18).
+            ConfirmPopup.Show(
+                "BUY LOCKER SLOT?",
+                $"Unlock slot {slotNo} for {price} CaseCash?",
+                "BUY",
+                onConfirm: () =>
+                {
+                    if (EvidenceLockerService.TryBuySlot())
+                        ToastService.Show("locker_slot", $"Locker slot unlocked (-{price} CC).", 2f);
+                    else
+                        ToastService.Show("locker_slot_no", "Not enough CaseCash.", 2f);
+                });
         }
 
         // ---- helpers ----

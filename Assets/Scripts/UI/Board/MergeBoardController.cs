@@ -759,6 +759,38 @@ namespace AQ.App.UI.Board
         /// Called once per lead requirement during lead activation to consume qualifying items.
         /// Returns false if no matching tile was found.
         /// </summary>
+        /// <summary>
+        /// Stores a tile's item into the Evidence Locker (drag-to-locker path).
+        /// Runs AFTER the normal drag lifecycle has fully completed, so the
+        /// fragile drag/click state machinery is never bypassed — this is the
+        /// same clear+store sequence the TileInfoPopup STORE button uses.
+        /// </summary>
+        public void StoreTileToLocker(BoardTileView tile)
+        {
+            if (tile == null || tile.IsEmpty || tile.Kind == TileKind.Generator) return;
+
+            var family = GetFamily(tile);
+            int tier   = tile.Tier;
+
+            if (!AQ.App.Locker.EvidenceLockerService.CanStore)
+            {
+                AQ.App.UI.Common.ToastService.Show("locker_full", "Locker full — buy a slot or retrieve an item.", 2f);
+                return;
+            }
+
+            var def = LookupItemDef(family, tier);
+            if (TryClearItem(family, tier, out _, out _))
+            {
+                AQ.App.Locker.EvidenceLockerService.TryStore(new OverflowTileData
+                {
+                    kind   = OverflowKind.Item,
+                    family = family,
+                    tier   = tier
+                }, def != null ? def.itemId : null);
+                AQ.App.UI.Common.ToastService.Show("locker_store", "Stored in locker.", 1.2f);
+            }
+        }
+
         public bool TryClearItem(string family, int tier) => TryClearItem(family, tier, out _, out _);
 
         public bool TryClearItem(string family, int tier, out Sprite clearedSprite, out Vector3 clearedWorldPos)
