@@ -270,7 +270,7 @@ namespace AQ.App.Leads
                 layout = row.gameObject.AddComponent<GridLayoutGroup>();
             layout.constraint      = GridLayoutGroup.Constraint.FixedColumnCount;
             layout.constraintCount = 2;
-            layout.cellSize        = new Vector2(140f, 38f);
+            layout.cellSize        = new Vector2(105f, 38f); // -25% width (2026-07-18)
             layout.spacing         = new Vector2(8f, 8f);
             layout.startCorner     = GridLayoutGroup.Corner.LowerLeft;
             layout.childAlignment  = TextAnchor.LowerLeft;
@@ -293,14 +293,16 @@ namespace AQ.App.Leads
             pill.color  = AQ.App.UI.AQTheme.BoardFrame;
             pill.raycastTarget = false;
 
+            // Icon straddles the pill's left edge, slightly taller than the pill
+            // (2026-07-18) — full art, never boxed down into a square crop.
             var iconGo = new GameObject("Icon");
             iconGo.transform.SetParent(rt, false);
             var irt = iconGo.AddComponent<RectTransform>();
             irt.anchorMin = new Vector2(0f, 0.5f);
             irt.anchorMax = new Vector2(0f, 0.5f);
-            irt.pivot     = new Vector2(0f, 0.5f);
+            irt.pivot     = new Vector2(0.5f, 0.5f);
             irt.anchoredPosition = new Vector2(4f, 0f);
-            irt.sizeDelta = new Vector2(30f, 30f);
+            irt.sizeDelta = new Vector2(64f, 46f);
             var img = iconGo.AddComponent<Image>();
             img.sprite = Resources.Load<Sprite>(spritePath);
             img.preserveAspect = true;
@@ -312,7 +314,7 @@ namespace AQ.App.Leads
             var trt = txtGo.AddComponent<RectTransform>();
             trt.anchorMin = Vector2.zero;
             trt.anchorMax = Vector2.one;
-            trt.offsetMin = new Vector2(40f, 0f);
+            trt.offsetMin = new Vector2(38f, 0f);
             trt.offsetMax = Vector2.zero;
             var tmp = txtGo.AddComponent<TextMeshProUGUI>();
             tmp.text      = amount.ToString(); // bare number (2026-07-18: no "+")

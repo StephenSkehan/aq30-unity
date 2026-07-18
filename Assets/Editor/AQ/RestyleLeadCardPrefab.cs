@@ -115,8 +115,10 @@ namespace AQ.EditorTools
                     var icon = slot.icon != null ? slot.icon.rectTransform : null;
                     if (icon != null)
                     {
-                        icon.anchorMin = icon.anchorMax = new Vector2(0.5f, 1f);
-                        icon.pivot     = new Vector2(0.5f, 1f);
+                        // Centered in the slot so the item floats midway between
+                        // the subtitle and the card's bottom edge (2026-07-18).
+                        icon.anchorMin = icon.anchorMax = new Vector2(0.5f, 0.5f);
+                        icon.pivot     = new Vector2(0.5f, 0.5f);
                         icon.anchoredPosition = new Vector2(0f, 0f);
                         icon.sizeDelta = new Vector2(86f, 86f);
                     }
