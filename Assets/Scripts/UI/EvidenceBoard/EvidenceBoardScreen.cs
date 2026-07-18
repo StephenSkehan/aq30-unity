@@ -165,15 +165,17 @@ namespace AQ.App.UI.EvidenceBoard
             _btnCg.blocksRaycasts = true;
             _btnCg.interactable  = true;
 
-            // Square button — bottom-right corner
+            // Square button — bottom-right, level with the locker button on the
+            // left (both centers at y≈264, over the background — Stephen-ruled
+            // 2026-07-18; both get proper icon art when the kit sprites land).
             var btnGo = new GameObject("Btn", typeof(RectTransform), typeof(Image), typeof(Button));
             btnGo.transform.SetParent(btnRoot.transform, false);
             var btnRt              = btnGo.GetComponent<RectTransform>();
             btnRt.anchorMin        = new Vector2(1f, 0f);
             btnRt.anchorMax        = new Vector2(1f, 0f);
             btnRt.pivot            = new Vector2(1f, 0f);
-            btnRt.sizeDelta        = new Vector2(140f, 140f);
-            btnRt.anchoredPosition = new Vector2(-24f, 24f);
+            btnRt.sizeDelta        = new Vector2(90f, 90f);
+            btnRt.anchoredPosition = new Vector2(-24f, 219f);
 
             var btnImg = btnGo.GetComponent<Image>();
             btnImg.color = Color.white;

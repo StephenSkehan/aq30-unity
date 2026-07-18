@@ -45,6 +45,10 @@ public class BoardFitMB : MonoBehaviour
 
     void Refit()
     {
+        // Runtime-only: the QA sweep SendMessages this — in edit mode it would
+        // mutate the serialized grid and dirty the scene (bitten 2026-07-18).
+        if (!Application.isPlaying) return;
+
         _lastW = Screen.width;
         _lastH = Screen.height;
 

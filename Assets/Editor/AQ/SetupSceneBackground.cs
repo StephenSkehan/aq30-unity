@@ -44,9 +44,40 @@ namespace AQ.EditorTools
             Undo.RecordObject(bgImg, "Set background sprite");
             bgImg.sprite = sprite;
             bgImg.type = Image.Type.Simple;
-            bgImg.preserveAspect = false;   // fill the screen; the art is portrait-ish so stretch is minimal
+            bgImg.preserveAspect = false;
             bgImg.color = Color.white;
             EditorUtility.SetDirty(bgImg);
+
+            // 2b) Full-bleed play space (Stephen-ruled 2026-07-18): GameRoot's
+            // AspectRatioFitter locked everything to 9:16, letterboxing tall
+            // phones with dead bands top and bottom. GameRoot now stretches to
+            // the whole canvas; the Background instead carries an EnvelopeParent
+            // fitter at the art's aspect so it COVERS the screen (crops overflow,
+            // never distorts). The board canvas inherits the full height and
+            // BoardFitMB grows the grid into it.
+            var gameRoot = (RectTransform)bg.transform.parent;
+            var rootFitter = gameRoot.GetComponent<AspectRatioFitter>();
+            if (rootFitter != null)
+            {
+                Undo.DestroyObjectImmediate(rootFitter);
+            }
+            Undo.RecordObject(gameRoot, "GameRoot full stretch");
+            gameRoot.anchorMin = Vector2.zero;
+            gameRoot.anchorMax = Vector2.one;
+            gameRoot.offsetMin = Vector2.zero;
+            gameRoot.offsetMax = Vector2.zero;
+            EditorUtility.SetDirty(gameRoot);
+
+            var bgRt = (RectTransform)bg.transform;
+            Undo.RecordObject(bgRt, "Background envelope");
+            bgRt.anchorMin = bgRt.anchorMax = new Vector2(0.5f, 0.5f);
+            bgRt.pivot = new Vector2(0.5f, 0.5f);
+            bgRt.anchoredPosition = Vector2.zero;
+            var bgFitter = bg.GetComponent<AspectRatioFitter>();
+            if (bgFitter == null) bgFitter = Undo.AddComponent<AspectRatioFitter>(bg);
+            bgFitter.aspectMode = AspectRatioFitter.AspectMode.EnvelopeParent;
+            bgFitter.aspectRatio = sprite.rect.width / sprite.rect.height; // all stage bgs share 1284x2778
+            EditorUtility.SetDirty(bg);
 
             // 3) Scrim: full-screen dark overlay directly above Background, below the board.
             var parent = bg.transform.parent; // GameRoot

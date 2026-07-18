@@ -1,6 +1,31 @@
 # Art Generation Kit — Item Icons & UI Sprites
 *v1.4 · 2026-07-15 (Render Language Standard added; Environment-block heading corrected — backgrounds share the ONE illustration language, framing rules differ) · v1.3 2026-07-12 (contradiction pass: single-object→cluster, no-text absolute, occupancy/tier rule, generator↔family map, separate UI-symbol block, technical QC, self-contained bg) · Attach the Ally key art as PALETTE/LIGHTING reference — not a geometry reference — with every item generation.*
 
+## ADDENDUM 2026-07-18 — corner button icons: Evidence Locker + Evidence Board
+*Both corner buttons now sit level (bottom strip, over the background) and need proper icons. Generate `ui_btn_locker.png` and `ui_btn_evidence_board.png` → `Assets/Art/UI/TopBar/` → I wire them into LockerScreen.BuildHudButton and EvidenceBoardScreen.BuildHudButton (replacing the LOCKER text pill and the photo-real cork thumbnail).*
+
+```
+ui_btn_locker.png — A single mobile-game UI icon: a small vintage evidence
+locker for a noir detective podcast game. A sturdy navy-steel locker door,
+slightly ajar, with a brass handle and a small tag slot — reads instantly
+as "secure storage". Stylized painterly game-UI finish (premium merge-game
+look): warm brass + navy palette, gentle dimensionality, soft top-light,
+NO photorealism, NO drop shadow, no background plate. TRANSPARENT
+background, centered, generous margins, must read clearly at 64px.
+512x512, straight alpha, no text.
+
+ui_btn_evidence_board.png — A single mobile-game UI icon: a corkboard
+investigation board for a noir detective podcast game. Warm cork panel in
+a slim dark-wood frame, two or three pinned abstract note shapes joined
+by a short red string, one brass pin catching light — reads instantly as
+"the case board". Stylized painterly game-UI finish (premium merge-game
+look), NOT a photo texture: painterly cork, gentle dimensionality, soft
+top-light, NO photorealism, NO drop shadow, no background plate.
+TRANSPARENT background, centered, generous margins, must read clearly at
+64px. 512x512, straight alpha, no readable text — note shapes stay
+abstract.
+```
+
 ## ADDENDUM 2026-07-17 — HUD menu (hamburger) button
 *The runtime-drawn 3-bar placeholder reads rough (Stephen). Generate `ui_top_menu.png` → import to `Assets/Art/UI/TopBar/` → wire in RebuildHudComponents.StyleSettingsGear (replaces the drawn bars).*
 
