@@ -26,7 +26,6 @@
 | Item | Blocks |
 |---|---|
 | Press family art (Arthur, T1–T10) | gen_junk Ep2 drops |
-| audio_investigation_t01 regen (earbuds need pocket case) | **audience-test gate** — first item of the opening-family experience and it already fails the 48px intention |
 | ui_top_menu.png (hamburger) | replaces drawn placeholder (cosmetic) |
 | VO recordings | audience-level testing |
 
@@ -37,7 +36,7 @@
 
 ## Crowd-test readiness (two milestones, per 2026-07-17 audit)
 - **Usability prototype (board comprehension/navigation): QA GATE PENDING** — flips to READY only when the verification debt above passes.
-- **Audience prototype (judging the podcast proposition): NOT READY** — audio opening ✅ and Del ✅ are now live — remaining: VO, FTUE first-merge choreography, audio t01 earbuds regen. Testing appeal before these exist risks judging a proposition players never saw.
+- **Audience prototype (judging the podcast proposition): NOT READY** — audio opening ✅ and Del ✅ are now live — remaining: VO and FTUE first-merge choreography only (audio t01 RULED FINAL 2026-07-19 — the spec'd pocket case read as cufflinks at low res; bare recognisable earbuds are canon). Testing appeal before these exist risks judging a proposition players never saw.
 
 ## Archived documents (do not start work from these)
 `Archive/handover-console-ui-pass.md`, `Archive/b4-editor-verification-checklist.md` — consumed 2026-07-13/16; both contain obsolete scene paths and values (banners inside).
