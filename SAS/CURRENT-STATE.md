@@ -29,6 +29,18 @@
 | ui_top_menu.png (hamburger) | replaces drawn placeholder (cosmetic) |
 | VO recordings | audience-level testing |
 
+## Sprint 7 compliance — CODE COMPLETE (verified 2026-07-19)
+Audit found Sprint 7 was already implemented (2026-07-09-era session), contrary to later planning notes that called it "unstarted":
+- **UMP consent**: `ConsentService` gathers at boot, editor bypass, dev-build EEA debug geography; `AdService` initializes ONLY after ConsentResolved.
+- **Settings Privacy tab**: Restore Purchases · Privacy Policy link (indigochimpstudios.com/privacy) · Manage Consent (EEA-only, UMP privacy-options form).
+- **ATT**: `NSUserTrackingUsageDescription` injected by IOSPostBuild; the ATT prompt itself is presented by UMP's IDFA message flow.
+- **Reset semantics**: full player reset = cold-install (consent wiped, re-gathered on boot — GDPR-correct, documented in GameResetMB).
+
+**Device/console checklist remaining (Stephen, next Mac build):**
+1. AdMob console: confirm the UMP consent + IDFA explainer messages are PUBLISHED for the app.
+2. Dev build: paste the device hash (printed in Xcode console on first run) into ConsentService's ConsentDebugSettings, verify the EEA form + ATT prompt sequence.
+3. Verify Restore Purchases on device (sandbox) + `episode_complete` in Firebase DebugView (emission is code-proven via CaseResolvedEvent firing).
+
 ## Verification debt (from 2026-07-17/18 external audits — not yet run)
 - Evidence Locker crash-boundary tests (kill/relaunch inside store/retrieve/mixed-consumption/slot-purchase windows — board and locker are separate save files; duplicate/loss windows theoretically exist). **Hardening target (2026-07-18): forcing a board save after locker transactions only NARROWS the window — proper fix is a transaction journal / idempotent operation IDs, or folding locker state into the board's atomic save aggregate. Add deterministic fault-injection checkpoints for the tests.**
 - Full Schedule B editor/device pass with real quantity>1 content (L7 easiest) + L11 climax board-pressure playtest (fallback: Schedule A's L11 shape if testers stall).
