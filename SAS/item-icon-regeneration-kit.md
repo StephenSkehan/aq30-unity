@@ -7,8 +7,8 @@ TOTAL PRE-BETA BOARD-ART SCOPE (recounted 2026-07-18 evening from repository sta
  +18 new assets: 6 audio items + 6 Field Kit tiers + 6 NEW corner_diner tiers — ALL DELIVERED+LIVE
     (gen_audio_rig 10 retired pre-integration; corner_diner ladder redesigned 10→6, see below)
   =95 unique deliverables (before Press items and Ep-stamps, tracked in art-kit-items-and-ui.md)
-DONE 60/95: currency 10 · gen_junk chain 10 · food_gifts 12 · rusty_anchor 10 · audio items 6 · field kit 6 · corner_diner chain 6
-REMAINING 35: garage 10 · helens_gifts 10 · forensic 5 · investigation_lab chain 10
+DONE 70/95 (2026-07-19): currency 10 · gen_junk chain 10 · food_gifts 12 · rusty_anchor 10 · helens_gifts 10 · audio items 6 · field kit 6 · corner_diner chain 6
+REMAINING 25: garage 10 · forensic 5 · investigation_lab chain 10
 ```
 
 ## Why this exists
