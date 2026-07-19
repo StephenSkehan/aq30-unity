@@ -101,16 +101,16 @@ namespace AQ.Editor.Items
             new() { itemId="corner_diner_t10", family="corner_diner", tier=9, displayName="Fast Food Facade",    spritePath="Generators/corner_diner/corner_diner_t10_fast_food_facade.png" },
 
             // ── Investigation Lab Generator (10 tiers) ──────────────────────
-            new() { itemId="investigation_lab_t01", family="investigation_lab", tier=0, displayName="Gloves",         spritePath="Generators/investigation_lab/gen_investigation_lab_t01_gloves.png" },
-            new() { itemId="investigation_lab_t02", family="investigation_lab", tier=1, displayName="Mask",           spritePath="Generators/investigation_lab/gen_investigation_lab_t02_mask.png" },
-            new() { itemId="investigation_lab_t03", family="investigation_lab", tier=2, displayName="Tubes",          spritePath="Generators/investigation_lab/gen_investigation_lab_t03_tubes.png" },
-            new() { itemId="investigation_lab_t04", family="investigation_lab", tier=3, displayName="Lab Coat",       spritePath="Generators/investigation_lab/gen_investigation_lab_t04_coat.png" },
-            new() { itemId="investigation_lab_t05", family="investigation_lab", tier=4, displayName="Microscope",     spritePath="Generators/investigation_lab/gen_investigation_lab_t05_microscope.png" },
-            new() { itemId="investigation_lab_t06", family="investigation_lab", tier=5, displayName="Respirator",     spritePath="Generators/investigation_lab/gen_investigation_lab_t06_respirator.png" },
-            new() { itemId="investigation_lab_t07", family="investigation_lab", tier=6, displayName="DNA Analysis",   spritePath="Generators/investigation_lab/gen_investigation_lab_t07_dna.png" },
-            new() { itemId="investigation_lab_t08", family="investigation_lab", tier=7, displayName="Hazmat Suit",    spritePath="Generators/investigation_lab/gen_investigation_lab_t08_hazmat.png" },
-            new() { itemId="investigation_lab_t09", family="investigation_lab", tier=8, displayName="Cleanroom Door", spritePath="Generators/investigation_lab/gen_investigation_lab_t09_door_cleanroom.png" },
-            new() { itemId="investigation_lab_t10", family="investigation_lab", tier=9, displayName="Research Facility",spritePath="Generators/investigation_lab/gen_investigation_lab_t10_facility_helix.png" },
+            new() { itemId="investigation_lab_t01", family="investigation_lab", tier=0, displayName="Sample Prep Tray",  spritePath="Generators/investigation_lab/gen_investigation_lab_t01_sample_prep_tray.png" },
+            new() { itemId="investigation_lab_t02", family="investigation_lab", tier=1, displayName="Lab Trolley",       spritePath="Generators/investigation_lab/gen_investigation_lab_t02_lab_trolley.png" },
+            new() { itemId="investigation_lab_t03", family="investigation_lab", tier=2, displayName="Lab Workbench",     spritePath="Generators/investigation_lab/gen_investigation_lab_t03_lab_workbench.png" },
+            new() { itemId="investigation_lab_t04", family="investigation_lab", tier=3, displayName="Analysis Station",  spritePath="Generators/investigation_lab/gen_investigation_lab_t04_analysis_station.png" },
+            new() { itemId="investigation_lab_t05", family="investigation_lab", tier=4, displayName="Cleanroom Airlock", spritePath="Generators/investigation_lab/gen_investigation_lab_t05_cleanroom_airlock.png" },
+            // Lab ladder is SIX-TIER (ruling 2026-07-19; t07-t10 retired — PPE
+            // subjects replaced by lab-capability progression). Sprite paths
+            // above are the PENDING final art filenames; live SOs point at the
+            // interim (old t01-t06) sprites until delivery.
+            new() { itemId="investigation_lab_t06", family="investigation_lab", tier=5, displayName="Research Facility", spritePath="Generators/investigation_lab/gen_investigation_lab_t06_research_facility.png" },
 
             // ── Junk Generator (10 tiers) ────────────────────────────────────
             new() { itemId="junk_t01", family="junk", tier=0, displayName="Drawer",    spritePath="Generators/junk/gen_junk_t01_drawer.png" },

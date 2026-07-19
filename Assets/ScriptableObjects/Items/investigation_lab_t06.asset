@@ -16,4 +16,4 @@ MonoBehaviour:
   family: investigation_lab
   tier: 5
   icon: {fileID: -4328059495257280336, guid: 8fb3189f686ad4f42a90fd467a53fe5c, type: 3}
-  displayName: Respirator
+  displayName: Research Facility

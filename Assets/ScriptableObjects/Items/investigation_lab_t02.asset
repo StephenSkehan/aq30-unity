@@ -16,4 +16,4 @@ MonoBehaviour:
   family: investigation_lab
   tier: 1
   icon: {fileID: 7022844974753378144, guid: 94e9a225e8b96264baf5700eae27da05, type: 3}
-  displayName: Mask
+  displayName: Lab Trolley

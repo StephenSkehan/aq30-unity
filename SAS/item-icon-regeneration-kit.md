@@ -6,9 +6,9 @@ TOTAL PRE-BETA BOARD-ART SCOPE (recounted 2026-07-18 evening from repository sta
   77 in-place regenerations (93 − fingerprint 6 retired 2026-07-15 − corner_diner chain 10 retired 2026-07-18)
  +18 new assets: 6 audio items + 6 Field Kit tiers + 6 NEW corner_diner tiers — ALL DELIVERED+LIVE
     (gen_audio_rig 10 retired pre-integration; corner_diner ladder redesigned 10→6, see below)
-  =95 unique deliverables (before Press items and Ep-stamps, tracked in art-kit-items-and-ui.md)
-DONE 85/95 (2026-07-19): currency 10 · gen_junk chain 10 · food_gifts 12 · rusty_anchor 10 · helens_gifts 10 · garage 10 · forensic 5 · audio items 6 · field kit 6 · corner_diner chain 6
-REMAINING 10: investigation_lab chain 10
+  =91 unique deliverables (lab chain 10→6, ruling 2026-07-19) (before Press items and Ep-stamps, tracked in art-kit-items-and-ui.md)
+DONE 85/91 (2026-07-19): currency 10 · gen_junk chain 10 · food_gifts 12 · rusty_anchor 10 · helens_gifts 10 · garage 10 · forensic 5 · audio items 6 · field kit 6 · corner_diner chain 6
+REMAINING 6: investigation_lab chain 6 (NEW six-tier ladder — ART PENDING; mechanics already live on interim sprites)
 ```
 
 ## Why this exists
@@ -173,7 +173,7 @@ Approve all five (checked at 96/64/48 px on a light tile, dark tile AND checkerb
 ---
 
 # PART 2 — GENERATOR CHAINS
-Generator chains get the same treatment as items — but each tier reads as a **fixture on a subtle base pedestal**, more massive/permanent than a loose item. The chain climbs from a humble source to a landmark. Same global block, plus "sits on a subtle base/pedestal; reads as a permanent installation, not a hand-held object." **Chains are NOT uniformly 10-tier (2026-07-18): Field Kit and Corner Diner are six-tier; only investigation_lab and gen_junk remain ten.**
+Generator chains get the same treatment as items — but each tier reads as a **fixture on a subtle base pedestal**, more massive/permanent than a loose item. The chain climbs from a humble source to a landmark. Same global block, plus "sits on a subtle base/pedestal; reads as a permanent installation, not a hand-held object." **Chains are NOT uniformly 10-tier: Field Kit 6 · Corner Diner 6 · investigation_lab 6 (2026-07-19) · gen_junk 10.**
 
 ### corner_diner · **✅ SIX-TIER LADDER DELIVERED + LIVE 2026-07-18 (df35827 — the old 10-tier ladder is RETIRED)**
 *Ruling: the ten-tier version had duplicate silhouettes (two carts; van vs truck), a backwards donut-shop→van step, and an unreachable hero (T10 = 512 T1 pieces ≈ 82,944 taps at the ~1/162 sub-gen rate; T6 = 32 pieces ≈ 5,184 — still long-term, actually reachable). Progression: supplies → preparation → street service → mobile kitchen → fixed service point → full location. Art direction (recorded): warm diner red + cream enamel, dark navy accents, brass/chrome hardware, soft upper-left top light + restrained warm rim, ~15° above front three-quarter, transparent bg, no cast shadow/plate, no readable text/menus/numerals; each tier changes ≥2 of silhouette/footprint/mobility/height/mass/architectural scale.*
@@ -186,20 +186,18 @@ Generator chains get the same treatment as items — but each tier reads as a **
 | corner_diner_t05_night_service_window.png | Night Service Window | ✅ live |
 | corner_diner_t06_corner_diner_facade.png | Corner Diner | ✅ live — **chain hero** |
 
-### investigation_lab (10) · the forensic source · palette: steel grey, teal, clinical white · `Assets/Art/Icons/Generators/investigation_lab/`
-*Filenames carry the `gen_investigation_lab_` prefix — keep exact.*
-| Filename | Item | Art note |
+### investigation_lab · **SIX-TIER LADDER (ruling 2026-07-19) — ⚠ ART PENDING, old t07–t10 RETIRED**
+*Ruling: the ten-tier ladder spent five tiers on PPE (gloves/mask/coat/respirator/hazmat) that neither read as a growing lab nor separated from the forensic items it produces; T10 needed 512 T1 pieces ≈ 79,360 lab taps at the 1/155 sub-gen rate (T6 = 32 ≈ 4,960 — long-term and reachable). Progression: sample preparation → mobile workspace → permanent bench → analysis → controlled environment → complete facility. **Live build: mechanics are six-tier NOW (maxGeneratorTier 5, t07–t10 SOs deleted, save clamp covers legacy tiers); the SOs point at the old t01–t06 sprites as INTERIM art until this set is delivered.** Import target: `Assets/Art/Icons/Generators/investigation_lab/` · 1024×1024 · straight alpha · same minimal-meta import as other generator chains. Art direction: steel grey + clinical cream, dark navy structure, restrained teal illumination, brass/amber status accents; ~15° above front three-quarter; occupancy ~58%→82%; fixture-like, distinct silhouettes at 48–64px; NO PPE, hospital symbolism, tube clutter, readable text or detailed screen UI; avoid overlap with forensic_tools items.*
+| Filename (PENDING) | Item | Art note |
 |---|---|---|
-| gen_investigation_lab_t01_gloves.png | Gloves | a pair of nitrile gloves — humblest source |
-| gen_investigation_lab_t02_mask.png | Mask | a surgical mask |
-| gen_investigation_lab_t03_tubes.png | Tubes | a rack of sample test tubes |
-| gen_investigation_lab_t04_coat.png | Lab Coat | a hung/folded lab coat |
-| gen_investigation_lab_t05_microscope.png | Microscope | a lab microscope |
-| gen_investigation_lab_t06_respirator.png | Respirator | a half-face respirator |
-| gen_investigation_lab_t07_dna.png | DNA Analysis | a gel/helix readout device, teal glow |
-| gen_investigation_lab_t08_hazmat.png | Hazmat Suit | a hazmat suit |
-| gen_investigation_lab_t09_door_cleanroom.png | Cleanroom Door | a sealed cleanroom door, edge light |
-| gen_investigation_lab_t10_facility_helix.png | Research Facility | a facility with a helix motif — **chain hero** |
+| gen_investigation_lab_t01_sample_prep_tray.png | Sample Prep Tray | shallow steel tray, one chunky sealed tube rack + two blank reagent bottles; low horizontal silhouette |
+| gen_investigation_lab_t02_lab_trolley.png | Lab Trolley | compact two-shelf clinical trolley on visible wheels, closed sample bin + one small rack — mobile infrastructure |
+| gen_investigation_lab_t03_lab_workbench.png | Lab Workbench | permanent steel-and-cream bench: drawers, task lamp, organised rack; wide fixed silhouette |
+| gen_investigation_lab_t04_analysis_station.png | Analysis Station | large microscope + compact monitor + control unit as ONE fixture; monitor shows abstract teal bars only |
+| gen_investigation_lab_t05_cleanroom_airlock.png | Cleanroom Airlock | standalone sealed doorway + frame, viewing panel, side control box, teal/amber status lights; architectural silhouette |
+| gen_investigation_lab_t06_research_facility.png | Research Facility | compact stylised research-building façade, lit lab windows, restrained abstract helix motif — **family hero** |
+
+*(retired 10-tier PPE ladder: gloves → mask → tubes → coat → microscope → respirator → dna → hazmat → cleanroom door → facility helix — superseded, do not generate)*
 
 ### junk (10) · the "old evidence drawer" storage source · palette: worn wood, brass, dust, dim warm · `Assets/Art/Icons/Generators/junk/`
 *Filenames carry the `gen_junk_` prefix — keep exact. Escalating storage furniture.*

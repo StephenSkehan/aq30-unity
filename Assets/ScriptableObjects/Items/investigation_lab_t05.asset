@@ -16,4 +16,4 @@ MonoBehaviour:
   family: investigation_lab
   tier: 4
   icon: {fileID: -2558790056612710088, guid: 88d707d757f664d4b90fa695cb8cf316, type: 3}
-  displayName: Microscope
+  displayName: Cleanroom Airlock

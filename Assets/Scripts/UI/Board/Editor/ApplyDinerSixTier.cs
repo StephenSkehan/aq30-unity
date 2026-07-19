@@ -48,7 +48,13 @@ namespace AQ.EditorTools
         [MenuItem("AQ/Dev/QA Push Diner Pair (T6)")]
         private static void PushT6Pair() => PushPair(5);
 
-        private static void PushPair(int tier)
+        [MenuItem("AQ/Dev/QA Push Lab Pair (T5)")]
+        private static void PushLabT5() => PushPair(4, "gen_investigation_lab");
+
+        [MenuItem("AQ/Dev/QA Push Lab Pair (T6)")]
+        private static void PushLabT6() => PushPair(5, "gen_investigation_lab");
+
+        private static void PushPair(int tier, string family = "corner_diner")
         {
             if (!Application.isPlaying) { Debug.LogWarning("[Diner6] Play mode only."); return; }
             var board = Object.FindFirstObjectByType<MergeBoardController>();
@@ -56,9 +62,9 @@ namespace AQ.EditorTools
             for (int i = 0; i < 2; i++)
                 board.PlaceFromOverflow(new OverflowTileData
                 {
-                    kind = OverflowKind.Generator, family = "corner_diner", tier = tier
+                    kind = OverflowKind.Generator, family = family, tier = tier
                 });
-            Debug.Log($"[Diner6] Placed 2x corner_diner T{tier + 1} on board — run QA Merge First Pair.");
+            Debug.Log($"[Diner6] Placed 2x {family} T{tier + 1} on board — run QA Merge First Pair.");
         }
     }
 }

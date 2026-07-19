@@ -16,4 +16,4 @@ MonoBehaviour:
   family: investigation_lab
   tier: 2
   icon: {fileID: 5277611117803656845, guid: ff48f4cd17380c5419a7a5bfa75e0a46, type: 3}
-  displayName: Tubes
+  displayName: Lab Workbench

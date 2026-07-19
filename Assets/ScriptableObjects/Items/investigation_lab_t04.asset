@@ -16,4 +16,4 @@ MonoBehaviour:
   family: investigation_lab
   tier: 3
   icon: {fileID: 7467405113745244285, guid: f1ba59919d7825d49902978dac95d3f7, type: 3}
-  displayName: Lab Coat
+  displayName: Analysis Station
