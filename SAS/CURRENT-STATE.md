@@ -1,5 +1,5 @@
 # CURRENT STATE — single entry point for the SAS pack
-*As of 2026-07-18 · branch `claude/ally-quinn-bible-phase-2-p8e642` · **describes commit `cba33df`** (update the hash when the state changes; strictly ahead of main; landing = Stephen's call). Update this file whenever a ruling lands or an integration flips. If a document below disagrees with this page, this page wins on STATUS; the named master wins on CONTENT.*
+*As of 2026-07-19 · branch **`main`** — **LANDED 2026-07-19** (fast-forward `062a137 → 65cb603`, Stephen-ruled; `claude/ally-quinn-bible-phase-2-p8e642` is history, all future work on main) · **describes commit `65cb603`** (update the hash when the state changes). Update this file whenever a ruling lands or an integration flips. If a document below disagrees with this page, this page wins on STATUS; the named master wins on CONTENT.*
 
 ## Authority hierarchy (content)
 1. `canon-character-roster.md` — character truth (names/roles/appearance)
