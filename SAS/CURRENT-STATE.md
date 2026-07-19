@@ -18,7 +18,6 @@
 - **Evidence Locker LIVE:** 8 free + CC slots 9–12 (200/400/800/1600); locker items satisfy leads (confirm gate on proceed).
 - **Board fits all form factors** (BoardFitMB dynamic cells; QA Form Factor Sweep = regression check, 8/8 clean).
 - **All 10 stage backgrounds plus the rivermouth board master (11 images total) live** on the flat illustration language (reconciliation CLOSED; per-asset matrix in the stage kit).
-- Dot portraits live (interim keyed); Ally portraits live; Gerald live (interim keyed).
 
 ## Signed but NOT integrated
 - *(none — the audio opening integration landed 2026-07-18 in `46b71a6`)*
@@ -38,7 +37,7 @@
 
 ## Crowd-test readiness (two milestones, per 2026-07-17 audit)
 - **Usability prototype (board comprehension/navigation): QA GATE PENDING** — flips to READY only when the verification debt above passes.
-- **Audience prototype (judging the podcast proposition): NOT READY** — needs audio opening family live, VO, FTUE first-merge choreography, Del portrait. Testing appeal before these exist risks judging a proposition players never saw.
+- **Audience prototype (judging the podcast proposition): NOT READY** — audio opening ✅ and Del ✅ are now live — remaining: VO, FTUE first-merge choreography, audio t01 earbuds regen. Testing appeal before these exist risks judging a proposition players never saw.
 
 ## Archived documents (do not start work from these)
 `Archive/handover-console-ui-pass.md`, `Archive/b4-editor-verification-checklist.md` — consumed 2026-07-13/16; both contain obsolete scene paths and values (banners inside).
