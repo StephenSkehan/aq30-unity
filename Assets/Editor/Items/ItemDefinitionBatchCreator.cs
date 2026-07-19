@@ -101,7 +101,7 @@ namespace AQ.Editor.Items
             new() { itemId="corner_diner_t10", family="corner_diner", tier=9, displayName="Fast Food Facade",    spritePath="Generators/corner_diner/corner_diner_t10_fast_food_facade.png" },
 
             // ── Investigation Lab Generator (10 tiers) ──────────────────────
-            new() { itemId="investigation_lab_t01", family="investigation_lab", tier=0, displayName="Sample Prep Tray",  spritePath="Generators/investigation_lab/gen_investigation_lab_t01_sample_prep_tray.png" },
+            new() { itemId="investigation_lab_t01", family="investigation_lab", tier=0, displayName="Lab Supply Cupboard", spritePath="Generators/investigation_lab/gen_investigation_lab_t01_lab_supply_cupboard.png" },
             new() { itemId="investigation_lab_t02", family="investigation_lab", tier=1, displayName="Lab Trolley",       spritePath="Generators/investigation_lab/gen_investigation_lab_t02_lab_trolley.png" },
             new() { itemId="investigation_lab_t03", family="investigation_lab", tier=2, displayName="Lab Workbench",     spritePath="Generators/investigation_lab/gen_investigation_lab_t03_lab_workbench.png" },
             new() { itemId="investigation_lab_t04", family="investigation_lab", tier=3, displayName="Analysis Station",  spritePath="Generators/investigation_lab/gen_investigation_lab_t04_analysis_station.png" },

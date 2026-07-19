@@ -87,6 +87,60 @@ namespace AQ.EditorTools
             Debug.LogWarning("[QATapGenerator] No mergeable pair on the board.");
         }
 
+        /// <summary>
+        /// Pushes a T1 Investigation Lab generator into the overflow pocket (the same
+        /// path LeadOutcomeMB grants use), so lab-chain behaviour (T1 icon, T1+T1→T2
+        /// via QA Merge First Pair, ceiling) can be QA'd without walking to L4.
+        /// </summary>
+        [MenuItem("AQ/Dev/QA Grant Lab Generator (pocket)")]
+        public static void GrantLabGenerator()
+        {
+            if (!Application.isPlaying)
+            {
+                Debug.LogWarning("[QATapGenerator] Enter Play Mode first.");
+                return;
+            }
+
+            OverflowBucketService.Push(new OverflowTileData
+            {
+                kind   = OverflowKind.Generator,
+                family = "gen_investigation_lab",
+                tier   = 0
+            });
+            Debug.Log("[QATapGenerator] Pushed T1 gen_investigation_lab into the overflow pocket.");
+        }
+
+        /// <summary>
+        /// Places the top overflow-pocket tile onto the board — the same
+        /// peek → PlaceFromOverflow → Pop sequence OverflowBucketView runs on a
+        /// bucket click, minus the raw-input dependency (stepped frames eat clicks).
+        /// </summary>
+        [MenuItem("AQ/Dev/QA Drain Pocket Once")]
+        public static void DrainPocketOnce()
+        {
+            if (!Application.isPlaying)
+            {
+                Debug.LogWarning("[QATapGenerator] Enter Play Mode first.");
+                return;
+            }
+
+            var board = Object.FindAnyObjectByType<MergeBoardController>();
+            if (board == null) { Debug.LogWarning("[QATapGenerator] No MergeBoardController found."); return; }
+
+            var top = OverflowBucketService.Peek();
+            if (top == null) { Debug.Log("[QATapGenerator] Pocket is empty."); return; }
+
+            if (board.PlaceFromOverflow(top.Value))
+            {
+                OverflowBucketService.Pop();
+                Debug.Log($"[QATapGenerator] Placed {top.Value.family} T{top.Value.tier + 1} from pocket. Remaining={OverflowBucketService.Count}.");
+            }
+            else
+            {
+                Debug.LogWarning("[QATapGenerator] Board refused placement (full?).");
+            }
+        }
+
         [MenuItem("AQ/Dev/QA Grant 50 Energy")]
         public static void GrantEnergy()
         {

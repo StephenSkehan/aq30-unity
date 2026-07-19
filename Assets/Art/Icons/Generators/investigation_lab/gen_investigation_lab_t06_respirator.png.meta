@@ -397,10 +397,10 @@ TextureImporter:
       name: gen_investigation_lab_t06_respirator_0
       rect:
         serializedVersion: 2
-        x: 188
-        y: 67
-        width: 636
-        height: 745
+        x: 0
+        y: 0
+        width: 942
+        height: 956
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -142,10 +142,10 @@ TextureImporter:
       name: gen_investigation_lab_t04_coat_0
       rect:
         serializedVersion: 2
-        x: 235
-        y: 79
-        width: 569
-        height: 805
+        x: 0
+        y: 0
+        width: 668
+        height: 980
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

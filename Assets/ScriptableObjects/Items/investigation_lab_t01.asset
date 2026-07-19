@@ -16,4 +16,4 @@ MonoBehaviour:
   family: investigation_lab
   tier: 0
   icon: {fileID: -8227789603668291983, guid: 8c0b79bdaa6fccd40ae1df8e844b032b, type: 3}
-  displayName: Sample Prep Tray
+  displayName: Lab Supply Cupboard
