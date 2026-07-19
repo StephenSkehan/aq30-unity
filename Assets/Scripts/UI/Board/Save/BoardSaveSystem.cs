@@ -8,7 +8,9 @@ using AQ.App.Config;
 using AQ.App.Economy;
 using AQ.App.Generators;
 using AQ.App.Leads;
+using AQ.App.Locker;
 using AQ.App.Overflow;
+using AQ.App.Persistence;
 using AQ.App.Services;
 using AQ.SharedKernel.CaseFlow;
 using AQ.SharedKernel.Economy;
@@ -173,7 +175,7 @@ namespace AQ.App.UI.Board
         [Serializable]
         private sealed class SaveDTO
         {
-            public string schemaVersion = "0.6.0";
+            public string schemaVersion = "0.7.0";
             public string timestampUtc;
 
             public int rows;
@@ -184,6 +186,7 @@ namespace AQ.App.UI.Board
             public WalletDTO          wallet;
             public CaseFlowDTO        caseFlow;
             public List<LeadStateDTO> leads    = new List<LeadStateDTO>();
+            public LockerStateDTO     locker;  // folded in at 0.7.0 — see ApplyLocker
         }
 
         public static void ClearSave()
@@ -207,6 +210,11 @@ namespace AQ.App.UI.Board
             // gone; a save from that state persists a phantom board (this is
             // how generator duplicates accumulated into real save files).
             if (!board.GridReady) return;
+            // Never persist before this boot's restore has applied. Unity fires
+            // OnApplicationPause(true) on the FIRST play frame when the editor is
+            // unfocused — before Start()/TryLoad — and that save would clobber the
+            // on-disk aggregate with boot-empty wallet/leads/locker state.
+            if (!WalletRestored) return;
 
             var dto = new SaveDTO
             {
@@ -216,6 +224,7 @@ namespace AQ.App.UI.Board
                 energy   = BuildEnergyDTO(),
                 wallet   = BuildWalletDTO(),
                 caseFlow = BuildCaseFlowDTO(),
+                locker   = EvidenceLockerService.ExportState(),
             };
             FillCells(dto.cells);
             FillLeads(dto.leads);
@@ -225,17 +234,11 @@ namespace AQ.App.UI.Board
 
             try
             {
-                File.WriteAllText(_pathTmp, json, Encoding.UTF8);
+                AtomicSaveFile.Write(_pathLive, _pathPrev, _pathTmp, json);
 
-                if (File.Exists(_pathPrev))
-                    File.Delete(_pathPrev);
-
-                if (File.Exists(_pathLive))
-                    File.Move(_pathLive, _pathPrev);
-
-                File.Move(_pathTmp, _pathLive);
-
-                //Debug.Log($"[Save] wrote {dto.cells.Count} cells → {_pathLive}");
+                // Locker state is folded into the aggregate just written — remove the
+                // pre-0.7.0 file so it can't resurrect stale state on a future boot.
+                EvidenceLockerService.DeleteLegacyFile();
             }
             catch (Exception ex)
             {
@@ -252,8 +255,12 @@ namespace AQ.App.UI.Board
 
             // A crash between the two File.Moves in TrySave can leave only the
             // .prev backup on disk, so a missing/corrupt live file falls back to it.
-            if (!LoadFrom(_pathLive))
-                LoadFrom(_pathPrev);
+            if (!LoadFrom(_pathLive) && !LoadFrom(_pathPrev))
+            {
+                // No readable save: reset locker statics (they survive play sessions
+                // when domain reload is off) and migrate the legacy file if present.
+                EvidenceLockerService.ImportState(null);
+            }
         }
 
         private bool LoadFrom(string path)
@@ -276,6 +283,7 @@ namespace AQ.App.UI.Board
                 ApplyWallet(dto.wallet);
                 ApplyCaseFlow(dto.caseFlow);
                 ApplyLeads(dto.leads);
+                ApplyLocker(dto);
 
                 Debug.Log($"[Save] loaded {dto.cells.Count} cells, {dto.leads?.Count ?? 0} leads from {path}");
                 return true;
@@ -489,6 +497,25 @@ namespace AQ.App.UI.Board
                 outList.Add(new LeadStateDTO { leadId = id, activated = true });
         }
 
+        private static void ApplyLocker(SaveDTO dto)
+        {
+            // JsonUtility auto-instantiates absent [Serializable] class fields, so
+            // dto.locker is non-null (and empty) even for pre-0.7.0 saves — importing
+            // it directly would silently wipe a migrating locker. Gate on the schema
+            // version instead: older saves take the null path, which resets state and
+            // migrates the legacy locker_state.json.
+            EvidenceLockerService.ImportState(SchemaAtLeast(dto.schemaVersion, 0, 7) ? dto.locker : null);
+        }
+
+        private static bool SchemaAtLeast(string version, int major, int minor)
+        {
+            if (string.IsNullOrEmpty(version)) return false;
+            var parts = version.Split('.');
+            if (parts.Length < 2) return false;
+            if (!int.TryParse(parts[0], out int maj) || !int.TryParse(parts[1], out int min)) return false;
+            return maj > major || (maj == major && min >= minor);
+        }
+
         private void ApplyLeads(List<LeadStateDTO> dtos)
         {
             if (dtos == null || dtos.Count == 0 || _leadsRepo == null) return;
@@ -553,6 +580,10 @@ namespace AQ.App.UI.Board
                         h = h * 31 + (int)lead.RuntimeState;
                     }
                 }
+
+                // Locker is part of the aggregate: a store/retrieve/purchase must
+                // trigger the same debounced save a board change does.
+                h = h * 31 + EvidenceLockerService.StateHash();
 
                 return h;
             }

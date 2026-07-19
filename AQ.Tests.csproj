@@ -67,6 +67,7 @@
     <Compile Include="Assets\Tests\PlayMode\PlayBootSmoke.cs" />
     <Compile Include="Assets\Tests\EditMode\Discovery_EditMode_Probe.cs" />
     <Compile Include="Assets\Tests\EditMode\ProjectBootSmoke.cs" />
+    <Compile Include="Assets\Tests\EditMode\LockerCrashBoundaryTests.cs" />
     <Compile Include="Assets\Tests\PlayMode\OverlayFlow_WK3_1_Tests.cs" />
     <Compile Include="Assets\Tests\EditMode\WK3_1_OverlayValidationTests.cs" />
     <Compile Include="Assets\Tests\PlayMode\UITests\MergeDropHookTests.cs" />

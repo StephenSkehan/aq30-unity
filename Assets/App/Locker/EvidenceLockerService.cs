@@ -8,12 +8,37 @@ using UnityEngine;
 
 namespace AQ.App.Locker
 {
+    [Serializable]
+    public sealed class LockerEntryDTO
+    {
+        public string family;
+        public int tier;
+        public string itemId;
+    }
+
+    /// <summary>
+    /// Persisted locker state. Field names match the retired locker_state.json layout,
+    /// so that legacy file parses directly as this DTO during migration.
+    /// </summary>
+    [Serializable]
+    public sealed class LockerStateDTO
+    {
+        public List<LockerEntryDTO> entries = new();
+        public int purchasedSlots;
+    }
+
     /// <summary>
     /// Off-board item storage ("Evidence Locker") — the CaseCash sink.
     /// 8 free slots; slots 9-12 purchased with soft currency (200/400/800/1600).
-    /// Generators cannot be stored. Persists via locker_state.json.
-    /// Stored items keep counting toward lead satisfaction (LeadRequirementChecker
-    /// merges locker counts); consumption pulls board first, then locker.
+    /// Generators cannot be stored. Stored items keep counting toward lead satisfaction
+    /// (LeadRequirementChecker merges locker counts); consumption pulls board first, then locker.
+    ///
+    /// Persistence: this service holds RUNTIME STATE ONLY. Since schema 0.7.0 the state
+    /// is folded into BoardSaveSystem's atomic save aggregate (ExportState/ImportState),
+    /// so a crash can never separate a locker transaction from its board-side half —
+    /// both roll back together to the last consistent save. locker_state.json is the
+    /// legacy pre-aggregate file: read once for migration, deleted after the first
+    /// successful aggregate save.
     /// </summary>
     public static class EvidenceLockerService
     {
@@ -32,6 +57,9 @@ namespace AQ.App.Locker
         private static readonly List<Entry> _entries = new();
         private static int _purchasedSlots;
         private static bool _loaded;
+
+        /// <summary>Test seam: overrides where the legacy locker_state.json is read from.</summary>
+        public static string LegacyPathOverride;
 
         public static event Action LockerChanged;
 
@@ -64,7 +92,6 @@ namespace AQ.App.Locker
             if (data.kind == OverflowKind.Generator) return false;
             if (!CanStore) return false;
             _entries.Add(new Entry { family = data.family, tier = data.tier, itemId = itemId ?? string.Empty });
-            Save();
             LockerChanged?.Invoke();
             return true;
         }
@@ -75,7 +102,6 @@ namespace AQ.App.Locker
             EnsureLoaded();
             if (index < 0 || index >= _entries.Count) return;
             _entries.RemoveAt(index);
-            Save();
             LockerChanged?.Invoke();
         }
 
@@ -90,7 +116,6 @@ namespace AQ.App.Locker
             {
                 if (_entries[i].tier != tier || _entries[i].family != family) continue;
                 _entries.RemoveAt(i);
-                Save();
                 LockerChanged?.Invoke();
                 return true;
             }
@@ -120,7 +145,6 @@ namespace AQ.App.Locker
             if (wallet == null || !wallet.TrySpend(Currency.Soft, price, "locker_slot")) return false;
 
             _purchasedSlots++;
-            Save();
             LockerChanged?.Invoke();
             Analytics.GameAnalytics.LogLockerSlotPurchased(FreeSlots + _purchasedSlots, price);
             return true;
@@ -131,66 +155,105 @@ namespace AQ.App.Locker
             _entries.Clear();
             _purchasedSlots = 0;
             _loaded = true;
-            Save();
+            DeleteLegacyFile();
             LockerChanged?.Invoke();
+        }
+
+        /// <summary>Deep-copies current state for the board save aggregate.</summary>
+        public static LockerStateDTO ExportState()
+        {
+            EnsureLoaded();
+            var dto = new LockerStateDTO { purchasedSlots = _purchasedSlots };
+            foreach (var e in _entries)
+                dto.entries.Add(new LockerEntryDTO { family = e.family, tier = e.tier, itemId = e.itemId });
+            return dto;
         }
 
         /// <summary>
-        /// Drops in-memory state and re-reads locker_state.json. Called on scene boot
-        /// (mirrors OverflowBucketService.Load) so statics can't go stale when domain
-        /// reload is disabled or QA reset deleted the file from edit mode.
+        /// Replaces runtime state from the board save aggregate on restore. A null state
+        /// means the save predates the aggregate (or no save exists): state resets and
+        /// the legacy locker_state.json, if present, is migrated in.
         /// </summary>
-        public static void ReloadFromDisk()
+        public static void ImportState(LockerStateDTO state)
         {
+            _loaded = true;
             _entries.Clear();
             _purchasedSlots = 0;
-            _loaded = false;
-            EnsureLoaded();
+            if (state != null) ApplyDto(state);
+            else LoadLegacy();
             LockerChanged?.Invoke();
         }
 
+        /// <summary>Hash of persisted state — lets BoardSaveSystem's snapshot poll catch locker changes.</summary>
+        public static int StateHash()
+        {
+            EnsureLoaded();
+            unchecked
+            {
+                int h = 17;
+                h = h * 31 + _purchasedSlots;
+                foreach (var e in _entries)
+                {
+                    h = h * 31 + (e.family?.GetHashCode() ?? 0);
+                    h = h * 31 + e.tier;
+                    h = h * 31 + (e.itemId?.GetHashCode() ?? 0);
+                }
+                return h;
+            }
+        }
+
+        /// <summary>
+        /// Deletes the pre-aggregate legacy file. BoardSaveSystem calls this after every
+        /// successful aggregate write (the contents are folded in and a stale file must
+        /// not resurrect on a future boot).
+        /// </summary>
+        public static void DeleteLegacyFile()
+        {
+            try
+            {
+                var p = LegacyPath;
+                if (File.Exists(p)) File.Delete(p);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"[EvidenceLocker] legacy file delete failed: {ex.Message}");
+            }
+        }
+
+        private static string LegacyPath
+            => LegacyPathOverride ?? Path.Combine(Application.persistentDataPath, "locker_state.json");
+
+        // Lazy legacy fallback for callers that touch the service before
+        // BoardSaveSystem.Start restores the aggregate (which then replaces
+        // this via ImportState either way).
         private static void EnsureLoaded()
         {
             if (_loaded) return;
             _loaded = true;
-            var p = FilePath;
+            LoadLegacy();
+        }
+
+        private static void LoadLegacy()
+        {
+            var p = LegacyPath;
             if (!File.Exists(p)) return;
             try
             {
-                var dto = JsonUtility.FromJson<DTO>(File.ReadAllText(p, Encoding.UTF8));
-                if (dto != null)
-                {
-                    if (dto.entries != null) _entries.AddRange(dto.entries);
-                    _purchasedSlots = Mathf.Clamp(dto.purchasedSlots, 0, SlotPrices.Length);
-                }
+                ApplyDto(JsonUtility.FromJson<LockerStateDTO>(File.ReadAllText(p, Encoding.UTF8)));
             }
             catch (Exception ex)
             {
-                Debug.LogWarning($"[EvidenceLocker] load failed: {ex.Message}");
+                Debug.LogWarning($"[EvidenceLocker] legacy load failed: {ex.Message}");
             }
         }
 
-        private static string FilePath
-            => Path.Combine(Application.persistentDataPath, "locker_state.json");
-
-        private static void Save()
+        private static void ApplyDto(LockerStateDTO dto)
         {
-            try
-            {
-                var dto = new DTO { entries = new List<Entry>(_entries), purchasedSlots = _purchasedSlots };
-                File.WriteAllText(FilePath, JsonUtility.ToJson(dto), Encoding.UTF8);
-            }
-            catch (Exception ex)
-            {
-                Debug.LogWarning($"[EvidenceLocker] save failed: {ex.Message}");
-            }
-        }
-
-        [Serializable]
-        private class DTO
-        {
-            public List<Entry> entries;
-            public int purchasedSlots;
+            if (dto == null) return;
+            if (dto.entries != null)
+                foreach (var e in dto.entries)
+                    _entries.Add(new Entry { family = e.family, tier = e.tier, itemId = e.itemId ?? string.Empty });
+            _purchasedSlots = Mathf.Clamp(dto.purchasedSlots, 0, SlotPrices.Length);
         }
     }
 }

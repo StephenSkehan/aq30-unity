@@ -32,7 +32,8 @@ namespace AQ.App.UI.Board
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Init()
         {
-            EvidenceLockerService.ReloadFromDisk();
+            // Locker state is restored by BoardSaveSystem.Start (ImportState fires
+            // LockerChanged, so panels built here refresh once the aggregate loads).
             BuildHudButton();
             SceneManager.sceneLoaded += (_, _) => { if (_isOpen) Close(); };
         }

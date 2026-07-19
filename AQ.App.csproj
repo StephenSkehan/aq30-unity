@@ -159,6 +159,7 @@
     <Compile Include="Assets\App\Unity\SafeUnity.cs" />
     <Compile Include="Assets\App\Audio\AudioSettingsService.cs" />
     <Compile Include="Assets\App\UI\Theme\Binders\ThemeImageBinder.cs" />
+    <Compile Include="Assets\App\Persistence\AtomicSaveFile.cs" />
     <Compile Include="Assets\App\UI\Settings\ShowSettingsPanelMB.cs" />
     <Compile Include="Assets\App\CaseFlow\CaseFlowLocator.cs" />
     <Compile Include="Assets\App\Presentation\EventBusInstaller.cs" />
