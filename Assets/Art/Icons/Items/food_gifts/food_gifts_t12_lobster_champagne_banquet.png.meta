@@ -142,10 +142,10 @@ TextureImporter:
       name: food_gifts_t12_lobster_champagne_banquet_0
       rect:
         serializedVersion: 2
-        x: 131
-        y: 168
-        width: 766
-        height: 612
+        x: 85
+        y: 147
+        width: 853
+        height: 733
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

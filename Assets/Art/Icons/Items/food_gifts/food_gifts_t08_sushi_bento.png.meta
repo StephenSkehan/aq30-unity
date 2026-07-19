@@ -142,10 +142,10 @@ TextureImporter:
       name: food_gifts_t08_sushi_bento_0
       rect:
         serializedVersion: 2
-        x: 100
-        y: 149
-        width: 815
-        height: 666
+        x: 109
+        y: 210
+        width: 805
+        height: 599
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

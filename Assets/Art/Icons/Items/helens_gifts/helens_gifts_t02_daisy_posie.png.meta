@@ -142,10 +142,10 @@ TextureImporter:
       name: helens_gifts_t02_daisy_posie_0
       rect:
         serializedVersion: 2
-        x: 249
-        y: 62
-        width: 536
-        height: 794
+        x: 246
+        y: 165
+        width: 750
+        height: 913
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

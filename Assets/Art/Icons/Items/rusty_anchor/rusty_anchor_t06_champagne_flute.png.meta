@@ -142,10 +142,10 @@ TextureImporter:
       name: rusty_anchor_t06_champagne_flute_0
       rect:
         serializedVersion: 2
-        x: 367
-        y: 93
-        width: 287
-        height: 825
+        x: 377
+        y: 102
+        width: 268
+        height: 819
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

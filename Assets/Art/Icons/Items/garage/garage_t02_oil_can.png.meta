@@ -142,10 +142,10 @@ TextureImporter:
       name: garage_t02_oil_can_0
       rect:
         serializedVersion: 2
-        x: 194
-        y: 242
-        width: 590
-        height: 485
+        x: 161
+        y: 122
+        width: 976
+        height: 1010
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

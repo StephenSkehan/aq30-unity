@@ -142,10 +142,10 @@ TextureImporter:
       name: gen_junk_t01_drawer_0
       rect:
         serializedVersion: 2
-        x: 174
-        y: 211
-        width: 671
-        height: 604
+        x: 212
+        y: 331
+        width: 599
+        height: 362
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

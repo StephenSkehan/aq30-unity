@@ -145,10 +145,10 @@ TextureImporter:
       name: forensic_tools_t1_cotton_swab_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 904
-        height: 937
+        x: 208
+        y: 182
+        width: 607
+        height: 659
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -142,10 +142,10 @@ TextureImporter:
       name: rusty_anchor_t07_wine_bottle_two_glasses_0
       rect:
         serializedVersion: 2
-        x: 198
-        y: 61
-        width: 628
-        height: 902
+        x: 162
+        y: 127
+        width: 699
+        height: 769
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

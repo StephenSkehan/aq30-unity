@@ -7,8 +7,8 @@ TOTAL PRE-BETA BOARD-ART SCOPE (recounted 2026-07-18 evening from repository sta
  +18 new assets: 6 audio items + 6 Field Kit tiers + 6 NEW corner_diner tiers — ALL DELIVERED+LIVE
     (gen_audio_rig 10 retired pre-integration; corner_diner ladder redesigned 10→6, see below)
   =95 unique deliverables (before Press items and Ep-stamps, tracked in art-kit-items-and-ui.md)
-DONE 70/95 (2026-07-19): currency 10 · gen_junk chain 10 · food_gifts 12 · rusty_anchor 10 · helens_gifts 10 · audio items 6 · field kit 6 · corner_diner chain 6
-REMAINING 25: garage 10 · forensic 5 · investigation_lab chain 10
+DONE 85/95 (2026-07-19): currency 10 · gen_junk chain 10 · food_gifts 12 · rusty_anchor 10 · helens_gifts 10 · garage 10 · forensic 5 · audio items 6 · field kit 6 · corner_diner chain 6
+REMAINING 10: investigation_lab chain 10
 ```
 
 ## Why this exists
@@ -41,9 +41,11 @@ cluster that reads as one silhouette. No scenery, room, tabletop or environmenta
 background.
 View from approximately 15 degrees above. Keep the same camera direction and
 ground plane across the entire family. Centre the composition with 10-12% safe
-margin on every side; nothing cropped. Overall occupancy may increase gradually
-from low tier to hero tier, approximately 62-82% (do NOT fill every tier to the
-same size - that flattens the value ladder).
+margin on every side; nothing cropped. Fill the frame: maximum recognisable occupancy at EVERY tier (~90%+ content).
+[SUPERSEDED 2026-07-19: the old 62-82% occupancy ladder is retired - icons now
+occupy the entire grid square in-game (full-cell anchors + margin-trimmed
+sprites); recognisability beats size progression. Tier value reads through
+SUBJECT escalation, not scale.]
 Fully transparent PNG background, straight (non-premultiplied) alpha, sRGB.
 NO border, frame, cast shadow, floor shadow, drop shadow, ground contact shadow,
 vignette, watermark, readable words, letters, numerals, denominations, dates,

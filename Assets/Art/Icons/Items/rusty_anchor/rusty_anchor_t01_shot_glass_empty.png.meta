@@ -142,10 +142,10 @@ TextureImporter:
       name: rusty_anchor_t01_shot_glass_empty_0
       rect:
         serializedVersion: 2
-        x: 260
-        y: 132
-        width: 504
-        height: 718
+        x: 267
+        y: 202
+        width: 488
+        height: 619
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

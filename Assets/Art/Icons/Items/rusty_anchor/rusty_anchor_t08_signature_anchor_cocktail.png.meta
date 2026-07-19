@@ -142,10 +142,10 @@ TextureImporter:
       name: rusty_anchor_t08_signature_anchor_cocktail_0
       rect:
         serializedVersion: 2
-        x: 219
+        x: 344
         y: 115
-        width: 585
-        height: 772
+        width: 334
+        height: 794
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

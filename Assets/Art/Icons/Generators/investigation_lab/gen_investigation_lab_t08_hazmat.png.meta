@@ -142,10 +142,10 @@ TextureImporter:
       name: gen_investigation_lab_t08_hazmat_0
       rect:
         serializedVersion: 2
-        x: 334
+        x: 328
         y: 60
-        width: 357
-        height: 876
+        width: 365
+        height: 881
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

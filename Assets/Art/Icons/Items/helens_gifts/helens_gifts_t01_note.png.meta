@@ -145,10 +145,10 @@ TextureImporter:
       name: helens_gifts_t01_note_0
       rect:
         serializedVersion: 2
-        x: 218
-        y: 188
-        width: 582
-        height: 631
+        x: 204
+        y: 184
+        width: 866
+        height: 778
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

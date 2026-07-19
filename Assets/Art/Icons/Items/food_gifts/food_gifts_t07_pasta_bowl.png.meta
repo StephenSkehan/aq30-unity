@@ -142,10 +142,10 @@ TextureImporter:
       name: food_gifts_t07_pasta_bowl_0
       rect:
         serializedVersion: 2
-        x: 124
-        y: 81
-        width: 776
-        height: 719
+        x: 194
+        y: 239
+        width: 635
+        height: 542
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

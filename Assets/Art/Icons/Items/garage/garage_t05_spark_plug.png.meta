@@ -142,10 +142,10 @@ TextureImporter:
       name: garage_t05_spark_plug_0
       rect:
         serializedVersion: 2
-        x: 312
-        y: 98
-        width: 391
-        height: 814
+        x: 151
+        y: 111
+        width: 942
+        height: 936
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

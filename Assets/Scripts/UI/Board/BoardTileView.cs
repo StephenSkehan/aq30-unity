@@ -207,10 +207,10 @@ namespace AQ.App.UI.Board
         /// </summary>
         void RefreshMergeHint()
         {
-            bool mergeable = !IsEmpty
-                          && itemImage != null && itemImage.enabled
-                          && controller != null
-                          && controller.IsMergeCandidate(this);
+            // Amber merge-pair badge DISABLED (Stephen-ruled 2026-07-19 — a
+            // different mergeability signal will be designed later; the
+            // candidate logic stays live for whatever replaces it).
+            bool mergeable = false;
 
             if (!mergeable)
             {

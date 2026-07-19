@@ -145,10 +145,10 @@ TextureImporter:
       name: garage_t09_big_block_engine_chrome_extractors_0
       rect:
         serializedVersion: 2
-        x: 219
-        y: 211
-        width: 585
-        height: 603
+        x: 86
+        y: 45
+        width: 1098
+        height: 1144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -142,10 +142,10 @@ TextureImporter:
       name: gen_investigation_lab_t03_tubes_0
       rect:
         serializedVersion: 2
-        x: 198
-        y: 159
-        width: 646
-        height: 677
+        x: 193
+        y: 152
+        width: 656
+        height: 691
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

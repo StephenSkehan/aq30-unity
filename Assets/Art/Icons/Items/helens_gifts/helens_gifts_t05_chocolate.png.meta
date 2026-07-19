@@ -142,10 +142,10 @@ TextureImporter:
       name: helens_gifts_t05_chocolate_0
       rect:
         serializedVersion: 2
-        x: 127
-        y: 183
-        width: 748
-        height: 621
+        x: 66
+        y: 0
+        width: 1128
+        height: 1193
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

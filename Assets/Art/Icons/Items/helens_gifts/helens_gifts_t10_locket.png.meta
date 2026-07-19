@@ -142,10 +142,10 @@ TextureImporter:
       name: helens_gifts_t10_locket_0
       rect:
         serializedVersion: 2
-        x: 86
-        y: 102
-        width: 843
-        height: 737
+        x: 71
+        y: 26
+        width: 1133
+        height: 1193
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -145,10 +145,10 @@ TextureImporter:
       name: helens_gifts_t06_dessert_0
       rect:
         serializedVersion: 2
-        x: 132
-        y: 290
-        width: 756
-        height: 410
+        x: 112
+        y: 125
+        width: 1036
+        height: 1009
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

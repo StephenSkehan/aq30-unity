@@ -142,10 +142,10 @@ TextureImporter:
       name: currency_cash_usd_t05_pile_small_bundles_0
       rect:
         serializedVersion: 2
-        x: 142
-        y: 87
-        width: 723
-        height: 746
+        x: 91
+        y: 228
+        width: 840
+        height: 577
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

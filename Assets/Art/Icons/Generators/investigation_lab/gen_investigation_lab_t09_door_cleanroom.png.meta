@@ -148,10 +148,10 @@ TextureImporter:
       name: gen_investigation_lab_t09_door_cleanroom_0
       rect:
         serializedVersion: 2
-        x: 149
-        y: 29
-        width: 694
-        height: 852
+        x: 99
+        y: 22
+        width: 753
+        height: 864
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

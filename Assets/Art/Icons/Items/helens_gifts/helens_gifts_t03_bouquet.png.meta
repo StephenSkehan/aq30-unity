@@ -145,10 +145,10 @@ TextureImporter:
       name: helens_gifts_t03_bouquet_0
       rect:
         serializedVersion: 2
-        x: 302
-        y: 162
-        width: 420
-        height: 727
+        x: 50
+        y: 26
+        width: 1151
+        height: 1166
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

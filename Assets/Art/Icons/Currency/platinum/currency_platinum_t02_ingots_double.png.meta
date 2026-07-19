@@ -142,10 +142,10 @@ TextureImporter:
       name: currency_platinum_t02_ingots_double_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 847
-        height: 652
+        x: 291
+        y: 349
+        width: 440
+        height: 325
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

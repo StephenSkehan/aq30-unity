@@ -142,10 +142,10 @@ TextureImporter:
       name: food_gifts_t10_steak_plate_0
       rect:
         serializedVersion: 2
-        x: 64
-        y: 166
-        width: 888
-        height: 585
+        x: 140
+        y: 240
+        width: 743
+        height: 544
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

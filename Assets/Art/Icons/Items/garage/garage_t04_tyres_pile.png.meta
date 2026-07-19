@@ -142,10 +142,10 @@ TextureImporter:
       name: garage_t04_tyres_pile_0
       rect:
         serializedVersion: 2
-        x: 273
-        y: 212
-        width: 508
-        height: 572
+        x: 109
+        y: 184
+        width: 1038
+        height: 880
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

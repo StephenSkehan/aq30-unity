@@ -142,10 +142,10 @@ TextureImporter:
       name: gen_investigation_lab_t01_gloves_0
       rect:
         serializedVersion: 2
-        x: 203
-        y: 101
-        width: 656
-        height: 754
+        x: 199
+        y: 97
+        width: 663
+        height: 760
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

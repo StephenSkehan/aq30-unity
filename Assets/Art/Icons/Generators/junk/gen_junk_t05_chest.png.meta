@@ -142,10 +142,10 @@ TextureImporter:
       name: gen_junk_t05_chest_0
       rect:
         serializedVersion: 2
-        x: 114
-        y: 122
-        width: 790
-        height: 771
+        x: 136
+        y: 213
+        width: 751
+        height: 597
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

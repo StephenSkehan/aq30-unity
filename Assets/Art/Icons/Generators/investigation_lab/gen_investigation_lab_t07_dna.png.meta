@@ -142,10 +142,10 @@ TextureImporter:
       name: gen_investigation_lab_t07_dna_0
       rect:
         serializedVersion: 2
-        x: 317
-        y: 64
-        width: 503
-        height: 897
+        x: 313
+        y: 60
+        width: 509
+        height: 903
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

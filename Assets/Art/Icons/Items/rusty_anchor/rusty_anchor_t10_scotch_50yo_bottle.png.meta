@@ -142,10 +142,10 @@ TextureImporter:
       name: rusty_anchor_t10_scotch_50yo_bottle_0
       rect:
         serializedVersion: 2
-        x: 253
-        y: 52
-        width: 518
-        height: 848
+        x: 286
+        y: 92
+        width: 450
+        height: 839
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

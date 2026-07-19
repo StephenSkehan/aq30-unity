@@ -142,10 +142,10 @@ TextureImporter:
       name: currency_platinum_t03_ingots_triple_0
       rect:
         serializedVersion: 2
-        x: 66
-        y: 135
-        width: 901
-        height: 707
+        x: 277
+        y: 334
+        width: 468
+        height: 356
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

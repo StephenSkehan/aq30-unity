@@ -142,10 +142,10 @@ TextureImporter:
       name: garage_t03_shock_absorbers_pair_0
       rect:
         serializedVersion: 2
-        x: 242
-        y: 242
-        width: 540
-        height: 556
+        x: 214
+        y: 94
+        width: 840
+        height: 1047
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

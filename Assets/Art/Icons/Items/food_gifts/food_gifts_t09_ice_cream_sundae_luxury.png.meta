@@ -142,10 +142,10 @@ TextureImporter:
       name: food_gifts_t09_ice_cream_sundae_luxury_0
       rect:
         serializedVersion: 2
-        x: 299
-        y: 79
-        width: 426
-        height: 849
+        x: 216
+        y: 159
+        width: 595
+        height: 709
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

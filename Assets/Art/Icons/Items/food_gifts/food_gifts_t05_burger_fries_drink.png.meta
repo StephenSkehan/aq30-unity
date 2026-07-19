@@ -142,10 +142,10 @@ TextureImporter:
       name: food_gifts_t05_burger_fries_drink_0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 200
-        width: 893
-        height: 513
+        x: 135
+        y: 170
+        width: 752
+        height: 683
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -24,8 +24,9 @@ namespace AQ.App.UI.Board
         private Image _itemIcon;
         private Text _badge;
 
-        private const float SIZE   = 160f;
-        private const float MARGIN = 32f;
+        // Sits beside the locker button in the bottom strip, same 90px size
+        // (Stephen-ruled 2026-07-19 — it lived alone on its own row before).
+        private const float SIZE = 90f;
 
         private void Awake()
         {
@@ -73,17 +74,21 @@ namespace AQ.App.UI.Board
             var canvas = canvasGO.AddComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.sortingOrder = 200;
-            canvasGO.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
+            // Match the locker/evidence button canvases so sizes track together.
+            var scaler = canvasGO.AddComponent<CanvasScaler>();
+            scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.referenceResolution = new Vector2(1080f, 1920f);
+            scaler.matchWidthOrHeight  = 0.5f;
             canvasGO.AddComponent<GraphicRaycaster>();
 
-            // Bucket root — bottom-left corner
+            // Bucket root — beside the locker button (locker spans x 24..114 at y 219)
             var bucketGO = new GameObject("BucketRoot");
             bucketGO.transform.SetParent(canvasGO.transform, false);
             _root = bucketGO.AddComponent<RectTransform>();
             _root.sizeDelta = new Vector2(SIZE, SIZE);
             _root.anchorMin = _root.anchorMax = new Vector2(0f, 0f);
             _root.pivot = new Vector2(0f, 0f);
-            _root.anchoredPosition = new Vector2(MARGIN, MARGIN);
+            _root.anchoredPosition = new Vector2(126f, 219f);
 
             // Translucent background
             var bg = MakeImage(_root, "BucketBg");

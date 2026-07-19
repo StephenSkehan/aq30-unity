@@ -142,10 +142,10 @@ TextureImporter:
       name: gen_junk_t07_wardrobe_0
       rect:
         serializedVersion: 2
-        x: 197
-        y: 165
-        width: 603
-        height: 671
+        x: 209
+        y: 91
+        width: 604
+        height: 841
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

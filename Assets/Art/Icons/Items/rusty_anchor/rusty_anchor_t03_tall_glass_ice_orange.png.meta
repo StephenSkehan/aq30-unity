@@ -142,10 +142,10 @@ TextureImporter:
       name: rusty_anchor_t03_tall_glass_ice_orange_0
       rect:
         serializedVersion: 2
-        x: 283
-        y: 68
-        width: 457
-        height: 869
+        x: 313
+        y: 177
+        width: 397
+        height: 669
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -148,10 +148,10 @@ TextureImporter:
       name: food_gifts_t02_hot_coffee_cup_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1018
-        width: 8
-        height: 6
+        x: 235
+        y: 219
+        width: 552
+        height: 585
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

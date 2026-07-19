@@ -145,10 +145,10 @@ TextureImporter:
       name: garage_t08_custom_exhaust_0
       rect:
         serializedVersion: 2
-        x: 171
-        y: 364
-        width: 683
-        height: 291
+        x: 111
+        y: 114
+        width: 1024
+        height: 952
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

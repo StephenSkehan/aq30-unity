@@ -145,10 +145,10 @@ TextureImporter:
       name: food_gifts_t01_paper_cup_0
       rect:
         serializedVersion: 2
-        x: 268
-        y: 109
-        width: 491
-        height: 716
+        x: 285
+        y: 217
+        width: 452
+        height: 589
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

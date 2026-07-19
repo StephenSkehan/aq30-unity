@@ -142,10 +142,10 @@ TextureImporter:
       name: gen_junk_t06_locker_0
       rect:
         serializedVersion: 2
-        x: 230
-        y: 151
-        width: 557
-        height: 698
+        x: 276
+        y: 134
+        width: 471
+        height: 756
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

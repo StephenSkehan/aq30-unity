@@ -142,10 +142,10 @@ TextureImporter:
       name: garage_t10_pimped_ride_hood_up_chrome_engine_0
       rect:
         serializedVersion: 2
-        x: 93
-        y: 186
-        width: 856
-        height: 589
+        x: 7
+        y: 111
+        width: 1226
+        height: 975
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

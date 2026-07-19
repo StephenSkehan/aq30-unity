@@ -142,10 +142,10 @@ TextureImporter:
       name: garage_t01_socket_wrench_chrome_0
       rect:
         serializedVersion: 2
-        x: 235
-        y: 143
-        width: 549
-        height: 673
+        x: 234
+        y: 183
+        width: 802
+        height: 870
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

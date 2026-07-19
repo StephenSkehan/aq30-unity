@@ -148,10 +148,10 @@ TextureImporter:
       name: currency_platinum_t05_ingots_pile_large_0
       rect:
         serializedVersion: 2
-        x: 51
-        y: 180
-        width: 942
-        height: 654
+        x: 81
+        y: 198
+        width: 852
+        height: 628
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

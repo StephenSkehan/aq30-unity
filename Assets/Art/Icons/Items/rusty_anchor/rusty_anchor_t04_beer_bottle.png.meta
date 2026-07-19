@@ -142,10 +142,10 @@ TextureImporter:
       name: rusty_anchor_t04_beer_bottle_0
       rect:
         serializedVersion: 2
-        x: 312
-        y: 78
-        width: 411
-        height: 855
+        x: 387
+        y: 165
+        width: 248
+        height: 694
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

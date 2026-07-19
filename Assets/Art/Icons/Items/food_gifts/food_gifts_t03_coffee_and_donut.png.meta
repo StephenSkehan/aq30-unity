@@ -154,10 +154,10 @@ TextureImporter:
       name: food_gifts_t03_coffee_and_donut_0
       rect:
         serializedVersion: 2
-        x: 115
-        y: 77
-        width: 846
-        height: 866
+        x: 190
+        y: 224
+        width: 643
+        height: 575
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

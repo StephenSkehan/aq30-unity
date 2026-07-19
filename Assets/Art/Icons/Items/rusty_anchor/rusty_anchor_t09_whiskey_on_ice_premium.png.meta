@@ -142,10 +142,10 @@ TextureImporter:
       name: rusty_anchor_t09_whiskey_on_ice_premium_0
       rect:
         serializedVersion: 2
-        x: 165
-        y: 95
-        width: 692
-        height: 812
+        x: 161
+        y: 102
+        width: 700
+        height: 819
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -142,10 +142,10 @@ TextureImporter:
       name: gen_junk_t03_cabinet_0
       rect:
         serializedVersion: 2
-        x: 160
-        y: 130
-        width: 704
-        height: 758
+        x: 211
+        y: 175
+        width: 601
+        height: 673
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

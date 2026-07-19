@@ -21,8 +21,11 @@ namespace AQ.EditorTools
     {
         const float CellSize = 142f;
         const float Gutter = 6f;
-        static readonly Vector2 ItemAnchorMin = new Vector2(0.09f, 0.09f);
-        static readonly Vector2 ItemAnchorMax = new Vector2(0.91f, 0.91f);
+        // Full-cell fill (Stephen-ruled 2026-07-19): recognisability beats the
+        // tier/size progression — icons occupy the whole square, art is
+        // margin-trimmed to match.
+        static readonly Vector2 ItemAnchorMin = new Vector2(0.01f, 0.01f);
+        static readonly Vector2 ItemAnchorMax = new Vector2(0.99f, 0.99f);
 
         [MenuItem("AQ/Setup/Board Density Pass")]
         public static void Apply()

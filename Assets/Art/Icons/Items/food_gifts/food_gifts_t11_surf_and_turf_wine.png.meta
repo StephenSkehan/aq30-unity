@@ -142,10 +142,10 @@ TextureImporter:
       name: food_gifts_t11_surf_and_turf_wine_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 118
-        width: 912
-        height: 741
+        x: 156
+        y: 148
+        width: 711
+        height: 731
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

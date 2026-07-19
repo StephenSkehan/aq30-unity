@@ -847,10 +847,10 @@ TextureImporter:
       name: rusty_anchor_t05_wine_glass_red_0
       rect:
         serializedVersion: 2
-        x: 80
-        y: 933
-        width: 121
-        height: 91
+        x: 268
+        y: 152
+        width: 487
+        height: 719
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

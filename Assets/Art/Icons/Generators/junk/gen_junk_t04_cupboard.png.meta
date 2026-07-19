@@ -142,10 +142,10 @@ TextureImporter:
       name: gen_junk_t04_cupboard_0
       rect:
         serializedVersion: 2
-        x: 109
-        y: 157
-        width: 763
-        height: 668
+        x: 187
+        y: 142
+        width: 649
+        height: 739
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -145,10 +145,10 @@ TextureImporter:
       name: currency_cash_usd_t01_note_single_0
       rect:
         serializedVersion: 2
-        x: 69
-        y: 121
-        width: 379
-        height: 269
+        x: 226
+        y: 335
+        width: 570
+        height: 353
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

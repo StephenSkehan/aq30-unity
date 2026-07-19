@@ -142,10 +142,10 @@ TextureImporter:
       name: garage_t06_car_battery_0
       rect:
         serializedVersion: 2
-        x: 202
-        y: 96
-        width: 620
-        height: 732
+        x: 71
+        y: 28
+        width: 1111
+        height: 1092
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

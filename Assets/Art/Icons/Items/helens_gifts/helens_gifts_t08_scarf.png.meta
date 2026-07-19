@@ -142,10 +142,10 @@ TextureImporter:
       name: helens_gifts_t08_scarf_0
       rect:
         serializedVersion: 2
-        x: 171
-        y: 60
-        width: 676
-        height: 827
+        x: 85
+        y: 116
+        width: 1079
+        height: 1003
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

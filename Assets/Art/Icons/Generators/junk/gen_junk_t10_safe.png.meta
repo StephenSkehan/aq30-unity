@@ -142,10 +142,10 @@ TextureImporter:
       name: gen_junk_t10_safe_0
       rect:
         serializedVersion: 2
-        x: 156
-        y: 147
-        width: 717
-        height: 701
+        x: 136
+        y: 100
+        width: 751
+        height: 824
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

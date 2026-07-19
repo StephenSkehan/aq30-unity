@@ -142,10 +142,10 @@ TextureImporter:
       name: rusty_anchor_t02_short_glass_ice_0
       rect:
         serializedVersion: 2
-        x: 194
-        y: 150
-        width: 628
-        height: 688
+        x: 370
+        y: 190
+        width: 282
+        height: 644
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

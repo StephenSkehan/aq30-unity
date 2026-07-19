@@ -142,10 +142,10 @@ TextureImporter:
       name: gen_junk_t09_shed_0
       rect:
         serializedVersion: 2
-        x: 148
-        y: 121
-        width: 740
-        height: 735
+        x: 99
+        y: 122
+        width: 815
+        height: 779
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
