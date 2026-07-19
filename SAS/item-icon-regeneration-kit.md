@@ -1,14 +1,14 @@
 # Item-Icon Regeneration Kit — full board sweep (PRE-RELEASE)
-*v1.4 · 2026-07-17 (audio item delivery status + total-scope arithmetic + transparency wording) · v1.3 2026-07-15 (Render Language Standard) · v1.2 2026-07-15, v1.0 2026-07-13 · Authoritative kit for the pre-beta board-art sweep. Supersedes the "Wave 1 = shipped, regen is post-launch" note in `art-kit-items-and-ui.md` — that call is reversed: **every item, generator, and currency icon is being regenerated now.***
+*v1.5 · 2026-07-19 (sweep COMPLETE 91/91 · PART 5 added: press family ported from art-kit Batch F, filenames aligned to family id `press_t*`) · v1.4 2026-07-17 (audio item delivery status + total-scope arithmetic + transparency wording) · v1.3 2026-07-15 (Render Language Standard) · v1.2 2026-07-15, v1.0 2026-07-13 · Authoritative kit for the pre-beta board-art sweep. Supersedes the "Wave 1 = shipped, regen is post-launch" note in `art-kit-items-and-ui.md` — that call is reversed: **every item, generator, and currency icon is being regenerated now.***
 
 ```text
 TOTAL PRE-BETA BOARD-ART SCOPE (recounted 2026-07-18 evening from repository state)
   77 in-place regenerations (93 − fingerprint 6 retired 2026-07-15 − corner_diner chain 10 retired 2026-07-18)
  +18 new assets: 6 audio items + 6 Field Kit tiers + 6 NEW corner_diner tiers — ALL DELIVERED+LIVE
     (gen_audio_rig 10 retired pre-integration; corner_diner ladder redesigned 10→6, see below)
-  =91 unique deliverables (lab chain 10→6, ruling 2026-07-19) (before Press items and Ep-stamps, tracked in art-kit-items-and-ui.md)
-DONE 85/91 (2026-07-19): currency 10 · gen_junk chain 10 · food_gifts 12 · rusty_anchor 10 · helens_gifts 10 · garage 10 · forensic 5 · audio items 6 · field kit 6 · corner_diner chain 6
-REMAINING 6: investigation_lab chain 6 (NEW six-tier ladder — ART PENDING; mechanics already live on interim sprites)
+  =91 unique deliverables (lab chain 10→6, ruling 2026-07-19)
+DONE 91/91 — SWEEP COMPLETE 2026-07-19: currency 10 · gen_junk chain 10 · food_gifts 12 · rusty_anchor 10 · helens_gifts 10 · garage 10 · forensic 5 · audio items 6 · field kit 6 · corner_diner chain 6 · investigation_lab chain 6
+WAVE 2 (Ep2-gated, tracked in PART 5 below — NOT in the 91): press 10 — 0/10 generated (P0 of the Ep2 batch; Ep-stamps remain in art-kit-items-and-ui.md)
 ```
 
 ## Why this exists
@@ -281,6 +281,33 @@ Currency families are on-board merge tiles too. Same global block. **Hard rule: 
 
 ---
 
+# PART 5 — WAVE 2: Press Items (10 · Ep2-gated · P0 of the Ep2 batch)
+
+### press (10) · palette: ink black, newsprint cream, brass, worn Gazette red · `Assets/Art/Icons/Items/press/` · *a story becoming permanent record*
+*Ported from art-kit-items-and-ui.md Batch F 2026-07-19 — this section is now the filename-exact authority; Batch F remains as design history. **Priority: Press = P0 of the Ep2 dependencies** (gates Ep2 L3 morgue files, L5 episode cutting, L12 the Publish; recurs all season). **Timing:** if the launch build is Episode 1 only, this generates on the Ep2 timeline — it is NOT in the 91-count pre-beta sweep.*
+
+***FILENAME RULING 2026-07-19:*** *Batch F staged these as `press_items_t*`; the live `gen_junk` drop table's family id is **`press`** (rows T1–T10 already tuned: 140/15/8/4/2/1, T7–T10 zeroed, flag-gated `aq.char.arthur.active`), and every other family's filenames match its family id. Filenames below are therefore **`press_t01`–`press_t10`** and itemIds will be `press_t01`…`press_t10` — the `press_items_t*` names are superseded.*
+
+**Escalation principle:** the ladder climbs by increasing **object count + physical mass + investigative value** — several tiers PAIR objects so the rise never dips (badge+notebook, phone+pad, viewer+reel). Distinct silhouette at 96px per tier.
+**⚠ NO TEXT (kit-wide rule — this family is the biggest temptation):** no readable words, headlines, dates, labels anywhere. Represent "paper/press" with abstract column strokes, redaction bars, colour tabs, grease-pencil rings, generic photo blocks, unreadable scribble texture only.
+**⚠ Do NOT depict Arthur (or any face/person).** His archive palette and props — brown card stock, black ink, brass, worn lanyard, red pencil marks — inspire the family; his face never appears on a badge, paper, or folder. Badge photo areas are blank blocks.
+**Workflow:** generate t01 first → approve → attach as family style anchor for t02–t10 (t01–t03 are three of the five PROOF BATCH categories — this family doubles as the pipeline QC gate). Paste the Global item style block with every generation; **state "fully transparent background, straight alpha — NOT a checkerboard pattern" explicitly** (two recent flat deliveries arrived with baked backgrounds).
+
+| Filename | Item | Per-tier prompt (append to the global style block · NO readable text) |
+|---|---|---|
+| press_t01.png | Torn Newsprint Clipping | a single light torn scrap of newspaper, abstract column strokes only (no readable words), soft creased edges, newsprint cream and ink black. The rawest, smallest tier. |
+| press_t02.png | Notepad & Pencil | a spiral-bound flip notepad with a pencil laid diagonally across it, unreadable scribble texture on the page. Thicker object + diagonal pencil — clearly more than t01. |
+| press_t03.png | Press Badge & Notebook | a laminated press badge on a worn brass-clipped lanyard resting on a closed leather notebook — a layered pair, hanging lanyard silhouette. Photo area is a blank block, no face. |
+| press_t04.png | Newsroom Telephone & Message Pad *(AMENDED 2026-07-15, LOCKED with the audio ruling — the original cassette recorder collided with the Audio Investigation family)* | a heavy retro newsroom desk telephone with a message pad and pencil beside it, one abstract scrawled line on the pad (no readable text). Distinct mechanical silhouette, more mass than t03. |
+| press_t05.png | Bulging Clippings Folder | a thick manila folder over-stuffed with papers, colour tabs and protruding clippings held by a paper-clip, one red grease-pencil ring. A visible collection — much more paper. |
+| press_t06.png | Portable Typewriter | a compact vintage portable typewriter, a blank sheet wound in, keys catching warm light, brass return lever. Large, unmistakable machine silhouette. |
+| press_t07.png | Microfilm Viewer & Reel | a boxed microfilm reel seated in/beside a small tabletop viewer, a short film strip pulled out catching light, brass spindle. Taller technical archive equipment. |
+| press_t08.png | Stuffed Morgue File Box | a large corrugated archive box, lid off, several folders standing inside with colour tabs, a redaction bar on one visible sheet. Big box — more mass than the viewer. |
+| press_t09.png | Front-Page Layout Board | a proof/layout board on a slight easel lip so it is NOT a flat low rectangle at the 15° angle — column blocks, a generic photo block, red grease-pencil markup, a raised roller and clipped sheets breaking the top silhouette. The published output. |
+| press_t10.png | The Morgue Cabinet | a tall oak card-catalogue / filing cabinet, one drawer open showing fanned clippings and brass label-holders, a desk-lamp glow on top, worn brass handles — the family **hero**: biggest, richest, warmest. |
+
+**Integration checklist (code/data side, one session when art lands):** ① import 10 PNGs to `Assets/Art/Icons/Items/press/` (minimal-meta single-sprite pattern, mipmaps off) ② create ItemDefinitionSOs `press_t01`–`press_t10` (family `press`, tiers 0–9, displayNames from the Item column) via ItemDefinitionBatchCreator ③ register in the scene ItemRegistry + MergeBoardController itemDefinitions (Wire Item Registry tool) ④ drop table needs NOTHING — `gen_junk` press rows are already tuned and flag-gated ⑤ verify with a QA flag-set + junk tap that press drops roll once `aq.char.arthur.active` fires (Ep2 content) ⑥ Lead Audit for any Ep2 leads requiring press items.
+
 ## Technical acceptance & QC (every asset)
 - PNG, **straight (non-premultiplied) alpha**, **sRGB**.
 - **No** opaque matte, **no** white/black edge halo, no semi-transparent noise outside the shape.
@@ -301,10 +328,10 @@ Track per approved icon: `filename · this kit v1.0 · reference images used · 
 
 ## Out of scope for this sweep (noted, not touched)
 - **`fingerprint_evidence` — RETIRED 2026-07-15.** Removed from the gen_investigation_lab drop table; every lead requirement (Ep1 + shelved Ghost Student + cold cases) remapped to same-tier forensic_tools. Its replacement is **Audio Investigation — CHOSEN and signed off** (requirement map ruled 2026-07-17; no longer a "front-runner"). Do NOT generate fingerprint art.
-- **`press` family** — referenced by the `gen_junk` drop-table but has no ScriptableObjects and no art; it's the Episode 2 dependency (Batch F in `art-kit-items-and-ui.md`), generated separately when Ep2 content lands.
+- **`press` family** — Ep2-gated, not in the 91-count sweep, but its filename-exact spec now lives HERE (PART 5, ported from Batch F 2026-07-19); generate when Ep2 content lands.
 - **`stakeout_fuel`** — a legacy alias that reuses `food_gifts` art; regenerating food_gifts refreshes it automatically. No separate generation.
 - **Legacy duplicates under `Assets/Art/UI/Icons/MergeChains/`** — superseded by `Assets/Art/Icons/Items/`; not on the live board, leave alone.
-- **The Ep2 branch stamps and Press items** — flat-UI-symbol / Wave-2 work, still tracked in `art-kit-items-and-ui.md`.
+- **The Ep2 branch stamps** — flat-UI-symbol work, still tracked in `art-kit-items-and-ui.md` (Press items moved into PART 5 of this kit 2026-07-19).
 
 ## Recommended generation order (biggest visible win first)
 1. **food_gifts** (12) — the most-merged family and the first tiles a player touches. Run the proof batch here, lock the look.

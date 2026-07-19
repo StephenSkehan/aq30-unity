@@ -163,7 +163,7 @@ So **four live families** are served by four generators (2026-07-18): the **Fiel
 
 **Batch discipline (same as Wave 1):** paste the **Global item style block** (Part 1) with every generation, attach the Ally key art as the STYLE anchor, and after the first Press icon is approved attach it as an extra style anchor for the rest of the family. Files `.png`, 1024×1024, transparent background. Drop finished batches in `OneDrive/AllyQuinn Game/Images/Production 2026 Images/Items/`.
 
-### Batch F — Press Items (10) · palette: ink black, newsprint cream, brass, worn Gazette red · reads as *a story becoming permanent record*
+### Batch F — Press Items (10) · **⚠ SUPERSEDED 2026-07-19 — the filename-exact spec now lives in `item-icon-regeneration-kit.md` PART 5. Generate from THERE, not from this table: filenames were re-ruled `press_t01`–`press_t10` (matching the live drop-table family id `press`; the `press_items_t*` names below are retired). This table stays as design history.** · palette: ink black, newsprint cream, brass, worn Gazette red · reads as *a story becoming permanent record*
 
 **Escalation principle (revised 2026-07-12 for steadier mass):** the ladder climbs by increasing **object count + physical mass + investigative value** — several tiers PAIR objects so the rise never dips (badge+notebook, recorder+tape, viewer+reel). Distinct silhouette at 96 px per tier.
 
