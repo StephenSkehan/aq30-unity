@@ -252,29 +252,48 @@ namespace AQ.EditorTools
             var img = t.GetComponent<Image>();
             if (img != null) { AQTheme.Round(img, AQTheme.Card); }
 
-            // Hide the "MENU" text label; NunitoSans lacks a ⚙ glyph so we draw a
-            // reliable 3-bar settings/menu icon from Images (proper gear sprite is
-            // still pending art per the audit).
+            // Hide the "MENU" text label.
             var tmp = t.GetComponentInChildren<TMP_Text>();
             if (tmp != null) tmp.text = string.Empty;
 
             for (int i = t.childCount - 1; i >= 0; i--)
             {
                 var c = t.GetChild(i);
-                if (c.name.StartsWith(Gen + "bar")) Object.DestroyImmediate(c.gameObject);
+                if (c.name.StartsWith(Gen + "bar") || c.name.StartsWith(Gen + "menu_icon"))
+                    Object.DestroyImmediate(c.gameObject);
             }
-            for (int i = 0; i < 3; i++)
+
+            // Delivered hamburger art (keyed from the 2026-07-19 drop). Falls back to
+            // the old runtime-drawn 3-bar icon if the asset ever goes missing.
+            var menuSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Art/UI/TopBar/ui_top_menu.png");
+            if (menuSprite != null)
             {
-                var bar = new GameObject(Gen + "bar_" + i, typeof(RectTransform), typeof(Image));
-                var brt = (RectTransform)bar.transform;
-                brt.SetParent(rt, false);
-                Center(brt, 0f, 16f - i * 16f, 44f, 7f);
-                var bimg = bar.GetComponent<Image>();
-                bimg.sprite = AQTheme.Rounded;
-                bimg.type = Image.Type.Sliced;
-                bimg.pixelsPerUnitMultiplier = 1f;
-                bimg.color = AQTheme.Paper;
-                bimg.raycastTarget = false;
+                var icon = new GameObject(Gen + "menu_icon", typeof(RectTransform), typeof(Image));
+                var irt = (RectTransform)icon.transform;
+                irt.SetParent(rt, false);
+                Center(irt, 0f, 0f, 48f, 48f);
+                var iimg = icon.GetComponent<Image>();
+                iimg.sprite = menuSprite;
+                iimg.type = Image.Type.Simple;
+                iimg.preserveAspect = true;
+                iimg.raycastTarget = false;
+            }
+            else
+            {
+                Debug.LogWarning("[RebuildHud] ui_top_menu.png missing — falling back to drawn 3-bar icon.");
+                for (int i = 0; i < 3; i++)
+                {
+                    var bar = new GameObject(Gen + "bar_" + i, typeof(RectTransform), typeof(Image));
+                    var brt = (RectTransform)bar.transform;
+                    brt.SetParent(rt, false);
+                    Center(brt, 0f, 16f - i * 16f, 44f, 7f);
+                    var bimg = bar.GetComponent<Image>();
+                    bimg.sprite = AQTheme.Rounded;
+                    bimg.type = Image.Type.Sliced;
+                    bimg.pixelsPerUnitMultiplier = 1f;
+                    bimg.color = AQTheme.Paper;
+                    bimg.raycastTarget = false;
+                }
             }
             rt.SetAsLastSibling();
         }

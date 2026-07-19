@@ -26,8 +26,8 @@ TRANSPARENT background, centered, generous margins, must read clearly at
 abstract.
 ```
 
-## ADDENDUM 2026-07-17 — HUD menu (hamburger) button
-*The runtime-drawn 3-bar placeholder reads rough (Stephen). Generate `ui_top_menu.png` → import to `Assets/Art/UI/TopBar/` → wire in RebuildHudComponents.StyleSettingsGear (replaces the drawn bars).*
+## ADDENDUM 2026-07-17 — HUD menu (hamburger) button — ✅ DELIVERED + LIVE 2026-07-19
+*Delivered on a BAKED CHECKERBOARD despite the transparent-bg spec (flat-delivery trap) — keyed via neutral border flood, cropped, live as `Assets/Art/UI/TopBar/ui_top_menu.png`, wired in RebuildHudComponents.StyleSettingsGear (drawn 3-bar kept as missing-asset fallback). Original prompt below for regen reference.*
 
 ```
 A single mobile-game UI icon: a hamburger menu button for a noir detective
