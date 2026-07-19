@@ -82,6 +82,7 @@
     <Compile Include="Assets\Editor\Items\WireItemRegistry.cs" />
     <Compile Include="Assets\Editor\Diag\CleanUpAndStyleDialogue.cs" />
     <Compile Include="Assets\Editor\AQ\QAResetMenuItem.cs" />
+    <Compile Include="Assets\Editor\AQ\CloseDeviceSimulator.cs" />
     <Compile Include="Assets\Editor\Diag\FixDialoguePanelStructure.cs" />
     <Compile Include="Assets\Editor\AQ\RaycastProbe.cs" />
     <Compile Include="Assets\Editor\Items\ItemIconImporter.cs" />
