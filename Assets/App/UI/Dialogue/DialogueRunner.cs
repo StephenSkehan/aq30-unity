@@ -59,6 +59,11 @@ namespace AQ.App
         private Stack<string> _history = new Stack<string>();
         public bool CanGoBack => _history.Count > 0;
 
+        // Node-range overrides: play a sub-span of a graph without splitting the
+        // asset (FTUE first-merge choreography plays N1–N3, then resumes at N4).
+        private string _startOverrideId;
+        private string _endAfterNodeId;
+
         void Start()
         {
             if (!_booted && Graph != null) InternalBoot(Graph);
@@ -69,14 +74,41 @@ namespace AQ.App
         /// </summary>
         public void BootWithGraph(CaseGraph g)
         {
+            _startOverrideId = null;
+            _endAfterNodeId  = null;
+            BootCore(g);
+        }
+
+        /// <summary>
+        /// Boot a sub-span of a graph: start at <paramref name="startNodeId"/>
+        /// (null/empty = the graph's own startId) and end the dialogue after the
+        /// node with id <paramref name="endAfterNodeId"/> (null/empty = play to
+        /// the graph's natural end). Overrides apply to this boot only.
+        /// </summary>
+        public void BootWithGraph(CaseGraph g, string startNodeId, string endAfterNodeId)
+        {
+            _startOverrideId = string.IsNullOrEmpty(startNodeId) ? null : startNodeId;
+            _endAfterNodeId  = string.IsNullOrEmpty(endAfterNodeId) ? null : endAfterNodeId;
+            BootCore(g);
+        }
+
+        private void BootCore(CaseGraph g)
+        {
             Graph = g;
             if (!_booted)
                 InternalBoot(g);
             else
             {
                 DialogueOpened?.Invoke(g);
-                JumpTo(Graph.startId);
+                JumpTo(ResolveStartId(g));
             }
+        }
+
+        private string ResolveStartId(CaseGraph g)
+        {
+            if (!string.IsNullOrEmpty(_startOverrideId)) return _startOverrideId;
+            if (!string.IsNullOrEmpty(g.startId)) return g.startId;
+            return g.nodes != null && g.nodes.Length > 0 ? g.nodes[0].id : null;
         }
 
         /// <summary>
@@ -175,9 +207,7 @@ namespace AQ.App
             Panel.BackClicked += OnBack;
 
             // Start at first node
-            _currentId = string.IsNullOrEmpty(g.startId) ?
-                (g.nodes != null && g.nodes.Length > 0 ? g.nodes[0].id : null) :
-                g.startId;
+            _currentId = ResolveStartId(g);
 
             _booted = true;
             _history.Clear(); // Reset history on boot
@@ -280,6 +310,13 @@ namespace AQ.App
             // linear progression instead of soft-locking.
             if (_filteredChoices != null && _filteredChoices.Length > 0) return;
 
+            // Node-range boot: this span ends here even though the graph continues.
+            if (_endAfterNodeId != null && n.id == _endAfterNodeId)
+            {
+                End();
+                return;
+            }
+
             // Linear progression
             if (!string.IsNullOrEmpty(n.nextId))
                 ShowNode(n.nextId);
@@ -300,6 +337,11 @@ namespace AQ.App
             if (idx < 0 || idx >= _filteredChoices.Length) return;
 
             var choice = _filteredChoices[idx];
+            if (_endAfterNodeId != null && _currentId == _endAfterNodeId)
+            {
+                End();
+                return;
+            }
             if (!string.IsNullOrEmpty(choice.nextId))
                 ShowNode(choice.nextId);
             else
@@ -519,6 +561,10 @@ namespace AQ.App
 
         void End()
         {
+            // Overrides are per-boot; never leak into the next dialogue.
+            _startOverrideId = null;
+            _endAfterNodeId  = null;
+
             if (_bodyTyper != null) _bodyTyper.StopTyping();
             if (_speakerTyper != null) _speakerTyper.StopTyping();
 

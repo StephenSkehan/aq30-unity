@@ -137,6 +137,44 @@ namespace AQ.App.CaseFlow
             return shortfall;
         }
 
+        // FTUE first-merge choreography (Assembly-CSharp) drives these two entries.
+        // Set for one DoProceed call: the resolution dialogue boots at this node
+        // instead of the graph's startId (payoff resumes at N4 after the intro
+        // span already played N1–N3).
+        private string _dialogueStartOverrideId;
+
+        /// <summary>
+        /// Plays a sub-span of a dialogue graph outside the lead-proceed flow,
+        /// with the same bar-hide/runner-activate mechanics as a resolution boot.
+        /// Used by the FTUE choreography for the L1 intro (nodes 1–3).
+        /// </summary>
+        public void PlayIntroForFtue(CaseGraph graph, string startNodeId, string endAfterNodeId)
+        {
+            if (dialogueRunner == null || graph == null)
+            {
+                Debug.LogWarning("[CaseFlowLeadBridge] PlayIntroForFtue: missing runner or graph.", this);
+                return;
+            }
+
+            if (_bar != null) _bar.gameObject.SetActive(false);
+            dialogueRunner.DialogueEnded += OnDialogueEnded;
+            dialogueRunner.gameObject.SetActive(true);
+            dialogueRunner.BootWithGraph(graph, startNodeId, endAfterNodeId);
+        }
+
+        /// <summary>
+        /// Auto-proceed for the FTUE first-merge choreography — the exact card-tap
+        /// path, minus the tap, with the resolution dialogue resuming at
+        /// <paramref name="dialogueStartNodeId"/>. Skips the locker-draw confirm:
+        /// on the FTUE board the requirement is always board-covered.
+        /// </summary>
+        public void ProceedForFtue(LeadData lead, string dialogueStartNodeId)
+        {
+            _dialogueStartOverrideId = dialogueStartNodeId;
+            try { DoProceed(lead); }
+            finally { _dialogueStartOverrideId = null; }
+        }
+
         private void DoProceed(LeadData lead)
         {
             if (_svc == null) return;
@@ -177,7 +215,9 @@ namespace AQ.App.CaseFlow
             dialogueRunner.DialogueEnded += OnDialogueEnded;
             dialogueRunner.gameObject.SetActive(true);
 
-            if (lead?.resolutionDialogue != null)
+            if (lead?.resolutionDialogue != null && !string.IsNullOrEmpty(_dialogueStartOverrideId))
+                dialogueRunner.BootWithGraph(lead.resolutionDialogue, _dialogueStartOverrideId, null);
+            else if (lead?.resolutionDialogue != null)
                 dialogueRunner.BootWithGraph(lead.resolutionDialogue);
             else
                 dialogueRunner.BootWithText("Ally Quinn", $"{lead?.title}: Missing dialog data - ID: {lead?.leadId}");

@@ -21,13 +21,19 @@ public class ProceedHintMB : MonoBehaviour
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     static void Bootstrap()
     {
-        Install();
-        SceneManager.sceneLoaded += (_, __) => Install();
+        EnsureInstalled();
+        SceneManager.sceneLoaded += (_, __) => EnsureInstalled();
     }
 
-    static void Install()
+    /// <summary>
+    /// Idempotent install — also used by the FTUE first-merge choreography to
+    /// restore the hint after suppressing it during the auto-proceed (the
+    /// one-time flag must survive for the first card the player taps themselves).
+    /// </summary>
+    public static void EnsureInstalled()
     {
         if (NarrativeFlags.Has(FtueFlag)) return;
+        if (GameObject.Find("ProceedHint") != null) return;
         var go = new GameObject("ProceedHint");
         go.AddComponent<RectTransform>();
         go.AddComponent<ProceedHintMB>();
