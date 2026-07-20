@@ -8,7 +8,7 @@ TOTAL PRE-BETA BOARD-ART SCOPE (recounted 2026-07-18 evening from repository sta
     (gen_audio_rig 10 retired pre-integration; corner_diner ladder redesigned 10→6, see below)
   =91 unique deliverables (lab chain 10→6, ruling 2026-07-19)
 DONE 91/91 — SWEEP COMPLETE 2026-07-19: currency 10 · gen_junk chain 10 · food_gifts 12 · rusty_anchor 10 · helens_gifts 10 · garage 10 · forensic 5 · audio items 6 · field kit 6 · corner_diner chain 6 · investigation_lab chain 6
-WAVE 2 (Ep2-gated, tracked in PART 5 below — NOT in the 91): press 10 — 0/10 generated (P0 of the Ep2 batch; Ep-stamps remain in art-kit-items-and-ui.md)
+WAVE 2 (Ep2-gated, tracked in PART 5 below — NOT in the 91): press 10 — DELIVERED + INTEGRATED 2026-07-20 (keyed from mixed flat/checker delivery, SOs created, registry wired, flag-gate QA PASS; drops stay dormant until aq.char.arthur.active — Ep2 content). Ep-stamps remain in art-kit-items-and-ui.md
 ```
 
 ## Why this exists

@@ -25,9 +25,9 @@
 ## Known blockers / outstanding deliveries (Stephen's art stream)
 | Item | Blocks |
 |---|---|
-| Press family art (Arthur, T1–T10) | gen_junk Ep2 drops |
-| ui_top_menu.png (hamburger) | replaces drawn placeholder (cosmetic) |
 | VO recordings | audience-level testing |
+
+*(Press family DELIVERED + INTEGRATED 2026-07-20 — 10 icons live, SOs + registry wired, flag-gate QA PASS, dormant until `aq.char.arthur.active`. Hamburger icon DELIVERED + LIVE 2026-07-19. VO is the only outstanding delivery.)*
 
 ## Sprint 7 compliance — CODE COMPLETE (verified 2026-07-19)
 Audit found Sprint 7 was already implemented (2026-07-09-era session), contrary to later planning notes that called it "unstarted":
