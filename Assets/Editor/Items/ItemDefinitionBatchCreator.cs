@@ -95,10 +95,9 @@ namespace AQ.Editor.Items
             new() { itemId="corner_diner_t04", family="corner_diner", tier=3, displayName="Large Coffee Cart",   spritePath="Generators/corner_diner/corner_diner_t04_large_coffee_cart.png" },
             new() { itemId="corner_diner_t05", family="corner_diner", tier=4, displayName="Donut Shop",          spritePath="Generators/corner_diner/corner_diner_t05_donut_shop.png" },
             new() { itemId="corner_diner_t06", family="corner_diner", tier=5, displayName="Vendor Van",          spritePath="Generators/corner_diner/corner_diner_t06_vendor_van.png" },
-            new() { itemId="corner_diner_t07", family="corner_diner", tier=6, displayName="Coffee Truck",        spritePath="Generators/corner_diner/corner_diner_t07_coffee_truck.png" },
-            new() { itemId="corner_diner_t08", family="corner_diner", tier=7, displayName="Night Window",        spritePath="Generators/corner_diner/corner_diner_t08_night_window.png" },
-            new() { itemId="corner_diner_t09", family="corner_diner", tier=8, displayName="Burger Shop Counter", spritePath="Generators/corner_diner/corner_diner_t09_burger_shop_counter.png" },
-            new() { itemId="corner_diner_t10", family="corner_diner", tier=9, displayName="Fast Food Facade",    spritePath="Generators/corner_diner/corner_diner_t10_fast_food_facade.png" },
+            // Diner ladder is SIX-TIER (ruling 2026-07-18; t07-t10 retired) —
+            // rows removed 2026-07-20 after this creator resurrected the four
+            // deleted SOs during the press batch run.
 
             // ── Investigation Lab Generator (10 tiers) ──────────────────────
             new() { itemId="investigation_lab_t01", family="investigation_lab", tier=0, displayName="Lab Supply Cupboard", spritePath="Generators/investigation_lab/gen_investigation_lab_t01_lab_supply_cupboard.png" },
@@ -123,6 +122,18 @@ namespace AQ.Editor.Items
             new() { itemId="junk_t08", family="junk", tier=7, displayName="Built-in",  spritePath="Generators/junk/gen_junk_t08_built_in.png" },
             new() { itemId="junk_t09", family="junk", tier=8, displayName="Shed",      spritePath="Generators/junk/gen_junk_t09_shed.png" },
             new() { itemId="junk_t10", family="junk", tier=9, displayName="Safe",      spritePath="Generators/junk/gen_junk_t10_safe.png" },
+
+            // ── Press (10 tiers, Ep2-gated — Arthur's archive; spec = regen kit PART 5) ──
+            new() { itemId="press_t01", family="press", tier=0, displayName="Torn Newsprint Clipping",         spritePath="Items/press/press_t01.png" },
+            new() { itemId="press_t02", family="press", tier=1, displayName="Notepad & Pencil",                spritePath="Items/press/press_t02.png" },
+            new() { itemId="press_t03", family="press", tier=2, displayName="Press Badge & Notebook",          spritePath="Items/press/press_t03.png" },
+            new() { itemId="press_t04", family="press", tier=3, displayName="Newsroom Telephone & Message Pad",spritePath="Items/press/press_t04.png" },
+            new() { itemId="press_t05", family="press", tier=4, displayName="Bulging Clippings Folder",        spritePath="Items/press/press_t05.png" },
+            new() { itemId="press_t06", family="press", tier=5, displayName="Portable Typewriter",             spritePath="Items/press/press_t06.png" },
+            new() { itemId="press_t07", family="press", tier=6, displayName="Microfilm Viewer & Reel",         spritePath="Items/press/press_t07.png" },
+            new() { itemId="press_t08", family="press", tier=7, displayName="Stuffed Morgue File Box",         spritePath="Items/press/press_t08.png" },
+            new() { itemId="press_t09", family="press", tier=8, displayName="Front-Page Layout Board",         spritePath="Items/press/press_t09.png" },
+            new() { itemId="press_t10", family="press", tier=9, displayName="The Morgue Cabinet",              spritePath="Items/press/press_t10.png" },
 
             // ── Cash Currency (5 tiers) ──────────────────────────────────────
             new() { itemId="currency_cash_t01", family="currency_cash", tier=0, displayName="Single Note",      spritePath="Currency/cash/currency_cash_usd_t01_note_single.png" },
