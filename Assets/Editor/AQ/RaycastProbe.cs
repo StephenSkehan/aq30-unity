@@ -56,16 +56,10 @@ namespace AQ.EditorTools
         public static void SimulateProceed()
         {
             if (!Application.isPlaying) { Debug.LogWarning("[Probe] enter play mode first."); return; }
-            // the ready card shows the runtime "Txt_ProceedHint"; its card root holds the button
-            var hint = GameObject.Find("Txt_ProceedHint");
-            GameObject card = hint != null ? hint.transform.parent.gameObject : null;
-            if (card == null)
-            {
-                // fallback: first lead card with a Button
-                var bar = GameObject.Find("LeadsBarRuntime");
-                var btnAny = bar != null ? bar.GetComponentInChildren<UnityEngine.UI.Button>(true) : null;
-                card = btnAny != null ? btnAny.gameObject : null;
-            }
+            // Txt_ProceedHint was retired 2026-07-20 — find the first lead card with a Button
+            var bar = GameObject.Find("LeadsBarRuntime");
+            var btnAny = bar != null ? bar.GetComponentInChildren<UnityEngine.UI.Button>(true) : null;
+            GameObject card = btnAny != null ? btnAny.gameObject : null;
             if (card == null) { FLog("[Probe] ERROR no ready lead card found"); return; }
             var btn = card.GetComponentInChildren<UnityEngine.UI.Button>(true);
             if (btn == null) { FLog("[Probe] ERROR no button on card " + card.name); return; }

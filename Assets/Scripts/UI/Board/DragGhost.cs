@@ -44,6 +44,14 @@ namespace AQ.App.UI.Board
             ghost.group.interactable   = false;
             ghost.group.ignoreParentGroups = true;
 
+            // The board canvas sorts at 0, below the locker/evidence/overflow
+            // button canvases (5/5/200) — without this the dragged item slides
+            // BEHIND the locker button on drag-to-store. Override sorting lifts
+            // the ghost above every HUD strip canvas (modals sit at 9999).
+            var sortCanvas = go.AddComponent<Canvas>();
+            sortCanvas.overrideSorting = true;
+            sortCanvas.sortingOrder    = 5000;
+
             // Match source icon size if supplied
             if (sourceIcon != null)
                 ghost.rect.sizeDelta = sourceIcon.rect.size;

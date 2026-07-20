@@ -104,10 +104,6 @@ namespace AQ.App.Leads
                         BuildRewardPreview(presenter.rewardsRow, so);
                 }
 
-                // Show a "tap to proceed" hint on ready lead cards
-                if (so != null && so.RuntimeState == LeadState.Ready)
-                    AddProceedHint(go.transform);
-
                 var btn = FindProceedButton(go.transform);
                 if (btn != null)
                 {
@@ -326,25 +322,6 @@ namespace AQ.App.Leads
             tmp.color     = Color.white;
             tmp.alignment = TextAlignmentOptions.MidlineLeft;
             tmp.raycastTarget = false;
-            AQ.App.UI.AQTheme.StyleText(tmp);
-        }
-
-        static void AddProceedHint(Transform cardRoot)
-        {
-            var go = new GameObject("Txt_ProceedHint");
-            go.transform.SetParent(cardRoot, false);
-            var rt = go.AddComponent<RectTransform>();
-            rt.anchorMin        = new Vector2(0f, 0f);
-            rt.anchorMax        = new Vector2(1f, 0f);
-            rt.pivot            = new Vector2(0.5f, 0f);
-            rt.sizeDelta        = new Vector2(0f, 28f);
-            rt.anchoredPosition = new Vector2(0f, 8f);
-            var tmp = go.AddComponent<TextMeshProUGUI>();
-            tmp.text        = ">>  Tap card to proceed";
-            tmp.fontSize    = 13f;
-            tmp.color       = AQ.App.UI.AQTheme.Amber;
-            tmp.alignment   = TextAlignmentOptions.Center;
-            tmp.fontStyle   = FontStyles.Bold;
             AQ.App.UI.AQTheme.StyleText(tmp);
         }
 

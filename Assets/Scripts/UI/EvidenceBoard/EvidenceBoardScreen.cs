@@ -174,7 +174,7 @@ namespace AQ.App.UI.EvidenceBoard
             btnRt.anchorMin        = new Vector2(1f, 0f);
             btnRt.anchorMax        = new Vector2(1f, 0f);
             btnRt.pivot            = new Vector2(1f, 0f);
-            btnRt.sizeDelta        = new Vector2(90f, 90f);
+            btnRt.sizeDelta        = new Vector2(142f, 142f); // grid-square parity, see LockerScreen
             btnRt.anchoredPosition = new Vector2(-24f, 219f);
 
             var btnImg = btnGo.GetComponent<Image>();

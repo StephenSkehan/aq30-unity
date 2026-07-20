@@ -38,7 +38,7 @@ namespace AQ.App.UI.Board
             SceneManager.sceneLoaded += (_, _) => { if (_isOpen) Close(); };
         }
 
-        // ---- HUD button: bottom-left, above the overflow bucket (160px + margins) ----
+        // ---- HUD button: bottom-left, overflow bucket beside it ----
 
         private static void BuildHudButton()
         {
@@ -61,7 +61,11 @@ namespace AQ.App.UI.Board
             rt.anchorMin        = new Vector2(0f, 0f);
             rt.anchorMax        = new Vector2(0f, 0f);
             rt.pivot            = new Vector2(0f, 0f);
-            rt.sizeDelta        = new Vector2(90f, 90f);
+            // Grid-square parity (Stephen-ruled 2026-07-20): 142 = the board's
+            // design cell, which BoardFitMB never exceeds — so the button is
+            // always at least a cell. BoardFit reserves above the button top,
+            // so the grid shrinks to make room automatically.
+            rt.sizeDelta        = new Vector2(142f, 142f);
             rt.anchoredPosition = new Vector2(24f, 219f); // level with the evidence-board button
 
             var img  = btnGo.GetComponent<Image>();
