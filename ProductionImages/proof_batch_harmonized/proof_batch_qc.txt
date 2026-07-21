@@ -1,0 +1,8 @@
+Five-icon proof batch QC
+All files: 1024x1024 RGBA PNG, transparent corners, sRGB-compatible PNG output.
+
+food_gifts_t04_burger_single.png: alpha bbox=(123, 112, 901, 912), minimum safe margin=112px (10.9%)
+forensic_tools_t2_evidence_bag.png: alpha bbox=(242, 112, 781, 912), minimum safe margin=112px (10.9%)
+rusty_anchor_t06_champagne_flute.png: alpha bbox=(387, 112, 636, 912), minimum safe margin=112px (10.9%)
+helens_gifts_t01_note.png: alpha bbox=(112, 181, 912, 843), minimum safe margin=112px (10.9%)
+gen_junk_t01_drawer.png: alpha bbox=(112, 179, 912, 844), minimum safe margin=112px (10.9%)

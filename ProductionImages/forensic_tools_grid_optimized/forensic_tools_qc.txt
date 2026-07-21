@@ -1,0 +1,8 @@
+Forensic Tools family QC
+All files are 1024x1024 RGBA PNG with transparent corners.
+
+T1 Dusting Brush: forensic_tools_t1_cotton_swab.png; target max dimension=640px; alpha bbox=(218, 192, 806, 832); minimum margin=192px
+T2 Evidence Bag: forensic_tools_t2_evidence_bag.png; target max dimension=690px; alpha bbox=(281, 167, 743, 857); minimum margin=167px
+T3 Closed Case: forensic_tools_t3_full_forensic_case_black.png; target max dimension=730px; alpha bbox=(147, 243, 877, 780); minimum margin=147px
+T4 UV Light: forensic_tools_t4_uv_light.png; target max dimension=770px; alpha bbox=(257, 127, 766, 897); minimum margin=127px
+T5 Complete Kit: forensic_tools_t5_complete_forensic_kit_transparent_soft.png; target max dimension=820px; alpha bbox=(126, 102, 898, 922); minimum margin=102px
