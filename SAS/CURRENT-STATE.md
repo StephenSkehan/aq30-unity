@@ -1,4 +1,6 @@
 # CURRENT STATE — single entry point for the SAS pack
+
+> **★ LAUNCH RE-ANCHORED 2026-07-21 (Stephen-ruled): iOS release 2026-10-01, submit to App Review by 2026-09-19/20** (was Sep 1 / Aug 20). Stephen has limited availability late July → mid-August; during that window work continues on Claude-side streams (store copy, ASO, screenshots plan, polish, QA) and anything needing Stephen's hands/eyes waits or shrinks to phone-sized approvals. Cut lines unchanged: never monetization or compliance. Dated docs below that reference Aug/Sep milestones (e.g. the 2026-07-12 beta-readiness audit) are point-in-time snapshots — do not re-derive schedule from them.
 *As of 2026-07-19 · branch **`main`** — **LANDED 2026-07-19** (fast-forward `062a137 → 65cb603`, Stephen-ruled; `claude/ally-quinn-bible-phase-2-p8e642` is history, all future work on main) · **describes commit `65cb603`** (update the hash when the state changes). Update this file whenever a ruling lands or an integration flips. If a document below disagrees with this page, this page wins on STATUS; the named master wins on CONTENT.*
 
 ## Authority hierarchy (content)
