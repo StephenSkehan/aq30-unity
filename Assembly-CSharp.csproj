@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardZoomPan.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\SoftCurrencyHudTMP.cs" />
     <Compile Include="Assets\Scripts\UI\Common\EnergyOutPopup.cs" />
+    <Compile Include="Assets\Scripts\Dev\DebugSettingsTab.cs" />
     <Compile Include="Assets\Scripts\App\Presentation\MergeEventsBridge.cs" />
     <Compile Include="Assets\Scripts\App\Services\Ads\AdService.cs" />
     <Compile Include="Assets\Scripts\UI\Dialogue\DialogueStageMB.cs" />
@@ -109,7 +110,6 @@
     <Compile Include="Assets\Scripts\UI\Settings\PrivacySettingsTab.cs" />
     <Compile Include="Assets\Scripts\UI\Board\FX\BoardFxObserver.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\CharacterProfileModal.cs" />
-    <Compile Include="Assets\Scripts\Dev\DevTestPanelMB.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardOpenerMB.cs" />
     <Compile Include="Assets\Scripts\UI\Common\ToastService.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyRuntime.cs" />

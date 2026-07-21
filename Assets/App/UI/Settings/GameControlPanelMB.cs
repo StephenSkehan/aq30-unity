@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -46,10 +47,12 @@ namespace AQ.App.UI.Settings
 
         // External assemblies (e.g. Assembly-CSharp services) can contribute tabs.
         // Must be called before the panel's first Show(), i.e. from a
-        // RuntimeInitializeOnLoadMethod(BeforeSceneLoad).
-        private static readonly List<(string label, Action<RectTransform> build)> _externalTabs = new();
-        public static void RegisterExternalTab(string label, Action<RectTransform> build)
-            => _externalTabs.Add((label, build));
+        // RuntimeInitializeOnLoadMethod(BeforeSceneLoad). Lower order sorts
+        // earlier in the tab bar (registration order breaks ties) — needed
+        // because RuntimeInitialize ordering across classes is unspecified.
+        private static readonly List<(string label, Action<RectTransform> build, int order)> _externalTabs = new();
+        public static void RegisterExternalTab(string label, Action<RectTransform> build, int order = 0)
+            => _externalTabs.Add((label, build, order));
 
         // ── ui references ─────────────────────────────────────────────────────
         private Canvas       _canvas;
@@ -67,47 +70,11 @@ namespace AQ.App.UI.Settings
         void Awake()
         {
             RegisterTab("Audio", BuildAudioTab);
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-            // Dev-only: whole tab (and DebugInfoToggle's effect) compiles out of release.
-            RegisterTab("Debug", BuildDebugTab);
-#endif
-            foreach (var (label, build) in _externalTabs)
+            // The Debug tab (dev builds only) registers externally from
+            // Assembly-CSharp (DebugSettingsTab) — its RESET needs BoardSaveSystem.
+            foreach (var (label, build, _) in _externalTabs.OrderBy(t => t.order))
                 RegisterTab(label, build);
         }
-
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-        private Button _debugToggleBtn;
-
-        private void BuildDebugTab(RectTransform ct)
-        {
-            _debugToggleBtn = MakeButton("DebugInfoToggle", ct,
-                DebugToggleLabel(), 32, AQTheme.Paper,
-                Dev.DebugInfoToggle.Show ? AQTheme.Teal : AQTheme.SteelDim);
-            var brt = _debugToggleBtn.GetComponent<RectTransform>();
-            brt.anchorMin = new Vector2(0.15f, 0.72f);
-            brt.anchorMax = new Vector2(0.85f, 0.86f);
-            brt.sizeDelta = Vector2.zero;
-            _debugToggleBtn.onClick.AddListener(() =>
-            {
-                Dev.DebugInfoToggle.Show = !Dev.DebugInfoToggle.Show;
-                var lbl = _debugToggleBtn.GetComponentInChildren<TextMeshProUGUI>();
-                if (lbl != null) lbl.text = DebugToggleLabel();
-                var img = _debugToggleBtn.GetComponent<Image>();
-                if (img != null) img.color = Dev.DebugInfoToggle.Show ? AQTheme.Teal : AQTheme.SteelDim;
-            });
-
-            var note = MakeText("Note", ct,
-                "Shows the status line (episode / step / leads) and the RESET, -50 ENERGY and CRASH TEST buttons.\n\nDev builds only — this tab does not exist in the production release.",
-                24, AQTheme.PaperDim);
-            var nrt = note.rectTransform;
-            nrt.anchorMin = new Vector2(0.1f, 0.4f);
-            nrt.anchorMax = new Vector2(0.9f, 0.68f);
-            nrt.sizeDelta = Vector2.zero;
-        }
-
-        private static string DebugToggleLabel()
-            => Dev.DebugInfoToggle.Show ? "DEBUG INFO: ON" : "DEBUG INFO: OFF";
-#endif
 
         void OnEnable() => Open();
 

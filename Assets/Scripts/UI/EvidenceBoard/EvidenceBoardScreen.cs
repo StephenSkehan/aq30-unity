@@ -28,8 +28,6 @@ namespace AQ.App.UI.EvidenceBoard
         private const float CardRowSpacing = 380f;
         private const float PhotoSpacing   = 300f;
 
-        private static readonly List<CaseFlowDebugOverlayMB> _pausedOverlays = new();
-
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Init()
         {
@@ -208,15 +206,6 @@ namespace AQ.App.UI.EvidenceBoard
 
             PopulateBoard();
 
-            // IMGUI debug overlays draw above every canvas; pause them while open.
-            _pausedOverlays.Clear();
-            foreach (var overlay in Object.FindObjectsByType<CaseFlowDebugOverlayMB>(FindObjectsSortMode.None))
-            {
-                if (!overlay.show) continue;
-                overlay.show = false;
-                _pausedOverlays.Add(overlay);
-            }
-
             _cg.alpha           = 1f;
             _cg.blocksRaycasts  = true;
             _cg.interactable    = true;
@@ -237,10 +226,6 @@ namespace AQ.App.UI.EvidenceBoard
             _cg.blocksRaycasts = false;
             _cg.interactable   = false;
             _isOpen            = false;
-
-            foreach (var overlay in _pausedOverlays)
-                if (overlay != null) overlay.show = true;
-            _pausedOverlays.Clear();
 
             if (_btnCg != null)
             {

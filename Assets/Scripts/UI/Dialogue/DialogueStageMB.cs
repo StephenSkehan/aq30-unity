@@ -155,6 +155,8 @@ public sealed class DialogueStageMB : MonoBehaviour
         if (evidBtn != null) Stage(evidBtn.GetComponent<CanvasGroup>());
         var overflow = GameObject.Find("OverflowCanvas");
         if (overflow != null) Stage(EnsureGroup(overflow));
+        var lockerBtn = GameObject.Find("__LockerBtn");
+        if (lockerBtn != null) Stage(EnsureGroup(lockerBtn));
 
         return _groups.Count > 0 || _scrim != null;
     }
