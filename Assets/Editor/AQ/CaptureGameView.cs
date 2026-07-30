@@ -35,6 +35,15 @@ namespace AQ.EditorTools
             EditorApplication.isPlaying = true;
         }
 
+        // Boot-choreography QA (splash, FTUE first-merge): frame zero is
+        // frozen until stepped, so early-lifetime visuals can be captured.
+        [MenuItem("AQ/Dev/Enter Play Mode (paused)")]
+        public static void EnterPlayPaused()
+        {
+            EditorApplication.isPaused  = true;
+            EditorApplication.isPlaying = true;
+        }
+
         // The unfocused editor throttles the player loop to ~zero; MCP-driven
         // sessions need explicit ticks for runtime scripts to advance.
         // NOTE: EditorApplication.Step() pauses playback — always clear the
@@ -51,6 +60,27 @@ namespace AQ.EditorTools
         public static void Resume()
         {
             EditorApplication.isPaused = false;
+        }
+
+        // Pair with "Enter Play Mode (paused)": advances exactly 25 frames and
+        // captures in one atomic action, staying paused, so early-boot visuals
+        // (studio splash, FTUE choreography) can't slip past between MCP calls.
+        [MenuItem("AQ/Dev/QA Boot Capture (paused)")]
+        public static void BootCapture()
+        {
+            if (!Application.isPlaying || !EditorApplication.isPaused)
+            {
+                Debug.LogWarning("[Capture] use AQ/Dev/Enter Play Mode (paused) first.");
+                return;
+            }
+            ForcePortraitGameView();
+            for (int i = 0; i < 25; i++) EditorApplication.Step();
+            var dir = Path.Combine(Directory.GetCurrentDirectory(), "Screenshots");
+            Directory.CreateDirectory(dir);
+            var path = Path.Combine(dir, $"bootcapture_{System.DateTime.Now:HHmmss}.png");
+            ScreenCapture.CaptureScreenshot(path, 1);
+            for (int i = 0; i < 3; i++) EditorApplication.Step(); // flush the queued capture
+            Debug.Log("[Capture] boot capture -> " + path);
         }
 
         /// <summary>
