@@ -24,6 +24,9 @@ namespace AQ.App.UI.Leads
         private RequirementData _data;
         private TextMeshProUGUI _countLabel;
 
+        private static Sprite _tickSprite;
+        private static bool _tickSpriteLoaded;
+
         private void Awake()
         {
             // Light chip plate so dark item icons stay visible on the dark card
@@ -68,15 +71,29 @@ namespace AQ.App.UI.Leads
             rt.anchoredPosition = new Vector2(-2f, 2f);
             rt.sizeDelta = new Vector2(28f, 28f);
             var img = go.AddComponent<Image>();
-            img.sprite = AQTheme.Rounded;
-            img.type   = Image.Type.Sliced;
-            img.pixelsPerUnitMultiplier = 0.35f; // corners overrun -> circular badge
-            img.color  = AQTheme.Success;
             img.raycastTarget = false;
 
-            // Checkmark drawn from two bars — no reliance on a ✓ glyph existing.
-            AddBar(rt, new Vector2(4f, 10f),  45f, new Vector2(-8f, -2f));
-            AddBar(rt, new Vector2(4f, 17f), -45f, new Vector2(1f, 0.5f));
+            if (!_tickSpriteLoaded)
+            {
+                _tickSpriteLoaded = true;
+                _tickSprite = Resources.Load<Sprite>("App/UI/Icons/ui_check_green");
+            }
+
+            if (_tickSprite != null)
+            {
+                img.sprite = _tickSprite;
+                img.preserveAspect = true;
+            }
+            else
+            {
+                // Drawn two-bar tick — fallback if the sprite asset goes missing.
+                img.sprite = AQTheme.Rounded;
+                img.type   = Image.Type.Sliced;
+                img.pixelsPerUnitMultiplier = 0.35f; // corners overrun -> circular badge
+                img.color  = AQTheme.Success;
+                AddBar(rt, new Vector2(4f, 10f),  45f, new Vector2(-8f, -2f));
+                AddBar(rt, new Vector2(4f, 17f), -45f, new Vector2(1f, 0.5f));
+            }
 
             go.SetActive(false);
             return go;

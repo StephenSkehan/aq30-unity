@@ -39,6 +39,22 @@ namespace AQ.App.UI.Board
         static Sprite _energyBadgeSprite;
         static bool _energyBadgeSpriteLoaded;
 
+        static Sprite _tickSprite;
+        static bool _tickSpriteLoaded;
+
+        internal static Sprite TickSprite
+        {
+            get
+            {
+                if (!_tickSpriteLoaded)
+                {
+                    _tickSpriteLoaded = true;
+                    _tickSprite = Resources.Load<Sprite>("App/UI/Icons/ui_check_green");
+                }
+                return _tickSprite;
+            }
+        }
+
         public struct PayloadData
         {
             public TileKind kind;
@@ -294,11 +310,20 @@ namespace AQ.App.UI.Board
             rt.offsetMax = Vector2.zero;
 
             var badge = go.GetComponent<Image>();
+            badge.raycastTarget = false;
+
+            if (TickSprite != null)
+            {
+                badge.sprite = TickSprite;
+                badge.preserveAspect = true;
+                return badge;
+            }
+
+            // Drawn two-bar tick — fallback if the sprite asset goes missing.
             badge.sprite = AQTheme.Rounded;
             badge.type   = Image.Type.Sliced;
             badge.pixelsPerUnitMultiplier = 0.35f; // corners overrun -> circular badge
             badge.color  = AQTheme.Success;
-            badge.raycastTarget = false;
 
             AddTickStroke(rt, new Vector2(5f, 12f),  45f, new Vector2(-9f, -2.5f));
             AddTickStroke(rt, new Vector2(5f, 20f), -45f, new Vector2(2f, 1.5f));
@@ -352,9 +377,35 @@ namespace AQ.App.UI.Board
                 energyBadge.sprite = _energyBadgeSprite;
                 energyBadge.preserveAspect = true;
                 energyBadge.raycastTarget = false;
+                go.AddComponent<BadgePulse>();
             }
 
             energyBadge.enabled = true;
+        }
+
+        /// <summary>
+        /// Full fade breath on the generator energy badge (opaque → invisible →
+        /// opaque, Stephen-ruled 2026-07-24) — the tap signal, replacing the
+        /// retired full-tile glow wash.
+        /// </summary>
+        sealed class BadgePulse : MonoBehaviour
+        {
+            const float Cycle = 2.5f;
+            float _phase;
+            Image _img;
+
+            void Awake()
+            {
+                _img   = GetComponent<Image>();
+                _phase = UnityEngine.Random.Range(0f, Cycle); // desync tiles
+            }
+
+            void Update()
+            {
+                if (!_img) return;
+                float a = Mathf.Cos((Time.time + _phase) / Cycle * Mathf.PI * 2f) * 0.5f + 0.5f;
+                var c = _img.color; c.a = a; _img.color = c;
+            }
         }
 
         public void SnapToGrid()
