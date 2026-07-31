@@ -17,61 +17,73 @@ MonoBehaviour:
   nodes:
   - id: E1_L2_N1
     speaker: "Ally Quinn"
-    line: "I loaded the whole of Friday's message into the studio. Forty seconds, one sound at a time."
+    line: "I loaded the whole of Friday's message into the studio. I've analysed all forty seconds, one sound at a time."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag: 
+    requiresFlag:
     skipIfFlagMissing: 1
-    setsFlag: 
+    setsFlag:
     nextId: E1_L2_N2
     choices: []
   - id: E1_L2_N2
     speaker: "Ally Quinn"
-    line: "First: a floorboard, twice. The same squeak opens twelve of her older messages — the same three footsteps before she starts talking. Her hall, by the phone table. Whoever moved on Friday was standing where Dot stands to talk to me."
+    line: "First: a floorboard, twice. The same squeak opens all of her older messages — the same three footsteps before she starts talking. Her hall, by the phone — I've never seen it. I've heard it a thousand times. Whoever moved on Friday was standing where Dot stands to talk to me."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag: 
+    requiresFlag:
     skipIfFlagMissing: 1
-    setsFlag: 
+    setsFlag:
     nextId: E1_L2_N3
     choices: []
   - id: E1_L2_N3
     speaker: "Ally Quinn"
-    line: "Then a strained spring — a door, opened slow. The way you open one you don't want heard. And outside, faint but steady: a diesel engine, idling. Waiting for somebody."
+    line: "Then a strained spring — a door, opened slowly. The way you open one you don't want heard. And outside, faint but steady: a diesel engine, idling. Waiting for somebody."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag: 
+    requiresFlag:
     skipIfFlagMissing: 1
-    setsFlag: 
+    setsFlag:
     nextId: E1_L2_N4
     choices: []
   - id: E1_L2_N4
     speaker: "Ally Quinn"
-    line: "The steps are the tell. Eight of them, unhurried, and every second one lands harder. I can't call it a limp yet. I can tell you the house does when they cross it."
+    line: "The steps are the tell. Eight of them, unhurried, and every second one lands harder. It sounds like a limp. But I can't be sure. Yet."
     portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
     emotion: 4
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag: 
+    requiresFlag:
     skipIfFlagMissing: 1
-    setsFlag: 
+    setsFlag:
     nextId: E1_L2_N5
     choices: []
   - id: E1_L2_N5
     speaker: "Ally Quinn"
-    line: "Somebody was in Dot's house at three in the morning. She kept the line open and her mouth shut — braver in forty seconds than most of us manage in a year. Now let's find her street."
+    line: "Somebody uninvited was in Dot's house at three in the morning. She kept the line open and her mouth shut — braver in those forty seconds than most of us can ever manage."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag: 
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: E1_L2_N6
+    choices: []
+  - id: E1_L2_N6
+    speaker: "Ally Quinn"
+    line: "And here's what three years of goodnights never gave me: her face. Her full name. Her address. I couldn't pick Dot out of a bus queue. Today, that changes. Let's find her."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
     skipIfFlagMissing: 1
     setsFlag: aq.lead.e1_forty.seen
-    nextId: 
+    nextId:
     choices: []

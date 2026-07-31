@@ -98,7 +98,7 @@ This repo had a serious LFS corruption event in its history (2.65 GiB bloat). Ru
 ## Narrative Context (for dialogue / content work)
 
 - **Setting:** Fictional coastal city of Havenbay.
-- **Protagonist:** Ally Quinn — true crime podcaster and amateur detective.
+- **Protagonist:** Ally Quinn — true crime podcaster and licensed private investigator (canon ruling 2026-07-31: PI licence is canon per the SAS bible, but "podcaster" is always the lead identity in player-facing copy).
 - **Case 1:** "The Ghost Student" — the planned vertical slice case.
 - **Framing device:** The game is presented as Ally's podcast episodes.
 - Tone: noir-inspired, grounded, character-driven. Not campy.

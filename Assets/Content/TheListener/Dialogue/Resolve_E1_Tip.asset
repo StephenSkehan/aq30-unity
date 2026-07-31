@@ -16,62 +16,86 @@ MonoBehaviour:
   stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e101, type: 3}
   nodes:
   - id: E1_L1_N1
+    speaker: "Tip line"
+    line: "“Message received — Thursday, two fifty-one a.m.”"
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: E1_L1_N1B
+    choices: []
+  - id: E1_L1_N1B
     speaker: "Dot Ellis (voicemail)"
-    line: "It's Dot from Rivermouth, love. Nothing worth troubling you with — the gulls held a parliament on my roof, and the quiet boats went by twice. Say goodnight to the harbour for me, Ally."
+    line: "It's Dot from Rivermouth, love. Nothing much worth troubling you with — the gulls held a squabble on my roof, and the quiet boats went by twice. Say goodnight to the harbour for me, Ally."
     portrait: {fileID: 0}
     emotion: 1
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag: 
+    requiresFlag:
     skipIfFlagMissing: 1
-    setsFlag: 
+    setsFlag:
+    nextId: E1_L1_N1C
+    choices: []
+  - id: E1_L1_N1C
+    speaker: "Tip line"
+    line: "“Message received — Friday, three oh-four a.m.”"
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
     nextId: E1_L1_N2
     choices: []
   - id: E1_L1_N2
-    speaker: "Tip line — 3:04 a.m., Friday"
+    speaker: "Tip line"
     line: "[An excerpt from her final message. Muffled movement inside a house. A strained metallic sound. An engine idling somewhere outside. It cuts off.]"
     portrait: {fileID: 0}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag: 
+    requiresFlag:
     skipIfFlagMissing: 1
-    setsFlag: 
+    setsFlag:
     nextId: E1_L1_N3
     choices: []
   - id: E1_L1_N3
     speaker: "Ally Quinn"
-    line: "My show ends the same way every week: I read out the tip-line number and say, tell me what this city won't. The line keeps voices, timestamps and nothing else. That's the promise. For three years, Dot left the last message after every episode."
+    line: "I end my show the same way every time: please comment, DM me — or call the tip-line number, for the things you can't, or won't, put your name to. Tell me what this city won't. The line keeps voices, timestamps and nothing else. That's my promise. Now I have a problem. Every night for three years — every single night — Dot called that line to say goodnight."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag: 
+    requiresFlag:
     skipIfFlagMissing: 1
-    setsFlag: 
+    setsFlag:
     nextId: E1_L1_N4
     choices: []
   - id: E1_L1_N4
     speaker: "Ally Quinn"
-    line: "Three nights ago — 3:04 on Friday morning — she left the message you just heard a piece of. Forty seconds. No words. She opened the line and let the house speak for her. It waited three days in my queue. I was busy making a show about listening."
+    line: "Three nights ago — 3:04 on Friday morning — she left the message you just heard a piece of. Forty seconds. No words. She called the line, then let the house speak for her. It sat unheard for three days in my queue — I was busy prepping today's show. And since Friday: nothing."
     portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
     emotion: 2
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag: 
+    requiresFlag:
     skipIfFlagMissing: 1
-    setsFlag: 
+    setsFlag:
     nextId: E1_L1_N5
     choices: []
   - id: E1_L1_N5
     speaker: "Ally Quinn"
-    line: "Dot, if you can hear this: goodnight, the harbour misses you. Everyone else — this is Echoes of Havenbay. The tip line is open. This week, it's mine to answer."
+    line: "Dot, if you're hearing this: goodnight, the harbour misses you. Everyone else — this is Echoes of Havenbay. As always, the tip line is open. That last message was meant for me. This time, I'm listening — to every second of it."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag: 
+    requiresFlag:
     skipIfFlagMissing: 1
     setsFlag: aq.lead.e1_tip.seen
-    nextId: 
+    nextId:
     choices: []
