@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L5_N2
     speaker: "Ally Quinn"
-    line: "Police logged a welfare check. No forced entry, no report from family, and an adult is allowed to leave home without explaining herself. They won't call it an abduction. I'm not asking them to — yet."
+    line: "Police logged a welfare check. No forced entry, no report from family, and an adult is allowed to leave home without explaining herself. They won't call it an abduction. I'm not asking them to. Yet."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L5_N3
     speaker: "Ally Quinn"
-    line: "So we do what this show does. We knock on Rivermouth's doors ourselves — and you'll notice I'm not saying her street on this feed. If you knew Dot Ellis, the tip line is open, and it keeps no names."
+    line: "So we do what this show does. We knock on Rivermouth's doors ourselves. And you'll notice I'm not saying her street on this feed. If you knew Dot Ellis, the tip line is open, and it keeps no names."
     portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}
@@ -53,7 +53,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L5_N4
     speaker: "Ally Quinn"
-    line: "One more thing, for whoever needs to hear it. She left us your footsteps. Eight of them — eight steps too slow to stay invisible. That was Friday. We're faster now."
+    line: "One more thing, for whoever needs to hear it. She left us your footsteps. Eight of them. Eight steps too slow to stay invisible. That was Friday. We're faster now."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

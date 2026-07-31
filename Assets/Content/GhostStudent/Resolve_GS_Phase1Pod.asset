@@ -28,7 +28,7 @@ MonoBehaviour:
     choices: []
   - id: GS_P1P_R2
     speaker: Ally Quinn
-    line: "Maya's roommate heard her on the phone the night she vanished — 'I
+    line: "Maya's roommate heard her on the phone the night she vanished: 'I
       have the records.' Her lecturer told her to go to administration, the worst
       advice he could have given. And when I pulled her enrollment file, I found fourteen
       remote logins and six students living the same lie."
@@ -57,7 +57,7 @@ MonoBehaviour:
   - id: GS_P1P_R4
     speaker: Ally Quinn
     line: "The money is somewhere. The name is somewhere. I'm going to find both.
-      This has been Echoes of Havenbay — and we're just getting started."
+      This has been Echoes of Havenbay. And we're just getting started."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

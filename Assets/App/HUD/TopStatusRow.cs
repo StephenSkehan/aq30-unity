@@ -49,7 +49,7 @@ namespace AQ.App.HUD
             if (leadsText) leadsText.text = $"Leads {_leads}";
             if (lastBreakthroughText)
             {
-                if (_last == default) lastBreakthroughText.text = "Last ✓ — —";
+                if (_last == default) lastBreakthroughText.text = "Last ✓ : none";
                 else
                 {
                     var mins = (int)System.DateTime.UtcNow.Subtract(_last).TotalMinutes;

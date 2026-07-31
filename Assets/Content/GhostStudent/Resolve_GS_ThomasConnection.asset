@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: GS_THO_R2
     speaker: Ally Quinn
-    line: "His handwriting. Notes going back to 2004. Voss Bio Holdings — the
+    line: "His handwriting. Notes going back to 2004. Voss Bio Holdings, the
       same shell company, the same payment routes, the same families. He was four
       years ahead of where I am now."
     portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}

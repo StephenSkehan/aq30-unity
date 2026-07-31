@@ -43,7 +43,7 @@ MonoBehaviour:
     choices: []
   - id: GS_FMY_R3
     speaker: Ally Quinn
-    line: "I told her: your message. Three words — 'They're selling us.' She'd
+    line: "I told her: your message. Three words: 'They're selling us.' She'd
       sent it into the dark, not knowing if anyone would ever hear it. I heard it."
     portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
     emotion: 5

@@ -58,7 +58,7 @@ MonoBehaviour:
     choices: []
   - id: GS_CC_R4
     speaker: Ally Quinn
-    line: "Maya encoded it and sent it into the dark — three words to whoever
+    line: "Maya encoded it and sent it into the dark, three words to whoever
       was listening. 'They're selling us.' She had the records. She had the proof.
       She just needed someone to find her."
     portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}

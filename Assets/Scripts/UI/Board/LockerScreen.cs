@@ -255,7 +255,7 @@ namespace AQ.App.UI.Board
             }
             else
             {
-                ToastService.Show("board_full", "Board full — free a slot first.", 2f);
+                ToastService.Show("board_full", "Board full. Free a slot first.", 2f);
             }
         }
 

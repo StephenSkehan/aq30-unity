@@ -95,13 +95,13 @@ namespace AQ.App.UI.Common
             foreach (var kv in byFamily)
             {
                 int pct = itemTotal > 0f ? Mathf.RoundToInt(kv.Value / itemTotal * 100f) : 0;
-                AddLabel($"{FormatFamily(kv.Key)}  —  {pct}%", panel, 32f,
+                AddLabel($"{FormatFamily(kv.Key)}  ·  {pct}%", panel, 32f,
                          AQTheme.Paper, new Vector2(0f, y), new Vector2(540f, 46f));
                 y -= 58f;
             }
             if (hasSubGen)
             {
-                AddLabel("Bonus generator  —  rare", panel, 32f,
+                AddLabel("Bonus generator  ·  rare", panel, 32f,
                          AQTheme.Success, new Vector2(0f, y), new Vector2(540f, 46f));
                 y -= 58f;
             }

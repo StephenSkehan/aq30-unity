@@ -30,7 +30,7 @@ MonoBehaviour:
     choices: []
   - id: GS_REC_R2
     speaker: Ally Quinn
-    line: "Her attendance record is perfect. Three years — every lecture, every
+    line: "Her attendance record is perfect. Three years: every lecture, every
       lab submission, every library swipe. Not one gap. Either Maya Chen had the discipline
       of a machine, or someone was running her academic profile from the outside."
     portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}

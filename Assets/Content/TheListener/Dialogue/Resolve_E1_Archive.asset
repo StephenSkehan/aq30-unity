@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: E1_L3_N1
     speaker: "Ally Quinn"
-    line: "Three years of messages, most under a minute. I'd often pick one to close the show. Dot knew — she'd hear herself on the next episode, and answer in the next message. \"Play the one about the gulls,\" she said in one of them. \"I was very good in that one.\""
+    line: "Three years of messages, most under a minute. I'd often pick one to close the show. Dot knew: she'd hear herself on the next episode, and answer in the next message. \"Play the one about the gulls,\" she said in one of them. \"I was very good in that one.\""
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L3_N2
     speaker: "Ally Quinn"
-    line: "Tonight they're not a heartwarming outro. They're pins on a map. A school bell in the daytime messages — so close she'd need to raise her voice over it. And under the late calls, a low mechanical note every twenty-odd seconds."
+    line: "Tonight they're not a heartwarming outro. They're pins on a map. A school bell in the daytime messages, so close she'd need to raise her voice over it. And under the late calls, a low mechanical note every twenty-odd seconds."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L3_N3
     speaker: "Ally Quinn"
-    line: "And the boats. She loved the boats. Years of them, mentioned like weather. Then three weeks ago, her tone was different: \"the pretty one came very close tonight — two-note horn, no lights, and a funny mark on the funnel, like a fish-hook.\" I played that one on the show."
+    line: "And the boats. She loved the boats. Years of them, mentioned like weather. Then three weeks ago, her tone was different: \"the pretty one came very close tonight. Two-note horn, no lights, and a funny mark on the funnel, like a fish-hook.\" I played that one on the show."
     portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}

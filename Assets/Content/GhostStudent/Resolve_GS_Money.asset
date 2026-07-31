@@ -17,7 +17,7 @@ MonoBehaviour:
   - id: GS_MON_R1
     speaker: Ally Quinn
     line: "Ghost students pay full tuition. Someone pays for them. I traced the payment
-      routing on six ghost accounts — all of them settled through a single intermediary.
+      routing on six ghost accounts, all of them settled through a single intermediary.
       Northgate Education Partners, registered in the Cayman Islands."
     portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5

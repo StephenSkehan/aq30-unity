@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: E1_L8_N1
     speaker: "Ally Quinn"
-    line: "Back to the archive with worse eyes. Every boat mention, three years, laid end to end. Low in the water going out. Riding high coming back. No manifest ever filed for a night crossing on that reach — but the mooring fees are paid, in cash, quarterly, by a company with no phone number. Cargo that doesn't exist, paid for by money that does."
+    line: "Back to the archive with worse eyes. Every boat mention, three years, laid end to end. Low in the water going out. Riding high coming back. No manifest ever filed for a night crossing on that reach. But the mooring fees are paid, in cash, quarterly, by a company with no phone number. Cargo that doesn't exist, paid for by money that does."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L8_N2
     speaker: "Ally Quinn"
-    line: "Insomnia made Dot a scientist. Same window, same hours, decades of nights. She wasn't spying. She just knew what belonged on her river — and said hello to what didn't."
+    line: "Insomnia made Dot a scientist. Same window, same hours, decades of nights. She wasn't spying. She just knew what belonged on her river, and said hello to what didn't."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -53,7 +53,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L8_N4
     speaker: "Ally Quinn"
-    line: "Ten days after I aired the fish-hook message, a fake inspector mapped her window. If he found her through the show — then I handed him the window. Episode forty-one, closing minute, my voice, her view. And if he's a listener, he's heard everything I've said since."
+    line: "Ten days after I aired the fish-hook message, a fake inspector mapped her window. If he found her through the show, then I handed him the window. Episode forty-one, closing minute, my voice, her view. And if he's a listener, he's heard everything I've said since."
     portrait: {fileID: 21300000, guid: 230f35c9bb532ef499cee05b337028d0, type: 3}
     emotion: 3
     voiceClip: {fileID: 0}

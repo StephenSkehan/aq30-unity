@@ -97,7 +97,7 @@ namespace AQ.App.UI
 
             // Summary body
             AddTMP(content, "Txt_Summary",
-                "You found Dot — safe, and listening still.\nThe man who came at noon has lost his cover. Harbourline’s trail leads deeper — and so does your father’s unfinished case.",
+                "You found Dot: safe, and listening still.\nThe man who came at noon has lost his cover. Harbourline’s trail leads deeper, and so does your father’s unfinished case.",
                 20f, new Color(0.88f, 0.88f, 0.88f, 1f), FontStyles.Normal,
                 TextAlignmentOptions.Center, 80f);
 

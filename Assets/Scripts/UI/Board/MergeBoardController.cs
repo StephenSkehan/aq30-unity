@@ -349,7 +349,7 @@ namespace AQ.App.UI.Board
             if (dst == null)
             {
                 Log("No empty cells found for spawn.");
-                ToastService.Show("board_full", "Board full — try selling or free a slot.", 1.8f);
+                ToastService.Show("board_full", "Board full. Try selling or free a slot.", 1.8f);
                 return;
             }
 
@@ -788,7 +788,7 @@ namespace AQ.App.UI.Board
 
             if (!AQ.App.Locker.EvidenceLockerService.CanStore)
             {
-                AQ.App.UI.Common.ToastService.Show("locker_full", "Locker full — buy a slot or retrieve an item.", 2f);
+                AQ.App.UI.Common.ToastService.Show("locker_full", "Locker full. Buy a slot or retrieve an item.", 2f);
                 return;
             }
 

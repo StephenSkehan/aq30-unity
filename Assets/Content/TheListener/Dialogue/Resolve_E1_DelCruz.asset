@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: E1_L9_N1
     speaker: "Ally Quinn"
-    line: "Sergeant Del Cruz, Harbor Ward, her lunch break, her bench — back to the water. I laid it out: the forty seconds, the inspector, the van, the coin now in her evidence intake."
+    line: "Sergeant Del Cruz, Harbor Ward, her lunch break, her bench, back to the water. I laid it out: the forty seconds, the inspector, the van, the coin now in her evidence intake."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L9_N2
     speaker: "Del Cruz"
-    line: "I can open the missing-person file — empty house, packed bag, that footage. That's real. What I can't do is turn your theory about boats into warrants. Not on a podcast's say-so."
+    line: "I can open the missing-person file: empty house, packed bag, that footage. That's real. What I can't do is turn your theory about boats into warrants. Not on a podcast's say-so."
     portrait: {fileID: 21300000, guid: de1a4b5c6d7e8f90a1b2c3d4e5f6a701, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L9_N3
     speaker: "Ally Quinn"
-    line: "Then the question that cuts this episode in half. He already knows I heard him — I told the whole city I have his footsteps. What he doesn't know is how cleanly. The full track holds his engine, his gait, the room itself. Publish it, and ten thousand ears go to work. So does he."
+    line: "Then the question that cuts this episode in half. He already knows I heard him. I told the whole city I have his footsteps. What he doesn't know is how cleanly. The full track holds his engine, his gait, the room itself. Publish it, and ten thousand ears go to work. So does he."
     portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}
@@ -63,15 +63,15 @@ MonoBehaviour:
     setsFlag: 
     nextId: 
     choices:
-    - text: "Release the full recording — let the city work it"
+    - text: "Release the full recording. Let the city work it"
       nextId: E1_L9_N5A
       requiresFlag: 
-    - text: "Publish a transcript only — Del keeps the clean copy"
+    - text: "Publish a transcript only. Del keeps the clean copy"
       nextId: E1_L9_N5B
       requiresFlag: 
   - id: E1_L9_N5A
     speaker: "Ally Quinn"
-    line: "We released it at noon. By mid-afternoon, a retired Harbourline fleet mechanic had named the engine — the governor retrofit their vans carried after the '09 recall. Hours, not days. The cost came with it: two hundred false sightings, and the van off the streets by dusk."
+    line: "We released it at noon. By mid-afternoon, a retired Harbourline fleet mechanic had named the engine: the governor retrofit their vans carried after the '09 recall. Hours, not days. The cost came with it: two hundred false sightings, and the van off the streets by dusk."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -95,7 +95,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L9_N6
     speaker: "Ally Quinn"
-    line: "Either way, one thing rides with me now: how you tell the truth is also who you are. Dot's still out there — and her car never left the drive. So how does a frightened woman with a church case leave town?"
+    line: "Either way, one thing rides with me now: how you tell the truth is also who you are. Dot's still out there, and her car never left the drive. So how does a frightened woman with a church case leave town?"
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

@@ -157,7 +157,7 @@ namespace AQ.App.UI.Common
                 _balanceLbl.text = $"You have {ingots} Platinum Ingots";
 
             if (_refillLbl != null)
-                _refillLbl.text = $"Refill +{EnergyLadderService.EnergyPerRefill} Energy  —  {cost} Ingots";
+                _refillLbl.text = $"Refill +{EnergyLadderService.EnergyPerRefill} Energy  ·  {cost} Ingots";
 
             if (_refillBtn != null)
             {
@@ -173,7 +173,7 @@ namespace AQ.App.UI.Common
                 bool ready = ads != null && ads.AdReady;
                 _adLbl.text = left > 0
                     ? $"Watch Ad  +{AdService.EnergyPerAd} Energy  ({left} left today)"
-                    : "Watch Ad  —  come back tomorrow";
+                    : "Watch Ad  ·  come back tomorrow";
                 _adBtn.interactable = ready;
                 _adBtn.GetComponent<Image>().color = ready ? AQTheme.Steel : AQTheme.SteelDim;
             }

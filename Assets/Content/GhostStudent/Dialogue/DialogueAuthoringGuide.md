@@ -136,6 +136,8 @@ Gerald only appears in: gs_gerald, gs_thomas_connection (and potentially gs_mone
 
 **Core voice:** Sharp but never cruel. Empathetic but never sentimental. She trusts evidence over emotion — but the emotion leaks out anyway, which is the point.
 
+**HARD RULE (2026-07-31): no em dashes (—) in any `line:` or `text:` value.** Convert: mid-sentence pivot → comma or new sentence; setup-then-reveal → colon; signatures in quoted letters → hyphen.
+
 **What she does:**
 - Opens with observation, not explanation. She reports what she saw, what she felt, what she noticed. The significance follows from the detail.
 - Speaks in past tense for podcast/narration leads (she's recounting to her audience).

@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: E1_L1_N1
     speaker: "Tip line"
-    line: "“Message received — Thursday, two fifty-one a.m.”"
+    line: "“Message received: Thursday, two fifty-one a.m.”"
     portrait: {fileID: 0}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L1_N1B
     speaker: "Dot Ellis (voicemail)"
-    line: "It's Dot from Rivermouth, love. Nothing much worth troubling you with — the gulls held a squabble on my roof, and the quiet boats went by twice. Say goodnight to the harbour for me, Ally."
+    line: "It's Dot from Rivermouth, love. Nothing much worth troubling you with. The gulls held a squabble on my roof, and the quiet boats went by twice. Say goodnight to the harbour for me, Ally."
     portrait: {fileID: 0}
     emotion: 1
     voiceClip: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L1_N1C
     speaker: "Tip line"
-    line: "“Message received — Friday, three oh-four a.m.”"
+    line: "“Message received: Friday, three oh-four a.m.”"
     portrait: {fileID: 0}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -65,7 +65,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L1_N3
     speaker: "Ally Quinn"
-    line: "I end my show the same way every time: please comment, DM me — or call the tip-line number, for the things you can't, or won't, put your name to. Tell me what this city won't. The line keeps voices, timestamps and nothing else. That's my promise. Now I have a problem. Every night for three years — every single night — Dot called that line to say goodnight."
+    line: "I end my show the same way every time: please comment, DM me, or call the tip-line number, for the things you can't, or won't, put your name to. Tell me what this city won't. The line keeps voices, timestamps and nothing else. That's my promise. Now I have a problem. Every night for three years, every single night, Dot called that line to say goodnight."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -77,7 +77,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L1_N4
     speaker: "Ally Quinn"
-    line: "Three nights ago — 3:04 on Friday morning — she left the message you just heard a piece of. Forty seconds. No words. She called the line, then let the house speak for her. It sat unheard for three days in my queue — I was busy prepping today's show. And since Friday: nothing."
+    line: "Three nights ago, at 3:04 on Friday morning, she left the message you just heard a piece of. Forty seconds. No words. She called the line, then let the house speak for her. It sat unheard for three days in my queue. I was busy prepping today's show. And since Friday: nothing."
     portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
     emotion: 2
     voiceClip: {fileID: 0}
@@ -89,7 +89,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L1_N5
     speaker: "Ally Quinn"
-    line: "Dot, if you're hearing this: goodnight, the harbour misses you. Everyone else — this is Echoes of Havenbay. As always, the tip line is open. That last message was meant for me. This time, I'm listening — to every second of it."
+    line: "Dot, if you're hearing this: goodnight, the harbour misses you. Everyone else: this is Echoes of Havenbay. As always, the tip line is open. That last message was meant for me. This time, I'm listening. To every second of it."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
