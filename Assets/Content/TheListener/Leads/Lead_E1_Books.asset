@@ -10,35 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 222fba07fae7fa343a6d2a96dfd2ee48, type: 3}
-  m_Name: Lead_E1_Bridge
+  m_Name: Lead_E1_Books
   m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadData
-  leadId: e1_bridge
-  title: "The Volume-Up"
-  subtitle: "Gerald has heard every machine this city ever built. Buy him a drink."
-  actorPortrait: {fileID: 21300000, guid: c3a4b5d6e7f8c3a4b5d6e7f8c3a4b5d6, type: 3}
+  leadId: e1_books
+  title: "Off the Books"
+  subtitle: "Coffee at Del's table. Sit down as a friend."
+  actorPortrait: {fileID: 21300000, guid: de1a4b5c6d7e8f90a1b2c3d4e5f6a701, type: 3}
   state: 0
   ActionType: 2
   EnergyCost: 0
   requirements:
-  - label: Beer Bottle
+  - label: Coffee Supply Crate
     icon: {fileID: 0}
     satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: cc9c941c9760f9341aecdd32cfd7888d, type: 2}
-    quantity: 1
+    itemDefinition: {fileID: 11400000, guid: 5c326a71d453c29439a5da380f664b9f, type: 2}
+    quantity: 2
   RequiredLeadIds:
-  - e1_forty
-  - e1_archive
+  - e1_bridge
   EvidenceIds: []
   SpawnLeadIds: []
   BranchOutcomes: []
   NarrativeFlags: []
-  SoftCurrency: 50
+  SoftCurrency: 20
   EnergyGrant: 0
   PremiumGrant: 0
-  generatorRewardTypeId: gen_investigation_lab
+  generatorRewardTypeId:
   generatorRewardTier: 0
-  resolutionDialogue: {fileID: 11400000, guid: dd10000400000000000000000000dd04, type: 2}
+  resolutionDialogue: {fileID: 11400000, guid: dd10001300000000000000000000dd13, type: 2}
   OutcomeHints: 4
   boardConnections:
-  - e1_books
+  - e1_pod1
   boardPhase: 1

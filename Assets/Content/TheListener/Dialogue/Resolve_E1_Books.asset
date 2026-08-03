@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_E1_Books
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: E1_LB_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e108, type: 3}
+  nodes:
+  - id: E1_LB_N1
+    speaker: "Ally Quinn"
+    line: "Harbor Ward, end of shift. Del's table outside the Corner Diner: back to the wall, eyes on the street, the crossing, and everyone's hands. Del doesn't relax. She just picks better sightlines. Coffee makes you a friend at that table. A notebook makes you an investigator. I brought us coffee."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: E1_LB_N2
+    choices: []
+  - id: E1_LB_N2
+    speaker: "Del Cruz"
+    line: "You've got your working face on, Quinny. The coffee doesn't hide it."
+    portrait: {fileID: 21300000, guid: de1a4b5c6d7e8f90a1b2c3d4e5f6a701, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: E1_LB_N3
+    choices: []
+  - id: E1_LB_N3
+    speaker: "Ally Quinn"
+    line: "I gave her the shape of it: a regular caller gone quiet, played her the wordless message from three in the morning, gave her the name from Mo. Dorothy Ellis, Rivermouth. Then I asked her for the smallest favour a badge can do: a knock on a door."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: E1_LB_N4
+    choices: []
+  - id: E1_LB_N4
+    speaker: "Del Cruz"
+    line: "You know a person's allowed to go quiet, Ally. That's not a crime, it's a right. But a welfare check is a knock, and knocking's free. I'll take the knock myself, after shift. You keep me out of the show, Quinny, and I'll keep you off the paperwork."
+    portrait: {fileID: 21300000, guid: de1a4b5c6d7e8f90a1b2c3d4e5f6a701, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: E1_LB_N5
+    choices: []
+  - id: E1_LB_N5
+    speaker: "Ally Quinn"
+    line: "By dark, she'd called me back. Knocked twice, walked the fence, curtains shut, nothing forced, no answer. Logged and closed. She read me the words \"no evident risk\" the way you read out a lie someone else wrote."
+    portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: E1_LB_N6
+    choices: []
+  - id: E1_LB_N6
+    speaker: "Del Cruz"
+    line: "And obviously I can't hand a private address to a civilian. You know that. Nice road, though, Chandler. There's a blue gate at eleven with a garden like a postcard. You'd think somebody really loved the place."
+    portrait: {fileID: 21300000, guid: de1a4b5c6d7e8f90a1b2c3d4e5f6a701, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: E1_LB_N7
+    choices: []
+  - id: E1_LB_N7
+    speaker: "Del Cruz"
+    line: "And Ally? If your gut's right, you won't be the first visitor that house has had this week. Stick to daylight, and take your grandad if you can."
+    portrait: {fileID: 21300000, guid: de1a4b5c6d7e8f90a1b2c3d4e5f6a706, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: E1_LB_N8
+    choices: []
+  - id: E1_LB_N8
+    speaker: "Ally Quinn"
+    line: "Some people hand you a key by describing the lock. Del's been doing it for me since I was thirteen. Tonight I tell the city her name. Not her address, and not where I got it. Tomorrow: the blue gate at eleven, and the neighbours on Chandler Road."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag: aq.lead.e1_books.seen
+    nextId:
+    choices: []

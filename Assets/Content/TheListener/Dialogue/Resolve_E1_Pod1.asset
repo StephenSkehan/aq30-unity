@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: E1_L5_N1
     speaker: "Ally Quinn"
-    line: "This is Echoes of Havenbay, with a case alert. Her name is Dot Ellis, from Rivermouth. At 3:04 on Friday morning, someone was inside her house. She hasn't been heard from since."
+    line: "This is Echoes of Havenbay. I'm Ally, here with a case alert. It's about a friend of ours. You've heard her say goodnight for three years: her name is Dot Ellis, from Rivermouth. What we know: at 3:04 on Friday morning, someone uninvited was inside her house. She hasn't been heard from since."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: E1_L5_N2
     speaker: "Ally Quinn"
-    line: "Police logged a welfare check. No forced entry, no report from family, and an adult is allowed to leave home without explaining herself. They won't call it an abduction. I'm not asking them to. Yet."
+    line: "Havenbay PD have her name. They knocked, walked the fence, and got silence. So it's logged: a welfare check, no forced entry, no report from family. And an adult is allowed to leave home without explaining herself. They won't call it an abduction. I'm not asking them to. Yet."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

@@ -55,8 +55,27 @@ Note: "a thousand times" kept over "so many times" (recommendation stood — it'
 
 Precision gradient is deliberate: L3 says "twenty-odd" (unmeasured) → L4 says "twenty-two" (Gerald counted).
 
-## Queue for L5–L12 (from the 2026-07-31 first-pass sweep + rulings)
-- **L5:** first direct address to the perp ("your footsteps… We're faster now") — review under van ruling; welfare-check trigger phrasing (low).
+## NEW LEAD (2026-08-03, Stephen-ruled): "Off the Books" · e1_books (Discuss — Del) · Day 2, Tuesday evening · between L4 and L5 — LOCKED + WIRED
+> **Ally** *(neutral)* Harbor Ward, end of shift. Del's table outside the Corner Diner: back to the wall, eyes on the street, the crossing, and everyone's hands. Del doesn't relax. She just picks better sightlines. Coffee makes you a friend at that table. A notebook makes you an investigator. I brought us coffee.
+> **Del** *(neutral)* You've got your working face on, Quinny. The coffee doesn't hide it.
+> **Ally** *(neutral)* I gave her the shape of it: a regular caller gone quiet, played her the wordless message from three in the morning, gave her the name from Mo. Dorothy Ellis, Rivermouth. Then I asked her for the smallest favour a badge can do: a knock on a door.
+> **Del** *(neutral)* You know a person's allowed to go quiet, Ally. That's not a crime, it's a right. But a welfare check is a knock, and knocking's free. I'll take the knock myself, after shift. You keep me out of the show, Quinny, and I'll keep you off the paperwork.
+> **Ally** *(sad)* By dark, she'd called me back. Knocked twice, walked the fence, curtains shut, nothing forced, no answer. Logged and closed. She read me the words "no evident risk" the way you read out a lie someone else wrote.
+> **Del** *(neutral)* And obviously I can't hand a private address to a civilian. You know that. Nice road, though, Chandler. There's a blue gate at eleven with a garden like a postcard. You'd think somebody really loved the place.
+> **Del** *(worried)* And Ally? If your gut's right, you won't be the first visitor that house has had this week. Stick to daylight, and take your grandad if you can.
+> **Ally** *(neutral)* Some people hand you a key by describing the lock. Del's been doing it for me since I was thirteen. Tonight I tell the city her name. Not her address, and not where I got it. Tomorrow: the blue gate at eleven, and the neighbours on Chandler Road.
+
+Wiring: LeadData `Lead_E1_Books` (Discuss · Easy·20 · 2× Coffee Supply Crate) · gates e1_bridge → e1_books → e1_pod1 · registered in LeadsDatabase · dialogue `Resolve_E1_Books`. **Stage BG = bg_e1_del_bench TEMPORARILY; swap to bg_e1_diner_exterior when Stephen's art lands (prompt delivered 2026-08-03).** DEL CANON ADDED: "Quinny" (Del's exclusive nickname) · watchful diner table (back to wall, watches hands) · never relaxes, picks sightlines · ROOKIE ORIGIN: Del (23, rookie) was the constable at the Quinn house the night Thomas died (Ally 13); has watched out for her since — first in-game Thomas whisper is this lead's "since I was thirteen" · blue-gate address slip (pays off L6n1's blue gate). ⚠ L9 venue continuity: "her bench" may move to the diner table when L9 is passed. Economy: +20 CC, +2 diner T1 grind — noise vs Schedule B; noted.
+
+## L5 · e1_pod1 — "Case Alert: Dot Ellis" — LOCKED (LIVE in asset)
+> **Ally** *(neutral)* [host register, steadier than she feels] This is Echoes of Havenbay. I'm Ally, here with a case alert. It's about a friend of ours. You've heard her say goodnight for three years: her name is Dot Ellis, from Rivermouth. What we know: at 3:04 on Friday morning, someone uninvited was inside her house. She hasn't been heard from since.
+> **Ally** *(neutral)* Havenbay PD have her name. They knocked, walked the fence, and got silence. So it's logged: a welfare check, no forced entry, no report from family. And an adult is allowed to leave home without explaining herself. They won't call it an abduction. I'm not asking them to. Yet.
+> **Ally** *(worried)* So we do what this show does. We knock on Rivermouth's doors ourselves. And you'll notice I'm not saying her street on this feed. If you knew Dot Ellis, the tip line is open, and it keeps no names.
+> **Ally** *(neutral)* [quiet steel; to one listener] One more thing, for whoever needs to hear it. She left us your footsteps. Eight of them. Eight steps too slow to stay invisible. That was Friday. We're faster now.
+
+Notes: "a friend of ours" stakes-framing (Stephen-ruled) · welfare-check mechanics dramatized in e1_books, so the show-version stays Del-less (Ally protecting her source ON AIR = the ethics beat) · n2's "no report from family" = secretly airtight (Vera can't report a sister who isn't missing to her) — protect · n4 = the loaded gun of the van-ruling guilt arc, kept deliberately · cue E1-06 est → ~0:22.
+
+## Queue for L6–L12 (from the 2026-07-31 first-pass sweep + rulings)
 - **L6:** Mrs. Vale entry-timing wobble (why only Wednesday — make one trigger condition late). Protect: "You don't pack for the river", the coin ("Placed. Not dropped.").
 - **L7:** gender-establishment lead — fine at first pass; check "the house wasn't imagining" still lands now L2n4 changed (it does — softer echo).
 - **L8:** "aired" → "put out" (agreed pickup); mooring-ledger access grounding (optional); fish-hook guilt beat = start of van-ruling thread.

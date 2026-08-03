@@ -31,7 +31,7 @@ MonoBehaviour:
     itemDefinition: {fileID: 11400000, guid: aad15000b1c2d3e4f5a6b7c8d9e0f103, type: 2}
     quantity: 1
   RequiredLeadIds:
-  - e1_bridge
+  - e1_books
   EvidenceIds: []
   SpawnLeadIds:
   - e1_cottage
