@@ -97,6 +97,10 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
         // One settle frame so LeadsRepository/LeadRequirementChecker have broadcast.
         yield return null;
 
+        // Hold while the boot overlay (logo card + FTUE promo film) still covers
+        // the game — the intro dialogue must not boot underneath it.
+        while (AQ.App.UI.StudioSplashMB.Showing) yield return null;
+
         _lead = FindLead();
         if (_lead == null || _lead.RuntimeState == LeadState.Blocked)
         {

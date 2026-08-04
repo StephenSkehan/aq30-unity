@@ -2,13 +2,24 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 namespace AQ.App.UI
 {
     /// Studio splash card shown once per app run at boot; tap to skip once settled.
+    /// On a fresh install the Ally 15s promo film plays after the logo card,
+    /// before the game is revealed (FTUE only — aq.ftue.promo.seen).
     public sealed class StudioSplashMB : MonoBehaviour
     {
         static bool _shownThisRun;
+
+        /// <summary>True while the boot overlay (logo card and/or promo film)
+        /// still covers the game. FTUE choreography holds on this so the intro
+        /// dialogue can't boot underneath.</summary>
+        public static bool Showing { get; private set; }
+
+        const string PromoSeenKey  = "aq.ftue.promo.seen";
+        const string PromoResource = "App/Video/ally_promo_15s";
 
         // The logo PNG has an opaque near-white background; the plate uses the
         // same value so the square sits seamlessly on the card.
@@ -31,6 +42,7 @@ namespace AQ.App.UI
         };
 
         CanvasGroup _root, _content;
+        Image _plateImg;
         TMP_Text _loading;
         bool _skipRequested;
 
@@ -41,7 +53,7 @@ namespace AQ.App.UI
         // Statics survive play sessions when domain reload is skipped — without
         // this reset the splash silently never shows again after the first run.
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        static void ResetStatics() => _shownThisRun = false;
+        static void ResetStatics() { _shownThisRun = false; Showing = false; }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         static void AutoInstall()
@@ -80,9 +92,11 @@ namespace AQ.App.UI
             // to dynamically-created overlay canvases is unreliable in Unity 6
             // (same failure class as the DialogueRunner tap regression).
             var plate = MakeRect("Plate", transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
-            var plateImg = plate.gameObject.AddComponent<Image>();
-            plateImg.color = Plate;
-            plateImg.raycastTarget = true;
+            _plateImg = plate.gameObject.AddComponent<Image>();
+            _plateImg.color = Plate;
+            _plateImg.raycastTarget = true;
+
+            Showing = true;
 
             // Content group fades in over the plate.
             var content = MakeRect("Content", transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
@@ -144,6 +158,9 @@ namespace AQ.App.UI
                 yield return null;
             }
 
+            // FTUE only: the Ally promo film plays between the logo and the game.
+            yield return PromoStage();
+
             // fade the whole card out to reveal the game
             t = 0f;
             while (t < FadeOut)
@@ -153,6 +170,84 @@ namespace AQ.App.UI
                 yield return null;
             }
             Destroy(gameObject);
+        }
+
+        void OnDestroy() => Showing = false;
+
+        IEnumerator PromoStage()
+        {
+            if (PlayerPrefs.GetInt(PromoSeenKey, 0) != 0) yield break;
+
+            var clip = Resources.Load<VideoClip>(PromoResource);
+            if (clip == null)
+            {
+                Debug.LogWarning("[StudioSplash] promo clip missing — FTUE film skipped.");
+                yield break;
+            }
+
+            // Logo card hands over to a black screen for the film.
+            _loading.text = string.Empty;
+            float t = 0f;
+            while (t < 0.3f)
+            {
+                t += Dt;
+                float k = Mathf.Clamp01(t / 0.3f);
+                _content.alpha = 1f - k;
+                _plateImg.color = Color.Lerp(Plate, Color.black, k);
+                yield return null;
+            }
+            _content.alpha = 0f;
+            _plateImg.color = Color.black;
+
+            // Letterboxed screen sized to the clip's aspect inside the 1080x1920 frame.
+            var rtTex = new RenderTexture((int)clip.width, (int)clip.height, 0);
+            float fit = Mathf.Min(1080f / clip.width, 1920f / clip.height);
+            var screenRt = MakeRect("PromoScreen", transform,
+                new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
+                new Vector2(clip.width * fit, clip.height * fit), Vector2.zero);
+            var raw = screenRt.gameObject.AddComponent<RawImage>();
+            raw.texture = rtTex;
+            raw.raycastTarget = false;
+
+            var audio = gameObject.AddComponent<AudioSource>();
+            var vp = gameObject.AddComponent<VideoPlayer>();
+            vp.playOnAwake     = false;
+            vp.clip            = clip;
+            vp.renderMode      = VideoRenderMode.RenderTexture;
+            vp.targetTexture   = rtTex;
+            vp.audioOutputMode = VideoAudioOutputMode.AudioSource;
+            vp.SetTargetAudioSource(0, audio);
+            vp.isLooping       = false;
+
+            vp.Prepare();
+            float prep = 0f;
+            while (!vp.isPrepared && prep < 6f) { prep += Dt; yield return null; }
+
+            if (vp.isPrepared)
+            {
+                vp.Play();
+                _skipRequested = false;
+                float played = 0f;
+                while (played < 0.5f) { played += Dt; yield return null; } // isPlaying settles
+                while (vp.isPlaying)
+                {
+                    played += Dt;
+                    if (_skipRequested && played >= 1f) break; // tap to skip
+                    yield return null;
+                }
+                vp.Stop();
+            }
+            else
+            {
+                Debug.LogWarning("[StudioSplash] promo clip failed to prepare — film skipped.");
+            }
+
+            PlayerPrefs.SetInt(PromoSeenKey, 1);
+            PlayerPrefs.Save();
+
+            raw.enabled = false;
+            rtTex.Release();
+            Destroy(rtTex);
         }
 
         void AnimateLoadingDots(float elapsed)
