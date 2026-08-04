@@ -56,7 +56,8 @@ namespace AQ.App.UI.Common
             dim.offsetMin = dim.offsetMax = Vector2.zero;
 
             int lineCount = byFamily.Count + (hasSubGen ? 1 : 0);
-            float panelH  = 420f + lineCount * 58f;
+            // Header 180 + icon 190 + CAN DROP 55 + lines + 40 gap + button 90 + margins.
+            float panelH  = 550f + lineCount * 58f;
 
             var panel = MakeRect("Panel", _root.transform);
             AQTheme.StylePanel(panel);
