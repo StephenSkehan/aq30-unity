@@ -11,19 +11,19 @@ gen_investigation_lab,Investigation Lab,2,item,forensic_tools,T3,4,,2.58
 gen_investigation_lab,Investigation Lab,3,item,forensic_tools,T4,2,,1.29
 gen_investigation_lab,Investigation Lab,4,item,forensic_tools,T5,1,,0.65
 gen_investigation_lab,Investigation Lab,5,sub_generator,,,1,,0.65
-corner_diner,Corner Diner,0,item,food_gifts,T1,135,,83.33
-corner_diner,Corner Diner,1,item,food_gifts,T2,14,,8.64
-corner_diner,Corner Diner,2,item,food_gifts,T3,6,,3.7
-corner_diner,Corner Diner,3,item,food_gifts,T4,3,,1.85
-corner_diner,Corner Diner,4,item,food_gifts,T5,2,,1.23
-corner_diner,Corner Diner,5,item,food_gifts,T6,1,,0.62
-corner_diner,Corner Diner,6,item,food_gifts,T7,0,,0.0
-corner_diner,Corner Diner,7,item,food_gifts,T8,0,,0.0
-corner_diner,Corner Diner,8,item,food_gifts,T9,0,,0.0
-corner_diner,Corner Diner,9,item,food_gifts,T10,0,,0.0
-corner_diner,Corner Diner,10,item,food_gifts,T11,0,,0.0
-corner_diner,Corner Diner,11,item,food_gifts,T12,0,,0.0
-corner_diner,Corner Diner,12,sub_generator,,,1,,0.62
+corner_diner,Kestrel Corner Diner,0,item,food_gifts,T1,135,,83.33
+corner_diner,Kestrel Corner Diner,1,item,food_gifts,T2,14,,8.64
+corner_diner,Kestrel Corner Diner,2,item,food_gifts,T3,6,,3.7
+corner_diner,Kestrel Corner Diner,3,item,food_gifts,T4,3,,1.85
+corner_diner,Kestrel Corner Diner,4,item,food_gifts,T5,2,,1.23
+corner_diner,Kestrel Corner Diner,5,item,food_gifts,T6,1,,0.62
+corner_diner,Kestrel Corner Diner,6,item,food_gifts,T7,0,,0.0
+corner_diner,Kestrel Corner Diner,7,item,food_gifts,T8,0,,0.0
+corner_diner,Kestrel Corner Diner,8,item,food_gifts,T9,0,,0.0
+corner_diner,Kestrel Corner Diner,9,item,food_gifts,T10,0,,0.0
+corner_diner,Kestrel Corner Diner,10,item,food_gifts,T11,0,,0.0
+corner_diner,Kestrel Corner Diner,11,item,food_gifts,T12,0,,0.0
+corner_diner,Kestrel Corner Diner,12,sub_generator,,,1,,0.62
 gen_junk,Junk Pile,0,item,garage,T1,140,aq.char.frankie.active,20.56
 gen_junk,Junk Pile,1,item,garage,T2,15,aq.char.frankie.active,2.2
 gen_junk,Junk Pile,2,item,garage,T3,8,aq.char.frankie.active,1.17

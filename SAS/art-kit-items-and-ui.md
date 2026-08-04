@@ -120,7 +120,7 @@ must remain identifiable at 96, 64 AND 48 pixels.
 | rusty_anchor_t09 | Whiskey on Ice Premium | crystal tumbler, large sphere ice, deep amber |
 | rusty_anchor_t10 | 50-Year Scotch | aged bottle, thick wax seal with five radial marks (no numeral), deep amber, brass — the family hero |
 
-### Batch D — Food Gifts / Corner Diner (12) · palette: warm diner reds/creams, appetizing
+### Batch D — Food Gifts / Kestrel Corner Diner (12) · palette: warm diner reds/creams, appetizing
 | File | Item | Art notes |
 |---|---|---|
 | food_gifts_t01 | Paper Cup | takeaway cup, plain sleeve |
@@ -140,7 +140,7 @@ must remain identifiable at 96, 64 AND 48 pixels.
 | File | Item | Art notes |
 |---|---|---|
 | gen_investigation_lab | Investigation Lab kit | desktop forensic station: lamp, microscope, files |
-| gen_corner_diner | Corner Diner takeout window | mini diner counter with a dark menu board bearing cream horizontal menu strokes (no readable words) |
+| gen_corner_diner | Kestrel Corner Diner takeout window | mini diner counter with a dark menu board bearing cream horizontal menu strokes (no readable words) |
 | gen_junk | Old evidence drawer | worn wooden drawer unit, mixed odds and ends spilling |
 
 **Generator ↔ family map (authoritative — from the shipped generator SOs, `Assets/App/Generators/`):**
@@ -148,7 +148,7 @@ must remain identifiable at 96, 64 AND 48 pixels.
 | Generator | Produces (Ep1) | Type | Notes |
 |---|---|---|---|
 | Investigation Lab (`gen_investigation_lab`) | Forensic Tools ONLY *(fingerprint retired 2026-07-15; becomes the L4-granted generator when the Audio Investigation swap lands)* | multi-fixed | the starting generator *(until the audio swap)* |
-| Corner Diner (`corner_diner`) | Food Gifts | single-fixed | granted at Ep1 L5 |
+| Kestrel Corner Diner (`corner_diner`) | Food Gifts | single-fixed | granted at Ep1 L5 |
 | Old Evidence Drawer (`gen_junk`) | Rusty Anchor *(in Ep1)* | flag-gated multi | also drops garage / press / helens_gifts, each locked behind its own `aq.char.*` / `aq.loc.*` story flag; only `rusty_anchor` is unlocked in Ep1 (rusty flag set at L1) |
 
 So **four live families** are served by four generators (2026-07-18): the **Field Kit** (six tiers, starting generator) produces audio_investigation only; the Lab (granted L4) produces forensic only; the Junk drawer's family menu grows as story flags fire; the Diner (granted L5) pours the food. **Semantic rule:** the Field Kit is how Ally CARRIES/deploys equipment · audio items LISTEN, record and analyse · lab/forensic items PROVE. The Field Kit art is deliberately generic luggage so later portable families can share it — multi-family drops are intentional future capability, NOT active in Ep1.

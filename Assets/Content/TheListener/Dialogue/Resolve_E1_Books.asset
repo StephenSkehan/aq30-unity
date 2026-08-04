@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Resolve_E1_Books
   m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
   startId: E1_LB_N1
-  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e108, type: 3}
+  stageBackground: {fileID: 21300000, guid: be4bc156f1c11264dbd3b03b24114d6e, type: 3}
   nodes:
   - id: E1_LB_N1
     speaker: "Ally Quinn"
-    line: "Harbor Ward, end of shift. Del's table outside the Corner Diner: back to the wall, eyes on the street, the crossing, and everyone's hands. Del doesn't relax. She just picks better sightlines. Coffee makes you a friend at that table. A notebook makes you an investigator. I brought us coffee."
+    line: "Harbor Ward, end of shift. Del's table outside the Kestrel Corner Diner: back to the wall, eyes on the street, the crossing, and everyone's hands. Del doesn't relax. She just picks better sightlines. Coffee makes you a friend at that table. A notebook makes you an investigator. I brought us coffee."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

@@ -133,7 +133,7 @@ The Listener made a corridor of the city canon: **Rivermouth** (Chandler Road, t
 
 ## 2.6 Culture & texture
 
-Food: chowders, pier dumplings, 2 a.m. diners, lumpia stands, Irish pubs — and the Corner Diner, whose takeout boxes open Rivermouth's doors (Episode 1). Fashion: dock coats and flannel below, tailored trench-coat money above; noir silhouettes echo the genre on purpose. Sports: the **Havenbay Mariners** (baseball), the **Bay City Sharks** (hockey — games often end in bar fights), and amateur boxing under Frankie Malone's promotion. Art: "rebellion and code" — Nova's murals on the Viaduct, Highcliff galleries fronting quiet money. Tech: "a city caught between analog grit and digital intrusion" — half-working fingerprint scanners and sabotaged CCTV two streets from gleaming corporate data centers. Faith: churches as community anchors rather than political powers; a parish newsletter can still find a missing woman (Episode 1).
+Food: chowders, pier dumplings, 2 a.m. diners, lumpia stands, Irish pubs — and the Kestrel Corner Diner, whose takeout boxes open Rivermouth's doors (Episode 1). Fashion: dock coats and flannel below, tailored trench-coat money above; noir silhouettes echo the genre on purpose. Sports: the **Havenbay Mariners** (baseball), the **Bay City Sharks** (hockey — games often end in bar fights), and amateur boxing under Frankie Malone's promotion. Art: "rebellion and code" — Nova's murals on the Viaduct, Highcliff galleries fronting quiet money. Tech: "a city caught between analog grit and digital intrusion" — half-working fingerprint scanners and sabotaged CCTV two streets from gleaming corporate data centers. Faith: churches as community anchors rather than political powers; a parish newsletter can still find a missing woman (Episode 1).
 
 Havenbay's contrasts are the story engine: wealth against poverty, tradition against progress, public virtue against private vice. Its warmth is real — and so are the shadows it casts.
 
@@ -643,13 +643,13 @@ Seven item families exist, plus the currency display chains; four families shipp
 | Forensic Tools | 5 (Cotton Swab → Complete Forensic Kit) | Ally's scene-work; Priya Shah's discipline. "Processing a scene." |
 | Fingerprint Evidence | 6 (Partial Dusted Print → Database Match) | Documentation and proof; the lab pipeline. |
 | Rusty Anchor | 10 (Shot Glass → 50-Year Scotch) | Mo's bar — buying rounds, holding booths, loosening tongues. The family hero (the 50-year scotch, wax seal, faded label) is practically a character. |
-| Food Gifts / Corner Diner | 12 (Paper Cup → Lobster Champagne Banquet) | Door-knocking supplies, witness coffees, kindness as method. |
+| Food Gifts / Kestrel Corner Diner | 12 (Paper Cup → Lobster Champagne Banquet) | Door-knocking supplies, witness coffees, kindness as method. |
 | Garage | 10 (Socket Wrench → the pimped ride) | Frankie Malone's world. Art-gated — avoid as a primary requirement until art ships. |
 | Press Items | — | Arthur Finch's Gazette morgue (his face anchors the family artwork). Art-gated. |
 | Helen's Gifts | 10 (Note → Locket) | The relationship family — Ally tending her mother. Its top tier being a locket is not an accident. |
 | Currency/Cash | 5 (single note → pile of bundles) | CaseCash made visible on the board. |
 
-Generators are places, not machines: the **Investigation Lab** (desktop forensic station), the **Corner Diner** takeout window, and the **Junk drawer** (worn wooden evidence drawer — granted in Episode 1 via L1's overflow as Ally literally clears space to work). The tier progression rule doubles as a readability rule: each tier reads visibly "more" than the last, so a player can rank two icons at a glance.
+Generators are places, not machines: the **Investigation Lab** (desktop forensic station), the **Kestrel Corner Diner** takeout window, and the **Junk drawer** (worn wooden evidence drawer — granted in Episode 1 via L1's overflow as Ally literally clears space to work). The tier progression rule doubles as a readability rule: each tier reads visibly "more" than the last, so a player can rank two icons at a glance.
 
 ## 7.4 The evidence board
 
@@ -758,7 +758,7 @@ The flow of truth: a script mints a fact → the roster/bible record it → prom
 - **Cold case** — repeatable between-episode lead chain (Storage Unit 44 → The Second Set → Last Orders → cycle).
 - **Tip line** — the show's in-world intake: "voices, timestamps and nothing else."
 - **CaseCash (CC)** — soft currency. **Platinum Ingots** — premium currency. **Energy** — the session pacer (90s regen, cap 100).
-- **Generator** — board item producing family items (Investigation Lab, Corner Diner, Junk drawer).
+- **Generator** — board item producing family items (Investigation Lab, Kestrel Corner Diner, Junk drawer).
 - **Item family / tier** — themed merge chain (T1 base; each tier visibly "more").
 - **FTUE** — first-time user experience; Episode 1's rig-merge cold open.
 - **Golden path** — the QA walkthrough of an episode's lead/economy spine.

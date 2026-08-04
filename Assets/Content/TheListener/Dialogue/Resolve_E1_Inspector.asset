@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: E1_L7_N1
     speaker: "Ally Quinn"
-    line: "Rivermouth doors open for coffee and a box from the Corner Diner. They packed it heavy when they heard why. Mrs. Vale remembered him without prompting: a gas man, eight days before Friday's message, lanyard doing the work. No company name she knew. Nobody had scheduled anything."
+    line: "Rivermouth doors open for coffee and a box from the Kestrel Corner. They packed it heavy when they heard why. Mrs. Vale remembered him without prompting: a gas man, eight days before Friday's message, lanyard doing the work. No company name she knew. Nobody had scheduled anything."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

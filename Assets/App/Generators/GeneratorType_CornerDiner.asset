@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GeneratorType_CornerDiner
   m_EditorClassIdentifier: AQ.App::AQ.App.Generators.GeneratorTypeSO
   generatorTypeId: corner_diner
-  displayName: Corner Diner
+  displayName: Kestrel Corner Diner
   maxGeneratorTier: 5
   tiers:
   - dropTable:
