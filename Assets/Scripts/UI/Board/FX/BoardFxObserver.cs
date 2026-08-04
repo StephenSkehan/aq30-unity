@@ -46,7 +46,10 @@ namespace AQ.App.UI.Board
 
         void LateUpdate()
         {
-            if (!initialized)
+            // prev == null with initialized true happens after an in-play assembly
+            // reload: hot-reload state transfer keeps the private bool but cannot
+            // serialize a multidimensional array. Re-capture instead of NRE-spamming.
+            if (!initialized || prev == null)
             {
                 if (GridReady())
                 {
