@@ -15,9 +15,16 @@ namespace AQ.App.UI.EvidenceBoard
         private static CanvasGroup   _cg;
         private static CanvasGroup   _btnCg;
         private static RectTransform _boardContent;
+        private static RectTransform _closeRt;
+        private static EvidenceBoardZoomPan _zoomPan;
         private static LeadsRepository _repo;
         private static DialogueRunner  _dialogueRunner;
         private static bool            _isOpen;
+
+        // Content-driven layout state (rebuilt per populate)
+        private static Vector2 _contentSize;
+        private static readonly List<RectTransform> _placed = new();
+        private static readonly List<(RectTransform rt, System.Action tap)> _tappables = new();
 
         private const float BoardW         = 2160f;
         private const float BoardH         = 3840f;
@@ -27,6 +34,9 @@ namespace AQ.App.UI.EvidenceBoard
         private const float CardColSpacing = 500f;
         private const float CardRowSpacing = 380f;
         private const float PhotoSpacing   = 300f;
+        // Visible viewport in reference px (1080x1920 minus the frame insets)
+        private const float ViewW          = 940f;
+        private const float ViewH          = 1640f;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Init()
@@ -96,6 +106,8 @@ namespace AQ.App.UI.EvidenceBoard
 
             var zp = boardGo.AddComponent<EvidenceBoardZoomPan>();
             zp.Init(_boardContent, MinZoom, MaxZoom, new Vector2(BoardW, BoardH));
+            zp.Tapped += OnBoardTapped;
+            _zoomPan = zp;
 
             // Title label
             var titleGo  = new GameObject("Title", typeof(RectTransform));
@@ -125,6 +137,7 @@ namespace AQ.App.UI.EvidenceBoard
             closeRt.anchoredPosition = new Vector2(-20f, -20f);
             closeBtnGo.GetComponent<Image>().color = new Color(0.25f, 0.12f, 0.08f, 0.90f);
             closeBtnGo.GetComponent<Button>().onClick.AddListener(Close);
+            _closeRt = closeRt; // raw-input poll fallback (Close is idempotent)
 
             var xLbl       = new GameObject("X", typeof(RectTransform));
             xLbl.transform.SetParent(closeRt, false);
@@ -206,6 +219,13 @@ namespace AQ.App.UI.EvidenceBoard
 
             PopulateBoard();
 
+            // Fit-to-content: open with every pin visible, centred on the cork.
+            float fit = DefaultScale;
+            if (_contentSize.x > 1f && _contentSize.y > 1f)
+                fit = Mathf.Min(ViewW / _contentSize.x, ViewH / _contentSize.y);
+            _boardContent.localScale       = Vector3.one * Mathf.Clamp(fit, MinZoom, 1f);
+            _boardContent.anchoredPosition = Vector2.zero;
+
             _cg.alpha           = 1f;
             _cg.blocksRaycasts  = true;
             _cg.interactable    = true;
@@ -280,8 +300,11 @@ namespace AQ.App.UI.EvidenceBoard
             for (int i = 0; i < cast.Count; i++)
             {
                 float x = (i - (cast.Count - 1) / 2f) * PhotoSpacing;
-                CharacterPhotoPin.Create(_boardContent, cast[i], resolvedLeads,
+                var photoRt = CharacterPhotoPin.Create(_boardContent, cast[i], resolvedLeads,
                     new Vector2(x, y), OnReplayLeadDialogue, tackSprite, CharacterNameFor(cast[i]));
+                _placed.Add(photoRt);
+                var photoPin = photoRt.GetComponent<CharacterPhotoPin>();
+                _tappables.Add((photoRt, photoPin.Tap));
             }
             if (cast.Count > 0) y -= 420f;
 
@@ -297,7 +320,8 @@ namespace AQ.App.UI.EvidenceBoard
             const int cols = 3;
             foreach (var kv in phases)
             {
-                CreatePhaseLabel("PHASE " + kv.Key, new Vector2(0f, y));
+                var label = CreatePhaseLabel("PHASE " + kv.Key, new Vector2(0f, y));
+                _placed.Add(label);
                 y -= 200f;
 
                 var leads = kv.Value;
@@ -309,16 +333,43 @@ namespace AQ.App.UI.EvidenceBoard
                     var rng   = new System.Random(leads[i].leadId.GetHashCode());
                     float jx  = (float)(rng.NextDouble() * 50.0 - 25.0);
                     float jy  = (float)(rng.NextDouble() * 36.0 - 18.0);
-                    float x   = (i % cols - (inRow - 1) / 2f) * CardColSpacing + jx;
+                    // Brick stagger on odd rows keeps the grid from reading as a spreadsheet.
+                    float brick = (row % 2 == 1) ? CardColSpacing * 0.25f : 0f;
+                    float x   = (i % cols - (inRow - 1) / 2f) * CardColSpacing + jx + brick;
 
                     var cardRt = LeadCardPin.Create(_boardContent, leads[i],
                         new Vector2(x, y - row * CardRowSpacing + jy), OnLeadCardTapped, tackSprite);
                     cardRts[leads[i].leadId] = cardRt;
+                    _placed.Add(cardRt);
+                    var cardPin = cardRt.GetComponent<LeadCardPin>();
+                    _tappables.Add((cardRt, cardPin.Tap));
                 }
                 y -= rows * CardRowSpacing + 60f;
             }
 
-            // String connections — draw after all pins so RTs are valid, behind everything
+            // Centre the composition: shift everything so the content centroid sits
+            // at board origin, then size the board to the content (plus breathing
+            // room) so pan clamps and the open-fit zoom track what's actually pinned.
+            Vector2 min = new Vector2(float.MaxValue, float.MaxValue);
+            Vector2 max = new Vector2(float.MinValue, float.MinValue);
+            foreach (var rt in _placed)
+            {
+                var half = rt.sizeDelta * 0.5f + new Vector2(40f, 40f); // tilt slop
+                min = Vector2.Min(min, rt.anchoredPosition - half);
+                max = Vector2.Max(max, rt.anchoredPosition + half);
+            }
+            var centreOff = (min + max) * 0.5f;
+            foreach (var rt in _placed) rt.anchoredPosition -= centreOff;
+            _contentSize = max - min;
+
+            var boardSize = new Vector2(
+                Mathf.Max(_contentSize.x + 500f, 1080f),
+                Mathf.Max(_contentSize.y + 500f, 1600f));
+            _boardContent.sizeDelta = boardSize;
+            _zoomPan.SetBoardSize(boardSize);
+
+            // String connections — after the recentre shift so endpoints are final.
+            // Threads run tack-to-tack like a real board, behind the cards.
             foreach (var lead in resolvedLeads)
             {
                 if (lead.boardConnections == null || lead.boardConnections.Length == 0) continue;
@@ -328,16 +379,54 @@ namespace AQ.App.UI.EvidenceBoard
                 {
                     if (!resolvedIds.Contains(toId)) continue;
                     if (!cardRts.TryGetValue(toId, out var toRt)) continue;
-                    StringConnectionLine.Create(_boardContent, fromRt, toRt);
+                    StringConnectionLine.Create(_boardContent, TackPoint(fromRt), TackPoint(toRt));
                 }
             }
         }
 
+        /// <summary>Board-space position of a card's thumbtack (local (0,128) rotated by its tilt).</summary>
+        private static Vector2 TackPoint(RectTransform card)
+        {
+            float a = card.localEulerAngles.z * Mathf.Deg2Rad;
+            const float tackY = 128f;
+            return card.anchoredPosition + new Vector2(-Mathf.Sin(a) * tackY, Mathf.Cos(a) * tackY);
+        }
+
         private static void ClearPins()
         {
+            _placed.Clear();
+            _tappables.Clear();
+            _contentSize = Vector2.zero;
             if (_boardContent == null) return;
             for (int i = _boardContent.childCount - 1; i >= 0; i--)
                 Object.Destroy(_boardContent.GetChild(i).gameObject);
+        }
+
+        // ---- Raw-input tap routing (board canvas is boot-created; GR unreliable) ----
+
+        private static void OnBoardTapped(Vector2 screenPos)
+        {
+            if (!_isOpen) return;
+            if (CharacterProfileModal.IsOpen) return; // modal owns input while up
+
+            if (_closeRt != null &&
+                RectTransformUtility.RectangleContainsScreenPoint(_closeRt, screenPos, null))
+            {
+                Close();
+                return;
+            }
+
+            // Topmost pin wins (later siblings render on top).
+            for (int i = _tappables.Count - 1; i >= 0; i--)
+            {
+                var (rt, tap) = _tappables[i];
+                if (rt == null || !rt.gameObject.activeInHierarchy) continue;
+                if (RectTransformUtility.RectangleContainsScreenPoint(rt, screenPos, null))
+                {
+                    tap();
+                    return;
+                }
+            }
         }
 
         // ---- Cluster helpers ----
@@ -352,7 +441,7 @@ namespace AQ.App.UI.EvidenceBoard
             return lead.title;
         }
 
-        private static void CreatePhaseLabel(string text, Vector2 pos)
+        private static RectTransform CreatePhaseLabel(string text, Vector2 pos)
         {
             var go = new GameObject("PhaseLabel_" + text, typeof(RectTransform), typeof(Image));
             var rt = (RectTransform)go.transform;
@@ -380,6 +469,8 @@ namespace AQ.App.UI.EvidenceBoard
             tmp.color         = new Color(0.20f, 0.10f, 0.05f, 0.9f);
             tmp.alignment     = TextAlignmentOptions.Center;
             tmp.raycastTarget = false;
+
+            return rt;
         }
 
         // ---- Dialogue replay ----

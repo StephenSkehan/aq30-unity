@@ -4,14 +4,26 @@ namespace AQ.App.UI.EvidenceBoard
 {
     public class EvidenceBoardZoomPan : MonoBehaviour
     {
+        /// <summary>Fired with the screen-px position of a completed tap
+        /// (short press, minimal drift). Raw-input path — the board canvas is
+        /// boot-created, where GraphicRaycaster clicks are unreliable (same
+        /// lesson as the splash and overflow bucket).</summary>
+        public System.Action<Vector2> Tapped;
+
         private RectTransform _rt;
         private Canvas _canvas;
         private float _minZoom, _maxZoom;
         private Vector2 _boardSize;
         private float _prevPinchDist;
 
+        private Vector2 _downPos;
+        private float   _downTime;
+        private bool    _tracking;
+
         private const float RefW = 1080f;
         private const float RefH = 1920f;
+        private const float TapMaxDrift = 30f;  // screen px
+        private const float TapMaxTime  = 0.4f; // seconds
 
         public void Init(RectTransform rt, float minZoom, float maxZoom, Vector2 boardSize)
         {
@@ -22,6 +34,13 @@ namespace AQ.App.UI.EvidenceBoard
             _canvas   = GetComponentInParent<Canvas>();
         }
 
+        /// <summary>Board content size changes per-populate (sized to content bounds).</summary>
+        public void SetBoardSize(Vector2 size)
+        {
+            _boardSize = size;
+            ClampPosition();
+        }
+
         void Update()
         {
             if (_rt == null) return;
@@ -29,7 +48,10 @@ namespace AQ.App.UI.EvidenceBoard
             if (Input.touchCount == 1)
                 HandleSingleTouch();
             else if (Input.touchCount >= 2)
+            {
+                _tracking = false;
                 HandlePinch();
+            }
 
 #if UNITY_EDITOR
             HandleEditorInput();
@@ -39,11 +61,31 @@ namespace AQ.App.UI.EvidenceBoard
         private void HandleSingleTouch()
         {
             var touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Moved)
+            switch (touch.phase)
             {
-                float sf = _canvas != null ? _canvas.scaleFactor : 1f;
-                _rt.anchoredPosition += touch.deltaPosition / sf;
-                ClampPosition();
+                case TouchPhase.Began:
+                    _tracking = true;
+                    _downPos  = touch.position;
+                    _downTime = Time.unscaledTime;
+                    break;
+
+                case TouchPhase.Moved:
+                    float sf = _canvas != null ? _canvas.scaleFactor : 1f;
+                    _rt.anchoredPosition += touch.deltaPosition / sf;
+                    ClampPosition();
+                    break;
+
+                case TouchPhase.Ended:
+                    if (_tracking &&
+                        (touch.position - _downPos).magnitude <= TapMaxDrift &&
+                        Time.unscaledTime - _downTime <= TapMaxTime)
+                        Tapped?.Invoke(touch.position);
+                    _tracking = false;
+                    break;
+
+                case TouchPhase.Canceled:
+                    _tracking = false;
+                    break;
             }
         }
 
@@ -72,12 +114,28 @@ namespace AQ.App.UI.EvidenceBoard
 #if UNITY_EDITOR
         private void HandleEditorInput()
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                _tracking = true;
+                _downPos  = Input.mousePosition;
+                _downTime = Time.unscaledTime;
+            }
+
             if (Input.GetMouseButton(0))
             {
                 float dx = Input.GetAxis("Mouse X") * 12f;
                 float dy = Input.GetAxis("Mouse Y") * 12f;
                 _rt.anchoredPosition += new Vector2(dx, dy);
                 ClampPosition();
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                if (_tracking &&
+                    ((Vector2)Input.mousePosition - _downPos).magnitude <= TapMaxDrift &&
+                    Time.unscaledTime - _downTime <= TapMaxTime)
+                    Tapped?.Invoke(Input.mousePosition);
+                _tracking = false;
             }
 
             float scroll = Input.GetAxis("Mouse ScrollWheel");

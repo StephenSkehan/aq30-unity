@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using AQ.App.Leads;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace AQ.App.UI.EvidenceBoard
 {
+    /// <summary>Polaroid photo pinned to the evidence board. Taps arrive via
+    /// the board's raw-input poll (EvidenceBoardScreen), not GraphicRaycaster.</summary>
     [RequireComponent(typeof(Image))]
-    public class CharacterPhotoPin : MonoBehaviour, IPointerClickHandler
+    public class CharacterPhotoPin : MonoBehaviour
     {
         private LeadData _lead;
         private List<LeadData> _relatedLeads;
         private Action<LeadData> _onReplay;
+
+        public void Tap() => CharacterProfileModal.Show(_lead, _relatedLeads, _onReplay);
 
         public static RectTransform Create(RectTransform parent, LeadData lead,
             List<LeadData> relatedLeads, Vector2 pos, Action<LeadData> onReplay,
@@ -32,6 +35,8 @@ namespace AQ.App.UI.EvidenceBoard
             pin._lead            = lead;
             pin._relatedLeads    = relatedLeads;
             pin._onReplay        = onReplay;
+
+            LeadCardPin.AddShadow(card);
 
             // Thumbtack
             AddTack("Tack", card, new Vector2(0f, 133f), 44f, tackSprite);
@@ -63,11 +68,6 @@ namespace AQ.App.UI.EvidenceBoard
             nTmp.raycastTarget   = false;
 
             return card;
-        }
-
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            CharacterProfileModal.Show(_lead, _relatedLeads, _onReplay);
         }
 
         private static void AddTack(string name, RectTransform parent, Vector2 pos, float size, Sprite sprite)

@@ -2,16 +2,20 @@ using System;
 using AQ.App.Leads;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace AQ.App.UI.EvidenceBoard
 {
+    /// <summary>Index card pinned to the evidence board. Taps arrive via the
+    /// board's raw-input poll (EvidenceBoardScreen), not GraphicRaycaster —
+    /// the board canvas is boot-created, where GR clicks are unreliable.</summary>
     [RequireComponent(typeof(Image))]
-    public class LeadCardPin : MonoBehaviour, IPointerClickHandler
+    public class LeadCardPin : MonoBehaviour
     {
         private LeadData _lead;
         private Action<LeadData> _onTap;
+
+        public void Tap() => _onTap?.Invoke(_lead);
 
         public static RectTransform Create(RectTransform parent, LeadData lead, Vector2 pos, Action<LeadData> onTap, Sprite tackSprite = null)
         {
@@ -27,6 +31,8 @@ namespace AQ.App.UI.EvidenceBoard
             var pin       = card.gameObject.AddComponent<LeadCardPin>();
             pin._lead     = lead;
             pin._onTap    = onTap;
+
+            AddShadow(card);
 
             // Thumbtack
             AddTack("Tack", card, new Vector2(0f, 128f), 44f, tackSprite);
@@ -68,10 +74,36 @@ namespace AQ.App.UI.EvidenceBoard
             subTmp.alignment = TextAlignmentOptions.TopLeft;
             subTmp.raycastTarget = false;
 
+            // "Tap to replay" affordance — bottom-right corner, quiet
+            var replayRt        = MakeRect("Replay", card);
+            replayRt.anchorMin  = new Vector2(0f, 0f);
+            replayRt.anchorMax  = new Vector2(1f, 0f);
+            replayRt.pivot      = new Vector2(0.5f, 0f);
+            replayRt.sizeDelta  = new Vector2(-28f, 30f);
+            replayRt.anchoredPosition = new Vector2(0f, 6f);
+            var replayTmp       = replayRt.gameObject.AddComponent<TextMeshProUGUI>();
+            replayTmp.text      = "▸ replay";
+            replayTmp.fontSize  = 18f;
+            replayTmp.fontStyle = FontStyles.Italic;
+            replayTmp.color     = new Color(0.45f, 0.32f, 0.18f, 0.85f);
+            replayTmp.alignment = TextAlignmentOptions.BottomRight;
+            replayTmp.raycastTarget = false;
+
             return card;
         }
 
-        public void OnPointerClick(PointerEventData eventData) => _onTap?.Invoke(_lead);
+        internal static void AddShadow(RectTransform card)
+        {
+            var rt        = MakeRect("Shadow", card);
+            rt.anchorMin  = Vector2.zero;
+            rt.anchorMax  = Vector2.one;
+            rt.offsetMin  = rt.offsetMax = Vector2.zero;
+            rt.anchoredPosition = new Vector2(10f, -12f);
+            rt.SetAsFirstSibling();
+            var img           = rt.gameObject.AddComponent<Image>();
+            img.color         = new Color(0f, 0f, 0f, 0.28f);
+            img.raycastTarget = false;
+        }
 
         private static void AddTack(string name, RectTransform parent, Vector2 pos, float size, Sprite sprite)
         {

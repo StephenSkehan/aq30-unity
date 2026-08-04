@@ -6,9 +6,12 @@ namespace AQ.App.UI.EvidenceBoard
     public static class StringConnectionLine
     {
         public static void Create(RectTransform parent, RectTransform from, RectTransform to)
+            => Create(parent, from.anchoredPosition, to.anchoredPosition);
+
+        /// <summary>String between two board-space points (the screen passes
+        /// thumbtack positions so threads run tack-to-tack like a real board).</summary>
+        public static void Create(RectTransform parent, Vector2 fromPos, Vector2 toPos)
         {
-            var fromPos = from.anchoredPosition;
-            var toPos   = to.anchoredPosition;
             var center  = (fromPos + toPos) * 0.5f;
             float dist  = Vector2.Distance(fromPos, toPos);
             float angle = Mathf.Atan2(toPos.y - fromPos.y, toPos.x - fromPos.x) * Mathf.Rad2Deg;
@@ -20,7 +23,7 @@ namespace AQ.App.UI.EvidenceBoard
             rt.anchorMin       = new Vector2(0.5f, 0.5f);
             rt.anchorMax       = new Vector2(0.5f, 0.5f);
             rt.pivot           = new Vector2(0.5f, 0.5f);
-            rt.sizeDelta       = new Vector2(dist, 5f);
+            rt.sizeDelta       = new Vector2(dist, 6f);
             rt.anchoredPosition = center;
             rt.localRotation   = Quaternion.Euler(0f, 0f, angle);
 

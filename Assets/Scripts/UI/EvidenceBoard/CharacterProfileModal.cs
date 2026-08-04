@@ -11,6 +11,10 @@ namespace AQ.App.UI.EvidenceBoard
     {
         private static GameObject _root;
 
+        /// <summary>True while the modal is up — the board's raw-input tap poll
+        /// suspends itself so taps on the modal don't fall through to pins.</summary>
+        public static bool IsOpen => _root != null;
+
         public static void Show(LeadData lead, List<LeadData> relatedLeads, Action<LeadData> onReplay)
         {
             if (_root != null) return;
