@@ -69,6 +69,7 @@ namespace AQ.App.Leads
                     family = lead.generatorRewardTypeId,
                     tier   = lead.generatorRewardTier
                 });
+                AQ.App.UI.FlightFX.FlyToOverflow();
             }
         }
 

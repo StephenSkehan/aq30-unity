@@ -24,6 +24,7 @@ namespace AQ.App.UI
         static bool _hold;
         static readonly System.Collections.Generic.List<(string kind, int amount)> _heldRewards = new();
         static readonly System.Collections.Generic.List<(Sprite sprite, Vector2 from)> _heldItems = new();
+        static readonly System.Collections.Generic.List<Vector2?> _heldOverflow = new();
 
         public static void SetHold(bool hold)
         {
@@ -31,10 +32,12 @@ namespace AQ.App.UI
             _hold = hold;
             if (_hold) return;
 
-            var rewards = _heldRewards.ToArray(); _heldRewards.Clear();
-            var items   = _heldItems.ToArray();   _heldItems.Clear();
+            var rewards  = _heldRewards.ToArray();  _heldRewards.Clear();
+            var items    = _heldItems.ToArray();    _heldItems.Clear();
+            var overflow = _heldOverflow.ToArray(); _heldOverflow.Clear();
             foreach (var (sprite, from) in items) FlyItemToBar(sprite, from);
             foreach (var (kind, amount) in rewards) FlyReward(kind, amount);
+            foreach (var from in overflow) FlyToOverflow(from);
         }
 
         /// <summary>kind: "soft" | "energy" | "premium".</summary>
@@ -70,6 +73,33 @@ namespace AQ.App.UI
             Runner().StartCoroutine(FlyOne(sprite, fromScreen, SourceScreenPos(), null));
         }
 
+        /// <summary>A just-banked tile (extra generator, granted reward) arcs to the
+        /// overflow bucket beside the locker. Call AFTER OverflowBucketService.Push —
+        /// the chip sprite is read from the bucket's own top-of-stack icon, so no
+        /// caller needs sprite plumbing. No fromScreen → departs from the leads bar.</summary>
+        public static void FlyToOverflow(Vector2? fromScreen = null)
+        {
+            if (_hold) { _heldOverflow.Add(fromScreen); return; }
+
+            var bucket = GameObject.Find("BucketRoot");
+            if (bucket == null) return;
+
+            Sprite sprite = null;
+            var iconTf = bucket.transform.Find("ItemIcon");
+            if (iconTf != null)
+            {
+                var img = iconTf.GetComponent<Image>();
+                if (img != null && img.enabled) sprite = img.sprite;
+            }
+
+            // Overlay canvas: world corners are screen pixels; centre of the bucket.
+            var corners = new Vector3[4];
+            ((RectTransform)bucket.transform).GetWorldCorners(corners);
+            Vector2 to = (corners[0] + corners[2]) * 0.5f;
+
+            Runner().StartCoroutine(FlyOne(sprite, fromScreen ?? SourceScreenPos(), to, bucket.transform, 88f));
+        }
+
         static Vector2 SourceScreenPos()
         {
             var bar = GameObject.Find("LeadsBarRuntime");
@@ -101,14 +131,14 @@ namespace AQ.App.UI
             }
         }
 
-        static IEnumerator FlyOne(Sprite sprite, Vector2 from, Vector2 to, Transform pulseTarget)
+        static IEnumerator FlyOne(Sprite sprite, Vector2 from, Vector2 to, Transform pulseTarget, float size = ChipSize)
         {
             var go = new GameObject("chip", typeof(RectTransform), typeof(Image));
             go.transform.SetParent(Runner().transform, false);
             var rt = (RectTransform)go.transform;
             rt.anchorMin = rt.anchorMax = Vector2.zero;
             rt.pivot     = new Vector2(0.5f, 0.5f);
-            rt.sizeDelta = new Vector2(ChipSize, ChipSize);
+            rt.sizeDelta = new Vector2(size, size);
             rt.anchoredPosition = from;
 
             var img = go.GetComponent<Image>();

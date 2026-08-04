@@ -387,6 +387,8 @@ namespace AQ.App.UI.Board
                     family = genTypeId,
                     tier   = 0
                 });
+                var genScreen = RectTransformUtility.WorldToScreenPoint(null, generator.transform.position);
+                AQ.App.UI.FlightFX.FlyToOverflow(genScreen);
                 Log($"Sub-generator pushed to overflow (type={genTypeId}).");
                 return;
             }

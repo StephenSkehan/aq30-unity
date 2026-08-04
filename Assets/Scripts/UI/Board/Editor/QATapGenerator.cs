@@ -107,6 +107,7 @@ namespace AQ.EditorTools
                 family = "gen_investigation_lab",
                 tier   = 0
             });
+            AQ.App.UI.FlightFX.FlyToOverflow();
             Debug.Log("[QATapGenerator] Pushed T1 gen_investigation_lab into the overflow pocket.");
         }
 
