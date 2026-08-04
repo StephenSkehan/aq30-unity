@@ -38,7 +38,7 @@ MonoBehaviour:
   SoftCurrency: 50
   EnergyGrant: 0
   PremiumGrant: 0
-  generatorRewardTypeId: 
+  generatorRewardTypeId: corner_diner
   generatorRewardTier: 0
   resolutionDialogue: {fileID: 11400000, guid: dd10000300000000000000000000dd03, type: 2}
   OutcomeHints: 4
