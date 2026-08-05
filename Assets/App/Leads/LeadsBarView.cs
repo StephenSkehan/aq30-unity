@@ -318,12 +318,29 @@ namespace AQ.App.Leads
             chip.transform.SetParent(row, false);
             var rt = chip.AddComponent<RectTransform>(); // sized by the 2x2 grid
 
+            // HUD pill look (teal outline + cream body, RebuildHudComponents):
+            // dark icons read against cream, cream reads against the dark card
+            // (2026-08-05 — the old BoardFrame pill vanished into both).
             var pill = chip.AddComponent<Image>();
             pill.sprite = AQ.App.UI.AQTheme.Rounded;
             pill.type   = Image.Type.Sliced;
             pill.pixelsPerUnitMultiplier = 2.5f;
-            pill.color  = AQ.App.UI.AQTheme.BoardFrame;
+            pill.color  = AQ.App.UI.AQTheme.Teal;
             pill.raycastTarget = false;
+
+            var bodyGo = new GameObject("PillBody");
+            bodyGo.transform.SetParent(rt, false);
+            var bodyRt = bodyGo.AddComponent<RectTransform>();
+            bodyRt.anchorMin = Vector2.zero;
+            bodyRt.anchorMax = Vector2.one;
+            bodyRt.offsetMin = new Vector2(3f, 3f);
+            bodyRt.offsetMax = new Vector2(-3f, -3f);
+            var body = bodyGo.AddComponent<Image>();
+            body.sprite = AQ.App.UI.AQTheme.Rounded;
+            body.type   = Image.Type.Sliced;
+            body.pixelsPerUnitMultiplier = 2.5f;
+            body.color  = AQ.App.UI.AQTheme.Paper;
+            body.raycastTarget = false;
 
             // Icon straddles the pill's left edge, slightly taller than the pill
             // (2026-07-18) — full art, never boxed down into a square crop.
@@ -351,7 +368,7 @@ namespace AQ.App.Leads
             var tmp = txtGo.AddComponent<TextMeshProUGUI>();
             tmp.text      = amount.ToString(); // bare number (2026-07-18: no "+")
             tmp.fontSize  = 24f;
-            tmp.color     = Color.white;
+            tmp.color     = AQ.App.UI.AQTheme.Navy; // dark on cream, like the HUD
             tmp.alignment = TextAlignmentOptions.MidlineLeft;
             tmp.raycastTarget = false;
             AQ.App.UI.AQTheme.StyleText(tmp);
