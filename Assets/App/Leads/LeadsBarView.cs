@@ -342,21 +342,28 @@ namespace AQ.App.Leads
             body.color  = AQ.App.UI.AQTheme.Paper;
             body.raycastTarget = false;
 
+            // A count of 1 is redundant (2026-08-05, Stephen-ruled): drop the
+            // digit and centre the icon in the pill instead.
+            bool showAmount = amount > 1;
+
             // Icon straddles the pill's left edge, slightly taller than the pill
             // (2026-07-18) — full art, never boxed down into a square crop.
             var iconGo = new GameObject("Icon");
             iconGo.transform.SetParent(rt, false);
             var irt = iconGo.AddComponent<RectTransform>();
-            irt.anchorMin = new Vector2(0f, 0.5f);
-            irt.anchorMax = new Vector2(0f, 0.5f);
+            var iconAnchor = showAmount ? new Vector2(0f, 0.5f) : new Vector2(0.5f, 0.5f);
+            irt.anchorMin = iconAnchor;
+            irt.anchorMax = iconAnchor;
             irt.pivot     = new Vector2(0.5f, 0.5f);
-            irt.anchoredPosition = new Vector2(iconX, 0f);
+            irt.anchoredPosition = showAmount ? new Vector2(iconX, 0f) : Vector2.zero;
             irt.sizeDelta = new Vector2(iconW, iconH);
             var img = iconGo.AddComponent<Image>();
             img.sprite = sprite;
             img.preserveAspect = true;
             img.raycastTarget  = false;
             img.enabled = img.sprite != null;
+
+            if (!showAmount) return;
 
             var txtGo = new GameObject("Amount");
             txtGo.transform.SetParent(rt, false);
