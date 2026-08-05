@@ -244,7 +244,8 @@ namespace AQ.App.Leads
             for (int i = row.childCount - 1; i >= 0; i--)
                 Destroy(row.GetChild(i).gameObject);
 
-            bool any = lead != null && (lead.SoftCurrency > 0 || lead.EnergyGrant > 0 || lead.PremiumGrant > 0);
+            bool any = lead != null && (lead.SoftCurrency > 0 || lead.EnergyGrant > 0 || lead.PremiumGrant > 0 ||
+                                        !string.IsNullOrEmpty(lead.generatorRewardTypeId));
             row.gameObject.SetActive(any);
             if (!any) return;
 
@@ -277,9 +278,30 @@ namespace AQ.App.Leads
             if (lead.SoftCurrency > 0) AddRewardChip(row, "App/UI/Icons/ui_top_soft",      lead.SoftCurrency, 62f, 45f);
             if (lead.EnergyGrant  > 0) AddRewardChip(row, "App/UI/MergeBoard/energy_badge", lead.EnergyGrant);
             if (lead.PremiumGrant > 0) AddRewardChip(row, "App/UI/Icons/flight_ingot",     lead.PremiumGrant);
+
+            // A granted generator is a headline reward — fourth chip slot.
+            // Icon comes from the loaded GeneratorTypeSO (the board scene keeps
+            // them all in memory); no SO found → no chip rather than a bare pill.
+            if (!string.IsNullOrEmpty(lead.generatorRewardTypeId))
+            {
+                var genSprite = FindGeneratorSprite(lead.generatorRewardTypeId, lead.generatorRewardTier);
+                if (genSprite != null) AddRewardChip(row, genSprite, 1, 46f, 46f);
+            }
+        }
+
+        static Sprite FindGeneratorSprite(string typeId, int tier)
+        {
+            foreach (var so in Resources.FindObjectsOfTypeAll<AQ.App.Generators.GeneratorTypeSO>())
+                if (so != null && so.generatorTypeId == typeId)
+                    return so.SpriteForTier(tier);
+            return null;
         }
 
         static void AddRewardChip(RectTransform row, string spritePath, int amount,
+                                  float iconW = 64f, float iconH = 46f)
+            => AddRewardChip(row, Resources.Load<Sprite>(spritePath), amount, iconW, iconH);
+
+        static void AddRewardChip(RectTransform row, Sprite sprite, int amount,
                                   float iconW = 64f, float iconH = 46f)
         {
             var chip = new GameObject("Reward");
@@ -304,7 +326,7 @@ namespace AQ.App.Leads
             irt.anchoredPosition = new Vector2(4f, 0f);
             irt.sizeDelta = new Vector2(iconW, iconH);
             var img = iconGo.AddComponent<Image>();
-            img.sprite = Resources.Load<Sprite>(spritePath);
+            img.sprite = sprite;
             img.preserveAspect = true;
             img.raycastTarget  = false;
             img.enabled = img.sprite != null;
