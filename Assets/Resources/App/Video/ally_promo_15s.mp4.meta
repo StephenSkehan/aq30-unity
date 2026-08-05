@@ -1,4 +1,4 @@
-﻿fileFormatVersion: 2
+fileFormatVersion: 2
 guid: 37352ca2854873542a53665f06cb47ba
 VideoClipImporter:
   externalObjects: {}
@@ -13,6 +13,6 @@ VideoClipImporter:
   flipHorizontal: 0
   importAudio: 1
   targetSettings: {}
-  userData: reimport-2026-08-05-48k-direct
+  userData: reimport-2026-08-05-video-only
   assetBundleName: 
   assetBundleVariant: 

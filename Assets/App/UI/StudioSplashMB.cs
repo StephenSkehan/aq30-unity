@@ -18,8 +18,9 @@ namespace AQ.App.UI
         /// dialogue can't boot underneath.</summary>
         public static bool Showing { get; private set; }
 
-        const string PromoSeenKey  = "aq.ftue.promo.seen";
-        const string PromoResource = "App/Video/ally_promo_15s";
+        const string PromoSeenKey       = "aq.ftue.promo.seen";
+        const string PromoResource      = "App/Video/ally_promo_15s";
+        const string PromoAudioResource = "App/Video/ally_promo_15s_audio";
 
         // The logo PNG has an opaque near-white background; the plate uses the
         // same value so the square sits seamlessly on the card.
@@ -212,19 +213,27 @@ namespace AQ.App.UI
             raw.texture = rtTex;
             raw.raycastTarget = false;
 
+            // The film ships as a SILENT video + separate mp3, played together.
+            // Unity's VideoPlayer audio integration (AudioSource and Direct
+            // modes both) overflowed AudioSampleProvider on the dev box, and
+            // since embedded audio is the video's master clock the film
+            // "finished" in ~2s of garble. With no audio track the video runs
+            // on game time and AudioSource playback is the same battle-tested
+            // path as the rest of the game's sound.
             var vp = gameObject.AddComponent<VideoPlayer>();
             vp.playOnAwake     = false;
             vp.clip            = clip;
             vp.renderMode      = VideoRenderMode.RenderTexture;
             vp.targetTexture   = rtTex;
-            // Direct = native audio path. The AudioSource route goes through
-            // AudioSampleProvider, which overflowed (dropping 10-40k sample
-            // frames repeatedly); since audio is the video's master clock, the
-            // whole film "finished" in ~2s of garble. Direct bypasses all that.
-            vp.audioOutputMode = VideoAudioOutputMode.Direct;
-            vp.SetDirectAudioVolume(0, Audio.AudioSettingsService.MusicVolume);
+            vp.audioOutputMode = VideoAudioOutputMode.None;
             vp.isLooping       = false;
             vp.errorReceived  += (_, msg) => Debug.LogWarning($"[StudioSplash] promo playback error: {msg}");
+
+            var audioClip = Resources.Load<AudioClip>(PromoAudioResource);
+            var audio = gameObject.AddComponent<AudioSource>();
+            audio.playOnAwake  = false;
+            audio.spatialBlend = 0f;
+            audio.volume       = Audio.AudioSettingsService.MusicVolume;
 
             vp.Prepare();
             float prep = 0f;
@@ -233,6 +242,8 @@ namespace AQ.App.UI
             if (vp.isPrepared)
             {
                 vp.Play();
+                if (audioClip != null) { audio.clip = audioClip; audio.Play(); }
+                else Debug.LogWarning("[StudioSplash] promo audio clip missing — film plays silent.");
                 _skipRequested = false;
                 float played = 0f;
                 while (played < 0.5f) { played += Dt; yield return null; } // isPlaying settles
@@ -243,6 +254,7 @@ namespace AQ.App.UI
                     yield return null;
                 }
                 vp.Stop();
+                audio.Stop();
 
                 // Seen only counts when playback actually ran — a failed prepare
                 // must not burn the one-shot FTUE film (it burned Stephen's on
