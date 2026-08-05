@@ -114,15 +114,24 @@ namespace AQ.App.UI.Board
             badgeRT.pivot = new Vector2(1f, 1f);
             badgeRT.anchoredPosition = new Vector2(8f, -8f);
 
-            // Background on a child so Image and Text aren't on the same GO (only one Graphic allowed per GO)
             var badgeBgGO = new GameObject("BadgeBg");
             badgeBgGO.transform.SetParent(badgeGO.transform, false);
             var badgeBgRT = badgeBgGO.AddComponent<RectTransform>();
             Stretch(badgeBgRT);
             var badgeBg = badgeBgGO.AddComponent<Image>();
+            badgeBg.sprite = AQ.App.UI.AQTheme.Rounded; // soft badge, not a hard square
+            badgeBg.type   = Image.Type.Sliced;
+            badgeBg.pixelsPerUnitMultiplier = 2.5f;
             badgeBg.color = new Color(0.85f, 0.15f, 0.15f, 1f);
 
-            _badge = badgeGO.AddComponent<Text>();
+            // Text on its OWN child AFTER the background — UI children render
+            // after parents, so text on the badge root was painted UNDER the
+            // red square and showed as an empty box (found 2026-08-05).
+            var badgeTxtGO = new GameObject("BadgeText");
+            badgeTxtGO.transform.SetParent(badgeGO.transform, false);
+            var badgeTxtRT = badgeTxtGO.AddComponent<RectTransform>();
+            Stretch(badgeTxtRT);
+            _badge = badgeTxtGO.AddComponent<Text>();
             _badge.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             _badge.fontSize = 20;
             _badge.fontStyle = FontStyle.Bold;
@@ -147,7 +156,8 @@ namespace AQ.App.UI.Board
             _itemIcon.enabled = _itemIcon.sprite != null;
 
             int count = OverflowBucketService.Count;
-            _badge.gameObject.SetActive(count > 1);
+            // _badge sits on a text child now — toggle the whole badge root.
+            _badge.transform.parent.gameObject.SetActive(count > 1);
             if (count > 1) _badge.text = $"×{count}";
         }
 
