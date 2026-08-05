@@ -55,7 +55,7 @@ namespace AQ.App.UI.Settings
             rt.anchorMin  = new Vector2(0.10f, anchorTop - 0.16f);
             rt.anchorMax  = new Vector2(0.90f, anchorTop);
             rt.sizeDelta  = Vector2.zero;
-            AQTheme.Round(go.GetComponent<Image>(), AQTheme.Steel);
+            AQTheme.StyleButton(go.GetComponent<Image>(), AQTheme.Steel);
             go.GetComponent<Button>().onClick.AddListener(() => onClick());
 
             var lblGo = new GameObject("Label", typeof(RectTransform));

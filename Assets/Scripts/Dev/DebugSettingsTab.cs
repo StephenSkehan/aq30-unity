@@ -129,7 +129,7 @@ namespace AQ.Dev
             rt.sizeDelta = Vector2.zero;
 
             var img = go.GetComponent<Image>();
-            AQTheme.Round(img, color);
+            AQTheme.StyleButton(img, color);
             go.GetComponent<Button>().onClick.AddListener(() => onClick());
 
             var txt = MakeText("Label", rt, label, 30, Color.white);

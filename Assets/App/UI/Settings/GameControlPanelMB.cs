@@ -123,12 +123,14 @@ namespace AQ.App.UI.Settings
             trt.anchorMax = new Vector2(0.85f, 0.97f);
             trt.sizeDelta  = Vector2.zero;
 
-            // Close button
-            var closeBtn = MakeButton("CloseBtn", _panelRt, "✕", 38, AQTheme.Paper, AQTheme.AlertRed);
+            // Close button — Steel blue (Stephen-ruled 2026-08-05, was AlertRed)
+            // with a drawn ✕ (the game font has no ✕ glyph; TMP rendered tofu).
+            var closeBtn = MakeButton("CloseBtn", _panelRt, "", 38, AQTheme.Paper, AQTheme.Steel);
             var crt = closeBtn.GetComponent<RectTransform>();
             crt.anchorMin = new Vector2(0.86f, 0.895f);
             crt.anchorMax = new Vector2(0.965f, 0.955f);
             crt.sizeDelta  = Vector2.zero;
+            AQTheme.AddDrawnX(crt, AQTheme.Paper, 26f, 5f);
             closeBtn.onClick.AddListener(Close);
 
             // Tab bar
@@ -189,10 +191,7 @@ namespace AQ.App.UI.Settings
         private void RefreshTabHighlight()
         {
             for (int i = 0; i < _tabButtons.Count; i++)
-            {
-                var img = _tabButtons[i].GetComponent<Image>();
-                if (img) img.color = (i == _activeTab) ? kTabActive : kTabIdle;
-            }
+                AQTheme.RetintButton(_tabButtons[i], (i == _activeTab) ? kTabActive : kTabIdle);
         }
 
         private void Close()
@@ -301,8 +300,8 @@ namespace AQ.App.UI.Settings
         private static Button MakeButton(string name, Transform parent, string label, int fontSize, Color textColor, Color bgColor)
         {
             var img = MakeImage(name, parent, bgColor);
-            AQTheme.Round(img, bgColor);
             var btn = img.gameObject.AddComponent<Button>();
+            AQTheme.StyleButton(img, bgColor);
             var txt = MakeText("Label", img.transform, label, fontSize, textColor, display: true);
             txt.alignment = TextAlignmentOptions.Center;
             var trt = txt.rectTransform;

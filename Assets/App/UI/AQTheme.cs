@@ -182,5 +182,103 @@ namespace AQ.App.UI
             Round(body.GetComponent<Image>(), Panel);
             body.GetComponent<Image>().raycastTarget = false;
         }
+
+        // ── layered buttons ──────────────────────────────────────────────────
+
+        private static Color RimColor(Color baseColor) => Color.Lerp(baseColor, Color.white, 0.30f);
+
+        /// <summary>
+        /// Layered button treatment: soft drop shadow, lit rim, inset body,
+        /// top sheen + bottom shade, and press tinting. Call on the button's
+        /// root Image BEFORE adding the label so the text renders on top.
+        /// Retint later (tab highlights) with RetintButton.
+        /// </summary>
+        public static Image StyleButton(Image img, Color baseColor)
+        {
+            Round(img, RimColor(baseColor));
+
+            var shadow = img.gameObject.GetComponent<Shadow>();
+            if (shadow == null) shadow = img.gameObject.AddComponent<Shadow>();
+            shadow.effectColor    = new Color(0f, 0f, 0f, 0.45f);
+            shadow.effectDistance = new Vector2(0f, -6f);
+
+            var body = new GameObject("BtnBody", typeof(RectTransform), typeof(Image));
+            body.transform.SetParent(img.transform, false);
+            var brt = (RectTransform)body.transform;
+            brt.anchorMin = Vector2.zero;
+            brt.anchorMax = Vector2.one;
+            brt.offsetMin = new Vector2(2.5f, 2.5f);
+            brt.offsetMax = new Vector2(-2.5f, -2.5f);
+            var bodyImg = Round(body.GetComponent<Image>(), baseColor);
+            bodyImg.raycastTarget = false;
+
+            var sheen = new GameObject("Sheen", typeof(RectTransform), typeof(Image));
+            sheen.transform.SetParent(body.transform, false);
+            var shr = (RectTransform)sheen.transform;
+            shr.anchorMin = new Vector2(0f, 0.52f);
+            shr.anchorMax = new Vector2(1f, 1f);
+            shr.offsetMin = new Vector2(4f, 0f);
+            shr.offsetMax = new Vector2(-4f, -3f);
+            var sheenImg = Round(sheen.GetComponent<Image>(), new Color(1f, 1f, 1f, 0.10f));
+            sheenImg.raycastTarget = false;
+
+            var shade = new GameObject("Shade", typeof(RectTransform), typeof(Image));
+            shade.transform.SetParent(body.transform, false);
+            var sdr = (RectTransform)shade.transform;
+            sdr.anchorMin = new Vector2(0f, 0f);
+            sdr.anchorMax = new Vector2(1f, 0.34f);
+            sdr.offsetMin = new Vector2(4f, 3f);
+            sdr.offsetMax = new Vector2(-4f, 0f);
+            var shadeImg = Round(shade.GetComponent<Image>(), new Color(0f, 0f, 0f, 0.16f));
+            shadeImg.raycastTarget = false;
+
+            var btn = img.GetComponent<Button>();
+            if (btn != null)
+            {
+                btn.transition    = Selectable.Transition.ColorTint;
+                btn.targetGraphic = bodyImg;
+                var cb = btn.colors;
+                cb.normalColor      = Color.white;
+                cb.highlightedColor = Color.white;
+                cb.pressedColor     = new Color(0.78f, 0.78f, 0.78f, 1f);
+                cb.selectedColor    = Color.white;
+                cb.fadeDuration     = 0.06f;
+                btn.colors = cb;
+            }
+
+            return bodyImg;
+        }
+
+        /// <summary>Retint a StyleButton-treated button (rim + body) in place.</summary>
+        public static void RetintButton(Button btn, Color baseColor)
+        {
+            if (btn == null) return;
+            var root = btn.GetComponent<Image>();
+            if (root != null) root.color = RimColor(baseColor);
+            var body = btn.transform.Find("BtnBody");
+            if (body != null)
+            {
+                var bi = body.GetComponent<Image>();
+                if (bi != null) bi.color = baseColor;
+            }
+        }
+
+        /// <summary>Drawn ✕ glyph (two rotated rounded bars) — the game font
+        /// has no ✕ character, so a TMP "✕" renders as a tofu box.</summary>
+        public static void AddDrawnX(RectTransform parent, Color color, float length, float thickness)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                var bar = new GameObject(i == 0 ? "XBarA" : "XBarB", typeof(RectTransform), typeof(Image));
+                bar.transform.SetParent(parent, false);
+                var rt = (RectTransform)bar.transform;
+                rt.anchorMin     = rt.anchorMax = new Vector2(0.5f, 0.5f);
+                rt.pivot         = new Vector2(0.5f, 0.5f);
+                rt.sizeDelta     = new Vector2(length, thickness);
+                rt.localRotation = Quaternion.Euler(0f, 0f, i == 0 ? 45f : -45f);
+                var img = Round(bar.GetComponent<Image>(), color);
+                img.raycastTarget = false;
+            }
+        }
     }
 }
