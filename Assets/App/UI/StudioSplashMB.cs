@@ -204,13 +204,12 @@ namespace AQ.App.UI
             _plateImg.color = Color.black;
 
             // Letterboxed screen sized to the clip's aspect inside the 1080x1920 frame.
-            var rtTex = new RenderTexture((int)clip.width, (int)clip.height, 0);
             float fit = Mathf.Min(1080f / clip.width, 1920f / clip.height);
             var screenRt = MakeRect("PromoScreen", transform,
                 new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
                 new Vector2(clip.width * fit, clip.height * fit), Vector2.zero);
             var raw = screenRt.gameObject.AddComponent<RawImage>();
-            raw.texture = rtTex;
+            raw.color = Color.black; // until the first decoded frame arrives
             raw.raycastTarget = false;
 
             // The film ships as a SILENT video + separate mp3, played together.
@@ -220,13 +219,16 @@ namespace AQ.App.UI
             // "finished" in ~2s of garble. With no audio track the video runs
             // on game time and AudioSource playback is the same battle-tested
             // path as the rest of the game's sound.
+            // APIOnly: sample the player's internal decoded texture directly on
+            // the RawImage. The RenderTexture target path never presented a frame
+            // on the dev box (black film, zero errors) across every encode.
             var vp = gameObject.AddComponent<VideoPlayer>();
             vp.playOnAwake     = false;
             vp.clip            = clip;
-            vp.renderMode      = VideoRenderMode.RenderTexture;
-            vp.targetTexture   = rtTex;
+            vp.renderMode      = VideoRenderMode.APIOnly;
             vp.audioOutputMode = VideoAudioOutputMode.None;
             vp.isLooping       = false;
+            vp.skipOnDrop      = false; // present every frame; nothing is clock-synced to us
             vp.errorReceived  += (_, msg) => Debug.LogWarning($"[StudioSplash] promo playback error: {msg}");
 
             var audioClip = Resources.Load<AudioClip>(PromoAudioResource);
@@ -246,13 +248,28 @@ namespace AQ.App.UI
                 else Debug.LogWarning("[StudioSplash] promo audio clip missing — film plays silent.");
                 _skipRequested = false;
                 float played = 0f;
+                bool diagLogged = false;
                 while (played < 0.5f) { played += Dt; yield return null; } // isPlaying settles
                 while (vp.isPlaying)
                 {
                     played += Dt;
+                    // APIOnly: the decoded texture appears after the first frame;
+                    // hand it to the RawImage as soon as it exists.
+                    if (raw.texture == null && vp.texture != null)
+                    {
+                        raw.texture = vp.texture;
+                        raw.color   = Color.white;
+                    }
+                    if (!diagLogged && played >= 2f)
+                    {
+                        diagLogged = true;
+                        Debug.Log($"[StudioSplash] promo diag @2s: frame={vp.frame}/{vp.frameCount} time={vp.time:0.00} " +
+                                  $"vpTex={(vp.texture != null ? vp.texture.width + "x" + vp.texture.height : "null")}");
+                    }
                     if (_skipRequested && played >= 1f) break; // tap to skip
                     yield return null;
                 }
+                Debug.Log($"[StudioSplash] promo ended: frame={vp.frame}/{vp.frameCount} played={played:0.0}s");
                 vp.Stop();
                 audio.Stop();
 
@@ -268,8 +285,6 @@ namespace AQ.App.UI
             }
 
             raw.enabled = false;
-            rtTex.Release();
-            Destroy(rtTex);
         }
 
         void AnimateLoadingDots(float elapsed)
