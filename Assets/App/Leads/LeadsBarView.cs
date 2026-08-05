@@ -254,8 +254,8 @@ namespace AQ.App.Leads
             row.anchorMin = new Vector2(0f, 1f);
             row.anchorMax = new Vector2(1f, 1f);
             row.pivot     = new Vector2(0f, 0f);
-            row.offsetMin = new Vector2(150f, 24f); // clear of the bust (2026-07-18)
-            row.offsetMax = new Vector2(-12f, 110f);
+            row.offsetMin = new Vector2(138f, 24f); // clear of the bust (2026-07-18)
+            row.offsetMax = new Vector2(-28f, 106f); // chips stay inside the card edge (2026-08-05)
 
             // Immediate, not deferred: Unity refuses AddComponent<GridLayoutGroup>
             // while a conflicting LayoutGroup is still alive on the object.
@@ -267,7 +267,7 @@ namespace AQ.App.Leads
                 layout = row.gameObject.AddComponent<GridLayoutGroup>();
             layout.constraint      = GridLayoutGroup.Constraint.FixedColumnCount;
             layout.constraintCount = 2;
-            layout.cellSize        = new Vector2(105f, 38f); // -25% width (2026-07-18)
+            layout.cellSize        = new Vector2(96f, 34f); // slightly reduced, in-card (2026-08-05)
             layout.spacing         = new Vector2(8f, 8f);
             layout.startCorner     = GridLayoutGroup.Corner.LowerLeft;
             layout.childAlignment  = TextAnchor.LowerLeft;
@@ -285,7 +285,9 @@ namespace AQ.App.Leads
             if (!string.IsNullOrEmpty(lead.generatorRewardTypeId))
             {
                 var genSprite = FindGeneratorSprite(lead.generatorRewardTypeId, lead.generatorRewardTier);
-                if (genSprite != null) AddRewardChip(row, genSprite, 1, 46f, 46f);
+                // Tile art is full-bleed (no transparent margins like the currency
+                // icons), so it sits fully INSIDE the pill at currency size.
+                if (genSprite != null) AddRewardChip(row, genSprite, 1, 30f, 30f, iconX: 20f);
             }
         }
 
@@ -302,7 +304,7 @@ namespace AQ.App.Leads
             => AddRewardChip(row, Resources.Load<Sprite>(spritePath), amount, iconW, iconH);
 
         static void AddRewardChip(RectTransform row, Sprite sprite, int amount,
-                                  float iconW = 64f, float iconH = 46f)
+                                  float iconW = 64f, float iconH = 46f, float iconX = 4f)
         {
             var chip = new GameObject("Reward");
             chip.transform.SetParent(row, false);
@@ -323,7 +325,7 @@ namespace AQ.App.Leads
             irt.anchorMin = new Vector2(0f, 0.5f);
             irt.anchorMax = new Vector2(0f, 0.5f);
             irt.pivot     = new Vector2(0.5f, 0.5f);
-            irt.anchoredPosition = new Vector2(4f, 0f);
+            irt.anchoredPosition = new Vector2(iconX, 0f);
             irt.sizeDelta = new Vector2(iconW, iconH);
             var img = iconGo.AddComponent<Image>();
             img.sprite = sprite;
@@ -336,7 +338,7 @@ namespace AQ.App.Leads
             var trt = txtGo.AddComponent<RectTransform>();
             trt.anchorMin = Vector2.zero;
             trt.anchorMax = Vector2.one;
-            trt.offsetMin = new Vector2(iconW * 0.5f + 8f, 0f);
+            trt.offsetMin = new Vector2(iconX + iconW * 0.5f + 4f, 0f);
             trt.offsetMax = Vector2.zero;
             var tmp = txtGo.AddComponent<TextMeshProUGUI>();
             tmp.text      = amount.ToString(); // bare number (2026-07-18: no "+")
