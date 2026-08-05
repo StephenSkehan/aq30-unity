@@ -184,6 +184,9 @@ namespace AQ.App.UI
                 Debug.LogWarning("[StudioSplash] promo clip missing — FTUE film skipped.");
                 yield break;
             }
+            // 1080x1920 = current H.264 encode; 2160x3840 means Unity is still
+            // serving the stale import of the original HEVC master.
+            Debug.Log($"[StudioSplash] promo clip {clip.width}x{clip.height} @{clip.frameRate:0}fps, {clip.length:0.0}s");
 
             // Logo card hands over to a black screen for the film.
             _loading.text = string.Empty;
@@ -218,6 +221,7 @@ namespace AQ.App.UI
             vp.audioOutputMode = VideoAudioOutputMode.AudioSource;
             vp.SetTargetAudioSource(0, audio);
             vp.isLooping       = false;
+            vp.errorReceived  += (_, msg) => Debug.LogWarning($"[StudioSplash] promo playback error: {msg}");
 
             vp.Prepare();
             float prep = 0f;
