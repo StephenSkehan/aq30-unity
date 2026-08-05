@@ -163,7 +163,7 @@ namespace AQ.App.UI.Common
             {
                 bool affordable = ingots >= cost;
                 _refillBtn.interactable = affordable;
-                _refillBtn.GetComponent<Image>().color = affordable ? AQTheme.Teal : AQTheme.TealDim;
+                AQTheme.RetintButton(_refillBtn, affordable ? AQTheme.Teal : AQTheme.TealDim);
             }
 
             var ads = AdService.Instance;
@@ -175,7 +175,7 @@ namespace AQ.App.UI.Common
                     ? $"Watch Ad  +{AdService.EnergyPerAd} Energy  ({left} left today)"
                     : "Watch Ad  ·  come back tomorrow";
                 _adBtn.interactable = ready;
-                _adBtn.GetComponent<Image>().color = ready ? AQTheme.Steel : AQTheme.SteelDim;
+                AQTheme.RetintButton(_adBtn, ready ? AQTheme.Steel : AQTheme.SteelDim);
             }
         }
 
@@ -231,7 +231,7 @@ namespace AQ.App.UI.Common
             rt.pivot            = new Vector2(0.5f, 0.5f);
             rt.sizeDelta        = size;
             rt.anchoredPosition = anchoredPosition;
-            AQTheme.Round(go.GetComponent<Image>(), color);
+            AQTheme.StyleButton(go.GetComponent<Image>(), color);
 
             var lbl       = MakeRect("Label", rt);
             lbl.anchorMin = Vector2.zero;

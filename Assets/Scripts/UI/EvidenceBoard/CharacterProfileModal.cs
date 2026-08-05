@@ -139,7 +139,7 @@ namespace AQ.App.UI.EvidenceBoard
             rt.pivot            = new Vector2(0.5f, 0.5f);
             rt.sizeDelta        = size;
             rt.anchoredPosition = centre;
-            go.GetComponent<Image>().color = color;
+            AQTheme.StyleButton(go.GetComponent<Image>(), color);
 
             var lbl       = MakeRect("Lbl", rt);
             lbl.anchorMin = Vector2.zero;

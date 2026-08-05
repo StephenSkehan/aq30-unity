@@ -315,7 +315,7 @@ namespace AQ.App.UI.Board
             rt.pivot            = new Vector2(0.5f, 0.5f);
             rt.sizeDelta        = dims;
             rt.anchoredPosition = pos;
-            AQTheme.Round(go.GetComponent<Image>(), color);
+            AQTheme.StyleButton(go.GetComponent<Image>(), color);
 
             AddLabel(rt, label, 40f, AQTheme.Paper, Vector2.zero, dims, display: true);
             return go.GetComponent<Button>();

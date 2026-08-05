@@ -137,7 +137,7 @@ namespace AQ.App.UI.Common
             rt.pivot            = new Vector2(0.5f, 0.5f);
             rt.sizeDelta        = new Vector2(280f, 90f);
             rt.anchoredPosition = anchoredPosition;
-            AQTheme.Round(go.GetComponent<Image>(), color);
+            AQTheme.StyleButton(go.GetComponent<Image>(), color);
 
             var lbl       = MakeRect("Label", rt);
             lbl.anchorMin = Vector2.zero;

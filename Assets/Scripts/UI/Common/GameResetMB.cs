@@ -149,7 +149,7 @@ public class GameResetMB : MonoBehaviour, IPointerClickHandler
         rt.pivot           = new Vector2(0.5f, 0.5f);
         rt.sizeDelta       = new Vector2(280f, 90f);
         rt.anchoredPosition = position;
-        go.GetComponent<Image>().color = color;
+        AQ.App.UI.AQTheme.StyleButton(go.GetComponent<Image>(), color);
 
         var lbl       = MakeRect("Label", rt);
         lbl.anchorMin = Vector2.zero;

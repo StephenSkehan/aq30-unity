@@ -243,7 +243,7 @@ namespace AQ.App
                 rt.offsetMin = rt.offsetMax = Vector2.zero;
 
                 var img = go.GetComponent<Image>();
-                img.color = new Color(0.10f, 0.14f, 0.22f, 0.97f);
+                AQ.App.UI.AQTheme.StyleButton(img, new Color(0.10f, 0.14f, 0.22f, 0.97f));
 
                 var lblGo = new GameObject("Label", typeof(RectTransform));
                 lblGo.transform.SetParent(rt, false);

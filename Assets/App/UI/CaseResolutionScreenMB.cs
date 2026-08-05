@@ -143,12 +143,8 @@ namespace AQ.App.UI
             rt.sizeDelta = new Vector2(220f, 56f);
 
             var img = rt.gameObject.AddComponent<Image>();
-            img.color = bgColor;
-
             var btn = rt.gameObject.AddComponent<Button>();
-            var cs  = btn.colors;
-            cs.highlightedColor = new Color(1f, 1f, 1f, 0.9f);
-            btn.colors = cs;
+            AQTheme.StyleButton(img, bgColor);
             btn.onClick.AddListener(() => onClick());
 
             var labelRt = MakeRect("Lbl", rt);

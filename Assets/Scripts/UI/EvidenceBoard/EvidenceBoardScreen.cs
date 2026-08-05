@@ -135,23 +135,10 @@ namespace AQ.App.UI.EvidenceBoard
             closeRt.pivot            = new Vector2(1f, 1f);
             closeRt.sizeDelta        = new Vector2(110f, 110f);
             closeRt.anchoredPosition = new Vector2(-20f, -20f);
-            closeBtnGo.GetComponent<Image>().color = new Color(0.25f, 0.12f, 0.08f, 0.90f);
+            AQTheme.StyleButton(closeBtnGo.GetComponent<Image>(), AQTheme.Steel);
             closeBtnGo.GetComponent<Button>().onClick.AddListener(Close);
             _closeRt = closeRt; // raw-input poll fallback (Close is idempotent)
-
-            var xLbl       = new GameObject("X", typeof(RectTransform));
-            xLbl.transform.SetParent(closeRt, false);
-            var xRt        = xLbl.GetComponent<RectTransform>();
-            xRt.anchorMin  = Vector2.zero;
-            xRt.anchorMax  = Vector2.one;
-            xRt.offsetMin  = xRt.offsetMax = Vector2.zero;
-            var xTmp             = xLbl.AddComponent<TextMeshProUGUI>();
-            xTmp.text            = "X";
-            xTmp.fontSize        = 48f;
-            xTmp.fontStyle       = FontStyles.Bold;
-            xTmp.color           = new Color(0.95f, 0.90f, 0.85f, 1f);
-            xTmp.alignment       = TextAlignmentOptions.Center;
-            xTmp.raycastTarget   = false;
+            AQTheme.AddDrawnX(closeRt, AQTheme.Paper, 34f, 6f);
 
             BuildHudButton();
         }
