@@ -101,7 +101,7 @@ namespace AQ.App.Leads
                     if (presenter.requirementsRow != null)
                         presenter.requirementsRow.gameObject.SetActive(hasReqs);
                     if (presenter.rewardsRow != null)
-                        BuildRewardPreview(presenter.rewardsRow, so);
+                        BuildRewardPreview(presenter.rewardsRow, (RectTransform)presenter.transform, so);
                 }
 
                 var btn = FindProceedButton(go.transform);
@@ -239,10 +239,17 @@ namespace AQ.App.Leads
         /// shoulder, above the card's top edge — the reward tags the character,
         /// GH-style, instead of burying itself in the copy.
         /// </summary>
-        static void BuildRewardPreview(RectTransform row, LeadData lead)
+        static void BuildRewardPreview(RectTransform row, RectTransform cardRoot, LeadData lead)
         {
             for (int i = row.childCount - 1; i >= 0; i--)
                 Destroy(row.GetChild(i).gameObject);
+
+            // The prefab parents the row under an inner container narrower than
+            // the card, so parent-relative offsets could never reach the card's
+            // right edge. Reparent to the card root: offsets below are then
+            // card-relative by construction (2026-08-05).
+            if (cardRoot != null && row.parent != cardRoot)
+                row.SetParent(cardRoot, false);
 
             bool any = lead != null && (lead.SoftCurrency > 0 || lead.EnergyGrant > 0 || lead.PremiumGrant > 0 ||
                                         !string.IsNullOrEmpty(lead.generatorRewardTypeId));
@@ -285,10 +292,10 @@ namespace AQ.App.Leads
             if (!string.IsNullOrEmpty(lead.generatorRewardTypeId))
             {
                 var genSprite = FindGeneratorSprite(lead.generatorRewardTypeId, lead.generatorRewardTier);
-                // Full-bleed tile art: same apparent size as the cash icon (taller
-                // than the pill, like the currency chips) but kept inside the
-                // pill's left edge so it cannot bleed into the neighbouring chip.
-                if (genSprite != null) AddRewardChip(row, genSprite, 1, 42f, 42f, iconX: 22f);
+                // Full-bleed tile art: cash-icon width (62px), overflowing the
+                // pill vertically like the currency chips, left edge pinned to
+                // the pill edge so it cannot bleed into the neighbouring chip.
+                if (genSprite != null) AddRewardChip(row, genSprite, 1, 62f, 62f, iconX: 29f);
             }
         }
 
