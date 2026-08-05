@@ -212,14 +212,17 @@ namespace AQ.App.UI
             raw.texture = rtTex;
             raw.raycastTarget = false;
 
-            var audio = gameObject.AddComponent<AudioSource>();
             var vp = gameObject.AddComponent<VideoPlayer>();
             vp.playOnAwake     = false;
             vp.clip            = clip;
             vp.renderMode      = VideoRenderMode.RenderTexture;
             vp.targetTexture   = rtTex;
-            vp.audioOutputMode = VideoAudioOutputMode.AudioSource;
-            vp.SetTargetAudioSource(0, audio);
+            // Direct = native audio path. The AudioSource route goes through
+            // AudioSampleProvider, which overflowed (dropping 10-40k sample
+            // frames repeatedly); since audio is the video's master clock, the
+            // whole film "finished" in ~2s of garble. Direct bypasses all that.
+            vp.audioOutputMode = VideoAudioOutputMode.Direct;
+            vp.SetDirectAudioVolume(0, Audio.AudioSettingsService.MusicVolume);
             vp.isLooping       = false;
             vp.errorReceived  += (_, msg) => Debug.LogWarning($"[StudioSplash] promo playback error: {msg}");
 
