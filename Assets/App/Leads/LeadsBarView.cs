@@ -367,11 +367,13 @@ namespace AQ.App.Leads
             trt.offsetMax = Vector2.zero;
             var tmp = txtGo.AddComponent<TextMeshProUGUI>();
             tmp.text      = amount.ToString(); // bare number (2026-07-18: no "+")
-            tmp.fontSize  = 24f;
+            tmp.fontSize  = 26f;
             tmp.color     = AQ.App.UI.AQTheme.Navy; // dark on cream, like the HUD
             tmp.alignment = TextAlignmentOptions.MidlineLeft;
             tmp.raycastTarget = false;
-            AQ.App.UI.AQTheme.StyleText(tmp);
+            // Same rule as the HUD counters (display font, Staatliches): reward
+            // numbers and wallet numbers speak with one voice (2026-08-05).
+            AQ.App.UI.AQTheme.StyleText(tmp, display: true);
         }
 
         static Button FindProceedButton(Transform root)
