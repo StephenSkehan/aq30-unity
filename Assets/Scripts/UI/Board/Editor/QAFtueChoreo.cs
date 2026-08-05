@@ -90,6 +90,14 @@ namespace AQ.UI.Board.EditorTools
             PlayerPrefs.Save();
             Debug.Log("[QAFtueChoreo] Stage flag cleared (full QA Reset still recommended for a clean run).");
         }
+
+        [MenuItem("AQ/Dev/QA Replay FTUE Promo Film")]
+        public static void ResetPromoSeenFlag()
+        {
+            PlayerPrefs.DeleteKey("aq.ftue.promo.seen");
+            PlayerPrefs.Save();
+            Debug.Log("[QAFtueChoreo] Promo seen-flag cleared — the Ally film plays on the next boot (any play session, no full reset needed).");
+        }
     }
 }
 #endif

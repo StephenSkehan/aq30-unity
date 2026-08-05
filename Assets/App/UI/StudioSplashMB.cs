@@ -236,14 +236,17 @@ namespace AQ.App.UI
                     yield return null;
                 }
                 vp.Stop();
+
+                // Seen only counts when playback actually ran — a failed prepare
+                // must not burn the one-shot FTUE film (it burned Stephen's on
+                // 2026-08-04 when the editor couldn't decode the old HEVC master).
+                PlayerPrefs.SetInt(PromoSeenKey, 1);
+                PlayerPrefs.Save();
             }
             else
             {
-                Debug.LogWarning("[StudioSplash] promo clip failed to prepare — film skipped.");
+                Debug.LogWarning("[StudioSplash] promo clip failed to prepare — film skipped, seen-flag NOT set (will retry next boot).");
             }
-
-            PlayerPrefs.SetInt(PromoSeenKey, 1);
-            PlayerPrefs.Save();
 
             raw.enabled = false;
             rtTex.Release();
