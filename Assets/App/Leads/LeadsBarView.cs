@@ -255,7 +255,7 @@ namespace AQ.App.Leads
             row.anchorMax = new Vector2(1f, 1f);
             row.pivot     = new Vector2(0f, 0f);
             row.offsetMin = new Vector2(138f, 24f); // clear of the bust (2026-07-18)
-            row.offsetMax = new Vector2(-28f, 106f); // chips stay inside the card edge (2026-08-05)
+            row.offsetMax = new Vector2(-12f, 106f); // block right-aligns flush with the card edge (2026-08-05)
 
             // Immediate, not deferred: Unity refuses AddComponent<GridLayoutGroup>
             // while a conflicting LayoutGroup is still alive on the object.
@@ -270,7 +270,7 @@ namespace AQ.App.Leads
             layout.cellSize        = new Vector2(96f, 34f); // slightly reduced, in-card (2026-08-05)
             layout.spacing         = new Vector2(8f, 8f);
             layout.startCorner     = GridLayoutGroup.Corner.LowerLeft;
-            layout.childAlignment  = TextAnchor.LowerLeft;
+            layout.childAlignment  = TextAnchor.LowerRight; // flush to card right edge (2026-08-05)
 
             // Cash chip mirrors the HUD's soft-currency icon at the SAME ON-SCREEN
             // size: the card hierarchy renders ~1.7x larger than the HUD canvas,
@@ -285,9 +285,10 @@ namespace AQ.App.Leads
             if (!string.IsNullOrEmpty(lead.generatorRewardTypeId))
             {
                 var genSprite = FindGeneratorSprite(lead.generatorRewardTypeId, lead.generatorRewardTier);
-                // Tile art is full-bleed (no transparent margins like the currency
-                // icons), so it sits fully INSIDE the pill at currency size.
-                if (genSprite != null) AddRewardChip(row, genSprite, 1, 30f, 30f, iconX: 20f);
+                // Full-bleed tile art: same apparent size as the cash icon (taller
+                // than the pill, like the currency chips) but kept inside the
+                // pill's left edge so it cannot bleed into the neighbouring chip.
+                if (genSprite != null) AddRewardChip(row, genSprite, 1, 42f, 42f, iconX: 22f);
             }
         }
 
