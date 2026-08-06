@@ -74,6 +74,15 @@ namespace AQ.App.UI.Common
                      new Vector2(0f, y), new Vector2(gridW, 70f), bold: true);
             y -= 56f;
 
+            // Appearing as a requirement on a live lead card counts as discovered
+            // (Stephen-ruled 2026-08-06) — mark BEFORE counting so the header and
+            // the cells agree on this very open.
+            var checker = AQ.App.Leads.LeadRequirementChecker.Instance;
+            if (checker != null)
+                foreach (var d in defs)
+                    if (checker.IsItemNeeded(d.itemId))
+                        ItemDiscoveryService.Mark(family, d.tier);
+
             int discovered = 0;
             foreach (var d in defs)
                 if (ItemDiscoveryService.IsDiscovered(family, d.tier)) discovered++;
@@ -97,7 +106,7 @@ namespace AQ.App.UI.Common
         private static void BuildCell(RectTransform parent, ItemDefinitionSO def,
                                       string family, int currentTier, Vector2 pos)
         {
-            bool isCurrent   = def.tier == currentTier;
+            bool isCurrent    = def.tier == currentTier;
             bool isDiscovered = ItemDiscoveryService.IsDiscovered(family, def.tier);
 
             var cell = MakeRect($"Tier{def.tier}", parent);
@@ -125,8 +134,8 @@ namespace AQ.App.UI.Common
             iconRt.anchorMin        = new Vector2(0.5f, 1f);
             iconRt.anchorMax        = new Vector2(0.5f, 1f);
             iconRt.pivot            = new Vector2(0.5f, 1f);
-            iconRt.sizeDelta        = new Vector2(CellSize - 34f, CellSize - 34f);
-            iconRt.anchoredPosition = new Vector2(0f, -12f);
+            iconRt.sizeDelta        = new Vector2(CellSize - 40f, CellSize - 52f);
+            iconRt.anchoredPosition = new Vector2(0f, -10f);
             var icon = iconRt.gameObject.AddComponent<Image>();
             icon.sprite         = def.icon;
             icon.preserveAspect = true;
@@ -136,18 +145,19 @@ namespace AQ.App.UI.Common
             else if (!isDiscovered)
                 icon.color = new Color(0.05f, 0.08f, 0.15f, 0.95f); // silhouette
 
-            // Tier tag, top-left corner.
+            // Tier tag — bottom centre, above the name strip (Stephen-ruled
+            // 2026-08-06; the top-left placement crowded the cell edge).
             var tag = MakeRect("TierTag", cell);
-            tag.anchorMin        = new Vector2(0f, 1f);
-            tag.anchorMax        = new Vector2(0f, 1f);
-            tag.pivot            = new Vector2(0f, 1f);
-            tag.sizeDelta        = new Vector2(44f, 30f);
-            tag.anchoredPosition = new Vector2(8f, -8f);
+            tag.anchorMin        = new Vector2(0.5f, 0f);
+            tag.anchorMax        = new Vector2(0.5f, 0f);
+            tag.pivot            = new Vector2(0.5f, 0f);
+            tag.sizeDelta        = new Vector2(60f, 24f);
+            tag.anchoredPosition = new Vector2(0f, 44f);
             var tagTmp = tag.gameObject.AddComponent<TextMeshProUGUI>();
             tagTmp.text      = $"T{def.tier + 1}";
-            tagTmp.fontSize  = 20f;
+            tagTmp.fontSize  = 19f;
             tagTmp.color     = isCurrent ? AQTheme.Amber : AQTheme.PaperDim;
-            tagTmp.alignment = TextAlignmentOptions.TopLeft;
+            tagTmp.alignment = TextAlignmentOptions.Center;
             tagTmp.raycastTarget = false;
             AQTheme.StyleText(tagTmp, display: true);
 
