@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\UI\Board\FX\BoardFxPlayer.cs" />
     <Compile Include="Assets\Scripts\App\Config\EnergyConfigRuntime.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\EnergyHudTMPTime.cs" />
+    <Compile Include="Assets\Scripts\UI\Common\ItemFamilyPopup.cs" />
     <Compile Include="Assets\Scripts\App\LeadActivationBridgeMB.cs" />
     <Compile Include="Assets\Scripts\App\Config\FeatureFlags.cs" />
     <Compile Include="Assets\Scripts\UI\Board\FX\GeneratorTileAnimator.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Assets\Scripts\App\Presentation\MergeEventsBridge.cs" />
     <Compile Include="Assets\Scripts\App\Services\Ads\AdService.cs" />
     <Compile Include="Assets\Scripts\UI\Dialogue\DialogueStageMB.cs" />
+    <Compile Include="Assets\Scripts\UI\Common\ItemDiscoveryService.cs" />
     <Compile Include="Assets\Scripts\UI\Board\MergeBoardController.cs" />
     <Compile Include="Assets\Scripts\UI\Board\OverflowBucketView.cs" />
     <Compile Include="Assets\Scripts\UI\Board\BoardFitMB.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="Assets\Scripts\Domain\Board\BoardRingTraversal.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\Scripts\App\Services\Ads\ConsentService.cs" />
+    <Compile Include="Assets\Scripts\UI\Common\RequirementHoldPopupBridge.cs" />
     <Compile Include="Assets\MergeBoardBoot.cs" />
     <Compile Include="Assets\Scripts\App\Bootstrap\ConfigInstaller.cs" />
     <Compile Include="Assets\Scripts\UI\Board\PocketDraggable.cs" />
