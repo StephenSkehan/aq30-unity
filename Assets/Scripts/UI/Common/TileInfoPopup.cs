@@ -41,11 +41,11 @@ namespace AQ.App.UI.Common
             panel.anchorMin        = new Vector2(0.5f, 0.5f);
             panel.anchorMax        = new Vector2(0.5f, 0.5f);
             panel.pivot            = new Vector2(0.5f, 0.5f);
-            panel.sizeDelta        = new Vector2(600f, 680f);
+            panel.sizeDelta        = new Vector2(600f, 800f);
             panel.anchoredPosition = Vector2.zero;
 
             // Title
-            AddLabel(displayName, panel, 52f, AQTheme.Paper, new Vector2(0f, 270f), new Vector2(540f, 80f), bold: true);
+            AddLabel(displayName, panel, 52f, AQTheme.Paper, new Vector2(0f, 330f), new Vector2(540f, 80f), bold: true);
 
             // Icon
             var iconRt             = MakeRect("Icon", panel);
@@ -53,7 +53,7 @@ namespace AQ.App.UI.Common
             iconRt.anchorMax       = new Vector2(0.5f, 0.5f);
             iconRt.pivot           = new Vector2(0.5f, 0.5f);
             iconRt.sizeDelta       = new Vector2(260f, 260f);
-            iconRt.anchoredPosition = new Vector2(0f, 70f);
+            iconRt.anchoredPosition = new Vector2(0f, 130f);
             var iconImg            = iconRt.gameObject.AddComponent<Image>();
             iconImg.sprite         = icon;
             iconImg.preserveAspect = true;
@@ -62,24 +62,28 @@ namespace AQ.App.UI.Common
 
             // Family
             AddLabel($"Family:  {FormatFamily(family)}", panel, 34f,
-                     AQTheme.PaperDim, new Vector2(0f, -115f), new Vector2(520f, 50f));
+                     AQTheme.PaperDim, new Vector2(0f, -55f), new Vector2(520f, 50f));
 
             // Tier
             AddLabel($"Tier:  {tier + 1}", panel, 34f,
-                     AQTheme.PaperDim, new Vector2(0f, -170f), new Vector2(520f, 50f));
+                     AQTheme.PaperDim, new Vector2(0f, -110f), new Vector2(520f, 50f));
 
-            // Buttons: OK alone when no store action; OK + STORE side by side otherwise.
+            // FAMILY opens the full tier ladder ON TOP (this popup stays under it).
+            var fam = MakeButton("FAMILY", panel, AQTheme.Steel, new Vector2(0f, -210f));
+            fam.onClick.AddListener(() => ItemFamilyPopup.Show(family, tier));
+
+            // Bottom row: OK alone when no store action; OK + STORE otherwise.
             if (onStore == null)
             {
-                var ok = MakeButton("OK", panel, AQTheme.Teal, new Vector2(0f, -270f));
+                var ok = MakeButton("OK", panel, AQTheme.Teal, new Vector2(0f, -330f));
                 ok.onClick.AddListener(Close);
             }
             else
             {
-                var ok = MakeButton("OK", panel, AQTheme.Teal, new Vector2(-150f, -270f));
+                var ok = MakeButton("OK", panel, AQTheme.Teal, new Vector2(-150f, -330f));
                 ok.onClick.AddListener(Close);
 
-                var store = MakeButton("STORE", panel, AQTheme.Steel, new Vector2(150f, -270f));
+                var store = MakeButton("STORE", panel, AQTheme.Steel, new Vector2(150f, -330f));
                 store.onClick.AddListener(() => { onStore(); Close(); });
             }
         }
