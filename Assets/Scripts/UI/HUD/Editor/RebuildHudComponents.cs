@@ -163,11 +163,35 @@ namespace AQ.EditorTools
             rt.SetParent(parent, false);
             Center(rt, x, y, PlusSize, PlusSize);
 
-            var img = go.GetComponent<Image>();
-            img.sprite = AQTheme.Rounded;
-            img.type   = Image.Type.Sliced;
-            img.pixelsPerUnitMultiplier = 0.5f; // corners overrun -> circle
-            img.color  = live ? AQTheme.Teal : AQTheme.SteelDim;
+            // Layered treatment at circle scale (2026-08-06). StyleButton's rect
+            // geometry would square the circle, so the same layers are built
+            // here with the ppu-overrun trick kept: lit rim on the root, inset
+            // body, drop shadow, press tint. Sheen/shade skipped — invisible
+            // at this size.
+            var baseColor = live ? AQTheme.Teal : AQTheme.SteelDim;
+
+            var rim = go.GetComponent<Image>();
+            rim.sprite = AQTheme.Rounded;
+            rim.type   = Image.Type.Sliced;
+            rim.pixelsPerUnitMultiplier = 0.5f; // corners overrun -> circle
+            rim.color  = Color.Lerp(baseColor, Color.white, 0.30f);
+
+            var shadow = go.AddComponent<Shadow>();
+            shadow.effectColor    = new Color(0f, 0f, 0f, 0.45f);
+            shadow.effectDistance = new Vector2(0f, -5f);
+
+            var bodyGo = new GameObject("PlusBody", typeof(RectTransform), typeof(Image));
+            bodyGo.transform.SetParent(rt, false);
+            var brt = (RectTransform)bodyGo.transform;
+            brt.anchorMin = Vector2.zero; brt.anchorMax = Vector2.one;
+            brt.offsetMin = new Vector2(2.5f, 2.5f);
+            brt.offsetMax = new Vector2(-2.5f, -2.5f);
+            var body = bodyGo.GetComponent<Image>();
+            body.sprite = AQTheme.Rounded;
+            body.type   = Image.Type.Sliced;
+            body.pixelsPerUnitMultiplier = 0.5f;
+            body.color  = baseColor;
+            body.raycastTarget = false;
 
             var lblGo = new GameObject("Label", typeof(RectTransform));
             lblGo.transform.SetParent(rt, false);
@@ -184,6 +208,15 @@ namespace AQ.EditorTools
             AQTheme.StyleText(tmp, display: true);
 
             var btn = go.GetComponent<Button>();
+            btn.transition    = Selectable.Transition.ColorTint;
+            btn.targetGraphic = body;
+            var cb = btn.colors;
+            cb.normalColor      = Color.white;
+            cb.highlightedColor = Color.white;
+            cb.pressedColor     = new Color(0.78f, 0.78f, 0.78f, 1f);
+            cb.selectedColor    = Color.white;
+            cb.fadeDuration     = 0.06f;
+            btn.colors = cb;
             btn.interactable = live;
             if (live) go.AddComponent<ShowEnergyStoreMB>();
         }

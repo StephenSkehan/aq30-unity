@@ -20,6 +20,7 @@ namespace AQ.App.Overflow
 
     /// <summary>
     /// FILO stack for items the player has won, gifted, or purchased but not yet placed on the board.
+    /// Player-facing name: THE STASH (Stephen-ruled 2026-08-06).
     /// Persists across sessions via overflow_state.json.
     /// </summary>
     public static class OverflowBucketService

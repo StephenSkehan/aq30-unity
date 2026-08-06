@@ -759,6 +759,7 @@ The flow of truth: a script mints a fact → the roster/bible record it → prom
 - **Tip line** — the show's in-world intake: "voices, timestamps and nothing else."
 - **CaseCash (CC)** — soft currency. **Platinum Ingots** — premium currency. **Energy** — the session pacer (90s regen, cap 100).
 - **Generator** — board item producing family items (Investigation Lab, Kestrel Corner Diner, Junk drawer).
+- **The Stash** — the holding pocket beside the board: rewards, gifts and extra generators queue here until the player taps to place them (ruled 2026-08-06; internally the overflow bucket).
 - **Item family / tier** — themed merge chain (T1 base; each tier visibly "more").
 - **FTUE** — first-time user experience; Episode 1's rig-merge cold open.
 - **Golden path** — the QA walkthrough of an episode's lead/economy spine.

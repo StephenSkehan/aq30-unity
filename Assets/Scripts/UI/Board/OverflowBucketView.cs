@@ -138,6 +138,24 @@ namespace AQ.App.UI.Board
             _badge.alignment = TextAnchor.MiddleCenter;
             _badge.color = Color.white;
 
+            // Player-facing name: THE STASH (Stephen-ruled 2026-08-06 — a concept,
+            // not an object; generators fit a stash, not a satchel).
+            var capGO = new GameObject("Caption");
+            capGO.transform.SetParent(_root, false);
+            var capRT = capGO.AddComponent<RectTransform>();
+            capRT.anchorMin = new Vector2(0f, 0f);
+            capRT.anchorMax = new Vector2(1f, 0f);
+            capRT.pivot     = new Vector2(0.5f, 0f);
+            capRT.sizeDelta = new Vector2(0f, 22f);
+            capRT.anchoredPosition = new Vector2(0f, 2f);
+            var cap = capGO.AddComponent<TMPro.TextMeshProUGUI>();
+            cap.text      = "STASH";
+            cap.fontSize  = 15f;
+            cap.color     = new Color(0.94f, 0.92f, 0.87f, 0.92f);
+            cap.alignment = TMPro.TextAlignmentOptions.Center;
+            cap.raycastTarget = false;
+            AQ.App.UI.AQTheme.StyleText(cap, display: true);
+
             // No Button — input handled via raw Update() poll (EventSystem GR unreliable on dynamic overlays)
         }
 
@@ -175,7 +193,7 @@ namespace AQ.App.UI.Board
                 UISfxService.PlayOverflowDrop();
             }
             else
-                ToastService.Show("board_full", "Board full. Free a slot first.", 2f);
+                ToastService.Show("board_full", "Board full. Free a slot to place from the Stash.", 2f);
         }
 
         private static Sprite ResolveSprite(OverflowTileData data)
