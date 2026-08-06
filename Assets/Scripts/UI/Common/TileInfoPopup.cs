@@ -60,16 +60,12 @@ namespace AQ.App.UI.Common
             iconImg.raycastTarget  = false;
             if (icon == null) iconImg.color = new Color(1f, 1f, 1f, 0.15f);
 
-            // Family
-            AddLabel($"Family:  {FormatFamily(family)}", panel, 34f,
-                     AQTheme.PaperDim, new Vector2(0f, -55f), new Vector2(520f, 50f));
-
-            // Tier
-            AddLabel($"Tier:  {tier + 1}", panel, 34f,
-                     AQTheme.PaperDim, new Vector2(0f, -110f), new Vector2(520f, 50f));
+            // Family and tier on one line (Stephen-ruled 2026-08-06)
+            AddLabel($"{FormatFamily(family)} - {tier + 1}", panel, 34f,
+                     AQTheme.PaperDim, new Vector2(0f, -80f), new Vector2(520f, 50f));
 
             // FAMILY opens the full tier ladder ON TOP (this popup stays under it).
-            var fam = MakeButton("FAMILY", panel, AQTheme.Steel, new Vector2(0f, -210f));
+            var fam = MakeButton("SHOW FAMILY", panel, AQTheme.Steel, new Vector2(0f, -210f));
             fam.onClick.AddListener(() => ItemFamilyPopup.Show(family, tier));
 
             // Bottom row: OK alone when no store action; OK + STORE otherwise.

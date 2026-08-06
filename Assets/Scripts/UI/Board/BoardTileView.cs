@@ -521,7 +521,7 @@ namespace AQ.App.UI.Board
             // Dropped on the locker HUD button? Note it, but let the normal drag
             // lifecycle complete first (state machinery untouched — the store
             // runs after, exactly like the long-press STORE path).
-            bool toLocker = dst == null && Kind == TileKind.Item &&
+            bool toLocker = dst == null && Kind != TileKind.Empty &&
                             AQ.App.UI.Board.LockerScreen.IsOverHudButton(eventData.position);
 
             controller?.EndDrag(dragStartRC, dst);
