@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using AQ.App.Leads;
 
@@ -8,11 +9,20 @@ namespace AQ.App.UI.Leads
 {
     /// <summary>
     /// Visual for one "required item" slot (icon + tick). Raises click with its RequirementData.
+    /// Press-and-hold raises the static OnRequirementHeld (itemId) — consumed by an
+    /// Assembly-CSharp bridge that opens TileInfoPopup (this assembly can't see it).
     /// Public names match Editor utilities.
     /// </summary>
-    public class RequirementSlotView : MonoBehaviour
+    public class RequirementSlotView : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
     {
         [System.Serializable] public sealed class RequirementClickedEvent : UnityEvent<RequirementData> {}
+
+        /// <summary>Fired when a requirement slot is long-pressed. Arg = itemId.</summary>
+        public static event System.Action<string> OnRequirementHeld;
+
+        private const float HoldSeconds = 0.45f;
+        private float _pressTime = -1f;
+        private bool  _holdFired;
 
         [Header("Wires")]
         public Button button;
@@ -213,7 +223,29 @@ namespace AQ.App.UI.Leads
 
         private void HandleClick()
         {
+            if (_holdFired) return; // the release that ended a long-press is not a click
             if (_data != null) onClick?.Invoke(_data);
+        }
+
+        // ---- press-and-hold (item details popup) ----
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            _pressTime = Time.unscaledTime;
+            _holdFired = false;
+        }
+
+        public void OnPointerUp(PointerEventData eventData)   => _pressTime = -1f;
+        public void OnPointerExit(PointerEventData eventData) => _pressTime = -1f;
+
+        private void Update()
+        {
+            if (_pressTime < 0f || _holdFired) return;
+            if (Time.unscaledTime - _pressTime < HoldSeconds) return;
+            _holdFired = true;
+            _pressTime = -1f;
+            if (_data != null && !string.IsNullOrEmpty(_data.ItemId))
+                OnRequirementHeld?.Invoke(_data.ItemId);
         }
     }
 }

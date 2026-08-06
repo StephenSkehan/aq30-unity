@@ -10,7 +10,7 @@ namespace AQ.App.UI.Common
         private static GameObject _root;
 
         public static void Show(string displayName, Sprite icon, string family, int tier,
-                                System.Action onStore = null)
+                                System.Action onStore = null, int ownedCount = -1)
         {
             if (_root != null) return;
 
@@ -63,6 +63,13 @@ namespace AQ.App.UI.Common
             // Family and tier on one line (Stephen-ruled 2026-08-06)
             AddLabel($"{FormatFamily(family)} - {tier + 1}", panel, 34f,
                      AQTheme.PaperDim, new Vector2(0f, -80f), new Vector2(520f, 50f));
+
+            // Owned count (board + locker) — shown when the caller knows it
+            // (lead-requirement long-press passes the live checker count).
+            if (ownedCount >= 0)
+                AddLabel($"You have:  {ownedCount}", panel, 34f,
+                         ownedCount > 0 ? AQTheme.Success : AQTheme.PaperDim,
+                         new Vector2(0f, -135f), new Vector2(520f, 50f));
 
             // FAMILY opens the full tier ladder ON TOP (this popup stays under it).
             var fam = MakeButton("SHOW FAMILY", panel, AQTheme.Steel, new Vector2(0f, -210f));
