@@ -159,7 +159,7 @@ namespace AQ.App.UI.Board
             panelBtn.transition = Selectable.Transition.None;
 
             AddLabel(panel, "EVIDENCE LOCKER", 56f, AQTheme.Paper, new Vector2(0f, 430f), new Vector2(860f, 80f), display: true);
-            AddLabel(panel, "Stash items off the board. Tap a stored item to bring it back.",
+            AddLabel(panel, "Stash items and generators off the board. Tap to bring them back.",
                      26f, AQTheme.PaperDim, new Vector2(0f, 368f), new Vector2(860f, 44f));
 
             _grid = MakeRect("Grid", panel);
@@ -209,7 +209,7 @@ namespace AQ.App.UI.Board
                     iconRt.offsetMin = new Vector2(16f, 16f);
                     iconRt.offsetMax = new Vector2(-16f, -16f);
                     var icon            = iconRt.gameObject.AddComponent<Image>();
-                    icon.sprite         = board != null ? board.SpriteForItem(data.family, data.tier) : null;
+                    icon.sprite         = ResolveSprite(board, data);
                     icon.preserveAspect = true;
                     icon.raycastTarget  = false;
                     if (icon.sprite == null) icon.color = new Color(1f, 1f, 1f, 0.2f);
@@ -225,12 +225,11 @@ namespace AQ.App.UI.Board
                 }
                 else if (slot == capacity && EvidenceLockerService.NextSlotPrice > 0)
                 {
-                    // Next purchasable slot.
-                    AQTheme.Round(img, AQTheme.Teal);
+                    // Next purchasable slot — reads as a real button (2026-08-06).
+                    var b = cell.gameObject.AddComponent<Button>();
+                    AQTheme.StyleButton(img, AQTheme.Teal);
                     int price = EvidenceLockerService.NextSlotPrice;
                     AddLabel(cell, $"+ SLOT\n{price} CC", 30f, AQTheme.Paper, Vector2.zero, new Vector2(SlotSize, SlotSize), display: true);
-                    var b = cell.gameObject.AddComponent<Button>();
-                    b.transition = Selectable.Transition.None;
                     b.onClick.AddListener(BuySlot);
                 }
                 else
@@ -240,6 +239,17 @@ namespace AQ.App.UI.Board
                     AddLabel(cell, "LOCKED", 24f, AQTheme.PaperDim, Vector2.zero, new Vector2(SlotSize, 40f));
                 }
             }
+        }
+
+        private static Sprite ResolveSprite(MergeBoardController board, AQ.App.Overflow.OverflowTileData data)
+        {
+            if (board == null) return null;
+            if (data.kind == AQ.App.Overflow.OverflowKind.Generator)
+            {
+                var so = board.FindGeneratorType(data.family);
+                return so != null ? so.SpriteForTier(data.tier) : board.generatorSprite;
+            }
+            return board.SpriteForItem(data.family, data.tier);
         }
 
         private static void Retrieve(int index)

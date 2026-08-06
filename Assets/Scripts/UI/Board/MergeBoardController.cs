@@ -783,7 +783,7 @@ namespace AQ.App.UI.Board
         /// </summary>
         public void StoreTileToLocker(BoardTileView tile)
         {
-            if (tile == null || tile.IsEmpty || tile.Kind == TileKind.Generator) return;
+            if (tile == null || tile.IsEmpty) return;
 
             var family = GetFamily(tile);
             int tier   = tile.Tier;
@@ -791,6 +791,31 @@ namespace AQ.App.UI.Board
             if (!AQ.App.Locker.EvidenceLockerService.CanStore)
             {
                 AQ.App.UI.Common.ToastService.Show("locker_full", "Locker full. Buy a slot or retrieve an item.", 2f);
+                return;
+            }
+
+            // Generators store too (Stephen-ruled 2026-08-06) — but the board keeps
+            // its last one: a generator-less board can't produce anything, and the
+            // boot-time EnsureGeneratorExists would mint a free duplicate next run.
+            if (tile.Kind == TileKind.Generator)
+            {
+                if (CountGeneratorsOnBoard() <= 1)
+                {
+                    AQ.App.UI.Common.ToastService.Show("locker_last_gen", "Keep at least one generator on the board.", 2f);
+                    return;
+                }
+
+                tile.Clear();
+                familyKeyByTile.Remove(tile);
+                NotifyBoardChanged();
+
+                AQ.App.Locker.EvidenceLockerService.TryStore(new OverflowTileData
+                {
+                    kind   = OverflowKind.Generator,
+                    family = family,
+                    tier   = tier
+                }, null);
+                AQ.App.UI.Common.ToastService.Show("locker_store", "Stored in locker.", 1.2f);
                 return;
             }
 
@@ -805,6 +830,18 @@ namespace AQ.App.UI.Board
                 }, def != null ? def.itemId : null);
                 AQ.App.UI.Common.ToastService.Show("locker_store", "Stored in locker.", 1.2f);
             }
+        }
+
+        private int CountGeneratorsOnBoard()
+        {
+            int n = 0;
+            for (int r = 0; r < rows; r++)
+                for (int c = 0; c < cols; c++)
+                {
+                    var v = grid[r, c];
+                    if (v != null && !v.IsEmpty && v.Kind == TileKind.Generator) n++;
+                }
+            return n;
         }
 
         public bool TryClearItem(string family, int tier) => TryClearItem(family, tier, out _, out _);

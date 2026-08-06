@@ -14,6 +14,7 @@ namespace AQ.App.Locker
         public string family;
         public int tier;
         public string itemId;
+        public bool isGenerator; // absent in pre-2026-08-06 saves → false → item
     }
 
     /// <summary>
@@ -28,10 +29,13 @@ namespace AQ.App.Locker
     }
 
     /// <summary>
-    /// Off-board item storage ("Evidence Locker") — the CaseCash sink.
+    /// Off-board storage ("Evidence Locker") — the CaseCash sink.
     /// 8 free slots; slots 9-12 purchased with soft currency (200/400/800/1600).
-    /// Generators cannot be stored. Stored items keep counting toward lead satisfaction
-    /// (LeadRequirementChecker merges locker counts); consumption pulls board first, then locker.
+    /// Items AND generators store (generators Stephen-ruled 2026-08-06; the board
+    /// keeps its last generator — MergeBoardController guards that). Stored items
+    /// keep counting toward lead satisfaction (LeadRequirementChecker merges locker
+    /// counts); consumption pulls board first, then locker — and never touches
+    /// stored generators (family strings like corner_diner exist on both sides).
     ///
     /// Persistence: this service holds RUNTIME STATE ONLY. Since schema 0.7.0 the state
     /// is folded into BoardSaveSystem's atomic save aggregate (ExportState/ImportState),
@@ -52,6 +56,7 @@ namespace AQ.App.Locker
             public string family;
             public int tier;
             public string itemId; // ItemDefinitionSO.itemId — drives lead satisfaction; may be empty
+            public bool isGenerator;
         }
 
         private static readonly List<Entry> _entries = new();
@@ -82,16 +87,26 @@ namespace AQ.App.Locker
         {
             EnsureLoaded();
             var e = _entries[index];
-            return new OverflowTileData { kind = OverflowKind.Item, family = e.family, tier = e.tier };
+            return new OverflowTileData
+            {
+                kind   = e.isGenerator ? OverflowKind.Generator : OverflowKind.Item,
+                family = e.family,
+                tier   = e.tier
+            };
         }
 
-        /// <summary>Stores an item. Returns false when full or when handed a generator.</summary>
+        /// <summary>Stores an item or a generator. Returns false when full.</summary>
         public static bool TryStore(OverflowTileData data, string itemId)
         {
             EnsureLoaded();
-            if (data.kind == OverflowKind.Generator) return false;
             if (!CanStore) return false;
-            _entries.Add(new Entry { family = data.family, tier = data.tier, itemId = itemId ?? string.Empty });
+            _entries.Add(new Entry
+            {
+                family      = data.family,
+                tier        = data.tier,
+                itemId      = itemId ?? string.Empty,
+                isGenerator = data.kind == OverflowKind.Generator
+            });
             LockerChanged?.Invoke();
             return true;
         }
@@ -114,6 +129,7 @@ namespace AQ.App.Locker
             EnsureLoaded();
             for (int i = 0; i < _entries.Count; i++)
             {
+                if (_entries[i].isGenerator) continue; // lead consumption never eats a stored generator
                 if (_entries[i].tier != tier || _entries[i].family != family) continue;
                 _entries.RemoveAt(i);
                 LockerChanged?.Invoke();
@@ -165,7 +181,7 @@ namespace AQ.App.Locker
             EnsureLoaded();
             var dto = new LockerStateDTO { purchasedSlots = _purchasedSlots };
             foreach (var e in _entries)
-                dto.entries.Add(new LockerEntryDTO { family = e.family, tier = e.tier, itemId = e.itemId });
+                dto.entries.Add(new LockerEntryDTO { family = e.family, tier = e.tier, itemId = e.itemId, isGenerator = e.isGenerator });
             return dto;
         }
 
@@ -197,6 +213,7 @@ namespace AQ.App.Locker
                     h = h * 31 + (e.family?.GetHashCode() ?? 0);
                     h = h * 31 + e.tier;
                     h = h * 31 + (e.itemId?.GetHashCode() ?? 0);
+                    h = h * 31 + (e.isGenerator ? 1 : 0);
                 }
                 return h;
             }
@@ -252,7 +269,7 @@ namespace AQ.App.Locker
             if (dto == null) return;
             if (dto.entries != null)
                 foreach (var e in dto.entries)
-                    _entries.Add(new Entry { family = e.family, tier = e.tier, itemId = e.itemId ?? string.Empty });
+                    _entries.Add(new Entry { family = e.family, tier = e.tier, itemId = e.itemId ?? string.Empty, isGenerator = e.isGenerator });
             _purchasedSlots = Mathf.Clamp(dto.purchasedSlots, 0, SlotPrices.Length);
         }
     }
