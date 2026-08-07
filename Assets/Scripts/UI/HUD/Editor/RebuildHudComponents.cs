@@ -102,10 +102,16 @@ namespace AQ.EditorTools
                 // Cash note art is wide (919x668): in a square box it renders short and
                 // reads cropped — give it the full pill height instead (2026-07-18).
                 // 2x (2026-08-07, Stephen-ruled: icons ARE the counter identity),
-                // then eased to 1.7x same day — 2x crowded the row.
+                // then eased to 1.7x same day — 2x crowded the row. Energy +5%
+                // on top (its glyph is tall/narrow); the energy PNG was also
+                // cropped to glyph bounds 2026-08-07 (was a small bolt lost in a
+                // 1024 canvas with a baked shadow — the transparent-looking fix).
                 float iw = (i == 1 ? 90f : IconSize) * 1.7f;
                 float ih = (i == 1 ? 66f : IconSize) * 1.7f;
-                MakeImage(hudRt, Gen + "icon_"   + i, icons[i], Color.white, px - PillW / 2f, RowY, iw, ih);
+                if (i == 0) { iw *= 1.05f; ih *= 1.05f; }
+                // Currency icons sit 5% of their width further right (2026-08-07).
+                float ix = px - PillW / 2f + (i > 0 ? iw * 0.05f : 0f);
+                MakeImage(hudRt, Gen + "icon_"   + i, icons[i], Color.white, ix, RowY, iw, ih);
                 if (plusLive[i]) MakePlus(hudRt, Gen + "plus_" + i, px + PillW / 2f - 10f, RowY, true);
             }
 
