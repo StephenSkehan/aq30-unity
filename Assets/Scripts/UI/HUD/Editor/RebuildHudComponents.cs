@@ -108,7 +108,11 @@ namespace AQ.EditorTools
                 // 1024 canvas with a baked shadow — the transparent-looking fix).
                 float iw = (i == 1 ? 90f : IconSize) * 1.7f;
                 float ih = (i == 1 ? 66f : IconSize) * 1.7f;
-                if (i == 0) { iw *= 1.05f; ih *= 1.05f; }
+                // Energy: the PNG is cropped to glyph (542px tall, glyph 510),
+                // so the box maps ~1:1 to the visible bolt. Pre-crop the bolt
+                // rendered 64.3px tall (129 box x 510/1024); +5% = 67.6px ->
+                // 72px box (67.6 / (510/542)). Accurate, not eyeballed.
+                if (i == 0) { iw = 72f; ih = 72f; }
                 // Currency icons sit 5% of their width further right (2026-08-07).
                 float ix = px - PillW / 2f + (i > 0 ? iw * 0.05f : 0f);
                 MakeImage(hudRt, Gen + "icon_"   + i, icons[i], Color.white, ix, RowY, iw, ih);
