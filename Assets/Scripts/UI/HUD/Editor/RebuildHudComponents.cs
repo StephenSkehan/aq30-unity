@@ -101,10 +101,10 @@ namespace AQ.EditorTools
                 // Icon straddles the pill's left edge — icon and value read as one unit.
                 // Cash note art is wide (919x668): in a square box it renders short and
                 // reads cropped — give it the full pill height instead (2026-07-18).
-                // Doubled 2026-08-07 (Stephen-ruled): the icons ARE the identity of
-                // each counter; at 1x they read as decoration.
-                float iw = (i == 1 ? 90f : IconSize) * 2f;
-                float ih = (i == 1 ? 66f : IconSize) * 2f;
+                // 2x (2026-08-07, Stephen-ruled: icons ARE the counter identity),
+                // then eased to 1.7x same day — 2x crowded the row.
+                float iw = (i == 1 ? 90f : IconSize) * 1.7f;
+                float ih = (i == 1 ? 66f : IconSize) * 1.7f;
                 MakeImage(hudRt, Gen + "icon_"   + i, icons[i], Color.white, px - PillW / 2f, RowY, iw, ih);
                 if (plusLive[i]) MakePlus(hudRt, Gen + "plus_" + i, px + PillW / 2f - 10f, RowY, true);
             }
