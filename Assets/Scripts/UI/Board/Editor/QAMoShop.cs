@@ -33,6 +33,16 @@ namespace AQ.EditorTools
             AQ.App.UI.Shop.MoShopService.ResetStock();
             Debug.Log("[QAMoShop] Stock cleared — next open regenerates today's offers.");
         }
+
+        [MenuItem("AQ/Dev/QA Grant Specials (one of each)")]
+        public static void GrantSpecials()
+        {
+            foreach (AQ.App.UI.Specials.SpecialId id in
+                     System.Enum.GetValues(typeof(AQ.App.UI.Specials.SpecialId)))
+                AQ.App.UI.Specials.SpecialItemsService.Grant(id);
+            AQ.App.UI.Specials.SpecialItemsService.GrantCassette("App/Audio/Cassettes/cassette_dot_goodnight");
+            Debug.Log("[QAMoShop] One of each special + the first cassette granted.");
+        }
     }
 }
 #endif

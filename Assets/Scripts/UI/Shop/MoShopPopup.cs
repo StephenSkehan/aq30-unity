@@ -101,7 +101,14 @@ namespace AQ.App.UI.Shop
             rowBg.raycastTarget = false;
 
             Sprite sprite; string label;
-            if (offer.isGenerator)
+            if (offer.isSpecial)
+            {
+                sprite = null; // art-gated: specials use monogram chips for now
+                System.Enum.TryParse<Specials.SpecialId>(offer.family, out var sid);
+                var (sName, sDesc, _) = Specials.SpecialItemsService.Catalog[sid];
+                label = sName + $"\n<size=20><color=#A5A092>{sDesc}</color></size>";
+            }
+            else if (offer.isGenerator)
             {
                 var so = board.FindGeneratorType(offer.family);
                 sprite = so != null ? so.SpriteForTier(offer.tier) : null;

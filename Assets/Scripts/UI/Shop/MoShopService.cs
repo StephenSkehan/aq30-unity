@@ -17,6 +17,7 @@ namespace AQ.App.UI.Shop
         public int    price;
         public bool   bought;
         public bool   isGenerator;
+        public bool   isSpecial;   // Case Kit special (family holds the SpecialId name)
     }
 
     [Serializable]
@@ -68,20 +69,37 @@ namespace AQ.App.UI.Shop
             var wallet = Economy.WalletLocator.Instance;
             if (wallet == null || !wallet.TrySpend(Currency.Soft, offer.price, "mo_shop")) return false;
 
-            OverflowBucketService.Push(new OverflowTileData
+            string sku;
+            if (offer.isSpecial)
             {
-                kind   = offer.isGenerator ? OverflowKind.Generator : OverflowKind.Item,
-                family = offer.family,
-                tier   = offer.tier
-            });
-            UI.FlightFX.FlyToOverflow();
+                Enum.TryParse<Specials.SpecialId>(offer.family, out var id);
+                Specials.SpecialItemsService.Grant(id);
+                sku = "special:" + offer.family;
+            }
+            else
+            {
+                OverflowBucketService.Push(new OverflowTileData
+                {
+                    kind   = offer.isGenerator ? OverflowKind.Generator : OverflowKind.Item,
+                    family = offer.family,
+                    tier   = offer.tier
+                });
+                UI.FlightFX.FlyToOverflow();
+                sku = (offer.isGenerator ? "gen:" : "item:") + offer.family + ":t" + (offer.tier + 1);
+            }
 
             offer.bought = true;
             Save();
 
-            Analytics.GameAnalytics.LogShopPurchase(
-                (offer.isGenerator ? "gen:" : "item:") + offer.family + ":t" + (offer.tier + 1),
-                offer.price, wallet.Get(Currency.Soft));
+            // First-ever purchase: Mo slips you a cassette (Tip-Line keepsake).
+            if (PlayerPrefs.GetInt("aq.moshop.cassette1", 0) == 0)
+            {
+                PlayerPrefs.SetInt("aq.moshop.cassette1", 1);
+                Specials.SpecialItemsService.GrantCassette("App/Audio/Cassettes/cassette_dot_goodnight");
+                UI.Common.ToastService.Show("mo_cassette", "Mo slides something across the bar. A cassette.", 3f);
+            }
+
+            Analytics.GameAnalytics.LogShopPurchase(sku, offer.price, wallet.Get(Currency.Soft));
             return true;
         }
 
@@ -145,6 +163,18 @@ namespace AQ.App.UI.Shop
                     price       = GeneratorPrice,
                     isGenerator = true
                 });
+
+            // One Case Kit special per day, rotating; price from the catalog.
+            var specials = new List<Specials.SpecialId>(
+                (Specials.SpecialId[])Enum.GetValues(typeof(Specials.SpecialId)));
+            var pick = specials[rng.Next(specials.Count)];
+            _state.offers.Add(new MoShopOffer
+            {
+                family    = pick.ToString(),
+                tier      = 0,
+                price     = Specials.SpecialItemsService.Catalog[pick].price,
+                isSpecial = true
+            });
 
             Save();
         }

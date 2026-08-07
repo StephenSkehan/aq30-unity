@@ -844,6 +844,103 @@ namespace AQ.App.UI.Board
             return n;
         }
 
+        // ---------------- Special items (Case Kit) — board effects ----------------
+        // All mirror PlaceFromOverflow's invariants exactly: SetFamily BEFORE
+        // SetItem (Refresh -> requirement-tick lookup), item events fired,
+        // NotifyBoardChanged after every mutation.
+
+        /// <summary>Public family/typeId lookup for targeting UIs.</summary>
+        public string FamilyOf(BoardTileView tile) => tile != null ? GetFamily(tile) : null;
+
+        /// <summary>Skeleton Key: item tile +1 tier. False at max tier.</summary>
+        public bool UpgradeTile(BoardTileView tile)
+        {
+            if (tile == null || tile.IsEmpty || tile.Kind != TileKind.Item) return false;
+            var fam = GetFamily(tile);
+            int t = tile.Tier;
+            if (LookupItemDef(fam, t + 1) == null) return false;
+            OnItemRemoved?.Invoke(fam, t);
+            SetFamily(tile, fam);
+            tile.SetItem(SpriteForItem(fam, t + 1), t + 1);
+            OnItemCreated?.Invoke(fam, t + 1);
+            NotifyBoardChanged();
+            return true;
+        }
+
+        /// <summary>Box Knife: item tile becomes T-1 plus a spare T-1 (board,
+        /// else the Stash). Value-neutral by construction (merge is 2:1).</summary>
+        public bool SplitTile(BoardTileView tile, out bool spareWentToStash)
+        {
+            spareWentToStash = false;
+            if (tile == null || tile.IsEmpty || tile.Kind != TileKind.Item || tile.Tier < 1) return false;
+            var fam = GetFamily(tile);
+            int t = tile.Tier;
+            if (LookupItemDef(fam, t - 1) == null) return false;
+            OnItemRemoved?.Invoke(fam, t);
+            SetFamily(tile, fam);
+            tile.SetItem(SpriteForItem(fam, t - 1), t - 1);
+            OnItemCreated?.Invoke(fam, t - 1);
+            var spare = new OverflowTileData { kind = OverflowKind.Item, family = fam, tier = t - 1 };
+            if (!PlaceFromOverflow(spare))
+            {
+                OverflowBucketService.Push(spare);
+                AQ.App.UI.FlightFX.FlyToOverflow();
+                spareWentToStash = true;
+            }
+            NotifyBoardChanged();
+            return true;
+        }
+
+        /// <summary>Carbon Copy: duplicates an item tile (board, else the Stash).</summary>
+        public bool DuplicateTile(BoardTileView tile, out bool copyWentToStash)
+        {
+            copyWentToStash = false;
+            if (tile == null || tile.IsEmpty || tile.Kind != TileKind.Item) return false;
+            var copy = new OverflowTileData { kind = OverflowKind.Item, family = GetFamily(tile), tier = tile.Tier };
+            if (!PlaceFromOverflow(copy))
+            {
+                OverflowBucketService.Push(copy);
+                AQ.App.UI.FlightFX.FlyToOverflow();
+                copyWentToStash = true;
+            }
+            return true;
+        }
+
+        /// <summary>Bolt Cutters: clears any tile. Generators keep-one guarded.</summary>
+        public bool CutTile(BoardTileView tile)
+        {
+            if (tile == null || tile.IsEmpty) return false;
+            if (tile.Kind == TileKind.Generator)
+            {
+                if (CountGeneratorsOnBoard() <= 1) return false;
+                tile.Clear();
+                familyKeyByTile.Remove(tile);
+                NotifyBoardChanged();
+                return true;
+            }
+            var fam = GetFamily(tile);
+            OnItemRemoved?.Invoke(fam, tile.Tier);
+            tile.Clear();
+            familyKeyByTile.Remove(tile);
+            NotifyBoardChanged();
+            return true;
+        }
+
+        /// <summary>Screen-point tile lookup for the special-item targeting overlay.</summary>
+        public BoardTileView TileAtScreenPoint(Vector2 screenPos)
+        {
+            for (int r = 0; r < rows; r++)
+                for (int c = 0; c < cols; c++)
+                {
+                    var v = grid[r, c];
+                    if (v == null) continue;
+                    var rt = v.transform as RectTransform;
+                    if (rt != null && RectTransformUtility.RectangleContainsScreenPoint(rt, screenPos, null))
+                        return v;
+                }
+            return null;
+        }
+
         /// <summary>Distinct generator type ids currently on the board — Mo's
         /// Back Room uses this (with locker + Stash) for the duplicate offer.</summary>
         public System.Collections.Generic.List<string> GeneratorTypeIdsOnBoard()
