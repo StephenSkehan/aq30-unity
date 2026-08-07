@@ -32,6 +32,9 @@ namespace AQ.App.Overflow
         public static int Count => _stack.Count;
         public static bool IsEmpty => _stack.Count == 0;
 
+        /// <summary>Read-only view of queued tiles (Mo's Back Room scans it for owned generator types).</summary>
+        public static IReadOnlyList<OverflowTileData> Items => _stack;
+
         public static OverflowTileData? Peek()
             => _stack.Count > 0 ? _stack[_stack.Count - 1] : (OverflowTileData?)null;
 

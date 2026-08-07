@@ -9,6 +9,7 @@ namespace AQ.App.Config
     {
         [Header("Gameplay Systems")]
         public bool EnergySystem = true;                           // ON by default
+        public bool MoShop = true;                                 // CaseCash shop (2026-08-07)
         public bool FamilyAwareMerges = true;                      // ON by default
         public bool InventoryPlacement_RowMajorFirstEmpty = true;  // ON by default
 

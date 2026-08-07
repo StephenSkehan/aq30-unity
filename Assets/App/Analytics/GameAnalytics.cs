@@ -88,5 +88,15 @@ namespace AQ.App.Analytics
                 ["price"] = price
             });
         }
+
+        public static void LogShopPurchase(string sku, int price, int balanceAfter)
+        {
+            AnalyticsLocator.Instance?.LogEvent("mo_shop_purchase", new Dictionary<string, object>
+            {
+                ["sku"] = sku,
+                ["price"] = price,
+                ["balance_after"] = balanceAfter
+            });
+        }
     }
 }

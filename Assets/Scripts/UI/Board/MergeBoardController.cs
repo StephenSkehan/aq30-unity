@@ -844,6 +844,22 @@ namespace AQ.App.UI.Board
             return n;
         }
 
+        /// <summary>Distinct generator type ids currently on the board — Mo's
+        /// Back Room uses this (with locker + Stash) for the duplicate offer.</summary>
+        public System.Collections.Generic.List<string> GeneratorTypeIdsOnBoard()
+        {
+            var list = new System.Collections.Generic.List<string>();
+            for (int r = 0; r < rows; r++)
+                for (int c = 0; c < cols; c++)
+                {
+                    var v = grid[r, c];
+                    if (v == null || v.IsEmpty || v.Kind != TileKind.Generator) continue;
+                    var id = GetFamily(v);
+                    if (!string.IsNullOrEmpty(id) && !list.Contains(id)) list.Add(id);
+                }
+            return list;
+        }
+
         public bool TryClearItem(string family, int tier) => TryClearItem(family, tier, out _, out _);
 
         public bool TryClearItem(string family, int tier, out Sprite clearedSprite, out Vector3 clearedWorldPos)

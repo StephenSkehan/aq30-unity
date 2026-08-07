@@ -90,7 +90,7 @@ namespace AQ.EditorTools
             // "+" at all (Stephen-ruled 2026-07-17): CaseCash is earn-only in the
             // canon economy, and a disabled button read as broken.
             string[] valueNames = { "Txt_Value", "Txt_Soft_Currency", "Txt_Premium" };
-            bool[]   plusLive    = { true, false, true }; // energy+, soft(none), premium+
+            bool[]   plusLive    = { true, true, true }; // energy+, soft+ (Mo's Back Room, hidden pre-L5), premium+
             for (int i = 0; i < 3; i++)
             {
                 float px = PillX[i];
@@ -116,7 +116,7 @@ namespace AQ.EditorTools
                 // Currency icons sit 5% of their width further right (2026-08-07).
                 float ix = px - PillW / 2f + (i > 0 ? iw * 0.05f : 0f);
                 MakeImage(hudRt, Gen + "icon_"   + i, icons[i], Color.white, ix, RowY, iw, ih);
-                if (plusLive[i]) MakePlus(hudRt, Gen + "plus_" + i, px + PillW / 2f - 10f, RowY, true);
+                if (plusLive[i]) MakePlus(hudRt, Gen + "plus_" + i, px + PillW / 2f - 10f, RowY, true, shop: i == 1);
             }
 
             // 5) Timer under the energy pill.
@@ -168,7 +168,7 @@ namespace AQ.EditorTools
             return img;
         }
 
-        static void MakePlus(RectTransform parent, string name, float x, float y, bool live)
+        static void MakePlus(RectTransform parent, string name, float x, float y, bool live, bool shop = false)
         {
             var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button));
             var rt = (RectTransform)go.transform;
@@ -202,7 +202,11 @@ namespace AQ.EditorTools
             }
 
             btn.interactable = live;
-            if (live) go.AddComponent<ShowEnergyStoreMB>();
+            if (live)
+            {
+                if (shop) go.AddComponent<AQ.App.UI.Shop.ShowMoShopMB>(); // self-hides until L5
+                else      go.AddComponent<ShowEnergyStoreMB>();
+            }
         }
 
         static void ReseatValue(Transform hud, string name, float x, float y)

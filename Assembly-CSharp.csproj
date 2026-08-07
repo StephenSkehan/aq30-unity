@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\HUD\EnergyHudTMP.cs" />
+    <Compile Include="Assets\Scripts\UI\HUD\ShowMoShopMB.cs" />
     <Compile Include="Assets\Scripts\UI\Board\FTUE\GeneratorTapHintMB.cs" />
     <Compile Include="Assets\Scripts\UI\Board\Save\BoardSaveSystem.cs" />
     <Compile Include="Assets\Scripts\Util\LeanTweenShim.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Assets\Scripts\App\Services\EnergyLadderService.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\LeadCardPin.cs" />
     <Compile Include="Assets\Scripts\UI\Board\FTUE\FTUEFirstMergeChoreographyMB.cs" />
+    <Compile Include="Assets\Scripts\UI\Shop\MoShopPopup.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\ShowEnergyStoreMB.cs" />
     <Compile Include="Assets\Scripts\UI\Board\LockerScreen.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\PremiumHudTMP.cs" />
@@ -113,6 +115,7 @@
     <Compile Include="Assets\Scripts\UI\Settings\PrivacySettingsTab.cs" />
     <Compile Include="Assets\Scripts\UI\Board\FX\BoardFxObserver.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\CharacterProfileModal.cs" />
+    <Compile Include="Assets\Scripts\UI\Shop\MoShopService.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardOpenerMB.cs" />
     <Compile Include="Assets\Scripts\UI\Common\ToastService.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyRuntime.cs" />

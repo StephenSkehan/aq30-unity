@@ -1,4 +1,11 @@
-# The CaseCash Shop — design sketch v1 (2026-08-07, for Stephen's markup)
+# The CaseCash Shop — design v1 · **RULED + BUILT 2026-08-07**
+
+> **Stephen's rulings (same day):** ① Venue = **Mo's Back Room** ② items IN for
+> v1 ③ **20 CC per T1eq** (up from the sketch's 12; T2=40, T3=80, T4=160) +
+> 400 CC generators ④ unlock at L5 confirmed ⑤ generator offer = ANY owned type
+> including the Field Kit. Shipped same day: MoShopService / MoShopPopup /
+> ShowMoShopMB on the cash pill's + (self-hides pre-L5), QA menus
+> (Open Mo Shop / Unlock Flag / Restock). Text below = original sketch.
 
 Goal: a second CaseCash sink with player agency ("buy items and generators with
 earned cash" — Stephen, 2026-08-06). Everything below prices against the shipped
