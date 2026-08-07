@@ -163,29 +163,25 @@ namespace AQ.EditorTools
             rt.SetParent(parent, false);
             Center(rt, x, y, PlusSize, PlusSize);
 
-            // Layered treatment at circle scale (2026-08-06). StyleButton's rect
-            // geometry would square the circle, so the same layers are built
-            // here with the ppu-overrun trick kept: lit rim on the root, inset
-            // body, drop shadow, press tint. Sheen/shade skipped — invisible
-            // at this size.
+            // Punched-into-the-pill look (2026-08-07 — the 08-06 rim+shadow read
+            // muddy at this scale: a 2.5px rim is blur, and a drop shadow ON the
+            // cream pill smeared a dark crescent). Crisp teal circle separated
+            // from the pill by a cream ring; the pill carries the elevation, so
+            // no shadow here. Press tint on the body is the interactive tell.
             var baseColor = live ? AQTheme.Teal : AQTheme.SteelDim;
 
-            var rim = go.GetComponent<Image>();
-            rim.sprite = AQTheme.Rounded;
-            rim.type   = Image.Type.Sliced;
-            rim.pixelsPerUnitMultiplier = 0.5f; // corners overrun -> circle
-            rim.color  = Color.Lerp(baseColor, Color.white, 0.30f);
-
-            var shadow = go.AddComponent<Shadow>();
-            shadow.effectColor    = new Color(0f, 0f, 0f, 0.45f);
-            shadow.effectDistance = new Vector2(0f, -5f);
+            var ring = go.GetComponent<Image>();
+            ring.sprite = AQTheme.Rounded;
+            ring.type   = Image.Type.Sliced;
+            ring.pixelsPerUnitMultiplier = 0.5f; // corners overrun -> circle
+            ring.color  = AQTheme.Paper;
 
             var bodyGo = new GameObject("PlusBody", typeof(RectTransform), typeof(Image));
             bodyGo.transform.SetParent(rt, false);
             var brt = (RectTransform)bodyGo.transform;
             brt.anchorMin = Vector2.zero; brt.anchorMax = Vector2.one;
-            brt.offsetMin = new Vector2(2.5f, 2.5f);
-            brt.offsetMax = new Vector2(-2.5f, -2.5f);
+            brt.offsetMin = new Vector2(3f, 3f);
+            brt.offsetMax = new Vector2(-3f, -3f);
             var body = bodyGo.GetComponent<Image>();
             body.sprite = AQTheme.Rounded;
             body.type   = Image.Type.Sliced;
