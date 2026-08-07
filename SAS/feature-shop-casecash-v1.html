@@ -1,0 +1,129 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><style>
+@page { margin: 18mm 16mm; }
+body { font-family: Georgia, serif; color: #1c1a17; font-size: 11pt; line-height: 1.55; }
+h1 { font-size: 19pt; border-bottom: 3px solid #1c1a17; padding-bottom: 6px; }
+h2 { font-size: 13pt; margin-top: 22px; border-bottom: 1px solid #999; padding-bottom: 3px; }
+table { border-collapse: collapse; margin: 8px 0; }
+td { border: 1px solid #bbb; padding: 5px 12px; }
+tr:first-child td { background: #ece7da; font-weight: bold; }
+ul { margin: 6px 0; }
+li { margin-bottom: 5px; }
+code { background: #f0ece2; padding: 0 4px; font-size: 10pt; }
+p { margin: 5px 0; }
+.sp { height: 4px; }
+</style></head><body><h1>The CaseCash Shop — design sketch v1 (2026-08-07, for Stephen&#x27;s markup)</h1>
+<div class=sp></div>
+<p>Goal: a second CaseCash sink with player agency (&quot;buy items and generators with</p>
+<p>earned cash&quot; — Stephen, 2026-08-06). Everything below prices against the shipped</p>
+<p>Schedule B economy; nothing here touches ingots, energy, or IAP.</p>
+<div class=sp></div>
+<h2>The economic frame (why this is safe to build)</h2>
+<div class=sp></div>
+<ul>
+<li>CC income: <b>1,410/episode</b> + 500 FTUE. Existing sink: locker slots</li>
+</ul>
+<p>  (200/400/800/1600 = 3,000 for all four). A typical player buys 1–2 slots and</p>
+<p>  finishes Ep1 with <b>~700–1,100 CC idle</b>. That surplus is the shop&#x27;s budget.</p>
+<ul>
+<li>Canon guardrail: <b>no CC→energy path, ever.</b> A bought ITEM is frozen energy</li>
+</ul>
+<p>  (1 T1eq ≈ 0.6–0.7 energy at tuned drop rates), so item pricing must sit far</p>
+<p>  above the earn yardstick. A bought GENERATOR is NOT — taps still cost energy —</p>
+<p>  so generators are the safe headline product.</p>
+<ul>
+<li>Earn yardstick: 1,410 CC / 330 required T1eq ≈ <b>4.3 CC per T1eq earned</b>.</li>
+</ul>
+<div class=sp></div>
+<h2>What&#x27;s for sale</h2>
+<div class=sp></div>
+<table>
+<tr><td>Slot</td><td>Contents</td><td>Price</td><td>Limit</td></tr>
+<tr><td>3 item offers</td><td>Random DISCOVERED tiers (T2–T4 band) from families whose generator the player owns</td><td>Tier-priced (below)</td><td>Each offer buyable once</td></tr>
+<tr><td>1 generator offer</td><td>Duplicate T1 of an owned generator type</td><td>Flat 400 CC</td><td>1/day</td></tr>
+</table>
+<div class=sp></div>
+<ul>
+<li>Stock refreshes at <b>local midnight</b> (same reset infra as the energy ladder;</li>
+</ul>
+<p>  same backwards-clock clamp).</p>
+<ul>
+<li><b>Discovered tiers only</b> — the shop reads ItemDiscoveryService, so it can</li>
+</ul>
+<p>  never spoil a silhouette in the family view. The shop sells convenience, not</p>
+<p>  discovery.</p>
+<ul>
+<li>T1 excluded (trivial, 1 tap); T5+ excluded (aspirational tiers stay earned).</li>
+<li>Delivery: purchases go to <b>the Stash</b> with the generator-arc flight — the</li>
+</ul>
+<p>  systems shipped this week do all the work.</p>
+<div class=sp></div>
+<h2>Pricing rule (items)</h2>
+<div class=sp></div>
+<p><b>T1eq price = 12 CC</b> (~2.8× the earn yardstick — a visible convenience tax,</p>
+<p>steep enough that grinding energy is always the rational bulk path):</p>
+<div class=sp></div>
+<table>
+<tr><td>Tier</td><td>T1eq</td><td>Price</td></tr>
+<tr><td>T2</td><td>2</td><td>25 CC</td></tr>
+<tr><td>T3</td><td>4</td><td>50 CC</td></tr>
+<tr><td>T4</td><td>8</td><td>95 CC</td></tr>
+</table>
+<div class=sp></div>
+<p>Sanity check vs the wall leads: L8 needs 56 T1eq; buying it outright at shop</p>
+<p>prices ≈ 670 CC ≈ half an episode&#x27;s total CC on one lead — possible once as a</p>
+<p>splurge, never sustainable. The energy loop keeps primacy. Generator at 400 CC</p>
+<p>competes directly with locker slot 10 (400) — a real decision, which is the</p>
+<p>point of a sink.</p>
+<div class=sp></div>
+<h2>Where it lives</h2>
+<div class=sp></div>
+<ul>
+<li><b>Entry point: the cash pill&#x27;s &quot;+&quot; button</b> — currently dead/greyed. It sits</li>
+</ul>
+<p>  on the CC counter, it&#x27;s already styled, and it gives the shop a home without</p>
+<p>  a fourth corner button. (Energy &quot;+&quot; keeps opening the energy store.)</p>
+<ul>
+<li><b>Fiction (needs Stephen&#x27;s ruling):</b></li>
+<li>(a) <b>Mo&#x27;s Back Room</b> — the Rusty Anchor&#x27;s neutral-ground trading post.</li>
+</ul>
+<p>    Zero new canon (Mo exists, speaks, the bar is &quot;cops and crooks coexist&quot;),</p>
+<p>    maximum charm. Recommended.</p>
+<ul>
+<li>(b) <b>Harbour Market</b> — new minor location, generic-safe but invents canon.</li>
+<li>(c) Fiction-light &quot;MARKET&quot; label, name it later.</li>
+</ul>
+<div class=sp></div>
+<h2>Gating and telemetry</h2>
+<div class=sp></div>
+<ul>
+<li>Unlocked at <b>L5 (e1_pod1 resolved)</b> — post-FTUE, first wall approaching,</li>
+</ul>
+<p>  the moment surplus CC starts existing. Story flag gate, same idiom as family</p>
+<p>  drops. Hidden entirely before then (dead + stays dead).</p>
+<ul>
+<li>Feature flag (FeatureFlagsRuntime) so it can ship dark if tuning slips.</li>
+<li>Analytics: offer impressions, purchases (slot, itemId/tier, price), balance</li>
+</ul>
+<p>  at purchase — enough to see whether it cannibalizes locker slots.</p>
+<div class=sp></div>
+<h2>v1 scope cuts</h2>
+<div class=sp></div>
+<p>No ingot pricing, no energy, no cosmetics, no restock-early-for-ingots (classic</p>
+<p>monetization lever — defer, it complicates the no-CC→energy story), no bundle</p>
+<p>offers, no shopkeeper dialogue (a Mo line on first open would be lovely — one</p>
+<p>line, banked for the script pass).</p>
+<div class=sp></div>
+<h2>Open rulings for Stephen</h2>
+<div class=sp></div>
+<ul>
+<li>Venue/name: Mo&#x27;s Back Room / Harbour Market / plain MARKET?</li>
+<li>Items at all in v1, or generators-only MVP (the economically bulletproof</li>
+</ul>
+<p>   version — items can follow after live data)?</p>
+<ul>
+<li>Price constants: 12 CC per T1eq and 400 CC generators feel right?</li>
+<li>Unlock at L5 confirmed?</li>
+<li>Generator offer: any type owned, or exclude the Field Kit (starting gen</li>
+</ul>
+<p>   duplicates are the strongest board-acceleration item)?</p>
+<div class=sp></div></body></html>
