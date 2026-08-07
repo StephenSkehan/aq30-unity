@@ -126,7 +126,6 @@
     <Compile Include="Assets\Scripts\UI\Common\GameResetMB.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyRegenMB.cs" />
     <Compile Include="Assets\Scripts\UI\Common\TileInfoPopup.cs" />
-    <Compile Include="Assets\Scripts\UI\Specials\SpecialItemsService.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyManager.cs" />
     <Compile Include="Assets\Scripts\Util\Audio\AudioListenerJanitor.cs" />
     <Compile Include="Assets\Scripts\UI\Specials\SpecialsTrayView.cs" />

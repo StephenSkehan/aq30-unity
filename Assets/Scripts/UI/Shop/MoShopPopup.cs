@@ -103,7 +103,7 @@ namespace AQ.App.UI.Shop
             Sprite sprite; string label;
             if (offer.isSpecial)
             {
-                sprite = null; // art-gated: specials use monogram chips for now
+                sprite = Specials.SpecialsTrayView.SpecialSprite(offer.family); // null until art lands
                 System.Enum.TryParse<Specials.SpecialId>(offer.family, out var sid);
                 var (sName, sDesc, _) = Specials.SpecialItemsService.Catalog[sid];
                 label = sName + $"\n<size=20><color=#A5A092>{sDesc}</color></size>";

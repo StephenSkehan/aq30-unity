@@ -71,6 +71,12 @@ namespace AQ.App.Leads
                 });
                 AQ.App.UI.FlightFX.FlyToOverflow();
             }
+
+            // Toast comes from SpecialsTrayView's Changed handler (this assembly
+            // cannot see ToastService).
+            if (!string.IsNullOrEmpty(lead.specialRewardId) &&
+                System.Enum.TryParse<AQ.App.UI.Specials.SpecialId>(lead.specialRewardId, out var specialId))
+                AQ.App.UI.Specials.SpecialItemsService.Grant(specialId, Mathf.Max(1, lead.specialRewardCount));
         }
 
         private void ApplyNarrativeFlags(LeadData lead)

@@ -132,6 +132,7 @@
     <Compile Include="Assets\App\CaseFlow\CaseFlowLeadBridgeMB.cs" />
     <Compile Include="Assets\App\Overflow\OverflowBucketService.cs" />
     <Compile Include="Assets\App\UI\Theme\Binders\ThemeTMPBinder.cs" />
+    <Compile Include="Assets\App\Specials\SpecialItemsService.cs" />
     <Compile Include="Assets\App\UnityAdapters\UnityPersistentPathProvider.cs" />
     <Compile Include="Assets\App\Leads\LeadsRuntimeBus.cs" />
     <Compile Include="Assets\App\CaseFlow\CaseFlowDebugOverlayMB.cs" />

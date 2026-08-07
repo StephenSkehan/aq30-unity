@@ -144,14 +144,23 @@ namespace AQ.App.UI.Specials
             _badge.color = new Color(0.1f, 0.07f, 0.02f, 1f);
         }
 
+        private int _lastTotal = -1;
+
         private void Refresh()
         {
             if (_root == null) return;
-            int total = SpecialItemsService.TotalCount + SpecialItemsService.Cassettes.Count;
+            int specials = SpecialItemsService.TotalCount;
+            int total = specials + SpecialItemsService.Cassettes.Count;
+
+            // Announce gains (lead rewards grant from AQ.App, which can't toast).
+            if (_lastTotal >= 0 && specials > _lastTotal)
+                ToastService.Show("case_kit_gain", "Added to the Case Kit.", 2f);
+            _lastTotal = specials;
+
             _root.gameObject.SetActive(total > 0);
             if (total <= 0) return;
-            _badge.transform.parent.gameObject.SetActive(SpecialItemsService.TotalCount > 0);
-            _badge.text = SpecialItemsService.TotalCount.ToString();
+            _badge.transform.parent.gameObject.SetActive(specials > 0);
+            _badge.text = specials.ToString();
         }
 
         // ---- kit popup ----
@@ -221,7 +230,7 @@ namespace AQ.App.UI.Specials
             var (name, desc, _) = SpecialItemsService.Catalog[id];
             var row = MakeRow(panel, pos);
 
-            AddMonogram(row, Monogram(id));
+            AddMonogram(row, Monogram(id), id.ToString());
             var txt = AddRowText(row, $"{name}  <color=#E8A33D>x{count}</color>\n<size=20><color=#A5A092>{desc}</color></size>");
 
             var use = MakeButton(row, "USE", AQTheme.Steel, new Vector2(620f / 2f - 90f, 0f), new Vector2(156f, 74f), 30f);
@@ -235,7 +244,7 @@ namespace AQ.App.UI.Specials
         private static void BuildCassetteRow(RectTransform panel, string clipPath, Vector2 pos)
         {
             var row = MakeRow(panel, pos);
-            AddMonogram(row, "TC");
+            AddMonogram(row, "TC", "cassette");
             AddRowText(row, "Tip-Line Cassette\n<size=20><color=#A5A092>A kept voice. Play it again.</color></size>");
             var play = MakeButton(row, "PLAY", AQTheme.Steel, new Vector2(620f / 2f - 90f, 0f), new Vector2(156f, 74f), 30f);
             play.onClick.AddListener(() =>
@@ -449,9 +458,12 @@ namespace AQ.App.UI.Specials
             return row;
         }
 
-        private static void AddMonogram(RectTransform row, string text)
+        /// <summary>Resources sprite for a special, or null pre-art-delivery.</summary>
+        public static Sprite SpecialSprite(string key) =>
+            Resources.Load<Sprite>("App/UI/Specials/special_" + key.ToLowerInvariant());
+
+        private static void AddMonogram(RectTransform row, string text, string spriteKey = null)
         {
-            // Art-gated placeholder: rounded chip + display-font monogram.
             var chip = new GameObject("Chip").AddComponent<RectTransform>();
             chip.transform.SetParent(row, false);
             chip.anchorMin = chip.anchorMax = new Vector2(0f, 0.5f);
@@ -461,6 +473,23 @@ namespace AQ.App.UI.Specials
             var img = chip.gameObject.AddComponent<Image>();
             AQTheme.Round(img, AQTheme.BoardFrame);
             img.raycastTarget = false;
+
+            // Real art wins when delivered (SAS/special-items-art-kit.md);
+            // display-font monogram is the pre-delivery placeholder.
+            var sprite = spriteKey != null ? SpecialSprite(spriteKey) : null;
+            if (sprite != null)
+            {
+                var icon = new GameObject("Icon").AddComponent<Image>();
+                icon.transform.SetParent(chip, false);
+                Stretch((RectTransform)icon.transform);
+                ((RectTransform)icon.transform).offsetMin = new Vector2(6f, 6f);
+                ((RectTransform)icon.transform).offsetMax = new Vector2(-6f, -6f);
+                icon.sprite = sprite;
+                icon.preserveAspect = true;
+                icon.raycastTarget = false;
+                return;
+            }
+
             var t = new GameObject("M").AddComponent<TextMeshProUGUI>();
             t.transform.SetParent(chip, false);
             Stretch((RectTransform)t.transform);

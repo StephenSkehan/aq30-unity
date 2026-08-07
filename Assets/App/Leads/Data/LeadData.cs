@@ -60,6 +60,11 @@ namespace AQ.App.Leads
         public string generatorRewardTypeId;
         public int generatorRewardTier;
 
+        [Header("Special Reward (Case Kit)")]
+        [Tooltip("SpecialId name granted on lead activation (SkeletonKey, BoxKnife, CarbonCopy, BoltCutters, SearchWarrant, EvidenceTag). Empty = none.")]
+        public string specialRewardId;
+        public int specialRewardCount = 1;
+
         [Header("Resolution Dialogue")]
         public CaseGraph resolutionDialogue;
 

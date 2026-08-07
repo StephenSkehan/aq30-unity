@@ -43,8 +43,10 @@ MonoBehaviour:
   SoftCurrency: 95
   EnergyGrant: 0
   PremiumGrant: 0
-  generatorRewardTypeId: 
+  generatorRewardTypeId:
   generatorRewardTier: 0
+  specialRewardId: SearchWarrant
+  specialRewardCount: 1
   resolutionDialogue: {fileID: 11400000, guid: dd10000600000000000000000000dd06, type: 2}
   OutcomeHints: 4
   boardConnections:
