@@ -101,8 +101,10 @@ namespace AQ.EditorTools
                 // Icon straddles the pill's left edge — icon and value read as one unit.
                 // Cash note art is wide (919x668): in a square box it renders short and
                 // reads cropped — give it the full pill height instead (2026-07-18).
-                float iw = i == 1 ? 90f : IconSize;
-                float ih = i == 1 ? 66f : IconSize;
+                // Doubled 2026-08-07 (Stephen-ruled): the icons ARE the identity of
+                // each counter; at 1x they read as decoration.
+                float iw = (i == 1 ? 90f : IconSize) * 2f;
+                float ih = (i == 1 ? 66f : IconSize) * 2f;
                 MakeImage(hudRt, Gen + "icon_"   + i, icons[i], Color.white, px - PillW / 2f, RowY, iw, ih);
                 if (plusLive[i]) MakePlus(hudRt, Gen + "plus_" + i, px + PillW / 2f - 10f, RowY, true);
             }
@@ -163,56 +165,32 @@ namespace AQ.EditorTools
             rt.SetParent(parent, false);
             Center(rt, x, y, PlusSize, PlusSize);
 
-            // Punched-into-the-pill look (2026-08-07 — the 08-06 rim+shadow read
-            // muddy at this scale: a 2.5px rim is blur, and a drop shadow ON the
-            // cream pill smeared a dark crescent). Crisp teal circle separated
-            // from the pill by a cream ring; the pill carries the elevation, so
-            // no shadow here. Press tint on the body is the interactive tell.
-            var baseColor = live ? AQTheme.Teal : AQTheme.SteelDim;
-
-            var ring = go.GetComponent<Image>();
-            ring.sprite = AQTheme.Rounded;
-            ring.type   = Image.Type.Sliced;
-            ring.pixelsPerUnitMultiplier = 0.5f; // corners overrun -> circle
-            ring.color  = AQTheme.Paper;
-
-            var bodyGo = new GameObject("PlusBody", typeof(RectTransform), typeof(Image));
-            bodyGo.transform.SetParent(rt, false);
-            var brt = (RectTransform)bodyGo.transform;
-            brt.anchorMin = Vector2.zero; brt.anchorMax = Vector2.one;
-            brt.offsetMin = new Vector2(3f, 3f);
-            brt.offsetMax = new Vector2(-3f, -3f);
-            var body = bodyGo.GetComponent<Image>();
-            body.sprite = AQTheme.Rounded;
-            body.type   = Image.Type.Sliced;
-            body.pixelsPerUnitMultiplier = 0.5f;
-            body.color  = baseColor;
-            body.raycastTarget = false;
-
-            var lblGo = new GameObject("Label", typeof(RectTransform));
-            lblGo.transform.SetParent(rt, false);
-            var lrt = (RectTransform)lblGo.transform;
-            lrt.anchorMin = Vector2.zero; lrt.anchorMax = Vector2.one;
-            lrt.offsetMin = Vector2.zero; lrt.offsetMax = new Vector2(0f, -4f);
-            var tmp = lblGo.AddComponent<TextMeshProUGUI>();
-            tmp.text = "+";
-            tmp.enableAutoSizing = false;
-            tmp.fontSize = 40f;
-            tmp.color = Color.white;
-            tmp.alignment = TextAlignmentOptions.Center;
-            tmp.raycastTarget = false;
-            AQTheme.StyleText(tmp, display: true);
-
+            // Same styling as the settings exit button (Stephen-ruled 2026-08-07):
+            // AQTheme.StyleButton layered rounded-rect (shadow, lit rim, body,
+            // sheen/shade, press tint) in Steel, with a DRAWN plus glyph — two
+            // rounded bars, like the settings X's drawn strokes (a TMP "+" sits
+            // off-baseline in Staatliches).
+            var baseColor = live ? AQTheme.Steel : AQTheme.SteelDim;
             var btn = go.GetComponent<Button>();
-            btn.transition    = Selectable.Transition.ColorTint;
-            btn.targetGraphic = body;
-            var cb = btn.colors;
-            cb.normalColor      = Color.white;
-            cb.highlightedColor = Color.white;
-            cb.pressedColor     = new Color(0.78f, 0.78f, 0.78f, 1f);
-            cb.selectedColor    = Color.white;
-            cb.fadeDuration     = 0.06f;
-            btn.colors = cb;
+            AQTheme.StyleButton(go.GetComponent<Image>(), baseColor);
+
+            for (int b = 0; b < 2; b++)
+            {
+                var bar = new GameObject(b == 0 ? "PlusBarH" : "PlusBarV",
+                    typeof(RectTransform), typeof(Image));
+                bar.transform.SetParent(rt, false);
+                var brt2 = (RectTransform)bar.transform;
+                brt2.anchorMin = brt2.anchorMax = new Vector2(0.5f, 0.5f);
+                brt2.pivot     = new Vector2(0.5f, 0.5f);
+                brt2.sizeDelta = b == 0 ? new Vector2(22f, 5f) : new Vector2(5f, 22f);
+                var barImg = bar.GetComponent<Image>();
+                barImg.sprite = AQTheme.Rounded;
+                barImg.type   = Image.Type.Sliced;
+                barImg.pixelsPerUnitMultiplier = 2.5f;
+                barImg.color  = AQTheme.Paper;
+                barImg.raycastTarget = false;
+            }
+
             btn.interactable = live;
             if (live) go.AddComponent<ShowEnergyStoreMB>();
         }
