@@ -94,17 +94,32 @@ namespace AQ.App.UI.Specials
             AQTheme.Round(bg, new Color(0f, 0f, 0f, 0.55f));
             Stretch((RectTransform)bg.transform);
 
-            // Drawn placeholder icon (art-gated: needs a kit sprite later):
-            // "KIT" monogram over a small case silhouette bar.
-            var lbl = new GameObject("Lbl").AddComponent<TextMeshProUGUI>();
-            lbl.transform.SetParent(_root, false);
-            Stretch((RectTransform)lbl.transform);
-            lbl.text = "KIT";
-            lbl.fontSize = 34f;
-            lbl.color = AQTheme.Paper;
-            lbl.alignment = TextAlignmentOptions.Center;
-            lbl.raycastTarget = false;
-            AQTheme.StyleText(lbl, display: true);
+            // Delivered icon art preferred (2026-08-10); KIT monogram fallback.
+            var btnSprite = Resources.Load<Sprite>("App/UI/Icons/ui_btn_case_kit");
+            if (btnSprite != null)
+            {
+                var iconRt = new GameObject("Icon").AddComponent<RectTransform>();
+                iconRt.transform.SetParent(_root, false);
+                Stretch(iconRt);
+                iconRt.offsetMin = new Vector2(6f, 6f);
+                iconRt.offsetMax = new Vector2(-6f, -6f);
+                var iconImg = iconRt.gameObject.AddComponent<Image>();
+                iconImg.sprite = btnSprite;
+                iconImg.preserveAspect = true;
+                iconImg.raycastTarget = false;
+            }
+            else
+            {
+                var lbl = new GameObject("Lbl").AddComponent<TextMeshProUGUI>();
+                lbl.transform.SetParent(_root, false);
+                Stretch((RectTransform)lbl.transform);
+                lbl.text = "KIT";
+                lbl.fontSize = 34f;
+                lbl.color = AQTheme.Paper;
+                lbl.alignment = TextAlignmentOptions.Center;
+                lbl.raycastTarget = false;
+                AQTheme.StyleText(lbl, display: true);
+            }
 
             var capRT = new GameObject("Caption").AddComponent<RectTransform>();
             capRT.transform.SetParent(_root, false);
