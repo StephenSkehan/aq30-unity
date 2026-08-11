@@ -262,6 +262,33 @@ violence with a business plan. Cold corporate lighting, hard shadows
 finale reveal — any imagery stays silhouette/coin/hands only, by explicit
 canon decision.
 
+### The Tip Line — Ally's answering machine *(OBJECT-CHARACTER, Stephen-ruled 2026-08-11: dialogue character with an evidence-board portrait, NO case file. First approved image becomes its canonical look game-wide — evidence board, dialogue nodes, any future promo. Global Style Block applies, but SKIP its face rules: no eyes-to-camera, no head-and-shoulders — the "bust" is the machine itself. Two frames instead of an emotion sheet: f01 message light DIM, f02 message light LIT — that pair is its blink.)*
+```
+The Tip Line: a vintage desktop answering machine, the physical voice of a
+true-crime podcast's anonymous tip line, treated with the gravity of a
+character portrait. Chunky early-1990s design: matte charcoal-black plastic
+body with worn, thumb-polished edges, a smoky cassette window with a tape
+visible inside, a round red MESSAGE light glowing softly like a watchful eye,
+a small mechanical tape counter, one strip of aged masking tape with a
+handwritten label rendered as illegible scrawl. A coiled telephone cord loops
+in from one side and out of frame. Three-quarter hero view from slightly
+below, centered and filling the frame like a bust portrait, sitting on the
+faint suggestion of a desk edge that fades into the dark background. Soft
+cinematic key light with a warm rim light; the red light throws a faint warm
+glow onto the casing around it. Reads as: patient, secret-keeping, always
+listening — the confessional booth of Havenbay. It keeps voices, timestamps
+and nothing else.
+```
+Variant (after the neutral is approved, attach it as reference): `Identical
+machine, same angle and lighting, but the red MESSAGE light is dark/unlit and
+the glow on the casing is gone.` — that unlit render is `f01`, the approved
+lit render is `f02`.
+
+Import: `char_tipline_neutral_f01.png` / `char_tipline_neutral_f02.png` →
+`Assets/Art/Characters/TipLine/`. The evidence board already maps the
+`tipline` token to "The Tip Line" and will pick the portrait up from dialogue
+nodes automatically once the announcer/tip-line nodes carry it.
+
 ## Emotion Strip Template (rev 2026-07-11 — supersedes single-variant template)
 
 One generation per character produces the full 7-emotion sheet. Attach the
