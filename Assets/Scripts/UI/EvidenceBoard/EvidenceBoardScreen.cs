@@ -277,12 +277,18 @@ namespace AQ.App.UI.EvidenceBoard
 
             float y = BoardH / 2f - 500f;
 
-            // Cast row — one photo per unique portrait
-            var seenPortraits = new HashSet<Sprite>();
+            // Cast row — one photo per unique CHARACTER (2026-08-11: dedup by
+            // portrait token, not sprite reference — Ally has multiple emotion
+            // sprites and was appearing twice).
+            var seenChars = new HashSet<string>();
             var cast = new List<LeadData>();
             foreach (var lead in resolvedLeads)
-                if (lead.actorPortrait != null && seenPortraits.Add(lead.actorPortrait))
-                    cast.Add(lead);
+            {
+                if (lead.actorPortrait == null) continue;
+                var key = PortraitToken(lead);
+                if (string.IsNullOrEmpty(key)) key = lead.actorPortrait.name;
+                if (seenChars.Add(key)) cast.Add(lead);
+            }
 
             for (int i = 0; i < cast.Count; i++)
             {

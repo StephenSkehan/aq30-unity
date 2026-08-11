@@ -165,6 +165,7 @@ namespace AQ.App.UI.Board
 
         private void Start()
         {
+            ApplyGridBackdropAlpha();
             Log("MergeBoardController.Start complete.");
         }
 
@@ -842,6 +843,42 @@ namespace AQ.App.UI.Board
                     if (v != null && !v.IsEmpty && v.Kind == TileKind.Generator) n++;
                 }
             return n;
+        }
+
+        // Grid furniture translucency (Stephen-ruled 2026-08-11 — born as a
+        // DialogueStage fade bug he liked): the checker cells and backdrop
+        // plate stay permanently see-through so the noir backdrop reads
+        // through the GRID ONLY; items, generators and HUD remain opaque.
+        private const float GridBackdropAlpha = 0.6f;
+
+        private void ApplyGridBackdropAlpha()
+        {
+            for (int r = 0; r < rows; r++)
+                for (int c = 0; c < cols; c++)
+                {
+                    var v = grid[r, c];
+                    if (v == null) continue;
+                    var bg = v.transform.Find("Bg");
+                    if (bg == null) continue;
+                    var img = bg.GetComponent<Image>();
+                    if (img == null) continue;
+                    var col = img.color;
+                    col.a = GridBackdropAlpha;
+                    img.color = col;
+                }
+
+            var frame = transform.Find("BoardFrame");
+            if (frame == null && transform.parent != null) frame = transform.parent.Find("BoardFrame");
+            if (frame != null)
+            {
+                var fImg = frame.GetComponent<Image>();
+                if (fImg != null)
+                {
+                    var col = fImg.color;
+                    col.a = GridBackdropAlpha * 0.9f; // plate a touch quieter than cells
+                    fImg.color = col;
+                }
+            }
         }
 
         // ---------------- Special items (Case Kit) — board effects ----------------

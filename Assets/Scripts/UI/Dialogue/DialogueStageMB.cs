@@ -84,6 +84,20 @@ public sealed class DialogueStageMB : MonoBehaviour
     {
         if (!_open)
         {
+            // A restore fade may still be running from the previous dialogue
+            // (the evidence-board replay flow reopens fast). Finish it INSTANTLY
+            // before re-capturing baselines — otherwise the partial alphas get
+            // captured as the new "base" and the board stays ghosted forever
+            // (the 2026-08-11 transparency bug).
+            if (_fade != null)
+            {
+                StopCoroutine(_fade);
+                _fade = null;
+                for (int i = 0; i < _groups.Count; i++)
+                    if (_groups[i].Group != null) _groups[i].Group.alpha = _groups[i].BaseAlpha;
+                if (_scrim != null) _scrim.opacity = _baseScrimOpacity;
+            }
+
             if (!FindStage()) return;
             _open = true;
             _baseScrimOpacity = _scrim != null ? _scrim.opacity : 0f;
