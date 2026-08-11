@@ -46,7 +46,7 @@ namespace AQ.App.UI.Dossiers
                 factHs[i] = 30f + EstimateTextH(def.facts[i].text, 26f, textW - 40f) + 26f;
                 panelH   += factHs[i] + 12f;
             }
-            float nextH = done ? 110f : (sealed_ ? 128f : 196f);
+            float nextH = done ? 110f : (sealed_ ? 76f : 196f);
             panelH += nextH + 16f + 80f + 24f;                   // next/complete + close
 
             // ---- canvas ----
@@ -133,12 +133,9 @@ namespace AQ.App.UI.Dossiers
             }
             else if (sealed_)
             {
-                var capRt = PlaceRect("Cap", box, new Vector2(textW, 30f), new Vector2(0f, nextH / 2f - 28f));
-                AddTmp(capRt, "ENTRY " + (unlocked + 1) + "  ·  SEALED", 20f,
+                var capRt = PlaceRect("Cap", box, new Vector2(textW, 30f), new Vector2(0f, 0f));
+                AddTmp(capRt, "ENTRY " + (unlocked + 1) + "  ·  SEALED FOR NOW", 20f,
                        new Color(0.60f, 0.44f, 0.30f, 1f), FontStyles.Bold, TextAlignmentOptions.Center);
-                var msgRt = PlaceRect("Msg", box, new Vector2(textW, 60f), new Vector2(0f, nextH / 2f - 82f));
-                AddTmp(msgRt, "Some pages wait for the case to close.", 26f,
-                       new Color(0.66f, 0.62f, 0.56f, 1f), FontStyles.Italic, TextAlignmentOptions.Center);
             }
             else
             {
@@ -165,10 +162,13 @@ namespace AQ.App.UI.Dossiers
             }
             cursor -= nextH + 16f;
 
-            // Close
+            // Bottom row: Close left, Other Case Files right (Stephen-ruled 2026-08-11)
             var close = PlaceButton("Close", panel, new Color(0.24f, 0.30f, 0.42f, 1f),
-                                    new Vector2(300f, 78f), new Vector2(0f, cursor - 39f));
+                                    new Vector2(280f, 78f), new Vector2(-170f, cursor - 39f));
             close.onClick.AddListener(Close);
+            var other = PlaceButton("Other Case Files", panel, new Color(0.55f, 0.40f, 0.16f, 1f),
+                                    new Vector2(300f, 78f), new Vector2(160f, cursor - 39f));
+            other.onClick.AddListener(() => { Close(); DossierIndexPopup.Show(); });
         }
 
         public static void Close()

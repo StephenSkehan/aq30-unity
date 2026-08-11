@@ -849,7 +849,7 @@ namespace AQ.App.UI.Board
         // DialogueStage fade bug he liked): the checker cells and backdrop
         // plate stay permanently see-through so the noir backdrop reads
         // through the GRID ONLY; items, generators and HUD remain opaque.
-        private const float GridBackdropAlpha = 0.6f;
+        private const float GridBackdropAlpha = 0.4f; // Stephen-tuned 2026-08-11 (was 0.6)
 
         private void ApplyGridBackdropAlpha()
         {

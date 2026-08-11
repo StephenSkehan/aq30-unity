@@ -15,8 +15,8 @@ namespace AQ.App.UI.EvidenceBoard
         /// suspends itself so taps on the modal don't fall through to pins.</summary>
         public static bool IsOpen => _root != null;
 
-        public static void Show(LeadData lead, List<LeadData> relatedLeads, Action<LeadData> onReplay,
-                                string displayName = null, string characterKey = null)
+        public static void Show(Sprite portrait, List<LeadData> relatedLeads, Action<LeadData> onReplay,
+                                string displayName, string characterKey = null)
         {
             if (_root != null) return;
             bool hasDossier = Dossiers.DossierService.Has(characterKey);
@@ -40,10 +40,11 @@ namespace AQ.App.UI.EvidenceBoard
             dim.offsetMin = dim.offsetMax = Vector2.zero;
             dim.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.82f);
 
-            // Panel — sized to content
-            var leads     = relatedLeads ?? new List<LeadData> { lead };
-            float panelH  = 20f + 220f + 18f + 64f + 20f + 2f + 18f
-                          + (hasDossier ? 92f : 0f) + leads.Count * 92f + 92f + 24f;
+            // Panel — sized to content. Header: portrait + name LEFT, Case File
+            // button RIGHT (Stephen-ruled 2026-08-11).
+            var leads     = relatedLeads ?? new List<LeadData>();
+            const float headerH = 200f + 8f + 84f;
+            float panelH  = 20f + headerH + 20f + 2f + 18f + leads.Count * 92f + 92f + 24f;
             float panelW  = 640f;
 
             var panel             = MakeRect("Panel", _root.transform);
@@ -55,51 +56,48 @@ namespace AQ.App.UI.EvidenceBoard
             panel.gameObject.AddComponent<Image>().color = new Color(0.12f, 0.10f, 0.08f, 1f);
 
             // Build content top → down using a cursor (from panel top, going negative)
-            float cursor = panelH / 2f;
+            float cursor = panelH / 2f - 20f;
 
-            // Portrait
-            cursor -= 20f;
-            var pRt              = PlaceRect("Portrait", panel, new Vector2(220f, 220f), new Vector2(0f, cursor - 110f));
+            // Portrait — left column
+            var pRt              = PlaceRect("Portrait", panel, new Vector2(200f, 200f), new Vector2(-190f, cursor - 100f));
             var pImg             = pRt.gameObject.AddComponent<Image>();
-            pImg.sprite          = lead.actorPortrait;
+            pImg.sprite          = portrait;
             pImg.preserveAspect  = true;
             pImg.raycastTarget   = false;
-            if (lead.actorPortrait == null) pImg.color = new Color(0.5f, 0.5f, 0.5f, 1f);
-            cursor -= 220f + 18f;
+            if (portrait == null) pImg.color = new Color(0.5f, 0.5f, 0.5f, 1f);
 
-            // Name — the CHARACTER, not the lead (2026-08-11 fix)
-            var nameRt     = PlaceRect("Name", panel, new Vector2(panelW - 40f, 64f), new Vector2(0f, cursor - 32f));
+            // Name under the portrait
+            var nameRt     = PlaceRect("Name", panel, new Vector2(300f, 84f), new Vector2(-170f, cursor - 200f - 8f - 42f));
             var nameTmp    = nameRt.gameObject.AddComponent<TextMeshProUGUI>();
-            nameTmp.text   = string.IsNullOrEmpty(displayName) ? lead.title : displayName;
-            nameTmp.fontSize    = 40f;
+            nameTmp.text   = displayName ?? string.Empty;
+            nameTmp.fontSize    = 34f;
             nameTmp.fontStyle   = FontStyles.Bold;
             nameTmp.color       = Color.white;
             nameTmp.alignment   = TextAlignmentOptions.Center;
             nameTmp.raycastTarget = false;
-            cursor -= 64f + 20f;
             // (No role/scene-count line — Stephen-ruled 2026-08-11: meta copy
             // breaks the fiction. Character role copy is a future bible pull.)
+
+            // Case File — right column, centred on the header block
+            if (hasDossier)
+            {
+                var fileBtn = PlaceButton("Case File", panel, new Color(0.55f, 0.40f, 0.16f, 1f),
+                                          new Vector2(270f, 80f), new Vector2(155f, cursor - headerH / 2f));
+                var keyCap  = characterKey;
+                var portCap = portrait;
+                fileBtn.onClick.AddListener(() => { Close(); Dossiers.DossierPopup.Show(keyCap, portCap); });
+            }
+            cursor -= headerH + 20f;
 
             // Divider
             var div       = PlaceRect("Divider", panel, new Vector2(panelW - 60f, 2f), new Vector2(0f, cursor - 1f));
             div.gameObject.AddComponent<Image>().color = new Color(0.35f, 0.30f, 0.25f, 1f);
             cursor -= 2f + 18f;
 
-            // Case file — Ally's dossier on this character
-            if (hasDossier)
-            {
-                var fileBtn = PlaceButton("Case File", panel, new Color(0.55f, 0.40f, 0.16f, 1f),
-                                          new Vector2(panelW - 60f, 80f), new Vector2(0f, cursor - 40f));
-                var keyCap  = characterKey;
-                var portCap = lead.actorPortrait;
-                fileBtn.onClick.AddListener(() => { Close(); Dossiers.DossierPopup.Show(keyCap, portCap); });
-                cursor -= 80f + 12f;
-            }
-
-            // Replay buttons
+            // Replay buttons — always titled with the scene (Stephen-ruled 2026-08-11)
             foreach (var rl in leads)
             {
-                string btnLabel  = leads.Count == 1 ? "Replay Evidence" : $"Replay: {TruncateStr(rl.title, 28)}";
+                string btnLabel  = $"Replay: {TruncateStr(rl.title, 28)}";
                 var btn          = PlaceButton(btnLabel, panel, new Color(0.18f, 0.42f, 0.28f, 1f),
                                               new Vector2(panelW - 60f, 80f), new Vector2(0f, cursor - 40f));
                 var capturedLead = rl;

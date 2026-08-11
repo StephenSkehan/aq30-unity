@@ -12,29 +12,31 @@ namespace AQ.App.UI.EvidenceBoard
     [RequireComponent(typeof(Image))]
     public class CharacterPhotoPin : MonoBehaviour
     {
-        private LeadData _lead;
+        private Sprite _portrait;
         private List<LeadData> _relatedLeads;
         private Action<LeadData> _onReplay;
         private string _displayName;
         private string _characterKey;
 
-        public void Tap() => CharacterProfileModal.Show(_lead, _relatedLeads, _onReplay, _displayName, _characterKey);
+        public void Tap() => CharacterProfileModal.Show(_portrait, _relatedLeads, _onReplay, _displayName, _characterKey);
 
-        public static RectTransform Create(RectTransform parent, LeadData lead,
+        /// <summary>Sprite-based (2026-08-11): cast members can come from dialogue-node
+        /// portraits, not just lead front portraits — Mo speaks but fronts no lead.</summary>
+        public static RectTransform Create(RectTransform parent, string pinId, Sprite portrait,
             List<LeadData> relatedLeads, Vector2 pos, Action<LeadData> onReplay,
             Sprite tackSprite = null, string displayName = null, string characterKey = null)
         {
-            var card              = MakeRect("Photo_" + lead.leadId, parent);
+            var card              = MakeRect("Photo_" + pinId, parent);
             card.anchorMin        = new Vector2(0.5f, 0.5f);
             card.anchorMax        = new Vector2(0.5f, 0.5f);
             card.pivot            = new Vector2(0.5f, 0.5f);
             card.sizeDelta        = new Vector2(260f, 310f);
             card.anchoredPosition = pos;
-            card.localRotation    = Quaternion.Euler(0f, 0f, Tilt(lead.leadId + "_ph"));
+            card.localRotation    = Quaternion.Euler(0f, 0f, Tilt(pinId + "_ph"));
             card.gameObject.AddComponent<Image>().color = new Color(0.97f, 0.97f, 0.95f, 1f);
 
             var pin              = card.gameObject.AddComponent<CharacterPhotoPin>();
-            pin._lead            = lead;
+            pin._portrait        = portrait;
             pin._relatedLeads    = relatedLeads;
             pin._onReplay        = onReplay;
             pin._displayName     = displayName;
@@ -51,10 +53,10 @@ namespace AQ.App.UI.EvidenceBoard
             pRt.anchorMax        = new Vector2(0.92f, 0.88f);
             pRt.offsetMin        = pRt.offsetMax = Vector2.zero;
             var pImg             = pRt.gameObject.AddComponent<Image>();
-            pImg.sprite          = lead.actorPortrait;
+            pImg.sprite          = portrait;
             pImg.preserveAspect  = true;
             pImg.raycastTarget   = false;
-            if (lead.actorPortrait == null)
+            if (portrait == null)
                 pImg.color = new Color(0.65f, 0.65f, 0.65f, 1f);
 
             // Name label
@@ -64,7 +66,7 @@ namespace AQ.App.UI.EvidenceBoard
             nRt.offsetMin        = new Vector2(6f, 4f);
             nRt.offsetMax        = new Vector2(-6f, 0f);
             var nTmp             = nRt.gameObject.AddComponent<TextMeshProUGUI>();
-            nTmp.text            = displayName ?? lead.title;
+            nTmp.text            = displayName ?? string.Empty;
             nTmp.fontSize        = 21f;
             nTmp.fontStyle       = FontStyles.Bold;
             nTmp.color           = new Color(0.10f, 0.05f, 0.02f, 1f);

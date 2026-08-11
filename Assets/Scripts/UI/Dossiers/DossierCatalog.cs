@@ -45,6 +45,9 @@ namespace AQ.App.UI.Dossiers
         static DossierReward Special(SpecialId id, string label) =>
             new DossierReward { kind = DossierRewardKind.Special, special = id, label = label };
 
+        /// <summary>Display order for the case-file index.</summary>
+        public static readonly string[] Order = { "ally", "gerald", "mo", "del", "dot", "vera" };
+
         public static readonly Dictionary<string, DossierDef> All = new()
         {
             ["ally"] = new DossierDef

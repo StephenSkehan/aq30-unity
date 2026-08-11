@@ -277,17 +277,29 @@ namespace AQ.App.UI.EvidenceBoard
 
             float y = BoardH / 2f - 500f;
 
-            // Cast row — one photo per unique CHARACTER (2026-08-11: dedup by
-            // portrait token, not sprite reference — Ally has multiple emotion
-            // sprites and was appearing twice).
+            // Cast row — one photo per unique CHARACTER, deduped by portrait
+            // token. Sourced from lead FRONT portraits AND dialogue-node
+            // portraits ("where is Mo?" fix 2026-08-11 — Mo speaks in scenes
+            // but fronts no lead, so actorPortrait alone never surfaced her).
             var seenChars = new HashSet<string>();
-            var cast = new List<LeadData>();
+            var cast = new List<(string token, Sprite sprite)>();
             foreach (var lead in resolvedLeads)
             {
                 if (lead.actorPortrait == null) continue;
-                var key = PortraitToken(lead);
+                var key = PortraitToken(lead.actorPortrait);
                 if (string.IsNullOrEmpty(key)) key = lead.actorPortrait.name;
-                if (seenChars.Add(key)) cast.Add(lead);
+                if (seenChars.Add(key)) cast.Add((key, lead.actorPortrait));
+            }
+            foreach (var lead in resolvedLeads)
+            {
+                var nodes = lead.resolutionDialogue != null ? lead.resolutionDialogue.nodes : null;
+                if (nodes == null) continue;
+                foreach (var node in nodes)
+                {
+                    if (node == null || node.portrait == null) continue;
+                    var key = PortraitToken(node.portrait);
+                    if (!string.IsNullOrEmpty(key) && seenChars.Add(key)) cast.Add((key, node.portrait));
+                }
             }
 
             for (int i = 0; i < cast.Count; i++)
@@ -295,10 +307,10 @@ namespace AQ.App.UI.EvidenceBoard
                 float x = (i - (cast.Count - 1) / 2f) * PhotoSpacing;
                 // Only the scenes this character actually appears in (Stephen-ruled
                 // 2026-08-11) — portrait match or a speaking part in the dialogue.
-                var involved = LeadsInvolving(cast[i], resolvedLeads);
-                var photoRt = CharacterPhotoPin.Create(_boardContent, cast[i], involved,
-                    new Vector2(x, y), OnReplayLeadDialogue, tackSprite, CharacterNameFor(cast[i]),
-                    PortraitToken(cast[i]));
+                var involved = LeadsInvolving(cast[i].token, resolvedLeads);
+                var photoRt = CharacterPhotoPin.Create(_boardContent, cast[i].token, cast[i].sprite,
+                    involved, new Vector2(x, y), OnReplayLeadDialogue, tackSprite,
+                    CharacterNameFor(cast[i].token), cast[i].token);
                 _placed.Add(photoRt);
                 var photoPin = photoRt.GetComponent<CharacterPhotoPin>();
                 _tappables.Add((photoRt, photoPin.Tap));
@@ -406,6 +418,7 @@ namespace AQ.App.UI.EvidenceBoard
             if (!_isOpen) return;
             if (CharacterProfileModal.IsOpen) return; // modal owns input while up
             if (Dossiers.DossierPopup.IsOpen) return; // ditto the case file
+            if (Dossiers.DossierIndexPopup.IsOpen) return; // and the file index
 
             if (_closeRt != null &&
                 RectTransformUtility.RectangleContainsScreenPoint(_closeRt, screenPos, null))
@@ -429,11 +442,8 @@ namespace AQ.App.UI.EvidenceBoard
 
         // ---- Cluster helpers ----
 
-        private static string CharacterNameFor(LeadData lead)
+        private static string CharacterNameFor(string token)
         {
-            // Portrait art is the only character identity on LeadData today.
-            // Sprite naming: char_<token>_<emotion>_fNN (e.g. char_del_neutral_f01).
-            var token = PortraitToken(lead);
             switch (token)
             {
                 case "ally":   return "Ally Quinn";
@@ -446,38 +456,40 @@ namespace AQ.App.UI.EvidenceBoard
             }
             if (!string.IsNullOrEmpty(token))
                 return char.ToUpperInvariant(token[0]) + token.Substring(1);
-            return lead.title; // last resort
+            return string.Empty;
         }
 
-        private static string PortraitToken(LeadData lead)
+        // Sprite naming: char_<token>_<emotion>_fNN (e.g. char_del_neutral_f01).
+        private static string PortraitToken(Sprite sprite)
         {
-            var n = lead.actorPortrait != null ? lead.actorPortrait.name.ToLowerInvariant() : string.Empty;
+            var n = sprite != null ? sprite.name.ToLowerInvariant() : string.Empty;
             if (!n.StartsWith("char_")) return string.Empty;
             int end = n.IndexOf('_', 5);
             return end > 5 ? n.Substring(5, end - 5) : n.Substring(5);
         }
 
-        /// <summary>Leads this character appears in: same portrait, or a speaking
-        /// part in the resolution dialogue (speaker contains the portrait token,
-        /// e.g. "Del" / "Dot Ellis (voicemail)").</summary>
-        private static List<LeadData> LeadsInvolving(LeadData castLead, List<LeadData> resolved)
+        /// <summary>Leads this character appears in: fronting portrait, a
+        /// dialogue-node portrait, or a speaking part (speaker text contains
+        /// the token, e.g. "Del" / "Dot Ellis (voicemail)").</summary>
+        private static List<LeadData> LeadsInvolving(string token, List<LeadData> resolved)
         {
-            var token = PortraitToken(castLead);
             var result = new List<LeadData>();
+            if (string.IsNullOrEmpty(token)) return result;
             foreach (var lead in resolved)
             {
-                bool involved = lead.actorPortrait == castLead.actorPortrait;
-                if (!involved && !string.IsNullOrEmpty(token) && lead.resolutionDialogue != null &&
-                    lead.resolutionDialogue.nodes != null)
+                bool involved = PortraitToken(lead.actorPortrait) == token;
+                if (!involved && lead.resolutionDialogue != null && lead.resolutionDialogue.nodes != null)
                 {
                     foreach (var node in lead.resolutionDialogue.nodes)
-                        if (node != null && !string.IsNullOrEmpty(node.speaker) &&
-                            node.speaker.ToLowerInvariant().Contains(token))
+                    {
+                        if (node == null) continue;
+                        if (PortraitToken(node.portrait) == token ||
+                            (!string.IsNullOrEmpty(node.speaker) && node.speaker.ToLowerInvariant().Contains(token)))
                         { involved = true; break; }
+                    }
                 }
                 if (involved) result.Add(lead);
             }
-            if (result.Count == 0) result.Add(castLead);
             return result;
         }
 
