@@ -833,7 +833,7 @@ namespace AQ.App.UI.Board
             }
         }
 
-        private int CountGeneratorsOnBoard()
+        public int CountGeneratorsOnBoard()
         {
             int n = 0;
             for (int r = 0; r < rows; r++)

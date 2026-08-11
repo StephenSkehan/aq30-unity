@@ -453,6 +453,7 @@ namespace AQ.App.UI.EvidenceBoard
                 case "dot":    return "Dot Ellis";
                 case "vera":   return "Vera";
                 case "benji":  return "Benji Park";
+                case "tipline": return "The Tip Line"; // object-character (Stephen-ruled 2026-08-11): no case file, portrait only
             }
             if (!string.IsNullOrEmpty(token))
                 return char.ToUpperInvariant(token[0]) + token.Substring(1);

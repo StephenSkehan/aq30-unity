@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\UI\Board\DragGhost.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardZoomPan.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\SoftCurrencyHudTMP.cs" />
+    <Compile Include="Assets\Scripts\UI\Specials\SpecialConfirmPopup.cs" />
     <Compile Include="Assets\Scripts\UI\Dossiers\AllyDossierEntry.cs" />
     <Compile Include="Assets\Scripts\UI\Common\EnergyOutPopup.cs" />
     <Compile Include="Assets\Scripts\Dev\DebugSettingsTab.cs" />

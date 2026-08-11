@@ -306,11 +306,23 @@ namespace AQ.App.UI.Specials
                     ToastService.Show("tag_locker_full", "Locker full. Free a slot for the tagged item.", 2f);
                     return;
                 }
-                EvidenceLockerService.TryStore(
-                    new OverflowTileData { kind = OverflowKind.Item, family = def.family, tier = def.tier },
-                    def.itemId);
-                SpecialItemsService.Consume(SpecialId.EvidenceTag);
-                ToastService.Show("tag_done", $"Evidence Tag: {def.displayName} filed in the locker.", 2.5f);
+
+                // Show what will happen and ask first (Stephen-ruled 2026-08-11).
+                var defCap = def;
+                SpecialConfirmPopup.Show("Evidence Tag",
+                    $"{defCap.displayName} is filed in the locker for the open lead.",
+                    new System.Collections.Generic.List<Sprite> { SpecialSprite("evidencetag") },
+                    new System.Collections.Generic.List<Sprite> { board.SpriteForItem(defCap.family, defCap.tier) },
+                    false,
+                    onConfirm: () =>
+                    {
+                        EvidenceLockerService.TryStore(
+                            new OverflowTileData { kind = OverflowKind.Item, family = defCap.family, tier = defCap.tier },
+                            defCap.itemId);
+                        SpecialItemsService.Consume(SpecialId.EvidenceTag);
+                        ToastService.Show("tag_done", $"Evidence Tag: {defCap.displayName} filed in the locker.", 2.5f);
+                    },
+                    onCancel: null);
                 return;
             }
             ToastService.Show("tag_none", "No taggable requirement right now (Tier 3 or below).", 2.5f);
@@ -353,6 +365,7 @@ namespace AQ.App.UI.Specials
             private SpecialId _id;
             private MergeBoardController _board;
             private RectTransform _banner;
+            private bool _confirming;
 
             public void Init(SpecialId id, MergeBoardController board, RectTransform banner)
             {
@@ -363,6 +376,8 @@ namespace AQ.App.UI.Specials
 
             private void Update()
             {
+                if (_confirming) return; // the confirm popup owns input
+
                 Vector2? tap = null;
                 if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
                     tap = Input.GetTouch(0).position;
@@ -379,7 +394,90 @@ namespace AQ.App.UI.Specials
                 var tile = _board != null ? _board.TileAtScreenPoint(tap.Value) : null;
                 if (tile == null || tile.IsEmpty) return; // keep targeting
 
-                if (Apply(tile)) Done();
+                // Show what will happen and ask first (Stephen-ruled 2026-08-11).
+                if (!BuildPreview(tile, out var desc, out var before, out var after, out var unknown))
+                    return; // refusal toast shown, keep targeting
+
+                _confirming = true;
+                var (name, _, _) = SpecialItemsService.Catalog[_id];
+                SpecialConfirmPopup.Show(name, desc, before, after, unknown,
+                    onConfirm: () => { _confirming = false; if (Apply(tile)) Done(); },
+                    onCancel:  () => _confirming = false);
+            }
+
+            /// <summary>Preview of the effect on this tile. False = refused (toast
+            /// already shown). Mirrors Apply()'s guards without mutating anything.</summary>
+            private bool BuildPreview(BoardTileView tile, out string desc,
+                                      out System.Collections.Generic.List<Sprite> before,
+                                      out System.Collections.Generic.List<Sprite> after,
+                                      out bool afterUnknown)
+            {
+                desc = null;
+                before = new System.Collections.Generic.List<Sprite> { tile.Payload.sprite };
+                after = null;
+                afterUnknown = false;
+
+                switch (_id)
+                {
+                    case SpecialId.SkeletonKey:
+                    {
+                        if (tile.Kind != TileKind.Item) { Refuse("That one won't turn. (Top tier, or not an item.)"); return false; }
+                        var family = _board.FamilyOf(tile);
+                        var up = _board.SpriteForItem(family, tile.Tier + 1);
+                        if (up == null) { Refuse("That one won't turn. (Top tier, or not an item.)"); return false; }
+                        desc = $"{NameOf(family, tile.Tier)} goes up a tier to {NameOf(family, tile.Tier + 1)}.";
+                        after = new System.Collections.Generic.List<Sprite> { up };
+                        return true;
+                    }
+                    case SpecialId.BoxKnife:
+                    {
+                        if (tile.Kind != TileKind.Item || tile.Tier < 1) { Refuse("Nothing to cut there. (Tier 2+ items only.)"); return false; }
+                        var family = _board.FamilyOf(tile);
+                        var down = _board.SpriteForItem(family, tile.Tier - 1);
+                        desc = $"{NameOf(family, tile.Tier)} is cut into two of {NameOf(family, tile.Tier - 1)}.";
+                        after = new System.Collections.Generic.List<Sprite> { down, down };
+                        return true;
+                    }
+                    case SpecialId.CarbonCopy:
+                    {
+                        if (tile.Kind != TileKind.Item || tile.Tier > 3) { Refuse("Copies stop at Tier 4."); return false; }
+                        var family = _board.FamilyOf(tile);
+                        desc = $"{NameOf(family, tile.Tier)} is duplicated.";
+                        after = new System.Collections.Generic.List<Sprite> { tile.Payload.sprite, tile.Payload.sprite };
+                        return true;
+                    }
+                    case SpecialId.BoltCutters:
+                    {
+                        if (tile.Kind == TileKind.Generator && _board.CountGeneratorsOnBoard() <= 1)
+                        { Refuse("Keep at least one generator on the board."); return false; }
+                        desc = "This tile is removed from the board for good.";
+                        after = new System.Collections.Generic.List<Sprite>(); // empty = removed box
+                        return true;
+                    }
+                    case SpecialId.SearchWarrant:
+                    {
+                        if (tile.Kind != TileKind.Item) { Refuse("Serve it on an item."); return false; }
+                        var family = _board.FamilyOf(tile);
+                        bool anyLeft = false;
+                        foreach (var d in _board.ItemDefinitions)
+                            if (d != null && d.family == family &&
+                                !Common.ItemDiscoveryService.IsDiscovered(family, d.tier))
+                            { anyLeft = true; break; }
+                        if (!anyLeft) { Refuse("Nothing left to uncover in that family."); return false; }
+                        desc = "The next undiscovered item in this family is revealed.";
+                        afterUnknown = true;
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            private string NameOf(string family, int tier)
+            {
+                foreach (var d in _board.ItemDefinitions)
+                    if (d != null && d.family == family && d.tier == tier)
+                        return d.displayName;
+                return "Tier " + (tier + 1);
             }
 
             private bool Apply(BoardTileView tile)
