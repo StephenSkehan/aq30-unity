@@ -287,7 +287,10 @@ namespace AQ.App.UI.EvidenceBoard
             for (int i = 0; i < cast.Count; i++)
             {
                 float x = (i - (cast.Count - 1) / 2f) * PhotoSpacing;
-                var photoRt = CharacterPhotoPin.Create(_boardContent, cast[i], resolvedLeads,
+                // Only the scenes this character actually appears in (Stephen-ruled
+                // 2026-08-11) — portrait match or a speaking part in the dialogue.
+                var involved = LeadsInvolving(cast[i], resolvedLeads);
+                var photoRt = CharacterPhotoPin.Create(_boardContent, cast[i], involved,
                     new Vector2(x, y), OnReplayLeadDialogue, tackSprite, CharacterNameFor(cast[i]));
                 _placed.Add(photoRt);
                 var photoPin = photoRt.GetComponent<CharacterPhotoPin>();
@@ -420,12 +423,54 @@ namespace AQ.App.UI.EvidenceBoard
 
         private static string CharacterNameFor(LeadData lead)
         {
-            // Portrait art is the only character identity on LeadData today;
-            // map the known sprite families, fall back to the lead title.
+            // Portrait art is the only character identity on LeadData today.
+            // Sprite naming: char_<token>_<emotion>_fNN (e.g. char_del_neutral_f01).
+            var token = PortraitToken(lead);
+            switch (token)
+            {
+                case "ally":   return "Ally Quinn";
+                case "gerald": return "Gerald Quinn";
+                case "del":    return "Del Cruz";
+                case "mo":     return "Mo Callahan";
+                case "dot":    return "Dot Ellis";
+                case "vera":   return "Vera";
+                case "benji":  return "Benji Park";
+            }
+            if (!string.IsNullOrEmpty(token))
+                return char.ToUpperInvariant(token[0]) + token.Substring(1);
+            return lead.title; // last resort
+        }
+
+        private static string PortraitToken(LeadData lead)
+        {
             var n = lead.actorPortrait != null ? lead.actorPortrait.name.ToLowerInvariant() : string.Empty;
-            if (n.Contains("ally"))   return "Ally Quinn";
-            if (n.Contains("gerald")) return "Gerald Quinn";
-            return lead.title;
+            if (!n.StartsWith("char_")) return string.Empty;
+            int end = n.IndexOf('_', 5);
+            return end > 5 ? n.Substring(5, end - 5) : n.Substring(5);
+        }
+
+        /// <summary>Leads this character appears in: same portrait, or a speaking
+        /// part in the resolution dialogue (speaker contains the portrait token,
+        /// e.g. "Del" / "Dot Ellis (voicemail)").</summary>
+        private static List<LeadData> LeadsInvolving(LeadData castLead, List<LeadData> resolved)
+        {
+            var token = PortraitToken(castLead);
+            var result = new List<LeadData>();
+            foreach (var lead in resolved)
+            {
+                bool involved = lead.actorPortrait == castLead.actorPortrait;
+                if (!involved && !string.IsNullOrEmpty(token) && lead.resolutionDialogue != null &&
+                    lead.resolutionDialogue.nodes != null)
+                {
+                    foreach (var node in lead.resolutionDialogue.nodes)
+                        if (node != null && !string.IsNullOrEmpty(node.speaker) &&
+                            node.speaker.ToLowerInvariant().Contains(token))
+                        { involved = true; break; }
+                }
+                if (involved) result.Add(lead);
+            }
+            if (result.Count == 0) result.Add(castLead);
+            return result;
         }
 
         private static RectTransform CreatePhaseLabel(string text, Vector2 pos)
@@ -470,8 +515,10 @@ namespace AQ.App.UI.EvidenceBoard
 
             Close();
 
+            // Include inactive: the dialogue panel sleeps between dialogues, and
+            // the default finder skips it — the silent replay no-op (2026-08-11).
             if (_dialogueRunner == null)
-                _dialogueRunner = Object.FindAnyObjectByType<DialogueRunner>();
+                _dialogueRunner = Object.FindAnyObjectByType<DialogueRunner>(FindObjectsInactive.Include);
 
             if (_dialogueRunner == null)
             {
@@ -479,6 +526,8 @@ namespace AQ.App.UI.EvidenceBoard
                 Open();
                 return;
             }
+            if (!_dialogueRunner.gameObject.activeSelf)
+                _dialogueRunner.gameObject.SetActive(true);
 
             _dialogueRunner.DialogueEnded += OnDialogueEndedReopen;
             _dialogueRunner.BootWithGraph(lead.resolutionDialogue);

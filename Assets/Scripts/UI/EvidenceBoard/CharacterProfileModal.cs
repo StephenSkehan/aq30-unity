@@ -15,7 +15,8 @@ namespace AQ.App.UI.EvidenceBoard
         /// suspends itself so taps on the modal don't fall through to pins.</summary>
         public static bool IsOpen => _root != null;
 
-        public static void Show(LeadData lead, List<LeadData> relatedLeads, Action<LeadData> onReplay)
+        public static void Show(LeadData lead, List<LeadData> relatedLeads, Action<LeadData> onReplay,
+                                string displayName = null)
         {
             if (_root != null) return;
 
@@ -64,10 +65,10 @@ namespace AQ.App.UI.EvidenceBoard
             if (lead.actorPortrait == null) pImg.color = new Color(0.5f, 0.5f, 0.5f, 1f);
             cursor -= 220f + 18f;
 
-            // Name
+            // Name — the CHARACTER, not the lead (2026-08-11 fix)
             var nameRt     = PlaceRect("Name", panel, new Vector2(panelW - 40f, 64f), new Vector2(0f, cursor - 32f));
             var nameTmp    = nameRt.gameObject.AddComponent<TextMeshProUGUI>();
-            nameTmp.text   = lead.title;
+            nameTmp.text   = string.IsNullOrEmpty(displayName) ? lead.title : displayName;
             nameTmp.fontSize    = 40f;
             nameTmp.fontStyle   = FontStyles.Bold;
             nameTmp.color       = Color.white;
@@ -75,10 +76,11 @@ namespace AQ.App.UI.EvidenceBoard
             nameTmp.raycastTarget = false;
             cursor -= 64f + 12f;
 
-            // Role/subtitle
+            // Role line: scene count, not the lead's subtitle (2026-08-11 fix —
+            // per-character role copy is a future bible pull).
             var roleRt     = PlaceRect("Role", panel, new Vector2(panelW - 40f, 80f), new Vector2(0f, cursor - 40f));
             var roleTmp    = roleRt.gameObject.AddComponent<TextMeshProUGUI>();
-            roleTmp.text   = lead.subtitle ?? string.Empty;
+            roleTmp.text   = leads.Count == 1 ? "Appears in 1 scene" : $"Appears in {leads.Count} scenes";
             roleTmp.fontSize    = 26f;
             roleTmp.color       = new Color(0.72f, 0.68f, 0.64f, 1f);
             roleTmp.alignment   = TextAlignmentOptions.Center;

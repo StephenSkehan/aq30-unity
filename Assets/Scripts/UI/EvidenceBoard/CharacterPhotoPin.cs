@@ -15,8 +15,9 @@ namespace AQ.App.UI.EvidenceBoard
         private LeadData _lead;
         private List<LeadData> _relatedLeads;
         private Action<LeadData> _onReplay;
+        private string _displayName;
 
-        public void Tap() => CharacterProfileModal.Show(_lead, _relatedLeads, _onReplay);
+        public void Tap() => CharacterProfileModal.Show(_lead, _relatedLeads, _onReplay, _displayName);
 
         public static RectTransform Create(RectTransform parent, LeadData lead,
             List<LeadData> relatedLeads, Vector2 pos, Action<LeadData> onReplay,
@@ -35,6 +36,7 @@ namespace AQ.App.UI.EvidenceBoard
             pin._lead            = lead;
             pin._relatedLeads    = relatedLeads;
             pin._onReplay        = onReplay;
+            pin._displayName     = displayName;
 
             LeadCardPin.AddShadow(card);
 
