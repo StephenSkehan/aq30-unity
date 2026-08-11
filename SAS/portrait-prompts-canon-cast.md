@@ -262,7 +262,7 @@ violence with a business plan. Cold corporate lighting, hard shadows
 finale reveal — any imagery stays silhouette/coin/hands only, by explicit
 canon decision.
 
-### The Tip Line — Ally's answering machine *(OBJECT-CHARACTER, Stephen-ruled 2026-08-11: dialogue character with an evidence-board portrait, NO case file. First approved image becomes its canonical look game-wide — evidence board, dialogue nodes, any future promo. Global Style Block applies, but SKIP its face rules: no eyes-to-camera, no head-and-shoulders — the "bust" is the machine itself. Two frames instead of an emotion sheet: f01 message light DIM, f02 message light LIT — that pair is its blink.)*
+### The Tip Line — Ally's answering machine *(★ CANON — pair approved + IMPORTED 2026-08-11: warm graphite body, amber cassette with cream label, glowing red MESSAGE light, pressed PLAY key with embossed triangle, coiled cord tucked behind. Frames live at `Assets/Art/Characters/TipLine/char_tipline_neutral_f01.png` (light off) / `f02.png` (lit — the working portrait, wired on all four L1 tip-line/voicemail nodes). Iterate only from the approved f02 image. OBJECT-CHARACTER: dialogue character with an evidence-board portrait, NO case file. Global Style Block face rules don't apply — the "bust" is the machine.)*
 ```
 The Tip Line: a vintage desktop answering machine, the physical voice of a
 true-crime podcast's anonymous tip line, treated with the gravity of a
