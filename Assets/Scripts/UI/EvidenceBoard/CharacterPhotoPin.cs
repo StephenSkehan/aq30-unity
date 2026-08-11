@@ -16,12 +16,13 @@ namespace AQ.App.UI.EvidenceBoard
         private List<LeadData> _relatedLeads;
         private Action<LeadData> _onReplay;
         private string _displayName;
+        private string _characterKey;
 
-        public void Tap() => CharacterProfileModal.Show(_lead, _relatedLeads, _onReplay, _displayName);
+        public void Tap() => CharacterProfileModal.Show(_lead, _relatedLeads, _onReplay, _displayName, _characterKey);
 
         public static RectTransform Create(RectTransform parent, LeadData lead,
             List<LeadData> relatedLeads, Vector2 pos, Action<LeadData> onReplay,
-            Sprite tackSprite = null, string displayName = null)
+            Sprite tackSprite = null, string displayName = null, string characterKey = null)
         {
             var card              = MakeRect("Photo_" + lead.leadId, parent);
             card.anchorMin        = new Vector2(0.5f, 0.5f);
@@ -37,6 +38,7 @@ namespace AQ.App.UI.EvidenceBoard
             pin._relatedLeads    = relatedLeads;
             pin._onReplay        = onReplay;
             pin._displayName     = displayName;
+            pin._characterKey    = characterKey;
 
             LeadCardPin.AddShadow(card);
 

@@ -297,7 +297,8 @@ namespace AQ.App.UI.EvidenceBoard
                 // 2026-08-11) — portrait match or a speaking part in the dialogue.
                 var involved = LeadsInvolving(cast[i], resolvedLeads);
                 var photoRt = CharacterPhotoPin.Create(_boardContent, cast[i], involved,
-                    new Vector2(x, y), OnReplayLeadDialogue, tackSprite, CharacterNameFor(cast[i]));
+                    new Vector2(x, y), OnReplayLeadDialogue, tackSprite, CharacterNameFor(cast[i]),
+                    PortraitToken(cast[i]));
                 _placed.Add(photoRt);
                 var photoPin = photoRt.GetComponent<CharacterPhotoPin>();
                 _tappables.Add((photoRt, photoPin.Tap));
@@ -404,6 +405,7 @@ namespace AQ.App.UI.EvidenceBoard
         {
             if (!_isOpen) return;
             if (CharacterProfileModal.IsOpen) return; // modal owns input while up
+            if (Dossiers.DossierPopup.IsOpen) return; // ditto the case file
 
             if (_closeRt != null &&
                 RectTransformUtility.RectangleContainsScreenPoint(_closeRt, screenPos, null))

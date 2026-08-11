@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\UI\Board\Editor\ApplyDinerSixTier.cs" />
     <Compile Include="Assets\Scripts\UI\Board\Editor\QAFtueChoreo.cs" />
     <Compile Include="Assets\Scripts\UI\Board\Editor\IntegrateAudioOpening.cs" />
+    <Compile Include="Assets\Scripts\UI\Board\Editor\QADossiers.cs" />
     <Compile Include="Assets\Scripts\UI\Board\Editor\QAMoShop.cs" />
   </ItemGroup>
   <ItemGroup>

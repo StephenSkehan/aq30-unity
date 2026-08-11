@@ -98,5 +98,16 @@ namespace AQ.App.Analytics
                 ["balance_after"] = balanceAfter
             });
         }
+
+        public static void LogDossierFact(string character, int factIndex, int price, int balanceAfter)
+        {
+            AnalyticsLocator.Instance?.LogEvent("dossier_fact_unlocked", new Dictionary<string, object>
+            {
+                ["character"] = character,
+                ["fact_index"] = factIndex,
+                ["price"] = price,
+                ["balance_after"] = balanceAfter
+            });
+        }
     }
 }

@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\HUD\EnergyHudTMP.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\ShowMoShopMB.cs" />
+    <Compile Include="Assets\Scripts\UI\Dossiers\DossierService.cs" />
     <Compile Include="Assets\Scripts\UI\Board\FTUE\GeneratorTapHintMB.cs" />
     <Compile Include="Assets\Scripts\UI\Board\Save\BoardSaveSystem.cs" />
     <Compile Include="Assets\Scripts\Util\LeanTweenShim.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Scripts\UI\Board\DragGhost.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardZoomPan.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\SoftCurrencyHudTMP.cs" />
+    <Compile Include="Assets\Scripts\UI\Dossiers\AllyDossierEntry.cs" />
     <Compile Include="Assets\Scripts\UI\Common\EnergyOutPopup.cs" />
     <Compile Include="Assets\Scripts\Dev\DebugSettingsTab.cs" />
     <Compile Include="Assets\Scripts\App\Presentation\MergeEventsBridge.cs" />
@@ -116,8 +118,11 @@
     <Compile Include="Assets\Scripts\UI\Board\FX\BoardFxObserver.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\CharacterProfileModal.cs" />
     <Compile Include="Assets\Scripts\UI\Shop\MoShopService.cs" />
+    <Compile Include="Assets\Scripts\UI\Dossiers\DossierCatalog.cs" />
+    <Compile Include="Assets\Scripts\App\DisableRenderingDebugger.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardOpenerMB.cs" />
     <Compile Include="Assets\Scripts\UI\Common\ToastService.cs" />
+    <Compile Include="Assets\Scripts\UI\Dossiers\DossierPopup.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyRuntime.cs" />
     <Compile Include="Assets\Scripts\UI\Board\FTUE\ProceedHintMB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />

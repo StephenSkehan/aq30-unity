@@ -5,159 +5,329 @@ h1 { font-size: 17pt; border-bottom: 3px solid #1c1a17; padding-bottom: 6px; }
 h2 { font-size: 13pt; margin-top: 20px; border-bottom: 1px solid #999; padding-bottom: 3px; }
 h3 { font-size: 12pt; margin: 16px 0 4px; color: #4a3520; page-break-after: avoid; }
 table { border-collapse: collapse; margin: 6px 0; width: 100%; page-break-inside: avoid; }
-td { border: 1px solid #bbb; padding: 4px 8px; vertical-align: top; }
-td:first-child { width: 24px; } td:nth-child(2) { width: 66px; } td:last-child { width: 150px; }
-tr:first-child td { background: #ece7da; font-weight: bold; }
-ul { margin: 5px 0; } li { margin-bottom: 4px; }
-b { color: #7a2f1d; } i { color: #555; }
-p { margin: 4px 0; } .sp { height: 3px; } hr { border: none; border-top: 2px solid #999; margin: 16px 0; }
-</style></head><body><h1>Character Dossiers (&quot;Case Files&quot;) — design sketch v1 + Ep1 fact sets (2026-08-11, for Stephen&#x27;s markup)</h1>
-<div class=sp></div>
-<p>Stephen&#x27;s pitch: a bio per character, progressively unlocked with CaseCash, each</p>
-<p>reveal carrying bible facts plus a reward; completing every dossier is the</p>
-<p>long-tail side quest. Diegetic frame: these are ALLY&#x27;S CASE FILES on the people</p>
-<p>of Havenbay — an investigator keeps dossiers; the player is reading hers.</p>
-<div class=sp></div>
+td, th { border: 1px solid #bbb; padding: 4px 8px; vertical-align: top; text-align: left; }
+th { background: #efe9df; }
+blockquote { background: #f4efe6; border-left: 4px solid #4a3520; margin: 10px 0; padding: 8px 14px; }
+code { font-family: Consolas, monospace; font-size: 9.5pt; background: #f0ede6; padding: 0 3px; }
+em { color: #4a3520; }
+</style></head><body><h1>Character Dossiers ("Case Files") — design v1 + Ep1 fact sets — <strong>RULED &amp; BUILT 2026-08-11</strong></h1>
+<blockquote>
+<p><strong>Stephen's rulings (2026-08-11), all applied:</strong>
+1. "Appears in N scenes" REMOVED from the profile modal — meta copy breaks the fiction.
+2. NO fixed fact count — characters may have many facts or few; the UI only ever
+   shows the NEXT available locked fact, never a full locked list.
+3. Prices: escalating 50/100/150/200 stands, any price CAPPED AT 300 CC for now.
+4. All nine [INVENTION] lines approved as written.
+5. Rewards ARE visible on the locked fact.
+6. Final-fact gating on episode resolution confirmed.
+7. No ingots as rewards confirmed.
+8. Completion cassette slots stay reserved (Dot's ships now with her existing clip).
+9. Mrs. Vale: no dossier for now.</p>
+<p><strong>Build (same day):</strong> <code>DossierCatalog</code> / <code>DossierService</code> / <code>DossierPopup</code> +
+<code>AllyDossierEntry</code> in <code>Assets/Scripts/UI/Dossiers/</code>; CASE FILE button on the
+profile modal; Ally's file opens from the HUD bust; QA menu under AQ/QA/Dossiers.</p>
+</blockquote>
+<p>Stephen's pitch: a bio per character, progressively unlocked with CaseCash, each
+reveal carrying bible facts plus a reward; completing every dossier is the
+long-tail side quest. Diegetic frame: these are ALLY'S CASE FILES on the people
+of Havenbay — an investigator keeps dossiers; the player is reading hers.</p>
 <h2>Design</h2>
-<div class=sp></div>
 <ul>
-<li><b>Entry points:</b> the character profile modal (evidence board polaroids) gains</li>
+<li><strong>Entry points:</strong> the character profile modal (evidence board polaroids) gains
+  a CASE FILE button opening a dedicated dossier popup. Ally's own dossier opens
+  from her HUD bust (previously tap-dead).</li>
+<li><strong>Structure per character:</strong> one free intro line + a VARIABLE number of locked
+  facts (Ep1 ships 4 each, Vera 3 — deliberately a thinner file, and future
+  characters may run longer or shorter). The popup shows every unlocked entry
+  plus ONLY the next locked fact. Escalating prices <strong>50 CC per step, capped at
+  300 CC</strong> (Ep1: 50 / 100 / 150 / 200; 500 CC per full dossier).</li>
+<li><strong>Rewards:</strong> items and Case Kit specials ONLY, themed to the character.
+  <strong>No energy ever</strong> (CC→energy ban) and <strong>no ingots in v1</strong> (a CC→premium
+  conversion would leak against IAP). Calibration rule: reward shop-value ≤
+  half the fact price — the player pays for the lore; the reward is a thank-you.</li>
+<li><strong>Spoiler gating:</strong> each character's final fact needs <code>e1.phase1.complete</code>+
+  episode resolution (<code>aq.lead.e1_close.seen</code>) in addition to CC — keeps
+  case-outcome facts safe and gives dossiers life after the credits. Season-arc
+  material (Ferryman, the truth about Thomas) NEVER appears in Ep1 dossiers.</li>
+<li><strong>Completion reward:</strong> finishing a dossier grants that character's
+  <strong>Tip-Line Cassette</strong> — their voice as a keepsake. Dot's exists today (her
+  goodnight); Mo/Del/Gerald cassettes ride the VO recording queue; until a
+  clip exists the completion grants the listed special and reserves the
+  cassette slot ("tape pending" state).</li>
+<li><strong>Economy shape:</strong> full Ep1 set = 2,800 CC. Deliberately MORE than one
+  episode's income after shop and locker spending — completing the wall is a
+  long-tail goal, not a day-one checkbox.</li>
+<li><strong>Persistence:</strong> PlayerPrefs JSON (precedent: specials, shop); flagged for
+  the eventual save-aggregate consolidation pass alongside them.</li>
+<li><strong>Analytics:</strong> <code>dossier_fact_unlocked</code> (character, index, price, balance).</li>
 </ul>
-<p>  a DOSSIER section under &quot;Appears in N scenes&quot;. Ally&#x27;s own dossier opens from</p>
-<p>  her HUD bust (currently tap-dead).</p>
-<ul>
-<li><b>Structure per character:</b> one free intro line + 4 locked FACTS (Vera: 3 —</li>
-</ul>
-<p>  she is deliberately a smaller file). Escalating prices **50 / 100 / 150 / 200</p>
-<p>  CC** (500 CC per full dossier).</p>
-<ul>
-<li><b>Rewards:</b> items and Case Kit specials ONLY, themed to the character.</li>
-</ul>
-<p>  <b>No energy ever</b> (CC→energy ban) and <b>no ingots in v1</b> (a CC→premium</p>
-<p>  conversion would leak against IAP). Calibration rule: reward shop-value ≤</p>
-<p>  half the fact price — the player pays for the lore; the reward is a thank-you.</p>
-<ul>
-<li><b>Spoiler gating:</b> each character&#x27;s final fact needs <code>e1.phase1.complete</code>+</li>
-</ul>
-<p>  episode resolution (<code>aq.lead.e1_close.seen</code>) in addition to CC — keeps</p>
-<p>  case-outcome facts safe and gives dossiers life after the credits. Season-arc</p>
-<p>  material (Ferryman, the truth about Thomas) NEVER appears in Ep1 dossiers.</p>
-<ul>
-<li><b>Completion reward:</b> finishing a dossier grants that character&#x27;s</li>
-</ul>
-<p>  <b>Tip-Line Cassette</b> — their voice as a keepsake. Dot&#x27;s exists today (her</p>
-<p>  goodnight); Mo/Del/Gerald cassettes ride the VO recording queue; until a</p>
-<p>  clip exists the completion grants the listed special and reserves the</p>
-<p>  cassette slot (&quot;tape pending&quot; state).</p>
-<ul>
-<li><b>Economy shape:</b> full Ep1 set = 2,800 CC. Deliberately MORE than one</li>
-</ul>
-<p>  episode&#x27;s income after shop and locker spending — completing the wall is a</p>
-<p>  long-tail goal, not a day-one checkbox.</p>
-<ul>
-<li><b>Persistence:</b> PlayerPrefs JSON (precedent: specials, shop); flagged for</li>
-</ul>
-<p>  the eventual save-aggregate consolidation pass alongside them.</p>
-<ul>
-<li><b>Analytics:</b> <code>dossier_fact_unlocked</code> (character, index, price, balance).</li>
-</ul>
-<div class=sp></div>
-<p><b>Writing rules for facts:</b> 1–3 sentences, noir register, no em dashes, no</p>
-<p>exclamation marks, Ep1-spoiler-safe. Every line below is bible-sourced;</p>
-<p>anything that adds connective tissue beyond the bible is flagged</p>
-<p><b>[INVENTION — approve/edit/cut]</b>.</p>
-<div class=sp></div>
-<hr>
-<div class=sp></div>
+<p><strong>Writing rules for facts:</strong> 1–3 sentences, noir register, no em dashes, no
+exclamation marks, Ep1-spoiler-safe. Every line below is bible-sourced;
+anything that adds connective tissue beyond the bible is flagged
+<strong>[INVENTION — approve/edit/cut]</strong>.</p>
+<hr />
 <h2>Ep1 fact sets (the actual content, for approval)</h2>
-<div class=sp></div>
 <h3>ALLY QUINN — free intro</h3>
-<p><i>Host of Echoes of Havenbay. Licensed investigator. Tells the city what it won&#x27;t tell itself.</i></p>
-<div class=sp></div>
+<p><em>Host of Echoes of Havenbay. Licensed investigator. Tells the city what it won't tell itself.</em></p>
 <table>
-<tr><td>#</td><td>CC</td><td>Fact</td><td>Reward</td></tr>
-<tr><td>1</td><td>50</td><td>Born March 30th. An Aries, which Gerald says explains everything and excuses nothing. <b>[INVENTION: the Gerald quip]</b></td><td>Coffee and Donut (food T3)</td></tr>
-<tr><td>2</td><td>100</td><td>The silver locket she never takes off holds a photo of her father. Thomas Quinn wrote for the Gazette. He died when she was thirteen.</td><td>Recorder &amp; Headphones (audio T3)</td></tr>
-<tr><td>3</td><td>150</td><td>Her favourite film is Spotlight. Her favourite food is pancakes at a late-night diner. She maintains these are professional influences. <b>[INVENTION: last line]</b></td><td>Box Knife (special)</td></tr>
-<tr><td>4</td><td>200 · gated</td><td>The PI licence is real. She just knows that people talk to a podcaster long before they talk to an investigator.</td><td>Search Warrant (special)</td></tr>
-<tr><td>✔</td><td>—</td><td>Completion: Carbon Copy + cassette slot reserved (Ally cassette TBD — her voice is the show itself; maybe the pilot episode stinger?)</td><td></td></tr>
+<thead>
+<tr>
+<th>#</th>
+<th>CC</th>
+<th>Fact</th>
+<th>Reward</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>50</td>
+<td>Born March 30th. An Aries, which Gerald says explains everything and excuses nothing. <strong>[INVENTION: the Gerald quip]</strong></td>
+<td>Coffee and Donut (food T3)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>100</td>
+<td>The silver locket she never takes off holds a photo of her father. Thomas Quinn wrote for the Gazette. He died when she was thirteen.</td>
+<td>Recorder &amp; Headphones (audio T3)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>150</td>
+<td>Her favourite film is Spotlight. Her favourite food is pancakes at a late-night diner. She maintains these are professional influences. <strong>[INVENTION: last line]</strong></td>
+<td>Box Knife (special)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>200 · gated</td>
+<td>The PI licence is real. She just knows that people talk to a podcaster long before they talk to an investigator.</td>
+<td>Search Warrant (special)</td>
+</tr>
+<tr>
+<td>✔</td>
+<td>—</td>
+<td>Completion: Carbon Copy + cassette slot reserved (Ally cassette TBD — her voice is the show itself; maybe the pilot episode stinger?)</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-<div class=sp></div>
 <h3>GERALD QUINN — free intro</h3>
-<p><i>Retired Brookford PD detective. Ally&#x27;s grandfather, first reader, and favourite bad influence.</i></p>
-<div class=sp></div>
+<p><em>Retired Brookford PD detective. Ally's grandfather, first reader, and favourite bad influence.</em></p>
 <table>
-<tr><td>#</td><td>CC</td><td>Fact</td><td>Reward</td></tr>
-<tr><td>1</td><td>50</td><td>Thirty years a detective. He taught Ally what to write down, when to shut up, and how to spot a lie.</td><td>Beer Bottle (bar T4)</td></tr>
-<tr><td>2</td><td>100</td><td>The corner booth at the Rusty Anchor is held for him without asking. The older dockhands remember what kind of cop he was, and that credit extends to Ally.</td><td>Wine Glass Red (bar T5)</td></tr>
-<tr><td>3</td><td>150</td><td>The teal suit and the magenta shirt are not a phase. He says a detective should be memorable to friends and forgettable to suspects, and refuses to explain further. <b>[INVENTION: the sayings]</b></td><td>Bolt Cutters (special)</td></tr>
-<tr><td>4</td><td>200 · gated</td><td>He checks Ally&#x27;s ribs when he hugs her. Old habit. He has been inspecting her for damage since she was thirteen. <b>[INVENTION: extends the L4 rib-check canon into a habit]</b></td><td>Carbon Copy (special)</td></tr>
-<tr><td>✔</td><td>—</td><td>Completion: cassette slot reserved (Gerald VO pending) + Skeleton Key</td><td></td></tr>
+<thead>
+<tr>
+<th>#</th>
+<th>CC</th>
+<th>Fact</th>
+<th>Reward</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>50</td>
+<td>Thirty years a detective. He taught Ally what to write down, when to shut up, and how to spot a lie.</td>
+<td>Beer Bottle (bar T4)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>100</td>
+<td>The corner booth at the Rusty Anchor is held for him without asking. The older dockhands remember what kind of cop he was, and that credit extends to Ally.</td>
+<td>Wine Glass Red (bar T5)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>150</td>
+<td>The teal suit and the magenta shirt are not a phase. He says a detective should be memorable to friends and forgettable to suspects, and refuses to explain further. <strong>[INVENTION: the sayings]</strong></td>
+<td>Bolt Cutters (special)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>200 · gated</td>
+<td>He checks Ally's ribs when he hugs her. Old habit. He has been inspecting her for damage since she was thirteen. <strong>[INVENTION: extends the L4 rib-check canon into a habit]</strong></td>
+<td>Carbon Copy (special)</td>
+</tr>
+<tr>
+<td>✔</td>
+<td>—</td>
+<td>Completion: cassette slot reserved (Gerald VO pending) + Skeleton Key</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-<div class=sp></div>
 <h3>MO CALLAHAN — free intro</h3>
-<p><i>Owner of the Rusty Anchor. Keeper of the neutral ground and everything said across it.</i></p>
-<div class=sp></div>
+<p><em>Owner of the Rusty Anchor. Keeper of the neutral ground and everything said across it.</em></p>
 <table>
-<tr><td>#</td><td>CC</td><td>Fact</td><td>Reward</td></tr>
-<tr><td>1</td><td>50</td><td>Third generation behind the bar. Patrick Callahan opened the doors in 1924; her father Seamus salvaged a shipwreck anchor, bolted it by the door, and renamed the place around it.</td><td>Tall Glass Orange (bar T3)</td></tr>
-<tr><td>2</td><td>100</td><td>House rule older than she is: violence goes outside, whoever you are. Everyone trusts the rule. That is why Mo hears everything.</td><td>Champagne Flute (bar T6)</td></tr>
-<tr><td>3</td><td>150</td><td>She calls exactly one person &quot;my lovely&quot; at a time and rations it like the good whiskey. <b>[INVENTION: the rationing line — bible says the endearment is hers, exclusivity per person is new]</b></td><td>Box Knife (special)</td></tr>
-<tr><td>4</td><td>200 · gated</td><td>Upstairs, behind a locked door: ledgers, old matchbooks, and a shoebox of favours owed. Mo collects debts patiently, the way the tide does. <b>[INVENTION: the simile]</b></td><td>Evidence Tag (special)</td></tr>
-<tr><td>✔</td><td>—</td><td>Completion: Mo cassette (VO pending) + Search Warrant</td><td></td></tr>
+<thead>
+<tr>
+<th>#</th>
+<th>CC</th>
+<th>Fact</th>
+<th>Reward</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>50</td>
+<td>Third generation behind the bar. Patrick Callahan opened the doors in 1924; her father Seamus salvaged a shipwreck anchor, bolted it by the door, and renamed the place around it.</td>
+<td>Tall Glass Orange (bar T3)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>100</td>
+<td>House rule older than she is: violence goes outside, whoever you are. Everyone trusts the rule. That is why Mo hears everything.</td>
+<td>Champagne Flute (bar T6)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>150</td>
+<td>She calls exactly one person "my lovely" at a time and rations it like the good whiskey. <strong>[INVENTION: the rationing line — bible says the endearment is hers, exclusivity per person is new]</strong></td>
+<td>Box Knife (special)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>200 · gated</td>
+<td>Upstairs, behind a locked door: ledgers, old matchbooks, and a shoebox of favours owed. Mo collects debts patiently, the way the tide does. <strong>[INVENTION: the simile]</strong></td>
+<td>Evidence Tag (special)</td>
+</tr>
+<tr>
+<td>✔</td>
+<td>—</td>
+<td>Completion: Mo cassette (VO pending) + Search Warrant</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-<div class=sp></div>
 <h3>DEL CRUZ — free intro</h3>
-<p><i>Sergeant, Harbor Ward precinct. Calls Ally &quot;Quinny&quot;. Nobody else is allowed.</i></p>
-<div class=sp></div>
+<p><em>Sergeant, Harbor Ward precinct. Calls Ally "Quinny". Nobody else is allowed.</em></p>
 <table>
-<tr><td>#</td><td>CC</td><td>Fact</td><td>Reward</td></tr>
-<tr><td>1</td><td>50</td><td>The kestrel on her right wrist points home to Kestrel Point. The Saint Michael medallion hangs on its own chain, never the one with the badge.</td><td>Evidence Bag (forensic T2)</td></tr>
-<tr><td>2</td><td>100</td><td>Her table outside the Kestrel Corner Diner has the best sightlines on the street. Back to the wall, eyes on the crossing and everyone&#x27;s hands. Coffee makes you a friend at that table.</td><td>Hot Coffee Cup (food T2)</td></tr>
-<tr><td>3</td><td>150</td><td>At twenty-three, a rookie constable, she stood on the Quinn doorstep the night Thomas died. Ally was thirteen. Del has been quietly watching out for her ever since.</td><td>Search Warrant (special)</td></tr>
-<tr><td>4</td><td>200 · gated</td><td>She bends rules the way a locksmith bends wire: precisely, quietly, and only for doors that should never have been locked. <b>[INVENTION: the whole line — a character thesis, please rule]</b></td><td>Skeleton Key (special)</td></tr>
-<tr><td>✔</td><td>—</td><td>Completion: Del cassette (VO pending) + Bolt Cutters</td><td></td></tr>
+<thead>
+<tr>
+<th>#</th>
+<th>CC</th>
+<th>Fact</th>
+<th>Reward</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>50</td>
+<td>The kestrel on her right wrist points home to Kestrel Point. The Saint Michael medallion hangs on its own chain, never the one with the badge.</td>
+<td>Evidence Bag (forensic T2)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>100</td>
+<td>Her table outside the Kestrel Corner Diner has the best sightlines on the street. Back to the wall, eyes on the crossing and everyone's hands. Coffee makes you a friend at that table.</td>
+<td>Hot Coffee Cup (food T2)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>150</td>
+<td>At twenty-three, a rookie constable, she stood on the Quinn doorstep the night Thomas died. Ally was thirteen. Del has been quietly watching out for her ever since.</td>
+<td>Search Warrant (special)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>200 · gated</td>
+<td>She bends rules the way a locksmith bends wire: precisely, quietly, and only for doors that should never have been locked. <strong>[INVENTION: the whole line — a character thesis, please rule]</strong></td>
+<td>Skeleton Key (special)</td>
+</tr>
+<tr>
+<td>✔</td>
+<td>—</td>
+<td>Completion: Del cassette (VO pending) + Bolt Cutters</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-<div class=sp></div>
 <h3>DOT ELLIS — free intro</h3>
-<p><i>Retired school cleaner, Rivermouth. For three years she said goodnight to the whole city, one voicemail at a time.</i></p>
-<div class=sp></div>
+<p><em>Retired school cleaner, Rivermouth. For three years she said goodnight to the whole city, one voicemail at a time.</em></p>
 <table>
-<tr><td>#</td><td>CC</td><td>Fact</td><td>Reward</td></tr>
-<tr><td>1</td><td>50</td><td>Thirty years cleaning the Chandler Road school. She knows every floorboard in Rivermouth and precisely which gulls are troublemakers. <b>[INVENTION: the gull census]</b></td><td>Paper Cup (food T1)</td></tr>
-<tr><td>2</td><td>100</td><td>Tuesday quiz night at the Rusty Anchor, table six. She has never once missed it.</td><td>Tall Glass Orange (bar T3)</td></tr>
-<tr><td>3</td><td>150</td><td>The garden behind the blue gate is the most loved thing on Chandler Road. Hollyhocks, roses, and a fence you could walk with your eyes shut.</td><td>Coffee and Donut (food T3)</td></tr>
-<tr><td>4</td><td>200 · gated</td><td>She went out through the allotments and caught the first bus of the morning, and told nobody, to keep her sister out of it. Brave, dry, and allergic to fuss.</td><td>Evidence Tag (special)</td></tr>
-<tr><td>✔</td><td>—</td><td>Completion: <b>Dot&#x27;s cassette — SHIPS TODAY</b> (her goodnight voicemail already exists as a clip)</td><td></td></tr>
+<thead>
+<tr>
+<th>#</th>
+<th>CC</th>
+<th>Fact</th>
+<th>Reward</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>50</td>
+<td>Thirty years cleaning the Chandler Road school. She knows every floorboard in Rivermouth and precisely which gulls are troublemakers. <strong>[INVENTION: the gull census]</strong></td>
+<td>Paper Cup (food T1)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>100</td>
+<td>Tuesday quiz night at the Rusty Anchor, table six. She has never once missed it.</td>
+<td>Tall Glass Orange (bar T3)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>150</td>
+<td>The garden behind the blue gate is the most loved thing on Chandler Road. Hollyhocks, roses, and a fence you could walk with your eyes shut.</td>
+<td>Coffee and Donut (food T3)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>200 · gated</td>
+<td>She went out through the allotments and caught the first bus of the morning, and told nobody, to keep her sister out of it. Brave, dry, and allergic to fuss.</td>
+<td>Evidence Tag (special)</td>
+</tr>
+<tr>
+<td>✔</td>
+<td>—</td>
+<td>Completion: <strong>Dot's cassette — SHIPS TODAY</strong> (her goodnight voicemail already exists as a clip)</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-<div class=sp></div>
 <h3>VERA — free intro (3 facts; a deliberately thin file)</h3>
-<p><i>Dot&#x27;s sister. Larkhill, the hill cottage. Says hello, which for Vera is a parade.</i></p>
-<div class=sp></div>
+<p><em>Dot's sister. Larkhill, the hill cottage. Says hello, which for Vera is a parade.</em></p>
 <table>
-<tr><td>#</td><td>CC</td><td>Fact</td><td>Reward</td></tr>
-<tr><td>1</td><td>50</td><td>The hill cottage above Larkhill: one kettle, two chairs, and a view worth the climb. <b>[INVENTION: the inventory]</b></td><td>Hot Coffee Cup (food T2)</td></tr>
-<tr><td>2</td><td>100</td><td>She and Dot speak in a shorthand fifty years deep. Half their sentences do not need finishing. <b>[INVENTION: whole line, though it dramatizes established sisterhood]</b></td><td>Wine Glass Red (bar T5)</td></tr>
-<tr><td>3</td><td>150 · gated</td><td>When Dot needed to disappear, Vera asked no questions. That is the entire family style.</td><td>Bolt Cutters (special)</td></tr>
-<tr><td>✔</td><td>—</td><td>Completion: cassette slot reserved (Vera VO pending) + Carbon Copy</td><td></td></tr>
+<thead>
+<tr>
+<th>#</th>
+<th>CC</th>
+<th>Fact</th>
+<th>Reward</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>50</td>
+<td>The hill cottage above Larkhill: one kettle, two chairs, and a view worth the climb. <strong>[INVENTION: the inventory]</strong></td>
+<td>Hot Coffee Cup (food T2)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>100</td>
+<td>She and Dot speak in a shorthand fifty years deep. Half their sentences do not need finishing. <strong>[INVENTION: whole line, though it dramatizes established sisterhood]</strong></td>
+<td>Wine Glass Red (bar T5)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>150 · gated</td>
+<td>When Dot needed to disappear, Vera asked no questions. That is the entire family style.</td>
+<td>Bolt Cutters (special)</td>
+</tr>
+<tr>
+<td>✔</td>
+<td>—</td>
+<td>Completion: cassette slot reserved (Vera VO pending) + Carbon Copy</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-<div class=sp></div>
-<hr>
-<div class=sp></div>
-<h2>Open rulings</h2>
-<div class=sp></div>
-<ul>
-<li>The <b>[INVENTION]</b> lines: approve, edit, or cut each (nine total).</li>
-<li>Reward visibility: show the reward on locked facts (collection-book style) or</li>
-</ul>
-<p>   keep it a surprise? (Recommend: show it — it sells the unlock.)</p>
-<ul>
-<li>Final-fact gating on episode completion: confirm.</li>
-<li>Prices 50/100/150/200 and the no-ingots rule: confirm.</li>
-<li>Ally&#x27;s completion cassette: what IS a cassette of the host? (Pilot stinger?</li>
-</ul>
-<p>   Thomas&#x27;s old voicemail, someday? Happy to leave slot reserved.)</p>
-<ul>
-<li>Mrs. Vale: no dossier in v1 (non-speaking). Confirm.</li>
-</ul>
-<div class=sp></div></body></html>
+<hr />
+<h2>Rulings — CLOSED 2026-08-11</h2>
+<p>All six open rulings answered by Stephen; see the banner at the top of this
+document. Nothing here remains open. Future work notes: Ally's completion
+cassette concept still wants an idea (pilot stinger? Thomas's old voicemail,
+someday); Mo/Del/Gerald/Vera cassettes ride the VO recording queue.</p></body></html>

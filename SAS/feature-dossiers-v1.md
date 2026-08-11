@@ -1,4 +1,20 @@
-# Character Dossiers ("Case Files") — design sketch v1 + Ep1 fact sets (2026-08-11, for Stephen's markup)
+# Character Dossiers ("Case Files") — design v1 + Ep1 fact sets — **RULED & BUILT 2026-08-11**
+
+> **Stephen's rulings (2026-08-11), all applied:**
+> 1. "Appears in N scenes" REMOVED from the profile modal — meta copy breaks the fiction.
+> 2. NO fixed fact count — characters may have many facts or few; the UI only ever
+>    shows the NEXT available locked fact, never a full locked list.
+> 3. Prices: escalating 50/100/150/200 stands, any price CAPPED AT 300 CC for now.
+> 4. All nine [INVENTION] lines approved as written.
+> 5. Rewards ARE visible on the locked fact.
+> 6. Final-fact gating on episode resolution confirmed.
+> 7. No ingots as rewards confirmed.
+> 8. Completion cassette slots stay reserved (Dot's ships now with her existing clip).
+> 9. Mrs. Vale: no dossier for now.
+>
+> **Build (same day):** `DossierCatalog` / `DossierService` / `DossierPopup` +
+> `AllyDossierEntry` in `Assets/Scripts/UI/Dossiers/`; CASE FILE button on the
+> profile modal; Ally's file opens from the HUD bust; QA menu under AQ/QA/Dossiers.
 
 Stephen's pitch: a bio per character, progressively unlocked with CaseCash, each
 reveal carrying bible facts plus a reward; completing every dossier is the
@@ -8,11 +24,13 @@ of Havenbay — an investigator keeps dossiers; the player is reading hers.
 ## Design
 
 - **Entry points:** the character profile modal (evidence board polaroids) gains
-  a DOSSIER section under "Appears in N scenes". Ally's own dossier opens from
-  her HUD bust (currently tap-dead).
-- **Structure per character:** one free intro line + 4 locked FACTS (Vera: 3 —
-  she is deliberately a smaller file). Escalating prices **50 / 100 / 150 / 200
-  CC** (500 CC per full dossier).
+  a CASE FILE button opening a dedicated dossier popup. Ally's own dossier opens
+  from her HUD bust (previously tap-dead).
+- **Structure per character:** one free intro line + a VARIABLE number of locked
+  facts (Ep1 ships 4 each, Vera 3 — deliberately a thinner file, and future
+  characters may run longer or shorter). The popup shows every unlocked entry
+  plus ONLY the next locked fact. Escalating prices **50 CC per step, capped at
+  300 CC** (Ep1: 50 / 100 / 150 / 200; 500 CC per full dossier).
 - **Rewards:** items and Case Kit specials ONLY, themed to the character.
   **No energy ever** (CC→energy ban) and **no ingots in v1** (a CC→premium
   conversion would leak against IAP). Calibration rule: reward shop-value ≤
@@ -109,13 +127,9 @@ anything that adds connective tissue beyond the bible is flagged
 
 ---
 
-## Open rulings
+## Rulings — CLOSED 2026-08-11
 
-1. The **[INVENTION]** lines: approve, edit, or cut each (nine total).
-2. Reward visibility: show the reward on locked facts (collection-book style) or
-   keep it a surprise? (Recommend: show it — it sells the unlock.)
-3. Final-fact gating on episode completion: confirm.
-4. Prices 50/100/150/200 and the no-ingots rule: confirm.
-5. Ally's completion cassette: what IS a cassette of the host? (Pilot stinger?
-   Thomas's old voicemail, someday? Happy to leave slot reserved.)
-6. Mrs. Vale: no dossier in v1 (non-speaking). Confirm.
+All six open rulings answered by Stephen; see the banner at the top of this
+document. Nothing here remains open. Future work notes: Ally's completion
+cassette concept still wants an idea (pilot stinger? Thomas's old voicemail,
+someday); Mo/Del/Gerald/Vera cassettes ride the VO recording queue.

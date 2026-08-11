@@ -16,9 +16,10 @@ namespace AQ.App.UI.EvidenceBoard
         public static bool IsOpen => _root != null;
 
         public static void Show(LeadData lead, List<LeadData> relatedLeads, Action<LeadData> onReplay,
-                                string displayName = null)
+                                string displayName = null, string characterKey = null)
         {
             if (_root != null) return;
+            bool hasDossier = Dossiers.DossierService.Has(characterKey);
 
             _root = new GameObject("__CharProfile", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             UnityEngine.Object.DontDestroyOnLoad(_root);
@@ -41,7 +42,8 @@ namespace AQ.App.UI.EvidenceBoard
 
             // Panel — sized to content
             var leads     = relatedLeads ?? new List<LeadData> { lead };
-            float panelH  = 20f + 220f + 18f + 64f + 12f + 80f + 20f + 2f + 18f + leads.Count * 92f + 92f + 24f;
+            float panelH  = 20f + 220f + 18f + 64f + 20f + 2f + 18f
+                          + (hasDossier ? 92f : 0f) + leads.Count * 92f + 92f + 24f;
             float panelW  = 640f;
 
             var panel             = MakeRect("Panel", _root.transform);
@@ -74,23 +76,25 @@ namespace AQ.App.UI.EvidenceBoard
             nameTmp.color       = Color.white;
             nameTmp.alignment   = TextAlignmentOptions.Center;
             nameTmp.raycastTarget = false;
-            cursor -= 64f + 12f;
-
-            // Role line: scene count, not the lead's subtitle (2026-08-11 fix —
-            // per-character role copy is a future bible pull).
-            var roleRt     = PlaceRect("Role", panel, new Vector2(panelW - 40f, 80f), new Vector2(0f, cursor - 40f));
-            var roleTmp    = roleRt.gameObject.AddComponent<TextMeshProUGUI>();
-            roleTmp.text   = leads.Count == 1 ? "Appears in 1 scene" : $"Appears in {leads.Count} scenes";
-            roleTmp.fontSize    = 26f;
-            roleTmp.color       = new Color(0.72f, 0.68f, 0.64f, 1f);
-            roleTmp.alignment   = TextAlignmentOptions.Center;
-            roleTmp.raycastTarget = false;
-            cursor -= 80f + 20f;
+            cursor -= 64f + 20f;
+            // (No role/scene-count line — Stephen-ruled 2026-08-11: meta copy
+            // breaks the fiction. Character role copy is a future bible pull.)
 
             // Divider
             var div       = PlaceRect("Divider", panel, new Vector2(panelW - 60f, 2f), new Vector2(0f, cursor - 1f));
             div.gameObject.AddComponent<Image>().color = new Color(0.35f, 0.30f, 0.25f, 1f);
             cursor -= 2f + 18f;
+
+            // Case file — Ally's dossier on this character
+            if (hasDossier)
+            {
+                var fileBtn = PlaceButton("Case File", panel, new Color(0.55f, 0.40f, 0.16f, 1f),
+                                          new Vector2(panelW - 60f, 80f), new Vector2(0f, cursor - 40f));
+                var keyCap  = characterKey;
+                var portCap = lead.actorPortrait;
+                fileBtn.onClick.AddListener(() => { Close(); Dossiers.DossierPopup.Show(keyCap, portCap); });
+                cursor -= 80f + 12f;
+            }
 
             // Replay buttons
             foreach (var rl in leads)
