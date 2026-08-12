@@ -158,19 +158,35 @@ namespace AQ.App.UI.Board
             var panelBtn = panel.gameObject.AddComponent<Button>();
             panelBtn.transition = Selectable.Transition.None;
 
-            AddLabel(panel, "EVIDENCE LOCKER", 56f, AQTheme.Paper, new Vector2(0f, 430f), new Vector2(860f, 80f), display: true);
-            AddLabel(panel, "Stash items and generators off the board. Tap to bring them back.",
-                     26f, AQTheme.PaperDim, new Vector2(0f, 368f), new Vector2(860f, 44f));
+            // Safe icon watermark behind the slots — same 40% read as the grid
+            // backdrop (Stephen-ruled 2026-08-12).
+            var markSprite = Resources.Load<Sprite>("App/UI/Icons/ui_btn_locker");
+            if (markSprite != null)
+            {
+                var mark = MakeRect("Watermark", panel);
+                mark.anchorMin        = mark.anchorMax = new Vector2(0.5f, 0.5f);
+                mark.pivot            = new Vector2(0.5f, 0.5f);
+                mark.sizeDelta        = new Vector2(680f, 680f);
+                mark.anchoredPosition = new Vector2(0f, -60f);
+                var mImg              = mark.gameObject.AddComponent<Image>();
+                mImg.sprite           = markSprite;
+                mImg.preserveAspect   = true;
+                mImg.raycastTarget    = false;
+                mImg.color            = new Color(1f, 1f, 1f, 0.4f);
+            }
 
             _grid = MakeRect("Grid", panel);
             _grid.anchorMin        = new Vector2(0.5f, 0.5f);
             _grid.anchorMax        = new Vector2(0.5f, 0.5f);
             _grid.pivot            = new Vector2(0.5f, 1f);
             _grid.sizeDelta        = new Vector2((SlotSize + SlotGap) * Columns, 700f);
-            _grid.anchoredPosition = new Vector2(0f, 330f);
+            _grid.anchoredPosition = new Vector2(0f, 300f);
 
-            var close = MakeButton(panel, "CLOSE", AQTheme.AlertRed, new Vector2(0f, -430f), new Vector2(280f, 90f));
-            close.onClick.AddListener(Close);
+            // Title bar restyle (Stephen-ruled 2026-08-12): X close + ? help in
+            // the bar; the instruction line moved behind the ? and the bottom
+            // CLOSE button retired (dim-tap still closes too).
+            AQTheme.TitleBar(panel, "EVIDENCE LOCKER", Close,
+                "Stash items and generators off the board. Tap an item to bring it back. Buy extra slots with CaseCash.");
         }
 
         private static void Refresh()
@@ -229,14 +245,14 @@ namespace AQ.App.UI.Board
                     var b = cell.gameObject.AddComponent<Button>();
                     AQTheme.StyleButton(img, AQTheme.Teal);
                     int price = EvidenceLockerService.NextSlotPrice;
-                    AddLabel(cell, $"+ SLOT\n{price} CC", 30f, AQTheme.Paper, Vector2.zero, new Vector2(SlotSize, SlotSize), display: true);
+                    AddLabel(cell, $"+ SLOT\n{price} CC", 38f, AQTheme.Paper, Vector2.zero, new Vector2(SlotSize, SlotSize), display: true);
                     b.onClick.AddListener(BuySlot);
                 }
                 else
                 {
                     // Locked (future slot).
                     AQTheme.Round(img, AQTheme.PanelLine);
-                    AddLabel(cell, "LOCKED", 24f, AQTheme.PaperDim, Vector2.zero, new Vector2(SlotSize, 40f));
+                    AddLabel(cell, "LOCKED", 32f, AQTheme.PaperDim, Vector2.zero, new Vector2(SlotSize, 48f));
                 }
             }
         }

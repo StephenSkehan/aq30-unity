@@ -183,6 +183,111 @@ namespace AQ.App.UI
             body.GetComponent<Image>().raycastTarget = false;
         }
 
+        /// <summary>
+        /// Distinct-tone title bar across a popup panel's top (Stephen-ruled
+        /// 2026-08-12): centred display title, X close button on the right,
+        /// and an optional ? button on the left that toggles a help strip
+        /// below the bar — instructional copy lives behind the ?, not as
+        /// clutter on the main surface. Call AFTER StylePanel; add content
+        /// beneath the bar's height.
+        /// </summary>
+        public static RectTransform TitleBar(RectTransform panel, string title,
+            UnityEngine.Events.UnityAction onClose, string helpText = null, float height = 96f)
+        {
+            var bar = new GameObject("TitleBar", typeof(RectTransform), typeof(Image));
+            bar.transform.SetParent(panel, false);
+            var rt       = (RectTransform)bar.transform;
+            rt.anchorMin = new Vector2(0f, 1f);
+            rt.anchorMax = new Vector2(1f, 1f);
+            rt.pivot     = new Vector2(0.5f, 1f);
+            rt.offsetMin = new Vector2(3f, -height - 3f);
+            rt.offsetMax = new Vector2(-3f, -3f);
+            Round(bar.GetComponent<Image>(), SteelDim); // distinct tone vs the Panel body
+
+            var titleGo = new GameObject("Title", typeof(RectTransform));
+            titleGo.transform.SetParent(rt, false);
+            var trt       = (RectTransform)titleGo.transform;
+            trt.anchorMin = Vector2.zero;
+            trt.anchorMax = Vector2.one;
+            trt.offsetMin = new Vector2(84f, 0f);   // clear the corner buttons
+            trt.offsetMax = new Vector2(-84f, 0f);
+            var tmp           = titleGo.AddComponent<TextMeshProUGUI>();
+            tmp.text          = title;
+            tmp.fontSize      = 42f;
+            tmp.color         = Paper;
+            tmp.alignment     = TextAlignmentOptions.Center;
+            tmp.raycastTarget = false;
+            StyleText(tmp, display: true);
+
+            if (onClose != null)
+            {
+                var x = BarButton(rt, new Vector2(1f, 0.5f), new Vector2(-16f, 0f));
+                AddDrawnX((RectTransform)x.transform, Color.white, 30f, 6f);
+                x.onClick.AddListener(onClose);
+            }
+
+            if (!string.IsNullOrEmpty(helpText))
+            {
+                // Hidden help strip just under the bar; the ? toggles it.
+                var strip = new GameObject("HelpStrip", typeof(RectTransform), typeof(Image));
+                strip.transform.SetParent(panel, false);
+                var srt       = (RectTransform)strip.transform;
+                srt.anchorMin = new Vector2(0f, 1f);
+                srt.anchorMax = new Vector2(1f, 1f);
+                srt.pivot     = new Vector2(0.5f, 1f);
+                srt.offsetMin = new Vector2(12f, -height - 9f - 118f);
+                srt.offsetMax = new Vector2(-12f, -height - 9f);
+                Round(strip.GetComponent<Image>(), Card);
+
+                var txtGo = new GameObject("Text", typeof(RectTransform));
+                txtGo.transform.SetParent(srt, false);
+                var xrt       = (RectTransform)txtGo.transform;
+                xrt.anchorMin = Vector2.zero;
+                xrt.anchorMax = Vector2.one;
+                xrt.offsetMin = new Vector2(20f, 10f);
+                xrt.offsetMax = new Vector2(-20f, -10f);
+                var htmp           = txtGo.AddComponent<TextMeshProUGUI>();
+                htmp.text          = helpText;
+                htmp.fontSize      = 26f;
+                htmp.color         = PaperDim;
+                htmp.alignment     = TextAlignmentOptions.Center;
+                htmp.raycastTarget = false;
+                StyleText(htmp);
+                strip.SetActive(false);
+
+                var help = BarButton(rt, new Vector2(0f, 0.5f), new Vector2(16f, 0f));
+                var qGo  = new GameObject("Q", typeof(RectTransform));
+                qGo.transform.SetParent(help.transform, false);
+                var qrt       = (RectTransform)qGo.transform;
+                qrt.anchorMin = Vector2.zero;
+                qrt.anchorMax = Vector2.one;
+                qrt.offsetMin = qrt.offsetMax = Vector2.zero;
+                var qtmp           = qGo.AddComponent<TextMeshProUGUI>();
+                qtmp.text          = "?";
+                qtmp.fontSize      = 38f;
+                qtmp.color         = Color.white;
+                qtmp.alignment     = TextAlignmentOptions.Center;
+                qtmp.raycastTarget = false;
+                StyleText(qtmp, display: true);
+                help.onClick.AddListener(() => strip.SetActive(!strip.activeSelf));
+            }
+
+            return rt;
+        }
+
+        private static Button BarButton(RectTransform bar, Vector2 sideAnchor, Vector2 offset)
+        {
+            var go = new GameObject("BarBtn", typeof(RectTransform), typeof(Image), typeof(Button));
+            go.transform.SetParent(bar, false);
+            var rt              = (RectTransform)go.transform;
+            rt.anchorMin        = rt.anchorMax = sideAnchor;
+            rt.pivot            = sideAnchor;
+            rt.sizeDelta        = new Vector2(64f, 64f);
+            rt.anchoredPosition = offset;
+            StyleButton(go.GetComponent<Image>(), Steel);
+            return go.GetComponent<Button>();
+        }
+
         // ── layered buttons ──────────────────────────────────────────────────
 
         private static Color RimColor(Color baseColor) => Color.Lerp(baseColor, Color.white, 0.30f);
