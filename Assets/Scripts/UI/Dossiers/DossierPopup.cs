@@ -35,9 +35,8 @@ namespace AQ.App.UI.Dossiers
 
             // ---- measure pass ----
             float introH = EstimateTextH(def.intro, 26f, textW) + 8f;
-            float panelH = 24f                                   // top pad
+            float panelH = 96f + 16f                             // title bar
                          + (_portrait != null ? 160f + 12f : 0f) // portrait
-                         + 30f + 56f + 16f                       // tag + name
                          + 2f + 16f                              // divider
                          + introH + 16f;                         // intro
             var factHs = new float[unlocked];
@@ -73,7 +72,7 @@ namespace AQ.App.UI.Dossiers
             panel.anchoredPosition = Vector2.zero;
             panel.gameObject.AddComponent<Image>().color = new Color(0.12f, 0.10f, 0.08f, 1f);
 
-            float cursor = panelH / 2f - 24f;
+            float cursor = panelH / 2f - 96f - 16f;
 
             // Portrait
             if (_portrait != null)
@@ -85,13 +84,6 @@ namespace AQ.App.UI.Dossiers
                 pImg.raycastTarget  = false;
                 cursor -= 160f + 12f;
             }
-
-            // "CASE FILE" tag + name
-            PlaceText("Tag", panel, textW, 30f, ref cursor, "C A S E   F I L E", 20f,
-                      new Color(0.62f, 0.52f, 0.36f, 1f), FontStyles.Normal, TextAlignmentOptions.Center);
-            PlaceText("Name", panel, textW, 56f, ref cursor, def.displayName, 42f,
-                      Color.white, FontStyles.Bold, TextAlignmentOptions.Center);
-            cursor -= 16f;
 
             var div = PlaceRect("Divider", panel, new Vector2(panelW - 80f, 2f), new Vector2(0f, cursor - 1f));
             div.gameObject.AddComponent<Image>().color = new Color(0.35f, 0.30f, 0.25f, 1f);
@@ -162,13 +154,14 @@ namespace AQ.App.UI.Dossiers
             }
             cursor -= nextH + 16f;
 
-            // Bottom row: Close left, Other Case Files right (Stephen-ruled 2026-08-11)
-            var close = PlaceButton("Close", panel, new Color(0.24f, 0.30f, 0.42f, 1f),
-                                    new Vector2(280f, 78f), new Vector2(-170f, cursor - 39f));
-            close.onClick.AddListener(Close);
+            // Close lives in the title bar's X now; Other Case Files stands alone.
             var other = PlaceButton("Other Case Files", panel, new Color(0.55f, 0.40f, 0.16f, 1f),
-                                    new Vector2(300f, 78f), new Vector2(160f, cursor - 39f));
+                                    new Vector2(380f, 78f), new Vector2(0f, cursor - 39f));
             other.onClick.AddListener(() => { Close(); DossierIndexPopup.Show(); });
+
+            // Title-bar treatment (Stephen-ruled 2026-08-12).
+            AQTheme.TitleBar(panel, def.displayName, Close,
+                "Ally's case file on this character. Unlock the next entry with CaseCash; each comes with a reward, and some pages wait for the case to close. Completing a file earns a keepsake.");
         }
 
         public static void Close()

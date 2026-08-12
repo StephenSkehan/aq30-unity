@@ -40,11 +40,11 @@ namespace AQ.App.UI.EvidenceBoard
             dim.offsetMin = dim.offsetMax = Vector2.zero;
             dim.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.82f);
 
-            // Panel — sized to content. Header: portrait + name LEFT, Case File
-            // button RIGHT (Stephen-ruled 2026-08-11).
+            // Panel — sized to content. Name lives in the title bar
+            // (Stephen-ruled 2026-08-12); portrait LEFT, Case File RIGHT.
             var leads     = relatedLeads ?? new List<LeadData>();
-            const float headerH = 200f + 8f + 84f;
-            float panelH  = 20f + headerH + 20f + 2f + 18f + leads.Count * 92f + 92f + 24f;
+            const float headerH = 200f;
+            float panelH  = 96f + 16f + headerH + 16f + 2f + 18f + leads.Count * 92f + 24f;
             float panelW  = 640f;
 
             var panel             = MakeRect("Panel", _root.transform);
@@ -56,25 +56,15 @@ namespace AQ.App.UI.EvidenceBoard
             panel.gameObject.AddComponent<Image>().color = new Color(0.12f, 0.10f, 0.08f, 1f);
 
             // Build content top → down using a cursor (from panel top, going negative)
-            float cursor = panelH / 2f - 20f;
+            float cursor = panelH / 2f - 96f - 16f;
 
-            // Portrait — left column
+            // Portrait — left column (name lives in the title bar)
             var pRt              = PlaceRect("Portrait", panel, new Vector2(200f, 200f), new Vector2(-190f, cursor - 100f));
             var pImg             = pRt.gameObject.AddComponent<Image>();
             pImg.sprite          = portrait;
             pImg.preserveAspect  = true;
             pImg.raycastTarget   = false;
             if (portrait == null) pImg.color = new Color(0.5f, 0.5f, 0.5f, 1f);
-
-            // Name under the portrait
-            var nameRt     = PlaceRect("Name", panel, new Vector2(300f, 84f), new Vector2(-170f, cursor - 200f - 8f - 42f));
-            var nameTmp    = nameRt.gameObject.AddComponent<TextMeshProUGUI>();
-            nameTmp.text   = displayName ?? string.Empty;
-            nameTmp.fontSize    = 34f;
-            nameTmp.fontStyle   = FontStyles.Bold;
-            nameTmp.color       = Color.white;
-            nameTmp.alignment   = TextAlignmentOptions.Center;
-            nameTmp.raycastTarget = false;
             // (No role/scene-count line — Stephen-ruled 2026-08-11: meta copy
             // breaks the fiction. Character role copy is a future bible pull.)
 
@@ -87,7 +77,7 @@ namespace AQ.App.UI.EvidenceBoard
                 var portCap = portrait;
                 fileBtn.onClick.AddListener(() => { Close(); Dossiers.DossierPopup.Show(keyCap, portCap); });
             }
-            cursor -= headerH + 20f;
+            cursor -= headerH + 16f;
 
             // Divider
             var div       = PlaceRect("Divider", panel, new Vector2(panelW - 60f, 2f), new Vector2(0f, cursor - 1f));
@@ -105,11 +95,9 @@ namespace AQ.App.UI.EvidenceBoard
                 cursor -= 80f + 12f;
             }
 
-            // Close
-            cursor -= 4f;
-            var close = PlaceButton("Close", panel, new Color(0.32f, 0.18f, 0.18f, 1f),
-                                    new Vector2(260f, 80f), new Vector2(0f, cursor - 40f));
-            close.onClick.AddListener(Close);
+            // Title-bar treatment (Stephen-ruled 2026-08-12); the bar's X closes.
+            AQTheme.TitleBar(panel, displayName ?? string.Empty, Close,
+                "Everyone pinned to the evidence board. Replay any scene this character appears in; CASE FILE opens Ally's dossier on them.");
         }
 
         private static void Close()

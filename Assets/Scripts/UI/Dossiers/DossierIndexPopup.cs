@@ -24,7 +24,7 @@ namespace AQ.App.UI.Dossiers
             const float panelW = 820f;
             const float rowH   = 116f;
             int rows = DossierCatalog.Order.Length;
-            float panelH = 24f + 48f + 18f + rows * (rowH + 10f) + 8f + 78f + 24f;
+            float panelH = 96f + 20f + rows * (rowH + 10f) + 14f; // title bar + rows
 
             _root = new GameObject("__DossierIndex", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             Object.DontDestroyOnLoad(_root);
@@ -49,11 +49,7 @@ namespace AQ.App.UI.Dossiers
             panel.anchoredPosition = Vector2.zero;
             panel.gameObject.AddComponent<Image>().color = new Color(0.12f, 0.10f, 0.08f, 1f);
 
-            float cursor = panelH / 2f - 24f;
-
-            var title = PlaceRect("Title", panel, new Vector2(panelW - 80f, 48f), new Vector2(0f, cursor - 24f));
-            AddTmp(title, "CASE FILES", 36f, Color.white, FontStyles.Bold, TextAlignmentOptions.Center);
-            cursor -= 48f + 18f;
+            float cursor = panelH / 2f - 96f - 20f;
 
             foreach (var key in DossierCatalog.Order)
             {
@@ -96,11 +92,9 @@ namespace AQ.App.UI.Dossiers
 
                 cursor -= rowH + 10f;
             }
-            cursor -= 8f;
-
-            var close = PlaceButton("Close", panel, new Color(0.24f, 0.30f, 0.42f, 1f),
-                                    new Vector2(300f, 78f), new Vector2(0f, cursor - 39f));
-            close.onClick.AddListener(Close);
+            // Title-bar treatment (Stephen-ruled 2026-08-12); the bar's X closes.
+            AQTheme.TitleBar(panel, "CASE FILES", Close,
+                "Every dossier Ally keeps. Tap a name to open their file; progress shows how many entries you have unlocked.");
         }
 
         public static void Close()

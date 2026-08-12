@@ -56,8 +56,8 @@ namespace AQ.App.UI.Common
             dim.offsetMin = dim.offsetMax = Vector2.zero;
 
             int lineCount = byFamily.Count + (hasSubGen ? 1 : 0);
-            // Header 180 + icon 190 + CAN DROP 55 + lines + 40 gap + button 90 + margins.
-            float panelH  = 550f + lineCount * 58f;
+            // Title bar 96 + subtitle 60 + icon 190 + CAN DROP 55 + lines + margins.
+            float panelH  = 460f + lineCount * 58f;
 
             var panel = MakeRect("Panel", _root.transform);
             AQTheme.StylePanel(panel);
@@ -68,13 +68,16 @@ namespace AQ.App.UI.Common
             panel.sizeDelta        = new Vector2(600f, panelH);
             panel.anchoredPosition = Vector2.zero;
 
-            float y = panelH / 2f - 60f;
-            AddLabel(string.IsNullOrEmpty(type.displayName) ? FormatFamily(type.generatorTypeId) : type.displayName,
-                     panel, 46f, AQTheme.Paper, new Vector2(0f, y), new Vector2(540f, 70f), bold: true);
-            y -= 60f;
+            // Title-bar treatment (Stephen-ruled 2026-08-12).
+            AQTheme.TitleBar(panel,
+                string.IsNullOrEmpty(type.displayName) ? FormatFamily(type.generatorTypeId) : type.displayName,
+                Close,
+                "Tap a generator on the board to spend energy and produce an item. CAN DROP lists what this one makes and how often.");
+
+            float y = panelH / 2f - 96f - 20f;
             AddLabel($"Generator  ·  Tier {tier + 1}", panel, 30f,
-                     AQTheme.PaperDim, new Vector2(0f, y), new Vector2(540f, 40f));
-            y -= 60f;
+                     AQTheme.PaperDim, new Vector2(0f, y - 20f), new Vector2(540f, 40f));
+            y -= 64f;
 
             var iconRt              = MakeRect("Icon", panel);
             iconRt.anchorMin        = new Vector2(0.5f, 0.5f);
@@ -107,8 +110,7 @@ namespace AQ.App.UI.Common
                 y -= 58f;
             }
 
-            var ok = MakeButton("OK", panel, AQTheme.Teal, new Vector2(0f, -panelH / 2f + 75f));
-            ok.onClick.AddListener(Close);
+            // The bar's X closes; the OK button is retired.
         }
 
         private static void Close()

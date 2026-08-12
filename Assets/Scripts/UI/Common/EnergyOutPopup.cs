@@ -52,36 +52,33 @@ namespace AQ.App.UI.Common
             panel.anchorMin        = new Vector2(0.5f, 0.5f);
             panel.anchorMax        = new Vector2(0.5f, 0.5f);
             panel.pivot            = new Vector2(0.5f, 0.5f);
-            panel.sizeDelta        = new Vector2(660f, 980f);
+            panel.sizeDelta        = new Vector2(660f, 800f);
             panel.anchoredPosition = Vector2.zero;
 
-            AddLabel("OUT OF ENERGY", panel, 52f, AQTheme.Paper, new Vector2(0f, 430f), new Vector2(600f, 70f), bold: true);
-            AddLabel("Energy refills over time (+1 every 90s)", panel, 28f,
-                     AQTheme.PaperDim, new Vector2(0f, 370f), new Vector2(600f, 40f));
+            // Title-bar treatment (Stephen-ruled 2026-08-12); the bar's X closes.
+            AQTheme.TitleBar(panel, "OUT OF ENERGY", Close,
+                "Energy refills over time (+1 every 90s). Refill instantly with Platinum Ingots, or watch a tip to earn a boost.");
 
             _balanceLbl = AddLabel("", panel, 34f, AQTheme.Paper,
-                                   new Vector2(0f, 305f), new Vector2(600f, 50f));
+                                   new Vector2(0f, 250f), new Vector2(600f, 50f));
 
             // Ladder refill
-            _refillBtn = MakeButton("", panel, AQTheme.Teal, new Vector2(0f, 215f), new Vector2(520f, 100f));
+            _refillBtn = MakeButton("", panel, AQTheme.Teal, new Vector2(0f, 165f), new Vector2(520f, 100f));
             _refillLbl = _refillBtn.GetComponentInChildren<TextMeshProUGUI>();
             _refillBtn.onClick.AddListener(OnRefillClicked);
 
-            _adBtn = MakeButton("", panel, AQTheme.Steel, new Vector2(0f, 100f), new Vector2(520f, 90f));
+            _adBtn = MakeButton("", panel, AQTheme.Steel, new Vector2(0f, 55f), new Vector2(520f, 90f));
             _adLbl = _adBtn.GetComponentInChildren<TextMeshProUGUI>();
             _adBtn.onClick.AddListener(OnWatchAdClicked);
             AdService.AvailabilityChanged += RefreshDynamic;
 
             AddLabel("GET PLATINUM INGOTS", panel, 34f, AQTheme.Amber,
-                     new Vector2(0f, 25f), new Vector2(600f, 50f), bold: true);
+                     new Vector2(0f, -20f), new Vector2(600f, 50f), bold: true);
 
-            MakeProductButton(panel, PurchaseService.IngotsSmall,  "20 Ingots",              "A$1.99", new Vector2(-140f, -75f));
-            MakeProductButton(panel, PurchaseService.IngotsMedium, "60 Ingots",              "A$4.99", new Vector2( 140f, -75f));
-            MakeProductButton(panel, PurchaseService.IngotsLarge,  "150 Ingots",             "A$9.99", new Vector2(-140f, -215f));
-            MakeProductButton(panel, PurchaseService.StarterPack,  "Starter Pack\n300 Energy + 50 Ingots", "A$3.99", new Vector2(140f, -215f));
-
-            var close = MakeButton("Close", panel, AQTheme.AlertRed, new Vector2(0f, -390f), new Vector2(280f, 90f));
-            close.onClick.AddListener(Close);
+            MakeProductButton(panel, PurchaseService.IngotsSmall,  "20 Ingots",              "A$1.99", new Vector2(-140f, -115f));
+            MakeProductButton(panel, PurchaseService.IngotsMedium, "60 Ingots",              "A$4.99", new Vector2( 140f, -115f));
+            MakeProductButton(panel, PurchaseService.IngotsLarge,  "150 Ingots",             "A$9.99", new Vector2(-140f, -255f));
+            MakeProductButton(panel, PurchaseService.StarterPack,  "Starter Pack\n300 Energy + 50 Ingots", "A$3.99", new Vector2(140f, -255f));
 
             PurchaseService.PurchaseSucceeded += OnPurchaseSucceeded;
             RefreshDynamic();

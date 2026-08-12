@@ -24,7 +24,7 @@ namespace AQ.App.UI.Specials
             if (_root != null) return;
 
             const float panelW = 700f;
-            const float panelH = 452f;
+            const float panelH = 496f; // includes the 96px title bar
 
             _root = new GameObject("__SpecialConfirm", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             UnityEngine.Object.DontDestroyOnLoad(_root);
@@ -49,11 +49,11 @@ namespace AQ.App.UI.Specials
             panel.anchoredPosition = Vector2.zero;
             AQTheme.Round(panel.gameObject.AddComponent<Image>(), AQTheme.Panel);
 
-            float cursor = panelH / 2f - 24f;
+            // Title lives in the bar (title-bar treatment, Stephen-ruled 2026-08-12);
+            // its X doubles as Cancel.
+            AQTheme.TitleBar(panel, title, () => { Close(); onCancel?.Invoke(); });
 
-            var titleRt = PlaceRect("Title", panel, new Vector2(panelW - 60f, 40f), new Vector2(0f, cursor - 20f));
-            AddTmp(titleRt, title, 32f, AQTheme.Paper, FontStyles.Bold, TextAlignmentOptions.Center);
-            cursor -= 40f + 12f;
+            float cursor = panelH / 2f - 96f - 18f;
 
             var descRt = PlaceRect("Desc", panel, new Vector2(panelW - 80f, 68f), new Vector2(0f, cursor - 34f));
             AddTmp(descRt, desc, 25f, AQTheme.PaperDim, FontStyles.Normal, TextAlignmentOptions.Center);

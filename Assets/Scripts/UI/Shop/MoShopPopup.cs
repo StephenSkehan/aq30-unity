@@ -49,7 +49,7 @@ namespace AQ.App.UI.Shop
             dim.anchorMax = Vector2.one;
             dim.offsetMin = dim.offsetMax = Vector2.zero;
 
-            float panelH = 330f + offers.Count * (RowH + 14f);
+            float panelH = 264f + offers.Count * (RowH + 14f) + (offers.Count == 0 ? 90f : 0f);
             var panel = MakeRect("Panel", _root.transform);
             AQTheme.StylePanel(panel);
             AQTheme.PopIn(panel);
@@ -59,15 +59,12 @@ namespace AQ.App.UI.Shop
             panel.sizeDelta        = new Vector2(680f, panelH);
             panel.anchoredPosition = Vector2.zero;
 
-            float y = panelH / 2f - 58f;
-            AddLabel("MO'S BACK ROOM", panel, 46f, AQTheme.Paper, new Vector2(0f, y), new Vector2(620f, 70f), bold: true);
-            y -= 52f;
+            // Fiction tagline stays on the surface; the instructions moved
+            // behind the title bar's ? (Stephen-ruled 2026-08-12).
+            float y = panelH / 2f - 96f - 18f;
             AddLabel("Neutral ground. Fair prices. No questions.", panel, 26f, AQTheme.PaperDim,
-                     new Vector2(0f, y), new Vector2(620f, 40f));
-            y -= 34f;
-            AddLabel("New stock at midnight. Purchases go to the Stash.", panel, 22f, AQTheme.PaperDim,
-                     new Vector2(0f, y), new Vector2(620f, 34f));
-            y -= 48f;
+                     new Vector2(0f, y - 20f), new Vector2(620f, 40f));
+            y -= 64f;
 
             if (offers.Count == 0)
             {
@@ -82,10 +79,10 @@ namespace AQ.App.UI.Shop
             }
 
             _balance = AddLabel($"CaseCash: {Balance()}", panel, 28f, AQTheme.Amber,
-                                new Vector2(0f, -panelH / 2f + 150f), new Vector2(600f, 40f));
+                                new Vector2(0f, -panelH / 2f + 44f), new Vector2(600f, 40f));
 
-            var close = MakeButton("CLOSE", panel, AQTheme.Teal, new Vector2(0f, -panelH / 2f + 75f), new Vector2(280f, 90f), 40f);
-            close.onClick.AddListener(Close);
+            AQTheme.TitleBar(panel, "MO'S BACK ROOM", Close,
+                "Mo restocks at midnight. Items and generators go to the Stash; specials go to the Case Kit. Prices are in CaseCash.");
         }
 
         private static void BuildRow(RectTransform panel, MergeBoardController board, MoShopOffer offer, Vector2 pos)

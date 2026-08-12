@@ -44,8 +44,10 @@ namespace AQ.App.UI.Common
             panel.sizeDelta        = new Vector2(600f, 800f);
             panel.anchoredPosition = Vector2.zero;
 
-            // Title
-            AddLabel(displayName, panel, 52f, AQTheme.Paper, new Vector2(0f, 330f), new Vector2(540f, 80f), bold: true);
+            // Title-bar treatment (Stephen-ruled 2026-08-12) — name in the bar,
+            // X closes, instructions behind the ?.
+            AQTheme.TitleBar(panel, displayName, Close,
+                "Long-press any board item to see this card. STORE files it in the Evidence Locker. SHOW FAMILY lists every tier of this item's family.");
 
             // Icon
             var iconRt             = MakeRect("Icon", panel);
@@ -75,18 +77,10 @@ namespace AQ.App.UI.Common
             var fam = MakeButton("SHOW FAMILY", panel, AQTheme.Steel, new Vector2(0f, -210f));
             fam.onClick.AddListener(() => ItemFamilyPopup.Show(family, tier));
 
-            // Bottom row: OK alone when no store action; OK + STORE otherwise.
-            if (onStore == null)
+            // The bar's X closes, so OK is retired; STORE stands alone when offered.
+            if (onStore != null)
             {
-                var ok = MakeButton("OK", panel, AQTheme.Teal, new Vector2(0f, -330f));
-                ok.onClick.AddListener(Close);
-            }
-            else
-            {
-                var ok = MakeButton("OK", panel, AQTheme.Teal, new Vector2(-150f, -330f));
-                ok.onClick.AddListener(Close);
-
-                var store = MakeButton("STORE", panel, AQTheme.Steel, new Vector2(150f, -330f));
+                var store = MakeButton("STORE", panel, AQTheme.Teal, new Vector2(0f, -330f));
                 store.onClick.AddListener(() => { onStore(); Close(); });
             }
         }

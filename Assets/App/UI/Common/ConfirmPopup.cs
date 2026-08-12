@@ -45,8 +45,10 @@ namespace AQ.App.UI.Common
             panel.sizeDelta        = new Vector2(680f, 460f);
             panel.anchoredPosition = Vector2.zero;
 
-            AddLabel(panel, title, 48f, AQTheme.Paper, new Vector2(0f, 150f), new Vector2(620f, 70f), display: true);
-            AddLabel(panel, message, 32f, AQTheme.PaperDim, new Vector2(0f, 30f), new Vector2(600f, 150f));
+            // Title-bar treatment (Stephen-ruled 2026-08-12); the bar's X cancels.
+            AQTheme.TitleBar(panel, title, () => { Close(); onCancel?.Invoke(); });
+
+            AddLabel(panel, message, 32f, AQTheme.PaperDim, new Vector2(0f, 0f), new Vector2(600f, 150f));
 
             var confirm = MakeButton(panel, confirmLabel, AQTheme.Teal, new Vector2(-160f, -150f));
             confirm.onClick.AddListener(() => { Close(); onConfirm?.Invoke(); });

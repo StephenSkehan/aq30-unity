@@ -987,7 +987,7 @@ namespace AQ.App.UI.Board
                 {
                     if (tile.Kind == TileKind.Generator && CountGeneratorsOnBoard() <= 1)
                     { RefuseSpecial("Keep at least one generator on the board."); return false; }
-                    desc = "This tile is removed from the board for good.";
+                    desc = "Confirm this item is to be removed from the board.";
                     after = new List<Sprite>(); // empty = removed box
                     return true;
                 }

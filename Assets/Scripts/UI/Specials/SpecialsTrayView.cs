@@ -210,7 +210,7 @@ namespace AQ.App.UI.Specials
             var cassettes = SpecialItemsService.Cassettes;
 
             float rowH = 118f;
-            float panelH = 300f + (rows.Count + cassettes.Count) * (rowH + 12f);
+            float panelH = 96f + 28f + (rows.Count + cassettes.Count) * (rowH + 12f) + 16f;
             var panel = new GameObject("Panel").AddComponent<RectTransform>();
             panel.transform.SetParent(_popup.transform, false);
             AQTheme.StylePanel(panel);
@@ -219,12 +219,7 @@ namespace AQ.App.UI.Specials
             panel.pivot = new Vector2(0.5f, 0.5f);
             panel.sizeDelta = new Vector2(680f, panelH);
 
-            float y = panelH / 2f - 58f;
-            AddLabel(panel, "CASE KIT", 46f, AQTheme.Paper, new Vector2(0f, y), true);
-            y -= 50f;
-            AddLabel(panel, "Tools of the trade. PLACE one, then drag it onto its target.", 24f, AQTheme.PaperDim, new Vector2(0f, y), false);
-            y -= 50f;
-
+            float y = panelH / 2f - 96f - 28f;
             foreach (var (id, count) in rows)
             {
                 BuildSpecialRow(panel, id, count, new Vector2(0f, y - rowH / 2f));
@@ -236,8 +231,10 @@ namespace AQ.App.UI.Specials
                 y -= rowH + 12f;
             }
 
-            var close = MakeButton(panel, "CLOSE", AQTheme.Teal, new Vector2(0f, -panelH / 2f + 75f), new Vector2(280f, 90f), 40f);
-            close.onClick.AddListener(CloseKit);
+            // Title-bar treatment (Stephen-ruled 2026-08-12) — instructions
+            // live behind the ?, bottom CLOSE retired.
+            AQTheme.TitleBar(panel, "CASE KIT", CloseKit,
+                "Tools of the trade. Tap PLACE, then drag the placed tool onto its target on the board. Cassettes replay kept voices.");
         }
 
         private static void CloseKit()
