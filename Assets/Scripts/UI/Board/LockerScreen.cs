@@ -166,7 +166,7 @@ namespace AQ.App.UI.Board
                 var mark = MakeRect("Watermark", panel);
                 mark.anchorMin        = mark.anchorMax = new Vector2(0.5f, 0.5f);
                 mark.pivot            = new Vector2(0.5f, 0.5f);
-                mark.sizeDelta        = new Vector2(680f, 680f);
+                mark.sizeDelta        = new Vector2(900f, 900f);
                 mark.anchoredPosition = new Vector2(0f, -60f);
                 var mImg              = mark.gameObject.AddComponent<Image>();
                 mImg.sprite           = markSprite;
@@ -211,11 +211,15 @@ namespace AQ.App.UI.Board
                                                     -row * (SlotSize + SlotGap));
 
                 var img = cell.gameObject.AddComponent<Image>();
+                // Slot squares sit at the board grid's 40% read so the safe
+                // watermark shows through (Stephen-ruled 2026-08-12).
+                const float slotAlpha = 0.4f;
 
                 if (slot < count)
                 {
                     // Occupied: item icon, tap to retrieve.
-                    AQTheme.Round(img, AQTheme.Card);
+                    var c = AQTheme.Card; c.a = slotAlpha;
+                    AQTheme.Round(img, c);
                     int index = slot;
                     var data  = EvidenceLockerService.GetAt(index);
 
@@ -237,22 +241,25 @@ namespace AQ.App.UI.Board
                 else if (slot < capacity)
                 {
                     // Unlocked and empty.
-                    AQTheme.Round(img, AQTheme.SteelDim);
+                    var c = AQTheme.SteelDim; c.a = slotAlpha;
+                    AQTheme.Round(img, c);
                 }
                 else if (slot == capacity && EvidenceLockerService.NextSlotPrice > 0)
                 {
-                    // Next purchasable slot — reads as a real button (2026-08-06).
+                    // Next purchasable slot — reads as a real button (2026-08-06),
+                    // so it stays opaque on purpose.
                     var b = cell.gameObject.AddComponent<Button>();
                     AQTheme.StyleButton(img, AQTheme.Teal);
                     int price = EvidenceLockerService.NextSlotPrice;
-                    AddLabel(cell, $"+ SLOT\n{price} CC", 38f, AQTheme.Paper, Vector2.zero, new Vector2(SlotSize, SlotSize), display: true);
+                    AddLabel(cell, $"+ SLOT\n{price} CC", 48f, AQTheme.Paper, Vector2.zero, new Vector2(SlotSize, SlotSize), display: true);
                     b.onClick.AddListener(BuySlot);
                 }
                 else
                 {
                     // Locked (future slot).
-                    AQTheme.Round(img, AQTheme.PanelLine);
-                    AddLabel(cell, "LOCKED", 32f, AQTheme.PaperDim, Vector2.zero, new Vector2(SlotSize, 48f));
+                    var c = AQTheme.PanelLine; c.a = slotAlpha;
+                    AQTheme.Round(img, c);
+                    AddLabel(cell, "LOCKED", 40f, AQTheme.PaperDim, Vector2.zero, new Vector2(SlotSize, 52f));
                 }
             }
         }
