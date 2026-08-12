@@ -38,9 +38,10 @@ namespace AQ.Dev
             srt.sizeDelta = Vector2.zero;
             ct.gameObject.AddComponent<StatusLineRefresher>().Target = status;
 
-            MakeActionButton(ct, "RESET",      0, new Color(0.55f, 0.20f, 0.20f), ResetToStart);
-            MakeActionButton(ct, "-50 ENERGY", 1, new Color(0.20f, 0.35f, 0.55f), DrainEnergy);
-            MakeActionButton(ct, "CRASH TEST", 2, new Color(0.45f, 0.30f, 0.10f), CrashTest);
+            MakeActionButton(ct, "RESET",           0, new Color(0.55f, 0.20f, 0.20f), ResetToStart);
+            MakeActionButton(ct, "-50 ENERGY",      1, new Color(0.20f, 0.35f, 0.55f), DrainEnergy);
+            MakeActionButton(ct, "+1 EACH SPECIAL", 2, new Color(0.16f, 0.42f, 0.30f), GrantAllSpecials);
+            MakeActionButton(ct, "CRASH TEST",      3, new Color(0.45f, 0.30f, 0.10f), CrashTest);
 
             var note = MakeText("Note", ct,
                 "Dev builds only — this tab does not exist in the production release.",
@@ -98,6 +99,15 @@ namespace AQ.Dev
             wallet.TrySpend(Currency.Energy, Mathf.Min(50, balance), "dev.drain");
         }
 
+        private static void GrantAllSpecials()
+        {
+            // Specials never exist as board tiles — they live in the Case Kit,
+            // so that is where these land (QA request 2026-08-12).
+            foreach (AQ.App.UI.Specials.SpecialId id in
+                     Enum.GetValues(typeof(AQ.App.UI.Specials.SpecialId)))
+                AQ.App.UI.Specials.SpecialItemsService.Grant(id);
+        }
+
         private static bool _threwOnce;
 
         private static void CrashTest()
@@ -123,8 +133,8 @@ namespace AQ.Dev
             var go = new GameObject("Dev_" + label, typeof(RectTransform), typeof(Image), typeof(Button));
             go.transform.SetParent(parent, false);
             var rt = (RectTransform)go.transform;
-            float top = 0.78f - row * 0.20f;
-            rt.anchorMin = new Vector2(0.18f, top - 0.15f);
+            float top = 0.80f - row * 0.17f; // 4 rows since the specials button (2026-08-12)
+            rt.anchorMin = new Vector2(0.18f, top - 0.14f);
             rt.anchorMax = new Vector2(0.82f, top);
             rt.sizeDelta = Vector2.zero;
 
