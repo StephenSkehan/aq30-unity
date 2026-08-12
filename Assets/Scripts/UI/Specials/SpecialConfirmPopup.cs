@@ -73,8 +73,7 @@ namespace AQ.App.UI.Specials
                 x += icon + gap;
             }
             x += -gap + 12f;
-            var arrowRt = PlaceRect("Arrow", panel, new Vector2(arrowW, icon), new Vector2(x + arrowW / 2f, stripY));
-            AddTmp(arrowRt, ">", 46f, AQTheme.PaperDim, FontStyles.Bold, TextAlignmentOptions.Center);
+            PlaceArrow(panel, new Vector2(x + arrowW / 2f, stripY));
             x += arrowW + 12f;
 
             if (afterUnknown)
@@ -112,19 +111,38 @@ namespace AQ.App.UI.Specials
 
         // ---- pieces ----
 
+        // Bare icons — no card mask behind them (Stephen-ruled 2026-08-12).
         private static void PlaceIcon(RectTransform parent, Sprite sprite, Vector2 centre)
         {
             var cell = PlaceRect("Icon", parent, new Vector2(108f, 108f), centre);
-            var bg   = cell.gameObject.AddComponent<Image>();
-            AQTheme.Round(bg, AQTheme.Card);
-            bg.raycastTarget = false;
-
-            var inner = PlaceRect("Sprite", cell, new Vector2(92f, 92f), Vector2.zero);
-            var img   = inner.gameObject.AddComponent<Image>();
+            var img  = cell.gameObject.AddComponent<Image>();
             img.raycastTarget  = false;
             img.preserveAspect = true;
             if (sprite != null) img.sprite = sprite;
-            else                img.color  = new Color(0.4f, 0.4f, 0.4f, 1f);
+            else                img.color  = new Color(0.4f, 0.4f, 0.4f, 0.6f);
+        }
+
+        // Amber drawn arrow: shaft + chevron head (upgrades the old ">" glyph).
+        private static void PlaceArrow(RectTransform parent, Vector2 centre)
+        {
+            var rt = PlaceRect("Arrow", parent, new Vector2(56f, 108f), centre);
+
+            var shaft = PlaceRect("Shaft", rt, new Vector2(36f, 7f), new Vector2(-9f, 0f));
+            var si    = shaft.gameObject.AddComponent<Image>();
+            AQTheme.Round(si, AQTheme.Amber);
+            si.raycastTarget = false;
+
+            var up = PlaceRect("HeadUp", rt, new Vector2(24f, 7f), new Vector2(13f, 7.2f));
+            up.localRotation = Quaternion.Euler(0f, 0f, -43f);
+            var ui = up.gameObject.AddComponent<Image>();
+            AQTheme.Round(ui, AQTheme.Amber);
+            ui.raycastTarget = false;
+
+            var dn = PlaceRect("HeadDown", rt, new Vector2(24f, 7f), new Vector2(13f, -7.2f));
+            dn.localRotation = Quaternion.Euler(0f, 0f, 43f);
+            var di = dn.gameObject.AddComponent<Image>();
+            AQTheme.Round(di, AQTheme.Amber);
+            di.raycastTarget = false;
         }
 
         private static void PlaceMysteryBox(RectTransform parent, Vector2 centre)
@@ -139,23 +157,18 @@ namespace AQ.App.UI.Specials
 
         private static void PlaceRemovedBox(RectTransform parent, Vector2 centre)
         {
+            // Trash can, bare like the item icons (Stephen-ruled 2026-08-12:
+            // no mask box; removal reads as binned, not a red cross).
+            var trash = Resources.Load<Sprite>("App/UI/Specials/special_trashcan");
+            if (trash != null)
+            {
+                PlaceIcon(parent, trash, centre);
+                return;
+            }
             var cell = PlaceRect("Removed", parent, new Vector2(108f, 108f), centre);
             var bg   = cell.gameObject.AddComponent<Image>();
             AQTheme.Round(bg, AQTheme.BoardFrame);
             bg.raycastTarget = false;
-
-            // Trash can (Stephen-ruled 2026-08-12: removal reads as binned, not
-            // a red cross). Sprite-first; drawn X is the pre-delivery fallback.
-            var trash = Resources.Load<Sprite>("App/UI/Specials/special_trashcan");
-            if (trash != null)
-            {
-                var inner = PlaceRect("Trash", cell, new Vector2(88f, 88f), Vector2.zero);
-                var img   = inner.gameObject.AddComponent<Image>();
-                img.sprite         = trash;
-                img.preserveAspect = true;
-                img.raycastTarget  = false;
-                return;
-            }
             AQTheme.AddDrawnX(cell, AQTheme.AlertRed, 52f, 8f);
         }
 
