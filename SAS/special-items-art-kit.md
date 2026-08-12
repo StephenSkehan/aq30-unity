@@ -31,6 +31,7 @@ deliver on flat #FF00FF and note it — we key it here.
 | special_searchwarrant.png | Search Warrant | A folded legal document in heavy cream paper, tri-fold slightly sprung open, closed with a deep red wax seal bearing an abstract scale-of-justice impression. A navy ribbon tail under the seal. Illegible formal script strokes only. |
 | special_evidencetag.png | Evidence Tag | A manila evidence tag with a reinforced ring hole and a short loop of butcher's twine, blank ruled lines where writing would go (no writing), one corner softly dog-eared. A thin amber border printed around the tag edge. |
 | special_cassette.png | Tip-Line Cassette | A worn audio cassette tape, smoke-grey shell, both reels visible with unequal tape wound, a hand-applied cream label with illegible handwritten strokes. One corner of the label lifting. Slight scuffs; a loved object, not a broken one. |
+| special_trashcan.png | Trash Can *(added 2026-08-12: the Bolt Cutters confirm shows the target going in the bin, not a red cross)* | A small vintage office waste bin in aged ribbed steel, round with a slightly flared rim, dents and honest wear on the body, the hinged lid tipped open a hand's width as if something was just dropped in. A single crumpled cream paper ball rests at the rim about to fall inside. One restrained teal accent on the lid handle. |
 
 ## The corner button icon → `Assets/Resources/App/UI/Icons/`
 
