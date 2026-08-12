@@ -143,6 +143,19 @@ namespace AQ.App.UI.Specials
             var bg   = cell.gameObject.AddComponent<Image>();
             AQTheme.Round(bg, AQTheme.BoardFrame);
             bg.raycastTarget = false;
+
+            // Trash can (Stephen-ruled 2026-08-12: removal reads as binned, not
+            // a red cross). Sprite-first; drawn X is the pre-delivery fallback.
+            var trash = Resources.Load<Sprite>("App/UI/Specials/special_trashcan");
+            if (trash != null)
+            {
+                var inner = PlaceRect("Trash", cell, new Vector2(88f, 88f), Vector2.zero);
+                var img   = inner.gameObject.AddComponent<Image>();
+                img.sprite         = trash;
+                img.preserveAspect = true;
+                img.raycastTarget  = false;
+                return;
+            }
             AQTheme.AddDrawnX(cell, AQTheme.AlertRed, 52f, 8f);
         }
 

@@ -249,6 +249,9 @@ namespace AQ.App.UI.Board
                 var so = board.FindGeneratorType(data.family);
                 return so != null ? so.SpriteForTier(data.tier) : board.generatorSprite;
             }
+            if (data.kind == AQ.App.Overflow.OverflowKind.Special &&
+                System.Enum.TryParse<AQ.App.UI.Specials.SpecialId>(data.family, out var sid))
+                return AQ.App.UI.Specials.SpecialItemsService.SpriteFor(sid);
             return board.SpriteForItem(data.family, data.tier);
         }
 

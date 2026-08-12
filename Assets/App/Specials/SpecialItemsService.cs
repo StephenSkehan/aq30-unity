@@ -17,10 +17,13 @@ namespace AQ.App.UI.Specials
     /// <summary>
     /// The Case Kit — special item inventory (Stephen-ruled 2026-08-07:
     /// SkeletonKey/BoxKnife/CarbonCopy/BoltCutters/SearchWarrant/EvidenceTag +
-    /// Tip-Line Cassettes as replayable keepsakes). Specials NEVER exist as
-    /// board tiles: they act on the board via SpecialsTrayView's targeting
-    /// overlay and the MergeBoardController effect methods, so the merge/drag
-    /// machinery and board save schema stay untouched.
+    /// Tip-Line Cassettes as replayable keepsakes). Mechanic re-ruled
+    /// 2026-08-12: board specials are PLACED from the kit as real board tiles
+    /// (TileKind.Special; the SpecialId travels in the board's family key) —
+    /// they move, swap, and store like anything else, and the effect fires
+    /// when the tile is dragged onto its target (confirm-first). This service
+    /// holds only the UNPLACED kit inventory; placing consumes a count here.
+    /// EvidenceTag has no board target and keeps the direct USE path.
     /// Persistence: PlayerPrefs (QA Reset's DeleteAll clears it).
     /// </summary>
     public static class SpecialItemsService
@@ -45,6 +48,10 @@ namespace AQ.App.UI.Specials
                 [SpecialId.SkeletonKey]   = ("Skeleton Key",   "Merge with anything: raise one item a tier.",           200),
                 [SpecialId.EvidenceTag]   = ("Evidence Tag",   "File one needed lead item (up to Tier 3) in the locker.", 250),
             };
+
+        /// <summary>Resources icon for a special (null pre-art-delivery).</summary>
+        public static Sprite SpriteFor(SpecialId id) =>
+            Resources.Load<Sprite>("App/UI/Specials/special_" + id.ToString().ToLowerInvariant());
 
         public static int CountOf(SpecialId id)
         {

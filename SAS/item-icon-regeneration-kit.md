@@ -253,7 +253,7 @@ Currency families are on-board merge tiles too. Same global block. **Hard rule: 
 *The ladder climbs from LISTENING to RECORDING to BROADCASTING to ANALYSING — each tier looks more professional and more coveted than the last. Match the gear already canonized in the BG-1 studio master (chrome broadcast mic, mixing desk, cassette deck): attach EP1-BG1.png as a prop-style reference alongside the Ally key art.*
 | Filename | Item | Art note |
 |---|---|---|
-| audio_investigation_t01_earbuds_case.png | Earbuds in Case | small consumer earbuds coiled in an open pocket case — the rawest listening tier, chunky case so it survives 48px |
+| audio_investigation_t01_earbuds_case.png | Earbuds | small consumer earbuds coiled in an open pocket case — the rawest listening tier, chunky case so it survives 48px |
 | audio_investigation_t02_studio_headphones.png | Studio Headphones | closed-back retro studio cans, coiled cable, worn leather headband — echoes Ally's canon neck-worn pair |
 | audio_investigation_t03_recorder_headphones.png | Recorder & Headphones | handheld cassette recorder with small headphones hooked over it — the first working field kit; one silhouette, recorder dominant |
 | audio_investigation_t04_broadcast_mic_rig.png | Broadcast Microphone Rig | the chrome broadcast mic (Ally's canon prop) on a desk arm with pop filter — tall, premium podcast silhouette |

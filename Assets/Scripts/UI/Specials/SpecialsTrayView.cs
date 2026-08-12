@@ -10,10 +10,11 @@ using UnityEngine.UI;
 namespace AQ.App.UI.Specials
 {
     /// <summary>
-    /// The Case Kit corner button (beside the Stash) + kit popup + targeting
-    /// overlay. Button input is a raw Update() poll (boot-created canvas — the
-    /// GR-unreliable class); the popup and overlay are created on demand, where
-    /// standard Buttons are fine (GeneratorInfoPopup precedent).
+    /// The Case Kit corner button (beside the Stash) + kit popup. Button input
+    /// is a raw Update() poll (boot-created canvas — the GR-unreliable class);
+    /// the popup is created on demand, where standard Buttons are fine
+    /// (GeneratorInfoPopup precedent). Board specials PLACE as tiles
+    /// (2026-08-12 mechanic); the old tap-to-target overlay is retired.
     /// </summary>
     public class SpecialsTrayView : MonoBehaviour
     {
@@ -30,7 +31,6 @@ namespace AQ.App.UI.Specials
         private const float SIZE = 142f; // grid-square parity with locker/stash/evidence
 
         private static GameObject _popup;
-        private static GameObject _overlay;
 
         private void Awake()
         {
@@ -46,9 +46,16 @@ namespace AQ.App.UI.Specials
 
         private void OnDisable() => SpecialItemsService.Changed -= Refresh;
 
+        private CanvasGroup _canvasGroup; // DialogueStageMB fades us out during dialogue
+
         private void Update()
         {
-            if (_root == null || !_root.gameObject.activeSelf || _popup != null || _overlay != null) return;
+            if (_root == null || !_root.gameObject.activeSelf || _popup != null) return;
+
+            // Faded out by the dialogue stage — the raw poll must not accept
+            // taps on an invisible button (Case-Kit-in-dialogue bug, 2026-08-12).
+            if (_canvasGroup == null) _canvasGroup = GetComponentInChildren<CanvasGroup>();
+            if (_canvasGroup != null && _canvasGroup.alpha < 0.9f) return;
 
             bool tapped = false;
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -215,7 +222,7 @@ namespace AQ.App.UI.Specials
             float y = panelH / 2f - 58f;
             AddLabel(panel, "CASE KIT", 46f, AQTheme.Paper, new Vector2(0f, y), true);
             y -= 50f;
-            AddLabel(panel, "Tools of the trade. Tap USE, then tap a board tile.", 24f, AQTheme.PaperDim, new Vector2(0f, y), false);
+            AddLabel(panel, "Tools of the trade. PLACE one, then drag it onto its target.", 24f, AQTheme.PaperDim, new Vector2(0f, y), false);
             y -= 50f;
 
             foreach (var (id, count) in rows)
@@ -248,7 +255,8 @@ namespace AQ.App.UI.Specials
             AddMonogram(row, Monogram(id), id.ToString());
             var txt = AddRowText(row, $"{name}  <color=#E8A33D>x{count}</color>\n<size=20><color=#A5A092>{desc}</color></size>");
 
-            var use = MakeButton(row, "USE", AQTheme.Steel, new Vector2(620f / 2f - 90f, 0f), new Vector2(156f, 74f), 30f);
+            var use = MakeButton(row, id == SpecialId.EvidenceTag ? "USE" : "PLACE",
+                                 AQTheme.Steel, new Vector2(620f / 2f - 90f, 0f), new Vector2(156f, 74f), 30f);
             use.onClick.AddListener(() =>
             {
                 CloseKit();
@@ -277,8 +285,12 @@ namespace AQ.App.UI.Specials
             });
         }
 
-        // ---- use / targeting ----
+        // ---- place / use ----
 
+        // Mechanic re-ruled 2026-08-12: board specials are PLACED as real tiles
+        // (move, store, swap like anything else); the effect fires when the tile
+        // is dragged onto its target (MergeBoardController.HandleSpecialDrop).
+        // EvidenceTag has no board target, so it keeps the direct USE path.
         private static void BeginUse(SpecialId id)
         {
             var board = Object.FindFirstObjectByType<MergeBoardController>();
@@ -286,7 +298,13 @@ namespace AQ.App.UI.Specials
 
             if (id == SpecialId.EvidenceTag) { UseEvidenceTag(board); return; }
 
-            ShowTargetOverlay(id, board);
+            if (!board.PlaceSpecial(id))
+            {
+                ToastService.Show("sp_board_full", "Board full. Free a slot to place it.", 2f);
+                return;
+            }
+            SpecialItemsService.Consume(id); // the kit copy became a board tile
+            ToastService.Show("sp_placed", "Placed. Drag it onto a target to use it.", 2.2f);
         }
 
         private static void UseEvidenceTag(MergeBoardController board)
@@ -326,222 +344,6 @@ namespace AQ.App.UI.Specials
                 return;
             }
             ToastService.Show("tag_none", "No taggable requirement right now (Tier 3 or below).", 2.5f);
-        }
-
-        private static void ShowTargetOverlay(SpecialId id, MergeBoardController board)
-        {
-            if (_overlay != null) return;
-
-            _overlay = new GameObject("__SpecialTargetOverlay", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
-            Object.DontDestroyOnLoad(_overlay);
-            var canvas = _overlay.GetComponent<Canvas>();
-            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            canvas.sortingOrder = 9000; // above HUD, below popups — board stays visible
-            var scaler = _overlay.GetComponent<CanvasScaler>();
-            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1080f, 1920f);
-            scaler.matchWidthOrHeight = 0.5f;
-
-            var (name, _, _) = SpecialItemsService.Catalog[id];
-            var banner = new GameObject("Banner").AddComponent<RectTransform>();
-            banner.transform.SetParent(_overlay.transform, false);
-            banner.anchorMin = new Vector2(0f, 1f);
-            banner.anchorMax = new Vector2(1f, 1f);
-            banner.pivot = new Vector2(0.5f, 1f);
-            banner.sizeDelta = new Vector2(0f, 120f);
-            banner.anchoredPosition = new Vector2(0f, -430f);
-            var bImg = banner.gameObject.AddComponent<Image>();
-            AQTheme.Round(bImg, new Color(0.08f, 0.11f, 0.19f, 0.96f));
-            bImg.raycastTarget = false;
-            AddLabel(banner, $"{name}: tap a tile on the board", 30f, AQTheme.Paper, new Vector2(0f, 14f), true);
-            AddLabel(banner, "or tap here to cancel", 22f, AQTheme.PaperDim, new Vector2(0f, -26f), false);
-
-            var driver = _overlay.AddComponent<TargetDriver>();
-            driver.Init(id, board, banner);
-        }
-
-        private sealed class TargetDriver : MonoBehaviour
-        {
-            private SpecialId _id;
-            private MergeBoardController _board;
-            private RectTransform _banner;
-            private bool _confirming;
-
-            public void Init(SpecialId id, MergeBoardController board, RectTransform banner)
-            {
-                _id = id;
-                _board = board;
-                _banner = banner;
-            }
-
-            private void Update()
-            {
-                if (_confirming) return; // the confirm popup owns input
-
-                Vector2? tap = null;
-                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-                    tap = Input.GetTouch(0).position;
-                else if (Input.GetMouseButtonDown(0))
-                    tap = Input.mousePosition;
-                if (tap == null) return;
-
-                if (RectTransformUtility.RectangleContainsScreenPoint(_banner, tap.Value, null))
-                {
-                    Done();
-                    return;
-                }
-
-                var tile = _board != null ? _board.TileAtScreenPoint(tap.Value) : null;
-                if (tile == null || tile.IsEmpty) return; // keep targeting
-
-                // Show what will happen and ask first (Stephen-ruled 2026-08-11).
-                if (!BuildPreview(tile, out var desc, out var before, out var after, out var unknown))
-                    return; // refusal toast shown, keep targeting
-
-                _confirming = true;
-                var (name, _, _) = SpecialItemsService.Catalog[_id];
-                SpecialConfirmPopup.Show(name, desc, before, after, unknown,
-                    onConfirm: () => { _confirming = false; if (Apply(tile)) Done(); },
-                    onCancel:  () => _confirming = false);
-            }
-
-            /// <summary>Preview of the effect on this tile. False = refused (toast
-            /// already shown). Mirrors Apply()'s guards without mutating anything.</summary>
-            private bool BuildPreview(BoardTileView tile, out string desc,
-                                      out System.Collections.Generic.List<Sprite> before,
-                                      out System.Collections.Generic.List<Sprite> after,
-                                      out bool afterUnknown)
-            {
-                desc = null;
-                before = new System.Collections.Generic.List<Sprite> { tile.Payload.sprite };
-                after = null;
-                afterUnknown = false;
-
-                switch (_id)
-                {
-                    case SpecialId.SkeletonKey:
-                    {
-                        if (tile.Kind != TileKind.Item) { Refuse("That one won't turn. (Top tier, or not an item.)"); return false; }
-                        var family = _board.FamilyOf(tile);
-                        var up = _board.SpriteForItem(family, tile.Tier + 1);
-                        if (up == null) { Refuse("That one won't turn. (Top tier, or not an item.)"); return false; }
-                        desc = $"{NameOf(family, tile.Tier)} goes up a tier to {NameOf(family, tile.Tier + 1)}.";
-                        after = new System.Collections.Generic.List<Sprite> { up };
-                        return true;
-                    }
-                    case SpecialId.BoxKnife:
-                    {
-                        if (tile.Kind != TileKind.Item || tile.Tier < 1) { Refuse("Nothing to cut there. (Tier 2+ items only.)"); return false; }
-                        var family = _board.FamilyOf(tile);
-                        var down = _board.SpriteForItem(family, tile.Tier - 1);
-                        desc = $"{NameOf(family, tile.Tier)} is cut into two of {NameOf(family, tile.Tier - 1)}.";
-                        after = new System.Collections.Generic.List<Sprite> { down, down };
-                        return true;
-                    }
-                    case SpecialId.CarbonCopy:
-                    {
-                        if (tile.Kind != TileKind.Item || tile.Tier > 3) { Refuse("Copies stop at Tier 4."); return false; }
-                        var family = _board.FamilyOf(tile);
-                        desc = $"{NameOf(family, tile.Tier)} is duplicated.";
-                        after = new System.Collections.Generic.List<Sprite> { tile.Payload.sprite, tile.Payload.sprite };
-                        return true;
-                    }
-                    case SpecialId.BoltCutters:
-                    {
-                        if (tile.Kind == TileKind.Generator && _board.CountGeneratorsOnBoard() <= 1)
-                        { Refuse("Keep at least one generator on the board."); return false; }
-                        desc = "This tile is removed from the board for good.";
-                        after = new System.Collections.Generic.List<Sprite>(); // empty = removed box
-                        return true;
-                    }
-                    case SpecialId.SearchWarrant:
-                    {
-                        if (tile.Kind != TileKind.Item) { Refuse("Serve it on an item."); return false; }
-                        var family = _board.FamilyOf(tile);
-                        bool anyLeft = false;
-                        foreach (var d in _board.ItemDefinitions)
-                            if (d != null && d.family == family &&
-                                !Common.ItemDiscoveryService.IsDiscovered(family, d.tier))
-                            { anyLeft = true; break; }
-                        if (!anyLeft) { Refuse("Nothing left to uncover in that family."); return false; }
-                        desc = "The next undiscovered item in this family is revealed.";
-                        afterUnknown = true;
-                        return true;
-                    }
-                }
-                return false;
-            }
-
-            private string NameOf(string family, int tier)
-            {
-                foreach (var d in _board.ItemDefinitions)
-                    if (d != null && d.family == family && d.tier == tier)
-                        return d.displayName;
-                return "Tier " + (tier + 1);
-            }
-
-            private bool Apply(BoardTileView tile)
-            {
-                switch (_id)
-                {
-                    case SpecialId.SkeletonKey:
-                        if (!_board.UpgradeTile(tile)) { Refuse("That one won't turn. (Top tier, or not an item.)"); return false; }
-                        SpecialItemsService.Consume(_id);
-                        ToastService.Show("sp_key", "Skeleton Key: one tier up.", 1.6f);
-                        return true;
-
-                    case SpecialId.BoxKnife:
-                        if (!_board.SplitTile(tile, out var toStash)) { Refuse("Nothing to cut there. (Tier 2+ items only.)"); return false; }
-                        SpecialItemsService.Consume(_id);
-                        ToastService.Show("sp_knife", toStash ? "Box Knife: split. Spare went to the Stash." : "Box Knife: split into two.", 1.8f);
-                        return true;
-
-                    case SpecialId.CarbonCopy:
-                        if (tile.Kind != TileKind.Item || tile.Tier > 3) { Refuse("Copies stop at Tier 4."); return false; }
-                        if (!_board.DuplicateTile(tile, out var copyStash)) { Refuse("Can't copy that."); return false; }
-                        SpecialItemsService.Consume(_id);
-                        ToastService.Show("sp_copy", copyStash ? "Carbon Copy: duplicate in the Stash." : "Carbon Copy: duplicated.", 1.8f);
-                        return true;
-
-                    case SpecialId.BoltCutters:
-                        if (!_board.CutTile(tile)) { Refuse("Keep at least one generator on the board."); return false; }
-                        SpecialItemsService.Consume(_id);
-                        ToastService.Show("sp_cut", "Bolt Cutters: cleared.", 1.5f);
-                        return true;
-
-                    case SpecialId.SearchWarrant:
-                        return ApplyWarrant(tile);
-                }
-                return false;
-            }
-
-            private bool ApplyWarrant(BoardTileView tile)
-            {
-                if (tile.Kind != TileKind.Item) { Refuse("Serve it on an item."); return false; }
-                var family = _board.FamilyOf(tile);
-                Items.ItemDefinitionSO reveal = null;
-                foreach (var d in _board.ItemDefinitions)
-                {
-                    if (d == null || d.family != family) continue;
-                    if (Common.ItemDiscoveryService.IsDiscovered(family, d.tier)) continue;
-                    if (reveal == null || d.tier < reveal.tier) reveal = d;
-                }
-                if (reveal == null) { Refuse("Nothing left to uncover in that family."); return false; }
-
-                Common.ItemDiscoveryService.Mark(family, reveal.tier);
-                SpecialItemsService.Consume(SpecialId.SearchWarrant);
-                ToastService.Show("sp_warrant", $"Search Warrant: {reveal.displayName} revealed.", 2.2f);
-                Common.ItemFamilyPopup.Show(family, reveal.tier);
-                return true;
-            }
-
-            private static void Refuse(string msg) => ToastService.Show("sp_refuse", msg, 2f);
-
-            private void Done()
-            {
-                Object.Destroy(_overlay);
-                _overlay = null;
-            }
         }
 
         // ---- shared UI helpers ----

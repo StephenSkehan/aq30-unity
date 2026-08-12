@@ -308,7 +308,11 @@ namespace AQ.App.UI.EvidenceBoard
                 // Only the scenes this character actually appears in (Stephen-ruled
                 // 2026-08-11) — portrait match or a speaking part in the dialogue.
                 var involved = LeadsInvolving(cast[i].token, resolvedLeads);
-                var photoRt = CharacterPhotoPin.Create(_boardContent, cast[i].token, cast[i].sprite,
+                // Prefer a neutral (then happy) frame for the polaroid (Stephen-ruled
+                // 2026-08-12) — first-found could be a worried/sad emotion frame.
+                var displaySprite = Dossiers.DossierPortraits.Find(cast[i].token);
+                if (displaySprite == null) displaySprite = cast[i].sprite;
+                var photoRt = CharacterPhotoPin.Create(_boardContent, cast[i].token, displaySprite,
                     involved, new Vector2(x, y), OnReplayLeadDialogue, tackSprite,
                     CharacterNameFor(cast[i].token), cast[i].token);
                 _placed.Add(photoRt);

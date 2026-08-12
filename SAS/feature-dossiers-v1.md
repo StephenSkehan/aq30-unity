@@ -11,6 +11,9 @@
 > 7. No ingots as rewards confirmed.
 > 8. Completion cassette slots stay reserved (Dot's ships now with her existing clip).
 > 9. Mrs. Vale: no dossier for now.
+> 10. **2026-08-12 addendum:** Vera's dossier CUT (Stephen-ruled) — her fact set
+>     below stays as authored copy in case she ever earns a file. Live Ep1 set =
+>     five dossiers, 2,500 CC total.
 >
 > **Build (same day):** `DossierCatalog` / `DossierService` / `DossierPopup` +
 > `AllyDossierEntry` in `Assets/Scripts/UI/Dossiers/`; CASE FILE button on the

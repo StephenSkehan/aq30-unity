@@ -171,6 +171,8 @@ public sealed class DialogueStageMB : MonoBehaviour
         if (overflow != null) Stage(EnsureGroup(overflow));
         var lockerBtn = GameObject.Find("__LockerBtn");
         if (lockerBtn != null) Stage(EnsureGroup(lockerBtn));
+        var specials = GameObject.Find("SpecialsCanvas");
+        if (specials != null) Stage(EnsureGroup(specials)); // Case Kit hides too (2026-08-12)
 
         return _groups.Count > 0 || _scrim != null;
     }

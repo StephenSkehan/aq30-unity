@@ -137,6 +137,18 @@ namespace AQ.App.UI.Board
             Refresh();
         }
 
+        /// <summary>Case Kit special placed as a board tile (mechanic re-ruled
+        /// 2026-08-12: place, move, store — effect fires on drag-onto-target).
+        /// The SpecialId travels in the controller's family key, not the payload.</summary>
+        public void SetSpecial(Sprite sprite)
+        {
+            GetComponent<AQ.App.UI.Board.FX.GeneratorTileAnimator>()?.Teardown();
+            payload.kind = TileKind.Special;
+            payload.tier = 0;
+            payload.sprite = sprite;
+            Refresh();
+        }
+
         public void Clear()
         {
             GetComponent<AQ.App.UI.Board.FX.GeneratorTileAnimator>()?.Teardown();

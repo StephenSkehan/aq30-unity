@@ -17,7 +17,7 @@ using AQ.SharedKernel.Economy;
 
 namespace AQ.App.UI.Board
 {
-    public enum TileKind { Empty, Item, Generator }
+    public enum TileKind { Empty, Item, Generator, Special }
 
     [DisallowMultipleComponent]
     public class MergeBoardController : MonoBehaviour
@@ -117,6 +117,18 @@ namespace AQ.App.UI.Board
                 return;
             }
 
+            if (tile.Kind == TileKind.Special)
+            {
+                // Name + how-to as a toast — the special's info lives in the Case Kit.
+                var sid = SpecialIdOf(tile);
+                if (sid != null)
+                {
+                    var (n, d, _) = Specials.SpecialItemsService.Catalog[sid.Value];
+                    ToastService.Show("sp_info", $"{n}: {d} Drag it onto a target.", 3f);
+                }
+                return;
+            }
+
             var family = GetFamily(tile);
             int tier   = tile.Tier;
 
@@ -209,6 +221,13 @@ namespace AQ.App.UI.Board
                 a.SnapToGrid();
                 return;
             }
+
+            // Specials are board tiles since 2026-08-12 (mechanic re-ruled): the
+            // effect fires when the SPECIAL is dragged onto its target; anything
+            // dropped onto a resting special just swaps. MergeRules never sees
+            // TileKind.Special.
+            if (a.Kind == TileKind.Special) { HandleSpecialDrop(a, b); return; }
+            if (b.Kind == TileKind.Special) { SwapTiles(a, b); return; }
 
             // Generator pairs cap at their own SO's tier count, not the board-wide
             // item ceiling — a 6-tier chain (Field Kit) must stop at T6, not T10.
@@ -483,6 +502,13 @@ namespace AQ.App.UI.Board
                 SetFamily(v, data.family);
                 AttachGeneratorAnimator(v, data.family, data.tier);
                 Log($"Placed generator from overflow: type={data.family} tier={data.tier} at ({r},{c}).");
+            }
+            else if (data.kind == OverflowKind.Special)
+            {
+                SetFamily(v, data.family); // family holds the SpecialId name
+                v.SetSpecial(System.Enum.TryParse<Specials.SpecialId>(data.family, out var sid)
+                    ? Specials.SpecialItemsService.SpriteFor(sid) : null);
+                Log($"Placed special from overflow: {data.family} at ({r},{c}).");
             }
             else
             {
@@ -795,6 +821,22 @@ namespace AQ.App.UI.Board
                 return;
             }
 
+            // Specials store too (board-tile mechanic, 2026-08-12) — no guard needed.
+            if (tile.Kind == TileKind.Special)
+            {
+                tile.Clear();
+                familyKeyByTile.Remove(tile);
+                NotifyBoardChanged();
+                AQ.App.Locker.EvidenceLockerService.TryStore(new OverflowTileData
+                {
+                    kind   = OverflowKind.Special,
+                    family = family,
+                    tier   = 0
+                }, null);
+                AQ.App.UI.Common.ToastService.Show("locker_store", "Stored in locker.", 1.2f);
+                return;
+            }
+
             // Generators store too (Stephen-ruled 2026-08-06) — but the board keeps
             // its last one: a generator-less board can't produce anything, and the
             // boot-time EnsureGeneratorExists would mint a free duplicate next run.
@@ -844,6 +886,184 @@ namespace AQ.App.UI.Board
                 }
             return n;
         }
+
+        // ---------------- Specials as board tiles (mechanic re-ruled 2026-08-12) ----------------
+        // A placed special is a real tile: it moves, swaps, and stores like any
+        // other. Its effect fires when IT is dragged onto a target tile — after
+        // the confirm-before-use preview (Stephen-ruled 2026-08-11).
+
+        public Specials.SpecialId? SpecialIdOf(BoardTileView tile)
+        {
+            if (tile == null || tile.Kind != TileKind.Special) return null;
+            return System.Enum.TryParse<Specials.SpecialId>(GetFamily(tile), out var id) ? id : null;
+        }
+
+        /// <summary>Places a special from the Case Kit onto a free cell. Caller
+        /// consumes the kit count only when this returns true.</summary>
+        public bool PlaceSpecial(Specials.SpecialId id)
+        {
+            var empty = FindAnyEmptyCell();
+            if (empty == null) return false;
+            var v = Get(empty.Value.r, empty.Value.c);
+            if (!v) return false;
+
+            SetFamily(v, id.ToString());
+            v.SetSpecial(Specials.SpecialItemsService.SpriteFor(id));
+            NotifyBoardChanged();
+            Log($"Placed special {id} at ({empty.Value.r},{empty.Value.c}).");
+            return true;
+        }
+
+        private void HandleSpecialDrop(BoardTileView special, BoardTileView target)
+        {
+            var idOpt = SpecialIdOf(special);
+            if (idOpt == null) { SwapTiles(special, target); return; } // corrupt family — behave inertly
+
+            if (target.IsEmpty)              { MoveTile(special, target); return; }
+            if (target.Kind == TileKind.Special) { SwapTiles(special, target); return; }
+
+            var id = idOpt.Value;
+            if (!BuildSpecialDropPreview(id, target, out var desc,
+                    out var before, out var after, out var unknown))
+                return; // refusal toast shown; tiles stay put
+
+            var (name, _, _) = Specials.SpecialItemsService.Catalog[id];
+            Specials.SpecialConfirmPopup.Show(name, desc, before, after, unknown,
+                onConfirm: () =>
+                {
+                    if (ApplySpecialTo(id, target))
+                    {
+                        special.Clear();               // the special is spent
+                        familyKeyByTile.Remove(special);
+                        NotifyBoardChanged();
+                    }
+                },
+                onCancel: null);
+        }
+
+        /// <summary>Preview of applying a special to a target tile. False = refused
+        /// (toast already shown). Mirrors ApplySpecialTo's guards without mutating.</summary>
+        private bool BuildSpecialDropPreview(Specials.SpecialId id, BoardTileView tile,
+            out string desc, out List<Sprite> before, out List<Sprite> after, out bool afterUnknown)
+        {
+            desc = null;
+            before = new List<Sprite> { tile.Payload.sprite };
+            after = null;
+            afterUnknown = false;
+
+            switch (id)
+            {
+                case Specials.SpecialId.SkeletonKey:
+                {
+                    if (tile.Kind != TileKind.Item) { RefuseSpecial("That one won't turn. (Items only.)"); return false; }
+                    var family = GetFamily(tile);
+                    var up = SpriteForItem(family, tile.Tier + 1);
+                    if (up == null || LookupItemDef(family, tile.Tier + 1) == null)
+                    { RefuseSpecial("That one won't turn. (Already top tier.)"); return false; }
+                    desc = $"{ItemNameOf(family, tile.Tier)} goes up a tier to {ItemNameOf(family, tile.Tier + 1)}.";
+                    after = new List<Sprite> { up };
+                    return true;
+                }
+                case Specials.SpecialId.BoxKnife:
+                {
+                    if (tile.Kind != TileKind.Item || tile.Tier < 1)
+                    { RefuseSpecial("Nothing to cut there. (Tier 2+ items only.)"); return false; }
+                    var family = GetFamily(tile);
+                    var down = SpriteForItem(family, tile.Tier - 1);
+                    desc = $"{ItemNameOf(family, tile.Tier)} is cut into two of {ItemNameOf(family, tile.Tier - 1)}.";
+                    after = new List<Sprite> { down, down };
+                    return true;
+                }
+                case Specials.SpecialId.CarbonCopy:
+                {
+                    if (tile.Kind != TileKind.Item || tile.Tier > 3)
+                    { RefuseSpecial("Copies stop at Tier 4."); return false; }
+                    var family = GetFamily(tile);
+                    desc = $"{ItemNameOf(family, tile.Tier)} is duplicated.";
+                    after = new List<Sprite> { tile.Payload.sprite, tile.Payload.sprite };
+                    return true;
+                }
+                case Specials.SpecialId.BoltCutters:
+                {
+                    if (tile.Kind == TileKind.Generator && CountGeneratorsOnBoard() <= 1)
+                    { RefuseSpecial("Keep at least one generator on the board."); return false; }
+                    desc = "This tile is removed from the board for good.";
+                    after = new List<Sprite>(); // empty = removed box
+                    return true;
+                }
+                case Specials.SpecialId.SearchWarrant:
+                {
+                    if (tile.Kind != TileKind.Item) { RefuseSpecial("Serve it on an item."); return false; }
+                    var family = GetFamily(tile);
+                    bool anyLeft = false;
+                    foreach (var d in itemDefinitions)
+                        if (d != null && d.family == family &&
+                            !Common.ItemDiscoveryService.IsDiscovered(family, d.tier))
+                        { anyLeft = true; break; }
+                    if (!anyLeft) { RefuseSpecial("Nothing left to uncover in that family."); return false; }
+                    desc = "The next undiscovered item in this family is revealed.";
+                    afterUnknown = true;
+                    return true;
+                }
+            }
+            RefuseSpecial("That does not work on a board tile.");
+            return false;
+        }
+
+        private bool ApplySpecialTo(Specials.SpecialId id, BoardTileView tile)
+        {
+            switch (id)
+            {
+                case Specials.SpecialId.SkeletonKey:
+                    if (!UpgradeTile(tile)) { RefuseSpecial("That one won't turn."); return false; }
+                    AQ.App.UI.Common.ToastService.Show("sp_key", "Skeleton Key: one tier up.", 1.6f);
+                    return true;
+
+                case Specials.SpecialId.BoxKnife:
+                    if (!SplitTile(tile, out var toStash)) { RefuseSpecial("Nothing to cut there."); return false; }
+                    AQ.App.UI.Common.ToastService.Show("sp_knife",
+                        toStash ? "Box Knife: split. Spare went to the Stash." : "Box Knife: split into two.", 1.8f);
+                    return true;
+
+                case Specials.SpecialId.CarbonCopy:
+                    if (!DuplicateTile(tile, out var copyStash)) { RefuseSpecial("Can't copy that."); return false; }
+                    AQ.App.UI.Common.ToastService.Show("sp_copy",
+                        copyStash ? "Carbon Copy: duplicate in the Stash." : "Carbon Copy: duplicated.", 1.8f);
+                    return true;
+
+                case Specials.SpecialId.BoltCutters:
+                    if (!CutTile(tile)) { RefuseSpecial("Keep at least one generator on the board."); return false; }
+                    AQ.App.UI.Common.ToastService.Show("sp_cut", "Bolt Cutters: cleared.", 1.5f);
+                    return true;
+
+                case Specials.SpecialId.SearchWarrant:
+                {
+                    var family = GetFamily(tile);
+                    ItemDefinitionSO reveal = null;
+                    foreach (var d in itemDefinitions)
+                    {
+                        if (d == null || d.family != family) continue;
+                        if (Common.ItemDiscoveryService.IsDiscovered(family, d.tier)) continue;
+                        if (reveal == null || d.tier < reveal.tier) reveal = d;
+                    }
+                    if (reveal == null) { RefuseSpecial("Nothing left to uncover in that family."); return false; }
+                    Common.ItemDiscoveryService.Mark(family, reveal.tier);
+                    AQ.App.UI.Common.ToastService.Show("sp_warrant", $"Search Warrant: {reveal.displayName} revealed.", 2.2f);
+                    Common.ItemFamilyPopup.Show(family, reveal.tier);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private string ItemNameOf(string family, int tier)
+        {
+            var def = LookupItemDef(family, tier);
+            return def != null ? def.displayName : FormatFamilyTier(family, tier);
+        }
+
+        private static void RefuseSpecial(string msg) =>
+            AQ.App.UI.Common.ToastService.Show("sp_refuse", msg, 2f);
 
         // Grid furniture translucency (Stephen-ruled 2026-08-11 — born as a
         // DialogueStage fade bug he liked): the checker cells and backdrop
@@ -1003,7 +1223,7 @@ namespace AQ.App.UI.Board
                 for (int c = 0; c < cols; c++)
                 {
                     var v = grid[r, c];
-                    if (v == null || v.IsEmpty || v.Kind == TileKind.Generator) continue;
+                    if (v == null || v.IsEmpty || v.Kind != TileKind.Item) continue;
                     if (v.Tier != tier) continue;
                     if (GetFamily(v) != family) continue;
 
@@ -1035,7 +1255,7 @@ namespace AQ.App.UI.Board
                 for (int c = 0; c < cols; c++)
                 {
                     var v = grid[r, c];
-                    if (v == null || v.IsEmpty || v.Kind == TileKind.Generator) continue;
+                    if (v == null || v.IsEmpty || v.Kind != TileKind.Item) continue;
                     var fam = GetFamily(v);
                     if (!string.IsNullOrEmpty(fam))
                         OnItemCreated?.Invoke(fam, v.Tier);

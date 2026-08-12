@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace AQ.App.Overflow
 {
-    public enum OverflowKind { Item, Generator }
+    public enum OverflowKind { Item, Generator, Special } // Special: family holds the SpecialId name
 
     [Serializable]
     public struct OverflowTileData

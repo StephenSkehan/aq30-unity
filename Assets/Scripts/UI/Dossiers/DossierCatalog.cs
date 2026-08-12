@@ -45,8 +45,9 @@ namespace AQ.App.UI.Dossiers
         static DossierReward Special(SpecialId id, string label) =>
             new DossierReward { kind = DossierRewardKind.Special, special = id, label = label };
 
-        /// <summary>Display order for the case-file index.</summary>
-        public static readonly string[] Order = { "ally", "gerald", "mo", "del", "dot", "vera" };
+        /// <summary>Display order for the case-file index.
+        /// (Vera cut 2026-08-12, Stephen-ruled: no case file for her.)</summary>
+        public static readonly string[] Order = { "ally", "gerald", "mo", "del", "dot" };
 
         public static readonly Dictionary<string, DossierDef> All = new()
         {
@@ -145,23 +146,8 @@ namespace AQ.App.UI.Dossiers
                 completion = null, // her cassette IS the completion reward
                 completionCassette = "App/Audio/Cassettes/cassette_dot_goodnight"
             },
-            ["vera"] = new DossierDef
-            {
-                key = "vera", displayName = "Vera",
-                intro = "Dot's sister. Larkhill, the hill cottage. Says hello, which for Vera is a parade.",
-                facts =
-                {
-                    new DossierFact { price = 50,  text = "The hill cottage above Larkhill: one kettle, two chairs, and a view worth the climb.",
-                                      reward = Item("food_gifts", 1, "Hot Coffee Cup") },
-                    new DossierFact { price = 100, text = "She and Dot speak in a shorthand fifty years deep. Half their sentences do not need finishing.",
-                                      reward = Item("rusty_anchor", 4, "Wine Glass Red") },
-                    new DossierFact { price = 150, gatedOnEpisodeClose = true,
-                                      text = "When Dot needed to disappear, Vera asked no questions. That is the entire family style.",
-                                      reward = Special(SpecialId.BoltCutters, "Bolt Cutters") },
-                },
-                completion = Special(SpecialId.CarbonCopy, "Carbon Copy"),
-                completionCassette = null
-            },
+            // Vera's dossier CUT 2026-08-12 (Stephen-ruled). Her fact set is
+            // preserved in SAS/feature-dossiers-v1.md if she ever earns a file.
         };
     }
 }

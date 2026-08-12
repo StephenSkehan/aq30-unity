@@ -311,7 +311,9 @@ namespace AQ.App.UI.Board
                     {
                         r = r,
                         c = c,
-                        kind   = v.Kind == TileKind.Generator ? "Generator" : "Item",
+                        kind   = v.Kind == TileKind.Generator ? "Generator"
+                               : v.Kind == TileKind.Special   ? "Special"
+                               : "Item",
                         tier   = v.Tier,
                         family = board.GetFamily(v)
                     });
@@ -351,6 +353,12 @@ namespace AQ.App.UI.Board
                                : (board.icons != null && board.icons.Count > 0 ? board.icons[0] : null));
                     v.SetGenerator(sprite, genTier);
                     board.AttachGeneratorAnimator(v, family, genTier);
+                }
+                else if (string.Equals(cell.kind, "Special", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Board-tile specials (2026-08-12): family holds the SpecialId name.
+                    v.SetSpecial(Enum.TryParse<UI.Specials.SpecialId>(family, out var sid)
+                        ? UI.Specials.SpecialItemsService.SpriteFor(sid) : null);
                 }
                 else
                 {
@@ -544,7 +552,10 @@ namespace AQ.App.UI.Board
                     for (int c = 0; c < board.Cols; c++)
                     {
                         var v = board.Get(r, c);
-                        int kind = v == null ? 0 : (v.IsEmpty ? 0 : (v.Kind == TileKind.Generator ? 2 : 1));
+                        int kind = v == null || v.IsEmpty ? 0
+                                 : v.Kind == TileKind.Generator ? 2
+                                 : v.Kind == TileKind.Special   ? 3
+                                 : 1;
                         int tier = v == null || v.IsEmpty ? -1 : v.Tier;
 
                         h = h * 31 + r;

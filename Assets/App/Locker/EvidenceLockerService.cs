@@ -15,6 +15,7 @@ namespace AQ.App.Locker
         public int tier;
         public string itemId;
         public bool isGenerator; // absent in pre-2026-08-06 saves → false → item
+        public bool isSpecial;   // absent in pre-2026-08-12 saves → false; family holds the SpecialId name
     }
 
     /// <summary>
@@ -57,6 +58,7 @@ namespace AQ.App.Locker
             public int tier;
             public string itemId; // ItemDefinitionSO.itemId — drives lead satisfaction; may be empty
             public bool isGenerator;
+            public bool isSpecial;
         }
 
         private static readonly List<Entry> _entries = new();
@@ -89,7 +91,9 @@ namespace AQ.App.Locker
             var e = _entries[index];
             return new OverflowTileData
             {
-                kind   = e.isGenerator ? OverflowKind.Generator : OverflowKind.Item,
+                kind   = e.isSpecial ? OverflowKind.Special
+                       : e.isGenerator ? OverflowKind.Generator
+                       : OverflowKind.Item,
                 family = e.family,
                 tier   = e.tier
             };
@@ -105,7 +109,8 @@ namespace AQ.App.Locker
                 family      = data.family,
                 tier        = data.tier,
                 itemId      = itemId ?? string.Empty,
-                isGenerator = data.kind == OverflowKind.Generator
+                isGenerator = data.kind == OverflowKind.Generator,
+                isSpecial   = data.kind == OverflowKind.Special
             });
             LockerChanged?.Invoke();
             return true;
@@ -129,7 +134,7 @@ namespace AQ.App.Locker
             EnsureLoaded();
             for (int i = 0; i < _entries.Count; i++)
             {
-                if (_entries[i].isGenerator) continue; // lead consumption never eats a stored generator
+                if (_entries[i].isGenerator || _entries[i].isSpecial) continue; // lead consumption never eats a stored generator or special
                 if (_entries[i].tier != tier || _entries[i].family != family) continue;
                 _entries.RemoveAt(i);
                 LockerChanged?.Invoke();
@@ -181,7 +186,7 @@ namespace AQ.App.Locker
             EnsureLoaded();
             var dto = new LockerStateDTO { purchasedSlots = _purchasedSlots };
             foreach (var e in _entries)
-                dto.entries.Add(new LockerEntryDTO { family = e.family, tier = e.tier, itemId = e.itemId, isGenerator = e.isGenerator });
+                dto.entries.Add(new LockerEntryDTO { family = e.family, tier = e.tier, itemId = e.itemId, isGenerator = e.isGenerator, isSpecial = e.isSpecial });
             return dto;
         }
 
@@ -214,6 +219,7 @@ namespace AQ.App.Locker
                     h = h * 31 + e.tier;
                     h = h * 31 + (e.itemId?.GetHashCode() ?? 0);
                     h = h * 31 + (e.isGenerator ? 1 : 0);
+                    h = h * 31 + (e.isSpecial ? 1 : 0);
                 }
                 return h;
             }
@@ -269,7 +275,7 @@ namespace AQ.App.Locker
             if (dto == null) return;
             if (dto.entries != null)
                 foreach (var e in dto.entries)
-                    _entries.Add(new Entry { family = e.family, tier = e.tier, itemId = e.itemId ?? string.Empty, isGenerator = e.isGenerator });
+                    _entries.Add(new Entry { family = e.family, tier = e.tier, itemId = e.itemId ?? string.Empty, isGenerator = e.isGenerator, isSpecial = e.isSpecial });
             _purchasedSlots = Mathf.Clamp(dto.purchasedSlots, 0, SlotPrices.Length);
         }
     }

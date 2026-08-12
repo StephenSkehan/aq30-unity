@@ -187,7 +187,7 @@ namespace AQ.App.UI.Dossiers
                 if (nodes != null)
                     foreach (var n in nodes)
                         if (n != null) best = Prefer(best, Match(n.portrait, token));
-                if (best != null && best.name.ToLowerInvariant().Contains("neutral")) return best;
+                if (Score(best) >= 2) return best;
             }
             return best;
         }
@@ -202,13 +202,16 @@ namespace AQ.App.UI.Dossiers
 
         private static Sprite Match(Sprite s, string token) => Token(s) == token ? s : null;
 
-        private static Sprite Prefer(Sprite current, Sprite candidate)
+        // Expression preference (Stephen-ruled 2026-08-12): neutral, then happy,
+        // then whatever exists — worried/sad frames stop fronting the board.
+        private static int Score(Sprite s)
         {
-            if (candidate == null) return current;
-            if (current == null) return candidate;
-            bool curNeutral  = current.name.ToLowerInvariant().Contains("neutral");
-            bool candNeutral = candidate.name.ToLowerInvariant().Contains("neutral");
-            return !curNeutral && candNeutral ? candidate : current;
+            if (s == null) return -1;
+            var n = s.name.ToLowerInvariant();
+            return n.Contains("neutral") ? 2 : n.Contains("happy") ? 1 : 0;
         }
+
+        private static Sprite Prefer(Sprite current, Sprite candidate) =>
+            Score(candidate) > Score(current) ? candidate : current;
     }
 }

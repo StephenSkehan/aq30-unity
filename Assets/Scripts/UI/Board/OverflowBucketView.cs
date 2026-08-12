@@ -207,6 +207,10 @@ namespace AQ.App.UI.Board
                 return so != null ? so.SpriteForTier(data.tier) : board.generatorSprite;
             }
 
+            if (data.kind == OverflowKind.Special &&
+                System.Enum.TryParse<AQ.App.UI.Specials.SpecialId>(data.family, out var sid))
+                return AQ.App.UI.Specials.SpecialItemsService.SpriteFor(sid);
+
             return board.SpriteForItemTierPublic(data.tier);
         }
 

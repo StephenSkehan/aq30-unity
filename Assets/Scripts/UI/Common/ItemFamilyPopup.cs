@@ -57,7 +57,7 @@ namespace AQ.App.UI.Common
 
             int rows      = (defs.Count + Columns - 1) / Columns;
             float gridW   = Columns * CellSize + (Columns - 1) * CellGap;
-            float gridH   = rows * (CellSize + 44f) + (rows - 1) * CellGap; // +44 name strip per cell
+            float gridH   = rows * (CellSize + 60f) + (rows - 1) * CellGap; // +60 two-line name strip per cell (2026-08-12)
             float panelH  = 300f + gridH;
 
             var panel = MakeRect("Panel", _root.transform);
@@ -95,7 +95,7 @@ namespace AQ.App.UI.Common
                 int row = i / Columns, col = i % Columns;
                 int inRow = Mathf.Min(Columns, defs.Count - row * Columns);
                 float x = (col - (inRow - 1) / 2f) * (CellSize + CellGap);
-                float cy = y - CellSize / 2f - row * (CellSize + 44f + CellGap);
+                float cy = y - CellSize / 2f - row * (CellSize + 60f + CellGap);
                 BuildCell(panel, defs[i], family, currentTier, new Vector2(x, cy));
             }
 
@@ -113,7 +113,7 @@ namespace AQ.App.UI.Common
             cell.anchorMin        = new Vector2(0.5f, 0.5f);
             cell.anchorMax        = new Vector2(0.5f, 0.5f);
             cell.pivot            = new Vector2(0.5f, 0.5f);
-            cell.sizeDelta        = new Vector2(CellSize, CellSize + 44f);
+            cell.sizeDelta        = new Vector2(CellSize, CellSize + 60f);
             cell.anchoredPosition = pos;
 
             // Modest highlight for the pressed tier: amber rim, same Card body.
@@ -152,7 +152,7 @@ namespace AQ.App.UI.Common
             tag.anchorMax        = new Vector2(0.5f, 0f);
             tag.pivot            = new Vector2(0.5f, 0f);
             tag.sizeDelta        = new Vector2(60f, 24f);
-            tag.anchoredPosition = new Vector2(0f, 44f);
+            tag.anchoredPosition = new Vector2(0f, 60f);
             var tagTmp = tag.gameObject.AddComponent<TextMeshProUGUI>();
             tagTmp.text      = $"T{def.tier + 1}";
             tagTmp.fontSize  = 19f;
@@ -166,11 +166,11 @@ namespace AQ.App.UI.Common
             nameRt.anchorMin = new Vector2(0f, 0f);
             nameRt.anchorMax = new Vector2(1f, 0f);
             nameRt.pivot     = new Vector2(0.5f, 0f);
-            nameRt.sizeDelta = new Vector2(-12f, 44f);
+            nameRt.sizeDelta = new Vector2(-10f, 58f);
             nameRt.anchoredPosition = new Vector2(0f, 4f);
             var nameTmp = nameRt.gameObject.AddComponent<TextMeshProUGUI>();
             nameTmp.text      = isDiscovered ? def.displayName : "???";
-            nameTmp.fontSize  = 17f;
+            nameTmp.fontSize  = 16f; // two lines fit the 58px strip (2026-08-12: no more mid-word ellipsis)
             nameTmp.color     = isDiscovered ? AQTheme.Paper : AQTheme.PaperDim;
             nameTmp.alignment = TextAlignmentOptions.Center;
             nameTmp.textWrappingMode = TextWrappingModes.Normal;
