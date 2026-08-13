@@ -116,22 +116,10 @@ namespace AQ.App.UI.Settings
             Centre(_panelRt, 800, 900);
             AQTheme.StylePanel(_panelRt);
 
-            // Title bar
-            var title = MakeText("Title", _panelRt, "SETTINGS", 46, AQTheme.Paper, display: true);
-            var trt = title.rectTransform;
-            trt.anchorMin = new Vector2(0.06f, 0.88f);
-            trt.anchorMax = new Vector2(0.85f, 0.97f);
-            trt.sizeDelta  = Vector2.zero;
-
-            // Close button — Steel blue (Stephen-ruled 2026-08-05, was AlertRed)
-            // with a drawn ✕ (the game font has no ✕ glyph; TMP rendered tofu).
-            var closeBtn = MakeButton("CloseBtn", _panelRt, "", 38, AQTheme.Paper, AQTheme.Steel);
-            var crt = closeBtn.GetComponent<RectTransform>();
-            crt.anchorMin = new Vector2(0.86f, 0.895f);
-            crt.anchorMax = new Vector2(0.965f, 0.955f);
-            crt.sizeDelta  = Vector2.zero;
-            AQTheme.AddDrawnX(crt, AQTheme.Paper, 26f, 5f);
-            closeBtn.onClick.AddListener(Close);
+            // Title bar (app-wide treatment; was a hand-rolled title + close
+            // predating the 2026-08-12 rollout, caught on-device in build 4)
+            AQTheme.TitleBar(_panelRt, "SETTINGS", Close,
+                "Changes apply immediately and are saved automatically.");
 
             // Tab bar
             var tabBar = new GameObject("TabBar");
