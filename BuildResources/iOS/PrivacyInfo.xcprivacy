@@ -43,13 +43,16 @@
 		</dict>
 	</array>
 
-	<!-- (b) Tracking. The app serves personalized ads via AdMob behind the ATT
-	     prompt, so app-wide tracking is true. The AdMob SDK's own bundled manifest
-	     declares its tracking domains; the app's first-party code contacts none,
-	     so this list is intentionally empty. Add a domain here only if first-party
-	     app code ever connects directly to a tracking domain. -->
+	<!-- (b) Tracking. FALSE at app level, ruled by ITMS-91064 on build 3
+	     (2026-08-13): Apple's validator rejects true + an empty domain list —
+	     declaring true REQUIRES at least one tracking domain. First-party app
+	     code contacts no tracking domains and collects nothing for tracking, so
+	     false + empty is the truthful app-level declaration; the AdMob SDK's own
+	     bundled manifest declares ITS tracking and domains, and Apple aggregates
+	     all manifests. If first-party code ever contacts a tracking domain, set
+	     true AND list that domain here — never true with an empty list. -->
 	<key>NSPrivacyTracking</key>
-	<true/>
+	<false/>
 	<key>NSPrivacyTrackingDomains</key>
 	<array/>
 
