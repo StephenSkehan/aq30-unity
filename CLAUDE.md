@@ -99,6 +99,8 @@ This repo had a serious LFS corruption event in its history (2.65 GiB bloat). Ru
 
 - **Setting:** Fictional coastal city of Havenbay.
 - **Protagonist:** Ally Quinn — true crime podcaster and licensed private investigator (canon ruling 2026-07-31: PI licence is canon per the SAS bible, but "podcaster" is always the lead identity in player-facing copy).
-- **Case 1:** "The Ghost Student" — the planned vertical slice case.
+- **Episode 1:** **"The Listener"** — the shipping vertical slice. 13 leads (`Lead_E1_*`) plus a close, `e1_close` "Goodnight, Harbour". Dot Ellis and the Tip Line. Content lives in `Assets/Content/TheListener/`. The authority doc for its script is `SAS/episode-1-vo-lock-v1.1-WIP.md`.
+- **"The Ghost Student":** **PARKED 2026-08-13** for possible inclusion as a later episode. This was the original Case 1 and was superseded by The Listener. Its `Resolve_GS_*` dialogue drafts remain at the root of `Assets/Content/GhostStudent/`, but **no GS leads are in `LeadsDatabase`**. Do not treat it as current content, and do not delete the drafts.
+- ⚠ **Content-folder trap:** the three cold cases and the Ep2 teaser live under `Assets/Content/GhostStudent/Leads/` but are **Episode 1 tail content** — `Lead_E1_Close` spawns `cold_case_a` and `ep2_teaser`. Folder name does not imply case membership; check `LeadsDatabase` and `SpawnLeadIds`, not the directory.
 - **Framing device:** The game is presented as Ally's podcast episodes.
 - Tone: noir-inspired, grounded, character-driven. Not campy.
