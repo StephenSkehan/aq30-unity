@@ -1,4 +1,4 @@
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
+#if UNITY_EDITOR || DEVELOPMENT_BUILD || AQ_DEBUG_TAB
 using System;
 using TMPro;
 using UnityEngine;

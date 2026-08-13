@@ -14,12 +14,16 @@ namespace AQ.EditorTools
             var opts = new BuildPlayerOptions
             {
                 scenes = new[] { "Assets/Scenes/Main Merge.unity" },
-                locationPathName = "Builds/iOS-b3",
+                locationPathName = "Builds/iOS-b5",
                 target = BuildTarget.iOS,
-                options = BuildOptions.None // release: no Development, no script debugging
+                options = BuildOptions.None, // release: no Development, no script debugging
+                // Settings > Debug tab in TestFlight builds (Stephen-ruled 2026-08-13:
+                // RESET is useful to testers, CRASH TEST checks Crashlytics liveness).
+                // REMOVE this line for the App Store submission build.
+                extraScriptingDefines = new[] { "AQ_DEBUG_TAB" }
             };
 
-            Debug.Log("[BuildIOS] START -> Builds/iOS-b3");
+            Debug.Log("[BuildIOS] START -> Builds/iOS-b5");
             BuildReport report = BuildPipeline.BuildPlayer(opts);
             BuildSummary s = report.summary;
             if (s.result == BuildResult.Succeeded)
