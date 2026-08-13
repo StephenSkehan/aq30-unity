@@ -54,3 +54,6 @@ Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/*.asset
 
 # Doc-pack snapshots for external audits stay local (2026-07-18)
 SAS/*.zip
+
+# Build output (never commit - git hygiene rule)
+/Builds/
