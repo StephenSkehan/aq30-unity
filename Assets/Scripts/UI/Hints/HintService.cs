@@ -169,7 +169,7 @@ namespace AQ.UI.Hints
             // Teaching begins after FTUE + L1 are fully done (Stephen-ruled
             // 2026-08-14): the choreography and first payoff stay clean, and the
             // queue holds anything triggered earlier.
-            if (!NarrativeFlags.Has("aq.lead.e1_tip.seen")) return true;
+            if (!DialogueFlags.Has("aq.lead.e1_tip.seen")) return true;
             return PlayerPrefs.GetInt("aq.ftue.first_merge.stage", 0) == 1;
         }
 
@@ -344,7 +344,7 @@ namespace AQ.UI.Hints
         // pointing at a live example.
         private static void OnTickShown(BoardTileView tile)
         {
-            if (!NarrativeFlags.Has("aq.lead.e1_tip.seen")) return;
+            if (!DialogueFlags.Has("aq.lead.e1_tip.seen")) return;
             HintService.Request("tick",
                 "Green tick. That is evidence somebody is waiting on.",
                 () => tile != null ? tile.transform : null);
@@ -445,7 +445,7 @@ namespace AQ.UI.Hints
         // done) so it does not stack on the L1 payoff moment.
         private static void OnDialogueClosed()
         {
-            if (!NarrativeFlags.Has("aq.lead.e1_tip.seen")) return;
+            if (!DialogueFlags.Has("aq.lead.e1_tip.seen")) return;
             HintService.Request("dossier",
                 "Ally keeps notes on everyone and everything. Tap her to find out what she knows.",
                 () => FindAny("Img_Player"));

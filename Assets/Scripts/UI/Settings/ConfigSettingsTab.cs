@@ -46,7 +46,13 @@ namespace AQ.UI.Settings
             brt.anchorMin = new Vector2(0.68f, 0.1f);
             brt.anchorMax = new Vector2(1f, 0.9f);
             brt.offsetMin = brt.offsetMax = Vector2.zero;
-            var img = btnGo.GetComponent<Image>();
+            var btn = btnGo.GetComponent<Button>();
+
+            // Style ONCE; its layered children would bury any earlier text
+            // (the invisible-label bug, device finding 2026-08-14). Repaints
+            // go through RetintButton, and the label is added LAST = topmost.
+            AQTheme.StyleButton(btnGo.GetComponent<Image>(),
+                new Color(0.18f, 0.42f, 0.28f, 1f));
 
             var txtGo = new GameObject("T", typeof(RectTransform));
             txtGo.transform.SetParent(brt, false);
@@ -65,11 +71,11 @@ namespace AQ.UI.Settings
             {
                 bool on = HintService.Enabled;
                 ttmp.text = on ? "ON" : "OFF";
-                AQTheme.StyleButton(img, on ? new Color(0.18f, 0.42f, 0.28f, 1f)
-                                            : new Color(0.35f, 0.33f, 0.30f, 1f));
+                AQTheme.RetintButton(btn, on ? new Color(0.18f, 0.42f, 0.28f, 1f)
+                                             : new Color(0.35f, 0.33f, 0.30f, 1f));
             }
 
-            btnGo.GetComponent<Button>().onClick.AddListener(() =>
+            btn.onClick.AddListener(() =>
             {
                 HintService.Enabled = !HintService.Enabled;
                 Paint();
