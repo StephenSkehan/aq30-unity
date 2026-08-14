@@ -336,7 +336,7 @@ namespace AQ.UI.Hints
             if (wallet == null) return;
             if (wallet.Get(AQ.SharedKernel.Economy.Currency.Energy) >= 90) return;
             HintService.Request("energy",
-                "Working the board costs energy. It refills on its own, slowly.");
+                "All this legwork costs energy. Recovery takes time.");
         }
 
         // Re-armed (Stephen-ruled 2026-08-14): L1's seeded-pair ticks are
@@ -346,7 +346,7 @@ namespace AQ.UI.Hints
         {
             if (!NarrativeFlags.Has("aq.lead.e1_tip.seen")) return;
             HintService.Request("tick",
-                "A green tick means a lead needs that item.",
+                "Green tick. That is evidence somebody is waiting on.",
                 () => tile != null ? tile.transform : null);
         }
 
@@ -363,7 +363,7 @@ namespace AQ.UI.Hints
             if (Time.realtimeSinceStartup - _bootTime < 5f) return;
             if (count == 0) return;
             HintService.Request("stash",
-                "Extra finds wait in the Stash. Tap it when the board has room.",
+                "Special things end up in the Stash. Tap this when there is room on the board.",
                 () => FindAny("__OverflowBtn", "__StashBtn"));
         }
 
@@ -380,7 +380,7 @@ namespace AQ.UI.Hints
                 }
             if (total == 0 || filled < total * 0.8f) return;
             HintService.Request("locker",
-                "Desk filling up? The locker stores evidence off the board.",
+                "A cluttered desk hides things. The locker keeps evidence safe until it is needed.",
                 () => FindAny("__LockerBtn"));
         }
 
@@ -398,13 +398,13 @@ namespace AQ.UI.Hints
             if (shrank) { HintService.ActionPerformed("casekit"); return; } // a special was placed
             if (total == 0) return;
             HintService.Request("casekit",
-                "New tool in the Case Kit. Place it on the board, then drag it onto its target.",
+                "A new tool of the trade. Open the Case Kit, place it, and drag it where it is needed.",
                 () => FindAny("__CaseKitBtn", "__KitBtn"));
         }
 
         private static void OnHelpBarBuilt(RectTransform helpBtn)
             => HintService.Request("help",
-                "Any screen with a ? will explain itself.",
+                "Lost? The ? knows the way. Every screen has one.",
                 () => helpBtn);
 
         // ---- P2/P3 handlers ----
@@ -420,7 +420,7 @@ namespace AQ.UI.Hints
             PlayerPrefs.SetInt("aq.hint.merge_ct", n);
             if (n < 10 || CountBoardItems() < 5) return;
             HintService.Request("longpress",
-                "Hold any item to examine it and see its whole family.");
+                "Look closer. Hold any item and it will tell you its story.");
         }
 
         private static int CountBoardItems()
@@ -439,7 +439,7 @@ namespace AQ.UI.Hints
 
         private static void OnTilesSwapped()
             => HintService.Request("swap",
-                "Different evidence families trade places instead of merging.");
+                "Those two do not mix. Different evidence trades places instead of merging.");
 
         // Dossier hint waits for the SECOND case beat (first close after L1 is
         // done) so it does not stack on the L1 payoff moment.
@@ -447,7 +447,7 @@ namespace AQ.UI.Hints
         {
             if (!NarrativeFlags.Has("aq.lead.e1_tip.seen")) return;
             HintService.Request("dossier",
-                "Tap Ally to open her case files.",
+                "Ally keeps notes on everyone and everything. Tap her to find out what she knows.",
                 () => FindAny("Img_Player"));
         }
 
@@ -465,13 +465,13 @@ namespace AQ.UI.Hints
                 if (r.Currency == AQ.SharedKernel.Economy.Currency.Soft)
                 {
                     HintService.Request("casecash",
-                        "CaseCash earned. It pays for locker slots, case file pages, and shop stock later on.");
+                        "Your help earns CaseCash. Look out for places to spend it around town.");
                     break;
                 }
 
             if (n >= 3)
                 HintService.Request("evidence",
-                    "Everything you learn is pinned to the evidence board.",
+                    "Everything we learn is pinned to the evidence board, ready to remind you.",
                     () => FindAny("__EvidBoardBtn"));
         }
 

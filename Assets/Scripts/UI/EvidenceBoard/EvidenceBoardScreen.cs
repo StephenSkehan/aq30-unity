@@ -240,7 +240,7 @@ namespace AQ.App.UI.EvidenceBoard
             // Zoom/pan existed since day one but nothing announced it (cohort
             // round: players never found it).
             AQ.UI.Hints.HintService.Request("boardzoom",
-                "Pinch to zoom the board. Drag to look around.");
+                "Get close to the details. Pinch to zoom, drag to move around the board.");
             AQ.UI.Hints.HintService.ActionPerformed("evidence"); // opening it IS the taught action
 
             PopulateBoard();
