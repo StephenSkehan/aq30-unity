@@ -14,7 +14,7 @@ namespace AQ.EditorTools
             var opts = new BuildPlayerOptions
             {
                 scenes = new[] { "Assets/Scenes/Main Merge.unity" },
-                locationPathName = "Builds/iOS-b5",
+                locationPathName = "Builds/iOS-b6",
                 target = BuildTarget.iOS,
                 options = BuildOptions.None, // release: no Development, no script debugging
                 // Settings > Debug tab in TestFlight builds (Stephen-ruled 2026-08-13:
@@ -23,7 +23,7 @@ namespace AQ.EditorTools
                 extraScriptingDefines = new[] { "AQ_DEBUG_TAB" }
             };
 
-            Debug.Log("[BuildIOS] START -> Builds/iOS-b5");
+            Debug.Log("[BuildIOS] START -> Builds/iOS-b6");
             BuildReport report = BuildPipeline.BuildPlayer(opts);
             BuildSummary s = report.summary;
             if (s.result == BuildResult.Succeeded)
