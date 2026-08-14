@@ -57,3 +57,7 @@ SAS/*.zip
 
 # Build output (never commit - git hygiene rule)
 /Builds/
+
+# Addressables build-time generated (Unity deletes/recreates it across refreshes)
+Assets/AddressableAssetsData/link.xml
+Assets/AddressableAssetsData/link.xml.meta
