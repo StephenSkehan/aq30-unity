@@ -212,8 +212,9 @@ namespace AQ.App.UI.Board
 
                 var img = cell.gameObject.AddComponent<Image>();
                 // Slot squares sit at the board grid's 40% read so the safe
-                // watermark shows through (0.5 Stephen-ruled 2026-08-14, was 0.4).
-                const float slotAlpha = 0.5f;
+                // watermark shows through (0.85 Stephen-ruled 2026-08-14 after
+                // an 0.5 look; 40pct original).
+                const float slotAlpha = 0.85f;
 
                 if (slot < count)
                 {
