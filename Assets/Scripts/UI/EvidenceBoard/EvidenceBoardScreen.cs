@@ -295,7 +295,6 @@ namespace AQ.App.UI.EvidenceBoard
                 return;
             }
 
-            var resolvedIds   = new HashSet<string>();
             var resolvedLeads = new List<LeadData>();
 
             foreach (var lead in _repo.database.Leads)
@@ -303,14 +302,12 @@ namespace AQ.App.UI.EvidenceBoard
                 if (lead == null || lead.boardPhase <= 0) continue; // repeatables/teasers stay off the board
                 if (DialogueFlags.Has("aq.lead." + lead.leadId + ".seen"))
                 {
-                    resolvedIds.Add(lead.leadId);
                     resolvedLeads.Add(lead);
                 }
             }
 
             if (resolvedLeads.Count == 0) return;
 
-            var cardRts    = new Dictionary<string, RectTransform>();
             var tackSprite = Resources.Load<Sprite>("App/UI/EvidenceBoard/push_pin");
 
             float y = BoardH / 2f - 500f;
@@ -359,44 +356,56 @@ namespace AQ.App.UI.EvidenceBoard
             }
             if (cast.Count > 0) y -= 420f;
 
-            // Lead cards clustered by phase, in database order within each phase
-            var phases = new SortedDictionary<int, List<LeadData>>();
+            // Location pins — WHERE, sourced from stage backgrounds exactly as
+            // the cast row sources WHO from portraits. Lead cards + phase
+            // banners retired (Stephen-ruled 2026-08-14, location board v2).
+            // Sprite index scans the FULL database so a location whose only
+            // resolved scenes carry a null stageBackground (the studio bucket)
+            // still finds its art on an unresolved graph.
+            var spriteIndex = new Dictionary<string, Sprite>();
+            foreach (var lead in _repo.database.Leads)
+            {
+                var s = lead != null && lead.resolutionDialogue != null
+                    ? lead.resolutionDialogue.stageBackground : null;
+                if (s == null) continue;
+                var k = LocationCatalog.KeyForSprite(s.name);
+                if (!spriteIndex.ContainsKey(k)) spriteIndex[k] = s;
+            }
+
+            var locLeads = new Dictionary<string, List<LeadData>>();
+            var locOrder = new List<string>();
             foreach (var lead in resolvedLeads)
             {
-                int p = Mathf.Max(1, lead.boardPhase);
-                if (!phases.TryGetValue(p, out var list)) phases[p] = list = new List<LeadData>();
+                var s = lead.resolutionDialogue != null ? lead.resolutionDialogue.stageBackground : null;
+                var k = LocationCatalog.KeyForSprite(s != null ? s.name : null);
+                if (!locLeads.TryGetValue(k, out var list))
+                {
+                    locLeads[k] = list = new List<LeadData>();
+                    locOrder.Add(k);
+                }
                 list.Add(lead);
             }
 
-            const int cols = 3;
-            foreach (var kv in phases)
+            const int locCols = 3;
+            int locRows = (locOrder.Count + locCols - 1) / locCols;
+            for (int i = 0; i < locOrder.Count; i++)
             {
-                var label = CreatePhaseLabel("PHASE " + kv.Key, new Vector2(0f, y));
-                _placed.Add(label);
-                y -= 200f;
+                var key   = locOrder[i];
+                int row   = i / locCols;
+                int inRow = Mathf.Min(locCols, locOrder.Count - row * locCols);
+                var rng   = new System.Random(key.GetHashCode());
+                float jx  = (float)(rng.NextDouble() * 40.0 - 20.0);
+                float brick = (row % 2 == 1) ? 170f : 0f;
+                float x   = (i % locCols - (inRow - 1) / 2f) * 340f + jx + brick;
 
-                var leads = kv.Value;
-                int rows  = (leads.Count + cols - 1) / cols;
-                for (int i = 0; i < leads.Count; i++)
-                {
-                    int row   = i / cols;
-                    int inRow = Mathf.Min(cols, leads.Count - row * cols);
-                    var rng   = new System.Random(leads[i].leadId.GetHashCode());
-                    float jx  = (float)(rng.NextDouble() * 50.0 - 25.0);
-                    float jy  = (float)(rng.NextDouble() * 36.0 - 18.0);
-                    // Brick stagger on odd rows keeps the grid from reading as a spreadsheet.
-                    float brick = (row % 2 == 1) ? CardColSpacing * 0.25f : 0f;
-                    float x   = (i % cols - (inRow - 1) / 2f) * CardColSpacing + jx + brick;
-
-                    var cardRt = LeadCardPin.Create(_boardContent, leads[i],
-                        new Vector2(x, y - row * CardRowSpacing + jy), OnLeadCardTapped, tackSprite);
-                    cardRts[leads[i].leadId] = cardRt;
-                    _placed.Add(cardRt);
-                    var cardPin = cardRt.GetComponent<LeadCardPin>();
-                    _tappables.Add((cardRt, cardPin.Tap));
-                }
-                y -= rows * CardRowSpacing + 60f;
+                spriteIndex.TryGetValue(key, out var bgSprite);
+                var pinRt = LocationPhotoPin.Create(_boardContent, key, bgSprite, locLeads[key],
+                    new Vector2(x, y - row * 400f), OnReplayLeadDialogue, tackSprite);
+                _placed.Add(pinRt);
+                var pin = pinRt.GetComponent<LocationPhotoPin>();
+                _tappables.Add((pinRt, pin.Tap));
             }
+            y -= locRows * 400f + 60f;
 
             // Centre the composition: shift everything so the content centroid sits
             // at board origin, then size the board to the content (plus breathing
@@ -419,28 +428,9 @@ namespace AQ.App.UI.EvidenceBoard
             _boardContent.sizeDelta = boardSize;
             _zoomPan.SetBoardSize(boardSize);
 
-            // String connections — after the recentre shift so endpoints are final.
-            // Threads run tack-to-tack like a real board, behind the cards.
-            foreach (var lead in resolvedLeads)
-            {
-                if (lead.boardConnections == null || lead.boardConnections.Length == 0) continue;
-                if (!cardRts.TryGetValue(lead.leadId, out var fromRt)) continue;
-
-                foreach (var toId in lead.boardConnections)
-                {
-                    if (!resolvedIds.Contains(toId)) continue;
-                    if (!cardRts.TryGetValue(toId, out var toRt)) continue;
-                    StringConnectionLine.Create(_boardContent, TackPoint(fromRt), TackPoint(toRt));
-                }
-            }
-        }
-
-        /// <summary>Board-space position of a card's thumbtack (local (0,128) rotated by its tilt).</summary>
-        private static Vector2 TackPoint(RectTransform card)
-        {
-            float a = card.localEulerAngles.z * Mathf.Deg2Rad;
-            const float tackY = 128f;
-            return card.anchoredPosition + new Vector2(-Mathf.Sin(a) * tackY, Mathf.Cos(a) * tackY);
+            // String connections retired with the cards (2026-08-14). They may
+            // return as authored location-to-location relationships (Chandler
+            // Road to the Allotments is the natural first).
         }
 
         private static void ClearPins()
@@ -459,7 +449,8 @@ namespace AQ.App.UI.EvidenceBoard
         {
             if (!_isOpen) return;
             if (CharacterProfileModal.IsOpen) return; // modal owns input while up
-            if (Dossiers.DossierPopup.IsOpen) return; // ditto the case file
+            if (LocationModal.IsOpen) return; // ditto the location sheet
+            if (Dossiers.DossierPopup.IsOpen) return; // and the case file
             if (Dossiers.DossierIndexPopup.IsOpen) return; // and the file index
 
             if (_closeRt != null &&
@@ -536,41 +527,9 @@ namespace AQ.App.UI.EvidenceBoard
             return result;
         }
 
-        private static RectTransform CreatePhaseLabel(string text, Vector2 pos)
-        {
-            var go = new GameObject("PhaseLabel_" + text, typeof(RectTransform), typeof(Image));
-            var rt = (RectTransform)go.transform;
-            rt.SetParent(_boardContent, false);
-            rt.anchorMin        = rt.anchorMax = new Vector2(0.5f, 0.5f);
-            rt.pivot            = new Vector2(0.5f, 0.5f);
-            rt.sizeDelta        = new Vector2(560f, 110f);
-            rt.anchoredPosition = pos;
-            rt.localRotation    = Quaternion.Euler(0f, 0f, -1.5f);
-
-            var img           = go.GetComponent<Image>();
-            img.color         = new Color(0.94f, 0.90f, 0.78f, 1f);
-            img.raycastTarget = false;
-
-            var lblGo = new GameObject("Text", typeof(RectTransform));
-            lblGo.transform.SetParent(rt, false);
-            var lblRt       = (RectTransform)lblGo.transform;
-            lblRt.anchorMin = Vector2.zero;
-            lblRt.anchorMax = Vector2.one;
-            lblRt.offsetMin = lblRt.offsetMax = Vector2.zero;
-            var tmp           = lblGo.AddComponent<TextMeshProUGUI>();
-            tmp.text          = text;
-            tmp.fontSize      = 52f;
-            tmp.fontStyle     = FontStyles.Bold;
-            tmp.color         = new Color(0.20f, 0.10f, 0.05f, 0.9f);
-            tmp.alignment     = TextAlignmentOptions.Center;
-            tmp.raycastTarget = false;
-
-            return rt;
-        }
 
         // ---- Dialogue replay ----
 
-        private static void OnLeadCardTapped(LeadData lead) => OnReplayLeadDialogue(lead);
 
         private static void OnReplayLeadDialogue(LeadData lead)
         {
