@@ -24,9 +24,15 @@ namespace AQ.UI.Hints
         private const string FlagPrefix = "aq.hint.";
         public const string EnabledPref = "aq.hints.enabled"; // Config tab switch
 
-        private static readonly Queue<(string id, string text, Func<Transform> anchor)> _queue = new();
+        private static readonly List<(string id, string text, Func<Transform> anchor)> _queue = new();
         private static readonly HashSet<string> _pending = new(); // queued or showing
         private static HintRunnerMB _runner;
+
+        // Backlog drains in this order after the L1 gate lifts (Stephen-ruled
+        // 2026-08-14): most-recent lesson first, then core loop, then chrome.
+        private static readonly string[] Priority =
+            { "casecash", "tick", "help", "energy", "stash", "locker",
+              "boardzoom", "dossier", "evidence", "casekit", "swap", "longpress" };
 
         public static bool Enabled
         {
@@ -43,8 +49,21 @@ namespace AQ.UI.Hints
             if (!Enabled) return;
             if (NarrativeFlags.Has(FlagPrefix + id)) return;
             if (!_pending.Add(id)) return;
-            _queue.Enqueue((id, text, anchor));
+            _queue.Add((id, text, anchor));
             EnsureRunner();
+        }
+
+        /// <summary>The player performed the taught action: retire the hint
+        /// whether it is showing OR still queued — no lecturing about things
+        /// already done (Stephen-ruled 2026-08-14).</summary>
+        public static void ActionPerformed(string id)
+        {
+            if (_pending.Contains(id))
+            {
+                _queue.RemoveAll(h => h.id == id);
+                MarkClosed(id);
+            }
+            if (_runner != null) _runner.CloseIfShowing(id);
         }
 
         internal static void MarkClosed(string id)
@@ -69,9 +88,18 @@ namespace AQ.UI.Hints
 
         internal static bool TryDequeue(out (string id, string text, Func<Transform> anchor) hint)
         {
-            if (_queue.Count > 0) { hint = _queue.Dequeue(); return true; }
             hint = default;
-            return false;
+            if (_queue.Count == 0) return false;
+            int best = 0, bestRank = int.MaxValue;
+            for (int i = 0; i < _queue.Count; i++)
+            {
+                int rank = System.Array.IndexOf(Priority, _queue[i].id);
+                if (rank < 0) rank = Priority.Length; // unknown ids after known, FIFO among themselves
+                if (rank < bestRank) { bestRank = rank; best = i; }
+            }
+            hint = _queue[best];
+            _queue.RemoveAt(best);
+            return true;
         }
     }
 
@@ -98,8 +126,19 @@ namespace AQ.UI.Hints
         private void OnDialogueOpened(CaseGraph _) => _dialogueOpen = true;
         private void OnDialogueClosed() => _dialogueOpen = false;
 
+        internal void CloseIfShowing(string id)
+        {
+            if (_chip == null || _chipId != id) return;
+            HintService.MarkClosed(_chipId);
+            Destroy(_chip);
+            _chip = null;
+        }
+
         private void Update()
         {
+            // Dossier opening has no event to hook; a per-frame static check is cheap.
+            if (AQ.App.UI.Dossiers.DossierPopup.IsOpen) HintService.ActionPerformed("dossier");
+
             if (_chip != null)
             {
                 // Persistent chip hides (not dies) while dialogue holds the stage.
@@ -267,6 +306,10 @@ namespace AQ.UI.Hints
             MergeBoardController.TilesSwapped += OnTilesSwapped;
             DialogueRunner.DialogueClosed += OnDialogueClosed;
             SubscribeWallet();
+
+            // Auto-clear signals: doing the thing retires its hint.
+            BoardTileView.LongHeld += _ => HintService.ActionPerformed("longpress");
+            AQ.App.Locker.EvidenceLockerService.LockerChanged += () => HintService.ActionPerformed("locker");
         }
 
         // The wallet may not exist until the save restores; hook the restore
@@ -296,16 +339,29 @@ namespace AQ.UI.Hints
                 "Working the board costs energy. It refills on its own, slowly.");
         }
 
+        // Re-armed (Stephen-ruled 2026-08-14): L1's seeded-pair ticks are
+        // ignored; the first fresh tick AFTER the gate teaches, with the pulse
+        // pointing at a live example.
         private static void OnTickShown(BoardTileView tile)
-            => HintService.Request("tick",
+        {
+            if (!NarrativeFlags.Has("aq.lead.e1_tip.seen")) return;
+            HintService.Request("tick",
                 "A green tick means a lead needs that item.",
                 () => tile != null ? tile.transform : null);
+        }
+
+        private static int _lastBucketCount = -1;
 
         private static void OnBucketChanged()
         {
+            int count = OverflowBucketService.Count;
+            bool shrank = _lastBucketCount >= 0 && count < _lastBucketCount;
+            _lastBucketCount = count;
+
+            if (shrank) { HintService.ActionPerformed("stash"); return; } // player used it
             // Boot restore also raises this; only a mid-session arrival teaches.
             if (Time.realtimeSinceStartup - _bootTime < 5f) return;
-            if (OverflowBucketService.Count == 0) return;
+            if (count == 0) return;
             HintService.Request("stash",
                 "Extra finds wait in the Stash. Tap it when the board has room.",
                 () => FindAny("__OverflowBtn", "__StashBtn"));
@@ -328,12 +384,19 @@ namespace AQ.UI.Hints
                 () => FindAny("__LockerBtn"));
         }
 
+        private static int _lastSpecialTotal = -1;
+
         private static void OnSpecialsChanged()
         {
-            bool any = false;
+            int total = 0;
             foreach (SpecialId id in Enum.GetValues(typeof(SpecialId)))
-                if (SpecialItemsService.CountOf(id) > 0) { any = true; break; }
-            if (!any) return;
+                total += SpecialItemsService.CountOf(id);
+
+            bool shrank = _lastSpecialTotal >= 0 && total < _lastSpecialTotal;
+            _lastSpecialTotal = total;
+
+            if (shrank) { HintService.ActionPerformed("casekit"); return; } // a special was placed
+            if (total == 0) return;
             HintService.Request("casekit",
                 "New tool in the Case Kit. Place it on the board, then drag it onto its target.",
                 () => FindAny("__CaseKitBtn", "__KitBtn"));
@@ -347,15 +410,31 @@ namespace AQ.UI.Hints
         // ---- P2/P3 handlers ----
 
         // Long-press discovery once merging is habitual; counter persists
-        // across sessions so a slow starter still gets taught.
+        // across sessions so a slow starter still gets taught. Requires 5+
+        // items on the grid (Stephen-ruled 2026-08-14: no use showing the tip
+        // when there is nothing to press) — under 5, a later merge re-tries.
         private static void OnTilesMerged(string fam, int tier)
         {
             if (HintService.Seen("longpress")) return;
             int n = PlayerPrefs.GetInt("aq.hint.merge_ct", 0) + 1;
             PlayerPrefs.SetInt("aq.hint.merge_ct", n);
-            if (n < 10) return;
+            if (n < 10 || CountBoardItems() < 5) return;
             HintService.Request("longpress",
                 "Hold any item to examine it and see its whole family.");
+        }
+
+        private static int CountBoardItems()
+        {
+            var board = UnityEngine.Object.FindAnyObjectByType<MergeBoardController>();
+            if (board == null) return 0;
+            int items = 0;
+            for (int r = 0; r < board.Rows; r++)
+                for (int c = 0; c < board.Cols; c++)
+                {
+                    var t = board.Get(r, c);
+                    if (t != null && t.Kind == TileKind.Item) items++;
+                }
+            return items;
         }
 
         private static void OnTilesSwapped()

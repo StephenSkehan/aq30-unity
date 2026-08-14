@@ -241,6 +241,7 @@ namespace AQ.App.UI.EvidenceBoard
             // round: players never found it).
             AQ.UI.Hints.HintService.Request("boardzoom",
                 "Pinch to zoom the board. Drag to look around.");
+            AQ.UI.Hints.HintService.ActionPerformed("evidence"); // opening it IS the taught action
 
             PopulateBoard();
 
