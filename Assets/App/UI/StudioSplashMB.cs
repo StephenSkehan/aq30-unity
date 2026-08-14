@@ -12,6 +12,7 @@ namespace AQ.App.UI
     public sealed class StudioSplashMB : MonoBehaviour
     {
         static bool _shownThisRun;
+        MusicManagerMB _music; // non-null only while the film has the soundtrack muted
 
         /// <summary>True while the boot overlay (logo card and/or promo film)
         /// still covers the game. FTUE choreography holds on this so the intro
@@ -173,7 +174,11 @@ namespace AQ.App.UI
             Destroy(gameObject);
         }
 
-        void OnDestroy() => Showing = false;
+        void OnDestroy()
+        {
+            Showing = false;
+            _music?.RestoreVolume(); // splash dying mid-film must not leave the BGM muted
+        }
 
         IEnumerator PromoStage()
         {
@@ -243,6 +248,11 @@ namespace AQ.App.UI
 
             if (vp.isPrepared)
             {
+                // The film owns the soundtrack (Stephen-ruled 2026-08-14: BGM
+                // was playing under the intro film). Duck-to-zero via the same
+                // mechanism dialogue uses; restored after Stop below.
+                _music = FindAnyObjectByType<MusicManagerMB>();
+                _music?.SetDuckedVolume(0f);
                 vp.Play();
                 if (audioClip != null) { audio.clip = audioClip; audio.Play(); }
                 else Debug.LogWarning("[StudioSplash] promo audio clip missing — film plays silent.");
@@ -272,6 +282,8 @@ namespace AQ.App.UI
                 Debug.Log($"[StudioSplash] promo ended: frame={vp.frame}/{vp.frameCount} played={played:0.0}s");
                 vp.Stop();
                 audio.Stop();
+                _music?.RestoreVolume();
+                _music = null;
 
                 // Seen only counts when playback actually ran — a failed prepare
                 // must not burn the one-shot FTUE film (it burned Stephen's on
