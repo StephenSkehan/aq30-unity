@@ -246,23 +246,50 @@ namespace AQ.UI.Hints
         // fixed slot — spatial pointing without a persistent chip on the board.
         private void PulseTarget(Func<Transform> anchorFn)
         {
-            var anchor = anchorFn?.Invoke();
-            if (anchor == null || _chip == null) return;
+            if (anchorFn != null && _chip != null)
+                StartCoroutine(PulseWhenCanvasReady(anchorFn));
+        }
 
+        // The chip canvas has no valid rect or scaleFactor on its creation
+        // frame, and the 1080x1920 reference is NOT the canvas's real unit
+        // size under matchWidthOrHeight 0.5 — both made the hand-rolled
+        // conversion miss its target (device finding 2026-08-14). Wait one
+        // frame, then let Unity do the conversion.
+        private System.Collections.IEnumerator PulseWhenCanvasReady(Func<Transform> anchorFn)
+        {
+            yield return null;
+            if (_chip == null) yield break;
+            var anchor = anchorFn.Invoke();
+            if (anchor == null) yield break;
+
+            var chipRoot = (RectTransform)_chip.transform;
             Vector2 screen = RectTransformUtility.WorldToScreenPoint(null, anchor.position);
+            if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(chipRoot, screen, null, out var local))
+                yield break;
+
+            // Ring sized to the target's on-screen footprint, with margin.
+            var size = new Vector2(150f, 150f);
+            if (anchor is RectTransform art)
+            {
+                var corners = new Vector3[4];
+                art.GetWorldCorners(corners);
+                float sf = _chipCanvas != null && _chipCanvas.scaleFactor > 0f ? _chipCanvas.scaleFactor : 1f;
+                size = new Vector2(
+                    Mathf.Max(90f, (corners[2].x - corners[0].x) / sf + 24f),
+                    Mathf.Max(90f, (corners[2].y - corners[0].y) / sf + 24f));
+            }
+
             var go = new GameObject("Pulse", typeof(RectTransform), typeof(Image));
-            go.transform.SetParent(_chip.transform, false);
+            go.transform.SetParent(chipRoot, false);
             var rt = (RectTransform)go.transform;
             rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
-            rt.sizeDelta = new Vector2(150f, 150f);
-            rt.anchoredPosition = new Vector2(
-                (screen.x / Screen.width - 0.5f) * 1080f,
-                (screen.y / Screen.height - 0.5f) * 1920f);
+            rt.sizeDelta = size;
+            rt.anchoredPosition = local;
             var img = go.GetComponent<Image>();
             img.sprite = AQTheme.Rounded;
             img.type = Image.Type.Sliced;
             img.raycastTarget = false;
-            StartCoroutine(PulseRoutine(go, img));
+            yield return PulseRoutine(go, img);
         }
 
         private System.Collections.IEnumerator PulseRoutine(GameObject go, Image img)
