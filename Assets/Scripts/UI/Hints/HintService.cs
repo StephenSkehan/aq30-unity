@@ -200,6 +200,28 @@ namespace AQ.UI.Hints
             MergeBoardController.BoardCompositionChanged += OnBoardChanged;
             SpecialItemsService.Changed += OnSpecialsChanged;
             AQTheme.HelpBarBuilt += OnHelpBarBuilt;
+
+            // P2/P3 set
+            MergeBoardController.TilesMerged += OnTilesMerged;
+            MergeBoardController.TilesSwapped += OnTilesSwapped;
+            DialogueRunner.DialogueClosed += OnDialogueClosed;
+            SubscribeWallet();
+        }
+
+        // The wallet may not exist until the save restores; hook the restore
+        // event as the fallback rather than polling.
+        private static void SubscribeWallet()
+        {
+            var wallet = AQ.App.Economy.WalletLocator.Instance;
+            if (wallet != null) { wallet.Granted += OnRewardsGranted; return; }
+            BoardSaveSystem.WalletRestoreCompleted += OnWalletReady;
+        }
+
+        private static void OnWalletReady()
+        {
+            BoardSaveSystem.WalletRestoreCompleted -= OnWalletReady;
+            var wallet = AQ.App.Economy.WalletLocator.Instance;
+            if (wallet != null) wallet.Granted += OnRewardsGranted;
         }
 
         // Second-ever generator tap: the first belongs to GeneratorTapHintMB's
@@ -258,6 +280,58 @@ namespace AQ.UI.Hints
             => HintService.Request("help",
                 "Any screen with a ? will explain itself.",
                 () => helpBtn);
+
+        // ---- P2/P3 handlers ----
+
+        // Long-press discovery once merging is habitual; counter persists
+        // across sessions so a slow starter still gets taught.
+        private static void OnTilesMerged(string fam, int tier)
+        {
+            if (HintService.Seen("longpress")) return;
+            int n = PlayerPrefs.GetInt("aq.hint.merge_ct", 0) + 1;
+            PlayerPrefs.SetInt("aq.hint.merge_ct", n);
+            if (n < 10) return;
+            HintService.Request("longpress",
+                "Hold any item to examine it and see its whole family.");
+        }
+
+        private static void OnTilesSwapped()
+            => HintService.Request("swap",
+                "Different evidence families trade places instead of merging.");
+
+        // Dossier hint waits for the SECOND case beat (first close after L1 is
+        // done) so it does not stack on the L1 payoff moment.
+        private static void OnDialogueClosed()
+        {
+            if (!NarrativeFlags.Has("aq.lead.e1_tip.seen")) return;
+            HintService.Request("dossier",
+                "Tap Ally to open her case files.",
+                () => FindAny("Img_Player"));
+        }
+
+        // One lesson per payoff: CaseCash at the first lead close, the
+        // evidence board at the third (L1 close would otherwise stack three
+        // chips on the game's best moment).
+        private static void OnRewardsGranted(AQ.SharedKernel.Economy.RewardsGranted e)
+        {
+            if (e == null || e.Reason != "lead.outcome") return;
+
+            int n = PlayerPrefs.GetInt("aq.hint.lead_ct", 0) + 1;
+            PlayerPrefs.SetInt("aq.hint.lead_ct", n);
+
+            foreach (var r in e.Rewards)
+                if (r.Currency == AQ.SharedKernel.Economy.Currency.Soft)
+                {
+                    HintService.Request("casecash",
+                        "CaseCash earned. It pays for locker slots, case file pages, and shop stock later on.");
+                    break;
+                }
+
+            if (n >= 3)
+                HintService.Request("evidence",
+                    "Everything you learn is pinned to the evidence board.",
+                    () => FindAny("__EvidBoardBtn"));
+        }
 
         private static Transform FindAny(params string[] names)
         {

@@ -6,13 +6,19 @@ namespace AQ.EditorTools
 {
     public static class QAHints
     {
-        private static readonly string[] Ids = { "energy", "tick", "stash", "locker", "casekit", "help" };
+        private static readonly string[] Ids =
+        {
+            "energy", "tick", "stash", "locker", "casekit", "help",
+            "longpress", "swap", "dossier", "casecash", "evidence"
+        };
 
         [MenuItem("AQ/Dev/QA Reset Hints")]
         public static void ResetHints()
         {
             HintService.ResetAll(Ids);
-            Debug.Log("[QAHints] all hint flags cleared");
+            PlayerPrefs.DeleteKey("aq.hint.merge_ct");
+            PlayerPrefs.DeleteKey("aq.hint.lead_ct");
+            Debug.Log("[QAHints] all hint flags + counters cleared");
         }
 
         [MenuItem("AQ/Dev/QA Hint Status")]

@@ -91,6 +91,16 @@ namespace AQ.App.UI.Board
         public static event Action GeneratorTapped;
 
         /// <summary>
+        /// A true merge only (not spawn/restore/special) — the clean earn hook
+        /// the OnItemCreated multi-site event cannot provide. Also the future
+        /// Subscribers earn source (SAS/feature-subscribers-v1.md).
+        /// </summary>
+        public static event Action<string, int> TilesMerged;
+
+        /// <summary>Any tile swap (family swap, ceiling swap, rearrange).</summary>
+        public static event Action TilesSwapped;
+
+        /// <summary>
         /// Fired after any change to what occupies the board (spawn, merge, overflow
         /// placement, lead consumption, restore). Drives the mergeable-pair hint on
         /// every tile — moves and swaps don't change composition, so they don't fire.
@@ -305,6 +315,7 @@ namespace AQ.App.UI.Board
             if (b.IsEmpty) familyKeyByTile.Remove(b);
 
             Log("SwapTiles complete.");
+            TilesSwapped?.Invoke();
         }
 
         private void MergeTiles(BoardTileView from, BoardTileView into)
@@ -356,6 +367,7 @@ namespace AQ.App.UI.Board
             OnItemRemoved?.Invoke(intoFam, intoTier);
             Log($"MergeTiles (Item): {newTier - 1}+{newTier - 1}->{newTier}");
             OnItemCreated?.Invoke(fam, newTier);
+            TilesMerged?.Invoke(fam, newTier);
             GameAnalytics.LogMerge(fam, fromTier, newTier);
             NotifyBoardChanged();
         }
