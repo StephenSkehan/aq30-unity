@@ -14,6 +14,14 @@ namespace AQ.UI.HUD
     /// </summary>
     public sealed class HudSafeAreaNudgeMB : MonoBehaviour
     {
+        // The plate carries dead space above the pills (and the bust overflows
+        // its frame by design), so the plate TOP may tuck under the notch edge
+        // as long as the pills stay clear. Shifting by the full plate overlap
+        // over-corrected and drove the HUD into the leads bar (device finding
+        // 2026-08-14). Canvas units; raise to lift the HUD, lower if a device
+        // ever clips pill content again.
+        private const float ContentHeadroom = 28f;
+
         private float _applied;         // canvas units already shifted
         private Vector2Int _lastScreen; // re-evaluate on resolution change only
 
@@ -51,10 +59,10 @@ namespace AQ.UI.HUD
             // World corners of an overlay canvas are screen pixels; corner 1 = top-left.
             var corners = new Vector3[4];
             rt.GetWorldCorners(corners);
-            float overlapPx = corners[1].y - Screen.safeArea.yMax;
+            float scale = canvas.scaleFactor > 0f ? canvas.scaleFactor : 1f;
+            float overlapPx = corners[1].y - Screen.safeArea.yMax - ContentHeadroom * scale;
             if (overlapPx <= 0f) return;
 
-            float scale = canvas.scaleFactor > 0f ? canvas.scaleFactor : 1f;
             _applied = overlapPx / scale;
             rt.anchoredPosition -= new Vector2(0f, _applied);
         }
