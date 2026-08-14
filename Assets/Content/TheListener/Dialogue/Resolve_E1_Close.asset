@@ -20,8 +20,8 @@ MonoBehaviour:
     line: "This is Echoes of Havenbay. Dot Ellis is safe. She was found through the life she left in plain sight: a school, a parish, a bus route, and three years of messages nobody had thought to treat as evidence. She declined an interview. Her words: \"I'm not content, love. I'm a person.\""
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1c00000000000000000001, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -32,8 +32,8 @@ MonoBehaviour:
     line: "On the record: the van traces to Harbourline Security, dissolved in 2011, still driving. You heard the full track when we did, and it worked, and it cost: two hundred ghosts in the queue, and the van gone before police reached it. Loud truth. I'd choose it again. I think."
     portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1c00000000000000000002, type: 3}
+    waitForAudio: 1
     requiresFlag: aq.e1.truth_public
     skipIfFlagMissing: 1
     setsFlag: 
@@ -44,8 +44,8 @@ MonoBehaviour:
     line: "On the record: the van traces to a dissolved port-security company. Del has asked me to keep its name off this feed. And this time, I'm listening. Quiet truth cost an afternoon of silence I don't want to spend again. I'd choose it again. I think."
     portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1c00000000000000000003, type: 3}
+    waitForAudio: 1
     requiresFlag: aq.e1.truth_protected
     skipIfFlagMissing: 1
     setsFlag: 
@@ -56,8 +56,8 @@ MonoBehaviour:
     line: "And one thing changes at this show, starting tonight: a voice can tell us where to look without me telling everyone else where it lives. That's the new rule. Dot wrote it; I'm just reading it out."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1c00000000000000000004, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -68,8 +68,8 @@ MonoBehaviour:
     line: "And now, not as a reporter, but to the man with the careful walk: this show is built on listening. This case taught me who else does. She's safe. The evidence is safe. You're the only one still hiding."
     portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1c00000000000000000005, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -80,8 +80,8 @@ MonoBehaviour:
     line: "It's Dot. Not from Rivermouth tonight. Imagine that. Vera says hello, which for Vera is a parade. You found an old woman who didn't want a fuss and you made one anyway. Good girl. Say goodnight to the harbour for me, Ally."
     portrait: {fileID: 21300000, guid: d07a4b5c6d7e8f90a1b2c3d4e5f6a702, type: 3}
     emotion: 1
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1c00000000000000000006, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -92,8 +92,8 @@ MonoBehaviour:
     line: "Goodnight, Dot. Goodnight, harbour. The tip line stays open."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1c00000000000000000007, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -104,8 +104,8 @@ MonoBehaviour:
     line: "[Somewhere: this episode, playing. A click. Silence. A diesel engine starts.]"
     portrait: {fileID: 0}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1c00000000000000000008, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: aq.lead.e1_close.seen

@@ -20,8 +20,8 @@ MonoBehaviour:
     line: "Eleven Chandler Road. A blue gate, a garden kept the way you keep a promise. And Dot's car in the drive, dry ground beneath it. It hasn't moved since before the rain."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1600000000000000000001, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -32,8 +32,8 @@ MonoBehaviour:
     line: "Mrs. Vale next door has held the spare key for years. Dot's own arrangement: if the curtains stayed shut and she couldn't raise her, use it. She couldn't, and hadn't for days. She went in first. I followed."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1600000000000000000002, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -44,8 +44,8 @@ MonoBehaviour:
     line: "Kettle cold. Bed made. Reading glasses gone, coat gone, the little case she took to church gone. She packed. Quick, in the dark, but she packed. You don't pack for the river."
     portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
     emotion: 2
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1600000000000000000003, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -56,8 +56,8 @@ MonoBehaviour:
     line: "The hall table: her phone charger, empty. The phone was gone. I hoped that meant it went with her. And on the cradle, dead centre, where the phone should sleep: a coin. Old brass, worn smooth. Placed. Not dropped."
     portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
     emotion: 4
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1600000000000000000004, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -68,8 +68,8 @@ MonoBehaviour:
     line: "I didn't touch it. I photographed where it lay, backed us both out of the hall, and kept the room untouched until Del arrived. Gerald's answer to the photo took a full minute: \"Where was it.\" Then: \"Don't put that on the show, love.\""
     portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1600000000000000000005, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -80,8 +80,8 @@ MonoBehaviour:
     line: "I've heard my grandfather discuss murders with his mouth full. I've never heard him go quiet. Back to work."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1600000000000000000006, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: aq.lead.e1_cottage.seen

@@ -20,8 +20,8 @@ MonoBehaviour:
     line: "This is Echoes of Havenbay. I'm Ally, here with a case alert. It's about a friend of ours. You've heard her say goodnight for three years: her name is Dot Ellis, from Rivermouth. What we know: at 3:04 on Friday morning, someone uninvited was inside her house. She hasn't been heard from since."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1500000000000000000001, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -32,8 +32,8 @@ MonoBehaviour:
     line: "Havenbay PD have her name. They knocked, walked the fence, and got silence. So it's logged: a welfare check, no forced entry, no report from family. And an adult is allowed to leave home without explaining herself. They won't call it an abduction. I'm not asking them to. Yet."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1500000000000000000002, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -44,8 +44,8 @@ MonoBehaviour:
     line: "So we do what this show does. We knock on Rivermouth's doors ourselves. And you'll notice I'm not saying her street on this feed. If you knew Dot Ellis, the tip line is open, and it keeps no names."
     portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1500000000000000000003, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -56,8 +56,8 @@ MonoBehaviour:
     line: "One more thing, for whoever needs to hear it. She left us your footsteps. Eight of them. Eight steps too slow to stay invisible. That was Friday. We're faster now."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1500000000000000000004, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: aq.lead.e1_pod1.seen

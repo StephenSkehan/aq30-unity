@@ -20,8 +20,8 @@ MonoBehaviour:
     line: "Back to the archive with worse eyes. Every boat mention, three years, laid end to end. Low in the water going out. Riding high coming back. No manifest ever filed for a night crossing on that reach. But the mooring fees are paid, in cash, quarterly, by a company with no phone number. Cargo that doesn't exist, paid for by money that does."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1800000000000000000001, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -32,8 +32,8 @@ MonoBehaviour:
     line: "Insomnia made Dot a scientist. Same window, same hours, decades of nights. She wasn't spying. She just knew what belonged on her river, and said hello to what didn't."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1800000000000000000002, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -44,8 +44,8 @@ MonoBehaviour:
     line: "Three weeks ago: the pretty one, close in. Two-note horn. A fish-hook mark on the funnel. I played it on the show with her blessing and thought it was charming."
     portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
     emotion: 4
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1800000000000000000003, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
@@ -56,8 +56,8 @@ MonoBehaviour:
     line: "Ten days after I aired the fish-hook message, a fake inspector mapped her window. If he found her through the show, then I handed him the window. Episode forty-one, closing minute, my voice, her view. And if he's a listener, he's heard everything I've said since."
     portrait: {fileID: 21300000, guid: 230f35c9bb532ef499cee05b337028d0, type: 3}
     emotion: 3
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1800000000000000000004, type: 3}
+    waitForAudio: 1
     requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: aq.lead.e1_boats.seen

@@ -20,8 +20,8 @@ MonoBehaviour:
     line: "I loaded the whole of Friday's message into the studio. I've analysed all forty seconds, one sound at a time."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1100000000000000000001, type: 3}
+    waitForAudio: 1
     requiresFlag:
     skipIfFlagMissing: 1
     setsFlag:
@@ -32,8 +32,8 @@ MonoBehaviour:
     line: "First: a floorboard, twice. The same squeak opens all of her older messages, the same three footsteps before she starts talking. Her hall, by the phone. I've never seen it. I've heard it a thousand times. Whoever moved on Friday was standing where Dot stands to talk to me."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1100000000000000000002, type: 3}
+    waitForAudio: 1
     requiresFlag:
     skipIfFlagMissing: 1
     setsFlag:
@@ -44,8 +44,8 @@ MonoBehaviour:
     line: "Then a strained spring. A door, opened slowly. The way you open one you don't want heard. And outside, faint but steady: a diesel engine, idling. Waiting for somebody."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1100000000000000000003, type: 3}
+    waitForAudio: 1
     requiresFlag:
     skipIfFlagMissing: 1
     setsFlag:
@@ -56,8 +56,8 @@ MonoBehaviour:
     line: "The steps are the tell. Eight of them, unhurried, and every second one lands harder. It sounds like a limp. But I can't be sure. Yet."
     portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
     emotion: 4
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1100000000000000000004, type: 3}
+    waitForAudio: 1
     requiresFlag:
     skipIfFlagMissing: 1
     setsFlag:
@@ -68,8 +68,8 @@ MonoBehaviour:
     line: "Somebody uninvited was in Dot's house at three in the morning. She kept the line open and her mouth shut, braver in those forty seconds than most of us can ever manage."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1100000000000000000005, type: 3}
+    waitForAudio: 1
     requiresFlag:
     skipIfFlagMissing: 1
     setsFlag:
@@ -80,8 +80,8 @@ MonoBehaviour:
     line: "And here's what three years of goodnights never gave me: her face. Her full name. Her address. I couldn't pick Dot out of a bus queue. Today, that changes. Let's find her."
     portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
+    voiceClip: {fileID: 8300000, guid: aad10d1a0e1100000000000000000006, type: 3}
+    waitForAudio: 1
     requiresFlag:
     skipIfFlagMissing: 1
     setsFlag: aq.lead.e1_forty.seen
