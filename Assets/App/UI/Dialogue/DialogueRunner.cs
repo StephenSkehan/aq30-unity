@@ -50,8 +50,7 @@ namespace AQ.App
         private CaseGraph.Choice[] _filteredChoices = System.Array.Empty<CaseGraph.Choice>();
 
         // Long nodes paginate at sentence boundaries instead of overflowing the
-        // strip — one tap per page, choices/advance only on the last page.
-        private const int PageCharLimit = 240;
+        // strip — pagination retired 2026-08-14, one page per node always.
         private string[] _pages = System.Array.Empty<string>();
         private int _pageIx;
 
@@ -506,27 +505,12 @@ namespace AQ.App
         /// Splits a long line into strip-sized pages at sentence boundaries.
         /// Short lines come back as a single page; sentences are never broken.
         /// </summary>
-        static string[] BuildPages(string line)
-        {
-            if (string.IsNullOrEmpty(line) || line.Length <= PageCharLimit)
-                return new[] { line ?? string.Empty };
-
-            var sentences = System.Text.RegularExpressions.Regex.Split(line, @"(?<=[.!?…])\s+");
-            var pages = new List<string>();
-            var current = new System.Text.StringBuilder();
-            foreach (var s in sentences)
-            {
-                if (current.Length > 0 && current.Length + s.Length + 1 > PageCharLimit)
-                {
-                    pages.Add(current.ToString());
-                    current.Clear();
-                }
-                if (current.Length > 0) current.Append(' ');
-                current.Append(s);
-            }
-            if (current.Length > 0) pages.Add(current.ToString());
-            return pages.ToArray();
-        }
+        // Pagination retired (Stephen-ruled 2026-08-14): the 420 strip shows
+        // every Ep1 node whole (longest = 355 chars, capacity ~440) and the
+        // on-screen text must match the playing VO clip. The page machinery
+        // stays; a single page is always the last page, so choices and
+        // waitForAudio behave unchanged.
+        static string[] BuildPages(string line) => new[] { line ?? string.Empty };
 
         IEnumerator WaitForAudioComplete(float duration)
         {
