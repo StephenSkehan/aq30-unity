@@ -272,7 +272,14 @@ namespace AQ.App.UI
                 qtmp.alignment     = TextAlignmentOptions.Center;
                 qtmp.raycastTarget = false;
                 StyleText(qtmp, display: true);
-                help.onClick.AddListener(() => strip.SetActive(!strip.activeSelf));
+                help.onClick.AddListener(() =>
+                {
+                    // Content built after the TitleBar call is a later sibling and
+                    // draws over the strip (the location modal's hero image hid it
+                    // entirely) — surface the strip whenever it opens.
+                    strip.transform.SetAsLastSibling();
+                    strip.SetActive(!strip.activeSelf);
+                });
                 HelpBarBuilt?.Invoke((RectTransform)help.transform);
             }
 

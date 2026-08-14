@@ -44,7 +44,7 @@ namespace AQ.App.UI.EvidenceBoard
             var prt       = (RectTransform)panel.transform;
             prt.anchorMin = prt.anchorMax = new Vector2(0.5f, 0.5f);
             prt.pivot     = new Vector2(0.5f, 0.5f);
-            prt.sizeDelta = new Vector2(940f, 1560f);
+            prt.sizeDelta = new Vector2(940f, 1680f); // taller rows since the unified 96px buttons
             AQTheme.StylePanel(prt);
 
             AQTheme.TitleBar(prt, def.displayName.ToUpperInvariant(), Close,
@@ -77,7 +77,7 @@ namespace AQ.App.UI.EvidenceBoard
             int shown = 0;
             foreach (var lead in scenes)
             {
-                if (shown >= 5) break;
+                if (shown >= 4) break; // taller rows: cap keeps the sheet inside the panel
                 var captured = lead;
                 // No ▸ glyph: NunitoSans renders it as tofu (console warning history).
                 y = AddRowButton(prt, lead.title, y, () => { Close(); onReplay?.Invoke(captured); });
@@ -229,11 +229,15 @@ namespace AQ.App.UI.EvidenceBoard
             return y - 112f;
         }
 
+        // One geometry for every button in the sheet (Stephen-ruled 2026-08-14:
+        // same height and width, font up 50 percent).
+        private const float BtnH = 96f;
+
         private static float AddRowButton(RectTransform parent, string label, float y, Action onClick)
-            => AddButtonRow(parent, label, y, new Color(0.18f, 0.42f, 0.28f, 1f), 78f, onClick);
+            => AddButtonRow(parent, label, y, new Color(0.18f, 0.42f, 0.28f, 1f), BtnH, onClick);
 
         private static float AddActionButton(RectTransform parent, string label, float y, Color color, Action onClick)
-            => AddButtonRow(parent, label, y - 8f, color, 92f, onClick);
+            => AddButtonRow(parent, label, y - 8f, color, BtnH, onClick);
 
         private static float AddButtonRow(RectTransform parent, string label, float y, Color color,
             float h, Action onClick)
@@ -254,7 +258,7 @@ namespace AQ.App.UI.EvidenceBoard
             Stretch((RectTransform)txt.transform);
             var tmp           = txt.AddComponent<TextMeshProUGUI>();
             tmp.text          = label;
-            tmp.fontSize      = 27f;
+            tmp.fontSize      = 42f;
             tmp.color         = AQTheme.Paper;
             tmp.alignment     = TextAlignmentOptions.Center;
             tmp.raycastTarget = false;
