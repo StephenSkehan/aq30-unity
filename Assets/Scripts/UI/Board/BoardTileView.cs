@@ -22,6 +22,7 @@ namespace AQ.App.UI.Board
         private Coroutine _longPressRoutine;
 
         public static event Action<BoardTileView> LongHeld;
+        public static event Action<BoardTileView> TickShown; // first-tick FTUE hint hook
         MergeBoardController controller;
         int row, col;
 
@@ -304,8 +305,10 @@ namespace AQ.App.UI.Board
             }
 
             if (!requirementTick) requirementTick = CreateRequirementTick();
+            bool wasShowing = requirementTick.gameObject.activeSelf;
             requirementTick.gameObject.SetActive(true);
             requirementTick.transform.SetAsLastSibling();
+            if (!wasShowing) TickShown?.Invoke(this);
         }
 
         Image CreateRequirementTick()

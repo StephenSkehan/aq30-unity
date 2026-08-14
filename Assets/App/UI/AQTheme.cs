@@ -191,6 +191,9 @@ namespace AQ.App.UI
         /// clutter on the main surface. Call AFTER StylePanel; add content
         /// beneath the bar's height.
         /// </summary>
+        /// <summary>Raised when a title bar builds a ? help button (first-open hint hook).</summary>
+        public static event System.Action<RectTransform> HelpBarBuilt;
+
         public static RectTransform TitleBar(RectTransform panel, string title,
             UnityEngine.Events.UnityAction onClose, string helpText = null, float height = 96f)
         {
@@ -270,6 +273,7 @@ namespace AQ.App.UI
                 qtmp.raycastTarget = false;
                 StyleText(qtmp, display: true);
                 help.onClick.AddListener(() => strip.SetActive(!strip.activeSelf));
+                HelpBarBuilt?.Invoke((RectTransform)help.transform);
             }
 
             return rt;
