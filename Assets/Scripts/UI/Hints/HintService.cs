@@ -22,19 +22,35 @@ namespace AQ.UI.Hints
     public static class HintService
     {
         private const string FlagPrefix = "aq.hint.";
+        public const string EnabledPref = "aq.hints.enabled"; // Config tab switch
 
         private static readonly Queue<(string id, string text, Func<Transform> anchor)> _queue = new();
+        private static readonly HashSet<string> _pending = new(); // queued or showing
         private static HintRunnerMB _runner;
+
+        public static bool Enabled
+        {
+            get => PlayerPrefs.GetInt(EnabledPref, 1) == 1;
+            set { PlayerPrefs.SetInt(EnabledPref, value ? 1 : 0); PlayerPrefs.Save(); }
+        }
 
         public static void Request(string id, string text, Func<Transform> anchor = null)
         {
+            // Seen is flagged on manual close (Stephen-ruled 2026-08-14), not at
+            // request: hints persist until X-closed, and a crash or a disabled
+            // switch re-offers on the next natural trigger rather than silently
+            // burning the one chance. _pending dedups repeat triggers meanwhile.
+            if (!Enabled) return;
             if (NarrativeFlags.Has(FlagPrefix + id)) return;
-            // Flag at request time, not show time: a crash mid-queue loses the
-            // hint rather than repeating it, matching the locker crash rule of
-            // never double-presenting.
-            NarrativeFlags.Set(FlagPrefix + id);
+            if (!_pending.Add(id)) return;
             _queue.Enqueue((id, text, anchor));
             EnsureRunner();
+        }
+
+        internal static void MarkClosed(string id)
+        {
+            NarrativeFlags.Set(FlagPrefix + id);
+            _pending.Remove(id);
         }
 
         public static bool Seen(string id) => NarrativeFlags.Has(FlagPrefix + id);
@@ -61,11 +77,10 @@ namespace AQ.UI.Hints
 
     internal sealed class HintRunnerMB : MonoBehaviour
     {
-        private const float MinShowSeconds = 1.4f;
-        private const float MaxShowSeconds = 7f;
-
         private GameObject _chip;
-        private float _shownAt;
+        private string _chipId;
+        private RectTransform _closeRt;
+        private Canvas _chipCanvas;
         private bool _dialogueOpen;
 
         private void OnEnable()
@@ -87,10 +102,17 @@ namespace AQ.UI.Hints
         {
             if (_chip != null)
             {
-                float elapsed = Time.unscaledTime - _shownAt;
-                bool tapped = elapsed > MinShowSeconds && Input.GetMouseButtonDown(0); // raw input per house GR lesson
-                if (tapped || elapsed > MaxShowSeconds)
+                // Persistent chip hides (not dies) while dialogue holds the stage.
+                bool hidden = Suppressed();
+                if (_chipCanvas != null && _chipCanvas.enabled == hidden)
+                    _chipCanvas.enabled = !hidden;
+                if (hidden) return;
+
+                // X-close only (Stephen-ruled 2026-08-14). Raw input per house GR lesson.
+                if (Input.GetMouseButtonDown(0) && _closeRt != null &&
+                    RectTransformUtility.RectangleContainsScreenPoint(_closeRt, Input.mousePosition, null))
                 {
+                    HintService.MarkClosed(_chipId);
                     Destroy(_chip);
                     _chip = null;
                 }
@@ -99,7 +121,7 @@ namespace AQ.UI.Hints
 
             if (Suppressed()) return;
             if (HintService.TryDequeue(out var hint))
-                Show(hint.text, hint.anchor);
+                Show(hint.id, hint.text, hint.anchor);
         }
 
         private bool Suppressed()
@@ -109,10 +131,12 @@ namespace AQ.UI.Hints
             return PlayerPrefs.GetInt("aq.ftue.first_merge.stage", 0) == 1;
         }
 
-        private void Show(string text, Func<Transform> anchorFn)
+        private void Show(string id, string text, Func<Transform> anchorFn)
         {
+            _chipId = id;
             _chip = new GameObject("__HintChip", typeof(Canvas), typeof(CanvasScaler));
             var canvas = _chip.GetComponent<Canvas>();
+            _chipCanvas = canvas;
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.sortingOrder = 4000; // above popups (<=1000), below DragGhost (5000)
             var scaler = _chip.GetComponent<CanvasScaler>();
@@ -149,7 +173,7 @@ namespace AQ.UI.Hints
             trt.anchorMin = Vector2.zero;
             trt.anchorMax = Vector2.one;
             trt.offsetMin = new Vector2(34f, 14f);
-            trt.offsetMax = new Vector2(-24f, -14f);
+            trt.offsetMax = new Vector2(-92f, -14f); // clear the X button
             var tmp = txt.AddComponent<TextMeshProUGUI>();
             tmp.text = text;
             tmp.fontSize = 34f;
@@ -159,8 +183,18 @@ namespace AQ.UI.Hints
             tmp.raycastTarget = false;
             AQTheme.StyleText(tmp);
 
+            // Manual X close (raw-input hit test in Update, not a Button).
+            var close = new GameObject("Close", typeof(RectTransform), typeof(Image));
+            close.transform.SetParent(prt, false);
+            _closeRt           = (RectTransform)close.transform;
+            _closeRt.anchorMin = _closeRt.anchorMax = new Vector2(1f, 0.5f);
+            _closeRt.pivot     = new Vector2(1f, 0.5f);
+            _closeRt.sizeDelta = new Vector2(64f, 64f);
+            _closeRt.anchoredPosition = new Vector2(-14f, 0f);
+            AQTheme.StyleButton(close.GetComponent<Image>(), AQTheme.Steel);
+            AQTheme.AddDrawnX(_closeRt, AQTheme.Paper, 22f, 4f);
+
             AQTheme.PopIn(prt);
-            _shownAt = Time.unscaledTime;
         }
 
         // Above the anchor when one resolves and fits; upper third otherwise —
