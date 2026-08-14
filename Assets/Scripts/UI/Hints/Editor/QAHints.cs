@@ -9,7 +9,7 @@ namespace AQ.EditorTools
         private static readonly string[] Ids =
         {
             "energy", "tick", "stash", "locker", "casekit", "help",
-            "longpress", "swap", "dossier", "casecash", "evidence"
+            "longpress", "swap", "dossier", "casecash", "evidence", "boardzoom"
         };
 
         [MenuItem("AQ/Dev/QA Reset Hints")]

@@ -109,22 +109,10 @@ namespace AQ.App.UI.EvidenceBoard
             zp.Tapped += OnBoardTapped;
             _zoomPan = zp;
 
-            // Title label
-            var titleGo  = new GameObject("Title", typeof(RectTransform));
-            titleGo.transform.SetParent(_root.transform, false);
-            var titleRt              = titleGo.GetComponent<RectTransform>();
-            titleRt.anchorMin        = new Vector2(0f, 1f);
-            titleRt.anchorMax        = new Vector2(1f, 1f);
-            titleRt.pivot            = new Vector2(0.5f, 1f);
-            titleRt.sizeDelta        = new Vector2(0f, 80f);
-            titleRt.anchoredPosition = new Vector2(0f, -12f);
-            var titleTmp             = titleGo.AddComponent<TextMeshProUGUI>();
-            titleTmp.text            = "EVIDENCE BOARD";
-            titleTmp.fontSize        = 36f;
-            titleTmp.fontStyle       = FontStyles.Bold;
-            titleTmp.color           = new Color(0.20f, 0.10f, 0.05f, 0.75f);
-            titleTmp.alignment       = TextAlignmentOptions.Center;
-            titleTmp.raycastTarget   = false;
+            // Brass plaque on the cork (replaced the screen-top title text,
+            // which the phone notch obscured — build-5 device finding). Sits
+            // over the viewport so panned cards slide beneath it.
+            BuildPlaque(_root.transform);
 
             // Close button — top-right
             var closeBtnGo = new GameObject("CloseBtn", typeof(RectTransform), typeof(Image), typeof(Button));
@@ -141,6 +129,51 @@ namespace AQ.App.UI.EvidenceBoard
             AQTheme.AddDrawnX(closeRt, AQTheme.Paper, 34f, 6f);
 
             BuildHudButton();
+        }
+
+        private static void BuildPlaque(Transform parent)
+        {
+            var plaque = new GameObject("Plaque", typeof(RectTransform), typeof(Image));
+            plaque.transform.SetParent(parent, false);
+            var prt              = (RectTransform)plaque.transform;
+            prt.anchorMin        = new Vector2(0.5f, 1f);
+            prt.anchorMax        = new Vector2(0.5f, 1f);
+            prt.pivot            = new Vector2(0.5f, 0.5f);
+            prt.sizeDelta        = new Vector2(470f, 86f);
+            prt.anchoredPosition = new Vector2(0f, -175f); // clear of every current notch
+            var rim              = plaque.GetComponent<Image>();
+            rim.sprite           = AQTheme.Rounded;
+            rim.type             = Image.Type.Sliced;
+            rim.color            = new Color(0.28f, 0.19f, 0.09f, 1f); // dark bronze rim
+            rim.raycastTarget    = false;
+
+            var face = new GameObject("Face", typeof(RectTransform), typeof(Image));
+            face.transform.SetParent(prt, false);
+            var frt       = (RectTransform)face.transform;
+            frt.anchorMin = Vector2.zero;
+            frt.anchorMax = Vector2.one;
+            frt.offsetMin = new Vector2(5f, 5f);
+            frt.offsetMax = new Vector2(-5f, -5f);
+            var fimg           = face.GetComponent<Image>();
+            fimg.sprite        = AQTheme.Rounded;
+            fimg.type          = Image.Type.Sliced;
+            fimg.color         = new Color(0.72f, 0.56f, 0.32f, 1f); // brushed brass
+            fimg.raycastTarget = false;
+
+            var txt = new GameObject("Text", typeof(RectTransform));
+            txt.transform.SetParent(frt, false);
+            var trt       = (RectTransform)txt.transform;
+            trt.anchorMin = Vector2.zero;
+            trt.anchorMax = Vector2.one;
+            trt.offsetMin = trt.offsetMax = Vector2.zero;
+            var tmp           = txt.AddComponent<TextMeshProUGUI>();
+            tmp.text          = "EVIDENCE BOARD";
+            tmp.fontSize      = 40f;
+            tmp.color         = new Color(0.22f, 0.13f, 0.05f, 1f); // engraved ink
+            tmp.alignment     = TextAlignmentOptions.Center;
+            tmp.characterSpacing = 6f;
+            tmp.raycastTarget = false;
+            AQTheme.StyleText(tmp, display: true);
         }
 
         private static void BuildHudButton()
@@ -203,6 +236,11 @@ namespace AQ.App.UI.EvidenceBoard
         {
             if (_root == null) Build();
             if (_isOpen) return;
+
+            // Zoom/pan existed since day one but nothing announced it (cohort
+            // round: players never found it).
+            AQ.UI.Hints.HintService.Request("boardzoom",
+                "Pinch to zoom the board. Drag to look around.");
 
             PopulateBoard();
 
