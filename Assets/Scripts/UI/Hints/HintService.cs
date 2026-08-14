@@ -127,7 +127,10 @@ namespace AQ.UI.Hints
         private bool Suppressed()
         {
             if (_dialogueOpen) return true;
-            // FTUE first-merge choreography owns the board until its flag clears.
+            // Teaching begins after FTUE + L1 are fully done (Stephen-ruled
+            // 2026-08-14): the choreography and first payoff stay clean, and the
+            // queue holds anything triggered earlier.
+            if (!NarrativeFlags.Has("aq.lead.e1_tip.seen")) return true;
             return PlayerPrefs.GetInt("aq.ftue.first_merge.stage", 0) == 1;
         }
 
@@ -149,7 +152,10 @@ namespace AQ.UI.Hints
             var prt = (RectTransform)panel.transform;
             prt.sizeDelta = new Vector2(820f, 128f);
             prt.anchorMin = prt.anchorMax = new Vector2(0.5f, 0.5f);
-            prt.anchoredPosition = AnchoredPosition(anchorFn);
+            // One fixed slot below the HUD (Stephen-ruled 2026-08-14): persistent
+            // chips must never cover board cells. The target gets a pulse instead.
+            prt.anchoredPosition = new Vector2(0f, 570f);
+            PulseTarget(anchorFn);
             var img = panel.GetComponent<Image>();
             img.sprite = AQTheme.Rounded;
             img.type = Image.Type.Sliced;
@@ -197,21 +203,42 @@ namespace AQ.UI.Hints
             AQTheme.PopIn(prt);
         }
 
-        // Above the anchor when one resolves and fits; upper third otherwise —
-        // low placements collide with the corner buttons and the board bottom.
-        private static Vector2 AnchoredPosition(Func<Transform> anchorFn)
+        // Brief teal pulse over the hint's subject while the chip sits in its
+        // fixed slot — spatial pointing without a persistent chip on the board.
+        private void PulseTarget(Func<Transform> anchorFn)
         {
-            var fallback = new Vector2(0f, 430f);
             var anchor = anchorFn?.Invoke();
-            if (anchor == null) return fallback;
+            if (anchor == null || _chip == null) return;
 
-            var cam = (Camera)null; // overlay canvases position in screen space
-            Vector2 screen = RectTransformUtility.WorldToScreenPoint(cam, anchor.position);
-            float nx = (screen.x / Screen.width - 0.5f) * 1080f;
-            float ny = (screen.y / Screen.height - 0.5f) * 1920f + 150f; // sit above the target
-            nx = Mathf.Clamp(nx, -110f, 110f); // chip is near-full-width; keep it on screen
-            ny = Mathf.Clamp(ny, -700f, 800f);
-            return new Vector2(nx, ny);
+            Vector2 screen = RectTransformUtility.WorldToScreenPoint(null, anchor.position);
+            var go = new GameObject("Pulse", typeof(RectTransform), typeof(Image));
+            go.transform.SetParent(_chip.transform, false);
+            var rt = (RectTransform)go.transform;
+            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.sizeDelta = new Vector2(150f, 150f);
+            rt.anchoredPosition = new Vector2(
+                (screen.x / Screen.width - 0.5f) * 1080f,
+                (screen.y / Screen.height - 0.5f) * 1920f);
+            var img = go.GetComponent<Image>();
+            img.sprite = AQTheme.Rounded;
+            img.type = Image.Type.Sliced;
+            img.raycastTarget = false;
+            StartCoroutine(PulseRoutine(go, img));
+        }
+
+        private System.Collections.IEnumerator PulseRoutine(GameObject go, Image img)
+        {
+            const float duration = 2.2f;
+            float t = 0f;
+            while (t < duration && go != null)
+            {
+                t += Time.unscaledDeltaTime;
+                float wave = (Mathf.Sin(t * Mathf.PI * 3f) + 1f) * 0.5f; // ~3 beats
+                img.color = new Color(AQTheme.Teal.r, AQTheme.Teal.g, AQTheme.Teal.b, wave * 0.55f);
+                go.transform.localScale = Vector3.one * (1f + wave * 0.12f);
+                yield return null;
+            }
+            if (go != null) Destroy(go);
         }
     }
 
@@ -258,11 +285,13 @@ namespace AQ.UI.Hints
             if (wallet != null) wallet.Granted += OnRewardsGranted;
         }
 
-        // Second-ever generator tap: the first belongs to GeneratorTapHintMB's
-        // arrow, and stacking both reads as clutter.
+        // First tap that puts energy visibly below 90 (Stephen-ruled 2026-08-14):
+        // teach when the number is moving, which is when a player wonders.
         private static void OnGeneratorTapped()
         {
-            if (!NarrativeFlags.Has("aq.ftue.tap_generator.seen")) return;
+            var wallet = AQ.App.Economy.WalletLocator.Instance;
+            if (wallet == null) return;
+            if (wallet.Get(AQ.SharedKernel.Economy.Currency.Energy) >= 90) return;
             HintService.Request("energy",
                 "Working the board costs energy. It refills on its own, slowly.");
         }
