@@ -152,7 +152,7 @@ namespace AQ.App.UI.Board
             panel.anchorMin        = new Vector2(0.5f, 0.5f);
             panel.anchorMax        = new Vector2(0.5f, 0.5f);
             panel.pivot            = new Vector2(0.5f, 0.5f);
-            panel.sizeDelta        = new Vector2(940f, 1000f);
+            panel.sizeDelta        = new Vector2(940f, 1250f); // 4x4 grid since slots 13-16
             panel.anchoredPosition = Vector2.zero;
             // Block dim-close clicks under the panel body.
             var panelBtn = panel.gameObject.AddComponent<Button>();
@@ -172,14 +172,14 @@ namespace AQ.App.UI.Board
                 mImg.sprite           = markSprite;
                 mImg.preserveAspect   = true;
                 mImg.raycastTarget    = false;
-                mImg.color            = new Color(1f, 1f, 1f, 0.4f);
+                mImg.color            = new Color(1f, 1f, 1f, 0.8f); // Stephen-ruled 2026-08-14 (was 0.4)
             }
 
             _grid = MakeRect("Grid", panel);
             _grid.anchorMin        = new Vector2(0.5f, 0.5f);
             _grid.anchorMax        = new Vector2(0.5f, 0.5f);
             _grid.pivot            = new Vector2(0.5f, 1f);
-            _grid.sizeDelta        = new Vector2((SlotSize + SlotGap) * Columns, 700f);
+            _grid.sizeDelta        = new Vector2((SlotSize + SlotGap) * Columns, (SlotSize + SlotGap) * 4f);
             _grid.anchoredPosition = new Vector2(0f, 300f);
 
             // Title bar restyle (Stephen-ruled 2026-08-12): X close + ? help in
@@ -212,8 +212,8 @@ namespace AQ.App.UI.Board
 
                 var img = cell.gameObject.AddComponent<Image>();
                 // Slot squares sit at the board grid's 40% read so the safe
-                // watermark shows through (Stephen-ruled 2026-08-12).
-                const float slotAlpha = 0.4f;
+                // watermark shows through (0.5 Stephen-ruled 2026-08-14, was 0.4).
+                const float slotAlpha = 0.5f;
 
                 if (slot < count)
                 {

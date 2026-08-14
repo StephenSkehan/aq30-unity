@@ -31,7 +31,7 @@ namespace AQ.App.Locker
 
     /// <summary>
     /// Off-board storage ("Evidence Locker") — the CaseCash sink.
-    /// 8 free slots; slots 9-12 purchased with soft currency (200/400/800/1600).
+    /// 8 free slots; slots 9-16 purchased with soft currency (200 doubling to 25,600).
     /// Items AND generators store (generators Stephen-ruled 2026-08-06; the board
     /// keeps its last generator — MergeBoardController guards that). Stored items
     /// keep counting toward lead satisfaction (LeadRequirementChecker merges locker
@@ -48,8 +48,10 @@ namespace AQ.App.Locker
     public static class EvidenceLockerService
     {
         public const int FreeSlots = 8;
-        public static readonly int[] SlotPrices = { 200, 400, 800, 1600 };
-        public const int MaxSlots = 12; // FreeSlots + SlotPrices.Length
+        // Slots 13-16 added 2026-08-14 (Stephen-ruled: continue the doubling).
+        // The top slots are deliberate long-tail aspirations, not near-term buys.
+        public static readonly int[] SlotPrices = { 200, 400, 800, 1600, 3200, 6400, 12800, 25600 };
+        public const int MaxSlots = 16; // FreeSlots + SlotPrices.Length
 
         [Serializable]
         private struct Entry
