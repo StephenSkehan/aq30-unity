@@ -161,7 +161,10 @@ namespace AQ.App
         /// </summary>
         public void ApplyStageLayout()
         {
-            const float stripTop = 300f / 1920f;
+            // 300 -> 420 (Stephen-ruled 2026-08-14): with full VO wired, the
+            // longest nodes need the whole text on screen; portrait rides the
+            // strip top so it lifts with it.
+            const float stripTop = 420f / 1920f;
 
             if (portraitImage != null)
             {
@@ -189,13 +192,21 @@ namespace AQ.App
             WidenToStrip(Speaker);
             WidenToStrip(Body);
 
+            // Speaker to the strip's top band (prefab values assume the old 300 strip).
+            if (Speaker != null)
+            {
+                var srt = Speaker.rectTransform;
+                var smin = srt.anchorMin; smin.y = 0.177f; srt.anchorMin = smin; // 340/1920
+                var smax = srt.anchorMax; smax.y = 0.211f; srt.anchorMax = smax; // 405/1920
+            }
+
             // Long nodes were silently truncating at three lines: give the body
             // the rest of the strip below the speaker and never clip vertically.
             if (Body != null)
             {
                 var rt = Body.rectTransform;
                 var min = rt.anchorMin; min.y = 0.012f; rt.anchorMin = min;
-                var max = rt.anchorMax; max.y = 0.096f; rt.anchorMax = max;
+                var max = rt.anchorMax; max.y = 0.172f; rt.anchorMax = max; // 330/1920, below the speaker band
                 rt.offsetMin = new Vector2(rt.offsetMin.x, 0f);
                 rt.offsetMax = new Vector2(rt.offsetMax.x, 0f);
                 Body.fontSize = 30; // was 36 — the longest Ep1 nodes need five lines

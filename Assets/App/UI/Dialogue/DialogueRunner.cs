@@ -128,7 +128,14 @@ namespace AQ.App
             Panel.EnsureRuntimeChoiceUI();
             Panel.ApplyStageLayout();
 
-            if (Panel.transform.Find("_Background") != null) return;
+            // Height must track DialogueController's strip constant even for a
+            // panel whose background was built under the old value.
+            var existingBg = Panel.transform.Find("_Background");
+            if (existingBg != null)
+            {
+                ((RectTransform)existingBg).anchorMax = new Vector2(1, 420f / 1920f);
+                return;
+            }
 
             var scaler = gameObject.GetComponent<UnityEngine.UI.CanvasScaler>();
             if (scaler == null) scaler = gameObject.AddComponent<UnityEngine.UI.CanvasScaler>();
@@ -141,7 +148,7 @@ namespace AQ.App
             bg.transform.SetParent(Panel.transform, false);
             var rt = bg.AddComponent<RectTransform>();
             rt.anchorMin = new Vector2(0, 0);
-            rt.anchorMax = new Vector2(1, 300f / 1920f);
+            rt.anchorMax = new Vector2(1, 420f / 1920f);
             rt.pivot = new Vector2(0.5f, 0);
             rt.sizeDelta = Vector2.zero;
             rt.anchoredPosition = Vector2.zero;
