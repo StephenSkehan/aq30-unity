@@ -126,6 +126,10 @@ namespace AQ.App.Services.Purchasing
             }
 
             Credit(args.purchasedProduct);
+            // Returning Complete finalizes the StoreKit transaction — Apple will
+            // never redeliver it. Persist the credit first so a crash in the
+            // debounce window can't orphan a paid purchase.
+            BoardSaveSystem.SaveNow();
             return PurchaseProcessingResult.Complete;
         }
 
@@ -140,11 +144,27 @@ namespace AQ.App.Services.Purchasing
         private void OnWalletRestoreCompleted()
         {
             if (_heldUntilRestore.Count == 0) return;
-            foreach (var product in _heldUntilRestore)
+            if (WalletLocator.Instance == null)
             {
-                Credit(product);
-                _controller?.ConfirmPendingPurchase(product);
+                // No wallet to credit into — keep everything held (still Pending on
+                // the store side, so it redelivers next boot). Never confirm a
+                // transaction whose credit didn't land.
+                Debug.LogError("[IAP] No wallet at restore-complete; keeping " +
+                               _heldUntilRestore.Count + " purchase(s) pending.");
+                return;
             }
+
+            foreach (var product in _heldUntilRestore)
+                Credit(product);
+
+            // Persist all credits BEFORE confirming: ConfirmPendingPurchase finalizes
+            // the transaction with Apple, so an unconfirmed-but-credited crash is
+            // recoverable (store redelivers, restore re-credits) while a
+            // confirmed-but-unpersisted one loses the player's money.
+            BoardSaveSystem.SaveNow();
+
+            foreach (var product in _heldUntilRestore)
+                _controller?.ConfirmPendingPurchase(product);
             _heldUntilRestore.Clear();
         }
 
