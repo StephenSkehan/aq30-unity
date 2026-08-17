@@ -241,11 +241,18 @@ namespace AQ.App.UI.Board
 
             // Generator pairs cap at their own SO's tier count, not the board-wide
             // item ceiling — a 6-tier chain (Field Kit) must stop at T6, not T10.
+            // Item pairs likewise cap at their family ladder's last defined tier:
+            // merging past it consumed both tiles into an undefined item (no
+            // ItemDefinitionSO — placeholder icon, empty itemId, satisfies nothing).
             int ceiling = maxTier;
             if (a.Kind == TileKind.Generator && b.Kind == TileKind.Generator)
             {
                 var genSO = FindGeneratorType(GetFamily(a));
                 if (genSO != null) ceiling = Mathf.Min(ceiling, genSO.maxGeneratorTier);
+            }
+            else if (a.Kind == TileKind.Item && b.Kind == TileKind.Item)
+            {
+                ceiling = Mathf.Min(ceiling, EffectiveItemCeiling(GetFamily(a), a.Tier));
             }
             var outcome = MergeRules.Decide(ToRulesTile(a), ToRulesTile(b), ceiling);
 
@@ -616,7 +623,27 @@ namespace AQ.App.UI.Board
                 var genSO = FindGeneratorType(fam);
                 if (genSO != null) ceiling = Mathf.Min(ceiling, genSO.maxGeneratorTier);
             }
+            else if (v.Kind == TileKind.Item)
+            {
+                ceiling = Mathf.Min(ceiling, EffectiveItemCeiling(fam, v.Tier));
+            }
             return MergeRules.Decide(t, t, ceiling) == MergeRules.Outcome.Merge;
+        }
+
+        /// <summary>
+        /// The merge ceiling for an item of this family at 'tier': the last tier
+        /// reachable walking the family's defined ItemDefinitionSO ladder upward,
+        /// bounded by the board maxTier. Families whose ladders end below maxTier
+        /// (most end at T4-T5) cap here so two family-ceiling items CeilingSwap
+        /// instead of merging into an undefined item.
+        /// </summary>
+        private int EffectiveItemCeiling(string family, int tier)
+        {
+            if (string.IsNullOrEmpty(family) || LookupItemDef(family, tier) == null)
+                return maxTier; // unknown ladder: fall back to the board-wide rule
+            int top = tier;
+            while (top < maxTier && LookupItemDef(family, top + 1) != null) top++;
+            return top;
         }
 
         private void RebuildMergeCounts()
