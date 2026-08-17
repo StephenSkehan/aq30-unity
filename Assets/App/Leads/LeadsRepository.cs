@@ -46,7 +46,10 @@ namespace AQ.App.Leads
 
                 if (allSatisfied)
                 {
-                    lead.RuntimeState = LeadState.Available;
+                    // Zero-requirement leads go straight to Ready — the requirement
+                    // checker's recompute loop is the only other Ready assigner and
+                    // it has nothing to observe for them.
+                    lead.RuntimeState = HasNoRequirements(lead) ? LeadState.Ready : LeadState.Available;
                     anyUnlocked = true;
                 }
             }
@@ -120,19 +123,24 @@ namespace AQ.App.Leads
             {
                 if (lead.RuntimeState == LeadState.Blocked)
                 {
-                    lead.RuntimeState = LeadState.Available;
+                    lead.RuntimeState = HasNoRequirements(lead) ? LeadState.Ready : LeadState.Available;
                     Broadcast();
                 }
                 return;
             }
 
-            lead.RuntimeState = LeadState.Available;
+            // Zero-requirement leads (ep2_teaser) spawn Ready: nothing exists for
+            // the requirement checker to satisfy, so Available would be a dead end.
+            lead.RuntimeState = HasNoRequirements(lead) ? LeadState.Ready : LeadState.Available;
             if (lead.requirements != null)
                 for (int i = 0; i < lead.requirements.Length; i++)
                     lead.SetRequirementSatisfied(i, false);
             _current.Add(lead);
             Broadcast();
         }
+
+        private static bool HasNoRequirements(LeadData lead)
+            => lead.requirements == null || lead.requirements.Length == 0;
 
         /// <summary>
         /// Call after mutating lead state outside the repository (e.g. from
@@ -197,6 +205,22 @@ namespace AQ.App.Leads
                     for (int i = 0; i < count; i++)
                         lead.SetRequirementSatisfied(i, saved.SatisfiedRequirements[i]);
                 }
+            }
+
+            // Re-evaluate RequiredLeadIds gates the save may predate: a lead added
+            // (or re-gated) by a content update restores as design-time Blocked even
+            // when its prerequisites are all in the restored activated set — and
+            // OnLeadActivated never fires again for already-activated leads, so
+            // without this pass such a lead can never unblock.
+            CheckAndUnlockBlockedLeads();
+
+            // Heal zero-requirement leads stuck at Available in older saves (they
+            // could never reach Ready before SpawnLead/the checker promoted them).
+            foreach (var lead in _current)
+            {
+                if (lead == null || lead.RuntimeState != LeadState.Available) continue;
+                if (!HasNoRequirements(lead)) continue;
+                lead.RuntimeState = LeadState.Ready;
             }
 
             Broadcast();

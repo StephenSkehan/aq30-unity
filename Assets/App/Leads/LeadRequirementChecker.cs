@@ -125,7 +125,20 @@ namespace AQ.App.Leads
                 if (lead == null || lead.RuntimeState == LeadState.Blocked) continue;
 
                 var reqs = lead.requirements;
-                if (reqs == null || reqs.Length == 0) continue;
+                if (reqs == null || reqs.Length == 0)
+                {
+                    // A lead with no requirements is trivially satisfied — promote it
+                    // so its Proceed gate opens. Skipping these left ep2_teaser as a
+                    // permanently dead card (Ready is only ever assigned here).
+                    if (lead.RuntimeState != LeadState.Ready)
+                    {
+                        GameAnalytics.LogCardStateChange(lead.leadId, lead.RuntimeState.ToString(), LeadState.Ready.ToString());
+                        lead.RuntimeState = LeadState.Ready;
+                        LeadsRuntimeBus.BroadcastState(lead);
+                        anyChanged = true;
+                    }
+                    continue;
+                }
 
                 // Greedy allocation: copy live counts (board + locker) and "spend" one
                 // per requirement. Correctly handles duplicate itemIds across reqs.
