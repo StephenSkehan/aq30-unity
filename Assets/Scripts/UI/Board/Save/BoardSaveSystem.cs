@@ -18,8 +18,9 @@ using AQ.SharedKernel.Economy;
 namespace AQ.App.UI.Board
 {
     /// <summary>
-    /// Saves and loads the board state (items/generators) and global energy in one JSON file.
-    /// Atomic write with rolling .prev.json backup. Schema 0.5.0.
+    /// Saves and loads the board state (items/generators), global energy, wallet,
+    /// case flow, leads, locker and Stash in one JSON file.
+    /// Atomic write with rolling .prev.json backup. Schema 0.8.0.
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class BoardSaveSystem : MonoBehaviour
@@ -54,10 +55,30 @@ namespace AQ.App.UI.Board
         /// <summary>Fired right after WalletRestored becomes true.</summary>
         public static event Action WalletRestoreCompleted;
 
+        /// <summary>The scene's save system, for SaveNow(). Null between scenes.</summary>
+        public static BoardSaveSystem Instance { get; private set; }
+
+        /// <summary>
+        /// Persist the aggregate right now (synchronous). For callers that are about
+        /// to make a change irreversible on the OUTSIDE — e.g. confirming a StoreKit
+        /// transaction — and must know the credit is on disk first. No-op if the
+        /// scene's save system isn't up or restore hasn't applied yet.
+        /// </summary>
+        public static void SaveNow()
+        {
+            var self = Instance;
+            if (self == null) return;
+            self.TrySave();
+            self._lastSnapshotHash = self.SnapshotHash();
+            self._nextSaveAt = -1f;
+            self._saveThisFrame = false;
+        }
+
         // --------------- Unity ---------------
 
         private void Awake()
         {
+            Instance = this;
             WalletRestored = false;
 
             if (!board)
@@ -89,22 +110,36 @@ namespace AQ.App.UI.Board
 
         private void OnDestroy()
         {
+            if (Instance == this) Instance = null;
             if (_observedWallet != null)
                 _observedWallet.Changed -= OnWalletChanged;
         }
 
-        // Premium is real-money value: persist immediately instead of waiting out
-        // the debounce window, so a crash can't eat a purchase credit.
+        private bool _saveThisFrame;
+
+        // Premium is real-money value: persist the same frame instead of waiting
+        // out the debounce window, so a crash can't eat a purchase credit.
+        // Same-FRAME, not synchronous-mid-mutation: a synchronous save here fired
+        // between an ingot spend and its energy grant (ladder refill, Starter Pack
+        // legs), persisting a charged-but-undelivered wallet. Deferring to
+        // LateUpdate makes the whole transaction one consistent snapshot.
         private void OnWalletChanged(WalletChanged e)
         {
             if (e.Currency != Currency.Premium) return;
-            TrySave();
-            _lastSnapshotHash = SnapshotHash();
-            _nextSaveAt = -1f;
+            _saveThisFrame = true;
         }
 
         private void LateUpdate()
         {
+            if (_saveThisFrame)
+            {
+                _saveThisFrame = false;
+                TrySave();
+                _lastSnapshotHash = SnapshotHash();
+                _nextSaveAt = -1f;
+                return;
+            }
+
             if (_nextSaveAt > 0f && Time.unscaledTime >= _nextSaveAt)
             {
                 TrySave();
@@ -175,18 +210,19 @@ namespace AQ.App.UI.Board
         [Serializable]
         private sealed class SaveDTO
         {
-            public string schemaVersion = "0.7.0";
+            public string schemaVersion = "0.8.0";
             public string timestampUtc;
 
             public int rows;
             public int cols;
 
-            public List<CellDTO>      cells    = new List<CellDTO>();
-            public EnergyDTO          energy;
-            public WalletDTO          wallet;
-            public CaseFlowDTO        caseFlow;
-            public List<LeadStateDTO> leads    = new List<LeadStateDTO>();
-            public LockerStateDTO     locker;  // folded in at 0.7.0 — see ApplyLocker
+            public List<CellDTO>          cells    = new List<CellDTO>();
+            public EnergyDTO              energy;
+            public WalletDTO              wallet;
+            public CaseFlowDTO            caseFlow;
+            public List<LeadStateDTO>     leads    = new List<LeadStateDTO>();
+            public LockerStateDTO         locker;  // folded in at 0.7.0 — see ApplyLocker
+            public List<OverflowTileData> overflow = new List<OverflowTileData>(); // folded in at 0.8.0 — see ApplyOverflow
         }
 
         public static void ClearSave()
@@ -225,6 +261,7 @@ namespace AQ.App.UI.Board
                 wallet   = BuildWalletDTO(),
                 caseFlow = BuildCaseFlowDTO(),
                 locker   = EvidenceLockerService.ExportState(),
+                overflow = OverflowBucketService.ExportState(),
             };
             FillCells(dto.cells);
             FillLeads(dto.leads);
@@ -236,9 +273,11 @@ namespace AQ.App.UI.Board
             {
                 AtomicSaveFile.Write(_pathLive, _pathPrev, _pathTmp, json);
 
-                // Locker state is folded into the aggregate just written — remove the
-                // pre-0.7.0 file so it can't resurrect stale state on a future boot.
+                // Locker (0.7.0) and Stash (0.8.0) are folded into the aggregate just
+                // written — remove the pre-fold files so they can't resurrect stale
+                // state on a future boot.
                 EvidenceLockerService.DeleteLegacyFile();
+                OverflowBucketService.DeleteLegacyFile();
             }
             catch (Exception ex)
             {
@@ -284,6 +323,7 @@ namespace AQ.App.UI.Board
                 ApplyCaseFlow(dto.caseFlow);
                 ApplyLeads(dto.leads);
                 ApplyLocker(dto);
+                ApplyOverflow(dto);
 
                 Debug.Log($"[Save] loaded {dto.cells.Count} cells, {dto.leads?.Count ?? 0} leads from {path}");
                 return true;
@@ -411,9 +451,13 @@ namespace AQ.App.UI.Board
 
             EnergyRuntime.Manager = new EnergyManager(0, cfg.Cap, lastTickUtc: last);
 
-            // Apply offline regen: compute ticks since last save
+            // Apply offline regen: compute ticks since last save.
+            // Regen fills toward the cap only, but a saved balance ABOVE the cap
+            // must survive untouched — ingot ladder refills, the Starter Pack and
+            // rewarded ads all grant past the cap on purpose (paid value). The old
+            // Min-only clamp deleted that over-cap energy on every relaunch.
             int offlineTicks = EnergyRuntime.Manager.TickNow(cfg.RegenSecondsPerPoint, DateTime.UtcNow);
-            int restored = Math.Min(energy.current + offlineTicks, cfg.Cap);
+            int restored = Math.Max(energy.current, Math.Min(energy.current + offlineTicks, cfg.Cap));
 
             // Seed wallet with restored balance
             var wallet = WalletLocator.Instance;
@@ -515,6 +559,17 @@ namespace AQ.App.UI.Board
             EvidenceLockerService.ImportState(SchemaAtLeast(dto.schemaVersion, 0, 7) ? dto.locker : null);
         }
 
+        private static void ApplyOverflow(SaveDTO dto)
+        {
+            // Same JsonUtility caveat as ApplyLocker: dto.overflow is an empty list
+            // (never null) for pre-0.8.0 saves, so importing it unconditionally would
+            // wipe a migrating Stash. Older saves keep the state the bootstrap-time
+            // OverflowBucketService.Load() already read from legacy overflow_state.json;
+            // the next TrySave folds it in and deletes the legacy file.
+            if (SchemaAtLeast(dto.schemaVersion, 0, 8))
+                OverflowBucketService.ImportState(dto.overflow);
+        }
+
         private static bool SchemaAtLeast(string version, int major, int minor)
         {
             if (string.IsNullOrEmpty(version)) return false;
@@ -592,9 +647,11 @@ namespace AQ.App.UI.Board
                     }
                 }
 
-                // Locker is part of the aggregate: a store/retrieve/purchase must
-                // trigger the same debounced save a board change does.
+                // Locker and Stash are part of the aggregate: a store/retrieve/
+                // purchase/push must trigger the same debounced save a board
+                // change does.
                 h = h * 31 + EvidenceLockerService.StateHash();
+                h = h * 31 + OverflowBucketService.StateHash();
 
                 return h;
             }
