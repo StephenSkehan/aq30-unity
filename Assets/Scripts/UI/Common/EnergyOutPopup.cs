@@ -56,8 +56,11 @@ namespace AQ.App.UI.Common
             panel.anchoredPosition = Vector2.zero;
 
             // Title-bar treatment (Stephen-ruled 2026-08-12); the bar's X closes.
+            // Regen rate comes from the live config — a hardcoded number here once
+            // shipped promising 90s while the tuned asset regenerated at 150s.
+            int regenSecs = EnergyRuntime.Config != null ? EnergyRuntime.Config.RegenSecondsPerPoint : 150;
             AQTheme.TitleBar(panel, "OUT OF ENERGY", Close,
-                "Energy refills over time (+1 every 90s). Refill instantly with Platinum Ingots, or watch a tip to earn a boost.");
+                $"Energy refills over time (+1 every {regenSecs}s). Refill instantly with Platinum Ingots, or watch a tip to earn a boost.");
 
             _balanceLbl = AddLabel("", panel, 34f, AQTheme.Paper,
                                    new Vector2(0f, 250f), new Vector2(600f, 50f));
