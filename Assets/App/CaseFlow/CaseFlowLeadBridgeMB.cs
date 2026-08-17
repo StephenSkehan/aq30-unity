@@ -26,11 +26,26 @@ namespace AQ.App.CaseFlow
         private const string kBoardActive = "Board_Active";
         private const string kLeadReady   = "Lead_Ready";
 
+        // Crash insurance for one-shot progression flags: a lead is consumed and
+        // autosaved the moment Proceed is tapped, but its aq.lead.<id>.seen flag
+        // (which gates Mo's shop, the hint system, dossier close facts and the
+        // evidence-board replay entry) only lands when the resolution dialogue's
+        // FINAL node displays — 30-90s of VO later. This marker records the
+        // in-flight dialogue so a kill in that window replays it on the next boot
+        // instead of stranding those gates forever.
+        private const string PendingDialogueKey = "aq.dialogue.pending_lead";
+        private string _pendingLeadIdAtBoot;
+
         void Start()
         {
             _svc  = CaseFlowLocator.Instance;
             _repo = FindAnyObjectByType<LeadsRepository>();
             _bar  = FindAnyObjectByType<LeadsBarView>();
+
+            // Read the marker before anything can clear it this session.
+            _pendingLeadIdAtBoot = PlayerPrefs.GetString(PendingDialogueKey, null);
+            if (!string.IsNullOrEmpty(_pendingLeadIdAtBoot))
+                StartCoroutine(ReplayPendingDialogue());
 
             if (_repo != null) _repo.LeadsChanged    += OnLeadsChanged;
             if (_bar  != null) _bar.ProceedRequested += OnProceed;
@@ -182,6 +197,11 @@ namespace AQ.App.CaseFlow
 
             GameAnalytics.LogCardSubmit(lead.leadId);
 
+            // Record the in-flight resolution dialogue BEFORE the activation commits
+            // (see PendingDialogueKey doc above). Cleared in OnDialogueEnded.
+            PlayerPrefs.SetString(PendingDialogueKey, lead.leadId);
+            PlayerPrefs.Save();
+
             // Hold reward/consumption flight FX until the resolution dialogue closes —
             // rewards fire inside BroadcastActivated, the same frame the dialogue opens,
             // and the chips should fly over the restored grid + HUD, not the stage.
@@ -226,7 +246,47 @@ namespace AQ.App.CaseFlow
         private void OnDialogueEnded()
         {
             dialogueRunner.DialogueEnded -= OnDialogueEnded;
+            // Dialogue ran to End(): its final node (the setsFlag carrier — content
+            // convention is FINAL NODE ONLY) has displayed, so the flag is down and
+            // the crash-replay marker can go.
+            PlayerPrefs.DeleteKey(PendingDialogueKey);
+            PlayerPrefs.Save();
             if (_bar != null) _bar.gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// Boot-time recovery: a previous session died between Proceed and the
+        /// resolution dialogue's final node. Replay the whole dialogue so its
+        /// setsFlag lands; the lead itself is long consumed, so this is the only
+        /// path left to those flags (the evidence-board replay is gated on the
+        /// very flag that's missing).
+        /// </summary>
+        private IEnumerator ReplayPendingDialogue()
+        {
+            // Wait out the boot overlay plus a few settle frames (save restore runs
+            // in the first frames; BoardSaveSystem itself is Assembly-CSharp and not
+            // visible from here), so a scene boot or the FTUE choreography claims
+            // the runner first if it needs it (killed-mid-payoff leaves FTUE stage 2
+            // = choreography inert, and the marker only ever exists past that stage).
+            for (int i = 0; i < 5; i++) yield return null;
+            while (UI.StudioSplashMB.Showing) yield return null;
+            yield return null;
+
+            if (dialogueRunner == null) yield break;
+            if (dialogueRunner.gameObject.activeSelf) yield break; // someone else is talking — marker survives for next boot
+
+            var lead = _repo != null && _repo.database != null
+                ? _repo.database.FindById(_pendingLeadIdAtBoot) : null;
+            if (lead == null || lead.resolutionDialogue == null)
+            {
+                // Unknown lead or no dialogue: nothing to replay, don't loop forever.
+                PlayerPrefs.DeleteKey(PendingDialogueKey);
+                PlayerPrefs.Save();
+                yield break;
+            }
+
+            Debug.Log($"[CaseFlowLeadBridge] Replaying interrupted resolution dialogue '{lead.leadId}' (previous session ended mid-dialogue).", this);
+            TryBootDialogue(lead);
         }
 
         private string CurrentKey()

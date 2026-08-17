@@ -63,6 +63,12 @@ namespace AQ.App
         private string _startOverrideId;
         private string _endAfterNodeId;
 
+        // Replay boots (evidence-board scene replays) must not write flags: a
+        // replayed story choice re-offered both branches and could set BOTH
+        // mutually exclusive truth flags, corrupting the finale's branch gating.
+        // A replay is a memory, not a decision. Per-boot; cleared in End().
+        private bool _suppressFlagWrites;
+
         void Start()
         {
             if (!_booted && Graph != null) InternalBoot(Graph);
@@ -75,6 +81,20 @@ namespace AQ.App
         {
             _startOverrideId = null;
             _endAfterNodeId  = null;
+            _suppressFlagWrites = false;
+            BootCore(g);
+        }
+
+        /// <summary>
+        /// Boot a graph as a REPLAY: plays normally but never writes node/choice
+        /// flags. Use for evidence-board scene replays — the player's original
+        /// decisions must stand.
+        /// </summary>
+        public void BootWithGraphForReplay(CaseGraph g)
+        {
+            _startOverrideId = null;
+            _endAfterNodeId  = null;
+            _suppressFlagWrites = true;
             BootCore(g);
         }
 
@@ -88,6 +108,7 @@ namespace AQ.App
         {
             _startOverrideId = string.IsNullOrEmpty(startNodeId) ? null : startNodeId;
             _endAfterNodeId  = string.IsNullOrEmpty(endAfterNodeId) ? null : endAfterNodeId;
+            _suppressFlagWrites = false;
             BootCore(g);
         }
 
@@ -157,13 +178,10 @@ namespace AQ.App
             img.raycastTarget = true;
             bg.transform.SetAsFirstSibling();
 
-            var trigger = bg.AddComponent<UnityEngine.EventSystems.EventTrigger>();
-            var entry = new UnityEngine.EventSystems.EventTrigger.Entry
-            {
-                eventID = UnityEngine.EventSystems.EventTriggerType.PointerClick
-            };
-            entry.callback.AddListener((_) => OnAdvance());
-            trigger.triggers.Add(entry);
+            // No PointerClick EventTrigger here: the raw-input poll in Update()
+            // already sees every tap. A click path on top of it made one physical
+            // tap advance TWICE (down via the poll, up via the click), cutting the
+            // next node's VO the moment it started.
         }
 
         void InternalBoot(CaseGraph g)
@@ -207,9 +225,13 @@ namespace AQ.App
             if (_bodyTyper != null) _bodyTyper.charsPerSecond = 45f;
             if (_speakerTyper != null) _speakerTyper.charsPerSecond = 60f;
 
-            // Subscribe to panel events
-            Panel.AdvanceClicked += OnAdvance;
-            Panel.ChoiceClicked += OnChoice;
+            // Subscribe to panel events. Advance and choice taps are handled
+            // EXCLUSIVELY by the raw-input poll in Update() — it sees every tap
+            // (down-phase, whole screen) regardless of EventSystem state, so the
+            // Button/onClick paths were duplicates: one tap fired both the poll
+            // (pointer down) and onClick (pointer up), double-advancing and
+            // stopping freshly started VO. Only Back keeps its Button (the poll
+            // has no back hit-test).
             Panel.BackClicked += OnBack;
 
             // Start at first node
@@ -226,8 +248,6 @@ namespace AQ.App
         {
             if (Panel != null)
             {
-                Panel.AdvanceClicked -= OnAdvance;
-                Panel.ChoiceClicked -= OnChoice;
                 Panel.BackClicked -= OnBack;
             }
         }
@@ -433,8 +453,9 @@ namespace AQ.App
                 }
             }
 
-            // Set flag if specified
-            if (!string.IsNullOrEmpty(n.setsFlag))
+            // Set flag if specified (never during a replay boot — the original
+            // playthrough's flags must stand)
+            if (!_suppressFlagWrites && !string.IsNullOrEmpty(n.setsFlag))
             {
                 DialogueFlags.Set(n.setsFlag);
             }
@@ -555,6 +576,7 @@ namespace AQ.App
             // Overrides are per-boot; never leak into the next dialogue.
             _startOverrideId = null;
             _endAfterNodeId  = null;
+            _suppressFlagWrites = false;
 
             if (_bodyTyper != null) _bodyTyper.StopTyping();
             if (_speakerTyper != null) _speakerTyper.StopTyping();
@@ -563,7 +585,12 @@ namespace AQ.App
                 voiceSource.Stop();
 
             if (_voiceRestoreRoutine != null) { StopCoroutine(_voiceRestoreRoutine); _voiceRestoreRoutine = null; }
-            RestoreMusic();
+
+            // SNAP the music back, no fade: Panel deactivates below and Panel
+            // lives on this same GameObject, so a RestoreMusic() coroutine here
+            // died after one frame and left the music stuck ducked at ~15%.
+            if (_musicFadeRoutine != null) { StopCoroutine(_musicFadeRoutine); _musicFadeRoutine = null; }
+            if (musicSource != null) musicSource.volume = AudioSettingsService.MusicVolume;
 
             if (verboseLogging)
                 Debug.Log("[DialogueRunner] End of graph");
