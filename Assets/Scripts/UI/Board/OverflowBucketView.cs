@@ -51,12 +51,37 @@ namespace AQ.App.UI.Board
             if (OverflowBucketService.IsEmpty || _root == null || !_root.gameObject.activeSelf) return;
 
             bool tapped = false;
+            Vector2 pos = default;
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-                tapped = RectContains(Input.GetTouch(0).position);
+            {
+                pos    = Input.GetTouch(0).position;
+                tapped = RectContains(pos);
+            }
             else if (Input.GetMouseButtonDown(0))
-                tapped = RectContains(Input.mousePosition);
+            {
+                pos    = Input.mousePosition;
+                tapped = RectContains(pos);
+            }
 
-            if (tapped) OnTapped();
+            // The raw poll can't see UI stacking on its own: without this check a
+            // tap meant for a modal drawn above (locker dim, confirm popup,
+            // dialogue scrim) ALSO popped the top stash tile onto the board
+            // behind it. The bucket's own images are raycast targets, so if
+            // anything else is topmost at the tap point, the tap isn't ours.
+            if (tapped && TopmostHitIsBucket(pos)) OnTapped();
+        }
+
+        private static readonly System.Collections.Generic.List<UnityEngine.EventSystems.RaycastResult> _hits = new();
+
+        private bool TopmostHitIsBucket(Vector2 screenPos)
+        {
+            var es = UnityEngine.EventSystems.EventSystem.current;
+            if (es == null) return true; // no EventSystem — keep raw behaviour
+            var ped = new UnityEngine.EventSystems.PointerEventData(es) { position = screenPos };
+            _hits.Clear();
+            es.RaycastAll(ped, _hits);
+            if (_hits.Count == 0) return true; // nothing else claims the tap
+            return _hits[0].gameObject.transform.IsChildOf(_root);
         }
 
         private bool RectContains(Vector2 screenPos)

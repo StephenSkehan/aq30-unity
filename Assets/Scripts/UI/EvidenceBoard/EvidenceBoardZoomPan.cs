@@ -10,6 +10,11 @@ namespace AQ.App.UI.EvidenceBoard
         /// lesson as the splash and overflow bucket).</summary>
         public System.Action<Vector2> Tapped;
 
+        /// <summary>When this returns true (e.g. a profile/location modal is up),
+        /// tracking is dropped: a tap that closes the modal can then never
+        /// complete as a board tap on the pin underneath it.</summary>
+        public System.Func<bool> SuppressInput;
+
         private RectTransform _rt;
         private Canvas _canvas;
         private float _minZoom, _maxZoom;
@@ -19,6 +24,23 @@ namespace AQ.App.UI.EvidenceBoard
         private Vector2 _downPos;
         private float   _downTime;
         private bool    _tracking;
+        private bool    _inputEnabled = true;
+        private bool    _suppressUntilRelease;
+
+        /// <summary>
+        /// The screen calls this on Open()/Close(). This component lives on
+        /// BoardContent, which stays active while the board is "closed" (only the
+        /// CanvasGroup is zeroed) — so without the gate it tracked EVERY touch,
+        /// including the one that dismissed a replayed dialogue: the board reopened
+        /// under the finger and that same touch's Ended fired as a board tap.
+        /// Enabling mid-touch suppresses until the finger lifts.
+        /// </summary>
+        public void SetInputEnabled(bool enabled)
+        {
+            _inputEnabled = enabled;
+            _tracking = false;
+            _suppressUntilRelease = enabled && (Input.touchCount > 0 || Input.GetMouseButton(0));
+        }
 
         private const float RefW = 1080f;
         private const float RefH = 1920f;
@@ -44,6 +66,20 @@ namespace AQ.App.UI.EvidenceBoard
         void Update()
         {
             if (_rt == null) return;
+
+            if (!_inputEnabled || (SuppressInput != null && SuppressInput()))
+            {
+                _tracking = false;
+                _suppressUntilRelease = Input.touchCount > 0 || Input.GetMouseButton(0);
+                return;
+            }
+
+            if (_suppressUntilRelease)
+            {
+                if (Input.touchCount == 0 && !Input.GetMouseButton(0))
+                    _suppressUntilRelease = false;
+                else { _tracking = false; return; }
+            }
 
             if (Input.touchCount == 1)
                 HandleSingleTouch();

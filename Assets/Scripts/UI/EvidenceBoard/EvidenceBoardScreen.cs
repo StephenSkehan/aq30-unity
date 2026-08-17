@@ -107,6 +107,12 @@ namespace AQ.App.UI.EvidenceBoard
             var zp = boardGo.AddComponent<EvidenceBoardZoomPan>();
             zp.Init(_boardContent, MinZoom, MaxZoom, new Vector2(BoardW, BoardH));
             zp.Tapped += OnBoardTapped;
+            // While a modal sheet is up it owns input: dropping tracking here means
+            // the tap that closes the modal can never complete as a board tap on
+            // whatever pin sits under the finger.
+            zp.SuppressInput = () => CharacterProfileModal.IsOpen || LocationModal.IsOpen
+                                  || Dossiers.DossierPopup.IsOpen || Dossiers.DossierIndexPopup.IsOpen;
+            zp.SetInputEnabled(false); // armed by Open()
             _zoomPan = zp;
 
             // Brass plaque on the cork (replaced the screen-top title text,
@@ -257,6 +263,12 @@ namespace AQ.App.UI.EvidenceBoard
             _cg.interactable    = true;
             _isOpen             = true;
 
+            // BoardContent (and its ZoomPan) stay active while closed, so gate its
+            // raw-input tracking on visibility. Enabling mid-touch suppresses that
+            // touch — the tap dismissing a replayed dialogue reopened the board
+            // under the finger and used to fire as a board tap.
+            if (_zoomPan != null) _zoomPan.SetInputEnabled(true);
+
             if (_btnCg != null)
             {
                 _btnCg.alpha          = 0f;
@@ -272,6 +284,8 @@ namespace AQ.App.UI.EvidenceBoard
             _cg.blocksRaycasts = false;
             _cg.interactable   = false;
             _isOpen            = false;
+
+            if (_zoomPan != null) _zoomPan.SetInputEnabled(false);
 
             if (_btnCg != null)
             {
@@ -553,7 +567,9 @@ namespace AQ.App.UI.EvidenceBoard
                 _dialogueRunner.gameObject.SetActive(true);
 
             _dialogueRunner.DialogueEnded += OnDialogueEndedReopen;
-            _dialogueRunner.BootWithGraph(lead.resolutionDialogue);
+            // Replay boot: never writes flags, so re-answering a story choice here
+            // can't stack both truth branches on top of the original decision.
+            _dialogueRunner.BootWithGraphForReplay(lead.resolutionDialogue);
         }
 
         private static void OnDialogueEndedReopen()
