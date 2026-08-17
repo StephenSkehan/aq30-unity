@@ -119,16 +119,22 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
         if (Stage == 0)
         {
             SeedPairIfNeeded();
-            Stage = 1;
 
             if (_lead.resolutionDialogue != null)
             {
+                // Stage stays 0 until the intro CLOSES (OnIntroClosed): stamping 1
+                // here meant any kill during the ~57s N1–N3 intro permanently
+                // skipped the case setup — the resume path jumps straight to the
+                // guide and the payoff later references "the message you just
+                // heard" that the player never heard. Seeding is idempotent, so
+                // replaying this block on relaunch is safe.
                 DialogueRunner.DialogueClosed += OnIntroClosed;
                 _bridge.PlayIntroForFtue(_lead.resolutionDialogue, IntroStart, IntroEnd);
                 Debug.Log("[FTUEChoreo] Pair seeded, intro span N1–N3 booted.");
                 yield break; // guide starts when the intro closes
             }
             Debug.LogWarning("[FTUEChoreo] L1 has no resolution dialogue — skipping intro.");
+            Stage = 1; // no intro to protect — mark the seed pass done
         }
 
         StartGuide();
@@ -148,6 +154,7 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
     {
         DialogueRunner.DialogueClosed -= OnIntroClosed;
         if (this == null) return;
+        Stage = 1; // intro fully shown — safe to skip it on any future relaunch
         StartGuide();
     }
 

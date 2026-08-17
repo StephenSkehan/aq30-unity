@@ -67,20 +67,45 @@ public class ProceedHintMB : MonoBehaviour
         _rt.sizeDelta = new Vector2(80f, 60f);
         transform.SetAsLastSibling();
 
-        _label = gameObject.AddComponent<TextMeshProUGUI>();
-        _label.text = "▼";
-        _label.fontSize = 52f;
-        _label.color = new Color(1f, 0.85f, 0.1f, 1f);
-        _label.alignment = TextAlignmentOptions.Center;
-        _label.raycastTarget = false;
+        if (_label == null)
+        {
+            _label = gameObject.AddComponent<TextMeshProUGUI>();
+            _label.text = "▼";
+            _label.fontSize = 52f;
+            _label.color = new Color(1f, 0.85f, 0.1f, 1f);
+            _label.alignment = TextAlignmentOptions.Center;
+            _label.raycastTarget = false;
+        }
+        _label.enabled = true;
 
         _target  = btnRect;
         _showing = true;
     }
 
+    float _nextScanAt;
+
     void Update()
     {
-        if (!_showing || _label == null || _target == null) return;
+        if (!_showing)
+        {
+            // CardBecameReady only fires on the false→true transition — a card
+            // that went Ready while the hint was suppressed (FTUE choreography)
+            // or before install has already spent its event. Scan for one.
+            if (Time.unscaledTime >= _nextScanAt)
+            {
+                _nextScanAt = Time.unscaledTime + 0.5f;
+                TryAttachToReadyCard();
+            }
+            return;
+        }
+
+        if (_target == null || _label == null)
+        {
+            // Card view rebuilt/destroyed under us — hide and rescan.
+            _showing = false;
+            if (_label != null) _label.enabled = false;
+            return;
+        }
 
         // Hover above the Proceed button in world space
         var pos = _target.position;
@@ -95,8 +120,25 @@ public class ProceedHintMB : MonoBehaviour
         _label.color = c;
     }
 
+    void TryAttachToReadyCard()
+    {
+        var cards = Object.FindObjectsByType<LeadCardView>(FindObjectsSortMode.None);
+        foreach (var card in cards)
+        {
+            if (card == null || !card.IsReadyNow) continue;
+            OnCardReady(card);
+            if (_showing) return;
+        }
+    }
+
     void OnLeadActivated(LeadData _)
     {
+        // Burn the one-shot flag only if the arrow actually taught. Activation can
+        // arrive while the hint never displayed (card went Ready during the FTUE
+        // suppression window) — burning then killed the tutorial for the whole
+        // save without it ever appearing once. If we weren't showing, stay armed
+        // for the next Ready card.
+        if (!_showing) return;
         NarrativeFlags.Set(FtueFlag);
         Destroy(gameObject);
     }

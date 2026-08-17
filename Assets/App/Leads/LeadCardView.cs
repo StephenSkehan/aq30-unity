@@ -33,6 +33,14 @@ namespace AQ.App.Leads
         public RectTransform ProceedButtonRect =>
             proceedButton ? proceedButton.GetComponent<RectTransform>() : null;
 
+        /// <summary>
+        /// True when the last bound model could proceed. Lets the FTUE hint find a
+        /// card that was ALREADY Ready when the hint installed — CardBecameReady
+        /// only fires on the false→true transition, which such a card has already
+        /// spent.
+        /// </summary>
+        public bool IsReadyNow => _wasCanProceed;
+
         // ------------------------ Public API ------------------------
 
         public void Bind(ILeadCardModel model)
