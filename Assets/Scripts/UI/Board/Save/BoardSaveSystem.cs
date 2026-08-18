@@ -19,8 +19,8 @@ namespace AQ.App.UI.Board
 {
     /// <summary>
     /// Saves and loads the board state (items/generators), global energy, wallet,
-    /// case flow, leads, locker and Stash in one JSON file.
-    /// Atomic write with rolling .prev.json backup. Schema 0.8.0.
+    /// case flow, leads, locker, Stash and Case Kit specials in one JSON file.
+    /// Atomic write with rolling .prev.json backup. Schema 0.9.0.
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class BoardSaveSystem : MonoBehaviour
@@ -210,7 +210,7 @@ namespace AQ.App.UI.Board
         [Serializable]
         private sealed class SaveDTO
         {
-            public string schemaVersion = "0.8.0";
+            public string schemaVersion = "0.9.0";
             public string timestampUtc;
 
             public int rows;
@@ -223,6 +223,7 @@ namespace AQ.App.UI.Board
             public List<LeadStateDTO>     leads    = new List<LeadStateDTO>();
             public LockerStateDTO         locker;  // folded in at 0.7.0 — see ApplyLocker
             public List<OverflowTileData> overflow = new List<OverflowTileData>(); // folded in at 0.8.0 — see ApplyOverflow
+            public UI.Specials.SpecialsStateDTO specials; // folded in at 0.9.0 — see ApplySpecials
         }
 
         public static void ClearSave()
@@ -236,6 +237,7 @@ namespace AQ.App.UI.Board
             OverflowBucketService.Clear();
             GeneratorFamilyRegistry.Clear();
             AQ.App.Locker.EvidenceLockerService.Clear();
+            UI.Specials.SpecialItemsService.Clear();
             Debug.Log("[Save] BoardSaveSystem cleared");
         }
 
@@ -262,6 +264,7 @@ namespace AQ.App.UI.Board
                 caseFlow = BuildCaseFlowDTO(),
                 locker   = EvidenceLockerService.ExportState(),
                 overflow = OverflowBucketService.ExportState(),
+                specials = UI.Specials.SpecialItemsService.ExportState(),
             };
             FillCells(dto.cells);
             FillLeads(dto.leads);
@@ -273,11 +276,12 @@ namespace AQ.App.UI.Board
             {
                 AtomicSaveFile.Write(_pathLive, _pathPrev, _pathTmp, json);
 
-                // Locker (0.7.0) and Stash (0.8.0) are folded into the aggregate just
-                // written — remove the pre-fold files so they can't resurrect stale
-                // state on a future boot.
+                // Locker (0.7.0), Stash (0.8.0) and Case Kit specials (0.9.0) are
+                // folded into the aggregate just written — remove the pre-fold
+                // stores so they can't resurrect stale state on a future boot.
                 EvidenceLockerService.DeleteLegacyFile();
                 OverflowBucketService.DeleteLegacyFile();
+                UI.Specials.SpecialItemsService.DeleteLegacyKeys();
             }
             catch (Exception ex)
             {
@@ -296,9 +300,11 @@ namespace AQ.App.UI.Board
             // .prev backup on disk, so a missing/corrupt live file falls back to it.
             if (!LoadFrom(_pathLive) && !LoadFrom(_pathPrev))
             {
-                // No readable save: reset locker statics (they survive play sessions
-                // when domain reload is off) and migrate the legacy file if present.
+                // No readable save: reset locker/specials statics (they survive
+                // play sessions when domain reload is off) and migrate their
+                // legacy stores if present.
                 EvidenceLockerService.ImportState(null);
+                UI.Specials.SpecialItemsService.ImportState(null);
             }
         }
 
@@ -324,6 +330,7 @@ namespace AQ.App.UI.Board
                 ApplyLeads(dto.leads);
                 ApplyLocker(dto);
                 ApplyOverflow(dto);
+                ApplySpecials(dto);
 
                 Debug.Log($"[Save] loaded {dto.cells.Count} cells, {dto.leads?.Count ?? 0} leads from {path}");
                 return true;
@@ -570,6 +577,16 @@ namespace AQ.App.UI.Board
                 OverflowBucketService.ImportState(dto.overflow);
         }
 
+        private static void ApplySpecials(SaveDTO dto)
+        {
+            // Same JsonUtility caveat again: dto.specials is auto-instantiated
+            // (empty, never null) for pre-0.9.0 saves — importing it directly
+            // would wipe a migrating Case Kit. Older saves take the null path,
+            // which resets statics and migrates the legacy PlayerPrefs keys.
+            UI.Specials.SpecialItemsService.ImportState(
+                SchemaAtLeast(dto.schemaVersion, 0, 9) ? dto.specials : null);
+        }
+
         private static bool SchemaAtLeast(string version, int major, int minor)
         {
             if (string.IsNullOrEmpty(version)) return false;
@@ -647,11 +664,12 @@ namespace AQ.App.UI.Board
                     }
                 }
 
-                // Locker and Stash are part of the aggregate: a store/retrieve/
-                // purchase/push must trigger the same debounced save a board
-                // change does.
+                // Locker, Stash and Case Kit are part of the aggregate: a store/
+                // retrieve/purchase/push/grant/consume must trigger the same
+                // debounced save a board change does.
                 h = h * 31 + EvidenceLockerService.StateHash();
                 h = h * 31 + OverflowBucketService.StateHash();
+                h = h * 31 + UI.Specials.SpecialItemsService.StateHash();
 
                 return h;
             }
