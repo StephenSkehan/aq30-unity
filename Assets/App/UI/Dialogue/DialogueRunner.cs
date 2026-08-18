@@ -240,12 +240,29 @@ namespace AQ.App
             _booted = true;
             _history.Clear(); // Reset history on boot
 
+            if (_tapRegion == null)
+            {
+                // Full-screen region, live only while the runner's GameObject is
+                // active (End() deactivates it). Layer floored high: pre-router
+                // behaviour was advance-on-ANY-tap, so only true topmost modals
+                // (ConfirmPopup at 9999+) may outrank the open dialogue — never
+                // incidental HUD graphics whose canvases sort above this one.
+                var canvas = GetComponent<Canvas>();
+                int layer = Mathf.Max(canvas != null ? canvas.sortingOrder : 0, 9000);
+                _tapRegion = UI.TapRouter.Register("dialogue-advance", layer,
+                    contains: _ => true,
+                    onTap:    HandleRoutedTap,
+                    enabled:  () => this != null && _booted && isActiveAndEnabled);
+            }
+
             DialogueOpened?.Invoke(g);
             ShowNode(_currentId);
         }
 
         void OnDestroy()
         {
+            UI.TapRouter.Unregister(_tapRegion);
+            _tapRegion = null;
             if (Panel != null)
             {
                 Panel.BackClicked -= OnBack;
@@ -266,19 +283,16 @@ namespace AQ.App
             }
         }
 
-        void Update()
+        // Registered on first boot; the dialogue owns the whole screen while its
+        // GameObject is active. Routing through TapRouter (2026-08-18) keeps the
+        // raw-input reliability (EventSystem clicks are flaky on this panel) but
+        // adds the stacking/claiming guarantees: a popup above the dialogue now
+        // blocks advance, and the tap that advances can never ALSO reach a
+        // surface underneath (the evidence-board fallthrough family).
+        private UI.TapRouter.Region _tapRegion;
+
+        void HandleRoutedTap(Vector2 tapPos)
         {
-            if (!_booted) return;
-
-            bool tapped = Input.GetMouseButtonDown(0);
-            Vector2 tapPos = Input.mousePosition;
-            if (!tapped && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                tapped = true;
-                tapPos = Input.GetTouch(0).position;
-            }
-            if (!tapped) return;
-
             // Choices use the same raw-input path as advance (Button.onClick is
             // unreliable on this panel — see EnsureRuntimeChoiceUI).
             if (_filteredChoices != null && _filteredChoices.Length > 0)

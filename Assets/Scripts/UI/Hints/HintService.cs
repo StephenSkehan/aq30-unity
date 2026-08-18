@@ -111,16 +111,34 @@ namespace AQ.UI.Hints
         private Canvas _chipCanvas;
         private bool _dialogueOpen;
 
+        private AQ.App.UI.TapRouter.Region _closeTapRegion;
+
         private void OnEnable()
         {
             DialogueRunner.DialogueOpened += OnDialogueOpened;
             DialogueRunner.DialogueClosed += OnDialogueClosed;
+
+            // Close-X tap via TapRouter (2026-08-18): the chip canvas sorts at
+            // 4000, so the router blocks the tap when a genuinely higher surface
+            // covers the X, and claims it so nothing underneath fires too.
+            _closeTapRegion = AQ.App.UI.TapRouter.Register("hint-close-x", 4000,
+                contains: p => _closeRt != null &&
+                               RectTransformUtility.RectangleContainsScreenPoint(_closeRt, p, null),
+                onTap:    _ =>
+                {
+                    HintService.MarkClosed(_chipId);
+                    Destroy(_chip);
+                    _chip = null;
+                },
+                enabled:  () => this != null && _chip != null && !Suppressed());
         }
 
         private void OnDisable()
         {
             DialogueRunner.DialogueOpened -= OnDialogueOpened;
             DialogueRunner.DialogueClosed -= OnDialogueClosed;
+            AQ.App.UI.TapRouter.Unregister(_closeTapRegion);
+            _closeTapRegion = null;
         }
 
         private void OnDialogueOpened(CaseGraph _) => _dialogueOpen = true;
@@ -147,14 +165,8 @@ namespace AQ.UI.Hints
                     _chipCanvas.enabled = !hidden;
                 if (hidden) return;
 
-                // X-close only (Stephen-ruled 2026-08-14). Raw input per house GR lesson.
-                if (Input.GetMouseButtonDown(0) && _closeRt != null &&
-                    RectTransformUtility.RectangleContainsScreenPoint(_closeRt, Input.mousePosition, null))
-                {
-                    HintService.MarkClosed(_chipId);
-                    Destroy(_chip);
-                    _chip = null;
-                }
+                // X-close only (Stephen-ruled 2026-08-14) — tap handled by the
+                // TapRouter region registered in OnEnable.
                 return;
             }
 

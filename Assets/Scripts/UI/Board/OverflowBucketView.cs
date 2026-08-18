@@ -28,6 +28,7 @@ namespace AQ.App.UI.Board
         // locker/evidence buttons (142 = board design cell, grid-square parity
         // Stephen-ruled 2026-07-20; it lived alone on its own row before).
         private const float SIZE = 142f;
+        private const int CanvasOrder = 200; // must match BuildHUD's canvas.sortingOrder
 
         private void Awake()
         {
@@ -35,53 +36,28 @@ namespace AQ.App.UI.Board
             catch (System.Exception e) { Debug.LogError($"[OverflowBucket] BuildHUD failed: {e}"); }
         }
 
+        private AQ.App.UI.TapRouter.Region _tapRegion;
+
         private void OnEnable()
         {
             OverflowBucketService.BucketChanged += Refresh;
             Refresh();
+
+            // Tap input goes through the TapRouter (2026-08-18): it enforces the
+            // stacking + one-consumer rules a bespoke poll can't (a tap meant for
+            // a modal above used to ALSO pop a stash tile onto the board).
+            _tapRegion = AQ.App.UI.TapRouter.Register("stash-button", CanvasOrder,
+                contains: RectContains,
+                onTap:    _ => OnTapped(),
+                enabled:  () => this != null && !OverflowBucketService.IsEmpty
+                                && _root != null && _root.gameObject.activeSelf);
         }
 
         private void OnDisable()
         {
             OverflowBucketService.BucketChanged -= Refresh;
-        }
-
-        private void Update()
-        {
-            if (OverflowBucketService.IsEmpty || _root == null || !_root.gameObject.activeSelf) return;
-
-            bool tapped = false;
-            Vector2 pos = default;
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                pos    = Input.GetTouch(0).position;
-                tapped = RectContains(pos);
-            }
-            else if (Input.GetMouseButtonDown(0))
-            {
-                pos    = Input.mousePosition;
-                tapped = RectContains(pos);
-            }
-
-            // The raw poll can't see UI stacking on its own: without this check a
-            // tap meant for a modal drawn above (locker dim, confirm popup,
-            // dialogue scrim) ALSO popped the top stash tile onto the board
-            // behind it. The bucket's own images are raycast targets, so if
-            // anything else is topmost at the tap point, the tap isn't ours.
-            if (tapped && TopmostHitIsBucket(pos)) OnTapped();
-        }
-
-        private static readonly System.Collections.Generic.List<UnityEngine.EventSystems.RaycastResult> _hits = new();
-
-        private bool TopmostHitIsBucket(Vector2 screenPos)
-        {
-            var es = UnityEngine.EventSystems.EventSystem.current;
-            if (es == null) return true; // no EventSystem — keep raw behaviour
-            var ped = new UnityEngine.EventSystems.PointerEventData(es) { position = screenPos };
-            _hits.Clear();
-            es.RaycastAll(ped, _hits);
-            if (_hits.Count == 0) return true; // nothing else claims the tap
-            return _hits[0].gameObject.transform.IsChildOf(_root);
+            AQ.App.UI.TapRouter.Unregister(_tapRegion);
+            _tapRegion = null;
         }
 
         private bool RectContains(Vector2 screenPos)
@@ -99,7 +75,7 @@ namespace AQ.App.UI.Board
             canvasGO.transform.SetParent(transform);
             var canvas = canvasGO.AddComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            canvas.sortingOrder = 200;
+            canvas.sortingOrder = CanvasOrder;
             // Match the locker/evidence button canvases so sizes track together.
             var scaler = canvasGO.AddComponent<CanvasScaler>();
             scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;

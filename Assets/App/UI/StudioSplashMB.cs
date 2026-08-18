@@ -131,10 +131,24 @@ namespace AQ.App.UI
             StartCoroutine(Run());
         }
 
-        void Update()
+        // Skip-tap via TapRouter (2026-08-18): the splash is the topmost surface
+        // in the game, so it registers at int.MaxValue and, while showing, claims
+        // every tap — nothing underneath (board, dialogue, HUD) can consume the
+        // skip tap or be poked through the card.
+        AQ.App.UI.TapRouter.Region _tapRegion;
+
+        void OnEnable()
         {
-            if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
-                _skipRequested = true;
+            _tapRegion = AQ.App.UI.TapRouter.Register("studio-splash-skip", int.MaxValue,
+                contains: _ => true,
+                onTap:    _ => _skipRequested = true,
+                enabled:  () => this != null && isActiveAndEnabled);
+        }
+
+        void OnDisable()
+        {
+            AQ.App.UI.TapRouter.Unregister(_tapRegion);
+            _tapRegion = null;
         }
 
         IEnumerator Run()
