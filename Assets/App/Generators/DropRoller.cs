@@ -38,15 +38,9 @@ namespace AQ.App.Generators
         public static bool IsEligible(in DropEntry e, bool subGenLocked)
         {
             if (e.type == DropType.SubGenerator && subGenLocked) return false;
-            // TWO flag stores exist (NarrativeFlags = nar_flag_*, DialogueFlags =
-            // dlg_flag_* — same names, different PlayerPrefs keys). Lead outcomes
-            // write NarrativeFlags; dialogue setsFlag writes DialogueFlags — and the
-            // GeneratorTypeSO tooltip tells authors this field is a DialogueFlag.
-            // Accept either store so a gate wired through EITHER path opens, instead
-            // of silently never dropping the item (= case-flow soft-lock).
-            if (!string.IsNullOrEmpty(e.requiresStoryFlag)
-                && !NarrativeFlags.Has(e.requiresStoryFlag)
-                && !AQ.App.DialogueFlags.Has(e.requiresStoryFlag)) return false;
+            // GameFlags is the unified store (2026-08-18): a gate set through a
+            // lead outcome OR a dialogue setsFlag lands in the same namespace.
+            if (!string.IsNullOrEmpty(e.requiresStoryFlag) && !GameFlags.Has(e.requiresStoryFlag)) return false;
             return true;
         }
     }
