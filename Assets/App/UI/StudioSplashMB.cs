@@ -170,6 +170,11 @@ namespace AQ.App.UI
             {
                 held += Dt;
                 AnimateLoadingDots(ContentFadeIn + held);
+                // A finger already down when the pump/region came up (icon-tap
+                // held through launch, palm-edge touch) never produces a Began
+                // event for the router — the old any-touch poll accepted it, so
+                // keep that as a fallback alongside the region's proper claim.
+                if (Input.touchCount > 0 || Input.GetMouseButton(0)) _skipRequested = true;
                 if (_skipRequested && ContentFadeIn + held >= SkippableAfter) break;
                 yield return null;
             }

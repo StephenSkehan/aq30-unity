@@ -463,6 +463,11 @@ namespace AQ.App.UI.EvidenceBoard
         private static void OnBoardTapped(Vector2 screenPos)
         {
             if (!_isOpen) return;
+            // The zoom-pan fires on touch ENDED; if a TapRouter region already
+            // claimed this gesture at its Began (the hint chip's close-X floats
+            // over the open board), the tap is spent — completing it here opened
+            // a pin modal or booted a replay from a tap meant to dismiss a hint.
+            if (AQ.App.UI.TapRouter.CurrentTouchClaimed) return;
             if (CharacterProfileModal.IsOpen) return; // modal owns input while up
             if (LocationModal.IsOpen) return; // ditto the location sheet
             if (Dossiers.DossierPopup.IsOpen) return; // and the case file

@@ -48,7 +48,12 @@ namespace AQ.App.UI
 
             var canvas = root.AddComponent<Canvas>();
             canvas.renderMode  = RenderMode.ScreenSpaceOverlay;
-            canvas.sortingOrder = 200;
+            // Full-screen takeover: must sort STRICTLY above every HUD corner
+            // canvas (locker/stash/kit at 200) and the hint chip (4000) so the
+            // TapRouter's stacking rule blocks their regions underneath. At the
+            // old 200 it TIED the stash/kit buttons and taps pierced the finale
+            // (equal order never blocks — regions must not self-block).
+            canvas.sortingOrder = 6000;
             root.AddComponent<GraphicRaycaster>();
             root.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
 

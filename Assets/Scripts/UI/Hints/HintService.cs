@@ -193,6 +193,10 @@ namespace AQ.UI.Hints
             _chipCanvas = canvas;
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.sortingOrder = 4000; // above popups (<=1000), below DragGhost (5000)
+            // GraphicRaycaster so the raycast-target X registers with the
+            // EventSystem: without it, the X only existed for the TapRouter and
+            // the SAME tap also pressed Buttons underneath (locker dim/slots).
+            _chip.AddComponent<UnityEngine.UI.GraphicRaycaster>();
             var scaler = _chip.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1080f, 1920f);

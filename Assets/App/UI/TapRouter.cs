@@ -43,7 +43,11 @@ namespace AQ.App.UI
         // Statics survive play sessions when domain reload is off; a stale region
         // holds closures over destroyed objects (StudioSplashMB lesson).
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ResetStatics() => _regions.Clear();
+        private static void ResetStatics()
+        {
+            _regions.Clear();
+            CurrentTouchClaimed = false;
+        }
 
         public static Region Register(string name, int layer,
             Func<Vector2, bool> contains, Action<Vector2> onTap, Func<bool> enabled = null)
@@ -90,24 +94,53 @@ namespace AQ.App.UI
             return best;
         }
 
+        /// <summary>
+        /// True from the moment a region claims a tap until that pointer gesture
+        /// fully ends (all touches lifted / mouse released, inclusive of the
+        /// release frame). Gesture surfaces that fire on pointer UP (e.g. the
+        /// evidence board's tap-on-Ended) consult this so a tap a region already
+        /// consumed — like the hint chip's close-X — can't ALSO complete as
+        /// their tap.
+        /// </summary>
+        public static bool CurrentTouchClaimed { get; private set; }
+
         internal static void Pump()
         {
-            Vector2 pos;
-            if (Input.touchCount > 0)
+            // Clear the claim once the gesture is fully over. GetMouseButtonUp
+            // keeps it alive through the release frame so Ended/up handlers
+            // running later this frame still see it.
+            if (CurrentTouchClaimed &&
+                Input.touchCount == 0 && !Input.GetMouseButton(0) && !Input.GetMouseButtonUp(0))
+                CurrentTouchClaimed = false;
+
+            // Scan ALL touches for a Began: reading only touch 0 dropped every
+            // tap made while another finger rested on the screen (touch 0 is the
+            // resting finger, whose phase is never Began) — deadening every
+            // router surface for the duration of the resting touch.
+            Vector2 pos = default;
+            bool found = false;
+            for (int i = 0; i < Input.touchCount; i++)
             {
-                var t = Input.GetTouch(0);
-                if (t.phase != TouchPhase.Began) return;
+                var t = Input.GetTouch(i);
+                if (t.phase != TouchPhase.Began) continue;
                 pos = t.position;
+                found = true;
+                break;
             }
-            else if (Input.GetMouseButtonDown(0))
+            if (!found)
             {
-                pos = Input.mousePosition;
+                if (Input.touchCount == 0 && Input.GetMouseButtonDown(0))
+                {
+                    pos = Input.mousePosition;
+                    found = true;
+                }
+                else return;
             }
-            else return;
 
             var target = Resolve(pos, _regions, TopmostRaycastOrder(pos));
             if (target == null) return;
 
+            CurrentTouchClaimed = true;
             try { target.OnTap(pos); }
             catch (Exception e) { Debug.LogError($"[TapRouter] Region '{target.Name}' handler threw: {e}"); }
         }
