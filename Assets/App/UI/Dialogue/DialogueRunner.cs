@@ -69,6 +69,15 @@ namespace AQ.App
         // A replay is a memory, not a decision. Per-boot; cleared in End().
         private bool _suppressFlagWrites;
 
+        // Crash-RECOVERY boots (interrupted resolution dialogue replayed at next
+        // launch) are the opposite: they exist to land the flags a kill skipped,
+        // so writes stay ON — but a choice the player already made must not be
+        // re-offered (setsFlag is NOT final-node-only in shipping content: the
+        // Del Cruz truth flags sit on mid-graph branch nodes, and re-answering
+        // would set BOTH mutually exclusive flags). Sticky choices: a choice
+        // whose target node's setsFlag is already down is auto-followed.
+        private bool _recoveryAutoChoice;
+
         void Start()
         {
             if (!_booted && Graph != null) InternalBoot(Graph);
@@ -82,6 +91,22 @@ namespace AQ.App
             _startOverrideId = null;
             _endAfterNodeId  = null;
             _suppressFlagWrites = false;
+            _recoveryAutoChoice = false;
+            BootCore(g);
+        }
+
+        /// <summary>
+        /// Boot a graph as CRASH RECOVERY: flag writes stay ON (landing the flags
+        /// the interrupted run never reached is the whole point) but choices whose
+        /// outcome is already on disk are auto-followed instead of re-offered —
+        /// the player's original decision stands.
+        /// </summary>
+        public void BootWithGraphForRecovery(CaseGraph g)
+        {
+            _startOverrideId = null;
+            _endAfterNodeId  = null;
+            _suppressFlagWrites = false;
+            _recoveryAutoChoice = true;
             BootCore(g);
         }
 
@@ -95,6 +120,7 @@ namespace AQ.App
             _startOverrideId = null;
             _endAfterNodeId  = null;
             _suppressFlagWrites = true;
+            _recoveryAutoChoice = false;
             BootCore(g);
         }
 
@@ -109,6 +135,7 @@ namespace AQ.App
             _startOverrideId = string.IsNullOrEmpty(startNodeId) ? null : startNodeId;
             _endAfterNodeId  = string.IsNullOrEmpty(endAfterNodeId) ? null : endAfterNodeId;
             _suppressFlagWrites = false;
+            _recoveryAutoChoice = false;
             BootCore(g);
         }
 
@@ -474,6 +501,27 @@ namespace AQ.App
                 DialogueFlags.Set(n.setsFlag);
             }
 
+            // Recovery boot, sticky choices: if any choice leads directly to a
+            // node whose setsFlag is already down, the player answered this in
+            // the interrupted run — follow their answer instead of re-asking
+            // (re-answering could set BOTH mutually exclusive branch flags).
+            if (_recoveryAutoChoice && n.choices != null)
+            {
+                foreach (var c in n.choices)
+                {
+                    if (c == null || string.IsNullOrEmpty(c.nextId)) continue;
+                    var target = Graph.Get(c.nextId);
+                    if (target != null && !string.IsNullOrEmpty(target.setsFlag) &&
+                        DialogueFlags.Has(target.setsFlag))
+                    {
+                        if (verboseLogging)
+                            Debug.Log($"[DialogueRunner] Recovery: auto-following decided choice → {c.nextId}");
+                        ShowNode(c.nextId);
+                        return;
+                    }
+                }
+            }
+
             // Display the node
             DisplayNodeContent(n, addToHistory: true);
 
@@ -591,6 +639,7 @@ namespace AQ.App
             _startOverrideId = null;
             _endAfterNodeId  = null;
             _suppressFlagWrites = false;
+            _recoveryAutoChoice = false;
 
             if (_bodyTyper != null) _bodyTyper.StopTyping();
             if (_speakerTyper != null) _speakerTyper.StopTyping();

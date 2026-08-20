@@ -223,7 +223,7 @@ namespace AQ.App.CaseFlow
             TryBootDialogue(lead);
         }
 
-        private void TryBootDialogue(LeadData lead)
+        private void TryBootDialogue(LeadData lead, bool recovery = false)
         {
             if (dialogueRunner == null)
             {
@@ -237,6 +237,12 @@ namespace AQ.App.CaseFlow
 
             if (lead?.resolutionDialogue != null && !string.IsNullOrEmpty(_dialogueStartOverrideId))
                 dialogueRunner.BootWithGraph(lead.resolutionDialogue, _dialogueStartOverrideId, null);
+            else if (lead?.resolutionDialogue != null && recovery)
+                // Recovery boot: flag writes ON (landing the missed flags is the
+                // point), but already-decided choices auto-follow the branch whose
+                // flag is on disk — re-offering them could set BOTH mutually
+                // exclusive truth flags (Del Cruz publish/protect).
+                dialogueRunner.BootWithGraphForRecovery(lead.resolutionDialogue);
             else if (lead?.resolutionDialogue != null)
                 dialogueRunner.BootWithGraph(lead.resolutionDialogue);
             else
@@ -280,13 +286,48 @@ namespace AQ.App.CaseFlow
             if (lead == null || lead.resolutionDialogue == null)
             {
                 // Unknown lead or no dialogue: nothing to replay, don't loop forever.
-                PlayerPrefs.DeleteKey(PendingDialogueKey);
-                PlayerPrefs.Save();
+                ClearPendingMarker();
+                yield break;
+            }
+
+            // STALE marker: the marker persists synchronously at Proceed, but the
+            // lead's consumption rides the debounced aggregate — a crash inside
+            // that window rolls the activation back. If the lead is still in the
+            // active list, nothing was actually consumed: replaying would set its
+            // .seen flag for a lead the player can (and should) still resolve
+            // properly. Drop the marker and let them.
+            if (_repo != null)
+            {
+                var live = _repo.CurrentLeads;
+                for (int i = 0; i < live.Count; i++)
+                {
+                    if (live[i] != null && live[i].leadId == lead.leadId)
+                    {
+                        Debug.Log($"[CaseFlowLeadBridge] Pending-dialogue marker for '{lead.leadId}' is stale (lead not consumed) — dropped.", this);
+                        ClearPendingMarker();
+                        yield break;
+                    }
+                }
+            }
+
+            // NOTHING LOST: the .seen flag lands when the final node DISPLAYS, so
+            // a kill during the closing VO (or before the dismissing tap) already
+            // has everything on disk. Forcing a 30-90s re-watch would punish the
+            // player the recovery exists to protect.
+            if (DialogueFlags.Has("aq.lead." + lead.leadId + ".seen"))
+            {
+                ClearPendingMarker();
                 yield break;
             }
 
             Debug.Log($"[CaseFlowLeadBridge] Replaying interrupted resolution dialogue '{lead.leadId}' (previous session ended mid-dialogue).", this);
-            TryBootDialogue(lead);
+            TryBootDialogue(lead, recovery: true);
+        }
+
+        private static void ClearPendingMarker()
+        {
+            PlayerPrefs.DeleteKey(PendingDialogueKey);
+            PlayerPrefs.Save();
         }
 
         private string CurrentKey()
