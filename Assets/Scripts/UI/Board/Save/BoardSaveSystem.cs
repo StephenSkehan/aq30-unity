@@ -61,17 +61,24 @@ namespace AQ.App.UI.Board
         /// <summary>
         /// Persist the aggregate right now (synchronous). For callers that are about
         /// to make a change irreversible on the OUTSIDE — e.g. confirming a StoreKit
-        /// transaction — and must know the credit is on disk first. No-op if the
-        /// scene's save system isn't up or restore hasn't applied yet.
+        /// transaction — and must know the credit is on disk first. Returns TRUE only
+        /// if the write actually landed; false when the scene's save system isn't up,
+        /// restore hasn't applied, or the disk write failed — callers making external
+        /// commitments MUST check it (a silent no-op here once finalized purchases
+        /// whose credit existed only in memory).
         /// </summary>
-        public static void SaveNow()
+        public static bool SaveNow()
         {
             var self = Instance;
-            if (self == null) return;
-            self.TrySave();
-            self._lastSnapshotHash = self.SnapshotHash();
-            self._nextSaveAt = -1f;
-            self._saveThisFrame = false;
+            if (self == null) return false;
+            bool ok = self.TrySave();
+            if (ok)
+            {
+                self._lastSnapshotHash = self.SnapshotHash();
+                self._nextSaveAt = -1f;
+                self._saveThisFrame = false;
+            }
+            return ok;
         }
 
         // --------------- Unity ---------------
@@ -238,21 +245,38 @@ namespace AQ.App.UI.Board
             GeneratorFamilyRegistry.Clear();
             AQ.App.Locker.EvidenceLockerService.Clear();
             UI.Specials.SpecialItemsService.Clear();
+
+            // ClearSave means RESET: nothing may write the aggregate again until
+            // the next boot's restore. Without this, the reset flow's own wallet
+            // wipe (a Premium change) armed the deferred same-frame save, and
+            // LateUpdate re-wrote the full mid-game aggregate AFTER the files
+            // were deleted — resurrecting the save the player just reset.
+            // TrySave already refuses while !WalletRestored; the next scene's
+            // Start() re-arms it after a clean TryLoad.
+            WalletRestored = false;
+            var self = Instance;
+            if (self != null)
+            {
+                self._saveThisFrame = false;
+                self._nextSaveAt = -1f;
+            }
+
             Debug.Log("[Save] BoardSaveSystem cleared");
         }
 
-        public void TrySave()
+        /// <summary>True only when the aggregate actually reached disk.</summary>
+        public bool TrySave()
         {
-            if (board == null) return;
+            if (board == null) return false;
             // After an editor domain reload mid-play the controller's grid is
             // gone; a save from that state persists a phantom board (this is
             // how generator duplicates accumulated into real save files).
-            if (!board.GridReady) return;
+            if (!board.GridReady) return false;
             // Never persist before this boot's restore has applied. Unity fires
             // OnApplicationPause(true) on the FIRST play frame when the editor is
             // unfocused — before Start()/TryLoad — and that save would clobber the
             // on-disk aggregate with boot-empty wallet/leads/locker state.
-            if (!WalletRestored) return;
+            if (!WalletRestored) return false;
 
             var dto = new SaveDTO
             {
@@ -282,6 +306,7 @@ namespace AQ.App.UI.Board
                 EvidenceLockerService.DeleteLegacyFile();
                 OverflowBucketService.DeleteLegacyFile();
                 UI.Specials.SpecialItemsService.DeleteLegacyKeys();
+                return true;
             }
             catch (Exception ex)
             {
@@ -289,6 +314,7 @@ namespace AQ.App.UI.Board
                     File.Delete(_pathTmp);
 
                 Debug.LogError($"[Save] write failed: {ex.Message}\nPath={_pathLive}");
+                return false;
             }
         }
 
