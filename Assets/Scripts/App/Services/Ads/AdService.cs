@@ -102,8 +102,16 @@ namespace AQ.App.Services.Ads
             int pending = PlayerPrefs.GetInt(PendingKey, 0);
             if (pending <= 0) return;
 
-            WalletLocator.Instance?.Grant("ad.energy.recovered", EcoReward.Energy(pending));
-            AQ.App.UI.Board.BoardSaveSystem.SaveNow();
+            // Clear the marker ONLY after the grant landed AND persisted — a
+            // null wallet (or failed save) with an unconditional clear silently
+            // ate the earned reward, defeating the recovery. The marker survives
+            // for the next restore instead.
+            var wallet = WalletLocator.Instance;
+            if (wallet == null) return;
+
+            wallet.Grant("ad.energy.recovered", EcoReward.Energy(pending));
+            if (!AQ.App.UI.Board.BoardSaveSystem.SaveNow()) return;
+
             PlayerPrefs.SetInt(PendingKey, 0);
             PlayerPrefs.Save();
             AnalyticsLocator.Instance?.LogEvent("ad_rewarded",
@@ -145,20 +153,37 @@ namespace AQ.App.Services.Ads
                 {
                     if (_earnedUnpersisted)
                     {
-                        // Update() never ran between earn and close — take over its
-                        // bookkeeping here (we're granting directly, so no marker).
+                        // Update() never ran between earn and close (Unity is
+                        // paused behind the fullscreen ad on iOS, so this is the
+                        // COMMON path, not the fallback — a kill while the ad is
+                        // still up therefore loses the reward; granting blind at
+                        // boot would let players farm energy by force-quitting
+                        // ads, so that narrow loss is accepted). Take over the
+                        // bookkeeping, marker included, so the failure paths
+                        // below still have crash insurance.
                         _earnedUnpersisted = false;
                         RolloverIfNewDay();
                         PlayerPrefs.SetInt(CountKey, PlayerPrefs.GetInt(CountKey, 0) + 1);
+                        PlayerPrefs.SetInt(PendingKey, PlayerPrefs.GetInt(PendingKey, 0) + EnergyPerAd);
+                        PlayerPrefs.Save();
                     }
-                    WalletLocator.Instance?.Grant("ad.energy", EcoReward.Energy(EnergyPerAd));
-                    // Persist the grant, THEN clear the pending marker: if we crash
-                    // before the save lands the marker re-grants on next boot.
-                    AQ.App.UI.Board.BoardSaveSystem.SaveNow();
-                    PlayerPrefs.SetInt(PendingKey, 0);
-                    PlayerPrefs.Save();
-                    AnalyticsLocator.Instance?.LogEvent("ad_rewarded",
-                        new System.Collections.Generic.Dictionary<string, object> { ["placement"] = "energy" });
+
+                    var wallet = WalletLocator.Instance;
+                    if (wallet != null)
+                    {
+                        wallet.Grant("ad.energy", EcoReward.Energy(EnergyPerAd));
+                        // Clear the marker ONLY once the grant is on disk: on a
+                        // failed save (or a crash before it) the marker re-grants
+                        // at next boot instead of the reward vanishing.
+                        if (AQ.App.UI.Board.BoardSaveSystem.SaveNow())
+                        {
+                            PlayerPrefs.SetInt(PendingKey, 0);
+                            PlayerPrefs.Save();
+                        }
+                        AnalyticsLocator.Instance?.LogEvent("ad_rewarded",
+                            new System.Collections.Generic.Dictionary<string, object> { ["placement"] = "energy" });
+                    }
+                    // wallet null: marker survives; GrantPendingReward recovers it.
                 }
                 onDone?.Invoke(rewarded);
                 LoadRewarded();
