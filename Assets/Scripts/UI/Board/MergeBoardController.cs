@@ -639,8 +639,15 @@ namespace AQ.App.UI.Board
         /// </summary>
         private int EffectiveItemCeiling(string family, int tier)
         {
-            if (string.IsNullOrEmpty(family) || LookupItemDef(family, tier) == null)
-                return maxTier; // unknown ladder: fall back to the board-wide rule
+            if (string.IsNullOrEmpty(family))
+                return maxTier; // no family at all: board-wide rule
+            // A KNOWN family with no def at the CURRENT tier is a broken artifact
+            // (an undefined item minted by the pre-fix merge bug, restored from an
+            // old save). Freeze it: returning maxTier here let two such tiles keep
+            // merging into ever-deeper undefined items — with the merge hint
+            // lighting them up as a suggested pair.
+            if (LookupItemDef(family, tier) == null)
+                return tier;
             int top = tier;
             while (top < maxTier && LookupItemDef(family, top + 1) != null) top++;
             return top;
