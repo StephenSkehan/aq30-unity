@@ -36,7 +36,7 @@ namespace AQ.App.Services
             PlayerPrefs.Save();
 
             wallet.Grant("ftue.energy_net", Reward.Energy(GrantAmount));
-            // DRAFT copy pending Stephen ruling (directive tier, ruling #1/#3).
+            // Copy Stephen-ruled 2026-08-21.
             ToastService.Show("energy_net", "The case doesn't sleep. +100 energy.", 3f);
             GameAnalytics.LogFtueEvent(used == 0 ? "energy_net_1" : "energy_net_2");
             return true;

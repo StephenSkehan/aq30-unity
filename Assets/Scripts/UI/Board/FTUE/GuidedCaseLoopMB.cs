@@ -15,8 +15,8 @@ using AQ.App.UI.Board;
 /// spent) → items drop → merge a pair (ghost demo shows how) → the lead goes
 /// Ready → PROCEED. Soft guidance in the house style: input stays free, every
 /// step advances on the player's own action, doing things out of order simply
-/// skips steps. Directive banner copy is ≤8 words (DRAFT pending Stephen's
-/// line-by-line ruling). One-shot: stage flag survives relaunch mid-loop.
+/// skips steps. Directive banner copy is ≤8 words (all lines Stephen-ruled
+/// 2026-08-21). One-shot: stage flag survives relaunch mid-loop.
 /// </summary>
 public sealed class GuidedCaseLoopMB : MonoBehaviour
 {
@@ -128,8 +128,8 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
     void EnterGeneratorStep()
     {
         _step = Step.Generator;
-        // DRAFT copy (directive tier) pending Stephen ruling.
-        SetBanner("Tap the kit. It makes evidence.");
+        // Copy Stephen-ruled 2026-08-21.
+        SetBanner("Tap the kit. Every item helps.");
         PulseGenerators();
         AQ.App.Analytics.GameAnalytics.LogFtueEvent("gl_gen_shown");
     }

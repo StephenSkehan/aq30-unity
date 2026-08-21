@@ -108,7 +108,7 @@ namespace AQ.UI.Hints
 
             if (_idle >= ToastAt)
             {
-                // DRAFT copy pending Stephen ruling (directive tier).
+                // Copy Stephen-ruled 2026-08-21.
                 ToastService.Show("stall",
                     _pulseTiles.Count == 2 ? "Drag matching items together."
                                            : "Tap the generator for more items.", 3f);
