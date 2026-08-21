@@ -166,16 +166,26 @@ namespace AQ.UI.Hints
             bool hasEnergy = wallet == null || wallet.Get(AQ.SharedKernel.Economy.Currency.Energy) > 0;
             if (!hasEnergy) return; // nothing actionable — stay quiet
 
+            // Prefer a generator that produces something a lead still NEEDS
+            // (Stephen playtest round 3: the diner pulsed while audio items were
+            // required). Fall back to any generator only when no required source
+            // is on the board.
+            var repo = Object.FindAnyObjectByType<AQ.App.Leads.LeadsRepository>();
+            var required = RequiredSourcePulseMB.RequiredGeneratorIds(_board, repo);
+            BoardTileView anyGen = null;
             for (int r = 0; r < _board.Rows; r++)
                 for (int c = 0; c < _board.Cols; c++)
                 {
                     var v = _board.Get(r, c);
-                    if (v != null && !v.IsEmpty && v.Kind == TileKind.Generator)
+                    if (v == null || v.IsEmpty || v.Kind != TileKind.Generator) continue;
+                    if (required.Contains(_board.GetFamily(v)))
                     {
                         _pulseTiles.Add(v);
                         return;
                     }
+                    if (anyGen == null) anyGen = v;
                 }
+            if (anyGen != null) _pulseTiles.Add(anyGen);
         }
 
         private void ClearVisuals()
