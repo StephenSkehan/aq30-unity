@@ -66,13 +66,17 @@
     <Compile Include="Assets\Tests\PlayMode\UITests\BootstrapperSmokeTests.cs" />
     <Compile Include="Assets\Tests\PlayMode\PlayBootSmoke.cs" />
     <Compile Include="Assets\Tests\EditMode\Discovery_EditMode_Probe.cs" />
+    <Compile Include="Assets\Tests\EditMode\SpecialsAggregateBoundaryTests.cs" />
+    <Compile Include="Assets\Tests\EditMode\TapRouterResolveTests.cs" />
     <Compile Include="Assets\Tests\EditMode\ProjectBootSmoke.cs" />
+    <Compile Include="Assets\Tests\EditMode\StashAggregateBoundaryTests.cs" />
     <Compile Include="Assets\Tests\EditMode\LockerCrashBoundaryTests.cs" />
     <Compile Include="Assets\Tests\PlayMode\OverlayFlow_WK3_1_Tests.cs" />
     <Compile Include="Assets\Tests\EditMode\WK3_1_OverlayValidationTests.cs" />
     <Compile Include="Assets\Tests\PlayMode\UITests\MergeDropHookTests.cs" />
     <Compile Include="Assets\Tests\PlayMode\UITests\DialogueSmokeTests_Modern.cs" />
     <Compile Include="Assets\Tests\PlayMode\UITests\ThemeSmokeTests.cs" />
+    <Compile Include="Assets\Tests\EditMode\GameFlagsUnificationTests.cs" />
     <Compile Include="Assets\Tests\EditMode\Sanity_EditMode_Tests.cs" />
     <Compile Include="Assets\Tests\PlayMode\UITests\Support\TestGame.cs" />
     <Compile Include="Assets\Tests\PlayMode\AddressablesSmokeTests.cs" />

@@ -79,11 +79,15 @@
     <Compile Include="Assets\Scripts\UI\Board\FX\GeneratorTileAnimator.cs" />
     <Compile Include="Assets\Scripts\Dev\EnergyDevHotkeys.cs" />
     <Compile Include="Assets\Scripts\UI\Board\DragGhost.cs" />
+    <Compile Include="Assets\Scripts\App\Services\FtueEnergyNet.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardZoomPan.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\SoftCurrencyHudTMP.cs" />
+    <Compile Include="Assets\Scripts\UI\Settings\ConfigSettingsTab.cs" />
     <Compile Include="Assets\Scripts\UI\Specials\SpecialConfirmPopup.cs" />
     <Compile Include="Assets\Scripts\UI\Dossiers\AllyDossierEntry.cs" />
+    <Compile Include="Assets\Scripts\UI\Hints\StallNudgeMB.cs" />
     <Compile Include="Assets\Scripts\UI\Common\EnergyOutPopup.cs" />
+    <Compile Include="Assets\Scripts\UI\HUD\HudSafeAreaNudgeMB.cs" />
     <Compile Include="Assets\Scripts\Dev\DebugSettingsTab.cs" />
     <Compile Include="Assets\Scripts\App\Presentation\MergeEventsBridge.cs" />
     <Compile Include="Assets\Scripts\App\Services\Ads\AdService.cs" />
@@ -104,8 +108,11 @@
     <Compile Include="Assets\Scripts\App\Config\EnergyConfig.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\CharacterPhotoPin.cs" />
     <Compile Include="Assets\UI\Board\MergeBoardPresenter.cs" />
+    <Compile Include="Assets\Scripts\UI\Board\FTUE\GuidedCaseLoopMB.cs" />
+    <Compile Include="Assets\Scripts\UI\EvidenceBoard\LocationModal.cs" />
     <Compile Include="Assets\Scripts\App\Services\Purchasing\PurchaseService.cs" />
     <Compile Include="Assets\Scripts\UI\Board\BoardTileView.cs" />
+    <Compile Include="Assets\Scripts\UI\Common\SourceGeneratorPulse.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardScreen.cs" />
     <Compile Include="Assets\Scripts\UI\Board\BoardTools.cs" />
     <Compile Include="Assets\Scripts\Domain\Board\BoardRingTraversal.cs" />
@@ -115,6 +122,7 @@
     <Compile Include="Assets\MergeBoardBoot.cs" />
     <Compile Include="Assets\Scripts\App\Bootstrap\ConfigInstaller.cs" />
     <Compile Include="Assets\Scripts\UI\Board\PocketDraggable.cs" />
+    <Compile Include="Assets\Scripts\UI\Hints\RequiredSourcePulseMB.cs" />
     <Compile Include="Assets\Scripts\Util\EnsureAudioListener.cs" />
     <Compile Include="Assets\Scripts\UI\Settings\PrivacySettingsTab.cs" />
     <Compile Include="Assets\Scripts\UI\Board\FX\BoardFxObserver.cs" />
@@ -123,20 +131,26 @@
     <Compile Include="Assets\Scripts\UI\Dossiers\DossierCatalog.cs" />
     <Compile Include="Assets\Scripts\App\DisableRenderingDebugger.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardOpenerMB.cs" />
+    <Compile Include="Assets\Scripts\UI\Board\FTUE\GhostDragDemoMB.cs" />
     <Compile Include="Assets\Scripts\UI\Common\ToastService.cs" />
     <Compile Include="Assets\Scripts\UI\Dossiers\DossierPopup.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyRuntime.cs" />
+    <Compile Include="Assets\Scripts\UI\EvidenceBoard\LocationCatalog.cs" />
     <Compile Include="Assets\Scripts\UI\Board\FTUE\ProceedHintMB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\Scripts\UI\Board\FX\BoardFxConfigSO.cs" />
     <Compile Include="Assets\Scripts\UI\Board\Save\BoardSaveData.cs" />
     <Compile Include="Assets\Scripts\UI\Common\GameResetMB.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyRegenMB.cs" />
+    <Compile Include="Assets\Scripts\UI\EvidenceBoard\LocationPhotoPin.cs" />
     <Compile Include="Assets\Scripts\UI\Common\TileInfoPopup.cs" />
+    <Compile Include="Assets\Scripts\UI\EvidenceBoard\LocationService.cs" />
     <Compile Include="Assets\Scripts\App\Services\EnergyManager.cs" />
+    <Compile Include="Assets\Scripts\UI\Common\HowToPlayPopup.cs" />
     <Compile Include="Assets\Scripts\Util\Audio\AudioListenerJanitor.cs" />
     <Compile Include="Assets\Scripts\UI\Specials\SpecialsTrayView.cs" />
     <Compile Include="Assets\Scripts\Domain\Board\MergeRules.cs" />
+    <Compile Include="Assets\Scripts\UI\Hints\HintService.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\StringConnectionLine.cs" />
   </ItemGroup>
   <ItemGroup>

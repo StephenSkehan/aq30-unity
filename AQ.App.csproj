@@ -97,6 +97,7 @@
     <Compile Include="Assets\App\Generators\GeneratorFamilyRegistry.cs" />
     <Compile Include="Assets\App\Generators\DropRoller.cs" />
     <Compile Include="Assets\App\Composition\BootstrapperAutoAssign.cs" />
+    <Compile Include="Assets\App\UI\TapRouter.cs" />
     <Compile Include="Assets\App\CaseFlow\AdvanceOnceMB.cs" />
     <Compile Include="Assets\App\Analytics\FirebaseAnalyticsAdapter.cs" />
     <Compile Include="Assets\App\Audio\UISfxService.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Assets\App\Leads\Data\LeadRequirement.cs" />
     <Compile Include="Assets\App\UI\Dialogue\TipLinePortraitBlink.cs" />
     <Compile Include="Assets\App\UI\Settings\GameControlPanelMB.cs" />
+    <Compile Include="Assets\App\GameFlags.cs" />
     <Compile Include="Assets\App\Merge\Runtime\MergeIconCatalog.cs" />
     <Compile Include="Assets\App\Leads\Data\LeadData.cs" />
     <Compile Include="Assets\App\Leads\LeadRequirementsHUD.cs" />
