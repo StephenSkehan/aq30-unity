@@ -130,6 +130,7 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
                 // replaying this block on relaunch is safe.
                 DialogueRunner.DialogueClosed += OnIntroClosed;
                 _bridge.PlayIntroForFtue(_lead.resolutionDialogue, IntroStart, IntroEnd);
+                AQ.App.Analytics.GameAnalytics.LogFtueEvent("l1_intro_start");
                 Debug.Log("[FTUEChoreo] Pair seeded, intro span N1–N3 booted.");
                 yield break; // guide starts when the intro closes
             }
@@ -155,6 +156,7 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
         DialogueRunner.DialogueClosed -= OnIntroClosed;
         if (this == null) return;
         Stage = 1; // intro fully shown — safe to skip it on any future relaunch
+        AQ.App.Analytics.GameAnalytics.LogFtueEvent("l1_intro_done");
         StartGuide();
     }
 
@@ -206,6 +208,7 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
         MergeBoardController.BoardCompositionChanged -= OnBoardChanged;
         LeadsRuntimeBus.OnLeadStateChanged           -= OnLeadStateChanged;
         LeadsRuntimeBus.OnLeadActivated              -= OnLeadActivated;
+        GhostDragDemoMB.Hide();
         _guiding = false;
     }
 
@@ -253,10 +256,19 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
             // Merged goal on board (or Ready imminent): stay quiet and wait for the
             // checker. Neither present: the pair is gone (lockered) — cede to the
             // normal card-tap flow rather than pulse at nothing.
+            GhostDragDemoMB.Hide();
             if (!goalOnBoard && _lead.RuntimeState != LeadState.Ready)
                 CedeToNormalFlow();
             return;
         }
+
+        // A pulse says "these matter"; only a demonstration says "do this"
+        // (Stephen-ruled 2026-08-21): loop a translucent copy of one seed item
+        // sliding onto its twin until the player performs the merge.
+        if (targets.Count >= 2)
+            GhostDragDemoMB.Show(targets[0], targets[1]);
+        else
+            GhostDragDemoMB.Hide();
 
         for (int r = 0; r < _board.Rows; r++)
             for (int c = 0; c < _board.Cols; c++)
@@ -339,6 +351,7 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
     {
         if (_payoffStarted) return;
         _payoffStarted = true;
+        AQ.App.Analytics.GameAnalytics.LogFtueEvent("l1_first_merge");
         StopGuideSubscriptions();
         ClearGuideVisuals();
         StartCoroutine(PayoffRoutine());
@@ -366,8 +379,10 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
     void OnPayoffClosed()
     {
         DialogueRunner.DialogueClosed -= OnPayoffClosed;
+        AQ.App.Analytics.GameAnalytics.LogFtueEvent("l1_payoff_done");
         GeneratorTapHintMB.EnsureInstalled();
         ProceedHintMB.EnsureInstalled();
+        GuidedCaseLoopMB.EnsureInstalled(); // I1: the full loop walks next (L2)
         if (this != null) Destroy(gameObject);
     }
 
@@ -376,6 +391,7 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
     void CedeToNormalFlow()
     {
         Debug.Log("[FTUEChoreo] Ceding to normal card-tap flow.");
+        AQ.App.Analytics.GameAnalytics.LogFtueEvent("l1_ceded");
         Stage = 2;
         StopGuideSubscriptions();
         ClearGuideVisuals();
