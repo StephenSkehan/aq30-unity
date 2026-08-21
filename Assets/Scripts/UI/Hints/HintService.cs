@@ -143,6 +143,7 @@ namespace AQ.UI.Hints
 
         // Context scope of the showing chip (null = anywhere).
         private Func<bool> _visibleWhile;
+        private float _nextAnchorCheckAt;
 
         private AQ.App.UI.TapRouter.Region _closeTapRegion;
 
@@ -242,11 +243,20 @@ namespace AQ.UI.Hints
                 }
 
                 // Pulse the hint's subject until the chip is closed (Stephen-ruled
-                // 2026-08-21). Resolve lazily and survive the target being rebuilt.
-                if (_pulseTarget == null && _anchorFn != null)
+                // 2026-08-21). Resolve lazily, and RE-validate every half second:
+                // a cached target can go stale (the ticked item merged away and
+                // its now-empty CELL kept pulsing — playtest round 4). Anchor fns
+                // are expected to return a currently-valid subject or null.
+                if (_anchorFn != null && Time.unscaledTime >= _nextAnchorCheckAt)
                 {
-                    var t = _anchorFn();
-                    if (t != null) { _pulseTarget = t; _pulseBaseScale = t.localScale; }
+                    _nextAnchorCheckAt = Time.unscaledTime + 0.5f;
+                    Transform now = null;
+                    try { now = _anchorFn(); } catch { }
+                    if (now != _pulseTarget)
+                    {
+                        RestorePulse();
+                        if (now != null) { _pulseTarget = now; _pulseBaseScale = now.localScale; }
+                    }
                 }
                 if (_pulseTarget != null)
                 {
@@ -449,9 +459,30 @@ namespace AQ.UI.Hints
         private static void OnTickShown(BoardTileView tile)
         {
             if (!DialogueFlags.Has("aq.lead.e1_tip.seen")) return;
+            // The triggering tile can lose its item before the queued chip shows
+            // (merged away): anchor to whatever tile CURRENTLY carries a tick,
+            // and only show while one exists at all — a tick lesson over a
+            // tickless board taught nothing (playtest round 4).
             HintService.Request("tick",
                 "Green tick. That is evidence somebody is waiting on.",
-                () => tile != null ? tile.transform : null, OnBoard);
+                FindTickedTile,
+                () => OnBoard() && FindTickedTile() != null);
+        }
+
+        /// <summary>First board item currently wearing the requirement tick, else null.</summary>
+        private static Transform FindTickedTile()
+        {
+            var board = UnityEngine.Object.FindAnyObjectByType<MergeBoardController>();
+            var checker = AQ.App.Leads.LeadRequirementChecker.Instance;
+            if (board == null || !board.GridReady || checker == null) return null;
+            for (int r = 0; r < board.Rows; r++)
+                for (int c = 0; c < board.Cols; c++)
+                {
+                    var v = board.Get(r, c);
+                    if (v == null || v.IsEmpty || v.Kind != TileKind.Item) continue;
+                    if (checker.IsItemNeeded(board.GetItemId(v))) return v.transform;
+                }
+            return null;
         }
 
         private static int _lastBucketCount = -1;
