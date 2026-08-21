@@ -401,9 +401,20 @@ namespace AQ.App.UI.Board
                 {
                     if (!wallet.TrySpend(Currency.Energy, 1, "generator.spawn"))
                     {
-                        Log("Energy insufficient — spawn cancelled.");
-                        EnergyOutPopup.Show();
-                        return;
+                        // First two energy-outs ever: the FTUE net refills for
+                        // free and the tap goes through — a hard stop is the
+                        // worst thing to show someone still learning the loop.
+                        if (AQ.App.Services.FtueEnergyNet.TryGrant(wallet) &&
+                            wallet.TrySpend(Currency.Energy, 1, "generator.spawn"))
+                        {
+                            // fall through to the spawn below
+                        }
+                        else
+                        {
+                            Log("Energy insufficient — spawn cancelled.");
+                            EnergyOutPopup.Show();
+                            return;
+                        }
                     }
                 }
                 else

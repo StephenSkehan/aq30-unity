@@ -17,6 +17,20 @@ namespace AQ.App.Analytics
             });
         }
 
+        /// <summary>
+        /// Onboarding funnel milestone (SAS/feature-ftue-onboarding-v1.md, I8).
+        /// One event name, one step param — funnel tools sequence them by
+        /// timestamp. Review rule: any step dropping &gt;20% of the previous
+        /// step's players is a defect, not a stat.
+        /// </summary>
+        public static void LogFtueEvent(string step)
+        {
+            AnalyticsLocator.Instance?.LogEvent("ftue_funnel", new Dictionary<string, object>
+            {
+                ["step"] = step ?? string.Empty
+            });
+        }
+
         public static void LogCardStateChange(string leadId, string fromState, string toState)
         {
             AnalyticsLocator.Instance?.LogEvent("card_state_change", new Dictionary<string, object>
