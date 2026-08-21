@@ -24,7 +24,7 @@ namespace AQ.UI.Hints
         private const string FlagPrefix = "aq.hint.";
         public const string EnabledPref = "aq.hints.enabled"; // Config tab switch
 
-        private static readonly List<(string id, string text, Func<Transform> anchor)> _queue = new();
+        private static readonly List<(string id, string text, Func<Transform> anchor, Func<bool> visibleWhile)> _queue = new();
         private static readonly HashSet<string> _pending = new(); // queued or showing
         private static HintRunnerMB _runner;
 
@@ -40,7 +40,14 @@ namespace AQ.UI.Hints
             set { PlayerPrefs.SetInt(EnabledPref, value ? 1 : 0); PlayerPrefs.Save(); }
         }
 
-        public static void Request(string id, string text, Func<Transform> anchor = null)
+        /// <param name="visibleWhile">Optional context scope (Stephen playtest
+        /// 2026-08-21): the chip shows only while this returns true, and if the
+        /// context ends mid-display the chip dismisses UNBURNED — it re-offers on
+        /// its next natural trigger instead of lecturing on the wrong screen
+        /// (CaseCash advice over the evidence board, zoom advice on the merge
+        /// board). Null = show anywhere.</param>
+        public static void Request(string id, string text, Func<Transform> anchor = null,
+                                   Func<bool> visibleWhile = null)
         {
             // Seen is flagged on manual close (Stephen-ruled 2026-08-14), not at
             // request: hints persist until X-closed, and a crash or a disabled
@@ -49,9 +56,13 @@ namespace AQ.UI.Hints
             if (!Enabled) return;
             if (NarrativeFlags.Has(FlagPrefix + id)) return;
             if (!_pending.Add(id)) return;
-            _queue.Add((id, text, anchor));
+            _queue.Add((id, text, anchor, visibleWhile));
             EnsureRunner();
         }
+
+        /// <summary>Context-dismiss support: the chip left the screen without the
+        /// player closing it, so it may trigger again later.</summary>
+        internal static void ReleaseUnseen(string id) => _pending.Remove(id);
 
         /// <summary>The player performed the taught action: retire the hint
         /// whether it is showing OR still queued — no lecturing about things
@@ -86,17 +97,24 @@ namespace AQ.UI.Hints
             _runner = go.AddComponent<HintRunnerMB>();
         }
 
-        internal static bool TryDequeue(out (string id, string text, Func<Transform> anchor) hint)
+        internal static bool TryDequeue(out (string id, string text, Func<Transform> anchor, Func<bool> visibleWhile) hint)
         {
             hint = default;
             if (_queue.Count == 0) return false;
-            int best = 0, bestRank = int.MaxValue;
+            int best = -1, bestRank = int.MaxValue;
             for (int i = 0; i < _queue.Count; i++)
             {
+                // Wrong-context entries stay queued for their moment.
+                bool ok;
+                try { ok = _queue[i].visibleWhile == null || _queue[i].visibleWhile(); }
+                catch { ok = false; }
+                if (!ok) continue;
+
                 int rank = System.Array.IndexOf(Priority, _queue[i].id);
                 if (rank < 0) rank = Priority.Length; // unknown ids after known, FIFO among themselves
                 if (rank < bestRank) { bestRank = rank; best = i; }
             }
+            if (best < 0) return false;
             hint = _queue[best];
             _queue.RemoveAt(best);
             return true;
@@ -122,6 +140,9 @@ namespace AQ.UI.Hints
         private Func<Transform> _anchorFn;
         private Transform _pulseTarget;
         private Vector3 _pulseBaseScale = Vector3.one;
+
+        // Context scope of the showing chip (null = anywhere).
+        private Func<bool> _visibleWhile;
 
         private AQ.App.UI.TapRouter.Region _closeTapRegion;
 
@@ -169,7 +190,20 @@ namespace AQ.UI.Hints
             if (_chip != null) Destroy(_chip);
             _chip = null;
             _anchorFn = null;
+            _visibleWhile = null;
             _nextChipAllowedAt = Time.realtimeSinceStartup + ChipGapSeconds;
+        }
+
+        // Left the screen without the player closing it: not seen, may re-offer.
+        private void DismissUnburned()
+        {
+            RestorePulse();
+            HintService.ReleaseUnseen(_chipId);
+            if (_chip != null) Destroy(_chip);
+            _chip = null;
+            _anchorFn = null;
+            _visibleWhile = null;
+            _nextChipAllowedAt = Time.realtimeSinceStartup + 3f; // brief settle, not the full gap
         }
 
         private void RestorePulse()
@@ -185,6 +219,18 @@ namespace AQ.UI.Hints
 
             if (_chip != null)
             {
+                // Context ended (evidence board opened under a board chip, the
+                // popup with the ? closed) — dismiss UNBURNED; it re-offers on
+                // its next natural trigger (Stephen playtest 2026-08-21).
+                bool inContext;
+                try { inContext = _visibleWhile == null || _visibleWhile(); }
+                catch { inContext = false; }
+                if (!inContext)
+                {
+                    DismissUnburned();
+                    return;
+                }
+
                 // Persistent chip hides (not dies) while dialogue holds the stage.
                 bool hidden = Suppressed();
                 if (_chipCanvas != null && _chipCanvas.enabled == hidden)
@@ -220,7 +266,7 @@ namespace AQ.UI.Hints
             if (Time.realtimeSinceStartup < _nextChipAllowedAt) return;
             if (GameObject.Find("GuidedCaseLoop") != null) return;
             if (HintService.TryDequeue(out var hint))
-                Show(hint.id, hint.text, hint.anchor);
+                Show(hint.id, hint.text, hint.anchor, hint.visibleWhile);
         }
 
         private bool Suppressed()
@@ -233,9 +279,10 @@ namespace AQ.UI.Hints
             return PlayerPrefs.GetInt("aq.ftue.first_merge.stage", 0) == 1;
         }
 
-        private void Show(string id, string text, Func<Transform> anchorFn)
+        private void Show(string id, string text, Func<Transform> anchorFn, Func<bool> visibleWhile)
         {
             _chipId = id;
+            _visibleWhile = visibleWhile;
             _chip = new GameObject("__HintChip", typeof(Canvas), typeof(CanvasScaler));
             var canvas = _chip.GetComponent<Canvas>();
             _chipCanvas = canvas;
@@ -337,6 +384,12 @@ namespace AQ.UI.Hints
         private static bool _installed;
         private static float _bootTime;
 
+        // Board-context scope: these lessons are about the merge board, so they
+        // hide (unburned) whenever a full-screen surface covers it.
+        private static bool OnBoard()
+            => !AQ.App.UI.EvidenceBoard.EvidenceBoardScreen.IsOpen
+            && !AQ.App.UI.Board.LockerScreen.IsOpen;
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Install()
         {
@@ -386,7 +439,8 @@ namespace AQ.UI.Hints
             if (wallet == null) return;
             if (wallet.Get(AQ.SharedKernel.Economy.Currency.Energy) >= 90) return;
             HintService.Request("energy",
-                "All this legwork costs energy. Recovery takes time.");
+                "All this legwork costs energy. Recovery takes time.",
+                () => FindAny("gen_hud_pill_0"), OnBoard);
         }
 
         // Re-armed (Stephen-ruled 2026-08-14): L1's seeded-pair ticks are
@@ -397,7 +451,7 @@ namespace AQ.UI.Hints
             if (!DialogueFlags.Has("aq.lead.e1_tip.seen")) return;
             HintService.Request("tick",
                 "Green tick. That is evidence somebody is waiting on.",
-                () => tile != null ? tile.transform : null);
+                () => tile != null ? tile.transform : null, OnBoard);
         }
 
         private static int _lastBucketCount = -1;
@@ -414,7 +468,7 @@ namespace AQ.UI.Hints
             if (count == 0) return;
             HintService.Request("stash",
                 "Special things end up in the Stash. Tap this when there is room on the board.",
-                () => FindAny("__OverflowBtn", "__StashBtn"));
+                () => FindAny("BucketRoot", "__OverflowBtn", "__StashBtn"), OnBoard);
         }
 
         private static void OnBoardChanged()
@@ -436,7 +490,7 @@ namespace AQ.UI.Hints
             if (total == 0 || filled < total * 0.8f) return;
             HintService.Request("locker",
                 "A cluttered desk hides things. The locker keeps evidence safe until it is needed.",
-                () => FindAny("__LockerBtn"));
+                () => FindAny("__LockerBtn"), OnBoard);
         }
 
         private static int _lastSpecialTotal = -1;
@@ -454,13 +508,17 @@ namespace AQ.UI.Hints
             if (total == 0) return;
             HintService.Request("casekit",
                 "A new tool of the trade. Open the Case Kit, place it, and drag it where it is needed.",
-                () => FindAny("__CaseKitBtn", "__KitBtn"));
+                () => FindAny("KitRoot", "__CaseKitBtn", "__KitBtn"), OnBoard);
         }
 
         private static void OnHelpBarBuilt(RectTransform helpBtn)
             => HintService.Request("help",
                 "Lost? The ? knows the way. Every screen has one.",
-                () => helpBtn);
+                () => helpBtn,
+                // Only while the popup carrying THIS ? is on screen — queued and
+                // shown later on the main board it pointed at nothing (Stephen
+                // playtest 2026-08-21).
+                () => helpBtn != null && helpBtn.gameObject.activeInHierarchy);
 
         // ---- P2/P3 handlers ----
 
@@ -475,7 +533,8 @@ namespace AQ.UI.Hints
             PlayerPrefs.SetInt("aq.hint.merge_ct", n);
             if (n < 10 || CountBoardItems() < 5) return;
             HintService.Request("longpress",
-                "Look closer. Hold any item and it will tell you its story.");
+                "Look closer. Hold any item and it will tell you its story.",
+                null, OnBoard);
         }
 
         private static int CountBoardItems()
@@ -494,7 +553,8 @@ namespace AQ.UI.Hints
 
         private static void OnTilesSwapped()
             => HintService.Request("swap",
-                "Those two do not mix. Different evidence trades places instead of merging.");
+                "Those two do not mix. Different evidence trades places instead of merging.",
+                null, OnBoard);
 
         // Dossier hint waits for the SECOND case beat (first close after L1 is
         // done) so it does not stack on the L1 payoff moment.
@@ -503,7 +563,7 @@ namespace AQ.UI.Hints
             if (!DialogueFlags.Has("aq.lead.e1_tip.seen")) return;
             HintService.Request("dossier",
                 "Ally keeps notes on everyone and everything. Tap her to find out what she knows.",
-                () => FindAny("Img_Player"));
+                () => FindAny("Img_Player"), OnBoard);
         }
 
         // One lesson per payoff: CaseCash at the first lead close, the
@@ -520,14 +580,23 @@ namespace AQ.UI.Hints
                 if (r.Currency == AQ.SharedKernel.Economy.Currency.Soft)
                 {
                     HintService.Request("casecash",
-                        "Your help earns CaseCash. Look out for places to spend it around town.");
+                        "Your help earns CaseCash. Look out for places to spend it around town.",
+                        () => FindAny("gen_hud_pill_1"), OnBoard); // pulse the cash pill (Stephen-ruled)
                     break;
                 }
 
             if (n >= 3)
                 HintService.Request("evidence",
                     "Everything we learn is pinned to the evidence board, ready to remind you.",
-                    () => FindAny("__EvidBoardBtn"));
+                    // Pulse the visible button, not its canvas root (root-scale is
+                    // imperceptible — Stephen playtest 2026-08-21).
+                    () =>
+                    {
+                        var root = FindAny("__EvidBoardBtn");
+                        if (root == null) return null;
+                        var btn = root.Find("Btn");
+                        return btn != null ? btn : root;
+                    }, OnBoard);
         }
 
         private static Transform FindAny(params string[] names)

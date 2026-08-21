@@ -21,6 +21,9 @@ namespace AQ.App.UI.EvidenceBoard
         private static DialogueRunner  _dialogueRunner;
         private static bool            _isOpen;
 
+        /// <summary>Hint-context hook: chips scope themselves to (or away from) the board.</summary>
+        public static bool IsOpen => _isOpen;
+
         // Content-driven layout state (rebuilt per populate)
         private static Vector2 _contentSize;
         private static readonly List<RectTransform> _placed = new();
@@ -246,7 +249,12 @@ namespace AQ.App.UI.EvidenceBoard
             // Zoom/pan existed since day one but nothing announced it (cohort
             // round: players never found it).
             AQ.UI.Hints.HintService.Request("boardzoom",
-                "Get close to the details. Pinch to zoom, drag to move around the board.");
+                "Get close to the details. Pinch to zoom, drag to move around the board.",
+                null,
+                // Only while the evidence board itself is up — queued and shown
+                // later over the merge board it made no sense (Stephen playtest
+                // 2026-08-21).
+                () => IsOpen);
             AQ.UI.Hints.HintService.ActionPerformed("evidence"); // opening it IS the taught action
 
             PopulateBoard();

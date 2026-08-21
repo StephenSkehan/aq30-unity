@@ -18,6 +18,9 @@ namespace AQ.App.UI.Board
         private static GameObject _root;      // panel canvas (built on demand)
         private static RectTransform _grid;   // slot grid parent, rebuilt on refresh
         private static bool _isOpen;
+
+        /// <summary>Hint-context hook: board chips hide while the locker is up.</summary>
+        public static bool IsOpen => _isOpen;
         private static RectTransform _hudBtn; // for drag-drop hit testing
 
         /// <summary>True when the screen point sits on the locker HUD button (drag-to-store).</summary>
