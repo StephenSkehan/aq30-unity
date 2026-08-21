@@ -111,6 +111,18 @@ namespace AQ.UI.Hints
         private Canvas _chipCanvas;
         private bool _dialogueOpen;
 
+        // Pacing (Stephen playtest 2026-08-21: chip velocity too fast, chips
+        // stacking) — a fresh chip may only appear this long after the previous
+        // one closed, plus a short grace after any dialogue ends.
+        private const float ChipGapSeconds = 25f;
+        private float _nextChipAllowedAt;
+
+        // Continuous target pulse while the chip is up (Stephen-ruled: pulse the
+        // target until the hint is closed, not a brief highlight).
+        private Func<Transform> _anchorFn;
+        private Transform _pulseTarget;
+        private Vector3 _pulseBaseScale = Vector3.one;
+
         private AQ.App.UI.TapRouter.Region _closeTapRegion;
 
         private void OnEnable()
@@ -124,12 +136,7 @@ namespace AQ.UI.Hints
             _closeTapRegion = AQ.App.UI.TapRouter.Register("hint-close-x", 4000,
                 contains: p => _closeRt != null &&
                                RectTransformUtility.RectangleContainsScreenPoint(_closeRt, p, null),
-                onTap:    _ =>
-                {
-                    HintService.MarkClosed(_chipId);
-                    Destroy(_chip);
-                    _chip = null;
-                },
+                onTap:    _ => CloseChip(),
                 enabled:  () => this != null && _chip != null && !Suppressed());
         }
 
@@ -142,14 +149,33 @@ namespace AQ.UI.Hints
         }
 
         private void OnDialogueOpened(CaseGraph _) => _dialogueOpen = true;
-        private void OnDialogueClosed() => _dialogueOpen = false;
+        private void OnDialogueClosed()
+        {
+            _dialogueOpen = false;
+            // A beat of quiet after any story moment before a chip may appear.
+            _nextChipAllowedAt = Mathf.Max(_nextChipAllowedAt, Time.realtimeSinceStartup + 4f);
+        }
 
         internal void CloseIfShowing(string id)
         {
             if (_chip == null || _chipId != id) return;
+            CloseChip();
+        }
+
+        private void CloseChip()
+        {
+            RestorePulse();
             HintService.MarkClosed(_chipId);
-            Destroy(_chip);
+            if (_chip != null) Destroy(_chip);
             _chip = null;
+            _anchorFn = null;
+            _nextChipAllowedAt = Time.realtimeSinceStartup + ChipGapSeconds;
+        }
+
+        private void RestorePulse()
+        {
+            if (_pulseTarget != null) _pulseTarget.localScale = _pulseBaseScale;
+            _pulseTarget = null;
         }
 
         private void Update()
@@ -163,7 +189,24 @@ namespace AQ.UI.Hints
                 bool hidden = Suppressed();
                 if (_chipCanvas != null && _chipCanvas.enabled == hidden)
                     _chipCanvas.enabled = !hidden;
-                if (hidden) return;
+                if (hidden)
+                {
+                    if (_pulseTarget != null) _pulseTarget.localScale = _pulseBaseScale;
+                    return;
+                }
+
+                // Pulse the hint's subject until the chip is closed (Stephen-ruled
+                // 2026-08-21). Resolve lazily and survive the target being rebuilt.
+                if (_pulseTarget == null && _anchorFn != null)
+                {
+                    var t = _anchorFn();
+                    if (t != null) { _pulseTarget = t; _pulseBaseScale = t.localScale; }
+                }
+                if (_pulseTarget != null)
+                {
+                    float wave = (Mathf.Sin(Time.unscaledTime * Mathf.PI * 2f / 0.9f) + 1f) * 0.5f;
+                    _pulseTarget.localScale = _pulseBaseScale * (1f + 0.08f * wave);
+                }
 
                 // X-close only (Stephen-ruled 2026-08-14) — tap handled by the
                 // TapRouter region registered in OnEnable.
@@ -171,6 +214,11 @@ namespace AQ.UI.Hints
             }
 
             if (Suppressed()) return;
+            // Pacing: respect the gap after the previous chip / dialogue, and
+            // hold the whole queue while the guided loop's banner owns the slot
+            // (chips stacked over it in playtest, 2026-08-21).
+            if (Time.realtimeSinceStartup < _nextChipAllowedAt) return;
+            if (GameObject.Find("GuidedCaseLoop") != null) return;
             if (HintService.TryDequeue(out var hint))
                 Show(hint.id, hint.text, hint.anchor);
         }
@@ -210,7 +258,7 @@ namespace AQ.UI.Hints
             // One fixed slot below the HUD (Stephen-ruled 2026-08-14): persistent
             // chips must never cover board cells. The target gets a pulse instead.
             prt.anchoredPosition = new Vector2(0f, 570f);
-            PulseTarget(anchorFn);
+            _anchorFn = anchorFn; // pulsed continuously in Update until closed
             var img = panel.GetComponent<Image>();
             img.sprite = AQTheme.Rounded;
             img.type = Image.Type.Sliced;
@@ -228,12 +276,33 @@ namespace AQ.UI.Hints
             aimg.color = new Color(0.96f, 0.72f, 0.25f, 1f); // case-file amber
             aimg.raycastTarget = false;
 
+            // Gerald leads the tutorial (Stephen concept 2026-08-21): the wise
+            // man's portrait fronts every hint chip so guidance reads as HIM
+            // walking you through, distinct from Ally's noir interiority.
+            float textLeft = 34f;
+            var mentor = AQ.App.UI.Dossiers.DossierPortraits.Find("gerald");
+            if (mentor != null)
+            {
+                var pgo = new GameObject("Mentor", typeof(RectTransform), typeof(Image));
+                pgo.transform.SetParent(prt, false);
+                var mrt = (RectTransform)pgo.transform;
+                mrt.anchorMin = mrt.anchorMax = new Vector2(0f, 0.5f);
+                mrt.pivot = new Vector2(0f, 0.5f);
+                mrt.sizeDelta = new Vector2(88f, 88f);
+                mrt.anchoredPosition = new Vector2(16f, 0f);
+                var pimg = pgo.GetComponent<Image>();
+                pimg.sprite = mentor;
+                pimg.preserveAspect = true;
+                pimg.raycastTarget = false;
+                textLeft = 116f;
+            }
+
             var txt = new GameObject("Text", typeof(RectTransform));
             txt.transform.SetParent(prt, false);
             var trt = (RectTransform)txt.transform;
             trt.anchorMin = Vector2.zero;
             trt.anchorMax = Vector2.one;
-            trt.offsetMin = new Vector2(34f, 14f);
+            trt.offsetMin = new Vector2(textLeft, 14f);
             trt.offsetMax = new Vector2(-92f, -14f); // clear the X button
             var tmp = txt.AddComponent<TextMeshProUGUI>();
             tmp.text = text;
@@ -258,70 +327,8 @@ namespace AQ.UI.Hints
             AQTheme.PopIn(prt);
         }
 
-        // Brief teal pulse over the hint's subject while the chip sits in its
-        // fixed slot — spatial pointing without a persistent chip on the board.
-        private void PulseTarget(Func<Transform> anchorFn)
-        {
-            if (anchorFn != null && _chip != null)
-                StartCoroutine(PulseWhenCanvasReady(anchorFn));
-        }
-
-        // The chip canvas has no valid rect or scaleFactor on its creation
-        // frame, and the 1080x1920 reference is NOT the canvas's real unit
-        // size under matchWidthOrHeight 0.5 — both made the hand-rolled
-        // conversion miss its target (device finding 2026-08-14). Wait one
-        // frame, then let Unity do the conversion.
-        private System.Collections.IEnumerator PulseWhenCanvasReady(Func<Transform> anchorFn)
-        {
-            yield return null;
-            if (_chip == null) yield break;
-            var anchor = anchorFn.Invoke();
-            if (anchor == null) yield break;
-
-            var chipRoot = (RectTransform)_chip.transform;
-            Vector2 screen = RectTransformUtility.WorldToScreenPoint(null, anchor.position);
-            if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(chipRoot, screen, null, out var local))
-                yield break;
-
-            // Ring sized to the target's on-screen footprint, with margin.
-            var size = new Vector2(150f, 150f);
-            if (anchor is RectTransform art)
-            {
-                var corners = new Vector3[4];
-                art.GetWorldCorners(corners);
-                float sf = _chipCanvas != null && _chipCanvas.scaleFactor > 0f ? _chipCanvas.scaleFactor : 1f;
-                size = new Vector2(
-                    Mathf.Max(90f, (corners[2].x - corners[0].x) / sf + 24f),
-                    Mathf.Max(90f, (corners[2].y - corners[0].y) / sf + 24f));
-            }
-
-            var go = new GameObject("Pulse", typeof(RectTransform), typeof(Image));
-            go.transform.SetParent(chipRoot, false);
-            var rt = (RectTransform)go.transform;
-            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
-            rt.sizeDelta = size;
-            rt.anchoredPosition = local;
-            var img = go.GetComponent<Image>();
-            img.sprite = AQTheme.Rounded;
-            img.type = Image.Type.Sliced;
-            img.raycastTarget = false;
-            yield return PulseRoutine(go, img);
-        }
-
-        private System.Collections.IEnumerator PulseRoutine(GameObject go, Image img)
-        {
-            const float duration = 2.2f;
-            float t = 0f;
-            while (t < duration && go != null)
-            {
-                t += Time.unscaledDeltaTime;
-                float wave = (Mathf.Sin(t * Mathf.PI * 3f) + 1f) * 0.5f; // ~3 beats
-                img.color = new Color(AQTheme.Teal.r, AQTheme.Teal.g, AQTheme.Teal.b, wave * 0.55f);
-                go.transform.localScale = Vector3.one * (1f + wave * 0.12f);
-                yield return null;
-            }
-            if (go != null) Destroy(go);
-        }
+        // One-shot teal pulse ring retired 2026-08-21 (Stephen-ruled): the hint's
+        // subject now pulses continuously in Update() until the chip is closed.
     }
 
     /// <summary>Wires the P1 hint set to live game signals. Self-installs.</summary>
@@ -419,7 +426,12 @@ namespace AQ.UI.Hints
                 for (int c = 0; c < board.Cols; c++)
                 {
                     total++;
-                    if (board.Get(r, c) != null) filled++;
+                    // OCCUPIED cells, not cell objects — every cell's view exists,
+                    // so the old null-check read a near-empty board as 100% full
+                    // and taught locker overflow next to one lone generator
+                    // (Stephen playtest finding 2026-08-21).
+                    var t = board.Get(r, c);
+                    if (t != null && !t.IsEmpty) filled++;
                 }
             if (total == 0 || filled < total * 0.8f) return;
             HintService.Request("locker",

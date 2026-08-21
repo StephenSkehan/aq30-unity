@@ -212,7 +212,10 @@ namespace AQ.App.UI.Board
                 System.Enum.TryParse<AQ.App.UI.Specials.SpecialId>(data.family, out var sid))
                 return AQ.App.UI.Specials.SpecialItemsService.SpriteFor(sid);
 
-            return board.SpriteForItemTierPublic(data.tier);
+            // Family-aware: the bucket must show the ACTUAL top item (a coffee
+            // reward looks like coffee), not the generic tier placeholder
+            // (Stephen playtest finding 2026-08-21). Falls back internally.
+            return board.SpriteForItem(data.family, data.tier);
         }
 
         private static Image MakeImage(Transform parent, string name)

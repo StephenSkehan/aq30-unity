@@ -297,12 +297,32 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         aimg.color = new Color(0.96f, 0.72f, 0.25f, 1f); // case-file amber
         aimg.raycastTarget = false;
 
+        // Gerald leads the tutorial (Stephen concept 2026-08-21): the wise man
+        // fronts the directive banner too, one consistent teacher everywhere.
+        float textLeft = 28f;
+        var mentor = AQ.App.UI.Dossiers.DossierPortraits.Find("gerald");
+        if (mentor != null)
+        {
+            var pgo = new GameObject("Mentor", typeof(RectTransform), typeof(Image));
+            pgo.transform.SetParent(_bannerRoot, false);
+            var mrt = (RectTransform)pgo.transform;
+            mrt.anchorMin = mrt.anchorMax = new Vector2(0f, 0.5f);
+            mrt.pivot = new Vector2(0f, 0.5f);
+            mrt.sizeDelta = new Vector2(78f, 78f);
+            mrt.anchoredPosition = new Vector2(14f, 0f);
+            var pimg = pgo.GetComponent<Image>();
+            pimg.sprite = mentor;
+            pimg.preserveAspect = true;
+            pimg.raycastTarget = false;
+            textLeft = 104f;
+        }
+
         var txt = new GameObject("Text", typeof(RectTransform));
         txt.transform.SetParent(_bannerRoot, false);
         var trt = (RectTransform)txt.transform;
         trt.anchorMin = Vector2.zero;
         trt.anchorMax = Vector2.one;
-        trt.offsetMin = new Vector2(28f, 10f);
+        trt.offsetMin = new Vector2(textLeft, 10f);
         trt.offsetMax = new Vector2(-20f, -10f);
         _bannerLabel = txt.AddComponent<TextMeshProUGUI>();
         _bannerLabel.fontSize = 34f;
