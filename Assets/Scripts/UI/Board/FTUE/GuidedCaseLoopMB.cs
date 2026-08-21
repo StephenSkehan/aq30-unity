@@ -103,8 +103,59 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         LeadsRuntimeBus.OnLeadActivated              += OnLeadActivated;
 
         AQ.App.Analytics.GameAnalytics.LogFtueEvent("gl_start");
+        SeedStarterSingles();
         BuildBanner();
         EnterGeneratorStep();
+    }
+
+    /// <summary>
+    /// I10-light (SAS FTUE, Stephen-ruled 2026-08-21): seed a few SINGLE tier-1
+    /// items from the generator's own drop families so the first free minutes
+    /// always contain visible near-merges. Singles, never pairs — a pre-made
+    /// pair would let the merge step fire before the player ever taps the
+    /// generator, skipping the lesson; a single means their own taps complete
+    /// the pair. Skipped when the board already has items (returning saves).
+    /// </summary>
+    void SeedStarterSingles()
+    {
+        int existingItems = 0;
+        for (int r = 0; r < _board.Rows; r++)
+            for (int c = 0; c < _board.Cols; c++)
+            {
+                var v = _board.Get(r, c);
+                if (v != null && !v.IsEmpty && v.Kind == TileKind.Item) existingItems++;
+            }
+        if (existingItems >= 3) return;
+
+        var seeded = new HashSet<string>();
+        for (int r = 0; r < _board.Rows && seeded.Count < 3; r++)
+            for (int c = 0; c < _board.Cols && seeded.Count < 3; c++)
+            {
+                var v = _board.Get(r, c);
+                if (v == null || v.IsEmpty || v.Kind != TileKind.Generator) continue;
+
+                var so = _board.FindGeneratorType(_board.GetFamily(v));
+                var cfg = so != null ? so.ConfigForTier(v.Tier) : null;
+                if (cfg?.dropTable == null) continue;
+
+                foreach (var e in cfg.dropTable)
+                {
+                    if (seeded.Count >= 3) break;
+                    if (e.type != AQ.App.Generators.DropType.Item || e.itemTier != 0) continue;
+                    if (!AQ.App.Generators.DropRoller.IsEligible(e, subGenLocked: true)) continue;
+                    if (string.IsNullOrEmpty(e.itemFamily) || !seeded.Add(e.itemFamily)) continue;
+
+                    _board.PlaceFromOverflow(new AQ.App.Overflow.OverflowTileData
+                    {
+                        kind   = AQ.App.Overflow.OverflowKind.Item,
+                        family = e.itemFamily,
+                        tier   = 0
+                    }); // full board just refuses — fine
+                }
+            }
+
+        if (seeded.Count > 0)
+            AQ.App.Analytics.GameAnalytics.LogFtueEvent("gl_seeded");
     }
 
     void OnDestroy()
