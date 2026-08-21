@@ -157,7 +157,9 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
     void EnterProceedStep()
     {
         _step = Step.Proceed;
-        SetBanner("Tap PROCEED on the lead.");
+        // Copy Stephen-ruled 2026-08-21 (cards proceed on tap; there is no
+        // separate PROCEED button on the card anymore).
+        SetBanner("Tap on green lead card to proceed.");
         ClearPulse();
         GhostDragDemoMB.Hide();
         AQ.App.Analytics.GameAnalytics.LogFtueEvent("gl_lead_ready");
