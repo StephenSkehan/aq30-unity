@@ -36,8 +36,10 @@ namespace AQ.App.Services
             PlayerPrefs.Save();
 
             wallet.Grant("ftue.energy_net", Reward.Energy(GrantAmount));
-            // Copy Stephen-ruled 2026-08-21.
-            ToastService.Show("energy_net", "The case doesn't sleep. +100 energy.", 3f);
+            // Gerald copy sheet, Stephen-ruled 2026-08-21: the grandad quietly
+            // covering the tab — warmth without an endearment (no "love" in
+            // player-facing copy; in-story dialogue to Ally only).
+            ToastService.Show("energy_net", "On me. +100 energy.", 3f);
             GameAnalytics.LogFtueEvent(used == 0 ? "energy_net_1" : "energy_net_2");
             return true;
         }

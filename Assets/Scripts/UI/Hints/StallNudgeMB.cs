@@ -108,10 +108,11 @@ namespace AQ.UI.Hints
 
             if (_idle >= ToastAt)
             {
-                // Copy Stephen-ruled 2026-08-21.
+                // Gerald copy sheet, Stephen-ruled 2026-08-21 (no endearments in
+                // player-facing tutorial copy).
                 ToastService.Show("stall",
-                    _pulseTiles.Count == 2 ? "Drag matching items together."
-                                           : "Tap the generator for more items.", 3f);
+                    _pulseTiles.Count == 2 ? "Look for pairs. Drag them together."
+                                           : "Nothing doing? Tap the kit again.", 3f);
                 _idle = 0f; // rest, then the cycle may repeat
                 ClearVisuals();
             }

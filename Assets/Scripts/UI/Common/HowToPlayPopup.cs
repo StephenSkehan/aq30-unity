@@ -18,14 +18,14 @@ namespace AQ.App.UI.Common
     {
         private static GameObject _root;
 
-        // Row copy: 1 and 4 reuse Stephen-ruled guided-loop lines; 2 and 3 are
-        // DRAFT pending his ruling on the Gerald copy sheet (2026-08-21).
+        // Row copy: Gerald copy sheet, all lines Stephen-ruled 2026-08-21
+        // (no endearments in player-facing tutorial copy).
         private static readonly string[] RowLines =
         {
             "Tap the kit. Every item helps.",
-            "Match two identical items. Drag them together.",
-            "Green tick means a lead wants it.",
-            "Tap on green lead card to proceed.",
+            "A matching pair. Drag them together.",
+            "Green tick? Somebody's waiting on that.",
+            "Lead's gone green. Tap it and proceed.",
         };
 
         public static void Show()
@@ -75,7 +75,7 @@ namespace AQ.App.UI.Common
                 pimg.preserveAspect = true;
                 pimg.raycastTarget = false;
 
-                // DRAFT header line pending the Gerald copy-sheet ruling.
+                // Gerald copy sheet, Stephen-ruled 2026-08-21.
                 var cap = AddLabel(panel, "Gerald's notes. Read them twice.", 30f, AQTheme.PaperDim,
                                    new Vector2(90f, y), new Vector2(560f, 110f));
                 cap.alignment = TextAlignmentOptions.MidlineLeft;

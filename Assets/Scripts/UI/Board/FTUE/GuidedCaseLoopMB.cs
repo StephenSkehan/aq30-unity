@@ -188,7 +188,10 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
     void EnterMergeStep(BoardTileView a, BoardTileView b)
     {
         _step = Step.Merge;
-        SetBanner("Drag one onto its twin.");
+        // Gerald copy sheet, Stephen-ruled 2026-08-21. NOTE the standing rule
+        // from that ruling: tutorial/UI copy addresses the PLAYER, so no
+        // endearments ("love" stays in-story, Gerald to Ally only).
+        SetBanner("A matching pair. Drag them together.");
         ClearPulse();
         _pulseTiles.Add(a);
         _pulseTiles.Add(b);
@@ -208,9 +211,8 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
     void EnterProceedStep()
     {
         _step = Step.Proceed;
-        // Copy Stephen-ruled 2026-08-21 (cards proceed on tap; there is no
-        // separate PROCEED button on the card anymore).
-        SetBanner("Tap on green lead card to proceed.");
+        // Gerald copy sheet, Stephen-ruled 2026-08-21.
+        SetBanner("Lead's gone green. Tap it and proceed.");
         ClearPulse();
         GhostDragDemoMB.Hide();
         AQ.App.Analytics.GameAnalytics.LogFtueEvent("gl_lead_ready");
