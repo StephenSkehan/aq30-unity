@@ -182,7 +182,20 @@ namespace AQ.App.UI
             // FTUE only: the Ally promo film plays between the logo and the game.
             yield return PromoStage();
 
-            // fade the whole card out to reveal the game
+            // Two-stage dissolve (Stephen playtest 2026-08-22): the logo carries
+            // a baked near-white background, and fading it TOGETHER with the
+            // plate doubled the whites into a visible rectangle mid-dissolve.
+            // The content first vanishes into the plate (seamless — they share
+            // the same white), THEN the clean plate dissolves to the game.
+            t = 0f;
+            while (t < ContentFadeIn)
+            {
+                t += Dt;
+                _content.alpha = 1f - Mathf.Clamp01(t / ContentFadeIn);
+                yield return null;
+            }
+            _content.alpha = 0f;
+
             t = 0f;
             while (t < FadeOut)
             {
