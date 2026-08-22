@@ -32,8 +32,14 @@ namespace AQ.App.UI.Board
 
         private void Awake()
         {
+            _instance = this;
             try { BuildHUD(); }
             catch (System.Exception e) { Debug.LogError($"[OverflowBucket] BuildHUD failed: {e}"); }
+        }
+
+        private void OnDestroy()
+        {
+            if (_instance == this) _instance = null;
         }
 
         private AQ.App.UI.TapRouter.Region _tapRegion;
@@ -147,9 +153,30 @@ namespace AQ.App.UI.Board
             // No Button — input handled via raw Update() poll (EventSystem GR unreliable on dynamic overlays)
         }
 
+        private static OverflowBucketView _instance;
+        private static bool _adviseHold;
+
+        /// <summary>
+        /// While the stash-reward advisory owns the moment, the button's visuals
+        /// freeze: the reward must not appear in the Stash until the popup
+        /// closes and its flight lands (Stephen-ruled 2026-08-22). Data pushes
+        /// are unaffected — only the presentation waits.
+        /// </summary>
+        public static void SetAdviseHold(bool held)
+        {
+            _adviseHold = held;
+            if (!held && _instance != null) _instance.Refresh();
+        }
+
+        /// <summary>The button's rect even while hidden (GameObject.Find can't
+        /// see inactive objects — the reveal flight needs a target before the
+        /// button first appears).</summary>
+        public static RectTransform ButtonRoot => _instance != null ? _instance._root : null;
+
         private void Refresh()
         {
             if (_root == null) return;
+            if (_adviseHold) return; // advisory owns the reveal
 
             bool hasContent = !OverflowBucketService.IsEmpty;
             _root.gameObject.SetActive(hasContent);

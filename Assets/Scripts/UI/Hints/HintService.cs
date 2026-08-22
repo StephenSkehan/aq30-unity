@@ -144,6 +144,30 @@ namespace AQ.UI.Hints
         // Context scope of the showing chip (null = anywhere).
         private Func<bool> _visibleWhile;
         private float _nextAnchorCheckAt;
+        private RectTransform _panelRt;
+
+        /// <summary>
+        /// Parks the chip just above/below its pulse target without covering it
+        /// (Stephen-ruled 2026-08-22: the evidence-board lesson must sit by the
+        /// evidence-board button). Anchorless chips keep the fixed HUD slot.
+        /// </summary>
+        private void PositionChipNearTarget()
+        {
+            if (_panelRt == null || _pulseTarget == null || _chip == null) return;
+            var canvasRect = (RectTransform)_chip.transform;
+            Vector2 screen = _pulseTarget.position; // overlay canvas: world == px
+            if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screen, null, out var local))
+                return;
+
+            float clearance = _panelRt.sizeDelta.y * 0.5f + 110f;
+            bool below = screen.y > Screen.height * 0.5f;
+            local.y += below ? -clearance : clearance;
+
+            float halfCanvas = canvasRect.rect.width * 0.5f;
+            float halfPanel  = _panelRt.sizeDelta.x * 0.5f;
+            local.x = Mathf.Clamp(local.x, -(halfCanvas - halfPanel - 8f), halfCanvas - halfPanel - 8f);
+            _panelRt.anchoredPosition = local;
+        }
 
         // HUD pills are FLAT siblings (pill bg, icon, amount are separate
         // objects), so pulsing the pill alone was barely visible — companions
@@ -213,6 +237,7 @@ namespace AQ.UI.Hints
             HintService.MarkClosed(_chipId);
             if (_chip != null) Destroy(_chip);
             _chip = null;
+            _panelRt = null;
             _anchorFn = null;
             _visibleWhile = null;
             _nextChipAllowedAt = Time.realtimeSinceStartup + ChipGapSeconds;
@@ -225,6 +250,7 @@ namespace AQ.UI.Hints
             HintService.ReleaseUnseen(_chipId);
             if (_chip != null) Destroy(_chip);
             _chip = null;
+            _panelRt = null;
             _anchorFn = null;
             _visibleWhile = null;
             _nextChipAllowedAt = Time.realtimeSinceStartup + 3f; // brief settle, not the full gap
@@ -288,6 +314,7 @@ namespace AQ.UI.Hints
                             ResolveCompanions();
                         }
                     }
+                    PositionChipNearTarget();
                 }
                 if (_pulseTarget != null)
                 {
@@ -350,11 +377,26 @@ namespace AQ.UI.Hints
             // chips must never cover board cells. The target gets a pulse instead.
             prt.anchoredPosition = new Vector2(0f, 570f);
             _anchorFn = anchorFn; // pulsed continuously in Update until closed
+            // Hairline border + opaque body (Stephen-ruled 2026-08-22).
             var img = panel.GetComponent<Image>();
             img.sprite = AQTheme.Rounded;
             img.type = Image.Type.Sliced;
-            img.color = new Color(0.10f, 0.12f, 0.16f, 0.96f);
+            img.color = new Color(0.45f, 0.48f, 0.55f, 0.85f); // subtle steel line
             img.raycastTarget = false;
+
+            var body = new GameObject("Body", typeof(RectTransform), typeof(Image));
+            body.transform.SetParent(prt, false);
+            var bodyRt = (RectTransform)body.transform;
+            bodyRt.anchorMin = Vector2.zero;
+            bodyRt.anchorMax = Vector2.one;
+            bodyRt.offsetMin = new Vector2(3f, 3f);
+            bodyRt.offsetMax = new Vector2(-3f, -3f);
+            var bodyImg = body.GetComponent<Image>();
+            bodyImg.sprite = AQTheme.Rounded;
+            bodyImg.type = Image.Type.Sliced;
+            bodyImg.color = new Color(0.10f, 0.12f, 0.16f, 1f);
+            bodyImg.raycastTarget = false;
+            _panelRt = prt;
 
             var accent = new GameObject("Accent", typeof(RectTransform), typeof(Image));
             accent.transform.SetParent(prt, false);
@@ -445,6 +487,7 @@ namespace AQ.UI.Hints
             BoardTileView.TickShown += OnTickShown;
             OverflowBucketService.BucketChanged += OnBucketChanged;
             MergeBoardController.BoardCompositionChanged += OnBoardChanged;
+            MergeBoardController.BoardCompositionChanged += OnGeneratorPairAppeared;
             SpecialItemsService.Changed += OnSpecialsChanged;
             AQTheme.HelpBarBuilt += OnHelpBarBuilt;
 
@@ -575,6 +618,36 @@ namespace AQ.UI.Hints
             HintService.Request("casekit",
                 "A new tool of the trade. Open the Case Kit, place it, and drag it where it is needed.",
                 () => FindAny("KitRoot", "__CaseKitBtn", "__KitBtn"), OnBoard);
+        }
+
+        // A second same-type generator on the board is the teachable moment for
+        // generator merging (Stephen-ruled 2026-08-22). Copy DRAFT pending ruling.
+        private static void OnGeneratorPairAppeared()
+        {
+            if (HintService.Seen("gen_merge")) return;
+            if (FindGeneratorPairTile() == null) return;
+            HintService.Request("gen_merge",
+                "Generators merge too. Higher tiers find better evidence.",
+                FindGeneratorPairTile,
+                () => OnBoard() && FindGeneratorPairTile() != null);
+        }
+
+        /// <summary>A board generator that has a same-type same-tier twin, else null.</summary>
+        private static Transform FindGeneratorPairTile()
+        {
+            var board = UnityEngine.Object.FindAnyObjectByType<MergeBoardController>();
+            if (board == null || !board.GridReady) return null;
+            var firstByKey = new Dictionary<(string fam, int tier), BoardTileView>();
+            for (int r = 0; r < board.Rows; r++)
+                for (int c = 0; c < board.Cols; c++)
+                {
+                    var v = board.Get(r, c);
+                    if (v == null || v.IsEmpty || v.Kind != TileKind.Generator) continue;
+                    var key = (board.GetFamily(v), v.Tier);
+                    if (firstByKey.TryGetValue(key, out var first)) return first.transform;
+                    firstByKey[key] = v;
+                }
+            return null;
         }
 
         private static void OnHelpBarBuilt(RectTransform helpBtn)

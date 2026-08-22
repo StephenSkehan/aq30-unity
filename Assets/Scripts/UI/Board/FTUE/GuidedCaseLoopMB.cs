@@ -115,6 +115,7 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
 
         MergeBoardController.BoardCompositionChanged += OnBoardChanged;
         MergeBoardController.TilesMerged             += OnTilesMerged;
+        MergeBoardController.GeneratorTapped         += OnGeneratorTapped;
         LeadsRuntimeBus.OnLeadStateChanged           += OnLeadStateChanged;
         LeadsRuntimeBus.OnLeadActivated              += OnLeadActivated;
 
@@ -254,6 +255,7 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         DialogueRunner.DialogueClosed -= OnDialogueClosed;
         MergeBoardController.BoardCompositionChanged -= OnBoardChanged;
         MergeBoardController.TilesMerged             -= OnTilesMerged;
+        MergeBoardController.GeneratorTapped         -= OnGeneratorTapped;
         LeadsRuntimeBus.OnLeadStateChanged           -= OnLeadStateChanged;
         LeadsRuntimeBus.OnLeadActivated              -= OnLeadActivated;
         GhostDragDemoMB.Hide();
@@ -315,7 +317,18 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         GhostDragDemoMB.Hide();
 
         // Pulse the green (Ready) lead card itself, banner just beneath it
-        // (Stephen-ruled 2026-08-22).
+        // (Stephen-ruled 2026-08-22). Update() keeps rescanning: the bar often
+        // REBUILDS its card views right after the Ready broadcast, so the first
+        // scan can run before the ready card exists (or grab a doomed view).
+        TryAttachReadyCard();
+
+        AQ.App.Analytics.GameAnalytics.LogFtueEvent("gl_lead_ready");
+    }
+
+    float _nextCardScanAt;
+
+    void TryAttachReadyCard()
+    {
         var cards = FindObjectsByType<LeadCardView>(FindObjectsSortMode.None);
         foreach (var card in cards)
             if (card != null && card.IsReadyNow)
@@ -323,10 +336,8 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
                 _pulseTransforms.Add(card.transform);
                 _bannerTarget = card.transform;
                 _nextBannerPlaceAt = 0f;
-                break;
+                return;
             }
-
-        AQ.App.Analytics.GameAnalytics.LogFtueEvent("gl_lead_ready");
     }
 
     void Finish(string funnelStep)
@@ -345,6 +356,17 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         if (_step != Step.Generator) return;
         if (TryFindMergePair(out var a, out var b))
             EnterMergeStep(a, b);
+    }
+
+    void OnGeneratorTapped()
+    {
+        // The tap-the-kit lesson completes on the tap itself (Stephen-ruled
+        // 2026-08-22): banner and pulse retire immediately; the step stays live
+        // so the first pair that forms advances to the merge lesson.
+        if (_step != Step.Generator) return;
+        SetBanner(null);
+        _bannerTarget = null;
+        ClearPulse();
     }
 
     void OnTilesMerged(string family, int tier)
@@ -418,6 +440,16 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
 
     void Update()
     {
+        // Card views rebuild often — drop dead transforms, and in the proceed
+        // step keep hunting for the live ready card until one sticks.
+        _pulseTransforms.RemoveAll(t => t == null);
+        if (_step == Step.Proceed && _pulseTransforms.Count == 0 &&
+            Time.unscaledTime >= _nextCardScanAt)
+        {
+            _nextCardScanAt = Time.unscaledTime + 0.5f;
+            TryAttachReadyCard();
+        }
+
         // Keep the banner parked by its subject (cheap, twice a second).
         if (_bannerTarget != null && Time.unscaledTime >= _nextBannerPlaceAt)
         {
@@ -485,11 +517,26 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         _bannerRoot.anchorMin = _bannerRoot.anchorMax = new Vector2(0.5f, 0.5f);
         // Fallback slot until a step parks it by its subject (PositionBannerNear).
         _bannerRoot.anchoredPosition = new Vector2(0f, 570f);
+        // Hairline border + opaque body (Stephen-ruled 2026-08-22): the outer
+        // image is the border line, the inset child carries the fill.
         var img = panel.GetComponent<Image>();
         img.sprite = AQ.App.UI.AQTheme.Rounded;
         img.type = Image.Type.Sliced;
-        img.color = new Color(0.13f, 0.11f, 0.07f, 1f); // warm dark: directive, not flavor
+        img.color = new Color(0.62f, 0.50f, 0.30f, 0.9f); // muted amber line
         img.raycastTarget = false;
+
+        var body = new GameObject("Body", typeof(RectTransform), typeof(Image));
+        body.transform.SetParent(_bannerRoot, false);
+        var brt2 = (RectTransform)body.transform;
+        brt2.anchorMin = Vector2.zero;
+        brt2.anchorMax = Vector2.one;
+        brt2.offsetMin = new Vector2(3f, 3f);
+        brt2.offsetMax = new Vector2(-3f, -3f);
+        var bodyImg = body.GetComponent<Image>();
+        bodyImg.sprite = AQ.App.UI.AQTheme.Rounded;
+        bodyImg.type = Image.Type.Sliced;
+        bodyImg.color = new Color(0.13f, 0.11f, 0.07f, 1f); // warm dark: directive, not flavor
+        bodyImg.raycastTarget = false;
         _bannerCg = panel.GetComponent<CanvasGroup>();
         _bannerCg.blocksRaycasts = false;
         _bannerCg.interactable = false;

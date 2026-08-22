@@ -71,6 +71,9 @@ namespace AQ.App.UI.Common
 
         private void ShowNext(OverflowTileData tile)
         {
+            // Freeze the stash button until the reveal flight lands: the reward
+            // must not pre-appear behind the popup (Stephen-ruled 2026-08-22).
+            OverflowBucketView.SetAdviseHold(true);
             var board = Object.FindFirstObjectByType<MergeBoardController>();
             _iconSprite = ResolveSprite(board, tile);
             string name = ResolveName(board, tile);
@@ -153,11 +156,23 @@ namespace AQ.App.UI.Common
             if (_popup != null) Destroy(_popup);
             _popup = null;
             _iconRt = null;
-            if (sprite == null) yield break;
+            if (sprite == null)
+            {
+                if (_queue.Count == 0) OverflowBucketView.SetAdviseHold(false);
+                yield break;
+            }
 
-            var stash = GameObject.Find("BucketRoot");
-            if (stash == null) yield break;
-            Vector3 end = stash.transform.position;
+            var stash = OverflowBucketView.ButtonRoot; // works even while hidden
+            if (stash == null)
+            {
+                if (_queue.Count == 0) OverflowBucketView.SetAdviseHold(false);
+                yield break;
+            }
+            // Aim at the button's CENTER — its pivot is bottom-left, so the raw
+            // transform position overflew the target (Stephen playtest 2026-08-22).
+            var stashCorners = new Vector3[4];
+            stash.GetWorldCorners(stashCorners);
+            Vector3 end = (stashCorners[0] + stashCorners[2]) * 0.5f;
 
             var go = new GameObject("__StashFlight", typeof(Canvas));
             go.transform.SetParent(transform, false);
@@ -184,6 +199,10 @@ namespace AQ.App.UI.Common
                 yield return null;
             }
             if (go != null) Destroy(go);
+
+            // Reveal: the button updates (or first appears) exactly as the
+            // flight lands; a longer queue keeps the hold for the next popup.
+            if (_queue.Count == 0) OverflowBucketView.SetAdviseHold(false);
         }
 
         private static float GetScale(RectTransform rt)
