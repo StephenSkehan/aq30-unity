@@ -182,19 +182,27 @@ namespace AQ.App.UI
             // FTUE only: the Ally promo film plays between the logo and the game.
             yield return PromoStage();
 
-            // Two-stage dissolve (Stephen playtest 2026-08-22): the logo carries
-            // a baked near-white background, and fading it TOGETHER with the
-            // plate doubled the whites into a visible rectangle mid-dissolve.
-            // The content first vanishes into the plate (seamless — they share
-            // the same white), THEN the clean plate dissolves to the game.
-            t = 0f;
-            while (t < ContentFadeIn)
+            // Dissolve, two cases (Stephen playtest 2026-08-22, twice over):
+            // - No film: the content sinks into the still-white OPAQUE plate
+            //   first — same white as the logo's baked background, so the fade
+            //   is seamless — then the clean plate dissolves to the game.
+            // - After the film: the plate is already BLACK and the content
+            //   already hidden. The first attempt faded content from 1 again,
+            //   which snapped the logo back over the black plate (the white
+            //   rectangle + logo-after-film regression). It must stay hidden;
+            //   only the black plate fades.
+            if (_content.alpha > 0.01f)
             {
-                t += Dt;
-                _content.alpha = 1f - Mathf.Clamp01(t / ContentFadeIn);
-                yield return null;
+                float from = _content.alpha;
+                t = 0f;
+                while (t < ContentFadeIn)
+                {
+                    t += Dt;
+                    _content.alpha = Mathf.Lerp(from, 0f, Mathf.Clamp01(t / ContentFadeIn));
+                    yield return null;
+                }
+                _content.alpha = 0f;
             }
-            _content.alpha = 0f;
 
             t = 0f;
             while (t < FadeOut)
