@@ -114,6 +114,7 @@
     <Compile Include="Assets\Scripts\UI\Board\BoardTileView.cs" />
     <Compile Include="Assets\Scripts\UI\Common\SourceGeneratorPulse.cs" />
     <Compile Include="Assets\Scripts\UI\EvidenceBoard\EvidenceBoardScreen.cs" />
+    <Compile Include="Assets\Scripts\UI\Common\StashRewardAdviseMB.cs" />
     <Compile Include="Assets\Scripts\UI\Board\BoardTools.cs" />
     <Compile Include="Assets\Scripts\Domain\Board\BoardRingTraversal.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
