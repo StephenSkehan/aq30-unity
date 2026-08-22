@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GeneratorType_GenJunk
   m_EditorClassIdentifier: AQ.App::AQ.App.Generators.GeneratorTypeSO
   generatorTypeId: gen_junk
-  displayName: Junk Pile
+  displayName: Salvage Stores
   maxGeneratorTier: 9
   tiers:
   - dropTable:
