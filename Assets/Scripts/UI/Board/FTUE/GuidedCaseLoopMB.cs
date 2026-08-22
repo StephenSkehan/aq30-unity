@@ -26,6 +26,15 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
     enum Step { Boot, Generator, Merge, Quiet, Proceed, Done }
     Step _step = Step.Boot;
 
+    static GuidedCaseLoopMB _active;
+
+    /// <summary>True only while the loop is actively directing the board (its
+    /// banner up, its own pulses running). The required-source pulse yields in
+    /// these steps but NOT during Quiet — suppressing it for the loop's whole
+    /// lifetime muted all guidance mid-case (Stephen playtest 2026-08-22).</summary>
+    public static bool OwnsBoard =>
+        _active != null && (_active._step == Step.Generator || _active._step == Step.Merge);
+
     MergeBoardController _board;
     LeadsRepository      _repo;
 
@@ -69,6 +78,7 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
 
     IEnumerator Start()
     {
+        _active = this;
         DialogueRunner.DialogueOpened += OnDialogueOpened;
         DialogueRunner.DialogueClosed += OnDialogueClosed;
 
@@ -238,6 +248,7 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
 
     void OnDestroy()
     {
+        if (_active == this) _active = null;
         // Unsubscribing handlers that were never subscribed is a safe no-op.
         DialogueRunner.DialogueOpened -= OnDialogueOpened;
         DialogueRunner.DialogueClosed -= OnDialogueClosed;
@@ -439,7 +450,7 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screen, null, out var local))
             return;
 
-        float clearance = _bannerRoot.sizeDelta.y * 0.5f + 130f; // half banner + subject + margin
+        float clearance = _bannerRoot.sizeDelta.y * 0.5f + 95f; // closer, still clear of the subject (2026-08-22)
         bool below = screen.y > Screen.height * 0.5f;
         local.y += below ? -clearance : clearance;
 

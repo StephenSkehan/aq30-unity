@@ -145,6 +145,29 @@ namespace AQ.UI.Hints
         private Func<bool> _visibleWhile;
         private float _nextAnchorCheckAt;
 
+        // HUD pills are FLAT siblings (pill bg, icon, amount are separate
+        // objects), so pulsing the pill alone was barely visible — companions
+        // pulse with it (Stephen-ruled 2026-08-22).
+        private readonly List<Transform> _pulseCompanions = new();
+
+        private void ResolveCompanions()
+        {
+            _pulseCompanions.Clear();
+            if (_pulseTarget == null || _pulseTarget.parent == null) return;
+            var name = _pulseTarget.name;
+            if (!name.StartsWith("gen_hud_pill_")) return;
+            string idx = name.Substring("gen_hud_pill_".Length);
+            string[] valueNames = { "Txt_Value", "Txt_Soft_Currency", "Txt_Premium" };
+            var parent = _pulseTarget.parent;
+            var icon = parent.Find("gen_hud_icon_" + idx);
+            if (icon != null) _pulseCompanions.Add(icon);
+            if (int.TryParse(idx, out int i) && i >= 0 && i < valueNames.Length)
+            {
+                var val = parent.Find(valueNames[i]);
+                if (val != null) _pulseCompanions.Add(val);
+            }
+        }
+
         private AQ.App.UI.TapRouter.Region _closeTapRegion;
 
         private void OnEnable()
@@ -211,6 +234,9 @@ namespace AQ.UI.Hints
         {
             if (_pulseTarget != null) _pulseTarget.localScale = _pulseBaseScale;
             _pulseTarget = null;
+            foreach (var c in _pulseCompanions)
+                if (c != null) c.localScale = Vector3.one;
+            _pulseCompanions.Clear();
         }
 
         private void Update()
@@ -255,13 +281,21 @@ namespace AQ.UI.Hints
                     if (now != _pulseTarget)
                     {
                         RestorePulse();
-                        if (now != null) { _pulseTarget = now; _pulseBaseScale = now.localScale; }
+                        if (now != null)
+                        {
+                            _pulseTarget = now;
+                            _pulseBaseScale = now.localScale;
+                            ResolveCompanions();
+                        }
                     }
                 }
                 if (_pulseTarget != null)
                 {
                     float wave = (Mathf.Sin(Time.unscaledTime * Mathf.PI * 2f / 0.9f) + 1f) * 0.5f;
-                    _pulseTarget.localScale = _pulseBaseScale * (1f + 0.12f * wave); // +50% (2026-08-22)
+                    float k = 1f + 0.12f * wave; // +50% (2026-08-22)
+                    _pulseTarget.localScale = _pulseBaseScale * k;
+                    foreach (var c in _pulseCompanions)
+                        if (c != null) c.localScale = Vector3.one * k;
                 }
 
                 // X-close only (Stephen-ruled 2026-08-14) — tap handled by the
@@ -441,13 +475,14 @@ namespace AQ.UI.Hints
             if (wallet != null) wallet.Granted += OnRewardsGranted;
         }
 
-        // First tap that puts energy visibly below 90 (Stephen-ruled 2026-08-14):
-        // teach when the number is moving, which is when a player wonders.
+        // Below 50 (Stephen-ruled 2026-08-22, was 90): the first-session number
+        // barely moves and the lesson landed way too early — teach when energy
+        // is visibly a resource under pressure.
         private static void OnGeneratorTapped()
         {
             var wallet = AQ.App.Economy.WalletLocator.Instance;
             if (wallet == null) return;
-            if (wallet.Get(AQ.SharedKernel.Economy.Currency.Energy) >= 90) return;
+            if (wallet.Get(AQ.SharedKernel.Economy.Currency.Energy) >= 50) return;
             HintService.Request("energy",
                 "All this legwork costs energy. Recovery takes time.",
                 () => FindAny("gen_hud_pill_0"), OnBoard);
@@ -564,8 +599,8 @@ namespace AQ.UI.Hints
             PlayerPrefs.SetInt("aq.hint.merge_ct", n);
             if (n < 10 || CountBoardItems() < 5) return;
             HintService.Request("longpress",
-                "Look closer. Hold any item and it will tell you its story.",
-                null, OnBoard);
+                "Look closer. Press and hold any item and it will tell you its story.",
+                null, OnBoard); // copy Stephen-ruled 2026-08-22
         }
 
         private static int CountBoardItems()

@@ -48,16 +48,31 @@ namespace AQ.UI.Hints
             go.AddComponent<RequiredSourcePulseMB>();
         }
 
+        // Pulse arms only after 10s without a generator tap, and disarms the
+        // moment one lands (Stephen-ruled 2026-08-22): guidance for the player
+        // who has STOPPED producing, not a constant heartbeat.
+        private const float ArmAfterSeconds = 10f;
+        private float _lastGenTapAt;
+
         private void OnEnable()
         {
             DialogueRunner.DialogueOpened += OnDialogueOpened;
             DialogueRunner.DialogueClosed += OnDialogueClosed;
+            MergeBoardController.GeneratorTapped += OnGeneratorTapped;
+            _lastGenTapAt = Time.unscaledTime; // grace at boot, then arm
         }
 
         private void OnDisable()
         {
             DialogueRunner.DialogueOpened -= OnDialogueOpened;
             DialogueRunner.DialogueClosed -= OnDialogueClosed;
+            MergeBoardController.GeneratorTapped -= OnGeneratorTapped;
+            ClearVisuals();
+        }
+
+        private void OnGeneratorTapped()
+        {
+            _lastGenTapAt = Time.unscaledTime;
             ClearVisuals();
         }
 
@@ -66,7 +81,7 @@ namespace AQ.UI.Hints
 
         private void Update()
         {
-            if (Suppressed())
+            if (Suppressed() || Time.unscaledTime - _lastGenTapAt < ArmAfterSeconds)
             {
                 ClearVisuals();
                 _nextRecomputeAt = 0f;
@@ -104,7 +119,11 @@ namespace AQ.UI.Hints
             if (_dialogueOpen) return true;
             if (AQ.App.UI.StudioSplashMB.Showing) return true;
             if (GameObject.Find("FTUEFirstMergeChoreography") != null) return true;
-            if (GameObject.Find("GuidedCaseLoop") != null) return true;
+            // Only while the loop is actively directing (banner up): suppressing
+            // for its whole lifetime muted all source guidance mid-case, since
+            // the loop object survives quietly until the L2 proceed
+            // (Stephen playtest 2026-08-22: kit never pulsed).
+            if (GuidedCaseLoopMB.OwnsBoard) return true;
             return false;
         }
 
@@ -132,12 +151,19 @@ namespace AQ.UI.Hints
                 }
 
             // A required source that only exists in the Stash: the actionable
-            // step is PLACING it, so the Stash button carries the pulse.
+            // step is PLACING it, so the Stash button carries the pulse — and
+            // Gerald says why (Stephen-ruled 2026-08-22).
             foreach (var entry in OverflowBucketService.Items)
             {
                 if (entry.kind != OverflowKind.Generator) continue;
                 if (!requiredGenIds.Contains(entry.family) || onBoard.Contains(entry.family)) continue;
                 _stashPulse = true;
+                HintService.Request("stash_gen",
+                    "Look in the Stash for new tools.",
+                    () => { var go = GameObject.Find("BucketRoot"); return go != null ? go.transform : null; },
+                    () => _stashPulse
+                       && !AQ.App.UI.EvidenceBoard.EvidenceBoardScreen.IsOpen
+                       && !AQ.App.UI.Board.LockerScreen.IsOpen);
                 break;
             }
         }
@@ -188,6 +214,32 @@ namespace AQ.UI.Hints
                 }
             }
             return result;
+        }
+
+        /// <summary>
+        /// True when merging (family, tier) moves toward some UNSATISFIED lead
+        /// requirement (same family, higher tier). Gates the ghost demo: never
+        /// demonstrate a merge whose result progresses nothing (Stephen-ruled
+        /// 2026-08-22).
+        /// </summary>
+        public static bool MergeProgressesTowardNeed(LeadsRepository repo, string family, int tier)
+        {
+            if (repo == null || string.IsNullOrEmpty(family)) return false;
+            var leads = repo.CurrentLeads;
+            for (int i = 0; i < leads.Count; i++)
+            {
+                var lead = leads[i];
+                if (lead == null || lead.RuntimeState == LeadState.Blocked) continue;
+                var reqs = lead.requirements;
+                if (reqs == null) continue;
+                foreach (var req in reqs)
+                {
+                    if (req.IsSatisfied) continue;
+                    var def = req.itemDefinition;
+                    if (def != null && def.family == family && def.tier > tier) return true;
+                }
+            }
+            return false;
         }
 
         private void ClearVisuals()

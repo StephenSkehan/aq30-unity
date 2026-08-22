@@ -28,6 +28,7 @@ namespace AQ.UI.Hints
         private float _idle;
         private bool  _dialogueOpen;
         private bool  _demoShowing;
+        private bool  _pairProgresses;
         private readonly List<BoardTileView> _pulseTiles = new List<BoardTileView>();
         private MergeBoardController _board;
 
@@ -100,8 +101,11 @@ namespace AQ.UI.Hints
             if (_idle >= PulseAt && _pulseTiles.Count == 0)
                 BeginPulse();
 
-            if (_idle >= DemoAt && !_demoShowing && _pulseTiles.Count == 2)
+            if (_idle >= DemoAt && !_demoShowing && _pulseTiles.Count == 2 && _pairProgresses)
             {
+                // Demo only merges whose result moves a lead requirement forward
+                // (Stephen-ruled 2026-08-22): demonstrating a dead-end merge
+                // teaches the player to waste their own items.
                 _demoShowing = true;
                 GhostDragDemoMB.Show(_pulseTiles[0], _pulseTiles[1]);
             }
@@ -144,8 +148,11 @@ namespace AQ.UI.Hints
             if (_board == null) _board = Object.FindAnyObjectByType<MergeBoardController>();
             if (_board == null || !_board.GridReady) return;
 
-            // Prefer a mergeable pair; fall back to the generator if energy allows.
+            // Prefer a mergeable pair whose result PROGRESSES a lead requirement;
+            // any pair second; the generator last (Stephen-ruled 2026-08-22).
+            var repoForNeed = Object.FindAnyObjectByType<AQ.App.Leads.LeadsRepository>();
             var firstByKey = new Dictionary<(string fam, int tier), BoardTileView>();
+            BoardTileView fallbackA = null, fallbackB = null;
             for (int r = 0; r < _board.Rows; r++)
                 for (int c = 0; c < _board.Cols; c++)
                 {
@@ -155,12 +162,24 @@ namespace AQ.UI.Hints
                     var key = (_board.GetFamily(v), v.Tier);
                     if (firstByKey.TryGetValue(key, out var first))
                     {
-                        _pulseTiles.Add(first);
-                        _pulseTiles.Add(v);
-                        return;
+                        if (RequiredSourcePulseMB.MergeProgressesTowardNeed(repoForNeed, key.Item1, key.Item2))
+                        {
+                            _pulseTiles.Add(first);
+                            _pulseTiles.Add(v);
+                            _pairProgresses = true;
+                            return;
+                        }
+                        if (fallbackA == null) { fallbackA = first; fallbackB = v; }
                     }
-                    firstByKey[key] = v;
+                    else firstByKey[key] = v;
                 }
+            if (fallbackA != null)
+            {
+                _pulseTiles.Add(fallbackA);
+                _pulseTiles.Add(fallbackB);
+                _pairProgresses = false;
+                return;
+            }
 
             var wallet = AQ.App.Economy.WalletLocator.Instance;
             bool hasEnergy = wallet == null || wallet.Get(AQ.SharedKernel.Economy.Currency.Energy) > 0;

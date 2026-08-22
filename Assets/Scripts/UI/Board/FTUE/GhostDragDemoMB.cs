@@ -81,8 +81,12 @@ public sealed class GhostDragDemoMB : MonoBehaviour
         {
             // Pause invisibly while the player is actually dragging (the source
             // icon hides during a real drag) — never fight the player's finger.
+            // Also while a full-screen surface covers the board: the demo canvas
+            // sorts above them and haunted the evidence board (2026-08-22).
             if (!TileUsable(_from) || !TileUsable(_to) ||
-                !_from.itemImage.enabled || !_to.itemImage.enabled)
+                !_from.itemImage.enabled || !_to.itemImage.enabled ||
+                AQ.App.UI.EvidenceBoard.EvidenceBoardScreen.IsOpen ||
+                AQ.App.UI.Board.LockerScreen.IsOpen)
             {
                 _cg.alpha = 0f;
                 yield return null;

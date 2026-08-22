@@ -18,26 +18,11 @@ public class ProceedHintMB : MonoBehaviour
     RectTransform   _target;
     bool            _showing;
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    static void Bootstrap()
-    {
-        EnsureInstalled();
-        SceneManager.sceneLoaded += (_, __) => EnsureInstalled();
-    }
-
-    /// <summary>
-    /// Idempotent install — also used by the FTUE first-merge choreography to
-    /// restore the hint after suppressing it during the auto-proceed (the
-    /// one-time flag must survive for the first card the player taps themselves).
-    /// </summary>
-    public static void EnsureInstalled()
-    {
-        if (NarrativeFlags.Has(FtueFlag)) return;
-        if (GameObject.Find("ProceedHint") != null) return;
-        var go = new GameObject("ProceedHint");
-        go.AddComponent<RectTransform>();
-        go.AddComponent<ProceedHintMB>();
-    }
+    // RETIRED (Stephen-ruled 2026-08-22): the guided case loop's proceed step
+    // (green-card pulse + Gerald banner) replaced this arrow, and with the
+    // card's PROCEED button gone its anchor floated mid-board as an orphan
+    // yellow triangle. EnsureInstalled stays as a no-op for its callers.
+    public static void EnsureInstalled() { }
 
     void Start()
     {
