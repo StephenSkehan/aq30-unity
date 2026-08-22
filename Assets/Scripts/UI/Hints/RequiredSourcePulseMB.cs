@@ -23,7 +23,7 @@ namespace AQ.UI.Hints
     public sealed class RequiredSourcePulseMB : MonoBehaviour
     {
         private const float RecomputeEvery = 0.5f;
-        private const float Amplitude = 0.06f;
+        private const float Amplitude = 0.09f; // +50% (Stephen-ruled 2026-08-22)
 
         private MergeBoardController _board;
         private LeadsRepository _repo;

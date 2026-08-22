@@ -35,6 +35,12 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
     bool _dialogueOpen;
 
     readonly List<BoardTileView> _pulseTiles = new List<BoardTileView>();
+    // Non-tile pulse subjects (the green lead card on the proceed step).
+    readonly List<Transform> _pulseTransforms = new List<Transform>();
+    // The banner sits just above/below its step's subject (Stephen-ruled
+    // 2026-08-22, supersedes the fixed hint-slot placement for this banner).
+    Transform _bannerTarget;
+    float _nextBannerPlaceAt;
 
     static int Stage
     {
@@ -145,17 +151,89 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
                     if (!AQ.App.Generators.DropRoller.IsEligible(e, subGenLocked: true)) continue;
                     if (string.IsNullOrEmpty(e.itemFamily) || !seeded.Add(e.itemFamily)) continue;
 
-                    _board.PlaceFromOverflow(new AQ.App.Overflow.OverflowTileData
+                    // Seeds must not just APPEAR (Stephen-ruled 2026-08-22): note
+                    // which tiles hold this family/tier already, place, then fly
+                    // the newcomer in from the generator that fictionally made it.
+                    var before = TilesOf(e.itemFamily, 0);
+                    bool placed = _board.PlaceFromOverflow(new AQ.App.Overflow.OverflowTileData
                     {
                         kind   = AQ.App.Overflow.OverflowKind.Item,
                         family = e.itemFamily,
                         tier   = 0
                     }); // full board just refuses — fine
+                    if (!placed) continue;
+
+                    foreach (var t in TilesOf(e.itemFamily, 0))
+                        if (!before.Contains(t))
+                        {
+                            StartCoroutine(FlyInSeed(t, v));
+                            break;
+                        }
                 }
             }
 
         if (seeded.Count > 0)
             AQ.App.Analytics.GameAnalytics.LogFtueEvent("gl_seeded");
+    }
+
+    readonly List<BoardTileView> _inFlight = new List<BoardTileView>();
+
+    HashSet<BoardTileView> TilesOf(string family, int tier)
+    {
+        var set = new HashSet<BoardTileView>();
+        for (int r = 0; r < _board.Rows; r++)
+            for (int c = 0; c < _board.Cols; c++)
+            {
+                var v = _board.Get(r, c);
+                if (v != null && !v.IsEmpty && v.Kind == TileKind.Item &&
+                    v.Tier == tier && _board.GetFamily(v) == family)
+                    set.Add(v);
+            }
+        return set;
+    }
+
+    /// <summary>Slides a freshly seeded item from its generator to its cell —
+    /// spawned things come FROM somewhere (Stephen-ruled 2026-08-22).</summary>
+    IEnumerator FlyInSeed(BoardTileView newTile, BoardTileView fromGen)
+    {
+        if (newTile == null || newTile.itemImage == null) yield break;
+        _inFlight.Add(newTile);
+        var sprite = newTile.itemImage.sprite;
+        newTile.itemImage.enabled = false;
+
+        // Overlay canvas parented to this MB so an early destroy takes the
+        // flight with it (OnDestroy restores the hidden icons).
+        var go = new GameObject("__SeedFlight", typeof(Canvas));
+        go.transform.SetParent(transform, false);
+        var canvas = go.GetComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.sortingOrder = 4600;
+
+        var iconGo = new GameObject("Icon", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        iconGo.transform.SetParent(go.transform, false);
+        var rt = (RectTransform)iconGo.transform;
+        var img = iconGo.GetComponent<Image>();
+        img.sprite = sprite;
+        img.preserveAspect = true;
+        img.raycastTarget = false;
+
+        var corners = new Vector3[4];
+        ((RectTransform)newTile.itemImage.transform).GetWorldCorners(corners);
+        rt.sizeDelta = new Vector2(corners[2].x - corners[0].x, corners[2].y - corners[0].y);
+        Vector3 end = (corners[0] + corners[2]) * 0.5f;
+        Vector3 start = fromGen != null && fromGen.itemImage != null
+            ? fromGen.itemImage.transform.position : end;
+
+        for (float t = 0f; t < 0.32f; t += Time.unscaledDeltaTime)
+        {
+            if (rt == null) break;
+            rt.position = Vector3.Lerp(start, end, Mathf.SmoothStep(0f, 1f, t / 0.32f));
+            yield return null;
+        }
+
+        if (go != null) Destroy(go);
+        if (newTile != null && newTile.itemImage != null) newTile.itemImage.enabled = true;
+        _inFlight.Remove(newTile);
     }
 
     void OnDestroy()
@@ -169,6 +247,10 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         LeadsRuntimeBus.OnLeadActivated              -= OnLeadActivated;
         GhostDragDemoMB.Hide();
         ClearPulse();
+        // Any seed still mid-flight dies with us — un-hide its real icon.
+        foreach (var t in _inFlight)
+            if (t != null && t.itemImage != null) t.itemImage.enabled = true;
+        _inFlight.Clear();
     }
 
     void OnDialogueOpened(CaseGraph _) { _dialogueOpen = true;  RefreshBannerVisibility(); }
@@ -182,6 +264,8 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         // Copy Stephen-ruled 2026-08-21.
         SetBanner("Tap the kit. Every item helps.");
         PulseGenerators();
+        _bannerTarget = _pulseTiles.Count > 0 ? _pulseTiles[0].transform : null;
+        _nextBannerPlaceAt = 0f;
         AQ.App.Analytics.GameAnalytics.LogFtueEvent("gl_gen_shown");
     }
 
@@ -195,6 +279,8 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         ClearPulse();
         _pulseTiles.Add(a);
         _pulseTiles.Add(b);
+        _bannerTarget = a != null ? a.transform : null;
+        _nextBannerPlaceAt = 0f;
         GhostDragDemoMB.Show(a, b);
     }
 
@@ -204,6 +290,7 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         // and ProceedHint carry the last mile.
         _step = Step.Quiet;
         SetBanner(null);
+        _bannerTarget = null;
         ClearPulse();
         GhostDragDemoMB.Hide();
     }
@@ -215,6 +302,19 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         SetBanner("Lead's gone green. Tap it and proceed.");
         ClearPulse();
         GhostDragDemoMB.Hide();
+
+        // Pulse the green (Ready) lead card itself, banner just beneath it
+        // (Stephen-ruled 2026-08-22).
+        var cards = FindObjectsByType<LeadCardView>(FindObjectsSortMode.None);
+        foreach (var card in cards)
+            if (card != null && card.IsReadyNow)
+            {
+                _pulseTransforms.Add(card.transform);
+                _bannerTarget = card.transform;
+                _nextBannerPlaceAt = 0f;
+                break;
+            }
+
         AQ.App.Analytics.GameAnalytics.LogFtueEvent("gl_lead_ready");
     }
 
@@ -299,16 +399,56 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
             if (v != null && v.itemImage != null)
                 v.itemImage.transform.localScale = Vector3.one;
         _pulseTiles.Clear();
+
+        foreach (var t in _pulseTransforms)
+            if (t != null) t.localScale = Vector3.one;
+        _pulseTransforms.Clear();
     }
 
     void Update()
     {
-        if (_pulseTiles.Count == 0) return;
+        // Keep the banner parked by its subject (cheap, twice a second).
+        if (_bannerTarget != null && Time.unscaledTime >= _nextBannerPlaceAt)
+        {
+            _nextBannerPlaceAt = Time.unscaledTime + 0.5f;
+            PositionBannerNear(_bannerTarget);
+        }
+
+        if (_pulseTiles.Count == 0 && _pulseTransforms.Count == 0) return;
         float phase = (Mathf.Sin(Time.unscaledTime * Mathf.PI * 2f / 0.9f) + 1f) * 0.5f;
-        float scale = 1f + 0.08f * phase;
+        float scale = 1f + 0.12f * phase; // +50% (Stephen-ruled 2026-08-22)
         foreach (var v in _pulseTiles)
             if (v != null && v.itemImage != null && v.itemImage.enabled)
                 v.itemImage.transform.localScale = Vector3.one * scale;
+        foreach (var t in _pulseTransforms)
+            if (t != null) t.localScale = Vector3.one * scale;
+    }
+
+    /// <summary>
+    /// Parks the banner just BELOW its subject (or above when the subject sits
+    /// in the lower half of the screen), never covering it (Stephen-ruled
+    /// 2026-08-22; supersedes the fixed hint-slot placement for this banner).
+    /// </summary>
+    void PositionBannerNear(Transform target)
+    {
+        if (_bannerRoot == null || target == null) return;
+        var canvasRect = _bannerRoot.parent as RectTransform;
+        if (canvasRect == null) return;
+
+        Vector2 screen = target.position; // overlay canvases: world == screen px
+        if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screen, null, out var local))
+            return;
+
+        float clearance = _bannerRoot.sizeDelta.y * 0.5f + 130f; // half banner + subject + margin
+        bool below = screen.y > Screen.height * 0.5f;
+        local.y += below ? -clearance : clearance;
+
+        // Stay on screen horizontally.
+        float halfCanvas = canvasRect.rect.width * 0.5f;
+        float halfBanner = _bannerRoot.sizeDelta.x * 0.5f;
+        local.x = Mathf.Clamp(local.x, -(halfCanvas - halfBanner - 8f), halfCanvas - halfBanner - 8f);
+
+        _bannerRoot.anchoredPosition = local;
     }
 
     // ---------------- banner ----------------
@@ -328,14 +468,16 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         var panel = new GameObject("Panel", typeof(RectTransform), typeof(Image), typeof(CanvasGroup));
         panel.transform.SetParent(canvasGo.transform, false);
         _bannerRoot = (RectTransform)panel.transform;
-        _bannerRoot.sizeDelta = new Vector2(760f, 96f);
+        // 1.5x size + fully opaque (Stephen-ruled 2026-08-22): the directive
+        // banner is THE teaching surface, it should not whisper.
+        _bannerRoot.sizeDelta = new Vector2(1040f, 144f);
         _bannerRoot.anchorMin = _bannerRoot.anchorMax = new Vector2(0.5f, 0.5f);
-        // Same fixed slot as the hint chips: below the HUD, never over board cells.
+        // Fallback slot until a step parks it by its subject (PositionBannerNear).
         _bannerRoot.anchoredPosition = new Vector2(0f, 570f);
         var img = panel.GetComponent<Image>();
         img.sprite = AQ.App.UI.AQTheme.Rounded;
         img.type = Image.Type.Sliced;
-        img.color = new Color(0.13f, 0.11f, 0.07f, 0.96f); // warm dark: directive, not flavor
+        img.color = new Color(0.13f, 0.11f, 0.07f, 1f); // warm dark: directive, not flavor
         img.raycastTarget = false;
         _bannerCg = panel.GetComponent<CanvasGroup>();
         _bannerCg.blocksRaycasts = false;
@@ -346,8 +488,8 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         var art = (RectTransform)accent.transform;
         art.anchorMin = new Vector2(0f, 0f);
         art.anchorMax = new Vector2(0f, 1f);
-        art.offsetMin = new Vector2(0f, 8f);
-        art.offsetMax = new Vector2(8f, -8f);
+        art.offsetMin = new Vector2(0f, 12f);
+        art.offsetMax = new Vector2(12f, -12f);
         var aimg = accent.GetComponent<Image>();
         aimg.color = new Color(0.96f, 0.72f, 0.25f, 1f); // case-file amber
         aimg.raycastTarget = false;
@@ -363,13 +505,13 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
             var mrt = (RectTransform)pgo.transform;
             mrt.anchorMin = mrt.anchorMax = new Vector2(0f, 0.5f);
             mrt.pivot = new Vector2(0f, 0.5f);
-            mrt.sizeDelta = new Vector2(78f, 78f);
-            mrt.anchoredPosition = new Vector2(14f, 0f);
+            mrt.sizeDelta = new Vector2(118f, 118f);
+            mrt.anchoredPosition = new Vector2(18f, 0f);
             var pimg = pgo.GetComponent<Image>();
             pimg.sprite = mentor;
             pimg.preserveAspect = true;
             pimg.raycastTarget = false;
-            textLeft = 104f;
+            textLeft = 152f;
         }
 
         var txt = new GameObject("Text", typeof(RectTransform));
@@ -380,7 +522,7 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         trt.offsetMin = new Vector2(textLeft, 10f);
         trt.offsetMax = new Vector2(-20f, -10f);
         _bannerLabel = txt.AddComponent<TextMeshProUGUI>();
-        _bannerLabel.fontSize = 34f;
+        _bannerLabel.fontSize = 48f; // 1.5x (Stephen-ruled 2026-08-22)
         _bannerLabel.alignment = TextAlignmentOptions.MidlineLeft;
         _bannerLabel.color = new Color(0.94f, 0.92f, 0.86f, 1f);
         _bannerLabel.raycastTarget = false;

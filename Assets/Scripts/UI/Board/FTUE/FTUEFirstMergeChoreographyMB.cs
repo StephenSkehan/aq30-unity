@@ -278,14 +278,10 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
 
                 if (targets.Contains(v))
                 {
+                    // No blue Highlight ring (Stephen-ruled 2026-08-22): the
+                    // scale pulse + ghost-drag demonstration carry the teaching;
+                    // the ring read as noise.
                     _pulseTargets.Add(v);
-                    var hl = FindImage(v, "Highlight");
-                    if (hl != null)
-                    {
-                        if (!_dimmed.ContainsKey(hl)) _dimmed[hl] = hl.color;
-                        hl.enabled = true;
-                        _pulseHighlights.Add(hl);
-                    }
                     continue;
                 }
 
@@ -329,9 +325,10 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
     {
         if (!_guiding || _pulseTargets.Count == 0) return;
 
-        // Gentle come-hither: scale pulse on the pair, alpha pulse on their rings.
+        // Gentle come-hither: scale pulse on the pair (+50% amplitude,
+        // Stephen-ruled 2026-08-22).
         float phase = (Mathf.Sin(Time.unscaledTime * Mathf.PI * 2f / 0.9f) + 1f) * 0.5f;
-        float scale = 1f + 0.07f * phase;
+        float scale = 1f + 0.105f * phase;
         foreach (var v in _pulseTargets)
             if (v != null && v.itemImage != null && v.itemImage.enabled)
                 v.itemImage.transform.localScale = Vector3.one * scale;

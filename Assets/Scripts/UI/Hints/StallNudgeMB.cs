@@ -121,7 +121,7 @@ namespace AQ.UI.Hints
             if (_pulseTiles.Count > 0)
             {
                 float phase = (Mathf.Sin(Time.unscaledTime * Mathf.PI * 2f / 0.9f) + 1f) * 0.5f;
-                float scale = 1f + 0.07f * phase;
+                float scale = 1f + 0.105f * phase; // +50% (2026-08-22)
                 foreach (var v in _pulseTiles)
                     if (v != null && v.itemImage != null && v.itemImage.enabled)
                         v.itemImage.transform.localScale = Vector3.one * scale;

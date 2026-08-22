@@ -261,7 +261,7 @@ namespace AQ.UI.Hints
                 if (_pulseTarget != null)
                 {
                     float wave = (Mathf.Sin(Time.unscaledTime * Mathf.PI * 2f / 0.9f) + 1f) * 0.5f;
-                    _pulseTarget.localScale = _pulseBaseScale * (1f + 0.08f * wave);
+                    _pulseTarget.localScale = _pulseBaseScale * (1f + 0.12f * wave); // +50% (2026-08-22)
                 }
 
                 // X-close only (Stephen-ruled 2026-08-14) — tap handled by the

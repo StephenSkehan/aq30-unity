@@ -59,7 +59,7 @@ namespace AQ.App.UI.Common
                 {
                     t += Time.unscaledDeltaTime;
                     float phase = (Mathf.Sin(t * Mathf.PI * 2f / 0.9f) + 1f) * 0.5f;
-                    tile.itemImage.transform.localScale = Vector3.one * (1f + 0.10f * phase);
+                    tile.itemImage.transform.localScale = Vector3.one * (1f + 0.15f * phase); // +50% (2026-08-22)
                     yield return null;
                 }
                 if (tile != null && tile.itemImage != null)
