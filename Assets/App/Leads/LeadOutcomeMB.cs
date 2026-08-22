@@ -63,13 +63,15 @@ namespace AQ.App.Leads
 
             if (!string.IsNullOrEmpty(lead.generatorRewardTypeId))
             {
+                // announce: the advise popup names the reward on the board
+                // screen and flies it to the Stash (Stephen-ruled 2026-08-22 —
+                // rewards were vanishing into the bucket unremarked).
                 OverflowBucketService.Push(new OverflowTileData
                 {
                     kind   = OverflowKind.Generator,
                     family = lead.generatorRewardTypeId,
                     tier   = lead.generatorRewardTier
-                });
-                AQ.App.UI.FlightFX.FlyToOverflow();
+                }, announce: true);
             }
 
             // Toast comes from SpecialsTrayView's Changed handler (this assembly

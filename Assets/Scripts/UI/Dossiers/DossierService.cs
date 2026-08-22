@@ -97,13 +97,14 @@ namespace AQ.App.UI.Dossiers
                     // A reward can outrun board discovery (e.g. a T6 flute) —
                     // it is in Ally's file now, so it counts as seen.
                     Common.ItemDiscoveryService.Mark(reward.family, reward.tier);
+                    // announce: the advise popup surfaces the reward + flies it
+                    // to the Stash (Stephen-ruled 2026-08-22).
                     OverflowBucketService.Push(new OverflowTileData
                     {
                         kind   = OverflowKind.Item,
                         family = reward.family,
                         tier   = reward.tier
-                    });
-                    FlightFX.FlyToOverflow();
+                    }, announce: true);
                     break;
                 case DossierRewardKind.Special:
                     SpecialItemsService.Grant(reward.special); // Case Kit toast rides the tray bridge

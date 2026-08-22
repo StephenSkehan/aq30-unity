@@ -32,6 +32,19 @@ namespace AQ.App.Overflow
 
         public static event Action BucketChanged;
 
+        /// <summary>A REWARD landed in the stash (lead outcome, dossier grant) —
+        /// consumed by the advise popup so awards never vanish into the bucket
+        /// unannounced (Stephen-ruled 2026-08-22). Deliberate transfers (shop
+        /// purchases, board spares) do not raise it.</summary>
+        public static event Action<OverflowTileData> RewardArrived;
+
+        /// <summary>Push that announces itself as a reward.</summary>
+        public static void Push(OverflowTileData tile, bool announce)
+        {
+            Push(tile);
+            if (announce) RewardArrived?.Invoke(tile);
+        }
+
         public static int Count => _stack.Count;
         public static bool IsEmpty => _stack.Count == 0;
 
