@@ -100,7 +100,7 @@ MonoBehaviour:
     nextId: E1_L12_N7
     choices: []
   - id: E1_L12_N7
-    speaker: "â€¦"
+    speaker: "…"
     line: "[Somewhere: this episode, playing. A click. Silence. A diesel engine starts.]"
     portrait: {fileID: 0}
     emotion: 0
