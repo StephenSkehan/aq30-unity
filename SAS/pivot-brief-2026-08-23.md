@@ -64,6 +64,8 @@ G and I share a 1989 spine and are mutually exclusive. H banks cleanly alongside
 
 No premise may use a real-world timer that punishes absence. A premise whose hook depends on an hours-scale pursuit must convert to a lead-state clock or name its structural problem rather than hide it.
 
+**Havenbay recording law (Stephen-ruled 2026-08-24).** Havenbay is an all-party consent jurisdiction. Recording a private conversation without every party's consent is an offence **except** where reasonably necessary to protect the recorder's lawful interests or to preserve evidence of a serious offence. **Publishing such a recording is a separate and stricter offence**, with narrow exceptions: disclosure to police, legal proceedings, or the consent of the parties. So a recording can be lawful to make and unlawful to broadcast, which makes any publish-it branch a genuine sacrifice rather than a tactic, and gives the quiet route its own lawful mechanism. The Tip Line is unaffected: a caller consents by leaving a message. Full detail and rationale in bible §2.3.1.
+
 **Method rules.** Forced ranking with no ties, never absolute scores. External benchmarks (real true-crime pilots), not internal comparison. Tester evidence outranks everything. Say "I do not know" rather than filling a gap.
 
 **House prose rules, binding on every line of game-facing text.** No em dashes. No exclamation marks. Grounded deadpan noir; understatement over melodrama; never explain the subtext. Every line must parse at listening speed. Numbers spelled out in spoken lines. "Grandad", one d. "Okay" spelled out. The tip-line announcer format is "Message received: [weekday], [time]", weekday and time only, never a calendar date.

@@ -121,6 +121,26 @@ Each district is a playable hub with its own texture, landmarks, and case flavor
 - **Havenbay University.** Journalism and forensic sciences; scholarship kids and legacy donors; the institutional-bureaucracy antagonist of the Ghost Student case.
 - **Transport.** The Bayline elevated rail and streetcars; the Harbor Ferry Terminal (lockers, pylons, handoffs); Havenbay International Airport (private jets, quiet cargo); cab drivers who hear everything.
 
+### 2.3.1 Havenbay recording law (Stephen-ruled 2026-08-24)
+
+Havenbay is an **all-party consent** jurisdiction, and the rule has two separate limbs, which is where the drama lives.
+
+**Making a recording.** Recording a private conversation without the consent of every party is an offence, **except** where the recording is reasonably necessary to protect the lawful interests of the person making it, or to preserve evidence of a serious offence.
+
+**Publishing a recording.** Communicating or publishing such a recording is a **separate and stricter** offence. Narrow exceptions only: disclosure to police, use in legal proceedings, or the consent of the parties recorded.
+
+**What this means in practice, and why it was ruled this way rather than as one-party consent.**
+
+- **Gerald's recording of Frank Doyle is lawful to make and unlawful to broadcast.** He is a retired detective who reasonably believed a homicide was being disclosed by a man who would deny it by morning. He was right; Doyle was dead by breakfast. The exception fits, so Gerald stays competent, which a flat prohibition would not have allowed.
+- **Airing a tape is a sacrifice, never a tactic.** Ally broadcasting it commits an offence in public and on the record, and exposes whoever made the recording. Any episode branch built on publication must price that in.
+- **There is a lawful quiet route.** Disclosure to police is an exception, so Ally can play a recording to Del privately. The quiet path has a mechanism of its own rather than being merely the absence of the loud one.
+- **The Tip Line is unaffected.** A caller who rings a line and leaves a message consents by the act. This is why the Tip Line works as an object-character and why the archive is lawful.
+- **Ally asks before she records an interview, on microphone.** It is real podcast practice, it demonstrates evidential discipline without a speech about it, and it makes any covert recording she does make a decision with a price rather than a free tool.
+
+**Exposition budget:** the player never needs the statute. One line from Del at the moment of choosing carries it. Register: *you can play me that, you can't play it to Havenbay.*
+
+*Note: this is chosen worldbuilding, not researched law. It follows the recognisable shape of all-party-consent regimes so a player finds it credible. Havenbay is fictional and the rule is ours to set; the constraint is only that it must not grant anyone a power institutions do not plausibly have.*
+
 ## 2.4 The Rusty Anchor
 
 The bar is as much a character as any person in Ally's world. Founded **1924** by **Patrick Callahan** as *Callahan's Dockside* (a "soda shop" front through Prohibition); renamed **The Rusty Anchor** in the 1970s by his son **Seamus**, after the salvaged shipwreck anchor now bolted by the door under a battered green neon sign; inherited in the 2000s by Seamus's daughter **Moira "Mo" Callahan**, who keeps it what it has always been: **neutral ground**. Cops and crooks drink under the same roof; city officials slip in for a whisky away from prying eyes; violence goes outside, whoever you are — and because everyone trusts the rule, Mo hears everything.
