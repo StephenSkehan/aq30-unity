@@ -1,6 +1,6 @@
-# Episode 1 Pitches, Round 3.1 — The Murder Pilot, with Agency Maps
+# Episode 1 Pitches, Round 3.2 — The Murder Pilot, with Agency Maps
 
-**Date:** 2026-08-23 (v3 body) · **Revised:** 2026-08-23 (v3.1 agency and charter pass) · **Status:** AWAITING PREMISE RULING · **Decision input:** the table-read in Appendix A, not this document.
+**Date:** 2026-08-23 (v3 body) · **Revised:** 2026-08-24 (v3.2 deficit annotation and clock ruling; v3.1 agency and charter pass 2026-08-23) · **Status:** AWAITING PREMISE RULING · **Decision input:** the table-read in Appendix A, not this document.
 
 **Trigger:** 12/12 F&F testers on The Listener: "no jeopardy, too safe, not real true crime, didn't finish." Stephen-ruled 2026-08-23: dates shelved, compelling pilot or no release; murder-led; The Listener demotes to mid-season (dread pass later); episode length is decided by the story, not the skeleton (expect 15-20+ leads); economy models regenerate to fit.
 
@@ -25,6 +25,18 @@ Four things, in order of consequence.
 - `LeadData.BranchOutcomes` (a label plus SpawnLeadIds) exists as a serialized field with **no runtime consumer anywhere in the project**. It is a stub.
 
 **So no flag can currently change which leads exist.** The bridge every map below depends on is one work item, specified in 1.5. It is small. It must land before any agency map is real, and it should be built and tested before the skeleton pass, not during it.
+
+### 0.5 What v3.2 changed, and what it deliberately did not
+
+Each pitch was audited against the standard in `SAS/prompt-kit-new-episode-pitches-v1.md`. Nine gaps were found. **Only one was repaired.**
+
+**Repaired:** Pitch G's cold open carried four proper nouns in sixty seconds, two of which mean nothing to a listener with no Havenbay context. That is the one gap that would bias the table-read, because the cold open is the only part of a pitch a tester ever hears, and leaving it would have tested G's formatting rather than G's premise. It is retrimmed below and now carries no name a stranger must hold. Each pitch also now states its clock structure, per the ruling of 2026-08-24.
+
+**Deliberately not repaired:** everything else. The remaining gaps are not evenly distributed, and that unevenness is the most useful discriminating information in this document. H is the weakest on Havenbay-necessity and on saying what the player physically reconstructs. I is the only pitch that fails the branching cost ceiling. G is the only one whose season notch has a real fact under the coin. Patching all three to a common standard would erase exactly the signal needed to choose between them, and would reproduce the condition that made the original scorecards worthless: three candidates that all look equally competent.
+
+So each pitch now ends with an honest block titled **what this pitch does not have yet**. Read the pitch and its deficit together. A short block is a finding.
+
+**Deferred to the skeleton pass:** the structural repairs (a named beneficiary of the crime, a plausible wrong hypothesis, a Havenbay fact that changes the solution rather than decorating it, a season notch that is not the coin, and Ally's missing warmth beat and irreversible change). Each is two to three leads of structure per pitch. Doing that three times throws away two thirds of it, and doing it before the ruling means doing it without knowing the cast, economy or art budget it has to fit.
 
 ---
 
@@ -114,8 +126,10 @@ Added 2026-08-23 after a craft note on thriller propulsion (Dan Brown's engine, 
 **Cold open (the hook is lines, not premise, first 60 seconds):**
 
 > ANNOUNCER: "Message received: Saturday, eleven fifty-one p.m."
-> MO (voicemail, low, the bar noise gone): "Ally. It's Mo. Not an emergency. Except I think it might be. There's a man in Gerald's booth who's been nursing one whiskey for four hours, and he just told your grandad something I wish I hadn't heard. Gerald's writing it down. Come when you can, my lovely. Come tonight."
-> ALLY (on-mic): "By the time I got there, the man was gone. Gerald was still in the booth. He hadn't touched his glass. He slid his notebook across the table and said: read it twice, love. Because tomorrow he'll deny it, and by Monday he'll be dead. He was wrong about one thing. Frank Doyle didn't live until Monday."
+> A WOMAN (voicemail, low, the bar noise gone from behind her): "It's me, my lovely. Not an emergency. Except I think it might be. There's a man in your grandad's booth who's been nursing one whiskey for four hours, and he's just told him something I wish I hadn't heard. Your grandad's writing it down. Come tonight."
+> ALLY (on-mic): "By the time I got there, the man was gone. My grandad was still in the booth. He hadn't touched his glass. He slid his notebook across the table and said: read it twice, love. Because tomorrow he'll deny it, and by Monday he'll be dead. He was wrong about one thing. The man in the booth didn't live until Monday."
+
+*Retrimmed 2026-08-24 for the blind read. Mo and Gerald are no longer named, because a listener with no Havenbay context cannot hold them and the previous version spent its first forty seconds establishing a relationship the listener does not have; both are identifiable to a player from the voice and the endearment. Frank Doyle's name moves out of the button for the same reason: "the man in the booth" is colder and needs nothing. The in-game version restores all three names.*
 
 **The case, two threads braided:**
 - **1989 (the confession):** Doyle, a foundry night-shift foreman, killed a man named Wren Kellaway in a dispute that was staged as a drunken fall into the harbour. Kellaway was written off as a drunk; his younger sister **June Kellaway** (the keeper) has spent thirty-seven years being told her brother drowned in shame. Doyle names the thing 1989 could not: he was PAID to make it look that way. He never knew the payer's face. Only a voice, an envelope, and a coin left in his coat pocket he never dared spend.
@@ -160,6 +174,19 @@ Every decision in G is the same question in a different costume: **who do you tr
 **Count: six play-changing decisions, spread 2 / 2 / 2 across three phases. Gate cleared.** Mix: three class A, two class B, one class C. Added VO ~14 lines. Added authored leads +4 (two sibling pairs; the two P3 chains net out against the unbranched P3).
 
 **What G's map does not do:** it never lets the player be wrong. Every route reaches the arrest. That is a defensible protective-genre choice, because custody stories are about cost rather than failure, but it means G carries the least *risk* of the three maps, and risk is a large part of what agency feels like.
+
+
+**Clock structure: day-stamped.** Saturday night through the following week, as The Listener ran Day 1 to Day 6. Overnight gaps are plausible because the second half of the episode is a protection detail, and protection has natural downtime.
+
+### What Pitch G does not have yet
+
+- **No named beneficiary.** The proxy who administered the injection is a casting note, not a solution, and the paymaster is deliberately a name on dissolved paperwork. Nobody in this episode is visibly getting away with anything the player can point at. Needs: who profited from Wren Kellaway's death in 1989, and who has been paying for the silence since.
+- **No wrong hypothesis.** There is nothing Ally believes and has to abandon, so the player never gets to be wrong and never earns the recontextualisation.
+- **Havenbay-flavoured, not Havenbay-dependent.** The Rusty Anchor is the crime scene, but a scene is a setting. Nothing yet is a civic or environmental fact that changes the solution. The thirty-seven mooring receipts are the closest candidate and are not doing that work yet.
+- **The coin is carrying the season notch.** "He was paid" is the real fact and should carry it instead. G is the best placed of the three to do this, because paid silence is already an economy rather than an icon.
+- **Ally is missing two of her required beats.** Her warmth beat is currently Mo closing the bar and cooking for the wake, which is Mo's warmth. And nothing in the episode changes Ally irreversibly by the end.
+- **Untested assumption at the centre.** That ninety seconds of tutorial hint chips fronted by Gerald's portrait produces attachment rather than recognition. Table-read question 2 tests it directly.
+
 
 ---
 
@@ -221,6 +248,20 @@ This is the cheapest agency design in the document, and the only one whose endin
 
 **Why this map is not optional for H.** See 5.4.1. The chase clock is H's biggest strength on the page and its biggest liability in a merge game played across days. Triage is the fix, because it makes the clock diegetic to *lead count* rather than to wall-clock time: the hunter advances when you advance. Without triage, H's "head start measured in hours" collides with an energy economy that meters play across a week. **Ruling for H is ruling for triage.**
 
+
+**Clock structure: lead-state.** The hunter advances when the player resolves a lead, not when time passes. This is not a preference. H's hook is a head start measured in hours and a merge economy meters play across days, so a wall-clock reading of this premise is outrun by a player who goes to sleep. Triage is what makes the clock diegetic, which is why ruling for H is ruling for triage.
+
+### What Pitch H does not have yet
+
+- **The weakest Havenbay case of the three.** The escape network is personal rather than civic. No tide, fog, harbour geometry, transport pattern or dockside memory changes what can be seen, proved or reached. As written, this is a strong thriller that could be relocated to any port city with a diner, which is the opposite of what the Harper test asks for.
+- **The evidence engine is a claim, not a mechanic.** "Every lead is a breadcrumb Nina keyed to the show's archive, so the merge requirements ARE the decoding" states an intention. It does not say what the player physically reconstructs, what conclusion that makes possible, or what action the conclusion unlocks. G and I can both answer that question. H cannot yet.
+- **No named beneficiary.** Kroll is hired, layered, "a receipt not a reason", and the manifests point at a shell that dissolves under a warrant. The episode ends with a professional in custody and no one to be angry at.
+- **No wrong hypothesis.**
+- **Split keeper.** Grief sits with the clerk's widow, danger sits with Nina, and the emotional thread runs through Nina's brother. Three strands, none of them the spine. G concentrates grief in June and I concentrates it in the witness; H spreads it, and spread grief is thin grief.
+- **Ally is missing two of her required beats,** the same two as G: no warmth action that costs her something, and no irreversible change by the ending.
+- **Tutorial collision.** The Kestrel Corner Diner is Del's canon table, the food generator, and a space the tutorial teaches in. Week one turns it into a crime-adjacent location. That is a tonal cost, not a bonus.
+
+
 ---
 ## PITCH I — "The Last Caller" (engineered hybrid: G's present-tense murder braided with H's chase, on The Listener's best device)
 
@@ -239,7 +280,7 @@ This is the cheapest agency design in the document, and the only one whose endin
 
 **What it borrows:** The Listener's wordless-interruption horror and tip-line-native evidence, the strongest devices we built, now with a body under them · G's confession-and-silencing braid, Cortez entrance, and voice-only victim economy · H's hunted-witness clock and polite midpoint visitor. **What it risks:** doing everything and therefore having no identity of its own; three casts of load on one witness character; the 12:04 interrupter needing an eventual face without spending season villains, so an episode-level proxy is required, Kroll eligible.
 
-**Cast and art cost:** between G and H. The caller is voice-only; the witness is one new full sheet; Cortez; an episode proxy. Backgrounds: foundry basin (shared with G if both advance), the witness's inland town (one master).
+**Cast and art cost:** between G and H, **but it fails the branching cost ceiling.** Two class C branches (I3's three candidate witnesses, I4's hold-or-publish chain) against a limit of one. The fix is to demote I3 to evidence-only, which removes the scenes and keeps the deduction, and I3 is the best detective beat in the document. I's strongest feature is the thing that makes it unaffordable. The caller is voice-only; the witness is one new full sheet; Cortez; an episode proxy. Backgrounds: foundry basin (shared with G if both advance), the witness's inland town (one master).
 
 **Coin plant:** in the dead caller's effects, sewn into a coat lining, the unspent 1989 coin. Same mint as G's.
 
@@ -263,6 +304,19 @@ I is the only premise where the player's *show* is the instrument. So the signat
 **Count: six play-changing decisions, spread 2 / 2 / 2, with the highest agency density of the three. Gate cleared.** Mix: three class A, one B, two class C. Added VO ~18 lines. Added authored leads +6, the largest bill in the document.
 
 **The structural problem the map must solve.** I's most important character does not appear until Phase 3. A keeper the player has not met cannot carry two thirds of an episode. The mitigation is the Tip Line precedent used again: **the witness is present from Phase 1 as artefacts.** A school photograph, her handwriting on a class register, her voice on a 1989 recording, the name three people almost say. By the time she opens a door, the player should feel they already know her, exactly as they will know Doyle in G without seeing his face. If that is not built in deliberately, I's Phase 3 lands on a stranger.
+
+
+**Clock structure: day-stamped.** The tape lands at 12:04 on a Wednesday, the body is found by morning, and the hunt for the witness runs across days. The interrupter's proximity advances on phase turns rather than on the wall clock.
+
+### What Pitch I does not have yet
+
+- **It fails the branching cost ceiling.** Two class C branches against a limit of one. See the production line above; the fix costs the pitch its best feature.
+- **The keeper is absent for two thirds of the episode.** The artefact-presence mitigation is designed and unbuilt, and if it is skipped under schedule pressure the emotional payoff lands on a stranger.
+- **No named interrupter.** The pitch admits this itself: the 12:04 presence needs an eventual face without spending a season villain.
+- **No wrong hypothesis,** although the three-candidate structure is the closest any pitch in this document comes to one. That is the cheapest place in the whole slate to add a real false trail.
+- **The structural echo.** Interrupted recording, reconstruct it, find the woman. That is the shape of the pilot twelve of twelve testers abandoned. A murder in the first minute changes the stakes and does not change the shape. This is the strongest single premise in the document and the one that most resembles the thing that already failed with this exact audience.
+- **Havenbay identifies, it does not decide.** The foghorn interval is the best location detail in the slate and it is used to locate a caller, not to change the solution.
+
 
 ---
 
