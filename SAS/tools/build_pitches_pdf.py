@@ -130,8 +130,19 @@ def main():
     body_md = preprocess(md_text)
     body = markdown.markdown(body_md, extensions=["tables", "sane_lists", "md_in_html"])
 
-    page = HEAD + body + TAIL
+    # PDF metadata title comes from the document's own first H1, never a
+    # hardcoded literal. A stale <title> shipped "Episode 1 Pitches v3.1" as the
+    # metadata of every document this builder produced, which an external
+    # conformance audit caught.
+    m = re.search(r"<!--\s*pdf-title:\s*(.+?)\s*-->", md_text)
+    if not m:
+        m = re.search(r"^#\s+(.+?)\s*$", md_text, re.M)
+    doc_title = m.group(1) if m else STEM_OUT
+    doc_title = re.sub(r"[*_`]", "", doc_title).strip()
+
+    page = HEAD.replace("__DOC_TITLE__", doc_title) + body + TAIL
     io.open(HTML, "w", encoding="utf-8").write(page)
+    print("title:", doc_title)
     print("wrote", HTML, len(page), "bytes")
 
     chrome = next((c for c in CHROME if os.path.exists(c)), None)
@@ -161,7 +172,7 @@ def main():
 
 
 HEAD = """<!DOCTYPE html><html><head><meta charset="utf-8">
-<title>Episode 1 Pitches v3.1</title>
+<title>__DOC_TITLE__</title>
 <style>
   @page { size: A4; margin: 16mm 15mm 18mm; }
   body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0;
