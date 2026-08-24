@@ -7,13 +7,21 @@ stays a table, including the section 6 comparison grid.
 Usage:  python SAS/tools/build_pitches_pdf.py
 Requires: markdown (pip), Chrome for --headless --print-to-pdf.
 """
-import io, os, re, subprocess, sys
+import io, os, re, subprocess, sys, time
 import markdown
 
 ROOT = r"C:\users\user\dev\aq30-unity"
-SRC = os.path.join(ROOT, "SAS", "episode-1-pitches-v3-murder-pilot.md")
-HTML = os.path.join(ROOT, "SAS", "episode-1-pitches-v3.1.html")
-PDF = os.path.join(ROOT, "SAS", "episode-1-pitches-v3.1.pdf")
+
+# Default target is the working pitch document. Pass a stem to build any other
+# SAS markdown file with the same house styling:
+#   python SAS/tools/build_pitches_pdf.py episode-1-story-pack
+STEM_IN  = sys.argv[1] if len(sys.argv) > 1 else "episode-1-pitches-v3-murder-pilot"
+STEM_OUT = sys.argv[2] if len(sys.argv) > 2 else (
+    STEM_IN if len(sys.argv) > 1 else "episode-1-pitches-v3.1")
+
+SRC  = os.path.join(ROOT, "SAS", STEM_IN + ".md")
+HTML = os.path.join(ROOT, "SAS", STEM_OUT + ".html")
+PDF  = os.path.join(ROOT, "SAS", STEM_OUT + ".pdf")
 
 CHROME = [
     r"C:\Program Files\Google\Chrome\Application\chrome.exe",
@@ -137,6 +145,17 @@ def main():
          "--no-pdf-header-footer", "--print-to-pdf=" + PDF, url],
         check=True, timeout=180,
     )
+    # Chrome has been observed to return before the PDF is fully flushed, which
+    # once produced a commit containing a stale file. Wait for the size to settle.
+    last, stable = -1, 0
+    for _ in range(40):
+        size = os.path.getsize(PDF) if os.path.exists(PDF) else 0
+        stable = stable + 1 if size == last and size > 0 else 0
+        if stable >= 3:
+            break
+        last = size
+        time.sleep(0.25)
+
     print("wrote", PDF, os.path.getsize(PDF), "bytes")
     return 0
 
