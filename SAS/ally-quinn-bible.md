@@ -260,9 +260,9 @@ Harbor Ward born, Puerto Rican descent; the grey zone between legality and crime
 
 Third-generation keeper of the family bar (§2.4) and of the neutral ground it stands for. Has known Gerald since his working days; helped look after Ally in the year after Thomas died — the back room, a cola, a jigsaw puzzle — and treats her as family still. Behind the no-nonsense front is the sharpest people-reader on the waterfront and a locked office of ledgers, matchbooks, and favors owed. She remembers everything and everyone: it was Mo who could put a name to three seconds of Dot's voice — "Dorothy Ellis. Cleaned Chandler Road school for thirty years. Tuesday quiz, table six — tell her it misses her."
 
-**Relationship to Ally.** Informal protector, supplier of street-level truth, keeper of her confidences — and the one adult who'll tell her when she's being reckless: "Baby, you're chasing a storm in a raincoat full of holes. Be careful."
+**Relationship to Ally.** Informal protector, supplier of street-level truth, keeper of her confidences — and the one adult who'll tell her when she's being reckless: "You're chasing a storm in a raincoat full of holes, my lovely. Be careful."
 
-**Voice.** Warm, unhurried, terminally unimpressed; endearments as punctuation ("hon," "sugar"); a bar towel's worth of wisdom per line. "I'll tell you, honey, that man's lying so bad I can see his nose growing from here."
+**Voice (locked register).** Warm, unhurried, terminally unimpressed; a bar towel's worth of wisdom per line. **Endearment: "my lovely", hers alone and the only one she uses.** The endearment map is closed (Gerald and Dot say "love", Mo says "my lovely", Del says "Quinny"); the legacy "hon"/"sugar"/"honey" register recorded here before the 2026-07-31 ruling is RETIRED and contradicts her shipped dialogue. Locked sample, live in `Resolve_E1_Bridge`: "Well, look what the tide brings. The corner booth, my lovely. Where else would he be? Go on through. I'll bring the usuals."
 
 **Appearance (locked).** Sturdy build, strong forearms; silver-streaked copper hair pinned up loosely (streak pattern exact per approved portrait); dark green henley, sleeves pushed up, bar towel over one shoulder; small gold claddagh ring. **Her signature warm amber light is an approved exception to the global noir key.**
 
