@@ -30,21 +30,47 @@ namespace AQ.App.Leads
             CheckAndUnlockBlockedLeads();
         }
 
+        /// <summary>
+        /// The agency gate: a lead may carry a requiresFlag and/or a forbidsFlag, read from
+        /// the unified GameFlags store. A player choice sets a flag through dialogue
+        /// (CaseGraph.Node.setsFlag), and that flag decides which of two sibling leads exists.
+        /// Empty strings mean "no condition", so leads without a gate are unaffected.
+        /// </summary>
+        public static bool FlagGateOpen(LeadData lead)
+        {
+            if (lead == null) return false;
+            if (!string.IsNullOrEmpty(lead.requiresFlag) && !GameFlags.Has(lead.requiresFlag)) return false;
+            if (!string.IsNullOrEmpty(lead.forbidsFlag) && GameFlags.Has(lead.forbidsFlag)) return false;
+            return true;
+        }
+
+        private static bool HasFlagGate(LeadData lead)
+            => !string.IsNullOrEmpty(lead.requiresFlag) || !string.IsNullOrEmpty(lead.forbidsFlag);
+
         private void CheckAndUnlockBlockedLeads()
         {
             bool anyUnlocked = false;
             foreach (var lead in _current)
             {
                 if (lead == null || lead.RuntimeState != LeadState.Blocked) continue;
-                if (lead.RequiredLeadIds == null || lead.RequiredLeadIds.Length == 0) continue;
+
+                bool hasLeadGate = lead.RequiredLeadIds != null && lead.RequiredLeadIds.Length > 0;
+                if (!hasLeadGate && !HasFlagGate(lead)) continue;
 
                 bool allSatisfied = true;
-                foreach (var requiredId in lead.RequiredLeadIds)
+                if (hasLeadGate)
                 {
-                    if (!_activatedLeadIds.Contains(requiredId)) { allSatisfied = false; break; }
+                    foreach (var requiredId in lead.RequiredLeadIds)
+                    {
+                        if (!_activatedLeadIds.Contains(requiredId)) { allSatisfied = false; break; }
+                    }
                 }
 
-                if (allSatisfied)
+                // The flag gate is checked in the same scan rather than only at spawn time:
+                // per the robustness rules a periodic state-scan is the guarantee and the
+                // spawn-time check is the optimization. A flag set after the lead was
+                // spawned still opens it.
+                if (allSatisfied && FlagGateOpen(lead))
                 {
                     // Zero-requirement leads go straight to Ready — the requirement
                     // checker's recompute loop is the only other Ready assigner and
@@ -119,9 +145,11 @@ namespace AQ.App.Leads
         {
             if (lead == null) return;
 
+            bool gateOpen = FlagGateOpen(lead);
+
             if (_current.Contains(lead))
             {
-                if (lead.RuntimeState == LeadState.Blocked)
+                if (lead.RuntimeState == LeadState.Blocked && gateOpen)
                 {
                     lead.RuntimeState = HasNoRequirements(lead) ? LeadState.Ready : LeadState.Available;
                     Broadcast();
@@ -129,9 +157,17 @@ namespace AQ.App.Leads
                 return;
             }
 
+            // A lead whose flag gate is shut is still added, as Blocked. The caller
+            // spawns the whole superset of siblings and the flags decide which one the
+            // player gets; keeping the shut one in the list means CheckAndUnlockBlockedLeads
+            // can still open it if its flag arrives later. Blocked leads are never
+            // activated, so they cannot advance case progress.
+            //
             // Zero-requirement leads (ep2_teaser) spawn Ready: nothing exists for
             // the requirement checker to satisfy, so Available would be a dead end.
-            lead.RuntimeState = HasNoRequirements(lead) ? LeadState.Ready : LeadState.Available;
+            lead.RuntimeState = !gateOpen
+                ? LeadState.Blocked
+                : HasNoRequirements(lead) ? LeadState.Ready : LeadState.Available;
             if (lead.requirements != null)
                 for (int i = 0; i < lead.requirements.Length; i++)
                     lead.SetRequirementSatisfied(i, false);
@@ -207,7 +243,7 @@ namespace AQ.App.Leads
                 }
             }
 
-            // Re-evaluate RequiredLeadIds gates the save may predate: a lead added
+            // Re-evaluate the RequiredLeadIds and flag gates the save may predate: a lead added
             // (or re-gated) by a content update restores as design-time Blocked even
             // when its prerequisites are all in the restored activated set — and
             // OnLeadActivated never fires again for already-activated leads, so
@@ -220,6 +256,7 @@ namespace AQ.App.Leads
             {
                 if (lead == null || lead.RuntimeState != LeadState.Available) continue;
                 if (!HasNoRequirements(lead)) continue;
+                if (!FlagGateOpen(lead)) continue;
                 lead.RuntimeState = LeadState.Ready;
             }
 
