@@ -1,6 +1,14 @@
-# PROMPT KIT — new episode pitch generation (v1)
+# PROMPT KIT — new episode pitch generation (v1) — RETIRED
 
-**Status:** CURRENT, Stephen-approved 2026-08-24 · **Use:** paste the block below into an external model that has the AQ30 source pack loaded, or adapt it in-session.
+> **RETIRED 2026-08-24, same day it was approved. Superseded by `SAS/prompt-kit-ep1-challengers-v2.0.pdf`** (document ID AQ-NAR-PROMPT-EP1-CHALLENGERS, version 2.0), which is the controlled artifact and the one to run.
+>
+> **Why it was retired.** It was executed once and it failed. It tested story architecture thoroughly and never made operational plausibility a precondition, so it promoted a premise called "The Wrong Name" in which a body-transfer contractor removed a suspicious body and drove an immediate cremation using forged order forms. In ordinary practice, police and coroner authority, custody, examination and release controls all intervene long before that is possible. The workflow carried the defect as a caveat instead of rejecting the seed, which is exactly the failure class this project keeps hitting: a compelling hook buying permission for something that cannot happen.
+>
+> **The controlling principle v2.0 adds:** a compelling hook never earns permission to invent institutional powers. Documents record or communicate authority. They do not create powers the issuing actor does not possess.
+>
+> This file is kept unaltered below as the superseded baseline, per the change-control rule in v2.0. Do not run it, do not repair it, and do not merge parts of it into the current version.
+
+**Status:** RETIRED 2026-08-24 (was: CURRENT, Stephen-approved 2026-08-24) · **Use:** paste the block below into an external model that has the AQ30 source pack loaded, or adapt it in-session.
 
 **What it is.** A reusable execution-ready prompt for generating murder-led episode pitch candidates that arrive complete: full solution, evidence chain, agency map, criminal economy, production reality and a self-adversarial finding, rather than a seductive one-paragraph concept with an empty middle.
 
