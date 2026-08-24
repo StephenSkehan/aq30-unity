@@ -56,6 +56,14 @@ G and I share a 1989 spine and are mutually exclusive. H banks cleanly alongside
 3. The midpoint changes what the player is **doing**, not merely what they know.
 4. **Agency:** count decisions that change which leads spawn, what the player does next, or what the ending is. Fewer than four is a fail. **A single end-of-episode gate is an automatic fail.**
 
+**The clock convention (Stephen-ruled 2026-08-24).** Kill-gate 2 demands a countdown, and this is a merge game whose energy regenerates every one hundred and fifty seconds across a fifteen-to-twenty lead episode, so a real player experiences a pilot across several days and several sessions. A countdown measured in hours is outrun by a player who goes to sleep. Three structures exist and only two are available:
+
+- **Day-stamped clock. The default.** Events progress across authored days, overnight gaps made plausible in the fiction. Proven and shipped: The Listener ran Day 1 Monday through Day 6 Saturday. Zero engineering.
+- **Lead-state clock. Approved for chase premises.** The antagonist advances when specified leads resolve, so story time moves at the player's pace and the pressure is diegetic to play. Near-free once the flag gate exists.
+- **Session-contained window. PARKED, not available for Episode 1.** A short urgent sequence beginning on activation and resolving before normal pacing resumes. Genuinely the best fit for a chase, and it carries a hazard: if the player runs out of energy inside the window you either break the fiction or gate them out of a climax, which puts a paywall-shaped moment at the worst point in the episode. Solvable (suspend energy inside the window, or pre-grant), but it is engineering and design work, not a convention. Revisit after the pilot ships.
+
+No premise may use a real-world timer that punishes absence. A premise whose hook depends on an hours-scale pursuit must convert to a lead-state clock or name its structural problem rather than hide it.
+
 **Method rules.** Forced ranking with no ties, never absolute scores. External benchmarks (real true-crime pilots), not internal comparison. Tester evidence outranks everything. Say "I do not know" rather than filling a gap.
 
 **House prose rules, binding on every line of game-facing text.** No em dashes. No exclamation marks. Grounded deadpan noir; understatement over melodrama; never explain the subtext. Every line must parse at listening speed. Numbers spelled out in spoken lines. "Grandad", one d. "Okay" spelled out. The tip-line announcer format is "Message received: [weekday], [time]", weekday and time only, never a calendar date.

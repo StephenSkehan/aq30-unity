@@ -450,7 +450,9 @@ Rules of the frame:
 - Podcast-type leads are the tent poles: L1 (the cold open), L5 (mid-season milestone), L12 (case close). All Podcast leads are voiced by Ally — write those nodes for the ear: rhythm, breath, no visual crutches.
 - Episode 1 added the *stinger* as a format tool: a final wordless node after the close (this episode, playing. A click. Silence. A diesel engine starts). Use sparingly; it is the format's equivalent of a post-credits scene.
 
-## 5.2 The 12-lead structure (hard engine constraint)
+## 5.2 The 12-lead structure (SUPERSEDED 2026-08-23)
+
+> **STATUS MARKER, not a content change.** This section was written as a hard engine constraint. It is no longer one. Stephen ruled on 2026-08-23 that **episode length is decided by the story**, and the live murder-pilot candidates run fifteen to eighteen leads across two or three phases. The shipped Listener already ran thirteen once Del's lead was added. `SAS/pivot-brief-2026-08-23.md` is the authority. Read what follows as an accurate description of one episode's shape, and as the reason the engine was built the way it was, not as a rule any new episode must obey.
 
 Exactly 12 leads in two phases, exactly 2 podcast milestones (L5, L12), parallel threads in both phases, one climax lead:
 
