@@ -1,0 +1,516 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Mode A Cross-Audit Instrument CAI-1 FINAL</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0;
+         font-size: 10.5pt; line-height: 1.55; }
+  h1 { font-size: 20pt; letter-spacing: .2px; border-bottom: 3px solid #1c1a17;
+       padding-bottom: 8px; margin: 0 0 14px; }
+  h2 { font-size: 13.5pt; margin: 26px 0 8px; padding-bottom: 4px;
+       border-bottom: 1.5px solid #1c1a17; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 18px 0 6px; color: #3a352d; page-break-after: avoid; }
+  p { margin: 0 0 9px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  hr { border: 0; border-top: 1px solid #ccc5b8; margin: 22px 0; }
+  code { font-family: Consolas, monospace; font-size: 9pt; color: #7a5c1f;
+         background: #f6f2e8; padding: 0 3px; border-radius: 2px; }
+  del { color: #999; }
+  blockquote { border-left: 3px solid #b9ae99; background: #faf8f2; margin: 10px 0;
+               padding: 8px 14px; page-break-inside: avoid; }
+  blockquote p { margin: 0 0 6px; }
+  blockquote p:last-child { margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 14px;
+          font-size: 9pt; table-layout: fixed; page-break-inside: avoid; }
+  th { text-align: left; background: #1c1a17; color: #f5f1e8; padding: 5px 7px;
+       font-size: 8.5pt; letter-spacing: .3px; }
+  td { vertical-align: top; padding: 5px 7px; border-bottom: 1px solid #e3ded2;
+       word-wrap: break-word; }
+  tr:nth-child(even) td { background: #faf8f2; }
+  .cards { margin: 10px 0 16px; }
+  .card { border: 1px solid #c9c1b0; border-left: 4px solid #1c1a17; border-radius: 3px;
+          padding: 8px 11px 9px; margin-bottom: 9px; background: #fdfcf8;
+          page-break-inside: avoid; font-size: 9.5pt; }
+  .chead { font-size: 8.5pt; color: #6b6357; margin-bottom: 4px; letter-spacing: .3px; }
+  .cid { font-weight: bold; color: #1c1a17; margin-right: 10px; }
+  .cphase { margin-right: 10px; }
+  .ccls { float: right; font-style: italic; }
+  .cdec { font-weight: bold; margin-bottom: 6px; }
+  .card dl { margin: 0; }
+  .card dt { font-size: 8pt; text-transform: uppercase; letter-spacing: .6px;
+             color: #8a6d3b; margin-top: 5px; }
+  .card dd { margin: 1px 0 0; }
+  .rank .order { margin: 2px 0 5px; font-size: 10pt; }
+  .rank .reason { color: #3a352d; }
+</style></head><body>
+<!-- pdf-title: Mode A Cross-Audit Instrument CAI-1 FINAL -->
+
+<h1>MODE A CROSS-AUDIT INSTRUMENT — CAI-1 FINAL</h1>
+<p><strong>Instrument ID:</strong> CAI-1 · <strong>Status:</strong> FROZEN on contestation. Amendments of 2026-08-25 applied in full · <strong>Date:</strong> 2026-08-25</p>
+<p><strong>Purpose.</strong> A single shared instrument for auditing two existing Mode A executions against the same evidentiary standard in both directions. It is a checklist, not a controlled prompt, and it creates no premises.</p>
+<p><strong>Subjects.</strong> <code>mode-a-EX-2026-08-24-02</code> (nine premises, Claude) and <code>AQ-NAR-MODEA-EXEC-2026-08-24-01</code> (nine premises, ChatGPT). Both frozen as evidence. Neither may be rewritten.</p>
+<p><strong>Direction.</strong> Both auditors conduct a <strong>complete item-by-item audit</strong> of the other's nine. New research may test, contradict or verify support already supplied by the execution. <strong>It may not supply missing support, repair a premise, or convert NOT DEMONSTRATED into CONFORMS.</strong> A foundational claim left unresolved in the execution remains subject to A4.</p>
+<p><strong>Freeze protocol.</strong> Contest this draft. When both parties settle the wording, it freezes as <strong>CAI-1 FINAL</strong> and neither party may amend it mid-audit. A defect discovered in the instrument during the audit is recorded and applied in a successor instrument, not retrofitted.</p>
+<hr />
+<h2>1. Outcomes</h2>
+<p>Every item receives exactly one.</p>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CONFORMS</strong></td>
+<td>The execution record itself demonstrates the requirement. Not "could be made to."</td>
+</tr>
+<tr>
+<td><strong>FAILS</strong></td>
+<td>A verified contradiction, an unknown foundational mechanism, or a gate substantively unmet.</td>
+</tr>
+<tr>
+<td><strong>NOT DEMONSTRATED</strong></td>
+<td>The premise may be viable; the record does not contain enough evidence to award CONFORMS.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>OUT OF INSTRUMENT is not an item outcome.</strong> It is a separate status for concerns falling outside items A1 to I7. Recorded, never determinative, carried to successor design.</p>
+<p><strong>Conditional items.</strong> For B5 and I1, where the trigger is optional: <strong>explicitly demonstrated non-use CONFORMS.</strong> If the record does not establish whether the trigger occurred, the outcome is NOT DEMONSTRATED.</p>
+<p><strong>Decision rules, binding on both auditors.</strong></p>
+<ol>
+<li><strong>No repair during audit.</strong> An auditor may not supply a missing answer, however obvious.</li>
+<li><strong>NOT DEMONSTRATED never becomes CONFORMS through charitable inference</strong>, and never becomes FAILS through uncharitable inference. It is its own finding.</li>
+<li><strong>An auditor may not substitute preference for evidence.</strong> Where the record answers a requirement in a way the auditor would not have chosen, the outcome is CONFORMS. Disagreements of craft are OUT OF INSTRUMENT.</li>
+<li><strong>Every finding cites a quotation or a precise record location.</strong> Where a required element is absent, cite the section searched and identify the absent element. <strong>Missing evidence is NOT DEMONSTRATED</strong> unless the requirement is explicitly an output-completeness requirement, or the record confirms a substantive failure.</li>
+<li><strong>No scores, no percentages, no ranking.</strong></li>
+<li><strong>The auditor does not decide advancement.</strong> Auditors report item outcomes and a premise-level conformance summary. Advancement is the owner's call at adjudication. This keeps selection out of the auditor's hands and prevents quota-shaped outcomes re-entering through the audit.</li>
+</ol>
+<hr />
+<h2>2. Per-premise items</h2>
+<h3>A. Kill Gate Zero</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1</td>
+<td>A first-five-<strong>causal</strong>-event audit is present, five events, not five scenes</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>All eight fields present for every event: actor, authority, custody, normal response, safeguard, bypass, consequence, evidence source</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>No field blank, circular or invented</td>
+</tr>
+<tr>
+<td>A4</td>
+<td><strong>No premise-dependent authority, custody, access, procedural, technological or institutional claim is left UNKNOWN.</strong> A deferral to "verify before script" is a FAIL under this item, not a mitigation</td>
+</tr>
+<tr>
+<td>A5</td>
+<td><strong>All</strong> institutional-power rules respected: corruption can misuse an existing power but cannot create one · a contractor may perform a delegated physical task only after valid authority is granted, and a contract does not automatically displace police, court, coroner, medical or regulatory control · a forged document may deceive a plausible recipient for a plausible period but does not automatically neutralise independent checks, custody records, signatures, witnesses or system alerts · a database entry can mislead action but cannot make a living person legally or physically inaccessible without a credible downstream mechanism · police, coroners, doctors, forensic staff, journalists, archivists and digital specialists remain competent and their competence creates constraints the antagonist must overcome · Ally's PI licence grants no police powers, no unrestricted crime-scene access, no medical records, no protected digital systems and no custody of evidence</td>
+</tr>
+<tr>
+<td>A6</td>
+<td>Antagonist least-cost test answered: why murder, why now, why this victim, why this method and staging, why not intimidation, theft, flight, bribery, destruction or silence by an easier route, and what the method costs the antagonist</td>
+</tr>
+<tr>
+<td>A7</td>
+<td>The six commonsense questions are <strong>answered</strong> in one plain sentence each, not merely answerable: why do the police not prevent this · why does the coroner, doctor, court, employer, bank, platform or regulator permit this · why is Ally present and allowed to do what the story requires · why does the antagonist choose this method instead of a simpler and safer one · why does the victim or keeper not take the obvious protective action · what would an informed viewer object to in the first story beat</td>
+</tr>
+<tr>
+<td>A8</td>
+<td><strong>Every premise-dependent operational claim is supported near the claim by an authoritative and preferably primary source.</strong> News, blogs, entertainment references and general summaries may locate primary material but may not provide final support. Jurisdictional differences and their materiality are stated</td>
+</tr>
+</tbody>
+</table>
+<h3>B. Gates one to nine</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td>Gate 1 desk: planned first thirty seconds are murder-led, recognisably true crime, contain a concrete contradiction, danger or irreversible event, and survive the ordinary-viewer objection. Performed compulsion recorded UNKNOWN</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>Gate 2 human consequence: a <strong>named living person</strong>, a mechanism <strong>still operating</strong>, both stated. A category fails. Historical suffering that has stopped fails</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>Gate 2 investigative consequence: a specific stated thing the player's choices can make worse. Embarrassment without consequence fails. Audience numbers alone fail. Reversible-within-episode fails</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>Gate 2 legibility: the human consequence is stateable in one sentence at listening speed</td>
+</tr>
+<tr>
+<td>B5</td>
+<td>Gate 3 clock: optional. If used, case-born, pause-safe, not a session-contained window, and <strong>not the same object as the resistance</strong></td>
+</tr>
+<tr>
+<td>B6</td>
+<td>Gate 4 midpoint: the player's action, route, target, risk or evidence strategy changes, not only their interpretation</td>
+</tr>
+<tr>
+<td>B7</td>
+<td>Gate 5 fair play: conclusions traceable to obtained evidence; a fair early plant precedes its explanation; no coincidence proves the culprit; <strong>a plausible wrong hypothesis is present</strong></td>
+</tr>
+<tr>
+<td>B8</td>
+<td>Gate 6 humanisation: the victim is grievable through <strong>one concrete human detail before becoming a puzzle component</strong>; the keeper has a need beyond survival or delivering information; <strong>the criminal economy imposes a recognisable ordinary cost</strong>; no gore, child harm or melodrama</td>
+</tr>
+<tr>
+<td>B9</td>
+<td>Gate 7, v2.1 verbatim: could this exact case happen only in Havenbay? Atmosphere must advance evidence, access, motive, jeopardy or consequence. <strong>Fog, docks, old records and civic corruption are not sufficient by themselves</strong></td>
+</tr>
+<tr>
+<td>B10</td>
+<td>Gate 8, in full: fifteen to twenty played leads across two or three phases determined by the story · played <strong>and</strong> total authored leads stated separately · Field Kit use, any Lab unlock and Kestrel Corner function identified · approved, proposed and new portraits <strong>and</strong> locations identified · reconstruction and resolution modes named · no invented costs or economy figures</td>
+</tr>
+<tr>
+<td>B11</td>
+<td>Gate 9 resistance: an agent or interest that benefits from, depends on or is protected by the accepted record <strong>and responds when challenged</strong>. Not a deadline, schedule or passage of time. Not a passive evidentiary constraint. Restraint as rational as action</td>
+</tr>
+</tbody>
+</table>
+<h3>C. Access map</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>All five fields present for the decisive item</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>A lawful possessor is named</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>A disclosure route is stated and is plausible on the supplied research</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>What remains inaccessible is stated</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Ally's route requires no police privilege and no power she does not have</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Field five present: <strong>what Ally gets wrong because she can reach only part of the record</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>D. Agency</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td><strong>At least four</strong> decisions that change which leads spawn, what the player does next, what evidence survives, the risk state, or the ending. Dialogue-only variation does not count</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>At least two are Class A</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>No more than one is Class C</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>Every branch rejoins within three leads; no fork opens before its branch rejoins</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>At least two reachable end states differ materially in who is protected, exposed, believed, harmed or denied remedy</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>At least one fair branch imposes on a <strong>named person</strong> a <strong>material loss</strong> of something held or owed at the moment of choice; that loss is one of the end-state differences; another fair branch avoids it; it cannot be undone within the episode</td>
+</tr>
+<tr>
+<td>D7</td>
+<td>The player can <strong>perceive</strong> that loss and <strong>attribute</strong> it to their own choice before the episode ends</td>
+</tr>
+<tr>
+<td>D8</td>
+<td>Counterfactual: removing the player's decisions changes at least one named person's outcome</td>
+</tr>
+<tr>
+<td>D9</td>
+<td>No consequence-free option; no obviously correct option; no harm arising from luck, withheld information or an obviously foolish option</td>
+</tr>
+<tr>
+<td>D10</td>
+<td>Fairness test present per consequential decision: what the player knows, the risk each option carries, why a reasonable player might choose either, what later evidence reframes, which consequence cannot be undone</td>
+</tr>
+</tbody>
+</table>
+<p><em>Auditor note on D9.</em> A protect-now versus preserve-evidence choice is <strong>NOT DEMONSTRATED</strong> unless the record establishes competing credible risks and explains why a reasonable player might choose either. <strong>The opposing risk may affect another named person or may constitute an irreversible evidentiary or publication outcome. A second named person is not mandatory</strong>, since the v2.1 reference pattern itself sets a keeper against decisive evidence. Both executions used variants of this shape; it is flagged so it is judged identically in both directions.</p>
+<h3>E. Registers</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1</td>
+<td>Failure mechanism named from the eight below</td>
+</tr>
+<tr>
+<td>E2</td>
+<td>Inherited situation named from the seven below</td>
+</tr>
+<tr>
+<td>E3</td>
+<td>Primary payoff named from the seven below, classified by the counterfactual test below</td>
+</tr>
+<tr>
+<td>E4</td>
+<td>Axis one, axis two and axis three values named</td>
+</tr>
+<tr>
+<td>E5</td>
+<td><strong>The merge requirements are the reconstruction.</strong> The record states what the player physically does, what conclusion that activity makes possible, and what action the conclusion unlocks. Asserting that the requirements "are the investigation" without stating the physical activity does not conform</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The eight failure mechanisms — why the record is wrong.</strong>
+1. Correct system, wrong answer. Every actor performs correctly and the outcome is still false.
+2. Misuse of a power actually held. A discretion, access or authority the person genuinely has, exercised for a reason.
+3. Overruled by someone with standing. The system worked and lawful authority set it aside.
+4. Unequal looking. Nobody looked hard because of who the victim was.
+5. A plausible person lied to the system, and the system believed them.
+6. A handoff gap. Two institutions each did their job and the space between them swallowed it.
+7. A community enforced the account. Everyone knew, nobody said.
+8. The victim's own choice created the record.</p>
+<p><strong>The seven inherited situations — what condition does the player enter?</strong>
+1. Wrong person blamed or punished.
+2. Culprit or beneficiary protected by the accepted account.
+3. Person, identity, body or decisive evidence missing.
+4. Preventable harm still occurring.
+5. Keeper, witness or evidence opportunity under pressure.
+6. Institution continuing an ordinary harmful practice.
+7. Responsibility genuinely unresolved rather than merely concealed.</p>
+<p><strong>The seven primary payoffs — what does the player feel they accomplished?</strong>
+1. Cleared or restored someone.
+2. Caught or proved someone responsible.
+3. Found or named someone or something.
+4. Prevented a further harm.
+5. Protected a person, source or evidentiary opportunity.
+6. Exposed an institution or criminal economy.
+7. Understood responsibility or decided what should become public.</p>
+<p><strong>The counterfactual classification test, binding on E3.</strong> Classify by effect, not by pitch language. <strong>If removing the blamed person removes the story's main emotional reason to continue, the payoff is clearing or restoring, even if the episode also identifies a killer.</strong></p>
+<h3>F. Territory and canon</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>The premise does not duplicate or reskin an occupied candidate's <strong>protected spine or combination of devices</strong>. Individual evidence types remain available unless v2.1 expressly excludes them</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>Not the excluded structural shape: a damaged or interrupted recording reconstructed by audio analysis to locate a person already missing</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>Canon characters used consistently with their established functions and status. Portraits and locations accurately labelled approved, proposed or new. No invention left unflagged</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Endearment map respected; no new endearment users; Vega's pronouns unset unless flagged as a proposed ruling</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>Season notch: one new fact and one new cost; no unmasking; no casual connection of the episode killer to the season conspiracy; the coin is not a substitute for an economy</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>Episode-specific people, places and institutions labelled PROPOSED CANON</td>
+</tr>
+<tr>
+<td>F7</td>
+<td>Where a premise uses a recording, <strong>acquisition, disclosure, police or legal use, consent and publication are assessed separately</strong> under Havenbay's all-party-consent rule. Lawful creation or possession does not imply lawful broadcast. The Tip Line's caller-consent rule is preserved</td>
+</tr>
+</tbody>
+</table>
+<h3>G. Kill brief</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G1</td>
+<td>All four objection frames present: competent professional, rational antagonist, ordinary player, producer</td>
+</tr>
+<tr>
+<td>G2</td>
+<td>Ends PASS or FAIL with a single decisive reason. <strong>No conditional pass</strong></td>
+</tr>
+<tr>
+<td>G3</td>
+<td><strong>No decisive weakness remains unresolved when the brief ends PASS.</strong> Where a brief identifies motive, resistance, access or proof as thin, weak, unverified or admitted and then passes <strong>without documenting the single permitted core-preserving revision and re-check</strong>, G3 FAILS. <strong>A weakness repaired once and re-audited may conform</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>G3 exists because it is the failure this cross-audit was created by. Candour is a finding, not a dispensation. It preserves v2.1's single permitted revision, so a premise genuinely repaired once is not punished for having been candid about the repair.</em></p>
+<hr />
+<h2>3. Field-level items</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1</td>
+<td>Seed-level distributions for mechanism, inherited situation and primary payoff. <strong>The auditor classifies every retrievable frozen seed and survivor under the three registers; classification is measurement, not premise repair.</strong> Seeds not present in the frozen record may not be reconstructed from memory</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>Survivor-level distributions reported for the same three</td>
+</tr>
+<tr>
+<td>H3</td>
+<td>The delta between them reported, <strong>with the gate responsible for each category's attrition attributed</strong></td>
+</tr>
+<tr>
+<td>H4</td>
+<td>No more than half the survivor pool shares one inherited situation or one primary payoff</td>
+</tr>
+<tr>
+<td>H5</td>
+<td>Seed level, per family: at least four inherited situations and four primary payoffs present, and no more than three of eight sharing one</td>
+</tr>
+</tbody>
+</table>
+<p><em>H3 is the instrument's only diagnostic item. Where seeds are diverse and survivors are not, the gates are performing the selection, and that is the finding both executions exist to expose.</em></p>
+<hr />
+<h2>4. Execution-level items</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I1</td>
+<td>If a second field was invoked, it contained <strong>twelve</strong> seeds distributed across the deficient families</td>
+</tr>
+<tr>
+<td>I2</td>
+<td>A complete seed ledger is present, with <strong>the single real-world process dependency stated for every seed</strong></td>
+</tr>
+<tr>
+<td>I3</td>
+<td>The rotating interleaved order was followed and reported: rounds of three, three and two per family, starting family rotating, only the stated batch generated at each turn</td>
+</tr>
+<tr>
+<td>I4</td>
+<td>The five closest rejected seeds are given with a decisive reason each, unbeautified</td>
+</tr>
+<tr>
+<td>I5</td>
+<td><code>true-crime-genre-anatomy</code> not used, and the execution record says so</td>
+</tr>
+<tr>
+<td>I6</td>
+<td>Mode A prohibitions observed: no cold opens, titles, elevator pitches, rankings, incumbent comparisons or table-read recommendations</td>
+</tr>
+<tr>
+<td>I7</td>
+<td>Execution record complete against the v2.1 field list</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Declared conditions before the audit begins</h2>
+<p><strong>Claude's execution cannot satisfy I2.</strong> Its thirty seeds were not recorded as an artifact. Fourteen are retrievable from the published document: nine survivors and five named rejections. The remaining sixteen exist only in unretrievable reasoning. They will not be reconstructed, classified retrospectively or improved.</p>
+<p><strong>Pre-assigned outcomes for that execution, agreed before the audit begins.</strong> UNAVAILABLE is the <em>reason</em>, never a fifth outcome:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Outcome</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1</td>
+<td><strong>NOT DEMONSTRATED</strong></td>
+<td>Source material unavailable</td>
+</tr>
+<tr>
+<td>H3</td>
+<td><strong>NOT DEMONSTRATED</strong></td>
+<td>Delta uncomputable without seed-level data</td>
+</tr>
+<tr>
+<td>H5</td>
+<td><strong>NOT DEMONSTRATED</strong></td>
+<td>Seed-level distribution unavailable</td>
+</tr>
+<tr>
+<td>I2</td>
+<td><strong>FAILS</strong></td>
+<td>Output-completeness requirement; the ledger was required and is absent</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ChatGPT's execution contains its complete twenty-four-seed ledger with dependencies</strong>, so its seed-to-survivor delta is calculable and H1, H3 and I2 are assessable.</p>
+<p><strong>Asymmetry recorded:</strong> the delta instrument can only run in one direction on the existing evidence. That is a limitation of Claude's execution, not of the instrument, and no inference about Claude's gates-versus-generation attractor may be drawn from its absence.</p>
+<hr />
+<h2>6. Reporting format</h2>
+<p>Per premise: a table of every item A1 to G3 with its outcome and, for anything other than CONFORMS, a quotation from the record and one sentence of reason.</p>
+<p>Per execution: the field-level items H1 to H5, the execution-level items I1 to I7, and a <strong>premise-level conformance summary</strong> — not an advancement recommendation.</p>
+<p>Auditors exchange complete results. Only actual disagreements are adjudicated. Agreement is not restated.</p>
+<hr />
+<h2>7. What this instrument does not do</h2>
+<p>It does not rank, recommend, allocate or select. It does not decide which premises advance. It does not assess performed cold-open compulsion, which remains UNKNOWN for every premise in both executions until blind testing.</p>
+<p><strong>And it does not extend itself.</strong> A concern outside items A1 to I7 is recorded OUT OF INSTRUMENT and carried forward. It does not become a new item mid-audit, and it does not postpone advancement on its own.</p>
+</body></html>
