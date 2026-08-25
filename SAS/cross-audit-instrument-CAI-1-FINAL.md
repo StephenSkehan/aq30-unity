@@ -16,7 +16,7 @@
 
 ## 1. Outcomes
 
-Every item receives exactly one.
+**Every active item receives exactly one outcome. E1 is suspended and excluded from CAI-1 outcomes.**
 
 | Outcome | Meaning |
 |---|---|
@@ -102,23 +102,13 @@ Every item receives exactly one.
 
 | # | Requirement |
 |---|---|
-| E1 | **SUSPENDED pending owner adoption. Record no outcome.** Failure mechanism named from the eight below |
+| E1 | **SUSPENDED FOR CAI-1. Excluded from outcomes. No auditor classifies any premise under a failure-mechanism taxonomy during this audit.** |
 | E2 | Inherited situation named from the seven below |
 | E3 | Primary payoff named from the seven below, classified by the counterfactual test below |
 | E4 | Axis one, axis two and axis three values named |
 | E5 | **The merge requirements are the reconstruction.** The record states what the player physically does, what conclusion that activity makes possible, and what action the conclusion unlocks. Asserting that the requirements "are the investigation" without stating the physical activity does not conform |
 
-**The eight failure mechanisms — why the record is wrong.**
-
-> ⚠ **PROVENANCE GAP, AND E1 IS SUSPENDED UNTIL IT CLOSES.** These eight values have **no controlled source.** They were drafted by Claude in the unissued `prompt-kit-v2.2-change-list`, item 1, and were never agreed by the second reviewer or adopted by the owner. **E1 is therefore NOT APPLICABLE and no auditor may record an E1 outcome** unless and until Stephen expressly adopts these exact eight values, at which point this note is replaced by the adoption reference. No auditor may infer adoption from their appearance here. The instrument is fully operable without E1: the delta findings run on inherited situation and primary payoff, both of which are controlled.
-1. Correct system, wrong answer. Every actor performs correctly and the outcome is still false.
-2. Misuse of a power actually held. A discretion, access or authority the person genuinely has, exercised for a reason.
-3. Overruled by someone with standing. The system worked and lawful authority set it aside.
-4. Unequal looking. Nobody looked hard because of who the victim was.
-5. A plausible person lied to the system, and the system believed them.
-6. A handoff gap. Two institutions each did their job and the space between them swallowed it.
-7. A community enforced the account. Everyone knew, nobody said.
-8. The victim's own choice created the record.
+*Non-operative note on the suspended item.* A proposed eight-value failure-mechanism register was drafted by Claude in the unissued `prompt-kit-v2.2-change-list`, item 1. It has **no controlled source**, was never agreed by the second reviewer, and on 2026-08-25 **Stephen ruled it left suspended rather than adopted.** It is therefore absent from this checklist and may not be applied. **E1 may not be activated later in this audit even if the taxonomy is subsequently adopted**, because CAI-1 cannot amend itself after freeze; any such adoption belongs to v2.2.
 
 **The seven inherited situations. Controlled values, to be carried unchanged.**
 `wrong person blamed` · `culprit or beneficiary protected` · `person, identity, body, or evidence missing` · `preventable harm ongoing` · `keeper, witness, or evidence pressured` · `institution continuing harm` · `responsibility genuinely unresolved`
@@ -164,9 +154,9 @@ Every item receives exactly one.
 
 | # | Requirement |
 |---|---|
-| H1 | Seed-level distributions for mechanism, inherited situation and primary payoff. **The auditor classifies every retrievable frozen seed and survivor under the three registers; classification is measurement, not premise repair.** Seeds not present in the frozen record may not be reconstructed from memory |
-| H2 | Survivor-level distributions reported for the same three |
-| H3 | The delta between them reported, **with the gate responsible for each category's attrition attributed** |
+| H1 | Seed-level distributions for **inherited situation and primary payoff only**. **The auditor classifies every retrievable frozen seed and survivor under those two registers; classification is measurement, not premise repair.** Seeds not present in the frozen record may not be reconstructed from memory |
+| H2 | Survivor-level distributions reported for **the same two** |
+| H3 | The delta between them reported for **inherited situation and primary payoff**, with the gate responsible for each category's attrition attributed |
 | H4 | No more than half the survivor pool shares one inherited situation or one primary payoff |
 | H5 | Seed level, per family: at least four inherited situations and four primary payoffs present, and no more than three of eight sharing one |
 
@@ -209,7 +199,7 @@ Every item receives exactly one.
 
 ## 6. Reporting format
 
-Per premise: a table of every item A1 to G3 with its outcome and, for anything other than CONFORMS, a quotation from the record and one sentence of reason.
+Per premise: a table of **every active item A1 to G3, explicitly excluding suspended E1**, with its outcome and, for anything other than CONFORMS, a quotation from the record and one sentence of reason.
 
 Per execution: the field-level items H1 to H5, the execution-level items I1 to I7, and a **premise-level conformance summary** — not an advancement recommendation.
 
