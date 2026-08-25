@@ -10,7 +10,7 @@
 
 **Direction.** Both auditors conduct a **complete item-by-item audit** of the other's nine. New research may test, contradict or verify support already supplied by the execution. **It may not supply missing support, repair a premise, or convert NOT DEMONSTRATED into CONFORMS.** A foundational claim left unresolved in the execution remains subject to A4.
 
-**Freeze protocol.** Contest this draft. When both parties settle the wording, it freezes as **CAI-1 FINAL** and neither party may amend it mid-audit. A defect discovered in the instrument during the audit is recorded and applied in a successor instrument, not retrofitted.
+**Freeze protocol.** This instrument was contested across two rounds and both parties settled its wording. **It is FINAL and neither party may amend it mid-audit.** A defect discovered in the instrument during an audit is recorded and applied in a successor instrument, never retrofitted, and never applied in one direction only.
 
 ---
 
@@ -26,7 +26,7 @@ Every item receives exactly one.
 
 **OUT OF INSTRUMENT is not an item outcome.** It is a separate status for concerns falling outside items A1 to I7. Recorded, never determinative, carried to successor design.
 
-**Conditional items.** For B5 and I1, where the trigger is optional: **explicitly demonstrated non-use CONFORMS.** If the record does not establish whether the trigger occurred, the outcome is NOT DEMONSTRATED.
+**Conditional items.** For **B5, F7 and I1**, where the trigger is optional: **explicitly demonstrated non-use CONFORMS.** If the record does not establish whether the trigger occurred, the outcome is NOT DEMONSTRATED. Where the trigger did occur, the item is assessed on its merits. For F7 specifically: explicit non-use of a recording CONFORMS; unclear use is NOT DEMONSTRATED; actual recording use is assessed under F7.
 
 **Decision rules, binding on both auditors.**
 
@@ -50,9 +50,9 @@ Every item receives exactly one.
 | A3 | No field blank, circular or invented |
 | A4 | **No premise-dependent authority, custody, access, procedural, technological or institutional claim is left UNKNOWN.** A deferral to "verify before script" is a FAIL under this item, not a mitigation |
 | A5 | **All** institutional-power rules respected: corruption can misuse an existing power but cannot create one · a contractor may perform a delegated physical task only after valid authority is granted, and a contract does not automatically displace police, court, coroner, medical or regulatory control · a forged document may deceive a plausible recipient for a plausible period but does not automatically neutralise independent checks, custody records, signatures, witnesses or system alerts · a database entry can mislead action but cannot make a living person legally or physically inaccessible without a credible downstream mechanism · police, coroners, doctors, forensic staff, journalists, archivists and digital specialists remain competent and their competence creates constraints the antagonist must overcome · Ally's PI licence grants no police powers, no unrestricted crime-scene access, no medical records, no protected digital systems and no custody of evidence |
-| A6 | Antagonist least-cost test answered: why murder, why now, why this victim, why this method and staging, why not intimidation, theft, flight, bribery, destruction or silence by an easier route, and what the method costs the antagonist |
+| A6 | Antagonist least-cost test answered: why murder, why now, why this victim, why this method and staging, why not intimidation, theft, flight, bribery, destruction or silence by an easier route, and **what does the method expose, cost or risk for the antagonist?** |
 | A7 | The six commonsense questions are **answered** in one plain sentence each, not merely answerable: why do the police not prevent this · why does the coroner, doctor, court, employer, bank, platform or regulator permit this · why is Ally present and allowed to do what the story requires · why does the antagonist choose this method instead of a simpler and safer one · why does the victim or keeper not take the obvious protective action · what would an informed viewer object to in the first story beat |
-| A8 | **Every premise-dependent operational claim is supported near the claim by an authoritative and preferably primary source.** News, blogs, entertainment references and general summaries may locate primary material but may not provide final support. Jurisdictional differences and their materiality are stated |
+| A8 | The v2.1 research standard **in full and verbatim**: use official agencies, legislation, regulations, courts, professional bodies, technical standards, manufacturer documentation or peer-reviewed research where applicable · use news, blogs, entertainment references and general summaries only to locate primary material, not as final support for a premise-dependent claim · cite the exact source near the claim it supports, and do not provide a decorative bibliography detached from the logic · state where the source jurisdiction differs from Havenbay and whether the difference matters · do not quote long passages, summarise the operative fact in plain language |
 
 ### B. Gates one to nine
 
@@ -67,7 +67,7 @@ Every item receives exactly one.
 | B7 | Gate 5 fair play: conclusions traceable to obtained evidence; a fair early plant precedes its explanation; no coincidence proves the culprit; **a plausible wrong hypothesis is present** |
 | B8 | Gate 6 humanisation: the victim is grievable through **one concrete human detail before becoming a puzzle component**; the keeper has a need beyond survival or delivering information; **the criminal economy imposes a recognisable ordinary cost**; no gore, child harm or melodrama |
 | B9 | Gate 7, v2.1 verbatim: could this exact case happen only in Havenbay? Atmosphere must advance evidence, access, motive, jeopardy or consequence. **Fog, docks, old records and civic corruption are not sufficient by themselves** |
-| B10 | Gate 8, in full: fifteen to twenty played leads across two or three phases determined by the story · played **and** total authored leads stated separately · Field Kit use, any Lab unlock and Kestrel Corner function identified · approved, proposed and new portraits **and** locations identified · reconstruction and resolution modes named · no invented costs or economy figures |
+| B10 | Gate 8 **verbatim**: fifteen to twenty played leads across two or three phases, **determined by the story rather than a fixed table**. **The Field Kit is the starting generator; the Lab may unlock mid-episode; Kestrel Corner supports food, home and care functions.** State played and total authored lead counts separately. Identify approved, proposed and new portraits and locations; **do not infer reuse from excluded art documents**. Do not invent costs or economy figures. Also report reconstruction mode and resolution mode |
 | B11 | Gate 9 resistance: an agent or interest that benefits from, depends on or is protected by the accepted record **and responds when challenged**. Not a deadline, schedule or passage of time. Not a passive evidentiary constraint. Restraint as rational as action |
 
 ### C. Access map
@@ -102,13 +102,15 @@ Every item receives exactly one.
 
 | # | Requirement |
 |---|---|
-| E1 | Failure mechanism named from the eight below |
+| E1 | **SUSPENDED pending owner adoption. Record no outcome.** Failure mechanism named from the eight below |
 | E2 | Inherited situation named from the seven below |
 | E3 | Primary payoff named from the seven below, classified by the counterfactual test below |
 | E4 | Axis one, axis two and axis three values named |
 | E5 | **The merge requirements are the reconstruction.** The record states what the player physically does, what conclusion that activity makes possible, and what action the conclusion unlocks. Asserting that the requirements "are the investigation" without stating the physical activity does not conform |
 
 **The eight failure mechanisms — why the record is wrong.**
+
+> ⚠ **PROVENANCE GAP, AND E1 IS SUSPENDED UNTIL IT CLOSES.** These eight values have **no controlled source.** They were drafted by Claude in the unissued `prompt-kit-v2.2-change-list`, item 1, and were never agreed by the second reviewer or adopted by the owner. **E1 is therefore NOT APPLICABLE and no auditor may record an E1 outcome** unless and until Stephen expressly adopts these exact eight values, at which point this note is replaced by the adoption reference. No auditor may infer adoption from their appearance here. The instrument is fully operable without E1: the delta findings run on inherited situation and primary payoff, both of which are controlled.
 1. Correct system, wrong answer. Every actor performs correctly and the outcome is still false.
 2. Misuse of a power actually held. A discretion, access or authority the person genuinely has, exercised for a reason.
 3. Overruled by someone with standing. The system worked and lawful authority set it aside.
@@ -118,25 +120,21 @@ Every item receives exactly one.
 7. A community enforced the account. Everyone knew, nobody said.
 8. The victim's own choice created the record.
 
-**The seven inherited situations — what condition does the player enter?**
-1. Wrong person blamed or punished.
-2. Culprit or beneficiary protected by the accepted account.
-3. Person, identity, body or decisive evidence missing.
-4. Preventable harm still occurring.
-5. Keeper, witness or evidence opportunity under pressure.
-6. Institution continuing an ordinary harmful practice.
-7. Responsibility genuinely unresolved rather than merely concealed.
+**The seven inherited situations. Controlled values, to be carried unchanged.**
+`wrong person blamed` · `culprit or beneficiary protected` · `person, identity, body, or evidence missing` · `preventable harm ongoing` · `keeper, witness, or evidence pressured` · `institution continuing harm` · `responsibility genuinely unresolved`
 
-**The seven primary payoffs — what does the player feel they accomplished?**
-1. Cleared or restored someone.
-2. Caught or proved someone responsible.
-3. Found or named someone or something.
-4. Prevented a further harm.
-5. Protected a person, source or evidentiary opportunity.
-6. Exposed an institution or criminal economy.
-7. Understood responsibility or decided what should become public.
+**The seven primary payoffs. Controlled values, to be carried unchanged.**
+`clear or restore` · `catch or prove` · `find or name` · `prevent` · `protect` · `expose` · `understand or decide what becomes public`
 
-**The counterfactual classification test, binding on E3.** Classify by effect, not by pitch language. **If removing the blamed person removes the story's main emotional reason to continue, the payoff is clearing or restoring, even if the episode also identifies a killer.**
+*Glosses may follow separately but may not narrow, broaden or rename a controlled value.*
+
+**The counterfactual classification test, binding on E2 and E3.** Classify by effect, not by pitch language.
+
+> **If the named innocent person were removed from the premise, would the investigation still have the same central purpose and reward?**
+>
+> **If no, the inherited situation is probably `wrong person blamed` and the payoff is probably `clear or restore`, whatever other labels appear.**
+
+*Provenance note, recorded so a later auditor does not read drift where there was none. The longer phrasings that appeared in CAI-1 before this correction — "wrong person blamed or punished", "culprit or beneficiary protected by the accepted account", and a test turning on "the story's main emotional reason to continue" — were the register author's own original wording, transcribed verbatim. The shorter forms above are that author's subsequent controlled values and supersede them. The substantive improvement in this correction is that the test now rules on **inherited situation as well as payoff**, which the earlier version did not.*
 
 ### F. Territory and canon
 
@@ -156,7 +154,7 @@ Every item receives exactly one.
 |---|---|
 | G1 | All four objection frames present: competent professional, rational antagonist, ordinary player, producer |
 | G2 | Ends PASS or FAIL with a single decisive reason. **No conditional pass** |
-| G3 | **No decisive weakness remains unresolved when the brief ends PASS.** Where a brief identifies motive, resistance, access or proof as thin, weak, unverified or admitted and then passes **without documenting the single permitted core-preserving revision and re-check**, G3 FAILS. **A weakness repaired once and re-audited may conform** |
+| G3 | **No decisive weakness remains unresolved when the brief ends PASS.** Where a brief identifies motive, resistance, access or proof as thin, weak, unverified or admitted and then passes without documenting the single permitted revision, G3 FAILS. A weakness may conform **only** where the record shows a revision that (a) **preserves the core premise**, (b) **replaces no verified fact with invention**, and (c) **is followed by a new kill brief demonstrating that the decisive weakness was resolved.** All three conditions, or G3 FAILS |
 
 *G3 exists because it is the failure this cross-audit was created by. Candour is a finding, not a dispensation. It preserves v2.1's single permitted revision, so a premise genuinely repaired once is not punished for having been candid about the repair.*
 
