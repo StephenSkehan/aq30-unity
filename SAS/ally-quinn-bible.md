@@ -141,6 +141,48 @@ Havenbay is an **all-party consent** jurisdiction, and the rule has two separate
 
 *Note: this is chosen worldbuilding, not researched law. It follows the recognisable shape of all-party-consent regimes so a player finds it credible. Havenbay is fictional and the rule is ours to set; the constraint is only that it must not grant anyone a power institutions do not plausibly have.*
 
+### 2.3.2 Havenbay institutional processes (Stephen-ruled 2026-08-25)
+
+Fifteen parameters, ruled in one sitting to close the gap that killed roughly a third of two premise fields. **These are parameters, not powers.** Kill Gate Zero is untouched: nobody may invent an authority an institution does not have. What is settled here is how long Havenbay's institutions keep things and who may ask for them.
+
+**Records and retention**
+
+| # | Ruling |
+|---|---|
+| R1 | **Sample handling records outlive the samples.** Toxicology and pathology samples are destroyed on schedule; the register of who handled them is kept **twenty-five years** and is disclosable to next of kin. |
+| R2 | **Weather and visibility observations are permanent and publicly searchable.** |
+| R4 | **A wound-up company's records** pass to the liquidator, then to whoever buys the assets, and are retained **seven years after dissolution.** Nothing is destroyed inside that window. |
+| R7 | **CCTV is kept thirty-one days**, and indefinitely once flagged for an investigation. |
+| R8 | **Ordinary commercial operational data** — dispatch, tracking, transaction logs — is kept **seven years.** |
+| R12 | **Fire investigation reports** are retained **twenty years.** Findings go to the coroner, the property owner and the insurer. Working notes are not disclosable. |
+
+**Who may obtain what**
+
+| # | Ruling |
+|---|---|
+| R3 | **Harbour authority contracts and payments are a public register**, searchable, retained seven years. |
+| R5 | **Coronial files:** next of kin may obtain the findings and the evidence tendered. Police running sheets, working notes and unused material stay closed. |
+| R6 | **Inquest and court transcripts** may be ordered by anyone on payment of a fee, unless a court restricts them. |
+| R9 | **A report commissioned by an insurer belongs to the insurer.** Where prepared in contemplation of a claim dispute it is privileged, and **the investigator who wrote it may not release it unilaterally.** |
+| R10 | **A deceased person's medical records** may be obtained by next of kin or an executor, with third-party information redacted. Never by Ally in her own right. |
+| R11 | **Death certificates** are restricted to next of kin, executors and legal representatives for **thirty years**, then open to public search. |
+| R14 | **Council permits, planning records and property transfers are publicly searchable, permanently.** |
+| R15 | **Vehicle event data** belongs to the vehicle owner; an insurer may hold a copy under the policy; **police seizure removes all other access.** |
+
+**Investigation**
+
+| # | Ruling |
+|---|---|
+| R13 | **A workplace fatality** is investigated by the regulator. The site is preserved until released. The report goes to next of kin and to the coroner. |
+
+**The consistent line across R5, R9 and R12:** a filed finding is reachable, an investigator's working notes are not. Hold that line in every institution or the world stops being credible.
+
+**What these rulings cost, recorded so nobody re-litigates them.** R8 confirms a 2001 dispatch record no longer exists. R9 removes the access route from a premise built on a retired investigator handing over an insurer's report. R11 breaks an access claim that assumed recent death certificates were freely searchable. R15 keeps event data on a seized vehicle out of reach. **Four premises died to keep the other eleven rulings honest.**
+
+**Standing effect.** A seed previously failed for want of one of these rulings may be resubmitted **once**, under the normal gates. Future premises depending on any process above no longer require research: they cite the ruling.
+
+**Standing practice, and the reason this section exists.** Prompt kit v2.1 never said an unverified process was fatal. It says *identify the required Havenbay canon ruling and fail the seed pending approval.* Across roughly fifty seeds in two executions, neither model ever returned one for a ruling; both read a question queue as a wall. **Where a premise depends on a Havenbay process that is not yet settled, ask for the ruling. Do not kill the seed and do not invent the answer.**
+
 ## 2.4 The Rusty Anchor
 
 The bar is as much a character as any person in Ally's world. Founded **1924** by **Patrick Callahan** as *Callahan's Dockside* (a "soda shop" front through Prohibition); renamed **The Rusty Anchor** in the 1970s by his son **Seamus**, after the salvaged shipwreck anchor now bolted by the door under a battered green neon sign; inherited in the 2000s by Seamus's daughter **Moira "Mo" Callahan**, who keeps it what it has always been: **neutral ground**. Cops and crooks drink under the same roof; city officials slip in for a whisky away from prying eyes; violence goes outside, whoever you are — and because everyone trusts the rule, Mo hears everything.

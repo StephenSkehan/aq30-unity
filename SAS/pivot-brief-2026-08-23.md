@@ -72,6 +72,8 @@ No premise may use a real-world timer that punishes absence. A premise whose hoo
 
 Everything else is recorded for later season design and may not postpone the experiment. Both reviewers recommended this rule and it binds both of them. Rationale, in the second reviewer's words: *the quality-control department may eventually become the game.*
 
+**Havenbay institutional processes (Stephen-ruled 2026-08-25).** Fifteen parameters settled in one sitting: retention periods and access rights for samples and their handling records, weather observations, wound-up company records, CCTV, commercial data, fire reports, harbour payments, coronial files, transcripts, insurer-commissioned reports, medical records, death certificates, council registers, vehicle data and workplace fatalities. **Parameters, never powers** — Kill Gate Zero is untouched. Full text and the four premises they killed: bible §2.3.2. **Standing practice: where a premise depends on an unsettled Havenbay process, ask for the ruling. Do not kill the seed and do not invent the answer.**
+
 **Method rules.** Forced ranking with no ties, never absolute scores. External benchmarks (real true-crime pilots), not internal comparison. Tester evidence outranks everything. Say "I do not know" rather than filling a gap.
 
 **House prose rules, binding on every line of game-facing text.** No em dashes. No exclamation marks. Grounded deadpan noir; understatement over melodrama; never explain the subtext. Every line must parse at listening speed. Numbers spelled out in spoken lines. "Grandad", one d. "Okay" spelled out. The tip-line announcer format is "Message received: [weekday], [time]", weekday and time only, never a calendar date.
