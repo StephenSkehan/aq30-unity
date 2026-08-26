@@ -226,7 +226,7 @@ The season question: **who killed Thomas Quinn, and what conspiracy was he uncov
 
 ## 3.1 The Thomas Quinn incident
 
-Ten years ago — Ally was sixteen — investigative journalist Thomas Quinn, 43, died when his car left the road on a rainy night. Official ruling: accident. The hallmarks of a cover-up were all present and all deniable: a traffic camera "under maintenance"; witnesses gone unreliable or silent; a report filed with questionable timing; an early witness statement — describing **two vehicles stopped roadside near the crash site** — later omitted from the file; and his ever-present **laptop missing from the wreck** ("lost in the marsh," said the police). The Gazette ran a brief obituary and never printed his final story.
+Ten years ago — Ally was sixteen — investigative journalist Thomas Quinn, 40, died when his car left the road on a rainy night. Official ruling: accident. The hallmarks of a cover-up were all present and all deniable: a traffic camera "under maintenance"; witnesses gone unreliable or silent; a report filed with questionable timing; an early witness statement — describing **two vehicles stopped roadside near the crash site** — later omitted from the file; and his ever-present **laptop missing from the wreck** ("lost in the marsh," said the police). The Gazette ran a brief obituary and never printed his final story.
 
 What he was chasing: a corruption web tying old-money redevelopment, missing public funds, and police involvement — the machine this bible calls the Ferryman network. Hours before he died he told a colleague he'd found something "explosive." He named no names. He'd learned not to.
 
@@ -295,7 +295,7 @@ Her ethics are the show's spine: she vets everything before airing it, holds bac
 
 **Appearance (locked by model sheets).** Auburn/copper shoulder-length wavy hair swept right-to-left; large green-blue (teal) eyes; teal trench coat with wide lapels over a black collared shirt; the **silver locket** on a fine chain holding Thomas's photo; retro silver-and-black headphones worn around the neck; brown leather cross-body satchel of podcast gear. Signature props: vintage chrome broadcast microphone, handheld cassette recorder. The blue in noir shots is lighting, never dye (Chapter 8.3). The locket is her purpose-built vulnerability beat — the private crack in her competence, spent at most once per episode.
 
-### 2. Thomas Quinn — 43, deceased · Ally's father · seed: the sepia photo in her locket
+### 2. Thomas Quinn — 40 at death, would be 50 now · Ally's father · seed: the sepia photo in her locket
 
 Investigative journalist at the Havenbay Gazette, later independent — union corruption, dockside smuggling, redevelopment graft. "Both wound and beacon": the reason Ally holds a microphone at the dark, and the season's central mystery (Chapter 3.1). Killed ten years ago in a staged accident; his laptop was never found. What survives of him is method and artifact: files annotated in initials only (a discipline Danny Reyes taught him posthumously), a battered messenger bag, the fountain pen Helen kept and Ally now carries, a shorthand only she and Gerald can read, the lockbox. Episodes touch him lightly — his absence, his files existing, not their contents — until the season deliberately opens the well. On-page he exists as the photo in the locket, "dark-haired, kind-eyed, 40s; indistinct but human."
 

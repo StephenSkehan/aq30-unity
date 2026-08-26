@@ -9,7 +9,7 @@
 | # | Character | Age | Role | Appearance status |
 |---|-----------|-----|------|-------------------|
 | 1 | Allison "Ally" Quinn | 26 | Protagonist; licensed PI, host of *Echoes of Havenbay* | ★ CANON (model sheets + emotion set v2, 2026-07-11) |
-| 2 | Thomas Quinn (deceased) | 43 | Ally's father; investigative journalist, Gazette; murdered — season arc | Seed: the sepia photo inside Ally's locket (model-sheet prop plate) |
+| 2 | Thomas Quinn (deceased) | 40 at death, would be 50 | Ally's father; investigative journalist, Gazette; murdered — season arc | Seed: the sepia photo inside Ally's locket (model-sheet prop plate) |
 | 3 | Helen Quinn | 46 | Ally's mother; school principal; wears Thomas's wedding ring | proposed (prompt block exists) |
 | 4 | Gerald Quinn | 74 | Ally's grandfather; retired detective, mentor; Rusty Anchor regular | ★ CANON (in-game portrait set) |
 | 5 | Arthur Finch | 62 | Semi-retired Gazette journalist/archivist; Havenbay's memory | ★ CANON (emotion sheet 2026-07-11; tousled hair is canon) |
