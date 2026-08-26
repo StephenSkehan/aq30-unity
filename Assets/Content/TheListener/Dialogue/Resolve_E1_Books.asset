@@ -101,7 +101,7 @@ MonoBehaviour:
     choices: []
   - id: E1_LB_N8
     speaker: "Ally Quinn"
-    line: "Some people hand you a key by describing the lock. Del's been doing it for me since I was thirteen. Tonight I tell the city her name. Not her address, and not where I got it. Tomorrow: the blue gate at eleven, and the neighbours on Chandler Road."
+    line: "Some people hand you a key by describing the lock. Del's been doing it for me since I was sixteen. Tonight I tell the city her name. Not her address, and not where I got it. Tomorrow: the blue gate at eleven, and the neighbours on Chandler Road."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 8300000, guid: aad10d1a0e1400000000000000000008, type: 3}

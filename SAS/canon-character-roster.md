@@ -19,7 +19,7 @@
 | 9 | Francis "Frankie" Malone | 38 | Mechanic (Malone's garage), boxing promoter, fixer | proposed |
 | 10 | Dr. Priya Shah | late 30s | Forensic scientist | proposed (prompt block exists) |
 | 11 | Dr. Lionel Cortez | mid 50s | Chief medical examiner | proposed (prompt block exists) |
-| 12 | Sgt. Delaney "Del" Cruz | 36 | Harbor Ward police sergeant; principled, bends rules for justice. **Calls Ally "Quinny" (hers alone).** Watchful table outside the Kestrel Corner Diner, back to the wall. Was the rookie constable on the Quinn doorstep the night Thomas died (Ally was 13) and has watched out for her since. | ★ CANON (portrait v2 + emotion sheet 2026-07-11; kestrel tattoo, cool blue lighting; canon adds 2026-08-03) |
+| 12 | Sgt. Delaney "Del" Cruz | 30 | Harbor Ward police sergeant; principled, bends rules for justice. **Calls Ally "Quinny" (hers alone).** Watchful table outside the Kestrel Corner Diner, back to the wall. Was the twenty-year-old rookie constable on the Quinn doorstep the night Thomas died (Ally was 16) and has watched out for her since. | ★ CANON (portrait v2 + emotion sheet 2026-07-11; kestrel tattoo, cool blue lighting; canon adds 2026-08-03) |
 | 13 | Captain Dana Drake | early 50s | HCPD captain; strict institutional gatekeeper, not inherently corrupt | proposed |
 | 14 | Officer Benjamin "Benji" Park | 24 | Rookie Harbor Ward patrol officer; idealistic, comic relief | proposed |
 | 15 | Silas Vex | indeterminate middle age | Black-market information broker; suspected Ferryman-network operator, **unproven** *(the Bible deliberately keeps his true role — pawn, partner, or independent — an open mystery; do not resolve it in scripts or art)* | proposed |

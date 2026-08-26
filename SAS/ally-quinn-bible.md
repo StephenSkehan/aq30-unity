@@ -96,7 +96,7 @@ Havenbay is a fictional, contemporary, mid-size coastal city — population ~480
 
 The city's thesis is **vertical corruption**: wealth and power sit uphill (literally, in Highcliff), and the money that feeds them moves through the docks below. Working Havenbay — dockworkers, teachers, cops, reporters — is the city's heartbeat; above it, old shipping-and-real-estate money coexists uneasily with new players like Councillor Hart's redevelopment machine and the Voss Group's private-security empire; beneath it runs an underground of hustlers, brokers, and organized crime "tolerated so long as they don't interfere with 'respectable' interests." Public sentiment is cynical about official truth — which is why *Echoes of Havenbay* has cult appeal: it "says the things the papers won't."
 
-**History in four beats:** (1) *Harbor origins* — a fishing town grown into shipyards on an immigrant backbone; (2) *the war boom* — the docks expand, the unions gain leverage and enemies; (3) *bust and "renewal"* — deindustrialization, blight, and aggressive redevelopment whose paperwork is where half the bodies are buried; (4) *the quiet scandal* — thirteen years ago, journalist Thomas Quinn dies in a "rainy accident," his laptop missing; files scatter, whispers persist (Chapter 3).
+**History in four beats:** (1) *Harbor origins* — a fishing town grown into shipyards on an immigrant backbone; (2) *the war boom* — the docks expand, the unions gain leverage and enemies; (3) *bust and "renewal"* — deindustrialization, blight, and aggressive redevelopment whose paperwork is where half the bodies are buried; (4) *the quiet scandal* — ten years ago, journalist Thomas Quinn dies in a "rainy accident," his laptop missing; files scatter, whispers persist (Chapter 3).
 
 ## 2.2 The six districts
 
@@ -226,7 +226,7 @@ The season question: **who killed Thomas Quinn, and what conspiracy was he uncov
 
 ## 3.1 The Thomas Quinn incident
 
-Thirteen years ago — Ally was thirteen — investigative journalist Thomas Quinn, 43, died when his car left the road on a rainy night. Official ruling: accident. The hallmarks of a cover-up were all present and all deniable: a traffic camera "under maintenance"; witnesses gone unreliable or silent; a report filed with questionable timing; an early witness statement — describing **two vehicles stopped roadside near the crash site** — later omitted from the file; and his ever-present **laptop missing from the wreck** ("lost in the marsh," said the police). The Gazette ran a brief obituary and never printed his final story.
+Ten years ago — Ally was sixteen — investigative journalist Thomas Quinn, 43, died when his car left the road on a rainy night. Official ruling: accident. The hallmarks of a cover-up were all present and all deniable: a traffic camera "under maintenance"; witnesses gone unreliable or silent; a report filed with questionable timing; an early witness statement — describing **two vehicles stopped roadside near the crash site** — later omitted from the file; and his ever-present **laptop missing from the wreck** ("lost in the marsh," said the police). The Gazette ran a brief obituary and never printed his final story.
 
 What he was chasing: a corruption web tying old-money redevelopment, missing public funds, and police involvement — the machine this bible calls the Ferryman network. Hours before he died he told a colleague he'd found something "explosive." He named no names. He'd learned not to.
 
@@ -287,7 +287,7 @@ Format note on voice: quoted lines in these entries are register samples from th
 
 ### 1. Allison "Ally" Quinn — 26 · protagonist · ★ CANON (model sheets + emotion set v2, 2026-07-11)
 
-Licensed private investigator and host of *Echoes of Havenbay*. Ally grew up in Havenbay, raised by her widowed mother Helen and her grandfather Gerald after her father's death when she was thirteen. Gerald's half-told stories of unsolved cases — and the staged "mystery scenarios" he built around the house for her — made an investigator of her before she knew the word; journalism school and a teenage true-crime blog made her a storyteller. Her breakout was real: a podcast season on a decade-old missing-person case produced a crowdsourced lead — an overlooked witness — that helped police make an arrest. She licensed as a PI under Gerald's coaching and built the show on a promise: the tip line "keeps voices, timestamps and nothing else."
+Licensed private investigator and host of *Echoes of Havenbay*. Ally grew up in Havenbay, raised by her widowed mother Helen and her grandfather Gerald after her father's death when she was sixteen. Gerald's half-told stories of unsolved cases — and the staged "mystery scenarios" he built around the house for her — made an investigator of her before she knew the word; journalism school and a teenage true-crime blog made her a storyteller. Her breakout was real: a podcast season on a decade-old missing-person case produced a crowdsourced lead — an overlooked witness — that helped police make an arrest. She licensed as a PI under Gerald's coaching and built the show on a promise: the tip line "keeps voices, timestamps and nothing else."
 
 Her ethics are the show's spine: she vets everything before airing it, holds back what could burn a witness, funnels crucial tips to police rather than broadcasting them — and, since Episode 1, follows the rule Dot wrote: a voice can tell her where to look without her telling everyone else where it lives. Her mantra, inherited from Gerald: *"Do the right thing, even if it's the hard thing."* Her flaw, named in the old design docs and dramatized in Episode 1: investigative obsession — tunnel vision that can put the story ahead of the people in it, which is exactly the mistake the fish-hook broadcast made and the season won't let her forget.
 
@@ -297,7 +297,7 @@ Her ethics are the show's spine: she vets everything before airing it, holds bac
 
 ### 2. Thomas Quinn — 43, deceased · Ally's father · seed: the sepia photo in her locket
 
-Investigative journalist at the Havenbay Gazette, later independent — union corruption, dockside smuggling, redevelopment graft. "Both wound and beacon": the reason Ally holds a microphone at the dark, and the season's central mystery (Chapter 3.1). Killed thirteen years ago in a staged accident; his laptop was never found. What survives of him is method and artifact: files annotated in initials only (a discipline Danny Reyes taught him posthumously), a battered messenger bag, the fountain pen Helen kept and Ally now carries, a shorthand only she and Gerald can read, the lockbox. Episodes touch him lightly — his absence, his files existing, not their contents — until the season deliberately opens the well. On-page he exists as the photo in the locket, "dark-haired, kind-eyed, 40s; indistinct but human."
+Investigative journalist at the Havenbay Gazette, later independent — union corruption, dockside smuggling, redevelopment graft. "Both wound and beacon": the reason Ally holds a microphone at the dark, and the season's central mystery (Chapter 3.1). Killed ten years ago in a staged accident; his laptop was never found. What survives of him is method and artifact: files annotated in initials only (a discipline Danny Reyes taught him posthumously), a battered messenger bag, the fountain pen Helen kept and Ally now carries, a shorthand only she and Gerald can read, the lockbox. Episodes touch him lightly — his absence, his files existing, not their contents — until the season deliberately opens the well. On-page he exists as the photo in the locket, "dark-haired, kind-eyed, 40s; indistinct but human."
 
 ### 3. Helen Quinn — 46 · Ally's mother · school principal · *proposed* (prompt block exists)
 
@@ -359,7 +359,7 @@ Havenbay's margins talking back: sprawling murals under the Stonebridge Viaduct 
 
 ### 9. Francis "Frankie" Malone — 38 · mechanic, boxing promoter, fixer · *proposed*
 
-Runs Malone's garage on the Rivermouth edge — anything with an engine fixed, and for clients who can pay, "specialty" modifications no invoice describes. Promotes amateur boxing, teaches street kids to jab, wears a St. Christopher, and owes Ally permanently: her podcast cleared his sister's name, a debt he repays in intel, safe exits through the garage's back door, and flat refusal of money (donuts accepted). His Ferryman-network adjacency is real and murky — "both resource and risk; deals always carry strings" — which makes him the ally most likely to know something he shouldn't and least likely to say where he heard it. His skills have an unspent season use: vehicle forensics, and one particular thirteen-year-old crash.
+Runs Malone's garage on the Rivermouth edge — anything with an engine fixed, and for clients who can pay, "specialty" modifications no invoice describes. Promotes amateur boxing, teaches street kids to jab, wears a St. Christopher, and owes Ally permanently: her podcast cleared his sister's name, a debt he repays in intel, safe exits through the garage's back door, and flat refusal of money (donuts accepted). His Ferryman-network adjacency is real and murky — "both resource and risk; deals always carry strings" — which makes him the ally most likely to know something he shouldn't and least likely to say where he heard it. His skills have an unspent season use: vehicle forensics, and one particular ten-year-old crash.
 
 **Voice.** Easy charm with an angle behind it; calls Ally **"Q."** "What trouble are we getting into today?"
 
@@ -385,11 +385,11 @@ Cuban-American, widowed; has seen the worst of two cities' harms up close and an
 
 ## 4.3 The police
 
-### 12. Sgt. Delaney "Del" Cruz — 36 · Harbor Ward sergeant · ★ CANON (portrait v2 + emotion sheet 2026-07-11)
+### 12. Sgt. Delaney "Del" Cruz — 30 · Harbor Ward sergeant · ★ CANON (portrait v2 + emotion sheet 2026-07-11)
 
 Over a decade in HCPD, sergeant by grit and intelligence, Filipino heritage, Harbor Ward to the bone. Her father died in an "accidental" warehouse fire that everyone on the docks understood was nothing of the kind — the private engine behind a career of bending rules for justice and paying for it in sleep. Her partnership with Ally is unofficial and mutually essential: Del converts podcast-grade findings into legally usable cases ("officially anonymous, unofficially airtight"), pulls what can be pulled, stalls what can be stalled, and draws the line out loud when Ally reaches it. She is the season's proof that not all of Havenbay's police are compromised — and, as of Episode 2's notch, the one who believes a taskforce would leak from inside her own department.
 
-**Canon adds (Stephen-ruled 2026-08-03, propagated here 2026-08-24).** She calls Ally **"Quinny"**, her nickname alone and nobody else's; it is part of the closed endearment map. She never relaxes, she picks better sightlines: her spot is the table outside the **Kestrel Corner Diner**, back to the wall, watching the street, the crossing and everyone's hands. **Origin:** as a twenty-three-year-old rookie constable she was on the Quinn doorstep the night Thomas died, when Ally was thirteen, and has quietly watched out for her since. That is the deep-trust engine under every rule she bends, and it surfaces in her locked "Off the Books" lead as "Del's been doing it for me since I was thirteen." Her refusals carry the route forward: she will not hand a civilian an address, so she describes the lock instead ("There's a blue gate at eleven with a garden like a postcard").
+**Canon adds (Stephen-ruled 2026-08-03, propagated here 2026-08-24).** She calls Ally **"Quinny"**, her nickname alone and nobody else's; it is part of the closed endearment map. She never relaxes, she picks better sightlines: her spot is the table outside the **Kestrel Corner Diner**, back to the wall, watching the street, the crossing and everyone's hands. **Origin:** as a twenty-year-old rookie constable she was on the Quinn doorstep the night Thomas died, when Ally was sixteen, and has quietly watched out for her since. That is the deep-trust engine under every rule she bends, and it surfaces in her locked "Off the Books" lead as "Del's been doing it for me since I was sixteen." Her refusals carry the route forward: she will not hand a civilian an address, so she describes the lock instead ("There's a blue gate at eleven with a garden like a postcard").
 
 **Voice (locked register).** Level, economical, honest about the cost of things: "You know what that does to a career?" — "Wakes it up. Mine's been asleep for years." Her signature mode: "I can't officially tell you to do this, but if you do, be careful."
 
@@ -500,7 +500,7 @@ Stale names that must NOT resurface outside this table. (Full authority: the ros
 |---|---|---|---|
 | The city | Brookford / "Havenford" | Havenford | **Havenbay** (Brookford survives only as Gerald's old PD) |
 | Bar owner | Margaret "Mags" O'Rourke, 61 | Maxine "Max" Carver, 61 | **Moira "Mo" Callahan**, late 50s |
-| Police sergeant | Tahlia "Tally" Reed, 34 | Naomi Reed, 34 | **Sgt. Delaney "Del" Cruz**, 36 |
+| Police sergeant | Tahlia "Tally" Reed, 34 | Naomi Reed, 34 | **Sgt. Delaney "Del" Cruz**, 30 |
 | Police captain | Nora Kincaid, 48 | Naomi Drake | **Captain Dana Drake**, early 50s |
 | Hacker | Rae Bishop, 29 | — | **Alexander "Alex" Vega**, 29 |
 | Ally's mother | (unnamed widow) | Elaine Quinn | **Helen Quinn**, 46 |
