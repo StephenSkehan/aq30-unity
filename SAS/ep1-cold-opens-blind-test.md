@@ -20,25 +20,31 @@ Two ways of starting the same episode of a true crime podcast. Each is about a m
 
 **RECORDING.** I have to go.
 
-**ALLY.** Wait. Where are you.
+*The message ends.*
 
-*The line ends.*
+**ALLY.** I played that back eleven times. On the eleventh I said "where are you" out loud, in an empty studio, at one in the morning, to a woman who had recorded it four hours earlier and was not there.
 
-**ALLY.** Our tip line keeps three things. A voice, a date, a time. It doesn't keep numbers, because I promised it wouldn't, and that promise is the only reason anybody calls it. So at eighteen minutes past eleven on Tuesday night, it left me with a dead woman who has no surname, a living woman who has no address, and a man who has probably already looked at her phone.
+Our tip line keeps three things. A voice, a date, a time. It doesn't keep numbers, because I promised it wouldn't, and that promise is the only reason anybody uses it.
+
+So Tuesday night left me with a dead woman who has no surname, a living woman who has no address, and a man who has probably already looked at her phone.
 
 ---
 
 ## B
 
-**ALLY.** Maureen Nolan has paid her daughter's phone bill every month since November. The number rings out. She leaves messages anyway, and by now they have all become the same message, which is that she isn't angry and she would just like to know she's all right.
+**ALLY.** It took me two days to find somebody who might be missing a Kerry.
 
-Her daughter has not been all right since November. Her daughter has been dead since November.
+Her name is Maureen Nolan. She lives interstate, and she has paid her daughter's phone bill every month since November. The number rings out. She leaves messages anyway. She told me they have all turned into the same message by now, which is that she isn't angry and she would just like to know she's all right.
 
-She is in a file in this city under five words. Unidentified female, no fixed address. She was found at the bottom of the steps under the Stonebridge Viaduct with one injury to the back of her head, and this city wrote down that she fell.
+Her daughter has been dead since November.
 
-On Tuesday night, a woman told me her name was Kerry. She told me Kerry didn't fall. She said Kerry hit her head in a room and that a man carried her out afterwards, which is not a thing you know unless somebody tells you.
+She is in a file in this city under five words. Unidentified female, no fixed address. Found at the bottom of the steps under the Stonebridge Viaduct with one injury to the back of her head, and this city wrote down that she fell.
 
-That woman is living with him. And I don't know where she is.
+Here is what I actually have. On Tuesday night a woman I have never met left a message saying Kerry didn't fall, that she hit her head in a room and that a man carried her out afterwards. Then somebody in the corridor said her name and she hung up.
+
+I don't know if she was telling me the truth.
+
+I know that if she was, she is sleeping tonight beside the man who did it, and I have no idea where that is.
 
 ---
 

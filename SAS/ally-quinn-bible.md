@@ -141,6 +141,14 @@ Havenbay is an **all-party consent** jurisdiction, and the rule has two separate
 
 *Note: this is chosen worldbuilding, not researched law. It follows the recognisable shape of all-party-consent regimes so a player finds it credible. Havenbay is fictional and the rule is ours to set; the constraint is only that it must not grant anyone a power institutions do not plausibly have.*
 
+### 2.3.1b The Tip Line, what it is for (Stephen-ruled 2026-08-26)
+
+**The Tip Line is the voice of the city dwellers who wish to stay anonymous for now.** It is an approved, standing plot device and is not restricted to any one episode. A caller consents by leaving a message, so making the recording is lawful under §2.3.1; publishing any part of it is a separate question and is Ally's to answer each time.
+
+*Effect:* the line is a signature of the show rather than a liability inherited from the demoted Episode 1. Concerns that reusing it repeats The Listener are resolved: the device is fine, and what failed there was the absence of jeopardy, not the telephone.
+
+*The standing constraint that makes it dramatic:* the line keeps a voice, a date and a time, and no caller metadata, because that promise is the only reason anyone uses it. An anonymous caller who is cut off cannot be called back.
+
 ### 2.3.2 Havenbay institutional processes (Stephen-ruled 2026-08-25)
 
 Fifteen parameters, ruled in one sitting to close the gap that killed roughly a third of two premise fields. **These are parameters, not powers.** Kill Gate Zero is untouched: nobody may invent an authority an institution does not have. What is settled here is how long Havenbay's institutions keep things and who may ask for them.
