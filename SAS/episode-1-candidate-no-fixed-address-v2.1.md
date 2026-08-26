@@ -1,15 +1,15 @@
-<!-- pdf-title: No Fixed Address v2.0 -->
+<!-- pdf-title: No Fixed Address v2.1 -->
 
 # EPISODE ONE CANDIDATE
-## NO FIXED ADDRESS, v2.0
+## NO FIXED ADDRESS, v2.1
 
-**Supersedes v1.0.** · 2026-08-26 · **v1.0 verdict PASS is WITHDRAWN.** All six findings of the independent REWORK review are accepted without contest and repaired below. Nothing is deferred to Mode B.
+**Supersedes v1.0.** · **v2.1 revision 2026-08-26: ruling question 1 ANSWERED by Stephen and the premise's largest exposure is closed.** · 2026-08-26 · **v1.0 verdict PASS is WITHDRAWN.** All six findings of the independent REWORK review are accepted without contest and repaired below. Nothing is deferred to Mode B.
 
 **What changed, in one line each.**
 
 | # | Finding | Repair |
 |---|---|---|
-| 1 | Identification failure was asserted, not demonstrated; misadventure unexplained | Cause of death written; every identification route answered individually; the load-bearing gap converted to a canon ruling question |
+| 1 | Identification failure was asserted, not demonstrated; misadventure unexplained | Cause of death written; every identification route answered individually; **the load-bearing gap ruled into canon as R16 (v2.1)** |
 | 2 | Dean's proactive helpfulness irrational while she is unnamed | Phase change stated. He is silent until identification becomes likely |
 | 3 | Three of four decisions were outlines; lead arithmetic contradictory | Four decisions demonstrated with corrected arithmetic and a fairness test each |
 | 4 | Relocation test run against a district, not a city | Re-run against another city. Dependency moved onto canon that does not travel |
@@ -43,7 +43,7 @@ The v1.0 claim that "nothing existed to make the records meet" was too absolute 
 | **DNA** | Requires a reference sample. The only available reference is her mother, and **no reference was ever taken from Maureen**, for the reason in the next row |
 | **The interstate report's classification** | ★ **The load-bearing repair.** Kerry was reported by her mother as an adult who had moved interstate, changed jobs, and cut contact after leaving a partner. That is correctly classified **low-risk, voluntarily absent.** Low-risk adult reports do not attract biometric reference collection, because nobody believes the person is dead. **Nobody thought Kerry needed finding. They thought she had left.** So there was never anything on Kerry's side of the comparison to match against |
 | **Physical description** | Compared and produced candidates. She was among them. **A description match is not an identification**, it is a list, and a list of possible thirty-to-forty-five-year-old women requires biometric or family follow-up to resolve. See the ruling question below |
-| **Automated cross-jurisdictional matching** | **PENDING APPROVAL.** See §7. The premise requires that Havenbay's participation in interstate matching for unidentified deceased is **voluntary and patchy rather than mandatory and complete.** If Stephen rules it mandatory and complete, **this premise dies and I will not argue** |
+| **Automated cross-jurisdictional matching** | ★ **ANSWERED. Bible §2.3.2 R16, Stephen-ruled 2026-08-26: participation is VOLUNTARY AND PATCHY.** Ruled from real-world practice, not from what this premise needed. Kerry's record may or may not have been entered; either way **entry is not identification**, and the candidate list it produces cannot be resolved without the reference sample nobody took |
 
 **The stay-away condition of v1.0 is deleted.** The reviewer correctly identified it as an unexplained link between Kerry's legal identity and Dean. She never made a complaint. Nothing on paper joins them.
 
@@ -164,7 +164,7 @@ Under that test, the following survive relocation and are therefore **not** clai
 
 **PENDING APPROVAL. Four one-line rulings, asked rather than invented:**
 
-1. ★ **Does Havenbay operate mandatory and complete cross-jurisdictional matching between missing-person reports and unidentified deceased, or is participation voluntary and patchy?** *The premise requires voluntary and patchy. A ruling the other way kills it.*
+1. ~~Does Havenbay operate mandatory and complete cross-jurisdictional matching?~~ ★ **RULED 2026-08-26: voluntary and patchy. Bible §2.3.2 R16.** No longer pending.
 2. How does a Havenbay coroner verify a claimed relationship to an unidentified deceased, and what may a proposed relative do before identification is formal?
 3. Who may formally identify a deceased person, and what happens when a family in another jurisdiction comes forward?
 4. Can a finding of misadventure be amended once the deceased is identified, and by whom?
@@ -175,7 +175,7 @@ Under that test, the following survive relocation and are therefore **not** clai
 
 # 9. KILL BRIEF
 
-**Competent professional.** Every identification route is answered individually in §2 and none requires anyone to skip a step. The pathology is unremarkable and correct. The classification was right about the risk and wrong about Kerry. **The single remaining exposure is ruling question 1, and it is asked rather than assumed.**
+**Competent professional.** Every identification route is answered individually in §2 and none requires anyone to skip a step. The pathology is unremarkable and correct. The classification was right about the risk and wrong about Kerry. **The exposure that ruling question 1 represented is closed: R16 rules participation voluntary and patchy, checked against real practice rather than against what this premise wanted.**
 
 **Rational antagonist.** Silent while she is unnamed, cooperative once he is reachable, and controlling the story only after a player choice makes that cheaper than absence. The staging is now testable against a written cause of death and it earns its twenty-minute drive.
 
@@ -187,4 +187,4 @@ Under that test, the following survive relocation and are therefore **not** clai
 
 **v1.0 claimed PASS while admitting performed compulsion was UNKNOWN and no cold open existed. The reviewer was right that the charter forbids that, and G2 forbids a conditional pass, so no pass is claimed.** This document says only that the premise is now sound enough to spend an opening on and put in front of readers.
 
-**Three weaknesses recorded and not defended.** A woman killed by a former partner is the most common real homicide and the most frequently told, so the freshness lives in the identity structure rather than the crime. The Gate 7 dependency rests on canon rather than physics. And ruling question 1 can kill the premise outright.
+**Three weaknesses recorded and not defended.** A woman killed by a former partner is the most common real homicide and the most frequently told, so the freshness lives in the identity structure rather than the crime. The Gate 7 dependency rests on canon rather than physics. And the third weakness recorded in v2.0, that ruling question 1 could kill the premise, is now resolved rather than outstanding.

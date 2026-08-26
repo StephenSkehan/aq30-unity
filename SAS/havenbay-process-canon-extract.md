@@ -2,7 +2,7 @@
 
 # HAVENBAY PROCESS CANON
 
-**Verbatim extract from `SAS/ally-quinn-bible.md`, sections 2.3.1 and 2.3.2, lines 124 to 205.** Supplied so the rulings are unmissable. The bible remains the canon authority; this is a convenience copy and does not supersede it.
+**Verbatim extract from `SAS/ally-quinn-bible.md`, sections 2.3.1 and 2.3.2. Includes R16, Stephen-ruled 2026-08-26.** The bible remains the canon authority; this is a convenience copy.
 
 ---
 
@@ -87,4 +87,17 @@ Havenbay's contrasts are the story engine: wealth against poverty, tradition aga
 # Chapter 3 — The Season Arc
 
 The season question: **who killed Thomas Quinn, and what conspiracy was he uncovering?** Every episode is a self-contained case plus exactly one new arc clue — one new fact, one new cost, never the full answer — until the finale unmasks the Ferryman and Councillor Hart live on the podcast. "The personal quest to solve her father's murder is the key that unlocks the city's deepest conspiracy."
+
+**R16. Cross-jurisdictional matching of missing-person reports against unidentified deceased (Stephen-ruled 2026-08-26).**
+
+**Participation is VOLUNTARY AND PATCHY.** Havenbay and the other jurisdictions contribute to a shared comparison system, but entry is not mandated, coverage is incomplete, and practice varies by agency and by the classification a case is given.
+
+*Why it reads true:* this is the real-world norm rather than a convenience. In the United States only around sixteen or seventeen states mandate entry into the national system, and in ninety per cent of counties not a single active unclaimed-person case was listed over a five-year period. In Australia roughly seven hundred and fifty sets of unidentified human remains are held nationally, and a dedicated national DNA programme had to be created to go back and ask families to voluntarily provide reference samples that were never taken at the time of report.
+
+*Consequences that are now canon:*
+- **Entry is not identification.** A description match returns a candidate list. Resolving it requires biometrics or a family follow-up.
+- **A low-risk or voluntarily-absent classification does not attract reference-sample collection**, because nobody believes the person is dead. This is the most common reason a body and a report never meet, and it requires no professional to omit a step.
+- Fingerprints identify only a person already on file. Odontology is confirmatory, not searching, and needs a named candidate first.
+
+*Recorded:* Claude's `No Fixed Address` premise depends on this ruling, and the ruling was made after checking real-world practice rather than from what the premise needed. Had it gone the other way the premise would still stand on the absent reference sample alone.
 
