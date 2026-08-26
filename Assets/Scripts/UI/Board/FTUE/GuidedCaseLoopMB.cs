@@ -364,6 +364,10 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         // 2026-08-22): banner and pulse retire immediately; the step stays live
         // so the first pair that forms advances to the merge lesson.
         if (_step != Step.Generator) return;
+        // I8: gl_gen_shown fires when we point at the kit; this fires when they
+        // actually tap it. The drop between the two is the confusion signal --
+        // "shown" alone cannot tell us whether the pointer worked.
+        AQ.App.Analytics.GameAnalytics.LogFtueEvent("gl_gen_tapped");
         SetBanner(null);
         _bannerTarget = null;
         ClearPulse();

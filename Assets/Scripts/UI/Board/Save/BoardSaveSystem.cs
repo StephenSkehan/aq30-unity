@@ -164,12 +164,29 @@ namespace AQ.App.UI.Board
 
         private void OnApplicationPause(bool paused)
         {
-            if (paused) TrySave();
+            if (paused) { TrySave(); LogSessionOneEndOnce(); }
         }
 
         private void OnApplicationQuit()
         {
             TrySave();
+            LogSessionOneEndOnce();
+        }
+
+        /// <summary>
+        /// I8 funnel terminator. Fires once ever, when the first session ends, so the
+        /// funnel has a denominator: every earlier ftue_funnel step is read against the
+        /// players who reached the end of session one. Backgrounding counts as an end on
+        /// mobile, which is the behaviour we want -- a player who backgrounds and never
+        /// returns has ended their first session.
+        /// </summary>
+        private static void LogSessionOneEndOnce()
+        {
+            const string key = "aq.ftue.session1_end.logged";
+            if (PlayerPrefs.GetInt(key, 0) != 0) return;
+            PlayerPrefs.SetInt(key, 1);
+            PlayerPrefs.Save();
+            AQ.App.Analytics.GameAnalytics.LogFtueEvent("session1_end");
         }
 
         // --------------- Save / Load ---------------

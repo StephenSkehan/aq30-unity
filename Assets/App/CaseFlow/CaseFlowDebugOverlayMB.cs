@@ -26,7 +26,7 @@ namespace AQ.App.CaseFlow
             var activeKey = (s.StepIndex < s.Steps.Count) ? s.Steps[s.StepIndex] : "<complete>";
 
             var bar = FindAnyObjectByType<Leads.LeadsBarView>();
-            string leads = bar != null ? $" · Leads {bar.ActivatedCount}/12" : string.Empty;
+            string leads = bar != null ? $" · Leads {bar.ActivatedCount}/{bar.CaseArcTotal}" : string.Empty;
 
             return $"Ep={s.Episode} Step={s.StepIndex}/{s.Steps.Count} {activeKey}{leads}";
 #else

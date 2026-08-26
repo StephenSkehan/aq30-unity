@@ -83,11 +83,33 @@ Fire `ftue_step` analytics events: intro_start, intro_skipped, first_merge, payo
 *Basis: funnel practice consensus. One evening of work; makes every other initiative measurable. Should ship in b7 regardless of all other rulings.*
 
 ### I9 — "Case File 101" replayable help · **P2 · S/M**
-A four-card how-to-play behind the board's ?: (1) Tap the kit, it produces evidence (2) Match two identical items, drag together (3) Green tick = a lead wants it (4) Fill the card, tap PROCEED. Illustrated with real sprites, ≤8 words per card, AQTheme popup rig.
+A four-card how-to-play behind the board's ?: (1) Tap the kit, it gives you gear (2) Match two identical items, drag together (3) Green tick = a lead wants it (4) Fill the card, tap PROCEED. Illustrated with real sprites, ≤8 words per card, AQTheme popup rig.
 *Basis: Apple guidance — skipped/missed info must remain retrievable. Also the answer for the tester who dismissed a hint chip too fast.*
 
 ### I10 — Board-as-teacher seeding · **P3 · S now, L later**
 Light version now: after the FTUE payoff, seed 4–6 mixed T1/T2 items so the first free minutes always contain visible merges (and keep ~20–25% free space on restore, Travel Town's rule). Full version post-launch: "sealed evidence bags" — pre-placed locked tiles that open when a matching item merges beside them (the cobweb/sand mechanic all four comps use as their zero-text tutor). The full version is a real mechanic with save-schema and merge-path implications — not before launch.
+
+---
+
+## Build state (2026-08-26)
+
+**The entire b7 wave is implemented.** It was never "not built"; it is not cut.
+
+| Item | Component | State |
+|---|---|---|
+| I1 | `Assets/Scripts/UI/Board/FTUE/GuidedCaseLoopMB.cs` | Built, 605 lines, playtested 2026-08-22 |
+| I3 | `Assets/App/UI/Leads/RequirementSlotView.cs` + `Assets/Scripts/UI/Common/RequirementHoldPopupBridge.cs` | Built |
+| I4 | `Assets/Scripts/UI/Hints/StallNudgeMB.cs` | Built |
+| I5 | `Assets/Scripts/App/Services/FtueEnergyNet.cs` | Built |
+| I8 | `AQ.App.Analytics.GameAnalytics.LogFtueEvent` | Built; **completed 2026-08-26**, see below |
+
+**I8 funnel, fourteen steps:** `l1_intro_start` · `l1_intro_done` · `l1_first_merge` · `l1_payoff_done` · `l1_ceded` · `gl_start` · `gl_seeded` · `gl_gen_shown` · **`gl_gen_tapped`** · `gl_first_free_merge` · `gl_lead_ready` · `gl_done` · **`first_energy_out`** · **`session1_end`**.
+
+Bold are new on 2026-08-26. `gl_gen_shown` to `gl_gen_tapped` is the pointer-worked signal; `gl_gen_shown` alone could not distinguish "we pointed" from "they understood". `session1_end` gives the funnel a denominator.
+
+**`intro_skipped` is NOT instrumented and cannot be**, because no intro-skip affordance exists yet. It arrives with I6 in the b8 wave. Recorded rather than silently dropped.
+
+**Remaining before b7 cuts:** play-verification, which is Stephen's under the 2026-08-26 tester ruling, plus round-7 and splash.
 
 ---
 
@@ -99,7 +121,7 @@ Light version now: after the FTUE payoff, seed 4–6 mixed T1/T2 items so the fi
 - Success criterion for the waves: next cohort answers "what do you do in this game?" correctly without prompting; funnel shows no step dropping >20%.
 
 ## Rulings needed from Stephen
-1. ~~I1/I4/I7 directive copy tier: approve the split voice and rule the lines?~~ **RESOLVED 2026-08-26. Split voice approved; all four lines ruled individually. See LOCKED COPY SHEET above.**
+1. ~~I1/I4/I7 directive copy tier: approve the split voice and rule the lines?~~ **RESOLVED 2026-08-21 by the Gerald copy sheet and implemented. Re-opened in error on 2026-08-26 because this document was never updated. See COPY SHEET STATUS above.**
 2. I6: is a quiet SKIP INTRO pill acceptable on the N1–N3 story open? And is a ~35–40s tightening of N1–N3 on the table, or is v1.1 VO locked?
 3. I5: confirm the +100 double safety net against Schedule B (it is additive early-game energy; drop tables untouched).
 4. I3/I2: MADE BY row reveals which generator produces a family before the family is discovered — spoiler-safe? (Recommend: show generator only if the generator itself is owned/known.)
@@ -115,9 +137,27 @@ Light version now: after the FTUE payoff, seed 4–6 mixed T1/T2 items so the fi
 
 ---
 
-## LOCKED COPY SHEET: directive tier (Stephen-ruled 2026-08-26)
+## COPY SHEET STATUS
 
-Four lines, ruled individually. **These are final. Do not paraphrase, re-case or re-punctuate when implementing.** All are imperative or confirmatory, at most 8 words, no em dashes, no exclamation marks, no address to the player.
+⚠ **CORRECTION 2026-08-26, later the same day. The four lines below are NOT in the build and were not applied.**
+
+**The shipped copy is the Gerald copy sheet, Stephen-ruled 2026-08-21**, which was implemented in `GuidedCaseLoopMB`, `StallNudgeMB` and `FtueEnergyNet` and playtested on the 22nd. **This spec document was never updated when that sheet was ruled**, so its draft quotes below survived as apparent open items, the nag list inherited them as "four draft copy lines blocking the b7 cut", and they were put to Stephen a second time on the 26th. They had not blocked anything since 21 August.
+
+### What is actually live
+
+| Beat | Live copy | Ruled |
+|---|---|---|
+| I1 generator | **Tap the kit. Every item helps.** | 2026-08-21 |
+| I1 merge | **A matching pair. Drag them together.** | 2026-08-21 |
+| I1 tick lands | *deliberately silent.* `EnterQuiet` clears the banner: loop demonstrated, stop talking | 2026-08-21 |
+| I1 proceed | **Lead's gone green. Tap it and proceed.** | 2026-08-21 |
+| I4 stall, pair present | **Look for pairs. Drag them together.** | 2026-08-21 |
+| I4 stall, no pair | **Nothing doing? Tap the kit again.** | 2026-08-21 |
+| I5 energy net | **On me. +100 energy.** | 2026-08-21 |
+
+### The 2026-08-26 alternatives, recorded and NOT applied
+
+Ruled against this document's stale draft quotes rather than against the built behaviour. Held pending Stephen's call on whether they supersede the shipped sheet. Applying line 2 would be a design change, not a wording change: it puts a banner on the tick where 08-21 deliberately goes quiet.
 
 | # | Line | Beat | Words |
 |---|---|---|---|
@@ -126,7 +166,7 @@ Four lines, ruled individually. **These are final. Do not paraphrase, re-case or
 | 3 | **Drag one onto its twin.** | I4. Board idle ~20s, valid pair present, arrow already on the pair. | 5 |
 | 4 | **No pairs left. Tap the kit.** | I4/I7. Board idle, NO valid pair, arrow moves to the Field Kit. | 6 |
 
-**Fiction correction applied.** The drafts said "Tap for evidence" and "It makes evidence". The Field Kit produces the **Audio Investigation** family (Earbuds in Case, Studio Headphones, Recorder & Headphones, Broadcast Microphone Rig, Audio Mixing Console, Forensic Audio Workstation). Under the 2026-07-15 family ruling, **"Audio Investigation finds the story. Forensic Tools makes it evidence."** Calling the Field Kit's output evidence gives it the Forensic Tools family's job. No directive-tier line may describe a generator as producing evidence.
+**Fiction correction, which stands regardless of which sheet wins.** The drafts said "Tap for evidence" and "It makes evidence". The Field Kit produces the **Audio Investigation** family (Earbuds in Case, Studio Headphones, Recorder & Headphones, Broadcast Microphone Rig, Audio Mixing Console, Forensic Audio Workstation). Under the 2026-07-15 family ruling, **"Audio Investigation finds the story. Forensic Tools makes it evidence."** Calling the Field Kit's output evidence gives it the Forensic Tools family's job. No directive-tier line may describe a generator as producing evidence.
 
-**Recorded, not a defect.** Lines 3 and 4 use two nouns for one concept, "twin" and "pair". Stephen ruled line 4 as "No pairs left" with that cost visible and accepted. If testers report confusion about what makes a matching pair, line 4 is the cheap place to unify.
+**Recorded.** Lines 3 and 4 use two nouns for one concept, "twin" and "pair". Stephen ruled line 4 as "No pairs left" with that cost visible and accepted. If testers report confusion about what makes a matching pair, line 4 is the cheap place to unify.
 

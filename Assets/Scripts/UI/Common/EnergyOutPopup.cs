@@ -27,6 +27,19 @@ namespace AQ.App.UI.Common
         {
             if (_root != null) return;
 
+            // I8. A hard stop is the worst thing to show someone still learning
+            // the loop, so the FIRST one is worth its own funnel step: it is the
+            // event FtueEnergyNet exists to prevent, and once the net is spent
+            // this is where players are lost. Logged once ever, before the net's
+            // own energy_net_1/2 grants, so the two are comparable.
+            const string firstOutKey = "aq.ftue.first_energy_out.logged";
+            if (PlayerPrefs.GetInt(firstOutKey, 0) == 0)
+            {
+                PlayerPrefs.SetInt(firstOutKey, 1);
+                PlayerPrefs.Save();
+                AQ.App.Analytics.GameAnalytics.LogFtueEvent("first_energy_out");
+            }
+
             _root = new GameObject("__EnergyOutPopup", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             Object.DontDestroyOnLoad(_root);
 
