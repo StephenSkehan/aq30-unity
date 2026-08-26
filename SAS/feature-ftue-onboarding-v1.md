@@ -51,7 +51,7 @@ The structural gap: **our teaching is reactive commentary; the genre's is direct
 Priority = impact on the F&F symptom ÷ effort. Effort: S (<½ day), M (½–2 days), L (2+ days).
 
 ### I1 — Guided Case Loop: extend the choreography through the first full loop · **P1 · M**
-After the L1 payoff closes, run one directed sequence teaching the REAL loop on L2: arrow/hand on the generator ("Tap for evidence" — energy visibly ticks down) → items drop → pointer pairs the first merge → merge to the required tier → the tick lands ("That's what the lead needs") → pointer to the card's Proceed. Soft-guide style (dim + pulse, input free) exactly like the existing choreography — the infrastructure (FTUEFirstMergeChoreographyMB, stage flags, pulse/dim code) already exists to extend. All copy ≤8 words, Ally's voice.
+After the L1 payoff closes, run one directed sequence teaching the REAL loop on L2: arrow/hand on the generator ("Tap the kit for gear.", energy visibly ticks down) → items drop → pointer pairs the first merge → merge to the required tier → the tick lands ("That's what the lead needs.") → pointer to the card's Proceed. Soft-guide style (dim + pulse, input free) exactly like the existing choreography — the infrastructure (FTUEFirstMergeChoreographyMB, stage flags, pulse/dim code) already exists to extend. All copy ≤8 words, Ally's voice.
 *Benchmarks: Merge Mansion pointer-per-feature; Gossip Harbor's forced second order. This is the single highest-impact fix for "don't know what to do."*
 
 ### I2 — One-tap chain view with "MADE BY" · **P1 · M**
@@ -75,7 +75,7 @@ Keep the story-first opening (Trailmix data supports it) but get the player's ha
 *Data: 20% install loss in 2 min; core action ≤90s guidance. VO is our identity — skip must exist but stay quiet.*
 
 ### I7 — Two-voice hint system: directive tier + flavor tier · **P2 · S**
-Keep the 12 noir chips exactly as ruled (they're flavor + soul). Add a small DIRECTIVE tier used only by I1/I4: ≤8 words, imperative, anchored with a pointer ("Drag one onto its twin." / "Tap the kit. It makes evidence."). Directive tier retires permanently once the player demonstrates each action.
+Keep the 12 noir chips exactly as ruled (they're flavor + soul). Add a small DIRECTIVE tier used only by I1/I4: ≤8 words, imperative, anchored with a pointer ("Drag one onto its twin." / "No pairs left. Tap the kit."). Directive tier retires permanently once the player demonstrates each action.
 *Basis: 80–90% don't read; 8-word rule; hierarchy convention hand = do this now, glow = suggestion.*
 
 ### I8 — FTUE funnel instrumentation · **P1 · S**
@@ -99,7 +99,7 @@ Light version now: after the FTUE payoff, seed 4–6 mixed T1/T2 items so the fi
 - Success criterion for the waves: next cohort answers "what do you do in this game?" correctly without prompting; funnel shows no step dropping >20%.
 
 ## Rulings needed from Stephen
-1. I1/I4/I7 introduce a directive copy tier (imperative, ≤8 words) alongside the noir chips — approve the split voice? Draft lines will come as a copy sheet for individual ruling as usual.
+1. ~~I1/I4/I7 directive copy tier: approve the split voice and rule the lines?~~ **RESOLVED 2026-08-26. Split voice approved; all four lines ruled individually. See LOCKED COPY SHEET above.**
 2. I6: is a quiet SKIP INTRO pill acceptable on the N1–N3 story open? And is a ~35–40s tightening of N1–N3 on the table, or is v1.1 VO locked?
 3. I5: confirm the +100 double safety net against Schedule B (it is additive early-game energy; drop tables untouched).
 4. I3/I2: MADE BY row reveals which generator produces a family before the family is discovered — spoiler-safe? (Recommend: show generator only if the generator itself is owned/known.)
@@ -112,3 +112,21 @@ Light version now: after the FTUE payoff, seed 4–6 mixed T1/T2 items so the fi
 **Comps FTUE:** Merge Mansion wiki (Starting Out / Game Mechanics / Tasks), Udonis Merge Mansion monetization, Level Winner guides, Gossip Harbor wiki (Day 1-5, Player Guide), PocketGamer.biz Gossip Harbor live-ops, Love & Pies wiki (Day 1), Trailmix Helpshift FAQs 7/9/282/283, Naavik Love & Pies deep dive, Mobilegamer.biz Trailmix retention interview, Level Winner + AppGamer Travel Town, PocketGamer.biz Travel Town deconstruction.
 **Genre conventions:** Merge Dragons wiki (Merge Chains, Merging), GDC 2019 Merge Dragons pillars, EverMerge guides (Touch Tap Play, Level Winner), Merge County guides + Play Store reviews, Seaside Escape reviews, Bernstein Merge Dragons critical play, BlueStacks/Lucid Puzzle Merge Mansion references.
 **Best practices:** Apple games-onboarding guidance, NN/g reading studies, GameAnalytics FTUE guide + 2025 benchmarks, AppsFlyer Q3 2022 retention benchmarks, deltaDNA first-session study (GameDeveloper.com), Udonis tutorial design, Playio onboarding, Antidote Ankama FTUE case, Candy Crush hint conventions.
+
+---
+
+## LOCKED COPY SHEET: directive tier (Stephen-ruled 2026-08-26)
+
+Four lines, ruled individually. **These are final. Do not paraphrase, re-case or re-punctuate when implementing.** All are imperative or confirmatory, at most 8 words, no em dashes, no exclamation marks, no address to the player.
+
+| # | Line | Beat | Words |
+|---|---|---|---|
+| 1 | **Tap the kit for gear.** | I1. Arrow on the Field Kit, energy ticks down, audio items drop. First instruction in the game. | 5 |
+| 2 | **That's what the lead needs.** | I1. Merge completes at the required tier, requirement tick lands on the card. | 5 |
+| 3 | **Drag one onto its twin.** | I4. Board idle ~20s, valid pair present, arrow already on the pair. | 5 |
+| 4 | **No pairs left. Tap the kit.** | I4/I7. Board idle, NO valid pair, arrow moves to the Field Kit. | 6 |
+
+**Fiction correction applied.** The drafts said "Tap for evidence" and "It makes evidence". The Field Kit produces the **Audio Investigation** family (Earbuds in Case, Studio Headphones, Recorder & Headphones, Broadcast Microphone Rig, Audio Mixing Console, Forensic Audio Workstation). Under the 2026-07-15 family ruling, **"Audio Investigation finds the story. Forensic Tools makes it evidence."** Calling the Field Kit's output evidence gives it the Forensic Tools family's job. No directive-tier line may describe a generator as producing evidence.
+
+**Recorded, not a defect.** Lines 3 and 4 use two nouns for one concept, "twin" and "pair". Stephen ruled line 4 as "No pairs left" with that cost visible and accepted. If testers report confusion about what makes a matching pair, line 4 is the cheap place to unify.
+
