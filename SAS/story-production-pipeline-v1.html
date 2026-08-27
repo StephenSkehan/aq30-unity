@@ -1,0 +1,160 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Story Production Pipeline</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0;
+         font-size: 10.5pt; line-height: 1.55; }
+  h1 { font-size: 20pt; letter-spacing: .2px; border-bottom: 3px solid #1c1a17;
+       padding-bottom: 8px; margin: 0 0 14px; }
+  h2 { font-size: 13.5pt; margin: 26px 0 8px; padding-bottom: 4px;
+       border-bottom: 1.5px solid #1c1a17; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 18px 0 6px; color: #3a352d; page-break-after: avoid; }
+  p { margin: 0 0 9px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  hr { border: 0; border-top: 1px solid #ccc5b8; margin: 22px 0; }
+  code { font-family: Consolas, monospace; font-size: 9pt; color: #7a5c1f;
+         background: #f6f2e8; padding: 0 3px; border-radius: 2px; }
+  del { color: #999; }
+  blockquote { border-left: 3px solid #b9ae99; background: #faf8f2; margin: 10px 0;
+               padding: 8px 14px; page-break-inside: avoid; }
+  blockquote p { margin: 0 0 6px; }
+  blockquote p:last-child { margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 14px;
+          font-size: 9pt; table-layout: fixed; page-break-inside: avoid; }
+  th { text-align: left; background: #1c1a17; color: #f5f1e8; padding: 5px 7px;
+       font-size: 8.5pt; letter-spacing: .3px; }
+  td { vertical-align: top; padding: 5px 7px; border-bottom: 1px solid #e3ded2;
+       word-wrap: break-word; }
+  tr:nth-child(even) td { background: #faf8f2; }
+  .cards { margin: 10px 0 16px; }
+  .card { border: 1px solid #c9c1b0; border-left: 4px solid #1c1a17; border-radius: 3px;
+          padding: 8px 11px 9px; margin-bottom: 9px; background: #fdfcf8;
+          page-break-inside: avoid; font-size: 9.5pt; }
+  .chead { font-size: 8.5pt; color: #6b6357; margin-bottom: 4px; letter-spacing: .3px; }
+  .cid { font-weight: bold; color: #1c1a17; margin-right: 10px; }
+  .cphase { margin-right: 10px; }
+  .ccls { float: right; font-style: italic; }
+  .cdec { font-weight: bold; margin-bottom: 6px; }
+  .card dl { margin: 0; }
+  .card dt { font-size: 8pt; text-transform: uppercase; letter-spacing: .6px;
+             color: #8a6d3b; margin-top: 5px; }
+  .card dd { margin: 1px 0 0; }
+  .rank .order { margin: 2px 0 5px; font-size: 10pt; }
+  .rank .reason { color: #3a352d; }
+</style></head><body>
+<!-- pdf-title: Story Production Pipeline -->
+
+<h1>STORY PRODUCTION PIPELINE</h1>
+<p><strong>How to produce quality stories with AI, efficiently, with no writing budget</strong> · 2026-08-27 · Derived entirely from what this project's own record shows, not from theory</p>
+<hr />
+<h1>The principle</h1>
+<p><strong>Optimise for the shortest path to a human reaction, not for the fewest human interruptions.</strong></p>
+<p>Every quality gain this project has made came from Stephen or Trish reacting to something. None came from a gate. The loop we have been running takes about a week to reach one human reaction. The loop below reaches one in about a day, and the pre-flight exists only to make sure that reaction is worth their ten minutes.</p>
+<p><strong>Three findings from our own data, which override any framework:</strong></p>
+<ol>
+<li><strong>Depth beats breadth.</strong> Forty-five premises generated wide produced one survivor. One premise developed deep produced the leading candidate. Stop generating fields.</li>
+<li><strong>The failures are a short recurring list</strong>, not unpredictable quality. Twelve objections cover essentially every rejection in three weeks.</li>
+<li><strong>Constrain the check, not the generation.</strong> Prohibitions applied before writing produced conformant and contrived work. The same rules applied to a finished draft catch the same defects without deadening the prose.</li>
+</ol>
+<hr />
+<h1>The pipeline</h1>
+<p>One pass is about a day. Failures are front-loaded into steps where they cost nothing.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Step</th>
+<th>Who</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>The spine.</strong> What actually happened, hour by hour, and what Ally can lawfully reach, from whom, on which day</td>
+<td>Claude</td>
+<td>Timeline + access ledger. <strong>No prose.</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Pre-flight.</strong> The twelve objections applied to the spine, each answered in writing</td>
+<td>Claude</td>
+<td>Twelve written answers or a kill</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Adversarial audit.</strong> Attack the spine, not the prose</td>
+<td>ChatGPT</td>
+<td>Findings; repair or kill</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Prose.</strong> Opening and key beats, written from the repaired spine</td>
+<td>Fable</td>
+<td>Draft copy</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Reader check.</strong> Two questions, ten minutes</td>
+<td>Stephen, Trish</td>
+<td>Grab / believe</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Kill or continue.</strong> Salvage fragments either way</td>
+<td>Stephen</td>
+<td>Decision</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 1 is the one we have never done and it is why every opening failed.</strong> Six openings, three writers, and all six were holed on "how did she get that." Ally could not source what she knew because nobody had decided what she actually got. A spine written before any prose makes that class of failure impossible rather than catchable.</p>
+<h2>Division of labour, by demonstrated performance</h2>
+<p>Not by preference. By what the record shows.</p>
+<ul>
+<li><strong>ChatGPT: audit and structure.</strong> Its REWORK of <code>No Fixed Address v2.1</code> found six real defects including two I had made three times. Its seed ledger conformed where mine failed outright.</li>
+<li><strong>Fable: prose.</strong> Wrote the best lines any of us has produced for this project. Needs an explicit brief for structure; give it a repaired spine and it will outwrite the rest of us.</li>
+<li><strong>Claude: spine, canon, integration, code.</strong> Holds continuity across documents, catches contradictions, applies rulings, and does the engineering.</li>
+<li><strong>Stephen and Trish: the two questions only humans can answer.</strong> Does it grab you, and do you believe it. Never conformance. Never volume.</li>
+</ul>
+<hr />
+<h1>PRE-FLIGHT: the twelve objections</h1>
+<p><strong>Every one is quoted from an objection actually raised by Stephen or Trish.</strong> This is empirical, not theoretical. Applied to a draft or a spine, never as a generation rule.</p>
+<p>Answer each in one written sentence. An unanswerable item is a kill, not a note.</p>
+<h3>Believability</h3>
+<ol>
+<li><strong>Why was the decisive material not found at the time?</strong> The answer may not be that anyone was lazy. <em>"Competent police would have done as a simple matter of process."</em> Legitimate: it did not exist then · the witness was a child · a promise released by a death · another jurisdiction · lawful destruction.</li>
+<li><strong>Does the antagonist act in his own interest at every point?</strong> <em>"Why would Dean call the workplace and leave his name?"</em></li>
+<li><strong>Would a real person actually do the small thing this needs them to do?</strong> <em>"A mother would never put an admin form on a wall."</em></li>
+<li><strong>Is the motive one an ordinary reader accepts without argument?</strong> <em>"Unbelievable motive for murder."</em></li>
+<li><strong>Is any discovery a coincidence wearing a coat?</strong> <em>"I walked Rivermouth and found a landlord??? Really?"</em></li>
+</ol>
+<h3>Comprehension</h3>
+<ol start="6">
+<li><strong>Does a reader with no context understand every word?</strong> <em>"What is a chandlery?"</em> No trade, legal or procedural vocabulary anywhere near the hook.</li>
+<li><strong>Can a reader hold the cast in their head on one pass?</strong> <em>"Too many characters to try and get my head around."</em></li>
+<li><strong>Is it clear what the crime is, immediately?</strong> <em>"I don't understand what crime she is serving 11 years for."</em></li>
+</ol>
+<h3>Knowledge and logic</h3>
+<ol start="9">
+<li><strong>Can Ally source everything she says she knows?</strong> <em>"How does she know about the mother? Did they meet?"</em> Every fact traces to a person, a document or a search, with a route.</li>
+<li><strong>Does anything break its own rules?</strong> <em>"Why would Ally say 'Wait. Where are you.' to a recording?"</em></li>
+</ol>
+<h3>Stakes</h3>
+<ol start="11">
+<li><strong>Is the stake a body, freedom, family, identity or present danger?</strong> Never a licence, benefit, election, membership or apprenticeship. <em>"Unions are boring."</em></li>
+<li><strong>Does anything decisive rest on a small number?</strong> <em>"Tills running nine minutes fast would just be synchronised."</em> Corroboration can make a correction credible; it cannot make arithmetic interesting.</li>
+</ol>
+<h3>One question that is not on the list, and should be asked anyway</h3>
+<p><strong>Is the antagonist a person or a mechanism?</strong> The strongest predictor of true-crime consumption is interest in dangerous minds, not in bodily harm. Forty-five of our premises had antagonists who were situations. The audience wants access to a person.</p>
+<hr />
+<h1>What this replaces</h1>
+<p><strong>Retire from generation:</strong> the twenty-four-seed fields, preallocated influence pairs, per-family distribution matrices, cross-audit instruments, and the twenty-field ledger schema. All were competently built. All were pointed at the wrong end of the process, and the field they produced was rejected wholesale by the only two readers who saw it.</p>
+<p><strong>Keep, unchanged:</strong> Kill Gate Zero and the least-cost test, the access map, the consequence-and-agency gate, the clock convention, evidential language, the canon roster and the bible. These are believability controls and they work. They belong in step 2 and step 3, applied to a draft.</p>
+<p><strong>The distinction that matters:</strong> a rule applied before writing shapes what gets written and produces conformance. The same rule applied after writing catches defects and costs the prose nothing.</p>
+<hr />
+<h1>What this cannot do</h1>
+<p>It cannot make a premise interesting. Nothing on this page would have rescued the union ballot or the till clock, and nothing here would have invented the mother still paying her daughter's phone bill.</p>
+<p><strong>What it does is stop us spending human attention on work that was never going to survive</strong>, so that the ten minutes we get from a reader lands on something that might.</p>
+<p>The bottleneck is judgment, and judgment lives in two people. Everything above exists to feed them better and more often.</p>
+</body></html>
