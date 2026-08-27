@@ -15,7 +15,7 @@ Every quality gain this project has made came from Stephen or Trish reacting to 
 **Three findings from our own data, which override any framework:**
 
 1. **Depth beats breadth.** Forty-five premises generated wide produced one survivor. One premise developed deep produced the leading candidate. Stop generating fields.
-2. **The failures are a short recurring list**, not unpredictable quality. Twelve objections cover essentially every rejection in three weeks.
+2. **The failures are a short recurring list**, not unpredictable quality. Thirteen objections cover essentially every rejection in three weeks, and the thirteenth was added by the rejection it caught.
 3. **Constrain the check, not the generation.** Prohibitions applied before writing produced conformant and contrived work. The same rules applied to a finished draft catch the same defects without deadening the prose.
 
 ---
@@ -27,13 +27,52 @@ One pass is about a day. Failures are front-loaded into steps where they cost no
 | # | Step | Who | Output |
 |---|---|---|---|
 | 1 | **The spine.** What actually happened, hour by hour, and what Ally can lawfully reach, from whom, on which day | Claude | Timeline + access ledger. **No prose.** |
-| 2 | **Pre-flight.** The twelve objections applied to the spine, each answered in writing | Claude | Twelve written answers or a kill |
+| **1b** | ★ **The earliest-action sweep.** One page. **Added 2026-08-27 and it is the most important step on this table** | Claude | A first-action date per person, or a kill |
+| 2 | **Pre-flight.** The thirteen objections applied to the spine, each answered in writing | Claude | Thirteen written answers or a kill |
 | 3 | **Adversarial audit.** Attack the spine, not the prose | ChatGPT | Findings; repair or kill |
 | 4 | **Prose.** Opening and key beats, written from the repaired spine | Fable | Draft copy |
 | 5 | **Reader check.** Two questions, ten minutes | Stephen, Trish | Grab / believe |
 | 6 | **Kill or continue.** Salvage fragments either way | Stephen | Decision |
 
 **Step 1 is the one we have never done and it is why every opening failed.** Six openings, three writers, and all six were holed on "how did she get that." Ally could not source what she knew because nobody had decided what she actually got. A spine written before any prose makes that class of failure impossible rather than catchable.
+
+---
+
+# ★ STEP 1b: THE EARLIEST-ACTION SWEEP
+
+**Added 2026-08-27, authored by ChatGPT after it found the same structural defect in three consecutive premises.** It is not an objection and it does not belong in the pre-flight. It is a mechanical sweep, it takes one page, and it would have killed all three premises before an audit ever saw them.
+
+## The defect it catches
+
+> **Accurate nodes and a false graph.**
+
+The engine gets declared first. Then every row of the access ledger is checked *locally* for lawful possession, and every row passes. **Nobody ever recomputes the earliest action available from the rows combined.** So the spine ends up full of people who can each lawfully act, silently prevented from composing into an intervention that would end the episode at lead 3.
+
+Three premises died or reworked on this, each time inside the section written to prevent it:
+
+| Premise | The node that could act | What silently stopped it |
+|---|---|---|
+| No Fixed Address | A workplace supervisor, reachable and willing | The engine needed the identity route to be the only one |
+| The Same House Twice v1.0 | The certifying doctor, reachable on day three | He was simply not visited until lead 10 |
+| The Same House Twice v1.1 | The same doctor, now visited on day three | His admission was declared worthless, and his live clinical duty to his own symptomatic patient was never mentioned |
+
+## How to run it
+
+**Ignore the authored lead order entirely.** Start at Day 1. For every person in the access ledger, ask:
+
+> **Given everything this person can lawfully know today, what is the earliest competent action they can take to stop the harm or to trigger an authority?**
+
+Write down the first day of each action, in a table, with the person and the action.
+
+**If any first-action date precedes the planned turn, the spine fails.** Not "has a note against it" — fails, before it goes to audit.
+
+## Three rules that make it work
+
+1. **Include professional duties, not just powers.** The question is not only what a person *may* do, it is what their job *requires* them to do once they know. A doctor told his own patient may be being overdosed does not have a choice about ringing her.
+2. **A duty renews when the facts change.** A concern reported seven weeks ago does not discharge the duty created by a new deterioration this week.
+3. **Every suppression must be named and paid for.** If a node genuinely cannot act, the reason goes in the sweep in one sentence, and it must be a reason the world supplies rather than one the plot needs. **"The story does not visit them yet" is not a reason.**
+
+---
 
 ## Division of labour, by demonstrated performance
 
@@ -46,7 +85,7 @@ Not by preference. By what the record shows.
 
 ---
 
-# PRE-FLIGHT: the twelve objections
+# PRE-FLIGHT: the thirteen objections
 
 **Every one is quoted from an objection actually raised by Stephen or Trish.** This is empirical, not theoretical. Applied to a draft or a spine, never as a generation rule.
 
@@ -70,11 +109,12 @@ Answer each in one written sentence. An unanswerable item is a kill, not a note.
 
 9. **Can Ally source everything she says she knows?** *"How does she know about the mother? Did they meet?"* Every fact traces to a person, a document or a search, with a route.
 10. **Does anything break its own rules?** *"Why would Ally say 'Wait. Where are you.' to a recording?"*
+11. ★ **If the premise claims a route is the ONLY one, read your own access ledger back and find the second route.** *"Naming Kerry is therefore the safest official route, not the only lawful route, which makes the declared engine decorative."* **ADDED 2026-08-27, and it killed No Fixed Address at the spine.** The contradiction was on the same page: one section listed a person as reachable and willing to speak, the next section declared his route closed. **A premise whose engine is "this is the only way" is making a claim about everything it did not write down, and the cheapest place to falsify it is the ledger you just wrote.** If the wall has to be engineered back in, the engine was decorative and the premise is dead.
 
 ### Stakes
 
-11. **Is the stake a body, freedom, family, identity or present danger?** Never a licence, benefit, election, membership or apprenticeship. *"Unions are boring."*
-12. **Does anything decisive rest on a small number?** *"Tills running nine minutes fast would just be synchronised."* Corroboration can make a correction credible; it cannot make arithmetic interesting.
+12. **Is the stake a body, freedom, family, identity or present danger?** Never a licence, benefit, election, membership or apprenticeship. *"Unions are boring."*
+13. **Does anything decisive rest on a small number?** *"Tills running nine minutes fast would just be synchronised."* Corroboration can make a correction credible; it cannot make arithmetic interesting.
 
 ### One question that is not on the list, and should be asked anyway
 
