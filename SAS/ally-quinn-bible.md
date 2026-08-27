@@ -242,6 +242,27 @@ The season question: **who killed Thomas Quinn, and what conspiracy was he uncov
 
 *Recorded:* Claude's `No Fixed Address` premise depends on this ruling, and the ruling was made after checking real-world practice rather than from what the premise needed. Had it gone the other way the premise would still stand on the absent reference sample alone.
 
+**R17. Independent review of death certificates (Stephen-ruled 2026-08-27).**
+
+**Every non-coronial death certificate is independently reviewed before registration, and the system was introduced THREE YEARS AGO.** A medical examiner checks the stated cause against the clinical record and may contact a representative of the deceased. Deaths certified before that date were closed on the attending doctor's signature alone.
+
+*Why it reads true:* modern jurisdictions have added exactly this safeguard in the last few years, precisely because a doctor certifying a patient they attended was the only check in the chain.
+
+*Consequences that are now canon:*
+- **A death certified more than three years ago received no independent scrutiny**, and that is not negligence, it is the system as it then stood.
+- **A death certified today does.** An unusual cause, or a beneficiary pattern a reviewer notices, is now caught at registration.
+- ★ **Anyone whose model of how deaths are recorded predates the reform is operating on an out-of-date map, and does not know it.**
+
+**R18. Pharmacy dispensing checks (Stephen-ruled 2026-08-27).**
+
+**Dispensing includes a pharmacist's clinical check, and an early or dose-inconsistent repeat is queried.** The query is answered by the person collecting, and **an ordinary plausible reason is accepted, recorded with a date and supplied against.** That record is retained under R8 for seven years.
+
+*Consequences that are now canon:*
+- **A pharmacist who queries, records the answer and supplies has done her job correctly.** No premise may depend on a pharmacy simply not noticing.
+- The resulting note is **a complete, accurate, dated record that exists and that nobody reads again** unless somebody goes looking.
+
+⚠ **Formatting note, not a ruling: R16 to R18 are §2.3.2 rulings and are sitting at the head of Chapter 3 rather than inside §2.3.2.** R16 was appended here on 2026-08-26 and R17 and R18 have been kept with it rather than split. **They should be moved into §2.3.2 in a tidy-up commit.**
+
 ## 3.1 The Thomas Quinn incident
 
 Ten years ago — Ally was sixteen — investigative journalist Thomas Quinn, 40, died when his car left the road on a rainy night. Official ruling: accident. The hallmarks of a cover-up were all present and all deniable: a traffic camera "under maintenance"; witnesses gone unreliable or silent; a report filed with questionable timing; an early witness statement — describing **two vehicles stopped roadside near the crash site** — later omitted from the file; and his ever-present **laptop missing from the wreck** ("lost in the marsh," said the police). The Gazette ran a brief obituary and never printed his final story.
