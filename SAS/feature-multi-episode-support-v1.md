@@ -1,7 +1,7 @@
 # Feature Spec — Multi-Episode Support (audit + costed design)
 
-**Status:** PHASE 1 AUDIT — costed design, awaiting Stephen's ruling. **No build has started.**
-**Date:** 2026-08-27
+**Status:** BUILT 2026-08-27 (same day). Stephen approved phase 2 and ruled R1–R6 (R2 fold, R3 global kit, R4 shared economy, R5 slot ids ep01–ep04, R6 no replay). All must-have items M1–M9 shipped on `feature/multi-episode-audit`: EpisodeCatalog + de-hardcode sweep, save schema 1.0.0 with episode sections + 0.9.0 migration, GameFlags folded into the aggregate with probe migration, transition seam + selector popup + next-episode flow, episode_id analytics user property. 42 new EditMode tests; batch baseline held (8 documented legacy failures). **Outstanding:** Stephen's play-verification (per the tester ruling), selector/status DRAFT copy needs his ruling, HUD entry point for the selector needs a scene pass, ep02–ep04 content when stories exist.
+**Date:** 2026-08-27 (audit and build)
 **Constraint:** first release ships AT LEAST FOUR episodes. Episode count is fixed; the 1 October date is not.
 **Verified against:** working tree of 2026-08-27. Every claim about current behaviour carries a file:line reference checked today.
 
