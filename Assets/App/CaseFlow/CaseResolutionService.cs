@@ -9,8 +9,22 @@ namespace AQ.App.CaseFlow
     /// Watches for the episode completion flag in activated lead flags; publishes CaseResolvedEvent once.
     public sealed class CaseResolutionService : MonoBehaviour
     {
-        const string EpisodeId    = "e1_the_listener";
         const string CompletionFlag = "e1.ep01.complete";
+
+        // Reported when no caseflow service is running at resolution time. A literal
+        // episode name here would go stale the moment an episode is renamed or added
+        // (a hardcoded "e1_the_listener" kept reporting a retired episode after the
+        // save was already recording the orchestrator's id) — so the id comes from
+        // the running caseflow service, and this sentinel marks the pathological case.
+        public const string UnknownEpisodeId = "unknown";
+
+        /// <summary>The episode id of the running caseflow, never a literal.</summary>
+        public static string ResolveEpisodeId()
+        {
+            var svc = CaseFlowLocator.Instance;
+            var id  = svc != null ? svc.Current?.Episode.Value : null;
+            return string.IsNullOrEmpty(id) ? UnknownEpisodeId : id;
+        }
 
         bool _fired;
 
@@ -26,7 +40,10 @@ namespace AQ.App.CaseFlow
         void OnEnable()  { LeadsRuntimeBus.OnLeadActivated += OnLeadActivated; }
         void OnDisable() { LeadsRuntimeBus.OnLeadActivated -= OnLeadActivated; }
 
-        void OnLeadActivated(LeadData lead)
+        // Public so EditMode tests can drive it directly: Unity does not run
+        // OnEnable on a plain MonoBehaviour outside play mode, so the bus
+        // subscription above never exists under the edit-mode runner.
+        public void OnLeadActivated(LeadData lead)
         {
             if (_fired || lead == null) return;
 
@@ -40,8 +57,9 @@ namespace AQ.App.CaseFlow
                 if (f == CompletionFlag)
                 {
                     _fired = true;
-                    GameAnalytics.LogEpisodeComplete(EpisodeId);
-                    GlobalBus.Bus.Publish(new CaseResolvedEvent(EpisodeId));
+                    var episodeId = ResolveEpisodeId();
+                    GameAnalytics.LogEpisodeComplete(episodeId);
+                    GlobalBus.Bus.Publish(new CaseResolvedEvent(episodeId));
                     return;
                 }
             }
