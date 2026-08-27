@@ -1,4 +1,10 @@
-<!-- pdf-title: No Fixed Address v2.1 -->
+<!-- pdf-title: No Fixed Address v2.1 (PARKED) -->
+
+# ⏸ PARKED 2026-08-27 with the whole premise. NOT DEAD, and not the version that would return.
+
+**The successor spine, `episode-1-spine-no-fixed-address-v3.1.md`, carries the finding that set this down and the one revival shape that works. Read that first.** This document is superseded by it in every respect and is kept as the record of the repair cycle.
+
+---
 
 # EPISODE ONE CANDIDATE
 ## NO FIXED ADDRESS, v2.1
