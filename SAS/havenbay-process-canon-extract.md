@@ -2,7 +2,7 @@
 
 # HAVENBAY PROCESS CANON
 
-**Verbatim extract from `SAS/ally-quinn-bible.md`, sections 2.3.1 to 2.3.2. Includes the Tip Line ruling and R16, both Stephen-ruled 2026-08-26.**
+**Verbatim extract from `SAS/ally-quinn-bible.md`, sections 2.3.1 to 2.3.2, including the Tip Line ruling and R16.**
 
 ---
 

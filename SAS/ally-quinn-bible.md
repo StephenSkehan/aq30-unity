@@ -51,7 +51,7 @@ Every design decision answers to these:
 
 Five tone commitments, quotable and binding:
 
-- **Investigative, not brutal.** "The darkness is intellectual intrigue, not bloodstains."
+- **Investigative, not brutal. AMENDED 2026-08-27 on external evidence.** The old wording, "the darkness is intellectual intrigue, not bloodstains", set a *graphicness* threshold. The genre research sets a *function* test instead, and the distinction matters: **a physical detail is permitted when it establishes mechanism, testimony or consequence, and refused when it exists for effect.** Detail that changes understanding may be unflinching; detail that decorates cruelty turns a person into a texture. This is a stricter rule than the slogan it replaces, not a looser one. It exists because the old wording read as permission to abstract bodily consequence away, and twelve testers called the result too safe. **The twelve-plus rating boundary is unchanged, and no premise may be gore-led.**
 - **Atmospheric noir-lite.** Foggy docks, whispered secrets, unsolved puzzles — "stylised to stay accessible and never oppressive."
 - **Conversationally human.** Ally is "witty, sharp, and empathetic… a true crime podcaster who knows how to balance tension with humanity."
 - **Empowering curiosity.** "Each combination is a reveal, a step deeper into the case… progress and discovery rather than grind."
@@ -63,11 +63,29 @@ The register is grounded and contemporary — modern forensic vocabulary (digita
 
 ## 1.4 The audience
 
-**The Investigative Casual.** Merge's player base runs 70–75% female, core ages 25–54, sessions of 15–25 minutes; true-crime podcast audiences run ~73% female and highly engaged — 34% of Americans 18–49 listen regularly, and they "crave a sense of participation." The overlap is this game's audience: players with a high need for cognition who prioritize intellectual closure and deductive satisfaction, who find the genre's cozy default (family dramas, farm restorations) "shallow or repetitive" and want grit, mystery, and stakes — without gore or camp. Roughly a quarter of merge MAU are "dolphins" — occasional $2–$10 spenders *if they feel respected*.
+**The Investigative Casual.** Merge's player base runs 70 to 75 per cent female, core ages 25 to 54, sessions of 15 to 25 minutes. True crime skews female too, consistently and across media.
+
+⚠ **CORRECTED 2026-08-27 on external evidence. The figures below are not interchangeable and the single-motive explanation is wrong.** Pew found a 44 to 23 per cent gender split among US podcast listeners who *regularly* consume true crime, and that 34 per cent of Americans who had listened to any podcast in the previous year regularly listen to true crime. Those denominators are different measures and must not be quoted as one number.
+
+**Motives are plural, and "women want safety tips" is an incomplete account** that the research specifically warns can place responsibility on women and overstate stranger danger while obscuring violence in intimate settings. The supported set includes threat learning, empathy with victims, anger at institutional failure, social belonging and conversation, escape and entertainment, curiosity about dangerous minds, and the moral permission required to enjoy dark material. Pew's true-crime-first listeners most often cite entertainment and wanting something to hear while doing something else, which makes this **companion media** consumed under divided attention. Clarity therefore beats density.
+
+The overlap is this game's audience: players with a high need for cognition who prioritize intellectual closure and deductive satisfaction, who find the genre's cozy default (family dramas, farm restorations) "shallow or repetitive" and want grit, mystery, and stakes — without gore or camp. Roughly a quarter of merge MAU are "dolphins" — occasional $2–$10 spenders *if they feel respected*.
 
 **Danielle H.**, the anchor persona: 34, digital marketing professional, Sydney, time-poor and media-savvy, earbuds always in. Crime Junkie and Casefile subscriber; watches *Only Murders in the Building*; plays Merge Mansion and Lily's Garden but finds them too cosy. She "plays to feel like she's part of a true-crime investigation." What she needs: 20–30 minute sessions without punishing downtime; storytelling more mature than the cozy default; progression without aggressive monetisation walls. What loses her: energy hard-gates that stall story for days; merge-as-housekeeping ("she feels clever for merging, not just tidy"); story behind spend — "she would feel betrayed if the story was locked behind aggressive spend." What she keeps: solved cases as trophies — the produced podcast episode she plays on her commute — and a suspect gallery worth screenshotting to her true-crime Facebook group. *(Source note: her age appears as 29 in the oldest GDD and 34 in later documents; 34 is adopted.)*
 
 Her ideal journey, end to end: install off the "unlock the podcast episode" hook → a first five minutes where the tutorial *is* detective work → every merge chain produces something meaningful that visibly updates the case → the first solved case unlocks a produced episode → "play merges → influence investigation → unlock podcast → share & discuss → await next case."
+
+## 1.4b The care line (review instrument, ADDED 2026-08-27)
+
+**Not canon, not marketing copy, not a gate.** A test field, answered at four levels: the game, the season, the episode and each phase.
+
+> **Who may lose what · what is not known · why the next evidence can change it.**
+
+Three plain sentences, no proper nouns, no trade terms. **If a phase cannot state its live question, its leads get combined, cut or reframed.** The point is that everyone working on the game can say what the player is trying to save before anyone discusses clues.
+
+*Why it exists:* the research is unambiguous that audiences follow a consequential question rather than a crime category, and our framework required this at premise level only, which is one level above where a player actually stands.
+
+*Falsification:* read the care line and the opening separately to blind listeners. If the line makes the opening attractive only after explanation, the copy is compensating for the story and the opening has failed.
 
 ## 1.5 The USPs
 
@@ -923,9 +941,9 @@ The commercial playbook, preserved from the Full AQ Download and validated/adjus
 
 **Brand kit.** Icon: Ally silhouette + magnifying glass. Palette: noir pastel. Tagline stack: "Merge clues. Solve cases. Expose the truth." / "Play the mystery. Piece by piece." Store keywords: "true crime merge," "detective story game," "mystery merge," "merge game," "detective merge." Screenshots lead with story and portraits, not the board; the subtitle carries the podcast hook. Domain to register: AllyQuinn.com. Community: a "Case Breakers" Discord; TikTok (merge gameplay + crime facts), Instagram (character art), Reddit (r/truecrime adjacency).
 
-**The marketing asymmetry (the plan's one big idea):** ads mimic crime-doc trailers, not gameplay ads — rain, evidence photos, red string, Ally's voice. The VO does double duty: 3–4 podcast nodes cut as captioned vertical clips *are* the TikTok pipeline at zero extra production cost, and real *Echoes of Havenbay* teaser episodes on Spotify/Apple blur game and reality. Micro true-crime podcasters (10–50k listeners) over big UA buys.
+**The marketing asymmetry (the plan's one big idea):** ads mimic crime-doc trailers, not gameplay ads — rain, evidence photos, red string, Ally's voice. The VO does double duty: 3–4 podcast nodes cut as captioned vertical clips *are* the TikTok pipeline at zero extra production cost, and real *Echoes of Havenbay* teaser episodes on Spotify/Apple, **clearly presented as fiction. ⚠ AMENDED 2026-08-27: the original wording said these should "blur game and reality" and that is now forbidden. Fiction cannot inherit true crime's reality premium, and simulating actuality would spend the trust the Tip Line promise depends on.** The crime-doc trailer aesthetic is unaffected. Micro true-crime podcasters (10–50k listeners) over big UA buys.
 
-**Pre-registration blueprint (90 days, when used):** Tease (store pages, whispered-voicemail ads, 2 real teaser episodes) → Engage (weekly case-file drops; milestone rewards at 10k/25k/50k/100k pre-regs — energy pack → exclusive Ally cosmetic → limited "Founders Case" pack → podcast profile badge) → Convert (playable cliffhanger ads, minisodes, Apple featuring pitch, "7 Days to Solve the Case" countdown) → launch day: Ally "publishes" the launch episode; "Launch Mystery Night" livestream.
+**Pre-registration blueprint (90 days, when used):** Tease (store pages, whispered-voicemail ads, 2 teaser episodes clearly marked as fiction) → Engage (weekly case-file drops; milestone rewards at 10k/25k/50k/100k pre-regs — energy pack → exclusive Ally cosmetic → limited "Founders Case" pack → podcast profile badge) → Convert (playable cliffhanger ads, minisodes, Apple featuring pitch, "7 Days to Solve the Case" countdown) → launch day: Ally "publishes" the launch episode; "Launch Mystery Night" livestream.
 
 **Soft-launch frame:** Canada/Australia/UK, 6–12 weeks. Targets: CPI < $2.50; D1 > 35% aspirational (read against the ~25% genre benchmark), D7 > 12%, D30 > 5%; ARPDAU $0.20–0.40; day-90 breakeven ROAS. Solo-dev counsel adopted: organic devlogs and a superfan Discord first; paid UA "to scale a proven model, not to test a hypothesis."
 
