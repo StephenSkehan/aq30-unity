@@ -1,4 +1,5 @@
 using AQ.App.Analytics;
+using AQ.App.Episodes;
 using AQ.App.Events;
 using AQ.App.Leads;
 using AQ.App.Presentation;
@@ -9,7 +10,9 @@ namespace AQ.App.CaseFlow
     /// Watches for the episode completion flag in activated lead flags; publishes CaseResolvedEvent once.
     public sealed class CaseResolutionService : MonoBehaviour
     {
-        const string CompletionFlag = "e1.ep01.complete";
+        // Fallback for catalog-less scenes only; the running episode's
+        // completionFlag (EpisodeCatalog) is the real trigger.
+        const string FallbackCompletionFlag = "e1.ep01.complete";
 
         // Reported when no caseflow service is running at resolution time. A literal
         // episode name here would go stale the moment an episode is renamed or added
@@ -52,9 +55,10 @@ namespace AQ.App.CaseFlow
             // so NarrativeFlags.Has() may not be set yet.
             var flags = lead.NarrativeFlags;
             if (flags == null) return;
+            var completionFlag = EpisodeRuntime.CompletionFlagOr(FallbackCompletionFlag);
             foreach (var f in flags)
             {
-                if (f == CompletionFlag)
+                if (f == completionFlag)
                 {
                     _fired = true;
                     var episodeId = ResolveEpisodeId();

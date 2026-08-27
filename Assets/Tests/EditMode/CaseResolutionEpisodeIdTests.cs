@@ -34,6 +34,9 @@ namespace AQ.Tests.EditMode
         {
             _priorService = CaseFlowLocator.Instance;
             CaseFlowLocator.Set(null);
+            // No catalog: completion-flag resolution takes the fallback path,
+            // which is what these tests drive with the e1 literal.
+            AQ.App.Episodes.EpisodeRuntime.OverrideForTests(null, null);
         }
 
         [TearDown]
@@ -43,6 +46,7 @@ namespace AQ.Tests.EditMode
             foreach (var o in _made) if (o != null) Object.DestroyImmediate(o);
             _made.Clear();
             CaseFlowLocator.Set(_priorService);
+            AQ.App.Episodes.EpisodeRuntime.ResetForTests();
         }
 
         // OnEnable (and thus the LeadsRuntimeBus subscription) does not run in
