@@ -6,11 +6,14 @@ using UnityEngine;
 using AQ.App.CaseFlow;
 using AQ.App.Config;
 using AQ.App.Economy;
+using AQ.App.Episodes;
+using AQ.App.Events;
 using AQ.App.Generators;
 using AQ.App.Leads;
 using AQ.App.Locker;
 using AQ.App.Overflow;
 using AQ.App.Persistence;
+using AQ.App.Presentation;
 using AQ.App.Services;
 using AQ.SharedKernel.CaseFlow;
 using AQ.SharedKernel.Economy;
@@ -20,7 +23,12 @@ namespace AQ.App.UI.Board
     /// <summary>
     /// Saves and loads the board state (items/generators), global energy, wallet,
     /// case flow, leads, locker, Stash and Case Kit specials in one JSON file.
-    /// Atomic write with rolling .prev.json backup. Schema 0.9.0.
+    /// Atomic write with rolling .prev.json backup. Schema 1.0.0: per-episode
+    /// state (board cells, caseflow step, lead states, completion) lives in
+    /// episode-keyed sections; value-bearing globals stay top-level so a crash
+    /// can never separate a transaction's halves (robustness rule 1). DTOs and
+    /// the 0.9.0 migration live in AQ.App.Persistence.SaveModel (testable there;
+    /// Assembly-CSharp cannot be referenced by test assemblies).
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class BoardSaveSystem : MonoBehaviour
@@ -43,6 +51,16 @@ namespace AQ.App.UI.Board
 
         private float _nextSaveAt = -1f;
         private int _lastSnapshotHash;
+
+        // Episode partition (schema 1.0.0). Sections for episodes other than the
+        // running one are carried verbatim through every save so switching
+        // episodes never destroys dormant progress (§1.4 of the audit was the
+        // destroy path). _switchTargetId points the NEXT save's currentEpisodeId
+        // at a different episode during a switch (see SwitchToEpisode).
+        private readonly List<EpisodeSectionDTO> _dormantSections = new List<EpisodeSectionDTO>();
+        private bool _currentEpisodeComplete;
+        private string _switchTargetId;
+        private IDisposable _caseResolvedSub;
 
         /// <summary>
         /// True once this scene's save (or absence of one) has been applied to the
@@ -81,6 +99,29 @@ namespace AQ.App.UI.Board
             return ok;
         }
 
+        /// <summary>
+        /// Point the save at another episode and persist, ready for a scene
+        /// reload to boot it. The outgoing episode's section is written in the
+        /// same atomic file, so nothing is lost if the reload never happens.
+        /// Returns false (and changes nothing durable) when the write fails —
+        /// the caller must not reload on false.
+        /// </summary>
+        public static bool SwitchToEpisode(string episodeId)
+        {
+            var self = Instance;
+            if (self == null || string.IsNullOrEmpty(episodeId)) return false;
+
+            self._switchTargetId = episodeId;
+            bool ok = SaveNow();
+            if (!ok)
+            {
+                self._switchTargetId = null;
+                return false;
+            }
+            EpisodeBootPointer.PendingEpisodeId = episodeId;
+            return true;
+        }
+
         // --------------- Unity ---------------
 
         private void Awake()
@@ -97,6 +138,25 @@ namespace AQ.App.UI.Board
             _pathLive = Path.Combine(root, fileName);
             _pathTmp  = _pathLive + ".tmp";
             _pathPrev = Path.Combine(root, Path.GetFileNameWithoutExtension(_pathLive) + ".prev.json");
+
+            // Boot handoff: CaseFlowOrchestratorMB (AQ.App) begins its episode in
+            // Start, BEFORE this component's Start restores the aggregate — and it
+            // cannot reference this assembly. Park the save's episode pointer where
+            // it can read it (all Awakes run before any Start). Story flags hydrate
+            // in the same pass: Start-order tie-breaks are arbitrary, so any Start
+            // that reads GameFlags must find them already imported. The usual
+            // JsonUtility caveat gates the flags import on the schema version —
+            // pre-1.0.0 saves take the null path, which probes the legacy
+            // PlayerPrefs keys (see GameFlags.ImportState).
+            var peeked = PeekSaveDTO();
+            EpisodeBootPointer.PendingEpisodeId = PeekEpisodeId(peeked);
+            GameFlags.ImportState(
+                peeked != null && SaveSchema.AtLeast(peeked.schemaVersion, 1, 0) ? peeked.flags : null);
+
+            // Episode-transition seam: AQ.App UI (resolution screen, selector)
+            // cannot reference this assembly, so it calls through EpisodeFlow.
+            EpisodeFlow.SwitchHandler    = SwitchToEpisode;
+            EpisodeFlow.ProgressProvider = GetProgress;
         }
 
         private IWallet _observedWallet;
@@ -113,6 +173,12 @@ namespace AQ.App.UI.Board
             _observedWallet = WalletLocator.Instance;
             if (_observedWallet != null)
                 _observedWallet.Changed += OnWalletChanged;
+
+            // Completion is detected by CaseResolutionService (AQ.App) and reaches
+            // the aggregate over the bus. The complete bit lands in the same
+            // debounced snapshot as the closing lead's activation and rewards —
+            // one atomic write, never two stores (rule 1).
+            _caseResolvedSub = GlobalBus.Bus.Subscribe<CaseResolvedEvent>(OnCaseResolved);
         }
 
         private void OnDestroy()
@@ -120,6 +186,17 @@ namespace AQ.App.UI.Board
             if (Instance == this) Instance = null;
             if (_observedWallet != null)
                 _observedWallet.Changed -= OnWalletChanged;
+            _caseResolvedSub?.Dispose();
+            _caseResolvedSub = null;
+            if (EpisodeFlow.SwitchHandler == (Func<string, bool>)SwitchToEpisode)
+                EpisodeFlow.SwitchHandler = null;
+            if (EpisodeFlow.ProgressProvider == (Func<string, EpisodeProgress>)GetProgress)
+                EpisodeFlow.ProgressProvider = null;
+        }
+
+        private void OnCaseResolved(CaseResolvedEvent e)
+        {
+            _currentEpisodeComplete = true;
         }
 
         private bool _saveThisFrame;
@@ -189,65 +266,92 @@ namespace AQ.App.UI.Board
             AQ.App.Analytics.GameAnalytics.LogFtueEvent("session1_end");
         }
 
-        // --------------- Save / Load ---------------
+        // --------------- Episode identity ---------------
 
-        [Serializable]
-        private sealed class CellDTO
+        /// <summary>
+        /// Started/complete for any episode, from the loaded aggregate: the
+        /// running episode answers from live memory, dormant episodes from their
+        /// carried sections. Feeds the selector's Complete ✓ / In progress /
+        /// Locked states through EpisodeFlow.
+        /// </summary>
+        public static EpisodeProgress GetProgress(string episodeId)
         {
-            public int r;
-            public int c;
-            public string kind;   // "Item" | "Generator"
-            public int tier;      // 0-based
-            public string family; // e.g. "corner_diner" — empty in legacy saves
+            var self = Instance;
+            if (self == null || string.IsNullOrEmpty(episodeId)) return default;
+
+            string canonical = Canonicalize(episodeId);
+            if (canonical == RunningEpisodeId())
+                return new EpisodeProgress { Started = true, Complete = self._currentEpisodeComplete };
+
+            foreach (var s in self._dormantSections)
+            {
+                if (s == null) continue;
+                if (Canonicalize(s.episodeId) == canonical)
+                    return new EpisodeProgress { Started = true, Complete = s.complete };
+            }
+            return default;
         }
 
-        [Serializable]
-        private sealed class EnergyDTO
+        /// <summary>
+        /// The canonical id of the episode the caseflow is running. Falls back to
+        /// the catalog's first episode (then "ep01") in caseflow-less dev scenes.
+        /// </summary>
+        private static string RunningEpisodeId()
         {
-            public int current;
-            public string lastTickUtc; // ISO-8601 string
+            var svc = CaseFlowLocator.Instance;
+            var raw = svc != null ? svc.Current?.Episode.Value : null;
+            var catalog = EpisodeRuntime.Catalog;
+            if (!string.IsNullOrEmpty(raw))
+                return catalog != null ? catalog.CanonicalId(raw) : raw;
+            return catalog?.First?.episodeId ?? "ep01";
         }
 
-        [Serializable]
-        private sealed class WalletDTO
+        private static string Canonicalize(string id)
         {
-            public int soft;
-            public int premium;
+            var catalog = EpisodeRuntime.Catalog;
+            return catalog != null ? catalog.CanonicalId(id) : id;
         }
 
-        [Serializable]
-        private sealed class CaseFlowDTO
+        /// <summary>
+        /// Awake-time parse of the save (live file, then the .prev fallback) for
+        /// the episode pointer and the flags — the same fallback order the full
+        /// TryLoad uses, so both read the same source of truth.
+        /// </summary>
+        private SaveDTO PeekSaveDTO()
         {
-            public string episodeId;
-            public int stepIndex;
+            foreach (var path in new[] { _pathLive, _pathPrev })
+            {
+                try
+                {
+                    if (!File.Exists(path)) continue;
+                    var dto = JsonUtility.FromJson<SaveDTO>(File.ReadAllText(path, Encoding.UTF8));
+                    if (dto != null) return dto;
+                }
+                catch { /* unreadable file: the full TryLoad path reports it */ }
+            }
+            return null;
         }
 
-        [Serializable]
-        private sealed class LeadStateDTO
+        private static string PeekEpisodeId(SaveDTO dto)
         {
-            public string leadId;
-            public int    runtimeState;
-            public bool[] satisfied;
-            public bool   activated;
+            if (dto == null) return null;
+            if (!string.IsNullOrEmpty(dto.currentEpisodeId)) return dto.currentEpisodeId;
+            // Legacy 0.x saves carry the id inside caseFlow.
+            if (dto.caseFlow != null && !string.IsNullOrEmpty(dto.caseFlow.episodeId)) return dto.caseFlow.episodeId;
+            return null;
         }
 
-        [Serializable]
-        private sealed class SaveDTO
+        /// <summary>
+        /// Bind the leads repository to the running episode's database (catalog-
+        /// driven). The scene serializes ep01's database; any other episode swaps
+        /// here before lead states are applied. No-op when no catalog resolves.
+        /// </summary>
+        private void EnsureEpisodeDatabase()
         {
-            public string schemaVersion = "0.9.0";
-            public string timestampUtc;
-
-            public int rows;
-            public int cols;
-
-            public List<CellDTO>          cells    = new List<CellDTO>();
-            public EnergyDTO              energy;
-            public WalletDTO              wallet;
-            public CaseFlowDTO            caseFlow;
-            public List<LeadStateDTO>     leads    = new List<LeadStateDTO>();
-            public LockerStateDTO         locker;  // folded in at 0.7.0 — see ApplyLocker
-            public List<OverflowTileData> overflow = new List<OverflowTileData>(); // folded in at 0.8.0 — see ApplyOverflow
-            public UI.Specials.SpecialsStateDTO specials; // folded in at 0.9.0 — see ApplySpecials
+            if (_leadsRepo == null) return;
+            var entry = EpisodeRuntime.Current;
+            if (entry != null && entry.database != null && _leadsRepo.database != entry.database)
+                _leadsRepo.ReplaceFromDatabase(entry.database);
         }
 
         public static void ClearSave()
@@ -262,6 +366,8 @@ namespace AQ.App.UI.Board
             GeneratorFamilyRegistry.Clear();
             AQ.App.Locker.EvidenceLockerService.Clear();
             UI.Specials.SpecialItemsService.Clear();
+            GameFlags.ResetForNewSave();
+            EpisodeBootPointer.PendingEpisodeId = null;
 
             // ClearSave means RESET: nothing may write the aggregate again until
             // the next boot's restore. Without this, the reset flow's own wallet
@@ -276,6 +382,9 @@ namespace AQ.App.UI.Board
             {
                 self._saveThisFrame = false;
                 self._nextSaveAt = -1f;
+                self._dormantSections.Clear();
+                self._currentEpisodeComplete = false;
+                self._switchTargetId = null;
             }
 
             Debug.Log("[Save] BoardSaveSystem cleared");
@@ -295,20 +404,37 @@ namespace AQ.App.UI.Board
             // on-disk aggregate with boot-empty wallet/leads/locker state.
             if (!WalletRestored) return false;
 
+            string runningId = RunningEpisodeId();
+
             var dto = new SaveDTO
             {
-                timestampUtc = DateTime.UtcNow.ToString("o"),
-                rows     = board.Rows,
-                cols     = board.Cols,
-                energy   = BuildEnergyDTO(),
-                wallet   = BuildWalletDTO(),
-                caseFlow = BuildCaseFlowDTO(),
-                locker   = EvidenceLockerService.ExportState(),
-                overflow = OverflowBucketService.ExportState(),
-                specials = UI.Specials.SpecialItemsService.ExportState(),
+                timestampUtc     = DateTime.UtcNow.ToString("o"),
+                energy           = BuildEnergyDTO(),
+                wallet           = BuildWalletDTO(),
+                locker           = EvidenceLockerService.ExportState(),
+                overflow         = OverflowBucketService.ExportState(),
+                specials         = UI.Specials.SpecialItemsService.ExportState(),
+                flags            = GameFlags.ExportState(),
+                currentEpisodeId = _switchTargetId ?? runningId,
             };
-            FillCells(dto.cells);
-            FillLeads(dto.leads);
+
+            var section = new EpisodeSectionDTO
+            {
+                episodeId = runningId,
+                complete  = _currentEpisodeComplete,
+                rows      = board.Rows,
+                cols      = board.Cols,
+                caseFlow  = BuildCaseFlowDTO(),
+            };
+            FillCells(section.cells);
+            FillLeads(section.leads);
+            dto.episodes.Add(section);
+
+            // Dormant episodes ride along verbatim: a save while playing ep02
+            // must never drop ep01's section.
+            foreach (var dormant in _dormantSections)
+                if (dormant != null && dormant.episodeId != runningId)
+                    dto.episodes.Add(dormant);
 
             string json = JsonUtility.ToJson(dto, prettyPrint: false);
             Directory.CreateDirectory(Path.GetDirectoryName(_pathLive));
@@ -317,12 +443,14 @@ namespace AQ.App.UI.Board
             {
                 AtomicSaveFile.Write(_pathLive, _pathPrev, _pathTmp, json);
 
-                // Locker (0.7.0), Stash (0.8.0) and Case Kit specials (0.9.0) are
-                // folded into the aggregate just written — remove the pre-fold
-                // stores so they can't resurrect stale state on a future boot.
+                // Locker (0.7.0), Stash (0.8.0), Case Kit specials (0.9.0) and
+                // story flags (1.0.0) are folded into the aggregate just written —
+                // remove the pre-fold stores so they can't resurrect stale state
+                // on a future boot.
                 EvidenceLockerService.DeleteLegacyFile();
                 OverflowBucketService.DeleteLegacyFile();
                 UI.Specials.SpecialItemsService.DeleteLegacyKeys();
+                GameFlags.DeleteLegacyKeys();
                 return true;
             }
             catch (Exception ex)
@@ -345,9 +473,13 @@ namespace AQ.App.UI.Board
             {
                 // No readable save: reset locker/specials statics (they survive
                 // play sessions when domain reload is off) and migrate their
-                // legacy stores if present.
+                // legacy stores if present. Fresh boot still binds the episode's
+                // database (a no-op for ep01, whose database the scene serializes).
                 EvidenceLockerService.ImportState(null);
                 UI.Specials.SpecialItemsService.ImportState(null);
+                _dormantSections.Clear();
+                _currentEpisodeComplete = false;
+                EnsureEpisodeDatabase();
             }
         }
 
@@ -366,16 +498,50 @@ namespace AQ.App.UI.Board
                     return false;
                 }
 
-                ApplyCells(dto);
+                // 0.x saves: wrap the flat per-episode fields into a section keyed
+                // by the id the save recorded ("e1_the_listener" in the wild — the
+                // catalog's alias table owns it). Globals pass through untouched.
+                SaveSchema.MigrateFlatToSection(dto, RunningEpisodeId());
+
                 ApplyEnergy(dto.energy);
                 ApplyWallet(dto.wallet);
-                ApplyCaseFlow(dto.caseFlow);
-                ApplyLeads(dto.leads);
                 ApplyLocker(dto);
                 ApplyOverflow(dto);
                 ApplySpecials(dto);
 
-                Debug.Log($"[Save] loaded {dto.cells.Count} cells, {dto.leads?.Count ?? 0} leads from {path}");
+                // Partition: apply the running episode's section; carry the rest
+                // dormant. Section ids are canonicalized on the way in so a legacy
+                // "e1_the_listener" section is owned by ep01.
+                string runningId = RunningEpisodeId();
+                _dormantSections.Clear();
+                _currentEpisodeComplete = false;
+                EpisodeSectionDTO current = null;
+                foreach (var s in dto.episodes)
+                {
+                    if (s == null) continue;
+                    if (current == null && Canonicalize(s.episodeId) == runningId)
+                        current = s;
+                    else
+                        _dormantSections.Add(s);
+                }
+
+                EnsureEpisodeDatabase();
+
+                if (current != null)
+                {
+                    ApplyCells(current);
+                    ApplyCaseFlow(current.caseFlow);
+                    ApplyLeads(current.leads);
+                    _currentEpisodeComplete = current.complete;
+                    Debug.Log($"[Save] loaded episode '{runningId}': {current.cells.Count} cells, {current.leads?.Count ?? 0} leads (+{_dormantSections.Count} dormant) from {path}");
+                }
+                else
+                {
+                    // No section for the running episode: a fresh episode start.
+                    // The scene's default board and the database's design-time lead
+                    // states ARE the correct initial state — apply nothing.
+                    Debug.Log($"[Save] no section for episode '{runningId}' — fresh episode start (+{_dormantSections.Count} dormant) from {path}");
+                }
                 return true;
             }
             catch (Exception ex)
@@ -411,13 +577,13 @@ namespace AQ.App.UI.Board
             }
         }
 
-        private void ApplyCells(SaveDTO dto)
+        private void ApplyCells(EpisodeSectionDTO section)
         {
             for (int r = 0; r < board.Rows; r++)
                 for (int c = 0; c < board.Cols; c++)
                     board.Get(r, c)?.Clear();
 
-            foreach (var cell in dto.cells)
+            foreach (var cell in section.cells)
             {
                 if (cell.r < 0 || cell.c < 0 || cell.r >= board.Rows || cell.c >= board.Cols) continue;
                 var v = board.Get(cell.r, cell.c);
@@ -568,7 +734,9 @@ namespace AQ.App.UI.Board
 
             // Advance silently from current index to saved index.
             // CaseFlowOrchestratorMB.Start() already ran Begin() + FTUE catch-up,
-            // so current StepIndex may already be > 0.
+            // so current StepIndex may already be > 0. The section this DTO came
+            // from is keyed to the running episode, so the replay always targets
+            // the step list it was recorded against.
             int target  = dto.stepIndex;
             int current = svc.Current.StepIndex;
             for (int i = current; i < target; i++)
@@ -606,7 +774,7 @@ namespace AQ.App.UI.Board
             // it directly would silently wipe a migrating locker. Gate on the schema
             // version instead: older saves take the null path, which resets state and
             // migrates the legacy locker_state.json.
-            EvidenceLockerService.ImportState(SchemaAtLeast(dto.schemaVersion, 0, 7) ? dto.locker : null);
+            EvidenceLockerService.ImportState(SaveSchema.AtLeast(dto.schemaVersion, 0, 7) ? dto.locker : null);
         }
 
         private static void ApplyOverflow(SaveDTO dto)
@@ -616,7 +784,7 @@ namespace AQ.App.UI.Board
             // wipe a migrating Stash. Older saves keep the state the bootstrap-time
             // OverflowBucketService.Load() already read from legacy overflow_state.json;
             // the next TrySave folds it in and deletes the legacy file.
-            if (SchemaAtLeast(dto.schemaVersion, 0, 8))
+            if (SaveSchema.AtLeast(dto.schemaVersion, 0, 8))
                 OverflowBucketService.ImportState(dto.overflow);
         }
 
@@ -627,16 +795,7 @@ namespace AQ.App.UI.Board
             // would wipe a migrating Case Kit. Older saves take the null path,
             // which resets statics and migrates the legacy PlayerPrefs keys.
             UI.Specials.SpecialItemsService.ImportState(
-                SchemaAtLeast(dto.schemaVersion, 0, 9) ? dto.specials : null);
-        }
-
-        private static bool SchemaAtLeast(string version, int major, int minor)
-        {
-            if (string.IsNullOrEmpty(version)) return false;
-            var parts = version.Split('.');
-            if (parts.Length < 2) return false;
-            if (!int.TryParse(parts[0], out int maj) || !int.TryParse(parts[1], out int min)) return false;
-            return maj > major || (maj == major && min >= minor);
+                SaveSchema.AtLeast(dto.schemaVersion, 0, 9) ? dto.specials : null);
         }
 
         private void ApplyLeads(List<LeadStateDTO> dtos)
@@ -707,12 +866,20 @@ namespace AQ.App.UI.Board
                     }
                 }
 
-                // Locker, Stash and Case Kit are part of the aggregate: a store/
-                // retrieve/purchase/push/grant/consume must trigger the same
-                // debounced save a board change does.
+                // Locker, Stash, Case Kit and story flags are part of the
+                // aggregate: a store/retrieve/purchase/push/grant/consume/flag-set
+                // must trigger the same debounced save a board change does. For
+                // flags this IS the atomicity fix: the flag lands in the same
+                // snapshot as the lead activation that set it.
                 h = h * 31 + EvidenceLockerService.StateHash();
                 h = h * 31 + OverflowBucketService.StateHash();
                 h = h * 31 + UI.Specials.SpecialItemsService.StateHash();
+                h = h * 31 + GameFlags.StateHash();
+
+                // Episode identity and completion are aggregate state too: the
+                // complete bit arriving must trigger the same debounced save.
+                h = h * 31 + RunningEpisodeId().GetHashCode();
+                h = h * 31 + (_currentEpisodeComplete ? 1 : 0);
 
                 return h;
             }
