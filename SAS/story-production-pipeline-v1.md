@@ -66,11 +66,31 @@ Write down the first day of each action, in a table, with the person and the act
 
 **If any first-action date precedes the planned turn, the spine fails.** Not "has a note against it" — fails, before it goes to audit.
 
+## ★ THE RECIPIENT COLUMN, added 2026-08-27 after the sweep was run and gamed
+
+**The first spine written under this sweep passed it, and the sweep was wrong.** Not because the instrument is weak, but because it was run one column short.
+
+> **The habit does not disappear when you stop silencing people. It moves into latency.**
+
+The initiators all acted correctly and on time. **The recipients were left outside the graph**: the care provider who receives the escalation, the authority that receives the doctor's statement, the office that receives the grave application, the pharmacy that holds the note. **"It takes weeks" described the outcome the story wanted, not the recipient's earliest action.** That is the same suppression re-expressed as delay, and it is harder to see because nothing in the document is silent.
+
+**So every row gets four more cells:**
+
+| Action | **Recipient** | **Recipient's earliest response** | **Every duty the combined facts trigger** | **Earliest consequential outcome** |
+|---|---|---|---|---|
+
+**Two rules for the new cells:**
+
+- **Name the recipient. "The system" is not a recipient.** If nobody can be named, the latency is invented.
+- ★ **A slow process does not absorb a fast duty.** An application that takes weeks does not establish that the same information cannot trigger an immediate protective response about the person currently at risk. **Those are two different duties on the same facts and both must be run.**
+
 ## Three rules that make it work
 
 1. **Include professional duties, not just powers.** The question is not only what a person *may* do, it is what their job *requires* them to do once they know. A doctor told his own patient may be being overdosed does not have a choice about ringing her.
 2. **A duty renews when the facts change.** A concern reported seven weeks ago does not discharge the duty created by a new deterioration this week.
 3. **Every suppression must be named and paid for.** If a node genuinely cannot act, the reason goes in the sweep in one sentence, and it must be a reason the world supplies rather than one the plot needs. **"The story does not visit them yet" is not a reason.**
+4. ★ **Consent and capacity are decision-specific and time-specific.** A competent refusal on day three is not a status conferred for the rest of the episode. **When the facts change, the assessment renews and so does every duty resting on it.** If a person visibly worsens at lead 12, that is new information to everyone who can act, and the sweep runs again from there. A refusal the story keeps leaning on without re-earning it has stopped being a right the world supplies.
+5. ★ **Check causal order against your own dates.** If A is said to cause B, A's date must precede B's. **This sounds too obvious to write down. The first spine run under this sweep got it backwards**, with the antagonist's warning on day four closing a route the victim had already closed on day three.
 
 ---
 
