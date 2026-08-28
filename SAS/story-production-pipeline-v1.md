@@ -94,14 +94,40 @@ The initiators all acted correctly and on time. **The recipients were left outsi
 
 ---
 
-## Division of labour, by demonstrated performance
+## ★ THE LEAST-COST TEST, CORRECTED 2026-08-28
 
-Not by preference. By what the record shows.
+**Stephen's correction, and it had been quietly distorting three premises.**
 
-- **ChatGPT: audit and structure.** Its REWORK of `No Fixed Address v2.1` found six real defects including two I had made three times. Its seed ledger conformed where mine failed outright.
-- **Fable: prose.** Wrote the best lines any of us has produced for this project. Needs an explicit brief for structure; give it a repaired spine and it will outwrite the rest of us.
-- **Claude: spine, canon, integration, code.** Holds continuity across documents, catches contradictions, applies rulings, and does the engineering.
-- **Stephen and Trish: the two questions only humans can answer.** Does it grab you, and do you believe it. Never conformance. Never volume.
+The test was being run as *does the antagonist minimise his risk*. **That is wrong. It asks whether his actions are coherent with what HE wants.** A consistency check, not a risk calculation and not a morality one.
+
+Run the narrow way, it forces every antagonist toward silence and inaction, and then the plot has to keep inventing reasons they cannot simply walk away. **That happened three times in one week.**
+
+**Some people want to be present.** Near the grief, needed, central, unsuspected while sitting in the room. **That has a real payoff to the person getting it and it is heavily documented.** A killer who inserts himself into the investigation of his own murder is not behaving irrationally; he is pursuing a goal the test was not scoring.
+
+★ **Stephen: "To murder anyone isn't rational, so this is about getting into the killer's twisted mind. It is very common when consuming true crime to ask how did they ever think they'd get away with that."** The genre research agrees: **curiosity about dangerous minds is the single strongest predictor of consumption, stronger than interest in violence.**
+
+**The guardrail, and it is craft rather than caution.** *He is a psychopath* explains **what he wants**. It never explains **how he does it**. The moment it becomes the answer to every *why would he do that*, the premise stops being falsifiable and a reader stops believing, which is the same failure as *nobody bothered* in a different costume. **The frightening version is a man whose goals are alien and whose execution is meticulous.**
+
+So: **he may do something that looks insane from outside, as long as it is coherent from inside his head, and the work shows us the inside.**
+
+---
+
+## Division of labour, CORRECTED 2026-08-28
+
+**Not by preference. By what the record shows, and the record changed.**
+
+★ **The winning Episode 1 premise came out of Fable's or ChatGPT's stinger batch, not Claude's.** Claude's best line of forty scored 7.5 with Stephen and 5 and 2 with the other two readers. **They generate better than Claude does, and the old split had them locked out of generation.**
+
+- **ChatGPT: audit, structure, and generation.** Its REWORK of `No Fixed Address v2.1` found six real defects including two Claude had made three times. **It also named the recurring defect better than we had — accurate nodes and a false graph — and authored the earliest-action sweep.**
+- **Fable: prose, character, and generation.** Best lines anyone has produced here. ★ **New: Fable defines the cast as people BEFORE the spine is written**, so characters are not built as functions and then inherited. The sharpest craft note of the week was that victims need lives more specific than illnesses and houses.
+- **Claude: spine, canon, integration, code, and collation.** Holds continuity, catches contradictions, applies rulings, does the engineering, and does the sorting so readers never have to.
+- ★ **Readers: THREE, never one.** Stephen, Trish and Alby. **Stephen's taste and the target audience's diverge on some items and the audience is 75 to 80 per cent women.** Where all three agree, back it hard. Where Stephen and Trish split, that disagreement is the most valuable thing available.
+
+## ★ RUN THE PRE-MORTEM BEFORE THE SPINE, NOT AFTER
+
+**Proven 2026-08-28.** Two spines cost a full day each before step 1b found their hole. **Run on a one-line premise, the same instrument found the next candidate's problems in a single page and produced three conditions that made it better.**
+
+**And send the adversarial audit at the premise, before a spine exists.** Attacking a shape costs an hour. Attacking a spine costs the day that built it.
 
 ---
 
