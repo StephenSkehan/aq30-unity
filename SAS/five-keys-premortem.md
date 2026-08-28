@@ -9,7 +9,7 @@
 
 ★ **This is the first time the earliest-action sweep has been run BEFORE a spine instead of after one.** Both previous candidates cost a full day of spine work before the instrument found the hole. If it can kill a premise from one sentence, it should.
 
-**Verdict: SURVIVES, on three conditions. One of them is the condition that sank both previous candidates, and it must be solved before a word of spine is written.**
+**Verdict: SURVIVES. Conditions A and B accepted 2026-08-28. Condition C ruled the same day, after the first three answers were rejected as thin.**
 
 ---
 
@@ -56,19 +56,42 @@ Five things, none of them optional:
 
 **Reject the alternative** — a lock needing all five keys, or five keys to five parts of one proof. **That is a puzzle-box device**, and puzzle-box thinking is exactly what dropped round two's ceiling from 8.5 to 7.5.
 
-## C. ⚠ SOMEBODY ALIVE MUST BE AT RISK, AND THE SENTENCE DOES NOT SUPPLY ONE
+## C. ★ SOMEBODY ALIVE IS AT RISK. RULED 2026-08-28.
 
-**This is the condition that sank both previous candidates and it is unsolved here.**
+**A and B accepted. The first three answers offered here were thin and were rejected; this replaces them.**
 
-The stake in the line as written is justice, friendship and identity. All legitimate. **None of them is present danger, and "no body at the top plus no living jeopardy" is precisely the combination that moved The Same House Twice out of the pilot slot.**
+> ### She had already told somebody. Not one of the five. Somebody outside, who does not know what they were told.
 
-**It is cheap to fix and it must be fixed before the spine, not during it.** The available answers, in the order I would take them:
+**Two years ago she said one ordinary sentence to somebody ordinary** — she named who she was meeting, or where she was going, in the way anybody mentions their evening to a person they see every week. **That person has never connected it to her death**, because her death was an accident and there was nothing to connect it to.
 
-1. ★ **One of the four is closest to the dead woman's family, and the killer knows which of them has started talking.**
-2. The killer is now with somebody the dead woman loved.
-3. The dead woman left a sixth key, and it has not been collected.
+**The killer knows she talked to someone. The killer has never found out who.** For two years that has been the one loose end, and for two years there has been no way to pull it.
 
-**Do not write a spine until this is chosen.** Both previous spines were written with this gap open and both were reworked because of it.
+★★ **Then a podcast starts asking, in public, on a schedule.**
+
+> **The investigation is the murder weapon. Every episode Ally publishes narrows the search for a person she is trying to protect, and she cannot stop without abandoning the case.**
+
+### Why this one and not the others
+
+| Test | Result |
+|---|---|
+| **A specific person, not a mood** | ✅ One woman, findable, and the player is looking for her too |
+| ★ **The killer's least-cost action** | ✅ **Listen.** He does nothing, spends nothing and risks nothing while somebody else does the work. **This is the first candidate in three where sitting still is not the antagonist's best move — because now sitting still and listening IS his best move, and it is lethal** |
+| **Danger grows because the player acts** | ✅ Directly and measurably. **Every decision to publish is a decision about her** |
+| **Can the police simply protect her?** | ✅ **No, and it is not a contrivance: nobody knows who she is.** You cannot protect a person whose name nobody has. That is a wall the world supplies |
+| **Can Ally just stop?** | ✅ She can, and then the case dies and the woman stays unprotected anyway, because he is still looking. **A real trade, not an obvious one** |
+| **Does it need new art?** | One portrait. She is worth it |
+| **Is it specific to a podcast?** | ★★ **Completely. A newspaper could not do this and neither could a detective.** A serialised public investigation is a search engine the killer could never have built for himself. **This is the strongest medium-necessity claim the project has produced** |
+
+### What it gives the episode for free
+
+- **A race with a real finish line.** Ally has to reach her first, along the same trail he is following.
+- **The agency gate solved without engineering.** Publishing advances the case and endangers her, every time, and the player feels both.
+- ★ **The warn-or-not decision.** Telling her makes her safe and tells her she has been a target for two years. Not telling her keeps her ordinary and keeps her exposed.
+- **A close that is not tidy.** She was found because a podcast went looking. That is true whichever way it ends.
+
+### The one thing to decide at spine time, not now
+
+**What she was actually told.** It must be so ordinary that not connecting it is obviously reasonable, and decisive the moment it is placed beside the empty cupboard. **It cannot be a clue she sat on. It has to be a Tuesday-evening sentence.**
 
 ---
 
@@ -85,8 +108,8 @@ The stake in the line as written is justice, friendship and identity. All legiti
 
 # VERDICT
 
-**Green, with condition C outstanding and blocking.**
+**Green. All three conditions closed. Clear to write the spine.**
 
 ★ **Two spines were written and reworked before this instrument found their hole. This time it took one page and no prose.** If that is all the sweep ever does, it has paid for itself.
 
-**Next, in order:** rule condition C · then the spine · then the pre-flight · then ChatGPT · then one opening from Fable.
+**Next, in order:** the spine · then the pre-flight · then ChatGPT · then one opening from Fable.
