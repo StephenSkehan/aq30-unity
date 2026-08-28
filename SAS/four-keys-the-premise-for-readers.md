@@ -3,7 +3,7 @@
 # EPISODE ONE
 ## The premise
 
-*v4, 2026-08-28. Working title not settled.*
+*v5, 2026-08-28. Working title not settled.*
 
 **Names are placeholders only.** Alice, Bobby, Carla, Dan and Edward are there so nobody has to hold four unnamed people in their head. Fable invents the real ones next, and will deliberately not be told which of them did it.
 
@@ -23,7 +23,7 @@ So four people who loved Alice are left knowing one thing for certain: one of th
 
 She does not have to say it. **Bobby is the only person in that room who knows for certain that one of them is guilty and exactly which one**, and he has spent weeks sitting in those meetings watching three people hunt him. He does not need Carla to accuse him. What he notices is that she has completely stopped looking at Dan and Edward.
 
-A few days later Bobby disappears. His car is found near the coast, at a spot the whole city knows people go to when they want to end things. His phone is left on the seat. No body is ever recovered, which is normal there.
+A few days later Bobby disappears. His car is found near the coast, at a spot the whole city knows people go to when they want to end things. His phone is left on the seat. No body is ever recovered, which is normal there; some are found years later and most are never found at all. His bank accounts are never touched again. His things stay in his flat exactly as he left them.
 
 And Carla stops.
 
@@ -37,9 +37,11 @@ Carla falls onto the rocks, and her body washes up in Havenbay harbour a few day
 
 Three friends gone, one after another, and the city settles on grief. It happens.
 
-Except that Dan and Edward each know something the police do not. One of the four murdered Alice and then emptied that cupboard. Each of them knows it was not him, so it is Bobby or it is the other one. And nothing can be done about Bobby, because there is no body and the file is closed.
+Except that Dan and Edward each know something the police do not. One of those four murdered Alice and emptied that cupboard, and each of them knows that it was not him.
 
-But you can suspect a dead man and still be frightened of a living one. **Dan is afraid of Edward. Edward is afraid of Dan.** And each of them is frightened enough to walk into a police station and say so.
+And once you are holding that, two friends going off the same cliff inside a year stops looking like grief and starts looking convenient.
+
+**Dan is afraid of Edward. Edward is afraid of Dan.** And each of them is frightened enough to walk into a police station and say so.
 
 Two men accusing each other of at least one death and possibly three, neither able to account for where they were. It is front page news, and Ally's podcast picks it up a day later.
 
@@ -73,4 +75,4 @@ He was wrong.
 - **Where in Havenbay it sits**, including which stretch of coast.
 - **How it ends**, and what it costs.
 
-**Settled, and expensive to move:** four friends rather than five · Alice's death recorded as an accident · the place already empty when they get there · Carla keeping her suspicion to herself · Bobby vanishing before Carla dies rather than after · the stranger who feeds her false leads first and kills her when that stops working · her injuries explaining themselves · nothing being possible about Bobby because there is no body · Ally arriving after all of it · the listeners finding the pieces.
+**Settled, and expensive to move:** four friends rather than five · Alice's death recorded as an accident · the place already empty when they get there · Carla keeping her suspicion to herself · Bobby vanishing before Carla dies rather than after · the stranger who feeds her false leads first and kills her when that stops working · her injuries explaining themselves · Bobby being unquestionably dead in the mind of everybody in Havenbay · Ally arriving after all of it · the listeners finding the pieces.
