@@ -5,6 +5,8 @@
 
 **★ THE EPISODE 1 CANDIDATE, and the strongest signal this project has ever recorded.** Stephen-ruled across 2026-08-27 and 28.
 
+⚠ **SUPERSEDED IN PART, 2026-08-28. `four-keys-the-premise-for-readers.md` v2 is the current statement of the story** and wins on any conflict. Stephen reworked it and three things were folded in. What changed here: the disappearance is at a **known suicide spot**, so nobody is incompetent for closing it · **the woman who got close STOPS**, because either she was wrong or she drove an innocent man off a cliff, and she cannot live inside the second one · **months later he baits her back as a stranger** who knows things and names the meeting place, which is the spot where his own car was found · **she goes off the cliff onto rocks and washes up in the harbour**, and nothing about her injuries is inconsistent with a fall, so pushed or jumped is unanswerable · the city reads three deaths as a grief cluster · **both survivors walk into a police station to accuse each other**, which makes front pages and is how Ally gets in · **the listeners find the pieces**, including one four hundred miles away who realises she knows him under another name · ★ **and the cost: proving he is alive turns the two survivors from suspects into the only two people who could identify him.**
+
 **Working title: NEEDED.** *"Five Keys After Midnight"* is retired as a title and kept as the origin. **Stephen: the 8.5 was the premise, not the title, and "after midnight" is nonsensical and constrains a timeline we do not want.** Recommendation: **THE FRIEND THEY MOURNED**. Alternatives: *Somebody Got There First* · *The Fourth Friend*. Not ruled.
 
 ---
