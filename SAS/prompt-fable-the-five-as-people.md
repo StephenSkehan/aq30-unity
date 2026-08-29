@@ -2,7 +2,9 @@
 
 # PROMPT: Fable writes the five of them as people, before the spine
 
-**Paste the block below.** Attach nothing. **Everything Fable needs is in the brief, deliberately** — a spine would tell it who the killer is, and it must not know.
+*Updated 2026-08-29 against premise v6, after Trish's agreed read of v5.*
+
+**Paste the block below.** Attach nothing. **Everything Fable needs is in the brief, deliberately** — a spine would tell it who the killer is, and it must not know. ⚠ When the cupboard's contents are decided, they stay OUT of this brief and out of any follow-up to Fable, for the same reason.
 
 ★ **This is a change to the pipeline.** Until now Fable only saw a spine after it was locked, which meant characters were built as functions by Claude and inherited. The sharpest craft note of the week was that victims need *lives more specific than illnesses and houses*. This is the fix.
 
@@ -16,9 +18,9 @@ You are writing the people at the centre of Episode One of **Ally Quinn: True Cr
 
 ### The situation, and it is all you need
 
-A woman was murdered. **Her death was recorded as an accident, so nobody investigated.**
+A woman was murdered. She was found at the foot of her own stairs, and the injury that killed her is exactly what a fall leaves. **Her death was recorded as an accident, so nobody investigated.**
 
-She had four close friends. Some months before she died she was frightened, and she hid something that proved one of those four was planning to kill her. She made an arrangement so that **after her death, all four of them would receive a key to where she had hidden it.**
+She had four close friends. Some months before she died she was frightened, because she had worked out that one of those four was planning to kill her. What she had fell short of proof, and using it meant accusing somebody she loved, so she hid it instead. She made an arrangement so that **after her death, all four of them would receive a key to where she had hidden it.**
 
 The keys went out. **By the time they got there, it was gone.** One of them had been first.
 

@@ -2,7 +2,9 @@
 
 # PROMPT: ChatGPT attacks the premise, before any spine exists
 
-**Paste the block below.** Attach `episode-1-premise-four-keys-v1.0.pdf` and, if it wants the history, `five-keys-premortem.pdf`.
+*Updated 2026-08-29 against premise v6, after Trish's agreed read of v5.*
+
+**Paste the block below.** Attach `four-keys-the-premise-for-readers.pdf` (v6, the current premise). If it wants the machinery behind it, add `episode-1-premise-four-keys-v1.0.pdf` (conditions and rulings) and `five-keys-premortem.pdf` (history).
 
 ★ **This is deliberately being run BEFORE a spine.** Two spines this week cost a full day each before the earliest-action sweep found their hole. Attacking a shape costs an hour; attacking a spine costs the day that built it.
 
@@ -17,6 +19,8 @@ You have audited three premises for this project. **Every finding you have retur
 ### What has changed since you last saw this project
 
 **Three readers scored roughly 190 one-line premises independently.** All three put the same one first: 10 from one, 8 from another, 8.5 from the third. **That ten is the only ten awarded to anything in the entire exercise.** It has been developed into the premise attached, and no prose exists.
+
+**The premise has since moved through six versions, and the reader who gave the ten has read it in full and agreed.** Two amendments from that read are folded in: the death now has a named injury, blunt force trauma to the head at the foot of her own stairs, exactly what a fall leaves; and the story is committed to answering what the dead woman hid. **The contents themselves are deliberately undecided.**
 
 **Two corrections we have taken and you should know about:**
 
@@ -51,12 +55,16 @@ You have audited three premises for this project. **Every finding you have retur
 - **A finding names what breaks**, with a person and a moment. *"This is thin"* is a note.
 - **Rank them with your own confidence.**
 - On your **top three only**: one line on *what would have to be true for this finding to be wrong.*
-- **Where it depends on an unsettled Havenbay process, ask for the ruling rather than inventing one.** We expect at least two: what allows a death to be recorded as an accident and what reopens it, and how a person is declared or presumed dead and what that presumption survives.
+- **Where it depends on an unsettled Havenbay process, ask for the ruling rather than inventing one.** We expect at least two: what allows an unwitnessed fatal fall, blunt force trauma at the foot of her own stairs, to be recorded as an accident with nobody investigating, and what reopens it; and how a person is declared or presumed dead and what that presumption survives.
 - ★ **Separate "this is wrong" from "this is not yet decided."** There is no spine, so almost nothing is decided. Only report the second kind where the decision looks impossible rather than merely unmade.
 
 ### Two constraints on output
 
 **No menus.** If you have a better version of something, state the one you would ship. **Four pages.**
+
+### One more job: constraints on what she hid
+
+The premise commits to answering what was in the cupboard, and it is deliberately not yet decided. **Do not pick it.** Name the constraints anything in that cupboard must satisfy for the premise to hold. Ours so far: it fell short of proof, or she would have used it · using it meant accusing somebody she loved · it was worth a murder to the man it named, and worth emptying before four keys arrived in the post · he emptied it rather than ignored it, so possessing it must have been more dangerous to him than the empty cupboard that told all four someone had been there. **Add any constraint we have missed, and flag any pair of them that cannot be satisfied by the same object.**
 
 ### One question outside the audit
 
