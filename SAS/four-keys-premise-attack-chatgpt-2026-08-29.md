@@ -2,7 +2,21 @@
 
 # ChatGPT attacks the Four Keys premise (v6)
 
-*Received 2026-08-29, verbatim. Placeholder names as in v6: Alice, Bobby, Carla, Dan, Edward. Each finding is under discussion with Stephen one at a time; nothing here is accepted until it is marked so.*
+*Received 2026-08-29, verbatim. Placeholder names as in v6: Alice, Bobby, Carla, Dan, Edward. Each finding is under discussion with Stephen one at a time.*
+
+## Status, 2026-08-29 (cast: Nell = Alice · Bram = Bobby · Margo = Carla · Owen and Sian = Dan and Edward)
+
+| # | Finding | Status | Ruling |
+|---|---|---|---|
+| 1 | Disappearance is camouflage not alibi | **Closed, accepted narrowly** | Dead to friends and city, missing on the file. "Police privately suspect" declined. Nobody alive ever says "plant": survivors dispute the *reading* of the letter, never its authorship. One planted item only, the smashed watch. |
+| 2 | Alice gave the killer a key | **Closed, reworked** | Nell did not know which of the four. The key letters say "one of you", so the letters create the suspects. The four agree to go together; Bram goes early and SWAPS X for Y, a clue-letter in her hand. Margo's turn: "why a key, when she could have posted copies?" X is a one-of-a-kind object Bram keeps; Ally describes it; the distant woman recognises it. "Only one who can do her hand" cut. |
+| 3 | Official response missing | **Closed, rulings to spine** | Nell's letters tell the four NOT to go to police, with her reasoning; the ending is the survivors breaking that instruction. Y is handed to police at the end and never tested. Six Havenbay rulings queued for the spine, plus: what triggers a document examination. |
+| 4 | Survivors have suspicion not certainty | **Closed, reworked** | Language shifts from knowing to believing on her word. Bram vanishes BEFORE the reading lands; Sian drives it after. **The inversion:** Bram plants the reading by *defending* Owen against it. The defender was the accuser. |
+| 5 | Authored order at the cupboard | **Closed, superseded** | Covered by 2. "Destroy the contents" overruled: he keeps X. Spine items: the window, the residue of the early visit, the cupboard's location. |
+| 6 | Podcast locates, cannot identify | **Closed, wording accepted** | Police establish via the reference sample taken on day two to identify his corpse. X is the clincher. Ally's protocol: tips go to Del, never on air. No suicide note; the phone on the seat is the note. The flat is searched and cleared, not untouched. |
+| 7 | Second life must predate | *Open* | Hard constraint already set: passport and cards stay in the flat; the second life runs on documents that were never his. |
+| – | Cupboard constraints | *Open* | Most resolved by the rulings above; tension one (not proof, yet worth two murders) is the creative problem and X is still unpicked. |
+| – | What it is about | *Open* | Claude recommends adopting "he weaponised friendship" as the thesis. |
 
 ---
 
