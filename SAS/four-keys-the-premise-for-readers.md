@@ -3,78 +3,81 @@
 # EPISODE ONE
 ## The premise
 
-*v6, 2026-08-29. Working title not settled.*
+*v7, 2026-08-29. Working title not settled.*
 
-**Trish read v5 on 28 August and agreed, with Fable to write.** Her two amendments are folded into this version: Alice's death now has a named injury, and what Alice hid is promised an answer rather than left open-ended.
+**What changed since v6.** Trish agreed v5. ChatGPT then attacked v6 and returned REWORK with seven findings; all seven were taken through one at a time and closed with rulings, and this is the result. The two biggest moves: the dead woman did not know which of her friends it was, and the cupboard was not emptied but swapped.
 
-**Names are placeholders only.** Alice, Bobby, Carla, Dan and Edward are there so nobody has to hold four unnamed people in their head. Fable invents the real ones next, and will deliberately not be told which of them did it.
+**Names are now real.** Fable wrote the five as people before any of this plot existed and was never told who did it. Nell was Alice, Bram was Bobby, Margo was Carla, Owen and Sian were Dan and Edward. The casting is Stephen's.
 
 ---
 
-**Alice** dies in her own home, at the foot of her own stairs. Blunt force trauma to the head, which is exactly what a fall like that leaves, and exactly what something else leaves too. It is recorded as an accident, so nobody investigates, and within a few weeks it is simply a sad thing that happened to somebody.
+**Nell** dies in her own home, at the foot of her own stairs. Blunt force trauma to the head, which is exactly what a fall like that leaves, and exactly what something else leaves too. Police attend, there is a post-mortem, and a coroner records an accident, because a shove down a staircase and a slip on one are the same injury. Nobody is incompetent. Within a few weeks it is simply a sad thing that happened to somebody.
 
-She had four close friends: **Bobby, Carla, Dan and Edward.** In the months before she died Alice had become frightened, because she had worked out that one of those four was planning to kill her. She hid what she had. She did not go to the police, partly because what she had was not quite proof, and mostly because taking it to them meant accusing somebody she loved. So she made an arrangement instead. If anything happened to her, all four of them would be sent a key.
+She had four close friends: **Owen, Sian, Margo and Bram.** In the months before she died Nell had worked out that one of those four was planning to kill her. She did not know which. What she had found was a thing, not a fact: one object, meaningless on its own, damning if the four of them put what they each separately knew of her beside it. She could not take it to the police, and she had thought that through. They would take all four of her friends apart, find nothing, close it in a week, and whoever it was would know she knew. So she hid it, and she made an arrangement.
 
-After the funeral, the keys arrive in the post. All four of them go to the same place.
+After the funeral, four keys arrive in the post, each with a letter in her hand. The letter says: one of you is planning to kill me. I do not know which. Do not go to the police, and here is why. What I found is behind this door. Only the four of you can read it.
 
-It is already empty.
+They ring each other that night. They agree to go together, on Saturday. Three of them keep the agreement. One goes early, and then goes again on Saturday with the others, as if for the first time.
 
-So four people who loved Alice are left knowing one thing for certain: one of the other three got there first. They have nothing they can take to the police. What they have is each other, and the fact that between them they knew her better than anyone alive did. They start meeting. They start trying to work out which of them it is.
+What they find is a letter in her hand. It does not name anyone. It sets out what she noticed, piece by piece, and leaves them to work through it. It is not the letter she wrote. Bram wrote it, in the days between the post and Saturday, in a hand nobody knew he had, from the sample she had sent him herself. What Nell actually hid is in his possession, and he has no intention of destroying it.
 
-**Carla gets close.** She keeps it entirely to herself, because you do not say that out loud about a friend until you are certain.
+So four people who loved her spend weeks in a room working a dead woman's letter, and it bends, slowly, towards Owen. **Bram is the one who will not have it.** Not Owen. Read it again. He argues Owen's side every time it comes up, and he loses every time, and every time the reading comes back to where it was.
 
-She does not have to say it. **Bobby is the only person in that room who knows for certain that one of them is guilty and exactly which one**, and he has spent weeks sitting in those meetings watching three people hunt him. He does not need Carla to accuse him. What he notices is that she has completely stopped looking at Dan and Edward.
+**Margo gets close**, and she gets there by the accountant's route, which is to ask what is missing. Why a letter? You post copies of a letter. You do not lock one behind a door and send four keys. A key means a thing. She goes back through everything the letter has made them think, and the one person she keeps arriving at is the one who kept defending Owen. She says nothing, because the man the letter points at is innocent and the man she suspects is her friend. But she stops arguing with Bram, and she stops looking at the other two, and Bram notices.
 
-A few days later Bobby disappears. His car is found near the coast, at a spot the whole city knows people go to when they want to end things. His phone is left on the seat. No body is ever recovered, which is normal there; some are found years later and most are never found at all. His bank accounts are never touched again. His things stay in his flat exactly as he left them.
+A few days later Bram disappears. His car is found near the coast, at a spot the whole city knows people go to when they want to end things. His phone is on the seat with one message on it: he cannot do this any more. His watch, the one he never took off, is on the rocks below, smashed. No body is recovered, which is normal there. Police search his flat and take the toothbrush and the razor they take when a body might wash up next year. When the rent stops, the landlord clears it, and Sian keeps the boxes. His accounts are never touched again. The city settles on grief.
 
-And Carla stops.
+And Margo stops. There are only two ways to read it. Either she was wrong about him, or she was right and she made a man jump off a cliff. She cannot live inside the second one, so she chooses the first. It never stops bothering her.
 
-Because there are only two ways to read it. Either she was wrong about him, or she was right and she made a man jump off a cliff. She cannot live inside the second one, so she chooses the first, and she lets it go. It never stops bothering her.
+The three of them keep working the letter, and it is Sian who drives it now, because Sian is who drives things. It lands on Owen. Even Bram could not make it not fit, and it broke him. Owen knows the letter is Nell's hand and knows it cannot mean him, so somebody is reading it to fit, and the person who ran the reading is the person who ran every meeting. Margo watches it land on a man she believes is innocent, and the only alternative she has is a man she believes she killed. She cannot say either.
 
-Months later a stranger begins talking to Carla. He knows things about Bobby's death that nobody has said out loud, and everything he offers points her gently somewhere else. When it becomes clear that she is not being turned, he tells her he will meet her and give her the rest, and he names the place: the spot where the car was found.
+Months later a stranger begins talking to Margo. He knows things about Bram's death that nobody has said out loud, and everything he offers points her gently somewhere else. When it becomes clear that she is not being turned, he tells her he will meet her and give her the rest, and he names the place: the spot where the car was found.
 
 She goes.
 
-Carla falls onto the rocks, and her body washes up in Havenbay harbour a few days later. There is nothing about her injuries that a fall does not explain, so nobody thinks she was pushed and they assume she jumped. And everybody has a reason ready, because she had spent months blaming herself for the friend who went off the same cliff.
+Margo's body washes up in Havenbay harbour a few days later. There is nothing about her injuries that a fall does not explain, so nobody thinks she was pushed and they assume she jumped. And everybody has a reason ready, because she had spent months blaming herself for the friend who went off the same cliff.
 
-Three friends gone, one after another, and the city settles on grief. It happens.
+**Owen is afraid of Sian. Sian is afraid of Owen.** For opposite reasons, and both of them wrong. And each of them is frightened enough to break Nell's last instruction and walk into a police station with the letters and say so. Not "he did it". "I am frightened of him."
 
-Except that Dan and Edward each know something the police do not. One of those four murdered Alice and emptied that cupboard, and each of them knows that it was not him.
+The police look. What they have is an accident, a presumed suicide, and a suicide, two survivors accusing each other, and a letter both of them swear is in their dead friend's hand. Nobody has said the word forgery, so nobody tests it. They find nothing, because there is nothing where they are looking. It is front page news, and Ally's podcast picks it up a day later.
 
-And once you are holding that, two friends going off the same cliff inside a year stops looking like grief and starts looking convenient.
+**And this is what she walks into.** Two people who have not been charged with anything and never will be, being taken apart in public by each other and by an entire city.
 
-**Dan is afraid of Edward. Edward is afraid of Dan.** And each of them is frightened enough to walk into a police station and say so.
+**Bram is alive.** He is four hundred miles away under a name that was never his, living on cash he put aside before Nell died, in a room he arranged before he needed it. His passport and his cards were in the flat when the police searched it. Nobody helped him. He thinks it is finished, and he is not wrong to think so. He killed Nell, he swapped what she left for a letter that did his pointing for him, he removed the one person who saw through it, and he left the last two doing the rest of the work.
 
-Two men accusing each other of at least one death and possibly three, neither able to account for where they were. It is front page news, and Ally's podcast picks it up a day later.
+Ally comes to all of this afterwards. She prevents nothing, and she could not have. What her podcast does, slowly, is turn an accident back into a murder and a dead man back into a living one. She does not do it alone. Her listeners do it. Somebody kept a message Margo sent them months ago and thought nothing of it at the time: *why a key?* Ally puts the question on air. If there was a key, there was a thing, and nobody has found it. She describes it, from the people who saw it in Nell's life before it went behind that door. One of a kind.
 
-**And this is what she walks into.** Two men who have not been charged with anything and never will be, being taken apart in public by each other and by an entire city. Work, family, the street they live on. Nothing about it improves while the case stays where it is, and one of them is not going to survive it.
+Bram is listening. He gets rid of the thing the same day. He knows somebody near him could have seen it. He cannot know who. He stays, because leaving costs him everything he built, and because he is cleverer than a podcast.
 
-**Bobby is alive.** He faked his own death. He is four hundred miles away under another name and he thinks it is finished, and he is not wrong to think so. He killed Alice, he removed the one person who was about to see it, he did it in a way that reads as grief, and he left the last two friends behind doing the rest of the work for him.
+Everything Ally learns goes to Del first and never on air. And eventually a woman four hundred miles away, who has been listening for six weeks, who half-saw a memorial photo and dismissed it, who has been hearing a man's habits and phrases and stories described by strangers, and who has seen that object a dozen times without a thought, understands that she knows him, under a different name, and that he has been sitting across a table from her. She writes to Ally. Ally tells Del. The next episode is indistinguishable from the last one. The sample the police took to identify his body identifies him alive.
 
-Ally comes to all of this afterwards. She prevents nothing, and she could not have. What her podcast does, slowly, is establish that the man everybody has spent months mourning was never harmed at all.
-
-She does not do it alone, and she could not have. Her listeners do it. Small pieces from subscribers, some of them anonymous and some not. Somebody who kept a message Carla sent them and thought nothing of it at the time.
-
-And eventually a woman four hundred miles away who has been listening to a description of a man for six weeks, and who has slowly understood that she knows him, under a different name, and that he has been sitting across a table from her.
+He notices her the way he noticed Margo. This time it is too late.
 
 ---
 
-## Who Bobby is
+## Who Bram is
 
-A man who genuinely believed he was cleverer than everybody around him, and that he could kill more than once and never have it land on him.
+A man who genuinely believed he was cleverer than everybody around him, and hid it behind a trade and a van so that nobody would ever check. Every tell is there on the page and none of them can be read forwards. The one that can be read backwards is that every time the room drifted away from Owen, it was Bram's loyalty that brought it home.
 
 He was wrong.
+
+## What it is about
+
+He weaponised what they loved. Nell's love sent four keys instead of a phone call to the police. The four's trust made them honour her last instruction and work his letter. Owen's and Sian's loyalty to a dead friend did his pointing for him. Margo's guilt kept her quiet. The people who found him were strangers, and strangers were the only people he had no hold on.
 
 ---
 
 ## Still open, so you know what you can change
 
 - **The title.** *Five Keys After Midnight* is retired. Current suggestion is *The Friend They Mourned*.
-- **Who these five actually are.** Not decided at all. Fable writes them next.
-- **What Alice hid**, and how she came by it. Trish's read: we need to know, or the story is empty. So this is open only as to *what* it is; that the episode answers it is settled, and it gets decided before Fable writes, not discovered along the way.
+- **What Nell hid.** Its shape is fixed (below) and the object is not chosen. Decided at the spine, and never told to Fable.
+- **Why Bram wanted Nell dead.** Not the object; the plan came first. Fable has seeded that Nell had more money than anyone knew.
 - **How long ago all of this happened**, and how long Ally's podcast runs for.
-- **Which of Dan or Edward comes to Ally**, and whether either of them is anything to her already.
-- **Where in Havenbay it sits**, including which stretch of coast.
+- **Which of Owen or Sian comes to Ally**, and whether either of them is anything to her already.
+- **Where in Havenbay it sits**, including which stretch of coast and where the cupboard is.
 - **How it ends**, and what it costs.
+- **Havenbay rulings needed at the spine:** what supports an accidental-fall finding and what reopens it · missing-person status, searches and reference samples when there is no body · who can petition to have a missing man declared dead · what triggers a forensic document examination · whether a death at a known disappearance site automatically links the cases.
 
-**Settled, and expensive to move:** four friends rather than five · Alice's death recorded as an accident · her injury a named one that a fall fully explains, so the question "an unfortunate slip, or murder" can stand · the episode answering what she hid · the place already empty when they get there · Carla keeping her suspicion to herself · Bobby vanishing before Carla dies rather than after · the stranger who feeds her false leads first and kills her when that stops working · her injuries explaining themselves · Bobby being unquestionably dead in the mind of everybody in Havenbay · Ally arriving after all of it · the listeners finding the pieces.
+**The shape of what she hid, fixed:** a unique physical object that cannot be posted or copied · meaningless alone, damning beside what the four separately knew · not the motive · something Nell could plausibly have found · something he wants · innocuous in a stranger's house four hundred miles away · describable by Ally without ever holding it.
+
+**Settled, and expensive to move:** four friends rather than five · Nell's death recorded as an accident after a competent inquiry · her injury one that a fall fully explains · Nell not knowing which of the four · the letters creating the suspects and telling them not to go to the police · the four agreeing to go together and one going early · the cupboard swapped, not emptied, and nobody doubting the letter is hers · nobody alive ever saying the word forgery · Bram defending Owen to make the reading land on him · Bram vanishing before it lands · the phone as the note, the watch as the proof, no written note · the flat searched and cleared, the reference sample as the verification · Margo's "why a key" surviving only in a message a listener kept · Bram's exit prepared before Nell died, on documents never his, with no accomplice · the object kept, not destroyed, and recognised by a stranger · tips to Del and never on air · Ally arriving after all of it · the listeners finding the pieces.
