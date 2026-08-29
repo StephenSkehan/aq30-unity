@@ -3,13 +3,15 @@
 # EPISODE ONE
 ## The premise
 
-*v5, 2026-08-28. Working title not settled.*
+*v6, 2026-08-29. Working title not settled.*
+
+**Trish read v5 on 28 August and agreed, with Fable to write.** Her two amendments are folded into this version: Alice's death now has a named injury, and what Alice hid is promised an answer rather than left open-ended.
 
 **Names are placeholders only.** Alice, Bobby, Carla, Dan and Edward are there so nobody has to hold four unnamed people in their head. Fable invents the real ones next, and will deliberately not be told which of them did it.
 
 ---
 
-**Alice** dies in her own home. It is recorded as an accident, so nobody investigates, and within a few weeks it is simply a sad thing that happened to somebody.
+**Alice** dies in her own home, at the foot of her own stairs. Blunt force trauma to the head, which is exactly what a fall like that leaves, and exactly what something else leaves too. It is recorded as an accident, so nobody investigates, and within a few weeks it is simply a sad thing that happened to somebody.
 
 She had four close friends: **Bobby, Carla, Dan and Edward.** In the months before she died Alice had become frightened, because she had worked out that one of those four was planning to kill her. She hid what she had. She did not go to the police, partly because what she had was not quite proof, and mostly because taking it to them meant accusing somebody she loved. So she made an arrangement instead. If anything happened to her, all four of them would be sent a key.
 
@@ -69,10 +71,10 @@ He was wrong.
 
 - **The title.** *Five Keys After Midnight* is retired. Current suggestion is *The Friend They Mourned*.
 - **Who these five actually are.** Not decided at all. Fable writes them next.
-- **What Alice hid**, and how she came by it.
+- **What Alice hid**, and how she came by it. Trish's read: we need to know, or the story is empty. So this is open only as to *what* it is; that the episode answers it is settled, and it gets decided before Fable writes, not discovered along the way.
 - **How long ago all of this happened**, and how long Ally's podcast runs for.
 - **Which of Dan or Edward comes to Ally**, and whether either of them is anything to her already.
 - **Where in Havenbay it sits**, including which stretch of coast.
 - **How it ends**, and what it costs.
 
-**Settled, and expensive to move:** four friends rather than five · Alice's death recorded as an accident · the place already empty when they get there · Carla keeping her suspicion to herself · Bobby vanishing before Carla dies rather than after · the stranger who feeds her false leads first and kills her when that stops working · her injuries explaining themselves · Bobby being unquestionably dead in the mind of everybody in Havenbay · Ally arriving after all of it · the listeners finding the pieces.
+**Settled, and expensive to move:** four friends rather than five · Alice's death recorded as an accident · her injury a named one that a fall fully explains, so the question "an unfortunate slip, or murder" can stand · the episode answering what she hid · the place already empty when they get there · Carla keeping her suspicion to herself · Bobby vanishing before Carla dies rather than after · the stranger who feeds her false leads first and kills her when that stops working · her injuries explaining themselves · Bobby being unquestionably dead in the mind of everybody in Havenbay · Ally arriving after all of it · the listeners finding the pieces.
