@@ -4,6 +4,8 @@
 
 *Received 2026-08-29, verbatim. Discussed one at a time on 2026-08-30 and closed; result folded into premise v8.*
 
+**Closure check on v8, 2026-08-30 (GPT, verbatim):** 1 CLOSED · 2 CLOSED · 3 CLOSED · 4 PARTLY ("closure still depends on the unsettled ruling about what a last-movements review can recover from the app, account and prepaid connection") · 5 CLOSED · 6 CLOSED · 7 CLOSED · 8 PARTLY ("the premise still does not account for Brad's physical journey to and from Margo's known death site when her movements are later reviewed"). No new findings. **v8 is closed to premise-level attack. The two PARTLY items are spine obligations: the last-movements ruling, and Brad's journey (route, cash travel, approach on foot, camera coverage at the site, what the review pulls for an apparent suicide, and the residue that becomes a listener lead).**
+
 ## Status, 2026-08-30 (names: Nell = Violet · Bram = Brad · Owen = Liam · Sian = Ruby)
 
 | # | Finding | Status | Ruling |
