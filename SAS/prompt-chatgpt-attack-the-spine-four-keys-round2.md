@@ -1,0 +1,23 @@
+<!-- pdf-title: Prompt, ChatGPT attacks the Four Keys spine, round two -->
+
+# PROMPT: ChatGPT attacks the spine, round two (v1.2)
+
+*Attach `episode-1-spine-four-keys-v1.2.pdf` and `four-keys-spine-attack-chatgpt-2026-08-30.pdf` (your round-one findings with their disposition). Nothing else. Paste the block below.*
+
+> You are the adversarial auditor for a true-crime narrative. Attached are two documents: the spine of an episode at v1.2, and your own round-one audit of v1.1 with a status table showing how each of your ten findings was disposed. Eight were accepted and repaired, one was answered from the ledger, one was closed by a new world rule (R27). Do not re-litigate the ten unless a repair created a new hole; if it did, cite the round-one number and the new row.
+>
+> The world's rules are R19 to R27 in Part E and the bible entries quoted there. Treat them as given. Attack the graph.
+>
+> Rules of the audit, unchanged. Every finding names a row, a day, and a person. A finding that says "someone would" must say who, what they lawfully hold on that day, whom they take it to, and what that recipient's first mandatory action is. Rank by confidence. For each, state what would have to be true for the finding to be wrong. Return REWORK, KILL or PASS.
+>
+> Attack what changed, in this order.
+>
+> 1. **The new decoy: the boat name board (D2, B1 rows 5a and 5b, B3 row 31, B7 R15 and R16).** Brad carries a transom board out of the house at 22:30 on Day 0 and No. 14 sees a man with something flat. The Day 1 scene photographs show an empty hook. On Day 19 the four find the board in the cage and assume she put it there. Find the person who can date the hook. Find the person who saw the board in her hall after Day −19. Test row 5b (nobody but Brad inside the house in those nineteen days) against her life in the five: the sister's dispute, the solicitor, a tradesman, a neighbour, Ruby's four a.m. history, Liam's key.
+> 2. **The deckhand (A1 Days −1500 to −1090, B1 rows 10a to 10d, B7 R6 to R6b, C8).** He lived aboard, drank at Brad's flat, kept a dry bag there with his papers, and the missing-person file names the boat and never Brad. The skipper knew "a mate's" and not whose. Break that: the harbour master, the pub, the boat's other crew, the deckhand's phone, the constable's canvass under a low-risk classification. Then the identity in use: a man living for eight months under a name with his face on no document, cash rent, cash workshop, a prepaid. Name the first ordinary interaction in a town of forty thousand that demands photo identification and say what he does.
+> 3. **The forgery capability (A1 Day −1800, A2 Day 17, B2 row 20, D3 last row, B7 R2, R3, R3a).** The debt book as exemplar, years of burned Tuesday-night practice at her bench, her pen and paper. Is the debt book enough cursive to write a long letter that passes against four contemporaneous letters? Does Violet ever notice her paper stock falling or her pen moved over eighteen hundred days? Does the sister, clearing the unit on Day 82, hold anything that shows two hands?
+> 4. **The weekday clock (A3 Day 53, A4 Days 212 to 216).** Both journeys are now Friday night to the Saturday 05:47. Margo's office is shut on Saturday; Tessa raises the alarm on Sunday Day 216. Put the police response to the car found at 06:40 on Saturday Day 215 on a real clock: who is rung from the registration, when, and what Margo's office manager and next of kin can say before Tessa rings. Find a route to Tessa, or to the app, that runs before Sunday.
+> 5. **R22 in the recipient column (B3 rows 25, 30, 33; C4 week 4; C5 weeks 6 to 8).** Routine examination now runs whenever a letter reaches Del. Recompute Ruby's and Margo's earliest actions under it. In particular: when Margo's Day 44 allegation stays open and all four are interviewed about the cage, state the interviewing officer's first mandatory action on learning that two of the four hold unit keys, and whether that reaches the loading-bay camera before it expires on Day 47.
+> 6. **The man in the lane (A2 Day 1, B2 row 18, C7 Day 1).** No. 14 reports at the door-knock; the four are asked on Day 2 and all say no. Brad lied to police on Day 2. What does that lie cost him on Day 54, when his own file opens, and on Day 222, when everything on him is read together?
+> 7. **The sweep, Part C, one more time.** The two thin locks stand (Margo Days 47 to 53; Ruby from Day 27). Under the repairs, is there a third?
+>
+> Do not propose prose. Do not propose a new premise. Do not say "the police would investigate" without naming the officer's first mandatory action and its date.
