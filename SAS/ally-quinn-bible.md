@@ -261,7 +261,20 @@ The season question: **who killed Thomas Quinn, and what conspiracy was he uncov
 - **A pharmacist who queries, records the answer and supplies has done her job correctly.** No premise may depend on a pharmacy simply not noticing.
 - The resulting note is **a complete, accurate, dated record that exists and that nobody reads again** unless somebody goes looking.
 
-⚠ **Formatting note, not a ruling: R16 to R18 are §2.3.2 rulings and are sitting at the head of Chapter 3 rather than inside §2.3.2.** R16 was appended here on 2026-08-26 and R17 and R18 have been kept with it rather than split. **They should be moved into §2.3.2 in a tidy-up commit.**
+**R19 to R26. Deaths, the missing, documents and devices (Stephen-ruled 2026-08-30, at the Four Keys spine).**
+
+| # | Ruling |
+|---|---|
+| R19 | **An unwitnessed fatal fall with a secure scene, a single impact consistent with the fall, and a competent post-mortem is recorded as an accident.** Only new evidence of an act by a person reopens it. A written expression of fear, a friend's later suicide, or a second death elsewhere do not. |
+| R20 | **A vehicle, a message and personal effects at a known site make a missing adult high risk, presumed in the water.** The search stands down within days. A DNA reference and prints are taken from the home on the first or second day and kept indefinitely against a future body. The file stays missing, not dead. |
+| R21 | **A declaration of death may be sought only by family or a person with a financial interest, after a waiting period measured in years.** |
+| R22 | **Authentication of a material posthumous handwritten document is routine:** it is examined before it is acted on, whether or not anyone disputes authorship. |
+| R23 | **A last-movements review on an apparent suicide reaches the deceased's own carrier records** (cell-site, data sessions). An encrypted messaging provider confirms an account and retains no content and no contact list. **No tower request is made without an alleged offence.** |
+| R24 | **A death at a known disappearance site with a known association links the files.** Linked means read together; neither death is reclassified by the link. |
+| R25 | **Kestrel Head:** one camera at the car park entrance covering vehicles, none on the point or the coast path. A review pulls it for an apparent suicide. |
+| R26 | **A second identity without an accomplice.** Births are not cross-checked against infant deaths at issue, but the route the episode uses is a missing man's genuine name: a low-risk, voluntarily-absent classification (R16) attracts no sample and nothing monitors the name; a licence photo renewal by post is accepted. The name is exposed only when someone with a name and a town asks. |
+
+⚠ **Formatting note, not a ruling: R16 to R26 are §2.3.2 rulings and are sitting at the head of Chapter 3 rather than inside §2.3.2.** R16 was appended here on 2026-08-26 and R17 and R18 have been kept with it rather than split. **They should be moved into §2.3.2 in a tidy-up commit.**
 
 ## 3.1 The Thomas Quinn incident
 

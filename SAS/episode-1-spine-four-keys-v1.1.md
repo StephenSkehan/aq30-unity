@@ -1,11 +1,13 @@
-<!-- pdf-title: The Friend They Mourned, the Spine v1.0 -->
+<!-- pdf-title: The Friend They Mourned, the Spine v1.1 -->
 
 # THE FRIEND THEY MOURNED (FOUR KEYS)
-## THE SPINE, v1.0
+## THE SPINE, v1.1
 
 *2026-08-30. Pipeline step 1, step 1b with the recipient column, and step 2. Written against premise v8 (closed to premise attack), the five v1.2, and the Four Keys rulings in memory. No prose. Nothing in this document reaches Fable except Part G.*
 
-**Status: the sweep PASSES.** No person's earliest competent action ends the episode before its planned turn. Two locks are thin and are named as such in Part C: Margo's six days between her turn and Brad's vanish, and Ruby's open route to Del from Day 27, which is open, computed, and does not deliver. Eight rulings are queued for Stephen in Part E; the spine holds under the answers it asks for and says what breaks otherwise.
+**v1.1, same day: all eight rulings in Part E taken by Stephen.** Seven went the way the spine asked. Ruling 8 went a different and better way: Brad does not live under a dead infant's record, he lives under the genuine name of a man he killed three years before Violet, whose body was never found and whose file is low risk with no sample under R16. That adds one node (the lodger, the skipper who reported him, the constable who called) to Parts A, B and C, and it changes "who Brad is": Violet was not his first. The sweep was re-run on the new node and still passes. ⚠ Premise v8's "Who Brad is" and the settled line "documents never his" now need a one-line update; that is Stephen's document and is flagged, not edited.
+
+**Status: the sweep PASSES.** No person's earliest competent action ends the episode before its planned turn. Two locks are thin and are named as such in Part C: Margo's six days between her turn and Brad's vanish, and Ruby's open route to Del from Day 27, which is open, computed, and does not deliver.
 
 **Two objects chosen here (Part D).** X, what Violet hid, is a gilded alphabet panel Brad made in a hand he had never shown anyone, signed with a mark that is not his name. Fable's brush, sable on an oar handle, fails three of the seven constraints as X and is the decoy instead. Fable's Violet gave us the decoy without knowing it.
 
@@ -19,7 +21,8 @@
 
 | What actually happened | Day |
 |---|---|
-| Brad builds an exit under a name that was never his: the birth record of a boy who died in infancy 400 miles away, then the documents that follow from it. No accomplice. | −900 to −500 |
+| A deckhand between boats lodges in Brad's spare room for a year. No family, nobody who would look. Brad walks him to Kestrel Head after a night's drinking and pushes him. The body is never found. The skipper reports him when he misses a sailing; a constable calls at the flat; Brad says he left with his bag. Low risk, no sample (R16). Brad keeps his papers. | −1500 to −1090 |
+| Brad builds the exit on the dead man's genuine name: the licence renewed with his own face, the passport left to lapse, a bank account, a prepaid. No accomplice, no seller, no register to cross-check. | −900 to −500 |
 | He hollows the trade: cash where offered, declared turnover falling year on year. The pub that changes its name every spring pays him cash at his request. | −850 onward |
 | He rents a room 400 miles away, cash, quarterly in advance, as a lodger in a widow's house. Weekend absences begin, told as customers up the coast. | −400 |
 | He makes the panel on Tuesday nights at Violet's bench after she has gone, and keeps it in the roof space over her paint racks, because his flat and van must stay clean. | −380 to −80 |
@@ -47,7 +50,10 @@ Day 0 is the Monday Violet dies. Negative days precede it. Times are given where
 | −1500 | Violet's mother dies; Liam drives them in the last night. Violet clears the house first and takes the cash her mother kept. The sister does not know. | Violet; Liam knows the night, not the cash |
 | −1450 | Violet asks Margo whether cash from her mother is taxable. Margo notes it in her own file. This is the only record of where the money came from. | Violet, Margo |
 | −1200 | The sister moves to sell the house. The dispute begins. Violet instructs a solicitor on Civic Row. | Violet, sister, solicitor, later all four |
-| −900 | Brad obtains the birth record of a boy born his year who died in infancy 400 miles away (public register). Over the next year, the documents that follow from it. | Brad |
+| −1500 | A deckhand, about Brad's age, between boats, no family, takes Brad's spare room for cash. | Brad, the skipper he crews for, the pub |
+| −1100 | Brad walks him to Kestrel Head after a night's drinking and pushes him. No body. The man's passport, birth certificate and licence are in the room. | Brad |
+| −1090 | The skipper reports him missing when he misses a sailing. A constable calls at the flat: Brad says he left with his bag a week ago, owing rent. Adult, itinerant, no dependants: low risk. No sample taken (R16). Brad is on the file as the last address. | HCPD file (Harbor Ward), skipper, Brad |
+| −900 → −500 | The exit, on the dead man's name: licence renewed by post with Brad's photograph, passport allowed to lapse, a bank account, a prepaid. | Brad |
 | −850 → | Cash where offered. The pub landlord pays cash from Day −700 at Brad's request. Declared turnover falls. | Brad; the pub landlord; Margo sees the pub's side of it |
 | −600 | Violet notices Margo has a Sunday, and a green app she checks at the slip. She says so to Brad, the only one she talks to about the other three. | Violet, Brad |
 | −400 | Brad rents the room, cash, quarterly, as a lodger. Weekend absences begin. | Brad; the landlady knows a lodger under the other name |
@@ -155,6 +161,7 @@ Day 0 is the Monday Violet dies. Negative days precede it. Times are given where
 | 300 | | Tessa writes, with the screenshot. |
 | 304 | 6 | The words go on air, from a woman two hours up the coast: the thing in the cupboard is wrong. Ally: if the thing was wrong there was a real thing, and nobody has found one. What did Violet have in her last months that she hadn't before. Two signwriters write in about the panel. |
 | 311 | 7 | I think against I know. The solicitor's slip dates the first. The letter that is kind to exactly one man. |
+| 311 | | The skipper writes: the deckhand who lodged with Brad Collins went missing three years before Violet. To Del, never aired: it points at a dead man as a killer, not at a living one. |
 | 318 | 8 | The woman from the platform writes: the first train, the Monday the car was found, wet boots, cash. To Del, not on air. Ally asks: if you were on that train, write to me. |
 | 325 | 9 | The panel described: black ground, twenty-six gold capitals and an ampersand, a crack across one corner, a small mark bottom right that was not her name and not his. One of a kind. |
 | 325 night | | Brad takes it off the wall and burns it in the workshop stove. |
@@ -162,7 +169,7 @@ Day 0 is the Monday Violet dies. Negative days precede it. Times are given where
 | 327 | | Ally to Del, 07:00. Del to the other force. |
 | 328 → 332 | | He notices her. |
 | 332 | 10 | Indistinguishable from episode nine. |
-| 333 | | Arrest on the identity offences. Prints against the Day 55 reference. Brad Collins, alive. |
+| 333 | | Arrest on the identity offences. The other force runs the name: a low-risk missing-person file in Harbor Ward, three years before Violet, last address Brad Collins's flat. Prints against the Day 55 reference. Brad Collins, alive. |
 
 ---
 
@@ -184,6 +191,8 @@ One row per fact. Columns: fact · who holds it · from when · by what route ·
 | 8 | Brad told the four a wedding; it was a marathon | Brad; Ruby | Day −250 / −200 | A patient's son showed Ruby the results page | Anyone | None |
 | 9 | Brad asked Liam what the yard would give for the van | Brad, Liam | Day −200 | Direct | Anyone | None |
 | 10 | Brad has a room, a name, and papers 400 miles away | Brad; the landlady knows a lodger under the other name | Day −400 | His own act | The landlady: anyone; she has nothing to say | None |
+| 10a | A deckhand who lodged with Brad went missing three years before Violet | HCPD (a low-risk MP file naming Brad's flat as last address); the skipper; the pub | Day −1090 | The skipper's report; the constable's call | Anyone | None then. On Day 222 the proper look pulls everything on Brad and finds it: two missing men from one flat, one presumed in the sea, one presumed drifted, no body, no act. On file, nothing to do. On Day 333 the name arrested 400 miles away is the name on this file |
+| 10b | The deckhand is dead, and how | Brad | Day −1100 | His act | Nobody | None |
 | 11 | A panel in an unknown hand was hidden in Violet's roof space | Violet; four people she showed it to | Day −75; −70 to −40 | The leak; she carried it round | Anyone | The four she showed: none, it is a panel |
 | 12 | Violet is asking round town whose hand | Café owner, cinema owner, two signwriters; Brad from the café | Day −70 to −40 | Direct | Anyone | Brad: accelerate |
 | 13 | The ladder foot was undone, not sheared | Violet | Day −45 | Her own inspection | Police, if she chose | Police: examine the ladder, no offence proven, no suspect named, note and advise |
@@ -273,7 +282,8 @@ One row per fact. Columns: fact · who holds it · from when · by what route ·
 | R3 | A hand better than his public one | Only in the cage letter, which passes as hers | An examiner told to compare it against Brad's public work would find no match, because he never wrote in that hand as Brad | Never tested that way |
 | R4 | The bag at the ridge wall | Dry-stone wall, eight days | A walker between Day 46 and 53 | Day 53 |
 | R5 | The walk and the 05:47 on Day 54 | Platform camera; the clerk | Anyone asking the halt | Tape Day 85; the clerk's memory fades |
-| R6 | The identity's paper trail: a dead infant's birth record and everything built on it | Public registers | Anyone who cross-checks births against infant deaths (Ruling 8) | Never |
+| R6 | The identity: a missing man's genuine name, licence renewed with Brad's face | The low-risk MP file in Del's own precinct, last address Brad's flat; the licence authority's renewal record | The proper look on Day 222 finds the file and can do nothing with it; the other force on Day 333 runs the arrested name and hits it (Ruling 8) | Never |
+| R6a | The skipper who reported him | His memory: the lodger who went missing from Brad Collins's flat | Ally's listeners; he writes in on Day 311. To Del, never aired | Memory |
 | R7 | Quarterly cash rent for over a year before he vanished | The landlady's rent book | Anyone who asks her, after Day 327 | Never |
 | R8 | The prepaid's cell hits at Kestrel Head, Day 214 | Carrier | A tower request (Ruling 5) | R8: seven years |
 | R9 | The trains, Days 213 to 215 | Guards, clerk, platform camera; the woman on the platform | Anyone asking; the woman writes to Ally on Day 318 | Tape Day 246 |
@@ -307,6 +317,7 @@ Authored order ignored. For each person, from the first day they can know anythi
 
 | Week | Position | Action taken | Coherent because | Cheaper alternative rejected, and why |
 |---|---|---|---|---|
+| −157 | He needs a name nobody will ever look for | Kill the lodger for it | A bought name has a seller; a dead infant's record has a register; a man with no one, reported by a skipper and closed as drifted, is the only name with no file that watches it. The exit came first, and this is what first means | Take the papers and let the man live: a living man reclaims a name the day he needs it |
 | −16 | The debt is called in; the exit is built | Decide she dies | Leaving as Brad Collins with a debt to a woman who forgets nobody lights up the cash economy Margo audits; dying as Brad Collins needs a grief; hers gives him both | Pay her: the cash is the exit. Move: a man who moved is a man who can be found |
 | −7 | The ladder | A fall that reads as a fall | Falls are his method; a survivor who slipped is survivable | A weapon leaves a wound the PM reads |
 | −6 | She is carrying the panel round | Wait for the debt conversation to give him a reason to be in her house | A visit about money is an ordinary visit | Retrieve the panel first: she has hidden it and he cannot search her without showing his hand |
@@ -392,7 +403,7 @@ Authored order ignored. For each person, from the first day they can know anythi
 | 54 | MP at a known site, message, watch, seven weeks after his friend's death | Search, sample, flat, interviews | MP procedure (Ruling 2) | Missing, presumed | Nobody mentions letters; if they had, row 40 |
 | 215 | A second car from the same four at the same site | Link the files (Ruling 6); search; Tessa's statement | MP, then sudden death | Suicide pending PM | |
 | 218 | Body, PM, phone absent | Last movements (Ruling 5); camera (Ruling 7); interview the surviving friends | Sudden-death procedure; a cluster | Del reaches Liam and Ruby on Day 219 before they reach her | Competent and on time |
-| 222 | Five letters, three deaths, two accusations | Examination (Ruling 4); solicitor; coroner's officer; app provider; carrier | All run, Days 222 to 262 | Consistent; lodged Day −18; no new physical evidence; no content; no recoverable contact | Nothing where they are looking, because nothing is there |
+| 222 | Five letters, three deaths, two accusations | Examination (Ruling 4); solicitor; coroner's officer; app provider; carrier; everything held on each of the four | All run, Days 222 to 262 | Consistent; lodged Day −18; no new physical evidence; no content; no recoverable contact; and a low-risk MP file from three years earlier naming Brad's flat as a lodger's last address | Nothing where they are looking, because nothing is there. Two missing men from one flat is noted and is not an act |
 | 327 | A landlady's message via Ally | Other force, prints, arrest | | Day 333 | |
 
 **Verdict:** PASS. Nothing is withheld from Del and she initiates the survivor interviews herself. What the file cannot do is name a living man or reopen a finding without evidence of an act.
@@ -401,6 +412,8 @@ Authored order ignored. For each person, from the first day they can know anythi
 
 | Person | Knows | Earliest action | Recipient | Response | Why nothing follows |
 |---|---|---|---|---|---|
+| The skipper | His deckhand missed a sailing, Day −1090; lodged with Brad | Report him missing | Harbor Ward | Constable calls at the flat; low risk; closed as drifted (R16) | An itinerant adult who left owing rent. Nobody else to ask. He writes to Ally on Day 311 when Brad's name is on air; to Del, never aired |
+| The constable, Day −1090 | Brad's account: left with his bag | Record, classify | The file | Low risk | Correct on what was in front of him |
 | Solicitor | Four sealed envelopes, Day −18 | Post after funeral | The four | | Contents unknown to him; no duty |
 | Sister | Tin, house, unit, an empty cage at Day 82 | None | | | An empty cage is an empty cage |
 | Locksmith | Four keys, Day −20 | None | | | Nobody asks until Ally |
@@ -417,6 +430,7 @@ Authored order ignored. For each person, from the first day they can know anythi
 
 | Claimed cause | Date | Claimed effect | Date | Holds |
 |---|---|---|---|---|
+| The exit needs a name | −1100 | The lodger dies; the papers | −1100 | Yes: the exit precedes the debt by a thousand days |
 | The debt called in | −110 | Decision | −110 | Yes |
 | The panel shown round | −70 to −40 | Brad hears; acceleration | −40; 0 | Yes |
 | The ladder | −45 | Violet's belief, the cage, the letters | −20 to −18 | Yes |
@@ -482,9 +496,22 @@ The money. Violet lent him the van and his start, cash, no paper, Day −2000, a
 
 ---
 
-# E. THE RULINGS
+# E. THE RULINGS (ALL EIGHT RULED, STEPHEN, 2026-08-30)
 
-Eight questions. Seven are v8's queue plus the camera question added at the closure check; the eighth is the spine's own, because Brad's papers cannot exist without it. For each: the question, what the spine needs, what happens otherwise. Nothing here is ruled.
+Eight questions. Seven are v8's queue plus the camera question added at the closure check; the eighth was the spine's own. Each is shown as asked, with what the spine needed and what would have broken, followed by **the ruling**. Recorded in the bible as R19 to R26.
+
+| # | Ruling | Effect on the spine |
+|---|---|---|
+| 1 (R19) | Accident stands; only new evidence of an act by a person reopens it | As written |
+| 2 (R20) | High-risk missing, presumed in the water; search stands down in days; DNA and prints taken from the home on day one or two and kept indefinitely | As written |
+| 3 (R21) | Family or a person with a financial interest, after years; nobody here has either | As written |
+| 4 (R22) | Routine: any material posthumous document is examined before it is acted on | As written; the examination on Days 230 to 250 needs no one to say forgery |
+| 5 (R23) | Her carrier records yes; the app confirms an account and retains no content and no contacts; no tower request without an alleged offence | As written; closes the closure check's PARTLY |
+| 6 (R24) | Same site and known association link the files; linked means read together, not reclassified | As written |
+| 7 (R25) | One camera at the car park entrance covering vehicles; none on the point or the path; a review pulls it and sees her car arrive alone | As written |
+| 8 (R26) | **Not the dead infant.** Brad lives under the genuine name of a man he killed three years before Violet, body never found, reported missing by his skipper, classified low risk, no sample (R16) | New node: the lodger, the skipper, the constable. Rows added to A1, B1 (10a, 10b), B7 (R6, R6a), C2, C7, C8, C9, A5. Premise "Who Brad is" needs one line from Stephen |
+
+The questions as they were put:
 
 **1. What supports an accidental-fall finding on an unwitnessed death with head trauma, and what reopens it?**
 The spine needs: a secure house, a single impact consistent with the stair, modest alcohol, and a GP-recorded fall six weeks earlier are enough for a coroner to record accident after a competent post-mortem; and reopening requires new evidence of an act by a person, not a document expressing fear, not a friend's suicide, not a second death elsewhere. If it goes the other way (a written allegation reopens it): the finding reopens on Day 222, the police are then running an open homicide with a document examination inside it, and Ally arrives into an active case rather than a closed one. The premise's "they find nothing" survives; "Ally comes to it afterwards" does not.
@@ -507,8 +534,8 @@ The spine needs: yes, and Del links them on Day 215 by hand anyway; linking mean
 **7. Camera coverage at the cliff and its approaches, and does a review pull it for an apparent suicide?**
 The spine needs: one camera at the car park entrance covering vehicles, pulled for Margo, showing her car arrive at 22:50 and nobody on foot, because the coast path from the landward side does not pass it; no camera on the point. If it goes the other way (a camera on the path or the point): it shows two figures at 23:00 on Day 214, and the spine fails at Day 218. If the review does not pull it at all: the tape expires Day 246 unwatched and the same nothing results, more cheaply. The spine wants it pulled, because a competent review that finds her alone is stronger than one that never looked.
 
-**8. Identity documents: can a man build a usable second identity from the birth record of a child who died in infancy, without an accomplice, in Havenbay's world?**
-The spine needs: yes, slowly, because the registers of births and infant deaths are not cross-checked at issue, and the identity is only exposed when someone with a name and a town asks. If it goes the other way (cross-checked at issue): the exit needs a bought identity, which needs a seller, which is an accomplice, which v8 settled against. This is the ruling the spine added.
+**8. Identity documents: can a man build a usable second identity without an accomplice, in Havenbay's world?**
+As asked, the spine proposed a dead infant's birth record with no cross-check at issue. Stephen asked for the other routes (a synthetic identity from nothing; a living person's identity taken; an unidentified dead person's name under R16; a lawful name change, which fails because the record links it to him; bought papers, which fail because a seller is an accomplice) and ruled a sixth: a missing man's genuine identity that Brad knows will never be used again, because Brad killed him. No seller, no register, no victim who can surface, and the file that holds the name is low risk in Del's own precinct under R16. It costs a prior, and it makes "the plan came first" literal.
 
 *Also decided here without a ruling, and flagged as geography rather than process: Kestrel Head as the cliff, at the end of Kestrel Road beyond the lighthouse. It is a naming, and it costs an exterior the art system does not yet have.*
 
@@ -524,7 +551,7 @@ The spine needs: yes, slowly, because the registers of births and infant deaths 
 | 4 | Is the motive one an ordinary reader accepts? | He owed her money he had already spent on leaving, and she had started asking for it. | Pass |
 | 5 | Is any discovery a coincidence wearing a coat? | The leak is the one accident in the spine and it is upstream of everything; the fishmonger, the platform woman and the landlady are found by asking, on air, in a serialised programme whose whole engine is that strangers answer. The landlady is a lodger's landlady, not a stranger who happened past. | Pass, with the leak flagged for the attack |
 | 6 | Does a reader with no context understand every word? | Cage, panel, brush, tin, ladder, cliff, train. "Gilding" needs one line. No procedure near the hook. | Pass |
-| 7 | Can a reader hold the cast on one pass? | Violet, then four names, then Del and Ally. Tessa and the landlady arrive one at a time and late. The solicitor, sister, fishmonger, clerk and café owner are functions with no names. | Pass |
+| 7 | Can a reader hold the cast on one pass? | Violet, then four names, then Del and Ally. Tessa and the landlady arrive one at a time and late. The solicitor, sister, fishmonger, clerk, café owner, skipper and lodger are functions with no names; the lodger's name is heard once, on Day 333, as the name Brad was arrested under. | Pass |
 | 8 | Is it clear what the crime is, immediately? | A woman died on her stairs and her four friends were sent keys. Two of them are alive and afraid of each other. | Pass |
 | 9 | Can Ally source everything she says she knows? | Part B6, rows 54 to 64. Nothing comes from the file. | Pass |
 | 10 | Does anything break its own rules? | Tips to Del never on air (rows 57, 60, 61, 63). The Tip Line keeps no metadata. All-party consent: Ally records nobody covertly. The letter is a letter, not a recording. | Pass |

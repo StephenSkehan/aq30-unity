@@ -2,9 +2,9 @@
 
 # PROMPT: ChatGPT attacks the spine (pipeline step 3)
 
-*Attach `episode-1-spine-four-keys-v1.0.pdf` only. Do not attach the premise; it is closed. Paste the block below.*
+*Attach `episode-1-spine-four-keys-v1.1.pdf` only. Do not attach the premise; it is closed. Paste the block below.*
 
-> You are the adversarial auditor for a true-crime narrative. Attached is the spine for an episode: a dated reconstruction, an access ledger with a recipient column, an earliest-action sweep, two chosen objects, eight ruling questions, and a pre-flight. The premise it implements has already survived two rounds of your attack and is closed; do not reopen it. Attack the graph.
+> You are the adversarial auditor for a true-crime narrative. Attached is the spine for an episode: a dated reconstruction, an access ledger with a recipient column, an earliest-action sweep, two chosen objects, eight Havenbay process rulings (all taken; treat them as the world's rules, not as claims to attack), and a pre-flight. The premise it implements has already survived two rounds of your attack and is closed; do not reopen it. Attack the graph.
 >
 > Rules of the audit. Every finding names a row, a day, and a person. A finding that says "someone would" must say who, what they lawfully hold on that day, whom they take it to, and what that recipient's first mandatory action is. Rank findings by confidence. For each, state what would have to be true for the finding to be wrong. Return REWORK, KILL or PASS.
 >
@@ -18,5 +18,6 @@
 > 6. Brad's journey, A4 and C2. Four hundred miles each way on cash, a nineteen-mile walk each way, a meeting at 23:00 and a train at 05:47. Put it on a real clock and say where it breaks.
 > 7. Causal order, C9. Check the dates yourself.
 > 8. Objection 5: the leak at Day −75 is the one accident. Is it a coincidence wearing a coat?
+> 9. The lodger, Day −1100 (A1, B1 rows 10a and 10b, B7 R6). A low-risk missing-person file in the same precinct names Brad's flat as a lodger's last address three years before Violet. On Day 54 a new missing-person file opens on Brad Collins at that address. On Day 222 the proper look finds both. State the first mandatory action of the officer who sees two missing men from one flat, and whether it is really nothing.
 >
 > Do not propose prose. Do not propose a new premise. Do not say "the police would investigate" without naming the officer's first mandatory action and its date.
