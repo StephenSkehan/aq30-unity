@@ -1,7 +1,7 @@
-<!-- pdf-title: The Friend They Mourned, the Spine v1.1 -->
+<!-- pdf-title: The Friend They Mourned, the Spine v1.2 -->
 
 # THE FRIEND THEY MOURNED (FOUR KEYS)
-## THE SPINE, v1.1
+## THE SPINE, v1.2
 
 *2026-08-30. Pipeline step 1, step 1b with the recipient column, and step 2. Written against premise v8 (closed to premise attack), the five v1.2, and the Four Keys rulings in memory. No prose. Nothing in this document reaches Fable except Part G.*
 
@@ -9,7 +9,9 @@
 
 **Status: the sweep PASSES.** No person's earliest competent action ends the episode before its planned turn. Two locks are thin and are named as such in Part C: Margo's six days between her turn and Brad's vanish, and Ruby's open route to Del from Day 27, which is open, computed, and does not deliver.
 
-**Two objects chosen here (Part D).** X, what Violet hid, is a gilded alphabet panel Brad made in a hand he had never shown anyone, signed with a mark that is not his name. Fable's brush, sable on an oar handle, fails three of the seven constraints as X and is the decoy instead. Fable's Violet gave us the decoy without knowing it.
+**Two objects chosen here (Part D).** X, what Violet hid, is a gilded alphabet panel Brad made in a hand he had never shown anyone, signed with a mark that is not his name. The decoy is the boat name board from her hall, Liam's gift from the yard, taken by Brad on Day 0 from the one place none of the four had been in the nineteen days before she died. Fable's brush, sable on an oar handle, fails three of the seven constraints as X and fails as decoy because the whole town saw her use it until the day she died; it stays as texture.
+
+**v1.2, same evening: ChatGPT's step-3 attack returned REWORK with ten findings.** Eight accepted and repaired here, one answered from the ledger (7), one contested with the reason written into C7 (5). Findings and disposition: `four-keys-spine-attack-chatgpt-2026-08-30.md`. The two repairs that matter: the decoy changed (finding 1) and the lodger's file no longer names Brad's flat and no document carries Brad's face (finding 4). Weekdays corrected (finding 2). The sweep still passes.
 
 **Decided here, from v8's open list:** the motive (the money, below) · the cupboard (Violet's storage cage, Bay 4, the back corridor of the fish market) · the meeting room (Ruby's kitchen) · the cliff (Kestrel Head, the drop beyond Kestrel Point Lighthouse at the end of Kestrel Road; canon landmark, cliff not yet built) · the source of Violet's money (her mother's cash, taken from the house the week she died, told only to Margo) · the span (Day 0 to Day 333, with Brad's first preparation at Day −900) · which survivor comes to Ally (Ruby first, Liam by episode four) · neither survivor is anything to Ally already.
 
@@ -21,8 +23,8 @@
 
 | What actually happened | Day |
 |---|---|
-| A deckhand between boats lodges in Brad's spare room for a year. No family, nobody who would look. Brad walks him to Kestrel Head after a night's drinking and pushes him. The body is never found. The skipper reports him when he misses a sailing; a constable calls at the flat; Brad says he left with his bag. Low risk, no sample (R16). Brad keeps his papers. | −1500 to −1090 |
-| Brad builds the exit on the dead man's genuine name: the licence renewed with his own face, the passport left to lapse, a bank account, a prepaid. No accomplice, no seller, no register to cross-check. | −900 to −500 |
+| A deckhand who lives aboard his skipper's boat drinks at Brad's flat and keeps a dry bag there. No family, nobody who would look. After a night's drinking at the flat, Brad walks him to Kestrel Head and pushes him. The body is never found. The skipper reports him when he misses a sailing; the file names the boat as his address and never names Brad. Low risk, no sample (R16). The bag, with his papers, is Brad's. | −1500 to −1090 |
+| Brad builds the exit on the dead man's genuine name and puts his own face on nothing: no licence renewal, no bank, no register. A room paid in cash, a workshop paid in cash, a prepaid. The name is inert on every system from Day −1090. No accomplice, no seller. | −900 to −500 |
 | He hollows the trade: cash where offered, declared turnover falling year on year. The pub that changes its name every spring pays him cash at his request. | −850 onward |
 | He rents a room 400 miles away, cash, quarterly in advance, as a lodger in a widow's house. Weekend absences begin, told as customers up the coast. | −400 |
 | He makes the panel on Tuesday nights at Violet's bench after she has gone, and keeps it in the roof space over her paint racks, because his flat and van must stay clean. | −380 to −80 |
@@ -50,10 +52,11 @@ Day 0 is the Monday Violet dies. Negative days precede it. Times are given where
 | −1500 | Violet's mother dies; Liam drives them in the last night. Violet clears the house first and takes the cash her mother kept. The sister does not know. | Violet; Liam knows the night, not the cash |
 | −1450 | Violet asks Margo whether cash from her mother is taxable. Margo notes it in her own file. This is the only record of where the money came from. | Violet, Margo |
 | −1200 | The sister moves to sell the house. The dispute begins. Violet instructs a solicitor on Civic Row. | Violet, sister, solicitor, later all four |
-| −1500 | A deckhand, about Brad's age, between boats, no family, takes Brad's spare room for cash. | Brad, the skipper he crews for, the pub |
-| −1100 | Brad walks him to Kestrel Head after a night's drinking and pushes him. No body. The man's passport, birth certificate and licence are in the room. | Brad |
-| −1090 | The skipper reports him missing when he misses a sailing. A constable calls at the flat: Brad says he left with his bag a week ago, owing rent. Adult, itinerant, no dependants: low risk. No sample taken (R16). Brad is on the file as the last address. | HCPD file (Harbor Ward), skipper, Brad |
-| −900 → −500 | The exit, on the dead man's name: licence renewed by post with Brad's photograph, passport allowed to lapse, a bank account, a prepaid. | Brad |
+| −1800 → | Brad practises Violet's cursive on Tuesday nights at her bench from her job notes, and burns the sheets. A private exercise nobody sees. | Brad |
+| −1500 | A deckhand, about Brad's age, who lives aboard his skipper's boat, starts drinking at Brad's flat and keeps a dry bag there with his papers. No family. | Brad; the skipper knows he drinks "at a mate's" and not whose |
+| −1100 | A bottle at the flat, two men, nobody else. Brad walks him to Kestrel Head and pushes him. No body. The bag stays at the flat. | Brad |
+| −1090 | The skipper reports him missing when he misses a sailing. Last address: the boat. Enquiries: the harbour master, the pub (he was not there that night). Adult, itinerant, no dependants: low risk, closed as drifted. No sample (R16). Brad's name is nowhere on the file. | HCPD file (Harbor Ward), skipper |
+| −900 → −500 | The exit, on the dead man's name, with Brad's face on nothing: the genuine passport and birth certificate in a drawer, never presented; a room and a workshop paid in cash; a prepaid. | Brad |
 | −850 → | Cash where offered. The pub landlord pays cash from Day −700 at Brad's request. Declared turnover falls. | Brad; the pub landlord; Margo sees the pub's side of it |
 | −600 | Violet notices Margo has a Sunday, and a green app she checks at the slip. She says so to Brad, the only one she talks to about the other three. | Violet, Brad |
 | −400 | Brad rents the room, cash, quarterly, as a lodger. Weekend absences begin. | Brad; the landlady knows a lodger under the other name |
@@ -77,12 +80,12 @@ Day 0 is the Monday Violet dies. Negative days precede it. Times are given where
 |---|---|---|
 | 0 Mon | 21:30 | Brad walks to Mariner's Row, phone left at his flat. She lets him in. The money. |
 | 0 | 21:55 | She goes up for the debt book. He follows. The landing, the light off. One push. |
-| 0 | 22:20 | She stops breathing at the foot of the stairs. He has not touched her again. He takes the book. |
-| 0 | 22:30 | Out by the back door, latched behind him. The neighbour at №14 sees a man's back in the lane and thinks nothing. |
+| 0 | 22:20 | She stops breathing at the foot of the stairs. He has not touched her again. He takes the book, and the boat name board off its hook in the hall. |
+| 0 | 22:30 | Out by the back door, latched behind him. The neighbour at №14 sees a man's back in the lane with a flat thing under his arm and thinks nothing. |
 | 1 Tue | 06:00 | Ruby's text, then Ruby's car at the slip. No Violet. Ruby assumes the Regent ladder, early. |
 | 1 | 12:30 | Liam at the unit. Shut. |
 | 1 | 13:10 | Liam at the house with the spare key. Finds her. 13:14 he rings it in. |
-| 1 | 14:00 | Uniform, then the Harbor Ward sergeant (Del) at a sudden death: unwitnessed, head injury, foot of the stairs, front locked, back latched, no disturbance, two glasses of wine on the side. Coroner's officer informed. Door-knock: №14 saw her Monday morning. |
+| 1 | 14:00 | Uniform, then the Harbor Ward sergeant (Del) at a sudden death: unwitnessed, head injury, foot of the stairs, front locked, back latched, no disturbance, two glasses of wine on the side. Coroner's officer informed. Door-knock: №14 saw her Monday morning, and a man's back in the lane about half ten, carrying something flat. Noted: unidentified male, lane, approx 22:30. Nothing to identify him against. Scene photographs include the hall: an empty hook and a pale rectangle on the wall, which nobody reads. |
 | 2 | | Liam into the unit, heater off, finds the tin. Rings the sister. Ruby reads Violet's record at the surgery: the ladder fall. |
 | 3 | | Post-mortem (Cortez): skull fracture and brain injury consistent with a fall down a domestic stair; healed bruising to the hip; blood alcohol modest. GP record shows a fall six weeks earlier. |
 | 5 | | The sister arrives. Liam hands her the tin in front of Ruby and Margo. All four now know of the tin. |
@@ -91,9 +94,9 @@ Day 0 is the Monday Violet dies. Negative days precede it. Times are given where
 | 12 Sat | | The solicitor posts four envelopes. |
 | 14 Mon | | Four keys and four letters arrive. The letter says: I think one of you is planning to kill me, I do not know which, I may be wrong, do not go to the police and here is why, what I found is behind this door, only the four of you can read it. Cage 4 is named. They ring each other that night and agree Saturday. |
 | 16 Wed | 05:40 | Brad at Cage 4, market hours, van in the loading bay. Reads the cage letter, takes it and the panel. The fishmonger at Bay 3 says early for you. |
-| 17 Thu | night | Brad at Violet's bench with his unit key. Her layout paper, her pen. He writes it there, where practice sheets in her style are invisible among her own. Takes the brush from the bucket. Burns the drafts in his sink. Puts the pen back. |
-| 18 Fri | 05:30 | Brad places the letter and the brush in Cage 4. |
-| 19 Sat | 10:00 | The four open Cage 4. A letter in her hand that says I know, and the brush. Read at Ruby's kitchen table. Margo asks why the brush is here and is answered: she is telling us something. Brad says she might have been wrong about all of it. Weekly meetings agreed. |
+| 17 Thu | night | Brad at Violet's bench with his unit key. Her layout paper, her pen. He writes it there, where practice sheets in her style are invisible among her own, with the debt book open beside him for her cursive. Burns the drafts and the book in his sink. Puts the pen back. |
+| 18 Fri | 05:30 | Brad places the letter and the name board in Cage 4. |
+| 19 Sat | 10:00 | The four open Cage 4. A letter in her hand that says I know, and the name board from her hall. Read at Ruby's kitchen table. Margo asks why the board is here and is answered: she is telling us something. Brad says she might have been wrong about all of it. Weekly meetings agreed. |
 
 ## A3. The room
 
@@ -107,8 +110,8 @@ Day 0 is the Monday Violet dies. Negative days precede it. Times are given where
 | 45 to 47 | The sums at three in the morning come out the same. The one person who kept the room on Liam by defending him. |
 | 46 | Brad had already placed the bag at the ridge wall: clothes, cash, the panel wrapped, on a customer run. Ready since Day 30. Margo is the trigger, not the plan. |
 | 47 | Meeting 5. Margo stops arguing with Brad and stops looking at the other two. Brad notices. |
-| 53 Sun 22:40 | Van to the Kestrel Head car park. 23:12 one message to the group thread: I can't do this any more. I'm sorry. Phone on the seat. The watch, smashed with a stone, thrown to the rocks. 23:30 the coast path inland, then the ridge path. |
-| 54 Mon 05:47 | First train from the inland halt, cash single. 15:00 at the lodgings, a job that ran late. |
+| 53 Fri 22:40 | Van to the Kestrel Head car park. 23:12 one message to the group thread: I can't do this any more. I'm sorry. Phone on the seat. The watch, smashed with a stone, thrown to the rocks. 23:30 the coast path inland, then the ridge path. |
+| 54 Sat 05:47 | First train from the inland halt, cash single. 15:00 at the lodgings, a job that ran late. |
 | 54 06:30 | A dog walker finds the van. Police. Del. Coastguard search Days 54 to 56. Flat searched Day 54 evening: passport, cards, tools, laptop, all present. |
 | 55 | Watch found at the base. Reference sample: toothbrush, razor, prints lifted from the flat. Missing person, high risk, presumed in the water. Interviews Days 55 to 56: Ruby, Liam, Margo, each says grief. None mentions the letters. |
 | 57 → | The three keep meeting. Ruby drives it. |
@@ -125,16 +128,17 @@ Day 0 is the Monday Violet dies. Negative days precede it. Times are given where
 |---|---|
 | 180 | A new contact on the green app, from a number that leads nowhere: you're the one who stopped believing the letter. Brad has her number from the group and knew the app from Violet. |
 | 180 → 212 | He knows the wording of the message, the watch, the time on the car park clock. He says Brad was not alone that night. Everything points her away from Brad and towards the woman who ran every meeting. Everything deletes. Margo does not turn: she keeps arriving at the man who defended Liam. |
-| 212 | Sunday. The point. Eleven. I'll show you where he went down and you'll see it isn't what they said. |
-| 213 Sat | Brad tells the landlady a job away Sunday to Monday. Train south, cash, two changes. |
-| 214 Sun 17:10 | The last Sunday train reaches the inland halt. He walks the ridge path, 19 miles. |
-| 214 20:00 | Margo leaves Tessa's early: work first thing. |
+| 212 Wed | Friday. The point. Eleven. I'll show you where he went down and you'll see it isn't what they said. |
+| 213 Thu | Brad tells the landlady a job away Friday to Saturday. Train south, cash, two changes. |
+| 214 Fri 17:10 | The last train of the day reaches the inland halt. He walks the ridge path, 19 miles. |
+| 214 | Margo tells nobody. Tessa expects her on Sunday, as every second Sunday. |
 | 214 22:50 | Margo's car in the Kestrel Head car park, ten minutes early. She sits in the car until the hour. |
 | 214 23:00 | The point. He asks to see what he sent her. She hands him the phone. He pockets it. |
 | 214 23:10 | She goes over. Her phone and his prepaid off the point into deep water at 23:20. |
-| 215 Mon 05:47 | The first train. The clerk sells a cash single to a man with wet boots and complains about the change. A woman on the platform notices the boots. |
+| 215 Sat 05:47 | The first train. The clerk sells a cash single to a man with wet boots and complains about the change. A woman on the platform notices the boots. |
 | 215 06:40 | The same dog walker finds the car. Police. Search. |
-| 215 12:00 | Tessa rings Margo's office. 15:30 Tessa rings the police: a partner nobody in Havenbay knew. |
+| 215 | Margo's office is shut; nobody expects her until Monday. Her sister is not in the story; her office manager is rung by police from the car's registration on Saturday afternoon and knows of no partner. |
+| 216 Sun 11:00 | Margo does not arrive at Tessa's; unanswered since Friday. 14:00 Tessa rings Havenbay police: a partner nobody in Havenbay knew. |
 | 215 | Del pulls Brad's file beside it: two of Violet Moore's four, same car park, five months apart. |
 | 218 | Margo's body in Havenbay harbour. Post-mortem: injuries fully explained by the fall and the water. |
 | 219 → 221 | Del interviews Liam and Ruby as Margo's friends. Each, separately, frightened, hands over the letters and says: I am frightened of him. I am frightened of her. |
@@ -186,13 +190,17 @@ One row per fact. Columns: fact · who holds it · from when · by what route ·
 | 3 | Violet lent Brad the van money, no paper | Violet, Brad, Margo | Day −2000 | Violet told Margo | Margo: nobody | None |
 | 4 | Violet is calling in every debt, Brad's the largest | Violet, Margo, Brad | Day −120 / −110 | Told directly | Margo: nobody | None |
 | 5 | Liam owns a third of the yard | Liam, Violet, Brad | Day −2900; Brad from Day −500 | Liam told Violet; Violet told Brad | Anyone: a lawful private shareholding; the yard's register is not public | None |
+| 5a | The boat name board in Violet's hall was Liam's gift from the yard, eight years ago, off the first boat lifted after he bought in | The four (they have all seen it in her hall); Brad knows the provenance and the date from Violet | Day −2900; Brad from Day −500 | Violet told Brad the story; the others saw the board | Anyone | None |
+| 5b | Nobody but Brad was inside Violet's house between Day −19 and Day 0 | Brad | Day 0 | Her visits happen at the unit and the slip | Nobody | The board's absence from the hall cannot be dated by any of the four |
 | 6 | Margo has a partner two hours up the coast and an app for her | Margo, Tessa; Violet (a Sunday and a green app, no name); Brad from Violet | Day −4000; Violet Day −600; Brad Day −500 | Observation; Violet to Brad | Anyone | None |
 | 7 | Brad's declared turnover is falling while the van stays busy | Brad; the pub landlord (his own payments); Margo (the pub's books) | Day −700 | Margo does the pub's accounts | Margo: her client's affairs are confidential; a cash payment to a tradesman is lawful | None: nothing to report |
 | 8 | Brad told the four a wedding; it was a marathon | Brad; Ruby | Day −250 / −200 | A patient's son showed Ruby the results page | Anyone | None |
 | 9 | Brad asked Liam what the yard would give for the van | Brad, Liam | Day −200 | Direct | Anyone | None |
 | 10 | Brad has a room, a name, and papers 400 miles away | Brad; the landlady knows a lodger under the other name | Day −400 | His own act | The landlady: anyone; she has nothing to say | None |
-| 10a | A deckhand who lodged with Brad went missing three years before Violet | HCPD (a low-risk MP file naming Brad's flat as last address); the skipper; the pub | Day −1090 | The skipper's report; the constable's call | Anyone | None then. On Day 222 the proper look pulls everything on Brad and finds it: two missing men from one flat, one presumed in the sea, one presumed drifted, no body, no act. On file, nothing to do. On Day 333 the name arrested 400 miles away is the name on this file |
+| 10a | A deckhand went missing from his skipper's boat three years before Violet | HCPD (a low-risk MP file, last address the boat, no mention of Brad); the skipper | Day −1090 | The skipper's report; harbour master and pub enquiries | Anyone | None then. On Day 222 the proper look pulls everything on Brad and finds nothing, because the file does not carry his name. On Day 333 the name arrested 400 miles away is the name on this file, and the skipper is the man who can say where the deckhand used to drink |
 | 10b | The deckhand is dead, and how | Brad | Day −1100 | His act | Nobody | None |
+| 10c | The deckhand drank at Brad Collins's flat | The skipper (a mate's; he learns whose only when Brad's name is on air) | Day −1200 | The deckhand said so | Anyone | The skipper writes to Ally on Day 311. To Del, never aired |
+| 10d | No document anywhere carries Brad's face under the other name | Brad | Day −900 | His design | Nobody | An activity check on the name, if ever run, returns nothing since Day −1090 |
 | 11 | A panel in an unknown hand was hidden in Violet's roof space | Violet; four people she showed it to | Day −75; −70 to −40 | The leak; she carried it round | Anyone | The four she showed: none, it is a panel |
 | 12 | Violet is asking round town whose hand | Café owner, cinema owner, two signwriters; Brad from the café | Day −70 to −40 | Direct | Anyone | Brad: accelerate |
 | 13 | The ladder foot was undone, not sheared | Violet | Day −45 | Her own inspection | Police, if she chose | Police: examine the ladder, no offence proven, no suspect named, note and advise |
@@ -205,9 +213,9 @@ One row per fact. Columns: fact · who holds it · from when · by what route ·
 
 | # | Fact | Holder | From | Route | Could tell | Recipient's earliest action |
 |---|---|---|---|---|---|---|
-| 18 | Brad walked to and from Mariner's Row on Monday night | Brad; No. 14 saw a man's back | Day 0 | Direct | No. 14: anyone | Police on Day 1 asked when she was last seen; the lane was not asked about. A listener lead at Day 290 onward |
+| 18 | Brad walked to and from Mariner's Row on Monday night | Brad; No. 14 saw a man's back, carrying something flat | Day 0 | Direct | No. 14: anyone | Told at the Day 1 door-knock. Noted: unidentified male in the lane, approx 22:30. No description beyond build and a coat. Nothing to test it against; the four are asked on Day 2 whether any of them called Monday night and all say no. On Day 222 it is re-read against Liam, who held a key. A listener on Day 297 notes the build No. 14 gave is wrong for Liam |
 | 19 | Brad's phone was at his flat all evening | Carrier (cell-site) | Day 0 | Records, R8 | Police on lawful request only | None without a suspect |
-| 20 | Her debt book is gone | Brad; Margo notices its absence Day 8 | Day 0 / 8 | Margo helped the sister with paperwork | Margo: the sister | Sister: shrug; nobody else knew it existed |
+| 20 | Her debt book is gone | Brad; Margo notices its absence Day 8 | Day 0 / 8 | Margo helped the sister with paperwork | Margo: the sister | Sister: shrug; nobody else knew it existed. The book is Brad's exemplar for her cursive on Day 17 and is ash by Day 18 |
 | 21 | Violet died of a head injury at the foot of her stairs, unwitnessed | HCPD, Cortez, coroner, the four, the sister | Day 1 to 3 | Scene, PM, R5 | Public in outline | Coroner: accident (Ruling 1) |
 | 22 | A fall six weeks earlier is on her GP record | Ruby, the PM (via GP) | Day −45 / 3 | Record | Supports the finding | None |
 | 23 | Liam found her and holds a key to the house | HCPD file | Day 1 | Sudden-death report | Police | None; noted |
@@ -217,15 +225,15 @@ One row per fact. Columns: fact · who holds it · from when · by what route ·
 
 | # | Fact | Holder | From | Route | Could tell | Recipient's earliest action |
 |---|---|---|---|---|---|---|
-| 25 | Each of the four holds a letter in her hand: I think, one of you, not the police, the cage | The four | Day 14 | Post | Each: anyone. The letter asks them not to | Del, if handed it: read; no offence, no named suspect, a closed accident, a dead author; statement, note on file, ask the coroner's officer whether it changes anything: it does not (Ruling 1) |
+| 25 | Each of the four holds a letter in her hand: I think, one of you, not the police, the cage | The four | Day 14 | Post | Each: anyone. The letter asks them not to | Del, if handed it: statement; under R22 the document is examined before anything is done with it (weeks; consistent); no offence, no named suspect, a closed accident; the coroner's officer is asked whether it changes anything: it does not (R19). The letter comes back to its owner with a police stamp saying it is hers |
 | 26 | Which cage, and that it holds a thing | The four | Day 14 | The letter | Anyone | None |
 | 27 | Brad went to the cage on the Wednesday and the Friday | Brad; the Bay 3 fishmonger (Wed); the loading-bay camera (both, R7 thirty-one days) | Day 16, 18 | Sight; tape | Fishmonger: anyone. Nobody asks until Day 290 | Camera expires Day 47 and 49 unflagged: no case exists to flag it |
 | 28 | What the genuine cage letter said: the ladder foot, the panel, the mark, "not Brad's hand, I taught him", and an instruction to pool everything odd each of you knows of the others | Brad only | Day 16 | He read it | Nobody | It is ash |
 | 29 | The panel is in Brad's possession | Brad | Day 16 | Taken | Nobody | None |
-| 30 | The cage letter (forged) says I know; the tin is Liam's; the yard; the ladder told to Liam; the oar; and never mentions a panel | The four, then Ruby's drawer | Day 19 | The cage | Anyone; the letter itself says not the police | Del, if handed it on any day from 19: as row 25; plus, if a civilian alleges forgery, examination (Ruling 4): consistent |
-| 31 | The brush is Violet's and was in her bucket at the unit until at least Day 2 | The four; Liam saw it Day 2 | Day 19 | Recognition | Anyone | None: she put it there, they assume |
+| 30 | The cage letter (forged) says I know; the tin is Liam's; the yard; the ladder told to Liam; the board; and never mentions a panel | The four, then Ruby's drawer | Day 19 | The cage | Anyone; the letter itself says not the police | Del, if handed it on any day from 19: as row 25, examination routine under R22: consistent |
+| 31 | The name board is Violet's, hung in her hall for eight years, and none of the four had been in the house since before Day −19 | The four | Day 19 | Recognition | Anyone | None: she took it down and put it there, they assume, and nobody can say when the hook emptied (row 5b) |
 | 32 | Liam's third is confirmed in the room | The four | Day 27 | Liam | Anyone | Del: a lawful shareholding |
-| 33 | The letter has the money wrong | Margo only | Day 44 | Her own file, row 2 | Del, the room, Tessa | Del: a forgery allegation, then examination, then consistent: the allegation fails and the accuser is exposed to the room |
+| 33 | The letter has the money wrong | Margo only | Day 44 | Her own file, row 2 | Del, the room, Tessa | Del: statement recorded, both documents preserved, R22 examination (consistent), the contradiction referred to the coroner's officer, who finds that a dispute about where a dead woman's cash came from is not evidence of an act (R19). The allegation does not fail; it stays open and unresolved on a closed file, all four are interviewed about the cage, and the room learns she called the letter a fake |
 | 34 | Margo has stopped arguing with Brad | Brad | Day 47 | Observation | Nobody | Go |
 
 ## B4. The vanish
@@ -246,8 +254,8 @@ One row per fact. Columns: fact · who holds it · from when · by what route ·
 | # | Fact | Holder | From | Route | Could tell | Recipient's earliest action |
 |---|---|---|---|---|---|---|
 | 43 | A stranger on the green app knows things about Brad's death | Margo; Brad | Day 180 | The app | Margo: Tessa, Del, Ruby, Liam. She tells nobody | If she told Del: a number that leads nowhere on a self-deleting app; nothing to pull; note. If she told Tessa: Tessa would tell her not to go |
-| 44 | The meeting: Sunday, the point, eleven | Margo, Brad | Day 212 | The app | As 43 | As 43 |
-| 45 | Brad was absent from the lodgings Sunday to Monday | The landlady | Day 213 | Told a job | Anyone | None until Day 327 |
+| 44 | The meeting: Friday, the point, eleven | Margo, Brad | Day 212 | The app | As 43 | As 43 |
+| 45 | Brad was absent from the lodgings Friday to Saturday | The landlady | Day 213 | Told a job | Anyone | None until Day 327 |
 | 46 | Brad rode the trains south and north on cash | Guards, the halt clerk, platform camera (R7, expires Day 246), a woman on the platform | Day 214, 215 | Sight | Anyone if asked | Nobody asks: the death is an apparent suicide (Rulings 5, 7) |
 | 47 | Brad's prepaid pinged the Kestrel Head cell at 22:50 on Day 214 | Carrier | Day 214 | Records, R8 | Police on a tower request | A tower dump is not ordered for an apparent suicide (Ruling 5) |
 | 48 | Margo's car, ten minutes early, and her body three days later | HCPD, the dog walker, her office, Tessa | Day 215, 218 | Scene | Public | Del: search; Ruling 6 link; Ruling 7 camera; PM |
@@ -278,12 +286,14 @@ One row per fact. Columns: fact · who holds it · from when · by what route ·
 | # | Residue | Where it sits | Who could find it | When it dies |
 |---|---|---|---|---|
 | R1 | Two dawn visits to Cage 4 | Loading-bay camera; Bay 3 fishmonger's memory | Anyone who asks the market; nobody does until Ally | Tape Day 47/49. Memory does not |
-| R2 | Her pen and paper used, drafts burned | Nothing survives; the pen is back in the unit and goes to the sister | Nobody | Day 17 |
-| R3 | A hand better than his public one | Only in the cage letter, which passes as hers | An examiner told to compare it against Brad's public work would find no match, because he never wrote in that hand as Brad | Never tested that way |
+| R2 | Her pen and paper used, drafts burned, the debt book burned | Nothing survives; the pen is back in the unit and goes to the sister | Nobody | Day 17 |
+| R3 | A hand better than his public one, and years of private practice of hers | Only in the cage letter, which passes as hers; the practice sheets were burned each Tuesday night from Day −1800 | An examiner told to compare it against Brad's public work would find no match, because he never wrote in that hand as Brad | Never tested that way |
+| R3a | Nobody in the room ever saw Brad write cursive | Their memories | A listener who asks: what did his handwriting look like? Ruby cannot answer; Ally airs that on Day 311 | Never |
 | R4 | The bag at the ridge wall | Dry-stone wall, eight days | A walker between Day 46 and 53 | Day 53 |
 | R5 | The walk and the 05:47 on Day 54 | Platform camera; the clerk | Anyone asking the halt | Tape Day 85; the clerk's memory fades |
-| R6 | The identity: a missing man's genuine name, licence renewed with Brad's face | The low-risk MP file in Del's own precinct, last address Brad's flat; the licence authority's renewal record | The proper look on Day 222 finds the file and can do nothing with it; the other force on Day 333 runs the arrested name and hits it (Ruling 8) | Never |
-| R6a | The skipper who reported him | His memory: the lodger who went missing from Brad Collins's flat | Ally's listeners; he writes in on Day 311. To Del, never aired | Memory |
+| R6 | The identity: a missing man's genuine name, with Brad's face on no document | The low-risk MP file in Del's own precinct, last address the boat; the deckhand's genuine passport and birth certificate in a drawer 400 miles away | The other force on Day 333 runs the arrested name and hits the file (Ruling 8). Nothing links the file to Brad before that day | Never |
+| R6a | The skipper who reported him | His memory: the deckhand drank at a mate's, and the mate was Brad Collins | Ally's listeners; he writes in on Day 311. To Del, never aired | Memory |
+| R6b | The deckhand's dry bag at Brad's flat, three years | Gone with the papers by Day −900; the flat search on Day 54 finds nothing of him | Nobody | Day −900 |
 | R7 | Quarterly cash rent for over a year before he vanished | The landlady's rent book | Anyone who asks her, after Day 327 | Never |
 | R8 | The prepaid's cell hits at Kestrel Head, Day 214 | Carrier | A tower request (Ruling 5) | R8: seven years |
 | R9 | The trains, Days 213 to 215 | Guards, clerk, platform camera; the woman on the platform | Anyone asking; the woman writes to Ally on Day 318 | Tape Day 246 |
@@ -292,7 +302,8 @@ One row per fact. Columns: fact · who holds it · from when · by what route ·
 | R12 | Ash in a workshop stove, Day 325 | The stove | The other force, Day 333 | Days |
 | R13 | A persistent download in one town from Day 283 | Ally's analytics | Ally | Never |
 | R14 | The debt book | Burned with the drafts, Day 17 | Nobody | Day 17 |
-| R15 | A man's back in the lane at 22:30, Day 0 | No. 14 | Ally's listeners | Memory |
+| R15 | A man's back in the lane at 22:30, Day 0, carrying something flat | No. 14; the sudden-death file (unidentified male, lane) | The Day 222 review re-reads it against Liam; a listener on Day 297 says the build is wrong for Liam and asks what the flat thing was | Memory; the file note is permanent |
+| R16 | An empty hook and a pale rectangle on the hall wall in the Day 1 scene photographs | The sudden-death file (R5: the sister may obtain the evidence tendered) | Nobody reads a scene photograph for a missing board; the sister, who never knew the board, has the file's findings and not its photographs unless she asks | Never |
 
 ---
 
@@ -357,7 +368,7 @@ Authored order ignored. For each person, from the first day they can know anythi
 | −7 | Violet fell from a ladder | Treat, record | Record | | Clinical: done | | |
 | 1 | Violet is dead; the record shows a prior fall | Nothing to act on | | | Reading the record without a clinical reason is a breach; she does it | Nothing | Cost: a breach she never mentions |
 | 3 | The key letter | Take it to Del | Del | Row 25 | **Professional duty tested:** a written fear by a dead person names no living person at risk; safeguarding duties attach to the living; no duty arises | Nothing; Violet's instruction broken for nothing | Lock: her reading is she was frightened, then she fell, and she read every face in that kitchen and saw no lie |
-| 4 | Liam's third is true, so the letter is right about something | **Duty renews on the new fact.** Go to Del with both letters | Del | Statement; a lawful secret; the letter alleges no act; note; ask the coroner's officer: no new physical evidence (Ruling 1) | None: still no living person at risk | Nothing, and Liam learns she went | **Open route, computed, does not deliver.** She does not take it because it costs her the room and gains nothing, which is a reason the world supplies |
+| 4 | Liam's third is true, so the letter is right about something | **Duty renews on the new fact.** Go to Del with both letters | Del | Statement; **R22: both letters examined before anything else, weeks, consistent**; a lawful secret; the letter alleges no act; the coroner's officer: no new evidence of an act (R19) | None: still no living person at risk | Nothing, Liam learns she went, and the letter returns to the room with a police stamp saying it is Violet's, which makes the reading harder to resist, not easier | **Open route, computed, does not deliver.** She does not take it because it costs her the room and gains nothing, which is a reason the world supplies. If she did, the room would be worse for Liam |
 | 6 | The tin claim; Liam denies | As above | | | | | Holds |
 | 8 | Brad missing with a message | Tell Del about the letters | Del | Row 40 | None: Brad is presumed dead, nobody alive is named at risk | Nothing moves | She reads the message as grief because she loves him; and Violet's reasons still live because the letter's suspects are still alive |
 | 13 | It lands on Liam | I am frightened of him | Del | What has he done? Nothing. Note | None | Nothing | Holds |
@@ -375,8 +386,8 @@ Authored order ignored. For each person, from the first day they can know anythi
 | 2 | The debt book is gone | Tell the sister | Sister | Shrug | None | Nothing | |
 | 3 | The key letter | Take it to Del | Del | Row 25 | **Professional duty tested:** she is an accountant, not a regulated reporter of suspected homicide; nothing in the letter is a financial crime | Nothing | Holds as Ruby's |
 | 4 | Liam's third (new to her) | As above | | | | | Holds |
-| 6 to 7 | The letter has the money wrong | (a) Say so in the room. (b) Take it to Del as a forgery | (a) The room. (b) Del | (a) The room asks how she knows; she must say Violet told her a thing she promised not to repeat, in front of the person who forged it. (b) Forgery allegation on a closed accident: examination (Ruling 4): consistent with known samples: the allegation fails; she is the friend who called the dead woman's letter a fake | None | (a) Brad knows tonight. (b) Brad knows in a week and the letter has a police stamp saying it is hers | **The thinnest lock in the spine, six days, named:** she wants certainty before accusing a friend, she runs the sums three nights, and the sums point at the man she has never liked, which is the reason she distrusts them. Paid: Day 53 |
-| 8 | Brad is gone | Tell Del: I think he forged it | Del | Forgery allegation against a presumed-dead man on a closed case: examination: consistent: nothing | None | Nothing, and she has said in public what she cannot live with | Guilt lock: she chooses she was wrong about him. Available to her because her certainty rests on what Violet told her, and Violet lied about cigarettes with total confidence |
+| 6 to 7 | The letter has the money wrong | (a) Say so in the room. (b) Take it to Del as a forgery | (a) The room. (b) Del | (a) The room asks how she knows; she must say Violet told her a thing she promised not to repeat, in front of the person who forged it. (b) Forgery allegation on a closed accident: statement, documents preserved, R22 examination (consistent), contradiction referred to the coroner's officer and found not to be evidence of an act (R19); the allegation stays open and unresolved; all four are interviewed about who could have reached the cage before Saturday; she is the friend who called the dead woman's letter a fake | None | (a) Brad knows tonight. (b) Brad is interviewed within the week, learns from the question what she has said, and the letter carries a police stamp saying it is consistent with hers | **The thinnest lock in the spine, six days, named:** she wants certainty before accusing a friend, she runs the sums three nights, and the sums point at the man she has never liked, which is the reason she distrusts them. Paid: Day 53 |
+| 8 | Brad is gone | Tell Del: I think he forged it | Del | Forgery allegation against a presumed-dead man on a closed case: statement, examination (consistent), the cage's access asked about, nothing to charge and nobody to charge | None | Nothing, and she has said in public what she cannot live with | Guilt lock: she chooses she was wrong about him. Available to her because her certainty rests on what Violet told her, and Violet lied about cigarettes with total confidence |
 | 10 | Guilt | Tell Tessa | Tessa | Tessa: what cupboard? Margo does not explain | None | A screenshot | Eleven years of compartments |
 | 13 | It lands on Liam | Say the letter is wrong | The room | As Week 6 (a), with a dead man as the only alternative | None | | Holds: the alternative is that she killed Brad |
 | 26 to 30 | A stranger who knows | Tell Del; tell Tessa | Del: nothing to pull. Tessa: do not go | None | | Holds: the stranger is the only person offering her the reading she can live in |
@@ -389,7 +400,7 @@ Authored order ignored. For each person, from the first day they can know anythi
 | Week | What she can lawfully know | Earliest competent action | Recipient | Recipient's earliest response | Duties | Outcome |
 |---|---|---|---|---|---|---|
 | 10 | A line about a cupboard | Ask | Margo | Does not explain | None | Screenshot kept |
-| 31 | Margo has not answered since Sunday | Ring the office; ring the police | Havenbay police | Statement; last movements; she is on the file by 15:30 on Day 215 | None | The partner nobody knew is found by the review on the first day |
+| 31 | Margo has not answered since Friday and does not arrive on Sunday | Ring the police | Havenbay police | Statement; last movements; she is on the file by 14:00 on Day 216, the day after the car was found | None | The partner nobody knew is found by the review inside 36 hours, because she came forward |
 | 35 | Re-interviewed | Give the line | Detective | Read as doubt about the reading; on file | None | Nothing |
 | 43 | Ally asks | Write, with the screenshot | Ally | On air, anonymised | | Ep 6 |
 
@@ -399,11 +410,12 @@ Authored order ignored. For each person, from the first day they can know anythi
 
 | Day | The file on the desk | Earliest competent action | Duties triggered | Outcome | Why it stops there |
 |---|---|---|---|---|---|
-| 1 | Unwitnessed sudden death, head injury, stairs, secure house | Scene, PM, coroner, door-knock | Sudden death procedure | Accident (Ruling 1) | Nothing at the scene says otherwise; the PM cannot |
+| 1 | Unwitnessed sudden death, head injury, stairs, secure house | Scene, PM, coroner, door-knock (movements and visitors) | Sudden death procedure | Accident (Ruling 1). No. 14's man in the lane is noted as unidentified; the four are asked on Day 2 whether any of them called and all say no | Nothing at the scene says otherwise; the PM cannot; an unidentified man in a back lane with no description is not an act |
 | 54 | MP at a known site, message, watch, seven weeks after his friend's death | Search, sample, flat, interviews | MP procedure (Ruling 2) | Missing, presumed | Nobody mentions letters; if they had, row 40 |
 | 215 | A second car from the same four at the same site | Link the files (Ruling 6); search; Tessa's statement | MP, then sudden death | Suicide pending PM | |
 | 218 | Body, PM, phone absent | Last movements (Ruling 5); camera (Ruling 7); interview the surviving friends | Sudden-death procedure; a cluster | Del reaches Liam and Ruby on Day 219 before they reach her | Competent and on time |
-| 222 | Five letters, three deaths, two accusations | Examination (Ruling 4); solicitor; coroner's officer; app provider; carrier; everything held on each of the four | All run, Days 222 to 262 | Consistent; lodged Day −18; no new physical evidence; no content; no recoverable contact; and a low-risk MP file from three years earlier naming Brad's flat as a lodger's last address | Nothing where they are looking, because nothing is there. Two missing men from one flat is noted and is not an act |
+| 222 | Five letters, three deaths, two accusations | Examination (Ruling 4); solicitor; coroner's officer; app provider; carrier; everything held on each of the four | All run, Days 222 to 262 | Consistent; lodged Day −18; no new evidence of an act; no content; no recoverable contact; nothing on Brad beyond his own MP file; the lane sighting re-read against Liam, who held a key, and going nowhere | Nothing where they are looking, because nothing is there |
+| 226 | The letters' stated origin: Cage 4 | The detective visits the cage (empty since Day 82, padlock cut by the sister), confirms the corridor is open in market hours with no custodian, asks the market manager about access | Proper review of a material document includes where it was found (finding 5, accepted this far) | Access: anyone with a key, any morning. The camera expired on Day 47 (R7) | **Contested judgement, flagged for Stephen:** the question that reaches the Bay 3 fishmonger's memory is "which of the four came before the Saturday", and that question exists only under a swap hypothesis. Nobody alive holds one: authorship is examined and consistent, and both survivors dispute the reading, not the origin. Ally asks it on Day 290 because Tessa's line gave her the hypothesis. If Stephen rules the canvass is routine, the file learns on Day 226 that the dead man went early, and the survivors' accusation of each other collapses into "Brad did it and died": the premise survives in a different shape and the sweep must be re-run from Day 226 |
 | 327 | A landlady's message via Ally | Other force, prints, arrest | | Day 333 | |
 
 **Verdict:** PASS. Nothing is withheld from Del and she initiates the survivor interviews herself. What the file cannot do is name a living man or reopen a finding without evidence of an act.
@@ -412,8 +424,8 @@ Authored order ignored. For each person, from the first day they can know anythi
 
 | Person | Knows | Earliest action | Recipient | Response | Why nothing follows |
 |---|---|---|---|---|---|
-| The skipper | His deckhand missed a sailing, Day −1090; lodged with Brad | Report him missing | Harbor Ward | Constable calls at the flat; low risk; closed as drifted (R16) | An itinerant adult who left owing rent. Nobody else to ask. He writes to Ally on Day 311 when Brad's name is on air; to Del, never aired |
-| The constable, Day −1090 | Brad's account: left with his bag | Record, classify | The file | Low risk | Correct on what was in front of him |
+| The skipper | His deckhand missed a sailing, Day −1090; drank "at a mate's" | Report him missing | Harbor Ward | Harbour master, the pub (not there that night), the boat; low risk; closed as drifted (R16) | An itinerant adult with no one. The mate is never named because the skipper never knew the name until it was on air. He writes to Ally on Day 311; to Del, never aired |
+| The constable, Day −1090 | A man living aboard, last seen going ashore | Record, canvass, classify | The file | Low risk | Correct on what was in front of him; no one to place him with Brad. The pub is removed as a holder: the drinking was at the flat |
 | Solicitor | Four sealed envelopes, Day −18 | Post after funeral | The four | | Contents unknown to him; no duty |
 | Sister | Tin, house, unit, an empty cage at Day 82 | None | | | An empty cage is an empty cage |
 | Locksmith | Four keys, Day −20 | None | | | Nobody asks until Ally |
@@ -454,6 +466,8 @@ Authored order ignored. For each person, from the first day they can know anythi
 
 A gilded alphabet panel. Oak, about 30 by 40 centimetres, black ground, twenty-six capitals and an ampersand in water gilding, a crack across one corner from the day the ceiling board came down, and a small maker's mark bottom right that is not a name: a monogram of the initials he lives under now. Made by Brad at Violet's bench on Tuesday nights over ten months, in a hand and at a standard he had never shown anyone in Havenbay, kept in the roof space over her racks because his flat and his van had to survive a search.
 
+**Why it is damning to the three and not only to Brad (finding 7).** The panel is gilded lettering, and of the four people the letter is addressed to, exactly one gilds letters for a living. Violet's letter argued that it could not be his because it was better than he was; the three, holding Ruby's lie, Margo's cash and Liam's van question beside it, would not have followed her there. A crane driver, a nurse and an accountant cannot make it. That is the independent fact each of them holds, and it is why Brad could not leave it.
+
 **Why it says "prepared exit" only when combined.** Alone it is a beautiful panel with a mark nobody knows. Beside the four's separate pieces it is one of the four making a name for himself somewhere else: Ruby's marathon told as a wedding (he lies about where he goes), Margo's pub books (he has been taking his income off paper for two years), Liam's question in the crane cab (he priced the van), and Violet's own expert judgement, which was wrong in the one way that matters: it is not Brad's hand, I taught him, he cannot do this. The genuine cage letter asked the four to pool everything odd they knew of one another. Pooled, the pieces name one man. That is why the letter had to go, and it is why the panel had to go with it: the mark on it is the mark he signs with now.
 
 | # | Constraint (v8) | Panel | Brush (Fable's seed) |
@@ -466,13 +480,13 @@ A gilded alphabet panel. Oak, about 30 by 40 centimetres, black ground, twenty-s
 | 6 | Innocuous in a stranger's house four hundred miles away | Yes: an alphabet thing on a lodger's wall; the mark is his own initials there | Yes, barely: an odd brush |
 | 7 | Describable by Ally without holding it | Yes: she carried it round for a month asking whose hand; four people can describe it | Yes: from across the road |
 
-**Verdict:** the panel passes seven of seven. The brush passes four and fails 2, 4 and 5 as X, and is the decoy.
+**Verdict:** the panel passes seven of seven. The brush passes four and fails 2, 4 and 5 as X. It also fails as the decoy (finding 1): she used it every day until she died, Liam saw it in her bucket on Day 2, and any decoy must be a thing none of the four can place after Day −19.
 
-## D2. The decoy: the brush
+## D2. The decoy: the name board
 
-Violet's own brush, sable on a handle cut from a broken oar, green electrical tape at the ferrule. In her bucket at the unit until Day 17, when Brad took it with his unit key. Everyone in the room recognises it because it is hers. Only its meaning is his.
+The transom name board off the first boat the yard lifted after Liam bought in, eight years ago. Liam gave it to Violet; she had lettered the boat herself years before; it hung on a hook in her hall. All four have seen it there. None of them had been inside her house between Day −19 and Day 0: her life with them happened at the unit and the slip (row 5b). Brad took it off the hook at 22:20 on Day 0 and carried it out under his arm. On Day 19 the four find it in the cage and assume she took it down when she hid the letter. Nobody can say otherwise, because nobody was there to see the hook. Only its meaning is his.
 
-**The false meaning, and the two truths it rides on.** The forged letter says: the oar came from the yard the week Liam bought in; he gave it to her that day and told her how he had paid for it; she cut a handle from it so she would see it every day and remember she had said nothing; the money in her tin is his, every quarter since, for her silence. Two claims in that letter are verifiable and true, and both are things Violet told only Brad: Liam owns a third of the yard (row 5), and there is a tin (row 1, and the whole room saw it go to the sister on Day 5). Liam confirms the first on Day 27. From that day the letter has earned the right to be believed about the third claim, which is the lie.
+**The false meaning, and the two truths it rides on.** The forged letter says: Liam gave her this board the day he bought in and told her that day how he had paid; she hung it where she would see it every morning and remember she had said nothing; the money in her tin is his, every quarter since, for her silence. Two claims in that letter are verifiable and true, and both are things Violet told only Brad: Liam owns a third of the yard (row 5), and there is a tin (row 1, and the whole room saw it go to the sister on Day 5). Liam confirms the first on Day 27. From that day the letter has earned the right to be believed about the third claim, which is the lie.
 
 **Where it fails.** Only on the money. Margo alone knows the tin came from Violet's mother's house (row 2). She has it in her own hand in her own file, Day −1450. Violet did not get her own money wrong. So the letter is not Violet's.
 
@@ -483,9 +497,10 @@ Violet's own brush, sable on a handle cut from a broken oar, green electrical ta
 | Claim | Genuine (Day −19), read only by Brad | Forged (Day 17), read by the four |
 |---|---|---|
 | Certainty | I think, and I may be wrong | I know, now |
-| Grounds | The ladder bolt undone; a panel in a hand she cannot place, hidden in her roof; a mark | The ladder: she had told Liam which ladder. The yard. The tin. The oar |
+| Grounds | The ladder bolt undone; a panel in a hand she cannot place, hidden in her roof; a mark | The ladder: she had told Liam which ladder. The yard. The tin. The board |
 | Who | Nobody named. One line: it is not Brad's hand, I taught him, he cannot do this | Nobody named. Every line leans one way |
-| The thing beside it | The panel: whose hand, whose mark | The brush: Liam's oar |
+| The thing beside it | The panel: whose hand, whose mark | The name board: Liam's gift, the day he bought in |
+| How it could be written | | The debt book, taken on Day 0, is pages of her cursive; years of Tuesday-night practice, burned; her pen, her paper, her bench. The finding-2 ruling: he secretly has the talent |
 | Instruction | Each of you write down everything odd you know of the other three from the last year, and read them together | Read this together, and be careful |
 | Mentions Brad | Once, to clear him | Once, as the one she sent up the ladder, kindly |
 | Retrospective tells | | I know against I think; the letter kind to exactly one man; no panel, though four people in town saw her carrying one |
@@ -509,7 +524,7 @@ Eight questions. Seven are v8's queue plus the camera question added at the clos
 | 5 (R23) | Her carrier records yes; the app confirms an account and retains no content and no contacts; no tower request without an alleged offence | As written; closes the closure check's PARTLY |
 | 6 (R24) | Same site and known association link the files; linked means read together, not reclassified | As written |
 | 7 (R25) | One camera at the car park entrance covering vehicles; none on the point or the path; a review pulls it and sees her car arrive alone | As written |
-| 8 (R26) | **Not the dead infant.** Brad lives under the genuine name of a man he killed three years before Violet, body never found, reported missing by his skipper, classified low risk, no sample (R16) | New node: the lodger, the skipper, the constable. Rows added to A1, B1 (10a, 10b), B7 (R6, R6a), C2, C7, C8, C9, A5. Premise "Who Brad is" needs one line from Stephen |
+| 8 (R26) | **Not the dead infant.** Brad lives under the genuine name of a man he killed three years before Violet, body never found, reported missing by his skipper, classified low risk, no sample (R16) | New node: the deckhand, the skipper, the constable. Rows added to A1, B1 (10a to 10d), B7 (R6, R6a, R6b), C2, C7, C8, C9, A5. v1.2 after finding 4: the deckhand lived aboard and the file names the boat, never Brad; and Brad's face is on no document under the name. Premise "Who Brad is" needs one line from Stephen |
 
 The questions as they were put:
 
@@ -550,7 +565,7 @@ As asked, the spine proposed a dead infant's birth record with no cross-check at
 | 3 | Would a real person do the small thing this needs? | Violet carries a panel round asking whose hand: she ranked handwriting out loud. Margo sits in the car until the hour. Ruby keeps the boxes. Tessa screenshots one strange line. Liam hands the tin over. Each is from the five. | Pass |
 | 4 | Is the motive one an ordinary reader accepts? | He owed her money he had already spent on leaving, and she had started asking for it. | Pass |
 | 5 | Is any discovery a coincidence wearing a coat? | The leak is the one accident in the spine and it is upstream of everything; the fishmonger, the platform woman and the landlady are found by asking, on air, in a serialised programme whose whole engine is that strangers answer. The landlady is a lodger's landlady, not a stranger who happened past. | Pass, with the leak flagged for the attack |
-| 6 | Does a reader with no context understand every word? | Cage, panel, brush, tin, ladder, cliff, train. "Gilding" needs one line. No procedure near the hook. | Pass |
+| 6 | Does a reader with no context understand every word? | Cage, panel, name board, tin, ladder, cliff, train. "Gilding" needs one line. No procedure near the hook. | Pass |
 | 7 | Can a reader hold the cast on one pass? | Violet, then four names, then Del and Ally. Tessa and the landlady arrive one at a time and late. The solicitor, sister, fishmonger, clerk, café owner, skipper and lodger are functions with no names; the lodger's name is heard once, on Day 333, as the name Brad was arrested under. | Pass |
 | 8 | Is it clear what the crime is, immediately? | A woman died on her stairs and her four friends were sent keys. Two of them are alive and afraid of each other. | Pass |
 | 9 | Can Ally source everything she says she knows? | Part B6, rows 54 to 64. Nothing comes from the file. | Pass |
