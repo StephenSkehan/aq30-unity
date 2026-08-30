@@ -431,3 +431,132 @@ Authored order ignored. For each person, from the first day they can know anythi
 | Panel aired | 325 | Panel burned; landlady looks | 325 night; 326 | Yes |
 
 **Sweep verdict: PASS.** No first-action date precedes its planned turn with a consequential outcome. Two thin locks: Margo Days 47 to 53; Ruby from Day 27. Both are open, computed and world-supplied. Both go to the attack first.
+
+---
+
+# D. THE OBJECTS
+
+## D1. X, what Violet hid: the panel
+
+A gilded alphabet panel. Oak, about 30 by 40 centimetres, black ground, twenty-six capitals and an ampersand in water gilding, a crack across one corner from the day the ceiling board came down, and a small maker's mark bottom right that is not a name: a monogram of the initials he lives under now. Made by Brad at Violet's bench on Tuesday nights over ten months, in a hand and at a standard he had never shown anyone in Havenbay, kept in the roof space over her racks because his flat and his van had to survive a search.
+
+**Why it says "prepared exit" only when combined.** Alone it is a beautiful panel with a mark nobody knows. Beside the four's separate pieces it is one of the four making a name for himself somewhere else: Ruby's marathon told as a wedding (he lies about where he goes), Margo's pub books (he has been taking his income off paper for two years), Liam's question in the crane cab (he priced the van), and Violet's own expert judgement, which was wrong in the one way that matters: it is not Brad's hand, I taught him, he cannot do this. The genuine cage letter asked the four to pool everything odd they knew of one another. Pooled, the pieces name one man. That is why the letter had to go, and it is why the panel had to go with it: the mark on it is the mark he signs with now.
+
+| # | Constraint (v8) | Panel | Brush (Fable's seed) |
+|---|---|---|---|
+| 1 | Unique physical object, cannot be posted or copied | Yes: hand-gilded, one crack, one mark | Yes |
+| 2 | Meaningless alone, damning beside what the four separately knew | Yes, as above | **Fails:** it is hers; nothing the four know makes it mean anything |
+| 3 | Not the motive | Yes: the debt is the motive; the panel accelerates | Yes |
+| 4 | Something Violet could plausibly have found | Yes: a leak, a ceiling board, a wrapped thing above her own racks | **Fails:** she made it; nothing was found |
+| 5 | Something he wants | Yes: the best thing he has ever made, in the self he could not show, and she wrote that he could not have made it | **Fails:** he has no use for her brush |
+| 6 | Innocuous in a stranger's house four hundred miles away | Yes: an alphabet thing on a lodger's wall; the mark is his own initials there | Yes, barely: an odd brush |
+| 7 | Describable by Ally without holding it | Yes: she carried it round for a month asking whose hand; four people can describe it | Yes: from across the road |
+
+**Verdict:** the panel passes seven of seven. The brush passes four and fails 2, 4 and 5 as X, and is the decoy.
+
+## D2. The decoy: the brush
+
+Violet's own brush, sable on a handle cut from a broken oar, green electrical tape at the ferrule. In her bucket at the unit until Day 17, when Brad took it with his unit key. Everyone in the room recognises it because it is hers. Only its meaning is his.
+
+**The false meaning, and the two truths it rides on.** The forged letter says: the oar came from the yard the week Liam bought in; he gave it to her that day and told her how he had paid for it; she cut a handle from it so she would see it every day and remember she had said nothing; the money in her tin is his, every quarter since, for her silence. Two claims in that letter are verifiable and true, and both are things Violet told only Brad: Liam owns a third of the yard (row 5), and there is a tin (row 1, and the whole room saw it go to the sister on Day 5). Liam confirms the first on Day 27. From that day the letter has earned the right to be believed about the third claim, which is the lie.
+
+**Where it fails.** Only on the money. Margo alone knows the tin came from Violet's mother's house (row 2). She has it in her own hand in her own file, Day −1450. Violet did not get her own money wrong. So the letter is not Violet's.
+
+**Why it cannot fail earlier or elsewhere.** Liam can deny paying her and cannot prove a negative. The sister does not know where the cash came from. Ruby never knew of the tin. Brad wrote nothing else that any of them could test.
+
+## D3. The two cupboard letters, as claims
+
+| Claim | Genuine (Day −19), read only by Brad | Forged (Day 17), read by the four |
+|---|---|---|
+| Certainty | I think, and I may be wrong | I know, now |
+| Grounds | The ladder bolt undone; a panel in a hand she cannot place, hidden in her roof; a mark | The ladder: she had told Liam which ladder. The yard. The tin. The oar |
+| Who | Nobody named. One line: it is not Brad's hand, I taught him, he cannot do this | Nobody named. Every line leans one way |
+| The thing beside it | The panel: whose hand, whose mark | The brush: Liam's oar |
+| Instruction | Each of you write down everything odd you know of the other three from the last year, and read them together | Read this together, and be careful |
+| Mentions Brad | Once, to clear him | Once, as the one she sent up the ladder, kindly |
+| Retrospective tells | | I know against I think; the letter kind to exactly one man; no panel, though four people in town saw her carrying one |
+
+## D4. The motive, stated once
+
+The money. Violet lent him the van and his start, cash, no paper, Day −2000, and on Day −110 told him she wanted it back for the lawyer. The exit was already built and the cash was already in it. From inside his head: a debt follows a man who moves; nobody chases a debt to a man who died; a man who dies off Kestrel Head needs a grief the whole city will accept; and Violet's death is the one grief that makes his own read true, seven weeks later, to everyone including the police. The panel is not why. It is why it was that month.
+
+---
+
+# E. THE RULINGS
+
+Eight questions. Seven are v8's queue plus the camera question added at the closure check; the eighth is the spine's own, because Brad's papers cannot exist without it. For each: the question, what the spine needs, what happens otherwise. Nothing here is ruled.
+
+**1. What supports an accidental-fall finding on an unwitnessed death with head trauma, and what reopens it?**
+The spine needs: a secure house, a single impact consistent with the stair, modest alcohol, and a GP-recorded fall six weeks earlier are enough for a coroner to record accident after a competent post-mortem; and reopening requires new evidence of an act by a person, not a document expressing fear, not a friend's suicide, not a second death elsewhere. If it goes the other way (a written allegation reopens it): the finding reopens on Day 222, the police are then running an open homicide with a document examination inside it, and Ally arrives into an active case rather than a closed one. The premise's "they find nothing" survives; "Ally comes to it afterwards" does not.
+
+**2. Missing-person status, search duration, and reference-sample practice when there is no body.**
+The spine needs: a vehicle, a message and a smashed watch at a known site make him high-risk missing presumed in the water; the search stands down within days; a DNA reference and lifted prints are taken from the home on the first or second day and retained indefinitely against a future body; the file stays missing, not dead, with no petition. If it goes the other way (no sample is taken for a presumed suicide): Day 333 has nothing to match him against and identification needs family DNA or his own confession. Fixable but slower and it loses the line the premise is built to deliver.
+
+**3. Who can petition to have a missing man declared dead, and how fast?**
+The spine needs: only family or a person with a financial interest, after a waiting period measured in years, and nobody in this story has either the standing or the wish. If it goes the other way (a friend can, and quickly): Ruby might, out of kindness, to close his affairs; a declaration puts his death on paper and adds nothing to Brad's safety or danger. Cosmetic.
+
+**4. Is authentication of a material posthumous document routine, discretionary, or only on express dispute?**
+The spine needs: any of the three. The letter is examined on Day 230 to 250 and passes as consistent with known samples on the same paper stock, because he was taught by her and wrote at her bench with her pen. The spine still needs to know which, because it decides whether the examination happens at Day 222 without anyone saying forgery (routine), or only because a detective chose to (discretionary), or not at all unless Margo's line is read as a dispute (on-dispute). If on-dispute: the examination may never happen, the file carries an unexamined letter, and Ally's later claim of forgery is untested rather than tested and wrong. Weaker, not fatal.
+
+**5. What does a last-movements review reach on an apparent suicide when the device is lost: carrier records, app metadata, the prepaid connection?**
+The spine needs: her own carrier records (cell-site, data sessions), reached on request; the app provider confirming an account and retaining no content and no contact list; and no tower request, because a tower dump is an investigative tool for an offence and there is no offence. If it goes the other way (a tower request is routine for a death at that site): an unregistered prepaid pings the same cell at 22:50 on Day 214, the review has a second phone at the point, and the death is no longer an uncomplicated suicide on Day 225. That is the finding the closure check left PARTLY, and it is this ruling.
+
+**6. Does a death at a known disappearance site automatically link the cases?**
+The spine needs: yes, and Del links them on Day 215 by hand anyway; linking means the files are read together, it does not mean either death is reclassified. If it goes the other way (no link): Del reaches the survivors four days later, when they come in themselves. Cosmetic.
+
+**7. Camera coverage at the cliff and its approaches, and does a review pull it for an apparent suicide?**
+The spine needs: one camera at the car park entrance covering vehicles, pulled for Margo, showing her car arrive at 22:50 and nobody on foot, because the coast path from the landward side does not pass it; no camera on the point. If it goes the other way (a camera on the path or the point): it shows two figures at 23:00 on Day 214, and the spine fails at Day 218. If the review does not pull it at all: the tape expires Day 246 unwatched and the same nothing results, more cheaply. The spine wants it pulled, because a competent review that finds her alone is stronger than one that never looked.
+
+**8. Identity documents: can a man build a usable second identity from the birth record of a child who died in infancy, without an accomplice, in Havenbay's world?**
+The spine needs: yes, slowly, because the registers of births and infant deaths are not cross-checked at issue, and the identity is only exposed when someone with a name and a town asks. If it goes the other way (cross-checked at issue): the exit needs a bought identity, which needs a seller, which is an accomplice, which v8 settled against. This is the ruling the spine added.
+
+*Also decided here without a ruling, and flagged as geography rather than process: Kestrel Head as the cliff, at the end of Kestrel Road beyond the lighthouse. It is a naming, and it costs an exterior the art system does not yet have.*
+
+---
+
+# F. PRE-FLIGHT: THE THIRTEEN OBJECTIONS
+
+| # | Objection | Answer | Result |
+|---|---|---|---|
+| 1 | Why was the decisive material not found at the time? | Because it did not exist where anyone looked: the panel left in a rucksack on Day 53, the genuine letter was ash on Day 17, and the one fact that breaks the forgery was a promise Violet made Margo keep. Nobody was lazy: the scene, the PM, the search, the sample, the examination and the review all ran. | Pass |
+| 2 | Does the antagonist act in his own interest at every point? | Part C2: every action is coherent with what he wants, including the two compulsions, which are priced in B7. | Pass |
+| 3 | Would a real person do the small thing this needs? | Violet carries a panel round asking whose hand: she ranked handwriting out loud. Margo sits in the car until the hour. Ruby keeps the boxes. Tessa screenshots one strange line. Liam hands the tin over. Each is from the five. | Pass |
+| 4 | Is the motive one an ordinary reader accepts? | He owed her money he had already spent on leaving, and she had started asking for it. | Pass |
+| 5 | Is any discovery a coincidence wearing a coat? | The leak is the one accident in the spine and it is upstream of everything; the fishmonger, the platform woman and the landlady are found by asking, on air, in a serialised programme whose whole engine is that strangers answer. The landlady is a lodger's landlady, not a stranger who happened past. | Pass, with the leak flagged for the attack |
+| 6 | Does a reader with no context understand every word? | Cage, panel, brush, tin, ladder, cliff, train. "Gilding" needs one line. No procedure near the hook. | Pass |
+| 7 | Can a reader hold the cast on one pass? | Violet, then four names, then Del and Ally. Tessa and the landlady arrive one at a time and late. The solicitor, sister, fishmonger, clerk and café owner are functions with no names. | Pass |
+| 8 | Is it clear what the crime is, immediately? | A woman died on her stairs and her four friends were sent keys. Two of them are alive and afraid of each other. | Pass |
+| 9 | Can Ally source everything she says she knows? | Part B6, rows 54 to 64. Nothing comes from the file. | Pass |
+| 10 | Does anything break its own rules? | Tips to Del never on air (rows 57, 60, 61, 63). The Tip Line keeps no metadata. All-party consent: Ally records nobody covertly. The letter is a letter, not a recording. | Pass |
+| 11 | If the premise claims a route is the ONLY one, find the second route in the ledger. | The premise claims no wall. Every route to Del is open from Day 14 and each is computed in Part C to produce a note on a closed file. The second route to Brad is the download map (row 61), which gives a town and not a house, and it is used. | Pass |
+| 12 | Is the stake a body, freedom, family, identity or present danger? | Three bodies, a man's freedom, and a woman four hundred miles away who has told nobody but Ally. | Pass |
+| 13 | Does anything decisive rest on a small number? | No. Ten minutes early is character, not evidence. Nothing turns on a time or a sum. | Pass |
+| + | Is the antagonist a person or a mechanism? | A man who was the pet of the room for seven years and was cleverer than all of them, who built a self nobody was allowed to see, and who kept the one thing that proved it because she said he could not have made it. | Person |
+
+**Score: 13 of 13, with objection 5's leak flagged for the step-3 attack.**
+
+---
+
+# G. WHAT FABLE MAY BE TOLD
+
+*The redacted brief for step 4. Paste this block and nothing else. It contains what Ally has on the day she starts and what the city knows. It does not contain which of the four, what was behind the door beyond what the survivors say, where anyone is, or anything from Parts A to F.*
+
+> **Brief for the opening of Episode One, working title The Friend They Mourned.**
+>
+> You wrote the five as people. They are canon. Here is what happened to them, as Havenbay knows it, and what Ally holds on the morning she decides to make the episode.
+>
+> **The public account.** Violet Moore, 44, signwriter, died at the foot of her own stairs on a Monday night about nine months ago. Head injury. Police attended, there was a post-mortem, a coroner recorded an accident. She had four close friends: Liam Bryce, Ruby Walker, Margo Rivera, Brad Collins. Two weeks after she died, each of them got a key in the post with a letter in her hand. The letter said she thought one of the four was planning to kill her, that she did not know which and might be wrong, that they were not to go to the police and why, and that what she had found was behind a door only the four of them could open. They went together on the Saturday. Behind the door was a second letter in her hand, longer, that said she knew, and a thing of hers beside it. The survivors will not say what the thing was, only that it was hers.
+>
+> They worked the letter for weeks at Ruby's kitchen table. Seven weeks after the funeral Brad drove to Kestrel Head at night, left his phone on the seat with one message on it, and was never found. His watch was on the rocks. Police searched and stood down. Five months after that Margo Rivera's car was found in the same car park, ten minutes before eleven on the dashboard clock, and her body came into the harbour three days later. Police reviewed it and called it what it looked like: a woman who had blamed herself for the friend who went off the same cliff. She had a partner two hours up the coast that none of them knew about.
+>
+> Liam and Ruby each went to the police within the week. Not to accuse. To say: I am frightened of him. I am frightened of her. The police looked, properly, for six weeks: the letters were examined and are hers, the solicitor confirmed she lodged them three weeks before she died, the coroner's finding stands, nothing was found. No further action. Ruby talked to the Gazette. The front page has the four of them at the wake.
+>
+> **What Ally holds on day one.** The paper. A sergeant she trusts saying: we looked, properly, there's nothing. Ruby willing to talk. Liam not, yet. A Tip Line that has had nothing on this. No relationship to either survivor; she has never met them.
+>
+> **What the opening must do.** Get the death and the keys inside the first forty-five seconds. Land on two living people taking each other apart in public over a dead woman's letter, and a podcaster who was not there for any of it. Under 330 words. Ally asks on microphone before she records anyone. Nothing in her voice claims to know what the police could not find.
+>
+> **Do not invent:** which of the four; what the thing behind the door was; what the second letter said beyond that it said she knew and pointed, over weeks, at Liam; anything about where anyone is now; any procedure. If the opening needs a fact not in this brief, leave a gap and mark it.
+>
+> No em dashes.
+
+*End of brief. Everything above this line stays in this file.*
