@@ -2,7 +2,7 @@
 
 # PROMPT: ChatGPT attacks the spine (pipeline step 3)
 
-*Attach `episode-1-spine-four-keys-v1.2.pdf` only. Do not attach the premise; it is closed. Paste the block below.*
+*Attach `episode-1-spine-four-keys-v1.1.pdf` only. Do not attach the premise; it is closed. Paste the block below.*
 
 > You are the adversarial auditor for a true-crime narrative. Attached is the spine for an episode: a dated reconstruction, an access ledger with a recipient column, an earliest-action sweep, two chosen objects, eight Havenbay process rulings (all taken; treat them as the world's rules, not as claims to attack), and a pre-flight. The premise it implements has already survived two rounds of your attack and is closed; do not reopen it. Attack the graph.
 >
