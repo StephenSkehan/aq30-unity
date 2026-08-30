@@ -2,7 +2,22 @@
 
 # ChatGPT attacks the Four Keys premise, round two (v7)
 
-*Received 2026-08-29, verbatim. Under discussion; nothing here is accepted until marked so. Stephen's instruction: analyse, consider, discuss, not necessarily change.*
+*Received 2026-08-29, verbatim. Discussed one at a time on 2026-08-30 and closed; result folded into premise v8.*
+
+## Status, 2026-08-30 (names: Nell = Violet · Bram = Brad · Owen = Liam · Sian = Ruby)
+
+| # | Finding | Status | Ruling |
+|---|---|---|---|
+| 1 | Brad can't write the plant from what he knows | **Closed, converted** | The knowledge gap is the mechanism, not a defect. Stephen: a genuine object of Violet's beside the forged letter, with a false meaning. Brad builds it from what Violet told him (the other three); it fails on what she told only Margo (the money). Residue list accepted as spine ledger work. |
+| 2 | Violet's instruction can't hold Liam | **Closed, reframed** | Her reasons expire; Liam's self-interest doesn't: the only thing he could hand police is a letter in her hand pointing at him. Stephen: the genuine letter says *I think*, so all three innocents hold "she was frightened, then she fell" as a live reading. Break point = fear of a person exceeds fear of the letter. |
+| 3 | Police authenticate the letter anyway | **Closed, CONCEDED** | The letter is examined and passes ("consistent with known samples"). The examination file is residue for Ally. Havenbay ruling still queued but safe in all three outcomes. |
+| 4 | Margo's comms identify the stranger | **Closed, reworked** | Stephen: Margo already had an encrypted, self-deleting app for Tessa (11 years). Brad finds her on it from a cash prepaid; conversation self-deletes; phone lost in the sea. Margo told Tessa "the thing is wrong", never who. Tessa = the listener who kept the message. |
+| 5 | Margo's insight weeks after the listener's | **Closed, dissolved** | With an object behind the door, nobody asks "why a key" on Saturday. Margo's turn is "this object is wrong", which only she can make. |
+| 6 | The inversion is readable forwards | **Closed, accepted** | Overclaim cut from the doc. Brad's defence now has an innocent surface ("she might have been wrong"). The surprise the episode depends on is "he is alive", not "it was him". |
+| 7 | The object's hardest constraint pair | **Closed, converted** | Same repair as 1: the character graph carries it. |
+| 8 | The return trail | **Closed, to spine** | Stands or falls with 4; 4 is closed. |
+| – | The woman's window | **Accepted** | Hours, not days. The object's absence from his shelf is her confirmation; she writes that night. |
+| – | Theme | **Accepted, reworded** | Distance, plurality and speed. "No hold on" was an overstatement. |
 
 ---
 
