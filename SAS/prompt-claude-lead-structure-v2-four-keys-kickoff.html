@@ -1,0 +1,64 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Kickoff, the Four Keys structure v2, chapters and packages</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0; font-size: 10.5pt; line-height: 1.55; }
+  h1 { font-size: 20pt; letter-spacing: .2px; border-bottom: 3px solid #1c1a17; padding-bottom: 8px; margin: 0 0 14px; }
+  h2 { font-size: 13.5pt; margin: 26px 0 8px; padding-bottom: 4px; border-bottom: 1.5px solid #1c1a17; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 18px 0 6px; page-break-after: avoid; }
+  p { margin: 0 0 9px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  hr { border: 0; border-top: 1px solid #ccc5b8; margin: 22px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 6px 0 14px; font-size: 8.6pt; line-height: 1.35; page-break-inside: auto; }
+  th, td { border: 1px solid #b9b2a4; padding: 4px 6px; vertical-align: top; text-align: left; }
+  th { background: #e9e4d8; font-weight: bold; }
+  td { background: #faf8f2; }
+  tr { page-break-inside: avoid; }
+  blockquote { border-left: 3px solid #b9b2a4; margin: 8px 0 12px; padding: 4px 14px; background: #f4f1ea; }
+  code { font-family: Consolas, monospace; font-size: 9pt; }
+</style></head><body>
+<h1>KICKOFF PROMPT: STRUCTURE v2.0 FOR "THE FRIENDS WITH FOUR KEYS": CHAPTERS × PACKAGES</h1>
+<p><em>2026-08-31. Paste everything below the line into a fresh session. This replaces the superseded 16-lead kickoff and the superseded structure v1.0: Stephen re-ruled the constraints and introduced lead packages the same day v1.0 landed. The story spine and the v1.0 turn-beats survive; the container changes.</em></p>
+<hr />
+<p>We are rebuilding the structure for Episode One of Ally Quinn, <em>The Friends with Four Keys</em>, as <strong>about 10 chapters containing about 100 lead packages</strong>. The spine is untouchable; the economy model is ruled; your job is to lay 100 story beats and their packages against both. Read this whole prompt before opening a file.</p>
+<h3>Read first, in this order</h3>
+<ol>
+<li><code>SAS/four-keys-package-economy-model-v1.1.md</code>. <strong>The ruled container.</strong> A lead package is 1 to 5 lead cards across characters and item families; fulfilling the PACKAGE shows the story beat; every package fulfilment pays off with something. Ruled numbers: ~100 packages · ~10 chapters · <strong>1,600 T1eq total</strong> (tunable once your beats exist) · CC at the 4.3 rate, ≈6,880 banded per package · <strong>no optionals, the 100 are everything</strong> · the ramp table is a guide and <strong>variety is mandated</strong>: never a mechanical size progression; quick wins beside five-carders late, a spike early, sizes and tiers mixed within every chapter.</li>
+<li><code>SAS/episode-1-spine-four-keys-v1.4.md</code>. The truth. Part A5 is Ally's broadcast clock; Part B6 is her sources ledger. <strong>The player learns with Ally: no beat may surface a fact before its B6 day, and nothing may reach the player that Ally never learns.</strong> Parts A to F are the whole graph and never reach Fable.</li>
+<li><code>SAS/episode-1-lead-structure-four-keys-v1.0.md</code>, superseded but load-bearing. Salvage: the <strong>16 turn leads</strong> (they become the spine of your beat list: the moments belief changes), the <strong>four decisions</strong> D1 to D4 (re-place them; their class analysis stands), the broadcast map (Eps 1 to 9 in the gaps, S10 = Days 326 to 333), the gate logic, the redaction lines, and its Part F questions, which are STILL OPEN and carry forward.</li>
+<li><code>SAS/four-keys-cold-open-v0.4.md</code> (the live open, spread across chapter 1's packages; its three-segment cut from v1.0 is a proposal awaiting Stephen), <code>SAS/four-keys-the-five-as-people-v1.2.md</code> (the five: your quarry for character-fact beats), <code>SAS/ally-voice-reference-v1.0.md</code> (register for any placeholder line).</li>
+<li>The bible: §5.7 toast pacing, §7.2 requirement bands, §7.3 item families and their character ties; §3.3 and §3.4 for the arc rules. Memory: <code>project_state.md</code> Four Keys headings, <code>project_economy.md</code>, <code>project_item_families.md</code> (the canonical 3 generators and 7 families: packages mix these), <code>project_architecture.md</code>, <code>feedback_check_implementation_first.md</code>.</li>
+<li>The code, before trusting any spec: the lead/requirement shape (<code>LeadData</code>, <code>LeadRequirement</code> quantity cap 3, <code>RequiredLeadIds</code>), <code>LeadsRepository</code>, the caseflow orchestrator. <strong>There is no package container in code yet</strong>; you are writing the content design it will be costed and built against, so name every assumption you make about it in one place.</li>
+</ol>
+<h3>What you are producing</h3>
+<p><strong>The beat-and-package table for the whole episode.</strong> For every one of the ~100 packages: id (<code>fk_p&lt;chapter&gt;_&lt;n&gt;</code> proposed; decide and say why) · chapter · the cards (count, family, tier, quantity, T1eq each) · gates in and unlock out · CC band · <strong>the beat</strong>: its type (evidence turn / character fact / Ally line / art with caption) · a one-line statement of its content · its source (a B6 row, the five, or new texture) · <strong>the redaction line</strong>: what Fable may be told when this beat's prose or caption is briefed.</p>
+<p>The discipline that governs the beats:</p>
+<ul>
+<li><strong>Every chapter turns belief at least once.</strong> The 16 turn leads carry this; place them, and mark each package's beat honestly as turn or texture. Texture is allowed; unmarked texture is not.</li>
+<li><strong>Character-fact beats reveal previously unknown facts about the five, and none may touch the graph.</strong> Mine the five v1.2 first (it is full of unexploited texture: the tenor voice, the grade eight piano, the county swimming, the 2014 kitchen date). Where you invent new facts, they must be safe at every future reveal, flagged as new, and they go to Stephen in a batch for ruling, not one at a time.</li>
+<li><strong>Art-with-caption beats are allowed freely</strong> (Stephen: budgets later, cost does not constrain the design). Mark them so the eventual art bill can be counted, but do not self-censor the count.</li>
+<li><strong>No beat spoils the spine.</strong> The surprise is "he is alive" and it lands where A5 lands it. Check every beat against B6's day.</li>
+</ul>
+<h3>Hard constraints and guides, as re-ruled 2026-08-31</h3>
+<ul>
+<li><strong>Hard:</strong> ~100 packages, ~10 chapters, 1,600 T1eq, no optionals, no replay, ep01 slot ids, quantity ≤ 3 per card, the v1.1 CC total banded, variety within chapters, cold open spread across chapter 1, every package pays off.</li>
+<li><strong>Guides, not constraints:</strong> 4 to 5 hours; 8 to 10 sessions; chapter-end = Ally publishes is a <strong>nice-to-have</strong> where it falls naturally (the arithmetic makes a chapter roughly a session anyway); do not build anything that only exists to enforce a session boundary.</li>
+<li><strong>Dropped:</strong> the "gap between sessions is Brad listening" framing. Do not design to it.</li>
+</ul>
+<h3>Decisions</h3>
+<p>Re-place v1.0's four decisions (D1 Ruby's letter aired vs verified · D2 the tip to Del raw vs market first · D3 Margo's words verbatim vs paraphrase · D4 the mark aired vs held) into the chapter flow, at package boundaries. Their known limitation stands and is named, not hidden: the spine's clock and arrest are fixed, so decisions redistribute who is protected, exposed and believed; the ending-changing axis is unavailable. Send that to the attack again.</p>
+<h3>Economy conformance (Part E of your document)</h3>
+<p>Show per chapter: packages, cards, T1eq, net energy, CC, against the v1.1 envelope; show the variety evidence (size and tier spread inside each chapter, the late-chapter quick wins, the early spike); total to 1,600 and ≈6,880 within rounding. Where your beats want a different chapter budget than the envelope, take it: the envelope is a guide, and say what you took and why.</p>
+<h3>Questions that are Stephen's, not yours (Part F)</h3>
+<p>Carried from v1.0, still open: <strong>F1</strong> the season notch (candidate: the skipper letter's Thursday-run line; it brushes the street/apex separation and needs an explicit season decision) and its irreversible cost to Ally · <strong>F2</strong> the close's shape (and now: whether an Ep2 teaser beat lives inside the close package) · <strong>F3</strong> the first interaction at 38 to 39 seconds against I6's open 35-to-40 ruling · <strong>F4</strong> the v0.4 cut boundaries. New: <strong>F5</strong> the new-character-facts batch for ruling · <strong>F6</strong> any beat whose art-with-caption is load-bearing rather than decorative, listed for the art bill.</p>
+<h3>Rules</h3>
+<ul>
+<li>The spine is not reopened; if a beat cannot exist without moving a spine fact, <strong>stop and report</strong>. The v1.1 economy rulings are not reopened. Stephen's rulings in memory are not reopened.</li>
+<li>No menus where the choice is yours; one structure, tests shown; options only inside Part F.</li>
+<li>Check the code before trusting any spec. Name your package-container assumptions in one section; the costing doc will price exactly those.</li>
+<li>Format: <code>SAS/episode-1-structure-v2-four-keys.md</code> + html/pdf via <code>SAS/tools/Convert-MdToPdf.ps1</code>. Parts: A chapter map (chapter × A5 episode × spine days × the chapter's turn) · B the beat-and-package tables, one per chapter · C decisions · D chapter 1 in seconds · E economy conformance · F Stephen's questions · G package-container assumptions for costing. No em dashes anywhere. Commit as you go; push at the end; update <code>project_state.md</code>.</li>
+</ul>
+<h3>When it is done</h3>
+<p>Report in this order: any stop against the spine · the chapter map in one paragraph · the beat-type census (turns / character facts / Ally lines / art-caption, and how many are texture) · the three weakest beats, named honestly · the decision placement · Part F · then propose the ChatGPT attack prompt aimed at the beat census (is every chapter's turn real), the economy conformance, the variety evidence, and the pacing of chapter 1, with the spine out of scope.</p>
+</body></html>
