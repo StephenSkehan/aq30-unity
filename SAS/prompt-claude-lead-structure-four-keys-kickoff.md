@@ -1,5 +1,7 @@
 <!-- pdf-title: Kickoff, the Four Keys lead structure -->
 
+# ⚠ SUPERSEDED 2026-08-31, SAME DAY: Stephen re-ruled the constraints after v1.0 landed. 16 leads is retired; the model is now ~10 chapters × ~100 LEAD PACKAGES (1 to 5 cards each) per `four-keys-package-economy-model-v1.0.md`. Hours/sessions are guides not constraints; publish-beat session boundary is a nice-to-have; "the gap is Brad listening" dropped. Do not run this prompt; a v2 kickoff follows once the economy model is ruled.
+
 # KICKOFF PROMPT: THE LEAD STRUCTURE FOR "THE FRIENDS WITH FOUR KEYS"
 
 *2026-08-31. Paste everything below the line into a fresh session. It is the step after the spine: the sixteen leads, the sessions, the decisions and the gates, built against the spine's clock. No prose.*
