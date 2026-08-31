@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head><meta charset="utf-8">
-<title>The lead-package economy model v1.0</title>
+<title>The lead-package economy model v1.1</title>
 <style>
   @page { size: A4; margin: 16mm 15mm 18mm; }
   body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0; font-size: 10.5pt; line-height: 1.55; }
@@ -18,8 +18,15 @@
   blockquote { border-left: 3px solid #b9b2a4; margin: 8px 0 12px; padding: 4px 14px; background: #f4f1ea; }
   code { font-family: Consolas, monospace; font-size: 9pt; }
 </style></head><body>
-<h1>THE LEAD-PACKAGE ECONOMY MODEL, v1.0</h1>
-<p><em>2026-08-31. First arithmetic pass for Stephen's lead-package concept, against the canonical economy (Schedule B anchors, 2026-07-17 tuned drop tables, regen 150s, cap 100). This re-models the episode's requirement mass; it does not touch energy, regen, drop tables, CC sinks or SKUs. Drafted for ruling; every number below the anchors is a tuning draft.</em></p>
+<h1>THE LEAD-PACKAGE ECONOMY MODEL, v1.1 (RULED)</h1>
+<p><em>2026-08-31. Arithmetic model for Stephen's lead-package concept, against the canonical economy (Schedule B anchors, 2026-07-17 tuned drop tables, regen 150s, cap 100). It re-models the episode's requirement mass; it does not touch energy, regen, drop tables, CC sinks or SKUs.</em></p>
+<p><strong>v1.1: the four open numbers ruled by Stephen, 2026-08-31.</strong></p>
+<ol>
+<li><strong>Total mass: 1,600 T1eq</strong>, tunable once the 100 story beats exist.</li>
+<li><strong>The ramp envelope stands as a guide, with variety mandated:</strong> never a mechanical progression. Late chapters keep quick single-card wins beside the five-carders; early chapters get the occasional spike; sizes and tiers mix within every chapter.</li>
+<li><strong>CC holds the 4.3 earn rate: ≈6,880 CC across the episode, banded per package.</strong></li>
+<li><strong>No optional packages in Ep1: the 100 are everything.</strong> No separate cold-case or teaser play. If an Ep2 teaser is wanted, it is a story beat inside the close package, not extra play; that is a structure question, not an economy one.</li>
+</ol>
 <h2>The concept, as ruled (Stephen, 2026-08-31)</h2>
 <ul>
 <li><strong>A lead package is the unit of story progress.</strong> Fulfilling a package shows the next story beat; individual card fulfilment no longer drives story.</li>
@@ -37,30 +44,30 @@
 <tr><td>CC earn yardstick</td><td>≈4.3 CC per T1eq</td></tr>
 <tr><td>Card quantity cap</td><td><code>LeadRequirement.quantity</code> is <code>[Range(1,3)]</code>: no card asks for more than 3 of an item</td></tr>
 </tbody></table>
-<h2>The headline arithmetic</h2>
+<h2>The headline arithmetic (at the ruled 1,600 T1eq)</h2>
 <ul>
-<li><strong>100 packages ≈ a story beat every 2.5 to 3 minutes</strong> at the 4-to-5-hour guide. Genre-correct cadence.</li>
-<li><strong>250 cards</strong> at the working ramp (average 2.5 cards per package).</li>
-<li><strong>Requirement mass ≈ 1,400 T1eq</strong> (4.2x Schedule B's 330). Per card that is an average of ~5.6 T1eq, i.e. mostly single T2 to T4 items in small quantities: no board-straining walls.</li>
-<li><strong>Net energy ≈ 900</strong> (1,400 ÷ 1.55), which is <strong>about 9 free session-tanks</strong>: the episode genuinely occupies 8 to 10 sessions without tank surgery, ladder spend, or ads.</li>
-<li><strong>Days to complete:</strong> ~9 days at one session a day, ~5 at two. <strong>This resolves the July finding</strong>: Schedule B's ~2-day episode needed ~700+ T1eq to reach genre-typical length, and the package model carries 1,400 comfortably because the mass is spread across 250 small cards instead of 12 walls.</li>
-<li><strong>CC:</strong> at the 4.3 yardstick the episode pays <strong>≈6,000 CC</strong> (was 1,410). Sinks are absolute-priced (locker, Mo's, Case Kit), so this expands the player's sink headroom rather than breaking anything; band the rewards per package at tuning.</li>
+<li><strong>100 packages ≈ a story beat every 2.5 to 3 minutes</strong> of play. Genre-correct cadence.</li>
+<li><strong>250 cards</strong> at the working ramp (average 2.5 cards per package); average <strong>6.4 T1eq per card</strong>: mostly single T2 to T4 items in small quantities, no board-straining walls, quantity cap 3 respected.</li>
+<li><strong>Requirement mass 1,600 T1eq</strong> (4.8x Schedule B's 330).</li>
+<li><strong>Net energy ≈ 1,030</strong> (1,600 ÷ 1.55) ≈ <strong>10.3 free session-tanks</strong>: the episode genuinely occupies about ten sittings without tank surgery, ladder spend, or ads; the ladder and ads shorten it for players who choose to.</li>
+<li><strong>Days to complete:</strong> ~10 at one session a day, ~5 to 6 at two. <strong>This resolves the July finding</strong>: Schedule B's ~2-day episode needed ~700+ T1eq to reach genre-typical length, and the package model carries 1,600 comfortably because the mass is spread across 250 small cards instead of 12 walls.</li>
+<li><strong>CC: ≈6,880 across the episode at the ruled 4.3 rate</strong> (was 1,410), banded per package. Sinks are absolute-priced (locker, Mo's, Case Kit), so this expands sink headroom; deeper locker slots and shop buys come into Ep1 reach, which the doubling curves were built for.</li>
 </ul>
-<h2>The ramp (working draft, 10 packages per chapter)</h2>
+<h2>The ramp (guide, 10 packages per chapter, variety mandated)</h2>
 <table><thead><tr><th>Ch</th><th>Packages</th><th>Avg cards/pkg</th><th>Cards</th><th>T1eq budget</th><th>Net energy</th><th>Feel</th></tr></thead><tbody>
-<tr><td>1</td><td>10</td><td>1.0</td><td>10</td><td>30</td><td>≈19</td><td>FTUE. Single cards, T1 to T2, instant wins; the cold open v0.4 spread across the first packages</td></tr>
-<tr><td>2</td><td>10</td><td>1.5</td><td>15</td><td>60</td><td>≈39</td><td>Second family unlocks</td></tr>
-<tr><td>3</td><td>10</td><td>2.0</td><td>20</td><td>90</td><td>≈58</td><td>First two-card, two-family packages</td></tr>
-<tr><td>4</td><td>10</td><td>2.0</td><td>20</td><td>120</td><td>≈77</td><td>Tier climb begins</td></tr>
-<tr><td>5</td><td>10</td><td>2.5</td><td>25</td><td>150</td><td>≈97</td><td>Mid-episode; Mo's and locker doing work</td></tr>
-<tr><td>6</td><td>10</td><td>2.5</td><td>25</td><td>180</td><td>≈116</td><td></td></tr>
-<tr><td>7</td><td>10</td><td>3.0</td><td>30</td><td>190</td><td>≈123</td><td>Three-family packages standard</td></tr>
-<tr><td>8</td><td>10</td><td>3.0</td><td>30</td><td>190</td><td>≈123</td><td>First five-card package</td></tr>
-<tr><td>9</td><td>10</td><td>3.5</td><td>35</td><td>190</td><td>≈123</td><td></td></tr>
-<tr><td>10</td><td>10</td><td>4.0</td><td>40</td><td>200</td><td>≈129</td><td>Finale; five-card multi-family peaks</td></tr>
-<tr><td><strong>Total</strong></td><td><strong>100</strong></td><td><strong>2.5</strong></td><td><strong>250</strong></td><td><strong>1,400</strong></td><td><strong>≈903</strong></td><td></td></tr>
+<tr><td>1</td><td>10</td><td>1.0</td><td>10</td><td>35</td><td>≈23</td><td>FTUE. Single cards, T1 to T2, instant wins; the cold open v0.4 spread across the first packages</td></tr>
+<tr><td>2</td><td>10</td><td>1.5</td><td>15</td><td>70</td><td>≈45</td><td>Second family unlocks; one spike package</td></tr>
+<tr><td>3</td><td>10</td><td>2.0</td><td>20</td><td>105</td><td>≈68</td><td>First two-card, two-family packages</td></tr>
+<tr><td>4</td><td>10</td><td>2.0</td><td>20</td><td>135</td><td>≈87</td><td>Tier climb begins</td></tr>
+<tr><td>5</td><td>10</td><td>2.5</td><td>25</td><td>170</td><td>≈110</td><td>Mid-episode; Mo's and locker doing work</td></tr>
+<tr><td>6</td><td>10</td><td>2.5</td><td>25</td><td>205</td><td>≈132</td><td></td></tr>
+<tr><td>7</td><td>10</td><td>3.0</td><td>30</td><td>215</td><td>≈139</td><td>Three-family packages standard</td></tr>
+<tr><td>8</td><td>10</td><td>3.0</td><td>30</td><td>220</td><td>≈142</td><td>First five-card package</td></tr>
+<tr><td>9</td><td>10</td><td>3.5</td><td>35</td><td>220</td><td>≈142</td><td></td></tr>
+<tr><td>10</td><td>10</td><td>4.0</td><td>40</td><td>225</td><td>≈145</td><td>Finale; five-card multi-family peaks, with quick wins kept beside them</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>100</strong></td><td><strong>2.5</strong></td><td><strong>250</strong></td><td><strong>1,600</strong></td><td><strong>≈1,032</strong></td><td></td></tr>
 </tbody></table>
-<p>Per-chapter play at ~1.1 taps per net energy point lands each chapter at roughly one session (chapter 1 lighter by design). Package-size peak of 5 lives inside chapters 8 to 10; averages above conceal singles and fives in every late chapter, which is where the dial gets tuned.</p>
+<p><strong>The averages are an envelope, not a pattern (ruled).</strong> Every chapter mixes sizes and tiers: a one-card quickie sits beside a four-carder in chapter 9, and chapter 2 carries one deliberate spike. Monotonic size-by-size progression is exactly what Stephen rejected. Per-chapter play at ~1.1 taps per net energy point lands each chapter at roughly one sitting (chapter 1 lighter by design).</p>
 <h2>What this supersedes and what it does not</h2>
 <ul>
 <li><strong>Supersedes:</strong> Schedule B's 330 T1eq / 12-lead requirement plan as the production-episode model, and the 16-lead structure premise of <code>episode-1-lead-structure-four-keys-v1.0.md</code> (rework to v2.0 as chapters × packages; its 16 leads survive as the turn-beat skeleton and its Part F questions stand).</li>
@@ -68,11 +75,11 @@
 </ul>
 <h2>Open tuning items (drafted here, ruled later)</h2>
 <ol>
-<li>Per-package card-size and tier mix inside each chapter (the averages above are the envelope).</li>
-<li>CC reward banding per package against the ≈6,000 total; whether energy/ingot rewards scale with it.</li>
+<li>Per-package card-size and tier mix inside each chapter (the envelope above; variety per the ruling).</li>
+<li>CC reward bands per package against the ≈6,880 total; whether energy/ingot rewards scale with it.</li>
 <li>Chapter 1's exact FTUE budget in seconds and packages (waits on the I6 first-interaction ruling and the v0.4 cut).</li>
-<li>Whether optional packages exist outside the 100 (cold cases, Ep2 teaser) and their pricing.</li>
 <li>Beat payoff type per package (art+caption / character fact / Ally line / evidence turn): drafted in the structure rework, budgeted later per Stephen's ruling.</li>
+<li>The whole mass re-tuned once the 100 story beats exist, per the ruling on question 1.</li>
 </ol>
 <h2>The systems bill, named and not costed here</h2>
 <p>A package container above lead cards: data (PackageData or an extension of the existing lead/requirement shape), leads-bar UI grouping, package-complete beat presentation (art+caption surface), gating by package rather than card, save schema addition, FTUE teaching, analytics events. Sits on top of <code>feature/multi-episode-audit</code>, which is still unmerged and not play-verified. Cost it the way the multi-episode bill was costed, before build.</p>
