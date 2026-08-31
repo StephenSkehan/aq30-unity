@@ -1,0 +1,356 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>The Friends with Four Keys, the Lead Structure v1.0</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0; font-size: 10.5pt; line-height: 1.55; }
+  h1 { font-size: 20pt; letter-spacing: .2px; border-bottom: 3px solid #1c1a17; padding-bottom: 8px; margin: 0 0 14px; }
+  h2 { font-size: 13.5pt; margin: 26px 0 8px; padding-bottom: 4px; border-bottom: 1.5px solid #1c1a17; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 18px 0 6px; page-break-after: avoid; }
+  p { margin: 0 0 9px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  hr { border: 0; border-top: 1px solid #ccc5b8; margin: 22px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 6px 0 14px; font-size: 8.6pt; line-height: 1.35; page-break-inside: auto; }
+  th, td { border: 1px solid #b9b2a4; padding: 4px 6px; vertical-align: top; text-align: left; }
+  th { background: #e9e4d8; font-weight: bold; }
+  td { background: #faf8f2; }
+  tr { page-break-inside: avoid; }
+  blockquote { border-left: 3px solid #b9b2a4; margin: 8px 0 12px; padding: 4px 14px; background: #f4f1ea; }
+  code { font-family: Consolas, monospace; font-size: 9pt; }
+</style></head><body>
+<h1>THE FRIENDS WITH FOUR KEYS</h1>
+<h2>THE LEAD STRUCTURE, v1.0</h2>
+<p><em>2026-08-31. Built on spine v1.4 (three attack rounds, sweep PASSES), premise v8, the five v1.2, cold open v0.4, and the Four Keys rulings in memory (16 leads, 4 to 5 hours, 8 to 10 sessions, session boundary = podcast episode boundary). No prose. Every player-facing line in this document is a placeholder and says so. The spine is not reopened here; nothing in this document moves a spine fact, and nothing needed to.</em></p>
+<p><strong>Code checked before trusting any spec (2026-08-31):</strong> <code>LeadData</code> (leadId, RequiredLeadIds AND-gate, SpawnLeadIds, requiresFlag/forbidsFlag, NarrativeFlags, banded rewards, generator and special rewards, boardPhase) · <code>LeadsRepository</code> (CheckAndUnlockBlockedLeads state-scan, SpawnLead spawns Blocked when gated, ApplySavedStates re-evaluates gates) · <code>LeadsDatabase.FindById</code> (the database, not the folder, decides membership) · <code>Lead_E1_*</code> assets as the shape reference (<code>e1_close</code> spawns <code>cold_case_a</code> + <code>ep2_teaser</code>, sets <code>e1.ep01.complete</code>) · the branch pattern as shipped (flags set in dialogue, variant nodes pay at later leads; no BranchOutcomes runtime UI exists). The multi-episode system (EpisodeCatalog, slot ep01) is on <code>feature/multi-episode-audit</code>, pushed, NOT merged: this document designs to its id scheme and touches no code.</p>
+<p><strong>Governing rule, applied to every card in Part B:</strong> the rank-one open question of this project is whether merging changes what a player believes. Every lead answers it on paper: belief before, evidence gained on the board, belief after. The three weakest answers are named honestly in Part E.</p>
+<hr />
+<h2>THE STRUCTURAL DECISIONS, STATED ONCE</h2>
+<ol>
+<li><strong>Ids.</strong> Runtime lead ids are <code>fk_*</code>, asset names <code>Lead_FK_*</code>, content folder <code>Assets/Content/FourKeys/</code>. Why <code>fk</code> and not <code>e1</code>: The Listener's <code>e1_*</code> ids hardcode an episode slot the story no longer holds, and R5 ruled slot ids story-neutral for exactly this reason. A story-scoped prefix survives renumbering. The <code>LeadsDatabase</code> for slot ep01 decides membership; the folder name implies nothing (the standing content-folder rule).</li>
+<li><strong>The publish beat is the session gap, not a lead.</strong> Completing a session's last lead hands Ally enough to cut that week's episode. She publishes in the gap; the next session's opening dialogue is the aired episode and what came back. This is the ruled session boundary made literal: the gap between sessions is Brad listening. No wall-clock gate exists or is added; the boundary is enforced economically, because each session's requirement mass is sized to roughly one energy tank (arithmetic in Part E). A binge player flows through without a wall, which is deliberate: R6 forbids replay, not pace.</li>
+<li><strong>Ten sessions, sixteen leads plus a close.</strong> Broadcast episodes 1 to 9 air in the gaps after sessions 1 to 9. Episode 10, ruled indistinguishable from episode 9, airs inside the close lead's narration, because a merge lead whose deliverable is a deliberately empty broadcast would fail the evidence-turn test by construction. The player instead holds the answer through it, which is the point of that week.</li>
+<li><strong>Decisions are Class A and B only.</strong> The spine's clock (Days 266 to 333) survived three adversarial rounds by being inevitable; no player decision may move it, so no decision changes who is arrested or when. The four decisions (Part C) change who is protected, exposed and believed along the way, and what the evidence record ends up holding. That satisfies the consequence-and-agency gate on its protected/exposed/believed axes; the honest caveat is stated in Part C and again in Part E.</li>
+<li><strong>Requirement families</strong> (per <code>project_item_families.md</code> and the shipped economy): <strong>A</strong> = Audio Investigation (lab, T1 to T6), <strong>F</strong> = Forensic Tools (lab, T1 to T5), <strong>R</strong> = Rusty Anchor (junk drawer, T1 to T10), <strong>D</strong> = Kestrel Corner Diner food (diner, T1 to T12). T1eq of tier n = 2^(n-1). Diegetic reads for this episode: A = the tape and the show (the tip line, the letters read aloud, the broadcast itself); F = documents and scene work (letters, the slip, photographs, the side-by-side spread); R = the harbour (the boatyard, the slip swimmers, the fish market, the pub that changes its name); D = door-knocking (the café, the cinema, Tessa's kitchen, a witness's coffee).</li>
+</ol>
+<hr />
+<h1>A. THE MAP</h1>
+<p>One table. Sessions air their episode in the gap that follows them. Days are Ally's working days from the spine's clock; B6 rows are the sources ledger in spine v1.4.</p>
+<table><thead><tr><th>#</th><th>Lead id</th><th>Title (placeholder)</th><th>Type</th><th>Session</th><th>Spine days</th><th>Location</th><th>Airs in the gap after (A5)</th><th>What Ally airs that week</th></tr></thead><tbody>
+<tr><td>1</td><td><code>fk_frontpage</code></td><td>The Front Page</td><td>Podcast</td><td>S1</td><td>266</td><td>Ally's studio</td><td></td><td></td></tr>
+<tr><td>2</td><td><code>fk_fourkeys</code></td><td>Four Keys</td><td>Evidence</td><td>S1</td><td>267</td><td>Ally's studio</td><td></td><td></td></tr>
+<tr><td>3</td><td><code>fk_sergeant</code></td><td>We Looked, Properly</td><td>Interview (Del)</td><td>S1</td><td>268 to 269</td><td>Precinct steps</td><td><strong>Ep 1, Day 269</strong></td><td>The cold open v0.4: the death, the keys, the door, two survivors afraid of each other</td></tr>
+<tr><td>4</td><td><code>fk_kitchen</code></td><td>The Kitchen Table</td><td>Interview (Ruby)</td><td>S2</td><td>270 to 275</td><td>Ruby's kitchen</td><td></td><td></td></tr>
+<tr><td>5</td><td><code>fk_boxes</code></td><td>The Boxes</td><td>Evidence</td><td>S2</td><td>270 to 275</td><td>Ruby's spare room</td><td><strong>Ep 2, Day 276</strong></td><td>The room, the letters read out (D1), the boxes, Brad's habits</td></tr>
+<tr><td>6</td><td><code>fk_calling_in</code></td><td>Calling It In</td><td>Money Trail (café owner)</td><td>S3</td><td>278 to 282</td><td>The harbour café</td><td></td><td></td></tr>
+<tr><td>7</td><td><code>fk_gold_panel</code></td><td>The Gold Panel</td><td>Interview (cinema owner)</td><td>S3</td><td>278 to 282</td><td>The Regent cinema</td><td><strong>Ep 3, Day 283</strong></td><td>She was calling money in; she carried a gold panel round asking whose hand</td></tr>
+<tr><td>8</td><td><code>fk_liam</code></td><td>The Man It Points At</td><td>Interview (Liam)</td><td>S4</td><td>288</td><td>The boatyard</td><td></td><td></td></tr>
+<tr><td>9</td><td><code>fk_bay3</code></td><td>The Wednesday Visitor</td><td>Location (fish market)</td><td>S4</td><td>290</td><td>Bay 3, the market</td><td><strong>Ep 4, Day 290</strong></td><td>Liam's side. The fishmonger's tip goes to Del and is never aired (D2)</td></tr>
+<tr><td>10</td><td><code>fk_asking</code></td><td>Did She Say Anything</td><td>Podcast · milestone</td><td>S5</td><td>291 to 297</td><td>Studio / Mariner's Row lane</td><td><strong>Ep 5, Day 297</strong></td><td>The ask about Margo; a listener: the build No. 14 gave is wrong for Liam</td></tr>
+<tr><td>11</td><td><code>fk_tessa</code></td><td>Two Hours Up the Coast</td><td>Interview (Tessa)</td><td>S6</td><td>300</td><td>Tessa's kitchen</td><td></td><td></td></tr>
+<tr><td>12</td><td><code>fk_wrong_thing</code></td><td>The Thing in the Cupboard</td><td>Data</td><td>S6</td><td>301 to 304</td><td>Studio</td><td><strong>Ep 6, Day 304</strong></td><td>Margo's words, anonymised (D3); if the thing was wrong there was a real thing</td></tr>
+<tr><td>13</td><td><code>fk_ithink</code></td><td>I Think Against I Know</td><td>Data · wall</td><td>S7</td><td>305 to 311</td><td>Studio</td><td><strong>Ep 7, Day 311</strong></td><td>The certainty gap; the slip's date; the letter kind to exactly one man; nobody ever saw Brad write</td></tr>
+<tr><td>14</td><td><code>fk_skipper</code></td><td>Three Years Before</td><td>Evidence</td><td>S8</td><td>311 to 313</td><td>The harbour master's office</td><td></td><td></td></tr>
+<tr><td>15</td><td><code>fk_platform</code></td><td>The First Train</td><td>Evidence</td><td>S8</td><td>314 to 318</td><td>The inland halt</td><td><strong>Ep 8, Day 318</strong></td><td>The 05:47 and the boots go to Del, not on air; on air: if you were on that train, write to me</td></tr>
+<tr><td>16</td><td><code>fk_one_of_a_kind</code></td><td>One of a Kind</td><td>Podcast · climax</td><td>S9</td><td>319 to 325</td><td>Studio</td><td><strong>Ep 9, Day 325</strong></td><td>The panel described (D4). One of a kind</td></tr>
+<tr><td>17</td><td><code>fk_close</code></td><td>The Man on the Wall</td><td>Podcast · close</td><td>S10</td><td>326 to 333</td><td>Studio</td><td><em>(Ep 10, Day 332, airs inside this lead's narration)</em></td><td>The accounting, after the arrest is public</td></tr>
+</tbody></table>
+<p><strong>The gap that matters most is the last one:</strong> between S9 and S10 the panel burns (Day 325 night), the landlady dusts the room (Day 326), and she writes. The player left the app having aired the description; they return to her letter.</p>
+<p><strong>Evidence board phases</strong> (<code>boardPhase</code>): Phase 1 = leads 1 to 7 (the public case) · Phase 2 = leads 8 to 13 (the doubt) · Phase 3 = leads 14 to 17 (the man).</p>
+<p><strong>Locations and art cost</strong> (new builds flagged): Ally's studio (exists), precinct (exists), Ruby's kitchen ⚠ new, the harbour café ⚠ new or redress, the Regent cinema frontage ⚠ new, the boatyard ⚠ new or redress, the fish market corridor ⚠ new, Mariner's Row lane ⚠ new, Tessa's kitchen ⚠ new or a Ruby-kitchen redress, the harbour master's office ⚠ new or redress, the inland halt platform ⚠ new. Kestrel Head is already flagged unbuilt at the spine and is needed only as photographs or narration in this structure, never as a playable location: that is deliberate, it keeps the cliff off the art bill.</p>
+<hr />
+<h1>B. THE LEAD CARDS</h1>
+<p>Format per card: purpose · belief before → evidence gained on the board → belief after · sources (B6 row numbers from spine v1.4) · requirement (band, families, T1eq) · gates in / spawns out · decision if any · the redaction line (what Fable may be told when this lead's prose is briefed; the standing base for every brief is spine Part G plus all earlier briefs, so each line states only the delta). All titles and subtitles are placeholders. Rewards are draft values, tuned to hold the shipped earn rate (Part E).</p>
+<h3>1 · <code>fk_frontpage</code> · The Front Page · Podcast · S1</h3>
+<ul>
+<li><strong>Purpose:</strong> cold install to first merge inside forty seconds; the death and the ruling on the table; FTUE entitlements and the first generator grant (mirrors the shipped <code>e1_tip</code> duties: junk drawer via overflow, family flags per the systems note in Part E).</li>
+<li><strong>Belief:</strong> nothing (cold install) → the front page assembled on the board, the wake photograph pinned (choreographed deterministic first merge, §5.7 pattern) → <em>a woman died on her stairs nine months ago, it was ruled an accident, and four friends got keys.</em> Orientation, not a turn; named as such in Part E.</li>
+<li><strong>Sources:</strong> row 54 (the Gazette front page).</li>
+<li><strong>Requirement:</strong> Easy · 1× A-T2 · 2 T1eq. Reward draft: 20 CC.</li>
+<li><strong>Gates/spawns:</strong> initial Available lead (design-time state 1). Spawns <code>fk_fourkeys</code>.</li>
+<li><strong>VO:</strong> cold open v0.4 segment 1 (Part D).</li>
+<li><strong>Redaction line:</strong> Fable may be told: nothing new. The VO is v0.4 as ruled; Fable writes only Ally's connective working notes from Part G.</li>
+</ul>
+<h3>2 · <code>fk_fourkeys</code> · Four Keys · Evidence · S1</h3>
+<ul>
+<li><strong>Purpose:</strong> the arrangement lands; the dramatic question is set (Pilot Doctrine #1).</li>
+<li><strong>Belief:</strong> an accident, a sad thing → the letter's public outline and the four keys laid out as an evidence spread → <em>the dead woman predicted her death and built an arrangement around it. Accident is now only one of two readings.</em> First real turn.</li>
+<li><strong>Sources:</strong> row 54 (keys, letters, the locked door, the Saturday agreement are all in the public account, Part G).</li>
+<li><strong>Requirement:</strong> Easy · 1× A-T3 · 4 T1eq. Reward draft: 20 CC.</li>
+<li><strong>Gates/spawns:</strong> requires nothing (spawned Available by 1). Spawns <code>fk_sergeant</code>.</li>
+<li><strong>VO:</strong> cold open v0.4 segment 2 (Part D).</li>
+<li><strong>Redaction line:</strong> Fable may be told: nothing new beyond Part G.</li>
+</ul>
+<h3>3 · <code>fk_sergeant</code> · We Looked, Properly · Interview (Del) · S1</h3>
+<ul>
+<li><strong>Purpose:</strong> close the police door honestly, so the whole season's sourcing logic is taught in one scene: nothing will come from the file; everything will come from people.</li>
+<li><strong>Belief:</strong> the police must have missed something → the outline of what was actually checked, pinned (letters examined and consistent, solicitor confirmed, movements reviewed, no further action) → <em>the police looked properly and found nothing. Whatever is wrong here is invisible to procedure. Only people hold it.</em> This is the turn that makes the podcast the instrument rather than a commentary on one.</li>
+<li><strong>Sources:</strong> rows 64 (Del: we looked, properly, there's nothing), 54.</li>
+<li><strong>Requirement:</strong> Easy · 1× A-T4 + 1× A-T2 · 10 T1eq. Reward draft: 20 CC.</li>
+<li><strong>Gates/spawns:</strong> requires <code>fk_fourkeys</code> (linear FTUE). Spawns <code>fk_kitchen</code>, <code>fk_boxes</code> (parallel pair). <strong>Ep 1 airs in the gap.</strong></li>
+<li><strong>VO:</strong> cold open v0.4 segment 3 including the ruled sign-off (Part D).</li>
+<li><strong>Redaction line:</strong> Fable may be told: Del exists as the sergeant from Part G and says only what Part G gives her. Never: anything the file holds (Ally never gets it either).</li>
+</ul>
+<h3>4 · <code>fk_kitchen</code> · The Kitchen Table · Interview (Ruby) · S2</h3>
+<ul>
+<li><strong>Purpose:</strong> the room. Five months of meetings, the reading, and the man who defended Liam, delivered as Ruby's testimony with no interpretation from Ally.</li>
+<li><strong>Belief:</strong> the letter is a dead woman's warning and the reading landed on Liam because it fit → the room reconstructed on the board: meeting by meeting, claim by claim, who argued what (the letters' claims as the survivors hold them: the yard, the tin, the ladder, the board) → <em>the reading landed on Liam because the letter's own lines lean that way, and the one man who argued his side lost every time.</em> The inversion enters as texture, unremarked.</li>
+<li><strong>Sources:</strong> row 55 (Ruby on record: the room, the letters read out, the meetings).</li>
+<li><strong>Requirement:</strong> Standard · 2× D-T4 + 3× D-T3 + 2× A-T3 · 36 T1eq. Reward draft: 170 CC.</li>
+<li><strong>Gates/spawns:</strong> spawned by 3, parallel with 5. Spawns nothing (6 and 7 gate on both).</li>
+<li><strong>Decision:</strong> <strong>D1, the letter on air</strong> (Part C).</li>
+<li><strong>Redaction line:</strong> Fable may be told: Ruby's account of the room and the meetings; the full text of the key letters and the cage letter <em>as the survivors hold them</em> (the claims about the yard, the tin, the ladder, the board). Never: that any of it is forged, or by whom.</li>
+</ul>
+<h3>5 · <code>fk_boxes</code> · The Boxes · Evidence · S2</h3>
+<ul>
+<li><strong>Purpose:</strong> Brad becomes a person, in absence, through objects and habits; and the episode gets its first hard date.</li>
+<li><strong>Belief:</strong> Brad is the tragic friend who broke → the boxes catalogued (nothing in them), his habits pinned (keys on the table moved twice, thank you like it cost him, up at five to run), and in Ruby's envelope the solicitor's covering slip → <em>Brad is a specific man, not a grief; and the letters were lodged three weeks before Violet died. Her fear predates everything.</em> The player holds the slip's date from here; its full meaning lands at lead 13, which is honest, because that is when Ally airs it.</li>
+<li><strong>Sources:</strong> rows 55, 41 (the boxes hold nothing), 62 (the slip and postmark, from Ruby's envelope, Day 276).</li>
+<li><strong>Requirement:</strong> Hard · 3× F-T5 + 3× F-T4 + 2× F-T3 · 80 T1eq. Reward draft: 380 CC.</li>
+<li><strong>Gates/spawns:</strong> spawned by 3, parallel with 4. <strong>Ep 2 airs in the gap</strong> once 4 and 5 are both activated. Spawns nothing (gate carried by 6 and 7).</li>
+<li><strong>Redaction line:</strong> Fable may be told: the boxes and their nothing; Brad's habits (Fable wrote them in the five v1.2); the slip, its date, and that Ally notes it without yet knowing what it proves. Never: what it will prove.</li>
+</ul>
+<h3>6 · <code>fk_calling_in</code> · Calling It In · Money Trail (café owner) · S3</h3>
+<ul>
+<li><strong>Purpose:</strong> money enters the story, from a witness who owed her nothing.</li>
+<li><strong>Belief:</strong> nobody had a reason to want Violet dead → the debt conversation reconstructed from the café (she was calling in what she was owed, for the lawyer, in her last months) → <em>money moved in her last months. Someone owed her, and she was collecting.</em> No name attaches; the player's suspicion has a category now, not a face.</li>
+<li><strong>Sources:</strong> row 56 (café owner, on record).</li>
+<li><strong>Requirement:</strong> Standard · 2× D-T5 + 1× D-T4 · 40 T1eq. Reward draft: 170 CC.</li>
+<li><strong>Gates/spawns:</strong> requires <code>fk_kitchen</code> + <code>fk_boxes</code>. Spawned by 4 and 5 (idempotent), parallel with 7.</li>
+<li><strong>Redaction line:</strong> Fable may be told: the café owner's account: she was calling her money in. Never: who owed most, or why it matters.</li>
+</ul>
+<h3>7 · <code>fk_gold_panel</code> · The Gold Panel · Interview (cinema owner) · S3</h3>
+<ul>
+<li><strong>Purpose:</strong> what Violet found gets a shape; and the download map plants the far town, player-only, with Ally.</li>
+<li><strong>Belief:</strong> what she found is unknowable, gone behind the door → a month of whose-hand sightings plotted (the cinema owner, the café, the panel described loosely: gold letters on a dark board, a hand she could not place) plus Ally's own download map, one town four hundred miles away listening every week → <em>what she found had a shape, and she showed it round town for a month. Whoever hid it heard her asking. And somewhere far away, one town is listening very hard.</em> The map is Ally's own data (row 61); it is never aired and never explained here.</li>
+<li><strong>Sources:</strong> rows 56, 61 (download map, Day 283 onward, her own analytics).</li>
+<li><strong>Requirement:</strong> Hard · 2× R-T5 + 2× D-T5 + 3× D-T4 · 88 T1eq. Reward draft: 380 CC.</li>
+<li><strong>Gates/spawns:</strong> requires <code>fk_kitchen</code> + <code>fk_boxes</code>, parallel with 6. <strong>Ep 3 airs in the gap</strong> once 6 and 7 are both activated. 8 and 9 gate on both.</li>
+<li><strong>Redaction line:</strong> Fable may be told: the whose-hand month; the panel only as witnesses describe it (gold letters, dark board); that the download map shows one persistent far town and Ally files it as odd. Never: what the panel is, whose hand, or what the town means.</li>
+</ul>
+<h3>8 · <code>fk_liam</code> · The Man It Points At · Interview (Liam) · S4</h3>
+<ul>
+<li><strong>Purpose:</strong> Liam talks (spine Day 288). The letter's case against him is tested claim by claim, in his own flat voice.</li>
+<li><strong>Belief:</strong> the letter's case against Liam is at least arguable → each claim laid against his account on the board: the third (true, lawful, confirmed by him), the tin (I never gave her a penny: undisprovable either way), the ladder (she told everyone which ladder) → <em>every claim is either true but innocent, or unfalsifiable. The letter reads like a case built to fit him.</em> The word "built" enters the player's vocabulary and is not yet aired anywhere.</li>
+<li><strong>Sources:</strong> row 58 (Liam, Day 288).</li>
+<li><strong>Requirement:</strong> Hard · 2× R-T6 + 1× R-T5 + 1× R-T4 · 88 T1eq. Reward draft: 380 CC.</li>
+<li><strong>Gates/spawns:</strong> requires <code>fk_calling_in</code> + <code>fk_gold_panel</code>. Parallel with 9 (9 spawns Blocked beside it, visible, gated on 8: the tip card sits on the bar as anticipation).</li>
+<li><strong>Redaction line:</strong> Fable may be told: Liam's side as he gives it, including the confirmed third and his refusals. Never: whether the letter is right.</li>
+</ul>
+<h3>9 · <code>fk_bay3</code> · The Wednesday Visitor · Location (fish market) · S4</h3>
+<ul>
+<li><strong>Purpose:</strong> the floor moves. The fishmonger's tip: Brad was at the cage on the Wednesday, three days before the Saturday.</li>
+<li><strong>Belief:</strong> the cage was sealed until the four opened it together → the market morning reconstructed (Bay 3 at 05:40, the corridor door round the side where no camera looks, market hours, anyone with a key) → <em>Brad was inside the arrangement before it opened. The dead man went early.</em> The single largest belief turn before the close, and it is held, not aired: it goes to Del the same day (spine row 57, Ally's protocol as canon). The player now suspects Brad of something and cannot say what death has to do with it, which is exactly the ruled shape: the surprise the episode protects is not "it was him", it is "he is alive".</li>
+<li><strong>Sources:</strong> row 57 (Bay 3 fishmonger, Tip Line, Day 290, caller consents; to Del, never aired).</li>
+<li><strong>Requirement:</strong> Standard · 2× F-T4 + 2× D-T4 + 2× A-T3 · 40 T1eq. Reward draft: 170 CC.</li>
+<li><strong>Gates/spawns:</strong> requires <code>fk_liam</code> (spawned Blocked beside it by 6/7's completion; unblocks on 8). <strong>Ep 4 airs in the gap</strong> (Liam's side; the tip is not in it). Spawns <code>fk_asking</code>.</li>
+<li><strong>Decision:</strong> <strong>D2, the Wednesday tip</strong> (Part C).</li>
+<li><strong>Redaction line:</strong> Fable may be told: the tip verbatim; that it goes to Del within the day and is never aired; Ally's private vertigo, unexplained. Never: what the visit was for, or that anything was swapped.</li>
+</ul>
+<h3>10 · <code>fk_asking</code> · Did She Say Anything · Podcast · milestone · S5</h3>
+<ul>
+<li><strong>Purpose:</strong> mid-season milestone (the halfway wall). Margo becomes the missing voice; the lane man stops being Liam.</li>
+<li><strong>Belief:</strong> Margo jumped from guilt and left nothing; the man in the lane could have been Liam → the lane sighting re-measured on the board (No. 14's build set against Liam's, from a listener's letter, spine row R15 Day 297) and Margo's last months mapped: the withdrawals, the every-second-Sunday drives, the silence → <em>the man in the lane was the wrong build for Liam, and Margo, the first to go quiet, is the person nobody ever heard from. Ally asks the world: did she say anything to anyone.</em> The board work here is re-measurement rather than new physical evidence, and Part E names this lead among the three weakest for it; the ask itself is the week's broadcast.</li>
+<li><strong>Sources:</strong> rows 55, 58 (follow-ups), R15 (the listener on the build, Day 297), 18 (the lane sighting as public door-knock fact).</li>
+<li><strong>Requirement:</strong> Very Hard wall · 2× R-T6 + 2× R-T5 + 2× D-T5 · 128 T1eq. Reward draft: <strong>milestone 400 CC + 20 energy</strong>.</li>
+<li><strong>Gates/spawns:</strong> requires <code>fk_bay3</code>. <strong>Ep 5 airs in the gap</strong> (the ask). Spawns <code>fk_tessa</code> and <code>fk_wrong_thing</code> (12 arrives Blocked, gated on 11, visible).</li>
+<li><strong>Redaction line:</strong> Fable may be told: the listener's letter about the build; Margo's mapped last months as the survivors describe them; the on-air ask, word for word once ruled. Never: who contacted Margo or why she went to the point.</li>
+</ul>
+<h3>11 · <code>fk_tessa</code> · Two Hours Up the Coast · Interview (Tessa) · S6</h3>
+<ul>
+<li><strong>Purpose:</strong> the person nobody in Havenbay knew exists. Eleven years, every second Sunday, and one kept screenshot.</li>
+<li><strong>Belief:</strong> Margo left nothing → the drive up the coast (door-knock kit), Tessa herself, and the screenshot authenticated on the board: <em>the thing in the cupboard is wrong. It can't mean that.</em> → <em>Margo doubted the letter's meaning, said so once, to one person, and never said who she suspected.</em> The first voice from inside the silence.</li>
+<li><strong>Sources:</strong> row 59 (Tessa writes Day 300, owns the screenshot, consents anonymised).</li>
+<li><strong>Requirement:</strong> Standard · 2× D-T5 + 1× D-T4 + 2× A-T3 · 48 T1eq. Reward draft: 170 CC.</li>
+<li><strong>Gates/spawns:</strong> spawned by 10, parallel-visible with 12 (12 gated on 11).</li>
+<li><strong>Decision:</strong> <strong>D3, Margo's words</strong> (Part C).</li>
+<li><strong>Redaction line:</strong> Fable may be told: Tessa as a person (the card in the drawer is hers to mention or not); the screenshot line verbatim; the channel's nature (self-deleting, eleven years). Never: who else ever used that channel.</li>
+</ul>
+<h3>12 · <code>fk_wrong_thing</code> · The Thing in the Cupboard · Data · S6</h3>
+<ul>
+<li><strong>Purpose:</strong> the deduction airs. If the thing was wrong, there was a real thing, and nobody has found one.</li>
+<li><strong>Belief:</strong> the cupboard held Violet's proof and the letter explains it → the cage letter's claims laid out against everything the room verified, with Margo's line pinned across them → <em>the letter and the thing do not have to be one testimony. If the thing was wrong there was a real thing, and it is not in the cage, not in the boxes, not in the estate. Something is missing from the world.</em> Two signwriters write in about the panel in response (one, on D3's paraphrase branch). The board work assembles facts the player already holds into a new reading; Part E names this lead among the three weakest for exactly that reason, and keeps it because the reading is Ally's Ep 6 and the player must build it with her rather than be told it.</li>
+<li><strong>Sources:</strong> rows 59 (aired anonymised, with consent), 56 (the signwriters' letters).</li>
+<li><strong>Requirement:</strong> Hard · 2× A-T5 + 2× F-T5 + 3× F-T4 · 88 T1eq. Reward draft: 380 CC.</li>
+<li><strong>Gates/spawns:</strong> requires <code>fk_tessa</code>. <strong>Ep 6 airs in the gap.</strong> Spawns <code>fk_ithink</code>.</li>
+<li><strong>Redaction line:</strong> Fable may be told: the deduction exactly as aired; that two signwriters wrote in describing a gilded panel. Never: that the deduction is correct, or what the real thing is.</li>
+</ul>
+<h3>13 · <code>fk_ithink</code> · I Think Against I Know · Data · wall · S7</h3>
+<ul>
+<li><strong>Purpose:</strong> the letter stops being Violet's. The episode's intellectual climax, one week before its physical one.</li>
+<li><strong>Belief:</strong> both letters are Violet's; one frightened voice → the two letters side by side on the board, dated by the slip: the first says <em>I think, and I may be wrong</em>, lodged three weeks before she died; the second says <em>I know</em>; the claims of the second are kind to exactly one man; and a listener's question lands: what did Brad's handwriting look like? Ruby cannot answer. Nobody can. → <em>the second letter is probably not hers, it is kind to the man who is dead, and nobody alive ever saw that man write cursive.</em> The player arrives where Margo arrived, six weeks after her, by the public route. A Gerald beat is proposed inside this lead's dialogue (Discuss register, canon-first; not a separate lead).</li>
+<li><strong>Sources:</strong> rows 55, 62 (the slip dates the lodging), R3a (nobody saw Brad write; aired Day 311), 30 (the cage letter's text as the survivors hold it).</li>
+<li><strong>Requirement:</strong> Very Hard wall · 2× A-T6 + 3× F-T5 + 2× F-T4 · 128 T1eq. Reward draft: 560 CC + 20 energy.</li>
+<li><strong>Gates/spawns:</strong> requires <code>fk_wrong_thing</code>. <strong>Ep 7 airs in the gap.</strong> Spawns <code>fk_skipper</code> and <code>fk_platform</code> (parallel pair).</li>
+<li><strong>Redaction line:</strong> Fable may be told: everything aired on Day 311, which necessarily includes "the second letter may not be Violet's and its kindness points at Brad". This is the widest brief before the close and it is licensed because Ally airs it; Fable still holds nothing of the swap's mechanics, the panel's meaning, or that Brad is alive. Never: those three things.</li>
+</ul>
+<h3>14 · <code>fk_skipper</code> · Three Years Before · Evidence · S8</h3>
+<ul>
+<li><strong>Purpose:</strong> Brad acquires a shadow. A letter from a man who was never asked a question in his life.</li>
+<li><strong>Belief:</strong> Brad's story starts at Violet's unit seven years ago → the skipper's letter pinned and the harbour years mapped: a deckhand who lived aboard, drank at Brad the signwriter's, missed a sailing three years before Violet died, and was never found → <em>someone vanished out of Brad's life before any of this began, and nobody ever connected the two until a podcast said his name often enough.</em> To Del, never aired (spine Day 311; Del revives the file Day 312, off-page). The thinnest full lead in the set and named in Part E; it stays because the close's identification is unbuyable without it and the player must hold it as an unexplained weight, exactly as Ally does. <strong>Season notch candidate sits here (Part F, question 1).</strong></li>
+<li><strong>Sources:</strong> rows 10c, R6a (the skipper writes via the show, Day 311; to Del, never aired).</li>
+<li><strong>Requirement:</strong> Standard · 2× R-T5 + 1× R-T4 · 40 T1eq. Reward draft: 170 CC.</li>
+<li><strong>Gates/spawns:</strong> spawned by 13, parallel with 15.</li>
+<li><strong>Redaction line:</strong> Fable may be told: the skipper's letter verbatim; that it goes to Del and is never aired; that Ally cannot see what it means and files it. Never: what it means.</li>
+</ul>
+<h3>15 · <code>fk_platform</code> · The First Train · Evidence · S8</h3>
+<ul>
+<li><strong>Purpose:</strong> alive becomes thinkable. The platform woman's letter: the Saturday the car was found, the first train, wet boots, a cash single.</li>
+<li><strong>Belief:</strong> Brad went into the water on the Friday night → the 05:47 reconstructed on the board: the clerk's complaint about the change, the boots, the timetable against the search timeline → <em>someone walked out of Kestrel Head the morning after Brad's car was found. Ally does not say the sentence. She asks the train to speak: if you were on that train, write to me.</em> To Del, not aired; the ask is aired (spine row 60). The player may now believe anything; the game confirms nothing, per the ruled reveal order.</li>
+<li><strong>Sources:</strong> row 60 (the platform woman, Day 318; to Del; the on-air ask).</li>
+<li><strong>Requirement:</strong> Hard · 2× R-T6 + 2× A-T4 + 2× F-T4 · 96 T1eq. Reward draft: 380 CC.</li>
+<li><strong>Gates/spawns:</strong> spawned by 13, parallel with 14. <strong>Ep 8 airs in the gap</strong> once 14 and 15 are both activated. 16 gates on both.</li>
+<li><strong>Redaction line:</strong> Fable may be told: the letter, the boots, the cash single, the on-air ask. Never: who was on the train.</li>
+</ul>
+<h3>16 · <code>fk_one_of_a_kind</code> · One of a Kind · Podcast · climax · S9</h3>
+<ul>
+<li><strong>Purpose:</strong> the climax build. Four descriptions become one object, and describing it out loud is a decision with a cost.</li>
+<li><strong>Belief:</strong> the panel is a rumour with no owner → the climax assembly: the café's memory, the cinema owner's, the two signwriters', cross-checked detail by detail into one describable thing: black ground, twenty-six gold capitals and an ampersand, a crack across one corner, a small mark bottom right that was not her name and not his → <em>the thing is real, unique, and about to be spoken into every kitchen in the country, including one Ally cannot know about. Airing it is the only way to find it, and airing it warns whoever holds it.</em> Ep 9 airs it. That night, off-page, it burns.</li>
+<li><strong>Sources:</strong> row 56 (the four describers; aired Ep 9, Day 325).</li>
+<li><strong>Requirement:</strong> Very Hard climax wall · 3× R-T6 + 2× F-T5 + 2× A-T5 · 160 T1eq. Reward draft: 560 CC + <strong>2 Platinum Ingots</strong>. Board-space guardrail: three concurrent T6 builds plus two T5s is the heaviest ask in the episode, same class as The Listener's L11-B; playtest before lock, fallback shape 2× R-T6 + 2× R-T5 + 2× F-T5 (144).</li>
+<li><strong>Gates/spawns:</strong> requires <code>fk_skipper</code> + <code>fk_platform</code>. <strong>Ep 9 airs in the gap.</strong> Spawns <code>fk_close</code>.</li>
+<li><strong>Decision:</strong> <strong>D4, the mark</strong> (Part C).</li>
+<li><strong>Redaction line:</strong> Fable may be told: the full description as assembled; Del's request to hold one detail back; that Ally airs the description knowing whoever has it will hear. Never: whose mark it is, what the panel proves, who hears it.</li>
+</ul>
+<h3>17 · <code>fk_close</code> · The Man on the Wall · Podcast · close · S10</h3>
+<ul>
+<li><strong>Purpose:</strong> the accounting. The letter from the landlady arrives in the gap; the player holds the answer through a deliberately quiet week; the arrest lands; Ally tells Havenbay he is alive.</li>
+<li><strong>Belief:</strong> the description is out and there is nothing to do but wait → ceremonial requirement (one item: the studio, one more time); the content is narrative: her letter (the wall, the gap where the panel hung, an address, never aired, never named), Del at 07:00, six days of silence, Ep 10 indistinguishable from Ep 9 by design, and then the news: arrested four hundred miles away, under a name that sat for three years in a missing-person file in Del's own precinct. <em>Brad Collins, alive.</em> → <em>he was alive the whole time; the reading was his; Margo was right and it killed her; and the two survivors were afraid of the only two people in the room who were innocent.</em> The close airs the accounting: what is public, plus everything Ally held that can now be said, minus the landlady, who is never named, even now. Ending shape and its named cost are Stephen's ruling (Part F, question 2).</li>
+<li><strong>Sources:</strong> rows 63 (the landlady's message, held), 54-class public record of the arrest (Day 333); everything previously held becomes airable only where the source consented.</li>
+<li><strong>Requirement:</strong> ceremonial · 1× A-T2 · 2 T1eq (the separate-axes rule, §7.2: Very Hard rewards over a ceremonial requirement). Reward draft: <strong>500 CC + 20 energy + 3 Platinum Ingots</strong>.</li>
+<li><strong>Gates/spawns:</strong> requires <code>fk_one_of_a_kind</code>. Sets <code>fk.ep01.complete</code> (mirrors <code>e1.ep01.complete</code>). Spawns <code>cold_case_a</code> + <code>ep2_teaser</code> (the shipped tail assets, reused; story-neutral, and the standing content-folder note applies).</li>
+<li><strong>Redaction line:</strong> the last brief, and the only one that ends the blindness: Fable may be told the ending as the public knows it (alive, the arrest, the identity offences, the revived file), plus Ally's held material with its consent boundaries marked. This brief is written last and only after every other lead's prose is locked.</li>
+</ul>
+<hr />
+<h1>C. THE DECISIONS</h1>
+<p>Four decisions, placed S2 / S4 / S6 / S9. None moves the spine's clock: the same man is arrested on the same day in every reachable state, because the spine survived three adversarial rounds by being inevitable and this document does not reopen it. What the decisions change is who is protected, exposed and believed along the way, and what the public record ends up holding, which is the axis the consequence-and-agency gate names ("differ materially in who is protected, exposed, believed, harmed"). The honest caveat: the gate's strongest reading, decisions that change the ending, is deliberately unavailable here. That trade is structural, not accidental, and it goes to the attack (Part E and the attack prompt).</p>
+<p>Implementation: each decision is the shipped pattern (two buttons in dialogue, one flag pair, variant nodes at later leads; no BranchOutcomes UI needed, no flag ever gates a mainline lead, so no branch can starve the chain). Flags: <code>aq.fk.d1.aired</code> / <code>aq.fk.d1.held</code>, <code>aq.fk.d2.direct</code> / <code>aq.fk.d2.market</code>, <code>aq.fk.d3.verbatim</code> / <code>aq.fk.d3.paraphrase</code>, <code>aq.fk.d4.mark_aired</code> / <code>aq.fk.d4.mark_held</code>.</p>
+<h3>D1 · The letter on air · lead 4, Day ~272 · Class B</h3>
+<p>Ruby wants her key letter read whole on the show: Violet's words in Violet's order, including <em>do not go to the police, and here is why</em>.</p>
+<ul>
+<li><strong>A (spine's account, Ep 2 "the letters read out"): read it whole.</strong> The city hears that four friends sat on a murder warning for months. Cost, named and irreversible: Ruby and Liam are savaged for the holding; the doorstepping hardens from S3; variant lines through S3 and S4 carry it, and one close-lead line accounts for it. Gain: Violet speaks for herself, and every later broadcast stands on her exact words.</li>
+<li><strong>B: air only what Ally can verify</strong> (the arrival, the solicitor's slip, the outline) and hold the text. Cost, named and perceivable by S6: a partial version of the letter leaks anyway (Ruby has read it aloud to others before Ally existed), the city's version is garbled and crueller, and Ep 7 must spend its opening correcting the record instead of advancing it; Ruby's variant lines carry the exposure to a worse version of her own evidence. Gain: the survivors are not the ones who put the warning in the city's mouth.</li>
+<li><strong>Fairness:</strong> both defensible at the moment of choice (let Violet speak vs shield the living); each option's risk is stated by Ruby and Ally respectively before the buttons; the later leak is signalled (Ruby says other people have heard her read it). Rejoin: immediate, shared topology; variant lines only. Clock check: Ep 7 airs the full text on Day 311 in both branches; no B6 day moves.</li>
+</ul>
+<h3>D2 · The Wednesday tip · lead 9, Day 290 · Class A</h3>
+<p>The tip names Brad at the cage on the Wednesday. It goes to Del the same day and never airs in both branches: that is Ally's protocol and it is canon, not the player's to spend. The choice is how it travels.</p>
+<ul>
+<li><strong>A (spine's account): hand it to Del raw, stand back.</strong> Del takes the fishmonger's first telling as a clean statement (spine Day 292). Cost: Ally never holds the texture; the evidence board's market cluster stays thin; the player's private certainty rests on one relayed sentence.</li>
+<li><strong>B: go to Bay 3 first, take his account on tape, then hand both over.</strong> Gain: the corridor door, the early-for-you line, the market morning on the board in detail. Cost, named: the market learns the podcast is asking about the cage; within the week the city knows there is a cage question; Liam, who has just bought his quiet by talking, is doorstepped with it and goes silent toward the show until Day 311 (his contribution drops out of the S5 material; the board marks him gone quiet; Del's single friction line notes the first telling is now on Ally's tape, not a statement).</li>
+<li><strong>Fairness:</strong> both defensible (evidence hygiene vs witness texture); risks stated by Del's standing rule and by the fishmonger's own "I'll tell you what I told the machine". Rejoin: by lead 13. Clock check: the tip reaches Del Day 290 in both branches; the fishmonger's statement lands Day 292 in both; the survivors learn nothing of its content in either; no B6 day moves. Class A: the differences ride on shared assets (board annotations, card subtitle, access state, one flat line), no exclusive scene.</li>
+</ul>
+<h3>D3 · Margo's words · lead 11, Days 300 to 304 · Class B</h3>
+<p>Tessa consents to the words going on air, anonymised, and is frightened of the phrasing itself: eleven years of secrecy has trained her to believe a sentence can be an address.</p>
+<ul>
+<li><strong>A (spine's account): air the words verbatim, anonymised.</strong> Gain: the exact words do the work; two signwriters connect the gold panel to "the thing in the cupboard"; Margo enters the record as someone who doubted, not someone who drowned in guilt. Cost, named: the channel is described on air (an app that deletes everything, a woman who was nobody's public anything), and Tessa spends the rest of the episode knowing the description exists; her variant lines carry it. The spine holds that no danger reaches her; the fear is real and is the cost.</li>
+<li><strong>B: air the substance, paraphrased; shield the phrasing and the channel.</strong> Cost, named and perceivable at S9 and the close: the deduction lands softer; one signwriter writes in instead of two; the Ep 9 description assembles from three sources and drops the crack across the corner; at the close, Tessa's variant line lands: <em>you made her sound like a rumour.</em> Margo's own words never enter the record. Gain: the channel is never described to the city.</li>
+<li><strong>Fairness:</strong> both defensible (the record vs the witness); Tessa states her fear, Ally states what verbatim words historically do (strangers answer). Rejoin: immediate; the S9 evidence-quality difference is the perceivable tail. Clock check: Ep 6 airs Day 304 in both; the panel description airs Day 325 in both; the burn and the letter (Days 325 to 326) hold in both, because a near-match is a risk the man cannot take; no B6 day moves.</li>
+</ul>
+<h3>D4 · The mark · lead 16, Day 325 · Class A</h3>
+<p>Del asks Ally to keep one detail off air so that claims can be tested: the small mark bottom right that was not Violet's name and not Brad's. Del does not say why she is asking (she has held a private hypothesis since Day 292 and it never leaves her, per C7).</p>
+<ul>
+<li><strong>A (spine's account): air everything, including the mark.</strong> Gain: maximum recognition reach (Ally cannot know whether the person who matters saw it daily or once), and the public record carries the strangest fact: somebody signed this thing as somebody else. Cost, named: the description is unfalsifiable in the wild; claims flood the week; Del sifts forty letters; the two signwriters who described it publicly are doorstepped, and the cinema owner shuts his booth to the press (board annotation and one close line).</li>
+<li><strong>B: hold the mark back at Del's request.</strong> Gain: the one letter that supplies the unaired detail is instantly credible; the close's accounting shows a clean identification instead of a sift. Cost, named: the broadcast record never carries the mark; the city's doubt runs the final week (Ruby's variant: nobody I know ever saw this thing); and the audience, in-world and at the handset, never hears the pre-echo.</li>
+<li><strong>Fairness:</strong> genuinely balanced; Del argues B, the season's own protocol history argues A. Rejoin: within the close. Clock check: the burn happens on the night of Day 325 in both branches (a partial description is still a description of the only such object in the world); the landlady looks on Day 326 in both (black ground and gold capitals is her wall either way); Del moves at 07:00 on Day 327 in both; arrest Day 333 in both. Class A: board and risk-state differences through shared assets plus close-lead variant nodes.</li>
+</ul>
+<p><strong>Gate arithmetic for the set:</strong> four decisions (minimum met) · Classes A, B, B, A (two Class A met; zero Class C, under the cap of one) · every branch rejoins in at most three leads (D1 immediate, D2 by lead 13, D3 by the close via S9's shared assembly, D4 within the close) · no nested forks (one live decision at a time; the pairs never overlap because each is resolved inside its own lead's dialogue) · no single end-of-episode branch (S2, S4, S6, S9) · no flag gates any mainline lead, so no reachable state starves the chain: verified against the Part E gate table. Material loss on a named person, per branch: Ruby (D1-A), the survivors' record (D1-B), Liam's quiet (D2-B), evidence texture (D2-A), Tessa's fear (D3-A), Margo's voice and Tessa's trust (D3-B), the sources' privacy (D4-A), the public record and the pre-echo (D4-B). Every loss is surfaced in a scene or on the board before the episode ends; none is design-document-only.</p>
+<hr />
+<h1>D. SESSION 1, IN SECONDS</h1>
+<p>The cold open v0.4 is ~470 words, ~3:20 at 140 wpm. Ruled 2026-08-31: spread over multiple FTUE leads at a cost of about one extra lead requirement. The cut below is the proposal for ruling (Part F, questions 3 and 4). Every word is v0.4 as adopted; nothing is rewritten.</p>
+<p><strong>The cut:</strong></p>
+<ul>
+<li><strong>Segment 1 → lead 1 (<code>fk_frontpage</code>).</strong> From <em>"This is Echoes of Havenbay"</em> through <em>"…four people received something in the post."</em> ≈ 90 words ≈ <strong>38 to 39 seconds</strong> at 140 wpm. The segment ends on the hook line so the first tap lands with the keys already in the air.</li>
+<li><strong>Segment 2 → lead 2 (<code>fk_fourkeys</code>).</strong> From <em>"Each of them got an identical key…"</em> through <em>"…neither one will say what that object was."</em> ≈ 160 words ≈ 68 seconds, played across the lead (opening nodes and completion nodes; the deterministic merge sits between them, §5.7's choreographed pattern).</li>
+<li><strong>Segment 3 → lead 3 (<code>fk_sergeant</code>).</strong> From <em>"Then the group began to disappear."</em> to the ruled sign-off ≈ 220 words ≈ 95 seconds, split around the Del scene, sign-off on completion. Ep 1 airs in the gap.</li>
+</ul>
+<p><strong>First interaction:</strong> the seeded pair begins pulsing under segment 1's third paragraph (about 0:25); the board accepts the tap from the moment segment 1 ends. <strong>VO before first required interaction ≈ 38 to 39 seconds</strong>, against I6's open 35-to-40-second target: inside the band, at its top edge. The alternative cut (end segment 1 at <em>"…nothing more."</em>, ≈ 78 words ≈ 33 seconds) buys 6 seconds and costs the keys landing before play. Both numbers are flagged for Stephen rather than assumed (Part F, question 3).</p>
+<p><strong>Timeline (draft):</strong> 0:00 ident and the death line · 0:25 board visible, pair pulsing under VO · ~0:39 first tap (lead 1's requirement is one A-T2: one deterministic merge) · ~1:00 lead 1 resolution nodes · ~1:15 segment 2 opens lead 2 (the keys, the letter, the door) · first self-directed merges (1× A-T3) · ~2:30 lead 2 resolution: the object, and the two survivors who will not say · ~3:00 lead 3: Del on the steps, segment 3, the requirement (A-T4 + A-T2) teaches a two-slot card · ~5:30 sign-off, Ep 1 publishes in the gap, session 1 can end. Total session 1 VO = the whole ruled open, unchanged; total new FTUE VO written for this structure: none.</p>
+<p>Mechanical duties (systems pass, not this document): lead 1 carries the FTUE entitlement hooks and the junk-drawer generator grant exactly as <code>e1_tip</code> does; the first R-family requirement does not appear until lead 7, so the rusty-anchor availability flag must be set by lead 6's activation at the latest; A and F flow from the lab from lead 1. To be wired and verified in the editor, not asserted here.</p>
+<hr />
+<h1>E. THE CHECKS</h1>
+<h3>E1. Every aired fact traces to a B6 row</h3>
+<table><thead><tr><th>Broadcast</th><th>Airs</th><th>B6 sources</th></tr></thead><tbody>
+<tr><td>Ep 1 (269)</td><td>The public account, Del's nothing</td><td>54, 64</td></tr>
+<tr><td>Ep 2 (276)</td><td>The room, the letters read out, the boxes, the habits</td><td>55, 41</td></tr>
+<tr><td>Ep 3 (283)</td><td>Debts called in; the panel carried round</td><td>56</td></tr>
+<tr><td>Ep 4 (290)</td><td>Liam's side (the tip is to Del, not aired)</td><td>58; 57 held</td></tr>
+<tr><td>Ep 5 (297)</td><td>The ask about Margo; the build correction</td><td>55/58, R15</td></tr>
+<tr><td>Ep 6 (304)</td><td>The words, anonymised, with consent; the deduction</td><td>59, 56</td></tr>
+<tr><td>Ep 7 (311)</td><td>I think against I know; the slip's date; the kindness; the handwriting question</td><td>55, 62, R3a, 30</td></tr>
+<tr><td>Ep 8 (318)</td><td>The on-air ask about the train (the letter itself to Del)</td><td>60 held; the ask is hers</td></tr>
+<tr><td>Ep 9 (325)</td><td>The description</td><td>56</td></tr>
+<tr><td>Ep 10 (332)</td><td>Indistinguishable from Ep 9</td><td>by design</td></tr>
+<tr><td>Close (333+)</td><td>The public arrest; held material within consent; the landlady never</td><td>public record; 63 never aired</td></tr>
+</tbody></table>
+<p>Never aired, held with Ally, shown to the player as held: rows 57 (the tip), 60 (the letter), 61 (the map), 63 (the landlady), 10c/R6a (the skipper). Nothing reaches the player that Ally never learns; nothing is aired ahead of its A5 episode; the only facts the player holds ahead of the audience are the ones Ally holds, which is the ruled shape: the player learns with Ally.</p>
+<h3>E2. No lead precedes its spine day</h3>
+<p>Checked lead by lead against B6 and A5: lead 5 uses row 62 (Day 276) inside S2 (270 to 276) · lead 7 uses row 61 (283 onward) at Day 282-283 · lead 9 sits on Day 290 exactly · lead 10 uses R15 (Day 297) · lead 11 sits on Day 300 · lead 13 airs R3a on Day 311 · lead 14 opens after Day 311 · lead 15 sits on Day 318 · lead 16 assembles sources dated 283 to 311 and airs Day 325 · the close consumes nothing dated before Day 326. <strong>Pass.</strong> The tightest joints are lead 5 (the slip arrives the same week it is used) and lead 14 (the skipper's letter is written on the day Ep 7 airs and read at the top of the next session); both are inside their windows.</p>
+<h3>E3. Kill Gate Zero (operational reality)</h3>
+<p>The structure invents no institutional power and asks no professional to skip a step. Every route used is one the spine already computed: the Tip Line (canon), witnesses speaking about their own knowledge (lawful throughout B6), Ally's own analytics (row 61), Del receiving and acting on tips (C7). The two decisions that touch process (D2's market visit, D4's held-back detail) use powers Ally and Del actually have: asking questions and choosing what to broadcast. The why-was-it-missed answer is the spine's pre-flight #1 and is not weakened by any lead: nothing here finds anything before its day.</p>
+<h3>E4. Consequence and agency</h3>
+<p>Four decisions, two Class A, zero Class C, all rejoining within three leads, no consequence-free branch, every cost surfaced in-scene or on-board before the end (Part C's arithmetic). Caveat, stated plainly: no decision changes the arrest or its day. The differing end states are who was exposed, protected and believed on the way, and what the record holds. Whether that satisfies the gate as ruled is folded into the attack prompt; it is the one place this structure knowingly trades the gate's strongest reading for the spine's inevitability.</p>
+<h3>E5. The evidence-turn test, answered per lead</h3>
+<p>Answered on every card in Part B (belief before → board → belief after). <strong>The three weakest, named honestly:</strong></p>
+<ol>
+<li><strong>Lead 1 <code>fk_frontpage</code>.</strong> Orientation, not a turn: the player believes nothing yet, so nothing can change. Defended as the FTUE's price and kept to one merge and forty seconds; it must never grow.</li>
+<li><strong>Lead 10 <code>fk_asking</code>.</strong> The board work is re-measurement (a build compared, a timeline mapped) and the belief turn arrives partly in dialogue (the listener's letter). It carries the mid-season milestone and the largest wall to that point, which risks toll-booth reading. Mitigation: the lane re-measurement is the merge deliverable itself (the player assembles the comparison that clears Liam of the lane), and the ask is the payoff, not the work.</li>
+<li><strong>Lead 12 <code>fk_wrong_thing</code>.</strong> A deduction lead: the merge assembles facts already held into a new reading. The belief does change (decoy enters the world), but the board contributes arrangement, not evidence. Kept because the player must build Ally's Ep 6 reasoning to own it; flagged as the first candidate for redesign if the evidence-turn play test says toll booth.</li>
+</ol>
+<p>Also thin, watched but defended: lead 14 (a single letter; the turn is real but small, and the close cannot exist without it).</p>
+<h3>E6. Gate arithmetic, written out</h3>
+<table><thead><tr><th>Lead</th><th>RequiredLeadIds</th><th>Spawned by</th><th>Spawns</th></tr></thead><tbody>
+<tr><td>1</td><td>(none, initial Available)</td><td></td><td>2</td></tr>
+<tr><td>2</td><td>(none)</td><td>1</td><td>3</td></tr>
+<tr><td>3</td><td>2</td><td>2</td><td>4, 5</td></tr>
+<tr><td>4</td><td>(none)</td><td>3</td><td></td></tr>
+<tr><td>5</td><td>(none)</td><td>3</td><td></td></tr>
+<tr><td>6</td><td>4 AND 5</td><td>4, 5 (idempotent)</td><td></td></tr>
+<tr><td>7</td><td>4 AND 5</td><td>4, 5 (idempotent)</td><td></td></tr>
+<tr><td>8</td><td>6 AND 7</td><td>6, 7</td><td></td></tr>
+<tr><td>9</td><td>8</td><td>6, 7 (arrives Blocked, visible)</td><td>10</td></tr>
+<tr><td>10</td><td>9</td><td>9</td><td>11, 12</td></tr>
+<tr><td>11</td><td>(none)</td><td>10</td><td></td></tr>
+<tr><td>12</td><td>11</td><td>10 (arrives Blocked, visible)</td><td>13</td></tr>
+<tr><td>13</td><td>12</td><td>12</td><td>14, 15</td></tr>
+<tr><td>14</td><td>(none)</td><td>13</td><td></td></tr>
+<tr><td>15</td><td>(none)</td><td>13</td><td></td></tr>
+<tr><td>16</td><td>14 AND 15</td><td>14, 15</td><td>17</td></tr>
+<tr><td>17 (close)</td><td>16</td><td>16</td><td>cold_case_a, ep2_teaser</td></tr>
+</tbody></table>
+<p>Checks: every referenced id exists in the table (auditor's rule) · the graph is acyclic and single-rooted at lead 1 · every lead is reachable (each gate's members are themselves reachable and completable) · no gate needs more than two keys and no lock needs all keys anywhere (the ruled anti-puzzle-box rule; the widest gate is 2) · no flag gates a mainline lead, so no decision can starve the chain · maximum simultaneous Available leads is 2, within the bar's shipped comfort · <code>CheckAndUnlockBlockedLeads</code> covers the two Blocked-visible teases (9, 12) on the state-scan guarantee, and <code>ApplySavedStates</code> re-evaluates both on restore (verified in code, lines cited at the head of this document).</p>
+<h3>E7. Bands, families and the 4-to-5-hour budget</h3>
+<p>Requirement mass (T1eq of tier n = 2^(n-1); shapes on the cards): <strong>total 1,078 T1eq</strong> across 16 leads + ceremonial close. By family: A 186 · F 264 · R 416 · D 212. By session: S1 16 · S2 116 · S3 128 · S4 128 · S5 128 · S6 136 · S7 128 · S8 136 · S9 160 · S10 2.</p>
+<p>Production taps at the tuned yields (lab 1.3355, junk 1.7427, diner 1.6975 T1eq/tap; method and 1.10 overhead per <code>ep1-economy-rebalance.md</code>): (186+264)/1.3355 + 416/1.7427 + 212/1.6975 = 700.6 × 1.10 ≈ <strong>771 taps ≈ 771 energy</strong>, less 40 granted (leads 10, 13, close) ≈ <strong>731 net external energy</strong>.</p>
+<p>Per-session energy demand (same method, per session's family mix): 13 · 91 · 83 · 86 · 81 · 105 · 105 · 92 · 113 · 2. A session opens on a full 100 tank plus ~12 regen across 30 minutes: <strong>sessions 6, 7 and 9 exceed the tank and are the episode's three deliberate EnergyOutPopup encounters</strong>, mirroring The Listener's climax-wall philosophy; every other session clears free. Ten sessions ≈ ten days for a light one-session player, ≈ five for an engaged two-session player: inside the ruled week-or-more.</p>
+<p>Playtime: 771 taps plus roughly 700 merges at 3 to 4 seconds of board action each ≈ 1.6 to 2.0 hours of pure board work; board management, locker and toasts ≈ ×1.4 ≈ 2.3 to 2.8 hours; dialogue, VO, decisions and the evidence board ≈ 1.2 to 1.6 hours. <strong>Total ≈ 3.7 to 4.5 hours: inside the ruled 4-to-5-hour band, with the assumptions written down so the tuning pass can attack them.</strong> All bands are drafts for tuning.</p>
+<p>Rewards (draft, scaled to hold the shipped earn rate): Easy 20 ×3 · Standard 170 ×5 · Hard 380 ×5 · Very Hard 560 ×2 · milestone 400 (lead 10) · close 500. <strong>Total 4,830 CC ≈ 4.48 CC per T1eq</strong> against The Listener's 4.27, so every sink (locker, Mo's Back Room at 20 CC/T1eq, Case Kit) keeps its intended price feel. Energy grants +40 total; ingots 5 total (2 climax + 3 close), matching the shipped episode. Note for the tuning pass: the §7.2 band midpoints (20/50/95/185) were sized for a 330 T1eq episode; holding them at 3.3× the mass would collapse the earn rate to 1.7 CC/T1eq and silently reprice every sink, which is why the draft scales the midpoints instead. Stephen's call.</p>
+<p>VO budget note: unique spoken VO ≈ the 470-word open + the lead 10 milestone + Ep 9's description passage + the close ≈ 1,100 to 1,400 words, roughly 2.5× The Listener's 515. Priced here, not approved here.</p>
+<h3>E8. Copy rules</h3>
+<p>All titles ≤ 32 characters, no puns; subtitles to be written ≤ 140 characters as case-file labels; directive lines ≤ 8 words; no em dashes anywhere in this document or in any line it proposes; every player-facing line here is a placeholder awaiting Stephen's ruling; no endearments or gendered address toward the player.</p>
+<hr />
+<h1>F. THE QUESTIONS FOR STEPHEN</h1>
+<p>Each in the ruled form: the question · what the structure needs · what changes otherwise. Stop there.</p>
+<h3>1. The season notch</h3>
+<p><strong>The question:</strong> §3.3 still lists The Listener as Ep 1 with the coin on Dot's cradle. What is the arc whisper of the new Ep 1, where in the sixteen does it land, and what irreversible cost does it leave Ally?</p>
+<p><strong>Candidate, not canonised:</strong> the whisper lands in lead 14. The skipper's letter carries one line Ally does not follow: the deckhand had once been paid to row a Thursday run out of the harbour, quit it, and lived aboard broke ever after. It is one sentence, unexplained, never mentioned again; the player who continues is the one it was for. This threads the season's Thursday-route machinery (the 2006 Reyes crossing) through a dead itinerant man without naming anything, but it brushes the street-layer/apex separation, and §3.4 says a finger connects to the head only by explicit season decision, which is exactly what this asks for. <strong>The cost candidate:</strong> Ally's description is what erased the panel. She knows by the close that the wall was cleared the day after she aired it: the one physical thing Violet's death left behind is gone because the show spoke it out loud. What the podcast touches, it changes; she cannot take that back.</p>
+<p><strong>What the structure needs:</strong> one dialogue node in lead 14 and one in the close. <strong>What changes otherwise:</strong> the episode ships arc-silent and fails §3.4's one-notch rule at review.</p>
+<h3>2. How it ends and what it costs</h3>
+<p><strong>The question:</strong> the spine stops at Day 333. What is the close's shape?</p>
+<p><strong>Candidate, not canonised:</strong> the close airs after the arrest is public. Its beats: he is alive, and what that un-writes (the grief, the reading, the two survivors' war); Margo read it right first and paid first, said so once, and the record now holds her words; the landlady is never named, even now, and the close says only that someone wrote, which is itself the season's thesis about strangers; and the honest limit: the arrest is for the identity offences and a revived file, and whether Violet's staircase is ever charged is not Ally's to promise. Truth delivered where justice is only partial, per the accountable-resolution element. Final image candidate: Liam and Ruby, who have not spoken since Day 96, standing in the same harbour crowd when the news breaks, with nothing left between them but the space where the accusation was.</p>
+<p><strong>What the structure needs:</strong> the close card's beats confirmed so its dialogue and VO can be briefed. <strong>What changes otherwise:</strong> the close lead and the final Fable brief cannot be written, and S10 ships as a stub.</p>
+<h3>3. The first-interaction budget</h3>
+<p><strong>The question:</strong> I6's 35-to-40-second first-interaction target is an open ruling; the cold open as cut puts ~38 to 39 seconds of VO before the first required tap (segment 1 ending on the keys hook), or ~33 seconds on the shorter alternative (ending at "nothing more").</p>
+<p><strong>What the structure needs:</strong> one number ruled. <strong>What changes otherwise:</strong> Part D's timeline and the segment-1 boundary stay provisional and the FTUE build cannot lock.</p>
+<h3>4. The cold-open cut</h3>
+<p><strong>The question:</strong> which stretch of v0.4 lands in which FTUE lead. The proposed cut: segment 1 ends on <em>"…four people received something in the post."</em> (lead 1); segment 2 ends on <em>"…neither one will say what that object was."</em> (lead 2); segment 3 runs to the sign-off (lead 3).</p>
+<p><strong>What the structure needs:</strong> the two boundary rulings (every Ally line is Stephen-ruled, and a cut is an edit). <strong>What changes otherwise:</strong> the FTUE leads' dialogue assets cannot be assembled and session 1 cannot be built.</p>
+<hr />
+<h1>APPENDIX: SYSTEMS NOTES (design-to, touch no code)</h1>
+<ul>
+<li>Slot <strong>ep01</strong> (story-neutral, R5); this structure becomes ep01's <code>LeadsDatabase</code> content when Four Keys ships as Ep 1. Alias table handles <code>e1_the_listener</code> saves per the multi-episode build; nothing here migrates anything.</li>
+<li>Lead ids <code>fk_*</code>, assets <code>Lead_FK_*</code>, folder <code>Assets/Content/FourKeys/</code>, dialogue <code>Resolve_FK_*</code>. The database decides membership.</li>
+<li>Close sets <code>fk.ep01.complete</code> and spawns the shipped tail (<code>cold_case_a</code>, <code>ep2_teaser</code>); R6 no-replay applies to every lead.</li>
+<li>Decision flags namespaced <code>aq.fk.d1..d4</code>; set on Proceed in dialogue; never gate a mainline lead.</li>
+<li>FTUE mechanical duties (entitlements, generator grants, family availability flags) mirror the shipped <code>e1_tip</code> pattern and are wired in a systems pass with editor verification, not asserted from this document.</li>
+<li>The board-space guardrail on lead 16 and the quantity cap [Range(1,3)] were checked against every requirement shape in Part B: no slot exceeds quantity 3, no card exceeds 3 slots.</li>
+</ul>
+</body></html>
