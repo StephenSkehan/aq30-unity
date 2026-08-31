@@ -209,26 +209,6 @@ Fifteen parameters, ruled in one sitting to close the gap that killed roughly a 
 
 **Standing practice, and the reason this section exists.** Prompt kit v2.1 never said an unverified process was fatal. It says *identify the required Havenbay canon ruling and fail the seed pending approval.* Across roughly fifty seeds in two executions, neither model ever returned one for a ruling; both read a question queue as a wall. **Where a premise depends on a Havenbay process that is not yet settled, ask for the ruling. Do not kill the seed and do not invent the answer.**
 
-## 2.4 The Rusty Anchor
-
-The bar is as much a character as any person in Ally's world. Founded **1924** by **Patrick Callahan** as *Callahan's Dockside* (a "soda shop" front through Prohibition); renamed **The Rusty Anchor** in the 1970s by his son **Seamus**, after the salvaged shipwreck anchor now bolted by the door under a battered green neon sign; inherited in the 2000s by Seamus's daughter **Moira "Mo" Callahan**, who keeps it what it has always been: **neutral ground**. Cops and crooks drink under the same roof; city officials slip in for a whisky away from prying eyes; violence goes outside, whoever you are — and because everyone trusts the rule, Mo hears everything.
-
-Geography of the room: ~60 seats — twenty stools, eight booths, six tables — plus a rear courtyard with an acoustic stage. **Gerald's booth** (the corner booth, held for him without asking) is the series' warmest set and an unofficial confessional; Mo's locked upstairs office holds "ledgers, old matchbooks, and a shoebox of favors owed." House fare: shepherd's pie, fish and chips in newsprint, the chowder of the day, Callahan's Stout, Dockhand's Whiskey, and the signature **Anchor Drop** (dark rum, ginger beer, lime, bitters). Thomas Quinn met sources here; Gerald calls it his second home; the Rusty Anchor item family (Chapter 7) makes the player buy their rounds like everyone else. **Mo's Back Room** (ruled 2026-08-07): the Anchor's quiet trading post behind the bar and the game's CaseCash shop — "Neutral ground. Fair prices. No questions." Daily stock, delivered to the Stash; Mo asks nothing about where the cash came from.
-
-## 2.5 Episode 1 geography (locked)
-
-The Listener made a corridor of the city canon: **Rivermouth** (Chandler Road, the school bell at 8:30 and noon, the swing-bridge's 22-second counterweight note, the blue-gated cottage, Mrs. Vale's doorbell camera next door) → the river reach where the **quiet boats** run dark (low in the water going out, riding high coming back; cash mooring fees, no manifests) → the **allotments** and the first morning bus → **Larkhill** (Chapel Lane, the church, the hill fog, Vera's cottage, St. Brigid's Pharmacy). Scripts set on this ground must respect these facts; the swing-bridge note and the school bells are now diegetic timekeepers any future Rivermouth scene can reuse.
-
-## 2.6 Culture & texture
-
-Food: chowders, pier dumplings, 2 a.m. diners, lumpia stands, Irish pubs — and the Kestrel Corner Diner, whose takeout boxes open Rivermouth's doors (Episode 1). Fashion: dock coats and flannel below, tailored trench-coat money above; noir silhouettes echo the genre on purpose. Sports: the **Havenbay Mariners** (baseball), the **Bay City Sharks** (hockey — games often end in bar fights), and amateur boxing under Frankie Malone's promotion. Art: "rebellion and code" — Nova's murals on the Viaduct, Highcliff galleries fronting quiet money. Tech: "a city caught between analog grit and digital intrusion" — half-working fingerprint scanners and sabotaged CCTV two streets from gleaming corporate data centers. Faith: churches as community anchors rather than political powers; a parish newsletter can still find a missing woman (Episode 1).
-
-Havenbay's contrasts are the story engine: wealth against poverty, tradition against progress, public virtue against private vice. Its warmth is real — and so are the shadows it casts.
-
-# Chapter 3 — The Season Arc
-
-The season question: **who killed Thomas Quinn, and what conspiracy was he uncovering?** Every episode is a self-contained case plus exactly one new arc clue — one new fact, one new cost, never the full answer — until the finale unmasks the Ferryman and Councillor Hart live on the podcast. "The personal quest to solve her father's murder is the key that unlocks the city's deepest conspiracy."
-
 **R16. Cross-jurisdictional matching of missing-person reports against unidentified deceased (Stephen-ruled 2026-08-26).**
 
 **Participation is VOLUNTARY AND PATCHY.** Havenbay and the other jurisdictions contribute to a shared comparison system, but entry is not mandated, coverage is incomplete, and practice varies by agency and by the classification a case is given.
@@ -276,7 +256,27 @@ The season question: **who killed Thomas Quinn, and what conspiracy was he uncov
 
 **R27. Review of a document's place of finding (Stephen-ruled 2026-08-30, after the step-3 audit of the Four Keys spine).** A proper review of a material posthumous document inspects the place it was found and its access. **Canvassing bystanders at that place about who visited it before the finders requires an allegation or a hypothesis of tampering.** Absent one, the question is not generated by the file.
 
-⚠ **Formatting note, not a ruling: R16 to R27 are §2.3.2 rulings and are sitting at the head of Chapter 3 rather than inside §2.3.2.** R16 was appended here on 2026-08-26 and R17 and R18 have been kept with it rather than split. **They should be moved into §2.3.2 in a tidy-up commit.**
+*Housekeeping note: R16 to R27 were recorded at the head of Chapter 3 between 2026-08-26 and 2026-08-30 and moved here, unchanged, in the 2026-08-31 tidy-up commit this note is part of.*
+
+## 2.4 The Rusty Anchor
+
+The bar is as much a character as any person in Ally's world. Founded **1924** by **Patrick Callahan** as *Callahan's Dockside* (a "soda shop" front through Prohibition); renamed **The Rusty Anchor** in the 1970s by his son **Seamus**, after the salvaged shipwreck anchor now bolted by the door under a battered green neon sign; inherited in the 2000s by Seamus's daughter **Moira "Mo" Callahan**, who keeps it what it has always been: **neutral ground**. Cops and crooks drink under the same roof; city officials slip in for a whisky away from prying eyes; violence goes outside, whoever you are — and because everyone trusts the rule, Mo hears everything.
+
+Geography of the room: ~60 seats — twenty stools, eight booths, six tables — plus a rear courtyard with an acoustic stage. **Gerald's booth** (the corner booth, held for him without asking) is the series' warmest set and an unofficial confessional; Mo's locked upstairs office holds "ledgers, old matchbooks, and a shoebox of favors owed." House fare: shepherd's pie, fish and chips in newsprint, the chowder of the day, Callahan's Stout, Dockhand's Whiskey, and the signature **Anchor Drop** (dark rum, ginger beer, lime, bitters). Thomas Quinn met sources here; Gerald calls it his second home; the Rusty Anchor item family (Chapter 7) makes the player buy their rounds like everyone else. **Mo's Back Room** (ruled 2026-08-07): the Anchor's quiet trading post behind the bar and the game's CaseCash shop — "Neutral ground. Fair prices. No questions." Daily stock, delivered to the Stash; Mo asks nothing about where the cash came from.
+
+## 2.5 Episode 1 geography (locked)
+
+The Listener made a corridor of the city canon: **Rivermouth** (Chandler Road, the school bell at 8:30 and noon, the swing-bridge's 22-second counterweight note, the blue-gated cottage, Mrs. Vale's doorbell camera next door) → the river reach where the **quiet boats** run dark (low in the water going out, riding high coming back; cash mooring fees, no manifests) → the **allotments** and the first morning bus → **Larkhill** (Chapel Lane, the church, the hill fog, Vera's cottage, St. Brigid's Pharmacy). Scripts set on this ground must respect these facts; the swing-bridge note and the school bells are now diegetic timekeepers any future Rivermouth scene can reuse.
+
+## 2.6 Culture & texture
+
+Food: chowders, pier dumplings, 2 a.m. diners, lumpia stands, Irish pubs — and the Kestrel Corner Diner, whose takeout boxes open Rivermouth's doors (Episode 1). Fashion: dock coats and flannel below, tailored trench-coat money above; noir silhouettes echo the genre on purpose. Sports: the **Havenbay Mariners** (baseball), the **Bay City Sharks** (hockey — games often end in bar fights), and amateur boxing under Frankie Malone's promotion. Art: "rebellion and code" — Nova's murals on the Viaduct, Highcliff galleries fronting quiet money. Tech: "a city caught between analog grit and digital intrusion" — half-working fingerprint scanners and sabotaged CCTV two streets from gleaming corporate data centers. Faith: churches as community anchors rather than political powers; a parish newsletter can still find a missing woman (Episode 1).
+
+Havenbay's contrasts are the story engine: wealth against poverty, tradition against progress, public virtue against private vice. Its warmth is real — and so are the shadows it casts.
+
+# Chapter 3 — The Season Arc
+
+The season question: **who killed Thomas Quinn, and what conspiracy was he uncovering?** Every episode is a self-contained case plus exactly one new arc clue — one new fact, one new cost, never the full answer — until the finale unmasks the Ferryman and Councillor Hart live on the podcast. "The personal quest to solve her father's murder is the key that unlocks the city's deepest conspiracy."
 
 ## 3.1 The Thomas Quinn incident
 
