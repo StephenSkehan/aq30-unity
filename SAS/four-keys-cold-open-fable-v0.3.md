@@ -1,6 +1,6 @@
-<!-- pdf-title: The Friend They Mourned, cold open, Fable v0.3 -->
+<!-- pdf-title: The Friends with Four Keys, cold open, Fable v0.3 -->
 
-# COLD OPEN, FABLE v0.3 (AFTER THE READER CHECK)
+# THE FRIENDS WITH FOUR KEYS: COLD OPEN, FABLE v0.3
 
 *2026-08-31. The same blind Fable agent's revision of its v0.2 against the six reader notes (`four-keys-cold-open-reader-check-2026-08-31.md`). Fable remains blind to Parts A to F: it does not know which of the four, what was behind the door, or that anyone is alive. Title options at the foot, Stephen-requested.*
 
@@ -34,7 +34,11 @@ This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep ti
 
 ---
 
-## Title options (Fable, eight, for Stephen to rule)
+## The title: RULED, Stephen, 2026-08-31
+
+**The Friends with Four Keys.** Stephen's own, not one of the eight. Registered warm on purpose: the thesis word is friends, the image is the keys, and the twist is untouched. The eight below are kept as the record of the option pass.
+
+## Title options (Fable's eight, superseded by the ruling)
 
 1. Four Keys
 2. One of You

@@ -69,7 +69,7 @@ He weaponised what they loved. Violet's love sent four keys instead of a phone c
 
 ## Still open, so you know what you can change
 
-- **The title.** *Five Keys After Midnight* is retired. Current suggestion is *The Friend They Mourned*.
+- **The title: RULED, Stephen, 2026-08-31.** ***The Friends with Four Keys.*** *Five Keys After Midnight* and *The Friend They Mourned* are retired. Fable's eight alternatives are recorded in the cold-open v0.3 file.
 - **What Violet hid.** Its shape is fixed (below) and the object is not chosen. Decided at the spine, and never told to Fable.
 - **The decoy.** A genuine thing of Violet's that Brad had access to; the letter gives it a false meaning that points at Liam through something Violet told Brad, and fails through something she told only Margo. The money is the obvious axis: Liam secretly owns a third of the yard, and Margo alone knows where Violet's came from. Chosen at the spine.
 - **Why Brad wanted Violet dead.** Not the object; the plan came first. Fable has seeded that Violet had more money than anyone knew.

@@ -1,6 +1,6 @@
-<!-- pdf-title: The Friend They Mourned, the Spine v1.4 -->
+<!-- pdf-title: The Friends with Four Keys, the Spine v1.4 -->
 
-# THE FRIEND THEY MOURNED (FOUR KEYS)
+# THE FRIENDS WITH FOUR KEYS
 ## THE SPINE, v1.4
 
 *2026-08-30. Pipeline step 1, step 1b with the recipient column, and step 2. Written against premise v8 (closed to premise attack), the five v1.2, and the Four Keys rulings in memory. No prose. Nothing in this document reaches Fable except Part G.*
@@ -593,7 +593,7 @@ As asked, the spine proposed a dead infant's birth record with no cross-check at
 
 *The redacted brief for step 4. Paste this block and nothing else. It contains what Ally has on the day she starts and what the city knows. It does not contain which of the four, what was behind the door beyond what the survivors say, where anyone is, or anything from Parts A to F.*
 
-> **Brief for the opening of Episode One, working title The Friend They Mourned.**
+> **Brief for the opening of Episode One, titled The Friends with Four Keys.**
 >
 > You wrote the five as people. They are canon. Here is what happened to them, as Havenbay knows it, and what Ally holds on the morning she decides to make the episode.
 >

@@ -1,6 +1,6 @@
-<!-- pdf-title: The Friend They Mourned, cold open, Fable v0.2 -->
+<!-- pdf-title: The Friends with Four Keys, cold open, Fable v0.2 -->
 
-# THE FRIEND THEY MOURNED: COLD OPEN, FABLE v0.2
+# THE FRIENDS WITH FOUR KEYS: COLD OPEN, FABLE v0.2
 
 *2026-08-31. Written by a fresh Fable 5 subagent fed only the show framing, the five v1.2 verbatim, and Part G of the spine (v1.4). No file access, no repo, no memory. Fable has never seen Parts A to F and does not know which of the four, what was behind the door, or that anyone is alive. v0.2 is the same agent's cut of its own v0.1 (388 words) to the brief's cap, with the sergeant unnamed.*
 
