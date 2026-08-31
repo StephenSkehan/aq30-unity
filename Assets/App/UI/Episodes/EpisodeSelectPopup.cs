@@ -119,7 +119,7 @@ namespace AQ.App.UI
             string status;
             Color statusColor;
             if (!entry.HasContent)              { status = "Coming soon";  statusColor = new Color(1f, 1f, 1f, 0.35f); }
-            else if (progress.Complete)         { status = "Complete";     statusColor = new Color(0.5f, 0.85f, 0.55f, 1f); }
+            else if (progress.Complete)         { status = "Solved";       statusColor = new Color(0.5f, 0.85f, 0.55f, 1f); }
             else if (current)                   { status = "In progress";  statusColor = new Color(0.7f, 0.85f, 1f, 1f); }
             else if (progress.Started)          { status = "In progress";  statusColor = new Color(0.7f, 0.85f, 1f, 1f); }
             else if (unlocked)                  { status = "Ready";        statusColor = new Color(0.9f, 0.9f, 0.9f, 1f); }
