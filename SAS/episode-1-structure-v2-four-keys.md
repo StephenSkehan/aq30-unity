@@ -1,7 +1,9 @@
-<!-- pdf-title: The Friends with Four Keys, Structure v2.0 -->
+<!-- pdf-title: The Friends with Four Keys, Structure v2.1 -->
 
 # THE FRIENDS WITH FOUR KEYS
-## THE STRUCTURE, v2.0: CHAPTERS AND LEAD PACKAGES
+## THE STRUCTURE, v2.1: CHAPTERS AND LEAD PACKAGES
+
+**v2.1, 2026-09-01.** The ChatGPT structure attack (five fronts, REWORK, `four-keys-structure-attack-chatgpt-2026-09-01.md`) and the overnight critical review are folded in under Stephen's two rulings of 2026-09-01: ① **the agency forks are adopted**: D3 forks play in chapter 7 and D4 forks the close, mutually exclusive flag-gated branch packages of equal mass, rejoining on the settled arrest, per the attack's findings 7 and 8; D1 and D2 stay lower-order with their promised consequences now mapped to named rows ② **chapter 1 is recut**: first tap at 12 to 15 seconds (F3 thereby ruled), the accident ruling and the keys inside the second package cycle (keys by ~0:45), the accusation landing exactly on p01_04's completion, and p01_09 board-first so Del interprets rather than repeats. Also applied: the census relabelled around the turns actually delivered (findings 1 and 5), the tap arithmetic done in one unit system (finding 2, with a correction: the 1,210 was gross taps including the tuned ×1.10 overhead, which the attack's ceiling omitted; the unit mixing it caught was real), chapter 1's size mix and chapter 7's quick win repaired (findings 3 and 4), and the CC column labelled as rounded. Played packages remain 100; authored packages are now 105 (five branch pairs).
 
 *2026-08-31. Built on the ruled package economy model v1.1 (100 packages, 10 chapters, 1,600 T1eq, CC ≈6,880 at 4.3, no optionals, variety mandated), spine v1.4 (three attack rounds, sweep PASSES on Margo's named lock), lead structure v1.0 (superseded; its 16 turn leads, four decisions, broadcast map, gate logic, redaction lines and Part F questions are salvaged here), cold open v0.4, the five v1.2, and the Four Keys rulings in memory. No prose. Every player-facing line is a placeholder and says so. The spine is not reopened; no beat in this document moves a spine fact, and none needed to. The v1.1 economy rulings are not reopened.*
 
@@ -25,18 +27,20 @@ A chapter is roughly one sitting (the arithmetic in Part E makes it so; nothing 
 
 | Ch | Title (placeholder) | Spine days | Airs at boundary | The chapter's turn(s) | Pkgs | T1eq |
 |---|---|---|---|---|---|---|
-| 1 | The Front Page | 266 to 269 | **Ep 1 (269)** | The keys land: accident becomes one of two readings · the police door closes honestly | 10 | 35 |
-| 2 | The Kitchen Table | 270 to 276 | **Ep 2 (276)** | The reading landed on Liam because the letter leans · the slip: her fear predates everything | 10 | 70 |
-| 3 | Whose Hand | 277 to 283 | **Ep 3 (283)** | Money moved in her last months · what she found had a shape (and one far town is listening) | 10 | 105 |
+| 1 | The Front Page | 266 to 269 | **Ep 1 (269)** | The accusation lands (p01_04) · she knew, not thought (p01_06) · the police door closes honestly, board-first (p01_09) | 10 | 35 |
+| 2 | The Kitchen Table | 270 to 276 | **Ep 2 (276)** | The reading landed on Liam because the letter leans (p02_03; the slip is provenance texture, not a turn) | 10 | 70 |
+| 3 | Whose Hand | 277 to 283 | **Ep 3 (283)** | Money moved in her last months · what she found had a shape (the download map is texture: attention, not belief) | 10 | 105 |
 | 4 | The Wednesday Visitor | 284 to 290 | **Ep 4 (290)** | The letter reads built to fit Liam · Brad was inside the arrangement before it opened | 10 | 135 |
 | 5 | Did She Say Anything | 291 to 297 | **Ep 5 (297)** | The lane man was the wrong build for Liam; Margo is the missing voice | 10 | 170 |
 | 6 | Two Hours Up the Coast | 298 to 304 | **Ep 6 (304)** | Margo doubted the letter's meaning · if the thing was wrong there was a real thing, and it is missing | 10 | 205 |
 | 7 | I Think Against I Know | 305 to 311 | **Ep 7 (311)** | The second letter is probably not hers, and nobody alive ever saw Brad write | 10 | 215 |
-| 8 | The First Train | 311 to 318 | **Ep 8 (318)** | A man vanished out of Brad's life three years early · someone walked out of Kestrel Head at dawn | 10 | 220 |
-| 9 | One of a Kind | 319 to 325 | **Ep 9 (325)** | The object is real, unique, and about to be spoken into every kitchen in the country | 10 | 220 |
-| 10 | The Man on the Wall | 326 to 333 | *(Ep 10, Day 332, airs inside the chapter)* | The landlady's letter · Brad Collins, alive | 10 | 225 |
+| 8 | The First Train | 311 to 318 | **Ep 8 (318)** | A man vanished out of Brad's life three years early · someone walked out of Kestrel Head at dawn · Ally stops saying "was" (p08_09) | 10 | 220 |
+| 9 | One of a Kind | 319 to 325 | **Ep 9 (325)** | The town's one judge of hands could not place this one, and the only signwriter in the room is dead (p09_05; the broadcast assembly p09_08 is the climax act, not a turn) | 10 | 220 |
+| 10 | The Man on the Wall | 326 to 333 | *(Ep 10, Day 332, airs inside the chapter)* | The landlady's letter (p10_01) · Margo was right first (p10_09; the arrest confirms, it does not turn) | 10 | 225 |
 
-**How v1.0's 16 turn leads map in** (the skeleton, preserved): fk_frontpage → p01_01 (orientation, still not a turn) · fk_fourkeys → p01_04 · fk_sergeant → p01_09 · fk_kitchen → p02_03 · fk_boxes → p02_06 + p02_08 (the slip carries the turn) · fk_calling_in → p03_02 · fk_gold_panel → p03_06 + p03_09 (the map) · fk_liam → p04_06 · fk_bay3 → p04_09 · fk_asking → p05_06 + p05_08 · fk_tessa → p06_03 + p06_06 · fk_wrong_thing → p06_08 · fk_ithink → p07_03/04/05 building to p07_07 · fk_skipper → p08_01 · fk_platform → p08_05 · fk_one_of_a_kind → p09_08 · fk_close → p10_01 + p10_07 + p10_10.
+**How v1.0's 16 turn leads map in** (the skeleton, relabelled per the attack): fk_frontpage → p01_01 (orientation, still not a turn) · fk_fourkeys → p01_04 (the accusation, real after the recut) · fk_sergeant → p01_09 (board-first after the recut) · fk_kitchen → p02_03 · fk_boxes → p02_06 + p02_08 (texture: provenance, not belief) · fk_calling_in → p03_02 · fk_gold_panel → p03_06 (the map at p03_09 is texture) · fk_liam → p04_06 · fk_bay3 → p04_09 · fk_asking → p05_06 + p05_08 · fk_tessa → p06_03 + p06_06 · fk_wrong_thing → p06_08 · fk_ithink → p07_03/04/05 building to p07_07 · fk_skipper → p08_01 · fk_platform → p08_05, and the re-string p08_09 is the unclaimed turn the census missed · fk_one_of_a_kind → p09_05 (the turn) + p09_08 (the act) · fk_close → p10_01 + p10_09 (Margo righted) with p10_07 as confirmation.
+
+**The 18 turns of v2.1:** p01_04, p01_06, p01_09 · p02_03 · p03_02, p03_06 · p04_06, p04_09 · p05_06 · p06_06, p06_08 · p07_07 · p08_01, p08_05, p08_09 · p09_05 · p10_01, p10_09. Every chapter carries at least one; chapters 2, 5, 7 and 9 carry exactly one.
 
 **Evidence board phases** (`boardPhase`): Phase 1 = chapters 1 to 3 (the public case) · Phase 2 = chapters 4 to 7 (the doubt) · Phase 3 = chapters 8 to 10 (the man).
 
@@ -52,26 +56,26 @@ Format per row: **#** (package id is `fk_p<ch>_<n>`) · **Cards** (family letter
 
 Diegetic family reads (v1.0, kept): A = the tape and the show (tip line, letters read aloud, the broadcast itself) · F = documents and scene work · R = the harbour (yard, slip, market, the pub that changes its name) · D = door-knocking (cafés, kitchens, a witness's coffee).
 
-Gating: within a chapter, packages chain (each requires the previous) except the parallel pairs named under each table; the last package of a chapter spawns the first of the next. Maximum simultaneous Available packages is 2, the bar's shipped comfort. Decisions (Part C) resolve inside the named package's completion dialogue; no flag ever gates a mainline package.
+Gating: within a chapter, packages chain (each requires the previous) except the parallel pairs named under each table; the last package of a chapter spawns the first of the next. Maximum simultaneous Available packages is 2, the bar's shipped comfort. Decisions (Part C) resolve inside the named package's completion dialogue. **Flag rule, amended at v2.1:** no flag ever gates a *shared* mainline package; the D3 and D4 branch packages are flag-gated in mutually exclusive pairs (`requiresFlag`/`forbidsFlag`, the shipped primitives) whose union is the mainline, so exactly one version is reachable in every state and nothing can starve.
 
 ## Chapter 1 · The Front Page · Days 266 to 269 · 10 pkgs · 10 cards · 35 T1eq · 150 CC
 
-FTUE. All single-card packages, lab families only (A and F flow from the first generator grant). The cold open v0.4 is spread across packages 1 to 10; the cut is Part D and its boundaries are Stephen's (F4). First deterministic merge choreographed per §5.7.
+FTUE, recut 2026-09-01 per Stephen's ruling (attack findings 3, 5 and 6): the accident ruling and the keys arrive in the second package cycle, the accusation lands exactly on p01_04's completion, p01_09 is board-first, and two packages carry two cards so the chapter has size mix. Lab families only (A and F flow from the first generator grant). The cold open v0.4 is spread across packages 1 to 10; the cut is Part D; the boundary sign-off is Stephen's (F4). First deterministic merge choreographed per §5.7.
 
 | # | Cards | T1eq | CC | Beat | Source | Fable |
 |---|---|---|---|---|---|---|
-| 01 | A1 | 1 | 10 | (t)[AL] Ident and the death line: a signwriter, her stairs, nine months ago. Orientation, not a turn; it must never grow | 54 | Nothing new; VO is v0.4 as ruled |
-| 02 | A2 | 2 | 10 | (t)[AC] Her work everywhere: shopfronts, boats, the bus, pinned as a town-wide map of her hand | 54, v1.2 | Violet's public work only; never the panel |
-| 03 | F1×2 | 2 | 10 | (t)[ET] The ruling pinned: accident, a fall, nothing more | 54 | Nothing new |
-| 04 | A2 | 2 | 15 | ★TURN [ET] Four keys and a letter in her handwriting: the dead woman predicted her death. Accident is now one of two readings | 54 | Nothing new beyond Part G |
-| 05 | F2×2 | 4 | 15 | (t)[AC] The wake photograph: four names become four faces | 54 | The photo as public record; never which face matters |
-| 06 | A2×2 | 4 | 15 | (t)[ET] Not the police, and a locked door: the pact, the Saturday, nobody alone | 54 | Nothing new |
-| 07 | F2×2 | 4 | 15 | (t)[ET] The second letter said she knew; a thing of hers beside it that two survivors will not name | 54 | Never what the object was |
-| 08 | A3 | 4 | 15 | (t)[ET] Then the group began to disappear: Brad's car, Margo's car, the same car park | 54 | Nothing new |
-| 09 | A4 | 8 | 25 | ★TURN [ET] Del on the steps: we looked, properly, there's nothing. The file is closed to everyone; whatever is wrong here is invisible to procedure. Only people hold it | 64 | Del says only what Part G gives her; never anything the file holds |
-| 10 | A3 | 4 | 20 | (t)[AL] Ep 1 publishes: sign-off as ruled; the show is live and the city is listening | 54 | Nothing new |
+| 01 | A1 | 1 | 10 | (t)[AL] Ident and the death line: a signwriter, her stairs, nine months ago. First tap at ~0:13. Orientation, not a turn; it must never grow | 54 | Nothing new; VO is v0.4 as ruled |
+| 02 | F1×2 | 2 | 10 | (t)[ET] Her work in one breath, then the ruling pinned: accident, a fall, nothing more. The accepted account is on the board by ~0:45 | 54, v1.2 | Violet's public work only; never the panel |
+| 03 | A2 | 2 | 10 | (t)[ET] Four keys and a letter in her handwriting arrive in the post: the dead woman arranged something. The keys are in play by ~0:50 | 54 | Nothing new |
+| 04 | A2 + F2 (two cards) | 4 | 20 | ★TURN [ET] Her closest friends named, and the letter's sentence lands on this package's completion: she thought one of them was planning to kill her. Accident is now one of two readings | 54 | Nothing new beyond Part G |
+| 05 | A2×2 | 4 | 15 | (t)[ET] Not the police, and a locked door: her instruction, and the reason she gave | 54 | Nothing new |
+| 06 | F2 + F2 (two cards) | 4 | 20 | ★TURN [ET] The pact, the Saturday, and behind the door a second letter: this one didn't say she thought. It said she knew. A thing of hers beside it that two survivors will not name | 54 | Never what the object was |
+| 07 | A3 | 4 | 15 | (t)[ET] Then the group began to disappear: Brad's car, Margo's car, the same car park | 54 | Nothing new |
+| 08 | A2×2 | 4 | 15 | (t)[ET] The survivors walk into the police station separately and say the same thing: I'm afraid of the other one | 54 | Nothing new |
+| 09 | A4 | 8 | 25 | ★TURN [ET] Board-first, then Del on the steps delivers the result the narration has held back: they looked, properly, the letters are really hers, and they found nothing. Del interprets: the file is closed to procedure; only people hold what is wrong here | 64 | Del says only what Part G gives her; never anything the file holds |
+| 10 | A2 | 2 | 20 | (t)[AL] The Gazette war, the I-don't-knows, four friends and four keys, sign-off as ruled. Ep 1 publishes | 54 | Nothing new |
 
-Chain is strict (FTUE). Chapter notes: mechanical duties mirror `e1_tip` (entitlements, lab grant at p01, junk-drawer generator granted via p10's overflow, diner granted at p10 for chapter 2; `aq.loc.rusty_anchor.active` set by chapter 2 open). Two turns; the rest is the open doing its work.
+Chain is strict (FTUE). Chapter notes: mechanical duties mirror `e1_tip` (entitlements, lab grant at p01, junk-drawer generator granted via p10's overflow, diner granted at p10 for chapter 2; `aq.loc.rusty_anchor.active` set by chapter 2 open). Three turns after the recut; 12 cards; the wake photograph moves into p01_04's beat presentation (AC) rather than its own package.
 
 ## Chapter 2 · The Kitchen Table · Days 270 to 276 · 10 pkgs · 15 cards · 70 T1eq · 300 CC
 
@@ -86,7 +90,7 @@ Ruby. The room, the letters, the boxes, and the first hard date. Decision D1 in 
 | 05 | A3 | 4 | 20 | (t)[CF] The four in the morning call, three years ago: Violet rang, Ruby drove over, and neither ever said what it was | v1.2 | The call happened and stayed private; it is never explained, to anyone, ever |
 | 06 | R4, R3, R3 | 16 | 60 | (t)[ET] The boxes: a vanished man's whole flat catalogued, and nothing in it. The spike: days of careful nothing | 41, 55 | The boxes and their nothing; never why the nothing matters |
 | 07 | A4 | 8 | 25 | (t)[CF] Brad's habits, from Ruby: keys on the table moved twice, thank you like it cost him, up at five to run | 55, v1.2 | The habits verbatim (Fable wrote them); never that anyone else will recognise them |
-| 08 | F4, F2 | 10 | 45 | ★TURN [ET] In Ruby's envelope, the solicitor's covering slip: the letters were lodged three weeks before she died. Her fear predates everything | 62 (D276) | The slip and its date; Ally notes it without knowing what it proves; never what it will prove |
+| 08 | F4, F2 | 10 | 45 | (t)[ET] In Ruby's envelope, the solicitor's covering slip: the letters were lodged three weeks before she died. Provenance, not a new belief (the player already holds her fear as prior); it becomes load-bearing at p07_04 | 62 (D276) | The slip and its date; Ally notes it without knowing what it proves; never what it will prove |
 | 09 | D4 | 8 | 30 | (t)[CF] The piano: sheet music past carols on Ruby's stand; grade eight at fourteen, and she lets the surgery think otherwise | v1.2, NEW route | The fact; never any bearing on the case (it has none) |
 | 10 | A3 | 4 | 20 | (t)[AL] Ep 2 publishes: the room, the letters (per D1), the boxes, the habits; and what airing costs Ruby | 55 | What aired per branch; never the audience it reaches |
 
@@ -106,8 +110,8 @@ The café, the cinema, the panel, and the download map. Money enters; what she f
 | 06 | A4, D4 | 16 | 70 | ★TURN [ET] The panel: a month of whose-hand sightings plotted; she carried a gold thing round town asking a question nobody could answer. Whoever hid it heard her asking | 56 | The whose-hand month; the panel only as witnesses loosely describe it; never what it is or whose hand |
 | 07 | R4, D3 | 12 | 50 | (t)[ET] Two signwriters up the coast, first pass: gold letters on a dark board, a hand neither could place | 56 | Their loose descriptions; never the mark's meaning |
 | 08 | R4, R2, R1 | 11 | 45 | (t)[ET] The ladder she let nobody climb threw her off it six weeks before she died: the fall on the record, the hip, the coincidence nobody called anything | 21, 55 | The fall as public-inquest fact and Ruby's memory of treating it; never the bolt |
-| 09 | A5 | 16 | 75 | ★TURN(minor) [ET] Ally's own download map: one town, four hundred miles away, listening every week. Held, never aired, never explained | 61 (D283) | The map shows one persistent far town and Ally files it as odd; never what the town means |
-| 10 | A4, F2, F2 | 12 | 50 | (t)[AL] Ep 3 publishes: the money and the panel go on air | 56 | What aired; nothing else |
+| 09 | A5 | 16 | 75 | (t)[ET] Ally's own download map: one town, four hundred miles away, listening every week. Held, never aired, never explained. Attention, not belief (the attack demoted it, correctly); it pays off at p10_02 | 61 (D283) | The map shows one persistent far town and Ally files it as odd; never what the town means |
+| 10 | A4, F2, F2 | 12 | 50 | (t)[AL] Ep 3 publishes: the money and the panel go on air. **D1 held branch: the garbled leak lands here: a rival column runs a mangled version of the letter, and Ruby's on-air cost (you could have read it right) is this package's variant close** | 56; D1 map | What aired per branch; nothing else |
 
 Parallel pair: p04 ∥ p05 (both from p03; p06 requires both). p09 sits on Day 283 exactly, the map's first week.
 
@@ -126,7 +130,7 @@ Liam talks; the floor moves. Decision D2 in p09. The R family carries the yard a
 | 07 | D4 | 8 | 35 | (t)[CF] August 2014, Violet's kitchen, a bottle open, one question about her mother's house, and a laugh two people have spent twelve years hearing differently | v1.2, NEW route | The scene as Liam flatly gives his half; never whose side Violet was on (nobody knows) |
 | 08 | R4, D3, F2 | 14 | 60 | (t)[AC] The market at 05:40: Bay 3, the cages, the corridor door round the side where no camera looks, anyone with a key in market hours | 57 setting, 27 | The geography as Ally lawfully observes it; never who used it |
 | 09 | R5, F4, A3 | 28 | 120 | ★TURN [ET] The fishmonger's tip: Brad was at the cage on the Wednesday, three days before the Saturday. The dead man went early. To Del the same day, never aired. **D2 resolves here** | 57 (D290) | The tip verbatim; that it goes to Del within the day and is never aired; Ally's private vertigo, unexplained; never what the visit was for, or that anything was swapped |
-| 10 | A4, D3, D1 | 13 | 60 | (t)[AL] Ep 4 publishes: Liam's side airs; the tip is not in it; Ally sits with what she is holding | 58; 57 held | What aired and what is held; never the held thing's meaning |
+| 10 | A4, D3, D1 | 13 | 60 | (t)[AL] Ep 4 publishes: Liam's side airs; the tip is not in it; Ally sits with what she is holding. **D2 market branch: this broadcast lacks Liam's consented follow-up, and his silence to the show starts here** | 58; 57 held | What aired and what is held; never the held thing's meaning |
 
 Parallel pair: p04 ∥ p05 (both from p03; p06 requires both). p09 sits on Day 290 exactly.
 
@@ -170,20 +174,22 @@ Parallel pair: p03 ∥ p04 (both from p02; p05 requires both). All of chapter 6 
 
 ## Chapter 7 · I Think Against I Know · Days 305 to 311 · 10 pkgs · 27 cards · 215 T1eq · 925 CC
 
-The intellectual climax: the letter stops being Violet's. The turn is p07; p03 to p05 build it in the open. Chapter wall at p07 (+20 energy).
+The intellectual climax: the letter stops being Violet's. The turn is p07; p03 to p05 build it in the open. Chapter wall at p07 (+20 energy). **D3's fork lives here (ruled 2026-09-01, attack finding 7): p01 and p02 exist in two mutually exclusive branch versions, flag-gated, equal mass, rejoining at p03.**
 
 | # | Cards | T1eq | CC | Beat | Source | Fable |
 |---|---|---|---|---|---|---|
-| 01 | F4, A3, D3 | 16 | 70 | (t)[ET] Two signwriters answer Ep 6 (one, on D3's paraphrase branch): independent descriptions of a gilded panel Violet carried. The rumour becomes testimony | 56 | Their letters; never the mark's meaning |
-| 02 | F5, F3 | 20 | 85 | (t)[AC] The side-by-side spread built: both letters, photographed, aligned line against line. The episode's defining image | 55, 30 | The spread as an object; never its conclusion yet |
-| 03 | A5, F4 | 24 | 100 | (t)[ET] The certainty gap: the first letter says I think, and I may be wrong; the second says I know. Dead women do not usually get surer | 55, 30, 62 | The gap as Ally reads it aloud; never its cause |
+| 01v | F4, A3, D3 | 16 | 70 | (t)[ET] **Verbatim branch** (`aq.fk.d3.verbatim`): two signwriters answer Ep 6's exact words with independent descriptions of the gilded panel. The rumour becomes double testimony | 56 | Their letters; never the mark's meaning |
+| 01p | F4, A3, D3 | 16 | 70 | (t)[ET] **Paraphrase branch** (`aq.fk.d3.paraphrase`): one signwriter answers the softened ask, and Ally works the second description out of the café owner by legwork instead. Single-source testimony, harder won | 56 | One letter and a coaxed interview; never the mark's meaning |
+| 02v | F5, F3 | 20 | 85 | (t)[AC] **Verbatim branch:** the side-by-side spread built from both letters, line against line, the crack corroborated twice. The episode's defining image at full strength | 55, 30 | The spread as an object; never its conclusion yet |
+| 02p | F5, F3 | 20 | 85 | (t)[AC] **Paraphrase branch:** the spread built from one letter plus the shielding work: a separate board task scrubs every detail that could triangulate Tessa's channel before anything is pinned. The crack is uncorroborated and stays off the spread | 55, 30 | The thinner spread and the shielding as deliberate cost; never its conclusion yet |
+| 03 | A5, F4 | 24 | 100 | (t)[ET] The certainty gap: the first letter says I think, and I may be wrong; the second says I know. Dead women do not usually get surer. **Rejoin: both D3 branches land here. D2 market branch: Liam's first words to the show since Day 290 arrive this week (Day 311), a two-line return that names his silence** | 55, 30, 62; D2 map | The gap as Ally reads it aloud; never its cause |
 | 04 | F4, A4 | 16 | 70 | (t)[ET] The slip dates the first: lodged three weeks before she died, calm, provisioned, sealed. Fear with a filing system | 62 | The date doing its work; nothing else |
 | 05 | A5, F3 | 20 | 85 | (t)[ET] The second letter is kind to exactly one man: every line leans away from the one it mentions kindly, once, as the one she sent up the ladder | 30 | The kindness observed; never its author |
 | 06 | R4, D4, A2 | 18 | 75 | (t)[CF] The wedding that was a marathon: Ruby saw the results page in spring and said nothing. He lied about where he went, once, provably, about nothing that mattered. Or so it seemed | 8 via 55 | The fact as Ruby's held pebble; never what the lie was for |
 | 07 | A5, F5, F3 | 36 | 155 | ★TURN [ET] A listener asks what Brad's handwriting looked like. Ruby cannot answer. Nobody can. Nobody alive ever saw Brad write cursive, and the letter is in cursive, and it is kind to him. The letter is probably not hers. **Wall; +20 energy** | R3a (D311), 30 | Everything aired Day 311, the widest brief before the close: the second letter may not be Violet's and its kindness points at Brad. Never: the swap's mechanics, the panel's meaning, that Brad is alive |
 | 08 | R5, D3 | 20 | 85 | (t)[AL] Gerald's booth: a letter that passes examination is not proved hers, love; it is just not proved anyone else's. Method, not facts; canon register | canon (Gerald) | Gerald says nothing the police could not; method only |
-| 09 | A5, F4, R4, D3 | 36 | 155 | (t)[ET] Ep 7 assembled: the gap, the slip, the kindness, the question nobody can answer, built into one broadcast | 55, 62, R3a, 30 | The broadcast as built; nothing beyond p07's licence |
-| 10 | A3, F2, D2, A1 | 9 | 45 | (t)[AL] Ep 7 publishes and the mailbag opens: more post than any week before, and two letters in it that matter (unread). A quick win before the heavy week | A5 D311 | The volume; never the two letters' contents |
+| 09 | A5, F4, R4, D3, A1 | 37 | 160 | (t)[ET] Ep 7 assembled: the gap, the slip, the kindness, the question nobody can answer, built into one broadcast | 55, 62, R3a, 30 | The broadcast as built; nothing beyond p07's licence |
+| 10 | A4 | 8 | 40 | (t)[AL] Ep 7 publishes and the mailbag opens: more post than any week before, and two letters in it that matter (unread). One card, one tap-run: a real quick win before the heavy week (attack finding 4's repair) | A5 D311 | The volume; never the two letters' contents |
 
 Parallel pair: p01 ∥ p02 (both from chapter 6's close; p03 requires both). p07 airs on Day 311 exactly.
 
@@ -201,7 +207,7 @@ Alive becomes thinkable and is never said. The first five-card packages (p02, p0
 | 06 | F5, R4, A3 | 28 | 120 | (t)[ET] The timetable against the search: last train in Friday 17:10, first out 05:47, and a ridge path between them that a fit man could walk in a night. Built on the board, held, never aired | 60, public timetables | The reconstruction as Ally's private working; never aired, never confirmed |
 | 07 | D4, R3 | 12 | 50 | (t)[CF] The clerk and the change: he complained about breaking a note at 05:40 and remembered the boots because of it. Small memory outlives tape | 60, R10 via the letter, NEW compression | The texture of the sighting; never the tape (it expired) |
 | 08 | A5, A3 | 20 | 85 | (t)[AL] On air: if you were on that train, write to me. The letter itself goes to Del; the ask is the broadcast | 60, A5 D318 | The ask verbatim; never what Ally hopes |
-| 09 | F5, A5, R4, D4, F3 | 52 | 230 | (t)[AL] The re-string, five cards: every card on the wall re-read in one sitting against a possibility Ally will not say on air. Her private note: I have stopped saying "was". **Chapter wall** | all held rows | Her private note exactly; never the word alive |
+| 09 | F5, A5, R4, D4, F3 | 52 | 230 | ★TURN [ET] The re-string, five cards: every card on the wall re-read in one sitting against a possibility Ally will not say on air. Her private note: I have stopped saying "was". Brad's survival becomes her operative belief, and the player's. **Chapter wall** (promoted by the attack: the census had this as texture and it is the chapter's third turn) | all held rows | Her private note exactly; never the word alive |
 | 10 | A3 | 4 | 20 | (t)[AL] Ep 8 publishes. Quick win; the week empties out | A5 D318 | Nothing new |
 
 Parallel pair: p03 ∥ p04 (both from p02; p05 requires both). p05 onward sits on Day 318's broadcast week; Del revives the deckhand's file on Day 312 off-page and the player never sees it (C7).
@@ -216,10 +222,10 @@ Four descriptions become one object; describing it out loud is a decision with a
 | 02 | F4, D3×2 | 16 | 70 | (t)[ET] Cross-check one: black ground, gold capitals, an ampersand. The letters agree | 56 | The converging details; nothing else |
 | 03 | F4, D3 | 12 | 50 | (t)[ET] Cross-check two: a crack across one corner. Three of four remember it; nobody knows how it got there | 56 | The crack as described; never its cause |
 | 04 | F5, A4 | 24 | 100 | (t)[ET] Cross-check three: a small mark bottom right that was not her name and not his. The strangest fact in the case | 56 | The mark as described; never whose it is |
-| 05 | D4, A3 | 12 | 50 | (t)[CF] She ranked handwriting out loud: the woman who judged every hand in town could not place this one, and said so for a month. Ally holds, privately, what the trade of one dead friend was, and does not air it | v1.2, 56 | Violet's expertise; Ally's private juxtaposition exists but is never aired and never confirmed; never the word Brad |
+| 05 | D4, A3 | 12 | 50 | ★TURN [ET] She ranked handwriting out loud: the woman who judged every hand in town could not place this one, and said so for a month. And the only other signwriter in her life is dead. Ally holds the juxtaposition privately and does not air it; the player holds it too. The chapter's turn (promoted by the attack: the panel starts pointing at its maker here) | v1.2, 56 | Violet's expertise; Ally's private juxtaposition exists but is never aired and never confirmed; never the word Brad |
 | 06 | R3 | 4 | 20 | (t)[CF] The brush: sable on a handle cut from a broken oar, green tape at the ferrule, hers beyond mistake from across a road. What her hand looked like in the world. Quick win | v1.2 | The brush as texture (Fable's seed, kept as texture per the spine); never a clue |
 | 07 | A4, F3, R3 | 16 | 70 | (t)[ET] Del asks: hold one detail back, so claims can be tested. She does not say why she asks | C7, v1.0 D4 | Del's request and her silence about her reasons; never her private hypothesis |
-| 08 | R5, A5, F5, F4 | 56 | 240 | ★TURN [ET] The description assembled: one of a kind, and about to be spoken into every kitchen in the country, including one Ally cannot know about. Airing it is the only way to find it, and airing it warns whoever holds it. **D4 resolves here. Climax wall; +2 Platinum Ingots** | 56 | The full description as assembled; Del's request; that Ally airs knowing the holder will hear; never whose mark, what it proves, who hears |
+| 08 | R5, A5, F5, F4 | 56 | 240 | (t)[ET] The description assembled: one of a kind, and about to be spoken into every kitchen in the country, including one Ally cannot know about. Airing it is the only way to find it, and airing it warns whoever holds it. Consequential action, not a belief turn (the attack demoted it, correctly); the chapter's belief work was done at p05. **D4 resolves here. Climax wall; +2 Platinum Ingots** | 56 | The full description as assembled; Del's request; that Ally airs knowing the holder will hear; never whose mark, what it proves, who hears |
 | 09 | A5, D4, R4 | 32 | 135 | (t)[AL] Ep 9 airs the description (per D4). The player leaves the app having said it out loud | A5 D325 | What aired per branch; never the burn (the player never sees it; Ally never learns it) |
 | 10 | A4, R4, F3×2, D3 | 28 | 125 | (t)[AL] The night after: nothing left to do but wait; the tip line light burning in a dark studio | A5 | Ally's side only; nothing that happens 400 miles away exists in this game's render |
 
@@ -227,7 +233,7 @@ Parallel pairs: p02 ∥ p03 (both from p01; p04 requires both) and p05 ∥ p06 (
 
 ## Chapter 10 · The Man on the Wall · Days 326 to 333 · 10 pkgs · 32 cards · 225 T1eq · 975 CC
 
-The letter, the wait, the arrest, the accounting. Strict chain: this week runs on rails and the fiction says so. Five-carders (p04, p08, p10) with quickies beside them (p03, p06).
+The letter, the wait, the arrest, the accounting. Strict chain: this week runs on rails and the fiction says so. Five-carders (p04, p08, p10) with quickies beside them (p03, p06). **D4's fork lives here (ruled 2026-09-01, attack findings 7 and 8): p08 to p10 exist in two mutually exclusive branch versions, flag-gated, equal mass, converging on the settled arrest and never on the record. The close's story shape inside each branch remains Stephen's F2 ruling.**
 
 | # | Cards | T1eq | CC | Beat | Source | Fable |
 |---|---|---|---|---|---|---|
@@ -237,10 +243,12 @@ The letter, the wait, the arrest, the accounting. Strict chain: this week runs o
 | 04 | A5, A4, F4, R4, D3 | 44 | 185 | (t)[ET] Ep 10 built, five cards: an episode that must be indistinguishable from episode nine, because he listens. The player assembles a broadcast whose whole job is to be boring, and knows why | A5 D332 | As p01 |
 | 05 | D4, A3, R3, D1×3 | 19 | 80 | (t)[CF] What gave him away was never evidence: keys moved twice, thank you like it cost him, up at five. Six weeks of habits, told by people who loved him, heard by a woman who dusts his room | 63, 55 | As p01 |
 | 06 | A3 | 4 | 20 | (t)[AL] Ep 10 airs, Day 332. Quick win; silence holds | A5 D332 | As p01 |
-| 07 | A5, R4, F3 | 28 | 120 | ★TURN [ET] The news, Day 333: arrested four hundred miles away, under a name that sat for three years in a missing-person file in Del's own precinct. Brad Collins, alive | public record D333 | As p01 |
-| 08 | A4, F4, R4, D4, F3 | 36 | 150 | (t)[ET] The accounting, five cards: every held tip laid in its true place at last: the Wednesday visitor, the first train, the skipper's deckhand. What Ally knew, when, and why she never said it | 57, 60, R6a, within consent | As p01 |
-| 09 | A4, D3, F3 | 16 | 70 | (t)[CF] Margo read it right first and paid first: she said it once, to one person, and her words are in the record now. The letter was wrong, and she was not | 59, A5 | As p01 |
-| 10 | A5, R4, D4, F3, D2 | 38 | 180 | (t)[AL] The close: he is alive and what that un-writes; the survivors' war ends where the accusation was; the landlady is never named, even now; and the honest limit: the arrest is for the identity offences, and Violet's staircase is not Ally's to promise. Sign-off. **+3 Platinum Ingots, +20 energy.** Sets `fk.ep01.complete`; spawns `cold_case_a`, `ep2_teaser` (shape is Stephen's, F2) | 63 held, public record | As p01; the last brief ends the blindness, written only after everything else is locked |
+| 07 | A5, R4, F3 | 28 | 120 | (t)[ET] The news, Day 333: arrested four hundred miles away, under a name that sat for three years in a missing-person file in Del's own precinct. Brad Collins, alive. Confirmation of p10_01, not a new belief (the attack demoted it, correctly); the week's dread pays off here without turning anything | public record D333 | As p01 |
+| 08a | A4, F4, R4, D4, F3 | 36 | 150 | (t)[ET] **Aired branch** (`aq.fk.d4.mark_aired`): the sift, five cards. The mark went out on Ep 9 against Del's request, so every claim that followed is untestable; the accounting is done through a flood of false sightings, and the mark sits in the public record forever, where the next man who burns a life will read what gave this one away. The lasting exposure cost is on the board and in the close | 57, 60, R6a, within consent | As p01 |
+| 08h | F5, A4, R4, D3, F3 | 36 | 150 | (t)[ET] **Held branch** (`aq.fk.d4.mark_held`): the clean identification, five cards. The held detail let Del test the landlady's message against something nobody else could know; the accounting lays every tip in its true place through one verified chain, and the mark never enters the public record | 57, 60, R6a, within consent | As p01 |
+| 09a/09h | A4, D3, F3 | 16 | 70 | ★TURN [CF] Margo's re-reading, branch-flavoured (crowded record against clean record): the frightened dissenter becomes the one friend who interpreted the substitution correctly, and the player re-ranks everything she did through the middle chapters. The turn the census missed (promoted by the attack) | 59, A5 | As p01 |
+| 10a | A5, R4, D4, F3, D2 | 38 | 180 | (t)[AL] **Aired branch close:** he is alive and what that un-writes; the survivors' war ends; the landlady is never named, and on this branch that anonymity is the one thing Ally managed to keep. The honest limit as ever. Sign-off. **+3 Platinum Ingots, +20 energy.** Sets `fk.ep01.complete`; spawns `cold_case_a`, `ep2_teaser` (story shape is Stephen's, F2) | 63 held, public record | As p01 |
+| 10h | A5, R4, D4, F3, D2 | 38 | 180 | (t)[AL] **Held branch close:** the same arrest, the same limit, and a record that holds only what was true; Tessa's close line differs per D3, and the mark dies with the case file. Sign-off, grants, flag and spawns identical to 10a | 63 held, public record | As p01 |
 
 ---
 
@@ -248,43 +256,41 @@ The letter, the wait, the arrest, the accounting. Strict chain: this week runs o
 
 The four decisions of v1.0, re-placed at package boundaries. Their class analysis stands unchanged and is not restated in full here (v1.0 Part C is the reference); what follows is the placement, the axis, and the standing caveat.
 
-**The known limitation, named, not hidden:** the spine's clock and arrest are fixed; they survived three adversarial rounds by being inevitable. No decision moves who is arrested or when. Decisions redistribute who is protected, exposed and believed along the way, and what the public record ends up holding. The ending-changing axis is unavailable by construction, this document says so plainly, and the question goes to the attack again (the attack prompt names it in scope as a fairness question, with the spine itself out of scope).
+**The limitation, re-drawn at v2.1 (attack findings 7 and 8, Stephen-ruled 2026-09-01):** the spine's clock and arrest are fixed and no decision moves who is arrested or when. v2.0's four decisions all shared one package graph, which failed the agency gate: zero decisions changed play. v2.1's repair, adopted as GPT specified: **D3 and D4 are mechanically divergent** (mutually exclusive branch packages of equal mass: p07_01/02 and p10_08/09/10, different requirements, different beats, different record left behind), and **D1 and D2 are lower-order** with their promised consequences now mapped to named rows (p03_10's garbled leak; p04_10's silence and p07_03's return). Both forks converge on the settled arrest; what never converges is the player's route and the human record left behind.
 
 | D | Package · Day | The choice | Class | Branch flags |
 |---|---|---|---|---|
-| D1 | `fk_p02_03` · ~272 | Ruby's letter read whole on air, or only what Ally can verify (the garbled leak lands by chapter 6 on the held branch) | B | `aq.fk.d1.aired` / `aq.fk.d1.held` |
-| D2 | `fk_p04_09` · 290 | The tip to Del raw, or Bay 3 on tape first then both handed over (Liam goes quiet to the show until Day 311 on the market branch) | A | `aq.fk.d2.direct` / `aq.fk.d2.market` |
-| D3 | `fk_p06_06` · ~302 | Margo's words verbatim anonymised, or paraphrased with the channel shielded (one signwriter instead of two answers; the Ep 9 assembly drops the crack; Tessa's close line differs) | B | `aq.fk.d3.verbatim` / `aq.fk.d3.paraphrase` |
-| D4 | `fk_p09_08` · 325 | The mark aired, or held at Del's request (the sift versus the clean identification at the close) | A | `aq.fk.d4.mark_aired` / `aq.fk.d4.mark_held` |
+| D1 | `fk_p02_03` · ~272 | Ruby's letter read whole on air, or only what Ally can verify | B, lower-order | `aq.fk.d1.aired` / `aq.fk.d1.held` · held branch: the garbled leak and Ruby's cost land at **p03_10** (mapped row) |
+| D2 | `fk_p04_09` · 290 | The tip to Del raw, or Bay 3 on tape first then both handed over | A, lower-order | `aq.fk.d2.direct` / `aq.fk.d2.market` · market branch: Liam's silence starts at **p04_10** and his two-line return lands at **p07_03**, Day 311 (mapped rows) |
+| D3 | `fk_p06_06` · ~302 | Margo's words verbatim anonymised, or paraphrased with the channel shielded | **A, mechanically divergent** | `aq.fk.d3.verbatim` / `aq.fk.d3.paraphrase` gate **p07_01v/01p and p07_02v/02p** (different testimony, different spread, the shielding task; crack corroborated only on verbatim); tails at p09_03 and p10_10 stand |
+| D4 | `fk_p09_08` · 325 | The mark aired, or held at Del's request | **A, mechanically divergent** | `aq.fk.d4.mark_aired` / `aq.fk.d4.mark_held` gate **p10_08a/08h, 09a/09h, 10a/10h** (the sift against the clean identification; different requirements and payoff art; the record differs forever) |
 
-Placement checks: one live decision at a time; every branch rejoins within the following chapter (D1 by ch3, D2 by ch7 p01 at the latest via Liam's return on Day 311, D3's evidence-quality tail is perceivable at ch9 and closes at ch10, D4 within the close); no flag gates a mainline package, so no reachable state starves the chain; every named cost surfaces in a scene or on the board before the episode ends. Clock check unchanged from v1.0: no B6 day moves on any branch; the burn, the landlady, Del's 07:00 and the arrest hold in all sixteen reachable flag states.
-
-D3's cross-chapter consequences in package terms: `aq.fk.d3.paraphrase` changes p07_01 (one letter, not two), p09_03 (the crack drops from the assembly, two describers not three) and one Tessa variant line at p10_10. Variant dialogue nodes and board annotations only; identical package graph.
+Placement checks, v2.1: one live decision at a time; D1's consequence lands at p03_10 and D2's at p04_10/p07_03 (mapped rows, no longer unplaced); D3's fork resolves inside chapter 7 (rejoin at p07_03) with perceivable tails at p09_03 and p10_10; D4's fork runs to the close and converges on the arrest. Branch pairs are mutually exclusive by `requiresFlag`/`forbidsFlag` and their union is the mainline, so exactly one version of each forked package is reachable in every state and no state starves. Branch masses are equal (16/16, 20/20, 36/36, 16/16, 38/38 T1eq), so the 1,600 envelope holds on every path. Clock check: no B6 day moves on any branch; the burn, the landlady, Del's 07:00 and the arrest hold in all sixteen reachable flag states. Authoring note: **100 packages played, 105 authored** (five branch pairs); the Fable brief and art bills count the authored number.
 
 ---
 
 # D. CHAPTER 1, IN SECONDS
 
-The cold open v0.4 (~470 words, ~3:20 at 140 wpm) spreads across chapter 1's ten packages. v1.0's three-segment cut is superseded as a proposal by this finer one; both remain proposals until Stephen rules the boundaries (F4). Every word is v0.4 as adopted; nothing is rewritten.
+The cold open v0.4 (~470 words, ~3:20 at 140 wpm) spreads across chapter 1's ten packages. **Recut 2026-09-01 per Stephen's ruling and the attack's findings 5 and 6:** no words are rewritten and no sentences reordered; only the boundaries move. The accident ruling rides with the biography so no package is career texture alone; the keys arrive in the second cycle; the accusation is the payoff of p01_04's completion; p01_09's police result is spoken only after its board work.
 
-**The proposed cut** (VO plays across each package's opening and completion nodes; the merge sits between):
+**The ruled shape, boundaries pending Stephen's line-level sign-off (F4):**
 
-| Pkg | v0.4 stretch | ~Words | ~Seconds |
-|---|---|---|---|
-| p01_01 | "This is Echoes of Havenbay" to "…bottom of her stairs." | 28 | 12 |
-| p01_02 | "Violet painted signs…" to "…side of a bus once." | 47 | 20 |
-| p01_03 | "Her death was ruled an accident…" to "…nothing more." | 24 | 10 |
-| p01_04 | "But two weeks later…" to "…written in Violet's handwriting." | 28 | 12 |
-| p01_05 | "Their names were…" to "…leave behind four keys." | 59 | 25 |
-| p01_06 | "She also told her friends…" to "…all four of them could be there together." | 68 | 29 |
-| p01_07 | "And when they finally opened it…" to "…what that object was." | 51 | 22 |
-| p01_08 | "Then the group began to disappear." to "…That left Liam and Ruby." | 71 | 30 |
-| p01_09 | "They both went to the police…" to "…At least, not yet." + the Del scene dialogue | 90 | 39 + scene |
-| p01_10 | "I don't know what was behind that locked door…" to the ruled sign-off | 92 | 39 |
+| Pkg | v0.4 stretch | ~Words | ~Seconds | Note |
+|---|---|---|---|---|
+| p01_01 | "This is Echoes of Havenbay" to "…bottom of her stairs." | 28 | 12 | First tap at the segment's end |
+| p01_02 | "Violet painted signs…" to "…nothing more." | 71 | 30 | Biography and ruling in one breath: the accepted account, never career texture alone |
+| p01_03 | "But two weeks later…" to "…written in Violet's handwriting." | 28 | 12 | The keys are in play by ~0:50 |
+| p01_04 | "Their names were…" to "…leave behind four keys." | 59 | 25 | The accusation lands on this completion: the turn |
+| p01_05 | "She also told her friends…" to "…was the reason she had become afraid." | 33 | 14 | |
+| p01_06 | "The four friends called each other…" to "…what that object was." | 91 | 39 | The pact, the Saturday, she knew: the second turn |
+| p01_07 | "Then the group began to disappear." to "…three days after that." | 60 | 26 | |
+| p01_08 | "That left Liam and Ruby." to "…I'm afraid of the other one." | 30 | 13 | |
+| p01_09 | Board work first, then "A sergeant I trust…" to "…they could use." as the Del scene | 33 | 14 + scene | The result is heard only after fulfilment; Del interprets |
+| p01_10 | "Now Liam and Ruby are accusing each other…" to the ruled sign-off | 100 | 43 | |
 
-**First interaction:** the seeded pair pulses under p01_01's VO; the board accepts the tap when that segment ends, at **~0:12 to 0:15**. This is earlier than v1.0's 38 to 39 seconds because the finer package grain lets the open keep rolling between merges instead of front-loading it. I6's 35-to-40-second band is still an open ruling: if Stephen holds the band, the board simply stays locked until the end of p01_03 (~0:42) with no structural change. One number to rule (F3).
+**First interaction: ruled 2026-09-01 at ~0:12 to 0:15** (the seeded pair pulses under p01_01's VO and the board accepts the tap at the segment's end). F3 is closed; I6's FTUE doc should be updated to record the ruling when the FTUE build locks.
 
-**Timeline (draft):** 0:00 ident and the death line · ~0:13 first tap (one A-T1: the §5.7 choreographed deterministic merge) · ~0:45 the ruling pinned · ~1:10 the keys land (p01_04, the first turn) · ~2:20 the pact and the second letter · ~3:20 the disappearances · ~4:00 Del on the steps (p01_09, the second turn, the chapter's heaviest card at A-T4) · ~5:30 sign-off, Ep 1 publishes, chapter 1 ends. Chapter 1 net energy ≈ 23: comfortably inside the FTUE tank with the whole open played.
+**Timeline (draft):** 0:00 ident and the death line · ~0:13 first tap (one A-T1: the §5.7 choreographed deterministic merge) · ~0:45 the accepted account pinned · ~0:50 the keys land · ~1:20 the accusation (p01_04, the first turn) · ~2:10 she knew (p01_06, the second turn) · ~2:50 the disappearances and the walk-ins · ~3:30 Del on the steps after the chapter's heaviest board work (p01_09, the third turn, A-T4) · ~4:30 sign-off, Ep 1 publishes, chapter 1 ends. Chapter 1 net energy ≈ 23: comfortably inside the FTUE tank with the whole open played.
 
 Mechanical duties (systems pass, not this document): p01_01 carries the FTUE entitlements and the lab grant exactly as `e1_tip` does; the junk-drawer generator arrives via p01_10's overflow; the diner is granted at chapter 1's close (first D card is p02_01); `aq.loc.rusty_anchor.active` is set at chapter 2's open (first R card is p02_06). Wired and verified in the editor, not asserted here.
 
@@ -296,47 +302,56 @@ Mechanical duties (systems pass, not this document): p01_01 carries the FTUE ent
 
 | Ch | Pkgs | Cards | T1eq | v1.1 envelope | Net energy (flat 1.55) | CC | CC at 4.3 |
 |---|---|---|---|---|---|---|---|
-| 1 | 10 | 10 | 35 | 35 | ≈23 | 150 | 151 |
+| 1 | 10 | 12 | 35 | 35 | ≈23 | 150 | 151 |
 | 2 | 10 | 15 | 70 | 70 | ≈45 | 300 | 301 |
 | 3 | 10 | 20 | 105 | 105 | ≈68 | 450 | 452 |
 | 4 | 10 | 21 | 135 | 135 | ≈87 | 580 | 581 |
 | 5 | 10 | 24 | 170 | 170 | ≈110 | 730 | 731 |
 | 6 | 10 | 23 | 205 | 205 | ≈132 | 880 | 882 |
-| 7 | 10 | 27 | 215 | 215 | ≈139 | 925 | 925 |
+| 7 | 10 | 25 | 215 | 215 | ≈139 | 925 | 925 |
 | 8 | 10 | 25 | 220 | 220 | ≈142 | 945 | 946 |
 | 9 | 10 | 26 | 220 | 220 | ≈142 | 945 | 946 |
 | 10 | 10 | 32 | 225 | 225 | ≈145 | 975 | 968 |
 | **Total** | **100** | **223** | **1,600** | **1,600** | **≈1,032** | **6,880** | **6,880** |
 
-No chapter needed a budget different from the envelope: the variety the beats wanted fit inside it, so nothing was taken. Card count lands at 223 against the model's derived working figure of 250 (average 2.23 cards per package, 7.2 T1eq per card against the model's 2.5 and 6.4). The ruled numbers (100 packages, 1,600 T1eq) are met exactly; the card figure was always derived, and the difference is that this design prefers a slightly heavier single card over two trivial ones where the beat is one object (the letter, the slip, the screenshot). If the tuning pass wants more board actions per package, the mechanical conversion is T4 → T3×2 and T5 → T4×2 at identical T1eq; it changes nothing in this document but the Cards column.
+Column notes (v2.1): the **CC at 4.3** column is **rounded per chapter and indicative**; the ruled totals reconcile exactly at 6,880 (the attack's 6,883 sum is the rounding artefact, now labelled). The **net energy (flat 1.55)** column is an indicative flat-yield figure superseded by E3's refined computation; it is kept only because the envelope was ruled against it. Cards are **played** cards; the D3/D4 branch pairs keep card counts equal per branch, so every path plays 223.
+
+No chapter needed a budget different from the envelope: the variety the beats wanted fit inside it, so nothing was taken. Card count lands at 223 against the model's derived working figure of 250 (average 2.23 cards per package, 7.2 T1eq per card against the model's 2.5 and 6.4). The ruled numbers (100 packages, 1,600 T1eq) are met exactly; the card figure was always derived, and the difference is that this design prefers a slightly heavier single card over two trivial ones where the beat is one object (the letter, the slip, the screenshot). The attack confirmed no wall-class package exists (heaviest 56 T1eq against The Listener's 160-class) and named fk_p06_08 and fk_p09_08 as the concentrated-build tuning risks; both stay watched. If the tuning pass wants more board actions per package, the mechanical conversion is T4 → T3×2 and T5 → T4×2 at identical T1eq; it changes nothing in this document but the Cards column.
 
 Rewards riders (draft): +20 energy at p05_10, p07_07, p10_10 (total +60); +2 Platinum Ingots at p09_08, +3 at p10_10 (total 5, matching the shipped episode). Toasts per §5.7 on every package of 3+ cards.
 
 ### E2. The variety evidence (the ruling's test)
 
-Package sizes across the episode: **28 one-card, 36 two-card, 26 three-card, 5 four-card, 5 five-card.** Within chapters, against a mechanical ramp:
+Package sizes across the episode (played, v2.1): **27 one-card, 38 two-card, 26 three-card, 3 four-card, 6 five-card.** Within chapters, against a mechanical ramp:
 
+- **Chapter 1 now mixes sizes** (attack finding 3's repair): two two-card packages (p01_04, p01_06) among the FTUE singles.
 - **Chapter 2 carries the ruled early spike:** p02_06 (the boxes, 16 T1eq, three cards) sits beside 2 and 4 T1eq singles.
-- **Chapters 7 to 10 keep quick wins beside the heavy builds:** p07_10 (9 T1eq across four small cards), p08_04 and p08_10 (single A-T3 quickies beside a 52 T1eq five-carder), p09_06 (single R-T3 beside the 56 T1eq climax), p10_03 and p10_06 (2 and 4 T1eq singles in the finale week).
+- **Chapters 7 to 10 keep quick wins beside the heavy builds:** p07_10 (one A-T4 card, a real quickie after finding 4's repair), p08_04 and p08_10 (single A-T3 quickies beside a 52 T1eq five-carder), p09_06 (single R-T3 beside the 56 T1eq climax), p10_03 and p10_06 (2 and 4 T1eq singles in the finale week).
 - **No chapter is monotonic:** chapter 8 runs 24, 40, 12, 4, 24, 28, 12, 20, 52, 4; chapter 10 runs 24, 14, 2, 44, 19, 4, 28, 36, 16, 38.
 - **Tier spread inside chapters:** chapter 10 spans T1 to T5; chapter 5 spans T2 to T5; the five-carders mix three or four families each.
 - **The heaviest single package** (p09_08, 56 T1eq, three T5s and a T4) is the climax and is far below The Listener's 160/185-class walls: the mass lives in the spread, which is the model's whole point.
 
-### E3. A finding for the tuning pass: the family mix is lab-heavy, and the flat 1.55 yield hides it
+### E3. The tap and session arithmetic, done in one unit system (rebuilt at v2.1 per the attack's finding 2)
 
-By family: **A 630 · F 377 · R 291 · D 302** (after four diegetic swaps that moved the boxes and the ladder work to the junk drawer). A podcast-and-documents episode is honestly A and F shaped: the tape, the letters, the spreads. But the lab's tuned yield (1.3355 T1eq per tap) is the worst of the three generators, so the refined tap count at this mix is **≈1,210 taps** against the flat model's ≈1,032, which is closer to 12 free session-tanks than 10.3. Named, not solved here, because the levers are all tuning-pass property: shift more texture mass to R and D where the diegesis allows, retune the lab drop table, or accept ~12 sittings (the v1.1 ruling explicitly made the 1,600 tunable once the beats existed; this is that trade arriving on schedule). Chapter-sitting shape at either yield: chapters 1 to 4 clear a single tank free; chapters 5 to 10 run 1.1 to 1.5 tanks, which is one generous sitting or two short ones, with the +20 grants and ads narrowing it. Inside the 8-to-10-session guide at the flat yield, 10 to 12 at the refined one.
+By family: **A 630 · F 377 · R 291 · D 302** (after four diegetic swaps that moved the boxes and the ladder work to the junk drawer). A podcast-and-documents episode is honestly A and F shaped, and the lab's tuned yield is the worst of the three generators.
 
-### E4. The beat census
+**Gross taps, per family at the tuned yields, then overhead:** A+F 1,007 ÷ 1.3355 = 754 · R 291 ÷ 1.7427 = 167 · D 302 ÷ 1.6975 = 178 · subtotal 1,099 · ×1.10 waste overhead (the Schedule B baseline's factor) = **≈1,209 gross taps**. (The attack called v2.0's 1,210 arithmetically impossible against a 1,198 ceiling; the ceiling omitted the overhead factor, so the figure itself was right. What the attack correctly caught was the unit mixing below, which v2.0 did commit.)
+
+**One unit system, as the baseline defines it:** a tap costs one energy, so gross taps = gross energy demand; net external energy = gross taps minus in-episode energy grants (the baseline's 233 taps and 213 net differ by the L5 +20 grant, the same rule). Grants here are +60 (E1's riders), so **net external energy ≈ 1,209 − 60 = 1,149 ≈ 11.5 free session-tanks** at the 100-energy tank.
+
+**Sessions, stated honestly:** ~11 to 12 free sittings at this family mix, against the 8-to-10 guide; ads (+20 ×5/day) and the ladder narrow it for players who use them. Chapter shape at the refined figure (episode average ≈0.756 taps per T1eq): chapters 1 to 3 clear inside a tank; chapters 4 to 7 run 0.9 to 1.2 tanks; chapters 8 to 10 run 1.6 to 1.7, which is two sittings each in practice. **The levers, for the tuning pass, in preference order:** shift 100 to 150 T1eq of texture mass from A/F to R and D where the diegesis allows (the boxes, the harbour legwork, the door-knocking can all carry more), which brings net energy near 1,080 and the count to ~10.5; or retune the lab drop table; or accept 11 to 12 (the v1.1 ruling made 1,600 tunable once the beats existed, and this is that trade arriving with real numbers attached).
+
+### E4. The beat census (relabelled at v2.1 per the attack's finding 1; v2.0's census was materially wrong)
 
 | Payoff class | Count | Of which ★TURN |
 |---|---|---|
-| Evidence turn (ET) | 49 | 18 (17 full, 1 minor: p03_09) |
-| Character fact (CF) | 20 | 0 |
+| Evidence turn (ET) | 51 | 17 |
+| Character fact (CF) | 20 | 1 (p10_09: Margo righted) |
 | Ally line (AL) | 21 | 0 |
-| Art with caption (AC) | 10 | 0 |
+| Art with caption (AC) | 8 | 0 |
 | **Total** | **100** | **18** |
 
-Texture packages: 82, every one marked (t) in Part B. Every chapter carries at least one full turn; chapters 1, 2, 3, 4, 6, 8 and 10 carry two. Character facts: 20, of which 14 are mined straight from the five v1.2 (the tenor voice, the piano, the county swimming, the 2014 kitchen, the 4 a.m. call, the tonic, the habits, the flask, the cheque, the receipts bag, ten minutes early, the sharpness, the brush, ranked handwriting) and the rest are Tessa, the deckhand and the clerk from the spine's own texture. New facts and routes: none touch the graph; all are batched in F5.
+The relabels, on the record: demoted to texture: p02_08 (provenance), p03_09 (attention), p09_08 (consequential action), p10_07 (confirmation); promoted to turns: p01_06 (she knew), p08_09 (stopped saying "was"), p09_05 (the trade juxtaposition), p10_09 (Margo righted); made real by the recut rather than relabelled: p01_04 (the accusation now lands on its completion) and p01_09 (board-first). Net count is still 18, which says v2.0 had the right amount of turn and the wrong addresses. Texture packages: 82, every one marked (t) in Part B. Every chapter carries at least one turn; chapters 2, 5, 7 and 9 carry exactly one. Character facts: 20, of which 14 are mined straight from the five v1.2 (the tenor voice, the piano, the county swimming, the 2014 kitchen, the 4 a.m. call, the tonic, the habits, the flask, the cheque, the receipts bag, ten minutes early, the sharpness, the brush, ranked handwriting) and the rest are Tessa, the deckhand and the clerk from the spine's own texture. New facts and routes: none touch the graph; all are batched in F5.
 
 ### E5. The three weakest beats, named honestly
 
@@ -345,6 +360,8 @@ Texture packages: 82, every one marked (t) in Part B. Every chapter carries at l
 3. **`fk_p10_03` (the wait, day one).** One card, one line, pure pacing. It exists to put air between the handover and the built broadcast, because the fiction needs the week to feel held. If any package in the episode is cuttable, it is this one; it is also two T1eq, so it costs the player forty seconds. Named so the cut, if it comes, is deliberate.
 
 Also watched, defended: p01_01 (orientation, not a turn; the FTUE's price, capped at one merge) and p10_04 (a package whose deliverable is a deliberately boring broadcast; the point of the week, and the riskiest ask of the player's trust in the set).
+
+**Postscript at v2.1:** the attack judged this section's self-diagnosis "not honest enough": the three named weaknesses were expendable texture while the census itself misaddressed a third of its turns. Accepted; the census above is the attack-corrected one, and the standing lesson is that a census is a claim to verify, not a property of having written one.
 
 ### E6. Spine-day audit
 
@@ -364,11 +381,11 @@ Each in the ruled form: the question · what the structure needs · what changes
 
 ### F2. The close's shape, and the teaser (carried, extended)
 
-The v1.0 candidate stands (the accounting after the arrest is public; Margo's words in the record; the landlady never named; the honest limit about the staircase; final image, Liam and Ruby in the same harbour crowd). **New half of the question, from the v1.1 economy ruling:** does an Ep 2 teaser beat live inside `fk_p10_10`, as a story beat with no extra play (the shipped `ep2_teaser` spawn is story-neutral tail either way)? **Needs:** the close's beats confirmed, and the teaser yes/no. **Otherwise:** the close package and the final Fable brief cannot be written, and chapter 10 ships as a stub.
+The v1.0 candidate stands (the accounting after the arrest is public; Margo's words in the record; the landlady never named; the honest limit about the staircase; final image, Liam and Ruby in the same harbour crowd). **New half of the question, from the v1.1 economy ruling:** does an Ep 2 teaser beat live inside the close package, as a story beat with no extra play (the shipped `ep2_teaser` spawn is story-neutral tail either way)? **Changed by v2.1:** the close now exists in two D4 branches (p10_08 to 10, a/h); the ruling shapes both, and the branch mechanics are already ruled, so F2 is now purely the story shape and the teaser yes/no. **Needs:** the close's beats confirmed, and the teaser yes/no. **Otherwise:** the close packages and the final Fable briefs cannot be written, and chapter 10 ships as a stub.
 
-### F3. The first-interaction number (carried, changed by this structure)
+### F3. The first-interaction number: **RULED, Stephen, 2026-09-01**
 
-The finer package grain lets the first required tap land at ~0:12 to 0:15, under VO that keeps rolling; v1.0 proposed 38 to 39 seconds against I6's open 35-to-40 band. Both are now live options with no structural difference: rule one number (accept the early tap, or hold the board to ~0:42 at the end of p01_03). **Needs:** one number. **Otherwise:** the FTUE build cannot lock.
+~0:12 to 0:15, the early tap, as part of the chapter 1 recut ruling. I6's band is superseded for this episode; the FTUE doc records it when the build locks. Closed.
 
 ### F4. The cold-open cut boundaries (carried, changed by this structure)
 
@@ -391,7 +408,7 @@ All invented texture in one place, per the kickoff rule. Facts marked CANON are 
 
 ### F6. Art-with-caption beats that are load-bearing (new, for the art bill)
 
-Decorative AC beats are not listed; these carry story weight and their art fails the beat if it fails: the wake photograph (p01_05) · the key letter as object (p02_02) · the Regent marquee with the chained ladder (p03_04) · the market corridor at 05:40 (p04_08) · the coast road drive (p06_02) · the side-by-side letter spread (p07_02, reused p07_09) · the witness-composite of the panel (p09_08 and p09_09: **text and sketch fragments only; no asset may depict the panel itself, in this episode or any marketing**) · the pale gap on the lodger's wall, if the close ever shows it (p10_01: recommend narration only, keeping the landlady's world unrendered). Ten dedicated AC payoffs exist in total; the count is reported, not rationed, per the ruling.
+Decorative AC beats are not listed; these carry story weight and their art fails the beat if it fails: the wake photograph (now inside p01_04's beat presentation, per the recut) · the key letter as object (p02_02) · the Regent marquee with the chained ladder (p03_04) · the market corridor at 05:40 (p04_08) · the coast road drive (p06_02) · the side-by-side letter spread (p07_02, reused p07_09) · the witness-composite of the panel (p09_08 and p09_09: **text and sketch fragments only; no asset may depict the panel itself, in this episode or any marketing**) · the pale gap on the lodger's wall, if the close ever shows it (p10_01: recommend narration only, keeping the landlady's world unrendered). Ten dedicated AC payoffs exist in total; the count is reported, not rationed, per the ruling.
 
 ---
 
@@ -406,7 +423,7 @@ There is no package container in code (verified this session). This design assum
 5. **Gating is package-to-package**, implemented with the shipped primitives: every card of package N+1 carries `RequiredLeadIds` = the member card ids of package N (AND-gate semantics already in `CheckAndUnlockBlockedLeads`), or the container resolves it; either way no new gate machinery is strictly required. Parallel pairs gate both packages on the same predecessor.
 6. **All cards of an Available package are simultaneously Available** (player picks order within the package); at most 2 packages Available at once, so the bar holds at most ~7 chips in the worst five-carder pair (UI grouping by package is the leads-bar work item in the systems bill).
 7. **Save schema: no new aggregate.** Package state is derivable from activated card ids (the shipped `_activatedLeadIds` set persisted by the existing save path); the container never persists its own state. If the costing doc finds it must, the save aggregate rule applies (fold into `BoardSaveSystem`, crash-boundary tests mandatory).
-8. **Ids and assets** as ruled in the header: `fk_p<ch>_<n>` packages, `fk_p<ch>_<n><letter>` cards, `Lead_FK_*` assets, `Assets/Content/FourKeys/`, database-decides-membership, slot ep01, no replay (R6), decision flags `aq.fk.d1..d4` never gate mainline packages.
+8. **Ids and assets** as ruled in the header: `fk_p<ch>_<n>` packages, `fk_p<ch>_<n><letter>` cards, `Lead_FK_*` assets, `Assets/Content/FourKeys/`, database-decides-membership, slot ep01, no replay (R6), decision flags `aq.fk.d1..d4` never gate a shared mainline package; the D3/D4 branch pairs are flag-gated mutually exclusive package versions (`requiresFlag`/`forbidsFlag`, shipped primitives; v2.1) whose union is the mainline, so the container needs no new gate machinery for them either.
 9. **Family availability:** lab (A, F) from p01_01; junk-drawer generator via p01_10 overflow; diner granted at chapter 1 close; `aq.loc.rusty_anchor.active` set at chapter 2 open. Mirrors the shipped `e1_tip` duties; wired in a systems pass with editor verification.
 10. **Analytics:** package_complete events with chapter, package id, T1eq, session index; the §7.7 climax watch attaches to p09_08 and p10_04.
 
