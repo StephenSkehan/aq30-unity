@@ -76,8 +76,9 @@ namespace AQ.App.Leads.Packages
             if (p == null || _service == null) return;
 
             bool firstPay = _service.TryPayRewards(p, WalletLocator.Instance);
-            if (firstPay && !string.IsNullOrEmpty(p.specialRewardId))
-                AQ.App.UI.Specials.SpecialItemsService.Grant(p.specialRewardId, Mathf.Max(1, p.specialRewardCount));
+            if (firstPay && !string.IsNullOrEmpty(p.specialRewardId) &&
+                Enum.TryParse<AQ.App.UI.Specials.SpecialId>(p.specialRewardId, out var specialId))
+                AQ.App.UI.Specials.SpecialItemsService.Grant(specialId, Mathf.Max(1, p.specialRewardCount));
 
             _service.MarkBeatSeen(p);
             _pendingBeats.Remove(p);
