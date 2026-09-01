@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d544b1378b43e4ae55e189e09359c7, type: 3}
+  m_Name: FourKeysCh1Catalog
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.Packages.PackageCatalog
+  episodeId: ep01
+  packages:
+  - {fileID: 11400000, guid: c70b4327a9f646d495b0627c3ca9a864, type: 2}
+  - {fileID: 11400000, guid: 5bfcfd6505e34b76b78d1b7e86cc3e69, type: 2}
+  - {fileID: 11400000, guid: 44758acc79bc486990f9ce0c0b3fb915, type: 2}
+  - {fileID: 11400000, guid: abbe11a3545b4506977aba37ece11b10, type: 2}
+  - {fileID: 11400000, guid: a0c4447756624ea1952e6b6f7517af16, type: 2}
+  - {fileID: 11400000, guid: a68050fb60814501b78c2dceaccdadd7, type: 2}
+  - {fileID: 11400000, guid: cfb4d443cbb64f3e9c694ed728880d63, type: 2}
+  - {fileID: 11400000, guid: e54487657a3348c5976893bcb631aa7b, type: 2}
+  - {fileID: 11400000, guid: a68d060d259f4b4ab913a77981f225f7, type: 2}
+  - {fileID: 11400000, guid: 44316a1cb42440f29142debea4ab17fa, type: 2}

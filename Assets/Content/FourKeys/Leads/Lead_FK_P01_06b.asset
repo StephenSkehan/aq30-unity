@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222fba07fae7fa343a6d2a96dfd2ee48, type: 3}
+  m_Name: Lead_FK_P01_06b
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadData
+  leadId: fk_p01_06b
+  title: "The Saturday (B)"
+  subtitle: "DRAFT"
+  actorPortrait: {fileID: 0}
+  state: 0
+  ActionType: 2
+  EnergyCost: 0
+  requirements:
+  - label: Forensic Work T2
+    icon: {fileID: 0}
+    satisfied: 0
+    itemDefinition: {fileID: 11400000, guid: 396f63cfaf7106c47bdaf61671377b24, type: 2}
+    quantity: 1
+  RequiredLeadIds: 
+  - fk_p01_05a
+  EvidenceIds: []
+  SpawnLeadIds: []
+  NarrativeFlags: []
+  SoftCurrency: 0
+  EnergyGrant: 0
+  PremiumGrant: 0
+  generatorRewardTypeId: 
+  generatorRewardTier: 0
+  specialRewardId: 
+  specialRewardCount: 1
+  resolutionDialogue: {fileID: 0}
+  OutcomeHints: 0
+  boardConnections: []
+  boardPhase: 1
