@@ -19,7 +19,12 @@ namespace AQ.App.UI.Dossiers
     public static class DossierService
     {
         private const string PrefsKey  = "aq.dossiers.state";
-        private const string CloseFlag = "aq.lead.e1_close.seen";
+        // Catalog-less fallback; the running episode's dossierGateFlag
+        // (EpisodeCatalog) is the real gate. All gated facts today are Ep1
+        // content; when a later episode ships its own gated facts, the gate
+        // moves onto the fact itself (per-fact episode), not this per-episode
+        // lookup.
+        private const string FallbackCloseFlag = "aq.lead.e1_close.seen";
 
         [Serializable] private class DTO { public List<string> keys = new(); public List<int> counts = new(); }
 
@@ -54,7 +59,8 @@ namespace AQ.App.UI.Dossiers
         public static bool NextIsSealed(string key)
         {
             var fact = NextFact(key);
-            return fact != null && fact.gatedOnEpisodeClose && !DialogueFlags.Has(CloseFlag);
+            return fact != null && fact.gatedOnEpisodeClose &&
+                   !DialogueFlags.Has(Episodes.EpisodeRuntime.DossierGateFlagOr(FallbackCloseFlag));
         }
 
         public static bool TryUnlockNext(string key)

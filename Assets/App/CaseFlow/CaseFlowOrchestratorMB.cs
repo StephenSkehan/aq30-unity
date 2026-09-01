@@ -7,6 +7,7 @@ using AQ.SharedKernel.CaseFlow;
 using AQ.SharedKernel.Economy;
 using AQ.App.Economy;
 using AQ.App.Analytics;
+using AQ.App.Episodes;
 
 namespace AQ.App.CaseFlow
 {
@@ -14,9 +15,10 @@ namespace AQ.App.CaseFlow
     [DefaultExecutionOrder(-2)]
     public sealed class CaseFlowOrchestratorMB : MonoBehaviour
     {
-        [Header("Episode config")]
+        [Header("Episode config (fallback — the EpisodeCatalog wins when present)")]
+        [Tooltip("Used only when no EpisodeCatalog resolves (dev/demo scenes). Shipped scenes boot from the catalog.")]
         public string episodeId = "Ep01";
-        [Tooltip("Ordered step keys for the episode's 'golden path'.")]
+        [Tooltip("Ordered step keys for the episode's 'golden path'. Fallback only, as above.")]
         public string[] steps = new[] { "FTUE_Entitlements", "Minigame_Scrub", "Resolution" };
 
         [Header("Lifecycle")]
@@ -51,10 +53,7 @@ namespace AQ.App.CaseFlow
         void Start()
         {
             if (beginOnStart)
-            {
-                _svc.Begin(new EpisodeId(episodeId), steps);
-                Debug.Log($"[CaseFlow] Began episode '{episodeId}' with {steps.Length} step(s).");
-            }
+                BeginResolvedEpisode();
 
             // Attach again in case wallet was created during other components' OnEnable/Awake
             TryAttachWallet();
@@ -110,9 +109,51 @@ namespace AQ.App.CaseFlow
             }
         }
 
+        /// <summary>
+        /// Boot the episode the catalog resolves; the scene-serialized fields are
+        /// the fallback for catalog-less scenes. Boot priority: the save's pointer
+        /// (parked in EpisodeBootPointer by BoardSaveSystem.Awake), then the
+        /// scene-serialized id (a legacy alias in shipped scenes), then the first
+        /// playable catalog entry. A reserved slot (no database) can never boot.
+        /// </summary>
+        private void BeginResolvedEpisode()
+        {
+            var entry = ResolveBootEntry();
+            if (entry != null)
+            {
+                episodeId = entry.episodeId;
+                if (entry.steps != null && entry.steps.Length > 0) steps = entry.steps;
+                EpisodeRuntime.SetCurrent(entry);
+            }
+
+            _svc.Begin(new EpisodeId(episodeId), steps);
+            // Ambient episode context for every event that follows (12 of 13
+            // analytics events carry no episode id of their own).
+            AnalyticsLocator.Instance?.SetUserProperty("episode_id", episodeId);
+            Debug.Log($"[CaseFlow] Began episode '{episodeId}' with {steps.Length} step(s).");
+        }
+
+        private EpisodeEntry ResolveBootEntry()
+        {
+            var catalog = EpisodeRuntime.Catalog;
+            if (catalog == null) return null;
+
+            var entry = catalog.FindById(EpisodeBootPointer.PendingEpisodeId)
+                     ?? catalog.FindById(episodeId)
+                     ?? catalog.First;
+
+            if (entry != null && !entry.HasContent)
+            {
+                foreach (var e in catalog.Episodes)
+                    if (e != null && e.HasContent) return e;
+                return null;
+            }
+            return entry;
+        }
+
         // Optional UI hooks:
         public void Advance() { if (_svc.CompleteCurrentStep()) Debug.Log($"[CaseFlow] Advance → { _svc.Current.StepIndex }"); }
         public void ResetProgress() { _svc.Reset(); Debug.Log("[CaseFlow] Reset progress to start"); }
-        public void BeginEpisode() { _svc.Begin(new EpisodeId(episodeId), steps); Debug.Log($"[CaseFlow] Begin '{episodeId}'"); }
+        public void BeginEpisode() { BeginResolvedEpisode(); }
     }
 }

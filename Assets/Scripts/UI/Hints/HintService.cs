@@ -24,6 +24,12 @@ namespace AQ.UI.Hints
         private const string FlagPrefix = "aq.hint.";
         public const string EnabledPref = "aq.hints.enabled"; // Config tab switch
 
+        // "Player is past the first lead" gate. Resolved from the running
+        // episode's entry lead (EpisodeCatalog); the e1 literal is the
+        // catalog-less fallback.
+        public static string EntryLeadSeenFlag =>
+            AQ.App.Episodes.EpisodeRuntime.EntryLeadSeenFlagOr("aq.lead.e1_tip.seen");
+
         private static readonly List<(string id, string text, Func<Transform> anchor, Func<bool> visibleWhile)> _queue = new();
         private static readonly HashSet<string> _pending = new(); // queued or showing
         private static HintRunnerMB _runner;
@@ -346,7 +352,7 @@ namespace AQ.UI.Hints
             // Teaching begins after FTUE + L1 are fully done (Stephen-ruled
             // 2026-08-14): the choreography and first payoff stay clean, and the
             // queue holds anything triggered earlier.
-            if (!DialogueFlags.Has("aq.lead.e1_tip.seen")) return true;
+            if (!DialogueFlags.Has(HintService.EntryLeadSeenFlag)) return true;
             return PlayerPrefs.GetInt("aq.ftue.first_merge.stage", 0) == 1;
         }
 
@@ -536,7 +542,7 @@ namespace AQ.UI.Hints
         // pointing at a live example.
         private static void OnTickShown(BoardTileView tile)
         {
-            if (!DialogueFlags.Has("aq.lead.e1_tip.seen")) return;
+            if (!DialogueFlags.Has(HintService.EntryLeadSeenFlag)) return;
             // The triggering tile can lose its item before the queued chip shows
             // (merged away): anchor to whatever tile CURRENTLY carries a tick,
             // and only show while one exists at all — a tick lesson over a
@@ -699,7 +705,7 @@ namespace AQ.UI.Hints
         // done) so it does not stack on the L1 payoff moment.
         private static void OnDialogueClosed()
         {
-            if (!DialogueFlags.Has("aq.lead.e1_tip.seen")) return;
+            if (!DialogueFlags.Has(HintService.EntryLeadSeenFlag)) return;
             HintService.Request("dossier",
                 "Ally keeps notes on everyone and everything. Tap her to find out what she knows.",
                 () => FindAny("Img_Player"), OnBoard);
