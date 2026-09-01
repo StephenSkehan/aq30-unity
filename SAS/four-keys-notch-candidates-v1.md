@@ -52,3 +52,13 @@ Convergence note: three sources independently generated "someone was at the dead
 37. A week later, her source sends one photograph: the destroyed object, whole, on somebody's kitchen table, taken years before Ally found the scene. **⚠ care:** does not un-destroy the object but resurrects its evidentiary life; changes what Ep2 inherits.
 38. At arraignment the killer answers only to the dead man's name, correcting the judge gently, like a habit he intends to keep.
 39. Arthur watches the booking footage twice and asks, "Why is he wearing your father's watch?" **⚠ SPINE**
+
+---
+
+## OUTCOME (2026-09-01, Stephen)
+
+**No batch line adopted.** Stephen's verdict on the class: every candidate is a reaction; the notch needed an action. His own design, sharpened in-session, is RULED as F1 (structure v2.2): the deckhand's photographs, kept by the skipper in case anyone came asking, opened at the accounting; Gerald goes still at one, asks for it and for silence, a few things to check first. Cost: what Ally described, she erased.
+
+**Stephen's per-line scores, kept as reader data** (line: score): 1:5 2:7 3:3 4:5 5:3 6:7 7:6 8:3 9:3 10:5 11:6 12:3 13:2 14:7 15:6 16:7 17:3 18:2 19:3 20:3 21:3 22:3 23:3 24:5 25:3 26:4 27:3 28:4 29:3 30:5 31:5 32:6 33:5 34:4 35:7 36:6 37:7 38:5 39:3.
+
+**Pattern in the 7s:** every 7 except 35 and 37 is Thomas-linked, and all Thomas-linked 7s carry the SPINE flag: his taste pulls hard toward the father thread, harder than the Ep1 rulings can spend. Season planning should treat that as the demand signal it is. **Salvage bank (unspent, nothing approved):** 35 (Mo takes down a photograph), 37 (the destroyed object photographed whole, years before), 2/6/14/16 (the Brad-to-Quinn class, usable only as a future season re-architecture), 15 (going still at the name: absorbed into the ruled notch), 8 (the paid memorial notice), 33 (the next of kin who never existed).
