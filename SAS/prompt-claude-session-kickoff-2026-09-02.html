@@ -19,7 +19,18 @@
   code { font-family: Consolas, monospace; font-size: 9pt; }
 </style></head><body>
 <h1>KICKOFF PROMPT: NEXT CLAUDE CODE SESSION (after 2026-09-01)</h1>
-<p><em>Written 2026-09-01 at session close, 97 per cent context spent, by the session that ran the Four Keys chain from spine kickoff to a playable chapter 1. Paste everything below the line into a fresh session in this repo. Memory (<code>project_state.md</code>) is current through tonight and is the authority where this prompt is stale.</em></p>
+<p><em>Written 2026-09-01, EXTENDED 2026-09-02 morning after the slice was brought up and Stephen began playing chapter 1. Paste everything below the line into a fresh session in this repo. Memory (<code>project_state.md</code>) is current and is the authority where this prompt is stale.</em></p>
+<h2>★ 2026-09-02 UPDATE, READ THIS FIRST: THE SLICE PLAYS, AND YOUR FIRST JOB IS BUGS</h2>
+<p>Stephen is playing chapter 1 of <em>The Friends with Four Keys</em> in the editor (<code>Main Merge</code>, menu <strong>AQ → Four Keys Slice → Enabled</strong>, then QA Reset + Play). It works now, and <strong>he has reported "a few issues" to fix</strong>: getting the playtest bug list and fixing them is your first task, ahead of everything below. Ask him for the specific issues, reproduce, fix, and verify.</p>
+<p><strong>Two bugs were already found and fixed this morning (context for the ones that remain):</strong></p>
+<ol>
+<li>The toggle lived in <code>PlayerPrefs</code>, which QA Reset wipes (<code>PlayerPrefs.DeleteAll</code>), so every "QA Reset + Play" silently reverted to The Listener. Moved to <code>EditorPrefs</code> (commit 508ea66).</li>
+<li>The slice swapped the leads database at <code>AfterSceneLoad</code>, but the caseflow orchestrator bound the ep01 catalog's Listener database a few frames later and clobbered it, and the FTUE choreographer then played Dot's voicemail on top. Fixed with a slice driver that re-applies the slice DB until it sticks (polling <code>LeadsRepository</code> only, no cross-assembly board refs) and a gate that no-ops the FTUE choreographer under the slice flag (commit 38d0c96).</li>
+</ol>
+<p><strong>The architectural honesty you inherit:</strong> the slice piggybacks on the Listener scene (swaps the DB, installs the package runtime, suppresses the Listener intro). That was the fast route to a playable test, and it carries fragility (the bind race above was one instance). If the remaining bugs trace to the same root (Listener boot machinery running under the slice), the clean fix is a proper slice entry (its own episode slot or a dedicated scene) rather than more suppression patches; weigh that with Stephen before piling on more gates. <strong>Boot flow is a documented fragile area (CLAUDE.md); change it carefully and headless-test.</strong></p>
+<p><strong>Slice files (all on main):</strong> <code>Assets/App/Leads/Packages/</code> (PackageData, PackageCatalog, PackageProgressService, PackageRuntimeMB, FourKeysSliceBootstrap + FourKeysSliceDriverMB), <code>Assets/App/UI/Packages/PackageBeatPresenterMB.cs</code>, <code>Assets/Editor/FourKeysSliceMenu.cs</code>, content under <code>Assets/Content/FourKeys/</code> and <code>Assets/Resources/App/FourKeys/</code>, tests <code>Assets/Tests/EditMode/PackageProgressServiceTests.cs</code>. Headless test recipe needs the editor CLOSED; when Stephen has it open, either wait or reason from the console via the mcp-unity bridge (<code>get_console_logs</code>) which IS available live.</p>
+<hr />
+<h2>The original agenda (still valid after the bugs are cleared)</h2>
 <hr />
 <p>You are picking up AQ30 (Ally Quinn: True Crime Merge) the morning after a landmark day. Read <code>MEMORY.md</code> and the Four Keys block of <code>project_state.md</code> first; they are current. Then read this agenda. Stephen's rulings in memory are never reopened.</p>
 <h3>Where everything stands (one paragraph each)</h3>
@@ -44,6 +55,6 @@
 <li><strong>Headless tests</strong>: <code>Unity.exe -batchmode -nographics -projectPath &lt;path&gt; -runTests -testPlatform EditMode</code> (editor must be closed for the same project; a git worktree gives you an independent project at the cost of a first import). Code work while Stephen's editor is open goes in a worktree; never switch his checked-out branch without the editor closed and his word.</li>
 <li><strong>Commit as you go, push at day end, update <code>project_state.md</code> at every landing.</strong> The daily nag and the critical reviewer cloud routines are current as of tonight; refresh their prompts when the queue shifts materially.</li>
 </ul>
-<h3>First move</h3>
-<p>Say good morning, check <code>git log origin/main</code> and the routines' overnight runs for anything that moved, then ask Stephen for the playtest verdict. Everything else flows from it.</p>
+<h3>First move (updated 2026-09-02)</h3>
+<p>Say good morning, <code>git pull</code> (main is at 38d0c96 or later), then <strong>ask Stephen for the chapter 1 playtest bug list and fix it</strong> before anything else. The mcp-unity bridge is live while his editor is open: use <code>get_console_logs</code> (includeStackTrace false) to see what the running game is doing. Only once the slice plays cleanly do you move to the playtest <em>design</em> verdict (feel, turns, Del, lines) and the agenda above.</p>
 </body></html>
