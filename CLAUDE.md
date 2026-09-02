@@ -15,7 +15,7 @@ Tests run inside the Unity Editor via **Window > General > Test Runner**.
 - **Edit Mode tests** (`Assets/Tests/EditMode/`) — NUnit, no scene loading, fast
 - **Play Mode tests** (`Assets/Tests/PlayMode/`, `Assets/Tests/PlayModeNew/`) — full scene boot, slower
 
-There is no CLI build or test script. All test execution goes through the Unity Editor or Unity's `-runTests` batch mode flag. When the editor is closed, batch mode works headless: `Unity.exe -batchmode -projectPath <repo> -runTests -testPlatform EditMode -testResults <xml> -logFile <log>` (launch detached — it outlives shell timeouts). Baseline: 8 legacy scene-dependent tests (WK3_*, Sanity spawn, Addressables smoke) always fail in batch mode's empty scene; that is pre-existing, not a regression.
+There is no CLI build or test script. All test execution goes through the Unity Editor or Unity's `-runTests` batch mode flag. When the editor is closed, batch mode works headless: `Unity.exe -batchmode -projectPath <repo> -runTests -testPlatform EditMode -testResults <xml> -logFile <log>` (launch detached — it outlives shell timeouts). Baseline: fully green (the 8 week-2/3 scaffold tests that could never pass headless were deleted 2026-09-02); any EditMode failure is a regression. Never run the suite through the mcp-unity bridge while Stephen has the editor open: its 10-second cap times out and the run can leave the editor on an Untitled scene.
 
 ## Robustness Rules (hold these in review — each one retired a shipped bug class)
 
