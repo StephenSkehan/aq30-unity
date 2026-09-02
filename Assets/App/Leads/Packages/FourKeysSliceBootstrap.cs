@@ -16,12 +16,28 @@ namespace AQ.App.Leads.Packages
 {
     public static class FourKeysSliceBootstrap
     {
+        // EditorPrefs, not PlayerPrefs: QA reset is a full PlayerPrefs.DeleteAll
+        // (DialogueFlags QA-reset semantics), which was silently disabling the
+        // slice on every "QA reset & play". A dev toggle is editor state, not
+        // player state. The slice is editor-only until a build needs it.
         public const string PrefKey = "aq.dev.fk_slice";
+
+        public static bool Enabled
+        {
+            get
+            {
+#if UNITY_EDITOR
+                return UnityEditor.EditorPrefs.GetInt(PrefKey, 0) == 1;
+#else
+                return false;
+#endif
+            }
+        }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Install()
         {
-            if (PlayerPrefs.GetInt(PrefKey, 0) != 1) return;
+            if (!Enabled) return;
 
             var db = Resources.Load<LeadsDatabase>("App/FourKeys/FourKeysCh1Database");
             var catalog = Resources.Load<PackageCatalog>("App/FourKeys/FourKeysCh1Catalog");
