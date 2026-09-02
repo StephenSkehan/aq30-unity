@@ -32,7 +32,7 @@ MonoBehaviour:
   SoftCurrency: 0
   EnergyGrant: 0
   PremiumGrant: 0
-  generatorRewardTypeId: 
+  generatorRewardTypeId: gen_investigation_lab
   generatorRewardTier: 0
   specialRewardId: 
   specialRewardCount: 1

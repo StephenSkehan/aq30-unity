@@ -197,10 +197,22 @@ namespace AQ.App.CaseFlow
 
             GameAnalytics.LogCardSubmit(lead.leadId);
 
+            // Lead packages: a member card carries no resolution dialogue of its
+            // own. The package runtime's completion scan (fired from inside
+            // BroadcastActivated below) queues the beat, and the beat presenter
+            // shows it; booting the per-lead fallback here would clobber that
+            // beat mid-boot ("Missing dialog data", slice playtest 2026-09-02).
+            bool packageOwnsPayoff = Leads.Packages.PackageRuntimeMB.OwnsPayoff(lead.leadId);
+
             // Record the in-flight resolution dialogue BEFORE the activation commits
             // (see PendingDialogueKey doc above). Cleared in OnDialogueEnded.
-            PlayerPrefs.SetString(PendingDialogueKey, lead.leadId);
-            PlayerPrefs.Save();
+            // Package beats carry their own crash discipline (beat_paid/beat_seen
+            // flags + restore-time scan), so no marker for them.
+            if (!packageOwnsPayoff)
+            {
+                PlayerPrefs.SetString(PendingDialogueKey, lead.leadId);
+                PlayerPrefs.Save();
+            }
 
             // Hold reward/consumption flight FX until the resolution dialogue closes —
             // rewards fire inside BroadcastActivated, the same frame the dialogue opens,
@@ -218,6 +230,16 @@ namespace AQ.App.CaseFlow
             {
                 if (_svc.CompleteCurrentStep())
                     Debug.Log($"[CaseFlowLeadBridge] Proceed '{lead?.leadId}' → step now '{CurrentKey()}'", this);
+            }
+
+            if (packageOwnsPayoff)
+            {
+                // No beat opened this tap (package still incomplete): nothing will
+                // close a dialogue to release the hold, so release it now and let
+                // the consumption/reward flights play over the live board.
+                if (dialogueRunner == null || !dialogueRunner.gameObject.activeSelf)
+                    UI.FlightFX.SetHold(false);
+                return;
             }
 
             TryBootDialogue(lead);

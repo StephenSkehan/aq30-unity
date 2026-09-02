@@ -30,10 +30,14 @@ namespace AQ.App.UI.Packages
         private readonly Queue<PackageData> _queue = new Queue<PackageData>();
         private PackageData _showing;
         private GameObject _overlayRoot;
+        private AQ.App.Leads.LeadsBarView _bar;
 
         private void Awake()
         {
             if (runtime == null) runtime = FindFirstObjectByType<PackageRuntimeMB>();
+            // Same courtesy the lead bridge pays its resolution dialogues: the
+            // leads bar sits over the stage, so it hides while a beat shows.
+            _bar = FindFirstObjectByType<AQ.App.Leads.LeadsBarView>(FindObjectsInactive.Include);
         }
 
         private void OnEnable()  => PackageRuntimeMB.BeatReady += OnBeatReady;
@@ -65,6 +69,7 @@ namespace AQ.App.UI.Packages
         {
             if (_showing != null || _queue.Count == 0) return;
             _showing = _queue.Dequeue();
+            if (_bar != null) _bar.gameObject.SetActive(false);
 
             bool hasDialogue = _showing.beatDialogue != null && dialogueRunner != null;
             if (hasDialogue)
@@ -91,6 +96,7 @@ namespace AQ.App.UI.Packages
             _showing = null;
             CloseOverlay();
             if (done != null && runtime != null) runtime.NotifyBeatDismissed(done);
+            if (_queue.Count == 0 && _bar != null) _bar.gameObject.SetActive(true);
             TryShowNext();
         }
 
