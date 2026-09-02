@@ -38,15 +38,28 @@ namespace AQ.App.Leads.Packages
         {
             if (string.IsNullOrEmpty(leadId)) return false;
             for (int i = 0; i < s_live.Count; i++)
-                if (s_live[i] != null && s_live[i]._memberIds.Contains(leadId)) return true;
+            {
+                var rt = s_live[i];
+                if (rt == null) continue;
+                rt.EnsureService();
+                if (rt._memberIds.Contains(leadId)) return true;
+            }
             return false;
         }
 
-        private void Awake()
+        private PackageCatalog _builtFor;
+
+        private void Awake() => EnsureService();
+
+        // Idempotent; re-runs if the catalog was assigned after Awake (a runtime
+        // added to an active object gets Awake before its fields are set).
+        private void EnsureService()
         {
+            if (_service != null && _builtFor == catalog) return;
             if (repository == null) repository = FindFirstObjectByType<LeadsRepository>();
             var packages = catalog != null ? (IReadOnlyList<PackageData>)catalog.packages : Array.Empty<PackageData>();
             _service = new PackageProgressService(packages, GameFlags.Has, GameFlags.Set);
+            _builtFor = catalog;
 
             _memberIds.Clear();
             foreach (var p in packages)
@@ -88,6 +101,7 @@ namespace AQ.App.Leads.Packages
 
         private void Scan(string justActivatedId)
         {
+            EnsureService();
             if (_service == null || repository == null) return;
             var activated = new HashSet<string>(repository.ActivatedLeadIds, StringComparer.Ordinal);
             if (!string.IsNullOrEmpty(justActivatedId)) activated.Add(justActivatedId);

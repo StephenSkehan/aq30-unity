@@ -109,7 +109,12 @@ namespace AQ.App.Leads.Packages
 
             repo.ReplaceFromDatabase(db);
 
+            // Built inactive: AddComponent on an active object runs Awake/OnEnable
+            // immediately, before the fields below are assigned. The runtime was
+            // building its progress service from a null catalog (zero packages),
+            // so no beat ever fired (slice playtest 2026-09-02).
             var go = new GameObject("FourKeysSlice");
+            go.SetActive(false);
             var runtime = go.AddComponent<PackageRuntimeMB>();
             runtime.catalog = catalog;
             runtime.repository = repo;
@@ -119,6 +124,7 @@ namespace AQ.App.Leads.Packages
             var driver = go.AddComponent<FourKeysSliceDriverMB>();
             driver.sliceDatabase = db;
             driver.repository = repo;
+            go.SetActive(true);
 
             Debug.Log("[FourKeysSlice] installed: " + catalog.packages.Count + " packages over " + db.Leads.Count + " cards.");
         }
