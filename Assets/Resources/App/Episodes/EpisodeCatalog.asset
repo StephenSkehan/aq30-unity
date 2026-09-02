@@ -68,3 +68,24 @@ MonoBehaviour:
     dossierGateFlag:
     closingSummary:
     flagPrefixes: []
+  - episodeId: fk01
+    legacyIdAliases: []
+    title: The Friends with Four Keys
+    database: {fileID: 11400000, guid: 00326ff3fab84713ae4110591cb896d0, type: 2}
+    steps:
+    - FTUE_Entitlements
+    - Board_Active
+    - Lead_Ready
+    - Resolution
+    completionFlag: fk.ch1.complete
+    entryLeadId: fk_p01_01a
+    shopUnlockFlag: pkg.fk_p01_04.beat_seen
+    dossierGateFlag: pkg.fk_p01_10b.beat_seen
+    closingSummary: 'DRAFT. Chapter 1 ends here in this slice: four friends, four keys,
+      and the door she wanted them to open.'
+    flagPrefixes:
+    - fk.
+    - pkg.fk_
+    - aq.lead.fk_
+    packages: {fileID: 11400000, guid: 80bdebea5b8842b7ad635621b07b5abe, type: 2}
+    ftue: {fileID: 11400000, guid: 3d9e1f0a2b4c4d5e8f6a7b8c9d0e1f2a, type: 2}

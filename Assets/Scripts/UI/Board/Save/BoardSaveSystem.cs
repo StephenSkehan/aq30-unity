@@ -149,7 +149,11 @@ namespace AQ.App.UI.Board
             // pre-1.0.0 saves take the null path, which probes the legacy
             // PlayerPrefs keys (see GameFlags.ImportState).
             var peeked = PeekSaveDTO();
-            EpisodeBootPointer.PendingEpisodeId = PeekEpisodeId(peeked);
+            // Editor-only dev override (AQ > Dev Boot Episode) wins over the save's
+            // pointer when it names a playable catalog entry; the override's
+            // episode then gets its own section like any other switch target.
+            EpisodeBootPointer.PendingEpisodeId =
+                EpisodeBootOverride.Resolve(EpisodeRuntime.Catalog, PeekEpisodeId(peeked));
             GameFlags.ImportState(
                 peeked != null && SaveSchema.AtLeast(peeked.schemaVersion, 1, 0) ? peeked.flags : null);
 

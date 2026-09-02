@@ -64,5 +64,9 @@ namespace AQ.App.Leads.Packages
         // two re-shows the beat but never double-pays.
         public string BeatSeenFlag => "pkg." + packageId + ".beat_seen";
         public string BeatPaidFlag => "pkg." + packageId + ".beat_paid";
+        // Set by the FTUE choreography after it has shown this package's beat as
+        // the episode intro; the presenter then pays and marks seen on completion
+        // without presenting the same lines twice. Rule 5: set after display.
+        public string BeatPrePlayedFlag => "pkg." + packageId + ".beat_preplayed";
     }
 }

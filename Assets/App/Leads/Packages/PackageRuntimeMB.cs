@@ -33,6 +33,39 @@ namespace AQ.App.Leads.Packages
         private static readonly List<PackageRuntimeMB> s_live = new List<PackageRuntimeMB>();
         private readonly HashSet<string> _memberIds = new HashSet<string>(StringComparer.Ordinal);
 
+        /// <summary>
+        /// Install the runtime + beat presenter for the running episode's package
+        /// catalog (called by the caseflow orchestrator once the entry resolves).
+        /// Idempotent per scene; no-op when the episode has no packages. Built
+        /// inactive so Awake sees the assigned fields (AddComponent on an active
+        /// object runs Awake before the caller can assign anything).
+        /// </summary>
+        public static PackageRuntimeMB EnsureInstalled(PackageCatalog catalog)
+        {
+            if (catalog == null) return null;
+            for (int i = 0; i < s_live.Count; i++)
+                if (s_live[i] != null && s_live[i].catalog == catalog) return s_live[i];
+
+            var repo = FindFirstObjectByType<LeadsRepository>();
+            if (repo == null)
+            {
+                Debug.LogWarning("[Packages] no LeadsRepository in scene; package runtime not installed.");
+                return null;
+            }
+
+            var go = new GameObject("PackageRuntime");
+            go.SetActive(false);
+            var runtime = go.AddComponent<PackageRuntimeMB>();
+            runtime.catalog = catalog;
+            runtime.repository = repo;
+            var presenter = go.AddComponent<AQ.App.UI.Packages.PackageBeatPresenterMB>();
+            presenter.runtime = runtime;
+            presenter.dialogueRunner = FindFirstObjectByType<DialogueRunner>(FindObjectsInactive.Include);
+            go.SetActive(true);
+            Debug.Log("[Packages] installed: " + catalog.packages.Count + " packages (" + catalog.name + ").");
+            return runtime;
+        }
+
         /// <summary>True when an enabled runtime's catalog lists this lead as a package member.</summary>
         public static bool OwnsPayoff(string leadId)
         {

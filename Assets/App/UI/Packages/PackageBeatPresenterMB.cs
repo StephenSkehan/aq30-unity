@@ -69,6 +69,15 @@ namespace AQ.App.UI.Packages
         {
             if (_showing != null || _queue.Count == 0) return;
             _showing = _queue.Dequeue();
+
+            // The FTUE intro already showed this beat in full: pay and mark seen
+            // without presenting the same lines twice.
+            if (GameFlags.Has(_showing.BeatPrePlayedFlag))
+            {
+                Dismiss();
+                return;
+            }
+
             if (_bar != null) _bar.gameObject.SetActive(false);
 
             bool hasDialogue = _showing.beatDialogue != null && dialogueRunner != null;

@@ -124,6 +124,9 @@ namespace AQ.App.CaseFlow
                 episodeId = entry.episodeId;
                 if (entry.steps != null && entry.steps.Length > 0) steps = entry.steps;
                 EpisodeRuntime.SetCurrent(entry);
+                // Package episodes (Four Keys onward) get their runtime + beat
+                // presenter here; a null catalog is a per-card-dialogue episode.
+                Leads.Packages.PackageRuntimeMB.EnsureInstalled(entry.packages);
             }
 
             _svc.Begin(new EpisodeId(episodeId), steps);

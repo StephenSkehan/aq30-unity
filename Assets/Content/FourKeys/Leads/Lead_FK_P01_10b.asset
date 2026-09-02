@@ -29,7 +29,8 @@ MonoBehaviour:
   - fk_p01_10a
   EvidenceIds: []
   SpawnLeadIds: []
-  NarrativeFlags: []
+  NarrativeFlags:
+  - fk.ch1.complete
   SoftCurrency: 0
   EnergyGrant: 0
   PremiumGrant: 0

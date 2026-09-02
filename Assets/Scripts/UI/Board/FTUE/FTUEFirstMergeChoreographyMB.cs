@@ -29,21 +29,26 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
     // 0 = untouched, 1 = pair seeded + intro span played, 2 = done (or ceded to normal flow)
     public const string StageKey = "aq.ftue.first_merge.stage";
 
-    const string LeadId       = "e1_tip";
-    const string SeedFamily   = "audio_investigation";
-    const int    SeedTier     = 0; // A-T1
-    const string SeedItemId   = "audio_investigation_t1";
-    const string TargetItemId = "audio_investigation_t2"; // the merged goal item
-    const string IntroStart   = "E1_L1_N1";
-    const string IntroEnd     = "E1_L1_N3";
-    const string PayoffStart  = "E1_L1_N4";
+    // Per-episode data (FtueChoreographyConfig on the EpisodeCatalog entry; null
+    // entry = the Listener's shipped constants). Resolved in Start once the
+    // caseflow has begun its episode.
+    AQ.App.FTUE.FtueChoreographyConfig _cfg;
+    string LeadId       => _cfg.leadId;
+    string SeedFamily   => _cfg.seedFamily;
+    int    SeedTier     => _cfg.seedTier;
+    string SeedItemId   => _cfg.seedItemId;
+    string TargetItemId => _cfg.targetItemId;
+    string PayoffStart  => string.IsNullOrEmpty(_cfg.payoffStartNodeId) ? null : _cfg.payoffStartNodeId;
+    bool   TapMode      => _cfg.GuidesGeneratorTap;
 
     const float SparkleBeatSeconds = 0.9f; // merge burst is ~0.35s; leave a beat after
+    const float TapBeatSeconds     = 0.45f; // drop fly-in, then the story
     const float DimFactor = 0.72f;
 
     MergeBoardController  _board;
     LeadsRepository       _repo;
     CaseFlowLeadBridgeMB  _bridge;
+    DialogueRunner        _runner;
     LeadData              _lead;
 
     bool _guiding;
@@ -68,9 +73,6 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
     static void Install()
     {
         if (Stage >= 2) return;
-        // The Four Keys chapter-1 slice runs its own package beats; the Listener
-        // FTUE intro (Dot's voicemail) must not boot on top of it.
-        if (AQ.App.Leads.Packages.FourKeysSliceBootstrap.Enabled) return;
         if (GameObject.Find("FTUEFirstMergeChoreography") != null) return;
         var go = new GameObject("FTUEFirstMergeChoreography");
         go.AddComponent<FTUEFirstMergeChoreographyMB>();
@@ -104,26 +106,35 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
         // the game — the intro dialogue must not boot underneath it.
         while (AQ.App.UI.StudioSplashMB.Showing) yield return null;
 
-        _lead = FindLead();
+        // Episode data: the catalog entry's config, else the Listener's constants.
+        _cfg = AQ.App.Episodes.EpisodeRuntime.Current?.ftue
+               ?? AQ.App.FTUE.FtueChoreographyConfig.ListenerDefaults();
+        _runner = FindAnyObjectByType<DialogueRunner>(FindObjectsInactive.Include);
+
+        // The repository binds the episode's database during the save restore;
+        // give the guided card a short grace period before deciding it is gone.
+        for (int i = 0; i < 180 && (_lead = FindLead()) == null; i++) yield return null;
         if (_lead == null || _lead.RuntimeState == LeadState.Blocked)
         {
-            // L1 already resolved (or content changed) — nothing to choreograph, ever.
+            // First card already resolved (or content changed) — nothing to choreograph, ever.
             if (_lead == null) Stage = 2;
             Destroy(gameObject);
             yield break;
         }
 
-        // The generator-tap and proceed hints would fight the guided merge (and
-        // the auto-proceed would burn ProceedHint's one-time flag on a card the
-        // player never tapped). Suppress both; restored when the payoff closes.
-        SuppressHint("GeneratorTapHint");
+        // The proceed hint would burn its one-time flag on a card the player never
+        // tapped; suppress it until the payoff closes. The generator-tap arrow is
+        // suppressed only in merge mode (it would fight the guided merge); in tap
+        // mode the arrow IS the guidance.
         SuppressHint("ProceedHint");
+        if (!TapMode) SuppressHint("GeneratorTapHint");
 
         if (Stage == 0)
         {
-            SeedPairIfNeeded();
+            SeedIfNeeded();
 
-            if (_lead.resolutionDialogue != null)
+            var intro = _cfg.introGraph != null ? _cfg.introGraph : _lead.resolutionDialogue;
+            if (intro != null)
             {
                 // Stage stays 0 until the intro CLOSES (OnIntroClosed): stamping 1
                 // here meant any kill during the ~57s N1–N3 intro permanently
@@ -132,12 +143,12 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
                 // heard" that the player never heard. Seeding is idempotent, so
                 // replaying this block on relaunch is safe.
                 DialogueRunner.DialogueClosed += OnIntroClosed;
-                _bridge.PlayIntroForFtue(_lead.resolutionDialogue, IntroStart, IntroEnd);
+                _bridge.PlayIntroForFtue(intro, _cfg.introStartNodeId, _cfg.introEndAfterNodeId);
                 AQ.App.Analytics.GameAnalytics.LogFtueEvent("l1_intro_start");
-                Debug.Log("[FTUEChoreo] Pair seeded, intro span N1–N3 booted.");
+                Debug.Log($"[FTUEChoreo] Intro booted ({intro.name}) for '{LeadId}' ({(TapMode ? "tap" : "merge")} mode).");
                 yield break; // guide starts when the intro closes
             }
-            Debug.LogWarning("[FTUEChoreo] L1 has no resolution dialogue — skipping intro.");
+            Debug.LogWarning("[FTUEChoreo] First card has no intro graph — skipping intro.");
             Stage = 1; // no intro to protect — mark the seed pass done
         }
 
@@ -159,19 +170,25 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
         DialogueRunner.DialogueClosed -= OnIntroClosed;
         if (this == null) return;
         Stage = 1; // intro fully shown — safe to skip it on any future relaunch
+        // Package episodes: the intro WAS the first package's beat; its completion
+        // must pay without re-presenting. Rule 5: flagged only now, after display.
+        if (!string.IsNullOrEmpty(_cfg.prePlayedPackageId))
+            GameFlags.Set("pkg." + _cfg.prePlayedPackageId + ".beat_preplayed");
         AQ.App.Analytics.GameAnalytics.LogFtueEvent("l1_intro_done");
         StartGuide();
     }
 
     // ---------------- seeding ----------------
 
-    void SeedPairIfNeeded()
+    void SeedIfNeeded()
     {
-        if (_lead.RuntimeState == LeadState.Ready || CountBoardItems(TargetItemId) > 0)
+        if (_cfg.seedCount <= 0) return; // tap mode: the generator makes the item
+        if (_lead.RuntimeState == LeadState.Ready ||
+            (!string.IsNullOrEmpty(TargetItemId) && CountBoardItems(TargetItemId) > 0))
             return; // goal already met somehow — don't add clutter
 
         int have = CountBoardItems(SeedItemId);
-        for (int i = have; i < 2; i++)
+        for (int i = have; i < _cfg.seedCount; i++)
         {
             bool placed = _board.PlaceFromOverflow(new OverflowTileData
             {
@@ -203,6 +220,11 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
         MergeBoardController.BoardCompositionChanged += OnBoardChanged;
         LeadsRuntimeBus.OnLeadStateChanged           += OnLeadStateChanged;
         LeadsRuntimeBus.OnLeadActivated              += OnLeadActivated;
+        if (TapMode)
+        {
+            MergeBoardController.GeneratorTapped += OnGuidedGeneratorTap;
+            GeneratorTapHintMB.EnsureInstalled(); // the gold arrow is the "do this"
+        }
         ApplyGuideVisuals();
     }
 
@@ -211,8 +233,36 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
         MergeBoardController.BoardCompositionChanged -= OnBoardChanged;
         LeadsRuntimeBus.OnLeadStateChanged           -= OnLeadStateChanged;
         LeadsRuntimeBus.OnLeadActivated              -= OnLeadActivated;
+        MergeBoardController.GeneratorTapped         -= OnGuidedGeneratorTap;
         GhostDragDemoMB.Hide();
         _guiding = false;
+    }
+
+    // Tap mode: the ruled first tap is deterministic (structure v2.2: "one A-T1").
+    // The drop table is weighted, not fixed, so if the guided tap did not yield
+    // the seed item, place one as if the generator had made it.
+    void OnGuidedGeneratorTap()
+    {
+        if (!_guiding || _payoffStarted || !TapMode) return;
+        StartCoroutine(EnsureGuidedDropNextFrame());
+    }
+
+    IEnumerator EnsureGuidedDropNextFrame()
+    {
+        yield return null;
+        if (!_guiding || _payoffStarted) yield break;
+        var lead = FindLead();
+        if (lead == null || lead.RuntimeState == LeadState.Ready) yield break;
+        if (CountBoardItems(SeedItemId) > 0) yield break;
+        bool placed = _board.PlaceFromOverflow(new OverflowTileData
+        {
+            kind   = OverflowKind.Item,
+            family = SeedFamily,
+            tier   = SeedTier
+        });
+        Debug.Log(placed
+            ? "[FTUEChoreo] Guided tap missed the seed item; placed one deterministically."
+            : "[FTUEChoreo] Guided tap missed and the board refused a placement; the player taps again.");
     }
 
     void OnBoardChanged()
@@ -235,7 +285,19 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
         Stage = 2;
         StopGuideSubscriptions();
         ClearGuideVisuals();
+        StartCoroutine(FinishWhenPayoffDialogueDone());
+    }
+
+    // The payoff normally ends when its dialogue closes. Package episodes may
+    // open no dialogue at all (the beat was the intro), so also finish when no
+    // runner is talking a frame after the proceed.
+    IEnumerator FinishWhenPayoffDialogueDone()
+    {
         DialogueRunner.DialogueClosed += OnPayoffClosed;
+        yield return null;
+        if (this == null) yield break;
+        if (_runner == null || !_runner.gameObject.activeInHierarchy)
+            OnPayoffClosed();
     }
 
     void ApplyGuideVisuals()
@@ -244,6 +306,25 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
 
         var targets = new List<BoardTileView>();
         bool goalOnBoard = false;
+
+        if (TapMode)
+        {
+            // Guide the generator tap: pulse every generator, dim the rest. No
+            // ghost drag (there is nothing to merge yet). Once the seed item is
+            // on the board the checker makes the card Ready and the payoff runs.
+            for (int r = 0; r < _board.Rows; r++)
+                for (int c = 0; c < _board.Cols; c++)
+                {
+                    var v = _board.Get(r, c);
+                    if (v == null || v.IsEmpty) continue;
+                    if (v.Kind == TileKind.Generator) { _pulseTargets.Add(v); continue; }
+                    Dim(FindImage(v, "Bg"));
+                    Dim(v.itemImage);
+                }
+            if (_pulseTargets.Count == 0) CedeToNormalFlow();
+            return;
+        }
+
         for (int r = 0; r < _board.Rows; r++)
             for (int c = 0; c < _board.Cols; c++)
             {
@@ -251,7 +332,7 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
                 if (v == null || v.Kind != TileKind.Item) continue;
                 var id = _board.GetItemId(v);
                 if (id == SeedItemId) targets.Add(v);
-                else if (id == TargetItemId) goalOnBoard = true;
+                else if (!string.IsNullOrEmpty(TargetItemId) && id == TargetItemId) goalOnBoard = true;
             }
 
         if (targets.Count == 0)
@@ -359,8 +440,8 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
 
     IEnumerator PayoffRoutine()
     {
-        // Let the merge sparkle land before the story takes over.
-        yield return new WaitForSecondsRealtime(SparkleBeatSeconds);
+        // Let the merge sparkle (or the drop fly-in) land before the story takes over.
+        yield return new WaitForSecondsRealtime(TapMode ? TapBeatSeconds : SparkleBeatSeconds);
 
         // Re-validate: the beat is long enough for a player card-tap to race us.
         var lead = FindLead();
@@ -373,7 +454,13 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
         Stage = 2;
         DialogueRunner.DialogueClosed += OnPayoffClosed;
         _bridge.ProceedForFtue(lead, PayoffStart);
-        Debug.Log("[FTUEChoreo] First merge landed — auto-proceeded L1, payoff N4–N5 booted.");
+        Debug.Log($"[FTUEChoreo] Guided action landed — auto-proceeded '{LeadId}'.");
+
+        // Package episodes may open no dialogue here (the beat was the intro):
+        // finish now rather than wait for a close that never comes.
+        yield return null;
+        if (this != null && (_runner == null || !_runner.gameObject.activeInHierarchy))
+            OnPayoffClosed();
     }
 
     void OnPayoffClosed()

@@ -46,6 +46,12 @@ namespace AQ.App.Episodes
         [Tooltip("Content flag namespaces owned by this episode (e.g. 'e1.', 'aq.lead.e1_'). Used for per-episode flag reset.")]
         public string[] flagPrefixes = Array.Empty<string>();
 
+        [Tooltip("Lead packages for this episode (Four Keys onward). Null = the episode has no packages; cards resolve with their own dialogue (The Listener).")]
+        public AQ.App.Leads.Packages.PackageCatalog packages;
+
+        [Tooltip("First-card FTUE choreography for this episode. Null = the built-in Listener choreography (e1_tip, seeded Audio T1 pair).")]
+        public AQ.App.FTUE.FtueChoreographyConfig ftue;
+
         /// <summary>A reserved slot has no database and cannot be played yet.</summary>
         public bool HasContent => database != null;
     }
