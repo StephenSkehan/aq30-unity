@@ -318,14 +318,27 @@ namespace AQ.App.UI.EvidenceBoard
                 return;
             }
 
-            var resolvedLeads = new List<LeadData>();
+            // Scenes the player has seen. Per-card episodes (The Listener): resolved
+            // leads with their own dialogue. Package episodes (Four Keys): completed
+            // packages, whose beat dialogue is the scene (member cards carry none).
+            var resolvedLeads = new List<BoardScene>();
 
             foreach (var lead in _repo.database.Leads)
             {
                 if (lead == null || lead.boardPhase <= 0) continue; // repeatables/teasers stay off the board
+                if (lead.resolutionDialogue == null) continue;      // package member cards pin via their package
                 if (DialogueFlags.Has("aq.lead." + lead.leadId + ".seen"))
+                    resolvedLeads.Add(new BoardScene(lead.leadId, lead.title, lead.resolutionDialogue, lead.actorPortrait));
+            }
+
+            var packages = AQ.App.Episodes.EpisodeRuntime.Current?.packages;
+            if (packages != null)
+            {
+                foreach (var p in packages.packages)
                 {
-                    resolvedLeads.Add(lead);
+                    if (p == null || p.beatDialogue == null) continue;
+                    if (!GameFlags.Has(p.BeatSeenFlag)) continue;
+                    resolvedLeads.Add(new BoardScene(p.packageId, p.title, p.beatDialogue, FirstMemberPortrait(p)));
                 }
             }
 
@@ -350,7 +363,7 @@ namespace AQ.App.UI.EvidenceBoard
             }
             foreach (var lead in resolvedLeads)
             {
-                var nodes = lead.resolutionDialogue != null ? lead.resolutionDialogue.nodes : null;
+                var nodes = lead.graph != null ? lead.graph.nodes : null;
                 if (nodes == null) continue;
                 foreach (var node in nodes)
                 {
@@ -394,16 +407,26 @@ namespace AQ.App.UI.EvidenceBoard
                 var k = LocationCatalog.KeyForSprite(s.name);
                 if (!spriteIndex.ContainsKey(k)) spriteIndex[k] = s;
             }
+            if (packages != null)
+            {
+                foreach (var p in packages.packages)
+                {
+                    var s = p != null && p.beatDialogue != null ? p.beatDialogue.stageBackground : null;
+                    if (s == null) continue;
+                    var k = LocationCatalog.KeyForSprite(s.name);
+                    if (!spriteIndex.ContainsKey(k)) spriteIndex[k] = s;
+                }
+            }
 
-            var locLeads = new Dictionary<string, List<LeadData>>();
+            var locLeads = new Dictionary<string, List<BoardScene>>();
             var locOrder = new List<string>();
             foreach (var lead in resolvedLeads)
             {
-                var s = lead.resolutionDialogue != null ? lead.resolutionDialogue.stageBackground : null;
+                var s = lead.graph != null ? lead.graph.stageBackground : null;
                 var k = LocationCatalog.KeyForSprite(s != null ? s.name : null);
                 if (!locLeads.TryGetValue(k, out var list))
                 {
-                    locLeads[k] = list = new List<LeadData>();
+                    locLeads[k] = list = new List<BoardScene>();
                     locOrder.Add(k);
                 }
                 list.Add(lead);
@@ -521,6 +544,18 @@ namespace AQ.App.UI.EvidenceBoard
             return string.Empty;
         }
 
+        /// <summary>A package's fronting portrait: its first member card's badge.</summary>
+        private static Sprite FirstMemberPortrait(AQ.App.Leads.Packages.PackageData p)
+        {
+            if (p == null || p.memberCardIds == null || _repo == null || _repo.database == null) return null;
+            foreach (var id in p.memberCardIds)
+            {
+                var lead = _repo.database.FindById(id);
+                if (lead != null && lead.actorPortrait != null) return lead.actorPortrait;
+            }
+            return null;
+        }
+
         // Sprite naming: char_<token>_<emotion>_fNN (e.g. char_del_neutral_f01).
         private static string PortraitToken(Sprite sprite)
         {
@@ -533,16 +568,16 @@ namespace AQ.App.UI.EvidenceBoard
         /// <summary>Leads this character appears in: fronting portrait, a
         /// dialogue-node portrait, or a speaking part (speaker text contains
         /// the token, e.g. "Del" / "Dot Ellis (voicemail)").</summary>
-        private static List<LeadData> LeadsInvolving(string token, List<LeadData> resolved)
+        private static List<BoardScene> LeadsInvolving(string token, List<BoardScene> resolved)
         {
-            var result = new List<LeadData>();
+            var result = new List<BoardScene>();
             if (string.IsNullOrEmpty(token)) return result;
             foreach (var lead in resolved)
             {
                 bool involved = PortraitToken(lead.actorPortrait) == token;
-                if (!involved && lead.resolutionDialogue != null && lead.resolutionDialogue.nodes != null)
+                if (!involved && lead.graph != null && lead.graph.nodes != null)
                 {
-                    foreach (var node in lead.resolutionDialogue.nodes)
+                    foreach (var node in lead.graph.nodes)
                     {
                         if (node == null) continue;
                         if (PortraitToken(node.portrait) == token ||
@@ -559,9 +594,9 @@ namespace AQ.App.UI.EvidenceBoard
         // ---- Dialogue replay ----
 
 
-        private static void OnReplayLeadDialogue(LeadData lead)
+        private static void OnReplayLeadDialogue(BoardScene lead)
         {
-            if (lead == null || lead.resolutionDialogue == null) return;
+            if (lead == null || lead.graph == null) return;
 
             Close();
 
@@ -582,7 +617,7 @@ namespace AQ.App.UI.EvidenceBoard
             _dialogueRunner.DialogueEnded += OnDialogueEndedReopen;
             // Replay boot: never writes flags, so re-answering a story choice here
             // can't stack both truth branches on top of the original decision.
-            _dialogueRunner.BootWithGraphForReplay(lead.resolutionDialogue);
+            _dialogueRunner.BootWithGraphForReplay(lead.graph);
         }
 
         private static void OnDialogueEndedReopen()

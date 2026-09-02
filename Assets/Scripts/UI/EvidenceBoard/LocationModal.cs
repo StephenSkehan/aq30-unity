@@ -19,7 +19,7 @@ namespace AQ.App.UI.EvidenceBoard
         private static GameObject _root;
         public static bool IsOpen => _root != null;
 
-        public static void Show(string key, Sprite bg, List<LeadData> scenes, Action<LeadData> onReplay)
+        public static void Show(string key, Sprite bg, List<BoardScene> scenes, Action<BoardScene> onReplay)
         {
             Close();
             var def = LocationCatalog.Get(key);

@@ -15,7 +15,7 @@ namespace AQ.App.UI.EvidenceBoard
         /// suspends itself so taps on the modal don't fall through to pins.</summary>
         public static bool IsOpen => _root != null;
 
-        public static void Show(Sprite portrait, List<LeadData> relatedLeads, Action<LeadData> onReplay,
+        public static void Show(Sprite portrait, List<BoardScene> relatedLeads, Action<BoardScene> onReplay,
                                 string displayName, string characterKey = null)
         {
             if (_root != null) return;
@@ -42,7 +42,7 @@ namespace AQ.App.UI.EvidenceBoard
 
             // Panel — sized to content. Name lives in the title bar
             // (Stephen-ruled 2026-08-12); portrait LEFT, Case File RIGHT.
-            var leads     = relatedLeads ?? new List<LeadData>();
+            var leads     = relatedLeads ?? new List<BoardScene>();
             const float headerH = 200f;
             float panelH  = 96f + 16f + headerH + 16f + 2f + 18f + leads.Count * 92f + 24f;
             float panelW  = 640f;
