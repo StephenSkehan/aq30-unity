@@ -9,11 +9,60 @@
 //          the Listener caseflow orchestrator still runs its own step machine
 //          underneath; package beats and board play are what this slice tests.
 
+using System.Collections;
 using AQ.App.UI.Packages;
 using UnityEngine;
 
 namespace AQ.App.Leads.Packages
 {
+    // Drives a delayed re-swap: the caseflow orchestrator binds the ep01
+    // catalog's Listener database a few frames after AfterSceneLoad, clobbering
+    // an early swap, so the slice re-applies its database once the board and
+    // wallet have restored and the caseflow has begun. Its own GameObject.
+    public sealed class FourKeysSliceDriverMB : MonoBehaviour
+    {
+        public LeadsDatabase sliceDatabase;
+        public LeadsRepository repository;
+
+        private IEnumerator Start()
+        {
+            if (sliceDatabase == null) yield break;
+            if (repository == null) repository = FindFirstObjectByType<LeadsRepository>();
+            if (repository == null) yield break;
+
+            // The caseflow binds the ep01 catalog's Listener database a few frames
+            // after our AfterSceneLoad swap. Poll for ~4s using only AQ.App types
+            // (no cross-assembly board refs): whenever the repo's current leads do
+            // not lead with the slice's cards, re-apply. Stops once it sticks for
+            // several frames. Re-apply resets activated ids, so we only re-apply
+            // when actually clobbered, never on a settled slice board.
+            string firstSliceId = sliceDatabase.Leads.Count > 0 ? sliceDatabase.Leads[0].leadId : null;
+            int stableFrames = 0;
+            for (int i = 0; i < 240 && stableFrames < 20; i++)
+            {
+                if (!RepoHasSliceCards(firstSliceId))
+                {
+                    repository.ReplaceFromDatabase(sliceDatabase);
+                    stableFrames = 0;
+                    Debug.Log("[FourKeysSlice] re-applied slice database after a clobber (" + sliceDatabase.Leads.Count + " cards).");
+                }
+                else
+                {
+                    stableFrames++;
+                }
+                yield return null;
+            }
+        }
+
+        private bool RepoHasSliceCards(string firstSliceId)
+        {
+            if (string.IsNullOrEmpty(firstSliceId)) return true;
+            foreach (var lead in repository.CurrentLeads)
+                if (lead != null && lead.leadId == firstSliceId) return true;
+            return false;
+        }
+    }
+
     public static class FourKeysSliceBootstrap
     {
         // EditorPrefs, not PlayerPrefs: QA reset is a full PlayerPrefs.DeleteAll
@@ -67,6 +116,9 @@ namespace AQ.App.Leads.Packages
             var presenter = go.AddComponent<PackageBeatPresenterMB>();
             presenter.runtime = runtime;
             presenter.dialogueRunner = Object.FindFirstObjectByType<DialogueRunner>(FindObjectsInactive.Include);
+            var driver = go.AddComponent<FourKeysSliceDriverMB>();
+            driver.sliceDatabase = db;
+            driver.repository = repo;
 
             Debug.Log("[FourKeysSlice] installed: " + catalog.packages.Count + " packages over " + db.Leads.Count + " cards.");
         }

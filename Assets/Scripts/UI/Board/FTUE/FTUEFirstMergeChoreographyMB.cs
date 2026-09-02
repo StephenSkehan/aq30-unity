@@ -68,6 +68,9 @@ public sealed class FTUEFirstMergeChoreographyMB : MonoBehaviour
     static void Install()
     {
         if (Stage >= 2) return;
+        // The Four Keys chapter-1 slice runs its own package beats; the Listener
+        // FTUE intro (Dot's voicemail) must not boot on top of it.
+        if (AQ.App.Leads.Packages.FourKeysSliceBootstrap.Enabled) return;
         if (GameObject.Find("FTUEFirstMergeChoreography") != null) return;
         var go = new GameObject("FTUEFirstMergeChoreography");
         go.AddComponent<FTUEFirstMergeChoreographyMB>();
