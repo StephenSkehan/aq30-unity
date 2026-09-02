@@ -22,5 +22,5 @@ Read `MEMORY.md` and the Four Keys block of `project_state.md` first, then this.
 ## Known seams to watch
 
 - The Listener now sits second and locks behind Four Keys for fresh saves; Stephen accepted this. The dev override boots it regardless.
-- `WK2_BoardDemo.unity` survives the test cleanup; retiring it is a separate question.
+- `WK2_BoardDemo.unity` was retired with the scaffold tests (7069957); Main Merge and SampleScene are the only scenes in build settings.
 - Package member cards have no per-card dialogue by design; anything that keys on `aq.lead.<id>.seen` sees packages only through their `pkg.<id>.beat_seen` flags (the evidence board and the fk01 shop and dossier gates already do).
