@@ -60,7 +60,9 @@ Diegetic family reads (v1.0, kept): A = the tape and the show (tip line, letters
 
 Gating: within a chapter, packages chain (each requires the previous) except the parallel pairs named under each table; the last package of a chapter spawns the first of the next. Maximum simultaneous Available packages is 2, the bar's shipped comfort. Decisions (Part C) resolve inside the named package's completion dialogue. **Flag rule, amended at v2.1:** no flag ever gates a *shared* mainline package; the D3 and D4 branch packages are flag-gated in mutually exclusive pairs (`requiresFlag`/`forbidsFlag`, the shipped primitives) whose union is the mainline, so exactly one version is reachable in every state and nothing can starve.
 
-## Chapter 1 · The Front Page · Days 266 to 269 · 10 pkgs · 10 cards · 35 T1eq · 150 CC
+## Chapter 1 · The Front Page · Days 266 to 269 · 12 pkgs · 14 cards · 39 T1eq · 150 CC
+
+**Playtest amendment 2026-09-02 (Stephen-ruled, record: `four-keys-ch1-playtest-verdict-2026-09-02.md`):** packages 09 and 10 were too big in play and split after their third line each (09 / 09b, 10 / 10b; words unchanged, F4 re-seam only); the cards of one package never ask the same item (06 is now F2 + A2); chapter census 12 packages, 14 cards, 39 T1eq; authored total 107. Rows below reflect the amendment.
 
 FTUE, recut 2026-09-01 per Stephen's ruling (attack findings 3, 5 and 6): the accident ruling and the keys arrive in the second package cycle, the accusation lands exactly on p01_04's completion, p01_09 is board-first, and two packages carry two cards so the chapter has size mix. Lab families only (A and F flow from the first generator grant). The cold open v0.4 is spread across packages 1 to 10; the cut is Part D; the boundary sign-off is Stephen's (F4). First deterministic merge choreographed per §5.7.
 
@@ -71,13 +73,15 @@ FTUE, recut 2026-09-01 per Stephen's ruling (attack findings 3, 5 and 6): the ac
 | 03 | A2 | 2 | 10 | (t)[ET] Four keys and a letter in her handwriting arrive in the post: the dead woman arranged something. The keys are in play by ~0:50 | 54 | Nothing new |
 | 04 | A2 + F2 (two cards) | 4 | 20 | ★TURN [ET] Her closest friends named, and the letter's sentence lands on this package's completion: she thought one of them was planning to kill her. Accident is now one of two readings | 54 | Nothing new beyond Part G |
 | 05 | A2×2 | 4 | 15 | (t)[ET] Not the police, and a locked door: her instruction, and the reason she gave | 54 | Nothing new |
-| 06 | F2 + F2 (two cards) | 4 | 20 | ★TURN [ET] The pact, the Saturday, and behind the door a second letter: this one didn't say she thought. It said she knew. A thing of hers beside it that two survivors will not name | 54 | Never what the object was |
+| 06 | F2 + A2 (two cards; was F2 + F2, amended 2026-09-02: one package never asks the same item twice) | 4 | 20 | ★TURN [ET] The pact, the Saturday, and behind the door a second letter: this one didn't say she thought. It said she knew. A thing of hers beside it that two survivors will not name | 54 | Never what the object was |
 | 07 | A3 | 4 | 15 | (t)[ET] Then the group began to disappear: Brad's car, Margo's car, the same car park | 54 | Nothing new |
 | 08 | A2×2 | 4 | 15 | (t)[ET] The survivors walk into the police station separately and say the same thing: I'm afraid of the other one | 54 | Nothing new |
-| 09 | A4 | 8 | 25 | ★TURN [ET] Board-first, then Del on the steps delivers the result the narration has held back: they looked, properly, the letters are really hers, and they found nothing. Del interprets: the file is closed to procedure; only people hold what is wrong here | 64 | Del says only what Part G gives her; never anything the file holds |
-| 10 | A2 | 2 | 20 | (t)[AL] The Gazette war, the I-don't-knows, four friends and four keys, sign-off as ruled. Ep 1 publishes | 54 | Nothing new |
+| 09 | A4 | 8 | 15 | ★TURN [ET] "Del on the Steps". Board-first, then Del on the steps delivers the result the narration has held back: they looked, properly, the letters are really hers, and they found nothing (segment lines 1 to 3) | 64 | Del says only what Part G gives her; never anything the file holds |
+| 09b | F2 | 2 | 10 | (t)[ET] "It Lives in People" (split 2026-09-02). Del interprets: closed means procedure found nothing it could hold; paper is all she may act on; whatever is wrong lives in people. "Which did you believe?" declined; "be careful" | 64 | As 09 |
+| 10 | A2 | 2 | 10 | (t)[AL] "Havenbay Takes Sides". The Gazette war, Ruby yes and Liam not yet, the I-don't-knows | 54 | Nothing new |
+| 10b | F2 | 2 | 10 | (t)[AL] "Ep 1 Publishes" (split 2026-09-02). Four friends and four keys, two dead, two afraid; where we begin; sign-off as ruled. Ep 1 publishes; sets `fk.ch1.complete` | 54 | Nothing new |
 
-Chain is strict (FTUE). Chapter notes: mechanical duties mirror `e1_tip` (entitlements, lab grant at p01, junk-drawer generator granted via p10's overflow, diner granted at p10 for chapter 2; `aq.loc.rusty_anchor.active` set by chapter 2 open). Three turns after the recut; 12 cards; the wake photograph moves into p01_04's beat presentation (AC) rather than its own package.
+Chain is strict (FTUE). Chapter notes: mechanical duties mirror `e1_tip` (entitlements, lab grant at p01, junk-drawer generator granted via p10's overflow, diner granted at p10 for chapter 2; `aq.loc.rusty_anchor.active` set by chapter 2 open). Three turns after the recut; 14 cards after the 2026-09-02 split (chain 09a, 09b, 10a, 10b strict); the wake photograph moves into p01_04's beat presentation (AC) rather than its own package.
 
 ## Chapter 2 · The Kitchen Table · Days 270 to 276 · 10 pkgs · 15 cards · 70 T1eq · 300 CC
 

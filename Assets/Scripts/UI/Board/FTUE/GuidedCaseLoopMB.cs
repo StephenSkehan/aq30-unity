@@ -144,6 +144,19 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
             }
         if (existingItems >= 3) return;
 
+        // Seed from the generator that feeds the current card when one is on the
+        // board (Stephen-ruled 2026-09-02); otherwise from any generator.
+        var families = FeedingFamilies();
+        bool anyFeeding = false;
+        for (int r = 0; r < _board.Rows && !anyFeeding; r++)
+            for (int c = 0; c < _board.Cols && !anyFeeding; c++)
+            {
+                var v = _board.Get(r, c);
+                if (v != null && !v.IsEmpty && v.Kind == TileKind.Generator &&
+                    GeneratorFeeds(_board.FindGeneratorType(_board.GetFamily(v)), v.Tier, families))
+                    anyFeeding = true;
+            }
+
         var seeded = new HashSet<string>();
         for (int r = 0; r < _board.Rows && seeded.Count < 3; r++)
             for (int c = 0; c < _board.Cols && seeded.Count < 3; c++)
@@ -152,6 +165,7 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
                 if (v == null || v.IsEmpty || v.Kind != TileKind.Generator) continue;
 
                 var so = _board.FindGeneratorType(_board.GetFamily(v));
+                if (anyFeeding && !GeneratorFeeds(so, v.Tier, families)) continue;
                 var cfg = so != null ? so.ConfigForTier(v.Tier) : null;
                 if (cfg?.dropTable == null) continue;
 
@@ -274,12 +288,86 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
     void EnterGeneratorStep()
     {
         _step = Step.Generator;
-        // Copy Stephen-ruled 2026-08-21.
-        SetBanner("Tap the kit. Every item helps.");
-        PulseGenerators();
-        _bannerTarget = _pulseTiles.Count > 0 ? _pulseTiles[0].transform : null;
+        var families = FeedingFamilies();
+        var pointing = PulseGenerators(families);
+        if (pointing == Pointing.Stash)
+        {
+            // The generator that feeds the current card is still in the Stash
+            // (Four Keys: the lab arrives from package 1). Point there first.
+            // Copy DRAFT pending Stephen (tutorial copy rule: <=8 words, no endearments).
+            SetBanner("Place the " + _preferredGenName + " from the Stash.");
+            _bannerTarget = AQ.App.UI.Board.OverflowBucketView.ButtonRoot;
+        }
+        else
+        {
+            // Copy Stephen-ruled 2026-08-21 for the kit; the generic form for
+            // any other feeding generator is DRAFT pending Stephen.
+            SetBanner(pointing == Pointing.Feeding && _preferredGenName != "kit"
+                ? "Tap the " + _preferredGenName + ". Every item helps."
+                : "Tap the kit. Every item helps.");
+            _bannerTarget = _pulseTiles.Count > 0 ? _pulseTiles[0].transform : null;
+        }
+        _pointingAtStash = pointing == Pointing.Stash;
         _nextBannerPlaceAt = 0f;
         AQ.App.Analytics.GameAnalytics.LogFtueEvent("gl_gen_shown");
+    }
+
+    // ---- feeding-generator preference (Stephen-ruled 2026-09-02) ----
+    // The loop points at the generator whose drop table feeds the card the
+    // player is working on, not just any generator on the board. If that
+    // generator is still in the Stash, the Stash is the pointer.
+
+    enum Pointing { Any, Feeding, Stash }
+    bool _pointingAtStash;
+    string _preferredGenName = "kit";
+
+    /// <summary>Item families the currently workable cards ask for (Available or Ready).</summary>
+    HashSet<string> FeedingFamilies()
+    {
+        var set = new HashSet<string>();
+        if (_repo == null) return set;
+        foreach (var lead in _repo.CurrentLeads)
+        {
+            if (lead == null || lead.RuntimeState == LeadState.Blocked) continue;
+            if (lead.requirements == null) continue;
+            foreach (var req in lead.requirements)
+                if (req.itemDefinition != null && !string.IsNullOrEmpty(req.itemDefinition.family))
+                    set.Add(req.itemDefinition.family);
+        }
+        return set;
+    }
+
+    static bool GeneratorFeeds(AQ.App.Generators.GeneratorTypeSO so, int tier, HashSet<string> families)
+    {
+        if (so == null || families == null || families.Count == 0) return false;
+        var cfg = so.ConfigForTier(tier);
+        if (cfg?.dropTable == null) return false;
+        foreach (var e in cfg.dropTable)
+            if (e.type == AQ.App.Generators.DropType.Item && families.Contains(e.itemFamily))
+                return true;
+        return false;
+    }
+
+    static string ShortName(AQ.App.Generators.GeneratorTypeSO so)
+    {
+        if (so == null || string.IsNullOrEmpty(so.displayName)) return "kit";
+        if (so.generatorTypeId == "gen_field_kit") return "kit";
+        // "Investigation Lab" -> "Lab": the last word carries the noun.
+        var parts = so.displayName.Split(' ');
+        return parts[parts.Length - 1];
+    }
+
+    /// <summary>A generator in the Stash whose drop table feeds the families, or null.</summary>
+    AQ.App.Generators.GeneratorTypeSO StashGeneratorFeeding(HashSet<string> families)
+    {
+        if (families == null || families.Count == 0) return null;
+        foreach (var item in AQ.App.Overflow.OverflowBucketService.Items)
+        {
+            if (item.kind != AQ.App.Overflow.OverflowKind.Generator) continue;
+            var so = _board.FindGeneratorType(item.family);
+            if (GeneratorFeeds(so, item.tier, families)) return so;
+        }
+        return null;
     }
 
     void EnterMergeStep(BoardTileView a, BoardTileView b)
@@ -355,7 +443,27 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
     {
         if (_step != Step.Generator) return;
         if (TryFindMergePair(out var a, out var b))
+        {
             EnterMergeStep(a, b);
+            return;
+        }
+        // Pointing at the Stash and the feeding generator just landed on the
+        // board: re-point at it (the Stash lesson is done by the placement).
+        if (_pointingAtStash)
+        {
+            var families = FeedingFamilies();
+            for (int r = 0; r < _board.Rows; r++)
+                for (int c = 0; c < _board.Cols; c++)
+                {
+                    var v = _board.Get(r, c);
+                    if (v == null || v.IsEmpty || v.Kind != TileKind.Generator) continue;
+                    if (GeneratorFeeds(_board.FindGeneratorType(_board.GetFamily(v)), v.Tier, families))
+                    {
+                        EnterGeneratorStep();
+                        return;
+                    }
+                }
+        }
     }
 
     void OnGeneratorTapped()
@@ -418,16 +526,38 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         return false;
     }
 
-    void PulseGenerators()
+    Pointing PulseGenerators(HashSet<string> families)
     {
         ClearPulse();
+        _preferredGenName = "kit";
+        var all = new List<BoardTileView>();
+        var feeding = new List<BoardTileView>();
         for (int r = 0; r < _board.Rows; r++)
             for (int c = 0; c < _board.Cols; c++)
             {
                 var v = _board.Get(r, c);
-                if (v != null && !v.IsEmpty && v.Kind == TileKind.Generator)
-                    _pulseTiles.Add(v);
+                if (v == null || v.IsEmpty || v.Kind != TileKind.Generator) continue;
+                all.Add(v);
+                var so = _board.FindGeneratorType(_board.GetFamily(v));
+                if (GeneratorFeeds(so, v.Tier, families)) { feeding.Add(v); if (feeding.Count == 1) _preferredGenName = ShortName(so); }
             }
+
+        if (feeding.Count > 0)
+        {
+            _pulseTiles.AddRange(feeding);
+            return Pointing.Feeding;
+        }
+
+        var stashed = StashGeneratorFeeding(families);
+        if (stashed != null)
+        {
+            _preferredGenName = ShortName(stashed);
+            var root = AQ.App.UI.Board.OverflowBucketView.ButtonRoot;
+            if (root != null) { _pulseTransforms.Add(root); return Pointing.Stash; }
+        }
+
+        _pulseTiles.AddRange(all);
+        return Pointing.Any;
     }
 
     void ClearPulse()

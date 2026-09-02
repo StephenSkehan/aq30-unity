@@ -152,12 +152,18 @@ namespace AQ.Tests.EditMode
         }
 
         [Test]
-        public void ShippedCatalog_FirstPlayableEpisode_IsEp01()
+        public void ShippedCatalog_FirstPlayableEpisode_IsFourKeys()
         {
+            // Stephen-ruled 2026-09-02: Four Keys is episode 1 and sits first
+            // (id fk01 until it ships and takes the ep01 id); The Listener
+            // follows and unlocks behind it.
             var catalog = LoadShipped();
             Assert.IsNotNull(catalog.First);
-            Assert.AreEqual("ep01", catalog.First.episodeId);
+            Assert.AreEqual("fk01", catalog.First.episodeId);
             Assert.IsTrue(catalog.First.HasContent, "the season opener must be playable");
+            Assert.IsNotNull(catalog.First.packages, "Four Keys is a package episode");
+            Assert.IsNotNull(catalog.First.ftue, "Four Keys carries its own FTUE choreography");
+            Assert.AreEqual("ep01", catalog.Next("fk01")?.episodeId, "The Listener follows Four Keys");
         }
     }
 }

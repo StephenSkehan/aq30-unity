@@ -141,9 +141,13 @@ namespace AQ.App.CaseFlow
             var catalog = EpisodeRuntime.Catalog;
             if (catalog == null) return null;
 
+            // Save pointer first; otherwise the catalog's FIRST playable entry is
+            // the default boot (Stephen-ruled 2026-09-02: Four Keys is episode 1
+            // and sits first). The scene-serialized id is a legacy alias that
+            // must not outrank the catalog order once a catalog resolves.
             var entry = catalog.FindById(EpisodeBootPointer.PendingEpisodeId)
-                     ?? catalog.FindById(episodeId)
-                     ?? catalog.First;
+                     ?? catalog.First
+                     ?? catalog.FindById(episodeId);
 
             if (entry != null && !entry.HasContent)
             {

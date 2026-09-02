@@ -30,13 +30,17 @@ Round 3 (feel verdict, 13:42):
 | 8 | Same item over two cards in one package looks contrived | Ruling (given) | DONE for p01_06 (06b now asks Audio T2; 06a keeps Forensic T2; equal T1eq). Standing rule recorded for authoring: the cards of one package never ask the same item. p01_04 already differed (Audio T2 + Forensic T2). Note: the structure table's "F1x2" style entries are one card asking quantity 2, not two cards; those stand. | this session |
 | 9 | FTUE tutorial completely lost; must be reinstated for feel, flow and timings | Ruling | RULED and BUILT (Stephen chose the proper slice entry, 2026-09-02 afternoon, after first picking the data-driven route). Four Keys chapter 1 is EpisodeCatalog entry `fk01` with its own database, package catalog, FTUE config, steps and completion flag; the database swap and polling driver are deleted; boot goes through the normal episode path via an editor-only boot override (AQ > Dev Boot Episode). The first-card choreography reads `FtueChoreographyConfig` from the entry (null = the Listener's shipped constants, pinned by tests). Four Keys: package 1's beat plays up front, guided first generator tap (arrow + pulse, deterministic Audio T1), auto-proceed, package 1 pays without repeating; the guided case loop follows. Play-verified by Stephen ("seems to be running OK"). | 750fed6 |
 
-## Rulings queued for Stephen (one at a time)
+## Rulings taken (asked one at a time, 2026-09-02 evening)
 
-1. Where Four Keys sits in the season list (today it is appended after ep04, so the selector shows it locked behind The Listener; the dev override bypasses that for booting only).
-2. Provisional titles and card asks for the split (item 6).
-3. Segment 9 backdrop: Del bench (current) or the studio.
-4. Guided loop generator choice: after package 1 the loop pulses any generator; package 2 wants the lab, which may still be in the Stash. Keep, or make the loop prefer the generator that feeds the current card.
-5. Chapter 1 line rulings in context (agenda item 2).
+| # | Question | Ruling | Applied |
+|---|---|---|---|
+| R1 | Where Four Keys sits in the season list | **First in order, id stays fk01.** Stephen: "Four Keys is episode 1." Consequences accepted: fresh saves and builds boot Four Keys; The Listener locks behind it until fk.ch1.complete; the ep01 rename happens when Four Keys ships. | Catalog reordered fk01, ep01..ep04; boot priority is save pointer, then the catalog's first playable, then the scene's legacy id. |
+| R2 | Split titles and card asks | **Stand.** "Del on the Steps" / "It Lives in People"; "Havenbay Takes Sides" / "Ep 1 Publishes"; 9b and 10b ask Forensic T2. | Structure v2.2 chapter 1 table updated. |
+| R3 | Segment 9 backdrop | **Del bench for 9 and 9b.** | Already so; no change. |
+| R4 | Guided loop generator choice | **Loop prefers the feeding generator**; if it is still in the Stash, the Stash is the pointer. | GuidedCaseLoopMB: FeedingFamilies from the workable cards' requirements; pulse only feeding generators; Stash pointer with DRAFT banner copy "Place the Lab from the Stash." and generic "Tap the Lab. Every item helps." (both copy lines need Stephen's ruling; the kit line is the ruled 2026-08-21 copy). |
+| R5 | Chapter 1 line rulings | **After the next full playthrough**, one line at a time. | Queued. |
+
+Still open for Stephen: the two DRAFT banner lines under R4; the DRAFT closing summary on the fk01 entry; the OPEN working-note lines deferred since the slice was built.
 
 ## Structure impact to fold into v2.2 when Stephen confirms
 
