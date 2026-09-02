@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53887cd0b9ce427895664a3c4544c256, type: 3}
-  m_Name: Package_FK_P01_10
+  m_Name: Package_FK_P01_10b
   m_EditorClassIdentifier: AQ.App::AQ.App.Leads.Packages.PackageData
-  packageId: fk_p01_10
+  packageId: fk_p01_10b
   chapter: 1
-  title: "Havenbay Takes Sides"
+  title: "Ep 1 Publishes"
   memberCardIds: 
-  - fk_p01_10a
+  - fk_p01_10b
   beatType: 2
-  beatDialogue: {fileID: 11400000, guid: 2ed4329f6ea9435990fcf7f9633297d3, type: 2}
+  beatDialogue: {fileID: 11400000, guid: e29866dc28fd460096bf9011af956e4d, type: 2}
   beatArt: {fileID: 0}
   beatCaption: 
   softCurrency: 10

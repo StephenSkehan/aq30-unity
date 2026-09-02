@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
-  m_Name: Resolve_FK_P01_10
+  m_Name: Resolve_FK_P01_10b
   m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
-  startId: FK_P01_10_N1
+  startId: FK_P01_10_N4
   stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e102, type: 3}
   nodes:
-  - id: FK_P01_10_N1
+  - id: FK_P01_10_N4
     speaker: "Ally Quinn"
-    line: "Now Liam and Ruby are accusing each other publicly, and Violet's warning is tearing them apart as Havenbay takes sides."
+    line: "But four friends received four keys."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -25,11 +25,11 @@ MonoBehaviour:
     requiresFlag:
     skipIfFlagMissing: 1
     setsFlag:
-    nextId: FK_P01_10_N2
+    nextId: FK_P01_10_N5
     choices: []
-  - id: FK_P01_10_N2
+  - id: FK_P01_10_N5
     speaker: "Ally Quinn"
-    line: "Ruby has agreed to speak with me. Liam hasn't. At least, not yet."
+    line: "Nine months later, two of them are dead, and the other two believe one of them could be next."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -37,11 +37,35 @@ MonoBehaviour:
     requiresFlag:
     skipIfFlagMissing: 1
     setsFlag:
-    nextId: FK_P01_10_N3
+    nextId: FK_P01_10_N6
     choices: []
-  - id: FK_P01_10_N3
+  - id: FK_P01_10_N6
     speaker: "Ally Quinn"
-    line: "I don't know what was behind that locked door. I don't know whether Violet really identified her killer. And I don't know whether Liam or Ruby has a reason to be afraid."
+    line: "So that's where we begin."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: FK_P01_10_N7
+    choices: []
+  - id: FK_P01_10_N7
+    speaker: "Ally Quinn"
+    line: "With Violet, her four friends and the door she wanted them to open."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: FK_P01_10_N8
+    choices: []
+  - id: FK_P01_10_N8
+    speaker: "Ally Quinn"
+    line: "This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

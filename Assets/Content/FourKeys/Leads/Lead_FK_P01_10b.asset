@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 222fba07fae7fa343a6d2a96dfd2ee48, type: 3}
-  m_Name: Lead_FK_P01_06b
+  m_Name: Lead_FK_P01_10b
   m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadData
-  leadId: fk_p01_06b
-  title: "The Saturday (B)"
+  leadId: fk_p01_10b
+  title: "Ep 1 Publishes"
   subtitle: "DRAFT"
   actorPortrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
   state: 0
   ActionType: 2
   EnergyCost: 0
   requirements:
-  - label: Audio Evidence T2
+  - label: Forensic Work T2
     icon: {fileID: 0}
     satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: aad15000b1c2d3e4f5a6b7c8d9e0f102, type: 2}
+    itemDefinition: {fileID: 11400000, guid: 396f63cfaf7106c47bdaf61671377b24, type: 2}
     quantity: 1
-  RequiredLeadIds: 
-  - fk_p01_05a
+  RequiredLeadIds:
+  - fk_p01_10a
   EvidenceIds: []
   SpawnLeadIds: []
   NarrativeFlags: []

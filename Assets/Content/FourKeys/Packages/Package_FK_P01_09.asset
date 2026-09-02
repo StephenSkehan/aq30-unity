@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: AQ.App::AQ.App.Leads.Packages.PackageData
   packageId: fk_p01_09
   chapter: 1
-  title: "TURN: Del on the Steps"
+  title: "Del on the Steps"
   memberCardIds: 
   - fk_p01_09a
   beatType: 0
   beatDialogue: {fileID: 11400000, guid: 16cd408300a0417f863083c2e52344eb, type: 2}
   beatArt: {fileID: 0}
   beatCaption: 
-  softCurrency: 25
+  softCurrency: 15
   energyGrant: 0
   premiumGrant: 0
   specialRewardId: 

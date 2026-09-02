@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53887cd0b9ce427895664a3c4544c256, type: 3}
-  m_Name: Package_FK_P01_10
+  m_Name: Package_FK_P01_09b
   m_EditorClassIdentifier: AQ.App::AQ.App.Leads.Packages.PackageData
-  packageId: fk_p01_10
+  packageId: fk_p01_09b
   chapter: 1
-  title: "Havenbay Takes Sides"
+  title: "It Lives in People"
   memberCardIds: 
-  - fk_p01_10a
-  beatType: 2
-  beatDialogue: {fileID: 11400000, guid: 2ed4329f6ea9435990fcf7f9633297d3, type: 2}
+  - fk_p01_09b
+  beatType: 0
+  beatDialogue: {fileID: 11400000, guid: ce92cdb48ee34069810b8d205addc60d, type: 2}
   beatArt: {fileID: 0}
   beatCaption: 
   softCurrency: 10
