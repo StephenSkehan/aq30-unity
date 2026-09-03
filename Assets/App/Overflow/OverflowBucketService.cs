@@ -41,8 +41,12 @@ namespace AQ.App.Overflow
         /// <summary>Push that announces itself as a reward.</summary>
         public static void Push(OverflowTileData tile, bool announce)
         {
-            Push(tile);
+            // Announce BEFORE the data push: the advisory freezes the Stash
+            // button on RewardArrived, so the BucketChanged refresh that follows
+            // cannot pre-show the reward behind its own popup (Stephen, 2026-09-03:
+            // the item must not appear in the Stash until the flight lands).
             if (announce) RewardArrived?.Invoke(tile);
+            Push(tile);
         }
 
         public static int Count => _stack.Count;

@@ -290,6 +290,19 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         _step = Step.Generator;
         var families = FeedingFamilies();
         var pointing = PulseGenerators(families);
+        if (pointing == Pointing.Stash && OverflowBucketView.AdviseHeld)
+        {
+            // The feeding generator is still in flight to the Stash (advisory
+            // popup, then the reveal flight). Point at nothing until it lands
+            // (Stephen, 2026-09-03: the prompt must not precede the item).
+            ClearPulse();
+            SetBanner(null);
+            _bannerTarget = null;
+            _pointingAtStash = false;
+            _awaitingStashReveal = true;
+            return;
+        }
+        _awaitingStashReveal = false;
         if (pointing == Pointing.Stash)
         {
             // The generator that feeds the current card is still in the Stash
@@ -319,6 +332,7 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
 
     enum Pointing { Any, Feeding, Stash }
     bool _pointingAtStash;
+    bool _awaitingStashReveal;
     string _preferredGenName = "kit";
 
     /// <summary>Item families the currently workable cards ask for (Available or Ready).</summary>
@@ -574,6 +588,14 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
 
     void Update()
     {
+        // Pointing at the Stash was deferred until the reward's reveal flight
+        // landed; re-enter the step the moment the Stash shows it.
+        if (_step == Step.Generator && _awaitingStashReveal && !OverflowBucketView.AdviseHeld)
+        {
+            _awaitingStashReveal = false;
+            EnterGeneratorStep();
+        }
+
         // Card views rebuild often — drop dead transforms, and in the proceed
         // step keep hunting for the live ready card until one sticks.
         _pulseTransforms.RemoveAll(t => t == null);
@@ -660,7 +682,17 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         local.x = Mathf.Clamp(local.x, -(halfCanvas - halfBanner - 8f), halfCanvas - halfBanner - 8f);
 
         _bannerRoot.anchoredPosition = local;
+
+        // Placement diagnostics (kept: cheap, twice a second, and the first
+        // playtest of this placement showed the card case landing wrong).
+        if (_lastPlacedTarget != target)
+        {
+            _lastPlacedTarget = target;
+            Debug.Log($"[GuidedLoop] banner -> '{target.name}' screenTop={screenTop:F0} screenBottom={screenBottom:F0} centreX={screenCentre.x:F0} below={below} canvasW={canvasW:F0} bannerW={bannerW:F0} local={local} screen={Screen.width}x{Screen.height}");
+        }
     }
+
+    Transform _lastPlacedTarget;
 
     // ---------------- banner ----------------
 

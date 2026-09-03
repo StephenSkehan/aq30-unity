@@ -168,6 +168,10 @@ namespace AQ.App.UI.Board
             if (!held && _instance != null) _instance.Refresh();
         }
 
+        /// <summary>True while an announced reward is still in flight to the Stash
+        /// (its icon is not yet shown); guidance that points at the Stash waits on this.</summary>
+        public static bool AdviseHeld => _adviseHold;
+
         /// <summary>The button's rect even while hidden (GameObject.Find can't
         /// see inactive objects — the reveal flight needs a target before the
         /// button first appears).</summary>

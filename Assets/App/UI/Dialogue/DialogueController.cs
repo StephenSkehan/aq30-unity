@@ -204,18 +204,33 @@ namespace AQ.App
                     var go = new GameObject("_SpeakerPill", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
                     go.transform.SetParent(transform, false);
                     pill = (RectTransform)go.transform;
+                    // Outer image is the border line, the inset child carries the
+                    // fill (same construction as the guided banner).
                     var img = go.GetComponent<Image>();
                     img.sprite = AQ.App.UI.AQTheme.Rounded;
                     img.type = Image.Type.Sliced;
-                    img.color = new Color(0.16f, 0.32f, 0.5f, 0.96f); // house blue, opaque
+                    img.color = new Color(0.82f, 0.88f, 0.96f, 0.95f); // pale border
                     img.raycastTarget = false;
+                    var fill = new GameObject("Fill", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+                    fill.transform.SetParent(pill, false);
+                    var frt = (RectTransform)fill.transform;
+                    frt.anchorMin = Vector2.zero;
+                    frt.anchorMax = Vector2.one;
+                    frt.offsetMin = new Vector2(3f, 3f);
+                    frt.offsetMax = new Vector2(-3f, -3f);
+                    var fimg = fill.GetComponent<Image>();
+                    fimg.sprite = AQ.App.UI.AQTheme.Rounded;
+                    fimg.type = Image.Type.Sliced;
+                    fimg.color = new Color(0.16f, 0.32f, 0.5f, 1f); // house blue
+                    fimg.raycastTarget = false;
                     Speaker.transform.SetParent(pill, false);
                 }
                 pill.anchorMin = pill.anchorMax = new Vector2(1f, stripTop);
                 pill.pivot = new Vector2(1f, 1f);
                 pill.sizeDelta = new Vector2(250f, 54f);
-                // Centred under the portrait holder (460 wide, pushed 36 past the edge).
-                pill.anchoredPosition = new Vector2(-105f, -10f);
+                // Up and to the right of the first placement (Stephen, 2026-09-03):
+                // the pill straddles the strip's top edge under the portrait's chin.
+                pill.anchoredPosition = new Vector2(-56f, 16f);
                 pill.SetAsLastSibling();
 
                 var srt = Speaker.rectTransform;

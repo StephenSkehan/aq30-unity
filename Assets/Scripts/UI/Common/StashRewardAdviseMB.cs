@@ -57,7 +57,14 @@ namespace AQ.App.UI.Common
             if (_inst == this) _inst = null;
         }
 
-        private void OnReward(OverflowTileData tile) => _queue.Enqueue(tile);
+        private void OnReward(OverflowTileData tile)
+        {
+            // Freeze the Stash presentation from the moment of the grant, not
+            // from the popup: the service announces before it pushes, so this
+            // runs ahead of the BucketChanged refresh (Stephen, 2026-09-03).
+            OverflowBucketView.SetAdviseHold(true);
+            _queue.Enqueue(tile);
+        }
         private void OnDialogueOpened(CaseGraph _) => _dialogueOpen = true;
         private void OnDialogueClosed() => _dialogueOpen = false;
 
