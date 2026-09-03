@@ -58,7 +58,7 @@ namespace AQ.App.UI.Common
             int rows      = (defs.Count + Columns - 1) / Columns;
             float gridW   = Columns * CellSize + (Columns - 1) * CellGap;
             float gridH   = rows * (CellSize + 60f) + (rows - 1) * CellGap; // +60 two-line name strip per cell (2026-08-12)
-            float panelH  = 96f + 18f + 40f + 22f + gridH + 28f; // title bar + count + grid
+            float panelH  = 96f + 18f + 40f + 34f + gridH + 28f; // title bar + count + gap (+12, 2026-09-03) + grid
 
             var panel = MakeRect("Panel", _root.transform);
             AQTheme.StylePanel(panel);
@@ -83,9 +83,11 @@ namespace AQ.App.UI.Common
             int discovered = 0;
             foreach (var d in defs)
                 if (ItemDiscoveryService.IsDiscovered(family, d.tier)) discovered++;
+            // Raised to sit between the title bar and the first row of items
+            // (Stephen, 2026-09-03: it was riding on the tile tops).
             AddLabel($"{discovered} of {defs.Count} discovered", panel, 26f, AQTheme.PaperDim,
-                     new Vector2(0f, y - 20f), new Vector2(gridW, 40f));
-            y -= 62f;
+                     new Vector2(0f, y - 6f), new Vector2(gridW, 40f));
+            y -= 74f;
 
             for (int i = 0; i < defs.Count; i++)
             {

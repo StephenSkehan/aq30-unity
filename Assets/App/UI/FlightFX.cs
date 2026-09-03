@@ -70,7 +70,21 @@ namespace AQ.App.UI
         public static void FlyItemToBar(Sprite sprite, Vector2 fromScreen)
         {
             if (_hold) { _heldItems.Add((sprite, fromScreen)); return; }
-            Runner().StartCoroutine(FlyOne(sprite, fromScreen, SourceScreenPos(), null));
+            // Consumed evidence goes to the evidence board (Stephen-ruled
+            // 2026-09-03); the bar is the fallback when no board button exists.
+            var to = EvidenceBoardButtonScreenPos() ?? SourceScreenPos();
+            Runner().StartCoroutine(FlyOne(sprite, fromScreen, to, null));
+        }
+
+        static Vector2? EvidenceBoardButtonScreenPos()
+        {
+            var btn = GameObject.Find("__EvidBoardBtn");
+            if (btn == null) return null;
+            var rt = btn.transform as RectTransform;
+            if (rt == null) return RectTransformUtility.WorldToScreenPoint(null, btn.transform.position);
+            var corners = new Vector3[4];
+            rt.GetWorldCorners(corners);
+            return (Vector2)((corners[0] + corners[2]) * 0.5f);
         }
 
         /// <summary>A just-banked tile (extra generator, granted reward) arcs to the
@@ -105,6 +119,19 @@ namespace AQ.App.UI
             var bar = GameObject.Find("LeadsBarRuntime");
             if (bar != null)
                 return RectTransformUtility.WorldToScreenPoint(null, bar.transform.position);
+            // The shipped bar is a LeadsBarView; "LeadsBarRuntime" no longer exists
+            // by that name, and the old fallback was the middle of the screen.
+            var view = Object.FindAnyObjectByType<AQ.App.Leads.LeadsBarView>();
+            if (view != null)
+            {
+                var rt = (view.contentRoot != null ? view.contentRoot : view.transform) as RectTransform;
+                if (rt != null)
+                {
+                    var corners = new Vector3[4];
+                    rt.GetWorldCorners(corners);
+                    return (Vector2)((corners[0] + corners[2]) * 0.5f);
+                }
+            }
             return new Vector2(Screen.width * 0.5f, Screen.height * 0.7f);
         }
 
