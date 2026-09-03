@@ -65,6 +65,20 @@ Still open for Stephen: the two DRAFT banner lines under R4; the DRAFT closing s
 
 Still unverified in this round (Stephen did not mention them): the evidence board's package pins; the Stash pointer moving to the lab once placed (the log shows the placement, not the banner).
 
+## Round 5 · 2026-09-03 · second full playthrough after round 4's fixes
+
+**Verbatim (with screenshots):**
+
+> speaker pill size is ok but it needs a border and to move up and right. The banner is still not fixed. 3&4 seem to be working OK. the move to stash animation appears correctly after the popup is closed. The item should NOT appear in the stash until after the animation is completed and the prompt should not appear before the item is in the stash. Also, there are animations after lead card fulfilment and tap that do not seem to be working correctly.
+
+| # | Finding | Kind | Disposition |
+|---|---|---|---|
+| 5.1 | Pill needs a border; move up and right | Ruling (UI) | DONE. Pale border with inset blue fill; anchored to straddle the strip's top edge under the portrait (offset -56, +16). |
+| 5.2 | Banner still wrong on the green card | Bug | FIXED, root cause found by the placement log: the Stash and the lab tile logged placements, the card never did. The loop searched for a `LeadCardView` component, which no card in the shipped bar carries, so the proceed step never attached a target and the banner stayed below the lab tile. `LeadsBarView.ReadyCardRoot()` now supplies the card root; the loop uses it first. |
+| 5.3 | Episode Closed after the last tap; evidence board | Verified | Stephen: "3&4 seem to be working OK." |
+| 5.4 | Reward pre-appears in the Stash before its flight; prompt appears before the item | Bug | FIXED. The service announced after pushing, so the bucket refreshed first. RewardArrived now fires before the push, the advisory freezes the Stash presentation on arrival, and the icon appears when the reveal flight lands. The guided loop does not point at the Stash while the reward is held; the log from the next run shows the prompt appearing 4.7 s after the payoff, after the reveal, then moving to the lab once placed. |
+| 5.5 | Animations after card fulfilment and tap not working correctly | OPEN | Needs Stephen's description (which animation, what it does wrong). Candidates: the fulfil bounce on the bar's rebuild, the consumed-item and reward flights replayed after the beat closes. |
+
 ## Structure impact to fold into v2.2 when Stephen confirms
 
 Chapter 1: 12 packages, 14 cards, 39 T1eq (was 10 / 12 / 35). Authored census 107 (was 105). Timeline draft's ~3:30 and ~4:30 marks now each span two beats.
