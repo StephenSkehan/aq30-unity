@@ -53,7 +53,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P01_06_N4
     speaker: "Ally Quinn"
-    line: "There was an object beside it. Something that had belonged to Violet. Two of the friends are still alive, and neither one will say what that object was."
+    line: "There was an object beside it. Something that had belonged to Violet. Only two of the friends are still alive, and neither one will say what that object was."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

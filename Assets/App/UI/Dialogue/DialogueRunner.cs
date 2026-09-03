@@ -162,6 +162,25 @@ namespace AQ.App
         /// Boot a single-line filler dialogue without needing a CaseGraph asset.
         /// Tap to dismiss — fires DialogueEnded normally.
         /// </summary>
+        /// <summary>
+        /// Panel shows first names only (Stephen-ruled 2026-09-03: the name sits
+        /// in a pill under the portrait). "Del Cruz" -> "Del", "Ally - Podcasting
+        /// Echoes of Havenbay" -> "Ally", "Dot Ellis (voicemail)" -> "Dot". Names
+        /// that begin with an article ("The Tip Line") are kept whole.
+        /// </summary>
+        public static string DisplaySpeakerName(string speaker)
+        {
+            if (string.IsNullOrWhiteSpace(speaker)) return speaker;
+            var s = speaker.Trim();
+            if (s.StartsWith("The ", System.StringComparison.OrdinalIgnoreCase)) return s;
+            int cut = s.IndexOfAny(new[] { ' ', '-', '(', ',', ':' });
+            if (cut <= 0) return s;
+            // A lowercase continuation ("Tip line") is a thing, not a surname: keep whole.
+            var rest = s.Substring(cut).TrimStart(' ', '-', '(', ',', ':');
+            if (rest.Length > 0 && char.IsLower(rest[0])) return s;
+            return s.Substring(0, cut).TrimEnd('.', ',', ':', '-');
+        }
+
         public void BootWithText(string speaker, string line)
         {
             var g = ScriptableObject.CreateInstance<CaseGraph>();
@@ -573,10 +592,11 @@ namespace AQ.App
             Panel.BindNode(n, lastPage ? _filteredChoices : System.Array.Empty<CaseGraph.Choice>());
             if (Panel.Body) Panel.Body.text = string.Empty; // BindNode wrote the full line
 
+            var speakerName = DisplaySpeakerName(n.speaker);
             if (_speakerTyper != null)
-                _speakerTyper.SetInstant(n.speaker);
+                _speakerTyper.SetInstant(speakerName);
             else if (Panel.Speaker)
-                Panel.Speaker.text = n.speaker;
+                Panel.Speaker.text = speakerName;
 
             if (_bodyTyper != null)
                 _bodyTyper.StartTyping(page);

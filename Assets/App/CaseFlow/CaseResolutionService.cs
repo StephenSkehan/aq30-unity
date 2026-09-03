@@ -63,10 +63,29 @@ namespace AQ.App.CaseFlow
                     _fired = true;
                     var episodeId = ResolveEpisodeId();
                     GameAnalytics.LogEpisodeComplete(episodeId);
-                    GlobalBus.Bus.Publish(new CaseResolvedEvent(episodeId));
+                    // The closing card's payoff (its resolution dialogue, or the
+                    // package beat) opens in this same activation. The Episode
+                    // Closed screen must follow the last line's dismissing tap,
+                    // never cover it (Stephen-ruled 2026-09-03). Edit-mode tests
+                    // drive this handler directly with no runner and no
+                    // coroutines: publish synchronously there.
+                    if (!Application.isPlaying)
+                        GlobalBus.Bus.Publish(new CaseResolvedEvent(episodeId));
+                    else
+                        StartCoroutine(PublishWhenDialogueClosed(episodeId));
                     return;
                 }
             }
+        }
+
+        System.Collections.IEnumerator PublishWhenDialogueClosed(string episodeId)
+        {
+            // One frame so a dialogue booted by this activation is active.
+            yield return null;
+            var runner = FindAnyObjectByType<DialogueRunner>(FindObjectsInactive.Include);
+            while (runner != null && runner.gameObject.activeInHierarchy)
+                yield return null;
+            GlobalBus.Bus.Publish(new CaseResolvedEvent(episodeId));
         }
     }
 }

@@ -612,17 +612,51 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
         var canvasRect = _bannerRoot.parent as RectTransform;
         if (canvasRect == null) return;
 
-        Vector2 screen = target.position; // overlay canvases: world == screen px
-        if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screen, null, out var local))
+        // Fit the banner to the canvas first: on tall phones the scaled canvas
+        // is narrower than the 1040 design width, and a clamp with an inverted
+        // range parked the banner off the right edge (its border vanished;
+        // Stephen, 2026-09-03).
+        float canvasW = canvasRect.rect.width;
+        float bannerW = Mathf.Min(1040f, canvasW - 32f);
+        _bannerRoot.sizeDelta = new Vector2(bannerW, _bannerRoot.sizeDelta.y);
+
+        // Subject bounds in screen space, from its real rect when it has one
+        // (the Stash root and the lead card are wide/tall; their pivots sit far
+        // from the edge the banner must clear).
+        Vector2 screenCentre = target.position;
+        float screenTop = screenCentre.y, screenBottom = screenCentre.y;
+        if (target is RectTransform trt)
+        {
+            var canvas = trt.GetComponentInParent<Canvas>();
+            var cam = canvas != null && canvas.rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay
+                ? canvas.rootCanvas.worldCamera : null;
+            var corners = new Vector3[4];
+            trt.GetWorldCorners(corners);
+            screenTop = float.MinValue; screenBottom = float.MaxValue;
+            float sx = 0f;
+            for (int i = 0; i < 4; i++)
+            {
+                Vector2 p = RectTransformUtility.WorldToScreenPoint(cam, corners[i]);
+                screenTop = Mathf.Max(screenTop, p.y);
+                screenBottom = Mathf.Min(screenBottom, p.y);
+                sx += p.x;
+            }
+            screenCentre = new Vector2(sx * 0.25f, (screenTop + screenBottom) * 0.5f);
+        }
+
+        // Park the banner almost touching its subject (Stephen-ruled 2026-09-03):
+        // below it when the subject sits in the upper half, above it otherwise.
+        bool below = screenCentre.y > Screen.height * 0.5f;
+        float edgeY = below ? screenBottom : screenTop;
+        if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, new Vector2(screenCentre.x, edgeY), null, out var local))
             return;
+        const float gap = 14f;
+        float halfH = _bannerRoot.sizeDelta.y * 0.5f;
+        local.y += below ? -(halfH + gap) : (halfH + gap);
 
-        float clearance = _bannerRoot.sizeDelta.y * 0.5f + 95f; // closer, still clear of the subject (2026-08-22)
-        bool below = screen.y > Screen.height * 0.5f;
-        local.y += below ? -clearance : clearance;
-
-        // Stay on screen horizontally.
-        float halfCanvas = canvasRect.rect.width * 0.5f;
-        float halfBanner = _bannerRoot.sizeDelta.x * 0.5f;
+        // Stay on screen horizontally (range is valid now that the banner fits).
+        float halfCanvas = canvasW * 0.5f;
+        float halfBanner = bannerW * 0.5f;
         local.x = Mathf.Clamp(local.x, -(halfCanvas - halfBanner - 8f), halfCanvas - halfBanner - 8f);
 
         _bannerRoot.anchoredPosition = local;

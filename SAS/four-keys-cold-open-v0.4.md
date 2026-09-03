@@ -13,6 +13,8 @@
 
 **Voice lesson banked (Trish + Stephen, this review):** Ally's register is the common true-crime podcast voice: short lines, one fact per line, plain statements over crafted constructions, no term-of-art phrasing, never state the obvious. Applies to all future Ally prose.
 
+**Line ruling in play (Stephen, 2026-09-03):** "Two of the friends are still alive" became "Only two of the friends are still alive". Applied here and in the chapter 1 graph; no other word of v0.4 changed.
+
 **Checks:** no em dashes (pass) · nothing invented beyond the brief (pass; "one of them could be next" is the survivors' real fear, kept) · death in the first line, keys by about 0:35 (pass) · sign-off as ruled.
 
 ---
@@ -43,7 +45,7 @@ And when they finally opened it, they found another letter.
 
 This one didn't say she thought. It said she knew.
 
-There was an object beside it. Something that had belonged to Violet. Two of the friends are still alive, and neither one will say what that object was.
+There was an object beside it. Something that had belonged to Violet. Only two of the friends are still alive, and neither one will say what that object was.
 
 Then the group began to disappear.
 
