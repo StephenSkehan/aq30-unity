@@ -92,6 +92,18 @@ Still unverified in this round (Stephen did not mention them): the evidence boar
 | 6.3 | Merge drag-drop slide is a white square from origin to target | Bug | FIXED. The slide icon was built from the source tile's sprite after the source was cleared. The FX observer now rebuilds the consumed piece's sprite (destination family, pre-merge tier) and passes it; no sprite, no slide. |
 | 6.4 | Post-fulfilment flight goes to screen centre; should go to the evidence board | Ruling + bug | DONE. The flight targeted an object name that no longer exists and fell back to the screen centre. Consumed evidence now flies to the evidence board button; the live bar is the fallback. |
 
+## Round 7 · 2026-09-03 · run with the green-card fix
+
+**Verbatim:**
+
+> fulfilment flight still goes to centre screen instead of the evidence board button. Other fixes look ok. Also what happened to gerald's portrait on the hint banners as he is meant to be the game tutorial mentor?
+
+| # | Finding | Kind | Disposition |
+|---|---|---|---|
+| 7.1 | Green-card banner, merge slide, "discovered" label | Verified | Stephen: "Other fixes look ok." The placement log confirms the banner attached to `LeadCard_0_Lead_FK_P01_02a` and parked under its bottom edge. |
+| 7.2 | Fulfilment flight still to screen centre | Bug | FIXED. The target object is a full-screen canvas root, so its centre was the screen centre; the flight now aims at its "Btn" child. |
+| 7.3 | Gerald missing from the hint banners | Bug (episode-keyed sourcing) | FIXED. The mentor portrait was found by scanning the running episode's lead portraits and lead resolution graphs. Four Keys has no Gerald in either (its scenes are package beat graphs), so the banner and hints lost him. The lookup now scans package beat graphs too (Del resolves for Four Keys as well) and falls back to a Resources copy of Gerald's neutral portrait for the standing cast. Standing rule for the next episodes: any portrait a UI surface needs regardless of episode content must have a Resources fallback. |
+
 ## Structure impact to fold into v2.2 when Stephen confirms
 
 Chapter 1: 12 packages, 14 cards, 39 T1eq (was 10 / 12 / 35). Authored census 107 (was 105). Timeline draft's ~3:30 and ~4:30 marks now each span two beats.
