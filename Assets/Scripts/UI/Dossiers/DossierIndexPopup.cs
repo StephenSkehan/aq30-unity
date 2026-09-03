@@ -184,6 +184,25 @@ namespace AQ.App.UI.Dossiers
                         if (n != null) best = Prefer(best, Match(n.portrait, token));
                 if (Score(best) >= 2) return best;
             }
+
+            // Package episodes (Four Keys onward) keep their scenes on the
+            // package beat graphs, not on the cards: scan those too.
+            var packages = AQ.App.Episodes.EpisodeRuntime.Current?.packages;
+            if (packages != null)
+                foreach (var p in packages.packages)
+                {
+                    var nodes = p != null && p.beatDialogue != null ? p.beatDialogue.nodes : null;
+                    if (nodes == null) continue;
+                    foreach (var n in nodes)
+                        if (n != null) best = Prefer(best, Match(n.portrait, token));
+                    if (Score(best) >= 2) return best;
+                }
+
+            // Standing cast who front UI without a scene in the running episode
+            // (Gerald mentors the tutorial in every episode): Resources fallback.
+            if (best == null)
+                best = Resources.Load<Sprite>("App/Characters/char_" + token + "_neutral")
+                    ?? Resources.Load<Sprite>("App/Characters/char_" + token + "_neutral_f01");
             return best;
         }
 

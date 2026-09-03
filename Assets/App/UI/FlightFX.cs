@@ -78,8 +78,12 @@ namespace AQ.App.UI
 
         static Vector2? EvidenceBoardButtonScreenPos()
         {
-            var btn = GameObject.Find("__EvidBoardBtn");
-            if (btn == null) return null;
+            // "__EvidBoardBtn" is a full-screen canvas root (its centre is the
+            // screen centre); the visible button is its "Btn" child.
+            var root = GameObject.Find("__EvidBoardBtn");
+            if (root == null) return null;
+            var btnTf = root.transform.Find("Btn");
+            var btn = btnTf != null ? btnTf.gameObject : root;
             var rt = btn.transform as RectTransform;
             if (rt == null) return RectTransformUtility.WorldToScreenPoint(null, btn.transform.position);
             var corners = new Vector3[4];
