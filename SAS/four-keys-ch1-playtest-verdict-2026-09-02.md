@@ -59,7 +59,7 @@ Still open for Stephen: the two DRAFT banner lines under R4; the DRAFT closing s
 | 4.5 | Episode Closed appears before the last dialogue line is read; should follow a tap after the last line | Bug | FIXED. `CaseResolutionService` now publishes the resolved event only once no dialogue runner is active (one frame after the closing card's activation, then wait for close). Edit-mode tests keep the synchronous path. Applies to the Listener's close as well. |
 | 4.6 | p01_06: "Only two of the friends are still alive" | Line ruling | APPLIED to the graph, ch01.md, and cold open v0.4 (noted in its header as the one in-play word change). |
 | 4.7 | p01_09 Ally: "Tell me straight Del, I want the city to know the truth. What's suspicious in those files?" | Line ruling | APPLIED to graph and ch01.md. |
-| 4.8 | p01_09 Del: "We looked. Properly. There's nothing. That's the truth, Quinny. It's taken six weeks of good specialist's time but there's nothing to chase." | Line ruling | APPLIED as written. Query for Stephen: "specialist's" (one) or "specialists'" (many)? Left as written until he says. |
+| 4.8 | p01_09 Del: "We looked. Properly. There's nothing. That's the truth, Quinny. It's taken six weeks of good specialist's time but there's nothing to chase." | Line ruling | APPLIED. Stephen ruled "specialists'" (2026-09-03). |
 | 4.9 | p01_09b Ally: "So, it's case closed?" | Line ruling | APPLIED. |
 | 4.10 | p01_09b Del: "...paper is clean. Whatever has been going on with those five friends, it doesn't live on the paper. It lives in the people." | Line ruling | APPLIED to graph, ch01.md and the digest's ch1 entry (paraphrase). |
 
