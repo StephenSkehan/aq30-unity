@@ -79,6 +79,19 @@ Still unverified in this round (Stephen did not mention them): the evidence boar
 | 5.4 | Reward pre-appears in the Stash before its flight; prompt appears before the item | Bug | FIXED. The service announced after pushing, so the bucket refreshed first. RewardArrived now fires before the push, the advisory freezes the Stash presentation on arrival, and the icon appears when the reveal flight lands. The guided loop does not point at the Stash while the reward is held; the log from the next run shows the prompt appearing 4.7 s after the payoff, after the reveal, then moving to the lab once placed. |
 | 5.5 | Animations after card fulfilment and tap not working correctly | OPEN | Needs Stephen's description (which animation, what it does wrong). Candidates: the fulfil bounce on the bar's rebuild, the consumed-item and reward flights replayed after the beat closes. |
 
+## Round 6 · 2026-09-03 · same run as round 5 (screenshots predate the green-card fix)
+
+**Verbatim (with screenshots):**
+
+> still not right. raise the label a little so it sits between items and title bar. Also, the move animation after an item is draged and dropped for merge is an animated white square moving from origin to target when it should be the origin item icon. Also, there is animation after card fulfilment and tap. I think this should animate to the evidence board but it animates to centre screen instead.
+
+| # | Finding | Kind | Disposition |
+|---|---|---|---|
+| 6.1 | Green-card banner "still not right" | Timing | The screenshot is stamped 12:34, from the run before the 12:50 fix (round 5.2). Awaits the next run. |
+| 6.2 | "N of M discovered" label rides on the tile tops | Ruling (UI) | DONE. Raised 14 px and the grid pushed 12 px down; panel height adjusted. |
+| 6.3 | Merge drag-drop slide is a white square from origin to target | Bug | FIXED. The slide icon was built from the source tile's sprite after the source was cleared. The FX observer now rebuilds the consumed piece's sprite (destination family, pre-merge tier) and passes it; no sprite, no slide. |
+| 6.4 | Post-fulfilment flight goes to screen centre; should go to the evidence board | Ruling + bug | DONE. The flight targeted an object name that no longer exists and fell back to the screen centre. Consumed evidence now flies to the evidence board button; the live bar is the fallback. |
+
 ## Structure impact to fold into v2.2 when Stephen confirms
 
 Chapter 1: 12 packages, 14 cards, 39 T1eq (was 10 / 12 / 35). Authored census 107 (was 105). Timeline draft's ~3:30 and ~4:30 marks now each span two beats.
