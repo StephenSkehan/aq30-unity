@@ -104,6 +104,27 @@ namespace AQ.App.Leads
 
         public void Rebuild() { }
 
+        /// <summary>
+        /// The card root of the first Ready lead in the bar, or null. FTUE
+        /// guidance parks its banner against this; the bar's cards carry no
+        /// LeadCardView component, so searching for one found nothing
+        /// (guided-loop banner never reached the green card, 2026-09-03).
+        /// </summary>
+        public RectTransform ReadyCardRoot()
+        {
+            if (contentRoot == null) return null;
+            foreach (var kv in _proceedByLead)
+            {
+                var lead = kv.Key;
+                var btn = kv.Value;
+                if (lead == null || btn == null || lead.RuntimeState != LeadState.Ready) continue;
+                Transform t = btn.transform;
+                while (t != null && t.parent != contentRoot) t = t.parent;
+                if (t != null) return t as RectTransform;
+            }
+            return null;
+        }
+
         public void Rebuild(IReadOnlyList<LeadData> leads)
         {
             if (contentRoot == null || cardPrefab == null) return;

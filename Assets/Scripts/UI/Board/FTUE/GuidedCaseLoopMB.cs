@@ -431,6 +431,19 @@ public sealed class GuidedCaseLoopMB : MonoBehaviour
 
     void TryAttachReadyCard()
     {
+        // The live bar (LeadsBarView) owns the card roots; ask it directly.
+        // The LeadCardView search below is the legacy path and finds nothing
+        // in the shipped bar (2026-09-03 diagnosis).
+        var bar = FindAnyObjectByType<LeadsBarView>();
+        var root = bar != null ? bar.ReadyCardRoot() : null;
+        if (root != null)
+        {
+            _pulseTransforms.Add(root);
+            _bannerTarget = root;
+            _nextBannerPlaceAt = 0f;
+            return;
+        }
+
         var cards = FindObjectsByType<LeadCardView>(FindObjectsSortMode.None);
         foreach (var card in cards)
             if (card != null && card.IsReadyNow)
