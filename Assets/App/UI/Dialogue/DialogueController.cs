@@ -192,21 +192,71 @@ namespace AQ.App
             WidenToStrip(Speaker);
             WidenToStrip(Body);
 
-            // Speaker to the strip's top band (prefab values assume the old 300 strip).
+            // Speaker name in a pill just under the portrait, right side of the
+            // strip top (Stephen-ruled 2026-09-03): frees the strip's top band so
+            // the body lifts by a line. The pill is built once and re-anchored on
+            // every layout pass.
             if (Speaker != null)
             {
+                var pill = transform.Find("_SpeakerPill") as RectTransform;
+                if (pill == null)
+                {
+                    var go = new GameObject("_SpeakerPill", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+                    go.transform.SetParent(transform, false);
+                    pill = (RectTransform)go.transform;
+                    // Outer image is the border line, the inset child carries the
+                    // fill (same construction as the guided banner).
+                    var img = go.GetComponent<Image>();
+                    img.sprite = AQ.App.UI.AQTheme.Rounded;
+                    img.type = Image.Type.Sliced;
+                    img.color = new Color(0.82f, 0.88f, 0.96f, 0.95f); // pale border
+                    img.raycastTarget = false;
+                    var fill = new GameObject("Fill", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+                    fill.transform.SetParent(pill, false);
+                    var frt = (RectTransform)fill.transform;
+                    frt.anchorMin = Vector2.zero;
+                    frt.anchorMax = Vector2.one;
+                    frt.offsetMin = new Vector2(3f, 3f);
+                    frt.offsetMax = new Vector2(-3f, -3f);
+                    var fimg = fill.GetComponent<Image>();
+                    fimg.sprite = AQ.App.UI.AQTheme.Rounded;
+                    fimg.type = Image.Type.Sliced;
+                    fimg.color = new Color(0.16f, 0.32f, 0.5f, 1f); // house blue
+                    fimg.raycastTarget = false;
+                    Speaker.transform.SetParent(pill, false);
+                }
+                pill.anchorMin = pill.anchorMax = new Vector2(1f, stripTop);
+                pill.pivot = new Vector2(1f, 1f);
+                pill.sizeDelta = new Vector2(250f, 54f);
+                // Up and to the right of the first placement (Stephen, 2026-09-03):
+                // the pill straddles the strip's top edge under the portrait's chin.
+                pill.anchoredPosition = new Vector2(-56f, 16f);
+                pill.SetAsLastSibling();
+
                 var srt = Speaker.rectTransform;
-                var smin = srt.anchorMin; smin.y = 0.177f; srt.anchorMin = smin; // 340/1920
-                var smax = srt.anchorMax; smax.y = 0.211f; srt.anchorMax = smax; // 405/1920
+                srt.anchorMin = Vector2.zero;
+                srt.anchorMax = Vector2.one;
+                srt.offsetMin = new Vector2(16f, 0f);
+                srt.offsetMax = new Vector2(-16f, 0f);
+                srt.pivot = new Vector2(0.5f, 0.5f);
+                Speaker.fontSize = 28;
+#if TMP_PRESENT
+                Speaker.alignment = TMPro.TextAlignmentOptions.Center;
+                Speaker.enableAutoSizing = false;
+#else
+                Speaker.alignment = TextAnchor.MiddleCenter;
+                Speaker.resizeTextForBestFit = false;
+#endif
             }
 
             // Long nodes were silently truncating at three lines: give the body
-            // the rest of the strip below the speaker and never clip vertically.
+            // the rest of the strip and never clip vertically. With the speaker
+            // in its pill the body runs to the strip top, clear of the pill.
             if (Body != null)
             {
                 var rt = Body.rectTransform;
                 var min = rt.anchorMin; min.y = 0.012f; rt.anchorMin = min;
-                var max = rt.anchorMax; max.y = 0.172f; rt.anchorMax = max; // 330/1920, below the speaker band
+                var max = rt.anchorMax; max.y = 0.190f; rt.anchorMax = max; // 365/1920: one line higher than before, under the pill's bottom edge
                 rt.offsetMin = new Vector2(rt.offsetMin.x, 0f);
                 rt.offsetMax = new Vector2(rt.offsetMax.x, 0f);
                 Body.fontSize = 30; // was 36 — the longest Ep1 nodes need five lines

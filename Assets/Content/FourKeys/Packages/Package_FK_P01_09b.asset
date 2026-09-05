@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53887cd0b9ce427895664a3c4544c256, type: 3}
+  m_Name: Package_FK_P01_09b
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.Packages.PackageData
+  packageId: fk_p01_09b
+  chapter: 1
+  title: "It Lives in People"
+  memberCardIds: 
+  - fk_p01_09b
+  beatType: 0
+  beatDialogue: {fileID: 11400000, guid: ce92cdb48ee34069810b8d205addc60d, type: 2}
+  beatArt: {fileID: 0}
+  beatCaption: 
+  softCurrency: 10
+  energyGrant: 0
+  premiumGrant: 0
+  specialRewardId: 
+  specialRewardCount: 1

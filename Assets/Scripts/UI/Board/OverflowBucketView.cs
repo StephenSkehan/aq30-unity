@@ -28,35 +28,42 @@ namespace AQ.App.UI.Board
         // locker/evidence buttons (142 = board design cell, grid-square parity
         // Stephen-ruled 2026-07-20; it lived alone on its own row before).
         private const float SIZE = 142f;
+        private const int CanvasOrder = 200; // must match BuildHUD's canvas.sortingOrder
 
         private void Awake()
         {
+            _instance = this;
             try { BuildHUD(); }
             catch (System.Exception e) { Debug.LogError($"[OverflowBucket] BuildHUD failed: {e}"); }
         }
+
+        private void OnDestroy()
+        {
+            if (_instance == this) _instance = null;
+        }
+
+        private AQ.App.UI.TapRouter.Region _tapRegion;
 
         private void OnEnable()
         {
             OverflowBucketService.BucketChanged += Refresh;
             Refresh();
+
+            // Tap input goes through the TapRouter (2026-08-18): it enforces the
+            // stacking + one-consumer rules a bespoke poll can't (a tap meant for
+            // a modal above used to ALSO pop a stash tile onto the board).
+            _tapRegion = AQ.App.UI.TapRouter.Register("stash-button", CanvasOrder,
+                contains: RectContains,
+                onTap:    _ => OnTapped(),
+                enabled:  () => this != null && !OverflowBucketService.IsEmpty
+                                && _root != null && _root.gameObject.activeSelf);
         }
 
         private void OnDisable()
         {
             OverflowBucketService.BucketChanged -= Refresh;
-        }
-
-        private void Update()
-        {
-            if (OverflowBucketService.IsEmpty || _root == null || !_root.gameObject.activeSelf) return;
-
-            bool tapped = false;
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-                tapped = RectContains(Input.GetTouch(0).position);
-            else if (Input.GetMouseButtonDown(0))
-                tapped = RectContains(Input.mousePosition);
-
-            if (tapped) OnTapped();
+            AQ.App.UI.TapRouter.Unregister(_tapRegion);
+            _tapRegion = null;
         }
 
         private bool RectContains(Vector2 screenPos)
@@ -74,7 +81,7 @@ namespace AQ.App.UI.Board
             canvasGO.transform.SetParent(transform);
             var canvas = canvasGO.AddComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            canvas.sortingOrder = 200;
+            canvas.sortingOrder = CanvasOrder;
             // Match the locker/evidence button canvases so sizes track together.
             var scaler = canvasGO.AddComponent<CanvasScaler>();
             scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
@@ -138,30 +145,42 @@ namespace AQ.App.UI.Board
             _badge.alignment = TextAnchor.MiddleCenter;
             _badge.color = Color.white;
 
-            // Player-facing name: THE STASH (Stephen-ruled 2026-08-06 — a concept,
-            // not an object; generators fit a stash, not a satchel).
-            var capGO = new GameObject("Caption");
-            capGO.transform.SetParent(_root, false);
-            var capRT = capGO.AddComponent<RectTransform>();
-            capRT.anchorMin = new Vector2(0f, 0f);
-            capRT.anchorMax = new Vector2(1f, 0f);
-            capRT.pivot     = new Vector2(0.5f, 0f);
-            capRT.sizeDelta = new Vector2(0f, 22f);
-            capRT.anchoredPosition = new Vector2(0f, 2f);
-            var cap = capGO.AddComponent<TMPro.TextMeshProUGUI>();
-            cap.text      = "STASH";
-            cap.fontSize  = 15f;
-            cap.color     = new Color(0.94f, 0.92f, 0.87f, 0.92f);
-            cap.alignment = TMPro.TextAlignmentOptions.Center;
-            cap.raycastTarget = false;
-            AQ.App.UI.AQTheme.StyleText(cap, display: true);
+            // STASH caption removed (Stephen-ruled 2026-08-21): no other corner
+            // button carries a label, so the word read as UI inconsistency. The
+            // name "The Stash" (Stephen-ruled 2026-08-06) lives on in hint copy,
+            // toasts and dialogue.
 
             // No Button — input handled via raw Update() poll (EventSystem GR unreliable on dynamic overlays)
         }
 
+        private static OverflowBucketView _instance;
+        private static bool _adviseHold;
+
+        /// <summary>
+        /// While the stash-reward advisory owns the moment, the button's visuals
+        /// freeze: the reward must not appear in the Stash until the popup
+        /// closes and its flight lands (Stephen-ruled 2026-08-22). Data pushes
+        /// are unaffected — only the presentation waits.
+        /// </summary>
+        public static void SetAdviseHold(bool held)
+        {
+            _adviseHold = held;
+            if (!held && _instance != null) _instance.Refresh();
+        }
+
+        /// <summary>True while an announced reward is still in flight to the Stash
+        /// (its icon is not yet shown); guidance that points at the Stash waits on this.</summary>
+        public static bool AdviseHeld => _adviseHold;
+
+        /// <summary>The button's rect even while hidden (GameObject.Find can't
+        /// see inactive objects — the reveal flight needs a target before the
+        /// button first appears).</summary>
+        public static RectTransform ButtonRoot => _instance != null ? _instance._root : null;
+
         private void Refresh()
         {
             if (_root == null) return;
+            if (_adviseHold) return; // advisory owns the reveal
 
             bool hasContent = !OverflowBucketService.IsEmpty;
             _root.gameObject.SetActive(hasContent);
@@ -211,7 +230,10 @@ namespace AQ.App.UI.Board
                 System.Enum.TryParse<AQ.App.UI.Specials.SpecialId>(data.family, out var sid))
                 return AQ.App.UI.Specials.SpecialItemsService.SpriteFor(sid);
 
-            return board.SpriteForItemTierPublic(data.tier);
+            // Family-aware: the bucket must show the ACTUAL top item (a coffee
+            // reward looks like coffee), not the generic tier placeholder
+            // (Stephen playtest finding 2026-08-21). Falls back internally.
+            return board.SpriteForItem(data.family, data.tier);
         }
 
         private static Image MakeImage(Transform parent, string name)

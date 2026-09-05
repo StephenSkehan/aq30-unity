@@ -48,7 +48,12 @@ namespace AQ.App.UI
 
             var canvas = root.AddComponent<Canvas>();
             canvas.renderMode  = RenderMode.ScreenSpaceOverlay;
-            canvas.sortingOrder = 200;
+            // Full-screen takeover: must sort STRICTLY above every HUD corner
+            // canvas (locker/stash/kit at 200) and the hint chip (4000) so the
+            // TapRouter's stacking rule blocks their regions underneath. At the
+            // old 200 it TIED the stash/kit buttons and taps pierced the finale
+            // (equal order never blocks — regions must not self-block).
+            canvas.sortingOrder = 6000;
             root.AddComponent<GraphicRaycaster>();
             root.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
 
@@ -81,11 +86,12 @@ namespace AQ.App.UI
                 48f, Color.white, FontStyles.Bold,
                 TextAlignmentOptions.Center, 72f);
 
-            // Case title — TODO: source from episode data when a second episode
-            // ships; hardcoded copy went stale once already (Ghost Student text
-            // survived into The Listener's finale until 2026-07-18).
+            // Case title and summary come from the running episode's catalog
+            // entry; the literals are catalog-less-scene fallbacks (hardcoded
+            // copy went stale once already: Ghost Student text survived into
+            // The Listener's finale until 2026-07-18).
             AddTMP(content, "Txt_CaseTitle",
-                "The Listener",
+                AQ.App.Episodes.EpisodeRuntime.TitleOr("The Listener"),
                 28f, new Color(0.7f, 0.85f, 1f, 1f), FontStyles.Italic,
                 TextAlignmentOptions.Center, 40f);
 
@@ -97,7 +103,8 @@ namespace AQ.App.UI
 
             // Summary body
             AddTMP(content, "Txt_Summary",
-                "You found Dot: safe, and listening still.\nThe man who came at noon has lost his cover. Harbourline’s trail leads deeper, and so does your father’s unfinished case.",
+                AQ.App.Episodes.EpisodeRuntime.ClosingSummaryOr(
+                    "You found Dot: safe, and listening still.\nThe man who came at noon has lost his cover. Harbourline’s trail leads deeper, and so does your father’s unfinished case."),
                 20f, new Color(0.88f, 0.88f, 0.88f, 1f), FontStyles.Normal,
                 TextAlignmentOptions.Center, 80f);
 
@@ -110,8 +117,30 @@ namespace AQ.App.UI
             hlg.childControlWidth = false;
             hlg.childForceExpandWidth = false;
 
-            AddButton(btnRow, "Btn_Replay",    "Play Again",    new Color(0.3f, 0.3f, 0.4f, 1f), OnReplay);
-            AddButton(btnRow, "Btn_Continue",  "Keep Playing",  new Color(0.2f, 0.5f, 0.85f, 1f), () => Destroy(root));
+            // The episode just completed: when the season continues, the primary
+            // action is the next episode (linear unlock, ruling R6 — completed
+            // episodes don't replay). Until ep02+ have content, NextPlayable is
+            // null and the pre-multi-episode buttons stand unchanged.
+            var catalog = Episodes.EpisodeRuntime.Catalog;
+            var currentId = Episodes.EpisodeRuntime.Current?.episodeId;
+            var next = Episodes.EpisodeFlow.NextPlayable(catalog, currentId, Episodes.EpisodeFlow.ProgressOf);
+
+            if (next != null)
+                AddButton(btnRow, "Btn_NextEpisode", "Next Episode", new Color(0.2f, 0.65f, 0.4f, 1f), () => OnNextEpisode(next.episodeId));
+            else
+                AddButton(btnRow, "Btn_Replay", "Play Again", new Color(0.3f, 0.3f, 0.4f, 1f), OnReplay);
+            AddButton(btnRow, "Btn_Continue", "Keep Playing", new Color(0.2f, 0.5f, 0.85f, 1f), () => Destroy(root));
+        }
+
+        static void OnNextEpisode(string episodeId)
+        {
+            // Persist-then-reload: TrySwitch writes the outgoing episode's section
+            // with the pointer moved in one atomic file; only a confirmed write
+            // may reload (false means nothing durable changed — stay put).
+            if (Episodes.EpisodeFlow.TrySwitch(episodeId))
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            else
+                Debug.LogError("[CaseResolution] episode switch failed to persist — staying in the current episode");
         }
 
         // ----- Helpers -----

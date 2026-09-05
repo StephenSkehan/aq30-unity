@@ -25,6 +25,38 @@ namespace AQ.App.Leads
 
         /// <summary>Resolved-lead count — surfaced in the combined debug overlay line.</summary>
         public int ActivatedCount => _activatedCount;
+
+        int _caseArcTotal = -1;
+
+        /// <summary>
+        /// Total leads in this episode's case arc (boardPhase &gt; 0), derived from the bound
+        /// repository's database. Never hardcode this: the arc was twelve for The Listener and
+        /// is sixteen-plus for later episodes, and a literal denominator ships "14 / 12".
+        /// </summary>
+        public int CaseArcTotal
+        {
+            get
+            {
+                if (_caseArcTotal < 0) _caseArcTotal = ComputeCaseArcTotal();
+                // A lead spawned at runtime that is not in the authored database can push the
+                // numerator past the total. Clamp so the counter can never read past itself.
+                return Mathf.Max(_caseArcTotal, _activatedCount);
+            }
+        }
+
+        int ComputeCaseArcTotal()
+        {
+            var repo = _boundRepo as LeadsRepository;
+            var db   = repo != null ? repo.database : null;
+            if (db == null) return 0;
+
+            var all = db.Leads;
+            int n = 0;
+            for (int i = 0; i < all.Count; i++)
+                if (all[i] != null && all[i].boardPhase > 0) n++;
+            return n;
+        }
+
         TextMeshProUGUI _progressLabel;
 
         UnityEngine.Object _boundRepo;
@@ -48,12 +80,12 @@ namespace AQ.App.Leads
             if (contentRoot == null && scrollRect != null) contentRoot = scrollRect.content;
             if (scrollRect != null && scrollRect.GetComponent<LeadCardSnapMB>() == null)
                 scrollRect.gameObject.AddComponent<LeadCardSnapMB>();
-            // Standalone "0/12" pill retired 2026-07-18 — progress now rides the
+            // Standalone progress pill retired 2026-07-18 — progress now rides the
             // combined debug overlay line (CaseFlowDebugOverlayMB, toggle-gated).
             // CreateProgressLabel();
         }
 
-        public void Bind(UnityEngine.Object repo) { _boundRepo = repo; }
+        public void Bind(UnityEngine.Object repo) { _boundRepo = repo; _caseArcTotal = -1; }
 
         void OnEnable()  { LeadsRuntimeBus.OnLeadActivated += HandleLeadActivated; }
         void OnDisable() { LeadsRuntimeBus.OnLeadActivated -= HandleLeadActivated; }
@@ -62,7 +94,7 @@ namespace AQ.App.Leads
         {
             if (lead == null) return;
             _lastFulfillId = lead.leadId;
-            // boardPhase 0 = repeatables/teasers, outside the "X / 12" case arc.
+            // boardPhase 0 = repeatables/teasers, outside the counted case arc.
             if (lead.boardPhase > 0)
             {
                 _activatedCount++;
@@ -71,6 +103,27 @@ namespace AQ.App.Leads
         }
 
         public void Rebuild() { }
+
+        /// <summary>
+        /// The card root of the first Ready lead in the bar, or null. FTUE
+        /// guidance parks its banner against this; the bar's cards carry no
+        /// LeadCardView component, so searching for one found nothing
+        /// (guided-loop banner never reached the green card, 2026-09-03).
+        /// </summary>
+        public RectTransform ReadyCardRoot()
+        {
+            if (contentRoot == null) return null;
+            foreach (var kv in _proceedByLead)
+            {
+                var lead = kv.Key;
+                var btn = kv.Value;
+                if (lead == null || btn == null || lead.RuntimeState != LeadState.Ready) continue;
+                Transform t = btn.transform;
+                while (t != null && t.parent != contentRoot) t = t.parent;
+                if (t != null) return t as RectTransform;
+            }
+            return null;
+        }
 
         public void Rebuild(IReadOnlyList<LeadData> leads)
         {
@@ -177,7 +230,7 @@ namespace AQ.App.Leads
         void UpdateProgressLabel()
         {
             if (_progressLabel == null) return;
-            _progressLabel.text = $"{_activatedCount} / 12";
+            _progressLabel.text = $"{_activatedCount} / {CaseArcTotal}";
         }
 
         static IEnumerator PlayFulfillBounce(RectTransform rt)

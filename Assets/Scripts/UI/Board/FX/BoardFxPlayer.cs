@@ -92,7 +92,7 @@ namespace AQ.App.UI.Board
             SparkleBurst(rt, 6, 46f, 0.35f);
         }
 
-        public void PlayMerge(BoardTileView from, BoardTileView into, Sprite _unused)
+        public void PlayMerge(BoardTileView from, BoardTileView into, Sprite consumedSprite)
         {
             if (debugLogs) Debug.Log("[FX] Merge");
             UISfxService.PlayBoardMerge();
@@ -133,10 +133,14 @@ namespace AQ.App.UI.Board
                 SparkleBurst(into.itemImage.rectTransform, 8, 68f, 0.45f);
             }
 
-            // Slide of the consumed piece into the destination
-            if (from && from.itemImage && into && into.itemImage)
+            // Slide of the consumed piece into the destination. The source tile
+            // is usually cleared before this runs (its sprite is null), so the
+            // caller supplies the consumed sprite; with neither, no slide rather
+            // than a white square (Stephen, 2026-09-03).
+            var slideSprite = from && from.itemImage && from.itemImage.sprite ? from.itemImage.sprite : consumedSprite;
+            if (slideSprite && from && from.itemImage && into && into.itemImage)
             {
-                var a = CreateOverlayIcon(from.itemImage.sprite, from.itemImage.rectTransform);
+                var a = CreateOverlayIcon(slideSprite, from.itemImage.rectTransform);
                 var start = WorldToOverlayPoint(from.itemImage.rectTransform);
                 var end   = WorldToOverlayPoint(into.itemImage.rectTransform);
                 a.rectTransform.anchoredPosition = start;

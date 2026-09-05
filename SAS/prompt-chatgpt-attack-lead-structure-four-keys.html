@@ -1,0 +1,49 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Attack brief: the Four Keys lead structure</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0; font-size: 10.5pt; line-height: 1.55; }
+  h1 { font-size: 20pt; letter-spacing: .2px; border-bottom: 3px solid #1c1a17; padding-bottom: 8px; margin: 0 0 14px; }
+  h2 { font-size: 13.5pt; margin: 26px 0 8px; padding-bottom: 4px; border-bottom: 1.5px solid #1c1a17; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 18px 0 6px; page-break-after: avoid; }
+  p { margin: 0 0 9px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  hr { border: 0; border-top: 1px solid #ccc5b8; margin: 22px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 6px 0 14px; font-size: 8.6pt; line-height: 1.35; page-break-inside: auto; }
+  th, td { border: 1px solid #b9b2a4; padding: 4px 6px; vertical-align: top; text-align: left; }
+  th { background: #e9e4d8; font-weight: bold; }
+  td { background: #faf8f2; }
+  tr { page-break-inside: avoid; }
+  blockquote { border-left: 3px solid #b9b2a4; margin: 8px 0 12px; padding: 4px 14px; background: #f4f1ea; }
+  code { font-family: Consolas, monospace; font-size: 9pt; }
+</style></head><body>
+<h1>ATTACK BRIEF: THE LEAD STRUCTURE OF "THE FRIENDS WITH FOUR KEYS"</h1>
+<p><em>2026-08-31. For ChatGPT. Attach <code>episode-1-lead-structure-four-keys-v1.0.pdf</code> and nothing else. The spine (v1.4) is settled after three of your own attack rounds and is NOT the target; any finding that requires moving a spine fact should be recorded as out of scope in one line and not developed.</em></p>
+<hr />
+<p>You are auditing the <strong>lead structure</strong> of a mobile merge game's episode: sixteen playable leads plus a close, built on a spine you have already attacked three times and passed. The structure maps leads to play sessions, to the podcast's broadcast clock, to merge-economy requirement bands, and to four player decisions. Your job is to break the structure, not the story.</p>
+<p><strong>Verdict format:</strong> PASS or REWORK, then numbered findings, each with: the claim in the document · why it fails · the cheapest repair that does not touch the spine. Confidence per finding. No praise.</p>
+<h2>Target 1: the evidence-turn table (highest priority)</h2>
+<p>The project's rank-one open question is whether merging changes what a player believes. Every lead card states: belief before, evidence gained on the board, belief after. Attack each card as a sceptical player:</p>
+<ul>
+<li>Is the "after" belief actually produced by the board deliverable, or is it delivered by dialogue while the board work is a toll paid to hear it? Name every lead where the merge output could be deleted and the belief would change anyway.</li>
+<li>Are any two adjacent "after" beliefs the same belief restated? A lead that re-proves the previous lead is padding.</li>
+<li>The document itself names leads 1, 10 and 12 as its weakest three. Check whether it is hiding a weaker one behind that honesty.</li>
+<li>The close (17) is ceremonial by design. Is any OTHER lead ceremonial in fact?</li>
+</ul>
+<h2>Target 2: the gate arithmetic and the decision set</h2>
+<ul>
+<li>Verify table E6 mechanically: reachability, acyclicity, no gate wider than two, the two Blocked-visible leads (9, 12), and that no decision flag gates a mainline lead. Attempt to construct a stuck state, including across a save/restore.</li>
+<li>The four decisions (Part C) never change who is arrested or when; they redistribute exposure, protection and belief among living witnesses. The document claims this satisfies the consequence-and-agency gate on its protected/exposed/believed axes. Attack that claim both ways: (a) as a player, would any branch feel consequence-free in play despite the named costs? (b) does any branch actually break the spine's clock or B6 ledger through a second-order route the document missed (a witness who now knows something on a day they must not)?</li>
+<li>Fairness test per decision: is any option obviously correct at the moment of choice? Is any cost withheld information rather than signalled risk?</li>
+</ul>
+<h2>Target 3: session pacing and the economy arithmetic</h2>
+<ul>
+<li>Rebuild E7's numbers from the stated method (yields 1.3355 / 1.7427 / 1.6975, ×1.10 overhead, tier T1eq = 2^(n-1)) and flag any arithmetic error, including the per-session energy splits and the claim that exactly sessions 6, 7 and 9 exceed the 100-energy tank.</li>
+<li>The session boundary is the podcast episode boundary, enforced economically rather than by any wall-clock gate. Attack the binge path: a player who clears three sessions in one evening receives three broadcast gaps in minutes. Does any narrative beat become incoherent when the "week" between episodes is ninety seconds? Name the worst case.</li>
+<li>Session 1 claims ~38 seconds of VO before first interaction against a 35-to-40-second target, and a whole-open spend of ~3:20 across three leads. Attack the second cliff: the player who survives the first forty seconds but is still hearing segment 2 at minute two.</li>
+<li>The requirement shapes: check every card against the stated caps (3 slots, quantity 3) and the board-space guardrail on lead 16. Flag any shape that forces two concurrent T6 builds in the same family earlier than the document admits.</li>
+</ul>
+<h2>Out of scope</h2>
+<p>The spine's facts, days, sweep and rulings (R19 to R27) · the premise · the cast · Ally's voice · the cold open's prose · anything requiring new Havenbay canon. If a finding needs one of these to move, log it in one line as out of scope.</p>
+</body></html>

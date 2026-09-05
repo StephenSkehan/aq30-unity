@@ -63,6 +63,21 @@ namespace AQ.App
         private string _startOverrideId;
         private string _endAfterNodeId;
 
+        // Replay boots (evidence-board scene replays) must not write flags: a
+        // replayed story choice re-offered both branches and could set BOTH
+        // mutually exclusive truth flags, corrupting the finale's branch gating.
+        // A replay is a memory, not a decision. Per-boot; cleared in End().
+        private bool _suppressFlagWrites;
+
+        // Crash-RECOVERY boots (interrupted resolution dialogue replayed at next
+        // launch) are the opposite: they exist to land the flags a kill skipped,
+        // so writes stay ON — but a choice the player already made must not be
+        // re-offered (setsFlag is NOT final-node-only in shipping content: the
+        // Del Cruz truth flags sit on mid-graph branch nodes, and re-answering
+        // would set BOTH mutually exclusive flags). Sticky choices: a choice
+        // whose target node's setsFlag is already down is auto-followed.
+        private bool _recoveryAutoChoice;
+
         void Start()
         {
             if (!_booted && Graph != null) InternalBoot(Graph);
@@ -75,6 +90,37 @@ namespace AQ.App
         {
             _startOverrideId = null;
             _endAfterNodeId  = null;
+            _suppressFlagWrites = false;
+            _recoveryAutoChoice = false;
+            BootCore(g);
+        }
+
+        /// <summary>
+        /// Boot a graph as CRASH RECOVERY: flag writes stay ON (landing the flags
+        /// the interrupted run never reached is the whole point) but choices whose
+        /// outcome is already on disk are auto-followed instead of re-offered —
+        /// the player's original decision stands.
+        /// </summary>
+        public void BootWithGraphForRecovery(CaseGraph g)
+        {
+            _startOverrideId = null;
+            _endAfterNodeId  = null;
+            _suppressFlagWrites = false;
+            _recoveryAutoChoice = true;
+            BootCore(g);
+        }
+
+        /// <summary>
+        /// Boot a graph as a REPLAY: plays normally but never writes node/choice
+        /// flags. Use for evidence-board scene replays — the player's original
+        /// decisions must stand.
+        /// </summary>
+        public void BootWithGraphForReplay(CaseGraph g)
+        {
+            _startOverrideId = null;
+            _endAfterNodeId  = null;
+            _suppressFlagWrites = true;
+            _recoveryAutoChoice = false;
             BootCore(g);
         }
 
@@ -88,6 +134,8 @@ namespace AQ.App
         {
             _startOverrideId = string.IsNullOrEmpty(startNodeId) ? null : startNodeId;
             _endAfterNodeId  = string.IsNullOrEmpty(endAfterNodeId) ? null : endAfterNodeId;
+            _suppressFlagWrites = false;
+            _recoveryAutoChoice = false;
             BootCore(g);
         }
 
@@ -114,6 +162,25 @@ namespace AQ.App
         /// Boot a single-line filler dialogue without needing a CaseGraph asset.
         /// Tap to dismiss — fires DialogueEnded normally.
         /// </summary>
+        /// <summary>
+        /// Panel shows first names only (Stephen-ruled 2026-09-03: the name sits
+        /// in a pill under the portrait). "Del Cruz" -> "Del", "Ally - Podcasting
+        /// Echoes of Havenbay" -> "Ally", "Dot Ellis (voicemail)" -> "Dot". Names
+        /// that begin with an article ("The Tip Line") are kept whole.
+        /// </summary>
+        public static string DisplaySpeakerName(string speaker)
+        {
+            if (string.IsNullOrWhiteSpace(speaker)) return speaker;
+            var s = speaker.Trim();
+            if (s.StartsWith("The ", System.StringComparison.OrdinalIgnoreCase)) return s;
+            int cut = s.IndexOfAny(new[] { ' ', '-', '(', ',', ':' });
+            if (cut <= 0) return s;
+            // A lowercase continuation ("Tip line") is a thing, not a surname: keep whole.
+            var rest = s.Substring(cut).TrimStart(' ', '-', '(', ',', ':');
+            if (rest.Length > 0 && char.IsLower(rest[0])) return s;
+            return s.Substring(0, cut).TrimEnd('.', ',', ':', '-');
+        }
+
         public void BootWithText(string speaker, string line)
         {
             var g = ScriptableObject.CreateInstance<CaseGraph>();
@@ -157,13 +224,10 @@ namespace AQ.App
             img.raycastTarget = true;
             bg.transform.SetAsFirstSibling();
 
-            var trigger = bg.AddComponent<UnityEngine.EventSystems.EventTrigger>();
-            var entry = new UnityEngine.EventSystems.EventTrigger.Entry
-            {
-                eventID = UnityEngine.EventSystems.EventTriggerType.PointerClick
-            };
-            entry.callback.AddListener((_) => OnAdvance());
-            trigger.triggers.Add(entry);
+            // No PointerClick EventTrigger here: the raw-input poll in Update()
+            // already sees every tap. A click path on top of it made one physical
+            // tap advance TWICE (down via the poll, up via the click), cutting the
+            // next node's VO the moment it started.
         }
 
         void InternalBoot(CaseGraph g)
@@ -207,9 +271,13 @@ namespace AQ.App
             if (_bodyTyper != null) _bodyTyper.charsPerSecond = 45f;
             if (_speakerTyper != null) _speakerTyper.charsPerSecond = 60f;
 
-            // Subscribe to panel events
-            Panel.AdvanceClicked += OnAdvance;
-            Panel.ChoiceClicked += OnChoice;
+            // Subscribe to panel events. Advance and choice taps are handled
+            // EXCLUSIVELY by the raw-input poll in Update() — it sees every tap
+            // (down-phase, whole screen) regardless of EventSystem state, so the
+            // Button/onClick paths were duplicates: one tap fired both the poll
+            // (pointer down) and onClick (pointer up), double-advancing and
+            // stopping freshly started VO. Only Back keeps its Button (the poll
+            // has no back hit-test).
             Panel.BackClicked += OnBack;
 
             // Start at first node
@@ -218,16 +286,31 @@ namespace AQ.App
             _booted = true;
             _history.Clear(); // Reset history on boot
 
+            if (_tapRegion == null)
+            {
+                // Full-screen region, live only while the runner's GameObject is
+                // active (End() deactivates it). Layer floored high: pre-router
+                // behaviour was advance-on-ANY-tap, so only true topmost modals
+                // (ConfirmPopup at 9999+) may outrank the open dialogue — never
+                // incidental HUD graphics whose canvases sort above this one.
+                var canvas = GetComponent<Canvas>();
+                int layer = Mathf.Max(canvas != null ? canvas.sortingOrder : 0, 9000);
+                _tapRegion = UI.TapRouter.Register("dialogue-advance", layer,
+                    contains: _ => true,
+                    onTap:    HandleRoutedTap,
+                    enabled:  () => this != null && _booted && isActiveAndEnabled);
+            }
+
             DialogueOpened?.Invoke(g);
             ShowNode(_currentId);
         }
 
         void OnDestroy()
         {
+            UI.TapRouter.Unregister(_tapRegion);
+            _tapRegion = null;
             if (Panel != null)
             {
-                Panel.AdvanceClicked -= OnAdvance;
-                Panel.ChoiceClicked -= OnChoice;
                 Panel.BackClicked -= OnBack;
             }
         }
@@ -246,19 +329,16 @@ namespace AQ.App
             }
         }
 
-        void Update()
+        // Registered on first boot; the dialogue owns the whole screen while its
+        // GameObject is active. Routing through TapRouter (2026-08-18) keeps the
+        // raw-input reliability (EventSystem clicks are flaky on this panel) but
+        // adds the stacking/claiming guarantees: a popup above the dialogue now
+        // blocks advance, and the tap that advances can never ALSO reach a
+        // surface underneath (the evidence-board fallthrough family).
+        private UI.TapRouter.Region _tapRegion;
+
+        void HandleRoutedTap(Vector2 tapPos)
         {
-            if (!_booted) return;
-
-            bool tapped = Input.GetMouseButtonDown(0);
-            Vector2 tapPos = Input.mousePosition;
-            if (!tapped && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                tapped = true;
-                tapPos = Input.GetTouch(0).position;
-            }
-            if (!tapped) return;
-
             // Choices use the same raw-input path as advance (Button.onClick is
             // unreliable on this panel — see EnsureRuntimeChoiceUI).
             if (_filteredChoices != null && _filteredChoices.Length > 0)
@@ -433,10 +513,32 @@ namespace AQ.App
                 }
             }
 
-            // Set flag if specified
-            if (!string.IsNullOrEmpty(n.setsFlag))
+            // Set flag if specified (never during a replay boot — the original
+            // playthrough's flags must stand)
+            if (!_suppressFlagWrites && !string.IsNullOrEmpty(n.setsFlag))
             {
                 DialogueFlags.Set(n.setsFlag);
+            }
+
+            // Recovery boot, sticky choices: if any choice leads directly to a
+            // node whose setsFlag is already down, the player answered this in
+            // the interrupted run — follow their answer instead of re-asking
+            // (re-answering could set BOTH mutually exclusive branch flags).
+            if (_recoveryAutoChoice && n.choices != null)
+            {
+                foreach (var c in n.choices)
+                {
+                    if (c == null || string.IsNullOrEmpty(c.nextId)) continue;
+                    var target = Graph.Get(c.nextId);
+                    if (target != null && !string.IsNullOrEmpty(target.setsFlag) &&
+                        DialogueFlags.Has(target.setsFlag))
+                    {
+                        if (verboseLogging)
+                            Debug.Log($"[DialogueRunner] Recovery: auto-following decided choice → {c.nextId}");
+                        ShowNode(c.nextId);
+                        return;
+                    }
+                }
             }
 
             // Display the node
@@ -490,10 +592,11 @@ namespace AQ.App
             Panel.BindNode(n, lastPage ? _filteredChoices : System.Array.Empty<CaseGraph.Choice>());
             if (Panel.Body) Panel.Body.text = string.Empty; // BindNode wrote the full line
 
+            var speakerName = DisplaySpeakerName(n.speaker);
             if (_speakerTyper != null)
-                _speakerTyper.SetInstant(n.speaker);
+                _speakerTyper.SetInstant(speakerName);
             else if (Panel.Speaker)
-                Panel.Speaker.text = n.speaker;
+                Panel.Speaker.text = speakerName;
 
             if (_bodyTyper != null)
                 _bodyTyper.StartTyping(page);
@@ -555,6 +658,8 @@ namespace AQ.App
             // Overrides are per-boot; never leak into the next dialogue.
             _startOverrideId = null;
             _endAfterNodeId  = null;
+            _suppressFlagWrites = false;
+            _recoveryAutoChoice = false;
 
             if (_bodyTyper != null) _bodyTyper.StopTyping();
             if (_speakerTyper != null) _speakerTyper.StopTyping();
@@ -563,7 +668,12 @@ namespace AQ.App
                 voiceSource.Stop();
 
             if (_voiceRestoreRoutine != null) { StopCoroutine(_voiceRestoreRoutine); _voiceRestoreRoutine = null; }
-            RestoreMusic();
+
+            // SNAP the music back, no fade: Panel deactivates below and Panel
+            // lives on this same GameObject, so a RestoreMusic() coroutine here
+            // died after one frame and left the music stuck ducked at ~15%.
+            if (_musicFadeRoutine != null) { StopCoroutine(_musicFadeRoutine); _musicFadeRoutine = null; }
+            if (musicSource != null) musicSource.volume = AudioSettingsService.MusicVolume;
 
             if (verboseLogging)
                 Debug.Log("[DialogueRunner] End of graph");

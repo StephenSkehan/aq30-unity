@@ -17,6 +17,29 @@ namespace AQ.App.UI.Common
         {
             RequirementSlotView.OnRequirementHeld -= Show; // domain-reload-off safety
             RequirementSlotView.OnRequirementHeld += Show;
+            RequirementSlotView.OnRequirementTapped -= ShowFamilyTrail;
+            RequirementSlotView.OnRequirementTapped += ShowFamilyTrail;
+        }
+
+        /// <summary>
+        /// SHOW ME trail (SAS FTUE I3, Merge Mansion's task-"Show" pattern): a
+        /// TAP on a requirement chip opens the item's family ladder — current
+        /// tier marked, undiscovered tiers silhouetted — and pulses the board
+        /// generator whose drop table starts that family, so one tap answers
+        /// both "what is this" and "where does it come from".
+        /// </summary>
+        private static void ShowFamilyTrail(string itemId)
+        {
+            var board = Object.FindFirstObjectByType<MergeBoardController>();
+            if (board == null) return;
+
+            AQ.App.Items.ItemDefinitionSO def = null;
+            foreach (var d in board.ItemDefinitions)
+                if (d != null && d.itemId == itemId) { def = d; break; }
+            if (def == null) return;
+
+            ItemFamilyPopup.Show(def.family, def.tier);
+            SourceGeneratorPulse.PulseFor(board, def.family);
         }
 
         private static void Show(string itemId)

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Ally Quinn: True Crime Merge (AQ30)** is a Unity 6000.3.7f1 mobile game for iOS/Android. It combines merge-grid puzzle gameplay with a true crime detective narrative, framed as a podcast hosted by protagonist Ally Quinn. The project is a 30-day vertical slice targeting a single playable case ("The Ghost Student") as a market-ready demo.
+**Ally Quinn: True Crime Merge (AQ30)** is a Unity 6000.3.14f1 mobile game for iOS/Android. It combines merge-grid puzzle gameplay with a true crime detective narrative, framed as a podcast hosted by protagonist Ally Quinn. The project is a 30-day vertical slice targeting a single playable case ("The Ghost Student") as a market-ready demo.
 
 Solo developer project. Pragmatic hybrid architecture: domain-driven design principles where they add value, Unity-idiomatic shortcuts where they don't.
 
@@ -15,7 +15,16 @@ Tests run inside the Unity Editor via **Window > General > Test Runner**.
 - **Edit Mode tests** (`Assets/Tests/EditMode/`) — NUnit, no scene loading, fast
 - **Play Mode tests** (`Assets/Tests/PlayMode/`, `Assets/Tests/PlayModeNew/`) — full scene boot, slower
 
-There is no CLI build or test script. All test execution goes through the Unity Editor or Unity's `-runTests` batch mode flag.
+There is no CLI build or test script. All test execution goes through the Unity Editor or Unity's `-runTests` batch mode flag. When the editor is closed, batch mode works headless: `Unity.exe -batchmode -projectPath <repo> -runTests -testPlatform EditMode -testResults <xml> -logFile <log>` (launch detached — it outlives shell timeouts). Baseline: fully green (the 8 week-2/3 scaffold tests that could never pass headless were deleted 2026-09-02); any EditMode failure is a regression. Never run the suite through the mcp-unity bridge while Stephen has the editor open: its 10-second cap times out and the run can leave the editor on an Untitled scene.
+
+## Robustness Rules (hold these in review — each one retired a shipped bug class)
+
+1. **Save aggregate rule.** Anything that exchanges value with the board or the wallet persists inside `BoardSaveSystem`'s atomic aggregate — never its own file or PlayerPrefs. A crash must never separate a transaction's two halves (spend↔delivery, consume↔grant). Schema history: 0.7.0 locker → 0.8.0 Stash → 0.9.0 Case Kit specials → 1.0.0 story flags + episode-keyed sections (per-episode board/caseflow/leads/completion in `episodes[]`, value-bearing globals top-level; DTOs and the 0.9.0 migration live in `Assets/App/Persistence/SaveModel.cs`). Fold-in pattern: service keeps its public API but mutates memory only, exposes `ExportState`/`ImportState`/`StateHash`, legacy store migrates on the null-import path and is deleted after the first save.
+2. **Crash-boundary tests are mandatory for any persisted system.** Every aggregate fold ships an EditMode suite covering: transactions mutate memory only (no stray file/prefs), export/import round-trip, StateHash changes-and-returns, legacy migration + legacy deletion, null-import resets statics, QA-reset clears everything. Templates: `LockerCrashBoundaryTests`, `StashAggregateBoundaryTests`, `SpecialsAggregateBoundaryTests`.
+3. **Raw tap input goes through `TapRouter`** (`Assets/App/UI/TapRouter.cs`) — never a bespoke `Input.GetMouseButtonDown`/`GetTouch` poll in `Update()`. Regions declare a layer (canvas sorting-order semantics); the router guarantees stacking (topmost wins, EventSystem surfaces above block) and claiming (one consumer per tap). Gesture surfaces (drag/pinch, e.g. `EvidenceBoardZoomPan`) stay bespoke but must gate on visibility and suppress in-flight touches when enabled mid-gesture. Contract tests: `TapRouterResolveTests`.
+4. **Story flags live in `GameFlags`** (`Assets/App/GameFlags.cs`). `NarrativeFlags`/`DialogueFlags` are forwarding shims kept for old call sites; never re-introduce per-store reads or writes. Since schema 1.0.0 the store is memory-backed inside the save aggregate (PlayerPrefs is only the pre-import passthrough for edit-mode tooling and the one-shot legacy probe); never write flags to PlayerPrefs from game code.
+5. **Persist "done" only after it happened.** Never stamp a completion flag before the content displays (FTUE stage, `.seen` flags). If an irreversible action precedes its payoff (consuming a lead, confirming a StoreKit transaction), write a pending marker first and reconcile at boot — see `aq.dialogue.pending_lead`, the ad-reward pending marker, and `BoardSaveSystem.SaveNow()` before `ConfirmPendingPurchase`.
+6. **Prefer state-scans over edge-events** for anything that must eventually happen. Transition events (`CardBecameReady`) are an optimization; a periodic or restore-time scan is the guarantee (see `ProceedHintMB`, `LeadsRepository.ApplySavedStates`).
 
 ## Architecture
 
@@ -67,6 +76,10 @@ The dialogue system is fully functional with animated character portraits. Key d
 - Ally Quinn has 7 emotion states driving portrait animation: `neutral`, `happy`, `sad`, `angry`, `surprised`, `worried`, `confused`.
 - Portrait animation uses sprite-pair animation (idle + expression frames).
 - Dialogue is driven by data; do not hardcode dialogue strings in MonoBehaviours.
+
+### Episodes
+
+Episode identity is data: **`EpisodeCatalog`** (`Assets/Resources/App/Episodes/EpisodeCatalog.asset`, class in `Assets/App/Episodes/`) holds the season's slots — story-neutral ids `ep01..ep04`, legacy-id aliases (`e1_the_listener`, `Ep01`), per-episode `LeadsDatabase`, steps, completion flag, and the flags cross-cutting systems read (shop unlock, dossier gate, entry lead). Never hardcode an episode id, flag, or title in a system; read the running entry via `EpisodeRuntime` with the old literal as catalog-less fallback. Episode switching goes through `EpisodeFlow` (persist-then-reload; the save system registers the handlers because AQ.App cannot reference Assembly-CSharp). Unlock is derived: previous playable episode's durable `complete` bit. Completed episodes do not replay (replay would re-grant lead rewards).
 
 ### Leads / Case Flow
 

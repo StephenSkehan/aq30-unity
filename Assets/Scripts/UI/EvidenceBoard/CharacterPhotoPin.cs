@@ -13,8 +13,8 @@ namespace AQ.App.UI.EvidenceBoard
     public class CharacterPhotoPin : MonoBehaviour
     {
         private Sprite _portrait;
-        private List<LeadData> _relatedLeads;
-        private Action<LeadData> _onReplay;
+        private List<BoardScene> _relatedLeads;
+        private Action<BoardScene> _onReplay;
         private string _displayName;
         private string _characterKey;
 
@@ -23,7 +23,7 @@ namespace AQ.App.UI.EvidenceBoard
         /// <summary>Sprite-based (2026-08-11): cast members can come from dialogue-node
         /// portraits, not just lead front portraits — Mo speaks but fronts no lead.</summary>
         public static RectTransform Create(RectTransform parent, string pinId, Sprite portrait,
-            List<LeadData> relatedLeads, Vector2 pos, Action<LeadData> onReplay,
+            List<BoardScene> relatedLeads, Vector2 pos, Action<BoardScene> onReplay,
             Sprite tackSprite = null, string displayName = null, string characterKey = null)
         {
             var card              = MakeRect("Photo_" + pinId, parent);

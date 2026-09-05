@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P01_09b
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P01_09_N4
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e108, type: 3}
+  nodes:
+  - id: FK_P01_09_N4
+    speaker: "Ally Quinn"
+    line: "So, it's case closed?"
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: FK_P01_09_N5
+    choices: []
+  - id: FK_P01_09_N5
+    speaker: "Del Cruz"
+    line: "Closed means procedure found nothing it could hold. The letters are hers. The solicitor confirms when she lodged them. The coroner's finding stands. Paper is all I'm allowed to act on, and the paper is clean. Whatever has been going on with those five friends, it doesn't live on the paper. It lives in the people."
+    portrait: {fileID: 21300000, guid: de1a4b5c6d7e8f90a1b2c3d4e5f6a701, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: FK_P01_09_N6
+    choices: []
+  - id: FK_P01_09_N6
+    speaker: "Ally Quinn"
+    line: "Which of the two did you believe?"
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: FK_P01_09_N7
+    choices: []
+  - id: FK_P01_09_N7
+    speaker: "Del Cruz"
+    line: "Not answering that."
+    portrait: {fileID: 21300000, guid: de1a4b5c6d7e8f90a1b2c3d4e5f6a701, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: FK_P01_09_N8
+    choices: []
+  - id: FK_P01_09_N8
+    speaker: "Ally Quinn"
+    line: "Had to ask."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: FK_P01_09_N9
+    choices: []
+  - id: FK_P01_09_N9
+    speaker: "Del Cruz"
+    line: "I can't officially tell you that there is something not right here. But I can tell you if you do start digging then be careful, very careful."
+    portrait: {fileID: 21300000, guid: de1a4b5c6d7e8f90a1b2c3d4e5f6a701, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag:
+    skipIfFlagMissing: 1
+    setsFlag:
+    nextId: 
+    choices: []

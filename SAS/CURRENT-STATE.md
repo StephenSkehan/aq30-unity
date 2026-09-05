@@ -1,4 +1,10 @@
-# CURRENT STATE — single entry point for the SAS pack
+# CURRENT STATE — systems and build state
+
+> **DEMOTED 2026-08-24. This page no longer owns story position or schedule.**
+>
+> It was the single entry point for the pack and it has been wrong at the top level since 2026-08-06: it predates the story pivot, it still describes The Listener as the shipping Episode 1, and its launch anchor predates both the surgery slip and the shelving of dates. Rather than rewrite it, it is scoped to what it is still good at.
+>
+> **`SAS/pivot-brief-2026-08-23.md` owns story position, episode order, the live premise decision and schedule status.** This page owns systems, build state, integration status and art delivery. Where the two disagree on anything narrative or scheduling, the pivot brief wins. Everything below the launch banner remains accurate on systems unless a later ruling says otherwise.
 
 > **★ LAUNCH RE-ANCHORED 2026-07-21 (Stephen-ruled): iOS release 2026-10-01, submit to App Review by 2026-09-19/20** (was Sep 1 / Aug 20). Stephen has limited availability late July → mid-August; during that window work continues on Claude-side streams (store copy, ASO, screenshots plan, polish, QA) and anything needing Stephen's hands/eyes waits or shrinks to phone-sized approvals. Cut lines unchanged: never monetization or compliance. Dated docs below that reference Aug/Sep milestones (e.g. the 2026-07-12 beta-readiness audit) are point-in-time snapshots — do not re-derive schedule from them.
 *As of 2026-07-19 · branch **`main`** — **LANDED 2026-07-19** (fast-forward `062a137 → 65cb603`, Stephen-ruled; `claude/ally-quinn-bible-phase-2-p8e642` is history, all future work on main) · **describes commit `65cb603`** (update the hash when the state changes). Update this file whenever a ruling lands or an integration flips. If a document below disagrees with this page, this page wins on STATUS; the named master wins on CONTENT.*

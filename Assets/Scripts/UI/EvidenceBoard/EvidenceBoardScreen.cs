@@ -21,6 +21,9 @@ namespace AQ.App.UI.EvidenceBoard
         private static DialogueRunner  _dialogueRunner;
         private static bool            _isOpen;
 
+        /// <summary>Hint-context hook: chips scope themselves to (or away from) the board.</summary>
+        public static bool IsOpen => _isOpen;
+
         // Content-driven layout state (rebuilt per populate)
         private static Vector2 _contentSize;
         private static readonly List<RectTransform> _placed = new();
@@ -107,6 +110,12 @@ namespace AQ.App.UI.EvidenceBoard
             var zp = boardGo.AddComponent<EvidenceBoardZoomPan>();
             zp.Init(_boardContent, MinZoom, MaxZoom, new Vector2(BoardW, BoardH));
             zp.Tapped += OnBoardTapped;
+            // While a modal sheet is up it owns input: dropping tracking here means
+            // the tap that closes the modal can never complete as a board tap on
+            // whatever pin sits under the finger.
+            zp.SuppressInput = () => CharacterProfileModal.IsOpen || LocationModal.IsOpen
+                                  || Dossiers.DossierPopup.IsOpen || Dossiers.DossierIndexPopup.IsOpen;
+            zp.SetInputEnabled(false); // armed by Open()
             _zoomPan = zp;
 
             // Brass plaque on the cork (replaced the screen-top title text,
@@ -240,7 +249,12 @@ namespace AQ.App.UI.EvidenceBoard
             // Zoom/pan existed since day one but nothing announced it (cohort
             // round: players never found it).
             AQ.UI.Hints.HintService.Request("boardzoom",
-                "Get close to the details. Pinch to zoom, drag to move around the board.");
+                "Get close to the details. Pinch to zoom, drag to move around the board.",
+                null,
+                // Only while the evidence board itself is up — queued and shown
+                // later over the merge board it made no sense (Stephen playtest
+                // 2026-08-21).
+                () => IsOpen);
             AQ.UI.Hints.HintService.ActionPerformed("evidence"); // opening it IS the taught action
 
             PopulateBoard();
@@ -257,6 +271,12 @@ namespace AQ.App.UI.EvidenceBoard
             _cg.interactable    = true;
             _isOpen             = true;
 
+            // BoardContent (and its ZoomPan) stay active while closed, so gate its
+            // raw-input tracking on visibility. Enabling mid-touch suppresses that
+            // touch — the tap dismissing a replayed dialogue reopened the board
+            // under the finger and used to fire as a board tap.
+            if (_zoomPan != null) _zoomPan.SetInputEnabled(true);
+
             if (_btnCg != null)
             {
                 _btnCg.alpha          = 0f;
@@ -272,6 +292,8 @@ namespace AQ.App.UI.EvidenceBoard
             _cg.blocksRaycasts = false;
             _cg.interactable   = false;
             _isOpen            = false;
+
+            if (_zoomPan != null) _zoomPan.SetInputEnabled(false);
 
             if (_btnCg != null)
             {
@@ -296,14 +318,27 @@ namespace AQ.App.UI.EvidenceBoard
                 return;
             }
 
-            var resolvedLeads = new List<LeadData>();
+            // Scenes the player has seen. Per-card episodes (The Listener): resolved
+            // leads with their own dialogue. Package episodes (Four Keys): completed
+            // packages, whose beat dialogue is the scene (member cards carry none).
+            var resolvedLeads = new List<BoardScene>();
 
             foreach (var lead in _repo.database.Leads)
             {
                 if (lead == null || lead.boardPhase <= 0) continue; // repeatables/teasers stay off the board
+                if (lead.resolutionDialogue == null) continue;      // package member cards pin via their package
                 if (DialogueFlags.Has("aq.lead." + lead.leadId + ".seen"))
+                    resolvedLeads.Add(new BoardScene(lead.leadId, lead.title, lead.resolutionDialogue, lead.actorPortrait));
+            }
+
+            var packages = AQ.App.Episodes.EpisodeRuntime.Current?.packages;
+            if (packages != null)
+            {
+                foreach (var p in packages.packages)
                 {
-                    resolvedLeads.Add(lead);
+                    if (p == null || p.beatDialogue == null) continue;
+                    if (!GameFlags.Has(p.BeatSeenFlag)) continue;
+                    resolvedLeads.Add(new BoardScene(p.packageId, p.title, p.beatDialogue, FirstMemberPortrait(p)));
                 }
             }
 
@@ -328,7 +363,7 @@ namespace AQ.App.UI.EvidenceBoard
             }
             foreach (var lead in resolvedLeads)
             {
-                var nodes = lead.resolutionDialogue != null ? lead.resolutionDialogue.nodes : null;
+                var nodes = lead.graph != null ? lead.graph.nodes : null;
                 if (nodes == null) continue;
                 foreach (var node in nodes)
                 {
@@ -372,16 +407,26 @@ namespace AQ.App.UI.EvidenceBoard
                 var k = LocationCatalog.KeyForSprite(s.name);
                 if (!spriteIndex.ContainsKey(k)) spriteIndex[k] = s;
             }
+            if (packages != null)
+            {
+                foreach (var p in packages.packages)
+                {
+                    var s = p != null && p.beatDialogue != null ? p.beatDialogue.stageBackground : null;
+                    if (s == null) continue;
+                    var k = LocationCatalog.KeyForSprite(s.name);
+                    if (!spriteIndex.ContainsKey(k)) spriteIndex[k] = s;
+                }
+            }
 
-            var locLeads = new Dictionary<string, List<LeadData>>();
+            var locLeads = new Dictionary<string, List<BoardScene>>();
             var locOrder = new List<string>();
             foreach (var lead in resolvedLeads)
             {
-                var s = lead.resolutionDialogue != null ? lead.resolutionDialogue.stageBackground : null;
+                var s = lead.graph != null ? lead.graph.stageBackground : null;
                 var k = LocationCatalog.KeyForSprite(s != null ? s.name : null);
                 if (!locLeads.TryGetValue(k, out var list))
                 {
-                    locLeads[k] = list = new List<LeadData>();
+                    locLeads[k] = list = new List<BoardScene>();
                     locOrder.Add(k);
                 }
                 list.Add(lead);
@@ -449,6 +494,11 @@ namespace AQ.App.UI.EvidenceBoard
         private static void OnBoardTapped(Vector2 screenPos)
         {
             if (!_isOpen) return;
+            // The zoom-pan fires on touch ENDED; if a TapRouter region already
+            // claimed this gesture at its Began (the hint chip's close-X floats
+            // over the open board), the tap is spent — completing it here opened
+            // a pin modal or booted a replay from a tap meant to dismiss a hint.
+            if (AQ.App.UI.TapRouter.CurrentTouchClaimed) return;
             if (CharacterProfileModal.IsOpen) return; // modal owns input while up
             if (LocationModal.IsOpen) return; // ditto the location sheet
             if (Dossiers.DossierPopup.IsOpen) return; // and the case file
@@ -494,6 +544,18 @@ namespace AQ.App.UI.EvidenceBoard
             return string.Empty;
         }
 
+        /// <summary>A package's fronting portrait: its first member card's badge.</summary>
+        private static Sprite FirstMemberPortrait(AQ.App.Leads.Packages.PackageData p)
+        {
+            if (p == null || p.memberCardIds == null || _repo == null || _repo.database == null) return null;
+            foreach (var id in p.memberCardIds)
+            {
+                var lead = _repo.database.FindById(id);
+                if (lead != null && lead.actorPortrait != null) return lead.actorPortrait;
+            }
+            return null;
+        }
+
         // Sprite naming: char_<token>_<emotion>_fNN (e.g. char_del_neutral_f01).
         private static string PortraitToken(Sprite sprite)
         {
@@ -506,16 +568,16 @@ namespace AQ.App.UI.EvidenceBoard
         /// <summary>Leads this character appears in: fronting portrait, a
         /// dialogue-node portrait, or a speaking part (speaker text contains
         /// the token, e.g. "Del" / "Dot Ellis (voicemail)").</summary>
-        private static List<LeadData> LeadsInvolving(string token, List<LeadData> resolved)
+        private static List<BoardScene> LeadsInvolving(string token, List<BoardScene> resolved)
         {
-            var result = new List<LeadData>();
+            var result = new List<BoardScene>();
             if (string.IsNullOrEmpty(token)) return result;
             foreach (var lead in resolved)
             {
                 bool involved = PortraitToken(lead.actorPortrait) == token;
-                if (!involved && lead.resolutionDialogue != null && lead.resolutionDialogue.nodes != null)
+                if (!involved && lead.graph != null && lead.graph.nodes != null)
                 {
-                    foreach (var node in lead.resolutionDialogue.nodes)
+                    foreach (var node in lead.graph.nodes)
                     {
                         if (node == null) continue;
                         if (PortraitToken(node.portrait) == token ||
@@ -532,9 +594,9 @@ namespace AQ.App.UI.EvidenceBoard
         // ---- Dialogue replay ----
 
 
-        private static void OnReplayLeadDialogue(LeadData lead)
+        private static void OnReplayLeadDialogue(BoardScene lead)
         {
-            if (lead == null || lead.resolutionDialogue == null) return;
+            if (lead == null || lead.graph == null) return;
 
             Close();
 
@@ -553,7 +615,9 @@ namespace AQ.App.UI.EvidenceBoard
                 _dialogueRunner.gameObject.SetActive(true);
 
             _dialogueRunner.DialogueEnded += OnDialogueEndedReopen;
-            _dialogueRunner.BootWithGraph(lead.resolutionDialogue);
+            // Replay boot: never writes flags, so re-answering a story choice here
+            // can't stack both truth branches on top of the original decision.
+            _dialogueRunner.BootWithGraphForReplay(lead.graph);
         }
 
         private static void OnDialogueEndedReopen()

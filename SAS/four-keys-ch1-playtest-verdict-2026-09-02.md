@@ -1,0 +1,121 @@
+# Four Keys, Chapter 1 Slice: Playtest Verdict and Disposition (2026-09-02)
+
+Stephen played the chapter 1 vertical slice in the editor (Main Merge, AQ menu toggle, QA Reset + Play). This file records his verdicts verbatim and how each was disposed. Rulings are his; dispositions marked PROVISIONAL are Claude's mechanical choices awaiting his word.
+
+## Verbatim
+
+Round 1 (bugs, 12:46 to 12:53):
+
+> Missing dialogue data and missing Ally portrait and the background should be her "On Air Studio". No generator available for fingerprint brush. Progress stalled as I cannot play on.
+
+Round 2 (bugs, 13:06 to 13:09):
+
+> Please ensure to revert the editor to the MainMerge scene for testing so that I don't need to fix it everytime. No portrait above card. Same issue as before - Missing dialogue data and missing Ally portrait and the background should be her "On Air Studio".
+
+Round 3 (feel verdict, 13:42):
+
+> The beat works now, on to the feel verdict. The dialogue needs a little work but it is pretty good. Segments 9 & 10 are too big so we may need to to go to 12 segments as these both split nicely after the 3rd line on each. I also noticed that nothing found its way to the evidence board. I also notice on occasion that the required package was the same item over 2 cards, this looks contrived and they should be different. Also, the FTUE tuturial has been completely lost, this really needs to be reinstated to get the full FTUE feel, flow and timings.
+
+## Disposition
+
+| # | Finding | Kind | Disposition | Where |
+|---|---|---|---|---|
+| 1 | "Missing dialog data" on every card; no portrait; harbour backdrop | Bug | FIXED. Root cause: the slice runtime was constructed before its catalog was assigned (Awake on AddComponent), so it held zero packages and no beat ever fired; the Listener lead bridge then booted its per-lead fallback. Bootstrap builds the object inactive; runtime rebuilds lazily. Member cards now skip the bridge's fallback; all ten beat graphs carry the On Air studio backdrop. | 5847f72, 125dea3 |
+| 2 | No generator for the brush (forensic family unreachable) | Bug | FIXED. Structure v2.2 puts the lab grant at p01_01; the card lacked it. p01_01a grants gen_investigation_lab via the Stash, as the Listener's Bridge lead does. | 5847f72 |
+| 3 | Editor left on an Untitled scene | Process | FIXED. Caused by running the test suite through the editor bridge. Rule: never run tests through the bridge while Stephen is testing; reload Main Merge after any bridge action that can change the scene. | this session |
+| 4 | No portrait above the card | Bug | FIXED. The 12 cards carried no actorPortrait; all now use Ally's badge (the Listener convention). | 125dea3 |
+| 5 | Dialogue "needs a little work but pretty good" | Ruling queue | OPEN. Line rulings in context are agenda item 2; the file is `four-keys-prose/ch01.md`. | |
+| 6 | Segments 9 and 10 too big; split after the third line of each; chapter goes to 12 segments | Ruling (given) | DONE. Package 09 keeps N1 to N3 (police found nothing; "tell me straight"; "We looked. Properly."); new 09b carries N4 to N9 (Del's interpretation and "be careful"). Package 10 keeps N1 to N3 (the Gazette war, Ruby yes Liam not yet, the I-don't-knows); new 10b carries N4 to N8 (four friends, four keys; sign-off). Chain is strict: 09a, 09b, 10a, 10b. Chapter 1 is now 12 packages over 14 cards. PROVISIONAL: titles ("It Lives in People" for 09b; "Havenbay Takes Sides" for 10; "Ep 1 Publishes" moves to 10b), the two new cards ask Forensic T2 each (+4 T1eq, chapter total 39), rewards split 15/10 and 10/10 CC. This is an F4 re-seam of the Part D cut; the words did not change. | this session |
+| 7 | Nothing reached the evidence board | Gap | DONE. The board pinned only leads with `aq.lead.<id>.seen` and a resolutionDialogue; package cards have neither. The board now works over a `BoardScene` (title, graph, portrait): resolved Listener leads and completed packages (beat_seen, beatDialogue) both map onto it, so the cast row, location pins and replay work per package. Del appears once package 9 is seen; locations come from the beat backdrops (studio, Del bench). | this session |
+| 8 | Same item over two cards in one package looks contrived | Ruling (given) | DONE for p01_06 (06b now asks Audio T2; 06a keeps Forensic T2; equal T1eq). Standing rule recorded for authoring: the cards of one package never ask the same item. p01_04 already differed (Audio T2 + Forensic T2). Note: the structure table's "F1x2" style entries are one card asking quantity 2, not two cards; those stand. | this session |
+| 9 | FTUE tutorial completely lost; must be reinstated for feel, flow and timings | Ruling | RULED and BUILT (Stephen chose the proper slice entry, 2026-09-02 afternoon, after first picking the data-driven route). Four Keys chapter 1 is EpisodeCatalog entry `fk01` with its own database, package catalog, FTUE config, steps and completion flag; the database swap and polling driver are deleted; boot goes through the normal episode path via an editor-only boot override (AQ > Dev Boot Episode). The first-card choreography reads `FtueChoreographyConfig` from the entry (null = the Listener's shipped constants, pinned by tests). Four Keys: package 1's beat plays up front, guided first generator tap (arrow + pulse, deterministic Audio T1), auto-proceed, package 1 pays without repeating; the guided case loop follows. Play-verified by Stephen ("seems to be running OK"). | 750fed6 |
+
+## Rulings taken (asked one at a time, 2026-09-02 evening)
+
+| # | Question | Ruling | Applied |
+|---|---|---|---|
+| R1 | Where Four Keys sits in the season list | **First in order, id stays fk01.** Stephen: "Four Keys is episode 1." Consequences accepted: fresh saves and builds boot Four Keys; The Listener locks behind it until fk.ch1.complete; the ep01 rename happens when Four Keys ships. | Catalog reordered fk01, ep01..ep04; boot priority is save pointer, then the catalog's first playable, then the scene's legacy id. |
+| R2 | Split titles and card asks | **Stand.** "Del on the Steps" / "It Lives in People"; "Havenbay Takes Sides" / "Ep 1 Publishes"; 9b and 10b ask Forensic T2. | Structure v2.2 chapter 1 table updated. |
+| R3 | Segment 9 backdrop | **Del bench for 9 and 9b.** | Already so; no change. |
+| R4 | Guided loop generator choice | **Loop prefers the feeding generator**; if it is still in the Stash, the Stash is the pointer. | GuidedCaseLoopMB: FeedingFamilies from the workable cards' requirements; pulse only feeding generators; Stash pointer with DRAFT banner copy "Place the Lab from the Stash." and generic "Tap the Lab. Every item helps." (both copy lines need Stephen's ruling; the kit line is the ruled 2026-08-21 copy). |
+| R5 | Chapter 1 line rulings | **After the next full playthrough**, one line at a time. | Queued. |
+
+Still open for Stephen: the two DRAFT banner lines under R4; the DRAFT closing summary on the fk01 entry; the OPEN working-note lines deferred since the slice was built.
+
+## Round 4 · 2026-09-03 · full chapter 1 playthrough on the fk01 entry
+
+**Verbatim (with screenshots):**
+
+> Finished play through. Move the character name to a pill just under the portrait and use first name only. This should allow dialogue to lift by a line. Prompt appears over the stash. Prompt is not close enough to the lead card, it needs to be almost touching to avoid confusion. Also, note the right hand border of the prompt is missing in both examples. Episode closed appears before the last dialogue has been read. It should appear after a tap after the last dialogue line. change to "...Violet. Only two of the friends..." Change to "Tell me straight Del, I want the city to know the truth. What's suspicious in those files?" change to "...nothing. That's the truth, Quinny. It's taken six weeks of good specialist's time but there's nothing to chase." change to "So, it's case closed?" change to "...paper is clean. Whatever has been going on with those five friends, it doesn't live on the paper. It lives in the people."
+
+**Console during the run:** no errors, no new warnings. Intro closed and marked package 1 pre-played; first tap 4 s later spawned Audio T1; package 1 paid without re-presenting; auto-proceed; lab placed from the Stash 34 s after the first tap; packages 2 to 10 completed in order, paid then seen.
+
+| # | Finding | Kind | Disposition |
+|---|---|---|---|
+| 4.1 | Speaker name to a pill under the portrait, first name only; body lifts a line | Ruling (UI) | DONE. `DialogueController.ApplyStageLayout` builds a `_SpeakerPill` (house blue, rounded) anchored under the portrait holder at the strip top and reparents the speaker label into it; body top raised from 330 to 365 of 1920. `DialogueRunner.DisplaySpeakerName` shows the first name ("Del Cruz" → "Del", "Ally - Podcasting..." → "Ally", "Dot Ellis (voicemail)" → "Dot"); names beginning "The " or with a lowercase continuation ("Tip line") stay whole. Applies to every episode. |
+| 4.2 | Guided-loop prompt appears over the Stash | Bug | FIXED. The banner was placed from the subject's pivot with a fixed clearance; the Stash root is tall, so the banner landed over its icons. Placement now uses the subject's real rect bounds in screen space (camera-aware) and parks above or below the edge. |
+| 4.3 | Prompt not close enough to the lead card; must be almost touching | Ruling (UI) | DONE. Gap is now 14 px from the subject's edge (was 95 px from its centre). |
+| 4.4 | Right-hand border of the prompt missing | Bug | FIXED. The 1040-wide banner overflowed the narrower scaled canvas on tall phones and an inverted clamp range parked it off the right edge. The banner now fits the canvas width minus a margin before clamping. |
+| 4.5 | Episode Closed appears before the last dialogue line is read; should follow a tap after the last line | Bug | FIXED. `CaseResolutionService` now publishes the resolved event only once no dialogue runner is active (one frame after the closing card's activation, then wait for close). Edit-mode tests keep the synchronous path. Applies to the Listener's close as well. |
+| 4.6 | p01_06: "Only two of the friends are still alive" | Line ruling | APPLIED to the graph, ch01.md, and cold open v0.4 (noted in its header as the one in-play word change). |
+| 4.7 | p01_09 Ally: "Tell me straight Del, I want the city to know the truth. What's suspicious in those files?" | Line ruling | APPLIED to graph and ch01.md. |
+| 4.8 | p01_09 Del: "We looked. Properly. There's nothing. That's the truth, Quinny. It's taken six weeks of good specialist's time but there's nothing to chase." | Line ruling | APPLIED. Stephen ruled "specialists'" (2026-09-03). |
+| 4.9 | p01_09b Ally: "So, it's case closed?" | Line ruling | APPLIED. |
+| 4.10 | p01_09b Del: "...paper is clean. Whatever has been going on with those five friends, it doesn't live on the paper. It lives in the people." | Line ruling | APPLIED to graph, ch01.md and the digest's ch1 entry (paraphrase). |
+
+Still unverified in this round (Stephen did not mention them): the evidence board's package pins; the Stash pointer moving to the lab once placed (the log shows the placement, not the banner).
+
+## Round 5 · 2026-09-03 · second full playthrough after round 4's fixes
+
+**Verbatim (with screenshots):**
+
+> speaker pill size is ok but it needs a border and to move up and right. The banner is still not fixed. 3&4 seem to be working OK. the move to stash animation appears correctly after the popup is closed. The item should NOT appear in the stash until after the animation is completed and the prompt should not appear before the item is in the stash. Also, there are animations after lead card fulfilment and tap that do not seem to be working correctly.
+
+| # | Finding | Kind | Disposition |
+|---|---|---|---|
+| 5.1 | Pill needs a border; move up and right | Ruling (UI) | DONE. Pale border with inset blue fill; anchored to straddle the strip's top edge under the portrait (offset -56, +16). |
+| 5.2 | Banner still wrong on the green card | Bug | FIXED, root cause found by the placement log: the Stash and the lab tile logged placements, the card never did. The loop searched for a `LeadCardView` component, which no card in the shipped bar carries, so the proceed step never attached a target and the banner stayed below the lab tile. `LeadsBarView.ReadyCardRoot()` now supplies the card root; the loop uses it first. |
+| 5.3 | Episode Closed after the last tap; evidence board | Verified | Stephen: "3&4 seem to be working OK." |
+| 5.4 | Reward pre-appears in the Stash before its flight; prompt appears before the item | Bug | FIXED. The service announced after pushing, so the bucket refreshed first. RewardArrived now fires before the push, the advisory freezes the Stash presentation on arrival, and the icon appears when the reveal flight lands. The guided loop does not point at the Stash while the reward is held; the log from the next run shows the prompt appearing 4.7 s after the payoff, after the reveal, then moving to the lab once placed. |
+| 5.5 | Animations after card fulfilment and tap not working correctly | OPEN | Needs Stephen's description (which animation, what it does wrong). Candidates: the fulfil bounce on the bar's rebuild, the consumed-item and reward flights replayed after the beat closes. |
+
+## Round 6 · 2026-09-03 · same run as round 5 (screenshots predate the green-card fix)
+
+**Verbatim (with screenshots):**
+
+> still not right. raise the label a little so it sits between items and title bar. Also, the move animation after an item is draged and dropped for merge is an animated white square moving from origin to target when it should be the origin item icon. Also, there is animation after card fulfilment and tap. I think this should animate to the evidence board but it animates to centre screen instead.
+
+| # | Finding | Kind | Disposition |
+|---|---|---|---|
+| 6.1 | Green-card banner "still not right" | Timing | The screenshot is stamped 12:34, from the run before the 12:50 fix (round 5.2). Awaits the next run. |
+| 6.2 | "N of M discovered" label rides on the tile tops | Ruling (UI) | DONE. Raised 14 px and the grid pushed 12 px down; panel height adjusted. |
+| 6.3 | Merge drag-drop slide is a white square from origin to target | Bug | FIXED. The slide icon was built from the source tile's sprite after the source was cleared. The FX observer now rebuilds the consumed piece's sprite (destination family, pre-merge tier) and passes it; no sprite, no slide. |
+| 6.4 | Post-fulfilment flight goes to screen centre; should go to the evidence board | Ruling + bug | DONE. The flight targeted an object name that no longer exists and fell back to the screen centre. Consumed evidence now flies to the evidence board button; the live bar is the fallback. |
+
+## Round 7 · 2026-09-03 · run with the green-card fix
+
+**Verbatim:**
+
+> fulfilment flight still goes to centre screen instead of the evidence board button. Other fixes look ok. Also what happened to gerald's portrait on the hint banners as he is meant to be the game tutorial mentor?
+
+| # | Finding | Kind | Disposition |
+|---|---|---|---|
+| 7.1 | Green-card banner, merge slide, "discovered" label | Verified | Stephen: "Other fixes look ok." The placement log confirms the banner attached to `LeadCard_0_Lead_FK_P01_02a` and parked under its bottom edge. |
+| 7.2 | Fulfilment flight still to screen centre | Bug | FIXED. The target object is a full-screen canvas root, so its centre was the screen centre; the flight now aims at its "Btn" child. |
+| 7.3 | Gerald missing from the hint banners | Bug (episode-keyed sourcing) | FIXED. The mentor portrait was found by scanning the running episode's lead portraits and lead resolution graphs. Four Keys has no Gerald in either (its scenes are package beat graphs), so the banner and hints lost him. The lookup now scans package beat graphs too (Del resolves for Four Keys as well) and falls back to a Resources copy of Gerald's neutral portrait for the standing cast. Standing rule for the next episodes: any portrait a UI surface needs regardless of episode content must have a Resources fallback. |
+
+## Round 8 · 2026-09-03 · playthrough complete
+
+**Verbatim:**
+
+> play thru complete - everything looks good! "I can't officially tell you that there is something not right here. But I can tell you if you do start digging then be careful, very careful." Then I happy for now, what is next? Just a comment for memory to be evaluated after a few more chapters. The T1eq usage seems a little low especially towards the end of the chapter, instead of ~40 my instinct says maybe 65-70 would get the feel about right. I'd like to see a couple more chapters before commiting that to the FTUE though.
+
+| # | Finding | Kind | Disposition |
+|---|---|---|---|
+| 8.1 | Everything looks good | Verified | Rounds 4 to 7 closed. Chapter 1 plays clean on fk01 with the FTUE, the Stash sequence, the banners, the evidence board, the merge slide, the evidence flight and Gerald. |
+| 8.2 | p01_09b Del's last line: "I can't officially tell you that there is something not right here. But I can tell you if you do start digging then be careful, very careful." | Line ruling | APPLIED to the graph, ch01.md and the digest. Note for the bible: this rewrites Del's signature mode line (bible 4.3 "I can't officially tell you to do this, but if you do, be careful") for this scene; the signature stays canon elsewhere unless Stephen says otherwise. |
+| 8.3 | Chapter 1's T1eq feels low, especially late; instinct 65 to 70 against the current 39 | Economy note (deferred) | RECORDED, not acted on. Stephen wants two more chapters played before committing a change to the FTUE chapter. Re-evaluate after chapters 2 and 3 exist and play; the lever named in structure v2.2 is to shift mass, and the economy model's envelope (1,600 T1eq) is the constraint. |
+
+## Structure impact to fold into v2.2 when Stephen confirms
+
+Chapter 1: 12 packages, 14 cards, 39 T1eq (was 10 / 12 / 35). Authored census 107 (was 105). Timeline draft's ~3:30 and ~4:30 marks now each span two beats.

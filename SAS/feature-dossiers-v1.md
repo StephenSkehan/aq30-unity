@@ -69,7 +69,7 @@ anything that adds connective tissue beyond the bible is flagged
 | # | CC | Fact | Reward |
 |---|---|---|---|
 | 1 | 50 | Born March 30th. An Aries, which Gerald says explains everything and excuses nothing. **[INVENTION: the Gerald quip]** | Coffee and Donut (food T3) |
-| 2 | 100 | The silver locket she never takes off holds a photo of her father. Thomas Quinn wrote for the Gazette. He died when she was thirteen. | Recorder & Headphones (audio T3) |
+| 2 | 100 | The silver locket she never takes off holds a photo of her father. Thomas Quinn wrote for the Gazette. He died when she was sixteen. | Recorder & Headphones (audio T3) |
 | 3 | 150 | Her favourite film is Spotlight. Her favourite food is pancakes at a late-night diner. She maintains these are professional influences. **[INVENTION: last line]** | Box Knife (special) |
 | 4 | 200 · gated | The PI licence is real. She just knows that people talk to a podcaster long before they talk to an investigator. | Search Warrant (special) |
 | ✔ | — | Completion: Carbon Copy + cassette slot reserved (Ally cassette TBD — her voice is the show itself; maybe the pilot episode stinger?) | |
@@ -82,7 +82,7 @@ anything that adds connective tissue beyond the bible is flagged
 | 1 | 50 | Thirty years a detective. He taught Ally what to write down, when to shut up, and how to spot a lie. | Beer Bottle (bar T4) |
 | 2 | 100 | The corner booth at the Rusty Anchor is held for him without asking. The older dockhands remember what kind of cop he was, and that credit extends to Ally. | Wine Glass Red (bar T5) |
 | 3 | 150 | The teal suit and the magenta shirt are not a phase. He says a detective should be memorable to friends and forgettable to suspects, and refuses to explain further. **[INVENTION: the sayings]** | Bolt Cutters (special) |
-| 4 | 200 · gated | He checks Ally's ribs when he hugs her. Old habit. He has been inspecting her for damage since she was thirteen. **[INVENTION: extends the L4 rib-check canon into a habit]** | Carbon Copy (special) |
+| 4 | 200 · gated | He checks Ally's ribs when he hugs her. Old habit. He has been inspecting her for damage since she was sixteen. **[INVENTION: extends the L4 rib-check canon into a habit]** | Carbon Copy (special) |
 | ✔ | — | Completion: cassette slot reserved (Gerald VO pending) + Skeleton Key | |
 
 ### MO CALLAHAN — free intro
@@ -103,7 +103,7 @@ anything that adds connective tissue beyond the bible is flagged
 |---|---|---|---|
 | 1 | 50 | The kestrel on her right wrist points home to Kestrel Point. The Saint Michael medallion hangs on its own chain, never the one with the badge. | Evidence Bag (forensic T2) |
 | 2 | 100 | Her table outside the Kestrel Corner Diner has the best sightlines on the street. Back to the wall, eyes on the crossing and everyone's hands. Coffee makes you a friend at that table. | Hot Coffee Cup (food T2) |
-| 3 | 150 | At twenty-three, a rookie constable, she stood on the Quinn doorstep the night Thomas died. Ally was thirteen. Del has been quietly watching out for her ever since. | Search Warrant (special) |
+| 3 | 150 | At twenty, a rookie constable, she stood on the Quinn doorstep the night Thomas died. Ally was sixteen. Del has been quietly watching out for her ever since. | Search Warrant (special) |
 | 4 | 200 · gated | She bends rules the way a locksmith bends wire: precisely, quietly, and only for doors that should never have been locked. **[INVENTION: the whole line — a character thesis, please rule]** | Skeleton Key (special) |
 | ✔ | — | Completion: Del cassette (VO pending) + Bolt Cutters | |
 

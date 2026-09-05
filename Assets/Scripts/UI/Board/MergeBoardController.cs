@@ -241,11 +241,18 @@ namespace AQ.App.UI.Board
 
             // Generator pairs cap at their own SO's tier count, not the board-wide
             // item ceiling — a 6-tier chain (Field Kit) must stop at T6, not T10.
+            // Item pairs likewise cap at their family ladder's last defined tier:
+            // merging past it consumed both tiles into an undefined item (no
+            // ItemDefinitionSO — placeholder icon, empty itemId, satisfies nothing).
             int ceiling = maxTier;
             if (a.Kind == TileKind.Generator && b.Kind == TileKind.Generator)
             {
                 var genSO = FindGeneratorType(GetFamily(a));
                 if (genSO != null) ceiling = Mathf.Min(ceiling, genSO.maxGeneratorTier);
+            }
+            else if (a.Kind == TileKind.Item && b.Kind == TileKind.Item)
+            {
+                ceiling = Mathf.Min(ceiling, EffectiveItemCeiling(GetFamily(a), a.Tier));
             }
             var outcome = MergeRules.Decide(ToRulesTile(a), ToRulesTile(b), ceiling);
 
@@ -394,9 +401,20 @@ namespace AQ.App.UI.Board
                 {
                     if (!wallet.TrySpend(Currency.Energy, 1, "generator.spawn"))
                     {
-                        Log("Energy insufficient — spawn cancelled.");
-                        EnergyOutPopup.Show();
-                        return;
+                        // First two energy-outs ever: the FTUE net refills for
+                        // free and the tap goes through — a hard stop is the
+                        // worst thing to show someone still learning the loop.
+                        if (AQ.App.Services.FtueEnergyNet.TryGrant(wallet) &&
+                            wallet.TrySpend(Currency.Energy, 1, "generator.spawn"))
+                        {
+                            // fall through to the spawn below
+                        }
+                        else
+                        {
+                            Log("Energy insufficient — spawn cancelled.");
+                            EnergyOutPopup.Show();
+                            return;
+                        }
                     }
                 }
                 else
@@ -616,7 +634,34 @@ namespace AQ.App.UI.Board
                 var genSO = FindGeneratorType(fam);
                 if (genSO != null) ceiling = Mathf.Min(ceiling, genSO.maxGeneratorTier);
             }
+            else if (v.Kind == TileKind.Item)
+            {
+                ceiling = Mathf.Min(ceiling, EffectiveItemCeiling(fam, v.Tier));
+            }
             return MergeRules.Decide(t, t, ceiling) == MergeRules.Outcome.Merge;
+        }
+
+        /// <summary>
+        /// The merge ceiling for an item of this family at 'tier': the last tier
+        /// reachable walking the family's defined ItemDefinitionSO ladder upward,
+        /// bounded by the board maxTier. Families whose ladders end below maxTier
+        /// (most end at T4-T5) cap here so two family-ceiling items CeilingSwap
+        /// instead of merging into an undefined item.
+        /// </summary>
+        private int EffectiveItemCeiling(string family, int tier)
+        {
+            if (string.IsNullOrEmpty(family))
+                return maxTier; // no family at all: board-wide rule
+            // A KNOWN family with no def at the CURRENT tier is a broken artifact
+            // (an undefined item minted by the pre-fix merge bug, restored from an
+            // old save). Freeze it: returning maxTier here let two such tiles keep
+            // merging into ever-deeper undefined items — with the merge hint
+            // lighting them up as a suggested pair.
+            if (LookupItemDef(family, tier) == null)
+                return tier;
+            int top = tier;
+            while (top < maxTier && LookupItemDef(family, top + 1) != null) top++;
+            return top;
         }
 
         private void RebuildMergeCounts()

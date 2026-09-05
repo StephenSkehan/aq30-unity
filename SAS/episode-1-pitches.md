@@ -71,7 +71,7 @@
 
 | # | Speaker | Emotion | Line |
 |---|---|---|---|
-| 1 | Ally | neutral | When I was thirteen and the house had gone quiet in the worst way, I listened to a radio show that started at midnight. Mags Okonkwo. She used to say: the dark answers, if you speak into it properly. |
+| 1 | Ally | neutral | When I was sixteen and the house had gone quiet in the worst way, I listened to a radio show that started at midnight. Mags Okonkwo. She used to say: the dark answers, if you speak into it properly. |
 | 2 | Ally | sad | She died on air when I was fourteen. Mid-sentence. The city heard four bars of jazz where her last words should have been, and we called that a mercy. |
 | 3 | Ally | surprised | Tuesday, a demolition surveyor mailed me a reel from the condemned station. Hand-labelled, her handwriting: DO NOT AIR — FINAL. It sat in my mailbox for one night. By morning the mailbox was open and the reel was gone. |
 | 4 | Ally | neutral | Seventeen years, and it still isn't safe to hear her finish a sentence. The wrecking ball swings Friday. This is Echoes of Havenbay — and this week, I speak into the dark for both of us. |

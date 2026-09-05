@@ -38,7 +38,9 @@ namespace AQ.App.Generators
         public static bool IsEligible(in DropEntry e, bool subGenLocked)
         {
             if (e.type == DropType.SubGenerator && subGenLocked) return false;
-            if (!string.IsNullOrEmpty(e.requiresStoryFlag) && !NarrativeFlags.Has(e.requiresStoryFlag)) return false;
+            // GameFlags is the unified store (2026-08-18): a gate set through a
+            // lead outcome OR a dialogue setsFlag lands in the same namespace.
+            if (!string.IsNullOrEmpty(e.requiresStoryFlag) && !GameFlags.Has(e.requiresStoryFlag)) return false;
             return true;
         }
     }

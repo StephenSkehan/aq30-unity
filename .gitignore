@@ -61,3 +61,12 @@ SAS/*.zip
 # Addressables build-time generated (Unity deletes/recreates it across refreshes)
 Assets/AddressableAssetsData/link.xml
 Assets/AddressableAssetsData/link.xml.meta
+
+# Non-AQ30 scratch work that lives in this working copy (2026-08-26)
+# Lot 54 / SA property outlook are unrelated to the game. Ignored so they
+# cannot be swept into a commit by `git add -A`.
+/deliverables/
+/output/
+/tmp/
+/Tools/build_lot54_report.py
+/Tools/build_sa_property_outlook.py
