@@ -4,7 +4,9 @@
 
 *2026-09-05. For ChatGPT (Stephen runs it; use a model with web search on) and for a fresh Fable agent (Claude runs it; Fable works from training knowledge and must say so where it is unsure). Both receive exactly the text below the line. Results are saved verbatim beside this file; nothing counts as considered until it is in a disposition table.*
 
-*Operator context, not for the model: the first generation round (2026-09-03, twenty invented scenarios) produced nothing that stood out. Stephen's diagnosis: the yard and the unit are reachable by strangers or point at one key-holder, so the threat must be inside her house; and invented scenarios lack the texture of the real. This round grounds the search in documented cases first, then derives candidates from them.*
+*Record note 2026-09-05: GPT and Fable were run on the earlier wording ("Liam holds a spare key", "unit"); the text below carries Stephen's later rulings (spare in a hiding place all four know; "workshop"). Translate on the way into the disposition.*
+
+*Operator context, not for the model: the first generation round (2026-09-03, twenty invented scenarios) produced nothing that stood out. Stephen's diagnosis: the yard and the workshop are reachable by strangers or point at one key-holder, so the threat must be inside her house; and invented scenarios lack the texture of the real. This round grounds the search in documented cases first, then derives candidates from them.*
 
 ---
 
@@ -29,13 +31,13 @@ Cite each case by name or a searchable description. If you are working from memo
 
 Now design **eight candidate scenarios** for the story below, each drawn from a pattern you found in part one (say which case or cases each one descends from). Real patterns adapted, not invented mechanisms.
 
-**The woman.** Violet Moore, forty-four, a signwriter in a small coastal city. Fit, sharp, physically confident. She lives alone in a terraced house on Mariner's Row and works from a rented unit behind the fish market. She swims off the harbour slip most mornings, eats standing up, keeps her cash in a cookie tin in the house, ranks people's handwriting out loud, and is the last person in the city who would believe a friend meant her harm.
+**The woman.** Violet Moore, forty-four, a signwriter in a small coastal city. Fit, sharp, physically confident. She lives alone in a terraced house on Mariner's Row and works from a rented workshop behind the fish market. She swims off the harbour slip most mornings, eats standing up, keeps her cash in a cookie tin in the house, ranks people's handwriting out loud, and is the last person in the city who would believe a friend meant her harm.
 
-**The four.** Her closest friends. Liam holds a spare key to her house. Ruby, a nurse, is her Tuesday-morning friend. Margo does her books. Brad, a younger signwriter she taught for seven years, has a key to her unit, not her house. All four know her habits; nobody else in the city does.
+**The four.** Her closest friends. Nobody but Violet holds a cut key to her house; the spare lives in a hiding place all four know and have used. Ruby, a nurse, is her Tuesday-morning friend. Margo does her books. Brad, a younger signwriter she taught for seven years, has a key to her workshop, not her house. All four know her habits; nobody else in the city does.
 
 **Hard constraints on every candidate. Show how each is met.**
 
-1. The tampering is **inside her house**. Not the yard, not the street, not the unit, not the slip. Nothing a stranger could reach by climbing a fence or walking past. The whole evidence of intimacy is that someone was inside her home.
+1. The tampering is **inside her house**. Not the yard, not the street, not the workshop, not the slip. Nothing a stranger could reach by climbing a fence or walking past. The whole evidence of intimacy is that someone was inside her home.
 2. Access needed her house key or knowledge of where the spare lives, and knowledge of a habit only the four have watched. It must point at all four equally, not at the one who holds the spare.
 3. It was aimed at her specifically, at something she does every day or every week, not at the house in general.
 4. She survives it unhurt or barely hurt: a near miss, or a preparation she discovers before it is used. No falls, no stairs, no ladders. She keeps working and swimming afterwards.
