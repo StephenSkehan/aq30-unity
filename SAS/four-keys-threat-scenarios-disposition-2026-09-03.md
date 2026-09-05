@@ -54,3 +54,10 @@
 ## Recommendation
 
 Rule F6, the car in the yard, as the inciting threat, with F1's image available to the genuine letter as a second sign of entry if the letter needs one. Fold: spine A1 (Day −46 the tamper, Day −45 the morning she gets out thick-headed), B1 rows 13 and 14 (the ladder rows become the car rows; Ruby's clinical record of the slip stumble stays as the innocent prior fall the coroner reads), C1 (her refusal to report holds: an officer says loose clamp), the forged letter's ladder claim becomes the door key lean, structure p03_04 (the Regent marquee stays as the unfinished-job image only), and the two letters. Also new in the spine: the yard padlock key hangs on the hook in the unit, known to all four.
+
+
+## Stephen's ruling on this round, 2026-09-05
+
+> The car in the yard can't work as access can be jumping over the fence. She is more likely to suspect that than one of her close friends is tampering. [...] None really stand out so we may have to refine the creation prompt.
+
+Gate A was wrong as written: "a private habit only an intimate could know" let outside places through. The correct gate is **inside her house, full stop**: a yard, the street, the slip and the unit are reachable by strangers or point at one key-holder, and the whole evidence of intimacy is that someone was inside her home. Under that gate the car (F6) fails with the tide table, the tow float, the kettle earth, the flask cap, the swapped labels, the iron sign and the paraffin. The three inside-the-house survivors (the bathroom heater G4, the back door and the tin F1, the blanket controller F7) did not stand out to Stephen. **Round one closed without a ruling.** Round two grounds the search in documented real cases: `prompt-gpt-four-keys-threat-real-cases-2026-09-05.md`.
