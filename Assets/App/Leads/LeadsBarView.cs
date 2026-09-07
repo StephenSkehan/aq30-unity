@@ -139,9 +139,16 @@ namespace AQ.App.Leads
 
             if (leads == null) return;
 
-            for (int i = 0; i < leads.Count; i++)
+            // Package grouping, minimal cut (feature-lead-packages-v1 item 4,
+            // MVP form, 2026-09-07, provisional until Stephen rules the surface):
+            // member cards of the same multi-card package sit side by side in
+            // catalog order, and each carries the package title with its
+            // progress ("The Four Names · 1 of 2") where the subtitle was.
+            var ordered = OrderForPackages(leads, out var groupLabels);
+
+            for (int i = 0; i < ordered.Count; i++)
             {
-                var so = leads[i];
+                var so = ordered[i];
                 if (so != null && so.RuntimeState == LeadState.Blocked) continue;
                 var go = Instantiate(cardPrefab, contentRoot);
                 go.name = $"LeadCard_{i}_{(so != null ? so.name : "Null")}";
@@ -149,7 +156,8 @@ namespace AQ.App.Leads
                 var presenter = go.GetComponent<LeadCardPresenter>();
                 if (presenter != null)
                 {
-                    presenter.Bind(ToCardData(so));
+                    groupLabels.TryGetValue(so, out var groupLabel);
+                    presenter.Bind(ToCardData(so, groupLabel));
                     bool hasReqs = so != null && so.requirements != null && so.requirements.Length > 0;
                     if (presenter.requirementsRow != null)
                         presenter.requirementsRow.gameObject.SetActive(hasReqs);
@@ -254,7 +262,68 @@ namespace AQ.App.Leads
 
         // ----- Helpers -----
 
-        static AQ.App.UI.Leads.LeadCardData ToCardData(LeadData lead)
+        /// <summary>
+        /// Stable re-order: cards that belong to the same multi-card package sit
+        /// together, positioned where the first member appeared; everything else
+        /// keeps its repository order. Also returns the per-lead group label
+        /// ("package title · done of total") for member cards of packages with
+        /// more than one card. Single-card packages keep the lead's own subtitle.
+        /// Reads the running episode's PackageCatalog; no catalog = no grouping.
+        /// </summary>
+        static List<LeadData> OrderForPackages(IReadOnlyList<LeadData> leads, out Dictionary<LeadData, string> labels)
+        {
+            labels = new Dictionary<LeadData, string>();
+            var result = new List<LeadData>(leads.Count);
+            var catalog = AQ.App.Episodes.EpisodeRuntime.Current?.packages;
+            if (catalog == null || catalog.packages == null || catalog.packages.Count == 0)
+            {
+                result.AddRange(leads);
+                return result;
+            }
+
+            // leadId -> package (only multi-card packages group)
+            var packageOf = new Dictionary<string, Packages.PackageData>(StringComparer.Ordinal);
+            foreach (var p in catalog.packages)
+            {
+                if (p == null || p.memberCardIds == null || p.memberCardIds.Length < 2) continue;
+                foreach (var id in p.memberCardIds)
+                    if (!string.IsNullOrEmpty(id)) packageOf[id] = p;
+            }
+            if (packageOf.Count == 0) { result.AddRange(leads); return result; }
+
+            var repo = FindAnyObjectByType<LeadsRepository>();
+            var activated = new HashSet<string>(repo != null ? repo.ActivatedLeadIds : System.Linq.Enumerable.Empty<string>(), StringComparer.Ordinal);
+
+            var placed = new HashSet<Packages.PackageData>();
+            for (int i = 0; i < leads.Count; i++)
+            {
+                var lead = leads[i];
+                if (lead == null) { result.Add(lead); continue; }
+                if (!packageOf.TryGetValue(lead.leadId, out var pkg)) { result.Add(lead); continue; }
+                if (placed.Contains(pkg)) continue; // already emitted with its siblings
+                placed.Add(pkg);
+
+                // Emit this package's live members in catalog member order.
+                int total = pkg.memberCardIds.Length;
+                int done = 0;
+                foreach (var id in pkg.memberCardIds) if (activated.Contains(id)) done++;
+                string label = string.IsNullOrEmpty(pkg.title) ? null : $"{pkg.title} · {done} of {total}";
+                foreach (var id in pkg.memberCardIds)
+                {
+                    for (int j = 0; j < leads.Count; j++)
+                    {
+                        var m = leads[j];
+                        if (m == null || m.leadId != id) continue;
+                        result.Add(m);
+                        if (label != null) labels[m] = label;
+                        break;
+                    }
+                }
+            }
+            return result;
+        }
+
+        static AQ.App.UI.Leads.LeadCardData ToCardData(LeadData lead, string groupLabel = null)
         {
             if (lead == null) return new AQ.App.UI.Leads.LeadCardData();
 
@@ -277,7 +346,7 @@ namespace AQ.App.Leads
             return new AQ.App.UI.Leads.LeadCardData
             {
                 Title        = lead.title,
-                Objective    = lead.subtitle,
+                Objective    = string.IsNullOrEmpty(groupLabel) ? lead.subtitle : groupLabel,
                 LeadId       = lead.leadId,
                 ActorBadge   = lead.actorPortrait,
                 Requirements = reqs,
