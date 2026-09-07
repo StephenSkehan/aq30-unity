@@ -15,6 +15,8 @@
 
 **Line ruling in play (Stephen, 2026-09-03):** "Two of the friends are still alive" became "Only two of the friends are still alive". Applied here and in the chapter 1 graph; no other word of v0.4 changed.
 
+**Line ruling 2026-09-07 (Stephen, spine v1.7 same-night opening):** "They'd wait until Saturday, when all four of them could be there together." became "They went that night, all four of them." Applied here, in the chapter 1 graph (package 6) and in ch01.md.
+
 **Checks:** no em dashes (pass) · nothing invented beyond the brief (pass; "one of them could be next" is the survivors' real fear, kept) · death in the first line, keys by about 0:35 (pass) · sign-off as ruled.
 
 ---
@@ -39,7 +41,7 @@ She also told her friends not to go to the police.
 
 Instead, she directed them to a locked door. Behind it, she said, was the reason she had become afraid.
 
-The four friends called each other that night. They agreed that nobody would open the door alone. They'd wait until Saturday, when all four of them could be there together.
+The four friends called each other that night. They agreed that nobody would open the door alone. They went that night, all four of them.
 
 And when they finally opened it, they found another letter.
 

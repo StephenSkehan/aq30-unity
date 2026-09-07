@@ -1,5 +1,7 @@
 <!-- pdf-title: Premise delta v0.1: the trust version -->
 
+> **REJECTED 2026-09-07** after the ChatGPT attack (`four-keys-premise-delta-trust-attack-chatgpt-2026-09-07.md`): premise v8.1 stands, plus one sentence of trust in the key letter. The PO box, Brad's own locker and the same-night opening were salvaged into spine v1.7.
+
 # PREMISE DELTA v0.1 · THE TRUST VERSION · 2026-09-05
 
 *Stephen's concept, 2026-09-05: Violet did not suspect her four friends; they were the only people she trusted. She left the keys and the letters so that, if anything happened to her, the four could put the pieces together and, if there was anything, take it to the police. Only when they work it together do they find the evidence pointing at one of themselves. This document states the change against premise v8.1 and spine v1.4 (with the v1.5 and v1.6 amendments), sketches the three letters under it, closes the holes it opens, lists what it changes and what it does not, and ends with the attack prompt. Nothing here is ruled. A premise change counts as attacked only when a result file exists beside this one.*

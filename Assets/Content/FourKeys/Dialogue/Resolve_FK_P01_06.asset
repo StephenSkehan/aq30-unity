@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P01_06_N1
     speaker: "Ally Quinn"
-    line: "The four friends called each other that night. They agreed that nobody would open the door alone. They'd wait until Saturday, when all four of them could be there together."
+    line: "The four friends called each other that night. They agreed that nobody would open the door alone. They went that night, all four of them."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
