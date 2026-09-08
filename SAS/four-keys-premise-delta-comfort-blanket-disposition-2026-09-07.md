@@ -1,6 +1,6 @@
 <!-- pdf-title: Comfort-blanket delta v0.2: disposition -->
 
-# PREMISE DELTA v0.2 (THE COMFORT BLANKET): DISPOSITION · 2026-09-07 (Fable in; GPT pending)
+# PREMISE DELTA v0.2 (THE COMFORT BLANKET): DISPOSITION · 2026-09-07 (Fable and GPT in)
 
 *Two independent adversaries were asked to break `four-keys-premise-delta-comfort-blanket-v0.2-2026-09-07.md` on the same six fronts. Fable's result is filed verbatim in `...-attack-fable-2026-09-07.md`; GPT's goes beside it when Stephen runs it. Author positions are hypotheses; this table is the check. Stephen rules.*
 
@@ -27,4 +27,8 @@
 
 Premise v8.1 stands, with one sentence of trust in the key letter (Stephen's ruling of 2026-09-07, question 3), as before this delta. The comfort-blanket idea goes to the idea bank with two salvageable pieces: Violet doubting herself is a shade the v8.1 letter already carries in "I might be wrong. I've been wrong about people before", and could be deepened by one clause without changing what she believes; and the same-night opening, the PO box and Brad's own locker, already ruled into v1.7, came out of this exploration.
 
-*GPT's column to be added when its result arrives; the verdict stands or falls on both, and Stephen rules.*
+## GPT's column, added 2026-09-08
+
+GPT's result (`...-attack-chatgpt-2026-09-07.md`) is REJECT, high confidence, independently of Fable and on the same decisive point. Front by front: 1 fatal (the shame does not scale: she carries the panel round a small city but will not speak to a nurse who loves her; excluding Brad is "naked plot preservation"); 2 fatal (a documentary criminal keeps the one page that proves the swap, in a room the landlady enters); 3 fatal, and named as the verdict's driver ("if she knew which of us, why give that person a key and send the other three to meet them at a locker without police": the two letters cannot come from one rational author); 4 serious ("the note didn't say why" is a delay, not a hook; names before stakes); 5 fatal (a list, not a turn: five debatable observations that attack different propositions); 6 fatal (each of the five facts arms an early ender: Brad burning the letter Monday morning, Ruby not accepting a subject change, Day 2 record-reading being improper, any recipient visiting the locker first, town gossip reaching the other three as easily as Brad).
+
+Two adversaries, two rejects, one shared decisive finding. **v0.2 is dead and is filed as such.** What survives it is recorded in the recommendation above and in the v0.3 work: Stephen's 2026-09-08 move that the forgery need not say "I know" at all, which removes the Monday-night contradiction both adversaries found decisive, is the basis of v0.3, the trusting forgery.
