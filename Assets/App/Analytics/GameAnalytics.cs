@@ -49,6 +49,29 @@ namespace AQ.App.Analytics
             });
         }
 
+        /// <summary>A lead package's members are all activated; its beat is queued (fires once per package, catalog order).</summary>
+        public static void LogPackageComplete(string packageId, int chapter, string beatType)
+        {
+            AnalyticsLocator.Instance?.LogEvent("package_complete", new Dictionary<string, object>
+            {
+                ["package_id"] = packageId ?? string.Empty,
+                ["chapter"]    = chapter,
+                ["beat_type"]  = beatType ?? string.Empty
+            });
+        }
+
+        /// <summary>A package beat was dismissed: paid_now is true on the first dismissal (beat_paid set), false on a restore re-show.</summary>
+        public static void LogPackageBeatSeen(string packageId, int chapter, bool paidNow, bool prePlayed)
+        {
+            AnalyticsLocator.Instance?.LogEvent("package_beat_seen", new Dictionary<string, object>
+            {
+                ["package_id"] = packageId ?? string.Empty,
+                ["chapter"]    = chapter,
+                ["paid_now"]   = paidNow,
+                ["pre_played"] = prePlayed
+            });
+        }
+
         public static void LogSpawnRoll(string family, int tier)
         {
             AnalyticsLocator.Instance?.LogEvent("spawn_roll", new Dictionary<string, object>

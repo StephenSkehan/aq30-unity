@@ -82,6 +82,21 @@ namespace AQ.App.Leads.Packages
 
         private PackageCatalog _builtFor;
 
+        /// <summary>Instance form of OwnsPayoff: true when this runtime's catalog lists the lead. Builds lazily.</summary>
+        public bool Owns(string leadId)
+        {
+            if (string.IsNullOrEmpty(leadId)) return false;
+            EnsureService();
+            return _memberIds.Contains(leadId);
+        }
+
+        /// <summary>
+        /// Run the completion scan now, folding in an id that has just been
+        /// activated (the same path OnLeadActivated takes). Public so tests and
+        /// diagnostics can drive it without the bus.
+        /// </summary>
+        public void RescanNow(string justActivatedId = null) => Scan(justActivatedId);
+
         private void Awake() => EnsureService();
 
         // Idempotent; re-runs if the catalog was assigned after Awake (a runtime
@@ -143,6 +158,7 @@ namespace AQ.App.Leads.Packages
             {
                 _pendingBeats.Add(p);
                 Debug.Log($"[Packages] complete: {p.packageId} ({p.beatType})", this);
+                AQ.App.Analytics.GameAnalytics.LogPackageComplete(p.packageId, p.chapter, p.beatType.ToString());
                 BeatReady?.Invoke(p);
             }
         }
@@ -154,8 +170,10 @@ namespace AQ.App.Leads.Packages
         /// </summary>
         public void NotifyBeatDismissed(PackageData p)
         {
-            if (p == null || _service == null) return;
+            if (p == null) return;
+            EnsureService();
 
+            bool prePlayed = GameFlags.Has(p.BeatPrePlayedFlag);
             bool firstPay = _service.TryPayRewards(p, WalletLocator.Instance);
             if (firstPay && !string.IsNullOrEmpty(p.specialRewardId) &&
                 Enum.TryParse<AQ.App.UI.Specials.SpecialId>(p.specialRewardId, out var specialId))
@@ -163,6 +181,7 @@ namespace AQ.App.Leads.Packages
 
             _service.MarkBeatSeen(p);
             _pendingBeats.Remove(p);
+            AQ.App.Analytics.GameAnalytics.LogPackageBeatSeen(p.packageId, p.chapter, firstPay, prePlayed);
         }
     }
 }
