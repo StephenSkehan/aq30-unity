@@ -1,0 +1,83 @@
+<!-- pdf-title: Locker object treatment: the clock -->
+
+# LOCKER OBJECT TREATMENT: THE CLOCK · 2026-09-08
+
+*Fresh Fable agent, no tools, same nine-station brief as the ashes treatment, differing only in the object. Filed verbatim so Stephen can see how it plays before ruling. Working sketch, not prose for the game; nothing here is approved.*
+
+---
+
+**1.**
+
+The forged paragraph, in her voice:
+
+Mum's clock. I let it run down after the funeral and I have not wound it since, and none of you has ever asked me why, which I have been grateful for. On the ninth I came in and it was going. Somebody had wound it. I stopped it. It is in the cupboard with this. I did not want to be in the house with it ticking.
+
+The starter-list line:
+
+Liam. Cannot walk past a stopped clock, says so every time he comes. Has sat under Mum's for four years and never touched it. I have wondered what that costs him.
+
+**2.**
+
+Ruby's key turns the padlock. Margo holds the torch. The letter is on the shelf in one of Violet's brown envelopes and the clock stands beside it, face out, hands stopped, brass gone dull. Nobody speaks. Margo takes the envelope, because her hands go to paper. Ruby lays her palm flat on the open door as if it might swing back. Brad keeps his hands in his jacket and looks at the letter and not at the clock. Liam looks at nothing else. Ruby says, "That's her mum's." Liam says, "I know whose it is." He lifts it out with both hands and holds it to his chest, dial inward, the way you carry a thing that might spill. Nobody offers to take it. He carries it up the slip to the cars because he has already picked it up, and because he is the only one who ever met the woman who wound it.
+
+**3.**
+
+It lives on Ruby's sideboard, behind the chair Liam always takes. In the car park that first night Liam says he will keep it at his, and Margo says it should stay with the letter, and Ruby says the letter is coming to hers because her table is the only one that seats four with paper. Nobody says the other reason and everybody hears it. Brad says, "Leave it as she left it. Nobody winds it," and that becomes the rule, agreed in a car park by three people who mean it and one who set it. Ruby turns it to face the wall after the second meeting because she cannot type with it looking at her. Nobody turns it back.
+
+**4.**
+
+Third Thursday. Four lists on the table, Ruby's typed and sorted by date. The clock is on the sideboard behind Liam's chair, where it has been since the first night. They reach the ninth.
+
+Ruby: "It's an eight day clock. You don't wind one of those in passing. You stand there and turn the key twenty times."
+
+Margo: "So not a burglar."
+
+Brad: "A burglar takes a clock. He doesn't set it going."
+
+Ruby: "Someone who thought it was a shame, stopped."
+
+Nobody looks at Liam. Nobody looks at the sideboard. Ruby turns the page because that is what the next page is.
+
+Ruby: "Vi's line. Cannot walk past a stopped clock, says so every time he comes. Has sat under Mum's four years and never touched it."
+
+Brad: "She wasn't accusing. She put it under things she'd noticed. She noticed he never did."
+
+Margo: "She noticed she'd wondered what it cost him."
+
+Ruby: "Nobody's accusing anybody."
+
+Liam has not moved. "I've said it. In this room, with her sat there. I've never put a finger on that clock and you all know why."
+
+Margo: "No one thinks you did."
+
+Liam: "I drove them in that night. I sat in that corridor. You think I'd stand in her front room and wind it?"
+
+Nobody answers, which is the answer. Brad gets up and fills the kettle.
+
+**5.**
+
+One beat, and it costs nothing. Margo is last to leave one night in the fifth week, drying glasses while Ruby is upstairs. She turns the clock round, opens the little door in the back, and the winding key is on its hook inside the case, where it has plainly always been. Anyone who opened that door could have wound it. It clears nobody and it names nobody; it only tells her that the clock itself points at no one and the pointing is being done by the page on the table. She shuts the door, turns it back to the wall, and tells nobody, because Margo does not say things that do nothing. It is the small rehearsal for the large silence she keeps later about the debts, and it never touches money.
+
+**6.**
+
+Ruby, nine months on, at the same table, sideboard bare:
+
+"There was a letter. I'll give you that, because her solicitor would and I'd sooner it came from me. What it said was for four people at one table. Two of them are dead and one won't talk to you, so it's mine now, and I'm keeping it. That's not me being difficult. She wrote not the police, and you're the police with better manners. Ask me anything about Vi. Ask me what she cooked. Don't ask me what was in the cupboard."
+
+Ally hears two things in it: the word cupboard, which nobody else in the city uses for a locker, and "what was in", not "what it said". A thing, not only a letter. She learns what the thing was from outside the room. The police photographs show the front room, and above the mantel there is a pale rectangle on the wallpaper, the one clean shape in a lived-in house, undated and never queried because nothing had been reported missing. Violet's sister, clearing the house for probate, wrote a short list of what she could not find, and "Mum's mantel clock, brass" is on it; she assumed a friend had taken a keepsake and did not think it worth a quarrel with people she did not know. Ally puts the rectangle against the list and asks Ruby whether her mother's clock was in the cupboard. Ruby does not answer, which is how Ally knows. That it stood beside the letter, and who carried it out, she does not learn until Liam speaks.
+
+**7.**
+
+The clock was never evidence of anything; it was casting. Brad stood in her front room the night he killed her and chose the one object in the house that already came with another man's sentence attached, and he set it beside a page in her hand so that her friends would do the pointing for him. The letter said somebody wound it, and that was the one true thing in the paragraph: he had been in her house on the ninth, he had turned the key himself to see whether she would write it down, and she did, and he read it in her own locker and gave it back to them with the hand left blank.
+
+Liam says: "I carried it out for him. He stood there with his hands in his pockets and let me."
+
+**8.**
+
+Ruby drives it over in the footwell, wrapped in a tea towel, and does not go in. Liam sets it on his own mantel, dial out, the hands where Violet left them, and the winding key on its hook inside the case. He walks past it every morning on his way to the yard. He does not wind it, and this time everybody who knows him knows why.
+
+**9.**
+
+First, the forged sentence "it is in the cupboard" claims she moved the clock before she died, so anyone who sat in her front room between the ninth and her death and saw it on the mantel breaks the forgery in one line; the ninth has to fall inside her last days, or she gave no dinners after it, and the story must say which. Second, once the sister's probate list exists, four friends with the clock on a sideboard are withholding estate property and a fact from a police file, and the story has to decide whether they know it and carry it, because a reader will. Third, the clock trait is the only trait Liam has, so a reader who has met a mystery before sees the plant the moment the letter names it and reads the room as slow, unless Liam is two other things at the table before the cupboard is ever opened.
+
+Ship it, with the first fixed and the ninth pinned to a date inside her last week.
