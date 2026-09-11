@@ -1,0 +1,39 @@
+<!-- pdf-title: Session kickoff 2026-09-09 -->
+
+# SESSION KICKOFF · 2026-09-09
+
+*Paste this to open the next session. Written 2026-09-08 night at Stephen's housekeep. Replaces the 09-08 kickoff. Story crafting only; schedule and release stay out of it (Stephen's rule). One issue at a time, worst first, accept / challenge / answer.*
+
+## Where we are
+
+Premise v8.1 remains in force. Delta v0.3, the trusting forgery (`four-keys-premise-delta-trusting-forgery-v0.3-2026-09-08.md`), was built on seven rulings Stephen accepted one at a time on 2026-09-08 (object = the mother's ashes, provisional; Margo's turn = a reading on the missing debt book; true letter burned, trophy = the panel; chapter 7 = the two omissions; Brad reads the debt book on Day 0; the open's first minute = "she said she might be imagining it; she wasn't; she was dead"; the panel never shown to the four = teacher's pride). It then went to two adversaries on the same frozen text:
+
+- **Fable: REWORK, high confidence** (`...-attack-fable-2026-09-08.md`). Driver: chapter 7 is an inference (the forgery's own words "a starter list, to show you what I mean"; rulings 2 and 7 hand Violet innocent reasons for both omissions).
+- **GPT: REJECT, high confidence** (`...-attack-chatgpt-2026-09-08.md`). Driver: Brad's Day 0 least-cost action: knowing a letter and object sit behind a new padlock, he defeats the padlock and destroys them before Day 14 rather than wait.
+
+Stephen's instruction on receipt of GPT: **"analyse and discuss before action."** No disposition has been written. Nothing has been reworked. Stephen's standard stands: hard evidence to kill a premise, not a count of objections; and the work is on the check, not on regenerating.
+
+## First: the analysis, one finding at a time, in order of fatality
+
+Build `four-keys-premise-delta-trusting-forgery-disposition-2026-09-08.md` (two columns plus concurrence), then walk it with Stephen. Proposed order, my provisional view attached so he can disagree with something concrete:
+
+1. **Brad's Day 0 least-cost action (GPT's driver; Fable raised it too).** Concur that the delta did not answer it. Candidate answers, in world: a picked or cut padlock at the slip sheds is seen (the sheds are worked from first light; a boat owner is already canon at dawn Day 14); a replaced padlock fails the four keys on Day 14 and announces tampering; and Brad's whole exit is built on nothing ever being visibly wrong, so a damaged lock costs him more than fourteen days of a letter nobody can read either. The strongest version: he does not know on Day 0 that the letter names anything; he knows a letter exists. Under v8.1 the same exposure existed (row 94 board taken Day 0) and was never asked. Needs a ruling, and possibly a line on the padlock (a closed-shackle marine padlock he cannot shim).
+2. **Chapter 7 as inference (Fable's driver; GPT concurs).** Concur. Candidate rebuild: the fact is the boat owner's dawn sighting (canon, Day 290, Tip Line): someone opened the store before the four, so the letter they read need not be the letter she left; the omissions say which one. "To show you what I mean" goes. The "known to the town" / "only Brad and Margo" contradiction is mine: the café knows the debts were called in (spine row 56); only Margo knows from whom and how much. Re-cut ruling 2's wording.
+3. **Violet's engine: the machinery's scale (both).** GPT: a dead-man mechanism presupposes danger; the solicitor could have heard the concern. Fable: Brad cut the tin and left the machinery standing on a shelf. Concur on the forgery's gap ("loose lid" left in the ban is mine). Candidate: the forgery keeps a reason for the scale in her voice that is not a poisoning and not a name; the true letter keeps the tin. On the solicitor: canon already has him ask and her joke (row −18), and C1 row −3 ("tell her solicitor why": advise police, cannot compel) passed three attacks under v8.1. GPT's "why not tell the solicitor" applies to v8.1 equally; it is not new evidence against v0.3.
+4. **Margo: Day 8 book to the executor (GPT) and Day 19 → Day 51 with no trigger (Fable).** The Day 8 point is the harder one and it is also a v8.1 exposure (row 232 is canon). Candidate: the sister IS the executor and the shrug is the executor's response; a notebook not found is not a missing record; Margo's own file is her record. Day 19 → 51: the trigger is the room's verdict (Day 47), which is when a reading acquires consequences. GPT's "Brad kills her over an ambiguous omission": under v8.1 he killed her over a silence too (row 122 to 125); no change, but say so.
+5. **The room: the key inquiry (GPT), Liam's line "she wrote it wasn't me" (Fable), the three-weeks arithmetic (GPT).** Concur that the room must be staged, not asserted: the spare in the meter box is the first thing they check and it is there, which under v0.3 is worse for them (someone knew where it lives, and all four do). Liam's line must be written and answered in the room ("she thought she'd know, and she's dead"). Arithmetic: "three weeks" in the open = Day 14 to Day 33/40; fix the words.
+6. **The sister and the ashes (GPT fatal; Fable misread Day 0).** Liam found her on Day 1; the tube left Day 0 22:30; no attender saw it. The sister on Day 5: does she look for the ashes? Candidate: she does not know the shelf (four years estranged, never in the house), and she is handed the barrel and the keys and leaves the rest to clearance months later. Needs one ruled line; GPT's "cannot competently assume scattered" has force if she knew where they were.
+7. **Liam's two requests (both).** Brad may salt only with what Liam cannot dispute; Liam explains on night one and the explanation is what the room later reads as motive. Cheap.
+8. **Ruby to Del on Day 15 (GPT fatal).** Under v8.1 C3 row 3 passed (row 25: statement, examination, coroner's officer, nothing). Under v0.3 GPT says an intruder report licenses a key inquiry and a sheds canvass that finds the dawn witness. Check R27's terms against an intruder report on a closed accident; if it licenses the canvass, this is real.
+9. **"The ninth" as an alibi date (GPT).** A dated intrusion is investigable; concur; candidate: the forgery gives no date ("one morning last month"), which is more in her voice anyway.
+10. **The first minute (both: a summary).** Testable; three blind readers; and GPT's point that the ruled open holds a present danger and the recut does not is fair. Possibly the tin belongs in the minute.
+
+Then Stephen decides: rework v0.3 to v0.4 on the answered items, or declare the premise dead on the unanswered ones. Either is a legitimate outcome of the process he asked for.
+
+## Standing facts for this work
+
+Spine v1.4 with v1.5 (locker), v1.6 (tin), v1.7 (same night), v1.8 (terminology: cash = the cookie barrel, "the tin" = tobacco only; AU copy "biscuit barrel" flagged). Object treatments: `four-keys-locker-object-treatment-{ashes,clock}-2026-09-08.md`; disposition `four-keys-locker-object-disposition-2026-09-08.md`. v0.1 and v0.2 are dead and filed with their dispositions. Never name a real chemical for the tin. Never tell Fable spine Parts A to F. No em dashes anywhere.
+
+## Parked behind the premise
+
+Both letters and the forgery as prose; Ruby's week-four line; chapter 2 line rulings; chapter 3 prose; the recut open to three readers; the two DRAFT banner lines and the Episode Closed summary; the headless EditMode run when the editor is closed (new tests and the leads-bar grouping unverified in play); the economy note.

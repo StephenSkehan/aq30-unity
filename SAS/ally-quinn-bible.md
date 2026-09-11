@@ -51,7 +51,7 @@ Every design decision answers to these:
 
 Five tone commitments, quotable and binding:
 
-- **Investigative, not brutal.** "The darkness is intellectual intrigue, not bloodstains."
+- **Investigative, not brutal. AMENDED 2026-08-27 on external evidence.** The old wording, "the darkness is intellectual intrigue, not bloodstains", set a *graphicness* threshold. The genre research sets a *function* test instead, and the distinction matters: **a physical detail is permitted when it establishes mechanism, testimony or consequence, and refused when it exists for effect.** Detail that changes understanding may be unflinching; detail that decorates cruelty turns a person into a texture. This is a stricter rule than the slogan it replaces, not a looser one. It exists because the old wording read as permission to abstract bodily consequence away, and twelve testers called the result too safe. **The twelve-plus rating boundary is unchanged, and no premise may be gore-led.**
 - **Atmospheric noir-lite.** Foggy docks, whispered secrets, unsolved puzzles — "stylised to stay accessible and never oppressive."
 - **Conversationally human.** Ally is "witty, sharp, and empathetic… a true crime podcaster who knows how to balance tension with humanity."
 - **Empowering curiosity.** "Each combination is a reveal, a step deeper into the case… progress and discovery rather than grind."
@@ -63,11 +63,29 @@ The register is grounded and contemporary — modern forensic vocabulary (digita
 
 ## 1.4 The audience
 
-**The Investigative Casual.** Merge's player base runs 70–75% female, core ages 25–54, sessions of 15–25 minutes; true-crime podcast audiences run ~73% female and highly engaged — 34% of Americans 18–49 listen regularly, and they "crave a sense of participation." The overlap is this game's audience: players with a high need for cognition who prioritize intellectual closure and deductive satisfaction, who find the genre's cozy default (family dramas, farm restorations) "shallow or repetitive" and want grit, mystery, and stakes — without gore or camp. Roughly a quarter of merge MAU are "dolphins" — occasional $2–$10 spenders *if they feel respected*.
+**The Investigative Casual.** Merge's player base runs 70 to 75 per cent female, core ages 25 to 54, sessions of 15 to 25 minutes. True crime skews female too, consistently and across media.
+
+⚠ **CORRECTED 2026-08-27 on external evidence. The figures below are not interchangeable and the single-motive explanation is wrong.** Pew found a 44 to 23 per cent gender split among US podcast listeners who *regularly* consume true crime, and that 34 per cent of Americans who had listened to any podcast in the previous year regularly listen to true crime. Those denominators are different measures and must not be quoted as one number.
+
+**Motives are plural, and "women want safety tips" is an incomplete account** that the research specifically warns can place responsibility on women and overstate stranger danger while obscuring violence in intimate settings. The supported set includes threat learning, empathy with victims, anger at institutional failure, social belonging and conversation, escape and entertainment, curiosity about dangerous minds, and the moral permission required to enjoy dark material. Pew's true-crime-first listeners most often cite entertainment and wanting something to hear while doing something else, which makes this **companion media** consumed under divided attention. Clarity therefore beats density.
+
+The overlap is this game's audience: players with a high need for cognition who prioritize intellectual closure and deductive satisfaction, who find the genre's cozy default (family dramas, farm restorations) "shallow or repetitive" and want grit, mystery, and stakes — without gore or camp. Roughly a quarter of merge MAU are "dolphins" — occasional $2–$10 spenders *if they feel respected*.
 
 **Danielle H.**, the anchor persona: 34, digital marketing professional, Sydney, time-poor and media-savvy, earbuds always in. Crime Junkie and Casefile subscriber; watches *Only Murders in the Building*; plays Merge Mansion and Lily's Garden but finds them too cosy. She "plays to feel like she's part of a true-crime investigation." What she needs: 20–30 minute sessions without punishing downtime; storytelling more mature than the cozy default; progression without aggressive monetisation walls. What loses her: energy hard-gates that stall story for days; merge-as-housekeeping ("she feels clever for merging, not just tidy"); story behind spend — "she would feel betrayed if the story was locked behind aggressive spend." What she keeps: solved cases as trophies — the produced podcast episode she plays on her commute — and a suspect gallery worth screenshotting to her true-crime Facebook group. *(Source note: her age appears as 29 in the oldest GDD and 34 in later documents; 34 is adopted.)*
 
 Her ideal journey, end to end: install off the "unlock the podcast episode" hook → a first five minutes where the tutorial *is* detective work → every merge chain produces something meaningful that visibly updates the case → the first solved case unlocks a produced episode → "play merges → influence investigation → unlock podcast → share & discuss → await next case."
+
+## 1.4b The care line (review instrument, ADDED 2026-08-27)
+
+**Not canon, not marketing copy, not a gate.** A test field, answered at four levels: the game, the season, the episode and each phase.
+
+> **Who may lose what · what is not known · why the next evidence can change it.**
+
+Three plain sentences, no proper nouns, no trade terms. **If a phase cannot state its live question, its leads get combined, cut or reframed.** The point is that everyone working on the game can say what the player is trying to save before anyone discusses clues.
+
+*Why it exists:* the research is unambiguous that audiences follow a consequential question rather than a crime category, and our framework required this at premise level only, which is one level above where a player actually stands.
+
+*Falsification:* read the care line and the opening separately to blind listeners. If the line makes the opening attractive only after explanation, the copy is compensating for the story and the opening has failed.
 
 ## 1.5 The USPs
 
@@ -96,7 +114,7 @@ Havenbay is a fictional, contemporary, mid-size coastal city — population ~480
 
 The city's thesis is **vertical corruption**: wealth and power sit uphill (literally, in Highcliff), and the money that feeds them moves through the docks below. Working Havenbay — dockworkers, teachers, cops, reporters — is the city's heartbeat; above it, old shipping-and-real-estate money coexists uneasily with new players like Councillor Hart's redevelopment machine and the Voss Group's private-security empire; beneath it runs an underground of hustlers, brokers, and organized crime "tolerated so long as they don't interfere with 'respectable' interests." Public sentiment is cynical about official truth — which is why *Echoes of Havenbay* has cult appeal: it "says the things the papers won't."
 
-**History in four beats:** (1) *Harbor origins* — a fishing town grown into shipyards on an immigrant backbone; (2) *the war boom* — the docks expand, the unions gain leverage and enemies; (3) *bust and "renewal"* — deindustrialization, blight, and aggressive redevelopment whose paperwork is where half the bodies are buried; (4) *the quiet scandal* — thirteen years ago, journalist Thomas Quinn dies in a "rainy accident," his laptop missing; files scatter, whispers persist (Chapter 3).
+**History in four beats:** (1) *Harbor origins* — a fishing town grown into shipyards on an immigrant backbone; (2) *the war boom* — the docks expand, the unions gain leverage and enemies; (3) *bust and "renewal"* — deindustrialization, blight, and aggressive redevelopment whose paperwork is where half the bodies are buried; (4) *the quiet scandal* — ten years ago, journalist Thomas Quinn dies in a "rainy accident," his laptop missing; files scatter, whispers persist (Chapter 3).
 
 ## 2.2 The six districts
 
@@ -121,6 +139,125 @@ Each district is a playable hub with its own texture, landmarks, and case flavor
 - **Havenbay University.** Journalism and forensic sciences; scholarship kids and legacy donors; the institutional-bureaucracy antagonist of the Ghost Student case.
 - **Transport.** The Bayline elevated rail and streetcars; the Harbor Ferry Terminal (lockers, pylons, handoffs); Havenbay International Airport (private jets, quiet cargo); cab drivers who hear everything.
 
+### 2.3.1 Havenbay recording law (Stephen-ruled 2026-08-24)
+
+Havenbay is an **all-party consent** jurisdiction, and the rule has two separate limbs, which is where the drama lives.
+
+**Making a recording.** Recording a private conversation without the consent of every party is an offence, **except** where the recording is reasonably necessary to protect the lawful interests of the person making it, or to preserve evidence of a serious offence.
+
+**Publishing a recording.** Communicating or publishing such a recording is a **separate and stricter** offence. Narrow exceptions only: disclosure to police, use in legal proceedings, or the consent of the parties recorded.
+
+**What this means in practice, and why it was ruled this way rather than as one-party consent.**
+
+- **Gerald's recording of Frank Doyle is lawful to make and unlawful to broadcast.** He is a retired detective who reasonably believed a homicide was being disclosed by a man who would deny it by morning. He was right; Doyle was dead by breakfast. The exception fits, so Gerald stays competent, which a flat prohibition would not have allowed.
+- **Airing a tape is a sacrifice, never a tactic.** Ally broadcasting it commits an offence in public and on the record, and exposes whoever made the recording. Any episode branch built on publication must price that in.
+- **There is a lawful quiet route.** Disclosure to police is an exception, so Ally can play a recording to Del privately. The quiet path has a mechanism of its own rather than being merely the absence of the loud one.
+- **The Tip Line is unaffected.** A caller who rings a line and leaves a message consents by the act. This is why the Tip Line works as an object-character and why the archive is lawful.
+- **Ally asks before she records an interview, on microphone.** It is real podcast practice, it demonstrates evidential discipline without a speech about it, and it makes any covert recording she does make a decision with a price rather than a free tool.
+
+**Exposition budget:** the player never needs the statute. One line from Del at the moment of choosing carries it. Register: *you can play me that, you can't play it to Havenbay.*
+
+*Note: this is chosen worldbuilding, not researched law. It follows the recognisable shape of all-party-consent regimes so a player finds it credible. Havenbay is fictional and the rule is ours to set; the constraint is only that it must not grant anyone a power institutions do not plausibly have.*
+
+### 2.3.1b The Tip Line, what it is for (Stephen-ruled 2026-08-26)
+
+**The Tip Line is the voice of the city dwellers who wish to stay anonymous for now.** It is an approved, standing plot device and is not restricted to any one episode. A caller consents by leaving a message, so making the recording is lawful under §2.3.1; publishing any part of it is a separate question and is Ally's to answer each time.
+
+*Effect:* the line is a signature of the show rather than a liability inherited from the demoted Episode 1. Concerns that reusing it repeats The Listener are resolved: the device is fine, and what failed there was the absence of jeopardy, not the telephone.
+
+*The standing constraint that makes it dramatic:* the line keeps a voice, a date and a time, and no caller metadata, because that promise is the only reason anyone uses it. An anonymous caller who is cut off cannot be called back.
+
+### 2.3.2 Havenbay institutional processes (Stephen-ruled 2026-08-25)
+
+Fifteen parameters, ruled in one sitting to close the gap that killed roughly a third of two premise fields. **These are parameters, not powers.** Kill Gate Zero is untouched: nobody may invent an authority an institution does not have. What is settled here is how long Havenbay's institutions keep things and who may ask for them.
+
+**Records and retention**
+
+| # | Ruling |
+|---|---|
+| R1 | **Sample handling records outlive the samples.** Toxicology and pathology samples are destroyed on schedule; the register of who handled them is kept **twenty-five years** and is disclosable to next of kin. |
+| R2 | **Weather and visibility observations are permanent and publicly searchable.** |
+| R4 | **A wound-up company's records** pass to the liquidator, then to whoever buys the assets, and are retained **seven years after dissolution.** Nothing is destroyed inside that window. |
+| R7 | **CCTV is kept thirty-one days**, and indefinitely once flagged for an investigation. |
+| R8 | **Ordinary commercial operational data** — dispatch, tracking, transaction logs — is kept **seven years.** |
+| R12 | **Fire investigation reports** are retained **twenty years.** Findings go to the coroner, the property owner and the insurer. Working notes are not disclosable. |
+
+**Who may obtain what**
+
+| # | Ruling |
+|---|---|
+| R3 | **Harbour authority contracts and payments are a public register**, searchable, retained seven years. |
+| R5 | **Coronial files:** next of kin may obtain the findings and the evidence tendered. Police running sheets, working notes and unused material stay closed. |
+| R6 | **Inquest and court transcripts** may be ordered by anyone on payment of a fee, unless a court restricts them. |
+| R9 | **A report commissioned by an insurer belongs to the insurer.** Where prepared in contemplation of a claim dispute it is privileged, and **the investigator who wrote it may not release it unilaterally.** |
+| R10 | **A deceased person's medical records** may be obtained by next of kin or an executor, with third-party information redacted. Never by Ally in her own right. |
+| R11 | **Death certificates** are restricted to next of kin, executors and legal representatives for **thirty years**, then open to public search. |
+| R14 | **Council permits, planning records and property transfers are publicly searchable, permanently.** |
+| R15 | **Vehicle event data** belongs to the vehicle owner; an insurer may hold a copy under the policy; **police seizure removes all other access.** |
+
+**Investigation**
+
+| # | Ruling |
+|---|---|
+| R13 | **A workplace fatality** is investigated by the regulator. The site is preserved until released. The report goes to next of kin and to the coroner. |
+
+**The consistent line across R5, R9 and R12:** a filed finding is reachable, an investigator's working notes are not. Hold that line in every institution or the world stops being credible.
+
+**What these rulings cost, recorded so nobody re-litigates them.** R8 confirms a 2001 dispatch record no longer exists. R9 removes the access route from a premise built on a retired investigator handing over an insurer's report. R11 breaks an access claim that assumed recent death certificates were freely searchable. R15 keeps event data on a seized vehicle out of reach. **Four premises died to keep the other eleven rulings honest.**
+
+**Standing effect.** A seed previously failed for want of one of these rulings may be resubmitted **once**, under the normal gates. Future premises depending on any process above no longer require research: they cite the ruling.
+
+**Standing practice, and the reason this section exists.** Prompt kit v2.1 never said an unverified process was fatal. It says *identify the required Havenbay canon ruling and fail the seed pending approval.* Across roughly fifty seeds in two executions, neither model ever returned one for a ruling; both read a question queue as a wall. **Where a premise depends on a Havenbay process that is not yet settled, ask for the ruling. Do not kill the seed and do not invent the answer.**
+
+**R16. Cross-jurisdictional matching of missing-person reports against unidentified deceased (Stephen-ruled 2026-08-26).**
+
+**Participation is VOLUNTARY AND PATCHY.** Havenbay and the other jurisdictions contribute to a shared comparison system, but entry is not mandated, coverage is incomplete, and practice varies by agency and by the classification a case is given.
+
+*Why it reads true:* this is the real-world norm rather than a convenience. In the United States only around sixteen or seventeen states mandate entry into the national system, and in ninety per cent of counties not a single active unclaimed-person case was listed over a five-year period. In Australia roughly seven hundred and fifty sets of unidentified human remains are held nationally, and a dedicated national DNA programme had to be created to go back and ask families to voluntarily provide reference samples that were never taken at the time of report.
+
+*Consequences that are now canon:*
+- **Entry is not identification.** A description match returns a candidate list. Resolving it requires biometrics or a family follow-up.
+- **A low-risk or voluntarily-absent classification does not attract reference-sample collection**, because nobody believes the person is dead. This is the most common reason a body and a report never meet, and it requires no professional to omit a step.
+- Fingerprints identify only a person already on file. Odontology is confirmatory, not searching, and needs a named candidate first.
+
+*Recorded:* Claude's `No Fixed Address` premise depends on this ruling, and the ruling was made after checking real-world practice rather than from what the premise needed. Had it gone the other way the premise would still stand on the absent reference sample alone.
+
+**R17. Independent review of death certificates (Stephen-ruled 2026-08-27).**
+
+**Every non-coronial death certificate is independently reviewed before registration, and the system was introduced THREE YEARS AGO.** A medical examiner checks the stated cause against the clinical record and may contact a representative of the deceased. Deaths certified before that date were closed on the attending doctor's signature alone.
+
+*Why it reads true:* modern jurisdictions have added exactly this safeguard in the last few years, precisely because a doctor certifying a patient they attended was the only check in the chain.
+
+*Consequences that are now canon:*
+- **A death certified more than three years ago received no independent scrutiny**, and that is not negligence, it is the system as it then stood.
+- **A death certified today does.** An unusual cause, or a beneficiary pattern a reviewer notices, is now caught at registration.
+- ★ **Anyone whose model of how deaths are recorded predates the reform is operating on an out-of-date map, and does not know it.**
+
+**R18. Pharmacy dispensing checks (Stephen-ruled 2026-08-27).**
+
+**Dispensing includes a pharmacist's clinical check, and an early or dose-inconsistent repeat is queried.** The query is answered by the person collecting, and **an ordinary plausible reason is accepted, recorded with a date and supplied against.** That record is retained under R8 for seven years.
+
+*Consequences that are now canon:*
+- **A pharmacist who queries, records the answer and supplies has done her job correctly.** No premise may depend on a pharmacy simply not noticing.
+- The resulting note is **a complete, accurate, dated record that exists and that nobody reads again** unless somebody goes looking.
+
+**R19 to R26. Deaths, the missing, documents and devices (Stephen-ruled 2026-08-30, at the Four Keys spine).**
+
+| # | Ruling |
+|---|---|
+| R19 | **An unwitnessed fatal fall with a secure scene, a single impact consistent with the fall, and a competent post-mortem is recorded as an accident.** Only new evidence of an act by a person reopens it. A written expression of fear, a friend's later suicide, or a second death elsewhere do not. |
+| R20 | **A vehicle, a message and personal effects at a known site make a missing adult high risk, presumed in the water.** The search stands down within days. A DNA reference and prints are taken from the home on the first or second day and kept indefinitely against a future body. The file stays missing, not dead. |
+| R21 | **A declaration of death may be sought only by family or a person with a financial interest, after a waiting period measured in years.** |
+| R22 | **Authentication of a material posthumous handwritten document is routine:** it is examined before it is acted on, whether or not anyone disputes authorship. |
+| R23 | **A last-movements review on an apparent suicide reaches the deceased's own carrier records** (cell-site, data sessions). An encrypted messaging provider confirms an account and retains no content and no contact list. **No tower request is made without an alleged offence.** |
+| R24 | **A death at a known disappearance site with a known association links the files.** Linked means read together; neither death is reclassified by the link. |
+| R25 | **Kestrel Head:** one camera at the car park entrance covering vehicles, none on the point or the coast path. A review pulls it for an apparent suicide. |
+| R26 | **A second identity without an accomplice.** Births are not cross-checked against infant deaths at issue, but the route the episode uses is a missing man's genuine name: a low-risk, voluntarily-absent classification (R16) attracts no sample and nothing monitors the name. A name with no activity on any register since the report is inert. The name is exposed only when someone with a name and a town asks. *(A sentence about licence photo renewal by post was here on first recording and was withdrawn the same day after the step-3 audit: it was Claude's detail, not the ruling, and it created a route.)* |
+
+**R27. Review of a document's place of finding (Stephen-ruled 2026-08-30, after the step-3 audit of the Four Keys spine).** A proper review of a material posthumous document inspects the place it was found and its access. **Canvassing bystanders at that place about who visited it before the finders requires an allegation or a hypothesis of tampering.** Absent one, the question is not generated by the file.
+
+*Housekeeping note: R16 to R27 were recorded at the head of Chapter 3 between 2026-08-26 and 2026-08-30 and moved here, unchanged, in the 2026-08-31 tidy-up commit this note is part of.*
+
 ## 2.4 The Rusty Anchor
 
 The bar is as much a character as any person in Ally's world. Founded **1924** by **Patrick Callahan** as *Callahan's Dockside* (a "soda shop" front through Prohibition); renamed **The Rusty Anchor** in the 1970s by his son **Seamus**, after the salvaged shipwreck anchor now bolted by the door under a battered green neon sign; inherited in the 2000s by Seamus's daughter **Moira "Mo" Callahan**, who keeps it what it has always been: **neutral ground**. Cops and crooks drink under the same roof; city officials slip in for a whisky away from prying eyes; violence goes outside, whoever you are — and because everyone trusts the rule, Mo hears everything.
@@ -143,7 +280,7 @@ The season question: **who killed Thomas Quinn, and what conspiracy was he uncov
 
 ## 3.1 The Thomas Quinn incident
 
-Thirteen years ago — Ally was thirteen — investigative journalist Thomas Quinn, 43, died when his car left the road on a rainy night. Official ruling: accident. The hallmarks of a cover-up were all present and all deniable: a traffic camera "under maintenance"; witnesses gone unreliable or silent; a report filed with questionable timing; an early witness statement — describing **two vehicles stopped roadside near the crash site** — later omitted from the file; and his ever-present **laptop missing from the wreck** ("lost in the marsh," said the police). The Gazette ran a brief obituary and never printed his final story.
+Ten years ago — Ally was sixteen — investigative journalist Thomas Quinn, 40, died when his car left the road on a rainy night. Official ruling: accident. The hallmarks of a cover-up were all present and all deniable: a traffic camera "under maintenance"; witnesses gone unreliable or silent; a report filed with questionable timing; an early witness statement — describing **two vehicles stopped roadside near the crash site** — later omitted from the file; and his ever-present **laptop missing from the wreck** ("lost in the marsh," said the police). The Gazette ran a brief obituary and never printed his final story.
 
 What he was chasing: a corruption web tying old-money redevelopment, missing public funds, and police involvement — the machine this bible calls the Ferryman network. Hours before he died he told a colleague he'd found something "explosive." He named no names. He'd learned not to.
 
@@ -204,7 +341,7 @@ Format note on voice: quoted lines in these entries are register samples from th
 
 ### 1. Allison "Ally" Quinn — 26 · protagonist · ★ CANON (model sheets + emotion set v2, 2026-07-11)
 
-Licensed private investigator and host of *Echoes of Havenbay*. Ally grew up in Havenbay, raised by her widowed mother Helen and her grandfather Gerald after her father's death when she was thirteen. Gerald's half-told stories of unsolved cases — and the staged "mystery scenarios" he built around the house for her — made an investigator of her before she knew the word; journalism school and a teenage true-crime blog made her a storyteller. Her breakout was real: a podcast season on a decade-old missing-person case produced a crowdsourced lead — an overlooked witness — that helped police make an arrest. She licensed as a PI under Gerald's coaching and built the show on a promise: the tip line "keeps voices, timestamps and nothing else."
+Licensed private investigator and host of *Echoes of Havenbay*. Ally grew up in Havenbay, raised by her widowed mother Helen and her grandfather Gerald after her father's death when she was sixteen. Gerald's half-told stories of unsolved cases — and the staged "mystery scenarios" he built around the house for her — made an investigator of her before she knew the word; journalism school and a teenage true-crime blog made her a storyteller. Her breakout was real: a podcast season on a decade-old missing-person case produced a crowdsourced lead — an overlooked witness — that helped police make an arrest. She licensed as a PI under Gerald's coaching and built the show on a promise: the tip line "keeps voices, timestamps and nothing else."
 
 Her ethics are the show's spine: she vets everything before airing it, holds back what could burn a witness, funnels crucial tips to police rather than broadcasting them — and, since Episode 1, follows the rule Dot wrote: a voice can tell her where to look without her telling everyone else where it lives. Her mantra, inherited from Gerald: *"Do the right thing, even if it's the hard thing."* Her flaw, named in the old design docs and dramatized in Episode 1: investigative obsession — tunnel vision that can put the story ahead of the people in it, which is exactly the mistake the fish-hook broadcast made and the season won't let her forget.
 
@@ -212,9 +349,9 @@ Her ethics are the show's spine: she vets everything before airing it, holds bac
 
 **Appearance (locked by model sheets).** Auburn/copper shoulder-length wavy hair swept right-to-left; large green-blue (teal) eyes; teal trench coat with wide lapels over a black collared shirt; the **silver locket** on a fine chain holding Thomas's photo; retro silver-and-black headphones worn around the neck; brown leather cross-body satchel of podcast gear. Signature props: vintage chrome broadcast microphone, handheld cassette recorder. The blue in noir shots is lighting, never dye (Chapter 8.3). The locket is her purpose-built vulnerability beat — the private crack in her competence, spent at most once per episode.
 
-### 2. Thomas Quinn — 43, deceased · Ally's father · seed: the sepia photo in her locket
+### 2. Thomas Quinn — 40 at death, would be 50 now · Ally's father · seed: the sepia photo in her locket
 
-Investigative journalist at the Havenbay Gazette, later independent — union corruption, dockside smuggling, redevelopment graft. "Both wound and beacon": the reason Ally holds a microphone at the dark, and the season's central mystery (Chapter 3.1). Killed thirteen years ago in a staged accident; his laptop was never found. What survives of him is method and artifact: files annotated in initials only (a discipline Danny Reyes taught him posthumously), a battered messenger bag, the fountain pen Helen kept and Ally now carries, a shorthand only she and Gerald can read, the lockbox. Episodes touch him lightly — his absence, his files existing, not their contents — until the season deliberately opens the well. On-page he exists as the photo in the locket, "dark-haired, kind-eyed, 40s; indistinct but human."
+Investigative journalist at the Havenbay Gazette, later independent — union corruption, dockside smuggling, redevelopment graft. "Both wound and beacon": the reason Ally holds a microphone at the dark, and the season's central mystery (Chapter 3.1). Killed ten years ago in a staged accident; his laptop was never found. What survives of him is method and artifact: files annotated in initials only (a discipline Danny Reyes taught him posthumously), a battered messenger bag, the fountain pen Helen kept and Ally now carries, a shorthand only she and Gerald can read, the lockbox. Episodes touch him lightly — his absence, his files existing, not their contents — until the season deliberately opens the well. On-page he exists as the photo in the locket, "dark-haired, kind-eyed, 40s; indistinct but human."
 
 ### 3. Helen Quinn — 46 · Ally's mother · school principal · *proposed* (prompt block exists)
 
@@ -260,9 +397,9 @@ Harbor Ward born, Puerto Rican descent; the grey zone between legality and crime
 
 Third-generation keeper of the family bar (§2.4) and of the neutral ground it stands for. Has known Gerald since his working days; helped look after Ally in the year after Thomas died — the back room, a cola, a jigsaw puzzle — and treats her as family still. Behind the no-nonsense front is the sharpest people-reader on the waterfront and a locked office of ledgers, matchbooks, and favors owed. She remembers everything and everyone: it was Mo who could put a name to three seconds of Dot's voice — "Dorothy Ellis. Cleaned Chandler Road school for thirty years. Tuesday quiz, table six — tell her it misses her."
 
-**Relationship to Ally.** Informal protector, supplier of street-level truth, keeper of her confidences — and the one adult who'll tell her when she's being reckless: "Baby, you're chasing a storm in a raincoat full of holes. Be careful."
+**Relationship to Ally.** Informal protector, supplier of street-level truth, keeper of her confidences — and the one adult who'll tell her when she's being reckless: "You're chasing a storm in a raincoat full of holes, my lovely. Be careful."
 
-**Voice.** Warm, unhurried, terminally unimpressed; endearments as punctuation ("hon," "sugar"); a bar towel's worth of wisdom per line. "I'll tell you, honey, that man's lying so bad I can see his nose growing from here."
+**Voice (locked register).** Warm, unhurried, terminally unimpressed; a bar towel's worth of wisdom per line. **Endearment: "my lovely", hers alone and the only one she uses.** The endearment map is closed (Gerald and Dot say "love", Mo says "my lovely", Del says "Quinny"); the legacy "hon"/"sugar"/"honey" register recorded here before the 2026-07-31 ruling is RETIRED and contradicts her shipped dialogue. Locked sample, live in `Resolve_E1_Bridge`: "Well, look what the tide brings. The corner booth, my lovely. Where else would he be? Go on through. I'll bring the usuals."
 
 **Appearance (locked).** Sturdy build, strong forearms; silver-streaked copper hair pinned up loosely (streak pattern exact per approved portrait); dark green henley, sleeves pushed up, bar towel over one shoulder; small gold claddagh ring. **Her signature warm amber light is an approved exception to the global noir key.**
 
@@ -276,7 +413,7 @@ Havenbay's margins talking back: sprawling murals under the Stonebridge Viaduct 
 
 ### 9. Francis "Frankie" Malone — 38 · mechanic, boxing promoter, fixer · *proposed*
 
-Runs Malone's garage on the Rivermouth edge — anything with an engine fixed, and for clients who can pay, "specialty" modifications no invoice describes. Promotes amateur boxing, teaches street kids to jab, wears a St. Christopher, and owes Ally permanently: her podcast cleared his sister's name, a debt he repays in intel, safe exits through the garage's back door, and flat refusal of money (donuts accepted). His Ferryman-network adjacency is real and murky — "both resource and risk; deals always carry strings" — which makes him the ally most likely to know something he shouldn't and least likely to say where he heard it. His skills have an unspent season use: vehicle forensics, and one particular thirteen-year-old crash.
+Runs Malone's garage on the Rivermouth edge — anything with an engine fixed, and for clients who can pay, "specialty" modifications no invoice describes. Promotes amateur boxing, teaches street kids to jab, wears a St. Christopher, and owes Ally permanently: her podcast cleared his sister's name, a debt he repays in intel, safe exits through the garage's back door, and flat refusal of money (donuts accepted). His Ferryman-network adjacency is real and murky — "both resource and risk; deals always carry strings" — which makes him the ally most likely to know something he shouldn't and least likely to say where he heard it. His skills have an unspent season use: vehicle forensics, and one particular ten-year-old crash.
 
 **Voice.** Easy charm with an angle behind it; calls Ally **"Q."** "What trouble are we getting into today?"
 
@@ -302,9 +439,11 @@ Cuban-American, widowed; has seen the worst of two cities' harms up close and an
 
 ## 4.3 The police
 
-### 12. Sgt. Delaney "Del" Cruz — 36 · Harbor Ward sergeant · ★ CANON (portrait v2 + emotion sheet 2026-07-11)
+### 12. Sgt. Delaney "Del" Cruz — 30 · Harbor Ward sergeant · ★ CANON (portrait v2 + emotion sheet 2026-07-11)
 
 Over a decade in HCPD, sergeant by grit and intelligence, Filipino heritage, Harbor Ward to the bone. Her father died in an "accidental" warehouse fire that everyone on the docks understood was nothing of the kind — the private engine behind a career of bending rules for justice and paying for it in sleep. Her partnership with Ally is unofficial and mutually essential: Del converts podcast-grade findings into legally usable cases ("officially anonymous, unofficially airtight"), pulls what can be pulled, stalls what can be stalled, and draws the line out loud when Ally reaches it. She is the season's proof that not all of Havenbay's police are compromised — and, as of Episode 2's notch, the one who believes a taskforce would leak from inside her own department.
+
+**Canon adds (Stephen-ruled 2026-08-03, propagated here 2026-08-24).** She calls Ally **"Quinny"**, her nickname alone and nobody else's; it is part of the closed endearment map. She never relaxes, she picks better sightlines: her spot is the table outside the **Kestrel Corner Diner**, back to the wall, watching the street, the crossing and everyone's hands. **Origin:** as a twenty-year-old rookie constable she was on the Quinn doorstep the night Thomas died, when Ally was sixteen, and has quietly watched out for her since. That is the deep-trust engine under every rule she bends, and it surfaces in her locked "Off the Books" lead as "Del's been doing it for me since I was sixteen." Her refusals carry the route forward: she will not hand a civilian an address, so she describes the lock instead ("There's a blue gate at eleven with a garden like a postcard").
 
 **Voice (locked register).** Level, economical, honest about the cost of things: "You know what that does to a career?" — "Wakes it up. Mine's been asleep for years." Her signature mode: "I can't officially tell you to do this, but if you do, be careful."
 
@@ -415,7 +554,7 @@ Stale names that must NOT resurface outside this table. (Full authority: the ros
 |---|---|---|---|
 | The city | Brookford / "Havenford" | Havenford | **Havenbay** (Brookford survives only as Gerald's old PD) |
 | Bar owner | Margaret "Mags" O'Rourke, 61 | Maxine "Max" Carver, 61 | **Moira "Mo" Callahan**, late 50s |
-| Police sergeant | Tahlia "Tally" Reed, 34 | Naomi Reed, 34 | **Sgt. Delaney "Del" Cruz**, 36 |
+| Police sergeant | Tahlia "Tally" Reed, 34 | Naomi Reed, 34 | **Sgt. Delaney "Del" Cruz**, 30 |
 | Police captain | Nora Kincaid, 48 | Naomi Drake | **Captain Dana Drake**, early 50s |
 | Hacker | Rae Bishop, 29 | — | **Alexander "Alex" Vega**, 29 |
 | Ally's mother | (unnamed widow) | Elaine Quinn | **Helen Quinn**, 46 |
@@ -450,7 +589,9 @@ Rules of the frame:
 - Podcast-type leads are the tent poles: L1 (the cold open), L5 (mid-season milestone), L12 (case close). All Podcast leads are voiced by Ally — write those nodes for the ear: rhythm, breath, no visual crutches.
 - Episode 1 added the *stinger* as a format tool: a final wordless node after the close (this episode, playing. A click. Silence. A diesel engine starts). Use sparingly; it is the format's equivalent of a post-credits scene.
 
-## 5.2 The 12-lead structure (hard engine constraint)
+## 5.2 The 12-lead structure (SUPERSEDED 2026-08-23)
+
+> **STATUS MARKER, not a content change.** This section was written as a hard engine constraint. It is no longer one. Stephen ruled on 2026-08-23 that **episode length is decided by the story**, and the live murder-pilot candidates run fifteen to eighteen leads across two or three phases. The shipped Listener already ran thirteen once Del's lead was added. `SAS/pivot-brief-2026-08-23.md` is the authority. Read what follows as an accurate description of one episode's shape, and as the reason the engine was built the way it was, not as a rule any new episode must obey.
 
 Exactly 12 leads in two phases, exactly 2 podcast milestones (L5, L12), parallel threads in both phases, one climax lead:
 
@@ -836,9 +977,9 @@ The commercial playbook, preserved from the Full AQ Download and validated/adjus
 
 **Brand kit.** Icon: Ally silhouette + magnifying glass. Palette: noir pastel. Tagline stack: "Merge clues. Solve cases. Expose the truth." / "Play the mystery. Piece by piece." Store keywords: "true crime merge," "detective story game," "mystery merge," "merge game," "detective merge." Screenshots lead with story and portraits, not the board; the subtitle carries the podcast hook. Domain to register: AllyQuinn.com. Community: a "Case Breakers" Discord; TikTok (merge gameplay + crime facts), Instagram (character art), Reddit (r/truecrime adjacency).
 
-**The marketing asymmetry (the plan's one big idea):** ads mimic crime-doc trailers, not gameplay ads — rain, evidence photos, red string, Ally's voice. The VO does double duty: 3–4 podcast nodes cut as captioned vertical clips *are* the TikTok pipeline at zero extra production cost, and real *Echoes of Havenbay* teaser episodes on Spotify/Apple blur game and reality. Micro true-crime podcasters (10–50k listeners) over big UA buys.
+**The marketing asymmetry (the plan's one big idea):** ads mimic crime-doc trailers, not gameplay ads — rain, evidence photos, red string, Ally's voice. The VO does double duty: 3–4 podcast nodes cut as captioned vertical clips *are* the TikTok pipeline at zero extra production cost, and real *Echoes of Havenbay* teaser episodes on Spotify/Apple, **clearly presented as fiction. ⚠ AMENDED 2026-08-27: the original wording said these should "blur game and reality" and that is now forbidden. Fiction cannot inherit true crime's reality premium, and simulating actuality would spend the trust the Tip Line promise depends on.** The crime-doc trailer aesthetic is unaffected. Micro true-crime podcasters (10–50k listeners) over big UA buys.
 
-**Pre-registration blueprint (90 days, when used):** Tease (store pages, whispered-voicemail ads, 2 real teaser episodes) → Engage (weekly case-file drops; milestone rewards at 10k/25k/50k/100k pre-regs — energy pack → exclusive Ally cosmetic → limited "Founders Case" pack → podcast profile badge) → Convert (playable cliffhanger ads, minisodes, Apple featuring pitch, "7 Days to Solve the Case" countdown) → launch day: Ally "publishes" the launch episode; "Launch Mystery Night" livestream.
+**Pre-registration blueprint (90 days, when used):** Tease (store pages, whispered-voicemail ads, 2 teaser episodes clearly marked as fiction) → Engage (weekly case-file drops; milestone rewards at 10k/25k/50k/100k pre-regs — energy pack → exclusive Ally cosmetic → limited "Founders Case" pack → podcast profile badge) → Convert (playable cliffhanger ads, minisodes, Apple featuring pitch, "7 Days to Solve the Case" countdown) → launch day: Ally "publishes" the launch episode; "Launch Mystery Night" livestream.
 
 **Soft-launch frame:** Canada/Australia/UK, 6–12 weeks. Targets: CPI < $2.50; D1 > 35% aspirational (read against the ~25% genre benchmark), D7 > 12%, D30 > 5%; ARPDAU $0.20–0.40; day-90 breakeven ROAS. Solo-dev counsel adopted: organic devlogs and a superfan Discord first; paid UA "to scale a proven model, not to test a hypothesis."
 

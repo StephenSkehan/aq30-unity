@@ -1,0 +1,28 @@
+<!-- pdf-title: Prompt: the object in the locker -->
+
+# PROMPT: THE OBJECT IN THE LOCKER · 2026-09-08
+
+*For ChatGPT (Stephen runs it) and a fresh Fable agent (Claude runs it). Both receive exactly the text below the line. Results are saved verbatim beside this file; a disposition table follows; Stephen rules. Context for the operator: under the trusting-forgery premise (v0.3, being built), the decoy object that Brad leaves in Violet's locker beside his forged letter needs re-choosing. The boat name board was chosen for v8.1's accusing forgery; the mother's door key was proposed on 2026-09-08 and Stephen's objection stands: a small object could have been posted, so it does not justify a locker. The object has to need the locker.*
+
+---
+
+You are helping design one physical object in a true-crime mystery. Read everything before answering. Work only from this text.
+
+**The situation.** Violet Moore, forty-four, a signwriter in a small coastal city, fears that someone with her spare key has been coming into her house, and half fears she is imagining it. She trusts her four closest friends completely: Liam (a boatyard crane driver who has known her since they were eleven, the only one who knew her late mother), Ruby (a nurse), Margo (an accountant who does her books), Brad (a younger signwriter she taught for seven years). She writes everything down, locks the letter in her padlocked locker at the slip boatsheds together with a thing she found hidden in her own workshop roof, and lodges four short notes with her solicitor to be posted to the four after her death: go to my locker together, all four of you, these are the only keys. Then she dies at the foot of her own stairs, and a coroner records an accident.
+
+**What only the writers know.** Brad killed her. The thing she found in her roof was his: a gilded alphabet panel in her own style, signed with a mark that is his secret new identity. He has a key to her workshop and knows where her house spare lives. He checks a PO box every morning, so he holds his note by seven while the other three read theirs after work. That morning he opens her locker, takes her true letter and the panel, spends the day at her workshop bench forging a replacement letter in her hand, and puts the forgery in the locker by mid-afternoon with a different object beside it, an object of hers that he took from her house the night he killed her. The four open the locker together that evening.
+
+**What the forged letter says.** It keeps her voice and her trust: it isn't any of you four; someone with my key has been in my house, or I'm imagining it; write down everything odd you've noticed this year about each other and about me, and read it together at one table; not the police, they'd have nothing and I won't have them in your lives. It includes a short "starter list" of odd things that are all true or unfalsifiable and that, worked by four people for three weeks, quietly point at Liam. It never accuses anyone. The object beside it must fit this letter: the letter should be able to say, in her voice, why she locked this object away from her house.
+
+**What the object has to do. Every candidate must meet all of these; show how.**
+1. It belonged to Violet, and all four friends would recognise it as hers on sight.
+2. **It needs the locker.** It could not simply have been posted with the notes, and it is not something she would keep in a house she believes someone else can enter. Size, value, fragility, danger or meaning must make a padlocked locker the natural place for it. This is the reason the last two candidates failed.
+3. Brad could take it from her house on the night she died and nobody could ever date its absence. Her friends had not been inside her house for three weeks before she died; police photographed the house the next day.
+4. In the locker, beside a letter that says "someone has been in my house", it proves intrusion. It makes the fear physical. It must not, by itself, accuse anyone.
+5. Worked at a kitchen table for three weeks by four frightened people, it can be read as pointing at Liam without the letter saying so. A connection to Liam is welcome but must be one the room infers, never one the letter states.
+6. Nine months later the two survivors will not say what the object was, and a reader must believe why.
+7. Margo, who alone knows where Violet's cash really came from (her late mother's house, told in confidence), should be able to see something in it that the others cannot, or fail to see something she expects. Later, Margo's partner will show a podcaster a message from Margo that says only: the thing in the cupboard is wrong. It can't mean that. The object must make that sentence make sense.
+8. It must never point at Brad, never raise money that Violet was owed, and never involve Margo's partner.
+9. It must not be: the boat name board from her hall (Liam's gift; the previous choice), her mother's front-door key (postable), the house spare key (must stay where it is), her favourite brush (the whole town saw her use it daily), or anything of Liam's.
+
+**Output.** Ten candidates, numbered, plain prose, no headings inside a candidate. For each: the object in one sentence; why she would lock it away rather than keep it or post it (the sentence the forged letter would use, in her plain dry voice); how Brad took it and why its absence is undatable; what the room reads into it by the third meeting; what Margo sees; what Tessa's message means about it; why the survivors will not name it; and the one thing that would make it fail as story, named honestly. Then a forced ranking, best first, one sentence per rank on why it beat the one below. No ties, no scores. No em dashes.

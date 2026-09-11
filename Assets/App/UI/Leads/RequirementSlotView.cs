@@ -20,6 +20,11 @@ namespace AQ.App.UI.Leads
         /// <summary>Fired when a requirement slot is long-pressed. Arg = itemId.</summary>
         public static event System.Action<string> OnRequirementHeld;
 
+        /// <summary>Tap (short press) on a requirement chip — itemId. Consumed by
+        /// the Assembly-CSharp bridge to open the family ladder and pulse the
+        /// source generator (SHOW ME trail, SAS FTUE I3).</summary>
+        public static event System.Action<string> OnRequirementTapped;
+
         private const float HoldSeconds = 0.45f;
         private float _pressTime = -1f;
         private bool  _holdFired;
@@ -224,7 +229,14 @@ namespace AQ.App.UI.Leads
         private void HandleClick()
         {
             if (_holdFired) return; // the release that ended a long-press is not a click
-            if (_data != null) onClick?.Invoke(_data);
+            if (_data == null) return;
+            onClick?.Invoke(_data);
+            // SHOW ME trail (SAS FTUE I3): a tap on a requirement chip answers
+            // "what is this and where does it come from" — bridged to the family
+            // ladder + source-generator pulse in Assembly-CSharp (this assembly
+            // can't see the popups; same pattern as OnRequirementHeld).
+            if (!string.IsNullOrEmpty(_data.ItemId))
+                OnRequirementTapped?.Invoke(_data.ItemId);
         }
 
         // ---- press-and-hold (item details popup) ----

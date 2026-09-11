@@ -1,0 +1,263 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Story Production Pipeline</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0;
+         font-size: 10.5pt; line-height: 1.55; }
+  h1 { font-size: 20pt; letter-spacing: .2px; border-bottom: 3px solid #1c1a17;
+       padding-bottom: 8px; margin: 0 0 14px; }
+  h2 { font-size: 13.5pt; margin: 26px 0 8px; padding-bottom: 4px;
+       border-bottom: 1.5px solid #1c1a17; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 18px 0 6px; color: #3a352d; page-break-after: avoid; }
+  p { margin: 0 0 9px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  hr { border: 0; border-top: 1px solid #ccc5b8; margin: 22px 0; }
+  code { font-family: Consolas, monospace; font-size: 9pt; color: #7a5c1f;
+         background: #f6f2e8; padding: 0 3px; border-radius: 2px; }
+  del { color: #999; }
+  blockquote { border-left: 3px solid #b9ae99; background: #faf8f2; margin: 10px 0;
+               padding: 8px 14px; page-break-inside: avoid; }
+  blockquote p { margin: 0 0 6px; }
+  blockquote p:last-child { margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 14px;
+          font-size: 9pt; table-layout: fixed; page-break-inside: avoid; }
+  th { text-align: left; background: #1c1a17; color: #f5f1e8; padding: 5px 7px;
+       font-size: 8.5pt; letter-spacing: .3px; }
+  td { vertical-align: top; padding: 5px 7px; border-bottom: 1px solid #e3ded2;
+       word-wrap: break-word; }
+  tr:nth-child(even) td { background: #faf8f2; }
+  .cards { margin: 10px 0 16px; }
+  .card { border: 1px solid #c9c1b0; border-left: 4px solid #1c1a17; border-radius: 3px;
+          padding: 8px 11px 9px; margin-bottom: 9px; background: #fdfcf8;
+          page-break-inside: avoid; font-size: 9.5pt; }
+  .chead { font-size: 8.5pt; color: #6b6357; margin-bottom: 4px; letter-spacing: .3px; }
+  .cid { font-weight: bold; color: #1c1a17; margin-right: 10px; }
+  .cphase { margin-right: 10px; }
+  .ccls { float: right; font-style: italic; }
+  .cdec { font-weight: bold; margin-bottom: 6px; }
+  .card dl { margin: 0; }
+  .card dt { font-size: 8pt; text-transform: uppercase; letter-spacing: .6px;
+             color: #8a6d3b; margin-top: 5px; }
+  .card dd { margin: 1px 0 0; }
+  .rank .order { margin: 2px 0 5px; font-size: 10pt; }
+  .rank .reason { color: #3a352d; }
+</style></head><body>
+<!-- pdf-title: Story Production Pipeline -->
+
+<h1>STORY PRODUCTION PIPELINE</h1>
+<p><strong>How to produce quality stories with AI, efficiently, with no writing budget</strong> · 2026-08-27 · Derived entirely from what this project's own record shows, not from theory</p>
+<hr />
+<h1>The principle</h1>
+<p><strong>Optimise for the shortest path to a human reaction, not for the fewest human interruptions.</strong></p>
+<p>Every quality gain this project has made came from Stephen or Trish reacting to something. None came from a gate. The loop we have been running takes about a week to reach one human reaction. The loop below reaches one in about a day, and the pre-flight exists only to make sure that reaction is worth their ten minutes.</p>
+<p><strong>Three findings from our own data, which override any framework:</strong></p>
+<ol>
+<li><strong>Depth beats breadth.</strong> Forty-five premises generated wide produced one survivor. One premise developed deep produced the leading candidate. Stop generating fields.</li>
+<li><strong>The failures are a short recurring list</strong>, not unpredictable quality. Thirteen objections cover essentially every rejection in three weeks, and the thirteenth was added by the rejection it caught.</li>
+<li><strong>Constrain the check, not the generation.</strong> Prohibitions applied before writing produced conformant and contrived work. The same rules applied to a finished draft catch the same defects without deadening the prose.</li>
+</ol>
+<hr />
+<h1>The pipeline</h1>
+<p>One pass is about a day. Failures are front-loaded into steps where they cost nothing.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Step</th>
+<th>Who</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>The spine.</strong> What actually happened, hour by hour, and what Ally can lawfully reach, from whom, on which day</td>
+<td>Claude</td>
+<td>Timeline + access ledger. <strong>No prose.</strong></td>
+</tr>
+<tr>
+<td><strong>1b</strong></td>
+<td>★ <strong>The earliest-action sweep.</strong> One page. <strong>Added 2026-08-27 and it is the most important step on this table</strong></td>
+<td>Claude</td>
+<td>A first-action date per person, or a kill</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Pre-flight.</strong> The thirteen objections applied to the spine, each answered in writing</td>
+<td>Claude</td>
+<td>Thirteen written answers or a kill</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Adversarial audit.</strong> Attack the spine, not the prose</td>
+<td>ChatGPT</td>
+<td>Findings; repair or kill</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Prose.</strong> Opening and key beats, written from the repaired spine</td>
+<td>Fable</td>
+<td>Draft copy</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Reader check.</strong> Two questions, ten minutes</td>
+<td>Stephen, Trish</td>
+<td>Grab / believe</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Kill or continue.</strong> Salvage fragments either way</td>
+<td>Stephen</td>
+<td>Decision</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 1 is the one we have never done and it is why every opening failed.</strong> Six openings, three writers, and all six were holed on "how did she get that." Ally could not source what she knew because nobody had decided what she actually got. A spine written before any prose makes that class of failure impossible rather than catchable.</p>
+<hr />
+<h1>★ STEP 1b: THE EARLIEST-ACTION SWEEP</h1>
+<p><strong>Added 2026-08-27, authored by ChatGPT after it found the same structural defect in three consecutive premises.</strong> It is not an objection and it does not belong in the pre-flight. It is a mechanical sweep, it takes one page, and it would have killed all three premises before an audit ever saw them.</p>
+<h2>The defect it catches</h2>
+<blockquote>
+<p><strong>Accurate nodes and a false graph.</strong></p>
+</blockquote>
+<p>The engine gets declared first. Then every row of the access ledger is checked <em>locally</em> for lawful possession, and every row passes. <strong>Nobody ever recomputes the earliest action available from the rows combined.</strong> So the spine ends up full of people who can each lawfully act, silently prevented from composing into an intervention that would end the episode at lead 3.</p>
+<p>Three premises died or reworked on this, each time inside the section written to prevent it:</p>
+<table>
+<thead>
+<tr>
+<th>Premise</th>
+<th>The node that could act</th>
+<th>What silently stopped it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No Fixed Address</td>
+<td>A workplace supervisor, reachable and willing</td>
+<td>The engine needed the identity route to be the only one</td>
+</tr>
+<tr>
+<td>The Same House Twice v1.0</td>
+<td>The certifying doctor, reachable on day three</td>
+<td>He was simply not visited until lead 10</td>
+</tr>
+<tr>
+<td>The Same House Twice v1.1</td>
+<td>The same doctor, now visited on day three</td>
+<td>His admission was declared worthless, and his live clinical duty to his own symptomatic patient was never mentioned</td>
+</tr>
+</tbody>
+</table>
+<h2>How to run it</h2>
+<p><strong>Ignore the authored lead order entirely.</strong> Start at Day 1. For every person in the access ledger, ask:</p>
+<blockquote>
+<p><strong>Given everything this person can lawfully know today, what is the earliest competent action they can take to stop the harm or to trigger an authority?</strong></p>
+</blockquote>
+<p>Write down the first day of each action, in a table, with the person and the action.</p>
+<p><strong>If any first-action date precedes the planned turn, the spine fails.</strong> Not "has a note against it" — fails, before it goes to audit.</p>
+<h2>★ THE RECIPIENT COLUMN, added 2026-08-27 after the sweep was run and gamed</h2>
+<p><strong>The first spine written under this sweep passed it, and the sweep was wrong.</strong> Not because the instrument is weak, but because it was run one column short.</p>
+<blockquote>
+<p><strong>The habit does not disappear when you stop silencing people. It moves into latency.</strong></p>
+</blockquote>
+<p>The initiators all acted correctly and on time. <strong>The recipients were left outside the graph</strong>: the care provider who receives the escalation, the authority that receives the doctor's statement, the office that receives the grave application, the pharmacy that holds the note. <strong>"It takes weeks" described the outcome the story wanted, not the recipient's earliest action.</strong> That is the same suppression re-expressed as delay, and it is harder to see because nothing in the document is silent.</p>
+<p><strong>So every row gets four more cells:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th><strong>Recipient</strong></th>
+<th><strong>Recipient's earliest response</strong></th>
+<th><strong>Every duty the combined facts trigger</strong></th>
+<th><strong>Earliest consequential outcome</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Two rules for the new cells:</strong></p>
+<ul>
+<li><strong>Name the recipient. "The system" is not a recipient.</strong> If nobody can be named, the latency is invented.</li>
+<li>★ <strong>A slow process does not absorb a fast duty.</strong> An application that takes weeks does not establish that the same information cannot trigger an immediate protective response about the person currently at risk. <strong>Those are two different duties on the same facts and both must be run.</strong></li>
+</ul>
+<h2>Three rules that make it work</h2>
+<ol>
+<li><strong>Include professional duties, not just powers.</strong> The question is not only what a person <em>may</em> do, it is what their job <em>requires</em> them to do once they know. A doctor told his own patient may be being overdosed does not have a choice about ringing her.</li>
+<li><strong>A duty renews when the facts change.</strong> A concern reported seven weeks ago does not discharge the duty created by a new deterioration this week.</li>
+<li><strong>Every suppression must be named and paid for.</strong> If a node genuinely cannot act, the reason goes in the sweep in one sentence, and it must be a reason the world supplies rather than one the plot needs. <strong>"The story does not visit them yet" is not a reason.</strong></li>
+<li>★ <strong>Consent and capacity are decision-specific and time-specific.</strong> A competent refusal on day three is not a status conferred for the rest of the episode. <strong>When the facts change, the assessment renews and so does every duty resting on it.</strong> If a person visibly worsens at lead 12, that is new information to everyone who can act, and the sweep runs again from there. A refusal the story keeps leaning on without re-earning it has stopped being a right the world supplies.</li>
+<li>★ <strong>Check causal order against your own dates.</strong> If A is said to cause B, A's date must precede B's. <strong>This sounds too obvious to write down. The first spine run under this sweep got it backwards</strong>, with the antagonist's warning on day four closing a route the victim had already closed on day three.</li>
+</ol>
+<hr />
+<h2>★ THE LEAST-COST TEST, CORRECTED 2026-08-28</h2>
+<p><strong>Stephen's correction, and it had been quietly distorting three premises.</strong></p>
+<p>The test was being run as <em>does the antagonist minimise his risk</em>. <strong>That is wrong. It asks whether his actions are coherent with what HE wants.</strong> A consistency check, not a risk calculation and not a morality one.</p>
+<p>Run the narrow way, it forces every antagonist toward silence and inaction, and then the plot has to keep inventing reasons they cannot simply walk away. <strong>That happened three times in one week.</strong></p>
+<p><strong>Some people want to be present.</strong> Near the grief, needed, central, unsuspected while sitting in the room. <strong>That has a real payoff to the person getting it and it is heavily documented.</strong> A killer who inserts himself into the investigation of his own murder is not behaving irrationally; he is pursuing a goal the test was not scoring.</p>
+<p>★ <strong>Stephen: "To murder anyone isn't rational, so this is about getting into the killer's twisted mind. It is very common when consuming true crime to ask how did they ever think they'd get away with that."</strong> The genre research agrees: <strong>curiosity about dangerous minds is the single strongest predictor of consumption, stronger than interest in violence.</strong></p>
+<p><strong>The guardrail, and it is craft rather than caution.</strong> <em>He is a psychopath</em> explains <strong>what he wants</strong>. It never explains <strong>how he does it</strong>. The moment it becomes the answer to every <em>why would he do that</em>, the premise stops being falsifiable and a reader stops believing, which is the same failure as <em>nobody bothered</em> in a different costume. <strong>The frightening version is a man whose goals are alien and whose execution is meticulous.</strong></p>
+<p>So: <strong>he may do something that looks insane from outside, as long as it is coherent from inside his head, and the work shows us the inside.</strong></p>
+<hr />
+<h2>Division of labour, CORRECTED 2026-08-28</h2>
+<p><strong>Not by preference. By what the record shows, and the record changed.</strong></p>
+<p>★ <strong>The winning Episode 1 premise came out of Fable's or ChatGPT's stinger batch, not Claude's.</strong> Claude's best line of forty scored 7.5 with Stephen and 5 and 2 with the other two readers. <strong>They generate better than Claude does, and the old split had them locked out of generation.</strong></p>
+<ul>
+<li><strong>ChatGPT: audit, structure, and generation.</strong> Its REWORK of <code>No Fixed Address v2.1</code> found six real defects including two Claude had made three times. <strong>It also named the recurring defect better than we had — accurate nodes and a false graph — and authored the earliest-action sweep.</strong></li>
+<li><strong>Fable: prose, character, and generation.</strong> Best lines anyone has produced here. ★ <strong>New: Fable defines the cast as people BEFORE the spine is written</strong>, so characters are not built as functions and then inherited. The sharpest craft note of the week was that victims need lives more specific than illnesses and houses.</li>
+<li><strong>Claude: spine, canon, integration, code, and collation.</strong> Holds continuity, catches contradictions, applies rulings, does the engineering, and does the sorting so readers never have to.</li>
+<li>★ <strong>Readers: THREE, never one.</strong> Stephen, Trish and Alby. <strong>Stephen's taste and the target audience's diverge on some items and the audience is 75 to 80 per cent women.</strong> Where all three agree, back it hard. Where Stephen and Trish split, that disagreement is the most valuable thing available.</li>
+</ul>
+<h2>★ RUN THE PRE-MORTEM BEFORE THE SPINE, NOT AFTER</h2>
+<p><strong>Proven 2026-08-28.</strong> Two spines cost a full day each before step 1b found their hole. <strong>Run on a one-line premise, the same instrument found the next candidate's problems in a single page and produced three conditions that made it better.</strong></p>
+<p><strong>And send the adversarial audit at the premise, before a spine exists.</strong> Attacking a shape costs an hour. Attacking a spine costs the day that built it.</p>
+<hr />
+<h1>PRE-FLIGHT: the thirteen objections</h1>
+<p><strong>Every one is quoted from an objection actually raised by Stephen or Trish.</strong> This is empirical, not theoretical. Applied to a draft or a spine, never as a generation rule.</p>
+<p>Answer each in one written sentence. An unanswerable item is a kill, not a note.</p>
+<h3>Believability</h3>
+<ol>
+<li><strong>Why was the decisive material not found at the time?</strong> The answer may not be that anyone was lazy. <em>"Competent police would have done as a simple matter of process."</em> Legitimate: it did not exist then · the witness was a child · a promise released by a death · another jurisdiction · lawful destruction.</li>
+<li><strong>Does the antagonist act in his own interest at every point?</strong> <em>"Why would Dean call the workplace and leave his name?"</em></li>
+<li><strong>Would a real person actually do the small thing this needs them to do?</strong> <em>"A mother would never put an admin form on a wall."</em></li>
+<li><strong>Is the motive one an ordinary reader accepts without argument?</strong> <em>"Unbelievable motive for murder."</em></li>
+<li><strong>Is any discovery a coincidence wearing a coat?</strong> <em>"I walked Rivermouth and found a landlord??? Really?"</em></li>
+</ol>
+<h3>Comprehension</h3>
+<ol start="6">
+<li><strong>Does a reader with no context understand every word?</strong> <em>"What is a chandlery?"</em> No trade, legal or procedural vocabulary anywhere near the hook.</li>
+<li><strong>Can a reader hold the cast in their head on one pass?</strong> <em>"Too many characters to try and get my head around."</em></li>
+<li><strong>Is it clear what the crime is, immediately?</strong> <em>"I don't understand what crime she is serving 11 years for."</em></li>
+</ol>
+<h3>Knowledge and logic</h3>
+<ol start="9">
+<li><strong>Can Ally source everything she says she knows?</strong> <em>"How does she know about the mother? Did they meet?"</em> Every fact traces to a person, a document or a search, with a route.</li>
+<li><strong>Does anything break its own rules?</strong> <em>"Why would Ally say 'Wait. Where are you.' to a recording?"</em></li>
+<li>★ <strong>If the premise claims a route is the ONLY one, read your own access ledger back and find the second route.</strong> <em>"Naming Kerry is therefore the safest official route, not the only lawful route, which makes the declared engine decorative."</em> <strong>ADDED 2026-08-27, and it killed No Fixed Address at the spine.</strong> The contradiction was on the same page: one section listed a person as reachable and willing to speak, the next section declared his route closed. <strong>A premise whose engine is "this is the only way" is making a claim about everything it did not write down, and the cheapest place to falsify it is the ledger you just wrote.</strong> If the wall has to be engineered back in, the engine was decorative and the premise is dead.</li>
+</ol>
+<h3>Stakes</h3>
+<ol start="12">
+<li><strong>Is the stake a body, freedom, family, identity or present danger?</strong> Never a licence, benefit, election, membership or apprenticeship. <em>"Unions are boring."</em></li>
+<li><strong>Does anything decisive rest on a small number?</strong> <em>"Tills running nine minutes fast would just be synchronised."</em> Corroboration can make a correction credible; it cannot make arithmetic interesting.</li>
+</ol>
+<h3>One question that is not on the list, and should be asked anyway</h3>
+<p><strong>Is the antagonist a person or a mechanism?</strong> The strongest predictor of true-crime consumption is interest in dangerous minds, not in bodily harm. Forty-five of our premises had antagonists who were situations. The audience wants access to a person.</p>
+<hr />
+<h1>What this replaces</h1>
+<p><strong>Retire from generation:</strong> the twenty-four-seed fields, preallocated influence pairs, per-family distribution matrices, cross-audit instruments, and the twenty-field ledger schema. All were competently built. All were pointed at the wrong end of the process, and the field they produced was rejected wholesale by the only two readers who saw it.</p>
+<p><strong>Keep, unchanged:</strong> Kill Gate Zero and the least-cost test, the access map, the consequence-and-agency gate, the clock convention, evidential language, the canon roster and the bible. These are believability controls and they work. They belong in step 2 and step 3, applied to a draft.</p>
+<p><strong>The distinction that matters:</strong> a rule applied before writing shapes what gets written and produces conformance. The same rule applied after writing catches defects and costs the prose nothing.</p>
+<hr />
+<h1>What this cannot do</h1>
+<p>It cannot make a premise interesting. Nothing on this page would have rescued the union ballot or the till clock, and nothing here would have invented the mother still paying her daughter's phone bill.</p>
+<p><strong>What it does is stop us spending human attention on work that was never going to survive</strong>, so that the ten minutes we get from a reader lands on something that might.</p>
+<p>The bottleneck is judgment, and judgment lives in two people. Everything above exists to feed them better and more often.</p>
+</body></html>

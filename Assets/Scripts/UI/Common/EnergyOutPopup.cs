@@ -27,6 +27,19 @@ namespace AQ.App.UI.Common
         {
             if (_root != null) return;
 
+            // I8. A hard stop is the worst thing to show someone still learning
+            // the loop, so the FIRST one is worth its own funnel step: it is the
+            // event FtueEnergyNet exists to prevent, and once the net is spent
+            // this is where players are lost. Logged once ever, before the net's
+            // own energy_net_1/2 grants, so the two are comparable.
+            const string firstOutKey = "aq.ftue.first_energy_out.logged";
+            if (PlayerPrefs.GetInt(firstOutKey, 0) == 0)
+            {
+                PlayerPrefs.SetInt(firstOutKey, 1);
+                PlayerPrefs.Save();
+                AQ.App.Analytics.GameAnalytics.LogFtueEvent("first_energy_out");
+            }
+
             _root = new GameObject("__EnergyOutPopup", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             Object.DontDestroyOnLoad(_root);
 
@@ -56,8 +69,11 @@ namespace AQ.App.UI.Common
             panel.anchoredPosition = Vector2.zero;
 
             // Title-bar treatment (Stephen-ruled 2026-08-12); the bar's X closes.
+            // Regen rate comes from the live config — a hardcoded number here once
+            // shipped promising 90s while the tuned asset regenerated at 150s.
+            int regenSecs = EnergyRuntime.Config != null ? EnergyRuntime.Config.RegenSecondsPerPoint : 150;
             AQTheme.TitleBar(panel, "OUT OF ENERGY", Close,
-                "Energy refills over time (+1 every 90s). Refill instantly with Platinum Ingots, or watch a tip to earn a boost.");
+                $"Energy refills over time (+1 every {regenSecs}s). Refill instantly with Platinum Ingots, or watch a tip to earn a boost.");
 
             _balanceLbl = AddLabel("", panel, 34f, AQTheme.Paper,
                                    new Vector2(0f, 250f), new Vector2(600f, 50f));

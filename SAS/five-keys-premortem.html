@@ -1,0 +1,214 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Five Keys, Pre-mortem</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0;
+         font-size: 10.5pt; line-height: 1.55; }
+  h1 { font-size: 20pt; letter-spacing: .2px; border-bottom: 3px solid #1c1a17;
+       padding-bottom: 8px; margin: 0 0 14px; }
+  h2 { font-size: 13.5pt; margin: 26px 0 8px; padding-bottom: 4px;
+       border-bottom: 1.5px solid #1c1a17; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 18px 0 6px; color: #3a352d; page-break-after: avoid; }
+  p { margin: 0 0 9px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  hr { border: 0; border-top: 1px solid #ccc5b8; margin: 22px 0; }
+  code { font-family: Consolas, monospace; font-size: 9pt; color: #7a5c1f;
+         background: #f6f2e8; padding: 0 3px; border-radius: 2px; }
+  del { color: #999; }
+  blockquote { border-left: 3px solid #b9ae99; background: #faf8f2; margin: 10px 0;
+               padding: 8px 14px; page-break-inside: avoid; }
+  blockquote p { margin: 0 0 6px; }
+  blockquote p:last-child { margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 14px;
+          font-size: 9pt; table-layout: fixed; page-break-inside: avoid; }
+  th { text-align: left; background: #1c1a17; color: #f5f1e8; padding: 5px 7px;
+       font-size: 8.5pt; letter-spacing: .3px; }
+  td { vertical-align: top; padding: 5px 7px; border-bottom: 1px solid #e3ded2;
+       word-wrap: break-word; }
+  tr:nth-child(even) td { background: #faf8f2; }
+  .cards { margin: 10px 0 16px; }
+  .card { border: 1px solid #c9c1b0; border-left: 4px solid #1c1a17; border-radius: 3px;
+          padding: 8px 11px 9px; margin-bottom: 9px; background: #fdfcf8;
+          page-break-inside: avoid; font-size: 9.5pt; }
+  .chead { font-size: 8.5pt; color: #6b6357; margin-bottom: 4px; letter-spacing: .3px; }
+  .cid { font-weight: bold; color: #1c1a17; margin-right: 10px; }
+  .cphase { margin-right: 10px; }
+  .ccls { float: right; font-style: italic; }
+  .cdec { font-weight: bold; margin-bottom: 6px; }
+  .card dl { margin: 0; }
+  .card dt { font-size: 8pt; text-transform: uppercase; letter-spacing: .6px;
+             color: #8a6d3b; margin-top: 5px; }
+  .card dd { margin: 1px 0 0; }
+  .rank .order { margin: 2px 0 5px; font-size: 10pt; }
+  .rank .reason { color: #3a352d; }
+</style></head><body>
+<!-- pdf-title: Five Keys, Pre-mortem -->
+
+<h1>FIVE KEYS AFTER MIDNIGHT</h1>
+<h2>STEP 1b RUN AS A PRE-MORTEM</h2>
+<p><strong>2026-08-28.</strong> The standing champion after roughly 180 lines: <strong>8.5, and the only line Stephen has called <em>"definitely intriguing"</em>.</strong></p>
+<blockquote>
+<p>Five friends receive keys after a woman's murder, each opening the cupboard where she hid proof that one of them planned her death.</p>
+</blockquote>
+<p>★ <strong>This is the first time the earliest-action sweep has been run BEFORE a spine instead of after one.</strong> Both previous candidates cost a full day of spine work before the instrument found the hole. If it can kill a premise from one sentence, it should.</p>
+<p><strong>Verdict: SURVIVES. Conditions A and B accepted 2026-08-28. Condition C ruled the same day, after the first three answers were rejected as thin.</strong></p>
+<hr />
+<h1>What the sentence commits us to</h1>
+<p>Five things, none of them optional:</p>
+<ol>
+<li>A woman was murdered.</li>
+<li><strong>She expected it</strong>, enough to hide proof and make an arrangement.</li>
+<li>Five friends receive keys <strong>after</strong> she dies, so somebody executed her instruction.</li>
+<li>The cupboard holds proof that <strong>one of the five planned it</strong>.</li>
+<li><strong>The five are a closed set.</strong> Each of them is a suspect to the other four.</li>
+</ol>
+<hr />
+<h1>The sweep</h1>
+<table>
+<thead>
+<tr>
+<th>Person</th>
+<th>Earliest competent action</th>
+<th>When</th>
+<th><strong>Recipient</strong></th>
+<th><strong>Recipient's earliest response</strong></th>
+<th>Does the episode survive?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>★ <strong>The first friend to reach the cupboard, if innocent</strong></td>
+<td><strong>Open it, read it, take it to the police</strong></td>
+<td>★ <strong>Hour one</strong></td>
+<td>Police</td>
+<td>★ <strong>A murder victim's own hidden proof, naming her killer. They act immediately</strong></td>
+<td>★★ <strong>NO. Episode over at lead one</strong></td>
+</tr>
+<tr>
+<td>★ <strong>The first friend to reach the cupboard, if guilty</strong></td>
+<td><strong>Open it and destroy it</strong></td>
+<td>★ <strong>Hour one</strong></td>
+<td>Nobody</td>
+<td>Nothing</td>
+<td>★ <strong>Yes, and this is the only version that works. See condition B</strong></td>
+</tr>
+<tr>
+<td><strong>Whoever holds the keys and posts them</strong></td>
+<td>Hand the whole arrangement to police, because it came from a murder victim</td>
+<td><strong>Day one</strong></td>
+<td>Police</td>
+<td>★ <strong>They open the cupboard themselves before any friend does</strong></td>
+<td>★★ <strong>NO, unless condition A holds</strong></td>
+</tr>
+<tr>
+<td><strong>The other four, once they know</strong></td>
+<td>Go to the police together</td>
+<td>Within days</td>
+<td>Police</td>
+<td><em>"Our dead friend left us keys to an empty cupboard"</em> is not evidence and cannot be acted on</td>
+<td>✅ <strong>Yes. Correctly, nothing happens</strong></td>
+</tr>
+<tr>
+<td><strong>The four, about each other</strong></td>
+<td>Talk to each other</td>
+<td>Immediately</td>
+<td>Each other</td>
+<td>★ <strong>They cannot, because each of them is a suspect to the other three</strong></td>
+<td>✅ <strong>Yes, and this is the engine</strong></td>
+</tr>
+<tr>
+<td><strong>Ally</strong></td>
+<td>Take it from whichever of the four calls her</td>
+<td>Day one</td>
+<td>Her audience</td>
+<td>She has no power and never gains any</td>
+<td>✅ <strong>Yes</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1>★ THE THREE CONDITIONS</h1>
+<h2>A. Her death was not treated as a murder at the time</h2>
+<p><strong>Otherwise the arrangement goes straight to police and they open the cupboard first.</strong> A solicitor or executor holding an instruction from a murder victim hands it over, and any version where they do not is the <em>"unbelievable incompetence"</em> that killed six lines in round one.</p>
+<p><strong>So: her death was recorded as an accident, an overdose or a suicide. There was no investigation, so there was nobody for the keys to be given to.</strong> ★ That is also the show's own engine, the record being wrong, and it costs nothing.</p>
+<p>⚠ <strong>Consequence to accept now: the murder is not established at the top of the episode. Only the reader knows.</strong> That is the third time this has come up and it needs handling in the opening, not later.</p>
+<h2>B. The cupboard is already empty</h2>
+<p><strong>The premise as written cannot survive an innocent person opening it, because that person goes to the police in the first hour and the story ends.</strong></p>
+<p>★ <strong>So the killer got there first, and the other four arrive to an empty cupboard.</strong> What survives is not the evidence. It is <strong>the certainty that one of the four people standing there took it</strong>, which is a human problem rather than an evidential one, and it is far better drama.</p>
+<p><strong>Reject the alternative</strong> — a lock needing all five keys, or five keys to five parts of one proof. <strong>That is a puzzle-box device</strong>, and puzzle-box thinking is exactly what dropped round two's ceiling from 8.5 to 7.5.</p>
+<h2>C. ★ SOMEBODY ALIVE IS AT RISK. RULED 2026-08-28.</h2>
+<p><strong>A and B accepted. The first three answers offered here were thin and were rejected; this replaces them.</strong></p>
+<blockquote>
+<h3>She had already told somebody. Not one of the five. Somebody outside, who does not know what they were told.</h3>
+</blockquote>
+<p><strong>Two years ago she said one ordinary sentence to somebody ordinary</strong> — she named who she was meeting, or where she was going, in the way anybody mentions their evening to a person they see every week. <strong>That person has never connected it to her death</strong>, because her death was an accident and there was nothing to connect it to.</p>
+<p><strong>The killer knows she talked to someone. The killer has never found out who.</strong> For two years that has been the one loose end, and for two years there has been no way to pull it.</p>
+<p>★★ <strong>Then a podcast starts asking, in public, on a schedule.</strong></p>
+<blockquote>
+<p><strong>The investigation is the murder weapon. Every episode Ally publishes narrows the search for a person she is trying to protect, and she cannot stop without abandoning the case.</strong></p>
+</blockquote>
+<h3>Why this one and not the others</h3>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A specific person, not a mood</strong></td>
+<td>✅ One woman, findable, and the player is looking for her too</td>
+</tr>
+<tr>
+<td>★ <strong>The killer's least-cost action</strong></td>
+<td>✅ <strong>Listen.</strong> He does nothing, spends nothing and risks nothing while somebody else does the work. <strong>This is the first candidate in three where sitting still is not the antagonist's best move — because now sitting still and listening IS his best move, and it is lethal</strong></td>
+</tr>
+<tr>
+<td><strong>Danger grows because the player acts</strong></td>
+<td>✅ Directly and measurably. <strong>Every decision to publish is a decision about her</strong></td>
+</tr>
+<tr>
+<td><strong>Can the police simply protect her?</strong></td>
+<td>✅ <strong>No, and it is not a contrivance: nobody knows who she is.</strong> You cannot protect a person whose name nobody has. That is a wall the world supplies</td>
+</tr>
+<tr>
+<td><strong>Can Ally just stop?</strong></td>
+<td>✅ She can, and then the case dies and the woman stays unprotected anyway, because he is still looking. <strong>A real trade, not an obvious one</strong></td>
+</tr>
+<tr>
+<td><strong>Does it need new art?</strong></td>
+<td>One portrait. She is worth it</td>
+</tr>
+<tr>
+<td><strong>Is it specific to a podcast?</strong></td>
+<td>★★ <strong>Completely. A newspaper could not do this and neither could a detective.</strong> A serialised public investigation is a search engine the killer could never have built for himself. <strong>This is the strongest medium-necessity claim the project has produced</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>What it gives the episode for free</h3>
+<ul>
+<li><strong>A race with a real finish line.</strong> Ally has to reach her first, along the same trail he is following.</li>
+<li><strong>The agency gate solved without engineering.</strong> Publishing advances the case and endangers her, every time, and the player feels both.</li>
+<li>★ <strong>The warn-or-not decision.</strong> Telling her makes her safe and tells her she has been a target for two years. Not telling her keeps her ordinary and keeps her exposed.</li>
+<li><strong>A close that is not tidy.</strong> She was found because a podcast went looking. That is true whichever way it ends.</li>
+</ul>
+<h3>The one thing to decide at spine time, not now</h3>
+<p><strong>What she was actually told.</strong> It must be so ordinary that not connecting it is obviously reasonable, and decisive the moment it is placed beside the empty cupboard. <strong>It cannot be a clue she sat on. It has to be a Tuesday-evening sentence.</strong></p>
+<hr />
+<h1>What the sweep did NOT catch</h1>
+<ul>
+<li><strong>Nothing resolves too fast.</strong> Once the cupboard is empty, the correct official response is that nothing can be done, and that is true rather than convenient.</li>
+<li><strong>No route is closed.</strong> Every one of the four can go to the police, and does, and it changes nothing.</li>
+<li><strong>No paperwork.</strong> The object is a key and an empty cupboard.</li>
+<li><strong>No small number carries a reversal.</strong> Five is a cast size, not a measurement.</li>
+<li><strong>No child and no elderly person</strong> is required by anything in the premise.</li>
+<li>✅ <strong>The closed set of five is the seam that has been working on this reader all week</strong>: five keys, two sisters with identical statements, four men in a van, three friends telling one story.</li>
+</ul>
+<hr />
+<h1>VERDICT</h1>
+<p><strong>Green. All three conditions closed. Clear to write the spine.</strong></p>
+<p>★ <strong>Two spines were written and reworked before this instrument found their hole. This time it took one page and no prose.</strong> If that is all the sweep ever does, it has paid for itself.</p>
+<p><strong>Next, in order:</strong> the spine · then the pre-flight · then ChatGPT · then one opening from Fable.</p>
+</body></html>

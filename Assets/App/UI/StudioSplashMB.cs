@@ -131,10 +131,24 @@ namespace AQ.App.UI
             StartCoroutine(Run());
         }
 
-        void Update()
+        // Skip-tap via TapRouter (2026-08-18): the splash is the topmost surface
+        // in the game, so it registers at int.MaxValue and, while showing, claims
+        // every tap — nothing underneath (board, dialogue, HUD) can consume the
+        // skip tap or be poked through the card.
+        AQ.App.UI.TapRouter.Region _tapRegion;
+
+        void OnEnable()
         {
-            if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
-                _skipRequested = true;
+            _tapRegion = AQ.App.UI.TapRouter.Register("studio-splash-skip", int.MaxValue,
+                contains: _ => true,
+                onTap:    _ => _skipRequested = true,
+                enabled:  () => this != null && isActiveAndEnabled);
+        }
+
+        void OnDisable()
+        {
+            AQ.App.UI.TapRouter.Unregister(_tapRegion);
+            _tapRegion = null;
         }
 
         IEnumerator Run()
@@ -156,6 +170,11 @@ namespace AQ.App.UI
             {
                 held += Dt;
                 AnimateLoadingDots(ContentFadeIn + held);
+                // A finger already down when the pump/region came up (icon-tap
+                // held through launch, palm-edge touch) never produces a Began
+                // event for the router — the old any-touch poll accepted it, so
+                // keep that as a fallback alongside the region's proper claim.
+                if (Input.touchCount > 0 || Input.GetMouseButton(0)) _skipRequested = true;
                 if (_skipRequested && ContentFadeIn + held >= SkippableAfter) break;
                 yield return null;
             }
@@ -163,7 +182,28 @@ namespace AQ.App.UI
             // FTUE only: the Ally promo film plays between the logo and the game.
             yield return PromoStage();
 
-            // fade the whole card out to reveal the game
+            // Dissolve, two cases (Stephen playtest 2026-08-22, twice over):
+            // - No film: the content sinks into the still-white OPAQUE plate
+            //   first — same white as the logo's baked background, so the fade
+            //   is seamless — then the clean plate dissolves to the game.
+            // - After the film: the plate is already BLACK and the content
+            //   already hidden. The first attempt faded content from 1 again,
+            //   which snapped the logo back over the black plate (the white
+            //   rectangle + logo-after-film regression). It must stay hidden;
+            //   only the black plate fades.
+            if (_content.alpha > 0.01f)
+            {
+                float from = _content.alpha;
+                t = 0f;
+                while (t < ContentFadeIn)
+                {
+                    t += Dt;
+                    _content.alpha = Mathf.Lerp(from, 0f, Mathf.Clamp01(t / ContentFadeIn));
+                    yield return null;
+                }
+                _content.alpha = 0f;
+            }
+
             t = 0f;
             while (t < FadeOut)
             {

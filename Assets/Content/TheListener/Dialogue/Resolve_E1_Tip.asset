@@ -76,7 +76,7 @@ MonoBehaviour:
     nextId: E1_L1_N4
     choices: []
   - id: E1_L1_N4
-    speaker: "Ally Quinn"
+    speaker: "Ally - Podcasting Echoes of Havenbay"
     line: "Three nights ago, at 3:04 on Friday morning, she left the message you just heard a piece of. Forty seconds. No words. She called the line, then let the house speak for her. It sat unheard for three days in my queue. I was busy prepping today's show. And since Friday: nothing."
     portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
     emotion: 2
@@ -88,7 +88,7 @@ MonoBehaviour:
     nextId: E1_L1_N5
     choices: []
   - id: E1_L1_N5
-    speaker: "Ally Quinn"
+    speaker: "Ally - Podcasting Echoes of Havenbay"
     line: "Dot, if you're hearing this: goodnight, the harbour misses you. Everyone else: this is Echoes of Havenbay. As always, the tip line is open. That last message was meant for me. This time, I'm listening. To every second of it."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0

@@ -14,7 +14,7 @@ namespace AQ.App.Generators
         [Tooltip("0-based tier of item to spawn. Ignored for SubGenerator.")]
         public int itemTier;
         [Min(0)] public float weight;
-        [Tooltip("Optional: entry only eligible when this DialogueFlag is set. Leave empty for always-eligible.")]
+        [Tooltip("Optional: entry only eligible when this GameFlags flag is set (lead outcomes and dialogue setsFlag both land there). Leave empty for always-eligible.")]
         public string requiresStoryFlag;
     }
 

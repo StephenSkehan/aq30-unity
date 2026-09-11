@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f1c2a9e3b4d4e5f8a7b9c0d1e2f3a4b, type: 3}
+  m_Name: FourKeysCh1Ftue
+  m_EditorClassIdentifier: AQ.App::AQ.App.FTUE.FtueChoreographyConfig
+  leadId: fk_p01_01a
+  introGraph: {fileID: 11400000, guid: 509b565bdf864e0ca8067a1ff1448339, type: 2}
+  introStartNodeId:
+  introEndAfterNodeId:
+  payoffStartNodeId:
+  prePlayedPackageId: fk_p01_01
+  seedFamily: audio_investigation
+  seedTier: 0
+  seedCount: 0
+  seedItemId: audio_investigation_t1
+  targetItemId:

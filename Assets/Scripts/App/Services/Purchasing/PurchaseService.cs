@@ -125,7 +125,32 @@ namespace AQ.App.Services.Purchasing
                 return PurchaseProcessingResult.Pending;
             }
 
-            Credit(args.purchasedProduct);
+            // Unknown catalog ids are discarded deliberately (Complete purges the
+            // bogus transaction) — everything below assumes a known product.
+            if (RewardsFor(args.purchasedProduct.definition.id) == null)
+            {
+                Debug.LogWarning("[IAP] Unknown product discarded: " + args.purchasedProduct.definition.id);
+                return PurchaseProcessingResult.Complete;
+            }
+
+            if (!Credit(args.purchasedProduct))
+                return PurchaseProcessingResult.Pending; // no wallet — held; store redelivers
+
+            // Returning Complete finalizes the StoreKit transaction — Apple will
+            // never redeliver it. The credit MUST be on disk first: SaveNow can
+            // fail (no save system, restore pending, disk full), and finalizing
+            // then would orphan a paid purchase. On failure, roll the in-memory
+            // credit back so memory matches disk and leave the transaction
+            // Pending — the store redelivers it and the next boot credits it
+            // through the held-purchase flush.
+            if (!BoardSaveSystem.SaveNow())
+            {
+                RollbackCredit(args.purchasedProduct);
+                Debug.LogError("[IAP] Credit persist failed — transaction left pending for redelivery: "
+                               + args.purchasedProduct.definition.id);
+                return PurchaseProcessingResult.Pending;
+            }
+
             return PurchaseProcessingResult.Complete;
         }
 
@@ -140,36 +165,71 @@ namespace AQ.App.Services.Purchasing
         private void OnWalletRestoreCompleted()
         {
             if (_heldUntilRestore.Count == 0) return;
-            foreach (var product in _heldUntilRestore)
+            if (WalletLocator.Instance == null)
             {
-                Credit(product);
-                _controller?.ConfirmPendingPurchase(product);
+                // No wallet to credit into — keep everything held (still Pending on
+                // the store side, so it redelivers next boot). Never confirm a
+                // transaction whose credit didn't land.
+                Debug.LogError("[IAP] No wallet at restore-complete; keeping " +
+                               _heldUntilRestore.Count + " purchase(s) pending.");
+                return;
             }
+
+            foreach (var product in _heldUntilRestore)
+                Credit(product);
+
+            // Persist all credits BEFORE confirming: ConfirmPendingPurchase finalizes
+            // the transaction with Apple, so an unconfirmed-but-credited crash is
+            // recoverable (store redelivers, restore re-credits) while a
+            // confirmed-but-unpersisted one loses the player's money. If the write
+            // fails, roll the credits back (memory must match disk) and keep
+            // everything Pending — the store redelivers next boot.
+            if (!BoardSaveSystem.SaveNow())
+            {
+                foreach (var product in _heldUntilRestore)
+                    RollbackCredit(product);
+                Debug.LogError("[IAP] Persist failed at restore flush — " +
+                               _heldUntilRestore.Count + " purchase(s) stay pending for redelivery.");
+                return;
+            }
+
+            foreach (var product in _heldUntilRestore)
+                _controller?.ConfirmPendingPurchase(product);
             _heldUntilRestore.Clear();
         }
 
-        private void Credit(Product product)
+        /// <summary>The catalog's rewards per product — single source for credit
+        /// AND rollback so the two can never drift apart. Null = unknown id.</summary>
+        private static Reward[] RewardsFor(string id) => id switch
+        {
+            IngotsSmall  => new[] { Reward.Premium(20) },
+            IngotsMedium => new[] { Reward.Premium(60) },
+            IngotsLarge  => new[] { Reward.Premium(150) },
+            StarterPack  => new[] { Reward.Premium(50), Reward.Energy(300) },
+            _            => null,
+        };
+
+        /// <summary>Grants the product's rewards. False = nothing granted (no
+        /// wallet — product held — or unknown id); callers must not finalize.</summary>
+        private bool Credit(Product product)
         {
             var wallet = WalletLocator.Instance;
             if (wallet == null)
             {
                 Debug.LogError("[IAP] No wallet at credit time; holding product " + product.definition.id);
                 if (!_heldUntilRestore.Contains(product)) _heldUntilRestore.Add(product);
-                return;
+                return false;
             }
 
             string id = product.definition.id;
-            string reason = "iap." + id;
-            switch (id)
+            var rewards = RewardsFor(id);
+            if (rewards == null)
             {
-                case IngotsSmall:  wallet.Grant(reason, Reward.Premium(20));  break;
-                case IngotsMedium: wallet.Grant(reason, Reward.Premium(60));  break;
-                case IngotsLarge:  wallet.Grant(reason, Reward.Premium(150)); break;
-                case StarterPack:  wallet.Grant(reason, Reward.Premium(50), Reward.Energy(300)); break;
-                default:
-                    Debug.LogWarning("[IAP] Unknown product credited: " + id);
-                    return;
+                Debug.LogWarning("[IAP] Unknown product not credited: " + id);
+                return false;
             }
+
+            wallet.Grant("iap." + id, rewards);
 
             AnalyticsLocator.Instance?.LogEvent("iap_purchase", new Dictionary<string, object>
             {
@@ -178,6 +238,19 @@ namespace AQ.App.Services.Purchasing
                 ["currency"] = product.metadata?.isoCurrencyCode ?? ""
             });
             PurchaseSucceeded?.Invoke(id);
+            return true;
+        }
+
+        /// <summary>Reverses a Credit whose persist failed, so the in-memory
+        /// wallet matches disk before the transaction is left Pending.</summary>
+        private static void RollbackCredit(Product product)
+        {
+            var wallet = WalletLocator.Instance;
+            if (wallet == null || product == null) return;
+            var rewards = RewardsFor(product.definition.id);
+            if (rewards == null) return;
+            foreach (var r in rewards)
+                wallet.TrySpend(r.Currency, r.Amount, "iap.rollback");
         }
 
         private void OnPurchaseFailedInternal(Product product, string reason)

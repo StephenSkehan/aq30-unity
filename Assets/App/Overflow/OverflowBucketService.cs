@@ -21,13 +21,33 @@ namespace AQ.App.Overflow
     /// <summary>
     /// FILO stack for items the player has won, gifted, or purchased but not yet placed on the board.
     /// Player-facing name: THE STASH (Stephen-ruled 2026-08-06).
-    /// Persists across sessions via overflow_state.json.
+    /// Persistence: folded into BoardSaveSystem's atomic aggregate at schema 0.8.0 so a
+    /// crash can never separate a stash transfer from its board/wallet half (the same
+    /// rule the Evidence Locker adopted at 0.7.0). The pre-0.8.0 overflow_state.json is
+    /// read once at boot for migration and deleted after the first aggregate save.
     /// </summary>
     public static class OverflowBucketService
     {
         private static readonly List<OverflowTileData> _stack = new();
 
         public static event Action BucketChanged;
+
+        /// <summary>A REWARD landed in the stash (lead outcome, dossier grant) —
+        /// consumed by the advise popup so awards never vanish into the bucket
+        /// unannounced (Stephen-ruled 2026-08-22). Deliberate transfers (shop
+        /// purchases, board spares) do not raise it.</summary>
+        public static event Action<OverflowTileData> RewardArrived;
+
+        /// <summary>Push that announces itself as a reward.</summary>
+        public static void Push(OverflowTileData tile, bool announce)
+        {
+            // Announce BEFORE the data push: the advisory freezes the Stash
+            // button on RewardArrived, so the BucketChanged refresh that follows
+            // cannot pre-show the reward behind its own popup (Stephen, 2026-09-03:
+            // the item must not appear in the Stash until the flight lands).
+            if (announce) RewardArrived?.Invoke(tile);
+            Push(tile);
+        }
 
         public static int Count => _stack.Count;
         public static bool IsEmpty => _stack.Count == 0;
@@ -42,7 +62,6 @@ namespace AQ.App.Overflow
         {
             _stack.Add(tile);
             BucketChanged?.Invoke();
-            Save();
         }
 
         public static OverflowTileData? Pop()
@@ -51,7 +70,6 @@ namespace AQ.App.Overflow
             var top = _stack[_stack.Count - 1];
             _stack.RemoveAt(_stack.Count - 1);
             BucketChanged?.Invoke();
-            Save();
             return top;
         }
 
@@ -59,9 +77,46 @@ namespace AQ.App.Overflow
         {
             _stack.Clear();
             BucketChanged?.Invoke();
-            Save();
+            DeleteLegacyFile();
         }
 
+        // --------------- Aggregate hooks (BoardSaveSystem) ---------------
+
+        /// <summary>Snapshot of the stack for the save aggregate.</summary>
+        public static List<OverflowTileData> ExportState()
+            => new List<OverflowTileData>(_stack);
+
+        /// <summary>Replaces the stack with the aggregate's saved state.</summary>
+        public static void ImportState(List<OverflowTileData> items)
+        {
+            _stack.Clear();
+            if (items != null) _stack.AddRange(items);
+            BucketChanged?.Invoke();
+        }
+
+        /// <summary>Order-sensitive content hash, for the aggregate's change detection.</summary>
+        public static int StateHash()
+        {
+            unchecked
+            {
+                int h = 23;
+                foreach (var t in _stack)
+                {
+                    h = h * 31 + (int)t.kind;
+                    h = h * 31 + (t.family != null ? t.family.GetHashCode() : 0);
+                    h = h * 31 + t.tier;
+                }
+                return h;
+            }
+        }
+
+        // --------------- Legacy file (pre-0.8.0 migration) ---------------
+
+        /// <summary>
+        /// Boot-time migration read of the pre-0.8.0 overflow_state.json. If the
+        /// aggregate save is schema 0.8.0+, BoardSaveSystem's ImportState replaces
+        /// whatever this loaded.
+        /// </summary>
         public static void Load()
         {
             _stack.Clear();
@@ -75,24 +130,25 @@ namespace AQ.App.Overflow
             }
             catch (Exception ex)
             {
-                Debug.LogWarning($"[OverflowBucket] load failed: {ex.Message}");
+                Debug.LogWarning($"[OverflowBucket] legacy load failed: {ex.Message}");
+            }
+        }
+
+        /// <summary>Removes the pre-0.8.0 standalone file once the aggregate owns the state.</summary>
+        public static void DeleteLegacyFile()
+        {
+            try
+            {
+                if (File.Exists(FilePath)) File.Delete(FilePath);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"[OverflowBucket] legacy delete failed: {ex.Message}");
             }
         }
 
         private static string FilePath
             => System.IO.Path.Combine(Application.persistentDataPath, "overflow_state.json");
-
-        private static void Save()
-        {
-            try
-            {
-                File.WriteAllText(FilePath, JsonUtility.ToJson(new DTO { items = new List<OverflowTileData>(_stack) }), Encoding.UTF8);
-            }
-            catch (Exception ex)
-            {
-                Debug.LogWarning($"[OverflowBucket] save failed: {ex.Message}");
-            }
-        }
 
         [Serializable]
         private class DTO { public List<OverflowTileData> items; }

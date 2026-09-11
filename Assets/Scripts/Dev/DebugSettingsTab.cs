@@ -42,13 +42,15 @@ namespace AQ.Dev
             MakeActionButton(ct, "-50 ENERGY",      1, new Color(0.20f, 0.35f, 0.55f), DrainEnergy);
             MakeActionButton(ct, "+1 EACH SPECIAL", 2, new Color(0.16f, 0.42f, 0.30f), GrantAllSpecials);
             MakeActionButton(ct, "CRASH TEST",      3, new Color(0.45f, 0.30f, 0.10f), CrashTest);
+            MakeActionButton(ct, "EPISODES",        4, new Color(0.30f, 0.25f, 0.50f),
+                AQ.App.Episodes.EpisodeFlow.OpenSelector);
 
             var note = MakeText("Note", ct,
                 "Dev builds only — this tab does not exist in the production release.",
                 22, AQTheme.PaperDim);
             var nrt = note.rectTransform;
-            nrt.anchorMin = new Vector2(0.07f, 0.02f);
-            nrt.anchorMax = new Vector2(0.93f, 0.13f);
+            nrt.anchorMin = new Vector2(0.07f, 0.00f);
+            nrt.anchorMax = new Vector2(0.93f, 0.08f);
             nrt.sizeDelta = Vector2.zero;
         }
 
@@ -133,8 +135,8 @@ namespace AQ.Dev
             var go = new GameObject("Dev_" + label, typeof(RectTransform), typeof(Image), typeof(Button));
             go.transform.SetParent(parent, false);
             var rt = (RectTransform)go.transform;
-            float top = 0.80f - row * 0.17f; // 4 rows since the specials button (2026-08-12)
-            rt.anchorMin = new Vector2(0.18f, top - 0.14f);
+            float top = 0.82f - row * 0.146f; // 5 rows since the episodes button (2026-08-27)
+            rt.anchorMin = new Vector2(0.18f, top - 0.125f);
             rt.anchorMax = new Vector2(0.82f, top);
             rt.sizeDelta = Vector2.zero;
 

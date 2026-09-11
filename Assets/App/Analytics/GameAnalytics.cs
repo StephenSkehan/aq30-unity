@@ -17,6 +17,20 @@ namespace AQ.App.Analytics
             });
         }
 
+        /// <summary>
+        /// Onboarding funnel milestone (SAS/feature-ftue-onboarding-v1.md, I8).
+        /// One event name, one step param — funnel tools sequence them by
+        /// timestamp. Review rule: any step dropping &gt;20% of the previous
+        /// step's players is a defect, not a stat.
+        /// </summary>
+        public static void LogFtueEvent(string step)
+        {
+            AnalyticsLocator.Instance?.LogEvent("ftue_funnel", new Dictionary<string, object>
+            {
+                ["step"] = step ?? string.Empty
+            });
+        }
+
         public static void LogCardStateChange(string leadId, string fromState, string toState)
         {
             AnalyticsLocator.Instance?.LogEvent("card_state_change", new Dictionary<string, object>
@@ -32,6 +46,29 @@ namespace AQ.App.Analytics
             AnalyticsLocator.Instance?.LogEvent("card_submit", new Dictionary<string, object>
             {
                 ["lead_id"] = leadId ?? string.Empty
+            });
+        }
+
+        /// <summary>A lead package's members are all activated; its beat is queued (fires once per package, catalog order).</summary>
+        public static void LogPackageComplete(string packageId, int chapter, string beatType)
+        {
+            AnalyticsLocator.Instance?.LogEvent("package_complete", new Dictionary<string, object>
+            {
+                ["package_id"] = packageId ?? string.Empty,
+                ["chapter"]    = chapter,
+                ["beat_type"]  = beatType ?? string.Empty
+            });
+        }
+
+        /// <summary>A package beat was dismissed: paid_now is true on the first dismissal (beat_paid set), false on a restore re-show.</summary>
+        public static void LogPackageBeatSeen(string packageId, int chapter, bool paidNow, bool prePlayed)
+        {
+            AnalyticsLocator.Instance?.LogEvent("package_beat_seen", new Dictionary<string, object>
+            {
+                ["package_id"] = packageId ?? string.Empty,
+                ["chapter"]    = chapter,
+                ["paid_now"]   = paidNow,
+                ["pre_played"] = prePlayed
             });
         }
 

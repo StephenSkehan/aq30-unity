@@ -47,7 +47,8 @@ namespace AQ.App.UI.Dossiers
             panel.pivot            = new Vector2(0.5f, 0.5f);
             panel.sizeDelta        = new Vector2(panelW, panelH);
             panel.anchoredPosition = Vector2.zero;
-            panel.gameObject.AddComponent<Image>().color = new Color(0.12f, 0.10f, 0.08f, 1f);
+            // Rounded corners to match the title bar (Stephen-ruled 2026-08-21).
+            AQTheme.Round(panel.gameObject.AddComponent<Image>(), new Color(0.12f, 0.10f, 0.08f, 1f));
 
             float cursor = panelH / 2f - 96f - 20f;
 
@@ -183,6 +184,25 @@ namespace AQ.App.UI.Dossiers
                         if (n != null) best = Prefer(best, Match(n.portrait, token));
                 if (Score(best) >= 2) return best;
             }
+
+            // Package episodes (Four Keys onward) keep their scenes on the
+            // package beat graphs, not on the cards: scan those too.
+            var packages = AQ.App.Episodes.EpisodeRuntime.Current?.packages;
+            if (packages != null)
+                foreach (var p in packages.packages)
+                {
+                    var nodes = p != null && p.beatDialogue != null ? p.beatDialogue.nodes : null;
+                    if (nodes == null) continue;
+                    foreach (var n in nodes)
+                        if (n != null) best = Prefer(best, Match(n.portrait, token));
+                    if (Score(best) >= 2) return best;
+                }
+
+            // Standing cast who front UI without a scene in the running episode
+            // (Gerald mentors the tutorial in every episode): Resources fallback.
+            if (best == null)
+                best = Resources.Load<Sprite>("App/Characters/char_" + token + "_neutral")
+                    ?? Resources.Load<Sprite>("App/Characters/char_" + token + "_neutral_f01");
             return best;
         }
 
