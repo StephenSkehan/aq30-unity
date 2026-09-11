@@ -1,6 +1,6 @@
 <!-- pdf-title: Premise delta v0.6: the trusting forgery, fourth cut -->
 
-# PREMISE DELTA v0.6 · THE TRUSTING FORGERY, FOURTH CUT · 2026-09-11 (DRAFT until Stephen has read it)
+# PREMISE DELTA v0.6 · THE TRUSTING FORGERY, FOURTH CUT · 2026-09-11 (read and released by Stephen 2026-09-11)
 
 *Sixth delta against premise v8.1 and spine v1.4 with amendments v1.5 to v1.8. History: v0.1 and v0.2 rejected by two adversaries each; v0.3 REWORK / REJECT, ten findings walked and answered; v0.4 REWORK / REWORK, nine findings walked and answered; v0.5 REWORK / REWORK, Fable stating for the second time that it could not break the device on its own terms, nine findings walked and answered on 2026-09-11 (`...-v0.5-disposition-2026-09-11.md`). This document is v0.5 with those nine answers built in. Three of them are structural and are flagged in the text. Premise v8.1 remains in force until this survives and Stephen rules.*
 
