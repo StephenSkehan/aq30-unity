@@ -1,8 +1,8 @@
 <!-- pdf-title: Premise delta v0.5: the trusting forgery, third cut -->
 
-# PREMISE DELTA v0.5 · THE TRUSTING FORGERY, THIRD CUT · 2026-09-09 (DRAFT until Stephen has read it)
+# PREMISE DELTA v0.5 · THE TRUSTING FORGERY, THIRD CUT · 2026-09-09 (read and released by Stephen 2026-09-11)
 
-*Fifth delta against premise v8.1 and spine v1.4 with amendments v1.5 to v1.8. History: v0.1 and v0.2 rejected by two adversaries each; v0.3 (2026-09-08) REWORK from Fable and REJECT from GPT, ten findings walked and answered on 2026-09-09; v0.4 (2026-09-09) REWORK from both, Fable stating that "the device itself survives every front", nine findings walked and answered the same day (`...-v0.4-disposition-2026-09-09.md`). This document is v0.4 with those nine answers built in. Assembled at Stephen's housekeep from rulings he accepted; he has not yet read it as a whole. When he has, it goes to both adversaries fresh. Premise v8.1 remains in force until it survives and Stephen rules.*
+*Fifth delta against premise v8.1 and spine v1.4 with amendments v1.5 to v1.8. History: v0.1 and v0.2 rejected by two adversaries each; v0.3 (2026-09-08) REWORK from Fable and REJECT from GPT, ten findings walked and answered on 2026-09-09; v0.4 (2026-09-09) REWORK from both, Fable stating that "the device itself survives every front", nine findings walked and answered the same day (`...-v0.4-disposition-2026-09-09.md`). This document is v0.4 with those nine answers built in. Assembled at Stephen's housekeep from rulings he accepted; read as a whole and released for the third adversary round on 2026-09-11. Premise v8.1 remains in force until it survives and Stephen rules.*
 
 *A note to the reviewer: sections 8 and 9 record the two previous rounds' findings and the answers now built in. Attack the answers. A finding re-raised without engaging its answer does not count.*
 
