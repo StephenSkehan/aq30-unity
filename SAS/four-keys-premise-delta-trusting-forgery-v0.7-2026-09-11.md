@@ -1,6 +1,6 @@
 <!-- pdf-title: Premise delta v0.7: the trusting forgery, fifth cut -->
 
-# PREMISE DELTA v0.7 · THE TRUSTING FORGERY, FIFTH CUT · 2026-09-11 (DRAFT until Stephen has read it)
+# PREMISE DELTA v0.7 · THE TRUSTING FORGERY, FIFTH CUT · 2026-09-11 (read and released by Stephen 2026-09-11)
 
 *Seventh delta against premise v8.1 and spine v1.4 with amendments v1.5 to v1.8. History: v0.1 and v0.2 rejected; v0.3 REWORK / REJECT; v0.4, v0.5 and v0.6 REWORK / REWORK, with Fable declining three times to attack the device and GPT conceding a front in the fourth round. Every finding of every round has been walked with Stephen and answered from the world (`...-v0.6-disposition-2026-09-11.md` and its predecessors). This document is v0.6 with the fourth round's ten answers built in. The one structural change is flagged. Premise v8.1 remains in force until this survives and Stephen rules.*
 
