@@ -34,6 +34,22 @@ Review: `episode-1-spine-four-keys-v2.0-attack-fable-r2-2026-09-13.md`. **Verdic
 
 **Held for Stephen:** front 1's extension of the refusal to the panel. Everything else is a row.
 
+## Round 3 (confirmation, at Stephen's request) → v2.0.4
+
+Review: `episode-1-spine-four-keys-v2.0-attack-fable-r3-2026-09-13.md`. **Verdict PROCEED WITH CHANGES**, high confidence the changes are rows and not machinery. Answered.
+
+| Front | Finding | Answer | Kind |
+|---|---|---|---|
+| 6 (driver) | The world says a book of everything she fetched to show people, and rules a book nobody knew; Ruby would ask where her book was | Written upstairs at night, alone; nobody but Violet had seen or heard of it before Day 0; Liam's twenty years of letting himself in were downstairs and daytime; Brad watched her go up for it on Day 0, the first time it was fetched for anyone; Margo knew because Violet told her the loan was written in it (G; row 20; Day 62) | Paid world fact |
+| 1 | One copy of the letter on a morning full of redundancy; the telling at the store door reads bolted on; the will | One copy by decision: a copy in a solicitor's file is a document the sister's people can demand, and the four read it together or not at all (A1 −19; C1 −3). The telling written as the third refusal on the Day −600 fact: he is the only one she talks to about the other three, and to keep it from him is to let him be the second hand. The will raised and deferred | Paid rows |
+| 2 | The box lie as a reflex on the one question he had fourteen days to prepare for; the corridor (a board, two carries, the tube out and back); the date arithmetic | A costed mistake: Liam rings, not Ruby, and says mine only came tonight, have you seen yours; Brad matches him, and hears it as he says it (A2; C2 verdict; F2). The panel wrapped, one carry; the tube never leaves the store (A2; D2). Mid August to the end of November, the December hearing | Rows |
+| 3 | "Again" has no antecedent once the tin is cut; nothing on the list about Margo | A bland first incident in her voice (the yard gate unbolted in October) gives again its antecedent (D3; row 30; Day 26). A bland Margo item so the list has one on each | Rows |
+| 4 | Margo's fourth route, Ruby alone, uncomputed; the barrel baseline wording; her Day 45 omission of the letter | Computed: Ruby cannot hold a thing without saying it in the room, and Margo has known that twenty years; her withdrawal from Ruby from Day 54 is the cost (C5). Baseline wording fixed. The omission owned as her second, paid | Paid rows |
+| 5 | "All three who knew him" with two survivors alive; the sort time unsourced; Ruby's two-hour wait; posting day | Two survivors; the counter clerk on the record that the overnight sort is in the boxes before seven (A5 Day 311; row 62; G). Ruby sits with hers and rings Liam at five; Liam rings Brad. Posted Friday evening after the last collection | Wordings + one source |
+| 6 (cosmetic) | The skipper and the dry bag; the boat owner and the front page | The skipper never knew where the papers were kept; the boat owner's Day 265 route to Del computed to the same nothing | Rows |
+
+**Held for Stephen:** nothing new this round beyond the two already flagged (the shared loft; Violet's refusal extended to the panel and, now, to the telling at the store door, all three as one refusal).
+
 ## Exit
 
-Fable returned PROCEED WITH CHANGES on round 2 and the changes are in. Spine v2.0.3 is frozen for GPT. If Stephen wants a confirmation round on v2.0.3 before GPT, it is one agent away.
+Three rounds. Round 1 REWORK of rows; rounds 2 and 3 PROCEED WITH CHANGES with high confidence the device holds. Every finding answered from the world or paid as a row; none needed a ruling. Spine v2.0.4 is frozen for GPT.
