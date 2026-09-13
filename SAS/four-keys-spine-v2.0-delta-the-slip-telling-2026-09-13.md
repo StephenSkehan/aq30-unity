@@ -2,7 +2,7 @@
 
 # SPINE v2.0 DELTA: THE SLIP TELLING · 2026-09-13
 
-*Proposed fix for one finding in `four-keys-spine-v2.0-critical-review-2026-09-13.md`: the Day 19 lists assert "nobody who could have known a pot" without ever establishing that Violet's Day −36 announcement of the pot's location was said out of anyone else's earshot, when the document is otherwise scrupulous about canvassing every possible overhearer. Two rounds with a fresh Fable agent; round 1 rejected, round 2 accepted with two small consistency edits (mine, marked). This is a proposed patch to `episode-1-spine-four-keys-v2.0.md`, not yet folded in. Stephen rules whether to adopt, per standing practice.*
+*Proposed fix for one finding in `four-keys-spine-v2.0-critical-review-2026-09-13.md`: the Day 19 lists assert "nobody who could have known a pot" without ever establishing that Violet's Day −36 announcement of the pot's location was said out of anyone else's earshot, when the document is otherwise scrupulous about canvassing every possible overhearer. Two rounds with a fresh Fable agent; round 1 rejected, round 2 accepted with two small consistency edits (mine, marked). This is a proposed patch to `episode-1-spine-four-keys-v2.0.md`. **Folded in on 2026-09-13 at Stephen's instruction, with the Sunday fixed: the lock and the locksmith moved to Monday Day −35, the tellings run Days −35 to −33 (Liam Monday evening, Ruby and Margo Tuesday, Brad Wednesday midday).***
 
 ## Round 1 (rejected)
 
