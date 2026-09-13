@@ -79,3 +79,35 @@ The world’s assertion that there was “no offence” fails because it convert
 **What would have to be true for this to be answered:** Testing would have to be incapable of distinguishing the dose from innocent contamination, or no medical, police or laboratory route could retain the material for later comparison. The spine currently states neither.
 
 **REWORK. Confidence: high.** The decisive finding is Front 3. “Only four people were told” never becomes “only four people could know,” and Violet’s own instruction confirms the difference. The entire accusation engine requires four competent adults to overlook the central logical distinction in the document they are painstakingly analysing.
+
+
+---
+
+## Appendix: GPT's overall assessment, same session (verbatim; an opinion, not a gate)
+
+*Filed because Stephen pasted it. Standing rule: scores, including an adversary's, are not evidence; the kill-gates decide. Kept for its words, in particular the restraint note on Brad's construction, which goes into every Brad prose brief.*
+
+Honestly: **84/100 as it stands.**
+
+It is a **93-point premise attached to a roughly 77-point mechanism**.
+
+What is genuinely excellent:
+
+* “Four friends receive four keys from a dead woman whose letter clears them, then use it to destroy one another” is a first-rate hook.
+* The emotional engine is stronger than the murder puzzle. Trust, guilt and friendship become Brad’s weapons.
+* The forged kindness is inspired. A reassuring sentence becoming the forgery’s weak point is memorable and thematically right.
+* Violet’s ashes, the locked store, the kitchen-table meetings and the same cliff give the story powerful recurring images.
+* Brad defending Liam so successfully that it condemns Liam is particularly good true-crime psychology.
+* Margo’s eventual realization has real tragedy rather than merely delivering information.
+
+What holds it below 90:
+
+* The room’s closed-pool logic currently does not hold. “Only four were told” is not “only four could know.” That is the most important weakness.
+* Brad keeping and displaying the panel feels author-required. His later willingness to burn it exposes the problem.
+* Margo’s Day 8 handling of a known loan and missing loan book strains her professional competence.
+* Chapter 7’s supposed box lie is not actually a contradiction. Collecting an envelope at seven and opening it later are compatible.
+* Brad’s total construction risks feeling one turn too elaborate: prior murder, stolen identity, forgery, staged suicide, second murder and trophy retention. Execution will need exceptional restraint to stop him becoming a plot machine.
+
+My honest commercial judgement: **this is already much better than the average mobile-game mystery and better than many professionally released cosy or dramatic mystery premises.** It has an identity, a strong title, visual memory and an emotionally marketable hook. The current weaknesses are load-bearing, but they are concentrated. They do not require abandoning the story’s heart.
+
+If the closed-pool reasoning, panel retention, Margo route and Chapter 7 tell are genuinely solved, I would put it around **91 to 93/100**. The raw creative idea is absolutely worth continuing. “Fatal” in the adversarial review meant fatal to a particular piece of machinery, not fatal to the story. The engine needs another trip onto the hoist, but the car is worth saving.
