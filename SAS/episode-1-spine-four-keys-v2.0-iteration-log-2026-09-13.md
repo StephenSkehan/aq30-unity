@@ -50,6 +50,23 @@ Review: `episode-1-spine-four-keys-v2.0-attack-fable-r3-2026-09-13.md`. **Verdic
 
 **Held for Stephen:** nothing new this round beyond the two already flagged (the shared loft; Violet's refusal extended to the panel and, now, to the telling at the store door, all three as one refusal).
 
+## GPT round → v2.0.5
+
+`episode-1-spine-four-keys-v2.0-attack-chatgpt-2026-09-13.md`, disposition `episode-1-spine-four-keys-v2.0-disposition-2026-09-13.md`. REWORK, six rows, all walked with Stephen in plain questions and accepted (the pot inside the yard; the panel's record is the trade; Day 14 versus Day 325; the personal representative; chapter 7's tell carried down; the tobacco binned, paid).
+
+## Round 4 (at Stephen's request, one more round starting with Fable) → v2.0.6
+
+Review: `episode-1-spine-four-keys-v2.0-attack-fable-r4-2026-09-13.md`. **Verdict REWORK confined to C2 and the room; foundations, premise and police rulings held.** The driver needed a ruling and got one.
+
+| Front | Finding | Answer | Kind |
+|---|---|---|---|
+| 2 (driver) | Brad could claim the panel with a true sentence; D1 constraint 6 (initials, no face, innocuous) refutes foundation 2's "the mark is his fingerprint" | **Stephen restated foundation 2:** the reason is Violet, not the mark: the one person who knows a hidden self was built at her bench and who would never believe his drowning. Brad's refusal to claim written as his own lock and paid (C2 −6, −3, −16; D1; D4; header; foundations file) | **Ruling** |
+| 1 | The telling at the store door paid in the wrong currency; the will unmotivated; the letter predates its own content | The telling as trusting him against the yours she has just heard; the will deferred because a will now is a document in the litigation; his answer pencilled into the letter at the door | Paid rows |
+| 3 | The trade would tell the four about the panel | The café owner asks Brad at the wake, and he closes it; the other three are not the trade's people | Row |
+| 4 | Margo could name the book to the room; G contradicted row 20 | Margo believes the book mislaid in the clearance until Day 50; G corrected to Violet, Brad and Margo | Row + drafting |
+| 5 | The tell is idiom; the clerk does not say one sort; the landlady's listening unexplained | A checkable sentence (nothing in the box this morning, must have come in the afternoon sort) against one sort a day, on the record; the landlady found the show from the national pickup and hears it through the wall | Rows |
+| 6 | The skipper on Day 62; R16 undefined; late July; Day 62 versus C4 | The skipper away on the northern season Days 40 to 300; R16 defined in G; late July; C4 Week 9 marked computed, not taken | Drafting |
+
 ## Exit
 
-Three rounds. Round 1 REWORK of rows; rounds 2 and 3 PROCEED WITH CHANGES with high confidence the device holds. Every finding answered from the world or paid as a row; none needed a ruling. Spine v2.0.4 is frozen for GPT.
+Spine v2.0.6 is frozen for GPT's second look, per Stephen's "one more round starting with Fable".
