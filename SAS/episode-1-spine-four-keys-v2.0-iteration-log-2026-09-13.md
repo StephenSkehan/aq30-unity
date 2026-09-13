@@ -19,6 +19,21 @@ Review: `episode-1-spine-four-keys-v2.0-attack-fable-r1-2026-09-13.md`. Verdict 
 
 **Held for Stephen:** the shared loft (front 1) is the one new world fact this round introduced; everything else is a row or a wording.
 
-## Round 2
+## Round 2 → v2.0.3
 
-Running on v2.0.2.
+Review: `episode-1-spine-four-keys-v2.0-attack-fable-r2-2026-09-13.md`. **Verdict PROCEED WITH CHANGES**, high confidence the device holds and every finding is answered by a row. The loop's exit condition is met; the changes are applied and the spine is frozen for GPT.
+
+| Front | Finding | Answer | Kind |
+|---|---|---|---|
+| 1 | The loft answers where the panel lay, not whose hand; two hands on the coast can write her alphabet, so the −75 sum closes and she is written as if it does not | The −75 row is a refusal, not a failure: she writes "half the market" in order not to write "two hands, and I am one", and it is the same refusal as Day −29, paid at the same price. Liam sees the new cylinder on Day −35 and she says the old one was sticking | Paid row. **Flagged for Stephen:** Violet now knowingly refuses a sum that points at Brad, which is foundation 3's refusal extended to the panel |
+| 2 | Brad has no route to the fact that the four get the keys on her death, and foundation 2 stands on that hour; the box lie is claimed coherent and is not; the repaid-not-forgiven reason is the wrong one | She tells him at the store door: if anything happens to me you four get the keys and my sister gets a padlock (A1 −19; row 16a; C2). The box lie owned as the one act against his interest, and the tell (A2; C2 verdict; F2). The truer reason for repaid added: forgiven is a louder lie to Margo's ear | Row + owned exception |
+| 3 | Ruby holds Brad's marathon lie and would say it at meeting 4; the room then holds a man who was leaving; Day 62 becomes voluntary disappearance | Meeting 4 written: Ruby says it, Brad answers, the room hears vanity not flight for two stated reasons, Ruby's cost paid, Liam keeps the crane-cab question because Brad is his only defender. Day 62: why nobody says voluntary. Row 30 carries the key taken in | Paid rows |
+| 4 | Margo asks what cash was found; the barrel's count against the van sum is a decisive small number the document never states; the Civic Row account was not yet due; the −120 list in Violet's hand is real paper | The count asked, given, computed to nothing against a stale baseline (A3 Day 45; 33d; F13). The account demoted: not due is not unpaid. The −120 list is Margo's own note of a conversation, not Violet's hand. Margo's arrival owned as the moment the reading acquires cost and shape, standing on the book alone | World facts + honesty |
+| 5 | Ally airs "eleven hours nobody has accounted for" while holding the boat owner's account; key-from-seven stated as fact; Margo's time unsourced; postmark and box lobby | The false sentence replaced by the on-air ask; the habit said as habit; Margo's time as Ruby's memory of her call; posted after the Friday collection; the box lobby opens at seven (G) | Wording |
+| 6 | The solicitor "advised police" and "could tell nobody": the uncomputed route ends the episode in week 4 | The cheap fix: she told him nothing but the instruction; he holds no fear; his Day 6 route to the coroner's officer is computed and empty (C1 −3; row 16; C8) | World fact, computed |
+
+**Held for Stephen:** front 1's extension of the refusal to the panel. Everything else is a row.
+
+## Exit
+
+Fable returned PROCEED WITH CHANGES on round 2 and the changes are in. Spine v2.0.3 is frozen for GPT. If Stephen wants a confirmation round on v2.0.3 before GPT, it is one agent away.
