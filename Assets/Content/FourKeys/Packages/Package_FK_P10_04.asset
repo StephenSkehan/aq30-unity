@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53887cd0b9ce427895664a3c4544c256, type: 3}
+  m_Name: Package_FK_P10_04
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.Packages.PackageData
+  packageId: fk_p10_04
+  chapter: 10
+  title: "Built to Sound the Same"
+  memberCardIds: 
+  - fk_p10_04a
+  - fk_p10_04b
+  - fk_p10_04c
+  - fk_p10_04d
+  - fk_p10_04e
+  beatType: 0
+  beatDialogue: {fileID: 11400000, guid: 27c85bf8bb1a4d24a8e00d41b57382a1, type: 2}
+  beatArt: {fileID: 0}
+  beatCaption: 
+  softCurrency: 185
+  energyGrant: 0
+  premiumGrant: 0
+  specialRewardId: 
+  specialRewardCount: 1

@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P03_10
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P03_10_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e102, type: 3}
+  nodes:
+  - id: FK_P03_10_N1
+    speaker: "Ally Quinn"
+    line: "This week I left Ruby's kitchen and went into the town. Violet Moore's lettering is on the menu boards at the harbour café and on half the shopfronts between there and the Regent."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P03_10_N2
+    choices: []
+  - id: FK_P03_10_N2
+    speaker: "Ally Quinn"
+    line: "The café owner told me that in her last months Violet said she was calling in what she was owed. For the lawyer, she said. No name. I don't know who owed her, or how much."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P03_10_N3
+    choices: []
+  - id: FK_P03_10_N3
+    speaker: "Ally Quinn"
+    line: "Violet's sister told me the two of them fought for years over their mother's house. Violet had a solicitor on Civic Row. She left no will, so her sister administers everything."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P03_10_N4
+    choices: []
+  - id: FK_P03_10_N4
+    speaker: "Ally Quinn"
+    line: "And her sister told me what stood beside the letter in the store, the thing the four have never said. It was their mother's ashes. Violet had kept them four years and said they were scattered. Her sister has them now."
+    portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P03_10_N5
+    choices: []
+  - id: FK_P03_10_N5
+    speaker: "Ally Quinn"
+    line: "Two and a half months before she died, Violet carried a lettering panel round the trade for about a month. Gold letters on a dark board, an alphabet in her own style, better than anyone had seen her do."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P03_10_N6
+    choices: []
+  - id: FK_P03_10_N6
+    speaker: "Ally Quinn"
+    line: "She asked everyone who saw it whose lettering it was. Two said hers. Nobody has seen it since she died, and I don't know where it is. If you do, write to me, not to anyone else."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P03_10_N7
+    choices: []
+  - id: FK_P03_10_N7
+    speaker: "Ally Quinn"
+    line: "A column elsewhere ran a garbled version of the letter. I held the real one back. Ruby rang tonight. You could have read it right, she said. She's right. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+    portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: aq.fk.d1.held
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P03_10_N8
+    choices: []
+  - id: FK_P03_10_N8
+    speaker: "Ally Quinn"
+    line: "That's the week. Money moved, a panel went round the town, and a mother's ashes sat beside the letter. I don't know yet what joins them. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: aq.fk.d1.aired
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P07_02P
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P07_02P_N1
+  stageBackground: {fileID: 21300000, guid: 2451cd1fa43fb724bacf7ad8ad419c9b, type: 3}
+  nodes:
+  - id: FK_P07_02P_N1
+    speaker: "Ally Quinn"
+    line: "One letter, pinned, with the café owner's words on a card beside it. Black ground. Gold capitals and the ampersand. The mark bottom right that wasn't her name."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P07_02P_N2
+    choices: []
+  - id: FK_P07_02P_N2
+    speaker: "Ally Quinn"
+    line: "The crack stays off the board. One person mentioned it and nobody else did, and one isn't enough to pin. I've written under it what it is: one description, and half of another."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

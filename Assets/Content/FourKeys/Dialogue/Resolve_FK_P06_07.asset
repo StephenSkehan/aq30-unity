@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P06_07
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P06_07_N1
+  stageBackground: {fileID: 21300000, guid: 2451cd1fa43fb724bacf7ad8ad419c9b, type: 3}
+  nodes:
+  - id: FK_P06_07_N1
+    speaker: "Ally Quinn"
+    line: "I've put the letter up on the board, line by line, next to what the room verified last month."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P06_07_N2
+    choices: []
+  - id: FK_P06_07_N2
+    speaker: "Ally Quinn"
+    line: "Liam's third of the yard, true. The boat requests, true. The lock changed and the key taken in, true. Every line the police could check, they checked, and it held."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P06_07_N3
+    choices: []
+  - id: FK_P06_07_N3
+    speaker: "Ally Quinn"
+    line: "One line nobody checked. The kind one. Brad had paid the van money back that autumn. Nobody looked at it, because why would you look at a kind thing."
+    portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
+    emotion: 6
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P06_07_N4
+    choices: []
+  - id: FK_P06_07_N4
+    speaker: "Ally Quinn"
+    line: "And across all of it, Margo's sentence on a pin. The thing in the cupboard is wrong."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

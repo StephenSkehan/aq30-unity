@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P03_06
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P03_06_N1
+  stageBackground: {fileID: 21300000, guid: 2451cd1fa43fb724bacf7ad8ad419c9b, type: 3}
+  nodes:
+  - id: FK_P03_06_N1
+    speaker: "Ally Quinn"
+    line: "Two and a half months before she died, Violet started carrying something round the trade. A lettering panel. Gold letters on a dark board."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P03_06_N2
+    choices: []
+  - id: FK_P03_06_N2
+    speaker: "Ally Quinn"
+    line: "For about a month she showed it to anyone who lettered for a living and asked the same question. Whose lettering is this."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P03_06_N3
+    choices: []
+  - id: FK_P03_06_N3
+    speaker: "Ally Quinn"
+    line: "The café owner saw it. The cinema owner saw it. Two signwriters up the coast saw it. Two of the four told her, yours, in a very good year. One asked whether she'd shown her lad."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P03_06_N4
+    choices: []
+  - id: FK_P03_06_N4
+    speaker: "Ally Quinn"
+    line: "Her lad was Brad Collins. He was her apprentice for seven years. That's the whole of what I know about that."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P03_06_N5
+    choices: []
+  - id: FK_P03_06_N5
+    speaker: "Ally Quinn"
+    line: "Nobody has seen the panel since she died. It wasn't in the store when the four opened it, Ruby says. It wasn't in the boxes. The sister has never seen it. I don't know where it is."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P03_06_N6
+    choices: []
+  - id: FK_P03_06_N6
+    speaker: "Ally Quinn"
+    line: "But she asked for a month, out loud, all over town. Whoever has it now heard her asking."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

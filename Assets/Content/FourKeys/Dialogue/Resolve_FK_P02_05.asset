@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P02_05
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P02_05_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e105, type: 3}
+  nodes:
+  - id: FK_P02_05_N1
+    speaker: "Ally Quinn"
+    line: "Ruby told me this one without being asked."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_05_N2
+    choices: []
+  - id: FK_P02_05_N2
+    speaker: "Ruby Walker"
+    line: "Three years ago she rang me at four in the morning. I drove over. Neither of us ever said what it was, not that night and not after. Anyway."
+    portrait: {fileID: 0}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_05_N3
+    choices: []
+  - id: FK_P02_05_N3
+    speaker: "Ally Quinn"
+    line: "I don't know what it was. Ruby didn't say, and I'm not going to guess."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

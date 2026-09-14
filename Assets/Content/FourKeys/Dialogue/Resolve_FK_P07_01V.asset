@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P07_01V
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P07_01V_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e101, type: 3}
+  nodes:
+  - id: FK_P07_01V_N1
+    speaker: "Ally Quinn"
+    line: "Last week I read out the exact words I'd been given for the panel and asked anyone who'd seen it to write. Two signwriters did. Neither knew the other had."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P07_01V_N2
+    choices: []
+  - id: FK_P07_01V_N2
+    speaker: "Ally Quinn"
+    line: "Both describe the same thing. A black ground. Gold capitals and an ampersand. Her own alphabet, done better than she'd ever done it."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P07_01V_N3
+    choices: []
+  - id: FK_P07_01V_N3
+    speaker: "Ally Quinn"
+    line: "Both put a crack across one corner. Both put a small mark bottom right, and both say it wasn't her name."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P07_01V_N4
+    choices: []
+  - id: FK_P07_01V_N4
+    speaker: "Ally Quinn"
+    line: "Two people who've never met, describing one object from memory, and they agree on the corner. I've pinned both letters side by side."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

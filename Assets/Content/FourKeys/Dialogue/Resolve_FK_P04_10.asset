@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P04_10
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P04_10_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e102, type: 3}
+  nodes:
+  - id: FK_P04_10_N1
+    speaker: "Ally Quinn"
+    line: "This week, Liam Bryce. He's known Violet Moore since the school bus, thirty-five years. He drives the crane at the boatyard, and he owns a third of it, which he's never said out loud until now."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_10_N2
+    choices: []
+  - id: FK_P04_10_N2
+    speaker: "Ally Quinn"
+    line: "The letter had lines about him. He answered every one of them at his own kitchen table, with the tape running."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_10_N3
+    choices: []
+  - id: FK_P04_10_N3
+    speaker: "Ally Quinn"
+    line: "He asked, twice, to take her mother's ashes out on his boat. He fixed a window catch in her back bedroom. He rehung her back door. He fitted the gate at the back of her yard."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_10_N4
+    choices: []
+  - id: FK_P04_10_N4
+    speaker: "Ally Quinn"
+    line: "Every one of those things happened. He told me so himself. What they add up to, I can't tell you. I don't know, and the police looked for six weeks and took no further action."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_10_N5
+    choices: []
+  - id: FK_P04_10_N5
+    speaker: "Ally Quinn"
+    line: "There's more in my notebook this week than in this episode. Some of it I don't understand yet, and I won't say it until I do."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_10_N6
+    choices: []
+  - id: FK_P04_10_N6
+    speaker: "Ally Quinn"
+    line: "I asked Liam to come back in before this went out. He didn't answer. So tonight is one afternoon at his table, and I'll leave it there. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+    portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: aq.fk.d2.market
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_10_N7
+    choices: []
+  - id: FK_P04_10_N7
+    speaker: "Ally Quinn"
+    line: "I'll be back at the yard next week, if Liam will have me. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: aq.fk.d2.direct
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

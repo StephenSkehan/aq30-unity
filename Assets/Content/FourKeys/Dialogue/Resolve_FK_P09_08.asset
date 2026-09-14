@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P09_08
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P09_08_N1
+  stageBackground: {fileID: 21300000, guid: 2451cd1fa43fb724bacf7ad8ad419c9b, type: 3}
+  nodes:
+  - id: FK_P09_08_N1
+    speaker: "Ally Quinn"
+    line: "Here it is, all of it. Black ground. Gold capitals. An ampersand. A crack across one corner. A small mark bottom right that isn't her name."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P09_08_N2
+    choices: []
+  - id: FK_P09_08_N2
+    speaker: "Ally Quinn"
+    line: "There's one of these in the world. Nobody has seen it since she died. Tomorrow night I say it into every kitchen in the country with the radio on."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P09_08_N3
+    choices: []
+  - id: FK_P09_08_N3
+    speaker: "Ally Quinn"
+    line: "Saying it is the only way to find it. And whoever has it will be listening too. I can't do one without the other."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P09_08_D
+    choices: []
+  - id: FK_P09_08_D
+    speaker: "Ally Quinn"
+    line: "Do I say the mark, or do I keep it for Del?"
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P09_08_R1
+    choices:
+    - text: "Say all of it, mark included"
+      nextId: FK_P09_08_R1
+      requiresFlag: 
+    - text: "Keep the mark back for Del"
+      nextId: FK_P09_08_R2
+      requiresFlag: 
+  - id: FK_P09_08_R1
+    speaker: "Ally Quinn"
+    line: "All of it, then. Every listener gets the whole object. If someone writes in and describes the mark, I'll have no way of knowing whether they saw it or heard me."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.fk.d4.mark_aired
+    nextId: FK_P09_08_N4
+    choices: []
+  - id: FK_P09_08_R2
+    speaker: "Ally Quinn"
+    line: "The mark stays with Del. The broadcast is a corner short of the truth. But if someone writes to me and tells me what's in that corner, they've seen it."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.fk.d4.mark_held
+    nextId: FK_P09_08_N4
+    choices: []
+  - id: FK_P09_08_N4
+    speaker: "Ally Quinn"
+    line: "Tomorrow night. There's no version of this where I don't say it."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

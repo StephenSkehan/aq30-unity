@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53887cd0b9ce427895664a3c4544c256, type: 3}
+  m_Name: Package_FK_P10_08A
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.Packages.PackageData
+  packageId: fk_p10_08a
+  chapter: 10
+  title: "The Flood"
+  memberCardIds: 
+  - fk_p10_08aa
+  - fk_p10_08ab
+  - fk_p10_08ac
+  - fk_p10_08ad
+  - fk_p10_08ae
+  beatType: 0
+  beatDialogue: {fileID: 11400000, guid: 3fc8e06d642d4b0aa20a486d7bfea56a, type: 2}
+  beatArt: {fileID: 0}
+  beatCaption: 
+  softCurrency: 150
+  energyGrant: 0
+  premiumGrant: 0
+  specialRewardId: 
+  specialRewardCount: 1

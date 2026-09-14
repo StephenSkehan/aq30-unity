@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P06_08
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P06_08_N1
+  stageBackground: {fileID: 21300000, guid: 2451cd1fa43fb724bacf7ad8ad419c9b, type: 3}
+  nodes:
+  - id: FK_P06_08_N1
+    speaker: "Ally Quinn"
+    line: "Here's where I've got to, and I'll say exactly this much. If the thing in the cupboard was wrong, then there was a thing, and something about it didn't fit."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P06_08_N2
+    choices: []
+  - id: FK_P06_08_N2
+    speaker: "Ally Quinn"
+    line: "I don't know what Margo meant. I'm not saying the letter's false. I'm not saying who."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P06_08_N3
+    choices: []
+  - id: FK_P06_08_N3
+    speaker: "Ally Quinn"
+    line: "But there's a plainer question. What did Violet have in her last months that she hadn't had before?"
+    portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
+    emotion: 6
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P06_08_N4
+    choices: []
+  - id: FK_P06_08_N4
+    speaker: "Ally Quinn"
+    line: "The gilded panel. She carried it round the trade, workshop to workshop, showing people. Nobody has seen it since."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P06_08_N5
+    choices: []
+  - id: FK_P06_08_N5
+    speaker: "Ally Quinn"
+    line: "It isn't in the store. It isn't in Brad's boxes. It isn't in the estate. I've asked. Something is missing from the world, and I don't know if it's the same something."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

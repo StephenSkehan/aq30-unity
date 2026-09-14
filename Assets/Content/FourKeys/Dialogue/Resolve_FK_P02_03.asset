@@ -1,0 +1,371 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P02_03
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P02_03_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e105, type: 3}
+  nodes:
+  - id: FK_P02_03_N1
+    speaker: "Ally Quinn"
+    line: "The letter behind the door. Violet's handwriting, dated three weeks before she died. Police examined it and gave it back. Ruby kept it. She read it to me at the table."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N2
+    choices: []
+  - id: FK_P02_03_N2
+    speaker: "Ally Quinn"
+    line: "There are lines in it about Violet's mother. Ruby won't read those. She put her hand over them. I haven't guessed at what's under it."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N3
+    choices: []
+  - id: FK_P02_03_N3
+    speaker: "Ruby Walker"
+    line: "It isn't any of you four, and I'd know. Someone with my key has been in my house, or I've started imagining things. I can't tell which, and both frighten me."
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N4
+    choices: []
+  - id: FK_P02_03_N4
+    speaker: "Ruby Walker"
+    line: "The first thing. The yard gate. I bolt it every night. One morning in October it was unbolted, and I couldn't swear I'd bolted it."
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N5
+    choices: []
+  - id: FK_P02_03_N5
+    speaker: "Ruby Walker"
+    line: "I changed the front door lock in October and told only you four where the new spare was. It happened again after that. So I took the key in, told nobody, and it stopped."
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N6
+    choices: []
+  - id: FK_P02_03_N6
+    speaker: "Ruby Walker"
+    line: "I don't think I'm going to die. I think I'm going to be sixty and embarrassed. But if I'm wrong nobody needs to know, and if I'm right you'll want to know what I noticed."
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N7
+    choices: []
+  - id: FK_P02_03_N7
+    speaker: "Ruby Walker"
+    line: "If I'd told you now you'd have sat in my kitchen with a torch and I'd never have heard the end of it."
+    portrait: {fileID: 0}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N8
+    choices: []
+  - id: FK_P02_03_N8
+    speaker: "Ally Quinn"
+    line: "Here Ruby's hand goes over the page. The lines about Violet's mother. She picks up again below her hand."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N9
+    choices: []
+  - id: FK_P02_03_N9
+    speaker: "Ruby Walker"
+    line: "Somebody got the place of my spare from one of you without your knowing, or watched one of you use it. So write down everything odd you've noticed this year. About me, and about who's been near each of you."
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N10
+    choices: []
+  - id: FK_P02_03_N10
+    speaker: "Ruby Walker"
+    line: "Read the four lists together at one table. Since I'm asking you to, here's mine. Liam has owned a third of the yard for eight years and lets the town think he's staff."
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N11
+    choices: []
+  - id: FK_P02_03_N11
+    speaker: "Ally Quinn"
+    line: "Her hand goes down again. One line. She won't read that one either."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N12
+    choices: []
+  - id: FK_P02_03_N12
+    speaker: "Ruby Walker"
+    line: "Ruby's been on nights since August and won't say why. Margo hasn't been to the slip since the summer. And Brad paid me back the van money this autumn, every penny. I put it here because it's the one thing this year that went right."
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N13
+    choices: []
+  - id: FK_P02_03_N13
+    speaker: "Ruby Walker"
+    line: "Not the police. I've nothing they'd act on and I won't have them in your lives over a gate and a feeling. You four can do what they won't. Read this together, and be careful. Write legibly. Violet."
+    portrait: {fileID: 0}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N14
+    choices: []
+  - id: FK_P02_03_N14
+    speaker: "Ruby Walker"
+    line: "That bit about the police. That never sounded like Vi to me. Liam said that night why she was like that about police. Something from the night her mum died. I don't know what. I let it go. I shouldn't have. Anyway."
+    portrait: {fileID: 0}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N15
+    choices: []
+  - id: FK_P02_03_N15
+    speaker: "Ally Quinn"
+    line: "That's the letter. Then Ruby told me about the room, in order. The night they opened the store, the first thing was relief. Then being ashamed of the relief. Nobody said the rest out loud that night."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N16
+    choices: []
+  - id: FK_P02_03_N16
+    speaker: "Ally Quinn"
+    line: "The next evening, at this table, they said it. She changed her lock and told the four of them. It happened again. She took the key in, told nobody, and it stopped."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N17
+    choices: []
+  - id: FK_P02_03_N17
+    speaker: "Ally Quinn"
+    line: "Liam found her. Ruby says the spare wasn't in its pot, so he broke a pane to get in, and the back door was latched."
+    portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N18
+    choices: []
+  - id: FK_P02_03_N18
+    speaker: "Ally Quinn"
+    line: "They looked for anyone else in Violet's life. No cleaner, no lodger, no tradesman. A sister she hadn't spoken to in years. Nobody."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N19
+    choices: []
+  - id: FK_P02_03_N19
+    speaker: "Ruby Walker"
+    line: "We knew a wall could be climbed. We chose not to think it. Anyway. Saturdays after that. Every Saturday, here."
+    portrait: {fileID: 0}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N20
+    choices: []
+  - id: FK_P02_03_N20
+    speaker: "Ally Quinn"
+    line: "The lists Violet asked for, who'd been near each of them: nobody. Where were they on the Monday night: Ruby on shift, Margo at home alone, Liam alone at the yard, Brad at home alone. Ruby's words: nobody had an alibi, and Liam had the least."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N21
+    choices: []
+  - id: FK_P02_03_N21
+    speaker: "Ruby Walker"
+    line: "She thought she'd know. And she's dead. I said that every week. I'm saying it to you now. Anyway."
+    portrait: {fileID: 0}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N22
+    choices: []
+  - id: FK_P02_03_N22
+    speaker: "Ally Quinn"
+    line: "Meeting by meeting, Ruby says, the letter's lines about Liam were read against him. The yard he'd kept quiet. The lines about her mother, which Ruby won't repeat. And that he'd fixed a window catch in Violet's back bedroom in spring, and the back door."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N23
+    choices: []
+  - id: FK_P02_03_N23
+    speaker: "Ally Quinn"
+    line: "Brad argued Liam's side every week. Reasonably, Ruby says. He lost every week. By the fifth week the table had settled on Liam. That's Ruby's account. Nobody else's yet."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N24
+    choices: []
+  - id: FK_P02_03_N24
+    speaker: "Ally Quinn"
+    line: "At the sixth meeting Margo stopped arguing and stopped looking at anyone. Ruby doesn't know why and won't guess. A week later Brad drove to Kestrel Head."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_D
+    choices: []
+  - id: FK_P02_03_D
+    speaker: "Ally Quinn"
+    line: "Next week I have to decide what this city hears of Violet's letter."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_R1
+    choices:
+    - text: "Read it whole, as Ruby read it"
+      nextId: FK_P02_03_R1
+      requiresFlag: 
+    - text: "Air only what I can check"
+      nextId: FK_P02_03_R2
+      requiresFlag: 
+  - id: FK_P02_03_R1
+    speaker: "Ally Quinn"
+    line: "I'll read it all, every line Ruby read me. They'll go out in Ruby's voice as much as Violet's, and Ruby is the one who'll carry them round this town."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.fk.d1.aired
+    nextId: FK_P02_03_N25
+    choices: []
+  - id: FK_P02_03_R2
+    speaker: "Ally Quinn"
+    line: "I'll read the parts I can stand behind from someone other than Ruby. The city hears less. Ruby keeps the rest at her own table."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.fk.d1.held
+    nextId: FK_P02_03_N25
+    choices: []
+  - id: FK_P02_03_N25
+    speaker: "Ruby Walker"
+    line: "You do what you think. I'll put the kettle on. Anyway."
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_03_N26
+    choices: []
+  - id: FK_P02_03_N26
+    speaker: "Ally Quinn"
+    line: "The lines under her hand stay there either way."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

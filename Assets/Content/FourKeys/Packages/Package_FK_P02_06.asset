@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53887cd0b9ce427895664a3c4544c256, type: 3}
+  m_Name: Package_FK_P02_06
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.Packages.PackageData
+  packageId: fk_p02_06
+  chapter: 2
+  title: "Brad's Boxes"
+  memberCardIds: 
+  - fk_p02_06a
+  - fk_p02_06b
+  - fk_p02_06c
+  beatType: 0
+  beatDialogue: {fileID: 11400000, guid: c34994c056804adeb545a02c60161618, type: 2}
+  beatArt: {fileID: 0}
+  beatCaption: 
+  softCurrency: 60
+  energyGrant: 0
+  premiumGrant: 0
+  specialRewardId: 
+  specialRewardCount: 1

@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P04_09
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P04_09_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e101, type: 3}
+  nodes:
+  - id: FK_P04_09_N1
+    speaker: "Ally Quinn"
+    line: "Late in the week a man rang the Tip Line. He owns a boat and works the slip before the tide. He knew Violet by sight because she lettered his boat, and he knew Brad because Brad painted his tender."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_09_N2
+    choices: []
+  - id: FK_P04_09_N2
+    speaker: "The boat owner"
+    line: "The Monday the notes came, I was down there at twenty past seven. The young one, Brad, was at Violet's store door. He carried a flat wrapped parcel from her door to another door in the same corridor. I said \"early for you.\" I thought her pupil was collecting her kit."
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_09_N3
+    choices: []
+  - id: FK_P04_09_N3
+    speaker: "Ally Quinn"
+    line: "That was hours before the four of them came at night. He knows what he saw, and he knows it's about a man who can't answer it. He's agreed to let me pass it to the police. It's not going on air."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_09_D
+    choices: []
+  - id: FK_P04_09_D
+    speaker: "Ally Quinn"
+    line: "It goes to Del today whichever way I do this; the question is whether I go to the sheds with a microphone first."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_09_R1
+    choices:
+    - text: "Ring Del now, as it stands"
+      nextId: FK_P04_09_R1
+      requiresFlag: 
+    - text: "A day at the sheds on tape first"
+      nextId: FK_P04_09_R2
+      requiresFlag: 
+  - id: FK_P04_09_R1
+    speaker: "Ally Quinn"
+    line: "I rang Sergeant Del Cruz from the studio and read it out the way he gave it to me. Del has it clean, and the show has nothing it can use, which is how it should be."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.fk.d2.direct
+    nextId: FK_P04_09_N4
+    choices: []
+  - id: FK_P04_09_R2
+    speaker: "Ally Quinn"
+    line: "I spent a day at the sheds with the recorder, and Del got the tape and the tip together, a day late. Liam heard I'd been down there with a microphone, and he's stopped answering me."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.fk.d2.market
+    nextId: FK_P04_09_N4
+    choices: []
+  - id: FK_P04_09_N4
+    speaker: "Ally Quinn"
+    line: "Either way, it's not going out. What I'm holding is this: a man nobody can ask went to her store early that morning, and I don't know why."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []
