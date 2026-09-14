@@ -173,7 +173,7 @@ PlayerSettings:
   buildNumber:
     Standalone: 0
     VisionOS: 0
-    iPhone: 6
+    iPhone: 7
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1
@@ -811,7 +811,7 @@ PlayerSettings:
     Android: UNITY_ADDRESSABLES;ADDRESSABLES
     Standalone: UNITY_ADDRESSABLES;ADDRESSABLES;APP_UI_EDITOR_ONLY;SENTIS_ANALYTICS_ENABLED
     WebGL: UNITY_ADDRESSABLES;ADDRESSABLES
-    iPhone: UNITY_ADDRESSABLES;ADDRESSABLES;APP_UI_EDITOR_ONLY
+    iPhone: UNITY_ADDRESSABLES;ADDRESSABLES;APP_UI_EDITOR_ONLY;SENTIS_ANALYTICS_ENABLED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
