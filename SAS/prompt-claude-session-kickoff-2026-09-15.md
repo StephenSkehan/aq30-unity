@@ -27,3 +27,9 @@ No em dashes anywhere in game-facing text. Ally's register: short lines, one fac
 ## Parked (not blocking production)
 
 The two DRAFT banner lines and the Episode Closed summary; the economy note (T1eq 65 to 70 per chapter); the TestFlight before 21 September (schedule stays out of story sessions).
+
+## STATUS UPDATE 2026-09-14 (end of session)
+
+Chapters 2 to 10 are in the game (commit eb39952). 95 packages, 238 cards, 95 beat graphs, four decisions, ch7 and ch10 branch packages, episode completes on `fk.ch10.complete`. Generator and validator live in the session scratchpad (`gen_assets.py`, `validate.py`, `guids.json`); the writers' JSON is in `scratchpad/dialogue/ch02..ch10.json`. Prose records: `SAS/four-keys-prose/ch02..ch10.md`.
+
+Next session starts with Stephen's playtest of chapter 2 onward. Known gaps to expect in play: no portraits for Ruby, Liam, Tessa, the sister or the trade witnesses (image hides); ch7 packages 01 and 02 run in series, not parallel; p10_05 has five cards not six; the QA/dev toggle may need the chapter 1 slice completed first (entry is fk_p01_01a, chapter 2 opens on fk_p01_10b).
