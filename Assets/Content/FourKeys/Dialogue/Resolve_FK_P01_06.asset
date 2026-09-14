@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P01_06_N1
     speaker: "Ally Quinn"
-    line: "The four friends called each other that night. They agreed that nobody would open the door alone. They went that night, all four of them."
+    line: "It said someone had been getting into her house."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P01_06_N2
     speaker: "Ally Quinn"
-    line: "And when they finally opened it, they found another letter."
+    line: "It said it wasn't any of them."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P01_06_N3
     speaker: "Ally Quinn"
-    line: "This one didn't say she thought. It said she knew."
+    line: "And it said she might be imagining it. She also told them not to go to the police."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P01_07_N1
     speaker: "Ally Quinn"
-    line: "Then the group began to disappear."
+    line: "They worked the letter for weeks at Ruby's kitchen table. Within a month, the four of them were sure the person getting into Violet's house was one of them. Then the group began to disappear."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

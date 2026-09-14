@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P01_10_N1
     speaker: "Ally Quinn"
-    line: "Now Liam and Ruby are accusing each other publicly, and Violet's warning is tearing them apart as Havenbay takes sides."
+    line: "Now Liam and Ruby are accusing each other publicly, and a letter that cleared them both is tearing them apart as Havenbay takes sides."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P01_10_N3
     speaker: "Ally Quinn"
-    line: "I don't know what was behind that locked door. I don't know whether Violet really identified her killer. And I don't know whether Liam or Ruby has a reason to be afraid."
+    line: "I don't know what was behind that locked door. I don't know whether anyone was ever in Violet's house. And I don't know whether Liam or Ruby has a reason to be afraid."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

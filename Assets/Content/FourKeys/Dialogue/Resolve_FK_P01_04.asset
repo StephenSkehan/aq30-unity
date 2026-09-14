@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P01_04_N1
     speaker: "Ally Quinn"
-    line: "Their names were Liam Bryce, Ruby Walker, Margo Rivera and Brad Collins. They were Violet's closest friends. And according to the letter, one of them may have been planning to kill her."
+    line: "Their names were Liam Bryce, Ruby Walker, Margo Rivera and Brad Collins. They were Violet's closest friends."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P01_04_N2
     speaker: "Ally Quinn"
-    line: "Violet didn't know which one. She admitted she might be wrong. But she was frightened enough to leave behind four keys."
+    line: "The note told them to go to her store at the boatsheds. Together. All four of them. It didn't say why. It said the four keys were the only ones."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

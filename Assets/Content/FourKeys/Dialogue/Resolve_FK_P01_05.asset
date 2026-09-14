@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P01_05_N1
     speaker: "Ally Quinn"
-    line: "She also told her friends not to go to the police."
+    line: "The four friends called each other that night. They agreed that nobody would open the door alone. They went that night, all four of them."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P01_05_N2
     speaker: "Ally Quinn"
-    line: "Instead, she directed them to a locked door. Behind it, she said, was the reason she had become afraid."
+    line: "And when they finally opened it, they found a letter."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

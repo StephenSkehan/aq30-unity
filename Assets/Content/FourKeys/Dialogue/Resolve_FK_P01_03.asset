@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P01_03_N2
     speaker: "Ally Quinn"
-    line: "Each of them got an identical key and a letter written in Violet's handwriting."
+    line: "Each of them got an identical key and a note written in Violet's handwriting."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
