@@ -2,7 +2,7 @@
 
 # THE FRIENDS WITH FOUR KEYS · THREE FOUNDATIONS · RULED 2026-09-11
 
-*After six adversary rounds on the trusting-forgery premise (v0.3 to v0.8), every round converging on the same joints, Stephen asked whether the process was getting anywhere or churning. The diagnosis: the device (a forged trust rather than a forged fear) was never broken; the churn came from the money being asked to do opposite jobs, and from attacking a partial document that omitted canon. These three rulings settle the joints. They are inputs to spine v2.0, which is the next artifact and the next thing to be attacked. Premise v8.1 remains formally in force until v2.0 is ruled; these three rulings bind v2.0.*
+*After six adversary rounds on the trusting-forgery premise (v0.3 to v0.8), every round converging on the same joints, Stephen asked whether the process was getting anywhere or churning. The diagnosis: the device (a forged trust rather than a forged fear) was never broken; the churn came from the money being asked to do opposite jobs, and from attacking a partial document that omitted canon. These three rulings settle the joints. They are inputs to spine v2.0, which is the next artifact and the next thing to be attacked. Spine v2.0.7 was ruled the episode's spine on 2026-09-14; premise v8.1 is superseded; these three rulings (foundation 2 as restated on 2026-09-13) bind it.*
 
 ## Foundation 1. The van money: the occasion, never the motive
 
