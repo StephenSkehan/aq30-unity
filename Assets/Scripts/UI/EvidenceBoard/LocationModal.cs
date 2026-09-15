@@ -48,7 +48,14 @@ namespace AQ.App.UI.EvidenceBoard
             AQTheme.StylePanel(prt);
 
             AQTheme.TitleBar(prt, def.displayName.ToUpperInvariant(), Close,
-                "Replay any scene set here. The location history reveals what Ally knows about the place; further details cost CaseCash. The last detail unlocks the wide view.");
+                "Replay any scene set here. A replay is a re-read: nothing restarts and nothing is lost, and you come back to this wall when it ends. The location history reveals what Ally knows about the place; further details cost CaseCash. The last detail unlocks the wide view.");
+
+            // TestFlight round 2026-09-15 (Trish): "why do we need to go back on
+            // scenes?" Gerald answers on the first visit, only while this is up.
+            AQ.UI.Hints.HintService.Request("replay",
+                "Scenes here replay what Ally already knows. Nothing restarts and nothing is lost. Go back when an old line starts to matter.",
+                null,
+                () => IsOpen);
 
             float y = -120f; // below the title bar
 
@@ -73,7 +80,7 @@ namespace AQ.App.UI.EvidenceBoard
             y = AddText(prt, def.epigraph, 30f, new Color(0.72f, 0.68f, 0.58f, 1f), y, italic: true) - 10f;
 
             // Scenes here
-            y = AddText(prt, "SCENES HERE", 26f, AQTheme.Teal, y, display: true) - 4f;
+            y = AddText(prt, "REPLAY A SCENE", 26f, AQTheme.Teal, y, display: true) - 4f;
             int shown = 0;
             foreach (var lead in scenes)
             {

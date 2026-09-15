@@ -163,6 +163,13 @@ namespace AQ.App.UI.Dossiers
             // Title-bar treatment (Stephen-ruled 2026-08-12).
             AQTheme.TitleBar(panel, def.displayName, Close,
                 "Ally's case file on this character. Unlock the next entry with CaseCash; each comes with a reward, and some pages wait for the case to close. Completing a file earns a keepsake.");
+
+            // TestFlight round 2026-09-15 (Trish, "what does 50 CC mean"): Gerald
+            // explains the file and the price on the first one opened.
+            AQ.UI.Hints.HintService.Request("casefile",
+                "A case file is what Ally knows about a person. Each entry costs CaseCash and comes with something for the board.",
+                null,
+                () => IsOpen);
         }
 
         public static void Close()

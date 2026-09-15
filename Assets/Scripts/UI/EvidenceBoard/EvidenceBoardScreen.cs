@@ -248,6 +248,13 @@ namespace AQ.App.UI.EvidenceBoard
 
             // Zoom/pan existed since day one but nothing announced it (cohort
             // round: players never found it).
+            // TestFlight round 2026-09-15 (Trish): players did not know what the
+            // wall was for or why scenes replay. Gerald says so on first open,
+            // ahead of the zoom hint.
+            AQ.UI.Hints.HintService.Request("boardintro",
+                "Ally's case wall. Every scene you have heard is pinned here by place and by person. Tap a pin to open it.",
+                null,
+                () => IsOpen);
             AQ.UI.Hints.HintService.Request("boardzoom",
                 "Get close to the details. Pinch to zoom, drag to move around the board.",
                 null,
