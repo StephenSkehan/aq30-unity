@@ -65,7 +65,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P06_08_N5
     speaker: "Ally Quinn"
-    line: "It isn't in the store. It isn't in Brad's boxes. It isn't in the estate. I've asked. Something is missing from the world, and I don't know if it's the same something."
+    line: "It isn't in the locker. It isn't in Brad's boxes. It isn't in the estate. I've asked. Something is missing from the world, and I don't know if it's the same something."
     portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}

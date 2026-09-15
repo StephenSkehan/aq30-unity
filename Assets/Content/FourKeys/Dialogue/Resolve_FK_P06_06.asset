@@ -53,7 +53,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P06_06_N4
     speaker: "Ally Quinn"
-    line: "The cupboard is what the four of them called Violet's store. Margo doubted what was in it. She said so once, to one person, and then she stopped."
+    line: "The cupboard is what the four of them called Violet's locker. Margo doubted what was in it. She said so once, to one person, and then she stopped."
     portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
     emotion: 6
     voiceClip: {fileID: 0}

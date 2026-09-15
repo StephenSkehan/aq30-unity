@@ -23,7 +23,7 @@ Scene fk_p01_03: The Post  [studio, on air]
 Scene fk_p01_04: TURN: The Four Names  [studio, on air]
 
   Ally Quinn: Their names were Liam Bryce, Ruby Walker, Margo Rivera and Brad Collins. They were Violet's closest friends.
-  Ally Quinn: The note told them to go to her store at the boatsheds. Together. All four of them. It didn't say why. It said the four keys were the only ones.
+  Ally Quinn: The note told them to go to her locker at the boatsheds. Together. All four of them. It didn't say why. It said the four keys were the only ones.
 
 Scene fk_p01_05: Her Instructions  [studio, on air]
 
@@ -93,7 +93,7 @@ Scene fk_p02_01: Ruby's Kitchen  [Ruby's kitchen]
 Scene fk_p02_02: The Note Under Glass  [case board]
 
   Ally Quinn: This is Ruby's copy of the note. Four went out, all the same, two weeks after Violet died. I photographed it at the kitchen table. It's under glass on my board now. Violet's handwriting.
-  Ally Quinn: If you've got this, I'm dead, and I'm sorry about the timing. Go to my store at the boatsheds by the slip. The padlock's new and these four keys are the only ones. Go together, all four of you, and read what's there together. Violet.
+  Ally Quinn: If you've got this, I'm dead, and I'm sorry about the timing. Go to my locker at the boatsheds by the slip. The padlock's new and these four keys are the only ones. Go together, all four of you, and read what's there together. Violet.
   Ally Quinn: That's all of it.
 
 Scene fk_p02_03: The Letter  [Ruby's kitchen]
@@ -112,7 +112,7 @@ Scene fk_p02_03: The Letter  [Ruby's kitchen]
   Ruby Walker: Ruby's been on nights since August and won't say why. Margo hasn't been to the slip since the summer. And Brad paid me back the van money this autumn, every penny. I put it here because it's the one thing this year that went right.
   Ruby Walker: Not the police. I've nothing they'd act on and I won't have them in your lives over a gate and a feeling. You four can do what they won't. Read this together, and be careful. Write legibly. Violet.
   Ruby Walker: That bit about the police. That never sounded like Vi to me. Liam said that night why she was like that about police. Something from the night her mum died. I don't know what. I let it go. I shouldn't have. Anyway.
-  Ally Quinn: That's the letter. Then Ruby told me about the room, in order. The night they opened the store, the first thing was relief. Then being ashamed of the relief. Nobody said the rest out loud that night.
+  Ally Quinn: That's the letter. Then Ruby told me about the room, in order. The night they opened the locker, the first thing was relief. Then being ashamed of the relief. Nobody said the rest out loud that night.
   Ally Quinn: The next evening, at this table, they said it. She changed her lock and told the four of them. It happened again. She took the key in, told nobody, and it stopped.
   Ally Quinn: Liam found her. Ruby says the spare wasn't in its pot, so he broke a pane to get in, and the back door was latched.
   Ally Quinn: They looked for anyone else in Violet's life. No cleaner, no lodger, no tradesman. A sister she hadn't spoken to in years. Nobody.
@@ -168,7 +168,7 @@ Scene fk_p02_09: Grade Eight  [Ruby's kitchen]
 
 Scene fk_p02_10: Episode Two  [studio, on air]
 
-  Ally Quinn: This week I sat at Ruby Walker's kitchen table. It's pine. It's the table the four of them worked Violet's letter at, Saturday after Saturday, after they opened the store.
+  Ally Quinn: This week I sat at Ruby Walker's kitchen table. It's pine. It's the table the four of them worked Violet's letter at, Saturday after Saturday, after they opened the locker.
   Ally Quinn: Ruby read me the letter from behind the door. All of it but the lines about Violet's mother. Those she covered with her hand, and I haven't guessed at them.
   Ally Quinn: She told me how the table went, meeting by meeting. According to Ruby, Brad argued Liam's side every week and lost every week. At the sixth meeting Margo stopped arguing. A week later Brad drove to Kestrel Head.
   Ally Quinn: When Brad's rent stopped, his landlord sent his flat to Ruby in boxes. Passport, cards, tools, laptop. Police had seen them all before. I've been through every box. There's nothing odd in any of it.
@@ -200,7 +200,7 @@ Scene fk_p03_03: The Sister  [street]
 
   Ally Quinn: Violet's sister administers the estate. She didn't get on with Violet and doesn't pretend she did. She met me in the street.
   Violet's sister: We fought over Mum's house for years. Years. She had a solicitor on Civic Row for it. Then she dies with no will and I get all of it anyway. Every box.
-  Violet's sister: You want to know what was beside that letter? Mum's ashes. Four years on a shelf. She told me she'd scattered them. A friend brought them back to me in a tube, ten weeks after, and wouldn't say where they'd been. Only that Violet locked them in that store.
+  Violet's sister: You want to know what was beside that letter? Mum's ashes. Four years on a shelf. She told me she'd scattered them. A friend brought them back to me in a tube, ten weeks after, and wouldn't say where they'd been. Only that Violet locked them in that locker.
   Ally Quinn: So that's what stood beside the letter. Their mother's ashes. The four have never said it. The sister has them now.
 
 Scene fk_p03_04: The Regent  [street]
@@ -220,7 +220,7 @@ Scene fk_p03_06: The Panel  [case board]
   Ally Quinn: For about a month she showed it to anyone who lettered for a living and asked the same question. Whose lettering is this.
   Ally Quinn: The café owner saw it. The cinema owner saw it. Two signwriters up the coast saw it. Two of the four told her, yours, in a very good year. One asked whether she'd shown her lad.
   Ally Quinn: Her lad was Brad Collins. He was her apprentice for seven years. That's the whole of what I know about that.
-  Ally Quinn: Nobody has seen the panel since she died. It wasn't in the store when the four opened it, Ruby says. It wasn't in the boxes. The sister has never seen it. I don't know where it is.
+  Ally Quinn: Nobody has seen the panel since she died. It wasn't in the locker when the four opened it, Ruby says. It wasn't in the boxes. The sister has never seen it. I don't know where it is.
   Ally Quinn: But she asked for a month, out loud, all over town. Whoever has it now heard her asking.
 
 Scene fk_p03_07: Two Signwriters  [street]
@@ -248,7 +248,7 @@ Scene fk_p03_10: Episode Three  [studio, on air]
   Ally Quinn: This week I left Ruby's kitchen and went into the town. Violet Moore's lettering is on the menu boards at the harbour café and on half the shopfronts between there and the Regent.
   Ally Quinn: The café owner told me that in her last months Violet said she was calling in what she was owed. For the lawyer, she said. No name. I don't know who owed her, or how much.
   Ally Quinn: Violet's sister told me the two of them fought for years over their mother's house. Violet had a solicitor on Civic Row. She left no will, so her sister administers everything.
-  Ally Quinn: And her sister told me what stood beside the letter in the store, the thing the four have never said. It was their mother's ashes. Violet had kept them four years and said they were scattered. Her sister has them now.
+  Ally Quinn: And her sister told me what stood beside the letter in the locker, the thing the four have never said. It was their mother's ashes. Violet had kept them four years and said they were scattered. Her sister has them now.
   Ally Quinn: Two and a half months before she died, Violet carried a lettering panel round the trade for about a month. Gold letters on a dark board, an alphabet in her own style, better than anyone had seen her do.
   Ally Quinn: She asked everyone who saw it whose lettering it was. Two said hers. Nobody has seen it since she died, and I don't know where it is. If you do, write to me, not to anyone else.
   (only if the letter was held) Ally Quinn: A column elsewhere ran a garbled version of the letter. I held the real one back. Ruby rang tonight. You could have read it right, she said. She's right. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.
@@ -307,14 +307,14 @@ Scene fk_p04_07: August 2014  [Ruby's kitchen]
 
 Scene fk_p04_08: The Boatsheds  [moorings]
 
-  Ally Quinn: The slip boatsheds, twenty to six in the morning. A row of brick boat stores, and behind them a corridor of lockers along the back wall. The slip road runs past the front, where the vans park.
+  Ally Quinn: The slip boatsheds, twenty to six in the morning. A row of brick boat lockers along the back wall, each with its own steel door. The slip road runs past the front, where the vans park.
   Ally Quinn: There's no camera on any of it. The boat owners are here from first light. Anyone with a key and a reason can walk this corridor and nobody looks twice.
-  Ally Quinn: Violet's store is a brick bay with a steel door. Her sister had the padlock cut. It's been empty since.
+  Ally Quinn: Violet's locker is a brick bay with a steel door. Her sister had the padlock cut. It's been empty since.
 
 Scene fk_p04_09: The Monday Visitor  [studio]
 
   Ally Quinn: Late in the week a man rang the Tip Line. He owns a boat and works the slip before the tide. He knew Violet by sight because she lettered his boat, and he knew Brad because Brad painted his tender.
-  The boat owner: The Monday the notes came, I was down there at twenty past seven. The young one, Brad, was at Violet's store door. He carried a flat wrapped parcel from her door to another door in the same corridor. I said "early for you." I thought her pupil was collecting her kit.
+  The boat owner: The Monday the notes came, I was down there at twenty past seven. The young one, Brad, was at Violet's locker door. He carried a flat wrapped parcel from her door to another door in the same corridor. I said "early for you." I thought her pupil was collecting her kit.
   Ally Quinn: That was hours before the four of them came at night. He knows what he saw, and he knows it's about a man who can't answer it. He's agreed to let me pass it to the police. It's not going on air.
 
   DECISION. Ally: It goes to Del today whichever way I do this; the question is whether I go to the sheds with a microphone first.
@@ -323,7 +323,7 @@ Scene fk_p04_09: The Monday Visitor  [studio]
     > A day at the sheds on tape first
       Ally Quinn: I spent a day at the sheds with the recorder, and Del got the tape and the tip together, a day late. Liam heard I'd been down there with a microphone, and he's stopped answering me.
 
-  Ally Quinn: Either way, it's not going out. What I'm holding is this: a man nobody can ask went to her store early that morning, and I don't know why.
+  Ally Quinn: Either way, it's not going out. What I'm holding is this: a man nobody can ask went to her locker early that morning, and I don't know why.
 
 Scene fk_p04_10: Episode Four  [studio, on air]
 
@@ -443,7 +443,7 @@ Scene fk_p06_06: The Screenshot  [studio]
   Ally Quinn: The screenshot is real. I had it checked, and the date on it holds. Seventy-seven days after Violet died, about two and a half weeks after Brad drove to Kestrel Head.
   Ally Quinn: It's a message from Margo to Tessa, on the app they used. It says: The thing in the cupboard is wrong. It can't mean that.
   Ally Quinn: Tessa kept it because Margo didn't say things like that. She asked what cupboard. Margo never answered, and never brought it up again.
-  Ally Quinn: The cupboard is what the four of them called Violet's store. Margo doubted what was in it. She said so once, to one person, and then she stopped.
+  Ally Quinn: The cupboard is what the four of them called Violet's locker. Margo doubted what was in it. She said so once, to one person, and then she stopped.
 
   DECISION. Ally: So do I put Margo's own words on air, or keep them back and say it my way?
     > Air her words, no name, no town
@@ -466,7 +466,7 @@ Scene fk_p06_08: The Plainer Question  [case board]
   Ally Quinn: I don't know what Margo meant. I'm not saying the letter's false. I'm not saying who.
   Ally Quinn: But there's a plainer question. What did Violet have in her last months that she hadn't had before?
   Ally Quinn: The gilded panel. She carried it round the trade, workshop to workshop, showing people. Nobody has seen it since.
-  Ally Quinn: It isn't in the store. It isn't in Brad's boxes. It isn't in the estate. I've asked. Something is missing from the world, and I don't know if it's the same something.
+  Ally Quinn: It isn't in the locker. It isn't in Brad's boxes. It isn't in the estate. I've asked. Something is missing from the world, and I don't know if it's the same something.
 
 Scene fk_p06_09: That  [case board]
 
@@ -477,10 +477,10 @@ Scene fk_p06_09: That  [case board]
 Scene fk_p06_10: Episode Six  [studio, on air]
 
   Ally Quinn: Last week I asked whether Margo Rivera said anything, to anyone. Three days of nothing. Then one answer. One.
-  Ally Quinn: Here's what I can tell you. The letter in Violet's store listed things that were wrong in her house. The police checked every line they could, and every line held.
-  Ally Quinn: One line nobody checked, because it was kind. And one thing Violet had in her last months, a gilded panel she showed round the trade, that nobody has seen since. Not in the store. Not anywhere I can find.
+  Ally Quinn: Here's what I can tell you. The letter in Violet's locker listed things that were wrong in her house. The police checked every line they could, and every line held.
+  Ally Quinn: One line nobody checked, because it was kind. And one thing Violet had in her last months, a gilded panel she showed round the trade, that nobody has seen since. Not in the locker. Not anywhere I can find.
   Ally Quinn: I'm not telling you the letter's false. I'm not telling you who. I'm telling you something is missing from the world, and if you've seen it, write to me, not to anyone else.
-  Ally Quinn: The four of them had a name for Violet's store. The cupboard. And Margo Rivera, who everybody thought said nothing, said one thing about it.
+  Ally Quinn: The four of them had a name for Violet's locker. The cupboard. And Margo Rivera, who everybody thought said nothing, said one thing about it.
   (only if Margo's words were aired verbatim) Ally Quinn: Seventy-seven days after Violet died, she wrote to a woman two hours up the coast: The thing in the cupboard is wrong. It can't mean that. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.
   (only if Margo's words were paraphrased) Ally Quinn: Margo doubted what was in the cupboard. Not that it was Violet's. What it meant. She said so once, to one person, and never again. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.
 
@@ -624,7 +624,7 @@ Scene fk_p08_08: Write to Me  [studio, on air]
 
 Scene fk_p08_09: The Re-String  [case board]
 
-  Ally Quinn: On Saturday night I took every card off the wall and read them again, in one sitting, in order. The letter, the keys, the store door at twenty past seven, the box on the boat, the boots.
+  Ally Quinn: On Saturday night I took every card off the wall and read them again, in one sitting, in order. The letter, the keys, the locker door at twenty past seven, the box on the boat, the boots.
   Ally Quinn: I read them against a possibility. I'm not going to say it. Not here, not on air, not until somebody who can prove it says it first.
   Ally Quinn: Some of the cards read differently. Not all of them. Enough.
   Ally Quinn: My note at the bottom of the board, in my own writing, says one thing. I have stopped saying "was".

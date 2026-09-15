@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P04_09_N2
     speaker: "The boat owner"
-    line: "The Monday the notes came, I was down there at twenty past seven. The young one, Brad, was at Violet's store door. He carried a flat wrapped parcel from her door to another door in the same corridor. I said \"early for you.\" I thought her pupil was collecting her kit."
+    line: "The Monday the notes came, I was down there at twenty past seven. The young one, Brad, was at Violet's locker door. He carried a flat wrapped parcel from her door to another door in the same corridor. I said \"early for you.\" I thought her pupil was collecting her kit."
     portrait: {fileID: 0}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -95,7 +95,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P04_09_N4
     speaker: "Ally Quinn"
-    line: "Either way, it's not going out. What I'm holding is this: a man nobody can ask went to her store early that morning, and I don't know why."
+    line: "Either way, it's not going out. What I'm holding is this: a man nobody can ask went to her locker early that morning, and I don't know why."
     portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}

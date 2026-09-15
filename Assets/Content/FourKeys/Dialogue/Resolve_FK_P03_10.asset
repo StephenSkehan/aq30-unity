@@ -53,7 +53,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P03_10_N4
     speaker: "Ally Quinn"
-    line: "And her sister told me what stood beside the letter in the store, the thing the four have never said. It was their mother's ashes. Violet had kept them four years and said they were scattered. Her sister has them now."
+    line: "And her sister told me what stood beside the letter in the locker, the thing the four have never said. It was their mother's ashes. Violet had kept them four years and said they were scattered. Her sister has them now."
     portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
     emotion: 2
     voiceClip: {fileID: 0}

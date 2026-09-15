@@ -185,7 +185,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P02_03_N15
     speaker: "Ally Quinn"
-    line: "That's the letter. Then Ruby told me about the room, in order. The night they opened the store, the first thing was relief. Then being ashamed of the relief. Nobody said the rest out loud that night."
+    line: "That's the letter. Then Ruby told me about the room, in order. The night they opened the locker, the first thing was relief. Then being ashamed of the relief. Nobody said the rest out loud that night."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

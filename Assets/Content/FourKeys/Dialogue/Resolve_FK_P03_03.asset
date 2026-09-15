@@ -41,7 +41,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P03_03_N3
     speaker: "Violet's sister"
-    line: "You want to know what was beside that letter? Mum's ashes. Four years on a shelf. She told me she'd scattered them. A friend brought them back to me in a tube, ten weeks after, and wouldn't say where they'd been. Only that Violet locked them in that store."
+    line: "You want to know what was beside that letter? Mum's ashes. Four years on a shelf. She told me she'd scattered them. A friend brought them back to me in a tube, ten weeks after, and wouldn't say where they'd been. Only that Violet locked them in that locker."
     portrait: {fileID: 0}
     emotion: 3
     voiceClip: {fileID: 0}

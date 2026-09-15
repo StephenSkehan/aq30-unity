@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P04_08_N1
     speaker: "Ally Quinn"
-    line: "The slip boatsheds, twenty to six in the morning. A row of brick boat stores, and behind them a corridor of lockers along the back wall. The slip road runs past the front, where the vans park."
+    line: "The slip boatsheds, twenty to six in the morning. A row of brick boat lockers along the back wall, each with its own steel door. The slip road runs past the front, where the vans park."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P04_08_N3
     speaker: "Ally Quinn"
-    line: "Violet's store is a brick bay with a steel door. Her sister had the padlock cut. It's been empty since."
+    line: "Violet's locker is a brick bay with a steel door. Her sister had the padlock cut. It's been empty since."
     portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
     emotion: 2
     voiceClip: {fileID: 0}

@@ -65,7 +65,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P03_06_N5
     speaker: "Ally Quinn"
-    line: "Nobody has seen the panel since she died. It wasn't in the store when the four opened it, Ruby says. It wasn't in the boxes. The sister has never seen it. I don't know where it is."
+    line: "Nobody has seen the panel since she died. It wasn't in the locker when the four opened it, Ruby says. It wasn't in the boxes. The sister has never seen it. I don't know where it is."
     portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}

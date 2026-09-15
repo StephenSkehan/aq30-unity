@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P06_10_N2
     speaker: "Ally Quinn"
-    line: "Here's what I can tell you. The letter in Violet's store listed things that were wrong in her house. The police checked every line they could, and every line held."
+    line: "Here's what I can tell you. The letter in Violet's locker listed things that were wrong in her house. The police checked every line they could, and every line held."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P06_10_N3
     speaker: "Ally Quinn"
-    line: "One line nobody checked, because it was kind. And one thing Violet had in her last months, a gilded panel she showed round the trade, that nobody has seen since. Not in the store. Not anywhere I can find."
+    line: "One line nobody checked, because it was kind. And one thing Violet had in her last months, a gilded panel she showed round the trade, that nobody has seen since. Not in the locker. Not anywhere I can find."
     portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}
@@ -65,7 +65,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P06_10_N5
     speaker: "Ally Quinn"
-    line: "The four of them had a name for Violet's store. The cupboard. And Margo Rivera, who everybody thought said nothing, said one thing about it."
+    line: "The four of them had a name for Violet's locker. The cupboard. And Margo Rivera, who everybody thought said nothing, said one thing about it."
     portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
     emotion: 2
     voiceClip: {fileID: 0}

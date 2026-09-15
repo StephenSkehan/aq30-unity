@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P02_10_N1
     speaker: "Ally Quinn"
-    line: "This week I sat at Ruby Walker's kitchen table. It's pine. It's the table the four of them worked Violet's letter at, Saturday after Saturday, after they opened the store."
+    line: "This week I sat at Ruby Walker's kitchen table. It's pine. It's the table the four of them worked Violet's letter at, Saturday after Saturday, after they opened the locker."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

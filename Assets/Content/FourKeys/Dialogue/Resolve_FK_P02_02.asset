@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P02_02_N2
     speaker: "Ally Quinn"
-    line: "If you've got this, I'm dead, and I'm sorry about the timing. Go to my store at the boatsheds by the slip. The padlock's new and these four keys are the only ones. Go together, all four of you, and read what's there together. Violet."
+    line: "If you've got this, I'm dead, and I'm sorry about the timing. Go to my locker at the boatsheds by the slip. The padlock's new and these four keys are the only ones. Go together, all four of you, and read what's there together. Violet."
     portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
     emotion: 2
     voiceClip: {fileID: 0}

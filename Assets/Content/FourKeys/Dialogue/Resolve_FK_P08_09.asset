@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P08_09_N1
     speaker: "Ally Quinn"
-    line: "On Saturday night I took every card off the wall and read them again, in one sitting, in order. The letter, the keys, the store door at twenty past seven, the box on the boat, the boots."
+    line: "On Saturday night I took every card off the wall and read them again, in one sitting, in order. The letter, the keys, the locker door at twenty past seven, the box on the boat, the boots."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
