@@ -20,7 +20,7 @@ MonoBehaviour:
   ActionType: 2
   EnergyCost: 0
   requirements:
-  - label: Forensic Tools T5
+  - label: Forensic Work T5
     icon: {fileID: 0}
     satisfied: 0
     itemDefinition: {fileID: 11400000, guid: f80f6006132ef7643a5914a70001d526, type: 2}

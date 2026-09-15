@@ -31,10 +31,11 @@ MonoBehaviour:
   SpawnLeadIds: []
   NarrativeFlags:
   - fk.ch1.complete
+  - aq.loc.rusty_anchor.active
   SoftCurrency: 0
   EnergyGrant: 0
   PremiumGrant: 0
-  generatorRewardTypeId: 
+  generatorRewardTypeId: corner_diner
   generatorRewardTier: 0
   specialRewardId: 
   specialRewardCount: 1

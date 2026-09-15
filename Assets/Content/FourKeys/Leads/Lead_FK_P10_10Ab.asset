@@ -20,10 +20,10 @@ MonoBehaviour:
   ActionType: 2
   EnergyCost: 0
   requirements:
-  - label: Junk T4
+  - label: Rusty Anchor T4
     icon: {fileID: 0}
     satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: 60e2a1ea3308ec54db98157b05e2124f, type: 2}
+    itemDefinition: {fileID: 11400000, guid: cc9c941c9760f9341aecdd32cfd7888d, type: 2}
     quantity: 1
   RequiredLeadIds: 
   - fk_p10_09aa

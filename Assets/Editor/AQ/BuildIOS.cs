@@ -7,7 +7,7 @@ namespace AQ.EditorTools
 {
     public static class BuildIOS
     {
-        private const string OutPath = "Builds/iOS-b7";
+        private const string OutPath = "Builds/iOS-b8";
 
         // Xcode project generation only; archive + upload happen on the Mac.
         [MenuItem("AQ/Build/Build iOS (Xcode Project)")]

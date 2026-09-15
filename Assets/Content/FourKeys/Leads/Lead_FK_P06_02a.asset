@@ -23,7 +23,7 @@ MonoBehaviour:
   - label: Diner T5
     icon: {fileID: 0}
     satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: b0af5acc2cf755e409d90702976f7c51, type: 2}
+    itemDefinition: {fileID: 11400000, guid: aa1431f6b45ac784ba1b01417415c0e5, type: 2}
     quantity: 1
   RequiredLeadIds: 
   - fk_p06_01a

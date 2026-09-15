@@ -23,7 +23,7 @@ MonoBehaviour:
   - label: Diner T3
     icon: {fileID: 0}
     satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: 120a41dab2bafc74bbcf8e161b2aa73d, type: 2}
+    itemDefinition: {fileID: 11400000, guid: a10bd1ec8cf686d4894f870d3b7fa2d7, type: 2}
     quantity: 1
   RequiredLeadIds: 
   - fk_p04_09a

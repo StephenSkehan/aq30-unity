@@ -23,7 +23,7 @@ MonoBehaviour:
   - label: Diner T4
     icon: {fileID: 0}
     satisfied: 0
-    itemDefinition: {fileID: 11400000, guid: 9dc17c19a57fd6a49961e5e38a9dd23e, type: 2}
+    itemDefinition: {fileID: 11400000, guid: e75756c20bf853a4d987fbc21775a7f8, type: 2}
     quantity: 1
   RequiredLeadIds: 
   - fk_p09_04a
