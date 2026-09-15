@@ -33,3 +33,9 @@ The two DRAFT banner lines and the Episode Closed summary; the economy note (T1e
 Chapters 2 to 10 are in the game (commit eb39952). 95 packages, 238 cards, 95 beat graphs, four decisions, ch7 and ch10 branch packages, episode completes on `fk.ch10.complete`. Generator and validator live in the session scratchpad (`gen_assets.py`, `validate.py`, `guids.json`); the writers' JSON is in `scratchpad/dialogue/ch02..ch10.json`. Prose records: `SAS/four-keys-prose/ch02..ch10.md`.
 
 Next session starts with Stephen's playtest of chapter 2 onward. Known gaps to expect in play: no portraits for Ruby, Liam, Tessa, the sister or the trade witnesses (image hides); ch7 packages 01 and 02 run in series, not parallel; p10_05 has five cards not six; the QA/dev toggle may need the chapter 1 slice completed first (entry is fk_p01_01a, chapter 2 opens on fk_p01_10b).
+
+## TODO (added 2026-09-15 evening)
+
+- **Fast Enter Play Mode experiment.** Project Settings, Editor: Enter Play Mode Options is already ticked but with neither reload disabled, so it gives nothing. Try "Reload Domain" OFF on a quiet day. Risk is editor-only: statics (HintService, LockerScreen gate, OverflowBucket, event subscriptions) survive between play sessions; several are guarded ("domain-reload-off safety"), several are not. Switch it straight back off if editor play differs from the phone. Builds are unaffected.
+- **Unity patch 6000.3.14f1 to 6000.3.24f1** after b8 is out (same LTS stream; Firebase Unity SDK 13.13 to 13.16 can ride along). Uninstall the dead 6000.4.4f1 from the Hub.
+- **Xcode 27 / iOS 27 SDK** required for all uploads from April 2027 (Mac + Xcode upgrade, not Unity).
