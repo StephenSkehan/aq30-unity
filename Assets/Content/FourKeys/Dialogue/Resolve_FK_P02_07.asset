@@ -18,7 +18,7 @@ MonoBehaviour:
   - id: FK_P02_07_N1
     speaker: "Ruby Walker"
     line: "He'd put his keys on the table and then move them. Twice, always twice. He said thank you like it cost him. Up at five to run, every day."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 3eda8c3a8ba44593b8d95260ba6b7487, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   - id: FK_P02_07_N2
     speaker: "Ruby Walker"
     line: "And the one everybody knew. He agreed with whoever had spoken last. Seven years he was the pet of the room. Anyway."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: ee933f5d948e45808a57817fd2e9d4fe, type: 3}
     emotion: 1
     voiceClip: {fileID: 0}
     waitForAudio: 0

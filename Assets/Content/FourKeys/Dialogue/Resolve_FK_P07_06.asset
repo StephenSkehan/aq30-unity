@@ -18,7 +18,7 @@ MonoBehaviour:
   - id: FK_P07_06_N1
     speaker: "Ruby Walker"
     line: "There's one thing I never told the others. One spring Brad told us he was at a wedding that weekend. A patient's son had run a marathon in another city the same weekend, and he showed me the results page. Brad's name was on it."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 0daf7b4e2afb4baca0c6660666687b94, type: 3}
     emotion: 2
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   - id: FK_P07_06_N2
     speaker: "Ruby Walker"
     line: "Same day. I said nothing. It wasn't mine to say, and it didn't matter."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 3eda8c3a8ba44593b8d95260ba6b7487, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0

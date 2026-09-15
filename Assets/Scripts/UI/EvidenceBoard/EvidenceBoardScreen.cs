@@ -544,6 +544,13 @@ namespace AQ.App.UI.EvidenceBoard
                 case "dot":    return "Dot Ellis";
                 case "vera":   return "Vera";
                 case "benji":  return "Benji Park";
+                // The Friends with Four Keys cast (portraits imported from 2026-09-16)
+                case "ruby":   return "Ruby Walker";
+                case "liam":   return "Liam Bryce";
+                case "violet": return "Violet Moore";
+                case "margo":  return "Margo Rivera";
+                case "brad":   return "Brad Collins";
+                case "tessa":  return "Tessa";
                 case "tipline": return "The Tip Line"; // object-character (Stephen-ruled 2026-08-11): no case file, portrait only
             }
             if (!string.IsNullOrEmpty(token))

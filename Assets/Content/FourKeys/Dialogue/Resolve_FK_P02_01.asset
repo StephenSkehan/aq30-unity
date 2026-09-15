@@ -42,7 +42,7 @@ MonoBehaviour:
   - id: FK_P02_01_N3
     speaker: "Ruby Walker"
     line: "Heater on, her at the door, then the same argument we'd had for years. Every Tuesday. That was the friendship. Anyway. Tea?"
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: ee933f5d948e45808a57817fd2e9d4fe, type: 3}
     emotion: 1
     voiceClip: {fileID: 0}
     waitForAudio: 0

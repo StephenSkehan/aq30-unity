@@ -30,7 +30,7 @@ MonoBehaviour:
   - id: FK_P05_09_N2
     speaker: "Ruby Walker"
     line: "Since the funeral she made me cry twice. Both times she was right. Both times she said it the worst way a person could say it."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 0daf7b4e2afb4baca0c6660666687b94, type: 3}
     emotion: 2
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
   - id: FK_P05_09_N3
     speaker: "Ruby Walker"
     line: "She apologised for one of them. For the way she'd said it. She didn't take back a word of it, and she was right not to."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 0daf7b4e2afb4baca0c6660666687b94, type: 3}
     emotion: 2
     voiceClip: {fileID: 0}
     waitForAudio: 0

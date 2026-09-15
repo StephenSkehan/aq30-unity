@@ -42,7 +42,7 @@ MonoBehaviour:
   - id: FK_P02_03_N3
     speaker: "Ruby Walker"
     line: "It isn't any of you four, and I'd know. Someone with my key has been in my house, or I've started imagining things. I can't tell which, and both frighten me."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 3eda8c3a8ba44593b8d95260ba6b7487, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
   - id: FK_P02_03_N4
     speaker: "Ruby Walker"
     line: "The first thing. The yard gate. I bolt it every night. One morning in October it was unbolted, and I couldn't swear I'd bolted it."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 3eda8c3a8ba44593b8d95260ba6b7487, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   - id: FK_P02_03_N5
     speaker: "Ruby Walker"
     line: "I changed the front door lock in October and told only you four where the new spare was. It happened again after that. So I took the key in, told nobody, and it stopped."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 3eda8c3a8ba44593b8d95260ba6b7487, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
   - id: FK_P02_03_N6
     speaker: "Ruby Walker"
     line: "I don't think I'm going to die. I think I'm going to be sixty and embarrassed. But if I'm wrong nobody needs to know, and if I'm right you'll want to know what I noticed."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 3eda8c3a8ba44593b8d95260ba6b7487, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   - id: FK_P02_03_N7
     speaker: "Ruby Walker"
     line: "If I'd told you now you'd have sat in my kitchen with a torch and I'd never have heard the end of it."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 0daf7b4e2afb4baca0c6660666687b94, type: 3}
     emotion: 2
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   - id: FK_P02_03_N9
     speaker: "Ruby Walker"
     line: "Somebody got the place of my spare from one of you without your knowing, or watched one of you use it. So write down everything odd you've noticed this year. About me, and about who's been near each of you."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 3eda8c3a8ba44593b8d95260ba6b7487, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   - id: FK_P02_03_N10
     speaker: "Ruby Walker"
     line: "Read the four lists together at one table. Since I'm asking you to, here's mine. Liam has owned a third of the yard for eight years and lets the town think he's staff."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 3eda8c3a8ba44593b8d95260ba6b7487, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
   - id: FK_P02_03_N12
     speaker: "Ruby Walker"
     line: "Ruby's been on nights since August and won't say why. Margo hasn't been to the slip since the summer. And Brad paid me back the van money this autumn, every penny. I put it here because it's the one thing this year that went right."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 3eda8c3a8ba44593b8d95260ba6b7487, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   - id: FK_P02_03_N13
     speaker: "Ruby Walker"
     line: "Not the police. I've nothing they'd act on and I won't have them in your lives over a gate and a feeling. You four can do what they won't. Read this together, and be careful. Write legibly. Violet."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 0daf7b4e2afb4baca0c6660666687b94, type: 3}
     emotion: 2
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
   - id: FK_P02_03_N14
     speaker: "Ruby Walker"
     line: "That bit about the police. That never sounded like Vi to me. Liam said that night why she was like that about police. Something from the night her mum died. I don't know what. I let it go. I shouldn't have. Anyway."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 4f3c2252e9b24f179e5e92bb42f0a6bb, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -234,7 +234,7 @@ MonoBehaviour:
   - id: FK_P02_03_N19
     speaker: "Ruby Walker"
     line: "We knew a wall could be climbed. We chose not to think it. Anyway. Saturdays after that. Every Saturday, here."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 4f3c2252e9b24f179e5e92bb42f0a6bb, type: 3}
     emotion: 5
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -258,7 +258,7 @@ MonoBehaviour:
   - id: FK_P02_03_N21
     speaker: "Ruby Walker"
     line: "She thought she'd know. And she's dead. I said that every week. I'm saying it to you now. Anyway."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 0daf7b4e2afb4baca0c6660666687b94, type: 3}
     emotion: 2
     voiceClip: {fileID: 0}
     waitForAudio: 0
@@ -348,7 +348,7 @@ MonoBehaviour:
   - id: FK_P02_03_N25
     speaker: "Ruby Walker"
     line: "You do what you think. I'll put the kettle on. Anyway."
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 3eda8c3a8ba44593b8d95260ba6b7487, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
