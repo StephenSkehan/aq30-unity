@@ -283,7 +283,7 @@ namespace AQ.UI.Hints
             if (Time.unscaledTime >= _nextPairScanAt)
             {
                 _nextPairScanAt = Time.unscaledTime + 1f;
-                OnGeneratorPairAppeared();
+                HintTriggers.OnGeneratorPairAppeared();
             }
 
             if (_chip != null)
@@ -644,7 +644,7 @@ namespace AQ.UI.Hints
         // after TestFlight: say WHY, higher-tier generators drop higher tiers
         // more often). Edge-triggered by BoardCompositionChanged and ALSO polled
         // once a second from Update (rule 6: the scan is the guarantee).
-        private static void OnGeneratorPairAppeared()
+        internal static void OnGeneratorPairAppeared()
         {
             if (HintService.Seen("gen_merge")) return;
             if (FindGeneratorPairTile() == null) return;
