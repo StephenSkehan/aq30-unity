@@ -284,6 +284,8 @@ namespace AQ.UI.Hints
             {
                 _nextPairScanAt = Time.unscaledTime + 1f;
                 HintTriggers.OnGeneratorPairAppeared();
+                // Locker reveal follows the saved flag (restore, QA reset) — rule 6 scan.
+                AQ.App.UI.Board.LockerScreen.ApplyRevealGate();
             }
 
             if (_chip != null)
@@ -615,9 +617,13 @@ namespace AQ.UI.Hints
                     var t = board.Get(r, c);
                     if (t != null && !t.IsEmpty) filled++;
                 }
-            if (total == 0 || filled < total * 0.8f) return;
+            // 75% full reveals the Evidence Locker for good and teaches it in the
+            // same breath (Stephen-ruled 2026-09-15: a locker offered before the
+            // board is crowded only raises "why would I buy a slot?").
+            if (total == 0 || filled < total * 0.75f) return;
+            AQ.App.UI.Board.LockerScreen.Reveal();
             HintService.Request("locker",
-                "A cluttered desk hides things. The locker keeps evidence safe until it is needed.",
+                "Your desk is filling up. The Evidence Locker, bottom left, holds items and generators off the board until you need them. The first slots are free.",
                 () => FindAny("__LockerBtn"), OnBoard);
         }
 
