@@ -36,7 +36,13 @@ namespace AQ.App.UI.Common
             AQ.App.Items.ItemDefinitionSO def = null;
             foreach (var d in board.ItemDefinitions)
                 if (d != null && d.itemId == itemId) { def = d; break; }
-            if (def == null) return;
+            if (def == null)
+            {
+                // A requirement the board cannot describe is a content bug (TestFlight
+                // b7: a card required a generator-ladder id, the tap did nothing).
+                Debug.LogWarning($"[RequirementTap] No board item definition for '{itemId}'; the card's requirement is not a droppable item.");
+                return;
+            }
 
             ItemFamilyPopup.Show(def.family, def.tier);
             SourceGeneratorPulse.PulseFor(board, def.family);

@@ -25,7 +25,17 @@ namespace AQ.UI.HUD
         private float _applied;         // canvas units already shifted
         private Vector2Int _lastScreen; // re-evaluate on resolution change only
 
+        // Runs once per process at boot AND on every scene load: a game reset
+        // or episode switch reloads the scene with a fresh HUDImage, and the
+        // boot-only install left that HUD under the notch (Trish's phone,
+        // TestFlight b7, 2026-09-15).
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        private static void Boot()
+        {
+            Install();
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += (_, __) => Install();
+        }
+
         private static void Install()
         {
             var hud = GameObject.Find("HUDImage");

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadData
   leadId: fk_p06_02b
   title: "The Coast Road (B)"
-  subtitle: "DRAFT"
+  subtitle: "Chapter 6 · Scene 2"
   actorPortrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
   state: 0
   ActionType: 2

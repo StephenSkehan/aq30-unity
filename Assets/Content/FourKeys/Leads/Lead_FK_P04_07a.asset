@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: AQ.App::AQ.App.Leads.LeadData
   leadId: fk_p04_07a
   title: "August 2014"
-  subtitle: "DRAFT"
+  subtitle: "Chapter 4 · Scene 7"
   actorPortrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
   state: 0
   ActionType: 2

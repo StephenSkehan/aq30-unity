@@ -26,7 +26,7 @@ MonoBehaviour:
     entryLeadId: fk_p01_01a
     shopUnlockFlag: pkg.fk_p01_04.beat_seen
     dossierGateFlag: pkg.fk_p01_10b.beat_seen
-    closingSummary: 'DRAFT. The Friends with Four Keys ends here: a letter, a panel, and
+    closingSummary: 'The Friends with Four Keys ends here: a letter, a panel, and
       a man believed dead in a room four hundred miles away.'
     flagPrefixes:
     - fk.
