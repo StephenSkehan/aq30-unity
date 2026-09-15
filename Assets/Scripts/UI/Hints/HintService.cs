@@ -595,7 +595,7 @@ namespace AQ.UI.Hints
             if (Time.realtimeSinceStartup - _bootTime < 5f) return;
             if (count == 0) return;
             HintService.Request("stash",
-                "Special things end up in the Stash. Tap this when there is room on the board.",
+                "Your Stash. New tools and spare items wait here. Tap it, then a free square, to place one.",
                 () => FindAny("BucketRoot", "__OverflowBtn", "__StashBtn"), OnBoard);
         }
 

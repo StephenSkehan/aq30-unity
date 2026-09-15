@@ -108,7 +108,7 @@ namespace AQ.App.UI.Common
             AQTheme.StylePanel(prt);
             AQTheme.PopIn(prt);
             prt.anchorMin = prt.anchorMax = new Vector2(0.5f, 0.5f);
-            prt.sizeDelta = new Vector2(640f, 620f);
+            prt.sizeDelta = new Vector2(640f, 700f); // taller for the three-line explanation (TestFlight 2026-09-15)
 
             // Copy DRAFT pending ruling (title + caption).
             AQTheme.TitleBar(prt, "TO THE STASH", () => StartCoroutine(CloseWithFlight()));
@@ -127,9 +127,13 @@ namespace AQ.App.UI.Common
                 img.raycastTarget = false;
             }
 
-            AddLabel(prt, name, 40f, AQTheme.Paper, new Vector2(0f, -80f), new Vector2(560f, 60f), display: true);
-            AddLabel(prt, "Sent to your Stash. Place it when there is room.",
-                     28f, AQTheme.PaperDim, new Vector2(0f, -140f), new Vector2(540f, 70f), display: false);
+            AddLabel(prt, name, 40f, AQTheme.Paper, new Vector2(0f, -72f), new Vector2(560f, 60f), display: true);
+            // Say what it is, where the Stash is and how to place it: "Stash?
+            // Makes no sense to a newbie merge player" (Trish, TestFlight b7).
+            string body = tile.kind == OverflowKind.Generator
+                ? "A generator: tap it on the board to make evidence. It is waiting in your Stash, the safe at the bottom left. Tap the safe, then a free square."
+                : "A spare item for your board. It is waiting in your Stash, the safe at the bottom left. Tap the safe, then a free square.";
+            AddLabel(prt, body, 24f, AQTheme.PaperDim, new Vector2(0f, -165f), new Vector2(540f, 130f), display: false);
 
             var btnGo = new GameObject("OkBtn", typeof(RectTransform), typeof(Image), typeof(Button));
             btnGo.transform.SetParent(prt, false);

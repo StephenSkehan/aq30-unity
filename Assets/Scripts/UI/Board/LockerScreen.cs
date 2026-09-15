@@ -189,7 +189,7 @@ namespace AQ.App.UI.Board
             // the bar; the instruction line moved behind the ? and the bottom
             // CLOSE button retired (dim-tap still closes too).
             AQTheme.TitleBar(panel, "EVIDENCE LOCKER", Close,
-                "Stash items and generators off the board. Tap an item to bring it back. Buy extra slots with CaseCash.");
+                "Store items and generators off the board. Tap one to bring it back. Buy extra slots with CaseCash.");
         }
 
         private static void Refresh()
