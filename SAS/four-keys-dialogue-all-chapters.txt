@@ -33,9 +33,9 @@ Scene fk_p01_05: Her Instructions  [studio, on air]
 Scene fk_p01_06: The Saturday  [studio, on air]
 
   Ally Quinn: It said someone had been getting into her house.
-  Ally Quinn: It said it wasn't any of them.
+  Ally Quinn: It said she knew that it wasn't any of them.
   Ally Quinn: And it said she might be imagining it. She also told them not to go to the police.
-  Ally Quinn: There was an object beside it. Something that had belonged to Violet. Only two of the friends are still alive, and neither one will say what that object was.
+  Ally Quinn: There was an object beside it. Something that had belonged to Violet. Tragically now, only two of the friends are still alive, and neither one will say what that object was.
 
 Scene fk_p01_07: The Disappearances  [studio, on air]
 
@@ -51,8 +51,8 @@ Scene fk_p01_08: The Walk-Ins  [studio, on air]
 
 Scene fk_p01_09: Del on the Steps  [Del's bench]
 
-  Ally Quinn: Police examined Violet's letter and found no reason to believe it was fake. They looked into Liam. They looked into Ruby. They found nothing they could use.
-  Ally Quinn: Tell me straight Del, I want the city to know the truth. What's suspicious in those files?
+  Ally Quinn: Police examined Violet's letter and found no reason to believe it was anything but genuine. They looked into Liam. They looked into Ruby. They found nothing incriminating about either of them.
+  Ally Quinn: Tell me straight Del, I want the city to know the truth. Is there something that doesn't add up in this case?
   Del Cruz: We looked. Properly. There's nothing. That's the truth, Quinny. It's taken six weeks of good specialists' time but there's nothing to chase.
 
 Scene fk_p01_09b: It Lives in People  [Del's bench]
@@ -68,9 +68,9 @@ Scene fk_p01_10: Havenbay Takes Sides  [studio, on air]
 
   Ally Quinn: Now Liam and Ruby are accusing each other publicly, and a letter that cleared them both is tearing them apart as Havenbay takes sides.
   Ally Quinn: Ruby has agreed to speak with me. Liam hasn't. At least, not yet.
-  Ally Quinn: I don't know what was behind that locked door. I don't know whether anyone was ever in Violet's house. And I don't know whether Liam or Ruby has a reason to be afraid.
+  Ally Quinn: I don't know what was behind that locker door. I don't know whether anyone was ever really sneaking into Violet's house. And I don't know whether Liam or Ruby has a real reason to be afraid.
 
-Scene fk_p01_10b: Ep 1 Publishes  [studio, on air]
+Scene fk_p01_10b: Episode One  [studio, on air]
 
   Ally Quinn: But four friends received four keys.
   Ally Quinn: Nine months later, two of them are dead, and the other two believe one of them could be next.

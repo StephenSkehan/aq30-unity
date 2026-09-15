@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P01_09_N1
     speaker: "Ally Quinn"
-    line: "Police examined Violet's letter and found no reason to believe it was fake. They looked into Liam. They looked into Ruby. They found nothing they could use."
+    line: "Police examined Violet's letter and found no reason to believe it was anything but genuine. They looked into Liam. They looked into Ruby. They found nothing incriminating about either of them."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P01_09_N2
     speaker: "Ally Quinn"
-    line: "Tell me straight Del, I want the city to know the truth. What's suspicious in those files?"
+    line: "Tell me straight Del, I want the city to know the truth. Is there something that doesn't add up in this case?"
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
