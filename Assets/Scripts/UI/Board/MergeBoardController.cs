@@ -96,6 +96,9 @@ namespace AQ.App.UI.Board
         /// Subscribers earn source (SAS/feature-subscribers-v1.md).
         /// </summary>
         public static event Action<string, int> TilesMerged;
+        /// <summary>Two generators of one type merged: (generatorTypeId, newTier).
+        /// Separate from TilesMerged, which the FTUE counts as ITEM merges.</summary>
+        public static event Action<string, int> GeneratorsMerged;
 
         /// <summary>Any tile swap (family swap, ceiling swap, rearrange).</summary>
         public static event Action TilesSwapped;
@@ -349,6 +352,7 @@ namespace AQ.App.UI.Board
                     GeneratorFamilyRegistry.SetSubGenLocked(genTypeId);
 
                 Log($"MergeTiles (Generator): {newTier - 1}+{newTier - 1}->{newTier} type={genTypeId}");
+                GeneratorsMerged?.Invoke(genTypeId, newTier);
                 NotifyBoardChanged();
                 return;
             }

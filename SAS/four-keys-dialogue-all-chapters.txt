@@ -20,7 +20,7 @@ Scene fk_p01_03: The Post  [studio, on air]
   Ally Quinn: But two weeks later, four people received something in the post.
   Ally Quinn: Each of them got an identical key and a note written in Violet's handwriting.
 
-Scene fk_p01_04: TURN: The Four Names  [studio, on air]
+Scene fk_p01_04: The Four Names  [studio, on air]
 
   Ally Quinn: Their names were Liam Bryce, Ruby Walker, Margo Rivera and Brad Collins. They were Violet's closest friends.
   Ally Quinn: The note told them to go to her locker at the boatsheds. Together. All four of them. It didn't say why. It said the four keys were the only ones.
@@ -30,7 +30,7 @@ Scene fk_p01_05: Her Instructions  [studio, on air]
   Ally Quinn: The four friends called each other that night. They agreed that nobody would open the door alone. They went that night, all four of them.
   Ally Quinn: And when they finally opened it, they found a letter.
 
-Scene fk_p01_06: TURN: The Saturday  [studio, on air]
+Scene fk_p01_06: The Saturday  [studio, on air]
 
   Ally Quinn: It said someone had been getting into her house.
   Ally Quinn: It said it wasn't any of them.

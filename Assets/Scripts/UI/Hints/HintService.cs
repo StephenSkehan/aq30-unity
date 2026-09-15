@@ -271,10 +271,20 @@ namespace AQ.UI.Hints
             _pulseCompanions.Clear();
         }
 
+        private float _nextPairScanAt;
+
         private void Update()
         {
             // Dossier opening has no event to hook; a per-frame static check is cheap.
             if (AQ.App.UI.Dossiers.DossierPopup.IsOpen) HintService.ActionPerformed("dossier");
+
+            // Generator-pair lesson as a state-scan (rule 6): a pair that arrived
+            // by stash pull, sub-generator drop or restore must still be taught.
+            if (Time.unscaledTime >= _nextPairScanAt)
+            {
+                _nextPairScanAt = Time.unscaledTime + 1f;
+                OnGeneratorPairAppeared();
+            }
 
             if (_chip != null)
             {
@@ -494,6 +504,9 @@ namespace AQ.UI.Hints
             OverflowBucketService.BucketChanged += OnBucketChanged;
             MergeBoardController.BoardCompositionChanged += OnBoardChanged;
             MergeBoardController.BoardCompositionChanged += OnGeneratorPairAppeared;
+            // Doing the taught thing retires the lesson (TestFlight 2026-09-15:
+            // Trish had two of each generator and no explanation).
+            MergeBoardController.GeneratorsMerged += (_, __) => HintService.ActionPerformed("gen_merge");
             SpecialItemsService.Changed += OnSpecialsChanged;
             AQTheme.HelpBarBuilt += OnHelpBarBuilt;
 
@@ -627,13 +640,16 @@ namespace AQ.UI.Hints
         }
 
         // A second same-type generator on the board is the teachable moment for
-        // generator merging (Stephen-ruled 2026-08-22). Copy DRAFT pending ruling.
+        // generator merging (Stephen-ruled 2026-08-22; copy re-ruled 2026-09-15
+        // after TestFlight: say WHY, higher-tier generators drop higher tiers
+        // more often). Edge-triggered by BoardCompositionChanged and ALSO polled
+        // once a second from Update (rule 6: the scan is the guarantee).
         private static void OnGeneratorPairAppeared()
         {
             if (HintService.Seen("gen_merge")) return;
             if (FindGeneratorPairTile() == null) return;
             HintService.Request("gen_merge",
-                "Generators merge too. Higher tiers find better evidence.",
+                "Two matching generators merge into a stronger one. Higher tiers turn up better evidence more often.",
                 FindGeneratorPairTile,
                 () => OnBoard() && FindGeneratorPairTile() != null);
         }
