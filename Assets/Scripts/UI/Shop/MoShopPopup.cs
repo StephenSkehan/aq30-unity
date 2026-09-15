@@ -146,7 +146,7 @@ namespace AQ.App.UI.Shop
             nameTmp.raycastTarget = false;
             AQTheme.StyleText(nameTmp);
 
-            var buy = MakeButton(offer.bought ? "SOLD" : $"{offer.price} CC", row,
+            var buy = MakeButton(offer.bought ? "SOLD" : $"${offer.price}", row,
                                  offer.bought ? AQTheme.SteelDim : AQTheme.Teal,
                                  new Vector2(620f / 2f - 110f, 0f), new Vector2(196f, 78f), 30f);
             buy.interactable = !offer.bought;

@@ -255,7 +255,7 @@ namespace AQ.App.UI.Board
                     var b = cell.gameObject.AddComponent<Button>();
                     AQTheme.StyleButton(img, AQTheme.Teal);
                     int price = EvidenceLockerService.NextSlotPrice;
-                    AddLabel(cell, $"+ SLOT\n{price} CC", 48f, AQTheme.Paper, Vector2.zero, new Vector2(SlotSize, SlotSize), display: true);
+                    AddLabel(cell, $"+ SLOT\n${price}", 48f, AQTheme.Paper, Vector2.zero, new Vector2(SlotSize, SlotSize), display: true);
                     b.onClick.AddListener(BuySlot);
                 }
                 else
@@ -312,7 +312,7 @@ namespace AQ.App.UI.Board
                 onConfirm: () =>
                 {
                     if (EvidenceLockerService.TryBuySlot())
-                        ToastService.Show("locker_slot", $"Locker slot unlocked (-{price} CC).", 2f);
+                        ToastService.Show("locker_slot", $"Locker slot unlocked (-${price}).", 2f);
                     else
                         ToastService.Show("locker_slot_no", "Not enough CaseCash.", 2f);
                 });

@@ -98,7 +98,7 @@ namespace AQ.App.UI.EvidenceBoard
                 var next   = def.details[unlocked];
                 var wallet = Economy.WalletLocator.Instance;
                 bool canAfford = wallet != null && wallet.Get(Currency.Soft) >= next.price;
-                string label = $"UNLOCK  ·  {next.price} CC" + (next.wideView ? "  ·  WIDE VIEW" : "");
+                string label = $"UNLOCK  ·  ${next.price}" + (next.wideView ? "  ·  WIDE VIEW" : "");
                 y = AddActionButton(prt, label, y,
                     canAfford ? new Color(0.55f, 0.40f, 0.16f, 1f) : new Color(0.35f, 0.33f, 0.30f, 1f),
                     () =>

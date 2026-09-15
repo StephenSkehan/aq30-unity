@@ -138,7 +138,7 @@ namespace AQ.App.UI.Dossiers
                 var rwRt = PlaceRect("Reward", box, new Vector2(textW, 32f), new Vector2(0f, nextH / 2f - 64f));
                 AddTmp(rwRt, "Comes with: " + next.reward.label, 24f,
                        new Color(0.72f, 0.68f, 0.64f, 1f), FontStyles.Normal, TextAlignmentOptions.Center);
-                var buy = PlaceButton("UNLOCK  ·  " + next.price + " CC", box,
+                var buy = PlaceButton("UNLOCK  ·  $" + next.price, box,
                                       new Color(0.18f, 0.42f, 0.28f, 1f),
                                       new Vector2(panelW - 160f, 78f), new Vector2(0f, -nextH / 2f + 52f));
                 string keyCap = characterKey;
