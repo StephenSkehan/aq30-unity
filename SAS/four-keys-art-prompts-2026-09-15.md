@@ -37,8 +37,9 @@
 ```
 Match the attached images' art style exactly: stylized painterly 3D-illustration
 look, eyes slightly larger than life, about one fifth of face height and never a third (Ally reference 4B, 2026-09-16), clean sculpted forms, soft cinematic key
-light with a warm rim light, rich saturated local colour against a plain very
-dark navy background (#0A1220) with a soft vignette. This is a dialogue portrait
+light with a warm rim light, rich saturated local colour. Background: a fully
+transparent PNG (alpha) is preferred, as delivered for Ally 4B; if the model
+cannot, a plain very dark navy (#0A1220) with a soft vignette. This is a dialogue portrait
 for a true-crime podcast game set in a small coastal city; it will be shown as a
 bust over painted night scenes, so it must read as illustration, not photograph.
 
@@ -54,9 +55,9 @@ for rendering style, lighting and eye treatment; this is a different person.
 
 Generate in this order: Ruby, Liam, Violet, Margo, Brad, Tessa, then the rest. After each approved neutral, run the emotion sheet block in section 3 (Ruby and Liam only; everyone else needs the single frame).
 
-### Ruby Walker · full emotion set · `char_ruby_{emotion}_f01.png`
+### Ruby Walker · full emotion set · `char_ruby_{emotion}_f01.png` · DONE 2026-09-16 (approved set imported; regenerate only if the eye edit is applied)
 ```
-Ruby Walker, woman of 39, practice nurse at a small harbour surgery. Medium
+Ruby Walker, woman in her mid thirties, practice nurse at a small harbour surgery. Medium
 build with a nurse's straight-backed, ready posture. Warm light-brown skin, dark
 brown eyes that are quick and a little too bright, as if she has not slept.
 Dark hair with copper lowlights pulled into a loose, practical low knot that is
