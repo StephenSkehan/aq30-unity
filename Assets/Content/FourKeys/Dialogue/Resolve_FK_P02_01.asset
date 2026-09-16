@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P02_01_N1
     speaker: "Ally Quinn"
-    line: "Ruby Walker's kitchen. A pine table under the window, and a heater beside it. This is the table the four of them sat at with Violet's letter, week after week."
+    line: "Ruby Walker's kitchen. A pine table under the window, a heater beside it. This is where the four sat with Violet's letter, week after week."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P02_01_N2
     speaker: "Ally Quinn"
-    line: "Before any of that it was Tuesdays. Violet came on Tuesday nights, for years, and Ruby had the heater on before she knocked."
+    line: "Before the letter, it was Tuesdays. Violet came for years, and Ruby had the heater on before she knocked."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P02_01_N3
     speaker: "Ruby Walker"
-    line: "Heater on, her at the door, then the same argument we'd had for years. Every Tuesday. That was the friendship. Anyway. Tea?"
+    line: "Heater on, her at the door, then the same argument we'd had for years. That was the friendship. Tea?"
     portrait: {fileID: 21300000, guid: ee933f5d948e45808a57817fd2e9d4fe, type: 3}
     emotion: 1
     voiceClip: {fileID: 0}
@@ -53,9 +53,21 @@ MonoBehaviour:
     choices: []
   - id: FK_P02_01_N4
     speaker: "Ally Quinn"
-    line: "The argument was about whether Ruby's husband should be told. Told what, Ruby didn't say, and I don't know."
+    line: "The argument was about whether Ruby's husband should be told. Told what?"
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_01_N5
+    choices: []
+  - id: FK_P02_01_N5
+    speaker: "Ruby Walker"
+    line: "You came for Violet, not my marriage. Leave him out of it. Anyway, tea?"
+    portrait: {fileID: 21300000, guid: 4f3c2252e9b24f179e5e92bb42f0a6bb, type: 3}
+    emotion: 5
     voiceClip: {fileID: 0}
     waitForAudio: 0
     requiresFlag: 

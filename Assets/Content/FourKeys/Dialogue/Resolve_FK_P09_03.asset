@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P09_03_N1
     speaker: "Ally Quinn"
-    line: "Cross-check two. A crack across one corner. The café owner has it. The cinema owner has it. One of the signwriters has it."
+    line: "Cross-check two. A crack across one corner. The diner's owner has it. The cinema owner has it. One of the signwriters has it."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -41,29 +41,17 @@ MonoBehaviour:
     choices: []
   - id: FK_P09_03_N3
     speaker: "Ally Quinn"
-    line: "And it isn't only tonight. Two of the letters I read out to you last week put a crack in a corner, before anyone had compared notes."
+    line: "And it isn't only tonight. The two letters I was sent put a crack in a corner, before anyone had compared notes."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag: aq.fk.d3.verbatim
+    requiresFlag: 
     skipIfFlagMissing: 1
     setsFlag: 
     nextId: FK_P09_03_N4
     choices: []
   - id: FK_P09_03_N4
-    speaker: "Ally Quinn"
-    line: "That's three memories and nothing on paper. Memory moves. I'm writing the crack on the board in pencil."
-    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
-    emotion: 5
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
-    requiresFlag: aq.fk.d3.paraphrase
-    skipIfFlagMissing: 1
-    setsFlag: 
-    nextId: FK_P09_03_N5
-    choices: []
-  - id: FK_P09_03_N5
     speaker: "Ally Quinn"
     line: "Nobody knows how it got there. Not the four of them, not me."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}

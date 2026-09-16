@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P04_10_N1
     speaker: "Ally Quinn"
-    line: "This week, Liam Bryce. He's known Violet Moore since the school bus, thirty-five years. He drives the crane at the boatyard, and he owns a third of it, which he's never said out loud until now."
+    line: "This week, Liam Bryce. He has known Violet since school, drives the boatyard crane and quietly owns a third of the yard."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P04_10_N2
     speaker: "Ally Quinn"
-    line: "The letter had lines about him. He answered every one of them at his own kitchen table, with the tape running."
+    line: "The letter says he offered twice to take her mother's ashes out by boat. He fixed her bedroom window, rehung her back door and fitted her yard gate."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P04_10_N3
     speaker: "Ally Quinn"
-    line: "He asked, twice, to take her mother's ashes out on his boat. He fixed a window catch in her back bedroom. He rehung her back door. He fitted the gate at the back of her yard."
+    line: "Every fact happened. Together they can describe a case or a friend helping."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -53,31 +53,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P04_10_N4
     speaker: "Ally Quinn"
-    line: "Every one of those things happened. He told me so himself. What they add up to, I can't tell you. I don't know, and the police looked for six weeks and took no further action."
-    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
-    emotion: 0
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
-    requiresFlag: 
-    skipIfFlagMissing: 1
-    setsFlag: 
-    nextId: FK_P04_10_N5
-    choices: []
-  - id: FK_P04_10_N5
-    speaker: "Ally Quinn"
-    line: "There's more in my notebook this week than in this episode. Some of it I don't understand yet, and I won't say it until I do."
-    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
-    emotion: 5
-    voiceClip: {fileID: 0}
-    waitForAudio: 0
-    requiresFlag: 
-    skipIfFlagMissing: 1
-    setsFlag: 
-    nextId: FK_P04_10_N6
-    choices: []
-  - id: FK_P04_10_N6
-    speaker: "Ally Quinn"
-    line: "I asked Liam to come back in before this went out. He didn't answer. So tonight is one afternoon at his table, and I'll leave it there. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+    line: "Liam no longer answers me. Tonight is one afternoon at his table. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
     portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
     emotion: 2
     voiceClip: {fileID: 0}
@@ -85,13 +61,13 @@ MonoBehaviour:
     requiresFlag: aq.fk.d2.market
     skipIfFlagMissing: 1
     setsFlag: 
-    nextId: FK_P04_10_N7
+    nextId: FK_P04_10_N5
     choices: []
-  - id: FK_P04_10_N7
+  - id: FK_P04_10_N5
     speaker: "Ally Quinn"
-    line: "I'll be back at the yard next week, if Liam will have me. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
-    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
-    emotion: 0
+    line: "Del asked me to stay off the sheds, and I will. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
     voiceClip: {fileID: 0}
     waitForAudio: 0
     requiresFlag: aq.fk.d2.direct

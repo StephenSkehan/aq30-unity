@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P07_05_N2
     speaker: "Ally Quinn"
-    line: "The café owner told me something else about that autumn. Violet was calling money in. Whatever she was owed, she wanted it back, and she didn't name anyone."
+    line: "The diner's owner told me something else about that autumn. Violet was calling money in. Whatever she was owed, she wanted it back, and she didn't name anyone."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P07_05_N3
     speaker: "Ally Quinn"
-    line: "So the letter says he paid her back unasked, and the café says she was asking. I've set the two beside each other on the board. I don't know what to make of it, and I'm not going to pretend I do."
+    line: "So the letter says he paid her back unasked, and the diner's owner says she was asking. I've set the two beside each other on the board. I don't know what to make of it, and I'm not going to pretend I do."
     portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
     emotion: 6
     voiceClip: {fileID: 0}

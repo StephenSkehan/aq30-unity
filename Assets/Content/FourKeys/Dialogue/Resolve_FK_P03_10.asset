@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P03_10_N1
     speaker: "Ally Quinn"
-    line: "This week I left Ruby's kitchen and went into the town. Violet Moore's lettering is on the menu boards at the harbour café and on half the shopfronts between there and the Regent."
+    line: "This week I left Ruby's kitchen and went into the town. Violet Moore's lettering is on the menu boards at the Kestrel Corner Diner and on half the shopfronts between there and the Regent."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P03_10_N2
     speaker: "Ally Quinn"
-    line: "The café owner told me that in her last months Violet said she was calling in what she was owed. For the lawyer, she said. No name. I don't know who owed her, or how much."
+    line: "The diner's owner told me that in her last months Violet said she was calling in what she was owed. For the lawyer, she said. No name. I don't know who owed her, or how much."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

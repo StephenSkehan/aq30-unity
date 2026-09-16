@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P03_02_N1
     speaker: "Ally Quinn"
-    line: "The café owner knew Violet for years. I asked about her last months."
+    line: "The diner's owner knew Violet for years. I asked about her last months."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -28,7 +28,7 @@ MonoBehaviour:
     nextId: FK_P03_02_N2
     choices: []
   - id: FK_P03_02_N2
-    speaker: "The café owner"
+    speaker: "The diner's owner"
     line: "She was in most mornings. Near the end she said she was calling in what she was owed. For the lawyer, she said. I didn't ask who. You didn't, with Violet."
     portrait: {fileID: 0}
     emotion: 2

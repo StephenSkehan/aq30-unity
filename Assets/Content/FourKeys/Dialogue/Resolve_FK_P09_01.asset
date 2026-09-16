@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P09_01_N1
     speaker: "Ally Quinn"
-    line: "Four people wrote to me about the same panel, a hand-lettered sign that belonged to Violet. A café owner, a cinema owner, two signwriters. Tonight they're in one diner booth, and the tape's running."
+    line: "Four people wrote to me about the same panel, a hand-lettered sign that belonged to Violet. The Kestrel Corner Diner's owner, a cinema owner, two signwriters. Tonight they're in one diner booth, and the tape's running."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -28,7 +28,7 @@ MonoBehaviour:
     nextId: FK_P09_01_N2
     choices: []
   - id: FK_P09_01_N2
-    speaker: "The café owner"
+    speaker: "The diner's owner"
     line: "I only saw it the once. But you don't forget the gold."
     portrait: {fileID: 0}
     emotion: 0

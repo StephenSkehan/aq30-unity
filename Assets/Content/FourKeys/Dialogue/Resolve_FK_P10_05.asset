@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P10_05_N1
     speaker: "Ally Quinn"
-    line: "What gave him away was never evidence. Keys moved twice on a table. Thank you, said like it cost him something. Up at five to run. And he agreed with whoever had spoken last."
+    line: "What found him was never evidence. That came after. Keys moved twice on a table. Thank you, said like it cost him something. Up at five to run. And he agreed with whoever had spoken last."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

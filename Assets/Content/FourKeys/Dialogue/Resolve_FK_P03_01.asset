@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P03_01_N1
     speaker: "Ally Quinn"
-    line: "The harbour café opens at six. Her menu boards are still out the front. Someone else chalks the prices in now."
+    line: "The Kestrel Corner Diner opens at six. Her menu boards are still out the front. Someone else chalks the prices in now."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

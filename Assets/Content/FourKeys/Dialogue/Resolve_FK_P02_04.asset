@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P02_04_N1
     speaker: "Ally Quinn"
-    line: "Ruby Walker is thirty-nine, a practice nurse at the surgery on Wharf Street. When she's frightened, she talks. She fills the room, gives you a job, makes tea nobody asked for, and ends her sentences with anyway."
+    line: "Ruby Walker is in her mid thirties, a practice nurse at the surgery on Wharf Street."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -28,9 +28,33 @@ MonoBehaviour:
     nextId: FK_P02_04_N2
     choices: []
   - id: FK_P02_04_N2
+    speaker: "Ruby Walker"
+    line: "You're talking about me like I'm not in the room."
+    portrait: {fileID: 21300000, guid: 0bf73a905b8a4f11a7398a494390fc6f, type: 3}
+    emotion: 6
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_04_N3
+    choices: []
+  - id: FK_P02_04_N3
     speaker: "Ally Quinn"
-    line: "The glass in her hand is tonic. She's been sober six years. She said so early, so nobody had to ask."
+    line: "When she is frightened, she talks. She fills the room, gives you a job and makes tea nobody asked for."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_04_N4
+    choices: []
+  - id: FK_P02_04_N4
+    speaker: "Ruby Walker"
+    line: "Six years sober. The glass is tonic. Say that too, before somebody else decides what it is."
+    portrait: {fileID: 21300000, guid: 3eda8c3a8ba44593b8d95260ba6b7487, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0

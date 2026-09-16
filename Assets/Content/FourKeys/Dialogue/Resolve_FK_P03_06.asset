@@ -41,7 +41,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P03_06_N3
     speaker: "Ally Quinn"
-    line: "The café owner saw it. The cinema owner saw it. Two signwriters up the coast saw it. Two of the four told her, yours, in a very good year. One asked whether she'd shown her lad."
+    line: "The diner's owner saw it. The cinema owner saw it. Two signwriters up the coast saw it. Two of the four told her, yours, in a very good year. One asked whether she'd shown her lad."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

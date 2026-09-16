@@ -85,113 +85,106 @@ CHAPTER 2 · THE KITCHEN TABLE
 
 Scene fk_p02_01: Ruby's Kitchen  [Ruby's kitchen]
 
-  Ally Quinn: Ruby Walker's kitchen. A pine table under the window, and a heater beside it. This is the table the four of them sat at with Violet's letter, week after week.
-  Ally Quinn: Before any of that it was Tuesdays. Violet came on Tuesday nights, for years, and Ruby had the heater on before she knocked.
-  Ruby Walker: Heater on, her at the door, then the same argument we'd had for years. Every Tuesday. That was the friendship. Anyway. Tea?
-  Ally Quinn: The argument was about whether Ruby's husband should be told. Told what, Ruby didn't say, and I don't know.
+  Ally Quinn: Ruby Walker's kitchen. A pine table under the window, a heater beside it. This is where the four sat with Violet's letter, week after week.
+  Ally Quinn: Before the letter, it was Tuesdays. Violet came for years, and Ruby had the heater on before she knocked.
+  Ruby Walker: Heater on, her at the door, then the same argument we'd had for years. That was the friendship. Tea?
+  Ally Quinn: The argument was about whether Ruby's husband should be told. Told what?
+  Ruby Walker: You came for Violet, not my marriage. Leave him out of it. Anyway, tea?
 
 Scene fk_p02_02: The Note Under Glass  [case board]
 
-  Ally Quinn: This is Ruby's copy of the note. Four went out, all the same, two weeks after Violet died. I photographed it at the kitchen table. It's under glass on my board now. Violet's handwriting.
+  Ally Quinn: Ruby kept her copy of the note. Four went out, all the same, two weeks after Violet died. I photographed hers at the kitchen table. It is under glass on my board now, in Violet's handwriting.
   Ally Quinn: If you've got this, I'm dead, and I'm sorry about the timing. Go to my locker at the boatsheds by the slip. The padlock's new and these four keys are the only ones. Go together, all four of you, and read what's there together. Violet.
   Ally Quinn: That's all of it.
 
 Scene fk_p02_03: The Letter  [Ruby's kitchen]
 
-  Ally Quinn: The letter behind the door. Violet's handwriting, dated three weeks before she died. Police examined it and gave it back. Ruby kept it. She read it to me at the table.
-  Ally Quinn: There are lines in it about Violet's mother. Ruby won't read those. She put her hand over them. I haven't guessed at what's under it.
   Ruby Walker: It isn't any of you four, and I'd know. Someone with my key has been in my house, or I've started imagining things. I can't tell which, and both frighten me.
-  Ruby Walker: The first thing. The yard gate. I bolt it every night. One morning in October it was unbolted, and I couldn't swear I'd bolted it.
-  Ruby Walker: I changed the front door lock in October and told only you four where the new spare was. It happened again after that. So I took the key in, told nobody, and it stopped.
-  Ruby Walker: I don't think I'm going to die. I think I'm going to be sixty and embarrassed. But if I'm wrong nobody needs to know, and if I'm right you'll want to know what I noticed.
-  Ruby Walker: If I'd told you now you'd have sat in my kitchen with a torch and I'd never have heard the end of it.
+  Ruby Walker: The first thing was the yard gate. I bolt it every night. One morning in October it was unbolted, and I couldn't swear I'd bolted it.
+  Ruby Walker: I changed the front door lock and told only you four where the new spare was. It happened again after that. So I took the key in, told nobody, and it stopped.
+  Ruby Walker: I don't think I'm going to die. I think I'm going to be sixty and embarrassed. If I'm wrong, nobody needs to know. If I'm right, you'll want to know what I noticed.
   Ally Quinn: Here Ruby's hand goes over the page. The lines about Violet's mother. She picks up again below her hand.
-  Ruby Walker: Somebody got the place of my spare from one of you without your knowing, or watched one of you use it. So write down everything odd you've noticed this year. About me, and about who's been near each of you.
+  Ruby Walker: Somebody got the place of my spare from one of you without your knowing, or watched one of you use it. Write down everything odd you've noticed this year. About me, and about who has been near each of you.
   Ruby Walker: Read the four lists together at one table. Since I'm asking you to, here's mine. Liam has owned a third of the yard for eight years and lets the town think he's staff.
   Ally Quinn: Her hand goes down again. One line. She won't read that one either.
-  Ruby Walker: Ruby's been on nights since August and won't say why. Margo hasn't been to the slip since the summer. And Brad paid me back the van money this autumn, every penny. I put it here because it's the one thing this year that went right.
-  Ruby Walker: Not the police. I've nothing they'd act on and I won't have them in your lives over a gate and a feeling. You four can do what they won't. Read this together, and be careful. Write legibly. Violet.
-  Ruby Walker: That bit about the police. That never sounded like Vi to me. Liam said that night why she was like that about police. Something from the night her mum died. I don't know what. I let it go. I shouldn't have. Anyway.
-  Ally Quinn: That's the letter. Then Ruby told me about the room, in order. The night they opened the locker, the first thing was relief. Then being ashamed of the relief. Nobody said the rest out loud that night.
-  Ally Quinn: The next evening, at this table, they said it. She changed her lock and told the four of them. It happened again. She took the key in, told nobody, and it stopped.
-  Ally Quinn: Liam found her. Ruby says the spare wasn't in its pot, so he broke a pane to get in, and the back door was latched.
-  Ally Quinn: They looked for anyone else in Violet's life. No cleaner, no lodger, no tradesman. A sister she hadn't spoken to in years. Nobody.
-  Ruby Walker: We knew a wall could be climbed. We chose not to think it. Anyway. Saturdays after that. Every Saturday, here.
-  Ally Quinn: The lists Violet asked for, who'd been near each of them: nobody. Where were they on the Monday night: Ruby on shift, Margo at home alone, Liam alone at the yard, Brad at home alone. Ruby's words: nobody had an alibi, and Liam had the least.
-  Ruby Walker: She thought she'd know. And she's dead. I said that every week. I'm saying it to you now. Anyway.
-  Ally Quinn: Meeting by meeting, Ruby says, the letter's lines about Liam were read against him. The yard he'd kept quiet. The lines about her mother, which Ruby won't repeat. And that he'd fixed a window catch in Violet's back bedroom in spring, and the back door.
-  Ally Quinn: Brad argued Liam's side every week. Reasonably, Ruby says. He lost every week. By the fifth week the table had settled on Liam. That's Ruby's account. Nobody else's yet.
-  Ally Quinn: At the sixth meeting Margo stopped arguing and stopped looking at anyone. Ruby doesn't know why and won't guess. A week later Brad drove to Kestrel Head.
+  Ruby Walker: Ruby's been on nights since August and won't say why. Margo hasn't been to the slip since summer. And Brad paid me back the van money this autumn, every penny. The one thing this year that went right.
+  Ruby Walker: Not the police. I've nothing they'd act on, and I won't have them in your lives over a gate and a feeling. You four can do what they won't. Read this together. Be careful. Write legibly. Violet.
 
-  DECISION. Ally: Next week I have to decide what this city hears of Violet's letter.
-    > Read it whole, as Ruby read it
-      Ally Quinn: I'll read it all, every line Ruby read me. They'll go out in Ruby's voice as much as Violet's, and Ruby is the one who'll carry them round this town.
-    > Air only what I can check
-      Ally Quinn: I'll read the parts I can stand behind from someone other than Ruby. The city hears less. Ruby keeps the rest at her own table.
+  DECISION. Ally: What does the city hear next week?
+    > Air Ruby's whole reading
+      Ally Quinn: I'll air every line Ruby read. The words go out in Ruby's voice as much as Violet's, and Ruby carries them round Havenbay.
+    > Air only verified lines
+      Ally Quinn: I'll air only lines I can verify elsewhere. The city hears less, and what Ruby covered stays at her table.
 
-  Ruby Walker: You do what you think. I'll put the kettle on. Anyway.
-  Ally Quinn: The lines under her hand stay there either way.
+  Ruby Walker: If you cut what I read, people will think I cut it. The lines under my hand stay there either way.
 
 Scene fk_p02_04: Ruby Walker  [Ruby's kitchen]
 
-  Ally Quinn: Ruby Walker is thirty-nine, a practice nurse at the surgery on Wharf Street. When she's frightened, she talks. She fills the room, gives you a job, makes tea nobody asked for, and ends her sentences with anyway.
-  Ally Quinn: The glass in her hand is tonic. She's been sober six years. She said so early, so nobody had to ask.
+  Ally Quinn: Ruby Walker is in her mid thirties, a practice nurse at the surgery on Wharf Street.
+  Ruby Walker: You're talking about me like I'm not in the room.
+  Ally Quinn: When she is frightened, she talks. She fills the room, gives you a job and makes tea nobody asked for.
+  Ruby Walker: Six years sober. The glass is tonic. Say that too, before somebody else decides what it is.
 
 Scene fk_p02_05: Four in the Morning  [Ruby's kitchen]
 
-  Ally Quinn: Ruby told me this one without being asked.
-  Ruby Walker: Three years ago she rang me at four in the morning. I drove over. Neither of us ever said what it was, not that night and not after. Anyway.
-  Ally Quinn: I don't know what it was. Ruby didn't say, and I'm not going to guess.
+  Ally Quinn: Ruby gave me this memory without being asked.
+  Ruby Walker: Three years ago Vi rang me at four in the morning. I drove over. Neither of us ever said what it was, not that night and not after. Anyway.
+  Ally Quinn: I don't know what happened. Ruby did not say, and I am not going to guess.
 
-Scene fk_p02_06: Brad's Boxes  [Ruby's kitchen]
+Scene fk_p02_06: The Room  [Ruby's kitchen]
 
-  Ally Quinn: When Brad Collins's rent stopped, his landlord boxed up his flat and sent the boxes to Ruby. They're at hers now.
-  Ally Quinn: Police had been through the flat before it was boxed. Passport, bank cards, tools, laptop. All there. All still there.
-  Ally Quinn: Ruby and I went through every box at the table, over days. Clothes, tools, paperwork. A whole flat. There's nothing odd in any of it. Days of careful nothing.
+  Ruby Walker: When we opened the locker, the first thing was relief. Then shame, because relief meant we'd believed she might name one of us.
+  Ally Quinn: The next evening you did the arithmetic.
+  Ruby Walker: New lock. Only four told. Something moved after. Key taken in, it stopped. Liam found the pot empty, broke a pane, and the back door was latched.
+  Ally Quinn: But the wall could be climbed. Someone could have watched Violet use the pot.
+  Ruby Walker: I know. We looked outward: no cleaner, lodger or tradesman, and an estranged sister. Then Monday: me on shift, Margo home, Liam at the yard, Brad at home. Nobody had an alibi. Liam had the least.
 
 Scene fk_p02_07: Four Habits  [Ruby's kitchen]
 
-  Ruby Walker: He'd put his keys on the table and then move them. Twice, always twice. He said thank you like it cost him. Up at five to run, every day.
-  Ruby Walker: And the one everybody knew. He agreed with whoever had spoken last. Seven years he was the pet of the room. Anyway.
-  Ally Quinn: That's Brad Collins as Ruby had him. Four habits. I've written them down as she said them.
+  Ally Quinn: When Brad's rent stopped, his landlord boxed up the flat and sent everything to Ruby. Police had already searched it.
+  Ally Quinn: Ruby and I went through the boxes over days. Passport, cards, tools, laptop, clothes and paperwork. Days of careful nothing.
+  Ruby Walker: He'd put his keys on the table, then move them. Twice, always twice. We used to wait for the second move before we spoke.
+  Ruby Walker: He said thank you like it cost him. He was up at five to run, and he agreed with whoever had spoken last. Seven years he was the pet of the room.
+  Ally Quinn: Four ordinary habits, remembered with affection. That was Brad Collins as Ruby had him.
 
 Scene fk_p02_08: The Covering Slip  [Ruby's kitchen]
 
-  Ally Quinn: Ruby kept the envelope her note came in. Inside it, behind the note, there's a covering slip from Violet's solicitor.
-  Ally Quinn: It says the four envelopes were lodged with the firm three weeks before Violet died, and posted after the funeral. It lists four addressees. Liam, Ruby, Margo, Brad.
-  Ally Quinn: It tells me where the note came from and when. That's what it's for. It's on the board, under the note.
+  Ally Quinn: Ruby kept the envelope her note came in. Folded behind the note was a covering slip from Violet's solicitor.
+  Ally Quinn: It says the four envelopes were lodged with the firm three weeks before Violet died and posted after the funeral.
+  Ruby Walker: Four addressees. Liam, me, Margo, Brad. I've read that list enough times to know the order.
+  Ally Quinn: The letter was dated three weeks before Violet died. Police examined it, then returned it to Ruby.
 
-Scene fk_p02_09: Grade Eight  [Ruby's kitchen]
+Scene fk_p02_09: Saturdays  [Ruby's kitchen]
 
-  Ally Quinn: There's a piano in Ruby's front room. The sheet music on the stand is a long way past carols.
-  Ally Quinn: She got her grade eight at fourteen. The surgery thinks she plays a bit at Christmas. She lets them.
+  Ruby Walker: Every Saturday we came back to this table with the lists Violet asked for. Every Saturday Liam looked worse.
+  Ally Quinn: The line about the police. Did that sound like Violet to you?
+  Ruby Walker: Never. Liam said that night why she was like that about them. Something from the night her mum died. I let it go. Then the facts bent towards him: the yard, the lines about her mother, the bedroom window, the back door.
+  Ally Quinn: Each of those could also be a friend helping a friend. Brad kept saying so.
+  Ruby Walker: Every week. Reasonably. He lost every week. By the fifth we'd settled on Liam. At the sixth Margo stopped arguing and looking at anyone. A week later Brad drove to Kestrel Head. She thought she'd know, and she's dead. Anyway.
 
 Scene fk_p02_10: Episode Two  [studio, on air]
 
-  Ally Quinn: This week I sat at Ruby Walker's kitchen table. It's pine. It's the table the four of them worked Violet's letter at, Saturday after Saturday, after they opened the locker.
-  Ally Quinn: Ruby read me the letter from behind the door. All of it but the lines about Violet's mother. Those she covered with her hand, and I haven't guessed at them.
-  Ally Quinn: She told me how the table went, meeting by meeting. According to Ruby, Brad argued Liam's side every week and lost every week. At the sixth meeting Margo stopped arguing. A week later Brad drove to Kestrel Head.
-  Ally Quinn: When Brad's rent stopped, his landlord sent his flat to Ruby in boxes. Passport, cards, tools, laptop. Police had seen them all before. I've been through every box. There's nothing odd in any of it.
-  Ally Quinn: Four things about Brad Collins, from Ruby. He moved his keys on the table, twice. He said thank you like it cost him. He ran at five. And he agreed with whoever had spoken last.
-  Ally Quinn: Everything you heard tonight came from Ruby Walker, at her own table, under her own name. In a town this size, that costs something.
-  (only if the letter was aired) Ally Quinn: Next week I'll read you Violet's letter whole, every line Ruby read me. They go out in Ruby's voice, and she'll carry them round this town. She knows that. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.
-  (only if the letter was held) Ally Quinn: Next week you'll hear the parts of Violet's letter I can check with someone other than Ruby. You'll hear less. The rest stays at her table. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.
+  Ally Quinn: This week Ruby Walker read me Violet's letter at the table where the four worked it.
+  Ally Quinn: By the fifth Saturday the room had settled on Liam. At the sixth Margo went quiet. A week later Brad drove to Kestrel Head.
+  Ally Quinn: Brad Collins, as Ruby had him: keys moved twice on the table, thank you like it cost him, up at five to run, and he agreed with whoever spoke last.
+  (only if the letter was aired) Ally Quinn: Next week I air Ruby's whole reading. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.
+  (only if the letter was held) Ally Quinn: Next week I air only verified lines. What Ruby covered stays at her table. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.
 
 
 ======================================================================
 CHAPTER 3 · THE TOWN
 ======================================================================
 
-Scene fk_p03_01: The Harbour Café  [diner]
+Scene fk_p03_01: The Kestrel Corner Diner  [diner]
 
-  Ally Quinn: The harbour café opens at six. Her menu boards are still out the front. Someone else chalks the prices in now.
+  Ally Quinn: The Kestrel Corner Diner opens at six. Her menu boards are still out the front. Someone else chalks the prices in now.
   Ally Quinn: Violet Moore lettered them. She lettered half the shopfronts in this town. You eat under her work and don't know it.
   Ally Quinn: I had breakfast under it this morning. Then I asked the owner what she was like.
 
 Scene fk_p03_02: Calling It In  [diner]
 
-  Ally Quinn: The café owner knew Violet for years. I asked about her last months.
-  The café owner: She was in most mornings. Near the end she said she was calling in what she was owed. For the lawyer, she said. I didn't ask who. You didn't, with Violet.
+  Ally Quinn: The diner's owner knew Violet for years. I asked about her last months.
+  The diner's owner: She was in most mornings. Near the end she said she was calling in what she was owed. For the lawyer, she said. I didn't ask who. You didn't, with Violet.
   Ally Quinn: Calling in what she was owed. For the lawyer. That's all of it. No name, no amount, no date.
   Ally Quinn: But money moved in her last months. Until this morning I had a letter and a kitchen table. Now I have money moving.
   Ally Quinn: That doesn't give suspicion a face. It gives it a category. I'll take a category.
@@ -218,7 +211,7 @@ Scene fk_p03_06: The Panel  [case board]
 
   Ally Quinn: Two and a half months before she died, Violet started carrying something round the trade. A lettering panel. Gold letters on a dark board.
   Ally Quinn: For about a month she showed it to anyone who lettered for a living and asked the same question. Whose lettering is this.
-  Ally Quinn: The café owner saw it. The cinema owner saw it. Two signwriters up the coast saw it. Two of the four told her, yours, in a very good year. One asked whether she'd shown her lad.
+  Ally Quinn: The diner's owner saw it. The cinema owner saw it. Two signwriters up the coast saw it. Two of the four told her, yours, in a very good year. One asked whether she'd shown her lad.
   Ally Quinn: Her lad was Brad Collins. He was her apprentice for seven years. That's the whole of what I know about that.
   Ally Quinn: Nobody has seen the panel since she died. It wasn't in the locker when the four opened it, Ruby says. It wasn't in the boxes. The sister has never seen it. I don't know where it is.
   Ally Quinn: But she asked for a month, out loud, all over town. Whoever has it now heard her asking.
@@ -245,8 +238,8 @@ Scene fk_p03_09: One Town  [studio]
 
 Scene fk_p03_10: Episode Three  [studio, on air]
 
-  Ally Quinn: This week I left Ruby's kitchen and went into the town. Violet Moore's lettering is on the menu boards at the harbour café and on half the shopfronts between there and the Regent.
-  Ally Quinn: The café owner told me that in her last months Violet said she was calling in what she was owed. For the lawyer, she said. No name. I don't know who owed her, or how much.
+  Ally Quinn: This week I left Ruby's kitchen and went into the town. Violet Moore's lettering is on the menu boards at the Kestrel Corner Diner and on half the shopfronts between there and the Regent.
+  Ally Quinn: The diner's owner told me that in her last months Violet said she was calling in what she was owed. For the lawyer, she said. No name. I don't know who owed her, or how much.
   Ally Quinn: Violet's sister told me the two of them fought for years over their mother's house. Violet had a solicitor on Civic Row. She left no will, so her sister administers everything.
   Ally Quinn: And her sister told me what stood beside the letter in the locker, the thing the four have never said. It was their mother's ashes. Violet had kept them four years and said they were scattered. Her sister has them now.
   Ally Quinn: Two and a half months before she died, Violet carried a lettering panel round the trade for about a month. Gold letters on a dark board, an alphabet in her own style, better than anyone had seen her do.
@@ -313,27 +306,25 @@ Scene fk_p04_08: The Boatsheds  [moorings]
 
 Scene fk_p04_09: The Monday Visitor  [studio]
 
-  Ally Quinn: Late in the week a man rang the Tip Line. He owns a boat and works the slip before the tide. He knew Violet by sight because she lettered his boat, and he knew Brad because Brad painted his tender.
-  The boat owner: The Monday the notes came, I was down there at twenty past seven. The young one, Brad, was at Violet's locker door. He carried a flat wrapped parcel from her door to another door in the same corridor. I said "early for you." I thought her pupil was collecting her kit.
-  Ally Quinn: That was hours before the four of them came at night. He knows what he saw, and he knows it's about a man who can't answer it. He's agreed to let me pass it to the police. It's not going on air.
+  Ally Quinn: Late in the week a boat owner rang the Tip Line. He works the slip before the tide and knew Violet by sight. She lettered his boat.
+  The boat owner: The Monday the notes came, I was down there at twenty past seven. A young man was in the corridor with something flat under his arm. He was near one of the doors. From where I stood, I couldn't tell which door, and I wouldn't swear to the man.
+  Ally Quinn: That was hours before the four came at night. It is enough to file, not enough to name anyone. It is not going on air.
 
-  DECISION. Ally: It goes to Del today whichever way I do this; the question is whether I go to the sheds with a microphone first.
-    > Ring Del now, as it stands
-      Ally Quinn: I rang Sergeant Del Cruz from the studio and read it out the way he gave it to me. Del has it clean, and the show has nothing it can use, which is how it should be.
-    > A day at the sheds on tape first
-      Ally Quinn: I spent a day at the sheds with the recorder, and Del got the tape and the tip together, a day late. Liam heard I'd been down there with a microphone, and he's stopped answering me.
+  DECISION. Ally: Who gets the first clean look?
+    > Send Del the clean tip
+      Ally Quinn: Del got the account clean. She asked me to stay off the sheds while they work it, and I said yes. I will not see the corridor again or ask the boat owner twice.
+    > Map the sheds first
+      Ally Quinn: I spent a day there first. I gained a second witness and the corridor layout. Del got it a day late, and Liam stopped answering me.
 
-  Ally Quinn: Either way, it's not going out. What I'm holding is this: a man nobody can ask went to her locker early that morning, and I don't know why.
+  Ally Quinn: Either way, I am holding an unnamed man, something flat and an early hour. Nothing more.
 
 Scene fk_p04_10: Episode Four  [studio, on air]
 
-  Ally Quinn: This week, Liam Bryce. He's known Violet Moore since the school bus, thirty-five years. He drives the crane at the boatyard, and he owns a third of it, which he's never said out loud until now.
-  Ally Quinn: The letter had lines about him. He answered every one of them at his own kitchen table, with the tape running.
-  Ally Quinn: He asked, twice, to take her mother's ashes out on his boat. He fixed a window catch in her back bedroom. He rehung her back door. He fitted the gate at the back of her yard.
-  Ally Quinn: Every one of those things happened. He told me so himself. What they add up to, I can't tell you. I don't know, and the police looked for six weeks and took no further action.
-  Ally Quinn: There's more in my notebook this week than in this episode. Some of it I don't understand yet, and I won't say it until I do.
-  (only if Ally went to the sheds first) Ally Quinn: I asked Liam to come back in before this went out. He didn't answer. So tonight is one afternoon at his table, and I'll leave it there. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.
-  (only if Ally rang Del direct) Ally Quinn: I'll be back at the yard next week, if Liam will have me. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.
+  Ally Quinn: This week, Liam Bryce. He has known Violet since school, drives the boatyard crane and quietly owns a third of the yard.
+  Ally Quinn: The letter says he offered twice to take her mother's ashes out by boat. He fixed her bedroom window, rehung her back door and fitted her yard gate.
+  Ally Quinn: Every fact happened. Together they can describe a case or a friend helping.
+  (only if Ally went to the sheds first) Ally Quinn: Liam no longer answers me. Tonight is one afternoon at his table. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.
+  (only if Ally rang Del direct) Ally Quinn: Del asked me to stay off the sheds, and I will. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.
 
 
 ======================================================================
@@ -491,35 +482,38 @@ CHAPTER 7 · THE BOX NUMBER
 
 Scene fk_p07_01v: Two Letters  [studio]
 
-  Ally Quinn: Last week I read out the exact words I'd been given for the panel and asked anyone who'd seen it to write. Two signwriters did. Neither knew the other had.
-  Ally Quinn: Both describe the same thing. A black ground. Gold capitals and an ampersand. Her own alphabet, done better than she'd ever done it.
-  Ally Quinn: Both put a crack across one corner. Both put a small mark bottom right, and both say it wasn't her name.
-  Ally Quinn: Two people who've never met, describing one object from memory, and they agree on the corner. I've pinned both letters side by side.
+  (only if Margo's words were aired verbatim) Ally Quinn: I aired Margo's exact words. By morning they had travelled beyond this podcast, detached from the care Tessa had put around them.
+  (only if Margo's words were aired verbatim) Ally Quinn: A stranger up the coast recognised the phrasing as part of a private message and contacted Tessa.
+  (only if Margo's words were aired verbatim) Ally Quinn: Tessa rang frightened. She had agreed to the words, not to being found through them.
+  (only if Margo's words were aired verbatim) Ally Quinn: She has stopped answering me. I still have the screenshot. I no longer have her trust.
 
-Scene fk_p07_01p: One Letter  [diner]
+Scene fk_p07_01p: One Letter  [studio]
 
-  Ally Quinn: Last week I asked, in my own words, for anyone who'd seen the panel. One signwriter wrote back.
-  Ally Quinn: Black ground. Gold capitals and an ampersand. Her own alphabet, done better than she'd ever done it. A small mark bottom right that wasn't her name. And a crack across one corner.
-  The café owner: She had it on the chair beside her, wrapped up. I saw a corner of it when she moved it. Black, with gold letters. I couldn't tell you about any crack.
-  Ally Quinn: That's one letter and one memory. It took three mornings at that counter to get the second. It's thinner than I wanted, and I'm using what I've got.
+  (only if Margo's words were paraphrased) Ally Quinn: I paraphrased Margo's message. No quotation, no app and no Sunday journey went out.
+  (only if Margo's words were paraphrased) Ally Quinn: Nobody listening could trace the sentence back to the private room where Margo had put it.
+  (only if Margo's words were paraphrased) Ally Quinn: Tessa stayed out of the story and kept answering when I called.
+  (only if Margo's words were paraphrased) Ally Quinn: The city heard less. I kept the person who trusted me.
 
 Scene fk_p07_02v: Side by Side  [case board]
 
-  Ally Quinn: Both letters, pinned side by side, with the matching lines joined in red. Black ground to black ground. Gold capitals to gold capitals. The ampersand. The crack across one corner, in both.
-  Ally Quinn: Two people, two memories, one object. I've written under it what it is: a description, twice over, of a thing nobody has seen since she died.
+  (only if Margo's words were aired verbatim) Ally Quinn: Separate from what happened to Tessa, two signwriters answered my request about the panel. Neither knew the other had written.
+  (only if Margo's words were aired verbatim) Ally Quinn: Both describe a black ground, gold capitals and an ampersand. Her own alphabet, done better than she had ever done it.
+  (only if Margo's words were aired verbatim) Ally Quinn: Both put a crack across one corner. Both put a small mark at the bottom right, and both say it was not her name.
+  (only if Margo's words were aired verbatim) Ally Quinn: Two people who have never met, describing one object from memory. I have pinned their letters side by side.
 
 Scene fk_p07_02p: Half of Another  [case board]
 
-  Ally Quinn: One letter, pinned, with the café owner's words on a card beside it. Black ground. Gold capitals and the ampersand. The mark bottom right that wasn't her name.
-  Ally Quinn: The crack stays off the board. One person mentioned it and nobody else did, and one isn't enough to pin. I've written under it what it is: one description, and half of another.
+  (only if Margo's words were paraphrased) Ally Quinn: Two signwriters answered my request about the panel. Neither knew the other had written.
+  (only if Margo's words were paraphrased) Ally Quinn: Both describe a black ground, gold capitals and an ampersand. Her own alphabet, done better than she had ever done it.
+  (only if Margo's words were paraphrased) Ally Quinn: Both put a crack across one corner. Both put a small mark at the bottom right, and both say it was not her name.
+  (only if Margo's words were paraphrased) Ally Quinn: Two people who have never met, describing one object from memory. I have pinned their letters side by side.
 
 Scene fk_p07_03: The Slip  [studio]
 
-  Ally Quinn: Ruby's envelope had more in it than the key and the note. Folded behind them was the solicitor's covering slip, the paper a solicitor sends out with anything they've been asked to hold.
+  Ally Quinn: Ruby's envelope held more than the key and note. Folded behind them was the solicitor's covering slip.
   (only if Ally went to the sheds first) Liam Bryce: I haven't said a word to you since the sheds. That was mine to carry, not yours. Ruby says you've got the slip. I'll tell you what I know about that night, if you want it.
-  (only if Ally rang Del direct) Ally Quinn: Ruby slid it across the table and said take it, I've read it enough. I've read it a dozen times since.
-  Ally Quinn: It lists four addressees. Three are street addresses. One is a post office box number.
-  Ally Quinn: The envelopes went in the post on the Friday evening after the funeral, after the last collection. They carry the Saturday postmark. The solicitor has already confirmed she lodged the keys three weeks before she died.
+  (only if Ally rang Del direct) Ally Quinn: Ruby slid it across the table and said, take it, I've read it enough. I have read it a dozen times since.
+  Ally Quinn: Four addressees, three streets and one post office box. Posted after the funeral, after Friday's last collection, with a Saturday postmark. The solicitor confirms Violet lodged the keys three weeks before she died.
 
 Scene fk_p07_04: The Times  [case board]
 
@@ -531,8 +525,8 @@ Scene fk_p07_04: The Times  [case board]
 Scene fk_p07_05: The Kind Line  [studio]
 
   Ally Quinn: The letter is hard on three of them and kind to one. The kind line is about Brad. It says he paid back the van money that autumn, every penny, without being asked.
-  Ally Quinn: The café owner told me something else about that autumn. Violet was calling money in. Whatever she was owed, she wanted it back, and she didn't name anyone.
-  Ally Quinn: So the letter says he paid her back unasked, and the café says she was asking. I've set the two beside each other on the board. I don't know what to make of it, and I'm not going to pretend I do.
+  Ally Quinn: The diner's owner told me something else about that autumn. Violet was calling money in. Whatever she was owed, she wanted it back, and she didn't name anyone.
+  Ally Quinn: So the letter says he paid her back unasked, and the diner's owner says she was asking. I've set the two beside each other on the board. I don't know what to make of it, and I'm not going to pretend I do.
 
 Scene fk_p07_06: The Marathon  [Ruby's kitchen]
 
@@ -551,14 +545,14 @@ Scene fk_p07_07: The Box Number  [studio, on air]
 
 Scene fk_p07_08: Gerald's Method  [Rusty Anchor]
 
-  Ally Quinn: I took the week to Gerald. He's the old newsman who keeps the back booth at the Rusty Anchor, and he doesn't give you facts. He gives you method.
+  Ally Quinn: I took the week to Gerald. He's my grandfather, a retired police detective who keeps the back booth at the Rusty Anchor, and he doesn't give you facts. He gives you method.
   Gerald: A letter that passes examination isn't proved hers, love. It's just not proved anyone else's. Write that on your board before you write anything else.
   Ally Quinn: He's right. The police said it's hers, and I've said it's hers, and what we both mean is that nobody could show it wasn't.
 
 Scene fk_p07_09: Built to Air  [studio]
 
   Ally Quinn: Episode seven is built. The slip first: four addressees and one box number. Then the times, each of them in their own words.
-  Ally Quinn: Then the kind line beside the café's line, with no verdict on either. Then the question, asked as a question, and the ask at the end.
+  Ally Quinn: Then the kind line beside the diner owner's line, with no verdict on either. Then the question, asked as a question, and the ask at the end.
   Ally Quinn: I've read it aloud twice. Every line has a name or a piece of paper behind it. I've cut the two that didn't.
 
 Scene fk_p07_10: Episode Seven  [studio, on air]
@@ -643,8 +637,8 @@ CHAPTER 9 · ONE OF A KIND
 
 Scene fk_p09_01: Four Describers  [diner]
 
-  Ally Quinn: Four people wrote to me about the same panel, a hand-lettered sign that belonged to Violet. A café owner, a cinema owner, two signwriters. Tonight they're in one diner booth, and the tape's running.
-  The café owner: I only saw it the once. But you don't forget the gold.
+  Ally Quinn: Four people wrote to me about the same panel, a hand-lettered sign that belonged to Violet. The Kestrel Corner Diner's owner, a cinema owner, two signwriters. Tonight they're in one diner booth, and the tape's running.
+  The diner's owner: I only saw it the once. But you don't forget the gold.
   Ally Quinn: Nobody at this table has seen it since Violet died. Nobody I've spoken to knows where it is. Four memories of one object. We start with what they agree on.
 
 Scene fk_p09_02: Cross-Check One  [case board]
@@ -655,10 +649,9 @@ Scene fk_p09_02: Cross-Check One  [case board]
 
 Scene fk_p09_03: Cross-Check Two  [case board]
 
-  Ally Quinn: Cross-check two. A crack across one corner. The café owner has it. The cinema owner has it. One of the signwriters has it.
+  Ally Quinn: Cross-check two. A crack across one corner. The diner's owner has it. The cinema owner has it. One of the signwriters has it.
   Ally Quinn: The fourth doesn't remember a crack. Doesn't say there wasn't one. Was looking at the letters, not the corner.
-  (only if Margo's words were aired verbatim) Ally Quinn: And it isn't only tonight. Two of the letters I read out to you last week put a crack in a corner, before anyone had compared notes.
-  (only if Margo's words were paraphrased) Ally Quinn: That's three memories and nothing on paper. Memory moves. I'm writing the crack on the board in pencil.
+  Ally Quinn: And it isn't only tonight. The two letters I was sent put a crack in a corner, before anyone had compared notes.
   Ally Quinn: Nobody knows how it got there. Not the four of them, not me.
 
 Scene fk_p09_04: Cross-Check Three  [case board]
@@ -692,7 +685,7 @@ Scene fk_p09_07: Del's Ask  [Del's bench]
 Scene fk_p09_08: One of a Kind  [case board]
 
   Ally Quinn: Here it is, all of it. Black ground. Gold capitals. An ampersand. A crack across one corner. A small mark bottom right that isn't her name.
-  Ally Quinn: There's one of these in the world. Nobody has seen it since she died. Tomorrow night I say it into every kitchen in the country with the radio on.
+  Ally Quinn: There's one of these in the world. Nobody has seen it since she died. Tomorrow night I say it into kitchens, cars and headphones across the country.
   Ally Quinn: Saying it is the only way to find it. And whoever has it will be listening too. I can't do one without the other.
 
   DECISION. Ally: Do I say the mark, or do I keep it for Del?
@@ -732,7 +725,7 @@ Scene fk_p10_02: Del's Bench  [Del's bench]
 
   Ally Quinn: Seven o'clock the same morning I was on Del's bench with all of it. Her message. The address. And the download map beside it, the one town that had been listening since the third week.
   Del Cruz: Same town. Right. Go home, Ally. Don't ring me today. I'll ring you.
-  Ally Quinn: He moved inside the day. By that evening it wasn't his any more. Another force had it, four hundred miles up the map, and that's the last thing I'm going to say about them.
+  Ally Quinn: She moved inside the day. By that evening it wasn't hers any more. Another force had it, four hundred miles up the map, and that's the last thing I'm going to say about them.
 
 Scene fk_p10_03: The Wait  [studio, dawn]
 
@@ -747,7 +740,7 @@ Scene fk_p10_04: Built to Sound the Same  [studio]
 
 Scene fk_p10_05: Never Evidence  [studio, dawn]
 
-  Ally Quinn: What gave him away was never evidence. Keys moved twice on a table. Thank you, said like it cost him something. Up at five to run. And he agreed with whoever had spoken last.
+  Ally Quinn: What found him was never evidence. That came after. Keys moved twice on a table. Thank you, said like it cost him something. Up at five to run. And he agreed with whoever had spoken last.
   Ally Quinn: Six weeks of habits, told on this show by people who loved him. Heard by a woman who dusts his room. That's all it was.
 
 Scene fk_p10_06: Episode Ten  [studio, on air]
@@ -764,13 +757,13 @@ Scene fk_p10_07: Day 333  [studio, on air]
 Scene fk_p10_08a: The Flood  [studio]
 
   Ally Quinn: Because the mark went out on episode nine, every claim that came after it was worth nothing. Anyone could say they'd seen it. Hundreds did.
-  Ally Quinn: For a fortnight the sighting lines ran hot, here and four hundred miles away. Del told me they had to sort one true message from a flood that only knew what I'd said.
+  Ally Quinn: For eight days the sighting lines ran hot, here and four hundred miles away. Del told me they had to sort one true message from a flood that only knew what I'd said.
   Ally Quinn: They got there, by hand, the hard way. And the mark sits in the public record now. It'll be there forever, because I put it there.
 
 Scene fk_p10_08h: One Chain  [studio]
 
   Ally Quinn: Because I held the mark back, Del had one thing that had never been said out loud anywhere.
-  Ally Quinn: He asked her one question about what had hung on that wall. Her answer matched the thing I'd never said. One chain, checked link by link, and it held.
+  Ally Quinn: She asked her one question about what had hung on that wall. Her answer matched the thing I'd never said. One chain, checked link by link, and it held.
   Ally Quinn: The mark never went out. It never will. It's in a file, and it's staying there.
 
 Scene fk_p10_09a: Margo, Re-read  [case board]
@@ -791,9 +784,10 @@ Scene fk_p10_09h: Margo, Re-read  [case board]
 
 Scene fk_p10_10a: Goodnight, Harbour  [studio, on air]
 
-  Ally Quinn: Brad Collins is alive. He was arrested this week, four hundred miles from here, under a name that had sat three years in a missing-person file. That undoes a lot. The month this show spent on a dead man, for a start.
+  Ally Quinn: A short update, released tonight, hours after the news. Not an episode. What I know at nine o'clock.
+  Ally Quinn: Brad Collins is alive. He was arrested this morning, four hundred miles from here, under a name that had sat three years in a missing-person file. That undoes a lot. The month this show spent on a dead man, for a start.
   Ally Quinn: The war between Liam and Ruby is over. They were in the same room this week, for the first time since the sixth week. The woman who wrote to me won't be named on this show. She asked for that and she has it.
-  (only if Margo's words were aired verbatim) Ally Quinn: Tessa told me the exact words were worth it. That's hers to say, and she said it.
+  (only if Margo's words were aired verbatim) Ally Quinn: Tessa rang me tonight, the first time since the summer. She said the exact words were worth it. That's hers to say, and she said it.
   (only if Margo's words were paraphrased) Ally Quinn: Tessa told me she was glad the words that went out weren't hers. That's hers to say, and she said it.
   Ally Quinn: Violet's sister asked Liam this time, and he took her and their mother out to the point on his boat. Ruby carried the tube down the slip.
   Ally Quinn: I don't know what was in the true letter, or whether there was one. I know a man believed dead was in a room with a black and gold thing on his wall. That's the whole of what I can say for certain.
@@ -801,9 +795,10 @@ Scene fk_p10_10a: Goodnight, Harbour  [studio, on air]
 
 Scene fk_p10_10h: Goodnight, Harbour  [studio, on air]
 
-  Ally Quinn: Brad Collins is alive. He was arrested this week, four hundred miles from here, under a name that had sat three years in a missing-person file. That undoes a lot. The month this show spent on a dead man, for a start.
+  Ally Quinn: A short update, released tonight, hours after the news. Not an episode. What I know at nine o'clock.
+  Ally Quinn: Brad Collins is alive. He was arrested this morning, four hundred miles from here, under a name that had sat three years in a missing-person file. That undoes a lot. The month this show spent on a dead man, for a start.
   Ally Quinn: The war between Liam and Ruby is over. They were in the same room this week, for the first time since the sixth week. The woman who wrote to me won't be named on this show. She asked for that and she has it.
-  (only if Margo's words were aired verbatim) Ally Quinn: Tessa told me the exact words were worth it. That's hers to say, and she said it.
+  (only if Margo's words were aired verbatim) Ally Quinn: Tessa rang me tonight, the first time since the summer. She said the exact words were worth it. That's hers to say, and she said it.
   (only if Margo's words were paraphrased) Ally Quinn: Tessa told me she was glad the words that went out weren't hers. That's hers to say, and she said it.
   Ally Quinn: Violet's sister asked Liam this time, and he took her and their mother out to the point on his boat. Ruby carried the tube down the slip.
   Ally Quinn: I don't know what was in the true letter, or whether there was one. What's on the record is only what could be checked. And I know a man believed dead was in a room with a black and gold thing on his wall.

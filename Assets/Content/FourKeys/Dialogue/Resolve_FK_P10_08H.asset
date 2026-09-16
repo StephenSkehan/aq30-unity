@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P10_08H_N2
     speaker: "Ally Quinn"
-    line: "He asked her one question about what had hung on that wall. Her answer matched the thing I'd never said. One chain, checked link by link, and it held."
+    line: "She asked her one question about what had hung on that wall. Her answer matched the thing I'd never said. One chain, checked link by link, and it held."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

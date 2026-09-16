@@ -1,0 +1,322 @@
+[
+ {
+  "id": "fk_p07_01v",
+  "background": "studio",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "I aired Margo's exact words. By morning they had travelled beyond this podcast, detached from the care Tessa had put around them.",
+    "variant": "aq.fk.d3.verbatim"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "A stranger up the coast recognised the phrasing as part of a private message and contacted Tessa.",
+    "variant": "aq.fk.d3.verbatim"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "Tessa rang frightened. She had agreed to the words, not to being found through them.",
+    "variant": "aq.fk.d3.verbatim"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "She has stopped answering me. I still have the screenshot. I no longer have her trust.",
+    "variant": "aq.fk.d3.verbatim"
+   }
+  ]
+ },
+ {
+  "id": "fk_p07_01p",
+  "background": "studio",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I paraphrased Margo's message. No quotation, no app and no Sunday journey went out.",
+    "variant": "aq.fk.d3.paraphrase"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Nobody listening could trace the sentence back to the private room where Margo had put it.",
+    "variant": "aq.fk.d3.paraphrase"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Tessa stayed out of the story and kept answering when I called.",
+    "variant": "aq.fk.d3.paraphrase"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "The city heard less. I kept the person who trusted me.",
+    "variant": "aq.fk.d3.paraphrase"
+   }
+  ]
+ },
+ {
+  "id": "fk_p07_02v",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Separate from what happened to Tessa, two signwriters answered my request about the panel. Neither knew the other had written.",
+    "variant": "aq.fk.d3.verbatim"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Both describe a black ground, gold capitals and an ampersand. Her own alphabet, done better than she had ever done it.",
+    "variant": "aq.fk.d3.verbatim"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "surprised",
+    "line": "Both put a crack across one corner. Both put a small mark at the bottom right, and both say it was not her name.",
+    "variant": "aq.fk.d3.verbatim"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Two people who have never met, describing one object from memory. I have pinned their letters side by side.",
+    "variant": "aq.fk.d3.verbatim"
+   }
+  ]
+ },
+ {
+  "id": "fk_p07_02p",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Two signwriters answered my request about the panel. Neither knew the other had written.",
+    "variant": "aq.fk.d3.paraphrase"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Both describe a black ground, gold capitals and an ampersand. Her own alphabet, done better than she had ever done it.",
+    "variant": "aq.fk.d3.paraphrase"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "surprised",
+    "line": "Both put a crack across one corner. Both put a small mark at the bottom right, and both say it was not her name.",
+    "variant": "aq.fk.d3.paraphrase"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Two people who have never met, describing one object from memory. I have pinned their letters side by side.",
+    "variant": "aq.fk.d3.paraphrase"
+   }
+  ]
+ },
+ {
+  "id": "fk_p07_03",
+  "background": "studio",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Ruby's envelope held more than the key and note. Folded behind them was the solicitor's covering slip."
+   },
+   {
+    "speaker": "Liam Bryce",
+    "emotion": "sad",
+    "line": "I haven't said a word to you since the sheds. That was mine to carry, not yours. Ruby says you've got the slip. I'll tell you what I know about that night, if you want it.",
+    "variant": "aq.fk.d2.market"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Ruby slid it across the table and said, take it, I've read it enough. I have read it a dozen times since.",
+    "variant": "aq.fk.d2.direct"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Four addressees, three streets and one post office box. Posted after the funeral, after Friday's last collection, with a Saturday postmark. The solicitor confirms Violet lodged the keys three weeks before she died."
+   }
+  ]
+ },
+ {
+  "id": "fk_p07_04",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "When did each of them read theirs? Ruby, off night shifts, woke about three and read hers at half past three. The note said together, so she sat with it and rang Liam at five, when the crane stopped."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Liam read his at half past five, in the yard's afternoon post. He rang Brad at a quarter to six. Ruby rang Margo at six, by her memory."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Liam told Brad his had come in the afternoon post and asked had Brad seen his. Brad said: same, nothing in the box this morning, it must have come in the afternoon sort. That's Liam's account, on the record."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Brad cleared his box at seven every working morning, on the way to the first job. The number's on the side of his van. The counter says one sort a day, overnight, in the boxes before seven. There's never been an afternoon sort."
+   }
+  ]
+ },
+ {
+  "id": "fk_p07_05",
+  "background": "studio",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The letter is hard on three of them and kind to one. The kind line is about Brad. It says he paid back the van money that autumn, every penny, without being asked."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The diner's owner told me something else about that autumn. Violet was calling money in. Whatever she was owed, she wanted it back, and she didn't name anyone."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "confused",
+    "line": "So the letter says he paid her back unasked, and the diner's owner says she was asking. I've set the two beside each other on the board. I don't know what to make of it, and I'm not going to pretend I do."
+   }
+  ]
+ },
+ {
+  "id": "fk_p07_06",
+  "background": "kitchen",
+  "nodes": [
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "sad",
+    "line": "There's one thing I never told the others. One spring Brad told us he was at a wedding that weekend. A patient's son had run a marathon in another city the same weekend, and he showed me the results page. Brad's name was on it."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "neutral",
+    "line": "Same day. I said nothing. It wasn't mine to say, and it didn't matter."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "He lied about where he went. Once, provably, about nothing that mattered. Or so it seemed. It's on the board now, next to the others, no bigger than they are."
+   }
+  ]
+ },
+ {
+  "id": "fk_p07_07",
+  "background": "studio_onair",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I want to put some things in a row. They're all on the record, and every one of them is a question, not a claim."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Brad Collins cleared his post office box at seven every working morning. The counter says the day's post is in the boxes before seven, and there has never been an afternoon sort."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "That Monday evening, by Liam's account, Brad said there'd been nothing in his box that morning, and it must have come in the afternoon sort."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "So either the one sort missed his box on that one day, or he had his key at seven and said he hadn't. I don't know which. Here's what else is true."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "He argued Liam's side at that table every week and lost. The letter's one kindness is to him. And the panel this town watched her carry for a month is nowhere in that letter."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "This isn't proof of anything. It's a question about a dead man that nobody asked while he was alive. If you saw Brad Collins anywhere on the morning the keys came, that Monday, write to me, not to anyone else."
+   }
+  ]
+ },
+ {
+  "id": "fk_p07_08",
+  "background": "rusty_anchor",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I took the week to Gerald. He's my grandfather, a retired police detective who keeps the back booth at the Rusty Anchor, and he doesn't give you facts. He gives you method."
+   },
+   {
+    "speaker": "Gerald",
+    "emotion": "neutral",
+    "line": "A letter that passes examination isn't proved hers, love. It's just not proved anyone else's. Write that on your board before you write anything else."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "He's right. The police said it's hers, and I've said it's hers, and what we both mean is that nobody could show it wasn't."
+   }
+  ]
+ },
+ {
+  "id": "fk_p07_09",
+  "background": "studio",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Episode seven is built. The slip first: four addressees and one box number. Then the times, each of them in their own words."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Then the kind line beside the diner owner's line, with no verdict on either. Then the question, asked as a question, and the ask at the end."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I've read it aloud twice. Every line has a name or a piece of paper behind it. I've cut the two that didn't."
+   }
+  ]
+ },
+ {
+  "id": "fk_p07_10",
+  "background": "studio_onair",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Seven aired, and the post came in the way it does after an ask. More than any week before. It's stacked on the floor because the table's full."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "I've sorted it by hand. Most of it is kind, some of it is angry, and I've read all of it but two. Those two I've set to one side, unopened. I know enough from the outside of them to know they matter."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I'll read them before I say a word about them. Here's how I closed the episode."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I've asked you one thing tonight and I'll ask it again. If you saw Brad Collins on the morning the keys came, write to me, not to anyone else. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+   }
+  ]
+ }
+]

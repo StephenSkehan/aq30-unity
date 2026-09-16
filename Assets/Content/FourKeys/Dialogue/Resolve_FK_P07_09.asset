@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P07_09_N2
     speaker: "Ally Quinn"
-    line: "Then the kind line beside the café's line, with no verdict on either. Then the question, asked as a question, and the ask at the end."
+    line: "Then the kind line beside the diner owner's line, with no verdict on either. Then the question, asked as a question, and the ask at the end."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

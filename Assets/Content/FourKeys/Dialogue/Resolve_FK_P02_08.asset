@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P02_08_N1
     speaker: "Ally Quinn"
-    line: "Ruby kept the envelope her note came in. Inside it, behind the note, there's a covering slip from Violet's solicitor."
+    line: "Ruby kept the envelope her note came in. Folded behind the note was a covering slip from Violet's solicitor."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P02_08_N2
     speaker: "Ally Quinn"
-    line: "It says the four envelopes were lodged with the firm three weeks before Violet died, and posted after the funeral. It lists four addressees. Liam, Ruby, Margo, Brad."
+    line: "It says the four envelopes were lodged with the firm three weeks before Violet died and posted after the funeral."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -40,8 +40,20 @@ MonoBehaviour:
     nextId: FK_P02_08_N3
     choices: []
   - id: FK_P02_08_N3
+    speaker: "Ruby Walker"
+    line: "Four addressees. Liam, me, Margo, Brad. I've read that list enough times to know the order."
+    portrait: {fileID: 21300000, guid: 3eda8c3a8ba44593b8d95260ba6b7487, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_08_N4
+    choices: []
+  - id: FK_P02_08_N4
     speaker: "Ally Quinn"
-    line: "It tells me where the note came from and when. That's what it's for. It's on the board, under the note."
+    line: "The letter was dated three weeks before Violet died. Police examined it, then returned it to Ruby."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

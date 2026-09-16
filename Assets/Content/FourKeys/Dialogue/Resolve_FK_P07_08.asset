@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P07_08_N1
     speaker: "Ally Quinn"
-    line: "I took the week to Gerald. He's the old newsman who keeps the back booth at the Rusty Anchor, and he doesn't give you facts. He gives you method."
+    line: "I took the week to Gerald. He's my grandfather, a retired police detective who keeps the back booth at the Rusty Anchor, and he doesn't give you facts. He gives you method."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

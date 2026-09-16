@@ -17,24 +17,48 @@ MonoBehaviour:
   nodes:
   - id: FK_P07_02V_N1
     speaker: "Ally Quinn"
-    line: "Both letters, pinned side by side, with the matching lines joined in red. Black ground to black ground. Gold capitals to gold capitals. The ampersand. The crack across one corner, in both."
+    line: "Separate from what happened to Tessa, two signwriters answered my request about the panel. Neither knew the other had written."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag: 
+    requiresFlag: aq.fk.d3.verbatim
     skipIfFlagMissing: 1
     setsFlag: 
     nextId: FK_P07_02V_N2
     choices: []
   - id: FK_P07_02V_N2
     speaker: "Ally Quinn"
-    line: "Two people, two memories, one object. I've written under it what it is: a description, twice over, of a thing nobody has seen since she died."
+    line: "Both describe a black ground, gold capitals and an ampersand. Her own alphabet, done better than she had ever done it."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
     waitForAudio: 0
-    requiresFlag: 
+    requiresFlag: aq.fk.d3.verbatim
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P07_02V_N3
+    choices: []
+  - id: FK_P07_02V_N3
+    speaker: "Ally Quinn"
+    line: "Both put a crack across one corner. Both put a small mark at the bottom right, and both say it was not her name."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: aq.fk.d3.verbatim
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P07_02V_N4
+    choices: []
+  - id: FK_P07_02V_N4
+    speaker: "Ally Quinn"
+    line: "Two people who have never met, describing one object from memory. I have pinned their letters side by side."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: aq.fk.d3.verbatim
     skipIfFlagMissing: 1
     setsFlag: 
     nextId: 

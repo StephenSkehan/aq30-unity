@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P02_05_N1
     speaker: "Ally Quinn"
-    line: "Ruby told me this one without being asked."
+    line: "Ruby gave me this memory without being asked."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P02_05_N2
     speaker: "Ruby Walker"
-    line: "Three years ago she rang me at four in the morning. I drove over. Neither of us ever said what it was, not that night and not after. Anyway."
+    line: "Three years ago Vi rang me at four in the morning. I drove over. Neither of us ever said what it was, not that night and not after. Anyway."
     portrait: {fileID: 21300000, guid: 0daf7b4e2afb4baca0c6660666687b94, type: 3}
     emotion: 2
     voiceClip: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
     choices: []
   - id: FK_P02_05_N3
     speaker: "Ally Quinn"
-    line: "I don't know what it was. Ruby didn't say, and I'm not going to guess."
+    line: "I don't know what happened. Ruby did not say, and I am not going to guess."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

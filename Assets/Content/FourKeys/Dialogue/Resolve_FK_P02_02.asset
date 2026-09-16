@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - id: FK_P02_02_N1
     speaker: "Ally Quinn"
-    line: "This is Ruby's copy of the note. Four went out, all the same, two weeks after Violet died. I photographed it at the kitchen table. It's under glass on my board now. Violet's handwriting."
+    line: "Ruby kept her copy of the note. Four went out, all the same, two weeks after Violet died. I photographed hers at the kitchen table. It is under glass on my board now, in Violet's handwriting."
     portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
     emotion: 0
     voiceClip: {fileID: 0}

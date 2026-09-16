@@ -1,0 +1,274 @@
+[
+ {
+  "id": "fk_p03_01",
+  "background": "diner",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The Kestrel Corner Diner opens at six. Her menu boards are still out the front. Someone else chalks the prices in now."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Violet Moore lettered them. She lettered half the shopfronts in this town. You eat under her work and don't know it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I had breakfast under it this morning. Then I asked the owner what she was like."
+   }
+  ]
+ },
+ {
+  "id": "fk_p03_02",
+  "background": "diner",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The diner's owner knew Violet for years. I asked about her last months."
+   },
+   {
+    "speaker": "The diner's owner",
+    "emotion": "sad",
+    "line": "She was in most mornings. Near the end she said she was calling in what she was owed. For the lawyer, she said. I didn't ask who. You didn't, with Violet."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Calling in what she was owed. For the lawyer. That's all of it. No name, no amount, no date."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "But money moved in her last months. Until this morning I had a letter and a kitchen table. Now I have money moving."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "That doesn't give suspicion a face. It gives it a category. I'll take a category."
+   }
+  ]
+ },
+ {
+  "id": "fk_p03_03",
+  "background": "street",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Violet's sister administers the estate. She didn't get on with Violet and doesn't pretend she did. She met me in the street."
+   },
+   {
+    "speaker": "Violet's sister",
+    "emotion": "angry",
+    "line": "We fought over Mum's house for years. Years. She had a solicitor on Civic Row for it. Then she dies with no will and I get all of it anyway. Every box."
+   },
+   {
+    "speaker": "Violet's sister",
+    "emotion": "angry",
+    "line": "You want to know what was beside that letter? Mum's ashes. Four years on a shelf. She told me she'd scattered them. A friend brought them back to me in a tube, ten weeks after, and wouldn't say where they'd been. Only that Violet locked them in that locker."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "So that's what stood beside the letter. Their mother's ashes. The four have never said it. The sister has them now."
+   }
+  ]
+ },
+ {
+  "id": "fk_p03_04",
+  "background": "street",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The Regent is the cinema on the front. Its marquee has six letters. Three of them are back up."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "The ladder is still chained underneath. Nothing's finished. That's how you know she was there."
+   }
+  ]
+ },
+ {
+  "id": "fk_p03_05",
+  "background": "street",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The owner of the Regent had a running argument with Violet about the colour of one R on the marquee."
+   },
+   {
+    "speaker": "The cinema owner",
+    "emotion": "happy",
+    "line": "Wrong red, she said. Every time. She'd walk in, rank the handwriting on my noticeboard out loud, tell me the truth about my kitchen, and start on the R again."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "She ranked people's handwriting out loud. I'm going to need that."
+   }
+  ]
+ },
+ {
+  "id": "fk_p03_06",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Two and a half months before she died, Violet started carrying something round the trade. A lettering panel. Gold letters on a dark board."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "For about a month she showed it to anyone who lettered for a living and asked the same question. Whose lettering is this."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The diner's owner saw it. The cinema owner saw it. Two signwriters up the coast saw it. Two of the four told her, yours, in a very good year. One asked whether she'd shown her lad."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Her lad was Brad Collins. He was her apprentice for seven years. That's the whole of what I know about that."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "Nobody has seen the panel since she died. It wasn't in the locker when the four opened it, Ruby says. It wasn't in the boxes. The sister has never seen it. I don't know where it is."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "But she asked for a month, out loud, all over town. Whoever has it now heard her asking."
+   }
+  ]
+ },
+ {
+  "id": "fk_p03_07",
+  "background": "street",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Two signwriters up the coast saw the panel. I drove up and asked them to describe it. First pass, nothing more."
+   },
+   {
+    "speaker": "The first signwriter",
+    "emotion": "neutral",
+    "line": "Gold on a dark ground. A whole alphabet, capitals. Her style, no question, but better than I'd ever seen her do. I said, if it's anyone it's you, in a very good year. I wouldn't have sworn to it."
+   },
+   {
+    "speaker": "The second signwriter",
+    "emotion": "confused",
+    "line": "I couldn't place the hand, and that's rare for me. Her letters, but not her day. I asked had she shown her lad. And there was a small mark in one corner. I asked what it was. She didn't say."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Lettering neither of them would swear to, and a small mark in one corner. I don't know what the mark is. Neither did they."
+   }
+  ]
+ },
+ {
+  "id": "fk_p03_08",
+  "background": "moorings",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Six weeks before she died, Violet fell on the slip here at the moorings. It's on her medical record, and the coroner read it as a prior fall."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "It was witnessed. She was walking backwards on the weed, talking to another swimmer, and went down. Bruised all over. She swam anyway."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Ruby treated the bruising at the surgery that week. Nobody called it anything, because it wasn't anything. A wet slip and a woman not looking where she was going."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I'm telling you because it's on the record and you'd find it. It was innocent, and someone saw it happen."
+   }
+  ]
+ },
+ {
+  "id": "fk_p03_09",
+  "background": "studio",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Every week I look at where the show gets downloaded. Havenbay first, then the coast, then the cities. Then one town, four hundred miles away."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "confused",
+    "line": "Every week since the show began. The same town. I don't know anyone there."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "I haven't told anyone and I'm not airing it. It doesn't mean anything yet. It's got my attention, that's all."
+   }
+  ]
+ },
+ {
+  "id": "fk_p03_10",
+  "background": "studio_onair",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "This week I left Ruby's kitchen and went into the town. Violet Moore's lettering is on the menu boards at the Kestrel Corner Diner and on half the shopfronts between there and the Regent."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The diner's owner told me that in her last months Violet said she was calling in what she was owed. For the lawyer, she said. No name. I don't know who owed her, or how much."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Violet's sister told me the two of them fought for years over their mother's house. Violet had a solicitor on Civic Row. She left no will, so her sister administers everything."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "And her sister told me what stood beside the letter in the locker, the thing the four have never said. It was their mother's ashes. Violet had kept them four years and said they were scattered. Her sister has them now."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Two and a half months before she died, Violet carried a lettering panel round the trade for about a month. Gold letters on a dark board, an alphabet in her own style, better than anyone had seen her do."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "She asked everyone who saw it whose lettering it was. Two said hers. Nobody has seen it since she died, and I don't know where it is. If you do, write to me, not to anyone else."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "variant": "aq.fk.d1.held",
+    "line": "A column elsewhere ran a garbled version of the letter. I held the real one back. Ruby rang tonight. You could have read it right, she said. She's right. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "variant": "aq.fk.d1.aired",
+    "line": "That's the week. Money moved, a panel went round the town, and a mother's ashes sat beside the letter. I don't know yet what joins them. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+   }
+  ]
+ }
+]
