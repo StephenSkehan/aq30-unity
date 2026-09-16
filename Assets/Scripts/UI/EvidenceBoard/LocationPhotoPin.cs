@@ -17,13 +17,13 @@ namespace AQ.App.UI.EvidenceBoard
     {
         private string _key;
         private Sprite _bg;
-        private List<LeadData> _scenes;
-        private Action<LeadData> _onReplay;
+        private List<BoardScene> _scenes;
+        private Action<BoardScene> _onReplay;
 
         public void Tap() => LocationModal.Show(_key, _bg, _scenes, _onReplay);
 
         public static RectTransform Create(RectTransform parent, string key, Sprite bg,
-            List<LeadData> scenes, Vector2 pos, Action<LeadData> onReplay, Sprite tackSprite)
+            List<BoardScene> scenes, Vector2 pos, Action<BoardScene> onReplay, Sprite tackSprite)
         {
             var def  = LocationCatalog.Get(key);
             var card              = MakeRect("Loc_" + key, parent);

@@ -1,0 +1,73 @@
+<!-- pdf-title: Trusting-forgery delta v0.8: Fable attack -->
+
+# PREMISE DELTA v0.8 (THE TRUSTING FORGERY, SIXTH CUT): FABLE ATTACK · 2026-09-11
+
+*Fresh Fable agent, given only `four-keys-premise-delta-trusting-forgery-v0.8-2026-09-11.md` and its own six-front prompt; told to attack the answers in sections 8 to 12. Filed verbatim. GPT's independent attack on the same text goes beside it when Stephen runs it; the disposition follows; Stephen rules. Verdict: REWORK, "confidence high on fronts 2, 3 and 5 ... moderate on front 1"; the driver is the van money asked to do two opposite jobs (unenforceable for the estate, fearsome for Brad).*
+
+---
+
+# Review of the sixth cut (v0.8), adversary two of two
+
+I have read the delta in full and I hold myself to sections 8 to 12: where I attack an answer, I say where it fails.
+
+## Front 1. The lock
+
+**Objection.** Section 2 gives Violet two exits from the trap after the shelf turns: tell the four (which accuses them) or write it down for after. It omits the third, which is the one this Violet takes by temperament: test the house without telling anyone. She dates and times everything; she has already doubted her own memory over the tin ("I don't know whether I did that"); a dated, timed photograph of the shelf each morning, or a phone left recording in the back bedroom while she is at the slip, is her own method applied to her own house, costs nothing, tells nobody, accuses nobody, and favours the answer she wants (if nothing shows, she is imagining it). The document's answer to the earlier "spare moved" finding was the lock change, but the lock change is Day −37 and the question is what she does after it fails, weeks later. The answer section 2 gives for that moment ("she would rather be imagining it") is a reason to check, not a reason not to: a woman who would rather be losing her mind gives herself the chance to prove it. The asymmetry is what breaks it: she carries the panel round four people in the trade asking whose hand it is, and lodges four keys with a solicitor against her death, and does nothing at all inside the house where the intrusion is. Public effort on the panel, zero on the bedroom, is not one character.
+
+**Does it end the episode?** If she watches, yes. The only post-shelf entry is Brad's on Day −9, "while she is at the slip", and it is caught; there is no Day 0 as written, because she does not pour two glasses for the man on her phone. If she instead takes the spare in silently, no: Day −9 fails (empty pot), Brad has to take the paper and pen on Day 0 along with the book, the forgery still has fourteen days, and the pool-closer hardens into "it stopped when I brought the key in". The episode survives the silent test and does not survive the watch.
+
+**Severity.** Serious, and fatal with readers if the reflex "she'd have put her phone on the shelf" fires in the first minute, which for a contemporary setting with smart meters and screenshots it will.
+
+**To be answered.** Her book must contain, in her voice, the reason she will not watch her own friends, and it must be a reason that also survives her having shown the panel to four people; or Day −9 must be cut so there is nothing for a watch to catch, with the paper, pen and plan moved to Day 0 and Day −19.
+
+## Front 2. Margo and the estate
+
+**Objection.** The answer fails at one sentence in section 5: "The estate can do nothing with an unpapered cash loan the debtor says is settled, and closes." Brad's reply to the accountant, "repaid in full, October, cash", is a written admission that the loan existed. An admitted loan is papered by the admission; the burden of proving repayment sits on the debtor; and the administrator is a sister who is already litigating over a house and is described as bitter. The next competent act is the sister's solicitor, around Day 55 to 65: a letter before claim to Brad for the sum, with a request for evidence of repayment. There is none, and cannot be. Brad vanishes off Kestrel Head on Day 60. The missing-person file now holds, from the sister's people, that the man drowned within days of a demand for a sum he claimed to have repaid in cash and could not evidence, and his Day 77 withdrawals read to a creditor's solicitor as a debtor stripping assets before absconding. That is exactly the reading section 4 says his exit cannot survive: "a living Brad Collins with a cash debt ... is a man who is looked for." The estate route he is forced onto by his own kind line is the one that creates the looker.
+
+**What happens.** Two things, neither of which the document has. First, the presumption of death is doubted by the one party with money and standing to doubt it, before Day 214. Second, the sister, who tells Ally about the ashes "bitterly" in chapter 3, tells her about the drowned debtor in the same breath, and chapter 7's motive is on the table four chapters early.
+
+**Severity.** Serious.
+
+**To be answered.** Either the sum is small enough that a solicitor advises against pursuit, which contradicts a sum Violet needed for a hearing and Brad killed over; or Brad's reply to the accountant is oral, non-committal and admits nothing, which he cannot do if the estate ever hears what the four read; or the sister is written as not pursuing, against everything else said about her. One of these has to be chosen and its cost paid.
+
+## Front 3. Brad's death
+
+**Objection.** Section 4 rests on a claim the document contradicts one section later. Section 4: a living Brad with a cash debt to Violet is a man who is looked for, so he needs to be dead, and a death needs her grief. Section 5: an unpapered cash loan cannot be pursued even by an estate with a solicitor and an accountant. Both cannot hold. If the loan is unenforceable, then a living Violet, holding only her own book, could do less than the estate, and Brad walks on Day −9 with nothing behind him but a grievance; the "looker" section 4 needs is never named with any power to look. If the loan is enforceable, Front 2 bites. The document also hands Brad a cheaper grief than hers and calls it the thing he fears: the first of the month. A man publicly written up by the woman who set him up, asked round the trade where the van money went, who then goes off Kestrel Head, is a drowning the town believes without a murder, a forgery, or a room. The document's own "one conversation his exit cannot survive" is the conversation that would cover his exit best.
+
+The one thing in the document that would carry the killing is criminal, not civil, and it is only half-said: the panel question is "still live in the trade", the leaf and size come by post to his box, and if Violet finds the gilder she has the man who was in her roof and, by inference, at her tin. That is a reason a competent man cannot leave her alive. Section 4 does not say it; it says debt and grief.
+
+**Severity.** Serious, and fronts 2 and 3 are one crack seen from two sides.
+
+**To be answered.** Section 4 must name what Brad Collins alive is running from that follows him off the coast and is not the debt, and it must be something the estate cannot also pick up. If it is the panel enquiry, say so plainly and accept that the first of the month is then not his date.
+
+## Front 4. The instruction
+
+**Objection.** On Day 19, under "who has been near each of you, asking, or hanging about, or in your houses", four honest lists are not empty: Ruby's shift colleagues who have dropped her at Violet's on a Tuesday, Liam's yard staff and customers and the boat owner, Margo's clients, Brad's customers and the market manager, and, on any list a competent person writes under "watched one of you use it", the neighbour at №14 who overlooks the yard door and has already told the police about a man in the lane. The document empties all four lists so the room can turn inward, and skips the one outsider best placed. That is a competence cost the readers will charge to the four, but it does not break the salt.
+
+What does: the three salted items survive being read beside the lists only because the room never puts to Brad's line the question it puts to Liam's. Liam's third of the yard is interrogated ("lets the town think he's staff"). Brad's line says a signwriter with a van produced eight years' van-and-stock money in cash in one go, and the room "is glad of it" and nobody at a table of his oldest friends says "all of it? where from?" Liam, who runs a yard and knows what a signwriter earns, is being hanged by Day 47 while Brad defends him; Liam's competent move at any of meetings 3 to 5 is "where did you find the van money, Brad?" The document's answer ("nobody lists money: the one money fact in the room is on Vi's own list and it is a kindness") is the forger's instruction to the room being obeyed by the author. Beside four lists that contain no money and no strangers, the kind line is the largest oddity at the table and the document treats it as the smallest.
+
+**Severity.** Serious.
+
+**To be answered.** Either the sum is one a good season could cover (then it is not a hearing's worth and not a motive), or Brad has a visible source the room knows and the estate's accountant will also find (Front 2 again), or Liam is written as a man who will not strike back even when the room has landed on him, which the document must state and prose must earn.
+
+## Front 5. Night one, again
+
+**Objection.** The line is the kind line as now written, and the competent person is Margo. By 21:00 on Day 14 the document has already given her, in its own text: the loan was on no paper against her advice (section 5); Violet told her in late summer she meant to call it in for the hearing (section 5); the private loan book is missing, which she herself reported to the sister on Day 8 (section 5). She then reads, in Violet's supposed hand, "Brad paid me back the van money in October, all of it, out of the blue." "Out of the blue" is false to her certain knowledge: Violet had been asking. The sweep table concedes it in terms: "only Margo knows Vi was asking." Row 6's fix for the earlier "tell" finding fails exactly here: "out of the blue" was added to explain why a repayment sits on an oddity list, and it is the phrase that hands the one bookkeeper at the table a falsifier on the night. Section 5's "arrival" on Day 50 then fails at the sentence "That is the arrival: Brad's own sentence coming back to her through a professional, beside the missing record." She had the missing record on Day 8 and the sentence on Day 14. The accountant adds only that Brad will repeat it to an outsider, which anyone who has read the letter knows he must. Nothing arrives on Day 50 that she did not hold on Day 14. The document has her underline "Spring" on Liam's fact on Day 26 and not underline "October" on Brad's on Day 14: that is not one Margo.
+
+**What follows.** The competent act is not an accusation, it is a bookkeeper's correction, at the table or to Brad alone: "Out of the blue? She'd asked you for it. She told me in August." Brad must answer in front of Ruby and Liam that yes, she had asked. Ruby now holds two lines that are not Vi (the police line and this one) on the night she has flagged the first; the kind line stops being the room's one nice thing and becomes the room's one discrepancy, and "where from?" (Front 4) follows within the week. The only motive at the table is on Brad by Day 19, and the room does not land on Liam.
+
+**Severity.** Serious, close to fatal for the engine, because the six-week lock is load-bearing and as written it begins on Day 14, not Day 50, whether the document says so or not.
+
+**To be answered.** One of three, each with a cost: Margo learns the loan book is missing only from the accountant on Day 45, which undoes part of the v0.7 answer to finding 1 (her competence with the estate on Day 8); or the kind line loses "October" and "out of the blue" so it is unfalsifiable on the night, which reopens row 6; or her silence is written to begin on Day 14, with the document owning that she watches Liam hanged for five weeks holding the inference and that Day 50 is confirmation, not discovery.
+
+## Front 6. The whole
+
+**Earliest competent action that ends the episode before its time.** Violet's, between the shelf turning and Day −19, on the fact of the shelf: watch the room, as in Front 1. It catches Day −9 and there is no Day 0. Second: Margo's on Day 14 (Front 5), which does not end the story but ends the device. Third: the sister's solicitor by Day 60 (Front 2), which does not end it but re-labels Day 60 as flight in the hands of the only party with standing, and puts the motive in chapter 3.
+
+Two further things bear on the whole and belong here. First, the fact the room closes on has no author in the document. If Brad turned the urn, section 4 must say why he was in the back bedroom with the new spare, after the lock change and before he had a plan (the plan is "made in knowledge" on Day −9, after the shelf); if he did not, Violet's pool-closer is a coincidence and the room hangs Liam on her mistake, which the story never surfaces. The document must know which, because Ally will. Second, chapter 7's stated inference ("a box is cleared first thing; home delivery came after work") is false on the document's own facts: Ruby has been on nights since August and is home in the morning; she has her key by nine on Day 14. Ally's conclusion survives (the boat owner saw the young one at 07:20), but the reasoning she airs does not, and this is a show whose listener is meant to check her.
+
+**Severity.** Front 1 as stated; the authorship gap is serious; the chapter 7 slip is cosmetic in itself and serious if it goes out in Ally's voice.
+
+## Verdict
+
+REWORK. Confidence high on fronts 2, 3 and 5, which are facts the document states turned against other facts the document states, and moderate on front 1, which turns on how the readers take Violet's temperament. The single finding that drives it is the van money being asked to do two opposite jobs: unenforceable, so that the estate closes and Margo is left with nothing but a reading; and fearsome, so that Brad must kill rather than walk. Both cannot be true, and whichever way it is settled the cost lands on a load-bearing beam, the motive or the estate thread. Beside it, and made of the same money, the person the device most needs silent for six weeks holds every fact she needs to break the kind line on the night she reads it. Fix the money's status first; the Margo timing, the kind line's wording, and Brad's stated reason for needing her dead all follow from that ruling, and none of them can be settled before it.

@@ -38,7 +38,9 @@ namespace AQ.App.UI.Shop
     public static class MoShopService
     {
         private const string PrefsKey       = "aq.moshop.state";
-        private const string UnlockFlag     = "aq.lead.e1_pod1.seen"; // L5 (Stephen-ruled)
+        // Catalog-less fallback; per-episode unlock flags live on EpisodeCatalog
+        // entries (ep01's is this same L5 flag, Stephen-ruled).
+        private const string FallbackUnlockFlag = "aq.lead.e1_pod1.seen";
         private const int    PricePerT1eq   = 20;  // Stephen-ruled 2026-08-07 (sketch draft had 12)
         private const int    GeneratorPrice = 400;
         private const int    ItemSlots      = 3;
@@ -47,7 +49,20 @@ namespace AQ.App.UI.Shop
 
         public static bool Unlocked =>
             (Config.FeatureFlagsRuntime.Current == null || Config.FeatureFlagsRuntime.Current.MoShop) &&
-            DialogueFlags.Has(UnlockFlag);
+            UnlockFlagSet();
+
+        // Once unlocked, the shop stays unlocked: any episode's unlock flag
+        // counts, so reaching ep02 can never re-lock a shop earned in ep01.
+        private static bool UnlockFlagSet()
+        {
+            if (DialogueFlags.Has(FallbackUnlockFlag)) return true;
+            var catalog = Episodes.EpisodeRuntime.Catalog;
+            if (catalog == null) return false;
+            foreach (var e in catalog.Episodes)
+                if (e != null && !string.IsNullOrEmpty(e.shopUnlockFlag) && DialogueFlags.Has(e.shopUnlockFlag))
+                    return true;
+            return false;
+        }
 
         public static IReadOnlyList<MoShopOffer> Offers
         {

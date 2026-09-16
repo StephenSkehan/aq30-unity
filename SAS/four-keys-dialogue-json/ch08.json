@@ -1,0 +1,227 @@
+[
+ {
+  "id": "fk_p08_01",
+  "background": "moorings",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "A fishing skipper wrote to me this week. Two pages in longhand, from a harbour address."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "He says a deckhand off his boat used to drink at, his words, Brad the signwriter's, the one with the van. I think he means Brad Collins. I can't be sure from the letter."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "The deckhand went missing from the boat three years before Violet died. No family. Reported missing, closed as drifted. Never found."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "The skipper still keeps a small box of the man's things that were left aboard. In case anyone ever comes asking. Nobody has."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "It went to Sergeant Del Cruz the same afternoon. It won't be aired. But there's a name beside Brad Collins's now, and I don't know what it's doing there."
+   }
+  ]
+ },
+ {
+  "id": "fk_p08_02",
+  "background": "moorings",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The skipper sets out the man's harbour years the way he knew them. He lived aboard. He kept a dry bag at a mate's place ashore. He drank in town when the boat was in."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "One morning he missed a sailing. The boat went without him. That was the last of it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "He had a first name and a trade. Nobody ever asked him for more than that, and now there's nobody to ask."
+   }
+  ]
+ },
+ {
+  "id": "fk_p08_03",
+  "background": "moorings",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The harbour master keeps a ledger of leavers. Itinerant crews, men who work between tides, a line each when they don't come back."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "Most of those lines close the same way. Drifted. There are men the sea is allowed to keep, and nobody argues."
+   }
+  ]
+ },
+ {
+  "id": "fk_p08_04",
+  "background": "studio",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "confused",
+    "line": "I've read the skipper's letter four times now. I can't see what it means. I'm saying that plainly because it's true."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "So it goes in the drawer, with the things I hold and don't air. The drawer's heavier than it was on Monday."
+   }
+  ]
+ },
+ {
+  "id": "fk_p08_05",
+  "background": "studio",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The second letter came on Thursday. A woman who catches the first train out of the inland halt, the small station on the far side of the ridge behind Kestrel Head, where Brad's car was found."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "She was on the platform for the 05:47 on the Saturday morning the car was found. She writes because I asked, weeks ago, for anything odd, and this had stayed with her."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "surprised",
+    "line": "A man bought a cash single. The clerk complained about breaking a note. She noticed the man's boots were wet."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "That's the whole of it. Wet boots, cash, a clerk short of change, a quarter to six in the morning."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "It went to Sergeant Del Cruz on Friday. It won't be aired. But if she's right about the day, somebody came down off that ridge to the first train on the morning they found Brad's car."
+   }
+  ]
+ },
+ {
+  "id": "fk_p08_06",
+  "background": "rivermouth",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I put the timetable on the board next to the search. The last train into the halt on a Friday arrives at ten past five in the evening. The first train out is the 05:47."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Between the halt and Kestrel Head there's a ridge path. A fit man could walk it in a night."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "Twelve hours and a bit, dark to first light. It fits. Fitting isn't proof, and it isn't going on air."
+   }
+  ]
+ },
+ {
+  "id": "fk_p08_07",
+  "background": "rivermouth",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The clerk at the halt remembers the man because of the note. Twenty to six, first sale of the day, and he had to break a note to do it. He complained out loud."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "He remembered the boots because of the complaint. He'd have forgotten the man otherwise. It's the small annoyances that keep."
+   }
+  ]
+ },
+ {
+  "id": "fk_p08_08",
+  "background": "studio_onair",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "If you were on the first train out of the inland halt on the Saturday morning Brad Collins's car was found at Kestrel Head, the 05:47, I'd like to hear from you."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Write to me. Not to anyone else. Not to the paper, not to a friend. To me."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The letter that started this is with Sergeant Del Cruz. The ask is the broadcast. That's the whole of this week's work in one sentence."
+   }
+  ]
+ },
+ {
+  "id": "fk_p08_09",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "On Saturday night I took every card off the wall and read them again, in one sitting, in order. The letter, the keys, the locker door at twenty past seven, the box on the boat, the boots."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "I read them against a possibility. I'm not going to say it. Not here, not on air, not until somebody who can prove it says it first."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "surprised",
+    "line": "Some of the cards read differently. Not all of them. Enough."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "My note at the bottom of the board, in my own writing, says one thing. I have stopped saying \"was\"."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "That's a change in me. It isn't a change in what I know. The broadcast stays where the facts are."
+   }
+  ]
+ },
+ {
+  "id": "fk_p08_10",
+  "background": "studio_onair",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Episode eight went out at nine. It's the shortest one yet. A question about a train and nothing else new, because nothing else is mine to say."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The week empties out after that. Two letters with Sergeant Del Cruz, one question on the air, and a wall I read differently now."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "If you were on the 05:47 that Saturday, write to me, not to anyone else. I'll say the rest when I can say it properly. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+   }
+  ]
+ }
+]

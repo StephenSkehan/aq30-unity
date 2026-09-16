@@ -3,13 +3,6 @@ using UnityEngine;
 
 namespace AQ.App.Leads
 {
-    [Serializable]
-    public struct LeadBranchOutcome
-    {
-        public string label;
-        public string[] SpawnLeadIds;
-    }
-
     public enum LeadState
     {
         Blocked = 0,
@@ -41,6 +34,15 @@ namespace AQ.App.Leads
         public LeadActionType ActionType;
         [Range(0, 10)] public int EnergyCost = 0;
 
+        [Header("Flag Gate (agency)")]
+        [Tooltip("GameFlags flag that must be SET before this lead can leave Blocked. Empty = no requirement. " +
+                 "Pair a sibling lead's forbidsFlag with this one's requiresFlag to make a player choice decide " +
+                 "which of two leads exists.")]
+        public string requiresFlag;
+
+        [Tooltip("GameFlags flag that must NOT be set for this lead to leave Blocked. Empty = no restriction.")]
+        public string forbidsFlag;
+
         [Header("Requirements (max 3 recommended)")]
         public LeadRequirement[] requirements = System.Array.Empty<LeadRequirement>();
 
@@ -48,7 +50,6 @@ namespace AQ.App.Leads
         public string[] RequiredLeadIds;
         public string[] EvidenceIds;
         public string[] SpawnLeadIds;
-        public LeadBranchOutcome[] BranchOutcomes;
         public string[] NarrativeFlags;
         public int SoftCurrency;
         public int EnergyGrant;

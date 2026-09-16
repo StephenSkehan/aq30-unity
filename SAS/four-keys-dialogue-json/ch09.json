@@ -1,0 +1,261 @@
+[
+ {
+  "id": "fk_p09_01",
+  "background": "diner",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Four people wrote to me about the same panel, a hand-lettered sign that belonged to Violet. The Kestrel Corner Diner's owner, a cinema owner, two signwriters. Tonight they're in one diner booth, and the tape's running."
+   },
+   {
+    "speaker": "The diner's owner",
+    "emotion": "neutral",
+    "line": "I only saw it the once. But you don't forget the gold."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Nobody at this table has seen it since Violet died. Nobody I've spoken to knows where it is. Four memories of one object. We start with what they agree on."
+   }
+  ]
+ },
+ {
+  "id": "fk_p09_02",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Cross-check one. I asked each of them, on their own, what colour the ground was. Black, four times."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The lettering. Gold capitals, four times. And an ampersand in the middle of it, four times."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Four people who never sat together until tonight, and the letters agree."
+   }
+  ]
+ },
+ {
+  "id": "fk_p09_03",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Cross-check two. A crack across one corner. The diner's owner has it. The cinema owner has it. One of the signwriters has it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The fourth doesn't remember a crack. Doesn't say there wasn't one. Was looking at the letters, not the corner."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "And it isn't only tonight. The two letters I was sent put a crack in a corner, before anyone had compared notes."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Nobody knows how it got there. Not the four of them, not me."
+   }
+  ]
+ },
+ {
+  "id": "fk_p09_04",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Cross-check three. Bottom right, a small mark. Nobody who saw it read it as her name."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Not a maker's stamp either. Not one anybody at the table recognised, and two of them letter signs for a living."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "confused",
+    "line": "Something is on that panel, bottom right, and nobody can tell me what it means. That's the strangest fact in this case."
+   }
+  ]
+ },
+ {
+  "id": "fk_p09_05",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I'm not saying this part on air. This is for the board."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Violet Moore ranked handwriting out loud. Menus, shopfronts, notes on a fridge. By every account I've got, she couldn't help it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "For a month, she couldn't place this one. She said so, and kept saying so."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "The two signwriters told me the same thing, separately. It's her alphabet. Her own letters. Done better than she could do them."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "There's one other signwriter in her life. Her apprentice for seven years. Brad Collins is presumed dead."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "I'm putting those three things next to each other on the board. I'm not putting them next to each other on air."
+   }
+  ]
+ },
+ {
+  "id": "fk_p09_06",
+  "background": "diner",
+  "nodes": [
+   {
+    "speaker": "A signwriter",
+    "emotion": "sad",
+    "line": "You'd know her brush from across a road. Sable, on a handle she cut from a broken oar. Green tape at the ferrule."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "That's what her hand looked like out in the world. An oar handle and a bit of green tape."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "It goes on the board because it's hers. Not because it proves anything."
+   }
+  ]
+ },
+ {
+  "id": "fk_p09_07",
+  "background": "del_bench",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Sergeant Del Cruz, Havenbay police, asked to meet me on the bench by the moorings. Not at the station."
+   },
+   {
+    "speaker": "Del Cruz",
+    "emotion": "neutral",
+    "line": "When you describe it, keep one thing back."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "confused",
+    "line": "Which thing? I asked why. Del didn't say. Just asked again."
+   },
+   {
+    "speaker": "Del Cruz",
+    "emotion": "neutral",
+    "line": "Your pick. Choose one detail, don't say it on air, and tell me what it was. That's all I'm asking."
+   }
+  ]
+ },
+ {
+  "id": "fk_p09_08",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Here it is, all of it. Black ground. Gold capitals. An ampersand. A crack across one corner. A small mark bottom right that isn't her name."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "There's one of these in the world. Nobody has seen it since she died. Tomorrow night I say it into kitchens, cars and headphones across the country."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "Saying it is the only way to find it. And whoever has it will be listening too. I can't do one without the other."
+   }
+  ],
+  "decision": {
+   "prompt": "Do I say the mark, or do I keep it for Del?",
+   "options": [
+    {
+     "label": "Say all of it, mark included",
+     "flag": "aq.fk.d4.mark_aired",
+     "result": "All of it, then. Every listener gets the whole object. If someone writes in and describes the mark, I'll have no way of knowing whether they saw it or heard me."
+    },
+    {
+     "label": "Keep the mark back for Del",
+     "flag": "aq.fk.d4.mark_held",
+     "result": "The mark stays with Del. The broadcast is a corner short of the truth. But if someone writes to me and tells me what's in that corner, they've seen it."
+    }
+   ]
+  },
+  "after": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Tomorrow night. There's no version of this where I don't say it."
+   }
+  ]
+ },
+ {
+  "id": "fk_p09_09",
+  "background": "studio_onair",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Nine months ago Violet Moore, a signwriter, died at the foot of her own stairs. A hand-lettered panel that belonged to her hasn't been seen since. This week four people who remember it sat down with me."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Black ground. Gold capitals. An ampersand. A crack across one corner. There's one of them."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "variant": "aq.fk.d4.mark_aired",
+    "line": "Bottom right, a small mark. Not her name. Not a maker's stamp anyone I've asked knows. If you've seen it, write to me, not to anyone else. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "variant": "aq.fk.d4.mark_held",
+    "line": "That's what it looks like. If you've seen it, write to me, not to anyone else. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+   }
+  ]
+ },
+ {
+  "id": "fk_p09_10",
+  "background": "studio_dawn",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "It's out. It's in the kitchens now, and there's nothing left for me to do but wait."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "The studio's dark except for the tip line light. I'm going to sit here and watch it."
+   }
+  ]
+ }
+]

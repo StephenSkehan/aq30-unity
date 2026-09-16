@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P09_09
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P09_09_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e102, type: 3}
+  nodes:
+  - id: FK_P09_09_N1
+    speaker: "Ally Quinn"
+    line: "Nine months ago Violet Moore, a signwriter, died at the foot of her own stairs. A hand-lettered panel that belonged to her hasn't been seen since. This week four people who remember it sat down with me."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P09_09_N2
+    choices: []
+  - id: FK_P09_09_N2
+    speaker: "Ally Quinn"
+    line: "Black ground. Gold capitals. An ampersand. A crack across one corner. There's one of them."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P09_09_N3
+    choices: []
+  - id: FK_P09_09_N3
+    speaker: "Ally Quinn"
+    line: "Bottom right, a small mark. Not her name. Not a maker's stamp anyone I've asked knows. If you've seen it, write to me, not to anyone else. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: aq.fk.d4.mark_aired
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P09_09_N4
+    choices: []
+  - id: FK_P09_09_N4
+    speaker: "Ally Quinn"
+    line: "That's what it looks like. If you've seen it, write to me, not to anyone else. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: aq.fk.d4.mark_held
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

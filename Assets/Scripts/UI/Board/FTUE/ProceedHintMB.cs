@@ -18,26 +18,11 @@ public class ProceedHintMB : MonoBehaviour
     RectTransform   _target;
     bool            _showing;
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    static void Bootstrap()
-    {
-        EnsureInstalled();
-        SceneManager.sceneLoaded += (_, __) => EnsureInstalled();
-    }
-
-    /// <summary>
-    /// Idempotent install — also used by the FTUE first-merge choreography to
-    /// restore the hint after suppressing it during the auto-proceed (the
-    /// one-time flag must survive for the first card the player taps themselves).
-    /// </summary>
-    public static void EnsureInstalled()
-    {
-        if (NarrativeFlags.Has(FtueFlag)) return;
-        if (GameObject.Find("ProceedHint") != null) return;
-        var go = new GameObject("ProceedHint");
-        go.AddComponent<RectTransform>();
-        go.AddComponent<ProceedHintMB>();
-    }
+    // RETIRED (Stephen-ruled 2026-08-22): the guided case loop's proceed step
+    // (green-card pulse + Gerald banner) replaced this arrow, and with the
+    // card's PROCEED button gone its anchor floated mid-board as an orphan
+    // yellow triangle. EnsureInstalled stays as a no-op for its callers.
+    public static void EnsureInstalled() { }
 
     void Start()
     {
@@ -67,20 +52,45 @@ public class ProceedHintMB : MonoBehaviour
         _rt.sizeDelta = new Vector2(80f, 60f);
         transform.SetAsLastSibling();
 
-        _label = gameObject.AddComponent<TextMeshProUGUI>();
-        _label.text = "▼";
-        _label.fontSize = 52f;
-        _label.color = new Color(1f, 0.85f, 0.1f, 1f);
-        _label.alignment = TextAlignmentOptions.Center;
-        _label.raycastTarget = false;
+        if (_label == null)
+        {
+            _label = gameObject.AddComponent<TextMeshProUGUI>();
+            _label.text = "▼";
+            _label.fontSize = 52f;
+            _label.color = new Color(1f, 0.85f, 0.1f, 1f);
+            _label.alignment = TextAlignmentOptions.Center;
+            _label.raycastTarget = false;
+        }
+        _label.enabled = true;
 
         _target  = btnRect;
         _showing = true;
     }
 
+    float _nextScanAt;
+
     void Update()
     {
-        if (!_showing || _label == null || _target == null) return;
+        if (!_showing)
+        {
+            // CardBecameReady only fires on the false→true transition — a card
+            // that went Ready while the hint was suppressed (FTUE choreography)
+            // or before install has already spent its event. Scan for one.
+            if (Time.unscaledTime >= _nextScanAt)
+            {
+                _nextScanAt = Time.unscaledTime + 0.5f;
+                TryAttachToReadyCard();
+            }
+            return;
+        }
+
+        if (_target == null || _label == null)
+        {
+            // Card view rebuilt/destroyed under us — hide and rescan.
+            _showing = false;
+            if (_label != null) _label.enabled = false;
+            return;
+        }
 
         // Hover above the Proceed button in world space
         var pos = _target.position;
@@ -95,8 +105,25 @@ public class ProceedHintMB : MonoBehaviour
         _label.color = c;
     }
 
+    void TryAttachToReadyCard()
+    {
+        var cards = Object.FindObjectsByType<LeadCardView>(FindObjectsSortMode.None);
+        foreach (var card in cards)
+        {
+            if (card == null || !card.IsReadyNow) continue;
+            OnCardReady(card);
+            if (_showing) return;
+        }
+    }
+
     void OnLeadActivated(LeadData _)
     {
+        // Burn the one-shot flag only if the arrow actually taught. Activation can
+        // arrive while the hint never displayed (card went Ready during the FTUE
+        // suppression window) — burning then killed the tutorial for the whole
+        // save without it ever appearing once. If we weren't showing, stay armed
+        // for the next Ready card.
+        if (!_showing) return;
         NarrativeFlags.Set(FtueFlag);
         Destroy(gameObject);
     }

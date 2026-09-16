@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P09_07
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P09_07_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e108, type: 3}
+  nodes:
+  - id: FK_P09_07_N1
+    speaker: "Ally Quinn"
+    line: "Sergeant Del Cruz, Havenbay police, asked to meet me on the bench by the moorings. Not at the station."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P09_07_N2
+    choices: []
+  - id: FK_P09_07_N2
+    speaker: "Del Cruz"
+    line: "When you describe it, keep one thing back."
+    portrait: {fileID: 21300000, guid: de1a4b5c6d7e8f90a1b2c3d4e5f6a701, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P09_07_N3
+    choices: []
+  - id: FK_P09_07_N3
+    speaker: "Ally Quinn"
+    line: "Which thing? I asked why. Del didn't say. Just asked again."
+    portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
+    emotion: 6
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P09_07_N4
+    choices: []
+  - id: FK_P09_07_N4
+    speaker: "Del Cruz"
+    line: "Your pick. Choose one detail, don't say it on air, and tell me what it was. That's all I'm asking."
+    portrait: {fileID: 21300000, guid: de1a4b5c6d7e8f90a1b2c3d4e5f6a701, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

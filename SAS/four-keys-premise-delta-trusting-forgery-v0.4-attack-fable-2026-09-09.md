@@ -1,0 +1,101 @@
+<!-- pdf-title: Trusting-forgery delta v0.4: Fable attack -->
+
+# PREMISE DELTA v0.4 (THE TRUSTING FORGERY, REWORKED): FABLE ATTACK · 2026-09-09
+
+*Fresh Fable agent, given only `four-keys-premise-delta-trusting-forgery-v0.4-2026-09-09.md` and its own six-front prompt; told to attack the answers in section 8, not re-raise the questions. Filed verbatim. GPT's independent attack on the same text goes beside it when Stephen runs it; the disposition follows; Stephen rules. Verdict: REWORK, high confidence; the device itself is said to survive every front.*
+
+---
+
+**Adversarial review of premise delta v0.4, the trusting forgery, reworked**
+
+Reviewer: Fable, independent of GPT. I have read the delta in full and section 8 as the record of the previous round. Where I attack an answer I say which row and where it fails.
+
+---
+
+**Front 1. Brad's fourteen days**
+
+Objection. Section 4 wins the argument it chose to have (defeating the padlock) and loses the one it did not notice. The key letter says "these four keys are the only ones", and Violet lodges all four with the solicitor. Section 2 says the store is where she keeps her hull kit and works from it. Those two facts cannot both stand. Either Violet kept a key of her own (the padlock's original, or a fifth cut), in which case it is on her ring in the house on Day 0, Brad has twenty minutes alone with her body and her keys and a rucksack, and he needs to cut, pick or wait for nothing: he walks the store that night, reads the true letter, removes the panel, and the whole fourteen-day architecture, the PO box, the dawn read and the box-number turn in chapter 7 are unnecessary to him. Or she kept no key, in which case a working signwriter has locked herself out of her own hull kit for the rest of her life, the sheds and her sister will both ask why, and the story has bought Brad's inertia with Violet's incompetence. Section 8 row 1 answers picking and cutting. It does not answer a legitimate key already inside the house.
+
+Even granting the padlock, "waiting" is not what he does; the delta has him idle for fourteen days and then improvising the entire forgery in fourteen hours, at her bench, in her workshop, burning the originals in her sink, on the one day when three other people are receiving a letter telling them to go to that store. That is the visibly-wrong thing his method forbids: a man inside a dead woman's premises for a working day, with the executor holding keys since Day 5, the neighbour at №14 who has already seen his back once, and an empty store at the sheds for fourteen hours during which any one of three key-holders who leaves work early opens an intact padlock on nothing. The book of everything told him on Day 0 what she noticed. The lower-cost act is Day 1 to Day 13 at his own bench, drafting from that list, so that Day 14 is a five-minute swap and the true letter is a check rather than a source. Section 4's own criteria (nothing visibly wrong, no reason to be remembered) condemn the Day 14 the delta wrote.
+
+Severity: fatal on the fifth key; serious on the fourteen hours.
+
+To be answered: the text must say where Violet's own key to her working store is, and that answer must survive Brad's twenty minutes on Day 0 and the sister's keyring on Day 5. And the forgery must not be made at her bench on the day the store stands empty.
+
+---
+
+**Front 2. The room**
+
+Objection. The meter box and Ruby's line together get the room from "someone had a key" to "one of us had a key". They do not get the room from "she fell" to "she was killed", and without that step there is nothing to convict Liam of that warrants Kestrel Head, Margo's six-week silence, or survivors accusing each other of murder to the police. In v8.1 the letter supplied the murder premise in Violet's own words. v0.4 removes it on purpose (no fear, "I don't think I'm going to die, I think I'm going to be sixty and embarrassed") and puts nothing in its place. The coroner has a fall. The police have nothing. The letter's author says on the page that she may be imagining it. The delta then writes, at meeting one, that nobody answers Ruby "because answering means saying Vi fell", which concedes that the room has decided she did not fall and gives no fact that decided it.
+
+The line one of them says, and the delta has not answered, is Margo's, Day 15 or Day 19: "She knew where the spare was better than any of us. She wrote it wasn't us anyway. And the coroner says she fell. What do we know about that box, or that night, that she didn't?" Ruby's "she thought she'd know, and she's dead" answers a character reading. It does not answer the arithmetic, because Violet did the arithmetic (she believes "someone with her spare key" has been in, she knows the five, and she still clears four). The room crossing out her clearance requires the room to believe Violet forgot her own meter box. That is not a frightened room; it is a stupid one. The delta says the later chapters indict the room. They can only indict a room that was competent enough to be culpable.
+
+A second unanswered line, cheaper but real: the forged list holds two kindnesses about Liam and one lie about Brad. In a room hunting a man who was somewhere he should not have been, a friend who said "wedding" and ran a marathon is the man who lied about his whereabouts. The delta gives no reason the room prefers two offers to scatter ashes over one false weekend, beyond Brad taking the defender's chair. That is a real psychological move, but it is the author's thumb until someone at the table says the obvious thing and is answered.
+
+Severity: serious.
+
+To be answered: the room needs one fact of its own, not from the letter and not from the police, that turns a fall into a death by another hand; and it needs a reason that fact was not available to the coroner. And someone must say the marathon line aloud and lose it on the page.
+
+---
+
+**Front 3. Margo**
+
+Objection. Her earliest competent action after Day 47 is on Day 47, and it is to her client. Violet's accountant is now the estate's accountant; the executor is her client. "No receivables evidenced" is the correct line in the accounts. The covering letter that accompanies any set of probate accounts is where a professional writes the rest: the deceased told me on such a date she was calling in a cash loan of this sum from this man; no documentation exists; the private loan book I understand she kept was not among her papers when I attended on Day 8. That is not a breach of confidence; it is the job. Section 8 row 4 fails at "a client's confidence": the client is dead, the confidence passes to the personal representative, and the personal representative is the person asking. There is no confidence to keep against the sister. "An omission is not evidence" is true and irrelevant; Margo is not being asked for evidence, she is being asked to close an estate honestly.
+
+What happens: the sister writes to Brad, or asks him at Ruby's door when she collects her mother. Brad denies, or says cash, repaid. Nothing is provable. But the sister now holds the motive, the sum and the missing book on Day 50, before Kestrel Head, and the survivors' accusations after Day 60 are made to police who can be handed a file by an executor. "The police look properly and find nothing" no longer holds; they find a debt, a missing loan book and a man who vanished.
+
+The delta also places Margo's knowledge of the missing debt book on Day 8, six days before any letter exists. A book of private loans gone from a locked house where the client died, noticed by the accountant closing the estate, is reported to the executor that day. Row 4 answers "no paper by Violet's choice", which describes the loan. The book was paper. It existed, Margo knew it, it is gone, and the answer does not touch it.
+
+Why an executor sister does not chase a debt: because nobody told her, and the only person who could is the professional whose duty runs to her. There is a second problem underneath. The van money was called in "for the fight with the sister", and the sister is now the executor. If by will, Violet appointed the sister she was fighting. If by intestacy, a woman with a solicitor, death-triggered letters and a habit of writing everything down made no will. The delta needs one of those to be a stated fact about Violet, and neither is.
+
+Severity: serious, and fatal to the "police find nothing" branch as written.
+
+To be answered: a reason the estate's accountant may lawfully and professionally withhold a known unevidenced claim and a missing loan book from the executor; and a stated reason a sister in a fight with Violet administers her estate.
+
+---
+
+**Front 4. Chapter 7**
+
+Objection. Sections 4 and 6 describe the same sighting and need it to mean opposite things. Section 4 gives Brad his own locker beside hers precisely so that the boat owner at 07:20 sees nothing out of the ordinary; that is the cover. Section 6 makes the same sighting the turn. The document must choose. If the boat owner could tell at dawn that the young one opened Violet's padlock and not the one beside it, then the cover in section 4 was never cover and the sighting is dangerous to Brad from Day 14, and a competent Ruby, who has six weeks of meetings and one physical location in the whole case, asks at the sheds in week one and gets it. If the boat owner could not tell, chapter 7 places a man at his own door.
+
+What Ally still has to assume: that the box was cleared before 07:20 (the slip proves a Saturday posting to a box number, not the hour of collection, and second class arrives Tuesday); that "the young one" is Brad; that the locker was hers not his; that reading early is swapping. The delta's own sentence, "with a day at her bench between", is a fact Ally cannot hold, because nobody alive knows where he wrote it. And the boat owner's ten-month-old memory of a specific Monday at twenty past seven, unaired until Ally's chapter 4, needs an anchor the delta does not give him.
+
+What the turn actually proves: that one man breached "go together" by fourteen hours. That is a breach of instruction. Forgery is inference from omission, and the delta concedes it ("consequences, not the turn"). For a podcast it may carry. For the two survivors it convicts nobody, and it depends entirely on Brad being gone and unable to say "my locker's next to hers".
+
+Severity: serious.
+
+To be answered: one fact that fixes which padlock the boat owner saw, decided in the text and held consistently in sections 4 and 6; one fact that anchors the witness's date; and the box-collection time must be a documented thing, not a habit.
+
+---
+
+**Front 5. Violet**
+
+Objection. The earliest moment is the first conversation she has in the trade, not the second: Day minus forty or earlier, the first signwriter. She asks "whose hand is this" about her own alphabet. Every signwriter on the coast knows exactly one other person writes her alphabet, because she trained him. The answer to her question, from a competent tradesman, is "yours, or your lad's; have you asked him?" The delta's fact (she never taught him leaf) is a fact about her. It is not a fact the trade holds or cares about; the alphabet is the fingerprint and the leaf is a medium anyone can learn from anyone, and gold leaf on a transom is the commonest gilding on any coast. Brad's public work is boat names. A boat-name signwriter who cannot gild is a contradiction to anyone in the trade who is looking at a gilded panel, and those are exactly the people she showed it to. "Nobody in town knows Brad can gild" covers the town; it does not cover the two signwriters, the café and the cinema, and the trade is who asks the question.
+
+The second competent person is Brad. The café tells him on Day minus forty that she is carrying a panel round asking whose hand. Her pupil, who lives in her alphabet, says nothing to her about the talk of the trade? Silence from him on that is itself odd to a woman who notices everything, and the delta has no scene where he asks and she refuses. If he asks and she shows him, her exclusion of his hand is now a thing she has said to his face, which he then knows and can plan around; if she refuses her only pupil, she has told him she suspects a hand, and his conduct from that day is not the conduct of a man she has not warned.
+
+Severity: serious.
+
+To be answered: the trade must have a reason to know Brad has never laid leaf anywhere (his boat names painted, and known to be painted), and the delta must contain the day Brad asks about the panel and what she says.
+
+---
+
+**Front 6. The new and changed facts**
+
+The closed-shackle padlock. Front 1 covers the fifth key. Independently: between Day 5 and Day 13 the executor is inventorying an estate that pays rent on a store at the sheds, or the sheds' operator asks the executor what to do with a dead tenant's locker. An executor with no key to an estate asset has the lock cut; that is her right and her job, and it needs no suspicion. She opens the store on Day 8 and reads the true letter with the panel beside it. Episode over. Section 4 armoured the padlock against the murderer and left it open to the one person with a legitimate claim on it. Fatal unless the sister cannot know the store exists, and Violet's own book of everything, which the delta introduced in section 4, records the store, the padlock and the four envelopes in her hand, dated.
+
+The sister's belief that the ashes were scattered. The earliest action is on Day 15, when the survivors tell her what the letter says: her sister lied to her for four years about their mother and kept her in a locker. The executor and next of kin has the claim on the remains, a grievance already running, and she asks for them. The tube leaves Ruby's sideboard in week three, and with it the label, Margo's quarter turn, and the survivors' refusal to name what stood beside the letter. Serious to the image the delta says it is keeping.
+
+"No receivables evidenced." Front 3 covers the duty. Earliest action from the other side: the café heard Violet calling in money. The sister, in a money fight with her, hears it too, and asks the estate's accountant on Day 8 who was called in. Margo must answer her client. Serious, and it fails row 4 at "a client's confidence".
+
+The undated forgery. Row 9 answers the letter's dates; the text still contains one ("one morning last month"), which dates the shelf and excludes Liam's spring catch, the only access the room has on him. More importantly the death is dated to the hour and the room does not need the letter for it. The neighbour at №14 saw a man leave by the back at 22:30 on Day 0; neighbours talk to friends at funerals. The room's first competent act on "one of us had a key" is "where were we on the night", and Brad needs an answer for 22:30 on Day 0 that the delta has not written. Serious.
+
+The meter box as the room's turn. Liam let himself in with the meter-box spare on Day 1 to find her, and told the attending officers how he got in. On Day 15 Ruby brings Del a letter in the deceased's hand alleging entry by someone with her key. Row 8 says "no tampering hypothesis so no canvass". It fails at the join: an allegation of entry by key, plus a key the police already know lived outdoors, plus a sudden death, is the hypothesis, with its mechanism, on a file, on Day 15, and a coroner's officer who does nothing with it is the incompetence the delta says the police do not have. The first door knocked is №14. Serious.
+
+Two new facts the sweep omitted. The book of everything: introduced in section 4, read by Brad on Day 0, fate never stated. If he leaves it, the executor clearing the house holds the true letter's whole content in Violet's hand (tin, panel, shelf, padlock, store) and the forgery is a forgery to the first person who reads both. If he takes it, a woman who writes everything down has had her book vanish from a locked house, and "Vi wrote everything down; where is it?" is Ruby's line on Day 15, unanswered, and a second missing object for Margo's reading on Day 8. Fatal unless placed. The panel's exit: a ceiling-board-sized gilded panel is in the store at 07:20 on Day 14 and is not there at 21:00. It leaves past a witness at sheds worked from first light. The delta never says where it goes, and if into the locker beside hers, the boat owner's sighting in chapter 4 is a man carrying a board between lockers at dawn, which is a turn, and not the one the delta wrote. Serious.
+
+---
+
+**Verdict**
+
+REWORK, with high confidence. The device itself, a forged trust rather than a forged fear, survives every front: nothing here requires a different story, and the room built at Ruby's table out of true things is the strongest thing in the document. What fails is the machinery that holds the letter unread for fourteen days, and it fails on the delta's own words: Violet either keeps a key to a store she works from, in which case Brad or the executor holds it before the post arrives, or she does not, in which case the executor cuts a lock on an estate asset between Day 5 and Day 13 and reads the true letter beside the panel. That single finding ends the episode on or about Day 8 by a person acting exactly within her role, and it is compounded by the book of everything, which the delta introduced and never disposed of, and by an accountant whose duty runs to the sister she is keeping a dead woman's confidence from. Fix the key, the book and Margo's client, then supply the room the one fact that makes a fall a killing, and this goes back to the readers. Until then it does not.

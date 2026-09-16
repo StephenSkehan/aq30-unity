@@ -1,0 +1,61 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Kickoff, the Four Keys package briefs and prose</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0; font-size: 10.5pt; line-height: 1.55; }
+  h1 { font-size: 20pt; letter-spacing: .2px; border-bottom: 3px solid #1c1a17; padding-bottom: 8px; margin: 0 0 14px; }
+  h2 { font-size: 13.5pt; margin: 26px 0 8px; padding-bottom: 4px; border-bottom: 1.5px solid #1c1a17; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 18px 0 6px; page-break-after: avoid; }
+  p { margin: 0 0 9px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  hr { border: 0; border-top: 1px solid #ccc5b8; margin: 22px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 6px 0 14px; font-size: 8.6pt; line-height: 1.35; page-break-inside: auto; }
+  th, td { border: 1px solid #b9b2a4; padding: 4px 6px; vertical-align: top; text-align: left; }
+  th { background: #e9e4d8; font-weight: bold; }
+  td { background: #faf8f2; }
+  tr { page-break-inside: avoid; }
+  blockquote { border-left: 3px solid #b9b2a4; margin: 8px 0 12px; padding: 4px 14px; background: #f4f1ea; }
+  code { font-family: Consolas, monospace; font-size: 9pt; }
+</style></head><body>
+<h1>KICKOFF PROMPT: THE 105 PACKAGE BRIEFS AND PROSE FOR "THE FRIENDS WITH FOUR KEYS"</h1>
+<p><em>2026-09-01. Paste everything below the line into a fresh session. It is pipeline step 4 at production scale: Fable writes every package's prose from redacted briefs, chapter by chapter, blind to the graph until the very end. This prompt is re-runnable: on resume, check which chapter files already exist in <code>SAS/four-keys-prose/</code> and continue from the first missing one.</em></p>
+<hr />
+<p>We are producing the prose for all <strong>105 authored packages</strong> (100 played; five branch pairs) of Episode One, <em>The Friends with Four Keys</em>. The structure is complete and fully ruled; your job is to cut a redacted brief per package, run Fable on them chapter by chapter, verify nothing leaks, and deliver each chapter to Stephen for line ruling. You hold the graph; Fable never does, until the final briefs end the blindness on purpose. Read this whole prompt before opening a file.</p>
+<h3>Read first, in this order</h3>
+<ol>
+<li><code>SAS/episode-1-structure-v2-four-keys.md</code> (v2.2, Part F all ruled). <strong>Part B is your manifest:</strong> per package: the beat, its payoff class, its source, and the <strong>Fable column</strong>, which is the redaction delta this whole process runs on: the standing base plus only what that package adds, and what is never told. Parts A, C, D, E, F govern; Part D's ten-way cut is the ruled chapter 1 text.</li>
+<li><code>SAS/episode-1-spine-four-keys-v1.4.md</code>. <strong>You read it; Fable never does.</strong> It is your leak-checking authority: anything in Parts A to F that is not explicitly licensed by a package's Fable column must not appear in a brief or survive in prose.</li>
+<li><code>SAS/four-keys-episode-synopsis-v1.0.md</code>: your own orientation. Full graph; never quoted to Fable.</li>
+<li><strong>Fable's standing base, the only things it may ever be given before chapter 10:</strong> spine <strong>Part G only</strong> (the public account) · <code>four-keys-the-five-as-people-v1.2.md</code> · <code>four-keys-cold-open-v0.4.md</code> · <code>ally-voice-reference-v1.0.md</code> · and the cumulative story-so-far digest you maintain (below).</li>
+<li>Voices beyond Ally: the bible's locked registers: Del (§4.3: level, economical, honest about cost; "Quinny" is hers alone), Gerald (§4.1: warm, "love", method-not-facts), Mo, Arthur Finch. Quote the register blocks into briefs where those characters speak; do not paraphrase them.</li>
+<li>Memory: <code>project_state.md</code> Four Keys headings; <code>feedback_copy_rules.md</code> (directive lines ≤8 words, no endearments to the PLAYER; in-story speech to Ally exempt); the em-dash ban is absolute.</li>
+</ol>
+<h3>The discipline (this is the whole game)</h3>
+<ul>
+<li><strong>Blindness is enforced by construction.</strong> Fable runs as fresh subagents fed ONLY: the standing base + the story-so-far digest + the current chapter's briefs. No repo access, no memory, no tool use. Before every chapter run, you leak-check the briefs against the spine; after every run, you leak-check the prose. A brief that cannot be written without revealing the graph is a structure bug: <strong>stop and report it</strong>, never widen the licence yourself.</li>
+<li><strong>The story-so-far digest</strong> is a document you maintain (<code>SAS/four-keys-prose/story-so-far.md</code>): after each chapter's prose drafts land, append only what a listener of the show now knows and what the room has experienced: never why. It is Fable's memory between chapters and it must stay as blind as Fable.</li>
+<li><strong>Chapter order is strict: 1 to 10, and chapter 10 last of all, close packages last within it.</strong> The chapter 10 briefs are the only ones that reveal the ending (Brad alive, the identity, the accounting); they are drafted only after chapters 1 to 9's prose exists, per the standing rule. The D3/D4 branch packages are briefed in pairs with equal care; a branch is never the lesser draft.</li>
+<li><strong>What Fable writes per package:</strong> the opening node line(s), the completion beat (dialogue, or the art caption for AC beats, or the character-fact delivery), and one §5.7-register toast line per member card on 3+ card packages. Chapter 1 is special: the open's words are v0.4 verbatim per Part D's ruled cut; Fable writes only the connective tissue and the p01_09 Del scene (Del interprets; she never repeats the narration).</li>
+<li><strong>Length discipline:</strong> turn beats may breathe (a short scene); minor beats one to three sentences; micro beats and toasts a line. The whole episode's VO bill is downstream of this restraint.</li>
+<li><strong>Every line is a placeholder until Stephen rules it.</strong> Deliver per chapter: one file <code>SAS/four-keys-prose/ch&lt;NN&gt;.md</code> containing, per package, the brief you sent (for audit) and the prose that returned, marked DRAFT. Batch to Stephen one chapter at a time: ten-ish packages is one review sitting, never more.</li>
+</ul>
+<h3>The checks, run per chapter before delivery</h3>
+<ol>
+<li><strong>Leak check</strong> (you, against the spine): no graph fact outside the licence; the standing never-tolds hold (never what the object was before chapter 9's composite, never that anyone is alive before chapter 10, never who forged, never the swap, never the deckhand's death, never what the photograph holds: that last one is never told to anyone, ever, including chapter 10).</li>
+<li><strong>Voice check</strong>: the ally-voice-reference Part B pass 4 (remove manufactured intrigue), the page-prose warning signs, the listening-speed test; locked registers for Del and Gerald; no em dashes; directive lines ≤8 words; evidential language (Ally never claims what she cannot source: Part B's Source column is her sourcing).</li>
+<li><strong>Structure conformance</strong>: every beat delivers what its Part B row says, turn beats actually turn, branch variants differ where the row says they differ (and only there).</li>
+<li><strong>Ruled-text conformance</strong>: chapter 1 uses v0.4's words untouched; the sign-off is the ruled one; the F1 Gerald lines and the F2 close beats appear as ruled, wordsmithed but not reinvented.</li>
+</ol>
+<h3>Rules</h3>
+<ul>
+<li>The structure is not reopened; if prose cannot be written inside a row's licence, stop and report (a licence widening is Stephen's, informed by you).</li>
+<li>Stephen's line rulings fold back into the chapter file and the digest before the next chapter depends on them; if he has not ruled a chapter yet, later chapters may draft against the DRAFT text, flagged as such.</li>
+<li>Commit per chapter; render md to html/pdf via <code>SAS/tools/Convert-MdToPdf.ps1</code>; push at session end; update <code>project_state.md</code> with the furthest chapter drafted and the furthest ruled.</li>
+<li>Token economy: this is multi-session work by design. End a session cleanly at a chapter boundary; the next session resumes from the files.</li>
+</ul>
+<h3>When a chapter is done</h3>
+<p>Report: the chapter's package count and word count · any stop-and-report items · the three weakest lines in your own judgement (named honestly, Stephen reads these first) · what the digest gained. Then wait for Stephen's line ruling or continue to the next chapter's draft on his say-so.</p>
+<h3>When it is all done</h3>
+<p>Chapters 1 to 10 drafted and ruled, the digest complete, and one final pass: read the whole episode's prose end to end against the synopsis for continuity, then propose the ChatGPT attack on the prose (aimed at voice drift, licence leaks a reader could infer, and beat-delivery failures; the structure and spine are out of scope).</p>
+</body></html>

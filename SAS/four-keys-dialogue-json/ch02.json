@@ -1,0 +1,331 @@
+[
+ {
+  "id": "fk_p02_01",
+  "background": "kitchen",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Ruby Walker's kitchen. A pine table under the window, a heater beside it. This is where the four sat with Violet's letter, week after week."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Before the letter, it was Tuesdays. Violet came for years, and Ruby had the heater on before she knocked."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "happy",
+    "line": "Heater on, her at the door, then the same argument we'd had for years. That was the friendship. Tea?"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The argument was about whether Ruby's husband should be told. Told what?"
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "worried",
+    "line": "You came for Violet, not my marriage. Leave him out of it. Anyway, tea?"
+   }
+  ]
+ },
+ {
+  "id": "fk_p02_02",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Ruby kept her copy of the note. Four went out, all the same, two weeks after Violet died. I photographed hers at the kitchen table. It is under glass on my board now, in Violet's handwriting."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "If you've got this, I'm dead, and I'm sorry about the timing. Go to my locker at the boatsheds by the slip. The padlock's new and these four keys are the only ones. Go together, all four of you, and read what's there together. Violet."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "That's all of it."
+   }
+  ]
+ },
+ {
+  "id": "fk_p02_03",
+  "background": "kitchen",
+  "nodes": [
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "neutral",
+    "line": "It isn't any of you four, and I'd know. Someone with my key has been in my house, or I've started imagining things. I can't tell which, and both frighten me."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "neutral",
+    "line": "The first thing was the yard gate. I bolt it every night. One morning in October it was unbolted, and I couldn't swear I'd bolted it."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "neutral",
+    "line": "I changed the front door lock and told only you four where the new spare was. It happened again after that. So I took the key in, told nobody, and it stopped."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "sad",
+    "line": "I don't think I'm going to die. I think I'm going to be sixty and embarrassed. If I'm wrong, nobody needs to know. If I'm right, you'll want to know what I noticed."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Here Ruby's hand goes over the page. The lines about Violet's mother. She picks up again below her hand."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "neutral",
+    "line": "Somebody got the place of my spare from one of you without your knowing, or watched one of you use it. Write down everything odd you've noticed this year. About me, and about who has been near each of you."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "neutral",
+    "line": "Read the four lists together at one table. Since I'm asking you to, here's mine. Liam has owned a third of the yard for eight years and lets the town think he's staff."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Her hand goes down again. One line. She won't read that one either."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "neutral",
+    "line": "Ruby's been on nights since August and won't say why. Margo hasn't been to the slip since summer. And Brad paid me back the van money this autumn, every penny. The one thing this year that went right."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "sad",
+    "line": "Not the police. I've nothing they'd act on, and I won't have them in your lives over a gate and a feeling. You four can do what they won't. Read this together. Be careful. Write legibly. Violet."
+   }
+  ],
+  "decision": {
+   "prompt": "What does the city hear next week?",
+   "options": [
+    {
+     "label": "Air Ruby's whole reading",
+     "flag": "aq.fk.d1.aired",
+     "result": "I'll air every line Ruby read. The words go out in Ruby's voice as much as Violet's, and Ruby carries them round Havenbay."
+    },
+    {
+     "label": "Air only verified lines",
+     "flag": "aq.fk.d1.held",
+     "result": "I'll air only lines I can verify elsewhere. The city hears less, and what Ruby covered stays at her table."
+    }
+   ]
+  },
+  "after": [
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "worried",
+    "line": "If you cut what I read, people will think I cut it. The lines under my hand stay there either way."
+   }
+  ]
+ },
+ {
+  "id": "fk_p02_04",
+  "background": "kitchen",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Ruby Walker is in her mid thirties, a practice nurse at the surgery on Wharf Street."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "confused",
+    "line": "You're talking about me like I'm not in the room."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "When she is frightened, she talks. She fills the room, gives you a job and makes tea nobody asked for."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "neutral",
+    "line": "Six years sober. The glass is tonic. Say that too, before somebody else decides what it is."
+   }
+  ]
+ },
+ {
+  "id": "fk_p02_05",
+  "background": "kitchen",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Ruby gave me this memory without being asked."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "sad",
+    "line": "Three years ago Vi rang me at four in the morning. I drove over. Neither of us ever said what it was, not that night and not after. Anyway."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I don't know what happened. Ruby did not say, and I am not going to guess."
+   }
+  ]
+ },
+ {
+  "id": "fk_p02_06",
+  "background": "kitchen",
+  "nodes": [
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "sad",
+    "line": "When we opened the locker, the first thing was relief. Then shame, because relief meant we'd believed she might name one of us."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The next evening you did the arithmetic."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "worried",
+    "line": "New lock. Only four told. Something moved after. Key taken in, it stopped. Liam found the pot empty, broke a pane, and the back door was latched."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "confused",
+    "line": "But the wall could be climbed. Someone could have watched Violet use the pot."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "angry",
+    "line": "I know. We looked outward: no cleaner, lodger or tradesman, and an estranged sister. Then Monday: me on shift, Margo home, Liam at the yard, Brad at home. Nobody had an alibi. Liam had the least."
+   }
+  ]
+ },
+ {
+  "id": "fk_p02_07",
+  "background": "kitchen",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "When Brad's rent stopped, his landlord boxed up the flat and sent everything to Ruby. Police had already searched it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "Ruby and I went through the boxes over days. Passport, cards, tools, laptop, clothes and paperwork. Days of careful nothing."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "happy",
+    "line": "He'd put his keys on the table, then move them. Twice, always twice. We used to wait for the second move before we spoke."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "happy",
+    "line": "He said thank you like it cost him. He was up at five to run, and he agreed with whoever had spoken last. Seven years he was the pet of the room."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Four ordinary habits, remembered with affection. That was Brad Collins as Ruby had him."
+   }
+  ]
+ },
+ {
+  "id": "fk_p02_08",
+  "background": "kitchen",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Ruby kept the envelope her note came in. Folded behind the note was a covering slip from Violet's solicitor."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "It says the four envelopes were lodged with the firm three weeks before Violet died and posted after the funeral."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "neutral",
+    "line": "Four addressees. Liam, me, Margo, Brad. I've read that list enough times to know the order."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The letter was dated three weeks before Violet died. Police examined it, then returned it to Ruby."
+   }
+  ]
+ },
+ {
+  "id": "fk_p02_09",
+  "background": "kitchen",
+  "nodes": [
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "neutral",
+    "line": "Every Saturday we came back to this table with the lists Violet asked for. Every Saturday Liam looked worse."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "confused",
+    "line": "The line about the police. Did that sound like Violet to you?"
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "worried",
+    "line": "Never. Liam said that night why she was like that about them. Something from the night her mum died. I let it go. Then the facts bent towards him: the yard, the lines about her mother, the bedroom window, the back door."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "confused",
+    "line": "Each of those could also be a friend helping a friend. Brad kept saying so."
+   },
+   {
+    "speaker": "Ruby Walker",
+    "emotion": "sad",
+    "line": "Every week. Reasonably. He lost every week. By the fifth we'd settled on Liam. At the sixth Margo stopped arguing and looking at anyone. A week later Brad drove to Kestrel Head. She thought she'd know, and she's dead. Anyway."
+   }
+  ]
+ },
+ {
+  "id": "fk_p02_10",
+  "background": "studio_onair",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "This week Ruby Walker read me Violet's letter at the table where the four worked it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "By the fifth Saturday the room had settled on Liam. At the sixth Margo went quiet. A week later Brad drove to Kestrel Head."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Brad Collins, as Ruby had him: keys moved twice on the table, thank you like it cost him, up at five to run, and he agreed with whoever spoke last."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Next week I air Ruby's whole reading. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.",
+    "variant": "aq.fk.d1.aired"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Next week I air only verified lines. What Ruby covered stays at her table. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.",
+    "variant": "aq.fk.d1.held"
+   }
+  ]
+ }
+]

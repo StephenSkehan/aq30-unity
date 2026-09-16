@@ -1,0 +1,143 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Reader Test Findings, twenty-one premises</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0;
+         font-size: 10.5pt; line-height: 1.55; }
+  h1 { font-size: 20pt; letter-spacing: .2px; border-bottom: 3px solid #1c1a17;
+       padding-bottom: 8px; margin: 0 0 14px; }
+  h2 { font-size: 13.5pt; margin: 26px 0 8px; padding-bottom: 4px;
+       border-bottom: 1.5px solid #1c1a17; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 18px 0 6px; color: #3a352d; page-break-after: avoid; }
+  p { margin: 0 0 9px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  hr { border: 0; border-top: 1px solid #ccc5b8; margin: 22px 0; }
+  code { font-family: Consolas, monospace; font-size: 9pt; color: #7a5c1f;
+         background: #f6f2e8; padding: 0 3px; border-radius: 2px; }
+  del { color: #999; }
+  blockquote { border-left: 3px solid #b9ae99; background: #faf8f2; margin: 10px 0;
+               padding: 8px 14px; page-break-inside: avoid; }
+  blockquote p { margin: 0 0 6px; }
+  blockquote p:last-child { margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 14px;
+          font-size: 9pt; table-layout: fixed; page-break-inside: avoid; }
+  th { text-align: left; background: #1c1a17; color: #f5f1e8; padding: 5px 7px;
+       font-size: 8.5pt; letter-spacing: .3px; }
+  td { vertical-align: top; padding: 5px 7px; border-bottom: 1px solid #e3ded2;
+       word-wrap: break-word; }
+  tr:nth-child(even) td { background: #faf8f2; }
+  .cards { margin: 10px 0 16px; }
+  .card { border: 1px solid #c9c1b0; border-left: 4px solid #1c1a17; border-radius: 3px;
+          padding: 8px 11px 9px; margin-bottom: 9px; background: #fdfcf8;
+          page-break-inside: avoid; font-size: 9.5pt; }
+  .chead { font-size: 8.5pt; color: #6b6357; margin-bottom: 4px; letter-spacing: .3px; }
+  .cid { font-weight: bold; color: #1c1a17; margin-right: 10px; }
+  .cphase { margin-right: 10px; }
+  .ccls { float: right; font-style: italic; }
+  .cdec { font-weight: bold; margin-bottom: 6px; }
+  .card dl { margin: 0; }
+  .card dt { font-size: 8pt; text-transform: uppercase; letter-spacing: .6px;
+             color: #8a6d3b; margin-top: 5px; }
+  .card dd { margin: 1px 0 0; }
+  .rank .order { margin: 2px 0 5px; font-size: 10pt; }
+  .rank .reason { color: #3a352d; }
+</style></head><body>
+<!-- pdf-title: Reader Test Findings, twenty-one premises -->
+
+<h1>READER TEST, FINDINGS</h1>
+<p><strong>Subjects:</strong> ChatGPT's nine (<code>AQ-NAR-MODEA-EXEC-2026-08-24-01</code>) and Claude's twelve
+<strong>Readers:</strong> Stephen Skehan, Trish Szabo, independently · <strong>Date:</strong> 2026-08-25
+<strong>Verdict:</strong> twenty-one premises, two survivors, no opener.</p>
+<hr />
+<h2>0. Housekeeping: my sealed prediction is dead</h2>
+<p>Predicted LEGS 5, 8, 9, 11 and REJECT 6, 7, 10, 12. Five hits, three misses. Death threshold was three. <strong>The record-versus-people axis was not the operative variable and is withdrawn.</strong> No retrofit.</p>
+<hr />
+<h2>1. What survived</h2>
+<table>
+<thead>
+<tr>
+<th>Premise</th>
+<th>Stephen</th>
+<th>Trish</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Claude 3</strong>, the erased woman under the viaduct</td>
+<td>"best of the bunch"</td>
+<td>"Good. What happens next?"</td>
+</tr>
+<tr>
+<td><strong>Claude 8</strong>, two deaths one address, one doctor</td>
+<td>"there may be something in this"</td>
+<td>"Not bad at all. This might be interesting."</td>
+</tr>
+<tr>
+<td>ChatGPT 4, the theatre understudy</td>
+<td>"seed for a later episode"</td>
+<td>"Easy to follow. I can picture it in my mind."</td>
+</tr>
+<tr>
+<td>ChatGPT 9, the private club</td>
+<td>setting wanted in canon</td>
+<td>"you lost me at accountant"</td>
+</tr>
+</tbody>
+</table>
+<p>Two mechanics were praised independently of their premises, both by Trish: <strong>crowd-sourced photographs and video assembling a picture no single image holds</strong> (ChatGPT 1 and 3). She liked the reconstruction more than either crime.</p>
+<hr />
+<h2>2. The finding that answers Stephen's question</h2>
+<p><strong>The genre research exists and was banned from the step that generates premises.</strong></p>
+<p><code>prompt-kit-v2.1-FINAL.md</code> line 142, verbatim:</p>
+<blockquote>
+<p><code>true-crime-genre-anatomy</code> is <strong>excluded from Mode A premise generation and from the spoken-opening comparison.</strong></p>
+</blockquote>
+<p>Both execution records state "Genre-anatomy reference used: No." Twenty-one premises were generated from thirty-four platinum cases that neither generator was permitted to look at.</p>
+<p><strong>Why the ban existed:</strong> to keep the clean Mode A comparison uncontaminated, since the three challengers had been written under the document's influence and would otherwise have had an unfair advantage. The reasoning was sound and the cost was the entire field.</p>
+<hr />
+<h2>3. Unbanning it is necessary and not sufficient</h2>
+<p>The document's own Part Four ranks the engines <strong>by merge-board fit first</strong>:</p>
+<blockquote>
+<p>Institutional failure and unreliable record are the two that best fit a merge board, because both are reconstructive.</p>
+</blockquote>
+<p>Those are the two engines the readers just rejected wholesale. The ranking optimised for the mechanic, not for the audience, and it is my error.</p>
+<p>Set against the readers' actual responses the ranking inverts. The two survivors sit on the two engines Part Four ranked lower and described accurately anyway:</p>
+<ul>
+<li><strong>Claude 3 is Engine 4, the invisible victim</strong> — "carries the most contemporary licence"</li>
+<li><strong>Claude 8 is Engine 5, the ordinary door</strong>, with Engine 1 asymmetry — "the strongest emotional engine for this specific audience"</li>
+</ul>
+<p><strong>Both readers independently selected the two premises sitting on the engines the banned document named as strongest for this audience.</strong> Neither premise was generated using it.</p>
+<hr />
+<h2>4. The two empirical patterns in the responses</h2>
+<h3>4.1 Occupational jeopardy is the only jeopardy in the field</h3>
+<p>What the wronged person stands to lose, across ChatGPT's nine: an apprenticeship (three times), a union election, a place in a theatre network, a death benefit, a port licence, a professional bar, a guild apprenticeship. <strong>Nine of nine are loss of occupational status.</strong> Claude's twelve are broader but still economic and legal: freedom, a house, a benefit, a redundancy, a room.</p>
+<p><strong>Across all twenty-one, not one premise has love, jealousy, sex, marriage, obsession, or a parent and child in conflict at its centre.</strong></p>
+<p>Every case a general audience can name has exactly that: Serial, The Teacher's Pet, Dirty John, The Jinx, Making a Murderer. This is the largest single gap between our field and the genre, and it is traceable: <strong>Gate 2 requires a named living person under a still-operating mechanism, and an institution is the easiest way to keep a mechanism running for thirty years.</strong> The gate did not ask for workplaces. It made workplaces the cheapest compliant answer.</p>
+<h3>4.2 Trish hit a vocabulary wall four times in twenty-one</h3>
+<blockquote>
+<p>"I don't know what a clipping box is" · "What is a fog dark loading room? What is a chandlery?" · "not sure what bypassing the lockout even means" · "I don't understand what crime she is serving 11 years for"</p>
+</blockquote>
+<p>Three are trade terms. The fourth is worse: a premise where the crime itself was not legible. <strong>No gate in v2.1 or CAI-1 tests whether a premise can be understood by someone who does not already work in a port.</strong></p>
+<p>Stephen's rejections are the same wall from the other side, stated as boredom rather than confusion: "clipping box, handwritten slips, scanning batches of photos, settlement files. So so so boring" · "bookkeepers, accountants, ledgers, rosters, receipts" · "transcript geometry and invoices about delay circuits".</p>
+<p><strong>The decisive evidence is an administrative document in nearly every one of the twenty-one.</strong> Tally sheet, invoice, service card, payroll record, correction sheet, circulation card, cash notebook, reconciliation book, custody record, entry log, settlement file, stamped stubs, cue sheet. This is Kill Gate Zero working as designed: it rewards a decisive item that is lawfully reachable, and lawfully reachable items are paperwork.</p>
+<hr />
+<h2>5. What is not wrong</h2>
+<p><strong>Kill Gate Zero is not the problem and must not be weakened.</strong> Every reader objection about believability was aimed at premises that <em>passed</em> it, and the failures were craft failures it does not test: "do brake pins have serial numbers", "cleaners would not notice", "a mother would never frame an admin form", "tills would just be synchronised". Gate Zero verifies that institutions behave correctly. It has no opinion on whether a human being would plausibly do the small thing the premise needs them to do.</p>
+<p><strong>Gate 6 is satisfiable by fabrication.</strong> Claude 2's framed manifest was invented to satisfy the grievable-detail requirement and Trish identified it instantly as false behaviour. No auditor in CAI-1 can detect this.</p>
+<hr />
+<h2>6. Recommended next steps, in priority order</h2>
+<ol>
+<li><strong>Stop the CAI-1 reciprocal audit.</strong> Both fields are rejected by both readers. Auditing rejected premises against each other produces findings about nothing. The instrument is sound and should be retired with its findings intact.</li>
+<li><strong>Lift the Mode A ban on <code>true-crime-genre-anatomy</code> and make it mandatory</strong>, with Part Four's engine ranking reversed: 4, 5, 1 before 2, 3.</li>
+<li><strong>Add a positive requirement: at least half the field must place an intimate relationship at the centre.</strong> Not a workplace, a guild, a licence or a union.</li>
+<li><strong>Add a comprehension gate.</strong> A premise must be stateable in three sentences containing no term a general reader would have to look up. Trish is the instrument; there is no substitute and no auditor can stand in for her.</li>
+<li><strong>Add a plausibility-of-behaviour gate distinct from Gate Zero.</strong> Would a real person, with nothing at stake, actually do the small thing this premise needs? Every reader objection about believability lands here.</li>
+<li><strong>Build from the two survivors and the two liked mechanics</strong>, rather than generating a third clean field. Claude 3 and Claude 8 have reader consent. Crowd-sourced media reconstruction has reader enthusiasm and is the best merge-board fit anyone has found.</li>
+<li><strong>Canon add, ruled by Stephen 2026-08-25:</strong> a private club for Havenbay's rich, famous and powerful, retained as a setting for later episodes.</li>
+</ol>
+<hr />
+<h2>7. The general lesson, for the record</h2>
+<p>v2.2's admission said a generator constrained only by prohibitions converges on whatever survives them. The reader test extends it.</p>
+<p><strong>Every instrument this project built measures whether a premise is defensible. Not one measures whether it is interesting.</strong> Four RC rounds, a cross-audit instrument, fifteen canon rulings and a delta analysis were spent on twenty-one premises that two readers rejected in an afternoon, and no amount of further auditing between two models could have found it, because neither of us was reading as an audience.</p>
+</body></html>

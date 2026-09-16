@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P08_05
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P08_05_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e101, type: 3}
+  nodes:
+  - id: FK_P08_05_N1
+    speaker: "Ally Quinn"
+    line: "The second letter came on Thursday. A woman who catches the first train out of the inland halt, the small station on the far side of the ridge behind Kestrel Head, where Brad's car was found."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P08_05_N2
+    choices: []
+  - id: FK_P08_05_N2
+    speaker: "Ally Quinn"
+    line: "She was on the platform for the 05:47 on the Saturday morning the car was found. She writes because I asked, weeks ago, for anything odd, and this had stayed with her."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P08_05_N3
+    choices: []
+  - id: FK_P08_05_N3
+    speaker: "Ally Quinn"
+    line: "A man bought a cash single. The clerk complained about breaking a note. She noticed the man's boots were wet."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P08_05_N4
+    choices: []
+  - id: FK_P08_05_N4
+    speaker: "Ally Quinn"
+    line: "That's the whole of it. Wet boots, cash, a clerk short of change, a quarter to six in the morning."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P08_05_N5
+    choices: []
+  - id: FK_P08_05_N5
+    speaker: "Ally Quinn"
+    line: "It went to Sergeant Del Cruz on Friday. It won't be aired. But if she's right about the day, somebody came down off that ridge to the first train on the morning they found Brad's car."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

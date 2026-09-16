@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P07_05
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P07_05_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e101, type: 3}
+  nodes:
+  - id: FK_P07_05_N1
+    speaker: "Ally Quinn"
+    line: "The letter is hard on three of them and kind to one. The kind line is about Brad. It says he paid back the van money that autumn, every penny, without being asked."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P07_05_N2
+    choices: []
+  - id: FK_P07_05_N2
+    speaker: "Ally Quinn"
+    line: "The diner's owner told me something else about that autumn. Violet was calling money in. Whatever she was owed, she wanted it back, and she didn't name anyone."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P07_05_N3
+    choices: []
+  - id: FK_P07_05_N3
+    speaker: "Ally Quinn"
+    line: "So the letter says he paid her back unasked, and the diner's owner says she was asking. I've set the two beside each other on the board. I don't know what to make of it, and I'm not going to pretend I do."
+    portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
+    emotion: 6
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P08_07
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P08_07_N1
+  stageBackground: {fileID: 21300000, guid: c26f32895ad18bd46be4538d6056e914, type: 3}
+  nodes:
+  - id: FK_P08_07_N1
+    speaker: "Ally Quinn"
+    line: "The clerk at the halt remembers the man because of the note. Twenty to six, first sale of the day, and he had to break a note to do it. He complained out loud."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P08_07_N2
+    choices: []
+  - id: FK_P08_07_N2
+    speaker: "Ally Quinn"
+    line: "He remembered the boots because of the complaint. He'd have forgotten the man otherwise. It's the small annoyances that keep."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

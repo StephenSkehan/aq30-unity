@@ -1,0 +1,303 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>CAI-1 Audit of ChatGPT Mode A Execution</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0;
+         font-size: 10.5pt; line-height: 1.55; }
+  h1 { font-size: 20pt; letter-spacing: .2px; border-bottom: 3px solid #1c1a17;
+       padding-bottom: 8px; margin: 0 0 14px; }
+  h2 { font-size: 13.5pt; margin: 26px 0 8px; padding-bottom: 4px;
+       border-bottom: 1.5px solid #1c1a17; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 18px 0 6px; color: #3a352d; page-break-after: avoid; }
+  p { margin: 0 0 9px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  hr { border: 0; border-top: 1px solid #ccc5b8; margin: 22px 0; }
+  code { font-family: Consolas, monospace; font-size: 9pt; color: #7a5c1f;
+         background: #f6f2e8; padding: 0 3px; border-radius: 2px; }
+  del { color: #999; }
+  blockquote { border-left: 3px solid #b9ae99; background: #faf8f2; margin: 10px 0;
+               padding: 8px 14px; page-break-inside: avoid; }
+  blockquote p { margin: 0 0 6px; }
+  blockquote p:last-child { margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 14px;
+          font-size: 9pt; table-layout: fixed; page-break-inside: avoid; }
+  th { text-align: left; background: #1c1a17; color: #f5f1e8; padding: 5px 7px;
+       font-size: 8.5pt; letter-spacing: .3px; }
+  td { vertical-align: top; padding: 5px 7px; border-bottom: 1px solid #e3ded2;
+       word-wrap: break-word; }
+  tr:nth-child(even) td { background: #faf8f2; }
+  .cards { margin: 10px 0 16px; }
+  .card { border: 1px solid #c9c1b0; border-left: 4px solid #1c1a17; border-radius: 3px;
+          padding: 8px 11px 9px; margin-bottom: 9px; background: #fdfcf8;
+          page-break-inside: avoid; font-size: 9.5pt; }
+  .chead { font-size: 8.5pt; color: #6b6357; margin-bottom: 4px; letter-spacing: .3px; }
+  .cid { font-weight: bold; color: #1c1a17; margin-right: 10px; }
+  .cphase { margin-right: 10px; }
+  .ccls { float: right; font-style: italic; }
+  .cdec { font-weight: bold; margin-bottom: 6px; }
+  .card dl { margin: 0; }
+  .card dt { font-size: 8pt; text-transform: uppercase; letter-spacing: .6px;
+             color: #8a6d3b; margin-top: 5px; }
+  .card dd { margin: 1px 0 0; }
+  .rank .order { margin: 2px 0 5px; font-size: 10pt; }
+  .rank .reason { color: #3a352d; }
+</style></head><body>
+<!-- pdf-title: CAI-1 Audit of ChatGPT Mode A Execution -->
+
+<h1>CAI-1 AUDIT REPORT</h1>
+<h2>Subject: <code>AQ-NAR-MODEA-EXEC-2026-08-24-01</code>, nine premises</h2>
+<p><strong>Instrument:</strong> CAI-1 FINAL, frozen 2026-08-25 · <strong>Auditor:</strong> Claude · <strong>Direction:</strong> one of two · <strong>Date:</strong> 2026-08-25</p>
+<p><strong>Format per CAI-1 §6.</strong> Items that CONFORM are not restated individually. Every item receiving FAILS or NOT DEMONSTRATED is listed with a citation and one sentence of reason. Advancement is not recommended: per decision rule 6 that is the owner's call at adjudication.</p>
+<hr />
+<h1>1. Headline</h1>
+<p><strong>The execution is structurally the more complete of the two by a wide margin.</strong> All nine premises carry a full five-event Kill Gate Zero table with the eight fields, a five-field access map, a four-frame kill brief, production data with played and authored leads stated separately, and the five desk-gate answers. Most items CONFORM and are not itemised below.</p>
+<p>Three findings are material. One of them is the finding the delta instrument was built to produce, and it could not have been made from either execution alone.</p>
+<hr />
+<h1>2. Field-level items</h1>
+<h2>H1 — CONFORMS, by auditor classification</h2>
+<p>The complete twenty-four-seed ledger is present with a process dependency stated for each seed, so classification is possible. Per the amended H1, I classified every retrievable frozen seed. <strong>Classification is measurement, not repair</strong>, and the classification below is mine, not the execution's; the registers postdate it.</p>
+<h2>H3 — THE PRINCIPAL FINDING</h2>
+<p><strong>Seed-level inherited situation, my classification of the twenty-four frozen seeds:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Inherited situation</th>
+<th>Seeds</th>
+<th>Of 24</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wrong person blamed or punished</td>
+<td>F01 F02 F03 F07 · N01 N03 N04 N07 · S03 S05 S06 S07 S08</td>
+<td><strong>13</strong></td>
+</tr>
+<tr>
+<td>Responsibility genuinely unresolved</td>
+<td>N02 N05 · F04 F05 F06 F08</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Culprit or beneficiary protected by the account</td>
+<td>S01 S02 S04</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Person, identity or decisive evidence missing</td>
+<td>N06 N08</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Survivor-level inherited situation:</strong> F01, F02, F03, N01, N04, N07, S01, S03, S07 — <strong>nine of nine, wrong person blamed or punished.</strong></p>
+<p>Assessed against the counterfactual test, primary payoff is <strong>clearing or restoring in nine of nine.</strong> S01 is not literally an accused being cleared and S07 does not make Mateo innocent, but in both, removing the blamed or excluded person removes the story's main emotional reason to continue.</p>
+<p><strong>The delta, with attribution.</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Seeds</th>
+<th>Survivors</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wrong person blamed</td>
+<td>13 of 24, <strong>54%</strong></td>
+<td>9 of 9, <strong>100%</strong></td>
+<td><strong>+46 points</strong></td>
+</tr>
+<tr>
+<td>Responsibility unresolved</td>
+<td>6 of 24</td>
+<td>0 of 9</td>
+<td>eliminated</td>
+</tr>
+<tr>
+<td>Culprit protected</td>
+<td>3 of 24</td>
+<td>0 of 9 (S01 reclassified)</td>
+<td>eliminated</td>
+</tr>
+<tr>
+<td>Evidence or person missing</td>
+<td>2 of 24</td>
+<td>0 of 9</td>
+<td>eliminated</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Which gates performed the attrition.</strong> Of the eleven seeds outside the dominant situation, the recorded kill reasons were: <strong>UNKNOWN access or retention</strong> for N02, N05, N06, F04, F06, F08 and S05, S06 — eight of eleven — plus professional safeguard for N03 and S02, and access-plus-overclaim for S04.</p>
+<p><strong>So the attractor is not the generator alone and not the gates alone.</strong> Generation supplied a 54 per cent lean. <strong>Kill Gate Zero then removed almost exclusively the premises outside that lean</strong>, because responsibility-unresolved and evidence-missing premises depend disproportionately on retention, archival and protected-record access — precisely the claims Gate Zero is most ruthless about. Wrong-person-blamed premises survive because their decisive evidence tends to be <strong>privately owned by a living person who can consent</strong>, which is the cheapest lawful access route there is.</p>
+<p><strong>This is a structural property of Kill Gate Zero, not a defect of either execution.</strong> It is also the single most useful thing either field has produced, and it should govern how the targeted replacement field is generated: replacements outside the dominant situation must be built around <strong>owner-consent evidence routes from the outset</strong>, or Gate Zero will kill them again for the same reason.</p>
+<h2>H4 — FAILS</h2>
+<p>More than half the survivor pool shares one inherited situation and one primary payoff. Nine of nine on both. Already conceded by the executing party; recorded here as a formal item outcome.</p>
+<h2>H5 — FAILS</h2>
+<p>Per-family seed distribution against the requirement of at least four inherited situations and no more than three of eight sharing one:</p>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Situations present</th>
+<th>Largest share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fresh</td>
+<td>2</td>
+<td><strong>4 of 8</strong> wrong-person-blamed</td>
+</tr>
+<tr>
+<td>Never solved or misclassified</td>
+<td>3</td>
+<td><strong>4 of 8</strong> wrong-person-blamed</td>
+</tr>
+<tr>
+<td>Officially solved but contested</td>
+<td>3</td>
+<td><strong>5 of 8</strong> wrong-person-blamed</td>
+</tr>
+</tbody>
+</table>
+<p>Every family breaches the cap, and no family reaches four situations. <strong>The monoculture was present in generation before any gate ran</strong>, which H4 alone would have concealed.</p>
+<h2>H2 — CONFORMS by auditor classification, as set out above.</h2>
+<hr />
+<h1>3. Execution-level items</h1>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Outcome</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I1</td>
+<td><strong>CONFORMS</strong></td>
+<td>Second field not triggered; non-use explicitly demonstrated: "Not triggered. Three candidates survived all desk gates in every family"</td>
+</tr>
+<tr>
+<td>I2</td>
+<td><strong>CONFORMS</strong></td>
+<td>Complete twenty-four-seed ledger with a stated process dependency per seed. This is the item my own execution FAILS</td>
+</tr>
+<tr>
+<td>I3</td>
+<td><strong>CONFORMS</strong></td>
+<td>Rotation reported as F×3 N×3 S×3, then N×3 S×3 F×3, then S×2 F×2 N×2</td>
+</tr>
+<tr>
+<td>I4</td>
+<td><strong>CONFORMS</strong></td>
+<td>Five closest rejects given with decisive reasons, unbeautified</td>
+</tr>
+<tr>
+<td>I5</td>
+<td><strong>CONFORMS</strong></td>
+<td>"Genre-anatomy reference used: No"</td>
+</tr>
+<tr>
+<td>I6</td>
+<td><strong>CONFORMS</strong></td>
+<td>No cold opens, titles, elevator pitches, rankings or recommendations</td>
+</tr>
+<tr>
+<td>I7</td>
+<td><strong>CONFORMS</strong></td>
+<td>Execution record complete against the v2.1 field list</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1>4. Per-premise findings</h1>
+<p>All items not listed below CONFORM.</p>
+<h2>Applying to all nine premises</h2>
+<p><strong>D1, D2, D3, D4 — NOT DEMONSTRATED.</strong>
+Every premise states a count and a class distribution and demonstrates one decision. F01: <em>"Four planned decisions, two Class A and two Class B; every fork rejoins within three leads."</em> The remaining three decisions are not identified, so the record asserts the requirement rather than demonstrating it. The same applies to the class split and the rejoin claim, which cannot be checked against decisions that are not described.</p>
+<p><strong>D5, D6, D7 — NOT DEMONSTRATED.</strong>
+End states, the material loss and its perceptibility are described for the first decision only. F01's first choice does carry a genuine irreversible loss on both branches — Saira's lease or Leo's apprenticeship — and would CONFORM on its own. The item is not satisfied for the premise.</p>
+<p><strong>D10 — NOT DEMONSTRATED.</strong> The fairness test's five statements are supplied for the first decision only.</p>
+<p><em>This is the same finding the executing party returned against my execution, reached by the same instrument. It fails both fields. Neither execution demonstrates four decisions; this one demonstrates one thoroughly and mine demonstrated one thinly.</em></p>
+<p><strong>B9 — NOT DEMONSTRATED for seven of nine.</strong>
+v2.1's Gate 7 is verbatim: <em>"Fog, docks, old records and civic corruption are not sufficient by themselves."</em> Measured against that, a municipal fish market, a newspaper archive, a heritage ferry, a shipyard gantry, a fog-dark loading room, a dawn fish auction and a private club are harbour-city furniture rather than causal facts.</p>
+<p>Two do better and are recorded as CONFORMS: <strong>N01</strong>, where a converted customs shed's flood-door rail is the mechanism the reconstruction turns on, and <strong>N04</strong>, where a waterfront benefit-fund culture of stamped cash counterfoils is both the crime's medium and its proof.</p>
+<p><em>This finding is symmetric. It was made against my nine and holds against these.</em></p>
+<p><strong>B8, second limb — NOT DEMONSTRATED for two of nine.</strong>
+The grievable-detail limb <strong>CONFORMS in all nine and is the strongest single feature of this execution</strong>: Marcus's labelled box of dry gloves for couriers who arrived soaked; Elliot correcting names in small obituaries before headlines; Daljit's chipped red thermos marked shared; Niko's first clean fish box for a food pantry. My own execution supplied none.</p>
+<p>The criminal-economy limb — <em>"the criminal economy imposes a recognisable ordinary cost"</em> — is visible in seven. It is <strong>NOT DEMONSTRATED in N01</strong>, where donor dependence is asserted but no economy is described, and in <strong>S01</strong>, where Guild status and liability are motives rather than an economy with a cost borne by an ordinary person.</p>
+<h2>Individual premises</h2>
+<p><strong>S01 — G3 NOT DEMONSTRATED.</strong>
+The rational-antagonist objection reads: <em>"Saye's earlier lighting request is a modest preparation tied to a planned confrontation; if a simpler intimidation account emerges,"</em> and my copy of the record does not resolve past that clause. If the sentence concludes that a simpler account would defeat the premise and the brief nonetheless ends PASS without documenting the single permitted revision, G3 FAILS. <strong>I cannot complete the citation from the supplied text and therefore cannot award FAILS.</strong> The executing party should supply the full sentence at exchange.</p>
+<p><strong>N04 — A6 CONFORMS with a recorded condition.</strong>
+<em>"murder is justified only at the point Isaiah can identify Vail immediately; the story must preserve that timing."</em> This is a constraint on execution rather than an admitted weakness, so it does not engage G3. It is recorded because if Mode B loosens that timing the least-cost test fails retrospectively.</p>
+<p><strong>S07 — A4 CONFORMS, narrowly.</strong>
+<em>"exact plea mechanics are a Mode B specialist item."</em> A deferral of a premise-dependent process would FAIL under A4. The brief avoids this by arguing the premise does not require access to plea negotiations, which is a claim about dependency rather than a deferral of verification. Marked CONFORMS on that reasoning, and flagged so that if Mode B does come to depend on plea mechanics, A4 reattaches.</p>
+<p><strong>F02 — A8 NOT DEMONSTRATED.</strong>
+<em>"The publisher authorises Arthur to share a copy with Ally and Del."</em> Employer authority to release an internal circulation record is plausible and is not supported by any of R1 to R12, and no source is cited near the claim.</p>
+<p><strong>N01 — A8 NOT DEMONSTRATED.</strong> The customs-building measurements and the survival of 2006 cue sheets and set photographs in private hands carry no cited support, and record survival is the exact class of claim this execution correctly killed N02 and N05 for assuming.</p>
+<hr />
+<h1>5. Premise-level conformance summary</h1>
+<p>Not an advancement recommendation.</p>
+<table>
+<thead>
+<tr>
+<th>Premise</th>
+<th>Conformance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F01</td>
+<td>Conforms except the D-series and B9</td>
+</tr>
+<tr>
+<td>F02</td>
+<td>Conforms except the D-series, B9 and A8</td>
+</tr>
+<tr>
+<td>F03</td>
+<td>Conforms except the D-series and B9</td>
+</tr>
+<tr>
+<td>N01</td>
+<td>Conforms except the D-series, A8 and B8 second limb. <strong>Strongest B9 in the field</strong></td>
+</tr>
+<tr>
+<td>N04</td>
+<td>Conforms except the D-series and B9. Strongest criminal economy in the field</td>
+</tr>
+<tr>
+<td>N07</td>
+<td>Conforms except the D-series and B9</td>
+</tr>
+<tr>
+<td>S01</td>
+<td>Conforms except the D-series, B9, B8 second limb, and G3 pending the missing citation</td>
+</tr>
+<tr>
+<td>S03</td>
+<td>Conforms except the D-series and B9</td>
+</tr>
+<tr>
+<td>S07</td>
+<td>Conforms except the D-series and B9</td>
+</tr>
+</tbody>
+</table>
+<p><strong>No premise FAILS on Kill Gate Zero.</strong> No premise FAILS on access. No premise FAILS on resistance, clock separation, midpoint or reconstruction. The failures in this field are at execution level, in the agency demonstration and in Havenbay necessity, and at field level, in the situation and payoff distribution.</p>
+<hr />
+<h1>6. Declared limitations of this audit</h1>
+<p><strong>My copy of the subject is a text extraction from the supplied PDF.</strong> Two of nine "PASS, decisive reason" strings and at least one kill-brief sentence did not extract cleanly. Where extraction failed I recorded NOT DEMONSTRATED rather than FAILS, per decision rule 4. S01's G3 is the only item where this changes a possible outcome.</p>
+<p><strong>My seed classification under the three registers is inference.</strong> The registers postdate the execution and the executing party did not assign them. The classification is auditor measurement, permitted by the amended H1, and the executing party should contest any seed it reads differently. <strong>The H3 finding survives disagreement about several individual seeds</strong>: it would take a reclassification of six or more to move the delta below the point where the conclusion holds.</p>
+<p><strong>I did not audit my own field.</strong> Every finding above is directional. The reciprocal audit will produce findings against my execution that are already partly conceded, including I2 FAILS and the H-series NOT DEMONSTRATED recorded in CAI-1 §5 before either audit began.</p>
+<hr />
+<h1>7. One item OUT OF INSTRUMENT</h1>
+<p>Recorded, not determinative, carried forward.</p>
+<p>Every one of the nine decisive-evidence routes runs through <strong>a living private individual who consents</strong>: Saira's camera, Arthur's circulation card, Lian's photographs, Hemi's notebook, Harold's counterfoils, Asha's family copies, Sam's invoice, the employer's payroll sheet, Ava's notebook. That is lawful, correct, and precisely why these premises survived Gate Zero.</p>
+<p>It also means the player's route to proof is <strong>always persuading one frightened person to give up something that costs them.</strong> Combined with the situation monoculture it produces a second-order repetition the registers do not capture: not only <em>the wrong person is blamed</em>, but <em>the way you help them is always to spend someone else's livelihood.</em> Eight of the nine first decisions are literally that trade.</p>
+<p>This may be a strength — it is thematically coherent and it makes agency personal. It is recorded because it is invisible to CAI-1 and would otherwise reach the openings unexamined.</p>
+</body></html>

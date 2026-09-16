@@ -70,7 +70,8 @@ namespace AQ.App.UI.Dossiers
             panel.pivot            = new Vector2(0.5f, 0.5f);
             panel.sizeDelta        = new Vector2(panelW, panelH);
             panel.anchoredPosition = Vector2.zero;
-            panel.gameObject.AddComponent<Image>().color = new Color(0.12f, 0.10f, 0.08f, 1f);
+            // Rounded corners to match the title bar (Stephen-ruled 2026-08-21).
+            AQTheme.Round(panel.gameObject.AddComponent<Image>(), new Color(0.12f, 0.10f, 0.08f, 1f));
 
             float cursor = panelH / 2f - 96f - 16f;
 
@@ -137,7 +138,7 @@ namespace AQ.App.UI.Dossiers
                 var rwRt = PlaceRect("Reward", box, new Vector2(textW, 32f), new Vector2(0f, nextH / 2f - 64f));
                 AddTmp(rwRt, "Comes with: " + next.reward.label, 24f,
                        new Color(0.72f, 0.68f, 0.64f, 1f), FontStyles.Normal, TextAlignmentOptions.Center);
-                var buy = PlaceButton("UNLOCK  ·  " + next.price + " CC", box,
+                var buy = PlaceButton("UNLOCK  ·  $" + next.price, box,
                                       new Color(0.18f, 0.42f, 0.28f, 1f),
                                       new Vector2(panelW - 160f, 78f), new Vector2(0f, -nextH / 2f + 52f));
                 string keyCap = characterKey;
@@ -162,6 +163,13 @@ namespace AQ.App.UI.Dossiers
             // Title-bar treatment (Stephen-ruled 2026-08-12).
             AQTheme.TitleBar(panel, def.displayName, Close,
                 "Ally's case file on this character. Unlock the next entry with CaseCash; each comes with a reward, and some pages wait for the case to close. Completing a file earns a keepsake.");
+
+            // TestFlight round 2026-09-15 (Trish, "what does 50 CC mean"): Gerald
+            // explains the file and the price on the first one opened.
+            AQ.UI.Hints.HintService.Request("casefile",
+                "A case file is what Ally knows about a person. Each entry costs CaseCash and comes with something for the board.",
+                null,
+                () => IsOpen);
         }
 
         public static void Close()

@@ -1,0 +1,266 @@
+[
+ {
+  "id": "fk_p04_01",
+  "background": "moorings",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The boatyard is at the harbour end of town, where boats come out of the water to be worked on. One crane, a set of slings under it, and a row of hulls up on blocks this morning."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Liam Bryce drives the crane. Everyone I asked on the way in called him staff. He isn't, and I'll let him say why."
+   }
+  ]
+ },
+ {
+  "id": "fk_p04_02",
+  "background": "moorings",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "A yard hand told me this while we waited for Liam to come down out of the cab."
+   },
+   {
+    "speaker": "A yard hand",
+    "emotion": "happy",
+    "line": "He sings up there. Proper tenor, not pub singing. Only with the door shut, and only when he thinks the yard's empty. Nobody's ever said a word to him about it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I stood under the cab for a while. The door was shut. I couldn't hear a thing."
+   }
+  ]
+ },
+ {
+  "id": "fk_p04_03",
+  "background": "kitchen",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Liam Bryce has known Violet Moore since the school bus, thirty-five years ago. He's the one who found her. We talked at his kitchen table."
+   },
+   {
+    "speaker": "Liam Bryce",
+    "emotion": "neutral",
+    "line": "I own a third of the yard. I bought in eight years ago and I never told anyone. A man who's staff gets asked for nothing. It was easier that way."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I asked him about the night Violet's mother died."
+   },
+   {
+    "speaker": "Liam Bryce",
+    "emotion": "sad",
+    "line": "I drove them in that night. Her and her mum in the back of my car. Four years ago. That's all there is to it."
+   }
+  ]
+ },
+ {
+  "id": "fk_p04_04",
+  "background": "kitchen",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The letter had lines about Liam. I read each of them to him."
+   },
+   {
+    "speaker": "Liam Bryce",
+    "emotion": "neutral",
+    "line": "March and July, I asked her to let me take her mum out to the point on the boat. She said no both times. It had been four years. I thought if somebody offered, she wouldn't have to be the one who decided."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "And the back bedroom."
+   },
+   {
+    "speaker": "Liam Bryce",
+    "emotion": "worried",
+    "line": "Once, in spring. The window catch had gone and she asked me to fix it. I rehung the back door the same visit. I know how that sounded at Ruby's table. I was sitting at it."
+   }
+  ]
+ },
+ {
+  "id": "fk_p04_05",
+  "background": "kitchen",
+  "nodes": [
+   {
+    "speaker": "Liam Bryce",
+    "emotion": "neutral",
+    "line": "October, in her kitchen, she told me she'd moved the spare to the second pot by the yard door. I'd noticed the new cylinder in the lock and asked. She said the old one was sticking."
+   },
+   {
+    "speaker": "Liam Bryce",
+    "emotion": "sad",
+    "line": "The day I found her the pot was empty. I saw her through the kitchen window and broke the pane by the back door. It was latched. It only catches if you lift it as you pull. I fitted it, so I know."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The pot sits under the step inside her yard, behind the wall and a gate Liam fitted. The gate latches from inside. You can't see any of it from the lane."
+   },
+   {
+    "speaker": "Liam Bryce",
+    "emotion": "worried",
+    "line": "Five of us knew that pot, and one of us is dead. And a wall can be climbed. We knew that at the table. We didn't want it."
+   }
+  ]
+ },
+ {
+  "id": "fk_p04_06",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I went back through the tape that night and wrote Liam's answers down beside the letter's lines."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Every one of them is true. He asked about the boat, twice. He was in the bedroom. He hung the door. He fitted the gate and the latch and knew where the key was. He's told me all of it himself."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "And every one of them, on its own, is a friend doing a job for a friend."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "Laid side by side, they read like a case. There's a word for the way they fit him, and I'm not going to say it on air, because I can't source it to anyone but me."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "So here it is, off air. Built. It reads like a case built to fit him. I don't know that. I'm writing it down so I can't pretend later I didn't think it."
+   }
+  ]
+ },
+ {
+  "id": "fk_p04_07",
+  "background": "kitchen",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "August 2014, Violet's kitchen, a bottle open on the table. One question about her mother's house, and one laugh. Here's Liam's half, the way he gave it, flat."
+   },
+   {
+    "speaker": "Liam Bryce",
+    "emotion": "neutral",
+    "line": "There was a question about her mum's house, and there was a laugh. I heard it one way. Somebody else in that kitchen heard it another, and we've each stuck to it for twelve years."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I asked him whose side Violet was on. He said he didn't know. Nobody I've asked does."
+   }
+  ]
+ },
+ {
+  "id": "fk_p04_08",
+  "background": "moorings",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The slip boatsheds, twenty to six in the morning. A row of brick boat lockers along the back wall, each with its own steel door. The slip road runs past the front, where the vans park."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "There's no camera on any of it. The boat owners are here from first light. Anyone with a key and a reason can walk this corridor and nobody looks twice."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "Violet's locker is a brick bay with a steel door. Her sister had the padlock cut. It's been empty since."
+   }
+  ]
+ },
+ {
+  "id": "fk_p04_09",
+  "background": "studio",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Late in the week a boat owner rang the Tip Line. He works the slip before the tide and knew Violet by sight. She lettered his boat."
+   },
+   {
+    "speaker": "The boat owner",
+    "emotion": "neutral",
+    "line": "The Monday the notes came, I was down there at twenty past seven. A young man was in the corridor with something flat under his arm. He was near one of the doors. From where I stood, I couldn't tell which door, and I wouldn't swear to the man."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "That was hours before the four came at night. It is enough to file, not enough to name anyone. It is not going on air."
+   }
+  ],
+  "decision": {
+   "prompt": "Who gets the first clean look?",
+   "options": [
+    {
+     "label": "Send Del the clean tip",
+     "flag": "aq.fk.d2.direct",
+     "result": "Del got the account clean. She asked me to stay off the sheds while they work it, and I said yes. I will not see the corridor again or ask the boat owner twice."
+    },
+    {
+     "label": "Map the sheds first",
+     "flag": "aq.fk.d2.market",
+     "result": "I spent a day there first. I gained a second witness and the corridor layout. Del got it a day late, and Liam stopped answering me."
+    }
+   ]
+  },
+  "after": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "Either way, I am holding an unnamed man, something flat and an early hour. Nothing more."
+   }
+  ]
+ },
+ {
+  "id": "fk_p04_10",
+  "background": "studio_onair",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "This week, Liam Bryce. He has known Violet since school, drives the boatyard crane and quietly owns a third of the yard."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The letter says he offered twice to take her mother's ashes out by boat. He fixed her bedroom window, rehung her back door and fitted her yard gate."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Every fact happened. Together they can describe a case or a friend helping."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "Liam no longer answers me. Tonight is one afternoon at his table. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.",
+    "variant": "aq.fk.d2.market"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "Del asked me to stay off the sheds, and I will. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight.",
+    "variant": "aq.fk.d2.direct"
+   }
+  ]
+ }
+]

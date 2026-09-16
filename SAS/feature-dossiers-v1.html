@@ -1,16 +1,49 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><style>
-@page { margin: 16mm 14mm; }
-body { font-family: Georgia, serif; color: #1c1a17; font-size: 10.5pt; line-height: 1.5; }
-h1 { font-size: 17pt; border-bottom: 3px solid #1c1a17; padding-bottom: 6px; }
-h2 { font-size: 13pt; margin-top: 20px; border-bottom: 1px solid #999; padding-bottom: 3px; }
-h3 { font-size: 12pt; margin: 16px 0 4px; color: #4a3520; page-break-after: avoid; }
-table { border-collapse: collapse; margin: 6px 0; width: 100%; page-break-inside: avoid; }
-td, th { border: 1px solid #bbb; padding: 4px 8px; vertical-align: top; text-align: left; }
-th { background: #efe9df; }
-blockquote { background: #f4efe6; border-left: 4px solid #4a3520; margin: 10px 0; padding: 8px 14px; }
-code { font-family: Consolas, monospace; font-size: 9.5pt; background: #f0ede6; padding: 0 3px; }
-em { color: #4a3520; }
-</style></head><body><h1>Character Dossiers ("Case Files") — design v1 + Ep1 fact sets — <strong>RULED &amp; BUILT 2026-08-11</strong></h1>
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Character Dossiers ("Case Files") — design v1 + Ep1 fact sets — RULED & BUILT 2026-08-11</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0;
+         font-size: 10.5pt; line-height: 1.55; }
+  h1 { font-size: 20pt; letter-spacing: .2px; border-bottom: 3px solid #1c1a17;
+       padding-bottom: 8px; margin: 0 0 14px; }
+  h2 { font-size: 13.5pt; margin: 26px 0 8px; padding-bottom: 4px;
+       border-bottom: 1.5px solid #1c1a17; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 18px 0 6px; color: #3a352d; page-break-after: avoid; }
+  p { margin: 0 0 9px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  hr { border: 0; border-top: 1px solid #ccc5b8; margin: 22px 0; }
+  code { font-family: Consolas, monospace; font-size: 9pt; color: #7a5c1f;
+         background: #f6f2e8; padding: 0 3px; border-radius: 2px; }
+  del { color: #999; }
+  blockquote { border-left: 3px solid #b9ae99; background: #faf8f2; margin: 10px 0;
+               padding: 8px 14px; page-break-inside: avoid; }
+  blockquote p { margin: 0 0 6px; }
+  blockquote p:last-child { margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 14px;
+          font-size: 9pt; table-layout: fixed; page-break-inside: avoid; }
+  th { text-align: left; background: #1c1a17; color: #f5f1e8; padding: 5px 7px;
+       font-size: 8.5pt; letter-spacing: .3px; }
+  td { vertical-align: top; padding: 5px 7px; border-bottom: 1px solid #e3ded2;
+       word-wrap: break-word; }
+  tr:nth-child(even) td { background: #faf8f2; }
+  .cards { margin: 10px 0 16px; }
+  .card { border: 1px solid #c9c1b0; border-left: 4px solid #1c1a17; border-radius: 3px;
+          padding: 8px 11px 9px; margin-bottom: 9px; background: #fdfcf8;
+          page-break-inside: avoid; font-size: 9.5pt; }
+  .chead { font-size: 8.5pt; color: #6b6357; margin-bottom: 4px; letter-spacing: .3px; }
+  .cid { font-weight: bold; color: #1c1a17; margin-right: 10px; }
+  .cphase { margin-right: 10px; }
+  .ccls { float: right; font-style: italic; }
+  .cdec { font-weight: bold; margin-bottom: 6px; }
+  .card dl { margin: 0; }
+  .card dt { font-size: 8pt; text-transform: uppercase; letter-spacing: .6px;
+             color: #8a6d3b; margin-top: 5px; }
+  .card dd { margin: 1px 0 0; }
+  .rank .order { margin: 2px 0 5px; font-size: 10pt; }
+  .rank .reason { color: #3a352d; }
+</style></head><body>
+<h1>Character Dossiers ("Case Files") — design v1 + Ep1 fact sets — <strong>RULED &amp; BUILT 2026-08-11</strong></h1>
 <blockquote>
 <p><strong>Stephen's rulings (2026-08-11), all applied:</strong>
 1. "Appears in N scenes" REMOVED from the profile modal — meta copy breaks the fiction.
@@ -22,7 +55,10 @@ em { color: #4a3520; }
 6. Final-fact gating on episode resolution confirmed.
 7. No ingots as rewards confirmed.
 8. Completion cassette slots stay reserved (Dot's ships now with her existing clip).
-9. Mrs. Vale: no dossier for now.</p>
+9. Mrs. Vale: no dossier for now.
+10. <strong>2026-08-12 addendum:</strong> Vera's dossier CUT (Stephen-ruled) — her fact set
+    below stays as authored copy in case she ever earns a file. Live Ep1 set =
+    five dossiers, 2,500 CC total.</p>
 <p><strong>Build (same day):</strong> <code>DossierCatalog</code> / <code>DossierService</code> / <code>DossierPopup</code> +
 <code>AllyDossierEntry</code> in <code>Assets/Scripts/UI/Dossiers/</code>; CASE FILE button on the
 profile modal; Ally's file opens from the HUD bust; QA menu under AQ/QA/Dossiers.</p>
@@ -88,7 +124,7 @@ anything that adds connective tissue beyond the bible is flagged
 <tr>
 <td>2</td>
 <td>100</td>
-<td>The silver locket she never takes off holds a photo of her father. Thomas Quinn wrote for the Gazette. He died when she was thirteen.</td>
+<td>The silver locket she never takes off holds a photo of her father. Thomas Quinn wrote for the Gazette. He died when she was sixteen.</td>
 <td>Recorder &amp; Headphones (audio T3)</td>
 </tr>
 <tr>
@@ -144,7 +180,7 @@ anything that adds connective tissue beyond the bible is flagged
 <tr>
 <td>4</td>
 <td>200 · gated</td>
-<td>He checks Ally's ribs when he hugs her. Old habit. He has been inspecting her for damage since she was thirteen. <strong>[INVENTION: extends the L4 rib-check canon into a habit]</strong></td>
+<td>He checks Ally's ribs when he hugs her. Old habit. He has been inspecting her for damage since she was sixteen. <strong>[INVENTION: extends the L4 rib-check canon into a habit]</strong></td>
 <td>Carbon Copy (special)</td>
 </tr>
 <tr>
@@ -226,7 +262,7 @@ anything that adds connective tissue beyond the bible is flagged
 <tr>
 <td>3</td>
 <td>150</td>
-<td>At twenty-three, a rookie constable, she stood on the Quinn doorstep the night Thomas died. Ally was thirteen. Del has been quietly watching out for her ever since.</td>
+<td>At twenty, a rookie constable, she stood on the Quinn doorstep the night Thomas died. Ally was sixteen. Del has been quietly watching out for her ever since.</td>
 <td>Search Warrant (special)</td>
 </tr>
 <tr>
@@ -330,4 +366,5 @@ anything that adds connective tissue beyond the bible is flagged
 <p>All six open rulings answered by Stephen; see the banner at the top of this
 document. Nothing here remains open. Future work notes: Ally's completion
 cassette concept still wants an idea (pilot stinger? Thomas's old voicemail,
-someday); Mo/Del/Gerald/Vera cassettes ride the VO recording queue.</p></body></html>
+someday); Mo/Del/Gerald/Vera cassettes ride the VO recording queue.</p>
+</body></html>

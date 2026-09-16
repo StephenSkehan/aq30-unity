@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P10_08A
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P10_08A_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e101, type: 3}
+  nodes:
+  - id: FK_P10_08A_N1
+    speaker: "Ally Quinn"
+    line: "Because the mark went out on episode nine, every claim that came after it was worth nothing. Anyone could say they'd seen it. Hundreds did."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P10_08A_N2
+    choices: []
+  - id: FK_P10_08A_N2
+    speaker: "Ally Quinn"
+    line: "For eight days the sighting lines ran hot, here and four hundred miles away. Del told me they had to sort one true message from a flood that only knew what I'd said."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P10_08A_N3
+    choices: []
+  - id: FK_P10_08A_N3
+    speaker: "Ally Quinn"
+    line: "They got there, by hand, the hard way. And the mark sits in the public record now. It'll be there forever, because I put it there."
+    portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []
