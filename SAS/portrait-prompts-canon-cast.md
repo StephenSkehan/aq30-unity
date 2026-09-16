@@ -17,7 +17,7 @@
 
 ```
 Match the attached image's art style exactly: stylized painterly 3D-illustration
-look, expressive oversized eyes, soft cinematic key light with a warm rim light,
+look, eyes slightly larger than life (about one fifth of face height, never a third; re-ruled 2026-09-16 with Ally reference 4B), soft cinematic key light with a warm rim light,
 rich saturated color against muted noir backgrounds. This is a character portrait
 for a true-crime detective game set in a coastal city at night.
 

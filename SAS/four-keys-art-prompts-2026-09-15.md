@@ -36,7 +36,7 @@
 
 ```
 Match the attached images' art style exactly: stylized painterly 3D-illustration
-look, expressive slightly enlarged eyes, clean sculpted forms, soft cinematic key
+look, eyes slightly larger than life, about one fifth of face height and never a third (Ally reference 4B, 2026-09-16), clean sculpted forms, soft cinematic key
 light with a warm rim light, rich saturated local colour against a plain very
 dark navy background (#0A1220) with a soft vignette. This is a dialogue portrait
 for a true-crime podcast game set in a small coastal city; it will be shown as a
