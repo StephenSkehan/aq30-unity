@@ -16,13 +16,13 @@
 | Ally | 4B approved, eyes one fifth, transparent, 7 frames in game (second frames deleted) | `Assets/Art/Characters/Ally/` |
 | Ruby | v2 approved: late thirties, round face, freckles, hazel, ash-brown bob; 7 frames in game; neutral's brows slightly anxious (leave unless it jars) | `Assets/Art/Characters/Ruby/` |
 | Del | Stephen has resized the eyes in chat; NOT exported or sent; needs transparent PNG + 7 frames | pending |
-| Liam | neutral approved pending edit: remove ear defenders, add small black two-way radio at collar, eyes to camera, nudge toward Ally style; then 7-frame prompt (Claude to write) | pending |
+| Liam | neutral APPROVED 2026-09-17 (radio on chest, eyes to camera); seven-frame prompt issued; awaiting `liam_bryce_emotion_set.zip` (watch angry: no scowl) | pending import |
 | Gerald, Mo, Dot, Tip Line | still on the old eye size; same edit prompt shape as Del's | pending |
 | Violet, Margo, Brad, Tessa, sister, diner owner, cinema owner, 2 signwriters, yard hand, boat owner | not started; blocks in the kit | pending |
 
 ## Backgrounds
 
-- **Ruby's kitchen**: approved composition (third image of the 18:34 set: long table, four chairs on legs, pot-belly stove on the floor with flue and log basket, pendant, harbour + lighthouse, piano through the doorway). Awaiting the 9:19.5 extend export (1284x2778). On import: add location entry `ruby_kitchen`, re-point kitchen scenes (ch2, 4, 5, 7), and change Ruby's line "had the heater on before she knocked" to "had the stove lit before she knocked" (fk_p02_01).
+- **Ruby's kitchen**: IN GAME (ce5615f). GPT's extend came back at 853x1844; Claude upscaled to 1284x2778 locally (PIL, Lanczos). Location entry `ruby_kitchen` added with four DRAFT history lines; kitchen scenes (ch2, 4, 5, 7) re-pointed; chapter 2 says stove not heater. Editor import/recompile of this was still pending at close (editor idle in background); verify no console errors next session.
 - Remaining 8 backgrounds not started.
 
 ## Open items
@@ -30,3 +30,8 @@
 - b9 build after Trish's chapter 2 read (or before, if she prefers the phone).
 - Ruby case file copy, Liam case file copy (writing, not art).
 - TODO from 09-15: Fast Enter Play Mode experiment; Unity patch to 6000.3.24f1 + Firebase 13.16; Xcode 27 by April 2027; `SAS/ipm.jpg` untracked, delete or keep.
+
+## Added at close of 2026-09-17 morning
+
+- Editor gotcha today: bridge calls (recompile, refresh) queue for minutes while the editor sits unfocused; results arrive as background task notifications. Verify `Library/ScriptAssemblies/Assembly-CSharp.dll` timestamp and Editor.log before trusting a "clean" claim.
+- Three reference images Stephen dropped in `SAS/` are untracked (`ally.jpg`, `ipm.jpg`, the dock-worker stock photo). His call to delete.
