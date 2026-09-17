@@ -19,7 +19,12 @@ namespace AQ.App.UI.Dossiers
     public static class DossierService
     {
         private const string PrefsKey  = "aq.dossiers.state";
-        private const string CloseFlag = "aq.lead.e1_close.seen";
+        // Catalog-less fallback; the running episode's dossierGateFlag
+        // (EpisodeCatalog) is the real gate. All gated facts today are Ep1
+        // content; when a later episode ships its own gated facts, the gate
+        // moves onto the fact itself (per-fact episode), not this per-episode
+        // lookup.
+        private const string FallbackCloseFlag = "aq.lead.e1_close.seen";
 
         [Serializable] private class DTO { public List<string> keys = new(); public List<int> counts = new(); }
 
@@ -54,7 +59,8 @@ namespace AQ.App.UI.Dossiers
         public static bool NextIsSealed(string key)
         {
             var fact = NextFact(key);
-            return fact != null && fact.gatedOnEpisodeClose && !DialogueFlags.Has(CloseFlag);
+            return fact != null && fact.gatedOnEpisodeClose &&
+                   !DialogueFlags.Has(Episodes.EpisodeRuntime.DossierGateFlagOr(FallbackCloseFlag));
         }
 
         public static bool TryUnlockNext(string key)
@@ -97,13 +103,14 @@ namespace AQ.App.UI.Dossiers
                     // A reward can outrun board discovery (e.g. a T6 flute) —
                     // it is in Ally's file now, so it counts as seen.
                     Common.ItemDiscoveryService.Mark(reward.family, reward.tier);
+                    // announce: the advise popup surfaces the reward + flies it
+                    // to the Stash (Stephen-ruled 2026-08-22).
                     OverflowBucketService.Push(new OverflowTileData
                     {
                         kind   = OverflowKind.Item,
                         family = reward.family,
                         tier   = reward.tier
-                    });
-                    FlightFX.FlyToOverflow();
+                    }, announce: true);
                     break;
                 case DossierRewardKind.Special:
                     SpecialItemsService.Grant(reward.special); // Case Kit toast rides the tray bridge

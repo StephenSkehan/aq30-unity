@@ -1,0 +1,344 @@
+[
+ {
+  "id": "fk_p10_01",
+  "background": "studio_dawn",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Day 326. The morning after the description aired, there was a private message waiting for me. Not through the Tip Line. Sent to me, by name."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "A woman four hundred miles away. She lets rooms in her house. She wrote that she had a quiet lodger, under a name I'd never heard."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "She'd been listening since the third week. Six weeks of strangers on this show describing one man. Keys moved twice on a table. Thank you, like it costs him. Up at five to run. She said she knew every one of them."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "surprised",
+    "line": "And on his wall, she wrote, there had been a black and gold thing. It hung there until Tuesday. Now there's a pale gap where it was."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "She gave me her address. She asked me to send the police, not to come myself, and never to say her name."
+   }
+  ]
+ },
+ {
+  "id": "fk_p10_02",
+  "background": "del_bench",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Seven o'clock the same morning I was on Del's bench with all of it. Her message. The address. And the download map beside it, the one town that had been listening since the third week."
+   },
+   {
+    "speaker": "Del Cruz",
+    "emotion": "neutral",
+    "line": "Same town. Right. Go home, Ally. Don't ring me today. I'll ring you."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "She moved inside the day. By that evening it wasn't hers any more. Another force had it, four hundred miles up the map, and that's the last thing I'm going to say about them."
+   }
+  ]
+ },
+ {
+  "id": "fk_p10_03",
+  "background": "studio_dawn",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "Day one of the wait. I've carried a lot this year that I couldn't say out loud. This was the heaviest thing I've ever held, and I said it to nobody."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Not Ruby. Not Liam. Nobody in this building. I read the Tip Line, answered what I could, and went home."
+   }
+  ]
+ },
+ {
+  "id": "fk_p10_04",
+  "background": "studio",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Episode ten had one job. It had to sound exactly like episode nine."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Same length. Same running order. A recap, two listener letters, a word about the weather off the harbour. Nothing new. Nothing that sounded like a woman waiting for a phone call."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "Because he listens. He's heard every week of this. And this week had to sound like all the others, or it was for nothing."
+   }
+  ]
+ },
+ {
+  "id": "fk_p10_05",
+  "background": "studio_dawn",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "What found him was never evidence. That came after. Keys moved twice on a table. Thank you, said like it cost him something. Up at five to run. And he agreed with whoever had spoken last."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Six weeks of habits, told on this show by people who loved him. Heard by a woman who dusts his room. That's all it was."
+   }
+  ]
+ },
+ {
+  "id": "fk_p10_06",
+  "background": "studio_onair",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Day 332. Episode ten went out at the usual time. It said nothing, which was the point."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "Then silence. No call from Del. Nothing from four hundred miles away. I went home and didn't sleep much."
+   }
+  ]
+ },
+ {
+  "id": "fk_p10_07",
+  "background": "studio_onair",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "surprised",
+    "line": "Day 333. Del rang early. A man had been arrested four hundred miles away."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The name he'd been living under wasn't new. It had sat for three years in a missing-person file in Del's own precinct. The deckhand's name, from the skipper's letter."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "Brad Collins. Alive. I'd carried that for weeks without saying it. It didn't land like news. It landed like something I already knew, said out loud by someone else."
+   }
+  ]
+ },
+ {
+  "id": "fk_p10_08a",
+  "background": "studio",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "Because the mark went out on episode nine, every claim that came after it was worth nothing. Anyone could say they'd seen it. Hundreds did."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "For eight days the sighting lines ran hot, here and four hundred miles away. Del told me they had to sort one true message from a flood that only knew what I'd said."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "They got there, by hand, the hard way. And the mark sits in the public record now. It'll be there forever, because I put it there."
+   }
+  ]
+ },
+ {
+  "id": "fk_p10_08h",
+  "background": "studio",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Because I held the mark back, Del had one thing that had never been said out loud anywhere."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "She asked her one question about what had hung on that wall. Her answer matched the thing I'd never said. One chain, checked link by link, and it held."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The mark never went out. It never will. It's in a file, and it's staying there."
+   }
+  ]
+ },
+ {
+  "id": "fk_p10_09a",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I've gone back over Margo. Everything she did in the middle weeks, I've put in a different order."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "There was one line in the letter nobody at Ruby's table could check. The line about Brad and the van money. And in the seventh week, the estate asked Margo about that money."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "She said one thing, to one person, and to nobody else. The thing in the cupboard is wrong. And she stepped back from a friend she loved rather than say it at a table where he sat."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "I don't know what Margo knew. I know what fits. The frightened one, the one who went quiet, may have been the only friend who read the letter's one kindness for what it was."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "That's the reading. It's mine, and it stays mine. With the mark out there, the record's too loud now to check anything softer against it. Margo's one sentence will never be more than what fits."
+   }
+  ]
+ },
+ {
+  "id": "fk_p10_09h",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I've gone back over Margo. Everything she did in the middle weeks, I've put in a different order."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "There was one line in the letter nobody at Ruby's table could check. The line about Brad and the van money. And in the seventh week, the estate asked Margo about that money."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "She said one thing, to one person, and to nobody else. The thing in the cupboard is wrong. And she stepped back from a friend she loved rather than say it at a table where he sat."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "I don't know what Margo knew. I know what fits. The frightened one, the one who went quiet, may have been the only friend who read the letter's one kindness for what it was."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "That's the reading. It's mine. The record's clean, one chain, checked all the way down. Margo's sentence sits beside it. It isn't part of it. She never said a word she couldn't prove, and I won't either."
+   }
+  ]
+ },
+ {
+  "id": "fk_p10_10a",
+  "background": "studio_onair",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "A short update, released tonight, hours after the news. Not an episode. What I know at nine o'clock."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Brad Collins is alive. He was arrested this morning, four hundred miles from here, under a name that had sat three years in a missing-person file. That undoes a lot. The month this show spent on a dead man, for a start."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The war between Liam and Ruby is over. They were in the same room this week, for the first time since the sixth week. The woman who wrote to me won't be named on this show. She asked for that and she has it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "variant": "aq.fk.d3.verbatim",
+    "line": "Tessa rang me tonight, the first time since the summer. She said the exact words were worth it. That's hers to say, and she said it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "variant": "aq.fk.d3.paraphrase",
+    "line": "Tessa told me she was glad the words that went out weren't hers. That's hers to say, and she said it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "Violet's sister asked Liam this time, and he took her and their mother out to the point on his boat. Ruby carried the tube down the slip."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I don't know what was in the true letter, or whether there was one. I know a man believed dead was in a room with a black and gold thing on his wall. That's the whole of what I can say for certain."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "What I described, I erased. The gap on his wall appeared the day after the description aired. And the mark's in the public record now, for good. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+   }
+  ]
+ },
+ {
+  "id": "fk_p10_10h",
+  "background": "studio_onair",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "A short update, released tonight, hours after the news. Not an episode. What I know at nine o'clock."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Brad Collins is alive. He was arrested this morning, four hundred miles from here, under a name that had sat three years in a missing-person file. That undoes a lot. The month this show spent on a dead man, for a start."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The war between Liam and Ruby is over. They were in the same room this week, for the first time since the sixth week. The woman who wrote to me won't be named on this show. She asked for that and she has it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "variant": "aq.fk.d3.verbatim",
+    "line": "Tessa rang me tonight, the first time since the summer. She said the exact words were worth it. That's hers to say, and she said it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "variant": "aq.fk.d3.paraphrase",
+    "line": "Tessa told me she was glad the words that went out weren't hers. That's hers to say, and she said it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "Violet's sister asked Liam this time, and he took her and their mother out to the point on his boat. Ruby carried the tube down the slip."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I don't know what was in the true letter, or whether there was one. What's on the record is only what could be checked. And I know a man believed dead was in a room with a black and gold thing on his wall."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "What I described, I erased. The gap on his wall appeared the day after the description aired. The rest stays in a file, where it did its work. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+   }
+  ]
+ }
+]

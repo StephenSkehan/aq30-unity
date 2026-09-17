@@ -1,0 +1,1037 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Ally Quinn Episode Story Generation and Falsification Prompt v2.1-RC4</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0;
+         font-size: 10.5pt; line-height: 1.55; }
+  h1 { font-size: 20pt; letter-spacing: .2px; border-bottom: 3px solid #1c1a17;
+       padding-bottom: 8px; margin: 0 0 14px; }
+  h2 { font-size: 13.5pt; margin: 26px 0 8px; padding-bottom: 4px;
+       border-bottom: 1.5px solid #1c1a17; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 18px 0 6px; color: #3a352d; page-break-after: avoid; }
+  p { margin: 0 0 9px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  hr { border: 0; border-top: 1px solid #ccc5b8; margin: 22px 0; }
+  code { font-family: Consolas, monospace; font-size: 9pt; color: #7a5c1f;
+         background: #f6f2e8; padding: 0 3px; border-radius: 2px; }
+  del { color: #999; }
+  blockquote { border-left: 3px solid #b9ae99; background: #faf8f2; margin: 10px 0;
+               padding: 8px 14px; page-break-inside: avoid; }
+  blockquote p { margin: 0 0 6px; }
+  blockquote p:last-child { margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 14px;
+          font-size: 9pt; table-layout: fixed; page-break-inside: avoid; }
+  th { text-align: left; background: #1c1a17; color: #f5f1e8; padding: 5px 7px;
+       font-size: 8.5pt; letter-spacing: .3px; }
+  td { vertical-align: top; padding: 5px 7px; border-bottom: 1px solid #e3ded2;
+       word-wrap: break-word; }
+  tr:nth-child(even) td { background: #faf8f2; }
+  .cards { margin: 10px 0 16px; }
+  .card { border: 1px solid #c9c1b0; border-left: 4px solid #1c1a17; border-radius: 3px;
+          padding: 8px 11px 9px; margin-bottom: 9px; background: #fdfcf8;
+          page-break-inside: avoid; font-size: 9.5pt; }
+  .chead { font-size: 8.5pt; color: #6b6357; margin-bottom: 4px; letter-spacing: .3px; }
+  .cid { font-weight: bold; color: #1c1a17; margin-right: 10px; }
+  .cphase { margin-right: 10px; }
+  .ccls { float: right; font-style: italic; }
+  .cdec { font-weight: bold; margin-bottom: 6px; }
+  .card dl { margin: 0; }
+  .card dt { font-size: 8pt; text-transform: uppercase; letter-spacing: .6px;
+             color: #8a6d3b; margin-top: 5px; }
+  .card dd { margin: 1px 0 0; }
+  .rank .order { margin: 2px 0 5px; font-size: 10pt; }
+  .rank .reason { color: #3a352d; }
+</style></head><body>
+<!-- pdf-title: Ally Quinn Episode Story Generation and Falsification Prompt v2.1-RC4 -->
+
+<h1>AQ-NAR-PROMPT-EP1-CHALLENGERS · VERSION 2.1-RC4</h1>
+<h1>ALLY QUINN EPISODE STORY GENERATION AND FALSIFICATION PROMPT</h1>
+<h2>STATUS: REVIEW CANDIDATE — DO NOT EXECUTE</h2>
+<p><strong>Document ID:</strong> AQ-NAR-PROMPT-EP1-CHALLENGERS · <strong>Version:</strong> 2.1-RC4 · <strong>Date:</strong> 2026-08-24 · <strong>Owner:</strong> Indigo Chimp Studios · <strong>Change class:</strong> major · <strong>Supersedes on release:</strong> v2.0 · <strong>Governing source:</strong> <code>backbone-consensus-v1.3-FINAL</code></p>
+<p><strong>Execution purpose:</strong> a two-mode workflow. Mode A funnels premise sketches through the gates. Mode B develops one named survivor into a complete package.</p>
+<p><strong>This document must not be executed.</strong> It is a review candidate awaiting conformance audit by the second reviewer against v2.0, the agreed thirty-four-item change list, and the governing source. On completion of that audit and correction of findings, the sole final v2.1 issues with status READY FOR EXECUTION.</p>
+<h2>Revision history</h2>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Status</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>24 Aug 2026</td>
+<td>Retired</td>
+<td>Initial unversioned workflow. Tested story architecture; did not make operational plausibility a precondition. Promoted The Wrong Name despite an unverified mortuary process.</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>24 Aug 2026</td>
+<td>Superseded on release of 2.1</td>
+<td>Added Kill Gate Zero, primary-source process validation, authority and custody mapping, competent-professional objections, antagonist least-cost testing, no-quota rule, separate falsification, premise graveyard, UNKNOWN-equals-FAIL governance.</td>
+</tr>
+<tr>
+<td>2.1-RC1</td>
+<td>24 Aug 2026</td>
+<td>Returned for correction</td>
+<td>Driven by the backbone consensus rather than by a failure. Two output modes. Interleaved family generation. Per-family no-quota rule. Replaced jeopardy gate. Renamed Gate 6. New Gate 9, rational resistance. Five-field access map. Consequence-and-agency gate with the material-loss clause. Three-axis taxonomy with the consecutive-repeat rule. Forming-record carve-out for fresh cases. Restructured territory. Self-contained: all mandatory wording inlined.</td>
+</tr>
+<tr>
+<td>2.1-RC2</td>
+<td>24 Aug 2026</td>
+<td>Returned for correction</td>
+<td>Attempted the ten RC1 audit corrections. Eight were fully resolved. Kill Gate Zero remained paraphrased rather than verbatim, and the Mode A Gate 1 and rotating-round implementation remained incomplete. RC3 completed those corrections and addressed the additional neutrality and control findings returned by the RC2 re-audit. Attempted: fresh-case neutrality, two restored "automatically" clauses, resistance-responds-when-challenged, deletion of unagreed Gate 4 examples and Gate 7 addition, inlined candidate dispositions, erratum reference and metadata title, Mode A assessment of the planned first beat, eight seeds per family, three restored checklist rows, recording-law publishing exceptions. Builder metadata-title defect fixed at source.</td>
+</tr>
+<tr>
+<td>2.1-RC3</td>
+<td>24 Aug 2026</td>
+<td>Returned for correction</td>
+<td>Corrected the six findings of the RC2 re-audit: Kill Gate Zero replaced with the v2.0 block verbatim rather than paraphrased; Success Definition contradiction on Gate 1 in Mode A; rotating-round arithmetic made exact at three, three, two; both family asymmetries declared rather than one; execution record splits candidate insufficiency from backbone desk failure; wrongful-conviction cap recorded but not binding during Mode A. Added the genre-anatomy Mode B admission rule. Returned because the genre-anatomy consequence contained incompatible instructions and the RC2 revision row was historically inaccurate.</td>
+</tr>
+<tr>
+<td><strong>2.1-RC4</strong></td>
+<td><strong>24 Aug 2026</strong></td>
+<td><strong>Review candidate</strong></td>
+<td><strong>Corrected the two findings of the RC3 re-audit: the genre-anatomy consequence no longer instructs Mode A to regenerate premises it must reject as duplicates, and now requires replacement premises instead; and the RC2 revision row now records accurately that eight of ten corrections landed and two remained incomplete.</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Change-control rule.</strong> Major versions change gates, workflow or output authority. Minor versions add constraints or sources without changing the decision process. Patch versions correct wording only. Never overwrite a controlled version. Issue a new filename and revision row.</p>
+<p><strong>Self-containment rule.</strong> This document carries every mandatory gate, taxonomy and output instruction in full. It cites its governing source for provenance only. <strong>No execution step may require a reader to open another document.</strong></p>
+<hr />
+<h2>How to use this prompt</h2>
+<p>Attach the six current project authorities named in the source hierarchy, plus the two disposition documents named in the territory section. Do not attach the stale art-pipeline documents.</p>
+<p>Select a mode at invocation.</p>
+<p><strong>Mode A, premise funnel.</strong> Generates gated premise sketches across three case families. It produces <strong>no</strong> cold opens, titles, elevator pitches, rankings, incumbent comparisons or table-read recommendations. It ends at premise sketches and stops.</p>
+<p><strong>Mode B, named-premise development.</strong> Develops one premise that has already survived Mode A and the desk-gate review into the complete package.</p>
+<h3>What this process can and cannot promise</h3>
+<p>It can greatly reduce believable-process failures and prevent an unverified premise reaching development. It cannot guarantee that every factual assumption is correct, or that a story is superior before specialist review and player testing. The required safeguard is that <strong>uncertainty stops advancement instead of being hidden in a footnote</strong>.</p>
+<h3>Expected result, Mode A</h3>
+<ul>
+<li>Up to nine surviving premise sketches, up to three per family, and fewer where gates eliminate candidates.</li>
+<li>A documented attrition path per family.</li>
+<li>Authoritative research for every premise-dependent institutional process.</li>
+<li>A per-family survivor count, which is itself a result.</li>
+<li><strong>No ranking and no recommendation.</strong></li>
+</ul>
+<hr />
+<h1>BEGIN EXECUTION PROMPT</h1>
+<h2>Core task</h2>
+<p><strong>Mode A.</strong> Target nine surviving premise sketches, up to three per case family. <strong>It may return fewer when gates eliminate candidates. It must never manufacture nine by softening a gate.</strong> Attempt three surviving premises in each family and report zero to three survivors per family after all gates.</p>
+<p><strong>Mode B.</strong> Develop the single named premise supplied at invocation into the complete package in the Mode B output contract.</p>
+<h2>Your roles</h2>
+<p>Senior crime-thriller architect, interactive narrative designer, procedural researcher and constructive adversary. <strong>These roles are sequential, not blended.</strong> Research and falsification happen before creative development.</p>
+<h2>Success definition</h2>
+<p>A successful execution is not one that produces a full slate. It is one that <strong>refuses unbelievable premises early</strong> and produces only candidates whose core events, institutions, evidence access and antagonist behaviour survive scrutiny.</p>
+<ul>
+<li>Believable does not mean documentary-dry. It means extraordinary events arising from credible human actions, authority, access and consequences.</li>
+<li><strong>Cold-open compulsion remains UNKNOWN until blind testing.</strong> Mode A does not draft or evaluate a performed cold open; it assesses only whether the planned first thirty seconds satisfy Gate 1's desk requirements.</li>
+<li>No scores or percentages. PASS, FAIL or UNKNOWN.</li>
+</ul>
+<h2>No-quota rule, binding per family</h2>
+<p>Never lower a gate, soften a failure, or carry a premise-dependent UNKNOWN as a caveat in order to return a full slate. <strong>UNKNOWN on the foundation of a story is FAIL.</strong></p>
+<p>The rule binds <strong>per family</strong>. If a family cannot supply three premises that pass every gate, return fewer for that family and say so plainly.</p>
+<blockquote>
+<p><strong>If either contested-record family cannot supply at least two premises that pass every desk gate, record a desk failure for that family. Do not replenish it using another family.</strong></p>
+</blockquote>
+<p>A family-level desk failure is a result, reported as such. It is the cheapest available falsification of the backbone hypothesis and it occurs before any tester is involved.</p>
+<h2>The backbone under test</h2>
+<blockquote>
+<p><strong>Internal engine.</strong> The record is wrong, and somebody is still living with the consequence.</p>
+<p><strong>Player-facing promise.</strong> Ally Quinn reopens the cases Havenbay has decided are over.</p>
+<p><strong>Episode construction rule.</strong> A contested record, a live human consequence, rational resistance, reconstructive play, consequential agency, and an accountable resolution.</p>
+</blockquote>
+<p><strong>This is not canon.</strong> It is a hypothesis awaiting a spoken-opening test that this prompt exists to feed.</p>
+<blockquote>
+<p><strong>Generate every family with equal effort. Do not use the backbone sentence as selling language for any family, and do not privilege contested-record premises during selection.</strong></p>
+</blockquote>
+<h2>The six mandatory elements</h2>
+<p>Every premise must contain all six. Any one missing is a REWORK.</p>
+<ol>
+<li><strong>Contested record.</strong> An official, accepted or socially dominant account, stateable plainly in one sentence.</li>
+<li><strong>Live human consequence.</strong> A named living person under a consequence that is still operating. Not a category. Not historical suffering that has stopped.</li>
+<li><strong>Rational resistance.</strong> See Gate 9.</li>
+<li><strong>Reconstructive play.</strong> The merge requirements <em>are</em> the reconstruction, not the price of reaching it. The physical activity is named at premise stage.</li>
+<li><strong>Consequential agency.</strong> The consequence-and-agency gate, in full.</li>
+<li><strong>Accountable resolution.</strong> The dramatic question is answered and publication is reckoned with. A conviction is not required.</li>
+</ol>
+<h3>The forming-record provision, for fresh cases</h3>
+<blockquote>
+<p>For a fresh case, the contested record is an official, institutional or socially dominant account <strong>already forming and directing present action</strong>. It need not be formally closed, but it must be stateable in one sentence, supported by a credible mechanism, and capable of harming a named living person if accepted.</p>
+</blockquote>
+<p><strong>Record this as a known stage-of-record asymmetry in the execution report.</strong></p>
+<p>This is the only difference in how the three families may satisfy the six mandatory premise elements. <strong>A separate agreed diagnostic asymmetry appears in the no-quota rule:</strong> inability of either contested-record family to supply two desk-gate survivors is recorded as a backbone desk failure. Both must be visible to anyone assessing whether the test was fair.</p>
+<h2>Fresh cases</h2>
+<p>Fresh cases are permitted and carry <strong>no numeric quota</strong>. During Mode A they receive <strong>equal generation effort, identical gates and identical selection treatment</strong>. Any season-level preference is suspended until the spoken-opening test. The season mix remains an outcome of testing and later ranking.</p>
+<p>A fresh case satisfies the same six elements, the same access map, the same jeopardy gate and the same agency gate as any other premise.</p>
+<h2>Authority hierarchy and exclusions</h2>
+<p>Read completely and in this order:</p>
+<ol>
+<li><code>pivot-brief-2026-08-23.md</code> — current-state authority, including the 2026-08-24 clock convention and all-party consent rulings. Wins every conflict about what is true now.</li>
+<li><code>critical-reviewer-charter.md</code> — assessment authority.</li>
+<li><code>episode-1-vo-lock-v1.1-WIP.md</code> — prose and listening-speed authority. Only locked L1 to L5 dialogue is final voice evidence.</li>
+<li><code>ally-quinn-bible.md</code> — subject to the pivot brief's explicit supersessions.</li>
+<li><code>canon-character-roster.md</code> — controls character existence, status and names.</li>
+<li><code>portrait-prompts-canon-cast.md</code> — controls approved, proposed and prohibited portrait facts.</li>
+</ol>
+<p>Plus, for candidate disposition only: <code>episode-1-challengers-EX-2026-08-24-01</code> and <code>kill-gate-zero-audit-GHI-2026-08-24</code>.</p>
+<h3>The genre-anatomy reference</h3>
+<blockquote>
+<p><code>true-crime-genre-anatomy</code> is <strong>excluded from Mode A premise generation and from the spoken-opening comparison.</strong> It may be supplied in <strong>Mode B only</strong>, after a named premise has survived Mode A and the desk gate, as a <strong>non-authoritative craft reference</strong>. It cannot supply canon, operational facts, gates, family definitions, occupied territory, or grounds for reversing an earlier verdict. <strong>The execution record must state whether it was used.</strong></p>
+</blockquote>
+<p><em>Consequence, recorded so it is not rediscovered later: the three challengers of EX-2026-08-24-01 were generated under that influence. They remain valid disposition and occupied-territory records and </em><em>cannot count as outputs of the clean Mode A comparison.</em><em> Mode A must generate </em><em>replacement</em><em> premises, without using <code>true-crime-genre-anatomy</code> and </em><em>without duplicating those candidates.</em>**</p>
+<p><strong>Do not read or use:</strong> the full Episode One pitch pack as creative inspiration · <code>stage-backgrounds-ep1-kit</code>, <code>item-icon-regeneration-kit</code> or <code>art-kit-items-and-ui</code>, which are stale art-pipeline documents · any retired premise as a repair brief.</p>
+<h3>Source discipline</h3>
+<p>Label every claim <strong>CANON</strong>, <strong>VERIFIED REAL-WORLD PROCESS</strong>, <strong>PROPOSED CANON</strong> or <strong>UNKNOWN</strong>.</p>
+<p>Do not invent economy figures, legal powers, police access, medical powers, forensic certainty, technical capabilities or production assets. Where an answer depends on material not provided, say exactly what is missing. Where a process has a realistic chance of being recalled incorrectly, research it before using it.</p>
+<h2>Occupied and excluded territory</h2>
+<p><strong>Update candidate status only from the current controlled pitch-disposition record. If that record is not supplied, preserve v2.0 territory except where the governing source expressly changes it, including The Listener remaining demoted and unallocated.</strong></p>
+<h3>Live candidates — do not duplicate</h3>
+<ul>
+<li><strong>G, "The Confession"</strong> — conditional pass at Kill Gate Zero, two repairs outstanding. <em>Occupied devices:</em> a confession recorded by a trusted mentor · the mentor becoming last witness and target · a 1989 harbour death staged as a drunken fall · paid silence and a payer known only by voice · a keeper with decades of receipts.</li>
+<li><strong>Slack Water</strong> — survivor of execution EX-2026-08-24-01. <em>Occupied devices:</em> a 1996 harbour drowning · a conviction resting substantially on body-drift and tide interpretation · environmental tide reconstruction as the player's activity · a review or appeal route · a culprit or beneficiary protected by the old verdict. <em>Excludes</em> interrupted recordings, confessions, hunted witnesses, coded rituals, staged drunken falls and audio-location reconstruction.</li>
+<li><strong>What the Log Says</strong> — survivor of EX-2026-08-24-01. <em>Occupied devices:</em> a deckhand killed during a fight on a working boat · a company cover-up rather than a conspiracy · inconsistent vessel logs · third-party position transmissions and a transmission gap · the player reconstructs a voyage. <em>Excludes</em> recordings, confessions, hunted people, dead-man switches and staged falls. <strong>The victim was not investigating anything.</strong></li>
+<li><strong>No Fixed Address</strong> — survivor of EX-2026-08-24-01. <em>Occupied devices:</em> a murdered woman misclassified as unidentified and of no fixed address · identity reconstructed from residue and community records · a redevelopment threatening surviving evidence · a second woman and the victim's mother carrying current consequences. <em>Excludes</em> recordings, confessions, hunted witnesses, coded rituals, staged drowning and audio-location reconstruction.</li>
+</ul>
+<h3>Failed at Kill Gate Zero — do not repair, do not reskin</h3>
+<ul>
+<li><strong>H, "The Overnight Girl."</strong> Decisive failures: a professional searching by touring a trust network while ignoring the one person the target must contact · murder unexplained against cheaper alternatives · a disposal site chosen for the audience. <em>Occupied devices:</em> a childhood escape plan executed by a competent adult · a coded telephone ritual as dead-man switch · a body in cold storage · a patient professional working a trust network · breadcrumbs keyed to the show archive.</li>
+<li><strong>I, "The Last Caller."</strong> Decisive failures: a rational interrupter in the room stops the call at sentence one · magical forensics identifying the caller from tape when a body found by morning supplies the name. <em>Occupied devices:</em> a Tip Line confession cut off mid-name · room-tone forensics to identify an anonymous caller · a childhood witness now grown and hunted.</li>
+</ul>
+<h3>Retired — do not repair, reskin or relocate</h3>
+<ul>
+<li><strong>The Wrong Name</strong> — a body carrying a living person's identity; contractor-controlled body transfer; administrative death through order forms.</li>
+<li><strong>The Morning Edition</strong> — murdered printer; advance obituaries for living owners; obituary and property-transfer machinery.</li>
+<li><strong>The Last Carriage</strong> — murdered transit auditor; impossible passenger records; cloned taps; a witness pursued through a closed line.</li>
+</ul>
+<h3>Demoted, not available as a pilot</h3>
+<p><strong>The Listener.</strong> It holds no season slot until it re-passes the current gates. <em>Occupied devices:</em> nightly voicemails from a lonely regular caller · a wordless or interrupted recording as inciting artefact · ambient audio locating a home · a woman already gone before the episode begins.</p>
+<h3>Structural exclusion</h3>
+<blockquote>
+<p>Do not use a damaged or interrupted recording reconstructed through audio analysis to locate a person who is already missing.</p>
+</blockquote>
+<p><strong>This is a scoped ideation boundary, not a proven diagnosis of The Listener's failure.</strong> Tester evidence established that it lacked jeopardy; it never established a causal mechanism. The exclusion exists to stop another candidate occupying substantially the same play pattern. <strong>This framing must not be hardened in any future version.</strong></p>
+<p>Audio remains available as evidence. It may not form the spine of another locate-the-missing-person reconstruction.</p>
+<hr />
+<h2>Mandatory staged workflow</h2>
+<p><strong>Do not skip stages.</strong> Premise generation, process verification, falsification and development are separate passes. <strong>Do not write a cold open, a title or any selling copy at any point in Mode A.</strong></p>
+<h3>Stage one — balanced interleaved seed generation</h3>
+<p><strong>The first field contains exactly eight seeds per family, twenty-four in total, generated in the rotating interleaved order below. The second field may target deficient families and must report its distribution.</strong> This controls initial opportunity only and imposes no survivor quota.</p>
+<p>For each seed, state the single real-world process on which the hook depends. Reject occupied, retired, supernatural, child-harm-led, gore-led, coincidence-led and decoratively-Havenbay ideas.</p>
+<p>Do not name, title or emotionally embellish seeds. Attractive presentation must not influence viability.</p>
+<blockquote>
+<p><strong>Interleaved generation, mandatory.</strong></p>
+<p><strong>Round one:</strong> generate <strong>three</strong> seeds per family, in the order fresh murder, never-solved or misclassified, officially solved but contested.
+<strong>Round two:</strong> generate <strong>three</strong> seeds per family, beginning with never-solved or misclassified, then officially solved but contested, then fresh murder.
+<strong>Round three:</strong> generate <strong>two</strong> seeds per family, beginning with officially solved but contested, then fresh murder, then never-solved or misclassified.</p>
+<p>Generate only the stated batch at each family turn. This produces exactly eight seeds per family without completing one family before the others. <strong>Do not complete one family before beginning the others.</strong></p>
+<p>This controls anchoring and order advantage without assuming where fluency peaks. Record the order actually followed in the execution record.</p>
+</blockquote>
+<h3>Stage two — Kill Gate Zero research</h3>
+<p>Apply the full operational-reality gate to every plausible seed, using authoritative and preferably primary sources for premise-dependent legal, police, coroner, medical, forensic, transport, telecommunications, property, banking, employment, insurance, digital-security or regulatory processes.</p>
+<p>Where Havenbay's jurisdiction is not canonical, do not power a premise with a narrow jurisdiction-specific loophole. Use a broadly shared operational baseline, or identify the required Havenbay canon ruling and fail the seed pending approval.</p>
+<h3>Stage three — controlled expansion and desk gates</h3>
+<p>Expand only seeds that pass Kill Gate Zero into victim, antagonist, motive, method, evidence and jeopardy summaries. Apply the remaining gates, the access map, the agency gate and the taxonomy.</p>
+<p>If fewer than three survive in a family after the first field, generate one additional field of twelve seeds distributed across the deficient families and repeat the gates once. <strong>If a family still cannot supply survivors after that second field, stop and report it.</strong> Do not attempt a third field in the same execution.</p>
+<h3>Stage four — independent kill brief</h3>
+<p><strong>Mandatory in both modes.</strong> For each apparent survivor, write a kill brief <strong>before</strong> any positive description. Review the mechanics without title or framing. Attempt elimination from four perspectives: competent professional, rational antagonist, ordinary true-crime player, interactive-narrative producer.</p>
+<p>The brief ends in <strong>PASS or FAIL</strong> with a single decisive reason. <strong>No conditional pass.</strong> A candidate may be revised once only if the repair preserves the core premise and replaces no verified fact with invention. Otherwise kill it.</p>
+<p><em>PASS or FAIL is a verdict, not a ranking. Mode A's prohibition on ranking does not remove this stage.</em></p>
+<h3>Stage five</h3>
+<p><strong>Mode A:</strong> output the premise sketches and stop. No openings, no titles, no elevator pitches, no rankings, no incumbent comparison, no table-read recommendation.</p>
+<p><strong>Mode B:</strong> develop the named survivor into the complete package.</p>
+<hr />
+<h1>KILL GATE ZERO — OPERATIONAL REALITY</h1>
+<p><strong>Unchanged from v2.0 in every particular.</strong> Nothing in the newer gates supersedes it. It is the only gate with a proven kill record: three premises in its first execution and two incumbents in its second.</p>
+<h2>Automatic-fail rule</h2>
+<p>A seed cannot advance while any premise-dependent authority, custody, access, procedural, technological or institutional claim remains UNKNOWN. Verify it, replace the mechanism or kill the seed.</p>
+<h2>Required first-five-event audit</h2>
+<p>Map the first five causal events, not merely five scenes. For each event provide:</p>
+<table>
+<thead>
+<tr>
+<th>Required field</th>
+<th>Question that must be answered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Actor</td>
+<td>Who performs the action?</td>
+</tr>
+<tr>
+<td>Authority</td>
+<td>What legal, professional, contractual or physical authority permits it?</td>
+</tr>
+<tr>
+<td>Custody</td>
+<td>Who controls the body, person, scene, evidence, record, vehicle, account or system at this moment?</td>
+</tr>
+<tr>
+<td>Normal response</td>
+<td>What would a competent professional ordinarily do next?</td>
+</tr>
+<tr>
+<td>Safeguard</td>
+<td>What rule, verification or colleague would obstruct the antagonist?</td>
+</tr>
+<tr>
+<td>Bypass</td>
+<td>How does the antagonist plausibly bypass that safeguard using access they actually possess?</td>
+</tr>
+<tr>
+<td>Consequence</td>
+<td>What risk or trace does the bypass create?</td>
+</tr>
+<tr>
+<td>Evidence source</td>
+<td>Which authoritative source supports the operational claim?</td>
+</tr>
+</tbody>
+</table>
+<p>Any blank, circular or invented answer is FAIL.</p>
+<h2>Institutional-power rules</h2>
+<ul>
+<li>Corruption can misuse an existing power. It cannot create a power the institution or actor never had.</li>
+<li>A contractor may perform a delegated physical task only after valid authority is granted. A contract does not automatically displace police, court, coroner, medical or regulatory control.</li>
+<li>A forged document may deceive a plausible recipient for a plausible period. It does not automatically neutralise independent checks, custody records, signatures, witnesses or system alerts.</li>
+<li>A database entry can mislead action. It cannot make a living person legally or physically inaccessible without a credible downstream mechanism.</li>
+<li>Police, coroners, doctors, forensic staff, journalists, archivists and digital specialists remain competent. Their competence must create constraints the antagonist has to overcome.</li>
+<li>Ally's PI licence does not grant police powers, unrestricted crime-scene access, medical records, protected digital systems or custody of evidence.</li>
+</ul>
+<h2>Commonsense challenge</h2>
+<p>Answer each question in one plain sentence. If the answer requires exposition, coincidence or 'because the plot needs it,' fail the seed.</p>
+<ul>
+<li>Why do the police not prevent this?</li>
+<li>Why does the coroner, doctor, court, employer, bank, platform or regulator permit this?</li>
+<li>Why is Ally present and allowed to do what the story requires?</li>
+<li>Why does the antagonist choose this method instead of a simpler and safer one?</li>
+<li>Why does the victim or keeper not take the obvious protective action?</li>
+<li>What would an informed viewer object to in the first story beat?</li>
+</ul>
+<h2>Antagonist least-cost test</h2>
+<ul>
+<li>Why murder?</li>
+<li>Why now?</li>
+<li>Why this victim?</li>
+<li>Why this method and staging?</li>
+<li>Why not intimidation, theft, flight, bribery, destruction or silence through an easier route?</li>
+<li>What does the method expose, cost or risk for the antagonist?</li>
+</ul>
+<p>If the antagonist is performing an elaborate thriller mechanism only because the player needs a puzzle, fail the seed.</p>
+<h2>Research standard</h2>
+<ul>
+<li>Use official agencies, legislation, regulations, courts, professional bodies, technical standards, manufacturer documentation or peer-reviewed research where applicable.</li>
+<li>Use news, blogs, entertainment references and general summaries only to locate primary material, not as final support for a premise-dependent claim.</li>
+<li>Cite the exact source near the claim it supports. Do not provide a decorative bibliography detached from the logic.</li>
+<li>State where the source jurisdiction differs from Havenbay and whether the difference matters.</li>
+<li>Do not quote long passages. Summarise the operative fact in plain language.</li>
+</ul>
+<hr />
+<h1>REMAINING KILL GATES</h1>
+<h2>Gate 1 — Immediate compulsion</h2>
+<p>The episode is murder-led, restrained twelve-plus, recognisably true crime. The opening must contain a concrete contradiction, danger or irreversible event understandable at listening speed, and must survive the ordinary-viewer objection before it is polished for drama.</p>
+<p><strong>Mode A assesses whether the planned first thirty seconds are murder-led, recognisably true crime, contain a concrete contradiction, danger or irreversible event, and survive the ordinary-viewer objection. Because Mode A writes no opening, cold-open compulsion remains UNKNOWN until blind testing.</strong></p>
+<h2>Gate 2 — Jeopardy</h2>
+<p>Replaces v2.0's two-track rule in full. <strong>Both tracks required. The weaker track controls the read.</strong></p>
+<blockquote>
+<p><strong>Human consequence.</strong> A named living person is under a consequence that is still operating: confined, excluded, publicly condemned, exposed, unprotected, denied a remedy, financially trapped, or reachable by someone with a reason to reach them. State the person, the mechanism, and why the mechanism is still running today.</p>
+<p><em>Fails if:</em> the suffering is historical and has stopped · the person is a category rather than a named individual · the only harm is that a truth is unknown.</p>
+<p><strong>Investigative consequence.</strong> The player's choices can make a specific, stated thing worse: evidence lost or made inadmissible · a witness permanently closed to the show · a hearing or prosecution prejudiced · a person exposed before they were ready · a remedy delayed past its opportunity · Ally's ability to be trusted, to publish, or to work lawfully permanently reduced. State what can be lost and who loses it.</p>
+<p><em>Fails if:</em> the cost is embarrassment without consequence · the only exposure is to Ally's audience numbers · the loss is reversible within the same episode.</p>
+<p><strong>Legibility.</strong> The human consequence must be stateable in one sentence a listener can hold at listening speed. In the pilot it must be present in the cold open. In every other episode it must be present no later than the first podcast milestone.</p>
+<p><strong>Physical danger is one valid form of either track. It is not required and it is not the default.</strong></p>
+</blockquote>
+<p>If the opening murder victim is already dead, another named living person must face a credible current consequence. <strong>Rational resistance must respond when the accepted record is challenged; the culprit need not already be committing a new present-day offence.</strong> Institutional wrongdoing alone is insufficient unless a named actor or interest currently sustains or defends it.</p>
+<h2>Gate 3 — Medium-safe clock</h2>
+<p>A clock is <strong>optional</strong>. It is <strong>not required</strong> where the current harm is already accumulating.</p>
+<p>Energy regenerates at one hundred and fifty seconds. A player may experience an episode across multiple sessions and real-world days. <strong>Do not use a countdown that expires while the player is asleep or away.</strong> No real-world timer that punishes absence.</p>
+<p>Permitted structures:</p>
+<ul>
+<li><strong>Day-stamped clock.</strong> Events progress across authored days with overnight gaps made plausible. The default.</li>
+<li><strong>Lead-state clock.</strong> The threat advances when specified leads resolve, so story time moves with play.</li>
+<li><strong>Session-contained window.</strong> <strong>PARKED. Not available for Episode One</strong> per the ruling of 2026-08-24: a player who exhausts energy inside the window is either shown a broken fiction or gated out of a climax.</li>
+</ul>
+<p>If used, the clock must be case-born: a scheduled hearing, transfer, lawful disposal, demolition, appointment, payment or official decision.</p>
+<blockquote>
+<p><strong>A deadline is never resistance.</strong> Clock and resistance are separate pitch fields and may not be satisfied by the same object.</p>
+</blockquote>
+<h2>Gate 4 — Action-changing midpoint</h2>
+<p>The midpoint must change what the player <strong>does</strong> next. A new interpretation without a changed action, route, target, risk or evidence strategy is FAIL.</p>
+<h2>Gate 5 — Fair-play evidence</h2>
+<p>Every conclusion traceable to evidence actually obtained. Method, culprit and motive have separate proof chains where appropriate. A fair early plant exists before its meaning is explained. No coincidence proves the culprit; no withheld obvious fact manufactures a twist. The supporting cast remains competent and contributes domain-specific truth.</p>
+<blockquote>
+<p><strong>The pitch must state what Ally gets wrong because she can only reach half the record.</strong> The inaccessible half is where the wrong hypothesis lives. A premise with no theory Ally must abandon fails this gate.</p>
+</blockquote>
+<h2>Gate 6 — Humanisation and keeper integrity</h2>
+<p><em>Renamed from v2.0's "human consequence". The number is preserved so existing audit citations remain intelligible. Present-jeopardy wording has moved to Gate 2 and is not repeated here.</em></p>
+<p>The victim is grievable through one concrete human detail before becoming a puzzle component. A living keeper has a need beyond survival or delivering information. The criminal economy imposes a recognisable ordinary cost. <strong>The story does not use gore, child harm or melodrama to manufacture seriousness.</strong></p>
+<h2>Gate 7 — Havenbay necessity</h2>
+<p>Could this exact case happen only in Havenbay? Atmosphere must advance evidence, access, motive, jeopardy or consequence. <strong>Fog, docks, old records and civic corruption are not sufficient by themselves.</strong></p>
+<h2>Gate 8 — Production reality</h2>
+<p>Fifteen to twenty played leads across two or three phases, determined by the story rather than a fixed table. The Field Kit is the starting generator; the Lab may unlock mid-episode; Kestrel Corner supports food, home and care functions.</p>
+<p>State <strong>played and total authored lead counts separately.</strong> Identify approved, proposed and new portraits and locations; do not infer reuse from excluded art documents. Do not invent costs or economy figures.</p>
+<blockquote>
+<p><strong>Also report: reconstruction mode (axis two) and resolution mode (axis three)</strong>, so the season anti-formula audit has data at premise stage rather than after the fact.</p>
+</blockquote>
+<h2>Gate 9 — Rational resistance</h2>
+<p><em>New in v2.1. Distinct from the antagonist least-cost test, which asks why the antagonist acts. This asks what pushes back when the record is challenged.</em></p>
+<blockquote>
+<p>Every episode requires an <strong>active resistance system</strong>: an agent or interest that benefits from, depends on, or is protected by the accepted record, <strong>and that responds to being investigated.</strong></p>
+<p>Permitted forms: a person protecting liberty, access, money, status, family or reputation · an institution protecting legitimacy, liability or authority · a witness or keeper protecting another person or a dangerous secret · a community enforcing a shared account.</p>
+<p><strong>It may not be a deadline, a schedule, or the passage of time.</strong> It may not be a passive evidentiary constraint: lawful custody limits, degradation and prior error are obstacles, not opposition, and belong under the access map or production constraints.</p>
+<p><strong>Its restraint must be as rational as its action.</strong> An antagonist who escalates because the third act requires it fails this gate exactly as one who escalates when they should not.</p>
+</blockquote>
+<hr />
+<h1>THE ACCESS MAP</h1>
+<p>Mandatory. For <strong>every decisive item of evidence</strong> in Mode B, and for the single decisive item in Mode A:</p>
+<ol>
+<li>Who lawfully possesses it.</li>
+<li>Why that person or body can disclose it.</li>
+<li>What remains inaccessible.</li>
+<li>How Ally proceeds without police privilege.</li>
+<li><strong>What Ally gets wrong because she can only reach half the record.</strong></li>
+</ol>
+<p>Field five is not compliance. It generates the wrong hypothesis Gate 5 requires, from the access position itself rather than by invention.</p>
+<p><strong>The access map and Kill Gate Zero's first-five-event audit are complementary, not duplicative.</strong> The audit covers authority and custody over <em>events</em>. The access map covers <em>evidence items</em>. Both are required. Neither may be merged into the other.</p>
+<hr />
+<h1>CONSEQUENCE AND AGENCY</h1>
+<h2>The gate</h2>
+<blockquote>
+<p>Before resolution, at least one material decision must force the player to choose between competing, credible risks affecting named people, or an irreversible evidentiary or publication outcome. <strong>No option may be consequence-free.</strong></p>
+<p>At least two reachable end states must differ materially in who is protected, exposed, believed, harmed, or denied remedy.</p>
+<p>At least one fair branch must impose on a named person a <strong>material loss</strong> of something they held or were owed at the moment of choice. <strong>That loss must constitute one of the material differences between the reachable end states</strong>, another fair branch must avoid it, and it cannot be undone within the episode.</p>
+<p>Any harmful outcome must arise causally from a signalled investigative or publication choice, and not from luck, withheld information, or an obviously foolish option.</p>
+<p><strong>The player must be able to perceive that loss and attribute it to their own choice before the episode ends.</strong> A cost that appears only in the design document is not a cost.</p>
+<p><strong>If removing the player's decisions leaves every named person's outcome unchanged, the episode fails.</strong></p>
+</blockquote>
+<p><strong>Reference pattern, to be matched rather than paraphrased:</strong> the player can protect a keeper or preserve decisive evidence, and cannot do both.</p>
+<p><strong>Verified against four abuse patterns, both reviewers agreeing:</strong> an obviously foolish "publish the witness's address" option FAILS · both endings improving a wrongfully imprisoned person while one loses the only chance of prosecution PASSES · a reasonable choice followed by hidden information producing a death FAILS · protect the keeper or preserve the evidence, not both, PASSES and is the exemplar.</p>
+<h2>Fairness test, per consequential decision</h2>
+<p>State: what the player knows at the moment of choice · which risk each option carries · why a reasonable player might choose either · what later evidence changes the interpretation · which consequence cannot be undone.</p>
+<p><strong>If one option is obviously correct before the choice, it is not agency. If decisive information is withheld solely to manufacture regret, it is not fair play.</strong></p>
+<h2>Branch-cost control</h2>
+<p>Carried forward unchanged. At least four decisions that change which leads spawn, what the player does next, what evidence survives, the risk state, or the ending. Dialogue-only variation does not count. <strong>A single end-of-episode branch is an automatic FAIL.</strong></p>
+<p>Every branch rejoins within a maximum of three leads. No nested fork opens before the current branch rejoins. <strong>At least two choices are Class A. No more than one choice is Class C.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Authoring definition</th>
+<th>Allowed effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>No exclusive voiced scene</td>
+<td>Lead order, evidence quality, access, target protection, route or risk changes through shared assets</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>Two to six variant voiced lines</td>
+<td>Shared scene with altered consequence, trust, evidence, risk or ending state</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>One fully exclusive lead or short chain</td>
+<td>A materially different route that rejoins within three leads</td>
+</tr>
+</tbody>
+</table>
+<p><strong>No branch is free.</strong> Even Class A requires configuration, balancing and QA.</p>
+<hr />
+<h1>THE THREE-AXIS TAXONOMY</h1>
+<p>A premise names one value on each axis. <strong>Neither axis two nor axis three may repeat in consecutive main episodes.</strong></p>
+<p><strong>Axis one — what is wrong with the record.</strong> Never solved · wrongful conviction · misclassified · covered up · officially solved but contested.</p>
+<blockquote>
+<p><strong>Wrongful conviction is provisionally limited to one main episode per season:</strong> formula risk, research burden, and because it pulls Ally toward a lawyer's investigator when podcaster leads the player-facing identity.</p>
+<p><strong>During Mode A, record the wrongful-conviction season cap but do not use it to reject, deprioritise or limit a premise.</strong> Apply the cap only when constructing the season slate after the spoken-opening experiment. A season-planning constraint must not contaminate premise generation while the comparison is meant to be neutral.</p>
+</blockquote>
+<p><strong>Axis two — what the player reconstructs.</strong> A recording · a document set · an environmental model such as tide, weather, visibility or travel time · a person's identity · a timeline · a route or voyage · a place that no longer exists · the custody history of an object · a network of relationships or payments.</p>
+<p><strong>Axis three — how the episode resolves.</strong> Legal review or exoneration · protection of a keeper or future victim · public correction without prosecution · institutional exposure · confession or confrontation · recovery, identification or return · a deliberately limited publication to prevent further harm · a partial remedy with a named cost · a culprit exposed but not yet chargeable.</p>
+<p><strong>Live consequence — pairs with axis one and is not itself an anti-formula axis.</strong> Wrongful loss of liberty or status · continued access or power · keeper under pressure · evidence opportunity closing · institutional decision · public lie blocking remedy.</p>
+<p><em>Why three axes and not one: two premises in different axis-one cells can still be sixteen leads of paper followed by an arrest. Axis one varies what the writer chooses. Axes two and three vary what the player does and how it ends.</em></p>
+<h2>The reconstruction requirement</h2>
+<blockquote>
+<p>The merge requirements <strong>are</strong> the reconstruction, not the price of reaching it. Name the physical activity at premise stage: what the player's hands do, what conclusion it makes possible, and what action that conclusion unlocks.</p>
+<p><strong>A premise that states the requirements "are" the investigation without saying what the player physically does has stated an intention, not a mechanism, and fails.</strong></p>
+</blockquote>
+<hr />
+<h1>ALLY, CAST, VOICE AND PROSE</h1>
+<p><em>Unchanged from v2.0 except where the roster has moved.</em></p>
+<h2>Ally's required episode arc</h2>
+<p>Player-facing podcaster first; licensed PI as a capability, not a promotional identity. Early warmth that costs time, access or tactical advantage · early competence visible through an action, not a speech about competence · evidential discipline, distinguishing fact, hypothesis and inference · a vulnerability, mistake or risk with a real consequence · <strong>an irreversible ending change caused by the player's investigation or publication choice</strong>, not by a final dialogue preference.</p>
+<h2>Competent supporting roles</h2>
+<table>
+<thead>
+<tr>
+<th>Character</th>
+<th>Primary value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Del</td>
+<td>Lawful action, institutional boundaries, defensible workarounds</td>
+</tr>
+<tr>
+<td>Gerald</td>
+<td>Pattern, police history, human judgement</td>
+</tr>
+<tr>
+<td>Mo</td>
+<td>Human knowledge and waterfront relationships</td>
+</tr>
+<tr>
+<td>Arthur</td>
+<td>Gazette archives and documentary memory</td>
+</tr>
+<tr>
+<td>Vega</td>
+<td>Digital investigation. <strong>Pronouns remain deliberately unsettled</strong> unless a proposed ruling is made and flagged</td>
+</tr>
+<tr>
+<td>Priya</td>
+<td>Forensic trace analysis</td>
+</tr>
+<tr>
+<td>Cortez</td>
+<td>Cause and manner of death. <strong>Roster status: proposed. No delivered portrait. Using him is an art cost</strong></td>
+</tr>
+<tr>
+<td>Helen</td>
+<td>Personal cost and family truth</td>
+</tr>
+</tbody>
+</table>
+<p>Do not make supporting characters ineffective so Ally can solve everything. <strong>Ally's distinctive competence is connecting evidence, people and meaning that specialists see separately.</strong></p>
+<h2>Closed endearment canon</h2>
+<p>Gerald says "love". Mo says "my lovely". Dot says "love". Del calls Ally "Quinny", hers alone. <strong>Nobody else gains an endearment.</strong> No endearments or gendered address in UI copy that speaks to the player rather than to Ally.</p>
+<h2>Game-facing prose</h2>
+<p>No em dashes · no exclamation marks · grounded deadpan noir · understatement over melodrama · never explain the subtext · every line parses at listening speed and stays near forty-five words or fewer · numbers spelled out in spoken lines · "Grandad" with one d · "Okay" spelled out · Tip Line format "Message received: [weekday], [time]" with no calendar date · no monologues, exposition dumps or ornamental puns.</p>
+<p><strong>Havenbay recording law applies to every premise.</strong> All-party consent, with an exception for recordings reasonably necessary to protect lawful interests or preserve evidence of a serious offence. <strong>Publishing such a recording is a separate and stricter offence.</strong> Narrow exceptions are disclosure to police, use in legal proceedings, or the consent of the recorded parties. <strong>Public broadcast remains a separate question.</strong> A recording can therefore be lawful to make, lawful to hand to Del, and unlawful to broadcast, which makes any publish-it branch a genuine sacrifice and gives the quiet route its own lawful mechanism. The Tip Line is unaffected: a caller consents by leaving a message.</p>
+<hr />
+<h1>CREATIVE LENSES AND SEASON CONTROLS</h1>
+<h2>Four development lenses</h2>
+<p><strong>Connelly.</strong> Can every conclusion be audited from obtained evidence, and do competent institutions create real constraints? Identify the credible wrong hypothesis and the evidence that defeats it.</p>
+<p><strong>Harper.</strong> Could this case happen only in Havenbay, with place changing investigation rather than decorating it?</p>
+<p><strong>Hallett.</strong> What recordings, documents, images, manifests or objects does the player physically reconstruct?</p>
+<p><strong>Lehane.</strong> Who profits, who performs the dangerous work, which institution absorbs the crime, who pays the ordinary cost, and what compromises decent people?</p>
+<h2>Season-arc restraint</h2>
+<p>The case is self-contained and resolved. Include <strong>one</strong> Thomas, Ferryman or Hart notch containing one new fact and one new cost. Do not unmask the Ferryman, depict a face, connect the episode killer casually to the season conspiracy, or use a coin as a substitute for an actual link.</p>
+<p>The Episode Two handoff must state the new fact, the new cost, the corrected misunderstanding, and the exact Episode Two use. Mark unsupported handoff material <strong>PROPOSED CANON</strong>.</p>
+<hr />
+<h1>INDEPENDENT KILL BRIEF</h1>
+<p><em>Unchanged from v2.0. Mandatory in both modes, written before any positive description.</em></p>
+<p><strong>Professional objection.</strong> Which professional would encounter the premise first? What would they say is wrong, missing or impossible? Which normal safeguard does the story ignore? What evidence or authority would actually be required?</p>
+<p><strong>Rational-antagonist objection.</strong> What simpler method achieves the same criminal goal? Why has the antagonist not already succeeded? Which step creates unnecessary exposure solely to give the player a clue?</p>
+<p><strong>Ordinary-player objection.</strong> What is the first "that would never happen" reaction? What is confusing before it is intriguing? Which question would make the player stop trusting the story?</p>
+<p><strong>Producer objection.</strong> Is the hook hiding excessive location, portrait, VO or branch burden? Does the agency require authored material most players never see? Does the evidence system remain readable on a mobile screen and at listening speed?</p>
+<p><strong>Decision rule.</strong> PASS or FAIL with a single decisive reason. <strong>No conditional pass.</strong> One revision permitted only if it preserves the core premise and replaces no verified fact with invention.</p>
+<hr />
+<h1>REQUIRED EXECUTION OUTPUT</h1>
+<h2>Mode A — premise funnel</h2>
+<h3>Part one, source and attrition report</h3>
+<p>Confirm the authorities were read in order and the excluded documents were not used · seeds generated per family per round, and the rotating order actually followed · the five closest rejected seeds with the decisive reason each failed, unbeautified · every real-world process researched, with authoritative citation beside the claim it supports · a kill-gate table using PASS, FAIL, UNKNOWN, in which <strong>UNKNOWN on Kill Gate Zero is FAIL</strong> · <strong>survivors per family, zero to three</strong> · any family-level desk failure, stated plainly.</p>
+<h3>Part two, per surviving premise</h3>
+<ul>
+<li>One-paragraph premise.</li>
+<li><strong>Axis one, axis two and axis three values</strong>, plus the live consequence.</li>
+<li>The <strong>named living person</strong> and the mechanism still operating.</li>
+<li>The <strong>resistance system</strong>, and confirmation it is not a clock.</li>
+<li><strong>What the player's hands reconstruct</strong>, and what that makes possible.</li>
+<li>The <strong>first consequential decision</strong> and what it changes.</li>
+<li>The <strong>access map's five fields</strong> for the decisive item.</li>
+<li><strong>Kill Gate Zero verdict</strong> with the first-five-causal-event audit.</li>
+<li><strong>The stage-four kill brief</strong>, ending PASS or FAIL.</li>
+<li><strong>The five desk-gate answers:</strong> what happens in the first thirty seconds · who can be materially affected now · what rational force resists correction · what the player's hands will reconstruct · what first choice changes the case rather than a line of dialogue.</li>
+<li>For a fresh case: <strong>the forming-record wording used</strong>, recorded as a stage-of-record asymmetry.</li>
+</ul>
+<h3>Prohibited in Mode A</h3>
+<p><strong>No cold opens. No titles. No elevator pitches. No intrinsic ranking. No incumbent comparison. No table-read recommendation.</strong> Ranking at sketch stage would prejudge the test this funnel exists to feed.</p>
+<h2>Mode B — full package for one named survivor</h2>
+<p>Begins with this exact heading:</p>
+<p><strong>ELEVATOR PITCH: WHY THIS SHOULD BE THE GAME'S EPISODE ONE STORYLINE</strong></p>
+<p>Then the one-page pitch: high concept, opening promise, player activity, human engine, agency promise, Havenbay necessity, strongest honest reservation. <strong>Do not claim tested compulsion.</strong></p>
+<p>Then sections A to O:</p>
+<p><strong>A. Reality dossier</strong> — verified baseline, first-five-event authority and custody map, antagonist bypass, sources, professional objection, remaining non-foundational unknowns.
+<strong>B. Identity</strong> — title, high concept, dramatic question, player fantasy, exclusion statement, axis values.
+<strong>C. Blind cold open</strong> — sixty to seventy-five seconds; no title, pitch letter, proper names or context briefing.
+<strong>D. Complete truth</strong> — victim, killer, motive, method, staging, current activity, decisive clue, fair early plant.
+<strong>E. Human engine</strong> — grievable detail, keeper need, warmth cost, emotional reversal.
+<strong>F. Jeopardy and clock</strong> — both tracks, weaker-track verdict, clock structure, pause-safe design.
+<strong>G. Evidence chain</strong> — obtained evidence, supported conclusion, better question, wrong hypothesis, midpoint, proof, competent cast. <strong>Plus the full five-field access map for every decisive item.</strong>
+<strong>H. Havenbay</strong> — causal location and institution dependence; relocation test.
+<strong>I. Criminal economy</strong> — the five Lehane answers.
+<strong>J. Phase topology</strong> — phases, played leads, <strong>total authored leads</strong>, generator progression, <strong>resolution mode</strong>.
+<strong>K. Agency</strong> — at least four decisions with class, consequence, divergence and rejoin, <strong>plus the fairness test's five statements for each</strong>.
+<strong>L. Ally, cast and art</strong> — required arc, cast purpose, portrait status, new or unverified production needs.
+<strong>M. Resolution and handoff</strong> — self-contained resolution, precise proposed Episode Two bridge.
+<strong>N. Production reality</strong> — relative burden without invented costs.
+<strong>O. Kill brief and verdict</strong> — the four objections; PASS or FAIL.</p>
+<p>No numeric scoring anywhere.</p>
+<hr />
+<h1>FINAL EXECUTION SAFEGUARDS</h1>
+<p><strong>Do not confuse polish with proof.</strong> Titles, cold opens, noir language, emotional detail and evidence-board elegance are downstream. None may be used to argue that an unverified mechanism is plausible.</p>
+<p>Do not recommend a premise because its opening image is memorable · do not label foundational research "to be validated later", validate or reject · do not repair the same failed mechanism with a different institution, contractor, document or department · do not infer that corruption makes normal controls disappear, show the authorised person, access path, bypass and trace · do not let Ally enter protected spaces, obtain private records or direct police action without a credible route · do not make the competent professional conveniently absent, slow or incurious · do not let evidence prove more than its real-world nature permits · do not use a proposed Havenbay rule to rescue a seed in the same execution, return it for owner approval · do not guarantee superiority.</p>
+<h2>Final pre-delivery checklist</h2>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Required state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cold open</td>
+<td>Mode B: clear at listening speed; compulsion remains UNKNOWN until blind testing. Mode A: not drafted</td>
+</tr>
+<tr>
+<td>Jeopardy</td>
+<td>Both human and investigative tracks pass; the weaker track controls</td>
+</tr>
+<tr>
+<td>Midpoint</td>
+<td>The player's action, route, target, risk or evidence strategy changes, not only their interpretation</td>
+</tr>
+<tr>
+<td>Authority and custody</td>
+<td>Every first-five-event row answered and sourced</td>
+</tr>
+<tr>
+<td>Professional reality</td>
+<td>No unresolved informed-professional objection to the core mechanism</td>
+</tr>
+<tr>
+<td>Antagonist rationality</td>
+<td>No simpler obvious action defeats the premise; restraint is as rational as action</td>
+</tr>
+<tr>
+<td>Named living person</td>
+<td>Named, with the mechanism still operating, stated</td>
+</tr>
+<tr>
+<td>Rational resistance</td>
+<td>Present, responsive, <strong>and not the clock</strong></td>
+</tr>
+<tr>
+<td>Access map</td>
+<td>All five fields, including what Ally gets wrong</td>
+</tr>
+<tr>
+<td>Agency gate</td>
+<td>Material loss, bound to an end-state difference, perceptible and attributable</td>
+</tr>
+<tr>
+<td>Fairness test</td>
+<td>Five statements per consequential decision</td>
+</tr>
+<tr>
+<td>Branch limits</td>
+<td>Four or more decisions; two or more Class A; one or fewer Class C; rejoin within three</td>
+</tr>
+<tr>
+<td>Axis values</td>
+<td>All three named; consecutive-repeat rule checked</td>
+</tr>
+<tr>
+<td>Reconstruction</td>
+<td>The physical activity named, not asserted</td>
+</tr>
+<tr>
+<td>Resolution mode</td>
+<td>Named</td>
+</tr>
+<tr>
+<td>Clock</td>
+<td>Optional, case-born, pause-safe, session-contained window not used</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Fair, traceable, no magical certainty</td>
+</tr>
+<tr>
+<td>Havenbay</td>
+<td>Case breaks or materially changes if relocated</td>
+</tr>
+<tr>
+<td>Per-family survivors</td>
+<td>Reported, zero to three, with any desk failure stated</td>
+</tr>
+<tr>
+<td>Mode A prohibitions</td>
+<td>No openings, titles, elevator pitches, rankings or recommendations</td>
+</tr>
+</tbody>
+</table>
+<h2>Final instruction</h2>
+<p>Begin with source reading and seed falsification. <strong>Do not draft a cold open at any point in Mode A.</strong> If the final answer contains fewer survivors than the target, that is a valid and preferable result to an unbelievable Episode One.</p>
+<h1>END EXECUTION PROMPT</h1>
+<hr />
+<h1>Execution record</h1>
+<p>Complete for each formal run. It separates the controlled prompt from the evidence produced by a particular model, source set and research session.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Record at run time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Execution ID</td>
+<td>Date plus sequential run identifier</td>
+</tr>
+<tr>
+<td><strong>Mode invoked</strong></td>
+<td><strong>A or B; for B, the named premise</strong></td>
+</tr>
+<tr>
+<td>Model and mode</td>
+<td>Model name, reasoning mode, whether internet research was available</td>
+</tr>
+<tr>
+<td>Project-source versions</td>
+<td>Exact filenames and versions of the six authorities plus the disposition documents</td>
+</tr>
+<tr>
+<td>Research record</td>
+<td>Authoritative external sources used for premise-dependent processes</td>
+</tr>
+<tr>
+<td>Seed field</td>
+<td>Number generated per family per round</td>
+</tr>
+<tr>
+<td><strong>Rotating generation order followed</strong></td>
+<td><strong>The actual order, round by round</strong></td>
+</tr>
+<tr>
+<td>Gate Zero attrition</td>
+<td>Number rejected for authority, custody, access, procedure, technology or antagonist rationality</td>
+</tr>
+<tr>
+<td><strong>Desk-gate result per premise</strong></td>
+<td><strong>Pass or fail, with the failing question</strong></td>
+</tr>
+<tr>
+<td><strong>Survivors per family</strong></td>
+<td><strong>Zero to three, each family stated separately</strong></td>
+</tr>
+<tr>
+<td><strong>Candidate insufficiency</strong></td>
+<td><strong>Any family that could not supply two survivors, stated plainly</strong></td>
+</tr>
+<tr>
+<td><strong>Backbone desk failure</strong></td>
+<td><strong>Either contested-record family could not supply two desk-gate survivors, stated plainly</strong></td>
+</tr>
+<tr>
+<td><strong>Forming-record wording used</strong></td>
+<td><strong>Per fresh premise</strong></td>
+</tr>
+<tr>
+<td><strong>Genre-anatomy reference used</strong></td>
+<td><strong>Yes or no. Mode B only; must be no in Mode A</strong></td>
+</tr>
+<tr>
+<td><strong>Axis values</strong></td>
+<td><strong>Reconstruction and resolution per surviving premise</strong></td>
+</tr>
+<tr>
+<td><strong>Keep / do-not-keep result</strong></td>
+<td><strong>Recorded later, when the openings are blind-reviewed</strong></td>
+</tr>
+<tr>
+<td>Owner disposition</td>
+<td>Accept, revise, reject, or request a new controlled version</td>
+</tr>
+</tbody>
+</table>
+<h2>Issue a new prompt version when</h2>
+<p>A current-state authority changes a rule embedded here · a new failure exposes a missing or weak gate · an occupied-territory ruling changes · production constraints materially change lead count, branching, generators, cast or location limits · the output contract or recommendation authority changes.</p>
+<p><strong>Preserve the audit trail.</strong> Do not silently amend this document or reuse a version number for changed instructions.</p>
+<hr />
+<h1>CONFORMANCE TABLE</h1>
+<p>Every item of the agreed thirty-four-item change list, and where it landed. Supplied so the audit is a check rather than a rediscovery.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Change</th>
+<th>Landed in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Two output modes; Mode A targets nine, may return fewer</td>
+<td>Core task · How to use · Mode A output</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Attempt three per family; report zero to three survivors</td>
+<td>Core task · No-quota rule · Execution record</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Interleaved rotating generation</strong> (replaces "fresh first")</td>
+<td>Stage one</td>
+</tr>
+<tr>
+<td>4</td>
+<td>No-quota rule binds per family; contested desk failure; no replenishment</td>
+<td>No-quota rule</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Backbone as hypothesis; <strong>equal effort</strong>, no selling language, no privileging</td>
+<td>The backbone under test</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Forming-record carve-out</strong>, precise wording, asymmetry recorded</td>
+<td>Six mandatory elements · Mode A output · Execution record</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Fresh cases permitted, no quota, same gates</td>
+<td>Fresh cases</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Kill Gate Zero unchanged, stated explicitly</td>
+<td>Kill Gate Zero preamble</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Gate 2 replaced by the consensus jeopardy gate</td>
+<td>Gate 2</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Gate 3: session window parked; clock optional, case-born; never resistance</td>
+<td>Gate 3</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Gate 4 unchanged</td>
+<td>Gate 4</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Gate 5 gains "what Ally gets wrong"</td>
+<td>Gate 5 · Access map</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>Gate 6 amended and renamed, not deleted; number preserved</strong></td>
+<td>Gate 6</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Gate 7 unchanged</td>
+<td>Gate 7</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Gate 8 reports reconstruction and resolution mode</td>
+<td>Gate 8</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Rational resistance as a gate; <strong>passive evidentiary constraint removed</strong></td>
+<td>Gate 9</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Agency gate replaced by the consensus gate</td>
+<td>Consequence and agency</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Fairness test added</td>
+<td>Consequence and agency</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Branch-cost control carried forward unchanged</td>
+<td>Branch-cost control</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Reference pattern cited</td>
+<td>Consequence and agency</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Three-axis taxonomy</td>
+<td>The three-axis taxonomy</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Wrongful-conviction cap</td>
+<td>Axis one</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Reconstruction requirement sharpened</td>
+<td>The reconstruction requirement</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Territory restructured; <strong>conditional wording retained</strong>; disposition documents supplied</td>
+<td>Occupied and excluded territory · Authority hierarchy</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Structural exclusion unchanged, framing must not harden</td>
+<td>Structural exclusion</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Mode A output contract</td>
+<td>Mode A</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Mode B contract amended</td>
+<td>Mode B</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Execution record fields</td>
+<td>Execution record</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Document control updated</td>
+<td>Header · Revision history</td>
+</tr>
+<tr>
+<td>30</td>
+<td>How-to-use and expected result replaced</td>
+<td>How to use this prompt</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Staged workflow conformed to modes</td>
+<td>Mandatory staged workflow</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Output and ranking authority; no ranking in Mode A; <strong>kill brief retained</strong></td>
+<td>Stage four · Mode A prohibitions</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Final checklist conformed</td>
+<td>Final pre-delivery checklist</td>
+</tr>
+<tr>
+<td>34</td>
+<td><strong>Self-contained; all mandatory wording inlined</strong></td>
+<td>Self-containment rule; observed throughout</td>
+</tr>
+</tbody>
+</table>
+<h2>Deviations from the change list, declared</h2>
+<p><strong>One.</strong> Item 16 as drafted listed "an evidentiary constraint created by lawful custody, degradation or prior error" among the resistance forms. It is removed on the second reviewer's amendment. <strong>This creates no deviation from the governing source</strong>: the example appears in the v1.1 brief but was verified as absent from <code>backbone-consensus-v1.3-FINAL</code>, whose resistance wording is the agent-or-interest definition alone. <strong>No erratum to v1.3 is required and none should be issued.</strong></p>
+<p><strong>No other deviations.</strong> Every remaining item landed as agreed.</p>
+<hr />
+<h1>CORRECTION LOG — RC2 to RC3</h1>
+<p>The RC2 re-audit returned six findings. <strong>All six are corrected. Every one was verified against the v2.0 source before acceptance and all six were sustained.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Finding</th>
+<th>Correction in RC3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td>Kill Gate Zero still did not match v2.0 clause for clause. "Not merely five scenes" became "not five scenes"; the eight-field audit was compressed to prose; "instead of a simpler and safer one" became "rather than"; "through an easier route" became "by"; the decorative-bibliography instruction was missing; the quote-length instruction was rewritten</td>
+<td><strong>The entire block from "Automatic-fail rule" through the end of "Research standard" is replaced with the v2.0 text verbatim.</strong> Table restored as a table. Only heading style and list formatting differ</td>
+</tr>
+<tr>
+<td>31</td>
+<td>The Success Definition still said Mode A "never assesses it at all", contradicting the corrected Gate 1. And eight seeds across three rotating rounds does not divide</td>
+<td>Success Definition replaced. Rounds made exact: three, three, two, with the family order rotating and only the stated batch generated at each turn</td>
+</tr>
+<tr>
+<td>6</td>
+<td>The forming-record provision claimed to be the single asymmetry. It is not: the no-quota rule treats contested-family failure differently</td>
+<td>Both asymmetries now declared. The forming record is the only difference in <strong>how the families satisfy the six elements</strong>; the no-quota rule is a separate <strong>diagnostic</strong> asymmetry</td>
+</tr>
+<tr>
+<td>28</td>
+<td>The execution record's family-failure row conflicted with the no-quota rule, which scopes backbone desk failure to the contested families</td>
+<td>Split into two rows: <strong>candidate insufficiency</strong> for any family, <strong>backbone desk failure</strong> for the contested families only. A fresh-family failure prevents a balanced comparison; it does not falsify the backbone</td>
+</tr>
+<tr>
+<td>22</td>
+<td>The wrongful-conviction cap did not say whether it binds during Mode A. Applying it would restrict one contested-record engine while the comparison is meant to be neutral</td>
+<td>The cap is recorded but <strong>does not reject, deprioritise or limit any premise during Mode A.</strong> It applies only when the season slate is built after the experiment</td>
+</tr>
+<tr>
+<td>29</td>
+<td>No revision-history row for RC2, contrary to this document's own change-control rule</td>
+<td>RC2 and RC3 rows added. The final v2.1 will carry its own READY FOR EXECUTION row</td>
+</tr>
+</tbody>
+</table>
+<h2>Withdrawn from the RC2 correction log</h2>
+<p>The RC2 log stated that the remainder of Kill Gate Zero "survives intact" after a clause-by-clause check. <strong>That claim is withdrawn and the sentence is removed.</strong></p>
+<p>The check behind it tested whether twelve key clauses were <em>present</em> in normalised text. Presence is not verbatim reproduction, and six of the differences the re-audit found would have passed that test unchanged. The claim was stronger than the method supported, which is the same defect as asserting a governance problem without opening the file. The replacement is not a better check but a different one: the block is no longer compared, it is copied.</p>
+<h2>Genre-anatomy ruling, adopted</h2>
+<p><code>true-crime-genre-anatomy</code> is admitted for <strong>Mode B only</strong> and excluded from Mode A and from the spoken-opening comparison. The rule is inlined in the authority section and a field is added to the execution record.</p>
+<p><strong>Consequence accepted:</strong> the three challengers of EX-2026-08-24-01 were generated under that influence. They remain valid disposition and occupied-territory records and <strong>cannot count as outputs of the clean Mode A comparison.</strong> Mode A must generate <strong>replacement</strong> premises, without using the genre anatomy and <strong>without duplicating those candidates.</strong> No exemption returns those three premises to Mode A: an occupied premise is a duplicate by definition, and instructing Mode A to reproduce one would order it to violate its own territory rule.</p>
+<hr />
+<h1>CORRECTION LOG — RC3 to RC4</h1>
+<p>The RC3 re-audit returned two findings. <strong>Both sustained on verification, both corrected.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Finding</th>
+<th>Correction in RC4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>24</td>
+<td>The genre-anatomy consequence gave two incompatible instructions: the three EX challengers are occupied territory, <strong>and</strong> they must be regenerated under Mode A. Mode A must reject occupied premises as duplicates, so it cannot regenerate them</td>
+<td>Replaced. Mode A now generates <strong>replacement</strong> premises without the genre anatomy and without duplicating those candidates. No exemption returns the three to Mode A: instructing it to reproduce an occupied premise would order it to violate its own territory rule</td>
+</tr>
+<tr>
+<td>29</td>
+<td>The RC2 revision row claimed it "corrected the ten findings". It did not: items 8 and 31 remained incomplete and caused the return</td>
+<td>Row now records that eight of ten landed, that Kill Gate Zero remained paraphrased and the Mode A Gate 1 and rotation implementation incomplete, and that RC3 completed them. RC3's row is likewise demoted to <em>returned for correction</em></td>
+</tr>
+</tbody>
+</table>
+<h2>Note on the Kill Gate Zero verification</h2>
+<p>The re-audit confirmed the block by SHA-256 over a normalised form, reporting 3,554 characters and digest <code>c7ceb3a3…</code>. <strong>The conclusion is independently confirmed here by a different route:</strong> stripping all whitespace, list markers and page furniture from both blocks yields 3,032 characters on each side, byte-identical, digest <code>92804a45…</code>.</p>
+<p>The two digests differ only because the two normalisations differ, and neither is wrong. Recorded as a process point rather than a finding: <strong>a digest is only a reusable verification artifact if the normalisation recipe is published alongside it.</strong> Future rounds should state the recipe or exchange the normalised text.</p>
+<h2>An open downstream question, not an RC4 matter</h2>
+<p>The three EX challengers are now simultaneously <strong>live candidates for the slate</strong> and <strong>excluded from the clean Mode A comparison</strong>. That is coherent, and it leaves a question this document should not answer: when the spoken-opening experiment selects six openings, whether the pool is the clean Mode A survivors alone, or those plus the standing candidates.</p>
+<p>Raised here so it is not discovered at the moment of building the slate. It requires the creator's ruling, not a prompt-kit clause.</p>
+<hr />
+<h1>Audit request for RC4</h1>
+<p>Contest by item number against v2.0, the agreed change list, and the governing source.</p>
+<p><strong>Please re-check specifically:</strong></p>
+<ol>
+<li>That the two corrections landed and introduced nothing new. Every round of this document has produced at least one over-correction, and RC4's changes touch the same paragraph twice, in two places.</li>
+<li>That the genre-anatomy consequence now reads consistently in <strong>both</strong> locations, the authority section and the correction log, with no residual instruction to regenerate the three challengers.</li>
+<li>That the revision history is now accurate for every row, including the demoted RC3 status.</li>
+</ol>
+<p><strong>Nothing is generated under this document while it carries REVIEW CANDIDATE status.</strong></p>
+</body></html>

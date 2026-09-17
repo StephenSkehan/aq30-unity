@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P08_06
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P08_06_N1
+  stageBackground: {fileID: 21300000, guid: c26f32895ad18bd46be4538d6056e914, type: 3}
+  nodes:
+  - id: FK_P08_06_N1
+    speaker: "Ally Quinn"
+    line: "I put the timetable on the board next to the search. The last train into the halt on a Friday arrives at ten past five in the evening. The first train out is the 05:47."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P08_06_N2
+    choices: []
+  - id: FK_P08_06_N2
+    speaker: "Ally Quinn"
+    line: "Between the halt and Kestrel Head there's a ridge path. A fit man could walk it in a night."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P08_06_N3
+    choices: []
+  - id: FK_P08_06_N3
+    speaker: "Ally Quinn"
+    line: "Twelve hours and a bit, dark to first light. It fits. Fitting isn't proof, and it isn't going on air."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

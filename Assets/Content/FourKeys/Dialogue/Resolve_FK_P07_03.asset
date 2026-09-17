@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P07_03
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P07_03_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e101, type: 3}
+  nodes:
+  - id: FK_P07_03_N1
+    speaker: "Ally Quinn"
+    line: "Ruby's envelope held more than the key and note. Folded behind them was the solicitor's covering slip."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P07_03_N2
+    choices: []
+  - id: FK_P07_03_N2
+    speaker: "Liam Bryce"
+    line: "I haven't said a word to you since the sheds. That was mine to carry, not yours. Ruby says you've got the slip. I'll tell you what I know about that night, if you want it."
+    portrait: {fileID: 0}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: aq.fk.d2.market
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P07_03_N3
+    choices: []
+  - id: FK_P07_03_N3
+    speaker: "Ally Quinn"
+    line: "Ruby slid it across the table and said, take it, I've read it enough. I have read it a dozen times since."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: aq.fk.d2.direct
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P07_03_N4
+    choices: []
+  - id: FK_P07_03_N4
+    speaker: "Ally Quinn"
+    line: "Four addressees, three streets and one post office box. Posted after the funeral, after Friday's last collection, with a Saturday postmark. The solicitor confirms Violet lodged the keys three weeks before she died."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

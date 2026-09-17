@@ -9,7 +9,7 @@
 | # | Character | Age | Role | Appearance status |
 |---|-----------|-----|------|-------------------|
 | 1 | Allison "Ally" Quinn | 26 | Protagonist; licensed PI, host of *Echoes of Havenbay* | ★ CANON (model sheets + emotion set v2, 2026-07-11) |
-| 2 | Thomas Quinn (deceased) | 43 | Ally's father; investigative journalist, Gazette; murdered — season arc | Seed: the sepia photo inside Ally's locket (model-sheet prop plate) |
+| 2 | Thomas Quinn (deceased) | 40 at death, would be 50 | Ally's father; investigative journalist, Gazette; murdered — season arc | Seed: the sepia photo inside Ally's locket (model-sheet prop plate) |
 | 3 | Helen Quinn | 46 | Ally's mother; school principal; wears Thomas's wedding ring | proposed (prompt block exists) |
 | 4 | Gerald Quinn | 74 | Ally's grandfather; retired detective, mentor; Rusty Anchor regular | ★ CANON (in-game portrait set) |
 | 5 | Arthur Finch | 62 | Semi-retired Gazette journalist/archivist; Havenbay's memory | ★ CANON (emotion sheet 2026-07-11; tousled hair is canon) |
@@ -19,7 +19,7 @@
 | 9 | Francis "Frankie" Malone | 38 | Mechanic (Malone's garage), boxing promoter, fixer | proposed |
 | 10 | Dr. Priya Shah | late 30s | Forensic scientist | proposed (prompt block exists) |
 | 11 | Dr. Lionel Cortez | mid 50s | Chief medical examiner | proposed (prompt block exists) |
-| 12 | Sgt. Delaney "Del" Cruz | 36 | Harbor Ward police sergeant; principled, bends rules for justice | ★ CANON (portrait v2 + emotion sheet 2026-07-11; kestrel tattoo, cool blue lighting) |
+| 12 | Sgt. Delaney "Del" Cruz | 30 | Harbor Ward police sergeant; principled, bends rules for justice. **Calls Ally "Quinny" (hers alone).** Watchful table outside the Kestrel Corner Diner, back to the wall. Was the twenty-year-old rookie constable on the Quinn doorstep the night Thomas died (Ally was 16) and has watched out for her since. | ★ CANON (portrait v2 + emotion sheet 2026-07-11; kestrel tattoo, cool blue lighting; canon adds 2026-08-03) |
 | 13 | Captain Dana Drake | early 50s | HCPD captain; strict institutional gatekeeper, not inherently corrupt | proposed |
 | 14 | Officer Benjamin "Benji" Park | 24 | Rookie Harbor Ward patrol officer; idealistic, comic relief | proposed |
 | 15 | Silas Vex | indeterminate middle age | Black-market information broker; suspected Ferryman-network operator, **unproven** *(the Bible deliberately keeps his true role — pawn, partner, or independent — an open mystery; do not resolve it in scripts or art)* | proposed |

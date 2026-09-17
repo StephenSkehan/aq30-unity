@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53887cd0b9ce427895664a3c4544c256, type: 3}
+  m_Name: Package_FK_P04_04
+  m_EditorClassIdentifier: AQ.App::AQ.App.Leads.Packages.PackageData
+  packageId: fk_p04_04
+  chapter: 4
+  title: "The Letter's Lines"
+  memberCardIds: 
+  - fk_p04_04a
+  - fk_p04_04b
+  beatType: 0
+  beatDialogue: {fileID: 11400000, guid: c9cf1c9e187f4eff8334c4e0dc46d3ce, type: 2}
+  beatArt: {fileID: 0}
+  beatCaption: 
+  softCurrency: 35
+  energyGrant: 0
+  premiumGrant: 0
+  specialRewardId: 
+  specialRewardCount: 1

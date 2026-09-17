@@ -15,7 +15,7 @@ namespace AQ.App.UI.EvidenceBoard
         /// suspends itself so taps on the modal don't fall through to pins.</summary>
         public static bool IsOpen => _root != null;
 
-        public static void Show(Sprite portrait, List<LeadData> relatedLeads, Action<LeadData> onReplay,
+        public static void Show(Sprite portrait, List<BoardScene> relatedLeads, Action<BoardScene> onReplay,
                                 string displayName, string characterKey = null)
         {
             if (_root != null) return;
@@ -42,7 +42,7 @@ namespace AQ.App.UI.EvidenceBoard
 
             // Panel — sized to content. Name lives in the title bar
             // (Stephen-ruled 2026-08-12); portrait LEFT, Case File RIGHT.
-            var leads     = relatedLeads ?? new List<LeadData>();
+            var leads     = relatedLeads ?? new List<BoardScene>();
             const float headerH = 200f;
             float panelH  = 96f + 16f + headerH + 16f + 2f + 18f + leads.Count * 92f + 24f;
             float panelW  = 640f;
@@ -53,7 +53,8 @@ namespace AQ.App.UI.EvidenceBoard
             panel.pivot           = new Vector2(0.5f, 0.5f);
             panel.sizeDelta       = new Vector2(panelW, panelH);
             panel.anchoredPosition = Vector2.zero;
-            panel.gameObject.AddComponent<Image>().color = new Color(0.12f, 0.10f, 0.08f, 1f);
+            // Rounded corners to match the title bar (Stephen-ruled 2026-08-21).
+            AQTheme.Round(panel.gameObject.AddComponent<Image>(), new Color(0.12f, 0.10f, 0.08f, 1f));
 
             // Build content top → down using a cursor (from panel top, going negative)
             float cursor = panelH / 2f - 96f - 16f;

@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P10_01
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P10_01_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e103, type: 3}
+  nodes:
+  - id: FK_P10_01_N1
+    speaker: "Ally Quinn"
+    line: "Day 326. The morning after the description aired, there was a private message waiting for me. Not through the Tip Line. Sent to me, by name."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P10_01_N2
+    choices: []
+  - id: FK_P10_01_N2
+    speaker: "Ally Quinn"
+    line: "A woman four hundred miles away. She lets rooms in her house. She wrote that she had a quiet lodger, under a name I'd never heard."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P10_01_N3
+    choices: []
+  - id: FK_P10_01_N3
+    speaker: "Ally Quinn"
+    line: "She'd been listening since the third week. Six weeks of strangers on this show describing one man. Keys moved twice on a table. Thank you, like it costs him. Up at five to run. She said she knew every one of them."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P10_01_N4
+    choices: []
+  - id: FK_P10_01_N4
+    speaker: "Ally Quinn"
+    line: "And on his wall, she wrote, there had been a black and gold thing. It hung there until Tuesday. Now there's a pale gap where it was."
+    portrait: {fileID: 21300000, guid: 7e03a4f198056f44ba2209764d9e8219, type: 3}
+    emotion: 4
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P10_01_N5
+    choices: []
+  - id: FK_P10_01_N5
+    speaker: "Ally Quinn"
+    line: "She gave me her address. She asked me to send the police, not to come myself, and never to say her name."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

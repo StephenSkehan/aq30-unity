@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P02_07
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P02_07_N1
+  stageBackground: {fileID: 21300000, guid: bf108783271c436ebaaba28a69708349, type: 3}
+  nodes:
+  - id: FK_P02_07_N1
+    speaker: "Ally Quinn"
+    line: "When Brad's rent stopped, his landlord boxed up the flat and sent everything to Ruby. Police had already searched it."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_07_N2
+    choices: []
+  - id: FK_P02_07_N2
+    speaker: "Ally Quinn"
+    line: "Ruby and I went through the boxes over days. Passport, cards, tools, laptop, clothes and paperwork. Days of careful nothing."
+    portrait: {fileID: 21300000, guid: a6ca2348df1d653488455433cabdac99, type: 3}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_07_N3
+    choices: []
+  - id: FK_P02_07_N3
+    speaker: "Ruby Walker"
+    line: "He'd put his keys on the table, then move them. Twice, always twice. We used to wait for the second move before we spoke."
+    portrait: {fileID: 21300000, guid: ee933f5d948e45808a57817fd2e9d4fe, type: 3}
+    emotion: 1
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_07_N4
+    choices: []
+  - id: FK_P02_07_N4
+    speaker: "Ruby Walker"
+    line: "He said thank you like it cost him. He was up at five to run, and he agreed with whoever had spoken last. Seven years he was the pet of the room."
+    portrait: {fileID: 21300000, guid: ee933f5d948e45808a57817fd2e9d4fe, type: 3}
+    emotion: 1
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_07_N5
+    choices: []
+  - id: FK_P02_07_N5
+    speaker: "Ally Quinn"
+    line: "Four ordinary habits, remembered with affection. That was Brad Collins as Ruby had him."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P04_05
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P04_05_N1
+  stageBackground: {fileID: 21300000, guid: bf108783271c436ebaaba28a69708349, type: 3}
+  nodes:
+  - id: FK_P04_05_N1
+    speaker: "Liam Bryce"
+    line: "October, in her kitchen, she told me she'd moved the spare to the second pot by the yard door. I'd noticed the new cylinder in the lock and asked. She said the old one was sticking."
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_05_N2
+    choices: []
+  - id: FK_P04_05_N2
+    speaker: "Liam Bryce"
+    line: "The day I found her the pot was empty. I saw her through the kitchen window and broke the pane by the back door. It was latched. It only catches if you lift it as you pull. I fitted it, so I know."
+    portrait: {fileID: 0}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_05_N3
+    choices: []
+  - id: FK_P04_05_N3
+    speaker: "Ally Quinn"
+    line: "The pot sits under the step inside her yard, behind the wall and a gate Liam fitted. The gate latches from inside. You can't see any of it from the lane."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_05_N4
+    choices: []
+  - id: FK_P04_05_N4
+    speaker: "Liam Bryce"
+    line: "Five of us knew that pot, and one of us is dead. And a wall can be climbed. We knew that at the table. We didn't want it."
+    portrait: {fileID: 0}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

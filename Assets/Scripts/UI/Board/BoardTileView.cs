@@ -470,6 +470,11 @@ namespace AQ.App.UI.Board
         public void OnBeginDrag(PointerEventData eventData)
         {
             CancelLongPress();
+            // The long-press already fired for this hold (TileInfoPopup is up):
+            // the same finger must not also start a drag — a merge could resolve
+            // BEHIND the open popup, leaving it describing a tile that no longer
+            // exists (and its STORE button clearing some other same-family tile).
+            if (_longPressFired) return;
             if (IsEmpty || !itemImage || !itemImage.enabled) return;
 
             dragStartRC = controller?.GetIndex(this);
@@ -522,6 +527,11 @@ namespace AQ.App.UI.Board
             SetHover(_hovered, false);
             _hovered = null;
 
+            // Long-press suppressed this drag in OnBeginDrag — no ghost, no
+            // dragStartRC. Don't resolve a drop (or a drag-to-locker store) for
+            // a gesture that never visually existed.
+            if (_longPressFired && ghost == null && dragStartRC == null) return;
+
             if (ghost != null)
             {
                 ghost.Despawn();
@@ -564,12 +574,15 @@ namespace AQ.App.UI.Board
             }
         }
 
-        static BoardTileView TileUnderPointer(PointerEventData eventData)
+        BoardTileView TileUnderPointer(PointerEventData eventData)
         {
             if (EventSystem.current == null) return null;
 
             var results = new List<RaycastResult>(16);
             EventSystem.current.RaycastAll(eventData, results);
+
+            var myCanvas   = GetComponentInParent<Canvas>();
+            int boardOrder = myCanvas != null ? myCanvas.rootCanvas.sortingOrder : 0;
 
             for (int i = 0; i < results.Count; i++)
             {
@@ -577,6 +590,13 @@ namespace AQ.App.UI.Board
                 if (go.name == "DragGhost") continue; // ignore the ghost defensively
                 var view = go.GetComponentInParent<BoardTileView>();
                 if (view != null) return view;
+
+                // A non-tile graphic on a canvas ABOVE the board blocks the drop
+                // (popup scrims, panels, corner buttons). Skipping every non-tile
+                // hit let drags started before a popup opened resolve merges
+                // BEHIND it. The board's own decor shares the tiles' canvas order
+                // and still falls through.
+                if (results[i].sortingOrder > boardOrder) return null;
             }
             return null;
         }

@@ -136,7 +136,21 @@ namespace AQ.App.UI.Board
 
                     bool merge = (afterInto.kind == beforeInto.kind) && (afterInto.tier == beforeInto.tier + 1);
                     if (merge)
-                        fx.PlayMerge(from, into, null);
+                    {
+                        // The source tile is already cleared by the time this diff
+                        // runs, so its image has no sprite; rebuild the consumed
+                        // piece's sprite from the destination's family and the
+                        // pre-merge tier (a white square slid instead, 2026-09-03).
+                        Sprite consumed = null;
+                        if (beforeFrom.kind == TileKind.Item)
+                            consumed = ctrl.SpriteForItem(ctrl.GetFamily(into), beforeFrom.tier);
+                        else if (beforeFrom.kind == TileKind.Generator)
+                        {
+                            var genSO = ctrl.FindGeneratorType(ctrl.GetFamily(into));
+                            consumed = genSO != null ? genSO.SpriteForTier(beforeFrom.tier) : null;
+                        }
+                        fx.PlayMerge(from, into, consumed);
+                    }
                     else
                     {
                         bool moved = (afterInto.kind == beforeFrom.kind) && (afterInto.tier == beforeFrom.tier);

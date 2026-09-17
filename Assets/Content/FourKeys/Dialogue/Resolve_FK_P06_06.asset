@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P06_06
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P06_06_N1
+  stageBackground: {fileID: 21300000, guid: b61e15d0a1b2c3d4e5f6a7b8c9d0e101, type: 3}
+  nodes:
+  - id: FK_P06_06_N1
+    speaker: "Ally Quinn"
+    line: "The screenshot is real. I had it checked, and the date on it holds. Seventy-seven days after Violet died, about two and a half weeks after Brad drove to Kestrel Head."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P06_06_N2
+    choices: []
+  - id: FK_P06_06_N2
+    speaker: "Ally Quinn"
+    line: "It's a message from Margo to Tessa, on the app they used. It says: The thing in the cupboard is wrong. It can't mean that."
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P06_06_N3
+    choices: []
+  - id: FK_P06_06_N3
+    speaker: "Ally Quinn"
+    line: "Tessa kept it because Margo didn't say things like that. She asked what cupboard. Margo never answered, and never brought it up again."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P06_06_N4
+    choices: []
+  - id: FK_P06_06_N4
+    speaker: "Ally Quinn"
+    line: "The cupboard is what the four of them called Violet's locker. Margo doubted what was in it. She said so once, to one person, and then she stopped."
+    portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
+    emotion: 6
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P06_06_D
+    choices: []
+  - id: FK_P06_06_D
+    speaker: "Ally Quinn"
+    line: "So do I put Margo's own words on air, or keep them back and say it my way?"
+    portrait: {fileID: 21300000, guid: e02460f0c092dde4891723eecbbdc368, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P06_06_R1
+    choices:
+    - text: "Air her words, no name, no town"
+      nextId: FK_P06_06_R1
+      requiresFlag: 
+    - text: "Paraphrase, and keep Tessa out of it"
+      nextId: FK_P06_06_R2
+      requiresFlag: 
+  - id: FK_P06_06_R1
+    speaker: "Ally Quinn"
+    line: "The exact words go out. Exact words sometimes draw exact answers. And Tessa's fear goes out with them, whether I name her or not."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.fk.d3.verbatim
+    nextId: FK_P06_06_N5
+    choices: []
+  - id: FK_P06_06_R2
+    speaker: "Ally Quinn"
+    line: "I'll say what Margo meant, not what she typed. No quotation, no app, no Sunday. Tessa's safer. The city hears less."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: aq.fk.d3.paraphrase
+    nextId: FK_P06_06_N5
+    choices: []
+  - id: FK_P06_06_N5
+    speaker: "Ally Quinn"
+    line: "Either way, it's the only doubt Margo is known to have said out loud, and she said it to the one person none of them knew."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

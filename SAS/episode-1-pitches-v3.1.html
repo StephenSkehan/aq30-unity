@@ -1,0 +1,775 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Episode 1 Pitches v3.1</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0;
+         font-size: 10.5pt; line-height: 1.55; }
+  h1 { font-size: 20pt; letter-spacing: .2px; border-bottom: 3px solid #1c1a17;
+       padding-bottom: 8px; margin: 0 0 14px; }
+  h2 { font-size: 13.5pt; margin: 26px 0 8px; padding-bottom: 4px;
+       border-bottom: 1.5px solid #1c1a17; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 18px 0 6px; color: #3a352d; page-break-after: avoid; }
+  p { margin: 0 0 9px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  hr { border: 0; border-top: 1px solid #ccc5b8; margin: 22px 0; }
+  code { font-family: Consolas, monospace; font-size: 9pt; color: #7a5c1f;
+         background: #f6f2e8; padding: 0 3px; border-radius: 2px; }
+  del { color: #999; }
+  blockquote { border-left: 3px solid #b9ae99; background: #faf8f2; margin: 10px 0;
+               padding: 8px 14px; page-break-inside: avoid; }
+  blockquote p { margin: 0 0 6px; }
+  blockquote p:last-child { margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 14px;
+          font-size: 9pt; table-layout: fixed; page-break-inside: avoid; }
+  th { text-align: left; background: #1c1a17; color: #f5f1e8; padding: 5px 7px;
+       font-size: 8.5pt; letter-spacing: .3px; }
+  td { vertical-align: top; padding: 5px 7px; border-bottom: 1px solid #e3ded2;
+       word-wrap: break-word; }
+  tr:nth-child(even) td { background: #faf8f2; }
+  .cards { margin: 10px 0 16px; }
+  .card { border: 1px solid #c9c1b0; border-left: 4px solid #1c1a17; border-radius: 3px;
+          padding: 8px 11px 9px; margin-bottom: 9px; background: #fdfcf8;
+          page-break-inside: avoid; font-size: 9.5pt; }
+  .chead { font-size: 8.5pt; color: #6b6357; margin-bottom: 4px; letter-spacing: .3px; }
+  .cid { font-weight: bold; color: #1c1a17; margin-right: 10px; }
+  .cphase { margin-right: 10px; }
+  .ccls { float: right; font-style: italic; }
+  .cdec { font-weight: bold; margin-bottom: 6px; }
+  .card dl { margin: 0; }
+  .card dt { font-size: 8pt; text-transform: uppercase; letter-spacing: .6px;
+             color: #8a6d3b; margin-top: 5px; }
+  .card dd { margin: 1px 0 0; }
+  .rank .order { margin: 2px 0 5px; font-size: 10pt; }
+  .rank .reason { color: #3a352d; }
+</style></head><body>
+<h1>Episode 1 Pitches, Round 3.2 — The Murder Pilot, with Agency Maps</h1>
+<p><strong>Date:</strong> 2026-08-23 (v3 body) · <strong>Revised:</strong> 2026-08-24 (v3.2 deficit annotation and clock ruling; v3.1 agency and charter pass 2026-08-23) · <strong>Status:</strong> AWAITING PREMISE RULING · <strong>Decision input:</strong> the table-read in Appendix A, not this document.</p>
+<p><strong>Trigger:</strong> 12/12 F&amp;F testers on The Listener: "no jeopardy, too safe, not real true crime, didn't finish." Stephen-ruled 2026-08-23: dates shelved, compelling pilot or no release; murder-led; The Listener demotes to mid-season (dread pass later); episode length is decided by the story, not the skeleton (expect 15-20+ leads); economy models regenerate to fit.</p>
+<p>Doctrine authority: bible Ch 5.4 (Pilot Doctrine) plus episode-1-pilot-spec.md. Tone authority: Ch 5.9 ("restrained murder yes, graphic violence no"). Conventions: episode-1-vo-lock-v1.1-WIP.md (all still binding: no em dashes, no exclamation marks, evidential language, announcer format, endearment map, absolute clock). Review authority: SAS/critical-reviewer-charter.md.</p>
+<hr />
+<h2>0. What v3.1 changes, and what is now void</h2>
+<p>Four things, in order of consequence.</p>
+<p><strong>0.1 The scorecards are VOID.</strong> Every "Doctrine score: 47/50 / 46/50 / 47/50" line in the pitch bodies below is struck. Stephen ruled it on the day: three near-identical percentages discriminate nothing, and the author of the pitches wrote the scores. Per charter rule 1, author scores are hypotheses, never evidence. They are left visible in the text only so the record shows what was replaced. <strong>Do not cite them.</strong> Section 5 replaces them with kill-gates and forced rankings.</p>
+<p><strong>0.2 As committed, all three pitches FAIL the agency kill-gate.</strong> The charter gate reads: count the decisions that change play, fewer than four is a fail, and a single end-of-episode gate is an automatic fail (The Listener precedent). Counted honestly, v3 gave Pitch G one branch (air or seal, Phase 3), Pitch H one branch (broadcast or decode, Phase 2), Pitch I one branch (hold or publish, Phase 3). One each, all late. That is the exact defect the pivot exists to fix, reproduced in the document written to fix it. Each pitch below now carries a six-decision agency map that clears the gate.</p>
+<p><strong>0.3 The agency maps are proposals, not premise changes.</strong> Nothing in a map alters a logline, a victim, a cast or an art bill. Each map answers one question: given this premise, what are the cheapest six decisions that change what the player does, and how does the player feel each one later. Ruling on a premise does not commit to its map; the map is the first thing the skeleton pass would negotiate.</p>
+<p><strong>0.4 There is a technical gap, and it is small but it is not zero.</strong> The previous session recorded that choice-gated lead spawns are "near-free" because RequiredLeadIds, setsFlag and sticky-choice recovery all exist. Half of that is true. Verified in the codebase today:</p>
+<ul>
+<li>Dialogue choices set persistent flags. <code>CaseGraph.Node.setsFlag</code> writes through <code>DialogueFlags</code> into the unified <code>GameFlags</code> store, and <code>DialogueRunner</code> has crash-safe sticky-choice recovery: a choice whose target node's flag is already down is auto-followed, so an interrupted run cannot set both halves of a mutually exclusive pair. This is shipping, tested, and it is the hard part. <code>Assets/App/UI/Dialogue/DialogueRunner.cs:504</code>.</li>
+<li>Lead gating reads lead completion only. <code>LeadsRepository</code> evaluates <code>RequiredLeadIds</code> and nothing else (<code>LeadsRepository.cs:39</code>), and <code>LeadOutcomeMB.SpawnFollowUpLeads</code> spawns every id in <code>SpawnLeadIds</code> unconditionally (<code>LeadOutcomeMB.cs:91</code>).</li>
+<li><code>LeadData.BranchOutcomes</code> (a label plus SpawnLeadIds) exists as a serialized field with <strong>no runtime consumer anywhere in the project</strong>. It is a stub.</li>
+</ul>
+<p><strong>So no flag can currently change which leads exist.</strong> The bridge every map below depends on is one work item, specified in 1.5. It is small. It must land before any agency map is real, and it should be built and tested before the skeleton pass, not during it.</p>
+<h3>0.5 What v3.2 changed, and what it deliberately did not</h3>
+<p>Each pitch was audited against the standard in <code>SAS/prompt-kit-new-episode-pitches-v1.md</code>. Nine gaps were found. <strong>Only one was repaired.</strong></p>
+<p><strong>Repaired:</strong> Pitch G's cold open carried four proper nouns in sixty seconds, two of which mean nothing to a listener with no Havenbay context. That is the one gap that would bias the table-read, because the cold open is the only part of a pitch a tester ever hears, and leaving it would have tested G's formatting rather than G's premise. It is retrimmed below and now carries no name a stranger must hold. Each pitch also now states its clock structure, per the ruling of 2026-08-24.</p>
+<p><strong>Deliberately not repaired:</strong> everything else. The remaining gaps are not evenly distributed, and that unevenness is the most useful discriminating information in this document. H is the weakest on Havenbay-necessity and on saying what the player physically reconstructs. I is the only pitch that fails the branching cost ceiling. G is the only one whose season notch has a real fact under the coin. Patching all three to a common standard would erase exactly the signal needed to choose between them, and would reproduce the condition that made the original scorecards worthless: three candidates that all look equally competent.</p>
+<p>So each pitch now ends with an honest block titled <strong>what this pitch does not have yet</strong>. Read the pitch and its deficit together. A short block is a finding.</p>
+<p><strong>Deferred to the skeleton pass:</strong> the structural repairs (a named beneficiary of the crime, a plausible wrong hypothesis, a Havenbay fact that changes the solution rather than decorating it, a season notch that is not the coin, and Ally's missing warmth beat and irreversible change). Each is two to three leads of structure per pitch. Doing that three times throws away two thirds of it, and doing it before the ruling means doing it without knowing the cast, economy or art budget it has to fit.</p>
+<hr />
+<h2>1. The agency contract</h2>
+<h3>1.1 What counts as a decision</h3>
+<p>A decision counts toward the kill-gate only if the answer to "what is different afterwards" is one of:</p>
+<ul>
+<li><strong>which leads exist</strong> (a lead spawns, or does not, or is replaced by a sibling),</li>
+<li><strong>what the player does on the board</strong> (different requirement families, tiers, quantities, generator grants, Case Kit specials, energy cost),</li>
+<li><strong>what the ending is</strong> (which close lead runs, or which variant of it).</li>
+</ul>
+<p>A decision that changes only which line of dialogue plays does not count. This is the rule that would have caught The Listener before the testers did.</p>
+<h3>1.2 Cost classes</h3>
+<p>Every decision in the maps below is tagged with one:</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>What it costs</th>
+<th>Rule of thumb</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>Zero VO. The choice label plus data on two sibling LeadData assets: requirements, economy, generator grant, board work.</td>
+<td>Free once the bridge exists. Use these to hit the gate count.</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>Two to six variant lines at the divergence and the rejoin.</td>
+<td>Cheap. Use for the felt callbacks.</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>A whole lead of exclusive dialogue, or a short exclusive chain.</td>
+<td>Expensive. One per episode, two at the outside. Reserve it for the branch the episode is named after.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Target mix per episode: three class A, two class B, one class C.</strong> Six decisions, one expensive branch, and a total added VO bill of roughly 12 to 20 lines over the unbranched baseline.</p>
+<h3>1.3 Branch and rejoin, always</h3>
+<p>Divergence lasts at most three leads and then converges on a shared lead. No branch may fork a second time before it rejoins. This is not an artistic preference. It is the only structure a solo dev can finish, because authored content then grows linearly with decisions instead of exponentially.</p>
+<h3>1.4 The felt-consequence rule</h3>
+<p>A decision the player cannot feel is a decision the player did not make. Every entry in the maps below carries a <strong>callback</strong>: the specific later moment where the game says back to the player what they chose. Preferred callbacks in descending order of strength:</p>
+<ol>
+<li>The board looks different (a lead card that is not there, a cold-trail card that is).</li>
+<li>A character refers to the choice by its content, not by its label.</li>
+<li>The close podcast is a different recording.</li>
+<li>The next episode opens differently.</li>
+</ol>
+<p>The Listener's branch had none of these, which is why it read as "a tacked on afterthought" even though it was mechanically real.</p>
+<h3>1.5 The Agency Bridge (engineering work item, do first)</h3>
+<p>Scope, in order:</p>
+<ol>
+<li><strong><code>LeadData.requiresFlag</code> and <code>LeadData.forbidsFlag</code></strong> (two strings). Checked in <code>LeadsRepository.SpawnLead</code> and in the gate evaluation beside <code>RequiredLeadIds</code>. A lead whose flag condition fails stays Blocked and is excluded from case progress.</li>
+<li><strong>Re-evaluate on restore.</strong> Hook the same state-scan that already re-evaluates <code>RequiredLeadIds</code> gates a save may predate (<code>LeadsRepository.cs:210</code>). Per CLAUDE.md robustness rule 6, the scan is the guarantee and the spawn-time check is the optimization.</li>
+<li><strong>Consume <code>BranchOutcomes</code>, or delete the field.</strong> Selection by flag: the first outcome whose label matches a set flag wins, otherwise index 0. Leaving a serialized stub in shipping data is how the next person is misled about what exists.</li>
+<li><strong>Flag registry.</strong> One document listing every <code>flag_e1_*</code> an episode sets, its two values, which leads read it, and whether Ep2 or later reads it. Without this the cross-episode callbacks in 1.4 quietly rot.</li>
+</ol>
+<p>No new persisted state is introduced: flags already live in <code>GameFlags</code>, leads already persist through <code>BoardSaveSystem</code>. So the CLAUDE.md crash-boundary suite (rule 2) is not triggered by a new aggregate, but the gate needs EditMode coverage for flag-set-before-spawn, flag-set-after-spawn, flag-never-set, and restore-path re-evaluation. Estimate: half a day of code, half a day of tests, and it unblocks all three premises equally. <strong>It is not premise-specific, so it can be built before the ruling.</strong></p>
+<h3>1.6 The authoring multiplier nobody has costed yet</h3>
+<p>Agency is not free in content even when it is free in VO. Authored leads exceed played leads:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Played leads</th>
+<th>Authored lead assets</th>
+<th>Multiplier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G</td>
+<td>17</td>
+<td>~21</td>
+<td>1.24</td>
+</tr>
+<tr>
+<td>H</td>
+<td>15</td>
+<td>~20</td>
+<td>1.33</td>
+</tr>
+<tr>
+<td>I</td>
+<td>18</td>
+<td>~24</td>
+<td>1.33</td>
+</tr>
+</tbody>
+</table>
+<p>Sibling leads, cold-trail stubs and exclusive chain leads are all real assets needing requirements, art references, board wiring and an audit pass. <strong>Ruling on a premise is ruling on the right-hand column, not the left.</strong> The economy regeneration in section 7 uses played leads; the schedule must use authored leads.</p>
+<h3>1.7 Propulsion discipline: the lead ledger</h3>
+<p>Added 2026-08-23 after a craft note on thriller propulsion (Dan Brown's engine, not his prose). The useful half of that model is information control: the player should always know the immediate objective and never be finished interpreting what they just found. Three rules, and they are authoring gates for the skeleton pass, not style advice.</p>
+<p><strong>Rule 1: the ledger.</strong> Before any dialogue is written, every lead gets one row: entering question · what the player's board work physically does · the answer obtained · the better question created. A lead with an empty fourth column is connective tissue and should be cut or merged.</p>
+<p><strong>Rule 2: two of four functions.</strong> Every lead must do at least two of: <strong>answer · complicate · endanger · humanise.</strong> One function is thin. Zero is a toll booth wearing a detective hat.</p>
+<p><strong>Rule 3: recontextualise rather than surprise.</strong> The strongest reveal changes the meaning of evidence the player already holds instead of adding new evidence. The signature was his; the ink was made twelve years after he disappeared. This is also the fairness gate: nothing may be explained that was not planted.</p>
+<p><strong>What we deliberately do not borrow:</strong> withholding obvious information to manufacture a cliffhanger, exposition delivered as convenient dialogue, escalating stakes for their own sake, or thin secondary characters who exist to hand over clues. Our differentiator is the keeper's humanity, and the keeper must never become a puzzle delivery mechanism. Brown makes a reader ask what happens next. This show also has to make them ask what the right thing to do with the truth is, which is precisely what the agency maps are for.</p>
+<hr />
+<h2>PITCH G — "The Confession" (Pitch B revived and re-engineered)</h2>
+<p><strong>Logline:</strong> An eighty-one-year-old man confesses to a thirty-seven-year-old killing in the back booth of the Rusty Anchor, and by morning he is dead of a heart attack that Dr. Cortez can prove was murder. Whoever silenced Frank Doyle waited thirty-seven years for him to talk. They were still listening. And the booth he talked in belongs to the man teaching Ally everything she knows.</p>
+<p><strong>Why round 1 killed it, and why that reason is now void:</strong> its engine was pre-existing love of Gerald, which a new player lacked. As of build b7, Gerald IS the tutorial: his face fronts every hint, banner and help card from the first ninety seconds. The systems now build the attachment before the story spends it. The objection has inverted into the pitch's strongest feature: <em>the man who has been guiding your hand is the man whose booth becomes a crime scene.</em></p>
+<blockquote>
+<p><strong>v3.1 reviewer note on the paragraph above:</strong> this rebuttal is an assumption presented as settled. Ninety seconds of hint chips carrying a portrait produces <em>familiarity</em>, not <em>attachment</em>, and the difference is exactly what the round-1 objection was about. It is cheap to test, and the same table-read tests it (Appendix A, question 3). Until then the objection is suspended, not void.</p>
+</blockquote>
+<p><strong>Cold open (the hook is lines, not premise, first 60 seconds):</strong></p>
+<blockquote>
+<p>ANNOUNCER: "Message received: Saturday, eleven fifty-one p.m."
+A WOMAN (voicemail, low, the bar noise gone from behind her): "It's me, my lovely. Not an emergency. Except I think it might be. There's a man in your grandad's booth who's been nursing one whiskey for four hours, and he's just told him something I wish I hadn't heard. Your grandad's writing it down. Come tonight."
+ALLY (on-mic): "By the time I got there, the man was gone. My grandad was still in the booth. He hadn't touched his glass. He slid his notebook across the table and said: read it twice, love. Because tomorrow he'll deny it, and by Monday he'll be dead. He was wrong about one thing. The man in the booth didn't live until Monday."</p>
+</blockquote>
+<p><em>Retrimmed 2026-08-24 for the blind read. Mo and Gerald are no longer named, because a listener with no Havenbay context cannot hold them and the previous version spent its first forty seconds establishing a relationship the listener does not have; both are identifiable to a player from the voice and the endearment. Frank Doyle's name moves out of the button for the same reason: "the man in the booth" is colder and needs nothing. The in-game version restores all three names.</em></p>
+<p><strong>The case, two threads braided:</strong>
+- <strong>1989 (the confession):</strong> Doyle, a foundry night-shift foreman, killed a man named Wren Kellaway in a dispute that was staged as a drunken fall into the harbour. Kellaway was written off as a drunk; his younger sister <strong>June Kellaway</strong> (the keeper) has spent thirty-seven years being told her brother drowned in shame. Doyle names the thing 1989 could not: he was PAID to make it look that way. He never knew the payer's face. Only a voice, an envelope, and a coin left in his coat pocket he never dared spend.
+- <strong>Present (the silencing):</strong> Doyle dies within hours of confessing. "Tidy heart attack." Dr. Cortez (his first appearance in the series; the casting block exists) finds the injection site behind the knee. Someone in the bar heard, or someone has watched Doyle for thirty-seven years waiting for the day his conscience won. The braid: solving 1989 is how Ally identifies who needed it silenced in the present.</p>
+<p><strong>Doctrine beats (selected):</strong>
+- <em>Dramatic question in two nodes or fewer:</em> "Who needed a dying man's thirty-seven-year-old secret to die with him tonight?"
+- <em>Grievable victim from ONE detail:</em> June has paid the mooring fee on her brother's ruined dinghy every year since 1989. Thirty-seven receipts in a biscuit tin. "You don't keep a boat for a drunk. You keep a boat for a sailor."
+- <em>Warmth beat:</em> Mo closing the bar to strangers and cooking for the wake nobody else will hold.
+- <em>Competence beat:</em> Ally reconstructing Doyle's last four hours from till receipts, the jukebox log and one whiskey that never got refilled.
+- <em>Midpoint jeopardy reaches Ally:</em> Gerald's notebook is the only record of the confession, which makes Gerald the last living witness. A pale sedan parks across from the Rusty Anchor two nights running. The episode's spine question flips from who killed Doyle to <em>how do I keep my grandfather alive.</em>
+- <em>The branch:</em> air Gerald's recording of the confession, making the whole city a witness so killing Gerald becomes pointless (loud shield), or keep it sealed and let Del work the injection-site evidence quietly while Gerald sleeps at Mo's (quiet shield). Both converge: the paymaster's proxy is caught by the mooring-fee thread; both cost something (aired means June hears her brother's death sold as content before she hears it as truth; sealed means the killer's name surfaces two days later and a second grave is nearly needed).
+- <em>Whiff of change and the coin:</em> Doyle's unspent 1989 coin, wrapped in the confession page Gerald tore out for Ally. Brass, one face worn blank, a crescent nick in the rim. Ally does not know what it means. Episode 2 does.
+- <em>Conversion hook (the close):</em> the paymaster's proxy is charged; the paymaster is a name on dissolved 1980s paperwork; and Ally's tip line receives one message the night the episode airs. "Message received: Sunday, one a.m." Coins dropping into a payphone. Then a voice, elderly, unhurried: "Frank always was sentimental. Goodnight, Miss Quinn." Click.
+- <em>Defeatable antagonist:</em> the proxy who administered the injection is an episode-level face (the bible allows Damien Kroll here if we want the recurring heavy, or an episode-invented nurse-turned-fixer). The paymaster stays a terrifying absence, per the season-villain firewall.</p>
+<p><strong>Natural length: 17 leads, 3 phases</strong> (Phase 1 the confession and the body, 6 · Phase 2 1989 exhumed, 6 · Phase 3 the shield and the catch, 5). The third phase exists because the case genuinely turns at the midpoint from investigation to protection, which is a different kind of play and earns its own phase podcast.</p>
+<p><strong>Cast and art cost:</strong> Ally, Gerald, Mo, Del, Tip Line, all existing final art. <strong>Cortez, new portrait (his entrance, prompt block ready).</strong> June Kellaway, new, episode-level, allowed. Doyle, VOICE ONLY plus an evidence-board polaroid (the Tip Line object-character precedent): he exists as a recording and a notebook, which is both cheap and thematically perfect. Two new backgrounds (foundry ruin, June's kitchen); Rusty Anchor and studio masters reused heavily. <strong>Verdict: cheapest of the three pitches in art.</strong></p>
+<p><strong>Mechanical vocabulary:</strong> audio (the confession tape, the jukebox log), forensic (injection site, exhumed 1989 file), rusty_anchor family (the bar IS the crime scene, so the gated family finally earns its story turn), food_gifts (Mo's wake, June interviews). Optional: press family (Arthur pulls the 1989 archive, art live, flag flip only).</p>
+<p><strong>VO scale:</strong> ~30-34 cues, 2 sessions (Ally plus one gravel male voice for Doyle; Mo, Gerald and Del lines follow the Ep1 text-only convention where not podcast-facing). Add the agency map's bill: +14 lines.</p>
+<p><del>Doctrine score: 47/50</del> <strong>VOID per 0.1. See section 5.</strong></p>
+<p><strong>Season notch planted:</strong> the coin plus "he was paid". Organized silence-buying existed in Havenbay in 1989. One notch, no Thomas spend.</p>
+<h3>AGENCY MAP G — flavour: CUSTODY</h3>
+<p>Every decision in G is the same question in a different costume: <strong>who do you trust with this.</strong> A page, a truth, a grandfather, a tape, a coin. That through-line is why G's agency reads as authored rather than bolted on, and it is the thing to protect if the map is negotiated down.</p>
+<div class="cards">
+<div class="card">
+<div class="chead"><span class="cid"><strong>G1</strong></span><span class="cphase">P1, lead 2</span><span class="ccls">class A + B (two 6-node sibling leads, one authored either way)</span></div>
+<div class="cdec"><strong>The notebook.</strong> Hand Gerald's page to Del now, or transcribe it yourself first.</div>
+<dl><dt>Changes in play</dt><dd>Swaps the next lead for its sibling. DEL: <code>Lead_E1G_Chain</code>, forensic family requirements, Cortez enters one lead earlier, lower CC. KEEP: <code>Lead_E1G_Transcribe</code>, audio family requirements, reusing the audio-forensics vocabulary already built for The Listener, and it yields the paymaster's <em>voice</em> detail the police route never gets.</dd><dt>Persists</dt><dd><code>flag_e1g_notebook_police</code> / <code>_kept</code>. Ep2 reads it for Del's willingness to do a favour.</dd><dt>Callback</dt><dd>P3 arrest: Del either says the chain held, or that a podcaster's transcript is inadmissible and they had to build it on the mooring thread instead.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>G2</strong></span><span class="cphase">P1 close</span><span class="ccls">class <strong>A</strong> (one variant node, two sibling leads, zero VO on the mechanical half)</span></div>
+<div class="cdec"><strong>June.</strong> Tell June Kellaway what Doyle confessed before you can prove it, or hold it until you can.</div>
+<dl><dt>Changes in play</dt><dd>TELL: June becomes an active source. <code>Lead_E1G_BiscuitTin</code> spawns early, the thirty-seven mooring receipts arrive as press-family merge material, and one Phase 2 wall is removed. HOLD: the receipts come later out of the harbour office, a harder lead that <strong>consumes a SearchWarrant special</strong> from the Case Kit.</dd><dt>Persists</dt><dd><code>flag_e1g_june_told_early</code></dd><dt>Callback</dt><dd>Close: June either says she has had three days to be angry with a dead man, or that Ally made her wait and she would have liked those three days.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>G3</strong></span><span class="cphase">P2 midpoint</span><span class="ccls">class B (three 4-node variants; Vega by phone-call convention, no new portrait)</span></div>
+<div class="cdec"><strong>The pale sedan.</strong> Run the plate through Del (legal, slow) · have Vega pull the dissolved-company records (fast, dirty) · put a callout on the tip line asking who owns a pale sedan on Harbour Row (loud, and it tells the watcher he was seen).</div>
+<dl><dt>Changes in play</dt><dd>Three-way. DEL and VEGA each spawn a different identification lead. CALLOUT spawns neither: it triggers the watcher's escalation one lead early, so <strong>Phase 3 opens at 4 leads instead of 5, under time pressure, with the shield decision forced before Ally is ready.</strong></dd><dt>Persists</dt><dd><code>flag_e1g_sedan_del</code> / <code>_vega</code> / <code>_callout</code></dd><dt>Callback</dt><dd>The P3 arrest is built on whichever route named the proxy, and Del names the route out loud.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>G4</strong></span><span class="cphase">P2 to P3 hinge</span><span class="ccls">class A + B</span></div>
+<div class="cdec"><strong>Where does Gerald sleep.</strong> Mo's back room · his own house with Del's drive-bys · the studio with Ally.</div>
+<dl><dt>Changes in play</dt><dd>The strongest structural one. MO'S: Gerald is safest, but the Rusty Anchor closes to Ally as a working space for two leads, so <strong>the rusty_anchor generator goes offline and the board's requirement mix changes.</strong> HOUSE: keeps the bar, but the sedan resolves as a break-in that destroys one evidence item, removing a P3 shortcut. STUDIO: keeps everything, and the tip line receives the taunting message a day early, which moves the season notch forward and unsettles the close.</dd><dt>Persists</dt><dd><code>flag_e1g_gerald_*</code></dd><dt>Callback</dt><dd>The Phase 3 podcast opens differently in each, and Gerald has one line about where he slept.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>G5</strong></span><span class="cphase">P3</span><span class="ccls">class <strong>C</strong> (the one expensive branch: two 3-lead chains, ~24 nodes, ~12 VO cues)</span></div>
+<div class="cdec"><strong>Air the tape, or shield quietly.</strong> The named branch, now play-changing rather than dialogue-changing.</div>
+<dl><dt>Changes in play</dt><dd>AIR: a 3-lead "the city as witness" chain. Tip line floods, listener-sourced evidence, press-family requirements, subscribers surge (a real economy reward), and June hears her brother's death as content before she hears it as truth. SEAL: a 3-lead "quiet net" chain. Del's warrant, Cortez, slower, a smaller subscriber payoff, June's trust intact, and the proxy gives a confession instead of an ambush. Both converge on the arrest lead.</dd><dt>Persists</dt><dd><code>flag_e1g_aired</code>. <strong>Season-level:</strong> Ally's public-pressure doctrine, readable by Ep2 and by Ep3 when The Listener is dread-passed.</dd><dt>Callback</dt><dd>The close podcast is a different recording. June's last line is different. Ep3 can quote it.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>G6</strong></span><span class="cphase">P3 close</span><span class="ccls">class <strong>A</strong> (choice label plus one line)</span></div>
+<div class="cdec"><strong>The coin.</strong> Keep it, or log it into evidence with Del.</div>
+<dl><dt>Changes in play</dt><dd>KEEP: the coin becomes a permanent evidence-board card that carries into Ep2 and opens Ep2's first lead one step earlier. LOG: HPD hold it, so Ep2 needs an extra lead to get it back, but Del's trust is maxed and one Ep2 favour is free.</dd><dt>Persists</dt><dd><code>flag_e1g_coin_kept</code>. Cross-episode by design.</dd><dt>Callback</dt><dd><strong>Episode 2 opens differently.</strong> The cheapest decision in the map and probably the most felt.</dd></dl>
+</div>
+</div>
+
+<p><strong>Count: six play-changing decisions, spread 2 / 2 / 2 across three phases. Gate cleared.</strong> Mix: three class A, two class B, one class C. Added VO ~14 lines. Added authored leads +4 (two sibling pairs; the two P3 chains net out against the unbranched P3).</p>
+<p><strong>What G's map does not do:</strong> it never lets the player be wrong. Every route reaches the arrest. That is a defensible protective-genre choice, because custody stories are about cost rather than failure, but it means G carries the least <em>risk</em> of the three maps, and risk is a large part of what agency feels like.</p>
+<p><strong>Clock structure: day-stamped.</strong> Saturday night through the following week, as The Listener ran Day 1 to Day 6. Overnight gaps are plausible because the second half of the episode is a protection detail, and protection has natural downtime.</p>
+<h3>What Pitch G does not have yet</h3>
+<ul>
+<li><strong>No named beneficiary.</strong> The proxy who administered the injection is a casting note, not a solution, and the paymaster is deliberately a name on dissolved paperwork. Nobody in this episode is visibly getting away with anything the player can point at. Needs: who profited from Wren Kellaway's death in 1989, and who has been paying for the silence since.</li>
+<li><strong>No wrong hypothesis.</strong> There is nothing Ally believes and has to abandon, so the player never gets to be wrong and never earns the recontextualisation.</li>
+<li><strong>Havenbay-flavoured, not Havenbay-dependent.</strong> The Rusty Anchor is the crime scene, but a scene is a setting. Nothing yet is a civic or environmental fact that changes the solution. The thirty-seven mooring receipts are the closest candidate and are not doing that work yet.</li>
+<li><strong>The coin is carrying the season notch.</strong> "He was paid" is the real fact and should carry it instead. G is the best placed of the three to do this, because paid silence is already an economy rather than an icon.</li>
+<li><strong>Ally is missing two of her required beats.</strong> Her warmth beat is currently Mo closing the bar and cooking for the wake, which is Mo's warmth. And nothing in the episode changes Ally irreversibly by the end.</li>
+<li><strong>Untested assumption at the centre.</strong> That ninety seconds of tutorial hint chips fronted by Gerald's portrait produces attachment rather than recognition. Table-read question 2 tests it directly.</li>
+</ul>
+<hr />
+<h2>PITCH H — "The Overnight Girl" (Pitch A revived)</h2>
+<p><strong>Logline:</strong> Nina Vasquez, twenty-four, works the overnight counter at the Kestrel Corner Diner. Every night at three ten a.m. she rings her kid brother twice and hangs up: the all-safe. Tonight the phone rang once. Through the diner window, four hours earlier, Nina watched two men load something man-shaped into the fish-market ice store. Nina is not missing. Nina is hiding. And the man looking for her has done this before.</p>
+<p><strong>Cold open:</strong></p>
+<blockquote>
+<p>ANNOUNCER: "Message received: Thursday, three twelve a.m."
+BOY (young, steady the way children are when they have rehearsed being brave): "My sister rings twice every night. Two rings means safe. It rang once tonight. She made me learn this number in case it ever rang once. She said ask for Ally. She said say the diner, say the ice store, say run."
+ALLY (on-mic): "He recited it like a times table. Somebody taught a twelve-year-old to be a dead man's switch. That somebody is out there right now, with a head start measured in hours, and so is whoever she built the switch against."</p>
+</blockquote>
+<p><strong>The case:</strong> a body IS in the ice store, the first on-page present-tense body of the series: found frozen, restrained rendering, a sheet, a hand, Cortez's gurney, nothing more. The victim is a harbour customs clerk who had begun photographing manifests. Nina saw the disposal, understood instantly what seeing it meant, and executed the escape plan she had rehearsed since childhood. She grew up in witness-protection fallout; her family fled something once before, so her competence is her backstory. The episode is a two-clock chase: Ally racing the hunter to Nina, using breadcrumbs Nina left only for someone who listens, keyed to episodes of the show. The hunter is a patient professional (Kroll fits perfectly) who cleans, never hurries, and is methodically visiting everyone Nina ever trusted, one conversation at a time, always polite, always a day ahead.</p>
+<p><strong>Doctrine beats (selected):</strong>
+- <em>Grievable victim from ONE detail:</em> the brother's twice-nightly phone ritual. Also its inversion at the close.
+- <em>Midpoint jeopardy reaches Ally:</em> Kroll sits at the diner counter during Ally's stakeout and orders coffee. Never threatens. Pays exact change. "You do good work, Miss Quinn. Thorough. He appreciates thorough." Leaves a tip: exact change again. The scene is polite the way a scalpel is clean.
+- <em>The branch:</em> broadcast Nina's breadcrumb key to flush the hunter into the open (burn the trail to burn the tail), or decode quietly and reach her first, knowing that if you are wrong about being faster, the last person to follow the trail is not you. Converges at the marsh boathouse.
+- <em>Competence beat and effort engine:</em> every lead is a breadcrumb Nina keyed to the show's archive, so the merge requirements ARE the decoding. Audio family, literal, medium-native.
+- <em>Resolution with emotional honesty:</em> Nina is found alive. The series does not kill women in fridges; the clerk in the ice store is the body, and HIS keeper, a wife who thought he was having an affair rather than a conscience, carries the grief thread. Kroll is taken at the boathouse but gives nothing: hired, layered, a receipt not a reason. The manifests point at a shell that dissolves under Del's warrant.
+- <em>Whiff of change and the coin:</em> among the clerk's photographed manifests, one Thursday-tide entry from Pier 13 flagged with a hand-drawn circle. Pinned beside it in his effects, a brass coin, one face blank, a nick in the rim. Nobody in the episode explains it.
+- <em>Conversion hook:</em> Nina, safe, records one line for the show. "Two rings tonight." Then the stinger: somewhere, a phone photographed on a manifest desk rings twice. Someone else has learned her code.</p>
+<p><strong>Natural length: 15 leads, 2 phases.</strong> The chase structure resists a third phase; it wants acceleration, not plateau.</p>
+<p><strong>Cast and art cost:</strong> Ally, Del, Gerald, Mo, Tip Line existing. <strong>New: Nina (full sheet, she survives into the series as a canon caller and ally), the brother (one frame or voice-only), Kroll (his canon entrance, antagonist lighting grammar), Cortez (shared with G), the clerk's wife (episode-level).</strong> Two or more new backgrounds (ice store exterior at night, marsh boathouse; the diner master EXISTS). <strong>Verdict: heaviest art bill of the three.</strong></p>
+<p><strong>VO scale:</strong> ~30 cues. The boy's cold-open voicemail is the casting risk, a child actor cue: source carefully, or restage as Nina's own pre-recorded failsafe message, which also works and may be stronger. Add the agency map's bill: +12 lines.</p>
+<p><del>Doctrine score: 46/50</del> <strong>VOID per 0.1. See section 5.</strong></p>
+<p><strong>Season notch planted:</strong> Pier 13, Thursday tide, photographed and circled by a man who is now dead. The route exists and it kills. No Thomas spend.</p>
+<h3>AGENCY MAP H — flavour: TRIAGE</h3>
+<p>H's agency is not a set of menus. It is one mechanic used three times: <strong>you cannot reach everything before he does.</strong> Every choice in H is the same question: <strong>what do you give up.</strong></p>
+<p><strong>The triage mechanic.</strong> At three points the board offers two open leads and the case offers time for one. Resolving either advances the hunter one tick. The unchosen lead does not vanish; it converts to a <strong>cold-trail card</strong> on the evidence board, resolved-negative, worth two or three nodes: the hunter got there first, the person will not talk now, and the thing they held is gone. The cold trail still tells Ally something, because it is the hunter's own path drawn in the negative, but the evidence it held is lost, which raises the requirement on a later lead.</p>
+<p>This is the cheapest agency design in the document, and the only one whose ending is <em>earned</em> rather than <em>picked</em>.</p>
+<div class="cards">
+<div class="card">
+<div class="chead"><span class="cid"><strong>H1</strong></span><span class="cphase">P1, lead 2</span><span class="ccls">class <strong>C</strong> (one exclusive lead)</span></div>
+<div class="cdec"><strong>The brother.</strong> Hand him to Del formally, so he goes into care, safe, and Ally loses the only person who can read Nina's code. Or park him with Helen Quinn off the books.</div>
+<dl><dt>Changes in play</dt><dd>DEL: two later breadcrumb leads have their requirements raised, Ally decodes alone, more merge work per lead. HELEN: those leads are cheaper, and an <strong>exclusive Phase 2 lead spawns</strong> in which Kroll visits Helen's school, politely, at pickup time.</dd><dt>Persists</dt><dd><code>flag_e1h_boy_with_helen</code></dd><dt>Callback</dt><dd>The close changes, and Helen's disposition carries into later episodes.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>H2</strong></span><span class="cphase">P1</span><span class="ccls">class <strong>A</strong> (plus one 3-node cold-trail stub, a reused pattern)</span></div>
+<div class="cdec"><strong>Triage tick 1.</strong> The trailer park where Nina's aunt lives, or the pawn shop that took her phone.</div>
+<dl><dt>Changes in play</dt><dd>One resolves, the other becomes a cold trail. Different evidence, different family requirements downstream.</dd><dt>Persists</dt><dd><code>flag_e1h_tick1_*</code></dd><dt>Callback</dt><dd>The cold-trail card sits on the evidence board for the rest of the episode. The board <em>looks</em> like your choice.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>H3</strong></span><span class="cphase">P2</span><span class="ccls">class <strong>A</strong></span></div>
+<div class="cdec"><strong>Triage tick 2.</strong> The night bus driver, or the church that runs the food bank.</div>
+<dl><dt>Changes in play</dt><dd>As above, and the loser's evidence is what makes the boathouse identification cheap. Lose it and H6 gets harder.</dd><dt>Persists</dt><dd><code>flag_e1h_tick2_*</code></dd><dt>Callback</dt><dd>As above, and Kroll is one step nearer in the P2 podcast.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>H4</strong></span><span class="cphase">P2</span><span class="ccls">class <strong>A</strong></span></div>
+<div class="cdec"><strong>Triage tick 3.</strong> The clerk's widow, or Nina's old caseworker.</div>
+<dl><dt>Changes in play</dt><dd>As above. Losing the widow costs the grief thread its best scene. Losing the caseworker costs the witness-protection backstory, which is the emotional key to the ending.</dd><dt>Persists</dt><dd><code>flag_e1h_tick3_*</code></dd><dt>Callback</dt><dd>As above.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>H5</strong></span><span class="cphase">P2</span><span class="ccls">class <strong>B</strong></span></div>
+<div class="cdec"><strong>Broadcast the breadcrumb key, or decode quietly.</strong> The named branch, now play-changing.</div>
+<dl><dt>Changes in play</dt><dd>BROADCAST: the tip line floods, two listener-sourced leads spawn (fast, cheap, subscribers surge), and the hunter hears it too, so <strong>the next triage tick offers only one lead, because he has already taken the other.</strong> DECODE: no flood, the archive leads need audio family at a higher tier (expensive merges), and the hunter stays a day behind.</dd><dt>Persists</dt><dd><code>flag_e1h_aired</code>. Same public-pressure doctrine class as G5 and I4.</dd><dt>Callback</dt><dd>The tick that follows is visibly poorer. Nina says which one she heard.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>H6</strong></span><span class="cphase">P2 climax</span><span class="ccls">class <strong>A</strong></span></div>
+<div class="cdec"><strong>The last mile.</strong> Go to the marsh boathouse now, or spend one more lead confirming it is the right place.</div>
+<dl><dt>Changes in play</dt><dd>NOW: skip a lead, arrive at the ambiguous ending. CONFIRM: one more lead of board work, arrive certain, Kroll taken cleanly. Pure risk and reward, zero VO on the mechanic.</dd><dt>Persists</dt><dd><code>flag_e1h_rushed</code></dd><dt>Callback</dt><dd>Which version of the boathouse you get.</dd></dl>
+</div>
+</div>
+
+<p><strong>The accumulated ending.</strong> <code>flag_e1h_ticks_won</code> counts H2 to H4 (0 to 3), modified by H5 and H6.</p>
+<ul>
+<li><strong>3 of 3:</strong> Ally reaches the boathouse first. Nina is calm, and she is calm because somebody finally kept up with her.</li>
+<li><strong>2 of 3:</strong> Ally arrives during. The hunter is there. Del is four minutes out.</li>
+<li><strong>0 or 1 of 3:</strong> Nina saves herself, exactly as she has planned to since she was nine, and Ally arrives to a woman who did not need her. This is the humbler close podcast, and it is the better one to have written.</li>
+</ul>
+<p><strong>Count: six play-changing decisions, and the ending is a function of play rather than a menu. Gate cleared, and cleared with the strongest mechanic in the document.</strong> Mix: four class A, one B, one C. Added VO ~12 lines plus three 3-node stubs. Added authored leads +5.</p>
+<p><strong>Why this map is not optional for H.</strong> See 5.4.1. The chase clock is H's biggest strength on the page and its biggest liability in a merge game played across days. Triage is the fix, because it makes the clock diegetic to <em>lead count</em> rather than to wall-clock time: the hunter advances when you advance. Without triage, H's "head start measured in hours" collides with an energy economy that meters play across a week. <strong>Ruling for H is ruling for triage.</strong></p>
+<p><strong>Clock structure: lead-state.</strong> The hunter advances when the player resolves a lead, not when time passes. This is not a preference. H's hook is a head start measured in hours and a merge economy meters play across days, so a wall-clock reading of this premise is outrun by a player who goes to sleep. Triage is what makes the clock diegetic, which is why ruling for H is ruling for triage.</p>
+<h3>What Pitch H does not have yet</h3>
+<ul>
+<li><strong>The weakest Havenbay case of the three.</strong> The escape network is personal rather than civic. No tide, fog, harbour geometry, transport pattern or dockside memory changes what can be seen, proved or reached. As written, this is a strong thriller that could be relocated to any port city with a diner, which is the opposite of what the Harper test asks for.</li>
+<li><strong>The evidence engine is a claim, not a mechanic.</strong> "Every lead is a breadcrumb Nina keyed to the show's archive, so the merge requirements ARE the decoding" states an intention. It does not say what the player physically reconstructs, what conclusion that makes possible, or what action the conclusion unlocks. G and I can both answer that question. H cannot yet.</li>
+<li><strong>No named beneficiary.</strong> Kroll is hired, layered, "a receipt not a reason", and the manifests point at a shell that dissolves under a warrant. The episode ends with a professional in custody and no one to be angry at.</li>
+<li><strong>No wrong hypothesis.</strong></li>
+<li><strong>Split keeper.</strong> Grief sits with the clerk's widow, danger sits with Nina, and the emotional thread runs through Nina's brother. Three strands, none of them the spine. G concentrates grief in June and I concentrates it in the witness; H spreads it, and spread grief is thin grief.</li>
+<li><strong>Ally is missing two of her required beats,</strong> the same two as G: no warmth action that costs her something, and no irreversible change by the ending.</li>
+<li><strong>Tutorial collision.</strong> The Kestrel Corner Diner is Del's canon table, the food generator, and a space the tutorial teaches in. Week one turns it into a crime-adjacent location. That is a tonal cost, not a bonus.</li>
+</ul>
+<hr />
+<h2>PITCH I — "The Last Caller" (engineered hybrid: G's present-tense murder braided with H's chase, on The Listener's best device)</h2>
+<p><strong>Logline:</strong> The tip line's midnight message is a confession. An old man, naming a killing from decades ago, talking like a man out of time. The message cuts off mid-sentence. Not hung up: interrupted. By morning there is a body, and the only person who can finish the dead man's sentence is the caller he named as his witness, who has just stopped answering her phone.</p>
+<p><strong>Cold open:</strong></p>
+<blockquote>
+<p>ANNOUNCER: "Message received: Wednesday, twelve oh four a.m."
+CALLER (elderly, deliberate, reading from something written): "My name doesn't matter yet. Write this down instead. In August of nineteen eighty-nine a man went into the harbour at the foundry basin and it was called a fall. It was not a fall. I was paid to say it was. The one who paid me had a voice I will hear when I die, which I am told is soon, so I am spending it. There was a witness. She was nine years old. Her name is..."
+[The line does not click. It muffles: a hand over a receiver. Four seconds of a room with two people breathing in it. Then dial tone.]
+ALLY (on-mic): "The tip line keeps voices, timestamps and nothing else. That has always been the promise. Tonight I would trade the whole archive for one more second of tape. Somewhere in this city is a woman who watched a murder when she was nine years old. Two people are looking for her tonight. I am the slower one."</p>
+</blockquote>
+<p><strong>The case:</strong> identifying the dead caller, a Doyle-figure, VOICE ONLY, found dead by morning, restrained murder, Cortez proof, from the message's room tone, medications heard rattling, a foghorn interval. Audio forensics as the spine, the show's own craft as the weapon. Then the chase: find the witness, now mid-forties, the keeper AND the endangered, one character carrying both doctrine loads, before the interrupter does. The interrupter was IN THE ROOM at 12:04. The episode's chill is that the confession was permitted up to the name. Someone let a dying man have his conscience, except for the only sentence that mattered.</p>
+<p><strong>Structure: 3 phases, natural length 18 leads</strong> (Phase 1 the tape and the body, 6 · Phase 2 nineteen eighty-nine and the hunt for her, 7 · Phase 3 she is found, and what she saw finishes the sentence, 5). The branch in Phase 3: she will only testify if Ally holds the episode until the arrest (protect), or the episode is the only pressure that forces the arrest (publish). The Listener's loud-truth and quiet-truth axis, aimed at a witness's life instead of a van.</p>
+<p><strong>What it borrows:</strong> The Listener's wordless-interruption horror and tip-line-native evidence, the strongest devices we built, now with a body under them · G's confession-and-silencing braid, Cortez entrance, and voice-only victim economy · H's hunted-witness clock and polite midpoint visitor. <strong>What it risks:</strong> doing everything and therefore having no identity of its own; three casts of load on one witness character; the 12:04 interrupter needing an eventual face without spending season villains, so an episode-level proxy is required, Kroll eligible.</p>
+<p><strong>Cast and art cost:</strong> between G and H, <strong>but it fails the branching cost ceiling.</strong> Two class C branches (I3's three candidate witnesses, I4's hold-or-publish chain) against a limit of one. The fix is to demote I3 to evidence-only, which removes the scenes and keeps the deduction, and I3 is the best detective beat in the document. I's strongest feature is the thing that makes it unaffordable. The caller is voice-only; the witness is one new full sheet; Cortez; an episode proxy. Backgrounds: foundry basin (shared with G if both advance), the witness's inland town (one master).</p>
+<p><strong>Coin plant:</strong> in the dead caller's effects, sewn into a coat lining, the unspent 1989 coin. Same mint as G's.</p>
+<p><del>Doctrine score: 47/50</del> <strong>VOID per 0.1. See section 5.</strong></p>
+<p><strong>Season notch planted:</strong> identical class to G. Paid silence, 1989, the coin.</p>
+<h3>AGENCY MAP I — flavour: EDITORIAL CONTROL</h3>
+<p>I is the only premise where the player's <em>show</em> is the instrument. So the signature is not a branch, it is a desk: <strong>what do you put on air, and who is listening when you do.</strong> Every choice in I is broadcast, deduction, or the promise the tip line makes.</p>
+<div class="cards">
+<div class="card">
+<div class="chead"><span class="cid"><strong>I1</strong></span><span class="cphase">P1, after the tape</span><span class="ccls">class <strong>A + B</strong> (three short leads, the player sees two; the unaired one banks for a later episode)</span></div>
+<div class="cdec"><strong>The first bulletin. Choose TWO of three</strong> pieces of the 12:04 tape to air: the foghorn interval · the medication rattle · the sentence "I was paid to say it was."</div>
+<dl><dt>Changes in play</dt><dd>Each aired item spawns its own listener-response lead in P2: a harbour pilot who knows that foghorn, a pharmacist who knows that rattle, and the third, which reaches the wrong ears and <strong>moves the interrupter one lead closer to the witness.</strong> The unaired item must instead be worked as an expensive solo lead, or not at all. Three combinations, three different Phase 2 shapes.</dd><dt>Persists</dt><dd><code>flag_e1i_aired_foghorn</code> / <code>_meds</code> / <code>_paid</code></dd><dt>Callback</dt><dd>Each responder says which broadcast they heard, and the interrupter's proximity is visible on the board.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>I2</strong></span><span class="cphase">P1 close</span><span class="ccls">class A + B</span></div>
+<div class="cdec"><strong>Name the dead caller on air, or protect his family.</strong></div>
+<dl><dt>Changes in play</dt><dd>NAME: the 1989 file opens faster, and Arthur plus the press family carry a whole lead's worth of work for free. PROTECT: the family stays cooperative and hands over the coat, so <strong>the coin plant lands in Phase 1 instead of Phase 3</strong> and the season notch is set before the hunt starts.</dd><dt>Persists</dt><dd><code>flag_e1i_named_caller</code></dd><dt>Callback</dt><dd>The family is either at the arrest or they are not.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>I3</strong></span><span class="cphase">P2, the spine</span><span class="ccls">class <strong>C</strong> (three candidate leads: two short at ~5 nodes, one full)</span></div>
+<div class="cdec"><strong>The nine-year-old's name.</strong> Three candidate women fit the evidence. Pick who to pursue first.</div>
+<dl><dt>Changes in play</dt><dd>The best detective beat in the document. A wrong first pick is not a fail state: it costs a phase tick, gives the interrupter ground, and produces a real scene, a woman who was not the witness but was in her class, who yields the school photograph the right identification needs. Order of leads changes; endgame cost changes.</dd><dt>Persists</dt><dd><code>flag_e1i_first_pick_*</code></dd><dt>Callback</dt><dd>The witness herself: "You went to Marion first. She rang me. That is the only reason I picked up." One line, and the whole choice lands.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>I4</strong></span><span class="cphase">P3</span><span class="ccls">class <strong>C</strong></span></div>
+<div class="cdec"><strong>Hold the episode, or publish.</strong> The named branch, now play-changing.</div>
+<dl><dt>Changes in play</dt><dd>HOLD: a 3-lead protect chain, the witness's safety, a wire, Del. PUBLISH: a 3-lead pressure chain, the city looks, the proxy panics, a second grave is nearly needed. Converge at the arrest.</dd><dt>Persists</dt><dd><code>flag_e1i_published</code>. Same doctrine class as G5 and H5.</dd><dt>Callback</dt><dd>The close is a different recording.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>I5</strong></span><span class="cphase">P2 or P3</span><span class="ccls">class <strong>A</strong> (plus two variant lines at the arrest)</span></div>
+<div class="cdec"><strong>The four seconds.</strong> Spend a full lead re-analysing the room tone at 12:04, two people breathing, or skip it.</div>
+<dl><dt>Changes in play</dt><dd>An optional lead with a real cost and a real reward. Done: the arrest is airtight and the proxy gives up the chain above him, the episode's deepest season notch. Skipped: the arrest still holds, the notch is thinner, and Ep2 opens with less.</dd><dt>Persists</dt><dd><code>flag_e1i_four_seconds</code></dd><dt>Callback</dt><dd>The player who did the work gets the Ferryman-shaped sentence. The player who did not, does not.</dd></dl>
+</div>
+<div class="card">
+<div class="chead"><span class="cid"><strong>I6</strong></span><span class="cphase">P3 close</span><span class="ccls">class <strong>A</strong></span></div>
+<div class="cdec"><strong>The archive promise.</strong> "The tip line keeps voices, timestamps and nothing else." Hand the 12:04 tape to HPD and break the promise, or keep it.</div>
+<dl><dt>Changes in play</dt><dd>BREAK: the case is materially stronger, and <strong>the tip line's inbound volume drops in Ep2</strong>, a real, visible effect on the subscribers ladder and on how many leads the tip line can seed next episode. KEEP: a weaker case, and the tip line stays the show's engine.</dd><dt>Persists</dt><dd><code>flag_e1i_promise_kept</code>. The strongest cross-episode flag in the document.</dd><dt>Callback</dt><dd><strong>Episode 2's tip line is quieter, or it is not.</strong> The show itself is the consequence.</dd></dl>
+</div>
+</div>
+
+<p><strong>Count: six play-changing decisions, spread 2 / 2 / 2, with the highest agency density of the three. Gate cleared.</strong> Mix: three class A, one B, two class C. Added VO ~18 lines. Added authored leads +6, the largest bill in the document.</p>
+<p><strong>The structural problem the map must solve.</strong> I's most important character does not appear until Phase 3. A keeper the player has not met cannot carry two thirds of an episode. The mitigation is the Tip Line precedent used again: <strong>the witness is present from Phase 1 as artefacts.</strong> A school photograph, her handwriting on a class register, her voice on a 1989 recording, the name three people almost say. By the time she opens a door, the player should feel they already know her, exactly as they will know Doyle in G without seeing his face. If that is not built in deliberately, I's Phase 3 lands on a stranger.</p>
+<p><strong>Clock structure: day-stamped.</strong> The tape lands at 12:04 on a Wednesday, the body is found by morning, and the hunt for the witness runs across days. The interrupter's proximity advances on phase turns rather than on the wall clock.</p>
+<h3>What Pitch I does not have yet</h3>
+<ul>
+<li><strong>It fails the branching cost ceiling.</strong> Two class C branches against a limit of one. See the production line above; the fix costs the pitch its best feature.</li>
+<li><strong>The keeper is absent for two thirds of the episode.</strong> The artefact-presence mitigation is designed and unbuilt, and if it is skipped under schedule pressure the emotional payoff lands on a stranger.</li>
+<li><strong>No named interrupter.</strong> The pitch admits this itself: the 12:04 presence needs an eventual face without spending a season villain.</li>
+<li><strong>No wrong hypothesis,</strong> although the three-candidate structure is the closest any pitch in this document comes to one. That is the cheapest place in the whole slate to add a real false trail.</li>
+<li><strong>The structural echo.</strong> Interrupted recording, reconstruct it, find the woman. That is the shape of the pilot twelve of twelve testers abandoned. A murder in the first minute changes the stakes and does not change the shape. This is the strongest single premise in the document and the one that most resembles the thing that already failed with this exact audience.</li>
+<li><strong>Havenbay identifies, it does not decide.</strong> The foghorn interval is the best location detail in the slate and it is used to locate a caller, not to change the solution.</li>
+</ul>
+<hr />
+<h2>5. Charter re-evaluation (this replaces the scorecards)</h2>
+<p>Conducted per SAS/critical-reviewer-charter.md. Kill-gates first, then forced ranking with no ties, then external benchmark, then the strongest case against.</p>
+<h3>5.1 Kill-gates</h3>
+<table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>G Confession</th>
+<th>H Overnight Girl</th>
+<th>I Last Caller</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Cold open read to a stranger produces "what happens next" unprompted</strong></td>
+<td><strong>PENDING TEST</strong></td>
+<td><strong>PENDING TEST</strong></td>
+<td><strong>PENDING TEST</strong></td>
+</tr>
+<tr>
+<td><strong>2. Central jeopardy in one sentence with a countdown or closing window</strong></td>
+<td>PASS</td>
+<td>PASS</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><strong>3. The midpoint changes what the player is DOING</strong></td>
+<td>PASS</td>
+<td><strong>CONDITIONAL</strong></td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><strong>4. Four or more play-changing decisions, not a single end gate</strong></td>
+<td>FAIL as v3 · <strong>PASS with map</strong></td>
+<td>FAIL as v3 · <strong>PASS with map</strong></td>
+<td>FAIL as v3 · <strong>PASS with map</strong></td>
+</tr>
+<tr>
+<td><strong>5. Present-tense murder with dual-track jeopardy</strong></td>
+<td>PASS</td>
+<td>PASS</td>
+<td>PASS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gate 1 is not mine to pass.</strong> The gate says a <em>stranger</em> produces the question. There is no tester data, so the honest answer for all three is: I do not know. That is precisely why Appendix A exists, and why every verdict in this section is capped until the read is run. Charter rule 5 is explicit: when tester data exists, internal scoring is advisory only. Right now there is none, so this entire section is advisory.</p>
+<p><strong>Gate 2 passes for all three,</strong> which is worth naming as a failure of the gate rather than a success of the pitches. Three for three is the same non-discrimination that voided the scorecards. For the record, the one-sentence statements:</p>
+<ul>
+<li>G: whoever paid Frank Doyle to lie in 1989 killed him within hours of him talking, and the only other person who heard the confession is a seventy-four-year-old man who wrote it down.</li>
+<li>H: Nina is hiding, the hunter is a day ahead, and he is working through everyone she ever trusted one polite conversation at a time.</li>
+<li>I: a dying man was cut off before he could say her name, the people who cut him off know it, and she does not know she is being looked for.</li>
+</ul>
+<p>I is the strongest of the three sentences, because its victim does not know she is one.</p>
+<p><strong>Gate 3 is where the gates finally discriminate.</strong> G passes explicitly and mechanically: the case turns from investigation to protection, and with G4 the available generator set literally changes. I passes twice, at both phase turns. <strong>H is conditional.</strong> As pitched, H is two phases and the doc itself says the chase "resists a third phase, it wants acceleration, not plateau." A chase's midpoint is more of the same but faster, and Kroll at the counter changes what Ally <em>knows and fears</em>, not what the player <em>does</em>. With triage in place H passes cleanly, because the midpoint becomes the point where the hunter starts pre-empting and the player switches from gathering to denying. Without triage, H fails gate 3. This is the single most load-bearing conditional in the document.</p>
+<p><strong>Gate 4: the v3 document as committed fails for all three.</strong> One branch each, at or near the end, The Listener's exact defect. That finding is the reason for this revision, and it should be recorded rather than quietly fixed.</p>
+<h3>5.2 Forced ranking, no ties</h3>
+<p>Ranked per dimension, first place best. The reasons are the point; the ordinals are just the discipline.</p>
+<div class="cards">
+<div class="card rank">
+<div class="cdec"><strong>Cold-open pull</strong> (predicted; the least reliable row in this table)</div>
+<div class="order"><b>1.</b> <strong>I</strong> &nbsp;·&nbsp; <b>2.</b> H &nbsp;·&nbsp; <b>3.</b> G</div>
+<div class="reason">I's interruption is the most unusual thing in the document: a confession physically stopped by a hand over a receiver, four seconds of two people breathing. It needs no prior context and it is wordless horror, which is the device our own testers responded to in The Listener before the rest of the episode let it down. H's boy is strong, but "dead man's switch" is a writerly phrase doing work a child's voice should do alone. G asks a stranger to care about a booth and a grandfather they have not met.</div>
+</div>
+<div class="card rank">
+<div class="cdec"><strong>Present-tense jeopardy legibility</strong></div>
+<div class="order"><b>1.</b> <strong>H</strong> &nbsp;·&nbsp; <b>2.</b> I &nbsp;·&nbsp; <b>3.</b> G</div>
+<div class="reason">H's clock is felt without being explained: he is a day ahead and he is working a list. I's is felt but must be inferred, because she does not know. G's arrives at the midpoint rather than at minute one.</div>
+</div>
+<div class="card rank">
+<div class="cdec"><strong>Medium fit</strong> (does it survive a merge economy played across days)</div>
+<div class="order"><b>1.</b> <strong>G</strong> &nbsp;·&nbsp; <b>2.</b> I &nbsp;·&nbsp; <b>3.</b> H</div>
+<div class="reason">G is day-structured and protection has natural downtime built into it. I's hunt plausibly takes days. H's chase fights the format hardest. See 5.4.1.</div>
+</div>
+<div class="card rank">
+<div class="cdec"><strong>Agency per authoring dollar</strong></div>
+<div class="order"><b>1.</b> <strong>H</strong> &nbsp;·&nbsp; <b>2.</b> I &nbsp;·&nbsp; <b>3.</b> G</div>
+<div class="reason">H's triage is one mechanic used three times, costing three 3-node stubs, and it buys an ending the player earned. I has the highest agency density but pays two class C branches for it. G's map is elegant and thematically unified, but its decisions are mostly different routes to the same arrest and it never lets the player be wrong.</div>
+</div>
+<div class="card rank">
+<div class="cdec"><strong>Production cost</strong> (cheapest first)</div>
+<div class="order"><b>1.</b> <strong>G</strong> &nbsp;·&nbsp; <b>2.</b> I &nbsp;·&nbsp; <b>3.</b> H</div>
+<div class="reason">Per the pitch bodies' own art analysis. Doyle voice-only is the cheapest victim design in the document. H needs Nina as a full sheet, Kroll's canon entrance, the brother, the widow, and two new backgrounds.</div>
+</div>
+<div class="card rank">
+<div class="cdec"><strong>Tutorial and systems synergy</strong></div>
+<div class="order"><b>1.</b> <strong>G</strong> &nbsp;·&nbsp; <b>2.</b> H &nbsp;·&nbsp; <b>3.</b> I</div>
+<div class="reason">G puts the rusty_anchor family, gated since it was built, at the centre of the case, and its crime scene is the room the tutorial taught in. H's synergy is real but inverted: the Kestrel Corner Diner is Del's canon table, the food_gifts generator and a tutorial space, and week one turns it into a crime-adjacent location. That is a tonal collision, not a bonus.</div>
+</div>
+<div class="card rank">
+<div class="cdec"><strong>Season-arc leverage into Ep2 Ferryman</strong></div>
+<div class="order"><b>1.</b> <strong>I</strong> &nbsp;·&nbsp; <b>2.</b> G &nbsp;·&nbsp; <b>3.</b> H</div>
+<div class="reason">"Someone let a dying man have his conscience, except for the sentence that mattered" is the most Ferryman-shaped sentence anyone has written for this project. G's paid-silence notch is the same class but blunter. H's circled Thursday tide is good, and procedural.</div>
+</div>
+<div class="card rank">
+<div class="cdec"><strong>Distance from The Listener's failure mode</strong></div>
+<div class="order"><b>1.</b> <strong>H</strong> &nbsp;·&nbsp; <b>2.</b> I &nbsp;·&nbsp; <b>3.</b> G</div>
+<div class="reason">The Listener failed as: an elderly person, a warm relationship, a decades-old wrong, and a threat the player had to be told about. H shares none of that shape. I shares the tip line and an elderly voice but inverts both by killing him in the first minute. G shares the most surface DNA, an old man, a warm bar, a 1989 wrong, and although its jeopardy is genuinely different, surface shape is what a tester meets first.</div>
+</div>
+</div>
+
+<p><strong>Cluster read.</strong> Each pitch wins a coherent cluster and no pitch wins two, which is what a real ranking looks like:</p>
+<ul>
+<li><strong>G wins PRODUCTION</strong> (cost, medium fit, systems synergy).</li>
+<li><strong>H wins AUDIENCE</strong> (jeopardy legibility, agency per dollar, distance from the failure).</li>
+<li><strong>I wins STORY</strong> (cold-open pull, season leverage).</li>
+</ul>
+<h3>5.3 External benchmark</h3>
+<p>Charter rule 4 forbids judging these against each other or against The Listener. Against the genre's actual pilots:</p>
+<ul>
+<li><strong>Serial S1E1 "The Alibi"</strong> opens on the host's own problem, whether anyone can remember an ordinary day six weeks ago, and only then on a teenager in prison for a murder he says he did not commit. The engine is audible uncertainty in the host.</li>
+<li><strong>Dirty John E1</strong> opens on ordinary loneliness and a man who is too good to be true. The engine is dramatic irony, because the title has already told you.</li>
+<li><strong>Teacher's Pet E1</strong> opens on a woman who vanished in 1982 and a suspect everyone can name. The engine is unpunished obviousness.</li>
+<li><strong>In the Dark S1</strong> opens on a child taken and twenty-seven years of institutional failure. The engine is a system that did not work.</li>
+</ul>
+<p><strong>The uncomfortable finding: three of those four are cold cases with no present-tense danger at all.</strong> What they have instead is an <em>unbearable asymmetry</em>. Someone knows and will not say, or an institution failed and will not admit it. Our pivot doctrine, present-tense jeopardy, is one way to manufacture that asymmetry, and it is not the way the genre's biggest pilots do it.</p>
+<p>This does not overturn the pivot. Twelve of twelve testers is real evidence and internal doctrine is not. But it sharpens what the testers were asking for. "No jeopardy, too safe" is not necessarily a request for a chase. It is a request for someone in the story to be <em>getting away with it while you listen</em>. Read that way:</p>
+<ul>
+<li><strong>I is closest to the genre's proven grammar.</strong> Somebody was in the room and permitted a confession up to the name. The asymmetry is stated in the first sixty seconds.</li>
+<li><strong>G is second.</strong> Someone has been waiting thirty-seven years and is still waiting, patiently, in the present.</li>
+<li><strong>H is a thriller, not a true-crime pilot.</strong> That is not a defect, it is a different product, and with a mobile audience who did not come for Serial it may well outperform the benchmarks. But it departs furthest from what the genre has proven, so it carries genre risk that G and I do not.</li>
+</ul>
+<h3>5.4 The strongest case against each</h3>
+<p><strong>5.4.1 The clock and the medium (hits H hardest, all three somewhat).</strong> Charter gate 2 demands a countdown. The game meters play at 150-second energy regen across a 15 to 18 lead episode with four walls, so realistically the player experiences Episode 1 over several days and several sessions. A hunter with "a head start measured in hours" is being outrun by a player who is asleep. The Listener solved this with in-fiction day stamps, Day 1 Monday through Day 6 Saturday, which converts hours into days, and G and I are already day-structured. H cannot take that fix without weakening its own hook. Its only real fix is triage, which advances the clock on lead resolution instead of on time. <strong>H's greatest strength on the page is the thing that fights the medium hardest, and the fix is not optional.</strong></p>
+<p><strong>5.4.2 G's revival rests on an untested assumption.</strong> The pitch body argues the round-1 objection is "void" because Gerald now fronts the tutorial. Ninety seconds of hint chips carrying a portrait produces recognition, not attachment. The claim may well be true and it is cheap to test: Appendix A question 3 asks each tester, after the read, who they would least like to see hurt. If G's readers do not name Gerald, the revival's central argument has failed and G should not be Ep1.</p>
+<p><strong>5.4.3 I's protagonist-of-the-case is absent for two thirds of it.</strong> The witness carries the grievable-victim load, the endangered-person load and the resolution, and she does not appear until Phase 3. The map's artefact mitigation is a real fix, but it has to be <em>designed in</em>, and if it is skipped under schedule pressure the episode's emotional payoff lands on a stranger. I also carries the identity risk its own pitch body admits: it borrows from all three predecessors and could end up being a hybrid rather than a thing.</p>
+<p><strong>5.4.4 The split keeper problem (H).</strong> H gives the grievable victim, the clerk, a keeper, his widow, who is disconnected from the chase, while the person in danger, Nina, has a separate emotional thread through her brother. Two grief threads, neither of them the spine. G concentrates grief in June. I concentrates it in the witness. H spreads it, and spread grief is thin grief.</p>
+<p><strong>5.4.5 A production risk that outranks all of the above.</strong> The launch plan is under review, surgery is at or after mid-September, and this is a solo project. Section 1.6 shows agency raises authored leads by a quarter to a third, and the Agency Bridge is new engineering. H is simultaneously the heaviest art bill and the most structurally novel design. Ranking it first on audience merit does not make it the right thing to attempt in this window, and that tension is a ruling for Stephen, not a judgement to bury inside a recommendation.</p>
+<h3>5.5 The three changes that would most improve this slate</h3>
+<ol>
+<li><strong>Build the Agency Bridge before the premise ruling</strong> (1.5). It is premise-independent, half a day of code plus tests, and until it exists every agency map here is fiction. Building it first also means the skeleton pass is authored against a working gate rather than against a promise.</li>
+<li><strong>Run the table-read before choosing</strong> (Appendix A). Every conclusion in section 5 is advisory by the charter's own rule 5. Five testers, three reads, twenty minutes each. It is the cheapest decisive act available and the only one that produces evidence rather than opinion.</li>
+<li><strong>Make the artefact-presence design explicit for whichever premise wins.</strong> G already does it, because Doyle is a voice and a notebook. I needs it built deliberately (5.4.3). H needs it least, and that is a hint about where H's emotional risk sits.</li>
+</ol>
+<h3>5.6 Verdict</h3>
+<p><strong>TEST BEFORE COMMITTING.</strong></p>
+<p>The slate is materially stronger than v3: gate 4 is cleared for all three, gate 3 now discriminates, and the rankings separate the pitches into three coherent clusters instead of three near-identical percentages. What is missing is not more analysis. It is the one input the charter says outranks all of this, and it does not exist yet.</p>
+<p><strong>Recommendation, conditional, and for Stephen to rule:</strong></p>
+<ul>
+<li><strong>If the schedule can absorb the heaviest art bill in the document: H,</strong> and ruling for H means ruling for triage (5.1 gate 3, 5.4.1). H wins the audience cluster, and the audience cluster is the one that killed the last pilot. H also preserves maximum optionality: G and I share a 1989 spine and are mutually exclusive, so choosing H keeps both in the bank, whereas choosing either of them spends the other.</li>
+<li><strong>If it cannot: I, not G.</strong> I is mid-cost, wins the story cluster, sits closest to the genre's proven grammar (5.3), and stands furthest from The Listener's surface shape. Its risks (5.4.3) are design risks, fixable at the skeleton pass. G's central risk (5.4.2) is an audience risk, only fixable by finding out.</li>
+<li><strong>G is not third on quality.</strong> G is the best-engineered pitch in the document, the cheapest, and its map has the tightest thematic through-line. It ranks below the other two here for one reason: its appeal depends most on a relationship the player has not had time to form, and that is the exact class of assumption that produced a twelve out of twelve rejection eight days ago.</li>
+</ul>
+<p><strong>Confidence: low to moderate, deliberately.</strong> High confidence in the kill-gate findings and the cost analysis, because those are verifiable. Low confidence in the cold-open ranking and therefore in the recommendation, because the decisive evidence has not been gathered.</p>
+<p><strong>What would change the verdict:</strong> a table-read in which one cold open is picked by four or more of five testers flips this to PROCEED on that premise regardless of anything above. A read in which G's listeners name Gerald in question 3 restores G to first on the audience cluster and makes it the clear overall winner given its cost advantage. A read in which no cold open pulls clearly means none of the three is the pilot, and the slate needs a fourth.</p>
+<hr />
+<h2>6. Comparison at a glance (revised)</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>G Confession</th>
+<th>H Overnight Girl</th>
+<th>I Last Caller</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Present-tense murder on-page</td>
+<td>yes, night one</td>
+<td>yes, ice store body</td>
+<td>yes, by morning</td>
+</tr>
+<tr>
+<td>Victim-track jeopardy</td>
+<td>June's truth and Gerald's life</td>
+<td>Nina hunted now</td>
+<td>witness hunted now</td>
+</tr>
+<tr>
+<td>Ally-track jeopardy</td>
+<td>family (Gerald)</td>
+<td>Kroll at the counter</td>
+<td>racing the interrupter</td>
+</tr>
+<tr>
+<td>Played length</td>
+<td>17 leads / 3 phases</td>
+<td>15 / 2</td>
+<td>18 / 3</td>
+</tr>
+<tr>
+<td><strong>Authored lead assets</strong></td>
+<td><strong>~21</strong></td>
+<td><strong>~20</strong></td>
+<td><strong>~24</strong></td>
+</tr>
+<tr>
+<td><strong>Play-changing decisions</strong></td>
+<td><strong>6 (2/2/2)</strong></td>
+<td><strong>6, ending accumulates</strong></td>
+<td><strong>6 (2/2/2)</strong></td>
+</tr>
+<tr>
+<td><strong>Agency flavour</strong></td>
+<td><strong>custody: who do you trust with this</strong></td>
+<td><strong>triage: what do you give up</strong></td>
+<td><strong>editorial: what goes on air</strong></td>
+</tr>
+<tr>
+<td><strong>Expensive (class C) branches</strong></td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td><strong>Added VO over baseline</strong></td>
+<td>~14 lines</td>
+<td>~12 lines plus 3 stubs</td>
+<td>~18 lines</td>
+</tr>
+<tr>
+<td>New art</td>
+<td>lightest (Cortez, June)</td>
+<td>heaviest (Nina, Kroll, brother, widow)</td>
+<td>middle</td>
+</tr>
+<tr>
+<td>Tutorial synergy</td>
+<td>strongest, Gerald-centred</td>
+<td>inverted, the diner becomes crime-adjacent</td>
+<td>neutral</td>
+</tr>
+<tr>
+<td>Reuses Listener devices</td>
+<td>announcer, bar</td>
+<td>archive breadcrumbs</td>
+<td>strongest, the interrupted tape</td>
+</tr>
+<tr>
+<td>Cluster won</td>
+<td><strong>production</strong></td>
+<td><strong>audience</strong></td>
+<td><strong>story</strong></td>
+</tr>
+<tr>
+<td><del>Score /50</del></td>
+<td><del>47</del> VOID</td>
+<td><del>46</del> VOID</td>
+<td><del>47</del> VOID</td>
+</tr>
+</tbody>
+</table>
+<h2>7. Economy consequences (per ruling 2: reported, not pre-decided)</h2>
+<p>At 15 / 17 / 18 played leads versus the tuned 13, total T1eq scales to roughly 380 / 430 / 460, keeping the 5-10 minute lead beat and the Act-1 frictionless hook, with the first five leads staying under ~36 T1eq combined. Wall placement: keep four walls, re-sited between story beats per pitch, drafted in the skeleton pass after the premise ruling.</p>
+<p><strong>Added by v3.1.</strong> The agency maps put economy inside the fiction, which is the cheapest agency there is, and it means Schedule B can no longer be a single column. Three consequences to carry into the regeneration:</p>
+<ul>
+<li><strong>Branch-divergent requirement cost.</strong> G2, H2 to H4 and I1 change which family a lead needs, so Schedule B needs a per-branch T1eq band rather than one number per lead, and the band's width is the tuning risk. Rule of thumb to hold: <strong>no branch may be more than 15% more expensive than its sibling</strong>, or the choice becomes an economy decision wearing a story costume.</li>
+<li><strong>Special-item consumption as a choice</strong> (G2's SearchWarrant). This is the first time a Case Kit special would be spent by a narrative decision rather than by a puzzle. It is a good idea and it needs its own line in the specials budget.</li>
+<li><strong>Subscriber payoff asymmetry.</strong> G5, H5 and I4 all make the loud branch pay more subscribers than the quiet branch. That is correct fiction and dangerous economy: if loud always pays better, the quiet branch is a tax on players who chose with their conscience. Compensate the quiet branch in a different currency, CC or a special or an extra evidence card, never in subscribers.</li>
+</ul>
+<p>Obligations triggered in all three cases, to be executed together after the premise ruling: Schedule B regeneration (new CSV grid, now per-branch), subscribers ladder recompute (episode-close projection moves from ~8,400 to ~10-11k, all eight tier thresholds re-derived, conversion-moment fiction re-ruled onto the new pilot), cold-case tail re-sourced from the new close lead. Hard limits respected in all skeletons: quantity three or fewer per requirement line, current board geometry, one generator grant per lead.</p>
+<h2>8. Season 1 straw man (re-based, all premises compatible)</h2>
+<p><strong>Ep1</strong> murder pilot (coin whisper, "someone knows her name") → <strong>Ep2 The Ferryman</strong> (detonation; its five Listener re-points reversed to point at the new pilot's coin, and the v3/v4 change tables make this auditable) → <strong>Ep3</strong> The Listener, demoted and dread-passed ("the woman who calls my show every night went silent" lands harder on an audience that now knows the show) → <strong>Ep4</strong> Pitch F "The Boy Who Said Yes" (banked; the systemic register works mid-season) → <strong>~Ep5</strong> Ghost Student (Voss Bio surfaces per the existing ladder) → mid-season red-herring spend → <strong>Finale</strong> reserved, the Ferryman unmasked live. One notch per episode, costs compound, and whichever murder pitch is not chosen for Ep1 banks as season stock. G and I share a 1989 spine and are mutually exclusive; H banks cleanly alongside either.</p>
+<p><strong>Added by v3.1.</strong> The public-pressure doctrine flag (<code>flag_e1*_aired</code> / <code>_published</code>) is the same class of decision in all three premises. Whichever wins, that flag should be renamed to a season-level name at the skeleton pass (<code>flag_ally_doctrine_loud</code>) and read by Ep2 and Ep3, so the first thing a returning player learns is that the game remembered what kind of journalist they decided to be. That is the cheapest cross-episode payoff available and it costs one variant line per episode.</p>
+<h2>9. Rulings requested</h2>
+<ol>
+<li><strong>The premise:</strong> G, H or I, or a directed cross. The table-read in Appendix A is the recommended input; section 5.6 is advisory only.</li>
+<li><strong>The agency maps:</strong> accept, trim or replace, per premise. Accepting a premise does not accept its map.</li>
+<li><strong>The Agency Bridge (1.5):</strong> authorise it now, before the premise ruling, as premise-independent engineering. Recommended yes.</li>
+<li><strong>On the winner:</strong> green-light the full skeleton pass (lead-by-lead beat sheet, the lead ledger of 1.7, the agency map wired to lead ids and flags, economy regeneration, art and VO manifest) as the next artifact, before any script writing.</li>
+<li><strong>The clock convention:</strong> confirm that day-stamped structure (Day 1 through Day 6, as in The Listener) is the house solution to 5.4.1, and that any premise choosing an hours-scale clock must convert it to a lead-count clock instead.</li>
+</ol>
+<hr />
+<h2>Appendix A — The table-read kit</h2>
+<p><strong>Purpose.</strong> This is the decision input. Per charter rule 5, tester evidence outranks every ranking in section 5, including the recommendation.</p>
+<p><strong>Who.</strong> Five or more of the twelve F&amp;F testers who read The Listener. Prefer the ones who were most specific in their criticism, not the kindest.</p>
+<p><strong>How.</strong></p>
+<ol>
+<li>Read aloud. Do not hand them the page. The cold opens are written to be heard, and reading silently changes what a hook does.</li>
+<li><strong>Do not say the titles, the pitch letters, or anything about the episode.</strong> Titles bias. So does "this is the murder one."</li>
+<li>Give only the framing line at the top of each read.</li>
+<li><strong>Rotate the order for every tester</strong> using the table below. Whatever is read first has an advantage; rotating cancels it.</li>
+<li>Ask questions 1 and 2 after each read, while it is fresh. Ask question 3 only after all three are done.</li>
+<li>Write down their words, not your summary of their words.</li>
+</ol>
+<p><strong>Rotation table</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tester</th>
+<th>First</th>
+<th>Second</th>
+<th>Third</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Read 1</td>
+<td>Read 2</td>
+<td>Read 3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Read 2</td>
+<td>Read 3</td>
+<td>Read 1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Read 3</td>
+<td>Read 1</td>
+<td>Read 2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Read 3</td>
+<td>Read 2</td>
+<td>Read 1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Read 1</td>
+<td>Read 3</td>
+<td>Read 2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Read 2</td>
+<td>Read 1</td>
+<td>Read 3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The questions</strong></p>
+<ul>
+<li><strong>Q1, after each read:</strong> in one sentence, what do you think is going on. (This is a comprehension check, not an opinion question. If they cannot say it, the open is not working, no matter how much they liked it.)</li>
+<li><strong>Q2, after each read:</strong> who in that would you least like to see get hurt. (This is the attachment probe, and it is the specific test of 5.4.2. If Read 1's answer is not "the grandfather", Pitch G's revival argument has failed.)</li>
+<li><strong>Q3, after all three:</strong> which one do you need to hear the rest of, and would you come back tomorrow for it.</li>
+</ul>
+<p><strong>Scoring.</strong> None. Count Q3 first-choices, and read the Q1 answers for confusion. Four or more of five converging on one read is decisive. A three-two split is not a result; it means run three more testers.</p>
+<p><strong>Private key, not to be shown to testers:</strong> Read 1 = Pitch G "The Confession" · Read 2 = Pitch H "The Overnight Girl" · Read 3 = Pitch I "The Last Caller".</p>
+<hr />
+<h3>READ 1</h3>
+<p><em>Framing line to say first: "This is the first minute of a true crime podcast episode. The host is a woman called Ally. Tell me what you think afterwards."</em></p>
+<blockquote>
+<p><strong>ANNOUNCER (flat, synthetic):</strong>
+Message received: Saturday, eleven fifty-one p.m.</p>
+<p><strong>MO (a voicemail, low, no bar noise behind her):</strong>
+Ally. It's Mo. Not an emergency. Except I think it might be. There's a man in Gerald's booth who's been nursing one whiskey for four hours, and he just told your grandad something I wish I hadn't heard. Gerald's writing it down. Come when you can, my lovely. Come tonight.</p>
+<p><strong>ALLY (on-mic):</strong>
+By the time I got there, the man was gone. Gerald was still in the booth. He hadn't touched his glass.</p>
+<p>He slid his notebook across the table and said: read it twice, love. Because tomorrow he'll deny it, and by Monday he'll be dead.</p>
+<p>He was wrong about one thing.</p>
+<p>Frank Doyle didn't live until Monday.</p>
+</blockquote>
+<p><em>Q1: in one sentence, what is going on. · Q2: who would you least like to see get hurt.</em></p>
+<hr />
+<h3>READ 2</h3>
+<p><em>Framing line to say first: "This is the first minute of a true crime podcast episode. The host is a woman called Ally. Tell me what you think afterwards."</em></p>
+<blockquote>
+<p><strong>ANNOUNCER (flat, synthetic):</strong>
+Message received: Thursday, three twelve a.m.</p>
+<p><strong>BOY (young, steady the way children are when they have rehearsed being brave):</strong>
+My sister rings twice every night. Two rings means safe.</p>
+<p>It rang once tonight.</p>
+<p>She made me learn this number in case it ever rang once. She said ask for Ally. She said say the diner, say the ice store, say run.</p>
+<p><strong>ALLY (on-mic):</strong>
+He recited it like a times table. Somebody taught a twelve-year-old to be a dead man's switch.</p>
+<p>That somebody is out there right now, with a head start measured in hours.</p>
+<p>And so is whoever she built the switch against.</p>
+</blockquote>
+<p><em>Q1: in one sentence, what is going on. · Q2: who would you least like to see get hurt.</em></p>
+<hr />
+<h3>READ 3</h3>
+<p><em>Framing line to say first: "This is the first minute of a true crime podcast episode. The host is a woman called Ally. Tell me what you think afterwards."</em></p>
+<blockquote>
+<p><strong>ANNOUNCER (flat, synthetic):</strong>
+Message received: Wednesday, twelve oh four a.m.</p>
+<p><strong>CALLER (elderly, deliberate, reading from something he has written down):</strong>
+My name doesn't matter yet. Write this down instead.</p>
+<p>In August of nineteen eighty-nine a man went into the harbour at the foundry basin and it was called a fall. It was not a fall. I was paid to say it was.</p>
+<p>The one who paid me had a voice I will hear when I die, which I am told is soon, so I am spending it.</p>
+<p>There was a witness. She was nine years old. Her name is...</p>
+<p><strong>[The line does not click. It muffles: a hand over a receiver. Four seconds of a room with two people breathing in it. Then dial tone.]</strong></p>
+<p><strong>ALLY (on-mic):</strong>
+The tip line keeps voices, timestamps and nothing else. That has always been the promise. Tonight I would trade the whole archive for one more second of tape.</p>
+<p>Somewhere in this city is a woman who watched a murder when she was nine years old.</p>
+<p>Two people are looking for her tonight.</p>
+<p>I am the slower one.</p>
+</blockquote>
+<p><em>Q1: in one sentence, what is going on. · Q2: who would you least like to see get hurt.</em></p>
+<hr />
+<p><em>All quoted script lines above are draft register sketches, not locked copy. They follow the no-em-dash and no-exclamation rules and will go through the standard line-by-line ruling at script pass.</em></p>
+</body></html>

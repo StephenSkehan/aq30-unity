@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P04_07
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P04_07_N1
+  stageBackground: {fileID: 21300000, guid: bf108783271c436ebaaba28a69708349, type: 3}
+  nodes:
+  - id: FK_P04_07_N1
+    speaker: "Ally Quinn"
+    line: "August 2014, Violet's kitchen, a bottle open on the table. One question about her mother's house, and one laugh. Here's Liam's half, the way he gave it, flat."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_07_N2
+    choices: []
+  - id: FK_P04_07_N2
+    speaker: "Liam Bryce"
+    line: "There was a question about her mum's house, and there was a laugh. I heard it one way. Somebody else in that kitchen heard it another, and we've each stuck to it for twelve years."
+    portrait: {fileID: 0}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P04_07_N3
+    choices: []
+  - id: FK_P04_07_N3
+    speaker: "Ally Quinn"
+    line: "I asked him whose side Violet was on. He said he didn't know. Nobody I've asked does."
+    portrait: {fileID: 21300000, guid: 792b5f88f6dd2724d84b6954cc0b5fad, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []

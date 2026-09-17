@@ -1,0 +1,76 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Lead packages, the systems bill v1</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1c1a17; margin: 0; font-size: 10.5pt; line-height: 1.55; }
+  h1 { font-size: 20pt; letter-spacing: .2px; border-bottom: 3px solid #1c1a17; padding-bottom: 8px; margin: 0 0 14px; }
+  h2 { font-size: 13.5pt; margin: 26px 0 8px; padding-bottom: 4px; border-bottom: 1.5px solid #1c1a17; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 18px 0 6px; page-break-after: avoid; }
+  p { margin: 0 0 9px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  hr { border: 0; border-top: 1px solid #ccc5b8; margin: 22px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 6px 0 14px; font-size: 8.6pt; line-height: 1.35; page-break-inside: auto; }
+  th, td { border: 1px solid #b9b2a4; padding: 4px 6px; vertical-align: top; text-align: left; }
+  th { background: #e9e4d8; font-weight: bold; }
+  td { background: #faf8f2; }
+  tr { page-break-inside: avoid; }
+  blockquote { border-left: 3px solid #b9b2a4; margin: 8px 0 12px; padding: 4px 14px; background: #f4f1ea; }
+  code { font-family: Consolas, monospace; font-size: 9pt; }
+</style></head><body>
+<h1>LEAD PACKAGES: AUDIT + COSTED DESIGN, v1</h1>
+<p><em>2026-08-31. Prices exactly the ten assumptions in structure v2.0 Part G, against the code as it exists today (main at 0d0cfa1; save schema 1.0.0 and episodes live on <code>feature/multi-episode-audit</code>, unmerged). Pattern follows <code>feature-multi-episode-support-v1.md</code>: verified facts with line refs, then the bill, then the rulings queue. Nothing here is built.</em></p>
+<h2>1. What the code already gives us (verified, with refs)</h2>
+<table><thead><tr><th>Part G assumption</th><th>Code truth</th><th>Verdict</th></tr></thead><tbody>
+<tr><td>G1 cards are ordinary <code>LeadData</code></td><td><code>Assets/App/Leads/Data/LeadData.cs</code>: id, display, <code>requirements[]</code>, <code>RequiredLeadIds</code>, <code>SpawnLeadIds</code>, rewards, <code>resolutionDialogue</code>, board fields. Runtime state shadowed in <code>RuntimeState</code>, never baked to the SO</td><td><strong>Holds.</strong> Cards need zero schema change</td></tr>
+<tr><td>G2 one requirement slot, quantity 1 to 3</td><td><code>requirements</code> is an array (max 3 recommended); <code>LeadRequirement.quantity</code> is <code>[Range(1,3)]</code> (shipped, exercised by Schedule B's L10 fix)</td><td><strong>Holds.</strong> Authoring convention, not code</td></tr>
+<tr><td>G5 package-to-package gating with shipped primitives</td><td><code>LeadsRepository.CheckAndUnlockBlockedLeads</code> (<code>LeadsRepository.cs:50</code>) unlocks a Blocked lead only when <strong>all</strong> <code>RequiredLeadIds</code> are in <code>_activatedLeadIds</code> (<code>:65</code>). AND-gate semantics exist today</td><td><strong>Holds.</strong> Package N+1 member cards each list package N's member ids. No new gate machinery</td></tr>
+<tr><td>G7 no new save state</td><td><code>_activatedLeadIds</code> round-trips through <code>LeadSaveState</code> / <code>ApplySavedStates</code> (<code>LeadsRepository.cs:199-251</code>) on the existing save path</td><td><strong>Holds, with one exception: the pending-beat marker (§3)</strong></td></tr>
+<tr><td>G4 rewards package-level</td><td><code>LeadOutcomeMB.GrantRewards</code> (<code>LeadOutcomeMB.cs:55-88</code>) pays per lead via <code>WalletLocator</code>, plus specials, generator rewards, flags, spawns</td><td><strong>Holds with a correction (§2):</strong> payout cannot sit on a designated card, because the completing card is whichever the player finishes last</td></tr>
+<tr><td>G3 beat fires once, on completion</td><td>Per-lead <code>resolutionDialogue</code> (<code>CaseGraph</code>) is the shipped beat path</td><td>Needs the container runtime (§2) and the art+caption surface (§4)</td></tr>
+<tr><td>G6 at most ~7 chips</td><td><code>LeadsBarView.cs</code> (442 lines) renders flat chips; no grouping concept</td><td>UI work item (§5)</td></tr>
+<tr><td>G8 ids and assets</td><td>Convention only</td><td>Free</td></tr>
+<tr><td>G9 family availability</td><td>Mirrors shipped <code>e1_tip</code>-style duties</td><td>Editor wiring pass, included in integration</td></tr>
+<tr><td>G10 analytics</td><td><code>LeadAnalytics.cs</code> exists for lead events</td><td>Small addition</td></tr>
+</tbody></table>
+<p><strong>The one Part G gap:</strong> G4/G3 say "the completing card or the container" fires the beat and pays. The completing card is not knowable at authoring time (G6 lets the player order cards freely inside a package), so a <strong>container runtime must detect completion</strong>. That is the only genuinely new mechanism in the whole feature.</p>
+<h2>2. The design (chosen, per the no-menus rule)</h2>
+<ul>
+<li><strong><code>PackageData</code> ScriptableObject</strong> (<code>Assets/App/Leads/Data/</code>): packageId, ordered member card ids, beat payload (beat type enum; <code>CaseGraph</code> ref for dialogue beats; sprite + caption for art beats; character-fact text), package rewards (soft/energy/premium/special), chapter id. A <strong><code>PackageCatalog</code> SO</strong> lists them in order for validation and analytics. Member <code>LeadData</code> cards carry <strong>zero rewards and no <code>resolutionDialogue</code></strong>; a one-line toast (§5.7 register) is optional per card.</li>
+<li><strong><code>PackageRuntime</code> MonoBehaviour</strong> (composition-root wired, like the orchestrator): subscribes to <code>LeadsRepository.LeadsChanged</code>; on each change, scans the catalog for packages whose members are all in <code>ActivatedLeadIds</code> and whose beat flag is unset (a state-scan, per robustness rule 6, so restore and edge cases converge); fires the beat, pays the rewards through <code>WalletLocator</code>, emits analytics, sets the beat flag <strong>after</strong> the beat displays.</li>
+<li><strong>Gating stays on the cards</strong> (G5 as written): the structure doc's Part B already lists the <code>RequiredLeadIds</code> per card. The runtime adds nothing to gating.</li>
+</ul>
+<h2>3. Robustness compliance (the rules that retired bug classes)</h2>
+<ul>
+<li><strong>Rule 5 (persist done only after it happened):</strong> the package-complete flag (<code>aq.fk.p01_03.beat_seen</code> in <code>GameFlags</code>) is set only after the beat presentation is dismissed. Crash between the last card's activation and the beat display: the boot-time state-scan re-fires the beat. Rewards must be idempotent with the beat: pay on the same dismiss, or pay first and mark paid separately; <strong>chosen: pay and flag in the same dismiss handler, and accept a re-shown beat as the crash outcome rather than a double payment</strong> (a <code>beat_paid</code> flag checked before granting).</li>
+<li><strong>Rule 1 (save aggregate):</strong> <code>GameFlags</code> is already folded into the aggregate on the branch, so beat/paid flags ride the existing atomic save. <strong>No new file, no prefs.</strong> If any per-package state ever exceeds flags, it folds into <code>BoardSaveSystem</code> with the standard crash-boundary suite.</li>
+<li><strong>Rule 6 (state-scan over edge-event):</strong> completion detection is a scan on <code>LeadsChanged</code>, never a per-card event chain.</li>
+<li><strong>Tests (mandatory):</strong> an EditMode suite on the templates' pattern: completion detection with member subsets, beat flag set only after display callback, reward idempotence across simulated crash, catalog validation (every Part B card exists, ids unique, gates acyclic, package totals match the v1.1 envelope), restore-time re-fire.</li>
+</ul>
+<h2>4. The bill (solo-dev days, after <code>feature/multi-episode-audit</code> merges)</h2>
+<table><thead><tr><th>#</th><th>Item</th><th>Days</th><th>Notes</th></tr></thead><tbody>
+<tr><td>1</td><td><code>PackageData</code> + <code>PackageCatalog</code> + validation</td><td>0.5</td><td>SO plumbing on existing patterns</td></tr>
+<tr><td>2</td><td><code>PackageRuntime</code>: scan, beat dispatch, rewards, flags, restore re-fire</td><td>1.5</td><td>The new mechanism; includes the EditMode suite</td></tr>
+<tr><td>3</td><td>Beat presentation surface: art+caption panel (new), dialogue beats reuse the shipped <code>CaseGraph</code> path, character-fact card variant</td><td>1.5 to 2</td><td>The only new player-facing UI; portrait/art slot, caption, dismiss</td></tr>
+<tr><td>4</td><td>Leads-bar grouping: package header chip, member chips, at most 2 packages visible</td><td>1 to 2</td><td>Heaviest UI risk; <code>LeadsBarView</code> is 442 lines and drag/click alternation is a known fragile area, so this gets its own editor QA pass</td></tr>
+<tr><td>5</td><td>Content tooling: an editor auditor that diffs the built assets against structure v2 Part B (250 cards, ids, gates, T1eq totals, CC bands)</td><td>1</td><td>At 250 cards, hand-checking is how errors ship; the SO-auditor commitment finally earns its keep</td></tr>
+<tr><td>6</td><td>FTUE teaching: chapter 1 packages 1 to 3 introduce the concept; copy is Stephen-ruled</td><td>0.5 to 1</td><td>Rides the existing guided loop</td></tr>
+<tr><td>7</td><td>Analytics: <code>package_complete</code> (chapter, id, T1eq, session index) + climax watches</td><td>0.25</td><td>On <code>LeadAnalytics</code></td></tr>
+<tr><td>8</td><td>Family/generator availability wiring (G9) + integration + editor QA</td><td>1</td><td>Includes the §D chapter-1 seconds check</td></tr>
+<tr><td></td><td><strong>Total</strong></td><td><strong>7.25 to 9.25</strong></td><td><strong>MVP cut: defer 4 to a minimal "package title above its chips" (saves ~1 day) and 5's CC-band check to a spreadsheet diff (saves ~0.5)</strong></td></tr>
+</tbody></table>
+<p>Content authoring (250 <code>Lead_FK_*</code> assets + ~100 <code>PackageData</code>) is not in this bill; it scales with the Fable-brief and VO pipeline and is the production schedule's line, not a systems line.</p>
+<h2>5. Sequencing</h2>
+<ol>
+<li>Stephen rules structure v2 Part F; GPT attacks the structure (both can run before any code).</li>
+<li><code>feature/multi-episode-audit</code>: play-verify + HUD scene pass + <strong>merge</strong>. Packages build on its save schema and flags fold; building them on main first would be double work.</li>
+<li>Items 1, 2, 7 (the invisible spine), then 3, then 4 and 6, then 5 and 8.</li>
+</ol>
+<h2>6. Rulings queued for Stephen (none block Part F)</h2>
+<ol>
+<li><strong>The beat surface's shape:</strong> full-screen interstitial (art fills, caption below) or board-corner card? Cheapest build is the interstitial; the corner card fights the merge board for space.</li>
+<li><strong>Member-card toasts:</strong> on 3+ card packages, does completing a non-final card show a §5.7 toast, or nothing? (Structure v2 assumed at most a toast.)</li>
+<li><strong>FTUE copy</strong> for teaching the package concept (≤8-word lines, ruled like all copy).</li>
+<li><strong>MVP cut yes or no</strong> (item 4's minimal grouping, item 5's spreadsheet diff).</li>
+</ol>
+</body></html>

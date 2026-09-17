@@ -1,0 +1,261 @@
+[
+ {
+  "id": "fk_p06_01",
+  "background": "studio",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Three days of nothing. Then on the Wednesday, one letter, from a woman two hours up the coast."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "surprised",
+    "line": "She'd heard the ask. Did Margo say anything, to anyone. She wrote back: once. To me."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "There was a screenshot attached. I read it twice before I did anything else."
+   }
+  ]
+ },
+ {
+  "id": "fk_p06_02",
+  "background": "street",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The coast road runs north out of Havenbay for two hours, and there isn't much on it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Margo Rivera drove it every second Sunday for eleven years, to a person none of the other three ever heard named."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "I drove it on a Thursday. I kept thinking how ordinary it must have got for her."
+   }
+  ]
+ },
+ {
+  "id": "fk_p06_03",
+  "background": "cottage",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Her name is Tessa. She was Margo's partner for eleven years. Nobody in Havenbay knew she existed."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Margo had a whole second room to her life, and she kept the door shut. Tessa says it never looked like effort."
+   }
+  ]
+ },
+ {
+  "id": "fk_p06_04",
+  "background": "cottage",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "There was a card in Margo's kitchen drawer. In case, ring Tessa, and a number. She wrote it eleven years ago."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "After the harbour, the police found the card and rang the number. That's how Tessa learned Margo was dead. From a stranger, reading it out."
+   }
+  ]
+ },
+ {
+  "id": "fk_p06_05",
+  "background": "cottage",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "Tessa's frightened of being found. Eleven years of keeping quiet taught her something, and she said it plainly: a sentence can be an address."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "She said yes anyway. I drove home slower than I drove up."
+   }
+  ]
+ },
+ {
+  "id": "fk_p06_06",
+  "background": "studio",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The screenshot is real. I had it checked, and the date on it holds. Seventy-seven days after Violet died, about two and a half weeks after Brad drove to Kestrel Head."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "It's a message from Margo to Tessa, on the app they used. It says: The thing in the cupboard is wrong. It can't mean that."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Tessa kept it because Margo didn't say things like that. She asked what cupboard. Margo never answered, and never brought it up again."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "confused",
+    "line": "The cupboard is what the four of them called Violet's locker. Margo doubted what was in it. She said so once, to one person, and then she stopped."
+   }
+  ],
+  "decision": {
+   "prompt": "So do I put Margo's own words on air, or keep them back and say it my way?",
+   "options": [
+    {
+     "label": "Air her words, no name, no town",
+     "flag": "aq.fk.d3.verbatim",
+     "result": "The exact words go out. Exact words sometimes draw exact answers. And Tessa's fear goes out with them, whether I name her or not."
+    },
+    {
+     "label": "Paraphrase, and keep Tessa out of it",
+     "flag": "aq.fk.d3.paraphrase",
+     "result": "I'll say what Margo meant, not what she typed. No quotation, no app, no Sunday. Tessa's safer. The city hears less."
+    }
+   ]
+  },
+  "after": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Either way, it's the only doubt Margo is known to have said out loud, and she said it to the one person none of them knew."
+   }
+  ]
+ },
+ {
+  "id": "fk_p06_07",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I've put the letter up on the board, line by line, next to what the room verified last month."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Liam's third of the yard, true. The boat requests, true. The lock changed and the key taken in, true. Every line the police could check, they checked, and it held."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "confused",
+    "line": "One line nobody checked. The kind one. Brad had paid the van money back that autumn. Nobody looked at it, because why would you look at a kind thing."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "And across all of it, Margo's sentence on a pin. The thing in the cupboard is wrong."
+   }
+  ]
+ },
+ {
+  "id": "fk_p06_08",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Here's where I've got to, and I'll say exactly this much. If the thing in the cupboard was wrong, then there was a thing, and something about it didn't fit."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I don't know what Margo meant. I'm not saying the letter's false. I'm not saying who."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "confused",
+    "line": "But there's a plainer question. What did Violet have in her last months that she hadn't had before?"
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "The gilded panel. She carried it round the trade, workshop to workshop, showing people. Nobody has seen it since."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "It isn't in the locker. It isn't in Brad's boxes. It isn't in the estate. I've asked. Something is missing from the world, and I don't know if it's the same something."
+   }
+  ]
+ },
+ {
+  "id": "fk_p06_09",
+  "background": "caseboard",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "One more word, and then I'll leave it. That. It can't mean that."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "confused",
+    "line": "Not it can't be true. Not it can't be hers. It can't mean that. Margo had a meaning in her head, and she was refusing it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "I've written the question on a card and pinned it under her sentence. What couldn't it mean? Nobody alive can tell me. So it stays up."
+   }
+  ]
+ },
+ {
+  "id": "fk_p06_10",
+  "background": "studio_onair",
+  "nodes": [
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Last week I asked whether Margo Rivera said anything, to anyone. Three days of nothing. Then one answer. One."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "Here's what I can tell you. The letter in Violet's locker listed things that were wrong in her house. The police checked every line they could, and every line held."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "worried",
+    "line": "One line nobody checked, because it was kind. And one thing Violet had in her last months, a gilded panel she showed round the trade, that nobody has seen since. Not in the locker. Not anywhere I can find."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "line": "I'm not telling you the letter's false. I'm not telling you who. I'm telling you something is missing from the world, and if you've seen it, write to me, not to anyone else."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "sad",
+    "line": "The four of them had a name for Violet's locker. The cupboard. And Margo Rivera, who everybody thought said nothing, said one thing about it."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "variant": "aq.fk.d3.verbatim",
+    "line": "Seventy-seven days after Violet died, she wrote to a woman two hours up the coast: The thing in the cupboard is wrong. It can't mean that. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+   },
+   {
+    "speaker": "Ally Quinn",
+    "emotion": "neutral",
+    "variant": "aq.fk.d3.paraphrase",
+    "line": "Margo doubted what was in the cupboard. Not that it was Violet's. What it meant. She said so once, to one person, and never again. This is Echoes of Havenbay, I'm Ally Quinn. Goodnight for now, Harbour. Sleep tight."
+   }
+  ]
+ }
+]

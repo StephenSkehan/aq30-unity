@@ -1,10 +1,7 @@
 fileFormatVersion: 2
 guid: a6ca2348df1d653488455433cabdac99
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -1035216374124417660
-    second: char_ally_sad_f01_0
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -137,29 +134,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: char_ally_sad_f01_0
-      rect:
-        serializedVersion: 2
-        x: 39
-        y: 0
-        width: 926
-        height: 966
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 48d65aa413c22a1f0800000000000000
-      internalID: -1035216374124417660
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     customData: 
     physicsShape: []
@@ -173,8 +148,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      char_ally_sad_f01_0: -1035216374124417660
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

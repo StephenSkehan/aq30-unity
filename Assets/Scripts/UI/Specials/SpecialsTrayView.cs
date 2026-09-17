@@ -38,32 +38,33 @@ namespace AQ.App.UI.Specials
             catch (System.Exception e) { Debug.LogError($"[SpecialsTray] BuildHUD failed: {e}"); }
         }
 
+        private CanvasGroup _canvasGroup; // DialogueStageMB fades us out during dialogue
+        private AQ.App.UI.TapRouter.Region _tapRegion;
+
         private void OnEnable()
         {
             SpecialItemsService.Changed += Refresh;
             Refresh();
+
+            // Tap input via TapRouter (2026-08-18) — stacking + one-consumer
+            // guarantees. The alpha guard stays: faded out by the dialogue stage
+            // means not tappable (Case-Kit-in-dialogue bug, 2026-08-12).
+            _tapRegion = AQ.App.UI.TapRouter.Register("case-kit-button", 200,
+                contains: RectContains,
+                onTap:    _ => ShowKit(),
+                enabled:  () =>
+                {
+                    if (this == null || _root == null || !_root.gameObject.activeSelf || _popup != null) return false;
+                    if (_canvasGroup == null) _canvasGroup = GetComponentInChildren<CanvasGroup>();
+                    return _canvasGroup == null || _canvasGroup.alpha >= 0.9f;
+                });
         }
 
-        private void OnDisable() => SpecialItemsService.Changed -= Refresh;
-
-        private CanvasGroup _canvasGroup; // DialogueStageMB fades us out during dialogue
-
-        private void Update()
+        private void OnDisable()
         {
-            if (_root == null || !_root.gameObject.activeSelf || _popup != null) return;
-
-            // Faded out by the dialogue stage — the raw poll must not accept
-            // taps on an invisible button (Case-Kit-in-dialogue bug, 2026-08-12).
-            if (_canvasGroup == null) _canvasGroup = GetComponentInChildren<CanvasGroup>();
-            if (_canvasGroup != null && _canvasGroup.alpha < 0.9f) return;
-
-            bool tapped = false;
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-                tapped = RectContains(Input.GetTouch(0).position);
-            else if (Input.GetMouseButtonDown(0))
-                tapped = RectContains(Input.mousePosition);
-
-            if (tapped) ShowKit();
+            SpecialItemsService.Changed -= Refresh;
+            AQ.App.UI.TapRouter.Unregister(_tapRegion);
+            _tapRegion = null;
         }
 
         private bool RectContains(Vector2 screenPos)

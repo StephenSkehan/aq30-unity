@@ -18,6 +18,9 @@ namespace AQ.App.UI.Board
         private static GameObject _root;      // panel canvas (built on demand)
         private static RectTransform _grid;   // slot grid parent, rebuilt on refresh
         private static bool _isOpen;
+
+        /// <summary>Hint-context hook: board chips hide while the locker is up.</summary>
+        public static bool IsOpen => _isOpen;
         private static RectTransform _hudBtn; // for drag-drop hit testing
 
         /// <summary>True when the screen point sits on the locker HUD button (drag-to-store).</summary>
@@ -38,6 +41,33 @@ namespace AQ.App.UI.Board
             SceneManager.sceneLoaded += (_, _) => { if (_isOpen) Close(); };
         }
 
+        // ---- Reveal gate (Stephen-ruled 2026-09-15 after TestFlight: "why am I
+        // wanting to buy a locker slot?") ----
+        // The locker stays hidden until the board is 75% full, then shows for
+        // good and Gerald teaches it. The flag rides the save aggregate through
+        // GameFlags; HintService's board scan sets it and polls the gate, so a
+        // restored save shows the button once the flags have loaded and a QA
+        // reset hides it again.
+        public const string RevealFlag = "aq.locker.revealed";
+        private static GameObject _btnRoot;
+
+        public static bool Revealed => GameFlags.Has(RevealFlag);
+
+        public static void Reveal()
+        {
+            if (!Revealed) GameFlags.Set(RevealFlag);
+            ApplyRevealGate();
+        }
+
+        /// <summary>Show or hide the HUD button to match the flag. Cheap; safe to poll.</summary>
+        public static void ApplyRevealGate()
+        {
+            if (_btnRoot == null) return;
+            bool show = Revealed;
+            if (_btnRoot.activeSelf != show) _btnRoot.SetActive(show);
+            if (!show && _isOpen) Close();
+        }
+
         // ---- HUD button: bottom-left, overflow bucket beside it ----
 
         private static void BuildHudButton()
@@ -45,6 +75,7 @@ namespace AQ.App.UI.Board
             var btnRoot = new GameObject("__LockerBtn",
                 typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             Object.DontDestroyOnLoad(btnRoot);
+            _btnRoot = btnRoot;
 
             var c          = btnRoot.GetComponent<Canvas>();
             c.renderMode   = RenderMode.ScreenSpaceOverlay;
@@ -95,6 +126,7 @@ namespace AQ.App.UI.Board
             var btn = btnGo.GetComponent<Button>();
             btn.transition = Selectable.Transition.None;
             btn.onClick.AddListener(Toggle);
+            ApplyRevealGate(); // hidden until the board earns it (flags may still be loading; polled)
             _hudBtn = rt;
         }
 
@@ -186,7 +218,7 @@ namespace AQ.App.UI.Board
             // the bar; the instruction line moved behind the ? and the bottom
             // CLOSE button retired (dim-tap still closes too).
             AQTheme.TitleBar(panel, "EVIDENCE LOCKER", Close,
-                "Stash items and generators off the board. Tap an item to bring it back. Buy extra slots with CaseCash.");
+                "Store items and generators off the board until you need them. Tap one to bring it back. The first slots are free; more cost CaseCash.");
         }
 
         private static void Refresh()
@@ -252,7 +284,7 @@ namespace AQ.App.UI.Board
                     var b = cell.gameObject.AddComponent<Button>();
                     AQTheme.StyleButton(img, AQTheme.Teal);
                     int price = EvidenceLockerService.NextSlotPrice;
-                    AddLabel(cell, $"+ SLOT\n{price} CC", 48f, AQTheme.Paper, Vector2.zero, new Vector2(SlotSize, SlotSize), display: true);
+                    AddLabel(cell, $"+ SLOT\n${price}", 48f, AQTheme.Paper, Vector2.zero, new Vector2(SlotSize, SlotSize), display: true);
                     b.onClick.AddListener(BuySlot);
                 }
                 else
@@ -309,7 +341,7 @@ namespace AQ.App.UI.Board
                 onConfirm: () =>
                 {
                     if (EvidenceLockerService.TryBuySlot())
-                        ToastService.Show("locker_slot", $"Locker slot unlocked (-{price} CC).", 2f);
+                        ToastService.Show("locker_slot", $"Locker slot unlocked (-${price}).", 2f);
                     else
                         ToastService.Show("locker_slot_no", "Not enough CaseCash.", 2f);
                 });

@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8140d05737a11468020c371c32ff33, type: 3}
+  m_Name: Resolve_FK_P02_09
+  m_EditorClassIdentifier: AQ.App::AQ.App.CaseGraph
+  startId: FK_P02_09_N1
+  stageBackground: {fileID: 21300000, guid: bf108783271c436ebaaba28a69708349, type: 3}
+  nodes:
+  - id: FK_P02_09_N1
+    speaker: "Ruby Walker"
+    line: "Every Saturday we came back to this table with the lists Violet asked for. Every Saturday Liam looked worse."
+    portrait: {fileID: 21300000, guid: 3eda8c3a8ba44593b8d95260ba6b7487, type: 3}
+    emotion: 0
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_09_N2
+    choices: []
+  - id: FK_P02_09_N2
+    speaker: "Ally Quinn"
+    line: "The line about the police. Did that sound like Violet to you?"
+    portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
+    emotion: 6
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_09_N3
+    choices: []
+  - id: FK_P02_09_N3
+    speaker: "Ruby Walker"
+    line: "Never. Liam said that night why she was like that about them. Something from the night her mum died. I let it go. Then the facts bent towards him: the yard, the lines about her mother, the bedroom window, the back door."
+    portrait: {fileID: 21300000, guid: 4f3c2252e9b24f179e5e92bb42f0a6bb, type: 3}
+    emotion: 5
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_09_N4
+    choices: []
+  - id: FK_P02_09_N4
+    speaker: "Ally Quinn"
+    line: "Each of those could also be a friend helping a friend. Brad kept saying so."
+    portrait: {fileID: 21300000, guid: ae0c3985c1991244d8ee72fa0756eb08, type: 3}
+    emotion: 6
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: FK_P02_09_N5
+    choices: []
+  - id: FK_P02_09_N5
+    speaker: "Ruby Walker"
+    line: "Every week. Reasonably. He lost every week. By the fifth we'd settled on Liam. At the sixth Margo stopped arguing and looking at anyone. A week later Brad drove to Kestrel Head. She thought she'd know, and she's dead. Anyway."
+    portrait: {fileID: 21300000, guid: 0daf7b4e2afb4baca0c6660666687b94, type: 3}
+    emotion: 2
+    voiceClip: {fileID: 0}
+    waitForAudio: 0
+    requiresFlag: 
+    skipIfFlagMissing: 1
+    setsFlag: 
+    nextId: 
+    choices: []
