@@ -435,5 +435,6 @@
  "portrait:char_ruby_angry_f01": "05596daefe01434b8af754b91499af1a",
  "portrait:char_ruby_surprised_f01": "8acbbfbedc1e49c1808d453fff2486ab",
  "portrait:char_ruby_worried_f01": "4f3c2252e9b24f179e5e92bb42f0a6bb",
- "portrait:char_ruby_confused_f01": "0bf73a905b8a4f11a7398a494390fc6f"
+ "portrait:char_ruby_confused_f01": "0bf73a905b8a4f11a7398a494390fc6f",
+ "bg:bg_fk_ruby_kitchen": "bf108783271c436ebaaba28a69708349"
 }

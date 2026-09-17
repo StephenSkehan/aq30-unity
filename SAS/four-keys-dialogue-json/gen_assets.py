@@ -41,7 +41,7 @@ GERALD = "4e5f6a7b8c9d4e5f8a7b6c5d4e3f2a1b"
 RUBY = {"neutral": "3eda8c3a8ba44593b8d95260ba6b7487", "happy": "ee933f5d948e45808a57817fd2e9d4fe", "sad": "0daf7b4e2afb4baca0c6660666687b94", "angry": "05596daefe01434b8af754b91499af1a", "surprised": "8acbbfbedc1e49c1808d453fff2486ab", "worried": "4f3c2252e9b24f179e5e92bb42f0a6bb", "confused": "0bf73a905b8a4f11a7398a494390fc6f"}  # imported 2026-09-16
 EMOTION = {"neutral": 0, "happy": 1, "sad": 2, "angry": 3, "surprised": 4, "worried": 5, "confused": 6}
 BG = {"studio": "b61e15d0a1b2c3d4e5f6a7b8c9d0e101", "studio_onair": "b61e15d0a1b2c3d4e5f6a7b8c9d0e102", "studio_dawn": "b61e15d0a1b2c3d4e5f6a7b8c9d0e103",
-      "rusty_anchor": "b61e15d0a1b2c3d4e5f6a7b8c9d0e104", "kitchen": "b61e15d0a1b2c3d4e5f6a7b8c9d0e105", "street": "b61e15d0a1b2c3d4e5f6a7b8c9d0e106",
+      "rusty_anchor": "b61e15d0a1b2c3d4e5f6a7b8c9d0e104", "kitchen": "bf108783271c436ebaaba28a69708349", "street": "b61e15d0a1b2c3d4e5f6a7b8c9d0e106",
       "moorings": "b61e15d0a1b2c3d4e5f6a7b8c9d0e107", "del_bench": "b61e15d0a1b2c3d4e5f6a7b8c9d0e108", "allotments": "b61e15d0a1b2c3d4e5f6a7b8c9d0e109",
       "cottage": "b61e15d0a1b2c3d4e5f6a7b8c9d0e110", "diner": "be4bc156f1c11264dbd3b03b24114d6e", "rivermouth": "c26f32895ad18bd46be4538d6056e914",
       "caseboard": "2451cd1fa43fb724bacf7ad8ad419c9b"}

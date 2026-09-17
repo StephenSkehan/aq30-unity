@@ -85,9 +85,9 @@ CHAPTER 2 · THE KITCHEN TABLE
 
 Scene fk_p02_01: Ruby's Kitchen  [Ruby's kitchen]
 
-  Ally Quinn: Ruby Walker's kitchen. A pine table under the window, a heater beside it. This is where the four sat with Violet's letter, week after week.
-  Ally Quinn: Before the letter, it was Tuesdays. Violet came for years, and Ruby had the heater on before she knocked.
-  Ruby Walker: Heater on, her at the door, then the same argument we'd had for years. That was the friendship. Tea?
+  Ally Quinn: Ruby Walker's kitchen. A pine table under the window, a stove in the corner. This is where the four sat with Violet's letter, week after week.
+  Ally Quinn: Before the letter, it was Tuesdays. Violet came for years, and Ruby had the stove lit before she knocked.
+  Ruby Walker: Stove lit, her at the door, then the same argument we'd had for years. That was the friendship. Tea?
   Ally Quinn: The argument was about whether Ruby's husband should be told. Told what?
   Ruby Walker: You came for Violet, not my marriage. Leave him out of it. Anyway, tea?
 

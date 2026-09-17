@@ -33,6 +33,7 @@ namespace AQ.App.UI.EvidenceBoard
         // L5+ script pass).
         private static readonly (string fragment, string key)[] SpriteMap =
         {
+            ("ruby_kitchen",    "ruby_kitchen"), // Four Keys (2026-09-17); listed before the Listener fragments
             ("studio",          "studio"),
             ("chandler",        "chandler"),
             ("allotments",      "allotments"),
@@ -62,6 +63,19 @@ namespace AQ.App.UI.EvidenceBoard
 
         private static readonly Dictionary<string, Def> Defs = new()
         {
+            // ---- The Friends with Four Keys (fk01) ----
+            ["ruby_kitchen"] = new Def
+            {
+                key = "ruby_kitchen", displayName = "Ruby's Kitchen",
+                epigraph = "The table they worked the letter at.",
+                details = new[]
+                {
+                    D("A pine table under the window, a stove in the corner. Violet came on Tuesdays for years, and Ruby had it lit before she knocked.", 0),
+                    D("Six Saturdays after the locker, the four of them sat here with their lists. Ruby says Liam looked worse every week.", 40),
+                    D("The glass on the table is tonic. Ruby has been sober six years and says so first, so nobody has to ask.", 80),
+                    D("Through the door, an upright piano. Grade eight at fourteen. The surgery thinks she plays a bit at Christmas.", 120, wide: true),
+                }
+            },
             ["studio"] = new Def
             {
                 key = "studio", displayName = "The Studio",
